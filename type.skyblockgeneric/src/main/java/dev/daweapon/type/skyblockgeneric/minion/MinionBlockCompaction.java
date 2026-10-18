@@ -28,6 +28,11 @@ public final class MinionBlockCompaction {
         register("SNOWBALL", "SNOW_BLOCK", 4);
         register("GLOWSTONE_DUST", "GLOWSTONE", 4);
         register("SAND", "SANDSTONE", 4);
+        register("MELON_SLICE", "MELON_BLOCK", 9);
+        register("RED_MUSHROOM", "RED_MUSHROOM_BLOCK", 9);
+        register("BROWN_MUSHROOM", "BROWN_MUSHROOM_BLOCK", 9);
+        register("SLIME_BALL", "SLIME_BLOCK", 9);
+        register("ICE", "PACKED_ICE", 9);
     }
 
     private MinionBlockCompaction() {

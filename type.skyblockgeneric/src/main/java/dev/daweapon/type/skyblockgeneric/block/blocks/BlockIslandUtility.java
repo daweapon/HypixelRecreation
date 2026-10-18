@@ -42,6 +42,10 @@ public class BlockIslandUtility implements CustomSkyBlockBlock, BlockPlaceable, 
         ItemType type = new SkyBlockItem(player.getItemInMainHand()).getAttributeHandler().getPotentialType();
         event.setCancelled(true);
         if (type == null || !HypixelConst.isIslandServer()) return;
+        if (IslandUtilityBlocks.isLimitedToOne(type) && IslandUtilityBlocks.has(event.getInstance(), type)) {
+            player.sendMessage("<c>You can only place one {} on your island!", type.getDisplayName());
+            return;
+        }
 
         Instance instance = event.getInstance();
         Point position = event.getBlockPosition();

@@ -313,7 +313,7 @@ items:
     material: player_head
     name: "Desert Crystal"
     rarity: UNCOMMON
-    unavailable: "Spawning island biomes from a placed item isn't built"
+    unavailable: "Needs island variants"
     source: "Spawned by placing a Desert Island"
     lore:
       - "§7Can be placed on your §bPrivate Island§7."

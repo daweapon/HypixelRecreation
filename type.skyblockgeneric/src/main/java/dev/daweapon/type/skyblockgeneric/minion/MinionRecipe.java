@@ -24,7 +24,7 @@ public class MinionRecipe {
         try {
             return new MinionRecipe((materials) -> {
                 Map<Character, ItemQuantifiable> map = new HashMap<>();
-                map.put('A', new ItemQuantifiable(materials.minionIngredients().get(number).getItem(), materials.minionIngredients().get(number).getAmount()));
+                map.put('A', materials.minionIngredients().get(number).toQuantifiable());
                 if (number != 0) {
                     ItemType itemType = materials.minionItem();
                     SkyBlockItem item = new SkyBlockItem(itemType);
@@ -38,7 +38,7 @@ public class MinionRecipe {
         } catch (IndexOutOfBoundsException e) {
             return new MinionRecipe((materials) -> {
                 Map<Character, ItemQuantifiable> map = new HashMap<>();
-                map.put('A', new ItemQuantifiable(materials.minionIngredients().get(1).getItem(), materials.minionIngredients().get(1).getAmount()));
+                map.put('A', materials.minionIngredients().get(1).toQuantifiable());
                 map.put('B', new ItemQuantifiable(materials.firstBaseItem(), 1));
                 return map;
             });

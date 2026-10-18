@@ -83,7 +83,6 @@ items:
     material: player_head
     name: "Farm Crystal"
     rarity: RARE
-    unavailable: "Island crystals (placeable minion boosts) are not built"
     source: "Crafted from 96 Enchanted Pumpkin and 1 Enchanted Quartz (Pumpkin VIII)"
     lore:
       - "§7Can be placed on your §bPrivate Island§7."
@@ -91,7 +90,7 @@ items:
       - "§7While placed down, §9Farming Minions §7will"
       - "§7work §a10% §7faster."
     components:
-      - id: SKULL_HEAD
+      - id: DECORATION_HEAD
         texture: 29180c05ccb5a5e6435aa5c198742166ab981904c56be86943f8fac1534690f6
       - id: DEFAULT_CRAFTABLE
         recipes:
@@ -442,7 +441,7 @@ items:
     material: player_head
     name: "Fishing Crystal"
     rarity: UNCOMMON
-    unavailable: "Island crystals (placeable fishing boost) are not built"
+    unavailable: "Needs island variants"
     source: "Crafted at the crafting table (Prismarine collection)"
     lore:
       - "§7Can be placed on your §bPrivate Island§7."
@@ -813,11 +812,13 @@ items:
       - "§7Loyalty Chance: §a100%"
       - ""
       - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
   - id: FRENCH_FRIES
     material: player_head
     name: "French Fries"
     rarity: COMMON
-    unavailable: "Needs the Great Spook event"
     source: "Potato Minion with a Hunter Knife upgrade"
     lore:
       - "§7A perfect side."
@@ -1137,7 +1138,7 @@ items:
     material: player_head
     name: "Acacia Minion XII Upgrade Stone"
     rarity: LEGENDARY
-    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
+    unavailable: "Needs the Ant NPC in Torrhus Canyon (Galatea), which is not built"
     source: "Ant in Torrhus Springs"
     lore:
       - "§7Use this item to upgrade a §bAcacia"
@@ -1152,7 +1153,7 @@ items:
     material: player_head
     name: "Birch Minion XII Upgrade Stone"
     rarity: LEGENDARY
-    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
+    unavailable: "Needs the Ant NPC in Torrhus Canyon (Galatea), which is not built"
     source: "Ant in Torrhus Springs"
     lore:
       - "§7Use this item to upgrade a §bBirch"
@@ -1184,7 +1185,7 @@ items:
     material: player_head
     name: "Dark Oak Minion XII Upgrade Stone"
     rarity: LEGENDARY
-    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
+    unavailable: "Needs the Ant NPC in Torrhus Canyon (Galatea), which is not built"
     source: "Ant in Torrhus Springs"
     lore:
       - "§7Use this item to upgrade a §bDark Oak"
@@ -1216,7 +1217,7 @@ items:
     material: player_head
     name: "Jungle Minion XII Upgrade Stone"
     rarity: LEGENDARY
-    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
+    unavailable: "Needs the Ant NPC in Torrhus Canyon (Galatea), which is not built"
     source: "Ant in Torrhus Springs"
     lore:
       - "§7Use this item to upgrade a §bJungle"
@@ -1231,7 +1232,7 @@ items:
     material: player_head
     name: "Lily Pad Minion XII Upgrade Stone"
     rarity: LEGENDARY
-    unavailable: "Needs Lotus Atoll (not built)"
+    unavailable: "Needs the Lotus Eater on Lotus Atoll (not built)"
     source: "The Lotus Eater on the Lotus Atoll"
     lore:
       - "§7Use this item to upgrade a §bLily Pad"
@@ -1248,7 +1249,7 @@ items:
     material: player_head
     name: "Oak Minion XII Upgrade Stone"
     rarity: LEGENDARY
-    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
+    unavailable: "Needs the Ant NPC in Torrhus Canyon (Galatea), which is not built"
     source: "Ant in Torrhus Springs for 1,024 Enchanted Oak Log and 2,000,000 Coins"
     lore:
       - "§7Use this item to upgrade a §bOak Minion"
@@ -1263,8 +1264,7 @@ items:
     material: player_head
     name: "Revenant Minion XII Upgrade Stone"
     rarity: LEGENDARY
-    unavailable: "Needs the Bartender shop and Tier XII minions"
-    source: "Bartender"
+    source: "Bartender in the Combat Settlement, for 64 Revenant Viscera and 2,000,000 Coins (Slayer 9)"
     lore:
       - "§7Use this item to upgrade a §bRevenant"
       - "§bMinion §7from §aTier XI §7to §aTier XII§7."
@@ -1279,7 +1279,7 @@ items:
     material: player_head
     name: "Spruce Minion XII Upgrade Stone"
     rarity: LEGENDARY
-    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
+    unavailable: "Needs the Ant NPC in Torrhus Canyon (Galatea), which is not built"
     source: "Ant in Torrhus Springs"
     lore:
       - "§7Use this item to upgrade a §bSpruce"
@@ -1294,8 +1294,7 @@ items:
     material: player_head
     name: "Tarantula Minion XII Upgrade Stone"
     rarity: LEGENDARY
-    unavailable: "Needs the Bartender shop and Tier XII minions"
-    source: "Bartender"
+    source: "Bartender in the Combat Settlement, for 64 Tarantula Silk and 2,000,000 Coins (Slayer 9)"
     lore:
       - "§7Use this item to upgrade a §bTarantula"
       - "§bMinion §7from §aTier XI §7to §aTier XII§7."

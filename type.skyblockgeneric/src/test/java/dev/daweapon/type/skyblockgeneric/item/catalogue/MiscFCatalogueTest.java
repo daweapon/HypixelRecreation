@@ -64,7 +64,8 @@ class MiscFCatalogueTest {
                     Stream<Map<String, Object>> ingredients = raw instanceof Map<?, ?> map
                             ? ((Map<String, Map<String, Object>>) map).values().stream()
                             : ((List<Map<String, Object>>) raw).stream();
-                    ingredients.map(ingredient -> String.valueOf(ingredient.get("type")))
+                    ingredients.filter(ingredient -> !ingredient.containsKey("minion"))
+                            .map(ingredient -> String.valueOf(ingredient.get("type")))
                             .filter(type -> !type.equals("AIR") && !known.contains(type))
                             .forEach(type -> dangling.add(item.get("id") + " needs " + type));
                 }

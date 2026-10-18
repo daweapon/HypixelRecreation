@@ -13,6 +13,7 @@ public enum BlockType {
     DECORATION(BlockDecoration.class),
     BREWING_STAND(BlockBrewingStand.class),
     ISLAND_UTILITY(BlockIslandUtility.class),
+    MINION_STORAGE(dev.daweapon.type.skyblockgeneric.block.blocks.BlockMinionStorage.class),
     PORTABLE_CAMPFIRE(BlockPortableCampfire.class),
     EXPERIMENTATION_TABLE(dev.daweapon.type.skyblockgeneric.block.blocks.BlockExperimentationTable.class),
     ;

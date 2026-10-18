@@ -48,6 +48,12 @@ public class BlockDecoration implements CustomSkyBlockBlock, BlockPlaceable, Blo
 
         if (item.getAttributeHandler().getPotentialType() == null) return;
         if (!(item.hasComponent(SkullHeadComponent.class))) return;
+        ItemType placing = item.getAttributeHandler().getPotentialType();
+        if (IslandUtilityBlocks.isLimitedToOne(placing) && IslandUtilityBlocks.has(event.getInstance(), placing)) {
+            event.setCancelled(true);
+            player.sendMessage("<c>You can only place one {} on your island!", placing.getDisplayName());
+            return;
+        }
         String texture = item.getComponent(SkullHeadComponent.class).getSkullTexture(item);
 
         Instance instance = event.getInstance();

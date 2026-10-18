@@ -486,7 +486,7 @@ items:
     material: paper
     name: "Super Jacob Entertainment System"
     rarity: EPIC
-    unavailable: "Needs Farming minion upgrades that generate Jacob's Tickets"
+    unavailable: "Needs Chirping Stereo (Galatea mob drop, InfiniVacuum Hooverius upgrade not built)"
     source: "Crafting: Chirping Stereo, PlantBoy Advance, Botroot, Enchanted Paper and Enchanted Iron Block"
     lore:
       - "§8Minion Upgrade"
@@ -501,6 +501,8 @@ items:
       - "§8§oto beat the last level of Jacob's"
       - "§8§oHarvest III -- Dull Plows."
     components:
+      - id: MINION_UPGRADE
+        speed_increase: 0.0
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -1740,6 +1742,17 @@ items:
     components:
       - id: SKULL_HEAD
         texture: d7ab512029667b4ccf8b537403d9289a3187dfef4ecde18062b102339ab89b77
+  - id: VAMPIRE_MINION
+    material: player_head
+    name: "Vampire Minion"
+    rarity: RARE
+    unavailable: "Needs the Rift (Hemovibe)"
+    source: "Crafting (Hemovibe): Hemovibe and Bat Person Helmet, then Hemoglass for higher tiers"
+    lore:
+      - "§7Place this minion and it will start"
+      - "§7generating and slaying Vampire"
+      - "§7Scions! Minions also work when you"
+      - "§7are offline!"
   - id: VAMPIRE_SOFA
     material: player_head
     name: "Vampire Sofa"
@@ -2174,7 +2187,6 @@ items:
     material: pufferfish
     name: "Voodoo Doll"
     rarity: RARE
-    unavailable: "Recipe needs a Pumpkin Minion IX ingredient, which recipes cannot express yet"
     source: "Crafting (Zombie Slayer V)"
     lore:
       - "§6Ability: Acupuncture  §e§lRIGHT CLICK"
@@ -2195,6 +2207,33 @@ items:
           - type: SLAYER
             slayer: REVENANT_HORROR
             level: 5
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: REVENANT_HORROR
+            pattern:
+              - " F "
+              - "GMP"
+              - " H "
+            ingredients:
+              F:
+                type: FLINT_ARROW
+                amount: 64
+              G:
+                type: ENCHANTED_GHAST_TEAR
+                amount: 32
+              M:
+                minion: PUMPKIN_MINION
+                tier: 9
+              P:
+                type: ENCHANTED_PUFFERFISH
+                amount: 2
+              H:
+                type: CRYSTALLIZED_HEART
+                amount: 1
+            result:
+              type: VOODOO_DOLL
+              amount: 1
   - id: VOODOO_DOLL_WILTED
     material: pufferfish
     name: "Jinxed Voodoo Doll"
@@ -2575,7 +2614,6 @@ items:
     material: player_head
     name: "Winter Crystal"
     rarity: EPIC
-    unavailable: "Needs private island crystal placement and the Winter Island"
     source: "Spawns when the Winter Island item is placed on a private island"
     lore:
       - "§7Can be placed on your §bPrivate Island§7."
@@ -2585,7 +2623,7 @@ items:
       - "§7Year, a present will spawn"
       - "§7somewhere on the island."
     components:
-      - id: SKULL_HEAD
+      - id: DECORATION_HEAD
         texture: d00cf10f4fae11b0e057c10197f70ed2e45da1ff1f111cfc99bb34d1e40af1b6
   - id: WISE_WITHER_BOOTS
     material: leather_boots
@@ -3020,7 +3058,6 @@ items:
     material: player_head
     name: "Woodcutting Crystal"
     rarity: RARE
-    unavailable: "Needs floating crystal placement on the private island"
     source: "Crafting (Birch Log VII): 12 Enchanted Spruce Log around an Enchanted Quartz"
     lore:
       - "§7Can be placed on your §bPrivate Island§7."
@@ -3028,7 +3065,7 @@ items:
       - "§7While placed down, §9Foraging Minions"
       - "§7will work §a10% §7faster."
     components:
-      - id: SKULL_HEAD
+      - id: DECORATION_HEAD
         texture: 5dc3b9a4c591cd7bbed3e16b34ad8d507608fbe44dc728a7ed141f2e1729d82
       - id: DEFAULT_CRAFTABLE
         recipes:
@@ -3158,8 +3195,7 @@ items:
     material: chest
     name: "X-Large Storage"
     rarity: EPIC
-    unavailable: "Needs minion storage chests"
-    source: "Crafting (Oak Log IV): Large Storage under a Minion Storage Expander"
+    source: "Crafted from a Minion Storage Expander and a Large Storage"
     lore:
       - "§8Minion Storage"
       - ""
@@ -3169,6 +3205,8 @@ items:
       - ""
       - "§7Storage space: §b21 §7items"
     components:
+      - id: PLACEABLE
+        block_type: MINION_STORAGE
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -3190,8 +3228,7 @@ items:
     material: chest
     name: "XX-Large Storage"
     rarity: SPECIAL
-    unavailable: "Needs minion storage chests"
-    source: "Crafting (Oak Log IV): X-Large Storage under a Minion Storage Expander"
+    source: "Crafted from a Minion Storage Expander and an X-Large Storage"
     lore:
       - "§8Minion Storage"
       - ""
@@ -3201,6 +3238,8 @@ items:
       - ""
       - "§7Storage space: §b27 §7items"
     components:
+      - id: PLACEABLE
+        block_type: MINION_STORAGE
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED

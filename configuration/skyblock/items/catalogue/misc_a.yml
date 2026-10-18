@@ -2977,7 +2977,6 @@ items:
     material: player_head
     name: "Cornucopia Crystal"
     rarity: EPIC
-    unavailable: "Needs Cornucopia (Harvest Feast) and Farm Crystals"
     source: "Crafted from 64 Cornucopia and a Farm Crystal"
     lore:
       - "§7Can be placed on your §bPrivate Island§7."
@@ -2987,7 +2986,7 @@ items:
       - "§9Farming Minion §7placed down, they will"
       - "§7work an additional §a1% §7faster."
     components:
-      - id: SKULL_HEAD
+      - id: DECORATION_HEAD
         texture: 2e8a41ded9e9d2693e18bd2cc1a709319156234c376c37ece124234bbdadf37f
   - id: COVEN_SEAL
     material: nether_wart

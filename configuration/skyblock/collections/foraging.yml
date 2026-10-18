@@ -38,6 +38,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SMALL_ENCHANTED_CHEST
   - amount: 1000
     rewards:
     - type: XP
@@ -51,6 +54,9 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: ENCHANTED_OAK_LOG
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MEDIUM_ENCHANTED_CHEST
   - amount: 5000
     rewards:
     - type: XP
@@ -69,6 +75,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: LARGE_ENCHANTED_CHEST
 - itemType: SPRUCE_LOG
   rewards:
   - amount: 50

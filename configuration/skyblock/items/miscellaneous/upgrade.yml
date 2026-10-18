@@ -124,9 +124,15 @@ items:
     material: cobweb
     name: "Fly Catcher"
     rarity: COMMON
+    unavailable: "Legacy duplicate of Flycatcher (FLYCATCHER_UPGRADE); inserted copies are converted"
     components:
       - id: MINION_UPGRADE
         speed_increase: 20.0
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: TARANTULA_BROODFATHER
+            level: 6
       - id: ENCHANTED
       - id: TRACKED_UNIQUE
   - id: MINION_EXPANDER

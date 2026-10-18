@@ -39,7 +39,13 @@ public enum MinionCrop {
             planting(Block.BROWN_MUSHROOM, MinionDropTable.of(of(ItemType.BROWN_MUSHROOM, 1)))),
             List.of(Block.MYCELIUM, Block.PODZOL), null),
     NETHER_WART(List.of(planting(Block.NETHER_WART.withProperty("age", "3"), MinionDropTable.of(between(ItemType.NETHER_WART, 2, 3)))),
-            List.of(Block.SOUL_SAND), null);
+            List.of(Block.SOUL_SAND), null),
+    SUNFLOWER(List.of(
+            planting(Block.SUNFLOWER, MinionDropTable.of(of(ItemType.SUNFLOWER, 2))),
+            planting(Block.LILAC, MinionDropTable.of(of(ItemType.MOONFLOWER, 2)))),
+            Soils.FARMABLE, null),
+    LILY_PAD(List.of(planting(Block.LILY_PAD, MinionDropTable.of(of(ItemType.LILY_PAD, 1)))),
+            List.of(Block.WATER), null);
 
     private final List<CropPlanting> plantings;
     private final List<Block> soils;

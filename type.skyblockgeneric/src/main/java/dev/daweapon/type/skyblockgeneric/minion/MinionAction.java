@@ -29,6 +29,14 @@ public abstract class MinionAction {
     public abstract @NonNull List<SkyBlockItem> onAction(MinionActionEvent event, IslandMinionData.IslandMinion minion, Instance island);
     public abstract boolean checkMaterials(IslandMinionData.IslandMinion minion, Instance island);
 
+    public List<SkyBlockItem> offlineYield(IslandMinionData.IslandMinion minion) {
+        return List.of();
+    }
+
+    public int actionsPerItem() {
+        return 2;
+    }
+
     @Getter
     @Setter
     public static class MinionActionEvent {
@@ -37,8 +45,11 @@ public abstract class MinionAction {
     }
 
     protected static boolean isStorageFull(IslandMinionData.IslandMinion minion) {
-        int capacity = minion.getMinion().asSkyBlockMinion().getTiers().get(minion.getTier() - 1).storage();
-        return minion.getItemsInMinion().stream().mapToInt(ItemQuantifiable::getAmount).sum() >= capacity;
+        int capacity = minion.getMinion().asSkyBlockMinion().getTiers().get(minion.getTier() - 1).storage()
+                + dev.daweapon.type.skyblockgeneric.minion.storage.MinionStorage.extraCapacity(minion);
+        int stored = minion.getItemsInMinion().stream().mapToInt(ItemQuantifiable::getAmount).sum()
+                + dev.daweapon.type.skyblockgeneric.minion.storage.MinionStorage.extraStored(minion);
+        return stored >= capacity;
     }
 
     public static void onMinionIteration(IslandMinionData.IslandMinion islandMinion,
@@ -53,12 +64,15 @@ public abstract class MinionAction {
         boolean flintShovel = extensionData.hasMinionUpgrade(ItemType.FLINT_SHOVEL);
         for (SkyBlockItem item : items) {
             item = MinionUpgradeEffects.convert(item, minion, flintShovel);
+            item = MinionBonusDrops.convert(item, islandMinion);
             if (extensionData.hasMinionUpgrade(ItemType.AUTO_SMELTER) || extensionData.hasMinionUpgrade(ItemType.DWARVEN_COMPACTOR)) {
                 item = FurnaceRecipeRegistry.smelt(item).orElse(item);
             }
             if (outputMultiplier > 1.0) {
                 item.setAmount((int) Math.floor(item.getAmount() * outputMultiplier));
             }
+            item = MinionBonusDrops.applyOutputPenalty(item, islandMinion);
+            if (item.getAmount() <= 0) continue;
             boolean hasAdded = islandMinion.addItem(item);
             double sellAmount = !item.hasComponent(SellableComponent.class) ? 0 :
                     item.getComponent(SellableComponent.class).getSellValue();
@@ -79,6 +93,8 @@ public abstract class MinionAction {
             }
         }
 
+        MinionBonusDrops.bonusDrops(islandMinion, items).forEach(islandMinion::addItem);
+
         if (extensionData.hasMinionUpgrade(ItemType.SUPER_COMPACTOR_3000) || extensionData.hasMinionUpgrade(ItemType.DWARVEN_COMPACTOR)) {
             MinionCompaction.compact(islandMinion);
         }
@@ -91,7 +107,7 @@ public abstract class MinionAction {
             int baseDrops = items.stream().mapToInt(SkyBlockItem::getAmount).sum();
             int diamonds = 0;
             for (int i = 0; i < baseDrops; i++) {
-                if (Math.random() < 0.1) diamonds++;
+                if (LootRoll.roll(null, ItemType.DIAMOND, 10)) diamonds++;
             }
             if (diamonds > 0) islandMinion.addItem(new SkyBlockItem(ItemType.DIAMOND, diamonds));
         }

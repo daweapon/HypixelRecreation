@@ -395,11 +395,7 @@ public class ItemConfigParser {
 					List<MinionIngredient> ingredientsMap = new ArrayList<>();
 
 					for (String ingredient : ingredients) {
-						String[] ingredientParts = ingredient.split(":");
-						ingredientsMap.add(new MinionIngredient(
-								ItemType.valueOf(ingredientParts[0]),
-								Integer.parseInt(ingredientParts[1])
-						));
+						ingredientsMap.add(MinionIngredient.parse(ingredient));
 					}
 
 					Map<Integer, MinionTierRecipe> tierRecipes = new HashMap<>();
@@ -695,10 +691,7 @@ public class ItemConfigParser {
 
 	private static MinionTierRecipe parseMinionTierRecipe(SafeConfig config) {
 		Map<Character, MinionIngredient> ingredients = new HashMap<>();
-		config.getMap("ingredients").forEach((symbol, value) -> {
-			String[] parts = value.toString().split(":");
-			ingredients.put(symbol.charAt(0), new MinionIngredient(ItemType.valueOf(parts[0]), Integer.parseInt(parts[1])));
-		});
+		config.getMap("ingredients").forEach((symbol, value) -> ingredients.put(symbol.charAt(0), MinionIngredient.parse(value)));
 		Map<Character, Integer> minionTiers = new HashMap<>();
 		config.getMap("minions").forEach((symbol, value) ->
 				minionTiers.put(symbol.charAt(0), Integer.parseInt(value.toString())));

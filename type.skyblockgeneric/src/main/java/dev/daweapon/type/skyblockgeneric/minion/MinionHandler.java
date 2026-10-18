@@ -44,6 +44,7 @@ public record MinionHandler(Scheduler scheduler) {
     private void minionLoop() {
         MinionEntityImpl.getActiveMinions().forEach(minionEntity -> {
             try {
+                MinionTimedProduction.tick(minionEntity.getIslandMinion(), System.currentTimeMillis());
                 tickMinion(minionEntity);
             } catch (RuntimeException exception) {
                 if (FAILED_MINIONS.add(minionEntity.getMinion().getClass().getSimpleName())) {
@@ -62,9 +63,8 @@ public record MinionHandler(Scheduler scheduler) {
         SkyBlockMinion.MinionTier tier = minion.getTiers().get(islandMinion.getTier() - 1);
         long lastAction = islandMinion.getLastAction();
         MinionExtensionData extensionData = islandMinion.getExtensionData();
-        long timeBetweenActions = ((long) tier.timeBetweenActions() / MinionGenerationCommand.divisionFactor) * 1000L;
-
-        timeBetweenActions = (long) (timeBetweenActions / islandMinion.getSpeedDivisor());
+        double timeBetweenActions = MinionOfflineProduction.actionIntervalMillis(
+                tier.timeBetweenActions(), MinionGenerationCommand.divisionFactor, islandMinion.getSpeedDivisor());
 
         if (!instance.isChunkLoaded(minionEntity.getPosition().chunkX(), minionEntity.getPosition().chunkZ())) return;
 
@@ -110,7 +110,7 @@ public record MinionHandler(Scheduler scheduler) {
 
         // Check if the minion is full
         List<ItemQuantifiable> itemsInMinion = islandMinion.getItemsInMinion();
-        if (itemsInMinion.size() == tier.getSlots() && action.checkMaterials(
+        if (itemsInMinion.size() == tier.getSlots() && !dev.daweapon.type.skyblockgeneric.minion.storage.MinionStorage.hasRoom(islandMinion) && action.checkMaterials(
                 islandMinion,
                 instance
         ) && extensionData.getOfType(MinionShippingExtension.class).getItemTypePassedIn() == null) {

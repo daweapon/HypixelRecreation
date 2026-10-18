@@ -70,6 +70,11 @@ public class MinionMineCocoaBeansAction extends MinionAction {
     }
 
     @Override
+    public List<SkyBlockItem> offlineYield(IslandMinionData.IslandMinion minion) {
+        return List.of(new SkyBlockItem(Material.COCOA_BEANS));
+    }
+
+    @Override
     public boolean checkMaterials(IslandMinionData.IslandMinion minion, Instance island) {
         List<ItemQuantifiable> items = minion.getItemsInMinion();
 

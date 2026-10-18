@@ -1,0 +1,34 @@
+title: "The Minion Update"
+date: "17th October 2026"
+intro:
+  - "Minions keep working while you are away, and five new minions, storage chests and more upgrades arrive."
+sections:
+  - heading: "Offline production"
+    colour: "<a>"
+    lines:
+      - "Minions now produce while you are offline, for up to 30 days, until their storage is full."
+      - "Collecting from a minion gives you skill XP for what it made."
+  - heading: "New minions"
+    colour: "<d>"
+    lines:
+      - "Revenant, Tarantula and Voidling minions unlock with Zombie Slayer 5, Spider Slayer 5 and Enderman Slayer 4."
+      - "Sunflower unlocks at Sunflower collection II and Lily Pad at Lily Pad collection I."
+      - "Revenant, Tarantula, Sunflower and Lily Pad have a Tier XII. The Bartender sells the Revenant and Tarantula ones after Slayer 9, and SkyMart sells Sunflower."
+      - "Recipes can now ask for another minion at an exact tier. The Voodoo Doll needs a Tier IX Pumpkin Minion."
+  - heading: "Storage and upgrades"
+    colour: "<b>"
+    lines:
+      - "Minion Storage chests (Small to XX-Large) go next to a minion and add 3 to 27 slots."
+      - "Soulflow Engines make Raw Soulflow but halve the minion's output."
+      - "Hunter Knife, Enchanted Egg, Enchanted Shears, Flycatcher and Super Jacob Entertainment System can now be installed."
+      - "Floating crystals: Farm, Woodcutting, Winter and Cornucopia boost nearby minions. Only one of each per island."
+      - "Free Will lets a minion choose to stay for +10% speed or leave. A Postcard gives every minion +5% speed."
+  - heading: "Fixes"
+    colour: "<e>"
+    lines:
+      - "Snow and Fishing minions now use their exact action times, and Fishing has a Tier XII."
+      - "Everburning Flame gives combat minions a little extra, and Super Compactor 3000 compacts the second tier."
+  - heading: "Not here yet"
+    colour: "<c>"
+    lines:
+      - "Vampire minion, Tony's farming Tier XII minions, Ant, Lukas and Lotus Eater stones, and the Desert, Nether Wart, Fishing and Bat crystals wait for other content."

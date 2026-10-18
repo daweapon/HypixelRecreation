@@ -131,10 +131,11 @@ entries:
     name: "<a>AquaMaster Hydromax"
     material: carrot_on_a_stick
     cost: { copper: 2500, items: { AQUAMASTER_X: 1, IRIDIUM: 1 } }
-  - item: SUNFLOWER_GENERATOR_12
+  - item: SUNFLOWER_MINION
+    tier: 12
     name: "<a>Sunflower Minion XII"
     material: paper
-    cost: { items: { SUNFLOWER_GENERATOR_11: 1, COMPACTED_SUNFLOWER: 32 } }
+    cost: { items: { COMPACTED_SUNFLOWER: 32 }, minions: { SUNFLOWER_MINION: 11 } }
   - item: PLANT_DIAGNOSTICS_TOOL
     name: "<a>Plant Diagnostics Tool"
     material: paper

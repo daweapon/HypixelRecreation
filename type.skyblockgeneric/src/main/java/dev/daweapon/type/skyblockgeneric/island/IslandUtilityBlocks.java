@@ -5,7 +5,13 @@ import net.minestom.server.instance.Instance;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.skyblockgeneric.user.island.SkyBlockIsland;
 
+import dev.daweapon.type.skyblockgeneric.minion.IslandMinionData;
+import dev.daweapon.type.skyblockgeneric.minion.MinionCategories;
+import dev.daweapon.type.skyblockgeneric.minion.MinionRegistry;
+
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,9 +27,36 @@ public final class IslandUtilityBlocks {
     private IslandUtilityBlocks() {
     }
 
+    private static final Set<ItemType> LIMITED_TO_ONE = Set.of(
+            ItemType.MITHRIL_CRYSTAL, ItemType.FARM_CRYSTAL, ItemType.WOODCUTTING_CRYSTAL,
+            ItemType.WINTER_ISLAND_CRYSTAL, ItemType.CORNUCOPIA_CRYSTAL, ItemType.POSTCARD);
+
     public static boolean isUtility(ItemType type) {
         return type == ItemType.MITHRIL_CRYSTAL || type == ItemType.REPELLING_CANDLE || type == ItemType.SILENCE_BLOCK
-                || type == ItemType.EXPERIMENTATION_TABLE;
+                || type == ItemType.EXPERIMENTATION_TABLE || LIMITED_TO_ONE.contains(type);
+    }
+
+    public static boolean isLimitedToOne(ItemType type) {
+        return type != null && LIMITED_TO_ONE.contains(type);
+    }
+
+    public static double crystalSpeedPercent(Instance instance, MinionRegistry minion) {
+        SkyBlockIsland island = islandOf(instance);
+        if (island == null) return 0;
+        Set<ItemType> placedTypes = new HashSet<>();
+        placed(island).values().forEach(name -> {
+            ItemType type = ItemType.get(name);
+            if (type != null && LIMITED_TO_ONE.contains(type)) placedTypes.add(type);
+        });
+        if (placedTypes.isEmpty()) return 0;
+        int uniqueFarming = 0;
+        if (island.getMinionData() != null) {
+            uniqueFarming = (int) island.getMinionData().getMinions().stream()
+                    .map(IslandMinionData.IslandMinion::getMinion)
+                    .filter(MinionCategories::isFarming)
+                    .distinct().count();
+        }
+        return FloatingCrystalBonus.percent(placedTypes, minion.name(), uniqueFarming);
     }
 
     public static void place(Instance instance, Point position, ItemType type) {

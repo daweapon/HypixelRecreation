@@ -182,8 +182,7 @@ items:
     material: chest
     name: "Large Storage"
     rarity: RARE
-    unavailable: "Minion storage chests are not built"
-    source: "Crafted from 256 Enchanted Oak Log, 1 Medium Enchanted Chest (recipe unlocked by Oak Log IX)"
+    source: "Crafted from 256 Enchanted Oak Log around a Medium Storage (recipe unlocked by Oak Log IX)"
     lore:
       - "§8Minion Storage"
       - ""
@@ -193,9 +192,12 @@ items:
       - ""
       - "§7Storage space: §b15 §7items"
     components:
+      - id: PLACEABLE
+        block_type: MINION_STORAGE
       - id: SELLABLE
         value: 65.0
       - id: DEFAULT_CRAFTABLE
+        default-craftable: false
         recipes:
           - type: SHAPED
             recipe-type: NONE
@@ -421,8 +423,7 @@ items:
     material: player_head
     name: "Lesser Soulflow Engine"
     rarity: RARE
-    unavailable: "Minion Soulflow generation is not built"
-    source: "Crafted from 6 Null Ovoid, 48 Enchanted Eye Of Ender, 8 Enchanted Iron Block (recipe unlocked by Enderman Slayer 2)"
+    source: "Crafted from 6 Null Ovoid, 48 Enchanted Eye Of Ender and 8 Enchanted Iron Block (recipe unlocked by Enderman Slayer 2)"
     lore:
       - "§8Minion Upgrade"
       - ""
@@ -435,6 +436,8 @@ items:
       - ""
       - "§4☠ §cRequires §5Enderman Slayer 2§c."
     components:
+      - id: MINION_UPGRADE
+        speed_increase: 0.0
       - id: SKULL_HEAD
         texture: 3d045ca3e8a29e19931656362e12477633a689c4801d8e21f7da0f80cc59e56b
       - id: ITEM_REQUIREMENTS
@@ -1112,8 +1115,7 @@ items:
     material: chest
     name: "Medium Storage"
     rarity: UNCOMMON
-    unavailable: "Minion storage chests are not built"
-    source: "Crafted from 8 Enchanted Oak Log, 1 Small Enchanted Chest (recipe unlocked by Oak Log VII)"
+    source: "Crafted from 8 Enchanted Oak Log around a Small Storage (recipe unlocked by Oak Log VI)"
     lore:
       - "§8Minion Storage"
       - ""
@@ -1123,9 +1125,12 @@ items:
       - ""
       - "§7Storage space: §b9 §7items"
     components:
+      - id: PLACEABLE
+        block_type: MINION_STORAGE
       - id: SELLABLE
         value: 65.0
       - id: DEFAULT_CRAFTABLE
+        default-craftable: false
         recipes:
           - type: SHAPED
             recipe-type: NONE
@@ -2253,7 +2258,7 @@ items:
     material: player_head
     name: "Nether Wart Crystal"
     rarity: UNCOMMON
-    unavailable: "Island floating crystals are not built; Nether Wart Island placement is not built"
+    unavailable: "Needs island variants"
     source: "Spawns with the Nether Wart Island on your Private Island"
     lore:
       - "§7Can be placed on your §bPrivate Island§7."
@@ -3310,7 +3315,7 @@ items:
     material: paper
     name: "Postcard"
     rarity: LEGENDARY
-    unavailable: "Minion Free Will is not built"
+    unavailable: "Needs the Rift (obtained only through Free Will)"
     source: "Sent to Jerry when a minion chooses to leave with Free Will"
     lore:
       - "§7When placed on your island, it will"
@@ -3327,6 +3332,8 @@ items:
       - "§8§omountain on a very, very distant"
       - "§8§oisland."
     components:
+      - id: PLACEABLE
+        block_type: ISLAND_UTILITY
       - id: SELLABLE
         value: 1000.0
       - id: ITEM_MODEL
@@ -3344,6 +3351,8 @@ items:
       - "§7upgrade. Place it in ONE minion and it"
       - "§7will occasionally generate Potatoes!"
     components:
+      - id: MINION_UPGRADE
+        speed_increase: 0.0
       - id: SKULL_HEAD
         texture: cf4624ebf7d419a11e43ed0c2038d32cd09ad1d7a6c6e20f6339cbcfe386fd1c
       - id: SELLABLE

@@ -81,6 +81,11 @@ public class MinionKillMobAction extends MinionAction {
     }
 
     @Override
+    public List<SkyBlockItem> offlineYield(IslandMinionData.IslandMinion minion) {
+        return drops.rollItems();
+    }
+
+    @Override
     public boolean checkMaterials(IslandMinionData.IslandMinion minion, Instance island) {
         return isStorageFull(minion);
     }

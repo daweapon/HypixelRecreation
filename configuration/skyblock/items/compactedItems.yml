@@ -480,8 +480,16 @@ items:
     material: EGG
     name: "Enchanted Egg"
     rarity: RARE
+    lore:
+      - "§8Minion Upgrade"
+      - ""
+      - "§7This item can be used as a minion"
+      - "§7upgrade. Chicken Minions will lay an"
+      - "§7extra Egg with every action."
     default_statistics: {}
     components:
+      - id: MINION_UPGRADE
+        speed_increase: 0.0
       - id: ENCHANTED
         recipe_type: FARMING
         item_id: EGG
@@ -883,6 +891,17 @@ items:
         item_id: LILY_PAD
       - id: SELLABLE
         value: 1600
+  - id: CONDENSED_LILY_PAD
+    material: LILY_PAD
+    name: "Condensed Lily Pad"
+    rarity: RARE
+    default_statistics: {}
+    components:
+      - id: ENCHANTED
+        recipe_type: FISHING
+        item_id: ENCHANTED_LILY_PAD
+      - id: SELLABLE
+        value: 256000
   - id: ENCHANTED_MAGMA_CREAM
     material: MAGMA_CREAM
     name: "Enchanted Magma Cream"

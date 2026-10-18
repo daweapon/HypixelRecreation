@@ -2751,8 +2751,7 @@ items:
     material: chest
     name: "Small Storage"
     rarity: COMMON
-    unavailable: "Minion storage chests are not built"
-    source: "Crafted from 8 Oak Log around a Chest-sized gap (Oak Log IV)"
+    source: "Crafted from 64 Oak Log (recipe unlocked by Oak Log IV)"
     lore:
       - "§8Minion Storage"
       - ""
@@ -2761,6 +2760,25 @@ items:
       - "§7its storage is full!"
       - ""
       - "§7Storage space: §b3 §7items"
+    components:
+      - id: PLACEABLE
+        block_type: MINION_STORAGE
+      - id: SELLABLE
+        value: 65.0
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - A
+            ingredients:
+              A:
+                type: OAK_LOG
+                amount: 64
+            result:
+              type: SMALL_ENCHANTED_CHEST
+              amount: 1
   - id: SMALL_POOL
     material: player_head
     name: "Small Pool"
@@ -2967,8 +2985,7 @@ items:
     material: player_head
     name: "Soulflow Engine"
     rarity: EPIC
-    unavailable: "Minion Soulflow upgrade is not built; Source unconfirmed"
-    source: "Source unconfirmed"
+    source: "Crafted from 4 Lesser Soulflow Engine, 2 Null Atom, 64 Null Ovoid and 12 Refined Titanium (Enderman Slayer 5)"
     lore:
       - "§8Minion Upgrade"
       - ""
@@ -2985,6 +3002,37 @@ items:
       - ""
       - "§4☠ §cRequires §5Enderman Slayer 5§c."
     components:
+      - id: MINION_UPGRADE
+        speed_increase: 0.0
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: VOIDGLOOM_SERAPH
+            level: 5
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - ABA
+              - BCB
+              - DBD
+            ingredients:
+              A:
+                type: NULL_ATOM
+                amount: 1
+              B:
+                type: LESSER_SOULFLOW_ENGINE
+                amount: 1
+              C:
+                type: NULL_OVOID
+                amount: 64
+              D:
+                type: REFINED_TITANIUM
+                amount: 6
+            result:
+              type: SOULFLOW_ENGINE
+              amount: 1
       - id: SKULL_HEAD
         texture: 3b0433f1c2279608f7bd2ceceb98cd175cbaadc3f6299ae3ccae257dc22a55b2
   - id: SOULWEAVER_GLOVES

@@ -7,8 +7,10 @@ import dev.daweapon.type.skyblockgeneric.minion.minions.combat.*;
 import dev.daweapon.type.skyblockgeneric.minion.minions.farming.*;
 import dev.daweapon.type.skyblockgeneric.minion.minions.fishing.MinionClay;
 import dev.daweapon.type.skyblockgeneric.minion.minions.fishing.MinionFishing;
+import dev.daweapon.type.skyblockgeneric.minion.minions.fishing.MinionLilyPad;
 import dev.daweapon.type.skyblockgeneric.minion.minions.foraging.*;
 import dev.daweapon.type.skyblockgeneric.minion.minions.mining.*;
+import dev.daweapon.type.skyblockgeneric.minion.minions.slayer.*;
 
 import java.util.Arrays;
 import java.util.EnumSet;
@@ -47,6 +49,7 @@ public enum MinionRegistry {
 
     FISHING(MinionFishing.class, ItemType.FISHING_MINION),
     CLAY(MinionClay.class, ItemType.CLAY_MINION),
+    LILY_PAD(MinionLilyPad.class, ItemType.LILY_PAD_MINION),
 
     WHEAT(MinionWheat.class, ItemType.WHEAT_MINION),
     POTATO(MinionPotato.class, ItemType.POTATO_MINION),
@@ -63,6 +66,7 @@ public enum MinionRegistry {
     PIG(MinionPig.class, ItemType.PIG_MINION),
     RABBIT(MinionRabbit.class, ItemType.RABBIT_MINION),
     SHEEP(MinionSheep.class, ItemType.SHEEP_MINION),
+    SUNFLOWER(MinionSunflower.class, ItemType.SUNFLOWER_MINION),
 
     BLAZE(MinionBlaze.class, ItemType.BLAZE_MINION),
     CAVE_SPIDER(MinionCaveSpider.class, ItemType.CAVE_SPIDER_MINION),
@@ -75,6 +79,9 @@ public enum MinionRegistry {
     SPIDER(MinionSpider.class, ItemType.SPIDER_MINION),
     ZOMBIE(MinionZombie.class, ItemType.ZOMBIE_MINION),
     INFERNO(MinionInferno.class, ItemType.INFERNO_MINION),
+    REVENANT(MinionRevenant.class, ItemType.REVENANT_MINION),
+    TARANTULA(MinionTarantula.class, ItemType.TARANTULA_MINION),
+    VOIDLING(MinionVoidling.class, ItemType.VOIDLING_MINION),
     ;
 
     private static final Set<MinionRegistry> MINING = EnumSet.of(

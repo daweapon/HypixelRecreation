@@ -313,7 +313,7 @@ items:
           - ENCHANTED_RAW_BEEF:16
           - ENCHANTED_RAW_BEEF:32
           - ENCHANTED_RAW_BEEF:64
-          - ENCHANTED_LEATHER:32
+          - ENCHANTED_LEATHER:64
   - id: MELON_MINION
     material: PLAYER_HEAD
     name: "Melon Minion"
@@ -944,7 +944,15 @@ items:
           - ENCHANTED_HARD_STONE:32
           - ENCHANTED_HARD_STONE:64
           - CONCENTRATED_STONE:1
-          - CONCENTRATED_STONE:2
+          - CONCENTRATED_STONE:1
+        tier_recipes:
+          - tier: 10
+            pattern:
+              - " A "
+              - "ABA"
+              - " A "
+            ingredients:
+              A: CONCENTRATED_STONE:1
   - id: ICE_MINION
     material: PLAYER_HEAD
     name: "Ice Minion"
@@ -1134,3 +1142,359 @@ items:
           - ENCHANTED_SNOW_BLOCK:8
           - ENCHANTED_SNOW_BLOCK:16
           - ENCHANTED_SNOW_BLOCK:32
+  - id: REVENANT_MINION
+    material: PLAYER_HEAD
+    name: "Revenant Minion"
+    rarity: RARE
+    components:
+      - id: MINION
+        minion_type: REVENANT
+        base_item: CRYSTALLIZED_HEART
+        default_craftable: false
+        ingredients:
+          - REVENANT_FLESH:10
+          - REVENANT_FLESH:20
+          - REVENANT_FLESH:40
+          - REVENANT_FLESH:64
+          - REVENANT_VISCERA:1
+          - REVENANT_VISCERA:2
+          - REVENANT_VISCERA:4
+          - REVENANT_VISCERA:8
+          - REVENANT_VISCERA:16
+          - REVENANT_VISCERA:32
+          - REVENANT_VISCERA:64
+        tier_recipes:
+          - tier: 2
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: REVENANT_FLESH:20
+              M: { minion: ZOMBIE_MINION, tier: 1 }
+          - tier: 3
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: REVENANT_FLESH:40
+              M: { minion: ZOMBIE_MINION, tier: 2 }
+          - tier: 4
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: REVENANT_FLESH:64
+              M: { minion: ZOMBIE_MINION, tier: 3 }
+          - tier: 5
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: REVENANT_VISCERA:1
+              M: { minion: ZOMBIE_MINION, tier: 4 }
+          - tier: 6
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: REVENANT_VISCERA:2
+              M: { minion: ZOMBIE_MINION, tier: 5 }
+          - tier: 7
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: REVENANT_VISCERA:4
+              M: { minion: ZOMBIE_MINION, tier: 6 }
+          - tier: 8
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: REVENANT_VISCERA:8
+              M: { minion: ZOMBIE_MINION, tier: 7 }
+          - tier: 9
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: REVENANT_VISCERA:16
+              M: { minion: ZOMBIE_MINION, tier: 8 }
+          - tier: 10
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: REVENANT_VISCERA:32
+              M: { minion: ZOMBIE_MINION, tier: 9 }
+          - tier: 11
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: REVENANT_VISCERA:64
+              M: { minion: ZOMBIE_MINION, tier: 10 }
+  - id: TARANTULA_MINION
+    material: PLAYER_HEAD
+    name: "Tarantula Minion"
+    rarity: RARE
+    components:
+      - id: MINION
+        minion_type: TARANTULA
+        base_item: ENCHANTED_FERMENTED_SPIDER_EYE
+        default_craftable: false
+        ingredients:
+          - TARANTULA_WEB:10
+          - TARANTULA_WEB:20
+          - TARANTULA_WEB:40
+          - TARANTULA_WEB:64
+          - TARANTULA_SILK:1
+          - TARANTULA_SILK:2
+          - TARANTULA_SILK:4
+          - TARANTULA_SILK:8
+          - TARANTULA_SILK:16
+          - TARANTULA_SILK:32
+          - TARANTULA_SILK:64
+        tier_recipes:
+          - tier: 2
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: TARANTULA_WEB:20
+              M: { minion: SPIDER_MINION, tier: 1 }
+          - tier: 3
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: TARANTULA_WEB:40
+              M: { minion: SPIDER_MINION, tier: 2 }
+          - tier: 4
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: TARANTULA_WEB:64
+              M: { minion: SPIDER_MINION, tier: 3 }
+          - tier: 5
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: TARANTULA_SILK:1
+              M: { minion: SPIDER_MINION, tier: 4 }
+          - tier: 6
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: TARANTULA_SILK:2
+              M: { minion: SPIDER_MINION, tier: 5 }
+          - tier: 7
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: TARANTULA_SILK:4
+              M: { minion: SPIDER_MINION, tier: 6 }
+          - tier: 8
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: TARANTULA_SILK:8
+              M: { minion: SPIDER_MINION, tier: 7 }
+          - tier: 9
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: TARANTULA_SILK:16
+              M: { minion: SPIDER_MINION, tier: 8 }
+          - tier: 10
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: TARANTULA_SILK:32
+              M: { minion: SPIDER_MINION, tier: 9 }
+          - tier: 11
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: TARANTULA_SILK:64
+              M: { minion: SPIDER_MINION, tier: 10 }
+  - id: VOIDLING_MINION
+    material: PLAYER_HEAD
+    name: "Voidling Minion"
+    rarity: RARE
+    components:
+      - id: MINION
+        minion_type: VOIDLING
+        base_item: ENDERMAN_MINION
+        default_craftable: false
+        ingredients:
+          - NULL_SPHERE:10
+          - NULL_SPHERE:20
+          - NULL_SPHERE:40
+          - NULL_SPHERE:64
+          - NULL_OVOID:1
+          - NULL_OVOID:2
+          - NULL_OVOID:4
+          - NULL_OVOID:8
+          - NULL_OVOID:16
+          - NULL_OVOID:32
+          - NULL_OVOID:64
+        tier_recipes:
+          - tier: 1
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A: NULL_SPHERE:10
+              B: { minion: ENDERMAN_MINION, tier: 1 }
+          - tier: 2
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: NULL_SPHERE:20
+              M: { minion: OBSIDIAN_MINION, tier: 1 }
+          - tier: 3
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: NULL_SPHERE:40
+              M: { minion: ENDERMAN_MINION, tier: 2 }
+          - tier: 4
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: NULL_SPHERE:64
+              M: { minion: OBSIDIAN_MINION, tier: 3 }
+          - tier: 5
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: NULL_OVOID:1
+              M: { minion: ENDERMAN_MINION, tier: 4 }
+          - tier: 6
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: NULL_OVOID:2
+              M: { minion: OBSIDIAN_MINION, tier: 5 }
+          - tier: 7
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: NULL_OVOID:4
+              M: { minion: ENDERMAN_MINION, tier: 6 }
+          - tier: 8
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: NULL_OVOID:8
+              M: { minion: OBSIDIAN_MINION, tier: 7 }
+          - tier: 9
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: NULL_OVOID:16
+              M: { minion: ENDERMAN_MINION, tier: 8 }
+          - tier: 10
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: NULL_OVOID:32
+              M: { minion: OBSIDIAN_MINION, tier: 9 }
+          - tier: 11
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AMA"
+            ingredients:
+              A: NULL_OVOID:64
+              M: { minion: ENDERMAN_MINION, tier: 10 }
+  - id: SUNFLOWER_MINION
+    material: PLAYER_HEAD
+    name: "Sunflower Minion"
+    rarity: COMMON
+    components:
+      - id: MINION
+        minion_type: SUNFLOWER
+        base_item: WOODEN_HOE
+        default_craftable: false
+        ingredients:
+          - SUNFLOWER:16
+          - SUNFLOWER:32
+          - SUNFLOWER:64
+          - ENCHANTED_SUNFLOWER:1
+          - ENCHANTED_SUNFLOWER:3
+          - ENCHANTED_SUNFLOWER:8
+          - ENCHANTED_SUNFLOWER:16
+          - ENCHANTED_SUNFLOWER:32
+          - ENCHANTED_SUNFLOWER:64
+          - COMPACTED_SUNFLOWER:1
+          - COMPACTED_SUNFLOWER:2
+  - id: LILY_PAD_MINION
+    material: PLAYER_HEAD
+    name: "Lily Pad Minion"
+    rarity: COMMON
+    components:
+      - id: MINION
+        minion_type: LILY_PAD
+        base_item: FISHING_ROD
+        default_craftable: false
+        ingredients:
+          - LILY_PAD:8
+          - LILY_PAD:16
+          - LILY_PAD:32
+          - LILY_PAD:64
+          - ENCHANTED_LILY_PAD:1
+          - ENCHANTED_LILY_PAD:4
+          - ENCHANTED_LILY_PAD:8
+          - ENCHANTED_LILY_PAD:16
+          - ENCHANTED_LILY_PAD:32
+          - ENCHANTED_LILY_PAD:64
+          - CONDENSED_LILY_PAD:1

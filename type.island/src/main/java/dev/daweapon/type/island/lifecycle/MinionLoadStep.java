@@ -1,15 +1,12 @@
 package dev.daweapon.type.island.lifecycle;
 
-import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.minion.IslandMinionData;
-import dev.daweapon.type.skyblockgeneric.minion.MinionAction;
-import dev.daweapon.type.skyblockgeneric.minion.SkyBlockMinion;
+import dev.daweapon.type.skyblockgeneric.minion.MinionOfflineProduction;
 import dev.daweapon.type.skyblockgeneric.user.island.IslandLifecycleContext;
 import dev.daweapon.type.skyblockgeneric.user.island.IslandLifecyclePhase;
 import dev.daweapon.type.skyblockgeneric.user.island.IslandLifecycleStep;
 import org.bson.Document;
 
-import java.util.List;
 import java.util.Map;
 
 // Island lifecycle step that restores minions on load and simulates offline production since last save.
@@ -35,36 +32,11 @@ public class MinionLoadStep implements IslandLifecycleStep {
 
         context.island().setMinionData(minionData);
 
-        long lastSaved = context.island().getLastSaved();
         long currentTime = System.currentTimeMillis();
 
         minionData.getMinions().forEach(data -> {
-            int tierIndex = data.getTier();
-            SkyBlockMinion.MinionTier tier = data.getMinion().asSkyBlockMinion().getTiers().get(tierIndex - 1);
-
-            long timeBetweenActions = (long) tier.timeBetweenActions();
-            double percentageSpeedIncrease = data.getSpeedPercentage();
-
-            timeBetweenActions = (long) (timeBetweenActions / (1 + (percentageSpeedIncrease / 100)));
-
-            int amountOfActions = Math.round((float) (currentTime - lastSaved) / (timeBetweenActions * 1000L));
-
+            MinionOfflineProduction.credit(data, context.island().getIslandInstance(), currentTime);
             data.spawnMinion(context.island().getIslandInstance());
-            if (lastSaved != 0) {
-                Thread.startVirtualThread(() -> {
-                    for (int i = 0; i < amountOfActions; i++) {
-                        MinionAction action = data.getMinion().asSkyBlockMinion().getAction();
-                        List<SkyBlockItem> items = action.onAction(
-                                new MinionAction.MinionActionEvent(),
-                                data,
-                                context.island().getIslandInstance());
-
-                        if (!items.isEmpty()) {
-                            MinionAction.onMinionIteration(data, data.getMinionEntity().getMinion(), items);
-                        }
-                    }
-                });
-            }
         });
     }
 }

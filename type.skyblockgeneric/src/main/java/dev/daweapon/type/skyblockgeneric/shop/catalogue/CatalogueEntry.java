@@ -3,6 +3,7 @@ package dev.daweapon.type.skyblockgeneric.shop.catalogue;
 import net.minestom.server.item.Material;
 import dev.daweapon.commons.StringUtility;
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.commons.skyblock.item.attribute.attributes.ItemAttributeMinionData;
 import dev.daweapon.type.skyblockgeneric.enchantment.EnchantmentType;
 import dev.daweapon.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
@@ -22,7 +23,8 @@ public record CatalogueEntry(
         @Nullable String unavailableReason,
         @Nullable ReputationRequirement requirement,
         @Nullable String enchantment,
-        int enchantmentLevel
+        int enchantmentLevel,
+        int minionTier
 ) {
     public static final String MISSING_ITEM_REASON = "<c>This item is not in the game yet!";
 
@@ -42,7 +44,8 @@ public record CatalogueEntry(
                 raw.get("unavailable") == null ? null : String.valueOf(raw.get("unavailable")),
                 ReputationRequirement.parse(raw.get("requires")),
                 raw.get("enchantment") == null ? null : String.valueOf(raw.get("enchantment")),
-                raw.get("enchantment_level") instanceof Number level ? level.intValue() : 1
+                raw.get("enchantment_level") instanceof Number level ? level.intValue() : 1,
+                raw.get("tier") instanceof Number tier ? tier.intValue() : 0
         );
     }
 
@@ -60,6 +63,9 @@ public record CatalogueEntry(
         SkyBlockItem item = new SkyBlockItem(itemType());
         if (enchantment != null) {
             item.getAttributeHandler().addEnchantment(new SkyBlockEnchantment(EnchantmentType.valueOf(enchantment), enchantmentLevel));
+        }
+        if (minionTier > 0) {
+            item.getAttributeHandler().setMinionData(new ItemAttributeMinionData.MinionData(minionTier, 0));
         }
         return item;
     }

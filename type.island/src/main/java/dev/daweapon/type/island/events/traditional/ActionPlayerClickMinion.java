@@ -6,7 +6,10 @@ import dev.daweapon.type.generic.event.EventNodes;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.event.phase.EventPhase;
 import dev.daweapon.type.generic.event.phase.PhasedEvent;
+import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.skyblockgeneric.entity.MinionEntityImpl;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.minion.freewill.FreeWillService;
 import dev.daweapon.type.skyblockgeneric.gui.inventories.GUIMinion;
 import dev.daweapon.type.skyblockgeneric.minion.inferno.CapsaicinEyedrops;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -22,6 +25,11 @@ public class ActionPlayerClickMinion implements HypixelEventClass {
         if (event.getTarget() instanceof MinionEntityImpl minion) {
             if (CapsaicinEyedrops.isHeld(player)) {
                 if (event.getHand() == PlayerHand.MAIN) CapsaicinEyedrops.apply(player, minion.getIslandMinion());
+                return;
+            }
+            ItemType held = new SkyBlockItem(player.getItemInMainHand()).getAttributeHandler().getPotentialType();
+            if (FreeWillService.isFreeWillItem(held)) {
+                if (event.getHand() == PlayerHand.MAIN) FreeWillService.begin(player, minion.getIslandMinion(), held);
                 return;
             }
             new GUIMinion(minion.getIslandMinion()).open(player);

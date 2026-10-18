@@ -877,10 +877,10 @@ items:
       - "§7minion upgrade for sheep"
       - "§7generators. This will"
       - "§7automatically shear sheep for"
-      - "§7you as they spawn."
-      - ""
-      - "§8Not active yet: Sheep minion shearing output is unconfirmed on the wiki, so the upgrade stays inert"
+      - "§7you as they spawn, yielding 1-3 Wool."
     components:
+      - id: MINION_UPGRADE
+        speed_increase: 0.0
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED

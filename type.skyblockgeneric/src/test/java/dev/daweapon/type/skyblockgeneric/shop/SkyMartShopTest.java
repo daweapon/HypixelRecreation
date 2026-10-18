@@ -64,13 +64,22 @@ class SkyMartShopTest {
     }
 
     @Test
-    void everythingSoldExistsExceptTheUnbuiltMinion() {
+    void everythingSoldExists() {
         for (String shop : SHOPS) {
             for (CatalogueEntry entry : entries(shop)) {
-                if (entry.itemId().equals("SUNFLOWER_GENERATOR_12")) continue;
                 assertNotNull(entry.itemType(), shop + " " + entry.itemId());
                 assertTrue(entry.cost().purchasable(), shop + " " + entry.itemId());
             }
         }
+    }
+
+    @Test
+    void sunflowerMinionTwelveNeedsTheElevenAndCompactedSunflowers() {
+        CatalogueEntry entry = entries("skymart_farming_essentials").stream()
+                .filter(candidate -> candidate.itemId().equals("SUNFLOWER_MINION")).findFirst().orElseThrow();
+        assertEquals(12, entry.minionTier());
+        assertEquals(Map.of("SUNFLOWER_MINION", 11), entry.cost().minions());
+        assertEquals(Map.of("COMPACTED_SUNFLOWER", 32), entry.cost().items());
+        assertTrue(entry.available());
     }
 }

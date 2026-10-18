@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import net.minestom.server.coordinate.Pos;
+import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.SharedInstance;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.skyblock.item.UnderstandableSkyBlockItem;
@@ -23,11 +24,18 @@ import dev.daweapon.type.skyblockgeneric.user.pets.PetAbilities;
 import org.tinylog.Logger;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Getter
 // Tracks all minions placed on an island, handling their initialization, storage, and per-minion state.
 public class IslandMinionData {
     private final SkyBlockIsland island;
+    private static final int EVERBURNING_FLAME_COMBAT_BONUS = 5;
+    private static final Set<MinionRegistry> EVERBURNING_FLAME_BONUS_MINIONS = EnumSet.of(
+            MinionRegistry.BLAZE, MinionRegistry.CAVE_SPIDER, MinionRegistry.CREEPER, MinionRegistry.ENDERMAN,
+            MinionRegistry.GHAST, MinionRegistry.MAGMA_CUBE, MinionRegistry.SKELETON, MinionRegistry.SLIME,
+            MinionRegistry.ZOMBIE);
+
     private final List<IslandMinion> minions = new ArrayList<>();
 
     public IslandMinionData(SkyBlockIsland island) {
@@ -69,6 +77,7 @@ public class IslandMinionData {
         private final MinionExtensionData extensionData;
         private boolean mithrilInfusion;
         private long capsaicinExpiry;
+        private final AtomicLong offlineSince = new AtomicLong();
 
         public void spawnMinion(SharedInstance instance) {
             minionEntity = new MinionEntityImpl(this, minion.asSkyBlockMinion());
@@ -87,7 +96,7 @@ public class IslandMinionData {
 
             // Check if adding the new item would exceed the total slot capacity (slots * 64).
             if ((totalItemsInStacks + item.getAmount()) > (slots * 64)) {
-                return false; // Do not add the item if it exceeds capacity.
+                return dev.daweapon.type.skyblockgeneric.minion.storage.MinionStorage.tryAdd(this, item);
             }
 
             // Increment the generatedItems counter by the amount of the new item.
@@ -122,7 +131,11 @@ public class IslandMinionData {
             return toReturn;
         }
 
-        public int getSpeedPercentage() {//Handle percentage speed increase from both fuels and minion upgrades
+        public int getSpeedPercentage() {
+            return getSpeedPercentage(minionEntity == null ? null : minionEntity.getInstance());
+        }
+
+        public int getSpeedPercentage(Instance instance) {//Handle percentage speed increase from both fuels and minion upgrades
             int percentageSpeedIncrease = 0;
 
             //Handle Mithril Infusion
@@ -134,8 +147,11 @@ public class IslandMinionData {
                     extensionData.getOfType(MinionFuelExtension.class);
             ItemType minionFuel = fuelExtension.getItemTypePassedIn();
             if (minionFuel != null && fuelExtension.refresh(this)
-                    && (minionFuel != ItemType.SOLAR_PANEL || isDaytime())) {
+                    && (minionFuel != ItemType.SOLAR_PANEL || isDaytime(instance))) {
                 percentageSpeedIncrease += (int) new SkyBlockItem(minionFuel).getComponent(MinionFuelComponent.class).getFuelPercentage();
+                if (minionFuel == ItemType.EVERBURNING_FLAME && EVERBURNING_FLAME_BONUS_MINIONS.contains(minion)) {
+                    percentageSpeedIncrease += EVERBURNING_FLAME_COMBAT_BONUS;
+                }
             }
 
             //Handle speed increases from minion upgrades
@@ -150,10 +166,14 @@ public class IslandMinionData {
             }
 
             percentageSpeedIncrease += minion.asSkyBlockMinion().getBonusSpeedPercentage(this);
-            if (minionEntity != null) {
-                percentageSpeedIncrease += (int) PetAbilities.minionSpeedPercent(minionEntity.getInstance(), minion.name());
-                percentageSpeedIncrease += (int) AccessoryEconomyHooks.potatoMinionSpeedPercent(minionEntity.getInstance(), minion.name());
-                percentageSpeedIncrease += (int) dev.daweapon.type.skyblockgeneric.island.IslandUtilityBlocks.minionSpeedPercent(minionEntity.getInstance(), minion.isMining());
+            if (dev.daweapon.type.skyblockgeneric.minion.freewill.FreeWillService.isLoyal(this)) {
+                percentageSpeedIncrease += (int) dev.daweapon.type.skyblockgeneric.minion.freewill.FreeWillOdds.LOYALTY_SPEED_PERCENT;
+            }
+            if (instance != null) {
+                percentageSpeedIncrease += (int) PetAbilities.minionSpeedPercent(instance, minion.name());
+                percentageSpeedIncrease += (int) AccessoryEconomyHooks.potatoMinionSpeedPercent(instance, minion.name());
+                percentageSpeedIncrease += (int) dev.daweapon.type.skyblockgeneric.island.IslandUtilityBlocks.minionSpeedPercent(instance, minion.isMining());
+                percentageSpeedIncrease += (int) dev.daweapon.type.skyblockgeneric.island.IslandUtilityBlocks.crystalSpeedPercent(instance, minion);
             }
 
             return percentageSpeedIncrease;
@@ -163,9 +183,13 @@ public class IslandMinionData {
             return (1 + getSpeedPercentage() / 100.0) * minion.asSkyBlockMinion().getSpeedMultiplier(this);
         }
 
-        private boolean isDaytime() {
-            if (minionEntity == null || minionEntity.getInstance() == null) return false;
-            long time = Math.floorMod(minionEntity.getInstance().getTime(), 24000);
+        public double getSpeedDivisor(Instance instance) {
+            return (1 + getSpeedPercentage(instance) / 100.0) * minion.asSkyBlockMinion().getSpeedMultiplier(this);
+        }
+
+        private boolean isDaytime(Instance instance) {
+            if (instance == null) return false;
+            long time = Math.floorMod(instance.getTime(), 24000);
             return time < 12000;
         }
 
@@ -186,6 +210,7 @@ public class IslandMinionData {
             data.put("itemsInMinion", itemsInMinionAsString);
             data.put("minion", minion.name());
             data.put("lastAction", lastAction);
+            data.put("savedAt", System.currentTimeMillis());
             data.put("tier", tier);
             data.put("generatedItems", generatedItems);
             data.put("minionUUID", minionUUID.toString());
@@ -224,7 +249,11 @@ public class IslandMinionData {
             else
                 extensionData = new MinionExtensionData();
 
-            return new IslandMinion(
+            long storedLastAction = data.containsKey("lastAction")
+                    ? ((Number) data.get("lastAction")).longValue() : System.currentTimeMillis();
+            long savedAt = data.containsKey("savedAt") ? ((Number) data.get("savedAt")).longValue() : storedLastAction;
+
+            IslandMinion restored = new IslandMinion(
                     UUID.fromString(data.get("minionUUID").toString()),
                     new Pos(
                             Integer.parseInt(data.get("position").toString().split(",")[0]),
@@ -235,13 +264,15 @@ public class IslandMinionData {
                     (int) data.get("tier"),
                     itemsInMinion,
                     (int) data.get("generatedItems"),
-                    System.currentTimeMillis(),
+                    storedLastAction,
                     null,
                     new MinionHandler.InternalMinionTags(),
                     extensionData,
                     data.containsKey("mithrilInfusion") && (boolean) data.get("mithrilInfusion"),
                     data.containsKey("capsaicinExpiry") ? ((Number) data.get("capsaicinExpiry")).longValue() : 0L
             );
+            restored.offlineSince.set(savedAt);
+            return restored;
         }
     }
 

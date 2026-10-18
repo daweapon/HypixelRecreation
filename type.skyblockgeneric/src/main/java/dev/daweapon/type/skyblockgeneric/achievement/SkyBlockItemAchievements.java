@@ -60,6 +60,12 @@ public final class SkyBlockItemAchievements {
         if (id != null) player.getAchievementHandler().completeAchievement(id);
     }
 
+    public static void onStoragePlaced(SkyBlockPlayer player, ItemType type) {
+        if (type == ItemType.LARGE_ENCHANTED_CHEST) {
+            player.getAchievementHandler().completeAchievement("skyblock.bigger_storage_is_seeded");
+        }
+    }
+
     public static void onSyphon(SkyBlockPlayer player) {
         if (player.getHuntingData().uniqueAttributes() >= SYPHON_GOAL) {
             player.getAchievementHandler().completeAchievement("skyblock.weird_science");
@@ -71,6 +77,8 @@ public final class SkyBlockItemAchievements {
         PlayerAchievementHandler handler = player.getAchievementHandler();
         if (MIDAS_ITEMS.contains(type)) {
             handler.completeAchievement("skyblock.united_in_blood");
+        } else if (type == ItemType.POSTCARD) {
+            handler.completeAchievement("skyblock.hasta_la_vista");
         } else if (type == ItemType.SEAL_OF_THE_FAMILY) {
             handler.completeAchievement("skyblock.lifelong_contract");
         } else if (type.name().startsWith("ABIPHONE_")) {

@@ -24,10 +24,12 @@ import dev.daweapon.type.skyblockgeneric.item.components.MinionFuelComponent;
 import dev.daweapon.type.skyblockgeneric.item.updater.NonPlayerItemUpdater;
 import dev.daweapon.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import dev.daweapon.type.skyblockgeneric.minion.IslandMinionData;
+import dev.daweapon.type.skyblockgeneric.minion.MinionCollectionXp;
 import dev.daweapon.type.skyblockgeneric.minion.SkyBlockMinion;
 import dev.daweapon.type.skyblockgeneric.minion.extension.MinionExtension;
 import dev.daweapon.type.skyblockgeneric.minion.extension.MinionExtensionData;
 import dev.daweapon.type.skyblockgeneric.minion.extension.MinionExtensions;
+import dev.daweapon.type.skyblockgeneric.minion.storage.MinionStorage;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.text.DecimalFormat;
@@ -73,7 +75,9 @@ public class GUIMinion extends HypixelInventoryGUI implements RefreshingGUI {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
                 player.closeInventory();
                 player.addAndUpdateItem(minion.asSkyBlockItem());
+                MinionCollectionXp.award(player, minion.getItemsInMinion());
                 minion.getItemsInMinion().forEach(item -> player.addAndUpdateItem(item.toSkyBlockItem()));
+                MinionStorage.release(minion, player::addAndUpdateItem);
 
                 for (SkyBlockItem item : minion.getExtensionData().getMinionUpgrades()) {
                     player.addAndUpdateItem(item);
@@ -110,11 +114,13 @@ public class GUIMinion extends HypixelInventoryGUI implements RefreshingGUI {
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
-                if (minion.getItemsInMinion().isEmpty()) {
+                if (minion.getItemsInMinion().isEmpty() && MinionStorage.extraStored(minion) == 0) {
                     player.sendMessage(Text.key("gui_minion.no_items_stored"));
                     return;
                 }
+                MinionStorage.drain(minion).forEach(item -> player.addAndUpdateItem(item.toSkyBlockItem()));
 
+                MinionCollectionXp.award(player, minion.getItemsInMinion());
                 minion.getItemsInMinion().forEach(item -> {
                     SkyBlockItem skyBlockItem = item.getItem();
                     skyBlockItem.setAmount(item.getAmount());
@@ -257,6 +263,7 @@ public class GUIMinion extends HypixelInventoryGUI implements RefreshingGUI {
                     ItemQuantifiable item = minion.getItemsInMinion().get(finalI - 1);
                     minion.getItemsInMinion().remove(item);
 
+                    MinionCollectionXp.award(player, List.of(item));
                     item.getItem().setAmount(item.getAmount());
                     player.addAndUpdateItem(item.getItem());
                     refreshItems(player);

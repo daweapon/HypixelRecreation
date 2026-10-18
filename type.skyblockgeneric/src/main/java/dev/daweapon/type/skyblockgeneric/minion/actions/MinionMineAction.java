@@ -54,6 +54,11 @@ public class MinionMineAction extends MinionAction {
     }
 
     @Override
+    public List<SkyBlockItem> offlineYield(IslandMinionData.IslandMinion minion) {
+        return List.of(new SkyBlockItem(Material.fromKey(toMine.key())));
+    }
+
+    @Override
     public boolean checkMaterials(IslandMinionData.IslandMinion minion, Instance island) {
         List<ItemQuantifiable> items = minion.getItemsInMinion();
 

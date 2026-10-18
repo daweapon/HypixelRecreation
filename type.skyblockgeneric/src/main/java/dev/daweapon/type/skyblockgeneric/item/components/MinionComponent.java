@@ -98,12 +98,14 @@ public class MinionComponent extends SkyBlockItemComponent {
 
     private ShapedRecipe customRecipe(SkyBlockItem result, MinionTierRecipe custom) {
         Map<Character, ItemQuantifiable> ingredientMap = new HashMap<>();
-        custom.ingredients().forEach((symbol, ingredient) ->
-                ingredientMap.put(symbol, new ItemQuantifiable(ingredient.getItem(), ingredient.getAmount())));
-        ingredientMap.put('B', minionOfTier(custom.tier() - 1));
+        custom.ingredients().forEach((symbol, ingredient) -> ingredientMap.put(symbol, ingredient.toQuantifiable()));
+        ingredientMap.putIfAbsent('B', minionOfTier(custom.tier() - 1));
         custom.minionTiers().forEach((symbol, minionTier) -> ingredientMap.put(symbol, minionOfTier(minionTier)));
 
         ShapedRecipe recipe = new ShapedRecipe(SkyBlockRecipe.RecipeType.MINION, result, ingredientMap, custom.pattern());
+        custom.ingredients().forEach((symbol, ingredient) -> {
+            if (ingredient.isMinion()) recipe.addExtraRequirement(symbol, MinionIngredient.exactTier(ingredient.getMinionTier()));
+        });
         custom.minionTiers().forEach((symbol, minionTier) -> recipe.addExtraRequirement(symbol, minionItem ->
                 !minionItem.hasComponent(MinionComponent.class)
                         || minionItem.getAttributeHandler().getMinionData().tier() == minionTier));

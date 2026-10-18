@@ -46,6 +46,7 @@ items:
     material: player_head
     name: "Corrupt Soil"
     rarity: EPIC
+    unavailable: "Needs Corrupted mob variants for mob-spawning minions"
     lore:
       - "§8Minion Upgrade"
       - ""

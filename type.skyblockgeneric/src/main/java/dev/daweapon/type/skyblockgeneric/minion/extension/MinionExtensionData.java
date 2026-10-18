@@ -14,7 +14,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MinionExtensionData {
+    private static final String ATTRIBUTES_KEY = "attributes";
     private final Map<Integer, MinionExtension> extensionData = new HashMap<>();
+    private final Map<String, String> attributes = new HashMap<>();
+
+    public @Nullable String getAttribute(String key) {
+        return attributes.get(key);
+    }
+
+    public void setAttribute(String key, @Nullable String value) {
+        if (value == null) attributes.remove(key);
+        else attributes.put(key, value);
+    }
 
     public void setData(int slot, MinionExtension extension) {
         extensionData.put(slot, extension);
@@ -91,6 +102,7 @@ public class MinionExtensionData {
             entryJson.put("serialized", entry.toString());
             json.put(String.valueOf(slot), entryJson);
         });
+        if (!attributes.isEmpty()) json.put(ATTRIBUTES_KEY, new JSONObject(attributes));
         return json.toString();
     }
     @SneakyThrows
@@ -99,6 +111,11 @@ public class MinionExtensionData {
         JSONObject json = new JSONObject(string);
 
         for (String key : json.keySet()) {
+            if (key.equals(ATTRIBUTES_KEY)) {
+                JSONObject stored = json.getJSONObject(key);
+                stored.keySet().forEach(name -> data.attributes.put(name, stored.getString(name)));
+                continue;
+            }
             JSONObject entryJson = json.getJSONObject(key);
             int slot = Integer.parseInt(key);
 

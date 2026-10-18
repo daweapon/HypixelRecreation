@@ -14,6 +14,7 @@ import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.components.MinionUpgradeComponent;
 import dev.daweapon.type.skyblockgeneric.item.updater.NonPlayerItemUpdater;
 import dev.daweapon.type.skyblockgeneric.minion.IslandMinionData;
+import dev.daweapon.type.skyblockgeneric.minion.MinionUpgradeRules;
 import dev.daweapon.type.skyblockgeneric.minion.extension.MinionExtension;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.NotNull;
@@ -38,13 +39,20 @@ public class MinionUpgradeExtension extends MinionExtension {
                     e.setCancelled(true);
 
                     ItemType itemTypeLinker = upgradeItem.getAttributeHandler().getPotentialType();
+                    if (itemTypeLinker != null) itemTypeLinker = MinionUpgradeRules.canonical(itemTypeLinker);
                     if (minion.getExtensionData().hasMinionUpgrade(itemTypeLinker)) {
                         player.sendMessage("<c>This upgrade is already applied to your minion.");
                         e.setCancelled(true);
                         return;
                     }
 
-                    if (upgradeItem.hasComponent(MinionUpgradeComponent.class) || itemTypeLinker == ItemType.KRAMPUS_HELMET) {
+                    if ((upgradeItem.hasComponent(MinionUpgradeComponent.class) || MinionUpgradeRules.insertableWithoutComponent(itemTypeLinker))
+                            && !MinionUpgradeRules.allows(player, minion, itemTypeLinker, upgradeItem)) {
+                        e.setCancelled(true);
+                        return;
+                    }
+
+                    if (upgradeItem.hasComponent(MinionUpgradeComponent.class) || MinionUpgradeRules.insertableWithoutComponent(itemTypeLinker)) {
                         p.getInventory().setCursorItem(ItemStack.AIR);
                         setItemTypePassedIn(itemTypeLinker);
                         minion.getExtensionData().setData(slot, MinionUpgradeExtension.this);
@@ -124,6 +132,6 @@ public class MinionUpgradeExtension extends MinionExtension {
             setItemTypePassedIn(null);
             return;
         }
-        setItemTypePassedIn(ItemType.valueOf(string));
+        setItemTypePassedIn(MinionUpgradeRules.canonical(ItemType.valueOf(string)));
     }
 }

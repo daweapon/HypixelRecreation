@@ -7,11 +7,11 @@ slayers:
       - { level: 2, requiredXp: 15, title: Novice }
       - { level: 3, requiredXp: 200, title: Skilled }
       - { level: 4, requiredXp: 1000, title: Destroyer }
-      - { level: 5, requiredXp: 5000, title: Bulldozer, unlocks: [DEVOUR_RING] }
+      - { level: 5, requiredXp: 5000, title: Bulldozer, unlocks: [DEVOUR_RING, REVENANT_MINION, VOODOO_DOLL] }
       - { level: 6, requiredXp: 20000, title: Savage }
       - { level: 7, requiredXp: 100000, title: Deathripper }
       - { level: 8, requiredXp: 400000, title: Necromancer, unlocks: [REAPER_ORB] }
-      - { level: 9, requiredXp: 1000000, title: Grim Reaper }
+      - { level: 9, requiredXp: 1000000, title: Grim Reaper, unlocks: [GENERATOR_UPGRADE_STONE_REVENANT_12] }
     tiers:
       - { tier: I, cost: 2000, requiredCombatXp: 100, slayerXp: 5, bossLevel: 1, bossHealth: 500, bossDamage: 15, bossSpeed: 100, tokenItem: REVENANT_FLESH, tokenDrops: 1 }
       - { tier: II, cost: 7500, requiredCombatXp: 1000, slayerXp: 25, bossLevel: 2, bossHealth: 20000, bossDamage: 50, bossSpeed: 110, tokenItem: REVENANT_FLESH, tokenDrops: 8, requiredCombatLevel: 5 }
@@ -30,11 +30,11 @@ slayers:
       - { level: 2, requiredXp: 25, title: Novice }
       - { level: 3, requiredXp: 200, title: Skilled }
       - { level: 4, requiredXp: 1000, title: Destroyer }
-      - { level: 5, requiredXp: 5000, title: Bulldozer }
+      - { level: 5, requiredXp: 5000, title: Bulldozer, unlocks: [TARANTULA_MINION] }
       - { level: 6, requiredXp: 20000, title: Savage }
       - { level: 7, requiredXp: 100000, title: Pest Control Genius, unlocks: [MOSQUITO_PET, TARANTULA_RING] }
       - { level: 8, requiredXp: 400000, title: Tarantula Exterminator }
-      - { level: 9, requiredXp: 1000000, title: Spider Annihilator }
+      - { level: 9, requiredXp: 1000000, title: Spider Annihilator, unlocks: [GENERATOR_UPGRADE_STONE_TARANTULA_12] }
     tiers:
       - { tier: I, cost: 2000, requiredCombatXp: 250, slayerXp: 5, bossLevel: 1, bossHealth: 2500, bossDamage: 35, bossSpeed: 120, tokenItem: TARANTULA_WEB, tokenDrops: 1 }
       - { tier: II, cost: 7500, requiredCombatXp: 650, slayerXp: 25, bossLevel: 2, bossHealth: 50000, bossDamage: 110, bossSpeed: 125, tokenItem: TARANTULA_WEB, tokenDrops: 8 }
@@ -85,7 +85,7 @@ slayers:
       - { level: 1, requiredXp: 10, title: Noob }
       - { level: 2, requiredXp: 30, title: Novice }
       - { level: 3, requiredXp: 250, title: Skilled }
-      - { level: 4, requiredXp: 1500, title: Destroyer }
+      - { level: 4, requiredXp: 1500, title: Destroyer, unlocks: [VOIDLING_MINION] }
       - { level: 5, requiredXp: 5000, title: Bulldozer }
       - { level: 6, requiredXp: 20000, title: Savage }
       - { level: 7, requiredXp: 100000, title: Voidwracker }

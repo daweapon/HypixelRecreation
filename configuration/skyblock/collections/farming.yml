@@ -1263,6 +1263,9 @@ collections:
         - type: XP
           data:
             xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: SUNFLOWER_MINION
     - amount: 10000
       rewards:
         - type: XP

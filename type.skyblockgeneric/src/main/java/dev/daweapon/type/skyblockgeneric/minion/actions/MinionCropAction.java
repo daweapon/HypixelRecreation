@@ -74,6 +74,11 @@ public class MinionCropAction extends MinionAction {
     }
 
     @Override
+    public List<SkyBlockItem> offlineYield(IslandMinionData.IslandMinion minion) {
+        return choosePlanting().drops().rollItems();
+    }
+
+    @Override
     public boolean checkMaterials(IslandMinionData.IslandMinion minion, Instance island) {
         return isStorageFull(minion);
     }

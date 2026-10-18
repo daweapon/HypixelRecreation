@@ -6,6 +6,7 @@ import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.crafting.ShapedRecipe;
 import dev.daweapon.type.skyblockgeneric.item.crafting.ShapelessRecipe;
 import dev.daweapon.type.skyblockgeneric.item.crafting.SkyBlockRecipe;
+import dev.daweapon.type.skyblockgeneric.minion.MinionIngredient;
 import dev.daweapon.type.skyblockgeneric.string.PlayerTemplateProcessor;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -133,10 +134,18 @@ public class RecipeParser {
         List<String> pattern = (List<String>) config.get("pattern");
 
         Map<Character, ItemQuantifiable> ingredientMap = new HashMap<>();
+        Map<Character, Integer> minionTiers = new HashMap<>();
 
         for (Map.Entry<String, Map<String, Object>> entry : ingredients.entrySet()) {
             char key = entry.getKey().charAt(0);
             Map<String, Object> ingredient = entry.getValue();
+
+            if (ingredient.containsKey("minion")) {
+                MinionIngredient minion = MinionIngredient.parse(ingredient);
+                ingredientMap.put(key, minion.toQuantifiable());
+                minionTiers.put(key, minion.getMinionTier());
+                continue;
+            }
 
             String materialType = (String) ingredient.get("type");
             int amount = (int) ingredient.getOrDefault("amount", 1);
@@ -150,8 +159,10 @@ public class RecipeParser {
 
         result.setAmount((Integer) ((Map<String, Object>) config.get("result")).get("amount"));
 
-        return new ShapedRecipe(craftingType, result, ingredientMap, pattern,
+        ShapedRecipe recipe = new ShapedRecipe(craftingType, result, ingredientMap, pattern,
                 (player) -> checkRequirements(player, requirements));
+        minionTiers.forEach((key, tier) -> recipe.addExtraRequirement(key, MinionIngredient.exactTier(tier)));
+        return recipe;
     }
 
     private static SkyBlockRecipe.CraftingResult checkRequirements(SkyBlockPlayer player, List<RequirementCheck> requirements) {
