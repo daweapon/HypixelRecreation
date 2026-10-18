@@ -3170,7 +3170,6 @@ items:
       - "§7Consumes §a1 Sulphur §7from the"
       - "§7Inventory or Quiver to double the"
       - "§7damage per shot."
-      - "§8(Not active yet)"
     default_statistics:
       damage: 200
       strength: 100

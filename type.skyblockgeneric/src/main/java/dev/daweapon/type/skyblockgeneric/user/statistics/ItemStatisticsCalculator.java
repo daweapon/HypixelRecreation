@@ -9,6 +9,7 @@ import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
 import dev.daweapon.type.skyblockgeneric.crimson.CrimsonGear;
 import dev.daweapon.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
 import dev.daweapon.type.skyblockgeneric.enchantment.abstr.EventBasedEnchant;
+import dev.daweapon.type.skyblockgeneric.enchantment.abstr.PlayerContextEnchant;
 import dev.daweapon.type.skyblockgeneric.gems.Gemstone;
 import dev.daweapon.type.skyblockgeneric.gifts.SnowSuit;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
@@ -70,6 +71,9 @@ final class ItemStatisticsCalculator {
         for (SkyBlockEnchantment enchantment : item.getAttributeHandler().getEnchantments().toList()) {
             ItemStatistics enchantmentStatistics = enchantment.type().getEnch().getStatistics(enchantment.level()).clone();
             statistics = ItemStatistics.add(statistics, enchantmentStatistics);
+            if (enchantment.type().getEnch() instanceof PlayerContextEnchant contextual) {
+                statistics = ItemStatistics.add(statistics, contextual.getStatistics(player, enchantment.level()));
+            }
 
             if (causer != null && enemy != null) {
                 if (enchantment.type().getEnch() instanceof EventBasedEnchant eventBasedStatistic) {

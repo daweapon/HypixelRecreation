@@ -60,9 +60,11 @@ public class PlayerActionDamageMob implements HypixelEventClass {
 
         double damage = (hit.getKey() + dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.flatMeleeDamage(player, mob))
                 * AttributeEffectService.outgoingDamageMultiplier(player.getHuntingData(), mob, false)
+                * (1 + AttributeEffectService.lifelinePercent(player) / 100D)
                 * dev.daweapon.type.skyblockgeneric.fishing.lava.CrimsonFishingGear.outgoingMultiplier(player, mob)
                 * dev.daweapon.type.skyblockgeneric.slayer.inferno.BlazeSlayerGear.outgoingMultiplier(player, mob)
                 * dev.daweapon.type.skyblockgeneric.slayer.zombie.ZombieSlayerGear.outgoingMultiplier(player, mob)
+                * dev.daweapon.type.skyblockgeneric.enchantment.impl.EnchantmentHabaneroTactics.outgoingMultiplier(player, mob)
                 * dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.outgoingMultiplier(player, mob);
         boolean critical = hit.getValue();
 

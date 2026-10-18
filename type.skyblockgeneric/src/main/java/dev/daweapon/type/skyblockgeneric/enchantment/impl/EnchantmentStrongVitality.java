@@ -15,7 +15,7 @@ public class EnchantmentStrongVitality implements Ench {
 
     @Override
     public String getDescription(int level) {
-        return "Convert <a>" + (level * 2) + "% <7>of <4>♨ Vitality <7>used as <c>❁ Strength <7>for <a>10s<7>. <8>(Max 30 Strength)" + NOT_ACTIVE;
+        return "Convert <a>" + (level * 2) + "% <7>of <4>♨ Vitality <7>used as <c>❁ Strength <7>for <a>10s<7>. <8>(Max 15 Strength)" + NOT_ACTIVE;
     }
 
     @Override
@@ -26,5 +26,10 @@ public class EnchantmentStrongVitality implements Ench {
     @Override
     public List<EnchantItemGroups> getGroups() {
         return List.of(EnchantItemGroups.ARMOR);
+    }
+
+    @Override
+    public boolean isEffectActive() {
+        return false;
     }
 }

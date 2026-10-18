@@ -945,6 +945,44 @@ items:
             result:
               type: MAGMA_LORD_BOOTS
               amount: 1
+  - id: MAGMA_LORD_NECKLACE
+    material: player_head
+    name: 'Magma Lord Necklace'
+    rarity: LEGENDARY
+    lore:
+      - '<7>Damage taken from <c>Magmatic<7> mobs'
+      - '<7>is reduced by <a>15% <7>and damage dealt'
+      - '<7>is increased by <c>1.3x<7>.'
+    default_statistics:
+      health: 45
+      strength: 10
+      ferocity: 2
+      sea_creature_chance: 2.5
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FISHING
+            level: 45
+      - id: SELLABLE
+        value: 93750
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "F F"
+              - " F "
+              - "F F"
+            ingredients:
+              F:
+                type: MAGMA_LORD_FRAGMENT
+                amount: 1
+            result:
+              type: MAGMA_LORD_NECKLACE
+              amount: 1
   - id: THUNDER_FRAGMENT
     material: prismarine_shard
     name: 'Thunder Fragment'

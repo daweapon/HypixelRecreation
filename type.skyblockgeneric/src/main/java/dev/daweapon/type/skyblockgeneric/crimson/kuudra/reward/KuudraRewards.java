@@ -6,6 +6,8 @@ import dev.daweapon.type.skyblockgeneric.crimson.kuudra.data.KuudraConfig;
 import dev.daweapon.type.skyblockgeneric.crimson.kuudra.data.KuudraLootTable;
 import dev.daweapon.type.skyblockgeneric.crimson.kuudra.follower.FollowerStep;
 import dev.daweapon.type.skyblockgeneric.crimson.kuudra.follower.KuudraFollowerProgress;
+import dev.daweapon.type.skyblockgeneric.hunting.AttributeEffectService;
+import dev.daweapon.type.skyblockgeneric.hunting.AttributeId;
 import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -27,7 +29,25 @@ public final class KuudraRewards {
 
     public static KuudraRun roll(SkyBlockPlayer player, KuudraTier tier) {
         boolean teethPlaque = KuudraFollowerProgress.has(player, FollowerStep.RELIC_UPGRADED);
-        return roll(player.getUuid(), tier, teethPlaque, KuudraConfig.get(), ThreadLocalRandom.current(), System.currentTimeMillis());
+        KuudraRun run = roll(player.getUuid(), tier, teethPlaque, KuudraConfig.get(), ThreadLocalRandom.current(), System.currentTimeMillis());
+        double extraTeeth = AttributeEffectService.value(player.getHuntingData(), AttributeId.parse("R22"));
+        if (extraTeeth <= 0 || !LootRoll.roll(player.getUuid(), ItemType.KUUDRA_TEETH, extraTeeth)) return run;
+        return new KuudraRun(run.id(), run.tier(), run.completedAt(), run.free(), withExtraTeeth(run.paid()), run.opened());
+    }
+
+    public static List<KuudraReward> withExtraTeeth(List<KuudraReward> paid) {
+        List<KuudraReward> result = new ArrayList<>();
+        boolean added = false;
+        for (KuudraReward reward : paid) {
+            if (!added && ItemType.KUUDRA_TEETH.name().equals(reward.itemId())) {
+                result.add(KuudraReward.item(reward.itemId(), reward.amount() + 1));
+                added = true;
+            } else {
+                result.add(reward);
+            }
+        }
+        if (!added) result.add(KuudraReward.item(ItemType.KUUDRA_TEETH.name(), 1));
+        return result;
     }
 
     public static KuudraRun roll(UUID player, KuudraTier tier, boolean teethPlaque, KuudraConfig config,

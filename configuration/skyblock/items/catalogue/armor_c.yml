@@ -2587,8 +2587,7 @@ items:
     rarity: UNCOMMON
     default_statistics:
       intelligence: 50
-    unavailable: "Needs Magma Fish (not in the game yet)"
-    source: "Crafted (see recipe on Hypixel)"
+    source: "Crafted from 8 Magmafish (Magmafish collection I)"
     lore:
       - "§6Ability: Splash  §e§lSNEAK"
       - "§7Crouch to splash some magma around."
@@ -2599,6 +2598,22 @@ items:
         texture: d184df9f7615f719103b9d1b0fd3f545c885746fade2cb81e965856eb2a3a948
       - id: STANDARD_ITEM
         standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - AAA
+              - A A
+              - AAA
+            ingredients:
+              A:
+                type: MAGMAFISH
+                amount: 1
+            result:
+              type: MAGMA_FISH_HAT
+              amount: 1
   - id: NOVICE_SKULL
     material: wither_skeleton_skull
     name: "Novice Skull"

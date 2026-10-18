@@ -14,6 +14,7 @@ import dev.daweapon.type.skyblockgeneric.fishing.registry.FishingRegistry;
 import dev.daweapon.type.skyblockgeneric.fishing.trophy.TrophyFishAwards;
 import dev.daweapon.type.skyblockgeneric.fishing.registry.FishingTableDefinition;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import dev.daweapon.type.skyblockgeneric.fishing.registry.TrophyFishDefinition;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -143,8 +144,9 @@ public sealed interface CatchPayload {
 
         @Override
         public void apply(CatchAwardContext ctx) {
-            Essences.add(ctx.player(), type, amount);
-            ctx.player().sendMessage("<b><l>TREASURE! </l><7>You found <d>{} {}<7>!", amount, type.getFullName());
+            long granted = type == EssenceType.CRIMSON ? CombatPetHooks.crimsonEssence(ctx.player(), amount) : amount;
+            Essences.add(ctx.player(), type, granted);
+            ctx.player().sendMessage("<b><l>TREASURE! </l><7>You found <d>{} {}<7>!", granted, type.getFullName());
         }
     }
 

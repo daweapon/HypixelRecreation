@@ -25,6 +25,7 @@ public class PlayerActionDamagedAttacked implements HypixelEventClass {
 
             MobAttackService.strike(mob, player);
             mob.onMeleeHit(player);
+            dev.daweapon.type.skyblockgeneric.item.set.sets.RekindledEmberSet.onMobMelee(mob, player);
         }
     }
 

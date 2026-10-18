@@ -12,6 +12,7 @@ import dev.daweapon.type.skyblockgeneric.entity.mob.MobStatusEffects;
 import dev.daweapon.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.components.ArrowComponent;
+import dev.daweapon.type.skyblockgeneric.item.equipment.passive.EquipmentPassives;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import dev.daweapon.type.skyblockgeneric.utility.AttackService;
 import org.jetbrains.annotations.Nullable;
@@ -135,7 +136,7 @@ public final class ArrowEffects {
         }
         for (SkyBlockMob mob : victims) {
             var hit = ArrowDamage.roll(shooter, arrow, mob.getStatistics());
-            AttackService.applyHit(shooter, mob, (float) explosionShare(hit.getKey(), victims.size()), hit.getValue());
+            AttackService.applyHit(shooter, mob, (float) explosionShare(hit.getKey() * EquipmentPassives.explosionMultiplier(shooter), victims.size()), hit.getValue());
         }
         if (explosionHurtsShooter(shooter.getPosition().distance(center))) {
             float loss = (float) (shooter.getMaxHealth() * EXPLOSION_SELF_HEALTH_LOSS);

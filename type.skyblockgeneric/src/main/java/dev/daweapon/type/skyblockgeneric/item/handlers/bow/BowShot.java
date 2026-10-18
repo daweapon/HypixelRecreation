@@ -6,6 +6,7 @@ import net.minestom.server.entity.metadata.LivingEntityMeta;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.type.skyblockgeneric.enchantment.impl.EnchantmentInfiniteQuiver;
 import dev.daweapon.type.skyblockgeneric.entity.ArrowEntityImpl;
+import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.components.BowComponent;
 import dev.daweapon.type.skyblockgeneric.item.components.ItemRequirementsComponent;
@@ -23,6 +24,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Strike's speed and extra arrows on top.
  */
 public final class BowShot {
+    private static final String SULPHUR_BOW = "SULPHUR_BOW";
     private static final long MILLIS_PER_TICK = 50;
     private static final Map<UUID, Long> NEXT_SHORTBOW_SHOT = new ConcurrentHashMap<>();
 
@@ -80,15 +82,22 @@ public final class BowShot {
         HydraStrike.Wear wear = HydraStrike.wear(player);
         int stacks = HydraStrike.stacks(player, wear);
         double speed = wear == null ? 1 : wear.arrowSpeedMultiplier(stacks);
+        double infusion = arrowInfusion(player, bow);
 
         for (double offset : ShortBowVolley.yawOffsets(arrows, spread)) {
-            spawn(player, bow, arrow, offset, power * speed, 1);
+            spawn(player, bow, arrow, offset, power * speed, infusion);
         }
         double extraFactor = wear == null ? 0 : wear.extraArrowFactor(stacks);
         if (extraFactor <= 0) return;
         for (double offset : ShortBowVolley.hydraOffsets(HydraStrike.EXTRA_ARROWS)) {
-            spawn(player, bow, arrow, offset, power * speed, extraFactor);
+            spawn(player, bow, arrow, offset, power * speed, extraFactor * infusion);
         }
+    }
+
+    private static double arrowInfusion(SkyBlockPlayer player, SkyBlockItem bow) {
+        if (!SULPHUR_BOW.equals(bow.getAttributeHandler().getTypeAsString())) return 1;
+        if (player.getAmountInInventory(ItemType.SULPHUR) < 1) return 1;
+        return player.removeItemFromPlayer(ItemType.SULPHUR, 1) ? 2 : 1;
     }
 
     private static void spawn(SkyBlockPlayer player, SkyBlockItem bow, SkyBlockItem arrow, double yawOffset,

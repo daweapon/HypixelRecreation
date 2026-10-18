@@ -28,4 +28,9 @@ public class EnchantmentVampiricVitality implements Ench {
     public List<EnchantItemGroups> getGroups() {
         return List.of(EnchantItemGroups.ARMOR);
     }
+
+    @Override
+    public boolean isEffectActive() {
+        return false;
+    }
 }

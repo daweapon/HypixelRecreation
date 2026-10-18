@@ -158,20 +158,12 @@ public final class CrimsonAbilities {
         AbilityRegistry.register(new RegisteredAbility(
                 "BIG_PULL",
                 "Big Pull",
-                (_, _) -> "<7>Throw a hook to grab and pull blazes and certain other <f>✈ Airborne <7>mobs.\n\n"
-                        + "<7>Pulling a mob multiplies its damage taken by <c>2x <7>and stops it from flying.\n"
-                        + "<8>(The damage multiplier is not active yet)",
+                (_, _) -> "<7>Throw a hook to grab and pull up to <a>5 <7>blazes and certain other <f>✈ Airborne <7>mobs within <a>15 <7>blocks.\n\n"
+                        + "<7>Pulling a mob multiplies its damage taken by <c>2x <7>and stops it from flying until it lands.",
                 AbilityActivation.RIGHT_CLICK,
                 20,
                 new AbilityManaCost(30),
-                (player, _, _, _) -> {
-                    SkyBlockMob target = mobInSight(player, 30);
-                    if (target == null) return false;
-                    Vec pull = player.getPosition().sub(target.getPosition()).asVec().normalize().mul(25).withY(8);
-                    target.setVelocity(pull);
-                    target.setNoGravity(false);
-                    return true;
-                }));
+                (player, _, _, _) -> BigPull.cast(player)));
 
         AbilityRegistry.register(new RegisteredAbility(
                 "DEPLOY_TOTEM_OF_CORRUPTION",

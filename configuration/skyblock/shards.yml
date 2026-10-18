@@ -6772,11 +6772,11 @@
       "description": "Grants +2 Trophy Chance",
       "effects": [
         {
-          "type": "ABILITY_VALUE",
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "TROPHY_FISH_CHANCE",
           "minimum": 2,
           "maximum": 20,
-          "condition": "ALWAYS",
-          "key": "E14"
+          "condition": "ALWAYS"
         }
       ],
       "sources": [
@@ -7496,7 +7496,7 @@
         }
       ],
       "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "unavailable": "No Dive Ghast mob exists to hunt, charm or lasso, and its Opal Gemstone pacify effect has no mining hook; only Fusion works"
     },
     {
       "id": "E44",
@@ -8283,11 +8283,11 @@
       "description": "Your <sbstat:intelligence> is increased by +0.1%",
       "effects": [
         {
-          "type": "ABILITY_VALUE",
+          "type": "PERCENTAGE_STATISTIC_PER_LEVEL",
+          "statistic": "INTELLIGENCE",
           "minimum": 0.1,
           "maximum": 1,
-          "condition": "ALWAYS",
-          "key": "L17"
+          "condition": "ALWAYS"
         }
       ],
       "sources": [
@@ -8485,11 +8485,11 @@
       "description": "Grants +0.5 Double Hook Chance while on Combat Islands",
       "effects": [
         {
-          "type": "ABILITY_VALUE",
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "DOUBLE_HOOK_CHANCE",
           "minimum": 0.5,
           "maximum": 5,
-          "condition": "ALWAYS",
-          "key": "L26"
+          "condition": "COMBAT_ISLAND"
         }
       ],
       "sources": [

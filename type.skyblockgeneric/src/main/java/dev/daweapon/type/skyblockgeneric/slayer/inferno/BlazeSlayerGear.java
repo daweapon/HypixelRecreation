@@ -33,6 +33,15 @@ public final class BlazeSlayerGear {
         return multiplier;
     }
 
+    public static double bonusCombatXp(SkyBlockPlayer player, SkyBlockMob killed, double baseXp) {
+        BlazeDagger dagger = BlazeDagger.of(new SkyBlockItem(player.getItemInMainHand()));
+        return dagger == null ? 0 : daggerCombatXp(dagger, killed.getMobTypes().contains(MobType.INFERNAL), baseXp);
+    }
+
+    public static double daggerCombatXp(BlazeDagger dagger, boolean infernal, double baseXp) {
+        return infernal ? baseXp * dagger.combatWisdom() / 100D : 0;
+    }
+
     public static float burststop(SkyBlockPlayer player, float damage) {
         if (damage < player.getMaxHealth() * BURST_THRESHOLD) return damage;
         boolean artifact = false;

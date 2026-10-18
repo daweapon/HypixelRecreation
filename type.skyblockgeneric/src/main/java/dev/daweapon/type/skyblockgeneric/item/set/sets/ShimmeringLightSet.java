@@ -2,6 +2,8 @@ package dev.daweapon.type.skyblockgeneric.item.set.sets;
 
 import dev.daweapon.type.skyblockgeneric.item.set.impl.TieredArmorSet;
 
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+
 import java.util.List;
 
 public class ShimmeringLightSet implements TieredArmorSet {
@@ -22,6 +24,18 @@ public class ShimmeringLightSet implements TieredArmorSet {
         return List.of(
                 "<7>Increases all <a>Experience Orbs",
                 "<7>gained from monsters and ores by",
-                "<a>" + EXPERIENCE_ORB_BONUS[TieredArmorSet.tierIndex(wornPieces, minimumPieces())] + "%<7>.");
+                "<a>" + (int) bonusPercent(wornPieces) + "%<7>.");
+    }
+
+    public static double bonusPercent(int wornPieces) {
+        return wornPieces < 2 ? 0 : EXPERIENCE_ORB_BONUS[Math.min(wornPieces, 4) - 2];
+    }
+
+    public static double experienceOrbMultiplier(int wornPieces) {
+        return 1 + bonusPercent(wornPieces) / 100;
+    }
+
+    public static double experienceOrbMultiplier(SkyBlockPlayer player) {
+        return experienceOrbMultiplier(new ShimmeringLightSet().getWornPieceCount(player));
     }
 }

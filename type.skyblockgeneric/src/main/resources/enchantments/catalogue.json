@@ -2971,16 +2971,16 @@
   "maxLevel": 10,
   "minLevel": 1,
   "levels": {
-   "1": "<7>Convert <a>2% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
-   "2": "<7>Convert <a>4% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
-   "3": "<7>Convert <a>6% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
-   "4": "<7>Convert <a>8% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
-   "5": "<7>Convert <a>10% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
-   "6": "<7>Convert <a>12% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
-   "7": "<7>Convert <a>14% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
-   "8": "<7>Convert <a>16% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
-   "9": "<7>Convert <a>18% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
-   "10": "<7>Convert <a>20% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar"
+   "1": "<7>Convert <a>2% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 15 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
+   "2": "<7>Convert <a>4% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 15 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
+   "3": "<7>Convert <a>6% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 15 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
+   "4": "<7>Convert <a>8% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 15 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
+   "5": "<7>Convert <a>10% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 15 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
+   "6": "<7>Convert <a>12% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 15 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
+   "7": "<7>Convert <a>14% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 15 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
+   "8": "<7>Convert <a>16% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 15 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
+   "9": "<7>Convert <a>18% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 15 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
+   "10": "<7>Convert <a>20% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 15 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar"
   },
   "sources": [],
   "appliedTo": [

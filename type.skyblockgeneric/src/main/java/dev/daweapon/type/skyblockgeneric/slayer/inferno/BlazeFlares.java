@@ -16,6 +16,9 @@ import dev.daweapon.type.skyblockgeneric.user.statistics.TemporaryStatistic;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Comparator;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -29,11 +32,12 @@ public final class BlazeFlares {
     private static final double RANGE = 40;
     private static final int MAX_PLAYERS = 8;
     private static final double SKY_OFFSET = 12;
+    private static final long MANA_REGEN_LINGER_MS = 1_500;
 
     public enum Flare {
-        WARNING(ItemType.WARNING_FLARE, "<a>Warning Flare", 10, 10, 30, 0, 0),
-        ALERT(ItemType.ALERT_FLARE, "<9>Alert Flare", 15, 20, 40, 10, 0),
-        SOS(ItemType.SOS_FLARE, "<5>SOS Flare", 25, 30, 50, 10, 5);
+        WARNING(ItemType.WARNING_FLARE, "<a>Warning Flare", 10, 10, 30, 0, 0, 0),
+        ALERT(ItemType.ALERT_FLARE, "<9>Alert Flare", 15, 20, 40, 10, 0, 50),
+        SOS(ItemType.SOS_FLARE, "<5>SOS Flare", 25, 30, 50, 10, 5, 125);
 
         private final ItemType item;
         private final String displayName;
@@ -42,9 +46,10 @@ public final class BlazeFlares {
         private final double healPerSecond;
         private final double ferocity;
         private final double attackSpeed;
+        private final double manaRegenPercent;
 
         Flare(ItemType item, String name, double vitality, double trueDefense, double healPerSecond,
-              double ferocity, double attackSpeed) {
+              double ferocity, double attackSpeed, double manaRegenPercent) {
             this.item = item;
             this.displayName = name;
             this.vitality = vitality;
@@ -52,6 +57,7 @@ public final class BlazeFlares {
             this.healPerSecond = healPerSecond;
             this.ferocity = ferocity;
             this.attackSpeed = attackSpeed;
+            this.manaRegenPercent = manaRegenPercent;
         }
 
         public static @Nullable Flare of(@Nullable ItemType type) {
@@ -73,7 +79,16 @@ public final class BlazeFlares {
         public String displayName() {
             return displayName;
         }
+
+        public double manaRegenPercent() {
+            return manaRegenPercent;
+        }
     }
+
+    private record ManaRegen(double fraction, long expiresAt) {
+    }
+
+    private static final Map<UUID, ManaRegen> MANA_REGEN = new ConcurrentHashMap<>();
 
     private BlazeFlares() {
     }
@@ -104,6 +119,16 @@ public final class BlazeFlares {
         return true;
     }
 
+    public static double manaRegenFraction(SkyBlockPlayer player) {
+        ManaRegen regen = MANA_REGEN.get(player.getUuid());
+        if (regen == null) return 0;
+        if (regen.expiresAt() < System.currentTimeMillis()) {
+            MANA_REGEN.remove(player.getUuid(), regen);
+            return 0;
+        }
+        return regen.fraction();
+    }
+
     private static void buff(SkyBlockPlayer player, Flare flare) {
         player.getStatistics().removeTemporaryStatistics(stat -> stat.getDisplayName() != null
             && stat.getDisplayName().startsWith(BUFF_PREFIX));
@@ -112,6 +137,11 @@ public final class BlazeFlares {
             .withExpirationInMs(1_500)
             .withDisplayName(BUFF_PREFIX + flare.displayName().replaceAll("<[^>]*>", ""))
             .build());
+        if (flare.manaRegenPercent > 0) {
+            MANA_REGEN.put(player.getUuid(), new ManaRegen(flare.manaRegenPercent / 100D, System.currentTimeMillis() + MANA_REGEN_LINGER_MS));
+        } else {
+            MANA_REGEN.remove(player.getUuid());
+        }
         if (CrimsonLocation.isOnCrimsonIsle(player)) {
             player.setHealth((float) Math.min(player.getMaxHealth(), player.getHealth() + flare.healPerSecond));
         }

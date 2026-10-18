@@ -201,6 +201,8 @@ items:
       - "§7this item to boost its chances of"
       - "§7creating §cunique §7drops from"
       - "§6Hypergolic §7fuel by §a30% §7for §a24 hours§7."
+      - ""
+      - "§cNot active yet: the charged version needs Exportable Carrots from the Rift, which is not built."
     components:
       - id: SKULL_HEAD
         texture: c5928c2785027e7bc49fb96ff4801a673d2a59ef30b561f9f2452146b45de899

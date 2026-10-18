@@ -1,11 +1,5 @@
 package dev.daweapon.type.skyblockgeneric.item.handlers.ability.abilities;
 
-import net.minestom.server.MinecraftServer;
-import net.minestom.server.coordinate.Pos;
-import net.minestom.server.instance.Instance;
-import net.minestom.server.network.packet.server.play.ParticlePacket;
-import net.minestom.server.particle.Particle;
-import net.minestom.server.timer.TaskSchedule;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.handlers.ability.AbilityRegistry;
 import dev.daweapon.type.skyblockgeneric.item.handlers.ability.RegisteredAbility;
@@ -15,7 +9,9 @@ import dev.daweapon.type.skyblockgeneric.item.handlers.ability.RegisteredPassive
 import dev.daweapon.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import dev.daweapon.type.skyblockgeneric.slayer.inferno.BlazeDagger;
 import dev.daweapon.type.skyblockgeneric.slayer.inferno.BlazeFlares;
+import dev.daweapon.type.skyblockgeneric.slayer.inferno.BlazetekkHamRadio;
 import dev.daweapon.type.skyblockgeneric.slayer.inferno.HellionAttunement;
+import dev.daweapon.type.skyblockgeneric.slayer.inferno.TacticalInsertion;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
@@ -25,7 +21,6 @@ import java.util.List;
  * the Hellion Shield), the three flares and the Tactical Insertion.
  */
 public final class BlazeSlayerAbilities {
-    private static final int TACTICAL_RETURN_TICKS = 60;
 
     private BlazeSlayerAbilities() {
     }
@@ -70,14 +65,31 @@ public final class BlazeSlayerAbilities {
                 new AbilityManaCost(250),
                 (player, item, _, _) -> deployFlare(player, item)));
 
+        AbilityRegistry.register(new RegisteredPassiveAbility(
+                "TELECOMMUNICATIONS",
+                "Telecommunications",
+                (_, _) -> "<7>If exactly two players within <a>110 <7>blocks are on the same channel, both gain:\n <a>+60 Defense\n <f>+40 True Defense\n <3>+5☯ Combat Wisdom\n <4>+10 Vitality\n<8>Earn half stats while alone!",
+                List.of()));
+
+        AbilityRegistry.register(new RegisteredAbility(
+                "TUNING_4_DUMMIES",
+                "Tuning 4 Dummies",
+                (_, item) -> "<7>Switches to the next radio channel.\n\n<7>Channel: <a>" + BlazetekkHamRadio.channelName(item.getAttributeHandler().getRadioChannel()),
+                AbilityActivation.RIGHT_CLICK,
+                0,
+                new RegisteredAbility.NoAbilityCost(),
+                (player, item, _, _) -> tuneRadio(player, item)));
+
+        BlazetekkHamRadio.start();
+
         AbilityRegistry.register(new RegisteredAbility(
                 "GORILLA_TACTICS",
                 "Gorilla Tactics",
-                (_, _) -> "<7>Marks your location and teleport back there after <a>3s<7>. On coming back, set your <c>❤ Health <7>to HALF of what it was.",
+                (_, _) -> "<7>Marks your location and teleport back there after <a>3s<7>. On coming back, set your <c>❤ Health <7>to HALF of what it was and burn enemies within <a>3 <7>blocks for <a>10% <7>of all damage you dealt in the last <a>3s <7>over <a>6s<7>.",
                 AbilityActivation.RIGHT_CLICK,
                 400,
                 new AbilityManaCost(200),
-                (player, _, _, _) -> gorillaTactics(player)));
+                (player, _, _, _) -> TacticalInsertion.begin(player)));
     }
 
     private static String attunementLore(SkyBlockItem item) {
@@ -104,8 +116,8 @@ public final class BlazeSlayerAbilities {
         StringBuilder lore = new StringBuilder(base).append("\n\n").append(flare.displayName()).append(" Buff");
         switch (flare) {
             case WARNING -> lore.append("\n<7>• Gain <4>+10 Vitality<7>.\n<7>• Gain <f>+10 True Defense<7>.\n<7>• Heal <c>30❤ <7>per second while on the <c>Crimson Isle<7>.");
-            case ALERT -> lore.append("\n<7>• Grants <b>+50% <7>base mana regen. <8>(not active yet)\n<7>• Gain <4>+15 Vitality<7>.\n<7>• Gain <f>+20 True Defense<7>.\n<7>• Heal <c>40❤ <7>per second while on the <c>Crimson Isle<7>.\n<7>• Gain <c>+10 Ferocity<7>.");
-            case SOS -> lore.append("\n<7>• Grants <b>+125% <7>base mana regen. <8>(not active yet)\n<7>• Gain <4>+25 Vitality<7>.\n<7>• Gain <f>+30 True Defense<7>.\n<7>• Heal <c>50❤ <7>per second while on the <c>Crimson Isle<7>.\n<7>• Gain <c>+10 Ferocity<7>.\n<7>• Gain <e>+5 Attack Speed<7>.");
+            case ALERT -> lore.append("\n<7>• Grants <b>+50% <7>base mana regen.\n<7>• Gain <4>+15 Vitality<7>.\n<7>• Gain <f>+20 True Defense<7>.\n<7>• Heal <c>40❤ <7>per second while on the <c>Crimson Isle<7>.\n<7>• Gain <c>+10 Ferocity<7>.");
+            case SOS -> lore.append("\n<7>• Grants <b>+125% <7>base mana regen.\n<7>• Gain <4>+25 Vitality<7>.\n<7>• Gain <f>+30 True Defense<7>.\n<7>• Heal <c>50❤ <7>per second while on the <c>Crimson Isle<7>.\n<7>• Gain <c>+10 Ferocity<7>.\n<7>• Gain <e>+5 Attack Speed<7>.");
         }
         return lore.append("\n\n<8>Only one deployable buff applies.").toString();
     }
@@ -115,19 +127,11 @@ public final class BlazeSlayerAbilities {
         return flare != null && BlazeFlares.deploy(player, flare);
     }
 
-    private static boolean gorillaTactics(SkyBlockPlayer player) {
-        Instance instance = player.getInstance();
-        if (instance == null) return false;
-        Pos mark = player.getPosition();
-        player.sendMessage("<6>Gorilla Tactics! <7>Returning in <a>3s<7>.");
-        MinecraftServer.getSchedulerManager().buildTask(() -> {
-            if (!player.isOnline() || player.getInstance() != instance) return;
-            player.teleport(mark);
-            player.setHealth(Math.max(1F, player.getHealth() / 2F));
-            ParticlePacket packet = new ParticlePacket(Particle.FLAME, true, true, mark.x(), mark.y() + 1, mark.z(),
-                    1.5f, 0.5f, 1.5f, 0.02f, 40);
-            instance.getPlayers().forEach(viewer -> viewer.sendPacket(packet));
-        }).delay(TaskSchedule.tick(TACTICAL_RETURN_TICKS)).schedule();
+    private static boolean tuneRadio(SkyBlockPlayer player, SkyBlockItem item) {
+        int channel = BlazetekkHamRadio.nextChannel(item.getAttributeHandler().getRadioChannel());
+        item.getAttributeHandler().setRadioChannel(channel);
+        player.setItemInMainHand(PlayerItemUpdater.playerUpdate(player, item.getItemStack()).build());
+        player.sendMessage("<7>Tuned to <a>" + BlazetekkHamRadio.channelName(channel) + "<7>.");
         return true;
     }
 }

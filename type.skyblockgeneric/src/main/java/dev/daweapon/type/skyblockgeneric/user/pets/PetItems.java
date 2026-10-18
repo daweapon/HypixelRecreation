@@ -68,6 +68,7 @@ public final class PetItems {
     }
 
     public static void registerInteractables() {
+        WispUpgradeStones.registerInteractables();
         InteractableRegistry.register("SUPER_SCRUBBER", InteractableItemConfig.builder()
                 .rightClickHandler(PetItems::scrub).build());
     }

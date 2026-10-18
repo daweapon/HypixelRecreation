@@ -503,6 +503,14 @@ public class ItemAttributeHandler {
         ((ItemAttributeDaggerAttunement) item.getAttribute("td_attune_mode")).setValue(mode);
     }
 
+    public int getRadioChannel() {
+        return ((ItemAttributeRadioChannel) item.getAttribute("radio_channel")).getValue();
+    }
+
+    public void setRadioChannel(int channel) {
+        ((ItemAttributeRadioChannel) item.getAttribute("radio_channel")).setValue(channel);
+    }
+
     public int getSnowballAmmo() {
         return ((ItemAttributeSnowballAmmo) item.getAttribute("ammo")).getValue();
     }

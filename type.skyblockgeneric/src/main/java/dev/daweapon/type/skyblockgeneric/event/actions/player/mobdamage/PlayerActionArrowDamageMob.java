@@ -66,6 +66,7 @@ public class PlayerActionArrowDamageMob implements HypixelEventClass {
         Map.Entry<Double, Boolean> hit = ArrowDamage.roll(shooter, arrow, entityStats);
         double damage = hit.getKey() * pierceFactor * snipeMultiplier(arrow, bow, collidedWith)
                 * AttributeEffectService.outgoingDamageMultiplier(shooter.getHuntingData(), collidedWith, true)
+                * (1 + AttributeEffectService.lifelinePercent(shooter) / 100D)
                 * CombatPetHooks.arrowMultiplier(shooter, collidedWith);
         boolean critical = hit.getValue();
 
@@ -77,9 +78,20 @@ public class PlayerActionArrowDamageMob implements HypixelEventClass {
         punch(arrow, bow, collidedWith);
         dev.daweapon.type.skyblockgeneric.item.handlers.bow.ArrowBounce.chain(shooter, bow, collidedWith, damageAmount, critical);
         ArrowDamage.onLanded(shooter, arrow);
+        bowHitEnchants(shooter, bow, collidedWith, damageAmount);
 
         double ferocity = ArrowDamage.shooterStatistics(shooter, arrow.getArrowItem()).getOverall(ItemStatistic.FEROCITY);
         AttackService.scheduleExtraHits(shooter, collidedWith, damageAmount, critical, ferocity);
+    }
+
+    private static void bowHitEnchants(SkyBlockPlayer shooter, SkyBlockItem bow, SkyBlockMob target, double damage) {
+        if (bow == null) return;
+        for (SkyBlockEnchantment enchantment : bow.getAttributeHandler().getEnchantments().toList()) {
+            if (enchantment.type().getEnch() instanceof dev.daweapon.type.skyblockgeneric.enchantment.abstr.DamageEventEnchant onHit) {
+                onHit.onDamageDealt(shooter, target, damage,
+                        dev.daweapon.type.skyblockgeneric.reforge.ReforgeLoadout.effectiveEnchantLevel(shooter, enchantment.type(), enchantment.level()));
+            }
+        }
     }
 
     private static double snipeMultiplier(ArrowEntityImpl arrow, SkyBlockItem bow, SkyBlockMob target) {

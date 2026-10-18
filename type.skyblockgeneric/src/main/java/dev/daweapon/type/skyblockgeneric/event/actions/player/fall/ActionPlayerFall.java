@@ -41,7 +41,7 @@ public class ActionPlayerFall implements HypixelEventClass {
 
         if (player.isOnGround()) {
             int fallDistance = currentHeight - newPosition.blockY();
-            if (fallDistance > 4) {
+            if (fallDistance > 4 && !dev.daweapon.type.skyblockgeneric.fishing.lava.CrimsonFishingGear.bounce(player, fallDistance)) {
                 float baseDamage = (float) ((fallDistance * 2) - 4);
                 FallDamageValueUpdateEvent valueEvent = new FallDamageValueUpdateEvent(player, baseDamage);
                 SkyBlockValueEvent.callValueUpdateEvent(valueEvent);

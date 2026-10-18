@@ -20,6 +20,8 @@ public final class AttributeEffectService {
     public static final String KEY_RULER = "RULER";
     public static final String KEY_RESISTANCE = "RESISTANCE";
     public static final String KEY_FORTUNE = "FORTUNE";
+    private static final AttributeId LIFELINE = AttributeId.parse("R36");
+    private static final double LIFELINE_THRESHOLD = 0.2;
 
     private AttributeEffectService() {
     }
@@ -52,6 +54,20 @@ public final class AttributeEffectService {
         if (definition == null || !data.enabled(id.toString())) return 0;
         return definition.effects().stream().findFirst().map(effect -> effect.atLevel(data.level(id.toString()))
                 * familyMultiplier(data, definition)).orElse(0D);
+    }
+
+    public static boolean lifelineTriggered(double health, double maxHealth) {
+        return maxHealth > 0 && health < maxHealth * LIFELINE_THRESHOLD;
+    }
+
+    public static double lifelinePercent(SkyBlockPlayer player) {
+        double percent = value(player.getHuntingData(), LIFELINE);
+        return percent > 0 && lifelineTriggered(player.getHealth(), player.getMaxHealth()) ? percent : 0;
+    }
+
+    public static ItemStatistics withLifelineDefense(SkyBlockPlayer player, ItemStatistics statistics) {
+        double percent = lifelinePercent(player);
+        return percent == 0 ? statistics : statistics.addAdditive(ItemStatistic.DEFENSE, percent / 100D);
     }
 
     public static double outgoingDamageMultiplier(DatapointHunting.HuntingData data, SkyBlockMob mob, boolean ranged) {

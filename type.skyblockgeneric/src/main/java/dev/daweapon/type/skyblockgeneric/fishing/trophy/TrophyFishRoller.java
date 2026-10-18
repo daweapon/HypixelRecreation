@@ -12,6 +12,8 @@ import dev.daweapon.type.skyblockgeneric.fishing.catches.CatchPayload;
 import dev.daweapon.type.skyblockgeneric.fishing.catches.TrophyTier;
 import dev.daweapon.type.skyblockgeneric.fishing.registry.FishingRegistry;
 import dev.daweapon.type.skyblockgeneric.fishing.registry.TrophyFishDefinition;
+import dev.daweapon.type.skyblockgeneric.item.equipment.passive.EquipmentPassiveMath;
+import dev.daweapon.type.skyblockgeneric.item.equipment.passive.EquipmentPassives;
 import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import dev.daweapon.type.skyblockgeneric.user.pets.PetItems;
@@ -46,7 +48,7 @@ public final class TrophyFishRoller {
     }
 
     public static Optional<CatchPayload> roll(FishingContext context, double trophyChance) {
-        if (!trophyWaters(context)) return Optional.empty();
+        if (!trophyWaters(context) || EquipmentPassives.wearing(context.player(), EquipmentPassiveMath.TERA_SHELL_NECKLACE)) return Optional.empty();
         UUID uuid = context.player().getUuid();
 
         Optional<CatchPayload> forced = forced(uuid);

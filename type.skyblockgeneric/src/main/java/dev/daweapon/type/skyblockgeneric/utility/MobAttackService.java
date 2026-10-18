@@ -34,7 +34,7 @@ public final class MobAttackService {
 
     public static float strike(SkyBlockMob mob, SkyBlockPlayer player, ItemStatistics mobStatistics) {
         if (CreeperVeil.absorb(player)) return 0;
-        ItemStatistics playerStatistics = player.getStatistics().allStatistics();
+        ItemStatistics playerStatistics = AttributeEffectService.withLifelineDefense(player, player.getStatistics().allStatistics());
 
         Map.Entry<Double, Boolean> damageDealt =
                 PlayerStatistics.runPrimaryDamageFormula(mobStatistics, playerStatistics);

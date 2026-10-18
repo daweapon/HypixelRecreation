@@ -1,6 +1,13 @@
 package dev.daweapon.type.skyblockgeneric.fishing.lava;
 
+import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
+import net.minestom.server.coordinate.Vec;
+import net.minestom.server.entity.Entity;
+import net.minestom.server.entity.EntityType;
+import net.minestom.server.entity.Player;
+import net.minestom.server.timer.Task;
+import net.minestom.server.timer.TaskSchedule;
 import net.minestom.server.entity.damage.Damage;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.item.ItemStack;
@@ -15,12 +22,13 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Lord Jawbus (wiki: Lord_Jawbus) shoots fireballs (2,500) and a laser (30,000). At 60M, 40M and 20M health it
  * rises inside a fire sphere, invulnerable, and calls 2 Jawbus Followers (random island-wide lava Sea Creatures,
- * never Thunder, Jawbus or Plhlegblast); killing them drops the sphere. Attack intervals are estimates, and the TNT
- * lobbing between phases is not modelled.
+ * never Thunder, Jawbus or Plhlegblast); killing them drops the sphere. While they live it lobs TNT (5,000 damage, 4 block
+ * blast, both estimates) that detonates when it lands. Attack intervals are estimates.
  */
 public class LordJawbusMob extends LavaSeaCreatureMob {
     static final double FIREBALL_DAMAGE = 2_500;
@@ -32,6 +40,12 @@ public class LordJawbusMob extends LavaSeaCreatureMob {
     private static final int FIREBALL_INTERVAL_TICKS = 60;
     private static final int LASER_INTERVAL_TICKS = 200;
     private static final double RANGE = 30;
+    private static final int TNT_INTERVAL_TICKS = 50;
+    private static final int TNT_MAX_TICKS = 100;
+    private static final double TNT_DAMAGE = 5_000;
+    private static final double TNT_RADIUS = 4;
+    private static final double TNT_HORIZONTAL_SPEED = 12;
+    private static final double TNT_UPWARD_SPEED = 14;
 
     private final List<LavaSeaCreatureMob> followers = new ArrayList<>();
     private int phasesTriggered;
@@ -74,6 +88,7 @@ public class LordJawbusMob extends LavaSeaCreatureMob {
         if (instance == null) return;
         if (shielded()) {
             if (ticks % 5 == 0) MythologicalCombat.particles(instance, Particle.FLAME, getPosition().add(0, 1.5, 0), 1.6f, 25);
+            if (ticks % TNT_INTERVAL_TICKS == 0) LavaAttacks.target(this, RANGE).ifPresent(this::lobTnt);
             return;
         }
         if (ticks % FIREBALL_INTERVAL_TICKS == 0) {
@@ -86,6 +101,41 @@ public class LordJawbusMob extends LavaSeaCreatureMob {
                 LavaAttacks.beam(instance, eyes, target.getPosition().add(0, 1, 0), Particle.FLAME);
                 hit(target, LASER_DAMAGE);
             });
+        }
+    }
+
+    private void lobTnt(SkyBlockPlayer target) {
+        Instance instance = getInstance();
+        if (instance == null) return;
+        Entity tnt = new Entity(EntityType.TNT);
+        Pos origin = getPosition().add(0, 2, 0);
+        Vec horizontal = target.getPosition().sub(origin).asVec().withY(0);
+        Vec launch = horizontal.length() < 0.01 ? Vec.ZERO : horizontal.normalize().mul(TNT_HORIZONTAL_SPEED);
+        tnt.setInstance(instance, origin).thenRun(() -> {
+            tnt.setVelocity(launch.withY(TNT_UPWARD_SPEED));
+            AtomicInteger age = new AtomicInteger();
+            Task[] task = new Task[1];
+            task[0] = MinecraftServer.getSchedulerManager().buildTask(() -> {
+                boolean landed = age.incrementAndGet() > 10 && tnt.isOnGround();
+                if (tnt.isRemoved() || (!landed && age.get() < TNT_MAX_TICKS)) {
+                    if (tnt.isRemoved()) task[0].cancel();
+                    return;
+                }
+                task[0].cancel();
+                explodeTnt(instance, tnt);
+            }).repeat(TaskSchedule.tick(1)).schedule();
+        });
+    }
+
+    private void explodeTnt(Instance instance, Entity tnt) {
+        Pos at = tnt.getPosition();
+        tnt.remove();
+        MythologicalCombat.particles(instance, Particle.EXPLOSION, at.add(0, 0.5, 0), 1.5f, 6);
+        LavaAttacks.ring(instance, at, TNT_RADIUS, Particle.FLAME);
+        for (Player player : instance.getPlayers()) {
+            if (player instanceof SkyBlockPlayer skyBlockPlayer && player.getPosition().distance(at) <= TNT_RADIUS) {
+                hit(skyBlockPlayer, TNT_DAMAGE);
+            }
         }
     }
 

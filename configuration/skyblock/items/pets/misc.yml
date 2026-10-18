@@ -869,7 +869,7 @@ items:
     components:
       - id: PET
         pet_name: "Frost Wisp"
-        source: { text: "Wisp Upgrade Stones", active: false }
+        source: { text: "Wisp Upgrade Stones", active: true }
         pet_type: GABAGOOL
         rarities: [RARE]
         skull_texture: 1d8ad9936d758c5ea30b0b7cc7c67c2bfcea829ecf2425c0b50fc92a26ae23d0
@@ -923,7 +923,7 @@ items:
     components:
       - id: PET
         pet_name: "Glacial Wisp"
-        source: { text: "Wisp Upgrade Stones", active: false }
+        source: { text: "Wisp Upgrade Stones", active: true }
         pet_type: GABAGOOL
         rarities: [EPIC]
         skull_texture: 3e2018feebe1a99177b3cb196d4e44521268b4b3eb56e6419cb0253cdbf0456c
@@ -977,7 +977,7 @@ items:
     components:
       - id: PET
         pet_name: "Subzero Wisp"
-        source: { text: "Wisp Upgrade Stones", active: false }
+        source: { text: "Wisp Upgrade Stones", active: true }
         pet_type: GABAGOOL
         rarities: [LEGENDARY]
         skull_texture: 7a0eb37e58c942eca4d33ab44e26eb1910c783788510b0a53b6f4d18881e237e

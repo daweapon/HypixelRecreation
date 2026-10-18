@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.fishing.lava;
 
+import net.minestom.server.coordinate.Vec;
 import net.minestom.server.entity.LivingEntity;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
@@ -33,12 +34,15 @@ public final class CrimsonFishingGear {
             Map.entry("THUNDER_LEGGINGS", new double[]{0.9, 1.2}), Map.entry("THUNDER_BOOTS", new double[]{0.9, 1.2}),
             Map.entry("THUNDERBOLT_NECKLACE", new double[]{0.95, 1.1}),
             Map.entry("MAGMA_LORD_HELMET", new double[]{0.85, 1.3}), Map.entry("MAGMA_LORD_CHESTPLATE", new double[]{0.85, 1.3}),
-            Map.entry("MAGMA_LORD_LEGGINGS", new double[]{0.85, 1.3}), Map.entry("MAGMA_LORD_BOOTS", new double[]{0.85, 1.3}));
+            Map.entry("MAGMA_LORD_LEGGINGS", new double[]{0.85, 1.3}), Map.entry("MAGMA_LORD_BOOTS", new double[]{0.85, 1.3}),
+            Map.entry("MAGMA_LORD_NECKLACE", new double[]{0.85, 1.3}));
     private static final Map<String, double[]> ODGERS_BLESSING = Map.of(
             "BRONZE", new double[]{0, 3, 4, 5}, "SILVER", new double[]{0, 5, 7.5, 10},
             "GOLD", new double[]{0, 10, 15, 20}, "DIAMOND", new double[]{0, 20, 25, 30});
     private static final Set<String> THUNDER = Set.of("THUNDER_HELMET", "THUNDER_CHESTPLATE", "THUNDER_LEGGINGS", "THUNDER_BOOTS", "THUNDERBOLT_NECKLACE");
     private static final Set<String> MAGMA_LORD = Set.of("MAGMA_LORD_HELMET", "MAGMA_LORD_CHESTPLATE", "MAGMA_LORD_LEGGINGS", "MAGMA_LORD_BOOTS", "MAGMA_LORD_NECKLACE");
+    private static final int BOUNCE_MIN_FALL = 10;
+    private static final double BOUNCE_VELOCITY = 24;
     private static final int[] CHARGE_SECONDS = {0, 0, 30, 25, 20, 10};
     private static final double[] CHARGE_DAMAGE = {0, 0, 0.15, 0.20, 0.25, 0.40};
     private static final Map<UUID, Charge> CHARGES = new ConcurrentHashMap<>();
@@ -84,6 +88,12 @@ public final class CrimsonFishingGear {
         double magicFind = lordPieces >= 5 ? 30 : lordPieces >= 4 ? 20 : 0;
         if (magicFind == 0) return ItemStatistics.empty();
         return ItemStatistics.builder().withBase(ItemStatistic.MAGIC_FIND, magicFind).build();
+    }
+
+    public static boolean bounce(SkyBlockPlayer player, int blocksFallen) {
+        if (blocksFallen < BOUNCE_MIN_FALL || !player.isSneaking() || !worn(player).contains("SLUG_BOOTS")) return false;
+        player.setVelocity(new Vec(0, BOUNCE_VELOCITY, 0));
+        return true;
     }
 
     public static double incomingMultiplier(SkyBlockPlayer player, @Nullable LivingEntity attacker) {

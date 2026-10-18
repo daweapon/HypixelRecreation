@@ -247,11 +247,17 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MAGMA_FISH_HAT
   - amount: 100
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: HOT_BAIT
   - amount: 500
     rewards:
     - type: XP
@@ -273,6 +279,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: CORRUPTED_BAIT
   - amount: 15000
     rewards:
     - type: XP

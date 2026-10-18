@@ -165,6 +165,10 @@ final class StatisticModifierCollector {
             String name = enchantment.type().getName() + " " + StringUtility.getAsRomanNumeral(enchantment.level());
             addModifier(modifiers, name, enchantment.type().getEnch().getStatistics(enchantment.level()),
                 sourceType, StatisticModifierType.ENCHANTMENT, parent, material, texture);
+            if (enchantment.type().getEnch() instanceof dev.daweapon.type.skyblockgeneric.enchantment.abstr.PlayerContextEnchant contextual) {
+                addModifier(modifiers, name, contextual.getStatistics(player, enchantment.level()),
+                    sourceType, StatisticModifierType.ENCHANTMENT, parent, material, texture);
+            }
         }
         addModifier(modifiers, "Hot Potato Books", calculator.getHotPotatoBookStatistics(item, ItemStatistics.empty()),
             sourceType, StatisticModifierType.HOT_POTATO_BOOK, parent, material, texture);

@@ -8,6 +8,8 @@ import dev.daweapon.commons.skyblock.item.Rarity;
 import dev.daweapon.type.skyblockgeneric.calendar.CalendarEvent;
 import dev.daweapon.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import dev.daweapon.type.skyblockgeneric.collection.CollectionCategories;
+import dev.daweapon.type.skyblockgeneric.hunting.AttributeEffectService;
+import dev.daweapon.type.skyblockgeneric.hunting.AttributeId;
 import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointPetData;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
@@ -100,7 +102,8 @@ public final class CombatPetHooks {
 
     public static long crimsonEssence(SkyBlockPlayer player, long amount) {
         if (!loaded(player)) return amount;
-        double extra = PetAbilities.value(player, ItemType.KUUDRA_PET, "Crimson", 0);
+        double extra = PetAbilities.value(player, ItemType.KUUDRA_PET, "Crimson", 0)
+                + AttributeEffectService.value(player.getHuntingData(), AttributeId.parse("R26"));
         return PetPerkMath.scaledAmount(amount, extra, ThreadLocalRandom.current());
     }
 

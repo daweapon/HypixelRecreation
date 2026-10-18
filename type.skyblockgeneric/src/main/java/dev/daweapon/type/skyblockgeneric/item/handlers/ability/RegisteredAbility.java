@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.item.handlers.ability;
 
+import dev.daweapon.type.skyblockgeneric.item.handlers.ability.abilities.HealthAbilityDamage;
 import dev.daweapon.type.skyblockgeneric.item.set.sets.WiseDragonArmorSet;
 import dev.daweapon.type.skyblockgeneric.enchantment.impl.EnchantmentRefrigerate;
 import dev.daweapon.type.skyblockgeneric.reforge.ReforgeLoadout;
@@ -64,7 +65,7 @@ public class RegisteredAbility {
             cost.onFail(player);
             return false;
         }
-        if (!action.execute(player, item, targetedBlock, blockFace)){
+        if (!HealthAbilityDamage.cast(cost, () -> action.execute(player, item, targetedBlock, blockFace))) {
             return false;
         }
         cost.onUse(player, this);

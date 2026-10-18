@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "crimson-activation"
+    name: "The Crimson Isle Activation Update"
+    date: "18th October 2026"
+    material: blaze_powder
+    title: "The Crimson Isle Activation Update"
+    book: "crimson_activation_update.yml"
   - version: "tablist-widgets"
     name: "The Tablist Widgets Update"
     date: "17th October 2026"

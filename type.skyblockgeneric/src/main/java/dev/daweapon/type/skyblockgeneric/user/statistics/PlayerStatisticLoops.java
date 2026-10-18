@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.user.statistics;
 
+import dev.daweapon.type.skyblockgeneric.slayer.inferno.BlazeFlares;
 import net.minestom.server.entity.Player;
 import java.util.*;
 import net.kyori.adventure.bossbar.BossBar;
@@ -219,7 +220,8 @@ final class PlayerStatisticLoops {
                     player.setMana(Math.min(manaPool, Math.min(manaPool, player.getMana() + (manaPool / 50) +
                             (int) ((manaPool / 50) * (player.getStatistics().getManaRegenerationPercentBonus()
                             + MiscPetHooks.manaRegenPercent(player) / 100D
-                            + DeployableBuffs.manaRegenFraction(player))))));
+                            + DeployableBuffs.manaRegenFraction(player)
+                            + BlazeFlares.manaRegenFraction(player))))));
                 }
             });
             return TaskSchedule.seconds(1);

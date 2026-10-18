@@ -21,6 +21,8 @@ import dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.bestiary.Bestiar
 import dev.daweapon.type.skyblockgeneric.entity.mob.MobType;
 import dev.daweapon.type.skyblockgeneric.entity.mob.ai.VanillaMeleeAttackGoal;
 import dev.daweapon.type.skyblockgeneric.entity.mob.ai.VanillaRandomStrollGoal;
+import dev.daweapon.type.skyblockgeneric.item.equipment.passive.BlazingPalisade;
+import dev.daweapon.type.skyblockgeneric.item.equipment.passive.FireDamageTaken;
 import dev.daweapon.type.skyblockgeneric.loottable.OtherLoot;
 import dev.daweapon.type.skyblockgeneric.loottable.SkyBlockLootTable;
 import dev.daweapon.type.skyblockgeneric.mythological.ability.MobProjectile;
@@ -276,8 +278,11 @@ public abstract class CrimsonIsleMob extends BestiaryMob {
     }
 
     protected void fireball(SkyBlockPlayer target, double damage) {
-        MobProjectile.item(this, target, ItemStack.of(Material.FIRE_CHARGE), 0.9,
-                hit -> MobAttackService.strike(this, hit, damage));
+        MobProjectile.item(this, target, ItemStack.of(Material.FIRE_CHARGE), 0.9, hit -> {
+            if (BlazingPalisade.reflect(hit, this, damage)) return;
+            float dealt = MobAttackService.strike(this, hit, damage * FireDamageTaken.multiplier(hit));
+            FireDamageTaken.record(hit, dealt);
+        });
     }
 
     protected void strike(SkyBlockPlayer player, double damage) {

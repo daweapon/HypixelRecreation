@@ -12,6 +12,7 @@ import dev.daweapon.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import dev.daweapon.type.skyblockgeneric.item.ItemLore;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.components.ArmorComponent;
+import dev.daweapon.type.skyblockgeneric.item.equipment.passive.EquipmentPassives;
 import dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import dev.daweapon.type.skyblockgeneric.loottable.LootAffector;
 import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
@@ -50,7 +51,7 @@ public final class CrimsonMobLoot {
         List<Won> won = new ArrayList<>();
         for (MobDrop drop : drops) {
             ItemType type = rollOne(player, mob, drop);
-            if (type != null) won.add(new Won(drop, create(player, type, drop)));
+            if (type != null) won.add(new Won(drop, create(player, mob, type, drop)));
         }
         return won;
     }
@@ -81,8 +82,9 @@ public final class CrimsonMobLoot {
         return new SkyBlockItem(type).hasComponent(ArmorComponent.class) ? CombatPetHooks.armorDropChance(player, enchanted) : enchanted;
     }
 
-    private static SkyBlockItem create(SkyBlockPlayer player, ItemType type, MobDrop drop) {
-        SkyBlockItem item = new SkyBlockItem(type, CombatPetHooks.collectionDropAmount(player, type, drop.rollAmount()));
+    private static SkyBlockItem create(SkyBlockPlayer player, SkyBlockMob mob, ItemType type, MobDrop drop) {
+        int amount = EquipmentPassives.magmaCream(player, mob, type, drop.rollAmount());
+        SkyBlockItem item = new SkyBlockItem(type, CombatPetHooks.collectionDropAmount(player, type, amount));
         if (drop.rarity() != null) item.getAttributeHandler().setRarity(drop.rarity());
         EnchantmentType enchantment = drop.enchantmentType();
         if (enchantment != null) {

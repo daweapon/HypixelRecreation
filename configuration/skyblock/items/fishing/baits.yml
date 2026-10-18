@@ -93,6 +93,23 @@ items:
     components:
       - id: FISHING_BAIT
         texture: 4bbcddd45cd347865bceab3e3dc5d382723463963f85ecce81cdd61b53db14e4
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - AB
+            ingredients:
+              A:
+                type: CORRUPTED_FRAGMENT
+                amount: 1
+              B:
+                type: MAGMAFISH
+                amount: 1
+            result:
+              type: CORRUPTED_BAIT
+              amount: 16
       - id: SELLABLE
         value: 1.0
       - id: ITEM_MODEL
@@ -166,10 +183,29 @@ items:
     material: PLAYER_HEAD
     name: "Hot Bait"
     rarity: UNCOMMON
+    default_statistics:
+      FISHING_SPEED: 15
     components:
       - id: FISHING_BAIT
         trophy_fish_chance_bonus: 5
         texture: 213c6899d97109c6cacbbcdd01e8900abaf46432f197595baa15ad137d5fb9ba
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - AB
+            ingredients:
+              A:
+                type: BLAZE_ASHES
+                amount: 1
+              B:
+                type: MAGMAFISH
+                amount: 1
+            result:
+              type: HOT_BAIT
+              amount: 16
       - id: SELLABLE
         value: 30.0
       - id: ITEM_MODEL

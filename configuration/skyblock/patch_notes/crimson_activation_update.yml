@@ -1,0 +1,36 @@
+title: "The Crimson Isle Activation Update"
+date: "18th October 2026"
+intro:
+  - "A lot of Crimson Isle gear and enchantments that said Not active yet now really work."
+sections:
+  - heading: "Enchantments"
+    colour: "<c>"
+    lines:
+      - "Flame, Fire Protection, Cayenne, Inferno, Fatal Tempo and Habanero Tactics are active. Flame and Fire Aspect, and Inferno, share one burning damage system."
+      - "Flame now ignites for 3.5 seconds at 3 percent of your damage per second (level I) or 4 seconds at 6 percent (level II). Apply costs match the wiki."
+      - "Strong Vitality now caps at 15 Strength like the wiki. The four Vitality enchantments still wait for the Vitality pool."
+      - "Habanero Tactics heals more from wands and gives Magic Find only once those items exist."
+  - heading: "Armor and equipment"
+    colour: "<6>"
+    lines:
+      - "Shimmering Light Armor multiplies experience from monster kills. Rekindled Ember Armor boosts your burning damage."
+      - "Blaze Belts reflect Fireballs, and the Vanquished Blaze Belt counts Blaze kills for Strength."
+      - "Magma Necklaces give extra Magma Cream, Scoville Belt grants Defense per burning enemy, and Flaming Fist, Implosion Belt, Gauntlet of Contagion, Delirium Necklace, Lava Shell Necklace, Tera Shell Necklace and the Glowstone Gauntlet work."
+      - "Magma Lord Necklace can now be crafted from 5 Magma Lord Fragments."
+  - heading: "Weapons and slayer"
+    colour: "<e>"
+    lines:
+      - "Moody Grappleshot pulls up to 5 Blazes from 15 blocks away and they take double damage until they land."
+      - "Sulphur Bow uses a Sulphur from your inventory for double damage. Slug Boots bounce you when you land sneaking."
+      - "Lord Jawbus throws TNT while its followers are alive."
+      - "Tactical Insertion, Blazetekk Ham Radio, dagger Combat Wisdom and Alert and SOS Flare mana regeneration are active."
+  - heading: "Shards, pets and fishing"
+    colour: "<b>"
+    lines:
+      - "Lava Leech, Kada Knight, Fire Eel, Taurus, Lord Jawbus and Hideondra shard abilities are active."
+      - "Wisp Upgrade Stones upgrade a level 80 Wisp to the next rarity at level 1."
+      - "Hot Bait, Corrupted Bait and the Magmafish Hat can be crafted from the Magmafish collection and Hot Bait adds Fishing Speed."
+  - heading: "Not here yet"
+    colour: "<8>"
+    lines:
+      - "Vitality enchantments, Fireproof, Teleport Pads, Capsaicin Eyedrops and the Dive Ghast shard wait for other content."

@@ -9,6 +9,7 @@ import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
 import dev.daweapon.type.skyblockgeneric.elections.perks.ElectionPerks;
 import dev.daweapon.type.skyblockgeneric.entity.mob.SkyBlockMob;
+import dev.daweapon.type.skyblockgeneric.item.equipment.passive.EquipmentPassives;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import dev.daweapon.type.skyblockgeneric.utility.DamageIndicator;
 
@@ -23,12 +24,17 @@ public final class AbilityDamage {
         double bonusAbilityDamage = statistics.getOverall(ItemStatistic.ABILITY_DAMAGE);
         return ElectionPerks.spellDamage(baseDamage)
                 * (1 + intelligence / 100 * intelligenceScaling)
-                * (1 + bonusAbilityDamage / 100);
+                * (1 + bonusAbilityDamage / 100)
+                * HealthAbilityDamage.multiplier(player);
+    }
+
+    private static double explosionMultiplier(SkyBlockPlayer player, String abilityName) {
+        return "Implosion".equals(abilityName) ? EquipmentPassives.explosionMultiplier(player) : 1;
     }
 
     public static void hitArea(SkyBlockPlayer player, Point center, double radius, String abilityName,
                                double baseDamage, double intelligenceScaling) {
-        float damage = (float) of(player, baseDamage, intelligenceScaling);
+        float damage = (float) (of(player, baseDamage, intelligenceScaling) * explosionMultiplier(player, abilityName));
         int hit = 0;
         for (Entity entity : player.getInstance().getNearbyEntities(center, radius)) {
             if (!(entity instanceof SkyBlockMob mob) || mob.isDead()) continue;

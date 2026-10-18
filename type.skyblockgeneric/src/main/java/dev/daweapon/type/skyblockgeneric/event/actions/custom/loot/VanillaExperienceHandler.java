@@ -14,6 +14,7 @@ import dev.daweapon.type.skyblockgeneric.enchantment.impl.EnchantmentExperience;
 import dev.daweapon.type.skyblockgeneric.event.custom.PlayerKilledSkyBlockMobEvent;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
+import dev.daweapon.type.skyblockgeneric.item.set.sets.ShimmeringLightSet;
 import dev.daweapon.type.skyblockgeneric.item.updater.PlayerItemOrigin;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -53,7 +54,8 @@ public class VanillaExperienceHandler implements HypixelEventClass {
 
         xpOrbsDropped = Math.round((baseXpOrbs) * bestiaryBoost * experienceEnchBoost
                 * UtilityAccessories.experienceOrbMultiplier(player)
-                * CombatPetHooks.experienceOrbMultiplier(player));
+                * CombatPetHooks.experienceOrbMultiplier(player)
+                * ShimmeringLightSet.experienceOrbMultiplier(player));
 
         player.addExperience(xpOrbsDropped);
     }
