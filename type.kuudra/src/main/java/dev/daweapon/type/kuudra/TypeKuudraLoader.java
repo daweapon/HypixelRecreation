@@ -14,8 +14,6 @@ import dev.daweapon.type.generic.command.HypixelCommand;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.tab.TablistManager;
-import dev.daweapon.type.generic.tab.AreaServerModule;
-import dev.daweapon.type.generic.tab.TablistModule;
 import dev.daweapon.type.kuudra.fight.KuudraFightHooks;
 import dev.daweapon.type.kuudra.redis.KuudraInstantiateGameHandler;
 import dev.daweapon.type.kuudra.run.KuudraInstanceHost;
@@ -25,13 +23,12 @@ import dev.daweapon.type.kuudra.run.KuudraSidebar;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
 import dev.daweapon.type.skyblockgeneric.crimson.kuudra.data.KuudraConfig;
 import dev.daweapon.type.skyblockgeneric.crimson.kuudra.queue.KuudraQueue;
-import dev.daweapon.type.skyblockgeneric.tabmodules.AccountInformationModule;
-import dev.daweapon.type.skyblockgeneric.tabmodules.SkyBlockPlayersOnlineModule;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
+import dev.daweapon.type.skyblockgeneric.tab.TabLocation;
+import dev.daweapon.type.skyblockgeneric.tab.SkyBlockTablistManager;
 
 /**
  * The Kuudra server: hosts up to {@link KuudraRuns#MAX_RUNS} runs, each in its own copy of Kuudra's Hollow.
@@ -82,17 +79,7 @@ public class TypeKuudraLoader implements SkyBlockTypeLoader {
 
     @Override
     public TablistManager getTablistManager() {
-        return new TablistManager() {
-            @Override
-            public List<TablistModule> getModules() {
-                return new ArrayList<>(List.of(
-                        new SkyBlockPlayersOnlineModule(1),
-                        new SkyBlockPlayersOnlineModule(2),
-                        new AreaServerModule("tablist.server_info.area.kuudra"),
-                        new AccountInformationModule()
-                ));
-            }
-        };
+        return new SkyBlockTablistManager(TabLocation.KUUDRA);
     }
 
     @Override

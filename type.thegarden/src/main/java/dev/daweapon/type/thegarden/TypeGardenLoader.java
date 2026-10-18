@@ -13,7 +13,6 @@ import dev.daweapon.type.generic.entity.hologram.PlayerHolograms;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.tab.TablistManager;
-import dev.daweapon.type.generic.tab.TablistModule;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
 import dev.daweapon.type.skyblockgeneric.garden.farm.GardenCropGrowth;
 import dev.daweapon.type.skyblockgeneric.garden.npc.CarpenterNpc;
@@ -26,10 +25,6 @@ import dev.daweapon.type.skyblockgeneric.garden.visitor.VisitorNpc;
 import dev.daweapon.type.thegarden.world.VisitorTicker;
 import dev.daweapon.type.skyblockgeneric.user.AreaSidebar;
 import dev.daweapon.type.skyblockgeneric.user.garden.SkyBlockGarden;
-import dev.daweapon.type.thegarden.tab.GardenPestsModule;
-import dev.daweapon.type.thegarden.tab.GardenContestModule;
-import dev.daweapon.type.thegarden.tab.GardenPlayersModule;
-import dev.daweapon.type.thegarden.tab.GardenInfoModule;
 import dev.daweapon.type.thegarden.world.GardenSidebar;
 import dev.daweapon.type.thegarden.world.GardenWorldDecor;
 import org.jetbrains.annotations.Nullable;
@@ -38,6 +33,8 @@ import org.tinylog.Logger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import dev.daweapon.type.skyblockgeneric.tab.TabLocation;
+import dev.daweapon.type.skyblockgeneric.tab.SkyBlockTablistManager;
 
 public class TypeGardenLoader implements SkyBlockTypeLoader {
     public static final Pos SPAWN_POS = new Pos(-5.5, 71, 17.5, 180, 0);
@@ -86,17 +83,7 @@ public class TypeGardenLoader implements SkyBlockTypeLoader {
 
     @Override
     public TablistManager getTablistManager() {
-        return new TablistManager() {
-            @Override
-            public List<TablistModule> getModules() {
-                return new ArrayList<>(List.of(
-                        new GardenPlayersModule(),
-                        new GardenInfoModule(),
-                        new GardenContestModule(),
-                        new GardenPestsModule()
-                ));
-            }
-        };
+        return new SkyBlockTablistManager(TabLocation.GARDEN);
     }
 
     @Override

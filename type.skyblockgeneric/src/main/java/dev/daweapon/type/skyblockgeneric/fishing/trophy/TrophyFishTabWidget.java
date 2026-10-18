@@ -1,6 +1,5 @@
 package dev.daweapon.type.skyblockgeneric.fishing.trophy;
 
-import dev.daweapon.type.skyblockgeneric.crimson.CrimsonTabWidgets;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointTrophyFish;
 import dev.daweapon.type.skyblockgeneric.fishing.registry.FishingRegistry;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -16,11 +15,7 @@ public final class TrophyFishTabWidget {
     private TrophyFishTabWidget() {
     }
 
-    public static void register() {
-        CrimsonTabWidgets.provide(CrimsonTabWidgets.Widget.TROPHY_FISH, TrophyFishTabWidget::lines);
-    }
-
-    static List<String> lines(SkyBlockPlayer player) {
+    public static List<String> lines(SkyBlockPlayer player) {
         DatapointTrophyFish.TrophyFishData data = player.getTrophyFishData();
         TrophyFisherRank rank = TrophyFisherRank.highest(data);
         long discovered = FishingRegistry.getTrophyFish().stream()

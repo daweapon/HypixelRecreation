@@ -27,9 +27,7 @@ import dev.daweapon.type.generic.entity.InteractionEntity;
 import dev.daweapon.type.generic.entity.hologram.ServerHolograms;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.event.HypixelEventClass;
-import dev.daweapon.type.generic.tab.AreaServerModule;
 import dev.daweapon.type.generic.tab.TablistManager;
-import dev.daweapon.type.generic.tab.TablistModule;
 import dev.daweapon.type.hub.darkauction.DarkAuctionDisplay;
 import dev.daweapon.type.hub.util.HubMap;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
@@ -46,8 +44,6 @@ import dev.daweapon.type.skyblockgeneric.gui.inventories.election.ElectionView;
 import dev.daweapon.type.skyblockgeneric.gui.inventories.election.ElectionViewStatsView;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.museum.MuseumDisplays;
-import dev.daweapon.type.skyblockgeneric.tabmodules.AccountInformationModule;
-import dev.daweapon.type.skyblockgeneric.tabmodules.SkyBlockPlayersOnlineModule;
 import dev.daweapon.type.skyblockgeneric.utility.WarpPortal;
 import dev.daweapon.type.hub.sewer.SewerRats;
 import dev.daweapon.type.skyblockgeneric.mission.missions.marco.MissionGiveRoseRedDyeToMarco;
@@ -58,7 +54,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Collectors;
+import dev.daweapon.type.skyblockgeneric.tab.TabLocation;
+import dev.daweapon.type.skyblockgeneric.tab.SkyBlockTablistManager;
 
 // Server type loader for the Hub: registers NPCs, events, warp portals, furniture, and displays for the central lobby world.
 public class TypeHubLoader implements SkyBlockTypeLoader {
@@ -232,17 +229,7 @@ public class TypeHubLoader implements SkyBlockTypeLoader {
     }
 
 	public TablistManager getTablistManager() {
-		return new TablistManager() {
-			@Override
-			public List<TablistModule> getModules() {
-				return new ArrayList<>(List.of(
-						new SkyBlockPlayersOnlineModule(1),
-						new SkyBlockPlayersOnlineModule(2),
-						new AreaServerModule("tablist.server_info.area.hub"),
-						new AccountInformationModule()
-				));
-			}
-		};
+		return new SkyBlockTablistManager(TabLocation.HUB);
 	}
 
 	@Override

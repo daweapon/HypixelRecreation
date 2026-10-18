@@ -44,6 +44,10 @@ import dev.daweapon.type.skyblockgeneric.user.BitsService;
 import dev.daweapon.type.skyblockgeneric.gifts.BottleOfJyrre;
 import dev.daweapon.type.skyblockgeneric.gifts.SnowmanPet;
 import dev.daweapon.type.skyblockgeneric.potion.CookieBuffService;
+import dev.daweapon.type.skyblockgeneric.tab.TabLocation;
+import dev.daweapon.type.skyblockgeneric.tab.TabSettings;
+import dev.daweapon.type.skyblockgeneric.tab.TabWidgets;
+import dev.daweapon.type.skyblockgeneric.tab.widgets.EffectsWidget;
 import dev.daweapon.type.skyblockgeneric.potion.GodPotionService;
 import dev.daweapon.type.skyblockgeneric.farmingcontest.FarmingContests;
 import dev.daweapon.type.skyblockgeneric.fishing.festival.FishingFestivalAnnouncer;
@@ -261,26 +265,29 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
 
             // Send per-player footer with their active effects
             for (SkyBlockPlayer player : players) {
-                Text footer = Text.of("\n<a><l>Active Effects\n");
+                Text footer = Text.of("\n");
+                if (!effectsWidgetShown(player)) {
+                    footer = footer.append("<a><l>Active Effects\n");
 
-                List<TemporaryStatistic> activeEffects = new ArrayList<>(player.getStatistics().getDisplayableActiveEffects());
-                activeEffects.removeIf(CookieBuffService::isCookieBuff);
-                long godPotionMs = activeEffects.stream().filter(GodPotionService::isGodPotionEffect)
-                        .mapToLong(TemporaryStatistic::getRemainingMs).max().orElse(0);
-                if (godPotionMs > 0) activeEffects.removeIf(GodPotionService::isGodPotionEffect);
+                    List<TemporaryStatistic> activeEffects = new ArrayList<>(player.getStatistics().getDisplayableActiveEffects());
+                    activeEffects.removeIf(CookieBuffService::isCookieBuff);
+                    long godPotionMs = activeEffects.stream().filter(GodPotionService::isGodPotionEffect)
+                            .mapToLong(TemporaryStatistic::getRemainingMs).max().orElse(0);
+                    if (godPotionMs > 0) activeEffects.removeIf(GodPotionService::isGodPotionEffect);
 
-                if (activeEffects.isEmpty() && godPotionMs <= 0) {
-                    footer = footer.append(
-                        "<7>No effects active. Drink potions or splash them on the\n<7>ground to buff yourself!");
-                } else {
-                    if (godPotionMs > 0) {
-                        footer = footer.append("<c>God Potion <f>{}\n", formatEffectDuration(godPotionMs));
-                    }
-                    for (TemporaryStatistic effect : activeEffects) {
-                        String color = effect.getDisplayColor() != null ? effect.getDisplayColor() : "<7>";
-                        String name = effect.getDisplayName();
-                        String duration = formatEffectDuration(effect.getRemainingMs());
-                        footer = footer.append(color + "{} <f>{}\n", name, duration);
+                    if (activeEffects.isEmpty() && godPotionMs <= 0) {
+                        footer = footer.append(
+                            "<7>No effects active. Drink potions or splash them on the\n<7>ground to buff yourself!");
+                    } else {
+                        if (godPotionMs > 0) {
+                            footer = footer.append("<c>God Potion <f>{}\n", formatEffectDuration(godPotionMs));
+                        }
+                        for (TemporaryStatistic effect : activeEffects) {
+                            String color = effect.getDisplayColor() != null ? effect.getDisplayColor() : "<7>";
+                            String name = effect.getDisplayName();
+                            String duration = formatEffectDuration(effect.getRemainingMs());
+                            footer = footer.append(color + "{} <f>{}\n", name, duration);
+                        }
                     }
                 }
 
@@ -708,6 +715,13 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
                 });
             }
         }
+    }
+
+    private static boolean effectsWidgetShown(SkyBlockPlayer player) {
+        return TabLocation.current()
+                .flatMap(location -> TabWidgets.byId(EffectsWidget.ID)
+                        .map(widget -> widget.availableAt(location) && TabSettings.of(player).enabled(location, widget)))
+                .orElse(false);
     }
 
     private static String formatEffectDuration(long durationMs) {

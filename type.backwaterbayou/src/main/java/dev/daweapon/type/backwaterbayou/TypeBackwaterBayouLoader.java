@@ -7,21 +7,18 @@ import dev.daweapon.commons.CustomWorlds;
 import dev.daweapon.commons.ServerType;
 import dev.daweapon.commons.ServiceType;
 import dev.daweapon.commons.redis.RedisMessageHandler;
-import dev.daweapon.type.generic.tab.AreaServerModule;
 import dev.daweapon.type.generic.SkyBlockTypeLoader;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.tab.TablistManager;
-import dev.daweapon.type.generic.tab.TablistModule;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
-import dev.daweapon.type.skyblockgeneric.tabmodules.AccountInformationModule;
-import dev.daweapon.type.skyblockgeneric.tabmodules.SkyBlockPlayersOnlineModule;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import dev.daweapon.type.skyblockgeneric.tab.TabLocation;
+import dev.daweapon.type.skyblockgeneric.tab.SkyBlockTablistManager;
 
 // Loader that wires up the Backwater Bayou server type: spawn point, tablist, NPCs, and events.
 public class TypeBackwaterBayouLoader implements SkyBlockTypeLoader {
@@ -49,17 +46,7 @@ public class TypeBackwaterBayouLoader implements SkyBlockTypeLoader {
     }
 
     public TablistManager getTablistManager() {
-        return new TablistManager() {
-            @Override
-            public List<TablistModule> getModules() {
-                return new ArrayList<>(List.of(
-                        new SkyBlockPlayersOnlineModule(1),
-                        new SkyBlockPlayersOnlineModule(2),
-                        new AreaServerModule("tablist.server_info.area.backwater_bayou"),
-                        new AccountInformationModule()
-                ));
-            }
-        };
+        return new SkyBlockTablistManager(TabLocation.BACKWATER_BAYOU);
     }
 
     @Override

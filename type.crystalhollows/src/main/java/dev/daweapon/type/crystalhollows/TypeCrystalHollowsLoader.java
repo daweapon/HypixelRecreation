@@ -3,7 +3,6 @@ package dev.daweapon.type.crystalhollows;
 import dev.daweapon.type.generic.event.join.SpawnOnJoin;
 import net.kyori.adventure.key.Key;
 import net.minestom.server.MinecraftServer;
-import net.minestom.server.coordinate.Pos;
 import net.minestom.server.registry.RegistryKey;
 import net.minestom.server.world.DimensionType;
 import dev.daweapon.commons.CustomWorlds;
@@ -20,26 +19,23 @@ import dev.daweapon.type.crystalhollows.claim.CrystalDisplays;
 import dev.daweapon.type.crystalhollows.quest.KingsScentWater;
 import dev.daweapon.type.crystalhollows.lifecycle.CrystalHollowsLobby;
 import dev.daweapon.type.crystalhollows.redis.RedisIsLobbyJoinable;
-import dev.daweapon.type.crystalhollows.tab.CrystalHollowsInfoModule;
 import dev.daweapon.type.generic.SkyBlockTypeLoader;
 import dev.daweapon.type.generic.command.HypixelCommand;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.tab.TablistManager;
-import dev.daweapon.type.generic.tab.TablistModule;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
 import dev.daweapon.type.skyblockgeneric.crystalhollows.HeatService;
 import dev.daweapon.type.skyblockgeneric.crystalhollows.MetalDetector;
 import dev.daweapon.type.skyblockgeneric.crystalhollows.HollowsSpawnProtection;
 import dev.daweapon.type.skyblockgeneric.user.AreaSidebar;
-import dev.daweapon.type.skyblockgeneric.tabmodules.AccountInformationModule;
-import dev.daweapon.type.skyblockgeneric.tabmodules.SkyBlockPlayersOnlineModule;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import dev.daweapon.type.skyblockgeneric.tab.TabLocation;
+import dev.daweapon.type.skyblockgeneric.tab.SkyBlockTablistManager;
 
 public class TypeCrystalHollowsLoader implements SkyBlockTypeLoader {
 
@@ -75,17 +71,7 @@ public class TypeCrystalHollowsLoader implements SkyBlockTypeLoader {
 
     @Override
     public TablistManager getTablistManager() {
-        return new TablistManager() {
-            @Override
-            public List<TablistModule> getModules() {
-                return new ArrayList<>(List.of(
-                        new SkyBlockPlayersOnlineModule(1),
-                        new SkyBlockPlayersOnlineModule(2),
-                        new CrystalHollowsInfoModule(),
-                        new AccountInformationModule()
-                ));
-            }
-        };
+        return new SkyBlockTablistManager(TabLocation.CRYSTAL_HOLLOWS);
     }
 
     @Override

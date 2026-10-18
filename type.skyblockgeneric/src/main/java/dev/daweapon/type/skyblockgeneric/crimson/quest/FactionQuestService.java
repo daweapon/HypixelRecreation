@@ -2,7 +2,6 @@ package dev.daweapon.type.skyblockgeneric.crimson.quest;
 
 import dev.daweapon.commons.StringUtility;
 import dev.daweapon.commons.skyblock.item.ItemType;
-import dev.daweapon.type.skyblockgeneric.crimson.CrimsonTabWidgets;
 import dev.daweapon.type.skyblockgeneric.crimson.dojo.DojoGrade;
 import dev.daweapon.type.skyblockgeneric.crimson.dojo.DojoProgress;
 import dev.daweapon.type.skyblockgeneric.crimson.dojo.DojoTest;
@@ -38,10 +37,6 @@ public final class FactionQuestService {
     private static final String KUUDRA_DAILY = "kuudra:daily:";
 
     private FactionQuestService() {
-    }
-
-    public static void registerTabWidget() {
-        CrimsonTabWidgets.provide(CrimsonTabWidgets.Widget.FACTION_QUESTS, FactionQuestService::tabLines);
     }
 
     public static long today() {

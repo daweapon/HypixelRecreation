@@ -1,8 +1,6 @@
 package dev.daweapon.type.jerrysworkshop;
 
 import dev.daweapon.type.generic.event.join.SpawnOnJoin;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.event.ClickEvent;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
 import dev.daweapon.commons.CustomWorlds;
@@ -15,7 +13,6 @@ import dev.daweapon.type.generic.SkyBlockTypeLoader;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.tab.TablistManager;
-import dev.daweapon.type.generic.tab.TablistModule;
 import dev.daweapon.type.jerrysworkshop.defense.JerryWorkshopDefenseManager;
 import dev.daweapon.type.jerrysworkshop.chickenrace.GulliversChicken;
 import dev.daweapon.type.jerrysworkshop.present.GiftCompass;
@@ -23,15 +20,13 @@ import dev.daweapon.type.jerrysworkshop.present.Present;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
 import dev.daweapon.type.skyblockgeneric.entity.GlassDisplay;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
-import dev.daweapon.type.skyblockgeneric.tabmodules.AccountInformationModule;
-import dev.daweapon.type.skyblockgeneric.tabmodules.SkyBlockPlayersOnlineModule;
-import dev.daweapon.type.generic.tab.AreaServerModule;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import dev.daweapon.type.skyblockgeneric.tab.TabLocation;
+import dev.daweapon.type.skyblockgeneric.tab.SkyBlockTablistManager;
 
 // Loader that wires up Jerry's Workshop server type: spawn point, tablist, presents, NPCs, and events.
 public class TypeJerrysWorkshopLoader implements SkyBlockTypeLoader {
@@ -79,17 +74,7 @@ public class TypeJerrysWorkshopLoader implements SkyBlockTypeLoader {
     }
 
     public TablistManager getTablistManager() {
-        return new TablistManager() {
-            @Override
-            public List<TablistModule> getModules() {
-                return new ArrayList<>(List.of(
-                    new SkyBlockPlayersOnlineModule(1),
-                    new SkyBlockPlayersOnlineModule(2),
-                    new AreaServerModule("tablist.server_info.area.jerrys_workshop"),
-                    new AccountInformationModule()
-                ));
-            }
-        };
+        return new SkyBlockTablistManager(TabLocation.JERRYS_WORKSHOP);
     }
 
     @Override

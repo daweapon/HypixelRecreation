@@ -1,0 +1,26 @@
+title: "The Tablist Widgets Update"
+date: "17th October 2026"
+intro:
+  - "Your tab list is now built from widgets you can switch on, reorder and tidy up for every island."
+sections:
+  - heading: "Widgets"
+    colour: "<a>"
+    lines:
+      - "Type /widgets (or /tablist) or open SkyBlock Menu -> Settings -> Tablist Widgets to pick an island and edit its widgets."
+      - "Each widget can be enabled, moved earlier or later, given an empty line after it, allowed to wrap into the next column, or minimized to just the information you choose."
+      - "General Info is always on. Profile, Pet, Skills, Stats, Effects, Minions, Forge, Powder, Commissions, Events, Election, Garden, Crimson Isle and Crystal Hollows widgets are available."
+  - heading: "Settings menu"
+    colour: "<b>"
+    lines:
+      - "The SkyBlock Menu Settings button and /viewsettings open a settings menu with Tablist Widgets, Island Settings and the Player List Info toggle."
+      - "Turn Player List Info off to get the plain player list back."
+  - heading: "Changes"
+    colour: "<e>"
+    lines:
+      - "The old Account Info column is gone. Its Profile, Bank, Skills and Stats lines now live in widgets."
+      - "The fake Pet Sitter line is gone."
+      - "The tab list only sends what changed, so it no longer flickers."
+  - heading: "Not here yet"
+    colour: "<c>"
+    lines:
+      - "Rift, Fire Sales, Hunting and Mineshaft widgets wait for other content. Dungeon tab lists are unchanged."

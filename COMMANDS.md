@@ -82,9 +82,11 @@ This catalog covers **130 top-level game-server command definitions** (after mer
 | `/toggledropalert` | `/dropalert` | Toggles drop alert. | DEFAULT | No | `type.skyblockgeneric` |
 | `/viewcollection <collection>` | `/vc` | Opens up a collections GUI. | DEFAULT | No | `type.skyblockgeneric` |
 | `/viewrecipe <recipe>` | `/vr` | Opens up a recipe GUI. | DEFAULT | No | `type.skyblockgeneric` |
+| `/viewsettings` | `/opengamesettings` | Opens the SkyBlock settings menu: Tablist Widgets, the Player List Info toggle and Island Settings. The SkyBlock Menu Settings button opens it too. | DEFAULT | No | `type.skyblockgeneric` |
 | `/viewskill <skill>` | `/vs` | Opens up a skills GUI. | DEFAULT | No | `type.skyblockgeneric` |
 | `/viewstash [item\|material]` | — | View your stash. | DEFAULT | No | `type.skyblockgeneric` |
 | `/wardrobe` | `/wd` | Open your Wardrobe. | DEFAULT | No | `type.skyblockgeneric` |
+| `/widgets` | `/tablist`, `/widget` | Opens the Tablist Widgets menu: pick an island, then enable, order, space, wrap or minimize each tab list widget. | DEFAULT | No | `type.skyblockgeneric` |
 | `/wikithis` | `/wikihand`, `/wikiinhand` | Shows page link of the item held towards the official Hypixel Wiki. Emits wiki links for the held item. Official wiki URLs now redirect to the closure announcement; see alias audit. | DEFAULT | No | `type.skyblockgeneric` |
 
 ### Social and chat

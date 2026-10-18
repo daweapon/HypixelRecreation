@@ -11,21 +11,18 @@ import dev.daweapon.type.generic.SkyBlockTypeLoader;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.tab.TablistManager;
-import dev.daweapon.type.generic.tab.TablistModule;
 import dev.daweapon.type.crimsonisle.faction.TownVillagers;
-import dev.daweapon.type.crimsonisle.tab.CrimsonIsleInfoModule;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
 import dev.daweapon.type.skyblockgeneric.crimson.faction.CrimsonFaction;
 import dev.daweapon.type.skyblockgeneric.crimson.faction.CrimsonReputationService;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
-import dev.daweapon.type.skyblockgeneric.tabmodules.AccountInformationModule;
-import dev.daweapon.type.skyblockgeneric.tabmodules.SkyBlockPlayersOnlineModule;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import dev.daweapon.type.skyblockgeneric.tab.TabLocation;
+import dev.daweapon.type.skyblockgeneric.tab.SkyBlockTablistManager;
 
 // SkyBlockTypeLoader for the Crimson Isle server type: defines its spawn point, tablist, and events/NPCs.
 public class TypeCrimsonIsleLoader implements SkyBlockTypeLoader {
@@ -53,17 +50,7 @@ public class TypeCrimsonIsleLoader implements SkyBlockTypeLoader {
     }
 
     public TablistManager getTablistManager() {
-        return new TablistManager() {
-            @Override
-            public List<TablistModule> getModules() {
-                return new ArrayList<>(List.of(
-                        new SkyBlockPlayersOnlineModule(1, TypeCrimsonIsleLoader::factionIcon),
-                        new SkyBlockPlayersOnlineModule(2, TypeCrimsonIsleLoader::factionIcon),
-                        new CrimsonIsleInfoModule(),
-                        new AccountInformationModule()
-                ));
-            }
-        };
+        return new SkyBlockTablistManager(TabLocation.CRIMSON_ISLE, TypeCrimsonIsleLoader::factionIcon);
     }
 
     private static String factionIcon(SkyBlockPlayer player) {

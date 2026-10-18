@@ -13,21 +13,19 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.tab.TablistManager;
-import dev.daweapon.type.generic.tab.TablistModule;
 import dev.daweapon.type.island.lifecycle.IslandLifecycleSteps;
 import dev.daweapon.type.island.npcs.NPCStranger;
-import dev.daweapon.type.island.tab.IslandGuestsModule;
-import dev.daweapon.type.island.tab.IslandMemberModule;
-import dev.daweapon.type.island.tab.IslandServerModule;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
 import dev.daweapon.type.skyblockgeneric.minion.MinionHandler;
-import dev.daweapon.type.skyblockgeneric.tabmodules.AccountInformationModule;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import dev.daweapon.type.island.tab.IslandPlayersColumnModule;
+import dev.daweapon.type.skyblockgeneric.tab.TabLocation;
+import dev.daweapon.type.skyblockgeneric.tab.SkyBlockTablistManager;
 
 // Server type loader that configures and initializes the Island server (a player's private SkyBlock island).
 public class TypeIslandLoader implements SkyBlockTypeLoader {
@@ -61,17 +59,7 @@ public class TypeIslandLoader implements SkyBlockTypeLoader {
 
     @Override
     public TablistManager getTablistManager() {
-        return new TablistManager() {
-            @Override
-            public List<TablistModule> getModules() {
-                return new ArrayList<>(List.of(
-                        new IslandMemberModule(),
-                        new IslandGuestsModule(),
-                        new IslandServerModule(),
-                        new AccountInformationModule()
-                ));
-            }
-        };
+        return new SkyBlockTablistManager(TabLocation.PRIVATE_ISLAND, new IslandPlayersColumnModule());
     }
 
     @Override

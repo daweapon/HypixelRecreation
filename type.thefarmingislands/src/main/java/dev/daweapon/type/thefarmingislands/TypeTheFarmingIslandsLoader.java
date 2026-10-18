@@ -13,17 +13,14 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.tab.TablistManager;
-import dev.daweapon.type.generic.tab.TablistModule;
-import dev.daweapon.type.skyblockgeneric.tabmodules.AccountInformationModule;
-import dev.daweapon.type.skyblockgeneric.tabmodules.SkyBlockPlayersOnlineModule;
-import dev.daweapon.type.generic.tab.AreaServerModule;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import dev.daweapon.type.skyblockgeneric.tab.TabLocation;
+import dev.daweapon.type.skyblockgeneric.tab.SkyBlockTablistManager;
 
 // Loader that wires up The Farming Islands server type: spawn point, tablist, NPCs, and events.
 public class TypeTheFarmingIslandsLoader implements SkyBlockTypeLoader {
@@ -53,17 +50,7 @@ public class TypeTheFarmingIslandsLoader implements SkyBlockTypeLoader {
     }
 
     public TablistManager getTablistManager() {
-        return new TablistManager() {
-            @Override
-            public List<TablistModule> getModules() {
-                return new ArrayList<>(List.of(
-                        new SkyBlockPlayersOnlineModule(1),
-                        new SkyBlockPlayersOnlineModule(2),
-                        new AreaServerModule("tablist.server_info.area.the_farming_islands"),
-                        new AccountInformationModule()
-                ));
-            }
-        };
+        return new SkyBlockTablistManager(TabLocation.THE_FARMING_ISLANDS);
     }
 
     @Override

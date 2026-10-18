@@ -12,6 +12,7 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Function;
@@ -68,6 +69,20 @@ public class SkyBlockPlayersOnlineModule extends TablistModule {
             entries.add(new TablistEntry(Text.of("{}", tablistPlayer.getRankDisplayName()).append(nameSuffix.apply(tablistPlayer)), TablistSkinRegistry.GRAY));
         }
 
+        return entries;
+    }
+
+    public List<TablistEntry> plainEntries(SkyBlockPlayer viewer) {
+        List<SkyBlockPlayer> players = new ArrayList<>(SkyBlockGenericLoader.getLoadedPlayers());
+        players.sort(Comparator.comparingInt((SkyBlockPlayer p) -> p.getDataHandler()
+                .get(HypixelDataHandler.Data.RANK, DatapointRank.class).getValue().ordinal()).reversed());
+        List<TablistEntry> entries = new ArrayList<>();
+        for (int i = 0; i < 80; i++) {
+            entries.add(i < players.size()
+                    ? new TablistEntry(Text.of("{}", players.get(i).getRankDisplayName())
+                            .append(nameSuffix.apply(players.get(i))), TablistSkinRegistry.GRAY)
+                    : getGrayEntry());
+        }
         return entries;
     }
 

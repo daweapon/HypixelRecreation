@@ -16,7 +16,6 @@ import dev.daweapon.commons.CustomWorlds;
 import dev.daweapon.commons.ServerType;
 import dev.daweapon.commons.ServiceType;
 import dev.daweapon.commons.redis.RedisMessageHandler;
-import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.generic.SkyBlockTypeLoader;
 import dev.daweapon.type.generic.entity.BlockDisplayEntity;
@@ -24,7 +23,6 @@ import dev.daweapon.type.generic.entity.InteractionEntity;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.tab.TablistManager;
-import dev.daweapon.type.generic.tab.TablistModule;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
 import dev.daweapon.type.skyblockgeneric.entity.TextDisplayEntity;
 import dev.daweapon.type.skyblockgeneric.mission.MissionData;
@@ -32,10 +30,7 @@ import dev.daweapon.type.skyblockgeneric.mission.SkyBlockMission;
 import dev.daweapon.type.skyblockgeneric.mission.missions.thepark.jungle.*;
 import dev.daweapon.type.skyblockgeneric.race.RaceInstance;
 import dev.daweapon.type.skyblockgeneric.race.RaceManager;
-import dev.daweapon.type.skyblockgeneric.tabmodules.AccountInformationModule;
-import dev.daweapon.type.skyblockgeneric.tabmodules.SkyBlockPlayersOnlineModule;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
-import dev.daweapon.type.generic.tab.AreaServerModule;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Quaternionf;
 import org.tinylog.Logger;
@@ -43,7 +38,8 @@ import org.tinylog.Logger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+import dev.daweapon.type.skyblockgeneric.tab.TabLocation;
+import dev.daweapon.type.skyblockgeneric.tab.SkyBlockTablistManager;
 
 // Loader that wires up The Park server type: spawn point, tablist, trap-placement mission entities, races, NPCs, and events.
 public class TypeTheParkLoader implements SkyBlockTypeLoader, RaceInstance {
@@ -238,17 +234,7 @@ public class TypeTheParkLoader implements SkyBlockTypeLoader, RaceInstance {
 	}
 
 	public TablistManager getTablistManager() {
-		return new TablistManager() {
-			@Override
-			public List<TablistModule> getModules() {
-				return new ArrayList<>(List.of(
-						new SkyBlockPlayersOnlineModule(1),
-						new SkyBlockPlayersOnlineModule(2),
-						new AreaServerModule("tablist.server_info.area.the_park"),
-						new AccountInformationModule()
-				));
-			}
-		};
+		return new SkyBlockTablistManager(TabLocation.THE_PARK);
 	}
 
 	@Override
