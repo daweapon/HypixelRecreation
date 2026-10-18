@@ -15,6 +15,7 @@ public final class CoreWidgets {
                 new PetWidget(),
                 new SkillsWidget(),
                 new StatsWidget(),
-                new EffectsWidget());
+                new EffectsWidget(),
+                new CookieBuffWidget());
     }
 }

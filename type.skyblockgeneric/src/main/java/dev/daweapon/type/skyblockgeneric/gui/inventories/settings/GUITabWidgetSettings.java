@@ -10,10 +10,16 @@ import dev.daweapon.type.generic.gui.v2.context.ViewContext;
 import dev.daweapon.type.skyblockgeneric.tab.TabLocation;
 import dev.daweapon.type.skyblockgeneric.tab.TabSettings;
 import dev.daweapon.type.skyblockgeneric.tab.TabWidget;
+import dev.daweapon.type.skyblockgeneric.tab.TabWidgetToggle;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.Material;
 
+import java.util.List;
+
 public class GUITabWidgetSettings extends StatelessView {
+    private static final int APPLY_ALL_SLOT = 53;
+
     private final TabLocation location;
     private final TabWidget widget;
 
@@ -25,37 +31,27 @@ public class GUITabWidgetSettings extends StatelessView {
     @Override
     public ViewConfiguration<DefaultState> configuration() {
         return ViewConfiguration.withString((state, context) -> widget.displayName() + " Widget Settings",
-                InventoryType.CHEST_4_ROW);
+                InventoryType.CHEST_6_ROW);
+    }
+
+    private String scope() {
+        return "<7>Changing this widget's setting will\n<7>only apply to being in " + location.getDisplayName() + ".";
     }
 
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
 
-        if (widget.alwaysOn()) {
-            layout.slot(10, (s, c) -> ItemStacks.item(Material.LIME_DYE,
-                    "<a>Enabled\n<7>This widget is always enabled\n<7>and cannot be moved."), (click, c) -> {
-            });
-        } else {
-            layout.slot(10, (s, c) -> TabGui.toggle("Enabled",
-                    "<7>Show this widget on the tab list.",
-                    TabSettings.of(c.player()).enabled(location, widget)), (click, c) -> {
-                TabSettings settings = TabSettings.of(c.player());
-                settings.setEnabled(location, widget, !settings.enabled(location, widget));
-                c.replace(new GUITabWidgetSettings(location, widget));
-            });
-        }
-
-        layout.slot(11, (s, c) -> TabGui.toggle("Spacing",
-                "<7>Adds an empty line after this widget.",
+        layout.slot(3, (s, c) -> TabGui.toggle("Spacing",
+                "<7>Adds an empty line after this widget.\n\n" + scope(),
                 TabSettings.of(c.player()).spacing(location, widget)), (click, c) -> {
             TabSettings settings = TabSettings.of(c.player());
             settings.setSpacing(location, widget, !settings.spacing(location, widget));
             c.replace(new GUITabWidgetSettings(location, widget));
         });
 
-        layout.slot(12, (s, c) -> TabGui.toggle("Wrapping",
-                "<7>Lets this widget continue in the\n<7>next column.",
+        layout.slot(4, (s, c) -> TabGui.toggle("Wrapping",
+                "<7>Lets this widget continue in the next\n<7>column.\n\n" + scope(),
                 TabSettings.of(c.player()).wrapping(location, widget)), (click, c) -> {
             TabSettings settings = TabSettings.of(c.player());
             settings.setWrapping(location, widget, !settings.wrapping(location, widget));
@@ -63,32 +59,36 @@ public class GUITabWidgetSettings extends StatelessView {
         });
 
         if (!widget.toggles().isEmpty()) {
-            layout.slot(13, (s, c) -> TabGui.toggle("Minimize",
-                    "<7>Only show the information you\n<7>chose in the shown settings.",
+            layout.slot(5, (s, c) -> TabGui.toggle("Minimize",
+                    "<7>Only show the information you chose\n<7>below.\n\n" + scope(),
                     TabSettings.of(c.player()).minimized(location, widget)), (click, c) -> {
                 TabSettings settings = TabSettings.of(c.player());
                 settings.setMinimized(location, widget, !settings.minimized(location, widget));
                 c.replace(new GUITabWidgetSettings(location, widget));
             });
-
-            layout.slot(14, (s, c) -> ItemStacks.item(Material.WRITABLE_BOOK,
-                    "<a>Shown Information\n<7>Choose what a minimized widget\n<7>displays.\n\n<e>Click to edit!"),
-                    (click, c) -> c.push(new GUITabWidgetShown(location, widget)));
         }
 
-        if (!widget.alwaysOn()) {
-            layout.slot(15, (s, c) -> ItemStacks.item(Material.ARROW,
-                    "<a>Move Earlier\n<7>Show this widget before the one\n<7>above it.\n\n<e>Click to move!"), (click, c) -> {
-                TabSettings.of(c.player()).move(location, widget, -1);
-                c.replace(new GUITabWidgetSettings(location, widget));
-            });
-            layout.slot(16, (s, c) -> ItemStacks.item(Material.ARROW,
-                    "<a>Move Later\n<7>Show this widget after the one\n<7>below it.\n\n<e>Click to move!"), (click, c) -> {
-                TabSettings.of(c.player()).move(location, widget, 1);
+        List<TabWidgetToggle> toggles = widget.toggles();
+        for (int i = 0; i < toggles.size() && i < TabGui.WIDGET_GRID.length; i++) {
+            TabWidgetToggle toggle = toggles.get(i);
+            layout.slot(TabGui.WIDGET_GRID[i], (s, c) -> TabGui.toggle("Show " + toggle.displayName(),
+                    "<7>Shows your " + toggle.displayName() + " on this widget.\n\n" + scope(),
+                    TabSettings.of(c.player()).toggleValue(location, widget, toggle.id())), (click, c) -> {
+                TabSettings settings = TabSettings.of(c.player());
+                settings.setToggle(location, widget, toggle.id(), !settings.toggleValue(location, widget, toggle.id()));
                 c.replace(new GUITabWidgetSettings(location, widget));
             });
         }
 
-        Components.backOrClose(layout, 31, ctx);
+        Components.back(layout, TabGui.BACK_SLOT, ctx);
+        Components.close(layout, TabGui.CLOSE_SLOT);
+        layout.slot(TabGui.PREVIEW_SLOT, (s, c) -> TabGui.preview((SkyBlockPlayer) c.player(), location));
+        layout.slot(APPLY_ALL_SLOT, (s, c) -> ItemStacks.item(Material.PLAYER_HEAD,
+                "<a>Apply Settings To All Modes\n<7>You are currently only editing the\n<7>" + widget.displayName()
+                        + " Widget settings for " + location.getDisplayName() + ".\n<7>Click this button to apply these\n<7>settings to all other modes.\n\n<e>Click to apply settings!"),
+                (click, c) -> {
+                    TabSettings.of(c.player()).applyToAllLocations(location, widget);
+                    c.player().sendMessage("<a>Applied the {} Widget settings to all modes!", widget.displayName());
+                });
     }
 }

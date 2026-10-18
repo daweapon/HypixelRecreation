@@ -17,6 +17,11 @@ public final class EffectsWidget implements TabWidget {
     public static final String ID = "effects";
 
     @Override
+    public boolean otherSection() {
+        return true;
+    }
+
+    @Override
     public String id() {
         return ID;
     }

@@ -76,4 +76,26 @@ class TabSettingsTest {
         stored.set("not json");
         assertTrue(settings().enabled(TabLocation.HUB, WIDGET));
     }
+
+    @Test
+    void columnsDefaultOnAndResetRestoresEverything() {
+        assertEquals(List.of(0, 1, 2), settings().enabledColumns(TabLocation.HUB));
+        settings().setColumnEnabled(TabLocation.HUB, 2, false);
+        settings().setEnabled(TabLocation.HUB, WIDGET, false);
+        assertEquals(List.of(0, 1), settings().enabledColumns(TabLocation.HUB));
+        assertEquals(List.of(0, 1, 2), settings().enabledColumns(TabLocation.GARDEN));
+        settings().resetLocation(TabLocation.HUB);
+        assertEquals(List.of(0, 1, 2), settings().enabledColumns(TabLocation.HUB));
+        assertTrue(settings().enabled(TabLocation.HUB, WIDGET));
+    }
+
+    @Test
+    void applyToAllCopiesSettingsButKeepsPriority() {
+        settings().setSpacing(TabLocation.HUB, WIDGET, true);
+        settings().setToggle(TabLocation.HUB, WIDGET, "b", true);
+        settings().applyToAllLocations(TabLocation.HUB, WIDGET);
+        assertTrue(settings().spacing(TabLocation.GARDEN, WIDGET));
+        assertTrue(settings().toggleValue(TabLocation.GARDEN, WIDGET, "b"));
+        assertEquals(30, settings().priority(TabLocation.GARDEN, WIDGET));
+    }
 }

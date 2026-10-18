@@ -36,6 +36,12 @@ public enum TabLocation {
         this.icon = icon;
     }
 
+    public String widgetsTitle() {
+        boolean on = this == PRIVATE_ISLAND || this == HUB || this == GALATEA || this == THE_PARK
+                || this == THE_END || this == THE_FARMING_ISLANDS || this == JERRYS_WORKSHOP;
+        return "Widgets " + (on ? "on " : "in ") + displayName;
+    }
+
     public String areaKey() {
         return "tablist.server_info.area." + id;
     }

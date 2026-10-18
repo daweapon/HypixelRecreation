@@ -26,7 +26,7 @@ public class GUITabWidgetLocations extends StatelessView {
             TabLocation location = locations[i];
             layout.slot(TabGui.GRID[i], (s, c) -> ItemStacks.item(location.getIcon(),
                     "<a>" + location.getDisplayName() + "\n<7>Edit the widgets shown on\n<7>this island's tab list.\n\n<e>Click to edit!"),
-                    (click, c) -> c.push(new GUITabWidgetList(location, 0)));
+                    (click, c) -> c.push(new GUITabWidgetList(location, null)));
         }
 
         Components.backOrClose(layout, 40, ctx);

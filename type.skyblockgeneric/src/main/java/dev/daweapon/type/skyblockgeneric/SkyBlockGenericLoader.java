@@ -47,6 +47,7 @@ import dev.daweapon.type.skyblockgeneric.potion.CookieBuffService;
 import dev.daweapon.type.skyblockgeneric.tab.TabLocation;
 import dev.daweapon.type.skyblockgeneric.tab.TabSettings;
 import dev.daweapon.type.skyblockgeneric.tab.TabWidgets;
+import dev.daweapon.type.skyblockgeneric.tab.widgets.CookieBuffWidget;
 import dev.daweapon.type.skyblockgeneric.tab.widgets.EffectsWidget;
 import dev.daweapon.type.skyblockgeneric.potion.GodPotionService;
 import dev.daweapon.type.skyblockgeneric.farmingcontest.FarmingContests;
@@ -266,7 +267,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
             // Send per-player footer with their active effects
             for (SkyBlockPlayer player : players) {
                 Text footer = Text.of("\n");
-                if (!effectsWidgetShown(player)) {
+                if (!widgetShown(player, EffectsWidget.ID)) {
                     footer = footer.append("<a><l>Active Effects\n");
 
                     List<TemporaryStatistic> activeEffects = new ArrayList<>(player.getStatistics().getDisplayableActiveEffects());
@@ -291,10 +292,12 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
                     }
                 }
 
-                footer = footer.append("\n<d><l>Cookie Buff</l>\n");
-                footer = player.isBoosterCookieActive()
-                        ? footer.append("<7>{}\n", CookieBuffService.formatRemaining(player))
-                        : footer.append("<7>Not active! Obtain booster cookies from the community\n<7>shop in the hub.\n");
+                if (!widgetShown(player, CookieBuffWidget.ID)) {
+                    footer = footer.append("\n<d><l>Cookie Buff</l>\n");
+                    footer = player.isBoosterCookieActive()
+                            ? footer.append("<7>{}\n", CookieBuffService.formatRemaining(player))
+                            : footer.append("<7>Not active! Obtain booster cookies from the community\n<7>shop in the hub.\n");
+                }
 
                 footer = footer.append("""
 
@@ -717,9 +720,9 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         }
     }
 
-    private static boolean effectsWidgetShown(SkyBlockPlayer player) {
+    private static boolean widgetShown(SkyBlockPlayer player, String widgetId) {
         return TabLocation.current()
-                .flatMap(location -> TabWidgets.byId(EffectsWidget.ID)
+                .flatMap(location -> TabWidgets.byId(widgetId)
                         .map(widget -> widget.availableAt(location) && TabSettings.of(player).enabled(location, widget)))
                 .orElse(false);
     }

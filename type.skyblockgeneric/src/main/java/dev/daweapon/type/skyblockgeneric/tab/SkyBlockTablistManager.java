@@ -46,25 +46,54 @@ public class SkyBlockTablistManager extends TablistManager {
         if (!settings.playerListInfo()) return plainModule.plainEntries(skyBlockPlayer);
 
         List<TablistModule.TablistEntry> entries = new ArrayList<>(playersModule.getEntries(skyBlockPlayer));
-        TabWidgetContext context = new TabWidgetContext(location, settings);
-        List<TabLayout.Block> blocks = new ArrayList<>();
-        for (TabWidget widget : settings.active(location)) {
-            try {
-                List<Text> lines = widget.lines(skyBlockPlayer, context);
-                if (lines.isEmpty()) continue;
-                blocks.add(new TabLayout.Block(lines,
-                        settings.spacing(location, widget), settings.wrapping(location, widget)));
-            } catch (Exception exception) {
-                reportOnce(widget.getClass().getName(), exception);
+        List<Text> widgetSlots = layoutFor(skyBlockPlayer, location, settings, reportingFailures());
+        List<Integer> enabled = settings.enabledColumns(location);
+        for (int column = 0; column < TabLayout.WIDGET_COLUMNS; column++) {
+            int position = enabled.indexOf(column);
+            for (int row = 0; row < TabLayout.ROWS; row++) {
+                Text slot = position < 0 ? null : widgetSlots.get(position * TabLayout.ROWS + row);
+                entries.add(slot == null
+                        ? TablistModule.getGrayEntry()
+                        : new TablistModule.TablistEntry(slot, TablistSkinRegistry.GRAY));
             }
         }
-
-        Text infoHeader = TablistModule.getCentered(Text.key("tablist.module.info"), player.getLocale());
-        for (Text slot : TabLayout.layout(infoHeader, blocks)) {
-            entries.add(slot == null
-                    ? TablistModule.getGrayEntry()
-                    : new TablistModule.TablistEntry(slot, TablistSkinRegistry.GRAY));
-        }
         return entries;
+    }
+
+    private java.util.function.BiConsumer<TabWidget, Exception> reportingFailures() {
+        return (widget, exception) -> reportOnce(widget.getClass().getName(), exception);
+    }
+
+    public static List<Text> layoutFor(SkyBlockPlayer player, TabLocation location, TabSettings settings,
+                                       java.util.function.BiConsumer<TabWidget, Exception> onFailure) {
+        TabWidgetContext context = new TabWidgetContext(location, settings);
+        List<TabLayout.Block> info = new ArrayList<>();
+        List<TabLayout.Block> other = new ArrayList<>();
+        for (TabWidget widget : settings.active(location)) {
+            try {
+                List<Text> lines = widget.lines(player, context);
+                if (lines.isEmpty()) continue;
+                (widget.otherSection() ? other : info).add(new TabLayout.Block(lines,
+                        settings.spacing(location, widget), settings.wrapping(location, widget)));
+            } catch (Exception exception) {
+                onFailure.accept(widget, exception);
+            }
+        }
+        List<TabLayout.Block> blocks = new ArrayList<>(info);
+        if (!other.isEmpty()) {
+            blocks.add(new TabLayout.Block(List.of(
+                    TablistModule.getCentered(Text.key("tablist.module.other"), player.getLocale())), false, false));
+            blocks.addAll(other);
+        }
+        Text infoHeader = TablistModule.getCentered(Text.key("tablist.module.info"), player.getLocale());
+        return TabLayout.layout(infoHeader, blocks, settings.enabledColumns(location).size());
+    }
+
+    public static List<Text> previewLines(SkyBlockPlayer player, TabLocation location, TabSettings settings) {
+        List<Text> lines = new ArrayList<>();
+        for (Text slot : layoutFor(player, location, settings, (widget, exception) -> { })) {
+            if (slot != null) lines.add(slot);
+        }
+        return lines;
     }
 }

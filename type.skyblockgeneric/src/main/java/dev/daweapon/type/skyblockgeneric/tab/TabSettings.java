@@ -119,6 +119,59 @@ public final class TabSettings {
         return available(location).stream().filter(widget -> enabled(location, widget)).toList();
     }
 
+    public boolean columnEnabled(TabLocation location, int column) {
+        JSONObject columns = root.optJSONObject("c");
+        if (columns == null) return true;
+        JSONObject entry = columns.optJSONObject(location.getId());
+        return entry == null || entry.optBoolean(String.valueOf(column), true);
+    }
+
+    public List<Integer> enabledColumns(TabLocation location) {
+        List<Integer> enabled = new java.util.ArrayList<>();
+        for (int column = 0; column < TabLayout.WIDGET_COLUMNS; column++) {
+            if (columnEnabled(location, column)) enabled.add(column);
+        }
+        return enabled;
+    }
+
+    public void setColumnEnabled(TabLocation location, int column, boolean value) {
+        JSONObject columns = root.optJSONObject("c");
+        if (columns == null) {
+            columns = new JSONObject();
+            root.put("c", columns);
+        }
+        JSONObject entry = columns.optJSONObject(location.getId());
+        if (entry == null) {
+            entry = new JSONObject();
+            columns.put(location.getId(), entry);
+        }
+        entry.put(String.valueOf(column), value);
+        persist();
+    }
+
+    public void resetLocation(TabLocation location) {
+        JSONObject widgets = root.optJSONObject(WIDGETS);
+        if (widgets != null) widgets.remove(location.getId());
+        JSONObject columns = root.optJSONObject("c");
+        if (columns != null) columns.remove(location.getId());
+        persist();
+    }
+
+    public void applyToAllLocations(TabLocation source, TabWidget widget) {
+        JSONObject entry = entry(source, widget);
+        for (TabLocation target : TabLocation.values()) {
+            if (target == source || !widget.availableAt(target)) continue;
+            JSONObject copy = new JSONObject(entry.toString());
+            copy.remove("p");
+            JSONObject existing = mutableEntry(target, widget);
+            int priority = existing.optInt("p", Integer.MIN_VALUE);
+            for (String key : existing.keySet().toArray(new String[0])) existing.remove(key);
+            for (String key : copy.keySet()) existing.put(key, copy.get(key));
+            if (priority != Integer.MIN_VALUE) existing.put("p", priority);
+        }
+        persist();
+    }
+
     public void move(TabLocation location, TabWidget widget, int delta) {
         List<TabWidget> ordered = available(location);
         int index = ordered.indexOf(widget);

@@ -73,7 +73,7 @@ public final class ProfileWidget implements TabWidget {
         if (context.shows(this, BANK)) lines.add(bankLine(player, bank));
         if (context.shows(this, INTEREST)) {
             long hours = SkyBlockCalendar.INTEREST_INTERVAL - SkyBlockCalendar.getDifferenceInHours(bank.getLastClaimedInterest());
-            lines.add(Text.of(" <7>Interest: <e>{}", hours <= 0 ? "Soon" : hours + "h"));
+            lines.add(Text.of(" <7>Interest: <e>{}", hours <= 0 ? "Soon" : hours + (hours == 1 ? " Hour" : " Hours")));
         }
         if (context.shows(this, SOULFLOW)) {
             lines.add(Text.of(" <7>Soulflow: <3>{:,}",
@@ -87,7 +87,7 @@ public final class ProfileWidget implements TabWidget {
             CoopDatabase.Coop coop = player.getCoop();
             if (coop != null) return Text.of(" <7>Bank: <6>{}", StringUtility.shortenNumber(coop.bankBalance()));
         }
-        return Text.of(" <7>Bank: <6>{}<7>/<6>{}",
+        return Text.of(" <7>Bank: <6>{} <7>/ <6>{}",
                 StringUtility.shortenNumber(bank.getAmount()), StringUtility.shortenNumber(bank.getBalanceLimit()));
     }
 }

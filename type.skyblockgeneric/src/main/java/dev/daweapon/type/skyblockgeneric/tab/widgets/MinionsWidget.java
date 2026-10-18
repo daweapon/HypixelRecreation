@@ -26,14 +26,20 @@ final class MinionsWidget extends AreaWidget {
 
         List<Text> lines = new ArrayList<>();
         lines.add(Text.of("<b><l>Minions: <f>{}<7>/<f>{}", minions.size(), data.getSlots()));
+        java.util.Map<String, Integer> grouped = new java.util.LinkedHashMap<>();
         for (IslandMinionData.IslandMinion minion : minions) {
             String state = switch (minion.getInternalMinionTags().getState()) {
                 case BAD_FULL -> "<c>FULL";
                 case BAD_LOCATION -> "<c>BLOCKED";
                 default -> "<a>ACTIVE";
             };
-            lines.add(Text.of(" <7>{} {:roman} {}", minion.getMinion().getDisplay().replace(" Minion", ""),
-                    minion.getTier(), Text.parse(state)));
+            String key = minion.getMinion().getDisplay().replace(" Minion", "") + "\u0000" + minion.getTier() + "\u0000" + state;
+            grouped.merge(key, 1, Integer::sum);
+        }
+        for (java.util.Map.Entry<String, Integer> entry : grouped.entrySet()) {
+            String[] parts = entry.getKey().split("\u0000");
+            lines.add(Text.of(" <7>{}x {} {:roman} {}", entry.getValue(), parts[0],
+                    Integer.parseInt(parts[1]), Text.parse("<7>[" + parts[2] + "<7>]")));
         }
         return lines;
     }

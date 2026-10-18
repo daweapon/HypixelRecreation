@@ -95,4 +95,14 @@ class TabLayoutTest {
         List<Text> slots = TabLayout.layout(HEADER, List.of());
         assertEquals(20, TabLayout.columnOf(slots, 2).size());
     }
+
+    @Test
+    void fewerColumnsShrinkCapacity() {
+        List<Text> slots = TabLayout.layout(HEADER, List.of(
+                new TabLayout.Block(lines("a", 19), false, false),
+                new TabLayout.Block(lines("b", 19), false, false),
+                new TabLayout.Block(lines("c", 19), false, false)), 2);
+        assertEquals(40, slots.size());
+        assertEquals("b18", plain(slots.get(38)));
+    }
 }

@@ -17,8 +17,14 @@ public final class TabLayout {
     }
 
     public static List<Text> layout(Text infoHeader, List<Block> blocks) {
-        Text[] slots = new Text[WIDGET_SLOTS];
+        return layout(infoHeader, blocks, WIDGET_COLUMNS);
+    }
+
+    public static List<Text> layout(Text infoHeader, List<Block> blocks, int columns) {
+        int capacity = ROWS * columns;
+        Text[] slots = new Text[capacity];
         int cursor = 0;
+        if (capacity == 0) return new ArrayList<>();
         slots[cursor++] = infoHeader;
 
         for (Block block : blocks) {
@@ -32,15 +38,15 @@ public final class TabLayout {
                 if (lines.size() > ROWS) continue;
                 if (rowInColumn != 0) cursor += remaining;
             }
-            if (cursor + (block.wrapping() ? 1 : lines.size()) > WIDGET_SLOTS) continue;
+            if (cursor + (block.wrapping() ? 1 : lines.size()) > capacity) continue;
 
             for (Text line : lines) {
-                if (cursor >= WIDGET_SLOTS) break;
+                if (cursor >= capacity) break;
                 slots[cursor++] = line;
             }
         }
 
-        List<Text> result = new ArrayList<>(WIDGET_SLOTS);
+        List<Text> result = new ArrayList<>(capacity);
         for (Text slot : slots) result.add(slot);
         return result;
     }

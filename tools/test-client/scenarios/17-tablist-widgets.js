@@ -25,30 +25,58 @@ module.exports = {
             return lines().slice(0, 40);
         });
 
-        await t.step('/widgets opens island picker, Private Island list, Stats settings', async () => {
+        await t.step('/widgets opens island picker then Widgets on Private Island with the video layout', async () => {
             bot.say('/widgets');
             await bot.waitWindow({ title: 'Tablist Widgets', timeoutMs: 15000 });
             await bot.click(slotOf(/Private Island/));
             await bot.waitWindow({ title: 'Widgets on Private Island', timeoutMs: 10000 });
-            await bot.click(slotOf(/^Stats/));
-            await bot.waitWindow({ title: 'Stats Widget Settings', timeoutMs: 10000 });
-            return bot.window().slots.map((item) => item.name);
+            const view = bot.window();
+            t.assert(view.slots.some((item) => /Priority Changer/.test(item.name)), 'no Priority Changer');
+            t.assert(view.slots.some((item) => /Widgets Preview/.test(item.name)), 'no Preview');
+            t.assert(view.slots.some((item) => /Reset All/.test(item.name)), 'no Reset All');
+            t.assert(view.slots.some((item) => /General Info Widget/.test(item.name)), 'no General Info Widget');
+            return view.slots.map((item) => item.name);
         });
 
-        await t.step('disabling Stats removes it from the tab within 8 s', async () => {
-            await bot.click(slotOf(/Enabled/));
+        await t.step('left-click disables Stats in the tab, left-click again restores it', async () => {
+            await bot.click(slotOf(/Stats Widget/));
             await bot.waitFor(() => !hasLine(/^Stats:/), { timeoutMs: 8000, what: 'Stats gone from tab' });
-        });
-
-        await t.step('re-enabling Stats brings it back', async () => {
-            await bot.waitWindow({ title: 'Stats Widget Settings', timeoutMs: 5000 });
-            await bot.click(slotOf(/Enabled/));
+            await bot.waitWindow({ title: 'Widgets on Private Island', timeoutMs: 5000 });
+            await bot.click(slotOf(/Stats Widget/));
             await waitTab(/^Stats:/, 8000);
         });
 
-        await t.step('Move Earlier changes order without error', async () => {
-            await bot.click(slotOf(/Move Earlier/));
+        await t.step('right-click opens Stats Widget Settings with shown-stat toggles and Minimize', async () => {
+            await bot.waitWindow({ title: 'Widgets on Private Island', timeoutMs: 5000 });
+            await bot.click(slotOf(/Stats Widget/), { button: 1 });
+            await bot.waitWindow({ title: 'Stats Widget Settings', timeoutMs: 10000 });
+            const view = bot.window();
+            t.assert(view.slots.some((item) => /Show Speed/.test(item.name)), 'no Show Speed toggle');
+            t.assert(view.slots.some((item) => /Apply Settings To All Modes/.test(item.name)), 'no apply to all');
+            await bot.click(slotOf(/Show Strength/));
+            await bot.waitFor(() => !hasLine(/^Strength:/), { timeoutMs: 8000, what: 'Strength removed' });
             await bot.waitWindow({ title: 'Stats Widget Settings', timeoutMs: 5000 });
+            await bot.click(slotOf(/Show Strength/));
+            await waitTab(/^Strength:/, 8000);
+            await bot.click(slotOf(/Go Back/));
+            await bot.waitWindow({ title: 'Widgets on Private Island', timeoutMs: 10000 });
+        });
+
+        await t.step('Priority Changer selects a widget and shift-click reorders it', async () => {
+            await bot.click(slotOf(/Priority Changer/));
+            await bot.waitWindow({ title: 'Widgets on Private Island', timeoutMs: 5000 });
+            const lore = bot.window().slots.find((item) => /Priority Changer/.test(item.name)).lore.join('\n');
+            t.assert(/EDITING/.test(lore) && /LOCKED/.test(lore), `lore: ${lore}`);
+            await bot.click(slotOf(/Priority Changer/), { button: 0, mode: 1 });
+            await bot.waitWindow({ title: 'Widgets on Private Island', timeoutMs: 5000 });
+        });
+
+        await t.step('Column 4 toggle shrinks the tab and Reset All restores it', async () => {
+            await bot.click(slotOf(/Column 4/));
+            await bot.waitWindow({ title: 'Widgets on Private Island', timeoutMs: 5000 });
+            await bot.click(slotOf(/Reset All/));
+            await bot.waitWindow({ title: 'Widgets on Private Island', timeoutMs: 5000 });
+            await waitTab(/^Stats:/, 8000);
             await bot.closeWindow();
         });
 

@@ -19,6 +19,14 @@ public interface TabWidget {
 
     List<Text> lines(SkyBlockPlayer player, TabWidgetContext context);
 
+    default boolean otherSection() {
+        return false;
+    }
+
+    default String description() {
+        return "Shows " + displayName().toLowerCase() + " information on your tab list.";
+    }
+
     default boolean alwaysOn() {
         return false;
     }
