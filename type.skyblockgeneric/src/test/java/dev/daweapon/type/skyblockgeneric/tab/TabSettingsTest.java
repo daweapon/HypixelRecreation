@@ -36,17 +36,19 @@ class TabSettingsTest {
         assertFalse(settings.enabled(TabLocation.GARDEN, WIDGET));
         assertEquals(30, settings.priority(TabLocation.HUB, WIDGET));
         assertTrue(settings.playerListInfo());
+        assertTrue(settings.spacing(TabLocation.HUB, WIDGET));
+        assertEquals(4, settings.columns(TabLocation.HUB));
     }
 
     @Test
     void settingsPersistThroughTheStoredString() {
         settings().setEnabled(TabLocation.GARDEN, WIDGET, true);
-        settings().setSpacing(TabLocation.GARDEN, WIDGET, true);
+        settings().setSpacing(TabLocation.GARDEN, WIDGET, false);
         settings().setPlayerListInfo(false);
 
         TabSettings reloaded = settings();
         assertTrue(reloaded.enabled(TabLocation.GARDEN, WIDGET));
-        assertTrue(reloaded.spacing(TabLocation.GARDEN, WIDGET));
+        assertFalse(reloaded.spacing(TabLocation.GARDEN, WIDGET));
         assertFalse(reloaded.playerListInfo());
     }
 
@@ -78,23 +80,22 @@ class TabSettingsTest {
     }
 
     @Test
-    void columnsDefaultOnAndResetRestoresEverything() {
-        assertEquals(List.of(0, 1, 2), settings().enabledColumns(TabLocation.HUB));
-        settings().setColumnEnabled(TabLocation.HUB, 2, false);
+    void thirdColumnToggleAndResetRestoreDefaults() {
+        settings().setThirdColumn(TabLocation.HUB, false);
         settings().setEnabled(TabLocation.HUB, WIDGET, false);
-        assertEquals(List.of(0, 1), settings().enabledColumns(TabLocation.HUB));
-        assertEquals(List.of(0, 1, 2), settings().enabledColumns(TabLocation.GARDEN));
+        assertEquals(3, settings().columns(TabLocation.HUB));
+        assertEquals(4, settings().columns(TabLocation.GARDEN));
         settings().resetLocation(TabLocation.HUB);
-        assertEquals(List.of(0, 1, 2), settings().enabledColumns(TabLocation.HUB));
+        assertEquals(4, settings().columns(TabLocation.HUB));
         assertTrue(settings().enabled(TabLocation.HUB, WIDGET));
     }
 
     @Test
     void applyToAllCopiesSettingsButKeepsPriority() {
-        settings().setSpacing(TabLocation.HUB, WIDGET, true);
+        settings().setSpacing(TabLocation.HUB, WIDGET, false);
         settings().setToggle(TabLocation.HUB, WIDGET, "b", true);
         settings().applyToAllLocations(TabLocation.HUB, WIDGET);
-        assertTrue(settings().spacing(TabLocation.GARDEN, WIDGET));
+        assertFalse(settings().spacing(TabLocation.GARDEN, WIDGET));
         assertTrue(settings().toggleValue(TabLocation.GARDEN, WIDGET, "b"));
         assertEquals(30, settings().priority(TabLocation.GARDEN, WIDGET));
     }

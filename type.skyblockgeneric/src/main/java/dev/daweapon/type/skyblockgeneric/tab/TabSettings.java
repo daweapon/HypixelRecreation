@@ -55,7 +55,7 @@ public final class TabSettings {
     }
 
     public boolean spacing(TabLocation location, TabWidget widget) {
-        return entry(location, widget).optBoolean("s", false);
+        return entry(location, widget).optBoolean("s", true);
     }
 
     public boolean wrapping(TabLocation location, TabWidget widget) {
@@ -119,33 +119,22 @@ public final class TabSettings {
         return available(location).stream().filter(widget -> enabled(location, widget)).toList();
     }
 
-    public boolean columnEnabled(TabLocation location, int column) {
+    public boolean thirdColumn(TabLocation location) {
         JSONObject columns = root.optJSONObject("c");
-        if (columns == null) return true;
-        JSONObject entry = columns.optJSONObject(location.getId());
-        return entry == null || entry.optBoolean(String.valueOf(column), true);
+        return columns == null || columns.optBoolean(location.getId(), true);
     }
 
-    public List<Integer> enabledColumns(TabLocation location) {
-        List<Integer> enabled = new java.util.ArrayList<>();
-        for (int column = 0; column < TabLayout.WIDGET_COLUMNS; column++) {
-            if (columnEnabled(location, column)) enabled.add(column);
-        }
-        return enabled;
+    public int columns(TabLocation location) {
+        return thirdColumn(location) ? TabLayout.MAX_COLUMNS : TabLayout.MAX_COLUMNS - 1;
     }
 
-    public void setColumnEnabled(TabLocation location, int column, boolean value) {
+    public void setThirdColumn(TabLocation location, boolean value) {
         JSONObject columns = root.optJSONObject("c");
         if (columns == null) {
             columns = new JSONObject();
             root.put("c", columns);
         }
-        JSONObject entry = columns.optJSONObject(location.getId());
-        if (entry == null) {
-            entry = new JSONObject();
-            columns.put(location.getId(), entry);
-        }
-        entry.put(String.valueOf(column), value);
+        columns.put(location.getId(), value);
         persist();
     }
 

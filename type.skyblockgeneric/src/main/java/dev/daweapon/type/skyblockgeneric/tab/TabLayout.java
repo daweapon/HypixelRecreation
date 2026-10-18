@@ -1,34 +1,28 @@
 package dev.daweapon.type.skyblockgeneric.tab;
 
-import dev.daweapon.commons.text.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public final class TabLayout {
     public static final int ROWS = 20;
-    public static final int WIDGET_COLUMNS = 3;
-    public static final int WIDGET_SLOTS = ROWS * WIDGET_COLUMNS;
+    public static final int MAX_COLUMNS = 4;
 
     private TabLayout() {
     }
 
-    public record Block(List<Text> lines, boolean spacing, boolean wrapping) {
+    public record Block(List<TabLine> lines, boolean spacing, boolean wrapping) {
+        public Block(List<TabLine> lines) {
+            this(lines, false, false);
+        }
     }
 
-    public static List<Text> layout(Text infoHeader, List<Block> blocks) {
-        return layout(infoHeader, blocks, WIDGET_COLUMNS);
-    }
-
-    public static List<Text> layout(Text infoHeader, List<Block> blocks, int columns) {
-        int capacity = ROWS * columns;
-        Text[] slots = new Text[capacity];
+    public static List<TabLine> layout(List<Block> blocks, int columns) {
+        int capacity = ROWS * Math.max(0, Math.min(columns, MAX_COLUMNS));
+        TabLine[] slots = new TabLine[capacity];
         int cursor = 0;
-        if (capacity == 0) return new ArrayList<>();
-        slots[cursor++] = infoHeader;
 
         for (Block block : blocks) {
-            List<Text> lines = new ArrayList<>(block.lines());
+            List<TabLine> lines = new ArrayList<>(block.lines());
             if (lines.isEmpty()) continue;
             if (block.spacing()) lines.add(null);
 
@@ -40,18 +34,14 @@ public final class TabLayout {
             }
             if (cursor + (block.wrapping() ? 1 : lines.size()) > capacity) continue;
 
-            for (Text line : lines) {
+            for (TabLine line : lines) {
                 if (cursor >= capacity) break;
                 slots[cursor++] = line;
             }
         }
 
-        List<Text> result = new ArrayList<>(capacity);
-        for (Text slot : slots) result.add(slot);
+        List<TabLine> result = new ArrayList<>(capacity);
+        for (TabLine slot : slots) result.add(slot);
         return result;
-    }
-
-    public static List<Text> columnOf(List<Text> widgetSlots, int column) {
-        return new ArrayList<>(widgetSlots.subList(column * ROWS, (column + 1) * ROWS));
     }
 }

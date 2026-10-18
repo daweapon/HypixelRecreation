@@ -54,7 +54,7 @@ public final class StatsWidget implements TabWidget {
 
     @Override
     public int defaultPriority() {
-        return 40;
+        return 60;
     }
 
     @Override

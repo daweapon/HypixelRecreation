@@ -22,7 +22,8 @@ final class TabGui {
             28, 29, 30, 31, 32, 33, 34,
             37, 38, 39, 40, 41, 42, 43
     };
-    static final int PREVIEW_SLOT = 50;
+    static final int[] PREVIEW_SLOTS = {3, 4, 5};
+    static final int THIRD_COLUMN_SLOT = 50;
     static final int BACK_SLOT = 48;
     static final int CLOSE_SLOT = 49;
     static final int RESET_SLOT = 53;

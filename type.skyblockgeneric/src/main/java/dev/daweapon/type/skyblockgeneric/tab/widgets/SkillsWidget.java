@@ -39,7 +39,7 @@ public final class SkillsWidget implements TabWidget {
 
     @Override
     public int defaultPriority() {
-        return 30;
+        return 50;
     }
 
     @Override

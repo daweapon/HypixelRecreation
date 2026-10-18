@@ -33,7 +33,7 @@ public final class EventsWidget implements TabWidget {
 
     @Override
     public int defaultPriority() {
-        return 140;
+        return 30;
     }
 
     @Override

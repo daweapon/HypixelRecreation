@@ -8,7 +8,6 @@ import dev.daweapon.type.generic.gui.v2.StatelessView;
 import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
 import dev.daweapon.type.generic.gui.v2.ViewLayout;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
-import dev.daweapon.type.skyblockgeneric.tab.TabLayout;
 import dev.daweapon.type.skyblockgeneric.tab.TabLocation;
 import dev.daweapon.type.skyblockgeneric.tab.TabSettings;
 import dev.daweapon.type.skyblockgeneric.tab.TabWidget;
@@ -20,7 +19,6 @@ import net.minestom.server.item.Material;
 import java.util.List;
 
 public class GUITabWidgetList extends StatelessView {
-    private static final int[] COLUMN_SLOTS = {3, 4, 5};
     private static final int PRIORITY_SLOT = 13;
 
     private final TabLocation location;
@@ -40,16 +38,13 @@ public class GUITabWidgetList extends StatelessView {
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
 
-        for (int column = 0; column < TabLayout.WIDGET_COLUMNS; column++) {
-            int index = column;
-            layout.slot(COLUMN_SLOTS[column], (s, c) -> TabGui.toggle("Column " + (index + 2),
-                    "<7>Shows or hides column " + (index + 2) + " of\n<7>the widget tab list.",
-                    TabSettings.of(c.player()).columnEnabled(location, index)), (click, c) -> {
-                TabSettings settings = TabSettings.of(c.player());
-                settings.setColumnEnabled(location, index, !settings.columnEnabled(location, index));
-                c.replace(new GUITabWidgetList(location, selectedId));
-            });
-        }
+        layout.slot(TabGui.THIRD_COLUMN_SLOT, (s, c) -> TabGui.toggle("Third Column",
+                "<7>Shows or hides the third widget\n<7>column of the tab list.",
+                TabSettings.of(c.player()).thirdColumn(location)), (click, c) -> {
+            TabSettings settings = TabSettings.of(c.player());
+            settings.setThirdColumn(location, !settings.thirdColumn(location));
+            c.replace(new GUITabWidgetList(location, selectedId));
+        });
 
         layout.slot(PRIORITY_SLOT, (s, c) -> priorityChanger(TabSettings.of(c.player())), (click, c) -> {
             TabSettings settings = TabSettings.of(c.player());
@@ -87,7 +82,9 @@ public class GUITabWidgetList extends StatelessView {
 
         Components.back(layout, TabGui.BACK_SLOT, ctx);
         Components.close(layout, TabGui.CLOSE_SLOT);
-        layout.slot(TabGui.PREVIEW_SLOT, (s, c) -> TabGui.preview((SkyBlockPlayer) c.player(), location));
+        for (int previewSlot : TabGui.PREVIEW_SLOTS) {
+            layout.slot(previewSlot, (s, c) -> TabGui.preview((SkyBlockPlayer) c.player(), location));
+        }
         layout.slot(TabGui.RESET_SLOT, (s, c) -> ItemStacks.item(Material.TNT,
                 "<c>Reset All " + location.getDisplayName() + " Settings\n<7>Reset all " + location.getDisplayName()
                         + " tablist widget\n<7>settings back to their default.\n\n<e>Click to reset ALL " + location.getDisplayName() + " settings!"),

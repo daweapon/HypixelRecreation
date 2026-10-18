@@ -42,7 +42,7 @@ public final class ProfileWidget implements TabWidget {
 
     @Override
     public int defaultPriority() {
-        return 10;
+        return 90;
     }
 
     @Override

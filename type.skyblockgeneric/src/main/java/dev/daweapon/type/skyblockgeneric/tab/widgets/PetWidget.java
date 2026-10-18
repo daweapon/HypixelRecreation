@@ -34,7 +34,7 @@ public final class PetWidget implements TabWidget {
 
     @Override
     public int defaultPriority() {
-        return 20;
+        return 10;
     }
 
     @Override
@@ -68,10 +68,11 @@ public final class PetWidget implements TabWidget {
                 : ItemAttributePetData.rarityOffset(rarity);
         int maxLevel = component.getMaxLevel();
         int level = data.getAsLevel(offset, maxLevel);
-        if (level >= maxLevel) return Text.of(" <7>XP: <b>{} <c><l>MAX LEVEL", StringUtility.shortenNumber(data.getExperience()));
+        if (level >= maxLevel) return Text.of(" <b><l>MAX LEVEL");
         long needed = ItemAttributePetData.totalExperienceForLevel(level + 1, offset)
                 - ItemAttributePetData.totalExperienceForLevel(level, offset);
         double current = data.getExperienceInCurrentLevel(offset, maxLevel);
-        return Text.of(" <7>XP: <e>{}<6>/<e>{}", StringUtility.shortenNumber(current), StringUtility.shortenNumber(needed));
+        return Text.of(" <e>{}<6>/<e>{} <6>XP <7>({}%)", StringUtility.shortenNumber(current), StringUtility.shortenNumber(needed),
+                needed <= 0 ? "0.0" : String.format(java.util.Locale.ROOT, "%.1f", current * 100.0 / needed));
     }
 }

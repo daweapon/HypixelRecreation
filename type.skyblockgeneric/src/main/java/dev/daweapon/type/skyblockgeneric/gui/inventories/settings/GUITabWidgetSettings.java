@@ -42,7 +42,7 @@ public class GUITabWidgetSettings extends StatelessView {
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
 
-        layout.slot(3, (s, c) -> TabGui.toggle("Spacing",
+        layout.slot(12, (s, c) -> TabGui.toggle("Spacing",
                 "<7>Adds an empty line after this widget.\n\n" + scope(),
                 TabSettings.of(c.player()).spacing(location, widget)), (click, c) -> {
             TabSettings settings = TabSettings.of(c.player());
@@ -50,7 +50,7 @@ public class GUITabWidgetSettings extends StatelessView {
             c.replace(new GUITabWidgetSettings(location, widget));
         });
 
-        layout.slot(4, (s, c) -> TabGui.toggle("Wrapping",
+        layout.slot(13, (s, c) -> TabGui.toggle("Wrapping",
                 "<7>Lets this widget continue in the next\n<7>column.\n\n" + scope(),
                 TabSettings.of(c.player()).wrapping(location, widget)), (click, c) -> {
             TabSettings settings = TabSettings.of(c.player());
@@ -59,7 +59,7 @@ public class GUITabWidgetSettings extends StatelessView {
         });
 
         if (!widget.toggles().isEmpty()) {
-            layout.slot(5, (s, c) -> TabGui.toggle("Minimize",
+            layout.slot(14, (s, c) -> TabGui.toggle("Minimize",
                     "<7>Only show the information you chose\n<7>below.\n\n" + scope(),
                     TabSettings.of(c.player()).minimized(location, widget)), (click, c) -> {
                 TabSettings settings = TabSettings.of(c.player());
@@ -82,7 +82,9 @@ public class GUITabWidgetSettings extends StatelessView {
 
         Components.back(layout, TabGui.BACK_SLOT, ctx);
         Components.close(layout, TabGui.CLOSE_SLOT);
-        layout.slot(TabGui.PREVIEW_SLOT, (s, c) -> TabGui.preview((SkyBlockPlayer) c.player(), location));
+        for (int previewSlot : TabGui.PREVIEW_SLOTS) {
+            layout.slot(previewSlot, (s, c) -> TabGui.preview((SkyBlockPlayer) c.player(), location));
+        }
         layout.slot(APPLY_ALL_SLOT, (s, c) -> ItemStacks.item(Material.PLAYER_HEAD,
                 "<a>Apply Settings To All Modes\n<7>You are currently only editing the\n<7>" + widget.displayName()
                         + " Widget settings for " + location.getDisplayName() + ".\n<7>Click this button to apply these\n<7>settings to all other modes.\n\n<e>Click to apply settings!"),

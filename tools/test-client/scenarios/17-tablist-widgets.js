@@ -16,6 +16,7 @@ module.exports = {
 
         await t.step('widget tab shows Info, Area, Server, Profile, Skills, Stats', async () => {
             await waitTab(/^Info$/);
+            t.assert(lines().indexOf('Info') > lines().findIndex((line) => /^Players/.test(line)), 'Info should follow the player block');
             await waitTab(/^Area:/);
             await waitTab(/^Server:/);
             await waitTab(/^Profile:/);
@@ -71,8 +72,8 @@ module.exports = {
             await bot.waitWindow({ title: 'Widgets on Private Island', timeoutMs: 5000 });
         });
 
-        await t.step('Column 4 toggle shrinks the tab and Reset All restores it', async () => {
-            await bot.click(slotOf(/Column 4/));
+        await t.step('Third Column toggle and Reset All work', async () => {
+            await bot.click(slotOf(/Third Column/));
             await bot.waitWindow({ title: 'Widgets on Private Island', timeoutMs: 5000 });
             await bot.click(slotOf(/Reset All/));
             await bot.waitWindow({ title: 'Widgets on Private Island', timeoutMs: 5000 });

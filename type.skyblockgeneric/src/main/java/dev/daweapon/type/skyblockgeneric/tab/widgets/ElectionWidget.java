@@ -32,7 +32,7 @@ public final class ElectionWidget implements TabWidget {
 
     @Override
     public int defaultPriority() {
-        return 150;
+        return 20;
     }
 
     @Override
@@ -43,16 +43,35 @@ public final class ElectionWidget implements TabWidget {
     @Override
     public List<Text> lines(SkyBlockPlayer player, TabWidgetContext context) {
         ElectionData data = ElectionManager.getElectionData();
+        if (data.isElectionOpen() && !data.getCandidates().isEmpty()) return electionLines(data);
         SkyBlockMayor mayor = data.getMayorEnum();
         if (mayor == null) return List.of();
         List<Text> lines = new ArrayList<>();
-        lines.add(Text.of("<b><l>Election:"));
+        lines.add(Text.of("<e><l>Election:"));
         lines.add(Text.of(" <7>Mayor: {}", ElectionData.colored(data.getCurrentMayorColor(), mayor.getDisplayName())));
         SkyBlockMayor minister = data.getMinisterEnum();
         if (minister != null) {
             lines.add(Text.of(" <7>Minister: {}", ElectionData.colored(data.getCurrentMinisterColor(), minister.getDisplayName())));
         }
-        if (data.isElectionOpen()) lines.add(Text.of(" <a>Voting is open!"));
+        return lines;
+    }
+
+    private List<Text> electionLines(ElectionData data) {
+        java.util.Map<String, Long> tally = data.tallyVotes();
+        long total = tally.values().stream().mapToLong(Long::longValue).sum();
+        List<ElectionData.CandidateData> ranked = new ArrayList<>(data.getCandidates());
+        ranked.sort(java.util.Comparator.comparingLong(
+                (ElectionData.CandidateData candidate) -> tally.getOrDefault(candidate.getMayorName(), 0L)).reversed());
+        List<Text> lines = new ArrayList<>();
+        lines.add(Text.of("<e><l>Election:"));
+        for (ElectionData.CandidateData candidate : ranked.stream().limit(3).toList()) {
+            long votes = tally.getOrDefault(candidate.getMayorName(), 0L);
+            long percent = total == 0 ? 0 : Math.round(votes * 100.0 / total);
+            int bars = (int) Math.round(percent / 5.0);
+            lines.add(Text.of(" {}: ", candidate.getColoredName())
+                    .append(Text.of("<color:{0}>{1}", candidate.getColor(), "|".repeat(bars)))
+                    .append(Text.of("<7>{} <f>({}%)", "|".repeat(20 - bars), percent)));
+        }
         return lines;
     }
 }

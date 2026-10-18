@@ -39,7 +39,7 @@ public final class CollectionsWidget implements TabWidget {
 
     @Override
     public int defaultPriority() {
-        return 170;
+        return 80;
     }
 
     @Override

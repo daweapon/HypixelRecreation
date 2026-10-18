@@ -23,7 +23,7 @@ import org.tinylog.Logger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import dev.daweapon.type.island.tab.IslandPlayersColumnModule;
+import dev.daweapon.type.island.tab.IslandPlayersBlock;
 import dev.daweapon.type.skyblockgeneric.tab.TabLocation;
 import dev.daweapon.type.skyblockgeneric.tab.SkyBlockTablistManager;
 
@@ -59,7 +59,7 @@ public class TypeIslandLoader implements SkyBlockTypeLoader {
 
     @Override
     public TablistManager getTablistManager() {
-        return new SkyBlockTablistManager(TabLocation.PRIVATE_ISLAND, new IslandPlayersColumnModule());
+        return new SkyBlockTablistManager(TabLocation.PRIVATE_ISLAND, new IslandPlayersBlock());
     }
 
     @Override
