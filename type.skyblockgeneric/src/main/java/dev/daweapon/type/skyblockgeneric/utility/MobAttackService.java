@@ -14,6 +14,7 @@ import dev.daweapon.type.skyblockgeneric.item.handlers.pet.abstr.PetEvent;
 import dev.daweapon.type.skyblockgeneric.mythological.MythologicalCreatureMob;
 import dev.daweapon.type.skyblockgeneric.mythological.gear.MythologicalGear;
 import dev.daweapon.type.skyblockgeneric.reforge.ReforgeLoadout;
+import dev.daweapon.type.skyblockgeneric.runecrafting.RunicMobs;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import dev.daweapon.type.skyblockgeneric.user.statistics.PlayerStatistics;
 
@@ -79,7 +80,7 @@ public final class MobAttackService {
 
     private static double gearMultiplier(SkyBlockMob mob, SkyBlockPlayer player) {
         double mythological = mob instanceof MythologicalCreatureMob ? MythologicalGear.incomingDamageMultiplier(player) : 1;
-        return mythological * ReforgeLoadout.incomingMultiplier(player, mob) * dev.daweapon.type.skyblockgeneric.fishing.lava.CrimsonFishingGear.incomingMultiplier(player, mob)
+        return mythological * RunicMobs.damageMultiplier(mob) * ReforgeLoadout.incomingMultiplier(player, mob) * dev.daweapon.type.skyblockgeneric.fishing.lava.CrimsonFishingGear.incomingMultiplier(player, mob)
                 * dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.mobDamageMultiplier(mob);
     }
 }

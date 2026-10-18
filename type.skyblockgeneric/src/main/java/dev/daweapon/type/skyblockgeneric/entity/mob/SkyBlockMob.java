@@ -30,6 +30,7 @@ import net.minestom.server.network.packet.server.play.SpawnEntityPacket;
 import net.minestom.server.timer.Scheduler;
 import net.minestom.server.timer.TaskSchedule;
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.skyblockgeneric.runecrafting.RunicMobs;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.skyblockgeneric.item.ItemLore;
@@ -81,6 +82,8 @@ public abstract class SkyBlockMob extends EntityCreature {
     private long lastAttack = System.currentTimeMillis();
     @Getter
     private boolean hasBeenDamaged = false;
+    @Getter
+    private boolean runic = false;
 
     private Text customName;
     private TextDisplayEntity nameDisplayEntity;
@@ -229,6 +232,18 @@ public abstract class SkyBlockMob extends EntityCreature {
         return toReturn;
     }
 
+    public void makeRunic() {
+        if (runic) return;
+        runic = true;
+        setMaxHealth(getMaxHealth() * RunicMobs.HEALTH_MULTIPLIER);
+        refreshName();
+    }
+
+    public void awardRune(SkyBlockPlayer player, ItemType rune) {
+        player.sendMessage(Text.of("<5><l>RUNIC!</l> <7>The mob dropped {}<7>.", new SkyBlockItem(rune).getDisplayNameText()));
+        awardDrop(player, rune, new SkyBlockLootTable.LootRecord(rune, 1, 100));
+    }
+
     public void refreshName() {
         String header = nameHeader();
         updateCustomName(Text.parse((header.isEmpty() ? "" : header + "\n") + nameLine()));
@@ -236,7 +251,8 @@ public abstract class SkyBlockMob extends EntityCreature {
 
     private String nameLine() {
         MobType type = getMobTypes().getFirst();
-        return "<8>[<7>Lv" + getLevel() + "<8>] " + type.getColor() + type.getSymbol() + " <c>" + getDisplayName()
+        return "<8>[<7>Lv" + getLevel() + "<8>] " + type.getColor() + type.getSymbol()
+                + (runic ? " <5>Runic " : " <c>") + getDisplayName()
                 + " <a>" + shortHealth(getHealth()) + "<f>/<a>" + shortHealth(getMaxHealth()) + "<c>❤";
     }
 
@@ -341,6 +357,8 @@ public abstract class SkyBlockMob extends EntityCreature {
 
         player.getSkills().increase(player, getSkillCategory(), (double) getOtherLoot().getSkillXPAmount());
         player.playSound(Sound.sound(deathSound(), Sound.Source.PLAYER, 1f, 1f), Sound.Emitter.self());
+
+        if (runic) RunicMobs.onKill(player, this);
 
         if (getLootTable() == null) return;
         if (getLastDamageSource() == null) return;

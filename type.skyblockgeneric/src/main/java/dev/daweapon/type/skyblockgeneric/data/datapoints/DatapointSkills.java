@@ -15,6 +15,7 @@ import dev.daweapon.type.skyblockgeneric.event.custom.SkillUpdateEvent;
 import dev.daweapon.type.skyblockgeneric.farmingcontest.FarmingContests;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategory;
+import dev.daweapon.type.skyblockgeneric.skill.skills.RunecraftingSkill;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
 import org.json.JSONObject;
@@ -171,6 +172,7 @@ public class DatapointSkills extends SkyBlockDatapoint<DatapointSkills.PlayerSki
             double wisdom = player.getStatistics().allStatistics().getOverall(category.getWisdomStatistic());
             double modifiedValue = value * (1D + wisdom / 100D) * ElectionPerks.multiplier(SkyBlockMayor.Perk.MOAR_SKILLZ)
                     * MiscPetHooks.learningMultiplier(player);
+            if (category == SkillCategories.RUNECRAFTING) modifiedValue *= RunecraftingSkill.rankMultiplier(player.getRank());
             setRaw(player, category, getRaw(category) + modifiedValue);
         }
 
@@ -222,6 +224,9 @@ public class DatapointSkills extends SkyBlockDatapoint<DatapointSkills.PlayerSki
             if (category == SkillCategories.FARMING && attachedPlayer != null) {
                 int cap = BASE_LEVEL_CAP + FarmingContests.farmingLevelCapTier(attachedPlayer);
                 return Math.min(cap, category.asCategory().getHighestLevel());
+            }
+            if (category == SkillCategories.RUNECRAFTING && attachedPlayer != null) {
+                return RunecraftingSkill.levelCap(attachedPlayer.getRank(), category.asCategory().getHighestLevel());
             }
             if (category != SkillCategories.FORAGING || attachedPlayer == null) {
                 return category.asCategory().getHighestLevel();

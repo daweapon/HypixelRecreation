@@ -64,6 +64,12 @@ public class ActionPlayerInventoryClick implements HypixelEventClass {
                 return;
             }
 
+            if (!gui.allowHotkeying() && event.getInventory() instanceof PlayerInventory && isShiftClick(event)) {
+                event.setCancelled(true);
+                quickMove(event, player, gui);
+                return;
+            }
+
             if (!gui.allowHotkeying() && isHotKey(event)) {
                 event.setCancelled(true);
                 player.sendActionBar(net.kyori.adventure.text.Component.text("You can't do that here! Place items one at a time.", net.kyori.adventure.text.format.NamedTextColor.RED));
@@ -110,6 +116,37 @@ public class ActionPlayerInventoryClick implements HypixelEventClass {
                     });
                 }
             }
+        }
+    }
+
+    private static boolean isShiftClick(InventoryPreClickEvent event) {
+        return event.getClick() instanceof Click.LeftShift || event.getClick() instanceof Click.RightShift;
+    }
+
+    private void quickMove(InventoryPreClickEvent event, HypixelPlayer player, HypixelInventoryGUI gui) {
+        ItemStack moved = event.getClickedItem();
+        PlayerInventory inventory = player.getInventory();
+        if (moved.isAir() || !inventory.getCursorItem().isAir()) return;
+
+        for (int slot = 0; slot < gui.getInventory().getSize(); slot++) {
+            if (!(gui.get(slot) instanceof GUIClickableItem clickable)) continue;
+            if (!clickable.canPickup() || !gui.getInventory().getItemStack(slot).isAir()) continue;
+
+            int origin = event.getSlot();
+            inventory.setItemStack(origin, ItemStack.AIR);
+            inventory.setCursorItem(moved);
+
+            InventoryPreClickEvent placed = new InventoryPreClickEvent(gui.getInventory(), player, new Click.Left(slot));
+            try {
+                clickable.run(placed, player);
+            } finally {
+                inventory.setCursorItem(ItemStack.AIR);
+                boolean stillOpen = player.getOpenInventory() == gui.getInventory();
+                if (placed.isCancelled() || (stillOpen && gui.getInventory().getItemStack(slot).isAir())) {
+                    inventory.setItemStack(origin, moved);
+                }
+            }
+            return;
         }
     }
 

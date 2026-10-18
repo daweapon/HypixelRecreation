@@ -11,3 +11,147 @@ rewards:
       - type: RUNE
         data:
           runeLevel: 1
+  - level: 2
+    requirement: 100
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 2
+  - level: 3
+    requirement: 125
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 3
+  - level: 4
+    requirement: 160
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 4
+  - level: 5
+    requirement: 200
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 5
+  - level: 6
+    requirement: 250
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 6
+  - level: 7
+    requirement: 315
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 7
+  - level: 8
+    requirement: 400
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 8
+  - level: 9
+    requirement: 500
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 9
+  - level: 10
+    requirement: 625
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 10
+  - level: 11
+    requirement: 785
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 11
+  - level: 12
+    requirement: 1000
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 12
+  - level: 13
+    requirement: 1250
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 13
+  - level: 14
+    requirement: 1600
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 14
+  - level: 15
+    requirement: 2000
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 15
+  - level: 16
+    requirement: 2465
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 16
+  - level: 17
+    requirement: 3125
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 17
+  - level: 18
+    requirement: 4000
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 18
+  - level: 19
+    requirement: 5000
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 19
+  - level: 20
+    requirement: 6200
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 20
+  - level: 21
+    requirement: 7800
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 21
+  - level: 22
+    requirement: 9800
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 22
+  - level: 23
+    requirement: 12200
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 23
+  - level: 24
+    requirement: 15300
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 24
+  - level: 25
+    requirement: 19000
+    unlocks:
+      - type: RUNE
+        data:
+          runeLevel: 25

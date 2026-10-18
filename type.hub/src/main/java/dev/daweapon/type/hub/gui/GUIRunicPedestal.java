@@ -21,17 +21,18 @@ import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.components.RuneComponent;
 import dev.daweapon.type.skyblockgeneric.item.components.RuneableComponent;
 import dev.daweapon.type.skyblockgeneric.item.updater.PlayerItemUpdater;
+import dev.daweapon.type.skyblockgeneric.runecrafting.RuneFusion;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 // GUI for the Runic Pedestal in the Hub, letting players apply runes to items or fuse two runes together.
 public class GUIRunicPedestal extends HypixelInventoryGUI {
-    private static final int MAX_RUNE_LEVEL = 3;
     private static final int[] BOTTOM_SLOTS = {45, 46, 47, 48, 50, 51, 52, 53};
     private static final int[] LEFT_RUNIC_SLOTS = {10, 11, 12};
     private static final int[] RIGHT_RUNIC_SLOTS = {14, 15, 16};
@@ -239,6 +240,24 @@ public class GUIRunicPedestal extends HypixelInventoryGUI {
                             <7>You cannot combine those items!""");
                 }
             });
+        } else if (runicMerge.blocker((SkyBlockPlayer) getPlayer(), itemOnLeft, itemOnRight).isPresent()) {
+            String reason = runicMerge.blocker((SkyBlockPlayer) getPlayer(), itemOnLeft, itemOnRight).get();
+            set(new GUIItem(13) {
+                @Override
+                public ItemStack.Builder getItem(HypixelPlayer p) {
+                    return ItemStacks.item(Material.END_PORTAL_FRAME, """
+                            <a>Apply a Rune or Fuse Two Runes
+                            <7>Add the rune to your provided item
+                            <7>or provide two runes to attempt to
+                            <7>fuse them.""");
+                }
+            });
+            set(new GUIItem(31) {
+                @Override
+                public ItemStack.Builder getItem(HypixelPlayer p) {
+                    return ItemStacks.item(Material.BARRIER, "<c>Error!\n" + reason);
+                }
+            });
         } else {
             RunicMerge finalRunicMerge = runicMerge;
             setGlassPanes(BOTTOM_SLOTS, Material.PURPLE_STAINED_GLASS_PANE);
@@ -254,7 +273,7 @@ public class GUIRunicPedestal extends HypixelInventoryGUI {
                     }
 
                     isFusing = true;
-                    outputItem = finalRunicMerge.merge(itemOnLeft, itemOnRight);
+                    outputItem = finalRunicMerge.resolve(player, itemOnLeft, itemOnRight);
                     itemOnLeft = null;
                     itemOnRight = null;
 
@@ -272,11 +291,11 @@ public class GUIRunicPedestal extends HypixelInventoryGUI {
 
                 @Override
                 public ItemStack.Builder getItem(HypixelPlayer p) {
-                    return ItemStacks.item(Material.END_PORTAL_FRAME, 1, """
-                            <a>Combine Items
-                            <7>Combine the provided items.
-                            <r>\s
-                            <e>Click to combine!""");
+                    String extra = String.join("\n", finalRunicMerge.combineLore(itemOnLeft, itemOnRight));
+                    return ItemStacks.item(Material.END_PORTAL_FRAME, 1,
+                            "<a>Combine Items\n<7>Combine the provided items.\n"
+                                    + (extra.isEmpty() ? "" : extra + "\n")
+                                    + "<r> \n<e>Click to combine!");
                 }
             });
             set(new GUIClickableItem(31) {
@@ -305,6 +324,18 @@ public class GUIRunicPedestal extends HypixelInventoryGUI {
 
     public static abstract class RunicMerge {
         public abstract SkyBlockItem merge(SkyBlockItem itemOnLeft, SkyBlockItem itemOnRight);
+
+        public SkyBlockItem resolve(SkyBlockPlayer player, SkyBlockItem itemOnLeft, SkyBlockItem itemOnRight) {
+            return merge(itemOnLeft, itemOnRight);
+        }
+
+        public Optional<String> blocker(SkyBlockPlayer player, SkyBlockItem itemOnLeft, SkyBlockItem itemOnRight) {
+            return Optional.empty();
+        }
+
+        public List<String> combineLore(SkyBlockItem itemOnLeft, SkyBlockItem itemOnRight) {
+            return List.of();
+        }
         public abstract boolean isValidType(SkyBlockItem itemOnLeft, SkyBlockItem itemOnRight);
         public abstract void onSuccess(SkyBlockPlayer player, SkyBlockItem outputItem);
 
@@ -314,14 +345,22 @@ public class GUIRunicPedestal extends HypixelInventoryGUI {
     }
 
     public static class RuneRunicMerge extends RunicMerge {
+        private boolean fused;
+        private ItemType fusedRune;
+
         @Override
         public SkyBlockItem merge(SkyBlockItem itemOnLeft, SkyBlockItem itemOnRight) {
-            int runeLevelOnLeft = itemOnLeft.getAttributeHandler().getRuneLevel();
-            int runeLevelOnRight = itemOnRight.getAttributeHandler().getRuneLevel();
-
             SkyBlockItem toReturn = itemOnLeft.clone();
-            toReturn.getAttributeHandler().setRuneLevel(runeLevelOnLeft + runeLevelOnRight);
+            toReturn.getAttributeHandler().setRuneLevel(itemOnLeft.getAttributeHandler().getRuneLevel() + 1);
             return toReturn;
+        }
+
+        @Override
+        public SkyBlockItem resolve(SkyBlockPlayer player, SkyBlockItem itemOnLeft, SkyBlockItem itemOnRight) {
+            ItemType rune = itemOnLeft.getAttributeHandler().getPotentialType();
+            fusedRune = rune;
+            fused = RuneFusion.attempt(player.getUuid(), rune, rune.rarity);
+            return fused ? merge(itemOnLeft, itemOnRight) : itemOnLeft.clone();
         }
 
         @Override
@@ -329,24 +368,35 @@ public class GUIRunicPedestal extends HypixelInventoryGUI {
             if (!(itemOnLeft.hasComponent(RuneComponent.class)) || !(itemOnRight.hasComponent(RuneComponent.class))) {
                 return false;
             }
-            String runeTypeOnLeft = itemOnLeft.getAttributeHandler().getTypeAsString();
-            String runeTypeOnRight = itemOnRight.getAttributeHandler().getTypeAsString();
-            if (!runeTypeOnLeft.equals(runeTypeOnRight))
-                return false;
+            return itemOnLeft.getAttributeHandler().getTypeAsString().equals(itemOnRight.getAttributeHandler().getTypeAsString());
+        }
 
-            int runeLevelOnLeft = itemOnLeft.getAttributeHandler().getRuneLevel();
-            int runeLevelOnRight = itemOnRight.getAttributeHandler().getRuneLevel();
+        @Override
+        public Optional<String> blocker(SkyBlockPlayer player, SkyBlockItem itemOnLeft, SkyBlockItem itemOnRight) {
+            int left = itemOnLeft.getAttributeHandler().getRuneLevel();
+            int right = itemOnRight.getAttributeHandler().getRuneLevel();
+            if (left != right) return Optional.of("<7>Both runes must be the same level to fuse!");
+            if (left >= RuneFusion.MAX_LEVEL) return Optional.of("<7>These runes are already at the maximum level!");
+            return Optional.empty();
+        }
 
-            return runeLevelOnLeft + runeLevelOnRight <= MAX_RUNE_LEVEL;
+        @Override
+        public List<String> combineLore(SkyBlockItem itemOnLeft, SkyBlockItem itemOnRight) {
+            Rarity rarity = itemOnLeft.getAttributeHandler().getPotentialType().rarity;
+            return List.of("<r> ", "<7>Success chance: <a>" + (int) RuneFusion.chancePercent(rarity) + "%");
         }
 
         @Override
         public void onSuccess(SkyBlockPlayer player, SkyBlockItem outputItem) {
-            int level = outputItem.getAttributeHandler().getRuneLevel();
+            Rarity rarity = fusedRune.rarity;
+            double xp = fused ? RuneFusion.xp(rarity) : RuneFusion.failureXp(rarity);
+            player.getSkills().increase(player, SkillCategories.RUNECRAFTING, xp);
 
-            player.getSkills().increase(player, SkillCategories.RUNECRAFTING, 15D);
-
-            sendSuccessMessage(player, "Combining Runes to Level {}", level);
+            if (fused) {
+                sendResultMessage(player, xp, "Combining Runes to Level {}", outputItem.getAttributeHandler().getRuneLevel());
+            } else {
+                sendResultMessage(player, xp, "<c>The fusion failed! <7>One rune was consumed.");
+            }
         }
     }
 
@@ -382,19 +432,34 @@ public class GUIRunicPedestal extends HypixelInventoryGUI {
         }
 
         @Override
-        public void onSuccess(SkyBlockPlayer player, SkyBlockItem outputItem) {
-            player.getSkills().increase(player, SkillCategories.RUNECRAFTING, 15D);
+        public Optional<String> blocker(SkyBlockPlayer player, SkyBlockItem itemOnLeft, SkyBlockItem itemOnRight) {
+            SkyBlockItem runeItem = itemOnLeft.hasComponent(RuneComponent.class) ? itemOnLeft : itemOnRight;
+            SkyBlockItem item = runeItem == itemOnLeft ? itemOnRight : itemOnLeft;
+            RuneComponent rune = runeItem.getComponent(RuneComponent.class);
 
+            if (!rune.canApplyTo(item)) {
+                return Optional.of("<7>This rune can only be applied to " + rune.getApplicableTo().name().toLowerCase().replace('_', ' ') + "!");
+            }
+            if (player.getRuneLevel() < rune.getRequiredLevel()) {
+                return Optional.of("<7>You need Runecrafting level " + rune.getRequiredLevel() + " to apply this rune!");
+            }
+            return Optional.empty();
+        }
+
+        @Override
+        public void onSuccess(SkyBlockPlayer player, SkyBlockItem outputItem) {
             ItemType appliedRune = outputItem.getAttributeHandler().getRuneData().getRuneType();
             Rarity rarity = appliedRune.rarity;
+            double xp = RuneFusion.xp(rarity);
+            player.getSkills().increase(player, SkillCategories.RUNECRAFTING, xp);
 
-            sendSuccessMessage(player, "Applying {} ({}<d>)",
+            sendResultMessage(player, xp, "Applying {} ({}<d>)",
                     StringUtility.toNormalCase(appliedRune.name()), rarity.getDisplay());
         }
     }
 
-    private static void sendSuccessMessage(SkyBlockPlayer player, String action, Object... arguments) {
-        player.sendMessage("<d>-<5>15 <d>Runecrafting XP <7>- <r>" + action, arguments);
+    private static void sendResultMessage(SkyBlockPlayer player, double xp, String action, Object... arguments) {
+        player.sendMessage("<d>-<5>" + (int) xp + " <d>Runecrafting XP <7>- <r>" + action, arguments);
     }
 
     @Override

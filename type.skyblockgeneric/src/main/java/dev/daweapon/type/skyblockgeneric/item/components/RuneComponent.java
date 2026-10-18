@@ -3,6 +3,7 @@ package dev.daweapon.type.skyblockgeneric.item.components;
 import lombok.Getter;
 import dev.daweapon.commons.StringUtility;
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItemComponent;
 
 import java.util.List;
@@ -28,6 +29,22 @@ public class RuneComponent extends SkyBlockItemComponent {
         addInheritedComponent(new ExtraUnderNameComponent(getExtraDisplay()));
         addInheritedComponent(new SkullHeadComponent((item) -> skullTexture));
         addInheritedComponent(new LoreUpdateComponent(applyLore(this.applicableTo), false));
+    }
+
+    public boolean canApplyTo(SkyBlockItem target) {
+        if (!target.hasComponent(RuneableComponent.class)) return false;
+        RuneableComponent.RuneApplicableTo slot = target.getComponent(RuneableComponent.class).getRuneApplicableTo();
+        return switch (applicableTo) {
+            case WEAPONS -> slot == RuneableComponent.RuneApplicableTo.WEAPONS;
+            case BOWS -> slot == RuneableComponent.RuneApplicableTo.WEAPONS && isBow(target);
+            default -> applicableTo == slot;
+        };
+    }
+
+    private static boolean isBow(SkyBlockItem item) {
+        if (item.hasComponent(BowComponent.class)) return true;
+        return item.hasComponent(StandardItemComponent.class)
+                && item.getComponent(StandardItemComponent.class).getType() == StandardItemComponent.StandardItemType.BOW;
     }
 
     public static List<String> applyLore(RuneableComponent.RuneApplicableTo applicableTo) {

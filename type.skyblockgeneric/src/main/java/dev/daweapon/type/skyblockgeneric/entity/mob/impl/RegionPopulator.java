@@ -8,6 +8,7 @@ import dev.daweapon.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import dev.daweapon.type.skyblockgeneric.region.MobFreeZones;
 import dev.daweapon.type.skyblockgeneric.region.RegionType;
 import dev.daweapon.type.skyblockgeneric.region.SkyBlockRegion;
+import dev.daweapon.type.skyblockgeneric.runecrafting.RunicMobs;
 
 import java.util.List;
 
@@ -28,6 +29,7 @@ public interface RegionPopulator {
             HypixelConst.getInstanceContainer().loadChunk(randomPosition).join();
 
         SkyBlockMob mob = registry.asMob();
+        RunicMobs.rollSpawn(mob);
         mob.setInstance(HypixelConst.getInstanceContainer(), randomPosition);
     }
 

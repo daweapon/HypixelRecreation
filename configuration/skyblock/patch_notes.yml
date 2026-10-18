@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "runecrafting"
+    name: "The Runecrafting Update"
+    date: "16th October 2026"
+    material: magma_cream
+    title: "The Runecrafting Update"
+    book: "runecrafting_update.yml"
   - version: "community-upgrades"
     name: "The Community Upgrades Update"
     date: "16th October 2026"

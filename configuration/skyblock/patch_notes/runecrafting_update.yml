@@ -1,0 +1,28 @@
+title: "The Runecrafting Update"
+date: "16th October 2026"
+intro:
+  - "Runecrafting is now a full 25-level skill, runes fuse by chance, and Runic mobs roam the world."
+sections:
+  - heading: "Runecrafting skill"
+    colour: "<d>"
+    lines:
+      - "Runecrafting has 25 levels. Each level lets you apply runes up to that level."
+      - "Earn Runecrafting XP by fusing runes, applying runes and killing Runic mobs."
+      - "Default rank players stop at level 3. VIP, VIP+, MVP, MVP+ and MVP++ earn 1.1x, 1.25x, 1.5x, 2x and 3x Runecrafting XP and can reach level 25."
+  - heading: "Runic Pedestal"
+    colour: "<5>"
+    lines:
+      - "Fusing two runes of the same type and level now has a chance to raise the first one a level, up to level III. The second rune is always used up."
+      - "Success chance by rarity: Common 25%, Uncommon 35%, Rare 40%, Epic 45%, Legendary 50%. The chance shows on the Combine button."
+      - "Fusion XP by rarity: 10, 15, 25, 30 and 35. A failed fusion earns half."
+      - "Applying a rune needs the matching Runecrafting level and the right kind of item, for example a bow rune only fits a bow."
+  - heading: "Runic mobs"
+    colour: "<5>"
+    lines:
+      - "Any mob that spawns in the world has a 1 in 200 chance to be Runic: purple name, 4x health, 2x damage."
+      - "A Runic mob always drops a rune and earns bonus Runecrafting XP."
+      - "Runes found this way: Snow, Lava, Gem, Zap, White Spiral, Hot, Hearts, Sparkling, Golden, Music, Clouds, Lightning and Rainbow."
+  - heading: "Not here yet"
+    colour: "<c>"
+    lines:
+      - "Bosses, slayers and dungeon mobs are never Runic. Runes from Fire Sales and seasonal bundles still wait for those events."

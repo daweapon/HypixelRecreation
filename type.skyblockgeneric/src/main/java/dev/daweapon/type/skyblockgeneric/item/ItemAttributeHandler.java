@@ -54,15 +54,19 @@ public class ItemAttributeHandler {
         return item.hasComponent(EnchantedComponent.class);
     }
 
+    private boolean carriesRuneLevel() {
+        return item.hasComponent(RuneableComponent.class) || item.hasComponent(RuneComponent.class);
+    }
+
     public int getRuneLevel() {
-        if (!(item.hasComponent(RuneableComponent.class))) {
+        if (!carriesRuneLevel()) {
             throw new RuntimeException("Item is not a rune item " + getTypeAsString());
         }
         return ((ItemAttributeRuneLevel) item.getAttribute("rune_level")).getValue();
     }
 
     public void setRuneLevel(int level) {
-        if (!(item.hasComponent(RuneableComponent.class))) throw new RuntimeException("Item is not a rune item");
+        if (!carriesRuneLevel()) throw new RuntimeException("Item is not a rune item");
         ((ItemAttributeRuneLevel) item.getAttribute("rune_level")).setValue(level);
     }
 

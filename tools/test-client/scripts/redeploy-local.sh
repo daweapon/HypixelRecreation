@@ -24,6 +24,7 @@ git ls-files -z configuration \
 cd "$stack"
 echo "Rebuilding the game server image..."
 docker compose build game_server_builder
+docker builder prune -af >/dev/null
 docker compose up -d --force-recreate game_server_builder >/dev/null
 
 echo "Starting the proxy in test mode before the game servers register..."

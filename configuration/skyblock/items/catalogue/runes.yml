@@ -167,7 +167,6 @@ items:
     material: player_head
     name: "Clouds Rune"
     rarity: EPIC
-    unavailable: "Runic mobs aren't built"
     source: "Runic mobs"
     lore:
       - "§7Feels like you're walking in the"
@@ -327,7 +326,6 @@ items:
     material: player_head
     name: "Gem Rune"
     rarity: COMMON
-    unavailable: "Runic mobs aren't built"
     source: "Runic mobs"
     lore:
       - "§7Create a gem effect behind your"
@@ -357,7 +355,6 @@ items:
     material: player_head
     name: "Golden Rune"
     rarity: EPIC
-    unavailable: "Runic mobs aren't built"
     source: "Runic mobs"
     lore:
       - "§7Flaunt your wealth with golden"
@@ -465,7 +462,6 @@ items:
     material: player_head
     name: "Hearts Rune"
     rarity: RARE
-    unavailable: "Runic mobs aren't built"
     source: "Runic mobs"
     lore:
       - "§7Shower your enemies in love!"
@@ -479,7 +475,6 @@ items:
     material: player_head
     name: "Hot Rune"
     rarity: UNCOMMON
-    unavailable: "Runic mobs aren't built"
     source: "Runic mobs"
     lore:
       - "§7Your shoes must be burning!"
@@ -508,7 +503,6 @@ items:
     material: player_head
     name: "Lava Rune"
     rarity: COMMON
-    unavailable: "Runic mobs aren't built"
     source: "Runic mobs"
     lore:
       - "§7Shoot magma arrows!"
@@ -522,7 +516,6 @@ items:
     material: player_head
     name: "Lightning Rune"
     rarity: LEGENDARY
-    unavailable: "Runic mobs aren't built"
     source: "Runic mobs"
     lore:
       - "§7Chance to strike lightning on the"
@@ -565,7 +558,6 @@ items:
     material: player_head
     name: "Music Rune"
     rarity: EPIC
-    unavailable: "Runic mobs aren't built"
     source: "Runic mobs"
     lore:
       - "§7Put monsters out of their misery with"
@@ -641,7 +633,6 @@ items:
     material: player_head
     name: "Rainbow Rune"
     rarity: LEGENDARY
-    unavailable: "Runic mobs aren't built"
     source: "Runic mobs"
     lore:
       - "§7Walkin' on rainbows!"
@@ -742,7 +733,6 @@ items:
     material: player_head
     name: "Snow Rune"
     rarity: COMMON
-    unavailable: "Runic mobs aren't built"
     source: "Runic mobs"
     lore:
       - "§7Freeze monsters to death!"
@@ -771,7 +761,6 @@ items:
     material: player_head
     name: "Sparkling Rune"
     rarity: RARE
-    unavailable: "Runic mobs aren't built"
     source: "Runic mobs"
     lore:
       - "§7Your shoes are sparkling!"
@@ -889,7 +878,6 @@ items:
     material: player_head
     name: "White Spiral Rune"
     rarity: UNCOMMON
-    unavailable: "Runic mobs aren't built"
     source: "Runic mobs"
     lore:
       - "§7Show your elegance with white"
@@ -904,7 +892,6 @@ items:
     material: player_head
     name: "Zap Rune"
     rarity: UNCOMMON
-    unavailable: "Runic mobs aren't built"
     source: "Runic mobs"
     lore:
       - "§7Zap across the lands!"
