@@ -48,7 +48,7 @@ public class GUITabWidgetList extends StatelessView {
 
         layout.slot(PRIORITY_SLOT, (s, c) -> priorityChanger(TabSettings.of(c.player())), (click, c) -> {
             TabSettings settings = TabSettings.of(c.player());
-            List<TabWidget> movable = settings.available(location).stream().filter(w -> !w.alwaysOn()).toList();
+            List<TabWidget> movable = settings.available(location).stream().filter(w -> !w.alwaysOn() && w.unavailableReason() == null).toList();
             if (movable.isEmpty()) return;
             int current = indexOf(movable, selectedId);
             if (click.click() instanceof Click.LeftShift) {
@@ -74,7 +74,7 @@ public class GUITabWidgetList extends StatelessView {
                     c.push(new GUITabWidgetSettings(location, widget));
                     return;
                 }
-                if (widget.alwaysOn()) return;
+                if (widget.alwaysOn() || widget.unavailableReason() != null) return;
                 settings.setEnabled(location, widget, !settings.enabled(location, widget));
                 c.replace(new GUITabWidgetList(location, selectedId));
             });
@@ -95,6 +95,10 @@ public class GUITabWidgetList extends StatelessView {
     }
 
     private net.minestom.server.item.ItemStack.Builder widgetItem(TabSettings settings, TabWidget widget) {
+        if (widget.unavailableReason() != null) {
+            return ItemStacks.item(widget.icon(), "<c>\u2716 " + widget.displayName() + " Widget\n<7>Currently: <c>UNAVAILABLE\n\n<7>"
+                    + widget.description() + "\n\n<c>" + widget.unavailableReason());
+        }
         boolean enabled = settings.enabled(location, widget);
         String current = widget.alwaysOn() ? "<a>ALWAYS ENABLED" : TabGui.status(enabled);
         String prefix = enabled ? "<a>✔ " : "<c>✖ ";
@@ -109,6 +113,7 @@ public class GUITabWidgetList extends StatelessView {
                 .append(location.widgetsTitle().startsWith("Widgets on") ? "on " : "in ")
                 .append(location.getDisplayName()).append(".\n");
         for (TabWidget widget : settings.available(location)) {
+            if (widget.unavailableReason() != null) continue;
             body.append("\n<8>▪ <7>").append(widget.displayName()).append(" Widget");
             if (widget.alwaysOn()) body.append(" <c>(LOCKED)");
             else if (widget.id().equals(selectedId)) body.append(" <a>(EDITING)");

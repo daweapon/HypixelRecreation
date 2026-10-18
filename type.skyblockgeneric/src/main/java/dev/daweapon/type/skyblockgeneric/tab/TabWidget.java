@@ -27,6 +27,10 @@ public interface TabWidget {
         return "Shows " + displayName().toLowerCase() + " information on your tab list.";
     }
 
+    default String unavailableReason() {
+        return null;
+    }
+
     default boolean alwaysOn() {
         return false;
     }

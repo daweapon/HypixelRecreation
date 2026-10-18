@@ -99,4 +99,18 @@ class TabSettingsTest {
         assertTrue(settings().toggleValue(TabLocation.GARDEN, WIDGET, "b"));
         assertEquals(30, settings().priority(TabLocation.GARDEN, WIDGET));
     }
+
+    @Test
+    void unavailableWidgetsStayDisabled() {
+        TabWidget stub = new TabWidget() {
+            public String id() { return "stub"; }
+            public String displayName() { return "Stub"; }
+            public Material icon() { return Material.STONE; }
+            public int defaultPriority() { return 1; }
+            public String unavailableReason() { return "not built"; }
+            public List<Text> lines(SkyBlockPlayer player, TabWidgetContext context) { return List.of(); }
+        };
+        settings().setEnabled(TabLocation.HUB, stub, true);
+        assertFalse(settings().enabled(TabLocation.HUB, stub));
+    }
 }

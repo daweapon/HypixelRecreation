@@ -36,6 +36,8 @@ module.exports = {
             t.assert(view.slots.some((item) => /Widgets Preview/.test(item.name)), 'no Preview');
             t.assert(view.slots.some((item) => /Reset All/.test(item.name)), 'no Reset All');
             t.assert(view.slots.some((item) => /General Info Widget/.test(item.name)), 'no General Info Widget');
+            const stubs = view.slots.filter((item) => /Fire Sales Widget|Daily Quests Widget/.test(item.name));
+            t.assert(stubs.length === 2 && stubs.every((item) => /UNAVAILABLE/.test(item.lore.join(' '))), `stubs: ${JSON.stringify(stubs)}`);
             return view.slots.map((item) => item.name);
         });
 

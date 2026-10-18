@@ -46,6 +46,7 @@ public final class TabSettings {
     }
 
     public boolean enabled(TabLocation location, TabWidget widget) {
+        if (widget.unavailableReason() != null) return false;
         if (widget.alwaysOn()) return true;
         return entry(location, widget).optBoolean("e", widget.enabledByDefault(location));
     }
@@ -162,7 +163,7 @@ public final class TabSettings {
     }
 
     public void move(TabLocation location, TabWidget widget, int delta) {
-        List<TabWidget> ordered = available(location);
+        List<TabWidget> ordered = available(location).stream().filter(w -> w.unavailableReason() == null).toList();
         int index = ordered.indexOf(widget);
         int target = index + delta;
         if (index < 0 || target < 0 || target >= ordered.size()) return;
