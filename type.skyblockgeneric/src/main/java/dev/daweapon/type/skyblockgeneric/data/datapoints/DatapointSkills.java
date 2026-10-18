@@ -225,9 +225,6 @@ public class DatapointSkills extends SkyBlockDatapoint<DatapointSkills.PlayerSki
                 int cap = BASE_LEVEL_CAP + FarmingContests.farmingLevelCapTier(attachedPlayer);
                 return Math.min(cap, category.asCategory().getHighestLevel());
             }
-            if (category == SkillCategories.RUNECRAFTING && attachedPlayer != null) {
-                return RunecraftingSkill.levelCap(attachedPlayer.getRank(), category.asCategory().getHighestLevel());
-            }
             if (category != SkillCategories.FORAGING || attachedPlayer == null) {
                 return category.asCategory().getHighestLevel();
             }

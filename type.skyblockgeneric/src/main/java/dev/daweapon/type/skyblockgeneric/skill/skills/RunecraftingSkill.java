@@ -6,8 +6,6 @@ import dev.daweapon.type.skyblockgeneric.skill.SkillCategory;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public class RunecraftingSkill {
-    public static final int DEFAULT_RANK_LEVEL_CAP = 3;
-
     private RunecraftingSkill() {
     }
 
@@ -20,10 +18,6 @@ public class RunecraftingSkill {
             case VIP -> 1.1D;
             case DEFAULT -> 1D;
         };
-    }
-
-    public static int levelCap(Rank rank, int highestLevel) {
-        return rank == Rank.DEFAULT ? Math.min(DEFAULT_RANK_LEVEL_CAP, highestLevel) : highestLevel;
     }
 
     public static Integer getUnlockedRune(SkyBlockPlayer player) {

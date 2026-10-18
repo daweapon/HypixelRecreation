@@ -8,7 +8,7 @@ sections:
     lines:
       - "Runecrafting has 25 levels. Each level lets you apply runes up to that level."
       - "Earn Runecrafting XP by fusing runes, applying runes and killing Runic mobs."
-      - "Default rank players stop at level 3. VIP, VIP+, MVP, MVP+ and MVP++ earn 1.1x, 1.25x, 1.5x, 2x and 3x Runecrafting XP and can reach level 25."
+      - "VIP, VIP+, MVP, MVP+ and MVP++ earn 1.1x, 1.25x, 1.5x, 2x and 3x Runecrafting XP. Every rank can reach level 25."
   - heading: "Runic Pedestal"
     colour: "<5>"
     lines:

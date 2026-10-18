@@ -36,9 +36,7 @@ class RunecraftingRulesTest {
     }
 
     @Test
-    void defaultRankIsCappedAtLevelThreeAndMultipliersMatchTheWiki() {
-        assertEquals(3, RunecraftingSkill.levelCap(Rank.DEFAULT, 25));
-        assertEquals(25, RunecraftingSkill.levelCap(Rank.VIP, 25));
+    void multipliersMatchTheWiki() {
         assertEquals(1D, RunecraftingSkill.rankMultiplier(Rank.DEFAULT));
         assertEquals(1.1D, RunecraftingSkill.rankMultiplier(Rank.VIP));
         assertEquals(1.25D, RunecraftingSkill.rankMultiplier(Rank.VIP_PLUS));
