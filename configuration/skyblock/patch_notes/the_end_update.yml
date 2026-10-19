@@ -1,0 +1,30 @@
+title: "The End Update"
+date: "19th October 2026"
+intro:
+  - "The Dragon's Nest wakes up. Place Summoning Eyes on the altar, fight a dragon with your friends and be rewarded for the damage you deal."
+sections:
+  - heading: "Ender Dragons"
+    colour: "<5>"
+    lines:
+      - "Place 8 Summoning Eyes on the altar in the Dragon's Nest to hatch a dragon. Each eye can be taken back every 3 seconds until the dragon wakes."
+      - "Seven dragons: Protector, Old, Wise, Unstable, Young, Strong and rare Superior. Recombobulated eyes raise the chance of a Superior Dragon up to 100% with eight."
+      - "Dragons Rush, throw Fireballs and call Lightning, and hit harder below half health. Ender Crystals heal the dragon until you destroy them."
+      - "Your loot depends on where you placed in damage, how many eyes you placed and how much damage you dealt. Everyone who helps gets Dragon Essence, fragments and Ender Pearls."
+      - "Sleeping Eyes become Remnants of the Eye when the dragon spawns. A Remnant saves you from death in The End, but not in the Void Sepulture."
+      - "The Dragon Egg returns one minute after the dragon falls."
+  - heading: "The End"
+    colour: "<d>"
+    lines:
+      - "Enderman, Endermite, Seer, Obsidian Defender, Voidling Fanatic, Voidling Extremist, Zealot and Special Zealot now live in The End and fill the Bestiary."
+      - "Zealots can spawn a Special Zealot, guaranteed after 400 Zealot kills. Special Zealots always drop a Summoning Eye."
+      - "The Ender Belt, Ender Cloak, Ender Necklace, Ender armor, Obsidian Chestplate and more now drop from the End mobs."
+      - "You need Combat 12 to enter The End and Combat 25 for the Void Sepulture."
+  - heading: "NPCs"
+    colour: "<a>"
+    lines:
+      - "Tyzzo in the Void Slate runs the Dragon Essence Shop and the Draconic Altar, where dragon armor and Ender gear turn into Dragon Essence and bonus items."
+      - "Pearl Dealer, Gregory (only while a dragon is alive), Lone Adventurer and Guber are standing in The End."
+  - heading: "Not here yet"
+    colour: "<c>"
+    lines:
+      - "End Stone Protector, Ender Nodes, the Zealot Bruiser Hideout, the Dragon's Gate door, the End Race and the dragon fight music."

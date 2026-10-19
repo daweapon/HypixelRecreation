@@ -1,0 +1,30 @@
+# The Pearl Dealer in The End (wiki Pearl_Dealer). Silent Pearl and the Stonk are left out until thrown-pearl teleports and End Stone mining exist.
+title: Pearl Dealer
+slots: DEFAULT
+entries:
+  - item: ENCHANTED_BOOK
+    name: "<a>Enchanted Book (Gravity VI)"
+    material: enchanted_book
+    enchantment: GRAVITY
+    enchantment_level: 6
+    cost: { coins: 5000000 }
+  - item: ENCHANTED_BOOK
+    name: "<a>Enchanted Book (Ender Slayer VI)"
+    material: enchanted_book
+    enchantment: ENDER_SLAYER
+    enchantment_level: 6
+    cost: { coins: 1500000 }
+  - item: END_STONE
+    name: "<f>End Stone"
+    material: end_stone
+    stackable: true
+    cost: { coins: 10 }
+  - item: OBSIDIAN
+    name: "<f>Obsidian"
+    material: obsidian
+    stackable: true
+    cost: { coins: 50 }
+  - item: REMNANT_OF_THE_EYE
+    name: "<5>Remnant of the Eye"
+    material: paper
+    cost: { coins: 200000 }

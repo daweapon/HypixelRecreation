@@ -27,6 +27,10 @@ final class ToyBoxActions {
         player.addAndUpdateItem(type);
     }
 
+    static void give(SkyBlockPlayer player, ItemType type, int amount) {
+        player.addAndUpdateItem(type, amount);
+    }
+
     static void duplicate(SkyBlockPlayer player) {
         ItemStack held = player.getItemInMainHand();
         if (held.isAir()) { player.sendMessage("<c>Hold an item first!"); return; }

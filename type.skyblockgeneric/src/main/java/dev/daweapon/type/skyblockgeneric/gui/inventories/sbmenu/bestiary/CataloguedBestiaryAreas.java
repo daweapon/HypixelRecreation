@@ -5,6 +5,19 @@ import dev.daweapon.type.generic.gui.inventory.item.GUIMaterial;
 import dev.daweapon.type.skyblockgeneric.entity.mob.BestiaryMob;
 import dev.daweapon.type.skyblockgeneric.entity.mob.CataloguedBestiaryMob;
 import dev.daweapon.type.skyblockgeneric.entity.mob.MobType;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobEndermanHigh;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobEndermanLow;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobEndermanMid;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobEndermiteHigh;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobEndermiteLow;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobNestEndermite;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobObsidianDefender;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobSeer;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobSpecialZealot;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobVoidlingExtremist;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobVoidlingFanatic;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobZealot;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobZealotBruiser;
 
 import java.util.List;
 
@@ -17,6 +30,14 @@ public final class CataloguedBestiaryAreas {
         @Override public String getDescription() { return description; }
         @Override public GUIMaterial getGuiMaterial() { return guiMaterial; }
         @Override public List<BestiaryMob> getMobs() { return mobs; }
+    }
+
+    private static CataloguedFamily liveFamily(String displayName, String description, String texture, BestiaryMob... mobs) {
+        return new CataloguedFamily("<a>" + displayName, description, new GUIMaterial(texture), List.of(mobs));
+    }
+
+    private static CataloguedFamily liveFamily(String displayName, String description, Material icon, BestiaryMob... mobs) {
+        return new CataloguedFamily("<a>" + displayName, description, new GUIMaterial(icon), List.of(mobs));
     }
 
     public static List<BestiaryMob> placeholder(String mobId, String displayName, int bracket, int maxTier, MobType type, Material icon) {
@@ -88,13 +109,18 @@ public final class CataloguedBestiaryAreas {
     public static final BestiaryEntry[] THE_END = {
             family("DRAGONS", "Dragons", "Inside the Dragon's Den, there is no escape from the fury of the beasts.", 6, 15, MobType.ENDER, Material.DRAGON_HEAD),
             family("END_STONE_PROTECTOR", "End Stone Protector", "Risen from the debris of Endstone.", 8, 20, MobType.CONSTRUCT, "22bcaceeb4162f400d44743315932ac820d3119ac8986a0161a726161ccc93fc"),
-            family("END_ENDERMAN", "Enderman", "Not your mother's endermen.", 7, 25, MobType.ENDER, "96c0b36d53fff69a49c7d6f3932f2b0fe948e032226d5e8045ec58408a36e951"),
-            family("ENDERMITE", "Endermite", "Hidden in the stone of The End.", 7, 25, MobType.ENDER, "5a1a0831aa03afb4212adcbb24e5dfaa7f476a1173fce259ef75a85855"),
-            family("OBSIDIAN_DEFENDER", "Obsidian Defender", "Forged from the forces of hot and cold.", 7, 25, MobType.CONSTRUCT, Material.OBSIDIAN),
-            family("SEER", "Seer", "Always watching.", 7, 25, MobType.ENDER, "daa8fc8de6417b48d48c80b443cf5326e3d9da4dbe9b25fcd49549d96168fc0"),
-            family("VOIDLING_EXTREMIST", "Voidling Extremist", "The top lieutenants of the void heraldry.", 4, 15, MobType.ENDER, "eb07594e2df273921a77c101d0bfdfa1115abed5b9b2029eb496ceba9bdbb4b3"),
-            family("VOIDLING_FANATIC", "Voidling Fanatic", "A step beyond zealotry.", 5, 25, MobType.ENDER, "e53b7bcd56f0b95f87dd79ed17636beb9d8346744014228ea2f6b110b148c1"),
-            family("ZEALOT", "Zealot", "Unwavering in their devotion to the Dragon.", 5, 25, MobType.ENDER, Material.ENDER_CHEST),
+            liveFamily("Enderman", "Not your mother's endermen.", "96c0b36d53fff69a49c7d6f3932f2b0fe948e032226d5e8045ec58408a36e951",
+                    new MobEndermanLow(), new MobEndermanMid(), new MobEndermanHigh()),
+            liveFamily("Endermite", "Hidden in the stone of The End.", "5a1a0831aa03afb4212adcbb24e5dfaa7f476a1173fce259ef75a85855",
+                    new MobEndermiteLow(), new MobEndermiteHigh(), new MobNestEndermite()),
+            liveFamily("Obsidian Defender", "Forged from the forces of hot and cold.", Material.OBSIDIAN, new MobObsidianDefender()),
+            liveFamily("Seer", "Always watching.", "daa8fc8de6417b48d48c80b443cf5326e3d9da4dbe9b25fcd49549d96168fc0", new MobSeer()),
+            liveFamily("Voidling Extremist", "The top lieutenants of the void heraldry.", "eb07594e2df273921a77c101d0bfdfa1115abed5b9b2029eb496ceba9bdbb4b3",
+                    new MobVoidlingExtremist()),
+            liveFamily("Voidling Fanatic", "A step beyond zealotry.", "e53b7bcd56f0b95f87dd79ed17636beb9d8346744014228ea2f6b110b148c1",
+                    new MobVoidlingFanatic()),
+            liveFamily("Zealot", "Unwavering in their devotion to the Dragon.", Material.ENDER_CHEST,
+                    new MobZealot(), new MobZealotBruiser(), new MobSpecialZealot()),
     };
 
     public static final BestiaryEntry[] THE_PARK = {

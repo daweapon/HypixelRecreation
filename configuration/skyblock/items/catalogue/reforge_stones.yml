@@ -641,7 +641,6 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 22§c."
-    unavailable: "Needs the Dragon's Nest Ender Dragon fight and Draconic Altar (neither exists)"
     source: "Ender Dragon drop at 2% x Summoning Eyes placed (needs over 446 dragon weight); or 2.35% bonus item when sacrificing an Aspect of the Dragons at the Draconic Altar"
     components:
       - id: REFORGE_STONE
@@ -687,7 +686,6 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 25§c."
-    unavailable: "Dragon fight drop table not found in repo (only DragonEntity); verify End dragon fight"
     source: "Superior Dragon drop, 30% base once 448+ Dragon Weight"
     components:
       - id: REFORGE_STONE
@@ -732,7 +730,6 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 20§c."
-    unavailable: "Needs Dungeons/Dragons Nest (Dragon Weight not implemented)"
     source: "Young Dragon drop (30% base at 296+ Dragon Weight); Superior Lost Adventurer in Catacombs 0.1%"
     components:
       - id: REFORGE_STONE

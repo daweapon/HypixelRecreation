@@ -1,0 +1,8 @@
+# The Lone Adventurer's Void Sword offer (wiki Lone_Adventurer), opened once the player has killed 5 Endermen.
+title: Lone Adventurer
+slots: SINGLE_SLOT
+entries:
+  - item: VOID_SWORD
+    name: "<5>Void Sword"
+    material: diamond_sword
+    cost: { coins: 200000 }

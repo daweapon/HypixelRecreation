@@ -15,6 +15,7 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.tab.TablistManager;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
+import dev.daweapon.type.skyblockgeneric.user.PlayerDeathOverrides;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
@@ -23,7 +24,7 @@ import java.util.List;
 import dev.daweapon.type.skyblockgeneric.tab.TabLocation;
 import dev.daweapon.type.skyblockgeneric.tab.SkyBlockTablistManager;
 
-// SkyBlockTypeLoader for the Crystal Hollows/The End server type: defines its spawn point, tablist, dimension, and events/NPCs.
+// SkyBlockTypeLoader for The End: spawn point, tablist, dimension, events, NPCs and the Remnant of the Eye death save.
 public class TypeTheEndLoader implements SkyBlockTypeLoader {
     @Override
     public ServerType getType() {
@@ -37,7 +38,8 @@ public class TypeTheEndLoader implements SkyBlockTypeLoader {
 
     @Override
     public void afterInitialize(MinecraftServer server) {
-
+        PlayerDeathOverrides.register(RemnantOfTheEye::saves);
+        ZealotWaves.start();
     }
 
     @Override

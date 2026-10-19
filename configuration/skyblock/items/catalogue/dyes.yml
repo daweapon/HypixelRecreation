@@ -678,7 +678,6 @@ items:
       - ""
       - "§7Changes the color of an armor piece"
       - "§7to §2#115555§7!"
-    unavailable: "The End has no mobs yet"
     source: "1/10M to 1/50k from killing mobs in The End"
     components:
       - id: SKULL_HEAD

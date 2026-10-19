@@ -591,11 +591,11 @@ items:
   - id: END_BOOTS
     material: chainmail_boots
     name: "Ender Boots"
+    source: "1% Ender Armor Piece drop from Endermen in The End"
     rarity: EPIC
     default_statistics:
       health: 15
       defense: 25
-    unavailable: "Legacy Ender armor, no confirmed current source"
     lore:
       - "§7All stats on this armor piece are"
       - "§7multiplied by §52x §7while on the End"
@@ -610,11 +610,11 @@ items:
   - id: END_CHESTPLATE
     material: chainmail_chestplate
     name: "Ender Chestplate"
+    source: "1% Ender Armor Piece drop from Endermen in The End"
     rarity: EPIC
     default_statistics:
       health: 30
       defense: 60
-    unavailable: "Legacy Ender armor, no confirmed current source"
     lore:
       - "§7All stats on this armor piece are"
       - "§7multiplied by §52x §7while on the End"
@@ -629,11 +629,11 @@ items:
   - id: END_HELMET
     material: player_head
     name: "Ender Helmet"
+    source: "1% Ender Armor Piece drop from Endermen in The End"
     rarity: EPIC
     default_statistics:
       health: 20
       defense: 35
-    unavailable: "Legacy Ender armor, no confirmed current source"
     lore:
       - "§7All stats on this armor piece are"
       - "§7multiplied by §52x §7while on the End"
@@ -650,11 +650,11 @@ items:
   - id: END_LEGGINGS
     material: chainmail_leggings
     name: "Ender Leggings"
+    source: "1% Ender Armor Piece drop from Endermen in The End"
     rarity: EPIC
     default_statistics:
       health: 25
       defense: 50
-    unavailable: "Legacy Ender armor, no confirmed current source"
     lore:
       - "§7All stats on this armor piece are"
       - "§7multiplied by §52x §7while on the End"

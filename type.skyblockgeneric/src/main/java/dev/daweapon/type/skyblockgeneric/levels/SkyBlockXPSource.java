@@ -66,7 +66,7 @@ public enum SkyBlockXPSource {
     COMPLETE_DUNGEONS(Group.DUNGEON, null, 540, Availability.NOT_IN_GAME, Material.WITHER_SKELETON_SKULL),
 
     // ----- Essence Shop Tasks (2,121 XP) -----
-    DRAGON_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 185, Availability.NOT_IN_GAME, Material.DRAGON_HEAD),
+    DRAGON_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 185, Availability.LIVE, Material.DRAGON_HEAD),
     ICE_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 121, Availability.LIVE, Material.ICE),
     SPIDER_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 126, Availability.NOT_IN_GAME, Material.COBWEB),
     UNDEAD_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 128, Availability.NOT_IN_GAME, Material.ZOMBIE_HEAD),
@@ -84,7 +84,7 @@ public enum SkyBlockXPSource {
     BESTIARY_PROGRESS(Group.SLAYING, null, 5635, Availability.LIVE, Material.WRITTEN_BOOK),
     MYTHOLOGICAL_KILLS(Group.SLAYING, null, 100, Availability.LIVE, Material.BONE_MEAL),
     COLLECT_MOB_TYPES(Group.SLAYING, null, 35, Availability.LIVE, Material.ZOMBIE_SPAWN_EGG),
-    SLAY_DRAGONS(Group.SLAYING, null, 200, Availability.NOT_IN_GAME, Material.DRAGON_EGG),
+    SLAY_DRAGONS(Group.SLAYING, null, 200, Availability.LIVE, Material.DRAGON_EGG),
     DEFEAT_SLAYERS(Group.SLAYING, null, 1125, Availability.LIVE, Material.ROTTEN_FLESH),
     DEFEAT_KUUDRA(Group.SLAYING, null, 300, Availability.NOT_IN_GAME, Material.MAGMA_CREAM),
     DEFEAT_ARACHNE(Group.SLAYING, null, 60, Availability.NOT_IN_GAME, Material.SPIDER_EYE),

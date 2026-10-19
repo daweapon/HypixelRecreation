@@ -368,6 +368,7 @@ public abstract class SkyBlockMob extends EntityCreature {
         if (!(getLastDamageSource().getAttacker() instanceof SkyBlockPlayer player)) return;
 
         HypixelEventHandler.callCustomEvent(new PlayerKilledSkyBlockMobEvent(player, this));
+        dev.daweapon.type.skyblockgeneric.essence.DragonEssencePerks.onEnderKill(player, this);
 
         player.getSkills().increase(player, getSkillCategory(), (double) getOtherLoot().getSkillXPAmount());
         player.playSound(Sound.sound(deathSound(), Sound.Source.PLAYER, 1f, 1f), Sound.Emitter.self());

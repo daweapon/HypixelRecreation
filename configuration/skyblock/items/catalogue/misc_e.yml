@@ -189,7 +189,6 @@ items:
     material: paper
     name: "Remnant of the Eye"
     rarity: EPIC
-    unavailable: "Needs the Summoning Eye recovery mechanic; Source unconfirmed"
     source: "Sleeping Eye turns into it when a Dragon spawns (The End only)"
     lore:
       - "§7Keeps you alive when you are on"
@@ -2617,8 +2616,7 @@ items:
     material: paper
     name: "Sleeping Eye"
     rarity: EPIC
-    unavailable: "Needs the Summoning Eye recovery mechanic; Source unconfirmed"
-    source: "Source unconfirmed"
+    source: "Placing a Summoning Eye on the Dragon's Nest altar; it turns into a Remnant of the Eye when the dragon spawns"
     lore:
       - "§7Keep this item in your inventory to"
       - "§7recover your placed Summoning Eye"

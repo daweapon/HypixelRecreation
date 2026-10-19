@@ -162,7 +162,6 @@ items:
     material: quartz
     name: "Crystal Fragment"
     rarity: EPIC
-    unavailable: "Needs Zealots, the End Stone Protector fight and the Ender Dragon fight (none are built)"
     source: "12.2% drop from Zealots holding an Ender Chest, End Stone Protector rewards (3 for 1st place, 1 for 2nd-5th) and destroying Ender Crystals in the Ender Dragon fight"
     components:
       - id: SELLABLE
@@ -557,7 +556,6 @@ items:
     material: paper
     name: "Old Dragon Fragment"
     rarity: EPIC
-    unavailable: "Needs the Ender Dragon fight (not built)"
     source: "Ender Dragon kills in The End, scaled by dragon weight"
     components:
       - id: SELLABLE
@@ -582,7 +580,6 @@ items:
     material: paper
     name: "Protector Dragon Fragment"
     rarity: EPIC
-    unavailable: "Needs the Ender Dragon fight (not built)"
     source: "Ender Dragon kills in The End, scaled by dragon weight"
     components:
       - id: SELLABLE
@@ -602,7 +599,6 @@ items:
     material: paper
     name: "Ritual Residue"
     rarity: EPIC
-    unavailable: "Needs the Draconic Altar (not built)"
     source: "10.84% from sacrificing Dragon Armor and 10.59% from sacrificing an Aspect of the Dragons at the Draconic Altar"
     lore:
       - "§8§oIt's all that's left from a draconic"
@@ -696,7 +692,6 @@ items:
     material: paper
     name: "Strong Dragon Fragment"
     rarity: EPIC
-    unavailable: "Needs the Ender Dragon fight (not built)"
     source: "Ender Dragon kills in The End, scaled by dragon weight"
     components:
       - id: SELLABLE
@@ -707,7 +702,6 @@ items:
     material: paper
     name: "Superior Dragon Fragment"
     rarity: EPIC
-    unavailable: "Needs the Ender Dragon fight (not built); Lost Adventurers need Dungeons"
     source: "Ender Dragon kills in The End, scaled by dragon weight; also from Lost Adventurers wearing the matching Dragon Armor in Dungeons"
     components:
       - id: SELLABLE
@@ -744,7 +738,6 @@ items:
     material: paper
     name: "Unstable Dragon Fragment"
     rarity: EPIC
-    unavailable: "Needs the Ender Dragon fight (not built); Lost Adventurers need Dungeons"
     source: "Ender Dragon kills in The End, scaled by dragon weight; also from Lost Adventurers wearing the matching Dragon Armor in Dungeons"
     components:
       - id: SELLABLE
@@ -766,7 +759,6 @@ items:
     material: paper
     name: "Wise Dragon Fragment"
     rarity: EPIC
-    unavailable: "Needs the Ender Dragon fight (not built)"
     source: "Ender Dragon kills in The End, scaled by dragon weight"
     components:
       - id: SELLABLE
@@ -824,7 +816,6 @@ items:
     material: paper
     name: "Young Dragon Fragment"
     rarity: EPIC
-    unavailable: "Needs the Ender Dragon fight (not built); Lost Adventurers need Dungeons"
     source: "Ender Dragon kills in The End, scaled by dragon weight; also from Lost Adventurers wearing the matching Dragon Armor in Dungeons"
     components:
       - id: SELLABLE

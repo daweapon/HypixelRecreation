@@ -1,0 +1,14 @@
+# Gregory in The End (wiki Gregory). Only stands there while an Ender Dragon is alive.
+title: Gregory
+slots: DEFAULT
+entries:
+  - item: FLINT_ARROW
+    name: "<f>Flint Arrow"
+    material: arrow
+    amount: 20
+    stackable: true
+    cost: { coins: 240 }
+  - item: DECENT_BOW
+    name: "<a>Decent Bow"
+    material: bow
+    cost: { coins: 500 }

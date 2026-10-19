@@ -235,9 +235,8 @@ items:
             values:
               - { per_level: { RARE: 0.4, EPIC: 0.5 } }
           - name: "Zealot Madness"
-            unavailable: "Needs Zealots"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Increases your odds to find a"
               - "<7>special Zealot by <a>{0}%<7>."

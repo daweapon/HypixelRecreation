@@ -605,6 +605,9 @@ public class SkyBlockDataHandler extends DataHandler {
         LUCIUS_TIERS_PURCHASED("lucius_tiers_purchased", false, false, false,
                 DatapointInteger.class, new DatapointInteger("lucius_tiers_purchased", 0)),
 
+        ZEALOT_PITY("zealot_pity", false, false, false,
+                DatapointInteger.class, new DatapointInteger("zealot_pity", 0)),
+
         BAZAAR_HISTORY("bazaar_history", false, false, false,
                 DatapointBazaarHistory.class, new DatapointBazaarHistory("bazaar_history")),
 

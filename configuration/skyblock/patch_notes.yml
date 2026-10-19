@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "the-end"
+    name: "The End Update"
+    date: "19th October 2026"
+    material: dragon_egg
+    title: "The End Update"
+    book: "the_end_update.yml"
   - version: "deep-caverns-quests"
     name: "The Deep Caverns Quests Update"
     date: "19th October 2026"

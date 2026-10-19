@@ -78,14 +78,16 @@ public class PlayerActionDamageMob implements HypixelEventClass {
                 MathUtility.ticksToMilliseconds(player.getStatistics().getInvulnerabilityTime()));
 
         float damageAmount = ((Number) valueEvent.getValue()).floatValue()
-                * (float) ReforgeLoadout.outgoingMultiplier(player, mob, critical);
+                * (float) ReforgeLoadout.outgoingMultiplier(player, mob, critical)
+                + (float) dev.daweapon.type.skyblockgeneric.essence.DragonEssencePerks.firstStrikeBonus(player, mob);
         if (!AttackService.applyHit(player, mob, damageAmount, critical)) return;
         dev.daweapon.type.skyblockgeneric.item.armor.ArmorAbilityEffects.afterMeleeHit(player, mob, damageAmount, critical);
         dev.daweapon.type.skyblockgeneric.item.armor.ArmorHitEffects.onMeleeHit(player, mob);
         dev.daweapon.type.skyblockgeneric.slayer.zombie.ZombieSlayerGear.onMeleeHit(player);
         player.getPetData().dispatch(new PetEvent.MeleeHit(player, player.getPetData().getEnabledPet(), mob, damageAmount));
 
-        double ferocity = player.getStatistics().allStatistics().getOverall(ItemStatistic.FEROCITY);
+        double ferocity = player.getStatistics().allStatistics().getOverall(ItemStatistic.FEROCITY)
+                + dev.daweapon.type.skyblockgeneric.essence.DragonEssencePerks.dragonFerocity(player, mob);
         if (player.getPosition().distance(mob.getPosition()) <= AttackService.MAX_MELEE_FEROCITY_DISTANCE)
             AttackService.scheduleExtraHits(player, mob, damageAmount, critical, ferocity);
 
