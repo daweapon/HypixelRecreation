@@ -117,8 +117,8 @@ module.exports = {
                 await bot.waitChat(/placed a Summoning Eye/i, { since: mark, timeoutMs: 8000 });
             }
             const mark = bot.markChat();
-            await bot.waitChat(/has awoken from the Dragon Egg/i, { since: mark, timeoutMs: 30000 }).catch(() => null);
-            await bot.waitFor(() => /has awoken/i.test(bot.chatText()), { timeoutMs: 30000, what: 'the dragon spawn message' });
+            await bot.waitChat(/has spawned/i, { since: mark, timeoutMs: 30000 }).catch(() => null);
+            await bot.waitFor(() => /has spawned/i.test(bot.chatText()), { timeoutMs: 30000, what: 'the dragon spawn message' });
         });
 
         await t.step('the Sleeping Eyes became Remnants of the Eye and Gregory arrived', async () => {

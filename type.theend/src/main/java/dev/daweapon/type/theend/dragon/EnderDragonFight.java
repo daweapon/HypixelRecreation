@@ -57,6 +57,7 @@ public final class EnderDragonFight {
     private static Task barTask;
     private static final Set<UUID> barViewers = new HashSet<>();
     private static final int BAR_TICKS = 10;
+    private static int gateStage;
 
     private EnderDragonFight() {
     }
@@ -109,8 +110,9 @@ public final class EnderDragonFight {
         convertSleepingEyes(instance);
         knockPlayersBack(instance);
         spawnCrystals(instance);
+        gateStage = 0;
         startBar(instance, mob);
-        broadcast(instance, Text.of("<5><l>☬ <r><d>The {} <5>has awoken from the Dragon Egg!", variant.displayName()));
+        broadcast(instance, Text.of("<5>The {} <5>has spawned!", variant.displayName()));
     }
 
     private static void convertSleepingEyes(Instance instance) {
@@ -118,7 +120,9 @@ public final class EnderDragonFight {
             if (!(player instanceof SkyBlockPlayer skyBlockPlayer)) continue;
             int converted = 0;
             while (skyBlockPlayer.removeItemFromPlayer(ItemType.SLEEPING_EYE, 1)) converted++;
-            if (converted > 0) skyBlockPlayer.addAndUpdateItem(ItemType.REMNANT_OF_THE_EYE, converted);
+            if (converted == 0) continue;
+            skyBlockPlayer.addAndUpdateItem(ItemType.REMNANT_OF_THE_EYE, converted);
+            skyBlockPlayer.sendMessage(Text.of("<5>Your Sleeping Eyes have been awoken by the magic of the Dragon. They are now Remnants of the Eye!"));
         }
     }
 
@@ -190,7 +194,7 @@ public final class EnderDragonFight {
         MinecraftServer.getSchedulerManager().buildTask(() -> {
             phase = Phase.IDLE;
             if (instance != null) {
-                DragonEgg.place(instance);
+                DragonEgg.restore(instance);
                 broadcast(instance, Text.of("<5>The Dragon Egg has respawned!"));
             }
         }).delay(TaskSchedule.tick(EGG_RESPAWN_TICKS)).schedule();
@@ -264,10 +268,10 @@ public final class EnderDragonFight {
             stopBar();
             return;
         }
+        announceGate(instance, mob);
         float max = mob.getMaxHealth();
         bar.progress(Math.max(0f, Math.min(1f, mob.getHealth() / max)));
-        bar.name(Text.of("<5><l>{} <r><c>{}<7>/<c>{}<red>❤", mob.variant().displayName(),
-                SkyBlockMob.shortHealth(mob.getHealth()), SkyBlockMob.shortHealth(max)).asComponent());
+        bar.name(Text.of("<c>{}", mob.variant().displayName()).asComponent());
         Set<UUID> present = new HashSet<>();
         for (Player player : instance.getPlayers()) {
             present.add(player.getUuid());
@@ -279,6 +283,13 @@ public final class EnderDragonFight {
             Player gone = MinecraftServer.getConnectionManager().getOnlinePlayerByUuid(uuid);
             if (gone != null) gone.hideBossBar(bar);
         }
+    }
+
+    private static void announceGate(Instance instance, EnderDragonMob mob) {
+        double total = mob.getDamageDealt().values().stream().mapToDouble(Double::doubleValue).sum();
+        String[] messages = DragonGate.messagesFor(gateStage, total);
+        for (String message : messages) broadcast(instance, Text.of("<d>{}", message));
+        gateStage += messages.length;
     }
 
     private static void stopBar() {

@@ -19,8 +19,8 @@ public final class DragonSpawnAnimation {
     public static final int RISE_TICKS = GlassRise.RISE_TICKS;
     public static final int STEP_TICKS = 2;
     private static final double BASE_Y = GlassRise.BASE_Y;
-    private static final Pos COLUMN_CORNER = new Pos(-672, BASE_Y, -277);
-    private static final double COLUMN_WIDTH = 3;
+    private static final Pos COLUMN_CORNER = new Pos(-672, BASE_Y, -276);
+    private static final double COLUMN_WIDTH = 1;
 
     private DragonSpawnAnimation() {
     }

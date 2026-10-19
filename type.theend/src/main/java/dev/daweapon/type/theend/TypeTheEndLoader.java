@@ -16,7 +16,9 @@ import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.tab.TablistManager;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
 import dev.daweapon.type.skyblockgeneric.user.PlayerDeathOverrides;
+import dev.daweapon.type.skyblockgeneric.user.ChallengeSidebar;
 import dev.daweapon.type.theend.dragon.DragonEgg;
+import dev.daweapon.type.theend.dragon.DragonSidebar;
 import dev.daweapon.type.theend.dragon.DragonMeleeRedirect;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
@@ -41,7 +43,8 @@ public class TypeTheEndLoader implements SkyBlockTypeLoader {
     @Override
     public void afterInitialize(MinecraftServer server) {
         PlayerDeathOverrides.register(RemnantOfTheEye::saves);
-        DragonEgg.placeSoon();
+        DragonEgg.captureSoon();
+        ChallengeSidebar.register(DragonSidebar::lines);
         DragonMeleeRedirect.install();
         ZealotWaves.start();
         EndMobSpawner.start();

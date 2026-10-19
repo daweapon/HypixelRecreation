@@ -3,7 +3,7 @@ package dev.daweapon.type.theend.dragon;
 public final class GlassRise {
     public static final int RISE_TICKS = 100;
     public static final double BASE_Y = 10;
-    public static final double EGG_Y = 77;
+    public static final double EGG_Y = 47;
 
     private GlassRise() {
     }

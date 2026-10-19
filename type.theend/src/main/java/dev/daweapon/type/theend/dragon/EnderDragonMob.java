@@ -10,7 +10,10 @@ import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.timer.TaskSchedule;
+import dev.daweapon.commons.StringUtility;
+import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.skyblockgeneric.crimson.mob.CrimsonIsleMob;
+import dev.daweapon.type.skyblockgeneric.utility.MobAttackService;
 import dev.daweapon.type.skyblockgeneric.crimson.mob.CrimsonMobProfile;
 import dev.daweapon.type.skyblockgeneric.entity.mob.MobType;
 import dev.daweapon.type.skyblockgeneric.mythological.ability.MobProjectile;
@@ -179,8 +182,8 @@ public final class EnderDragonMob extends CrimsonIsleMob {
         rushTicks++;
         Pos at = getPosition();
         for (SkyBlockPlayer player : playersWithin(RUSH_RANGE)) {
-            strike(player, RUSH_DAMAGE * berserkFactor() * variant.rushMultiplier());
-            trueStrike(player, RUSH_TRUE * berserkFactor() * variant.rushMultiplier());
+            hit(player, "Rush", RUSH_DAMAGE * berserkFactor() * variant.rushMultiplier(),
+                    RUSH_TRUE * berserkFactor() * variant.rushMultiplier());
             rushTarget = null;
             pickOrbitTarget();
             return;
@@ -194,8 +197,7 @@ public final class EnderDragonMob extends CrimsonIsleMob {
     private void fireball(SkyBlockPlayer target) {
         double multiplier = berserkFactor() * variant.projectileMultiplier();
         MobProjectile.item(this, target, ItemStack.of(Material.FIRE_CHARGE), 1.0, hit -> {
-            strike(hit, BOLT_DAMAGE * multiplier);
-            trueStrike(hit, BOLT_TRUE * multiplier);
+            hit(hit, "Fireball", BOLT_DAMAGE * multiplier, BOLT_TRUE * multiplier);
             hit.setVelocity(hit.getVelocity().add(0, 14, 0));
         });
     }
@@ -210,8 +212,7 @@ public final class EnderDragonMob extends CrimsonIsleMob {
             if (isRemoved() || isDead() || getInstance() == null) return;
             for (SkyBlockPlayer player : playersNear(strikeAt, 2.5)) {
                 if (covered(player)) continue;
-                strike(player, BOLT_DAMAGE * multiplier);
-                trueStrike(player, BOLT_TRUE * multiplier);
+                hit(player, "Lightning Strike", BOLT_DAMAGE * multiplier, BOLT_TRUE * multiplier);
             }
         }).delay(TaskSchedule.tick(LIGHTNING_DELAY)).schedule();
     }
@@ -230,6 +231,14 @@ public final class EnderDragonMob extends CrimsonIsleMob {
             if (getInstance().getBlock(at.add(0, dy, 0)).isSolid()) return true;
         }
         return false;
+    }
+
+    private void hit(SkyBlockPlayer player, String attack, double normal, double trueDamage) {
+        if (player.isDead()) return;
+        float dealt = MobAttackService.strike(this, player, normal);
+        MobAttackService.trueStrike(this, player, trueDamage);
+        player.sendMessage(Text.of("<c>{} used {} on you for {} damage.", variant.displayName(), attack,
+                StringUtility.commaify(dealt + trueDamage)));
     }
 
     private void contactStrike() {

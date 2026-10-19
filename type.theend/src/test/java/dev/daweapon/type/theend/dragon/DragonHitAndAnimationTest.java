@@ -23,4 +23,14 @@ class DragonHitAndAnimationTest {
         assertEquals(GlassRise.EGG_Y - GlassRise.BASE_Y, GlassRise.heightAt(GlassRise.RISE_TICKS * 2));
         assertTrue(GlassRise.heightAt(50) > 0 && GlassRise.heightAt(50) < GlassRise.heightAt(80));
     }
+
+    @Test
+    void gateMessagesFollowCumulativeDamage() {
+        assertEquals(0, DragonGate.messagesFor(0, 299_999).length);
+        assertEquals("The Dragon's Gate is weakening!", DragonGate.messagesFor(0, 300_000)[0]);
+        assertEquals(2, DragonGate.messagesFor(0, 600_000).length);
+        assertEquals(1, DragonGate.messagesFor(1, 600_000).length);
+        assertEquals(4, DragonGate.messagesFor(0, 5_000_000).length);
+        assertEquals(0, DragonGate.messagesFor(4, 5_000_000).length);
+    }
 }

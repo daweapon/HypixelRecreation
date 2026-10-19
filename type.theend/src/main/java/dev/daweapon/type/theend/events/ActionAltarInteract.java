@@ -50,9 +50,11 @@ public class ActionAltarInteract implements HypixelEventClass {
         player.addAndUpdateItem(ItemType.SLEEPING_EYE, 1);
         setEye(event, true);
         EyeLedger ledger = EnderDragonFight.ledger();
-        player.getInstance().getPlayers().forEach(nearby -> nearby.sendMessage(Text.of(
-                "<5>{} <d>placed a Summoning Eye! <7>({}/{} <7>Summoning Eyes placed)",
-                player.getUsername(), ledger.count(), EyeLedger.FRAMES)));
+        String ending = ledger.complete() ? " Brace yourselves!" : "";
+        player.getInstance().getPlayers().forEach(nearby -> {
+            String who = nearby == player ? "You" : player.getUsername();
+            nearby.sendMessage(Text.of("<d>{} <5>placed a Summoning Eye!{} <7>({}/{})", who, ending, ledger.count(), EyeLedger.FRAMES));
+        });
         EnderDragonFight.onAltarFilled(player.getInstance());
     }
 
