@@ -7,7 +7,7 @@ import dev.daweapon.type.skyblockgeneric.loottable.OtherLoot;
 public class MobMinerSkeleton_20 extends MobMinerSkeleton_15 {
     @Override
     public Integer getLevel() {
-        return 20;
+        return 14;
     }
 
     @Override

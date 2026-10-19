@@ -6,6 +6,9 @@ import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.skyblockgeneric.deepcaverns.DeepCavernsQuests;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 
 // NPC for the Lapis Miner, found in the Deep Caverns.
 public class NPCLapisMiner extends HypixelNPC {
@@ -42,6 +45,61 @@ public class NPCLapisMiner extends HypixelNPC {
 	@Override
 	public void onClick(NPCInteractEvent event) {
 		SkyBlockPlayer player = (SkyBlockPlayer) event.player();
-		player.notImplemented();
+		if (isInDialogue(player)) return;
+
+		int state = DeepCavernsQuests.lapisMinerState(player);
+		if (state == DeepCavernsQuests.LAPIS_DONE) {
+			setDialogue(player, "idle");
+			return;
+		}
+
+		if (state == DeepCavernsQuests.LAPIS_UNTOUCHED) {
+			DeepCavernsQuests.setLapisMinerState(player, DeepCavernsQuests.LAPIS_ASKED);
+			setDialogue(player, "first");
+			return;
+		}
+
+		if (DeepCavernsQuests.collectionTier(player, ItemType.LAPIS_LAZULI) < DeepCavernsQuests.LAPIS_COLLECTION_TIER) {
+			setDialogue(player, "collection");
+			return;
+		}
+
+		if (player.getAmountInInventory(ItemType.LAPIS_PICKAXE) < 1) {
+			setDialogue(player, "craft");
+			return;
+		}
+
+		player.takeItem(ItemType.LAPIS_PICKAXE, 1);
+		DeepCavernsQuests.setLapisMinerState(player, DeepCavernsQuests.LAPIS_DONE);
+		setDialogue(player, "thanks").thenRun(() -> player.addAndUpdateItem(new SkyBlockItem(ItemType.COMPACTOR)));
+	}
+
+	@Override
+	protected DialogueSet[] dialogues(HypixelPlayer player) {
+		return new DialogueSet[]{
+				DialogueSet.builder().key("first").lines(
+						"Hey you! I broke my Lapis Pickaxe - do you think you could bring me another?",
+						"First you'll need to reach <9>Lapis Lazuli Collection III<f>, and then you can craft it for me."
+				).build(),
+				DialogueSet.builder().key("collection").lines(
+						"Some items in SkyBlock can only be crafted when you reach a certain collection requirement.",
+						"To craft me a Lapis Pickaxe, you will need to reach <9>Lapis Lazuli Collection III<f>."
+				).build(),
+				DialogueSet.builder().key("craft").lines(
+						"Oh! You reached <9>Lapis Lazuli Collection III<f>!",
+						"Any chance you can craft me a new <9>Lapis Pickaxe <f>now?",
+						"Check the <a>Recipe Book <f>in your SkyBlock Menu to learn how to craft it!"
+				).build(),
+				DialogueSet.builder().key("thanks").lines(
+						"Thank you! I appreciate your support in these trying times.",
+						"For your trouble, here's a <9>Compactor<f>. Place it in a minion upgrade slot and it will automatically turn items into their block form once it's collected enough of them.",
+						"I use it in my Lapis Minion, those things fill terribly fast!"
+				).build(),
+				DialogueSet.builder().key("idle").lines(
+						"My Lapis Pickaxe might not mine the fastest, but it gives me a lot of experience!",
+						"I use that experience to enchant my Lapis Pickaxe with efficiency, which makes it mine faster!",
+						"How cool is that?"
+				).build()
+		};
 	}
 }

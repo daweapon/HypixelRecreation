@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "deep-caverns-quests"
+    name: "The Deep Caverns Quests Update"
+    date: "19th October 2026"
+    material: lapis_lazuli
+    title: "The Deep Caverns Quests Update"
+    book: "deep_caverns_quests_update.yml"
   - version: "hoppitys-hunt"
     name: "The Hoppity's Hunt Update"
     date: "18th October 2026"

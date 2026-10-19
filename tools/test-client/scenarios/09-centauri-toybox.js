@@ -33,11 +33,11 @@ module.exports = {
             mainSlots = occupied(bot, 6);
             const stray = mainSlots.filter((slot) => !INNER.has(slot) && !NAV.has(slot));
             t.assert(stray.length === 0, `items outside the grid: ${stray}`);
-            t.assert(mainSlots.filter((slot) => INNER.has(slot)).length === 13, `expected 7 general + 5 category + 1 loose button, got ${mainSlots}`);
+            t.assert(mainSlots.filter((slot) => INNER.has(slot)).length === 14, `expected 7 general + 6 category + 1 loose button, got ${mainSlots}`);
             return mainSlots;
         });
 
-        for (const [index, name] of [[7, 'Mining'], [8, 'Garden'], [9, 'Experimentation'], [10, 'Currencies'], [11, 'Dungeons']]) {
+        for (const [index, name] of [[7, 'Mining'], [8, 'Garden'], [9, 'Experimentation'], [10, 'Currencies'], [11, "Hoppity's Hunt"], [12, 'Dungeons']]) {
             await t.step(`${name} category opens with every button inside the grid`, async () => {
                 const slot = 19 + (index - 7);
                 await bot.click(slot, { button: 0, mode: 0 });

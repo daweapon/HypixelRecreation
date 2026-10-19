@@ -38,7 +38,7 @@ public class MobMinerSkeleton_15 extends BestiaryMob implements RegionPopulator 
 
 	@Override
 	public Integer getLevel() {
-		return 15;
+		return 11;
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class MobMinerSkeleton_15 extends BestiaryMob implements RegionPopulator 
 	public ItemStatistics getBaseStatistics() {
 		return ItemStatistics.builder()
 				.withBase(ItemStatistic.HEALTH, 250D)
-				.withBase(ItemStatistic.DAMAGE, 200D)
+				.withBase(ItemStatistic.DAMAGE, 150D)
 				.withBase(ItemStatistic.SPEED, 100D)
 				.build();
 	}

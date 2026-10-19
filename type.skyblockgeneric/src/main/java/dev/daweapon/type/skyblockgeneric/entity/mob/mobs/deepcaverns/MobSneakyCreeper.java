@@ -38,7 +38,7 @@ public class MobSneakyCreeper extends BestiaryMob implements RegionPopulator {
 
 	@Override
 	public Integer getLevel() {
-		return 3;
+		return 5;
 	}
 
 	@Override

@@ -2952,7 +2952,7 @@ items:
     rarity: EPIC
     default_statistics:
       defense: 250
-    unavailable: "Needs the Obsidian Defender mob"
+    unavailable: "Needs the Obsidian Defender mob, which only spawns in the Dragon's Nest in The End (not built yet)"
     source: "Dropped by Obsidian Defenders (0.1%)"
     lore:
       - "§7While worn, gain §a+1 §f Speed§7 for"

@@ -1086,7 +1086,7 @@ items:
     default_statistics:
       health: 15
       defense: 10
-    unavailable: "Obsidian Defender mob not found in repo"
+    unavailable: "Needs the Obsidian Defender mob, which only spawns in the Dragon's Nest in The End (not built yet)"
     source: "1% rare drop from Obsidian Defender (Lv44)"
     lore:
       - "§7All stats on this piece of equipment"

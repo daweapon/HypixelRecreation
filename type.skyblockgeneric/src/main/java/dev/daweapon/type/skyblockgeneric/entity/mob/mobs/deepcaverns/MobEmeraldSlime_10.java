@@ -7,7 +7,7 @@ import dev.daweapon.type.skyblockgeneric.loottable.OtherLoot;
 public class MobEmeraldSlime_10 extends MobEmeraldSlime_05 {
     @Override
     public Integer getLevel() {
-        return 10;
+        return 7;
     }
 
     @Override

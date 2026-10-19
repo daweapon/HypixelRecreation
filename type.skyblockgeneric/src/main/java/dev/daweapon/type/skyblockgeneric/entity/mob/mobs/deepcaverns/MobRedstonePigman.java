@@ -39,7 +39,7 @@ public class MobRedstonePigman extends BestiaryMob implements RegionPopulator {
 
 	@Override
 	public Integer getLevel() {
-		return 3;
+		return 8;
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class MobRedstonePigman extends BestiaryMob implements RegionPopulator {
 						1.6,
 						20,
 						TimeUnit.SERVER_TICK,
-						RegionType.LAPIS_QUARRY), // TODO: only attack target if they broke a redstone ore, or they attacked first
+						RegionType.PIGMENS_DEN), // TODO: only attack target if they broke a redstone ore, or they attacked first
 				new RandomRegionStrollGoal(this, 15, RegionType.PIGMENS_DEN)  // Walk around
 		);
 	}

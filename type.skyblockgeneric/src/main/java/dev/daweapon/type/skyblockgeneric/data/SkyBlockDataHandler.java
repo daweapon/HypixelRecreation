@@ -724,6 +724,18 @@ public class SkyBlockDataHandler extends DataHandler {
         JACOBUS_UPGRADES("jacobus_upgrades", false, false, false,
                 DatapointInteger.class, new DatapointInteger("jacobus_upgrades", 0)),
 
+        RHYS_ORES_DELIVERED("rhys_ores_delivered", false, false, false,
+                DatapointInteger.class, new DatapointInteger("rhys_ores_delivered", 0)),
+
+        LAPIS_MINER_STATE("lapis_miner_state", false, false, false,
+                DatapointInteger.class, new DatapointInteger("lapis_miner_state", 0)),
+
+        REDSTONE_MINER_TIER("redstone_miner_tier", false, false, false,
+                DatapointInteger.class, new DatapointInteger("redstone_miner_tier", 0)),
+
+        REDSTONE_MINER_ACCEPTED("redstone_miner_accepted", false, false, false,
+                DatapointInteger.class, new DatapointInteger("redstone_miner_accepted", 0)),
+
         TRADE_COINS_SENT("trade_coins_sent", false, false, false,
                 DatapointString.class, new DatapointString("trade_coins_sent", "")),
 

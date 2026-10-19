@@ -1,0 +1,23 @@
+title: "The Deep Caverns Quests Update"
+date: "19th October 2026"
+intro:
+  - "The three miners of the Deep Caverns finally have something to say, and the Lift Operator works again."
+sections:
+  - heading: "Rhys"
+    colour: "<5>"
+    lines:
+      - "Rhys in the Obsidian Sanctuary wants 15 enchanted ores once you reach Mining Level XII. Any mix of Enchanted Redstone, Iron Ingot, Coal, Emerald, Lapis Lazuli, Diamond and Gold Ingot counts, and you can hand them over in several visits."
+      - "Finishing his request earns the Resourceful achievement. The Dwarven Mines stay open to everyone, so existing players lose nothing."
+  - heading: "Lapis Miner"
+    colour: "<9>"
+    lines:
+      - "The Lapis Miner in the Lapis Quarry asks for a Lapis Pickaxe once you reach Lapis Lazuli Collection III. He keeps the pickaxe and pays you with a Compactor."
+  - heading: "Redstone Miner"
+    colour: "<c>"
+    lines:
+      - "The Redstone Miner in the Pigmen's Den trades Accessory Bag slots for Redstone once you reach Redstone Collection II. He asks for 128, then 256, 512 and 1,024 Redstone, and each delivery adds one slot, four in total."
+  - heading: "Fixes"
+    colour: "<a>"
+    lines:
+      - "The Lift Operator now shows which layers you have discovered and lets you travel to all of them, including the Pigmen's Den, which was refused before."
+      - "Deep Caverns mob levels now match the wiki, and Lapis Zombies live in the Lapis Quarry and Redstone Pigmen stay in the Pigmen's Den."

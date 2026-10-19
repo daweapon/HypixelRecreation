@@ -12,6 +12,7 @@ import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import dev.daweapon.type.generic.gui.inventory.item.GUIClickableItem;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
+import dev.daweapon.type.skyblockgeneric.region.RegionType;
 import dev.daweapon.type.skyblockgeneric.region.SkyBlockRegion;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -50,7 +51,7 @@ public class GUILiftOperator extends HypixelInventoryGUI {
 							DatapointStringList.class
 					);
 					List<String> discoveredZonesList = discoveredZones.getValue();
-					if (!discoveredZonesList.contains(location.prettyName()) && location != LiftLocation.DWARVEN_MINES) {
+					if (!location.isDiscovered(discoveredZonesList)) {
 						player.sendMessage("<c>You have not discovered the {} yet!", location.prettyName());
 						return;
 					}
@@ -66,7 +67,7 @@ public class GUILiftOperator extends HypixelInventoryGUI {
 							DatapointStringList.class
 					);
 					List<String> discoveredZonesList = discoveredZones.getValue();
-					if (!discoveredZonesList.contains(location.name()) && location != LiftLocation.DWARVEN_MINES) {
+					if (!location.isDiscovered(discoveredZonesList)) {
 						return ItemStacks.item(location.material, """
 								<a>{}
 								<7>Click to teleport to the
@@ -114,6 +115,10 @@ public class GUILiftOperator extends HypixelInventoryGUI {
 
 		private static void teleportLocation(HypixelPlayer player, Pos pos) {
 			player.teleport(pos);
+		}
+
+		public boolean isDiscovered(List<String> discoveredRegions) {
+			return this == DWARVEN_MINES || discoveredRegions.contains(RegionType.valueOf(name()).getName());
 		}
 
 		public String prettyName() {

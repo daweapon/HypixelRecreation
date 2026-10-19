@@ -149,6 +149,7 @@ public final class MaxStickService {
             new Step("Minion crafts", MaxStickService::maxMinionCrafts),
             new Step("Missions", MaxStickService::maxMissions),
             new Step("Chocolate Factory", MaxStickService::maxChocolateFactory),
+            new Step("Deep Caverns quests", dev.daweapon.type.skyblockgeneric.deepcaverns.DeepCavernsQuests::maxOut),
             new Step("Mob types", MaxStickService::maxMobTypes),
             new Step("Fame", MaxStickService::maxFame),
             new Step("Bits", MaxStickService::giveMaxBits),

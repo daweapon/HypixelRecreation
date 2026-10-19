@@ -40,7 +40,7 @@ public class MobMinerZombie_15 extends BestiaryMob implements RegionPopulator {
 
 	@Override
 	public Integer getLevel() {
-		return 15;
+		return 13;
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgrades;
 import dev.daweapon.type.generic.data.datapoints.DatapointInteger;
 import dev.daweapon.type.skyblockgeneric.collection.CustomCollectionAward;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
+import dev.daweapon.type.skyblockgeneric.deepcaverns.DeepCavernsQuests;
 import dev.daweapon.type.skyblockgeneric.hunting.AttributeEffectService;
 import dev.daweapon.type.skyblockgeneric.hunting.AttributeId;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * Accessory Bag size, as Hypixel counts it since July 2026: 9 slots from the start, +6 per Redstone
  * collection tier II to IX (48), +2 per Jacobus purchase (198), +1 per Accessory Size attribute level
- * (10), plus the Community Center account upgrade (12) and the Redstone Miner (4), which aren't built.
+ * (10), plus the Community Center account upgrade (12) and the Redstone Miner quest (4).
  */
 public final class AccessoryBagSlots {
     public static final int BASE = 9;
@@ -62,7 +63,7 @@ public final class AccessoryBagSlots {
     }
 
     public static int redstoneMiner(SkyBlockPlayer player) {
-        return 0;
+        return DeepCavernsQuests.redstoneSlots(DeepCavernsQuests.redstoneTier(player));
     }
 
     /** The next Redstone upgrade still to unlock, or null once all eight are owned. */
