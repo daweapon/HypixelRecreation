@@ -3,7 +3,7 @@ items:
     material: player_head
     name: "Antlers Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "the Taylor 2025 Winter Bundle"
     lore:
       - "§7A set of beautiful antlers adorn"
@@ -61,7 +61,6 @@ items:
     material: player_head
     name: "Fading Rainbow Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
     source: "Fire Sales"
     lore:
       - "§7Your axe fades into every color of"
@@ -76,7 +75,6 @@ items:
     material: player_head
     name: "Barkshatter Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
     source: "Fire Sales"
     lore:
       - "§7Your axe throws bark all over the"
@@ -91,7 +89,6 @@ items:
     material: player_head
     name: "Soul Slice Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
     source: "Fire Sales"
     lore:
       - "§7Your axe slices the very threads of"
@@ -106,7 +103,6 @@ items:
     material: player_head
     name: "Bark Tunes Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
     source: "Fire Sales"
     lore:
       - "§7Plays aggresive barks when slaying"
@@ -135,7 +131,7 @@ items:
     material: player_head
     name: "Blazing Sun Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "the Taylor 2025 Summer Bundle"
     lore:
       - "§7The Blazing Sun conquers all."
@@ -151,7 +147,7 @@ items:
     material: player_head
     name: "Blooming Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "the Taylor Spring Bundle"
     lore:
       - "§7A wonderful circle of flowers"
@@ -195,7 +191,6 @@ items:
     material: player_head
     name: "Crowned Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
     source: "Fire Sales"
     lore:
       - "§7Only befit for a ruler of this world."
@@ -266,7 +261,6 @@ items:
     material: player_head
     name: "Explosifall Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
     source: "the Taylor Fall Bundle"
     lore:
       - "§7Let the slain be one with nature."
@@ -296,7 +290,7 @@ items:
     material: player_head
     name: "Flowery Carpet Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "the Taylor Spring Bundle"
     lore:
       - "§7A small piece of nature. Obtained"
@@ -311,7 +305,6 @@ items:
     material: player_head
     name: "Flowing Fall Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
     source: "the Taylor Fall Bundle"
     lore:
       - "§7Let the flowers hit the floor."
@@ -340,7 +333,7 @@ items:
     material: player_head
     name: "Golden Carpet Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sales"
     lore:
       - "§7A small piece of royalty. Obtained"
@@ -369,7 +362,7 @@ items:
     material: player_head
     name: "Grand Freezing Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sales"
     lore:
       - "§7Special look on Jerry's Workshop!"
@@ -384,7 +377,7 @@ items:
     material: player_head
     name: "Grand Gardening Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "the Taylor Spring Bundle"
     lore:
       - "§7Special look on Farming Islands &"
@@ -400,7 +393,7 @@ items:
     material: player_head
     name: "Grand Leaf-ing Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "the Taylor Fall Bundle"
     lore:
       - "§7Special §dCherry Blossom §7effect on"
@@ -416,7 +409,7 @@ items:
     material: player_head
     name: "Grand Searing Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sales"
     lore:
       - "§7Special look on the Crimson Isle!"
@@ -431,7 +424,6 @@ items:
     material: player_head
     name: "Harmony Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
     source: "Fire Sales"
     lore:
       - "§7Less controversial than §5Stereo"
@@ -446,7 +438,7 @@ items:
     material: player_head
     name: "Heartsplosion Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "the Taylor Valentine's Bundle"
     lore:
       - "§7Explode your enemies... with love."
@@ -488,7 +480,7 @@ items:
     material: player_head
     name: "Ice Skates Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "the Taylor Winter 2023 Bundle"
     lore:
       - "§7Shred that ice! Obtained from the"
@@ -543,7 +535,7 @@ items:
     material: player_head
     name: "Meow Music Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sales"
     lore:
       - "§7Plays captivating meows when slaying"
@@ -572,7 +564,6 @@ items:
     material: player_head
     name: "Ornamental Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
     source: "Fire Sales"
     lore:
       - "§7Display wonderful ornaments all"
@@ -588,7 +579,7 @@ items:
     material: player_head
     name: "Peafowl Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sales"
     lore:
       - "§7Show off some colorful blue"
@@ -603,7 +594,6 @@ items:
     material: player_head
     name: "Primal Fear Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
     source: "Fire Sales"
     lore:
       - "§7What are you scared of? Obtained"
@@ -618,7 +608,6 @@ items:
     material: player_head
     name: "Rainbow Carpet Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
     source: "Fire Sales"
     lore:
       - "§7A small piece of a prism. Obtained"
@@ -646,7 +635,7 @@ items:
     material: player_head
     name: "Rainy Day Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "the Taylor 2024 Summer Bundle"
     lore:
       - "§7Nothin' like a rainy summer day."
@@ -688,7 +677,7 @@ items:
     material: player_head
     name: "Smitten Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "the Taylor Valentine's 2024 Bundle"
     lore:
       - "§7Do you want to be my lover?"
@@ -774,7 +763,7 @@ items:
     material: player_head
     name: "Spellbound Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sales"
     lore:
       - "§7Creates a captivating Enchanting"
@@ -803,7 +792,7 @@ items:
     material: player_head
     name: "Sunny Spiral Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "the Taylor Summer Bundle"
     lore:
       - "§7The heat of the sun orbits you!"
@@ -819,7 +808,7 @@ items:
     material: player_head
     name: "Super Pumpkin Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "the Taylor Fall 2024 Bundle"
     lore:
       - "§7YEAH BABY? GIANT PUMPKIN?"
@@ -850,7 +839,6 @@ items:
     material: player_head
     name: "Turkey Rune"
     rarity: LEGENDARY
-    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
     source: "Fire Sales"
     lore:
       - "§7Show off some gobbly brown"

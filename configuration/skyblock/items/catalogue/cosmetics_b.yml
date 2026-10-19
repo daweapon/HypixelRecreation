@@ -3,7 +3,7 @@ items:
     material: player_head
     name: "Deep Sea Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -34,7 +34,7 @@ items:
     material: player_head
     name: "Cat-o-Lantern Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Taylor Fall 2024 seasonal bundle, 350 SkyBlock Gems"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -57,7 +57,7 @@ items:
     material: player_head
     name: "Bag of Coal Backpack Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Taylor Winter 2023 seasonal bundle, 350 SkyBlock Gems"
     lore:
       - "§7§7Item skins give your gear a"
@@ -110,7 +110,6 @@ items:
     material: player_head
     name: "Sandstorm Cat Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -130,7 +129,7 @@ items:
     material: player_head
     name: "Pumpkin Spice Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -150,7 +149,7 @@ items:
     material: player_head
     name: "Snowflake Space Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -170,7 +169,6 @@ items:
     material: player_head
     name: "Blazing Crimson Helmet Skin"
     rarity: SPECIAL
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -216,7 +214,7 @@ items:
     material: player_head
     name: "Jester Bonzo's Mask Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -253,7 +251,6 @@ items:
     material: player_head
     name: "Caduceus Mender Skin"
     rarity: SPECIAL
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -290,7 +287,7 @@ items:
     material: player_head
     name: "Cherry Blossom Power Orb Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Spring 2024 Fire Sale, 1,350 SkyBlock Gems"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -318,7 +315,7 @@ items:
     material: player_head
     name: "Christmas Stocking Backpack Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Taylor Winter 2023 seasonal bundle, 350 SkyBlock Gems"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -341,7 +338,6 @@ items:
     material: player_head
     name: "Corrupt Wither Goggles Helmet Skin"
     rarity: SPECIAL
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -364,7 +360,7 @@ items:
     material: player_head
     name: "Spooky Skin"
     rarity: LEGENDARY
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -444,7 +440,7 @@ items:
     material: player_head
     name: "Gumball Machine Power Orb Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Winter Taylor seasonal bundle, 1,350 SkyBlock Gems (Gumball Machine skin)"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -472,7 +468,7 @@ items:
     material: player_head
     name: "Dragon Egg Backpack Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale (July 29, 2023), 650 SkyBlock Gems"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -534,7 +530,6 @@ items:
     material: player_head
     name: "Harvester Helmet Skin"
     rarity: SPECIAL
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -573,7 +568,7 @@ items:
     material: player_head
     name: "Fireworks Shadow Assassin Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -595,7 +590,7 @@ items:
     material: player_head
     name: "Floral Power Orb Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Spring 2025 Fire Sale, 1,350 SkyBlock Gems"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -637,7 +632,7 @@ items:
     material: player_head
     name: "Icicle Skin"
     rarity: LEGENDARY
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -732,7 +727,7 @@ items:
     material: player_head
     name: "Glacial Divan Helmet Skin"
     rarity: SPECIAL
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -752,7 +747,7 @@ items:
     material: player_head
     name: "Glacial Guardian Glacite Helmet Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -787,7 +782,7 @@ items:
     material: player_head
     name: "Glowing Grape Power Orb Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale, 1,350 SkyBlock Gems"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -815,7 +810,7 @@ items:
     material: player_head
     name: "Genie Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -835,7 +830,7 @@ items:
     material: player_head
     name: "Golden Turtle Egg Power Orb Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale (September 3, 2023), 1,350 SkyBlock Gems (Golden Turtle Egg skin)"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -863,7 +858,7 @@ items:
     material: player_head
     name: "Celestial Goldor's Helmet Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -886,7 +881,7 @@ items:
     material: player_head
     name: "Hambagger Backpack Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Taylor Summer 2024 seasonal bundle, 350 SkyBlock Gems"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -983,7 +978,7 @@ items:
     material: player_head
     name: "Shimmer Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1021,7 +1016,7 @@ items:
     material: player_head
     name: "Kitsune Tiki Mask Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1057,7 +1052,7 @@ items:
     material: player_head
     name: "Ragnarok's Bane Magma Lord Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1080,7 +1075,7 @@ items:
     material: player_head
     name: "Celestial Maxor's Helmet Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1103,7 +1098,7 @@ items:
     material: player_head
     name: "Meteor Magma Lord Helmet Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1140,7 +1135,7 @@ items:
     material: player_head
     name: "Celestial Necron's Helmet Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1163,7 +1158,7 @@ items:
     material: player_head
     name: "Nutcracker Knight Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1183,7 +1178,7 @@ items:
     material: player_head
     name: "Shimmer Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1206,7 +1201,7 @@ items:
     material: player_head
     name: "Paladin Mineral Helmet Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1230,7 +1225,7 @@ items:
     material: player_head
     name: "Penguin Backpack Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale (December 24, 2022), 650 SkyBlock Gems"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1253,7 +1248,7 @@ items:
     material: player_head
     name: "Paladin Perfect Helmet Skin"
     rarity: LEGENDARY
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1303,7 +1298,7 @@ items:
     material: player_head
     name: "Pirate Bomb Power Orb Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale (July 15, 2023), 1,350 SkyBlock Gems"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1331,7 +1326,7 @@ items:
     material: player_head
     name: "Polar Nights Power Orb Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Winter 2024 Fire Sale, 1,350 SkyBlock Gems"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1359,7 +1354,6 @@ items:
     material: player_head
     name: "Hunter Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1382,7 +1376,7 @@ items:
     material: player_head
     name: "Shimmer Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1419,7 +1413,7 @@ items:
     material: player_head
     name: "Blue Oni Reaper Mask Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1439,7 +1433,6 @@ items:
     material: player_head
     name: "Spectre Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1491,7 +1484,7 @@ items:
     material: player_head
     name: "Sentinel Warden Skin"
     rarity: SPECIAL
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1511,7 +1504,7 @@ items:
     material: player_head
     name: "Mauve Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1533,7 +1526,6 @@ items:
     material: player_head
     name: "Fox Hoodie Skin"
     rarity: LEGENDARY
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1582,7 +1574,6 @@ items:
     material: player_head
     name: "Sorrowful Samurai Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1605,7 +1596,7 @@ items:
     material: player_head
     name: "Celestial Storm's Helmet Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1628,7 +1619,7 @@ items:
     material: player_head
     name: "Shimmer Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1651,7 +1642,7 @@ items:
     material: player_head
     name: "Shimmer Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1685,7 +1676,7 @@ items:
     material: player_head
     name: "Thunder Aqua Biker Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1705,7 +1696,7 @@ items:
     material: player_head
     name: "Thunder Pink Biker Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1764,7 +1755,7 @@ items:
     material: player_head
     name: "Shimmer Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1787,7 +1778,7 @@ items:
     material: player_head
     name: "Dragon Hydra Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1833,7 +1824,7 @@ items:
     material: player_head
     name: "Shimmer Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1856,7 +1847,7 @@ items:
     material: player_head
     name: "Celestial Wither Goggles Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1879,7 +1870,7 @@ items:
     material: player_head
     name: "Ablaze Skin"
     rarity: EPIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1899,7 +1890,7 @@ items:
     material: player_head
     name: "Shimmer Skin"
     rarity: MYTHIC
-    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"

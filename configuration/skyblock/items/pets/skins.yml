@@ -14,6 +14,7 @@ items:
     material: player_head
     name: "Hermit Beach Ball Ammonite Skin"
     rarity: EPIC
+    source: "Fire Sale on 2024-08-03, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Ammonite"
@@ -69,6 +70,7 @@ items:
     material: player_head
     name: "Shelled Ammonite Skin"
     rarity: LEGENDARY
+    source: "Fire Sale on 2026-08-22, 950 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Ammonite"
@@ -88,6 +90,7 @@ items:
     material: player_head
     name: "Iceberg Ankylosaurus Skin"
     rarity: EPIC
+    source: "Fire Sale on 2026-05-23, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Ankylosaurus"
@@ -115,6 +118,7 @@ items:
     material: player_head
     name: "Armaron Armadillo Skin"
     rarity: MYTHIC
+    source: "Fire Sale on 2024-10-02, 1,350 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Armadillo"
@@ -163,6 +167,7 @@ items:
     material: player_head
     name: "Dark Sasquatch Baby Yeti Skin"
     rarity: EPIC
+    source: "Fire Sale on 2023-09-30, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Baby Yeti"
@@ -200,6 +205,7 @@ items:
     material: player_head
     name: "Blizzard Bal Skin"
     rarity: MYTHIC
+    source: "Fire Sale on 2024-09-21, 1,350 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Bal"
@@ -220,6 +226,7 @@ items:
     material: player_head
     name: "Bone Bat Skin"
     rarity: EPIC
+    source: "Fire Sale on 2023-10-28, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Bat"
@@ -267,6 +274,7 @@ items:
     material: player_head
     name: "BeeLoved Bee Skin"
     rarity: EPIC
+    source: "Fire Sale on 2024-02-24, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Bee"
@@ -367,6 +375,7 @@ items:
     material: player_head
     name: "Cardboard Box Black Cat Skin"
     rarity: EPIC
+    source: "Fire Sale on 2025-03-01, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Black Cat"
@@ -376,6 +385,7 @@ items:
     material: player_head
     name: "Catgirl Black Cat Skin"
     rarity: ADMIN
+    source: "Fire Sale on 2025-04-05, 1,800 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Black Cat"
@@ -396,6 +406,7 @@ items:
     material: player_head
     name: "Litter Black Cat Skin"
     rarity: MYTHIC
+    source: "Taylor's Summer 2026 Seasonal Bundle, 1,350 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Black Cat"
@@ -406,6 +417,7 @@ items:
     material: player_head
     name: "Loafed Black Cat Skin"
     rarity: EPIC
+    source: "Fire Sale on 2024-10-05, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Black Cat"
@@ -471,6 +483,7 @@ items:
     material: player_head
     name: "Candy Slime Spirit Skin"
     rarity: EPIC
+    source: "Fire Sale on 2024-11-16, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Spirit"
@@ -516,6 +529,7 @@ items:
     material: player_head
     name: "Pink Chick Chicken Skin"
     rarity: EPIC
+    source: "Fire Sale on 2025-04-26, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Chicken"
@@ -543,6 +557,7 @@ items:
     material: player_head
     name: "Roast Chicken Skin"
     rarity: EPIC
+    source: "Taylor's Collection, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Chicken"
@@ -552,6 +567,7 @@ items:
     material: player_head
     name: "Rubber Chicken Skin"
     rarity: EPIC
+    source: "Fire Sale on 2023-11-25, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Chicken"
@@ -588,6 +604,7 @@ items:
     material: player_head
     name: "Snow Crow Skin"
     rarity: MYTHIC
+    source: "Fire Sale on 2025-12-20, 1,350 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Crow"
@@ -606,6 +623,7 @@ items:
     material: player_head
     name: "Midnight Dolphin Skin"
     rarity: MYTHIC
+    source: "Fire Sale on 2024-07-27, 1,350 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Dolphin"
@@ -761,6 +779,7 @@ items:
     material: player_head
     name: "Dark Blue Plushie Elephant Skin"
     rarity: EPIC
+    source: "Fire Sale on 2025-10-11, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Elephant"
@@ -816,6 +835,7 @@ items:
     material: player_head
     name: "Pink Plushie Elephant Skin"
     rarity: EPIC
+    source: "Fire Sale on 2024-01-06, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Elephant"
@@ -899,6 +919,7 @@ items:
     material: player_head
     name: "Despair Enderman Skin"
     rarity: EPIC
+    source: "Fire Sale on 2024-11-23, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Enderman"
@@ -908,6 +929,7 @@ items:
     material: player_head
     name: "Endercat Enderman Skin"
     rarity: LEGENDARY
+    source: "Fire Sale on 2026-02-28, 950 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Enderman"
@@ -974,6 +996,7 @@ items:
     material: player_head
     name: "Gateway Endermite Skin"
     rarity: EPIC
+    source: "Fire Sale on 2025-06-28, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Endermite"
@@ -1021,6 +1044,7 @@ items:
     material: player_head
     name: "Smol Ender Dragon Skin"
     rarity: ADMIN
+    source: "Taylor's Fall 2026 Seasonal Bundle, 1,800 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Ender Dragon"
@@ -1031,6 +1055,7 @@ items:
     material: player_head
     name: "Super Plushie Ender Dragon Skin"
     rarity: ADMIN
+    source: "Taylor's Collection, 1,800 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Ender Dragon"
@@ -1087,6 +1112,7 @@ items:
     material: player_head
     name: "Tidal Bowl Flying Fish Skin"
     rarity: MYTHIC
+    source: "Fire Sale on 2026-09-12, 1,350 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Flying Fish"
@@ -1096,6 +1122,7 @@ items:
     material: player_head
     name: "Harlequin Flying Fish Skin"
     rarity: MYTHIC
+    source: "Fire Sale on 2024-06-29, 1,350 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Flying Fish"
@@ -1106,6 +1133,7 @@ items:
     material: player_head
     name: "Hungry Flying Fish Skin"
     rarity: MYTHIC
+    source: "Taylor's Summer 2026 Seasonal Bundle, 1,350 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Flying Fish"
@@ -1116,6 +1144,7 @@ items:
     material: player_head
     name: "Four Seasons Griffin Skin"
     rarity: ADMIN
+    source: "Fire Sale on 2023-12-09, 1,800 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Griffin"
@@ -1137,6 +1166,7 @@ items:
     material: player_head
     name: "Burning Frog Skin"
     rarity: EPIC
+    source: "Fire Sale on 2026-10-10, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Frog"
@@ -1173,6 +1203,7 @@ items:
     material: player_head
     name: "Bamboo Giraffe Skin"
     rarity: EPIC
+    source: "Fire Sale on 2025-05-17, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Giraffe"
@@ -1209,6 +1240,7 @@ items:
     material: player_head
     name: "Cavern Glacite Golem Skin"
     rarity: MYTHIC
+    source: "Fire Sale on 2024-04-27, 1,350 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Glacite Golem"
@@ -1219,6 +1251,7 @@ items:
     material: player_head
     name: "Crystal Glacite Golem Skin"
     rarity: LEGENDARY
+    source: "Fire Sale on 2026-01-24, 950 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Glacite Golem"
@@ -1228,6 +1261,7 @@ items:
     material: player_head
     name: "Molten Glacite Golem Skin"
     rarity: EPIC
+    source: "Fire Sale on 2025-08-16, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Glacite Golem"
@@ -1246,6 +1280,7 @@ items:
     material: player_head
     name: "Jinn Goblin Skin"
     rarity: EPIC
+    source: "Fire Sale on 2025-05-31, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Goblin"
@@ -1264,6 +1299,7 @@ items:
     material: player_head
     name: "Ancient Golden Dragon Skin"
     rarity: ADMIN
+    source: "Fire Sale on 2024-02-10, 1,800 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Golden Dragon"
@@ -1285,6 +1321,7 @@ items:
     material: player_head
     name: "Super Plushie Golden Dragon Skin"
     rarity: ADMIN
+    source: "Taylor's Collection, 1,800 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Golden Dragon"
@@ -1296,6 +1333,7 @@ items:
     material: player_head
     name: "End Golem Skin"
     rarity: EPIC
+    source: "Fire Sale on 2024-04-20, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Golem"
@@ -1305,6 +1343,7 @@ items:
     material: player_head
     name: "Real Grandma Wolf Skin"
     rarity: EPIC
+    source: "Fire Sale on 2024-05-18, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Grandma Wolf"
@@ -1378,6 +1417,7 @@ items:
     material: player_head
     name: "Burning Hedgehog Skin"
     rarity: LEGENDARY
+    source: "Fire Sale on 2026-01-31, 950 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Hedgehog"
@@ -1387,6 +1427,7 @@ items:
     material: player_head
     name: "Glacial Hedgehog Skin"
     rarity: EPIC
+    source: "Fire Sale on 2024-12-21, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Hedgehog"
@@ -1460,6 +1501,7 @@ items:
     material: player_head
     name: "Clay Golem Skin"
     rarity: EPIC
+    source: "Taylor's Collection, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Golem"
@@ -1469,6 +1511,7 @@ items:
     material: player_head
     name: "Baby Jade Dragon Skin"
     rarity: ADMIN
+    source: "Fire Sale on 2026-07-04, 1,800 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Jade Dragon"
@@ -1480,6 +1523,7 @@ items:
     material: player_head
     name: "Cute Jellyfish Skin"
     rarity: MYTHIC
+    source: "Fire Sale on 2025-03-29, 1,350 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Jellyfish"
@@ -1545,6 +1589,7 @@ items:
     material: player_head
     name: "Mummy Jerry Skin"
     rarity: LEGENDARY
+    source: "Fire Sale on 2024-11-02, 950 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Jerry"
@@ -1601,6 +1646,7 @@ items:
     material: player_head
     name: "Lioness Lion Skin"
     rarity: EPIC
+    source: "Fire Sale on 2026-02-21, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Lion"
@@ -1628,6 +1674,7 @@ items:
     material: player_head
     name: "White Lion Skin"
     rarity: EPIC
+    source: "Fire Sale on 2024-08-31, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Lion"
@@ -1656,6 +1703,7 @@ items:
     material: player_head
     name: "Copper Mammoth Skin"
     rarity: EPIC
+    source: "Fire Sale on 2026-05-30, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Mammoth"
@@ -1684,6 +1732,7 @@ items:
     material: player_head
     name: "Void Mammoth Skin"
     rarity: EPIC
+    source: "Fire Sale on 2025-06-21, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Mammoth"
@@ -1711,6 +1760,7 @@ items:
     material: player_head
     name: "Cherry Blossom Mithril Golem Skin"
     rarity: EPIC
+    source: "Fire Sale on 2024-01-20, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Mithril Golem"
@@ -1739,6 +1789,7 @@ items:
     material: player_head
     name: "Geode Mithril Golem Skin"
     rarity: MYTHIC
+    source: "Fire Sale on 2026-07-18, 1,350 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Mithril Golem"
@@ -1767,6 +1818,7 @@ items:
     material: player_head
     name: "Astronaut Monkey Skin"
     rarity: EPIC
+    source: "Fire Sale on 2024-01-13, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Monkey"
@@ -1805,6 +1857,7 @@ items:
     material: player_head
     name: "Lion Tamarin Monkey Skin"
     rarity: EPIC
+    source: "Fire Sale on 2025-02-15, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Monkey"
@@ -1833,6 +1886,7 @@ items:
     material: player_head
     name: "Sock Monkey Skin"
     rarity: EPIC
+    source: "Taylor's Collection, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Monkey"
@@ -1869,6 +1923,7 @@ items:
     material: player_head
     name: "Highland Orange Mooshroom Cow Skin"
     rarity: EPIC
+    source: "Fire Sale on 2026-07-25, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Mooshroom Cow"
@@ -1914,6 +1969,7 @@ items:
     material: player_head
     name: "Moonbloom Mooshroom Cow Skin"
     rarity: LEGENDARY
+    source: "Fire Sale on 2024-08-24, 950 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Mooshroom Cow"
@@ -1924,6 +1980,7 @@ items:
     material: player_head
     name: "Myceliyum Burger Mooshroom Cow Skin"
     rarity: EPIC
+    source: "Taylor's Collection, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Mooshroom Cow"
@@ -1951,6 +2008,7 @@ items:
     material: player_head
     name: "Panther Ocelot Skin"
     rarity: LEGENDARY
+    source: "Fire Sale on 2025-04-19, 950 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Ocelot"
@@ -1970,6 +2028,7 @@ items:
     material: player_head
     name: "Red Panda Ocelot Skin"
     rarity: EPIC
+    source: "Fire Sale on 2025-05-24, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Ocelot"
@@ -2016,6 +2075,7 @@ items:
     material: player_head
     name: "Galaxy Parrot Skin"
     rarity: EPIC
+    source: "Fire Sale on 2025-05-03, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Parrot"
@@ -2070,6 +2130,7 @@ items:
     material: player_head
     name: "Seagull Phoenix Skin"
     rarity: EPIC
+    source: "Fire Sale on 2025-07-26, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Phoenix"
@@ -2079,6 +2140,7 @@ items:
     material: player_head
     name: "BBQ Pigman Skin"
     rarity: EPIC
+    source: "Taylor's Collection, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Pigman"
@@ -2134,6 +2196,7 @@ items:
     material: player_head
     name: "Garden Bunny Rabbit Skin"
     rarity: MYTHIC
+    source: "Fire Sale on 2026-04-04, 1,350 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Rabbit"
@@ -2173,6 +2236,7 @@ items:
     material: player_head
     name: "Plushie Rabbit Skin"
     rarity: EPIC
+    source: "Fire Sale on 2024-03-30, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Rabbit"
@@ -2263,6 +2327,7 @@ items:
     material: player_head
     name: "Mr Claws Rat Skin"
     rarity: EPIC
+    source: "Fire Sale on 2023-11-18, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Rat"
@@ -2533,6 +2598,7 @@ items:
     material: player_head
     name: "Gummy Worm Scatha Skin"
     rarity: ADMIN
+    source: "Fire Sale on 2025-11-22, 1,800 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Scatha"
@@ -2561,6 +2627,7 @@ items:
     material: player_head
     name: "Pup Seal Skin"
     rarity: EPIC
+    source: "Taylor's Fall 2026 Seasonal Bundle, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Seal"
@@ -2570,6 +2637,7 @@ items:
     material: player_head
     name: "Sea Leopard Seal Skin"
     rarity: EPIC
+    source: "Fire Sale on 2026-06-13, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Seal"
@@ -2644,6 +2712,7 @@ items:
     material: player_head
     name: "Dark Green Sheep Skin"
     rarity: EPIC
+    source: "Fire Sale on 2025-09-13, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Sheep"
@@ -2843,6 +2912,7 @@ items:
     material: player_head
     name: "Silbrrrfish Silverfish Skin"
     rarity: EPIC
+    source: "Fire Sale on 2025-01-18, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Silverfish"
@@ -2880,6 +2950,7 @@ items:
     material: player_head
     name: "Plushie Tuxedo Sloth Skin"
     rarity: LEGENDARY
+    source: "Fire Sale on 2026-08-08, 950 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Sloth"
@@ -2890,6 +2961,7 @@ items:
     material: player_head
     name: "Azure Sea Slug Skin"
     rarity: EPIC
+    source: "Fire Sale on 2023-12-02, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Slug"
@@ -2899,6 +2971,7 @@ items:
     material: player_head
     name: "Banana Slug Skin"
     rarity: EPIC
+    source: "Fire Sale on 2025-02-22, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Slug"
@@ -2926,6 +2999,7 @@ items:
     material: player_head
     name: "Cake Snail Skin"
     rarity: LEGENDARY
+    source: "Fire Sale on 2025-02-01, 950 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Snail"
@@ -2974,6 +3048,7 @@ items:
     material: player_head
     name: "Melting Snowman Skin"
     rarity: EPIC
+    source: "Fire Sale on 2025-01-25, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Snowman"
@@ -2983,6 +3058,7 @@ items:
     material: player_head
     name: "Plushie Snowman Skin"
     rarity: EPIC
+    source: "Fire Sale on 2023-12-30, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Snowman"
@@ -3019,6 +3095,7 @@ items:
     material: player_head
     name: "Baby Spinosaurus Skin"
     rarity: MYTHIC
+    source: "Fire Sale on 2026-05-16, 1,350 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Spinosaurus"
@@ -3029,6 +3106,7 @@ items:
     material: player_head
     name: "Chromari Squid Skin"
     rarity: MYTHIC
+    source: "Fire Sale on 2024-06-08, 1,350 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Squid"
@@ -3058,6 +3136,7 @@ items:
     material: player_head
     name: "Greenbottle Tarantula Skin"
     rarity: EPIC
+    source: "Fire Sale on 2024-03-23, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Tarantula"
@@ -3170,6 +3249,7 @@ items:
     material: player_head
     name: "Shell Shulked Turtle Skin"
     rarity: MYTHIC
+    source: "Fire Sale on 2025-08-23, 1,350 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Turtle"
@@ -3180,6 +3260,7 @@ items:
     material: player_head
     name: "Baby T-Rex Skin"
     rarity: MYTHIC
+    source: "Fire Sale on 2026-06-27, 1,350 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "T-Rex"
@@ -3190,6 +3271,7 @@ items:
     material: player_head
     name: "Fossil T-Rex Skin"
     rarity: EPIC
+    source: "Fire Sale on 2025-01-04, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "T-Rex"
@@ -3227,6 +3309,7 @@ items:
     material: player_head
     name: "Spirit Orca Blue Whale Skin"
     rarity: ADMIN
+    source: "Fire Sale on 2025-09-06, 1,800 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Blue Whale"
@@ -3303,6 +3386,7 @@ items:
     material: player_head
     name: "Fenrir Wolf Skin"
     rarity: MYTHIC
+    source: "Fire Sale on 2024-10-19, 1,350 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Wolf"
@@ -3313,6 +3397,7 @@ items:
     material: player_head
     name: "German Wolf Skin"
     rarity: EPIC
+    source: "Taylor's Collection, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Wolf"
@@ -3322,6 +3407,7 @@ items:
     material: player_head
     name: "Husky Wolf Skin"
     rarity: MYTHIC
+    source: "Fire Sale on 2023-10-14, 1,350 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Wolf"
@@ -3369,6 +3455,7 @@ items:
     material: player_head
     name: "Brain Freeze Zombie Skin"
     rarity: EPIC
+    source: "Fire Sale on 2023-12-23, 650 SkyBlock Gems"
     components:
       - id: PET_SKIN
         pet_name: "Zombie"

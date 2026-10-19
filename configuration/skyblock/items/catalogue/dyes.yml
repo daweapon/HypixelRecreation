@@ -26,7 +26,6 @@ items:
       - ""
       - "§7Animates the color of an armor piece"
       - "§7between §c#048F95§7 and §c#088D97§7!"
-    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
     source: "Legacy Fire Sale item (Dec 24 2024), 375 SkyBlock Gems; no longer obtainable except trading"
     components:
       - id: SKULL_HEAD
@@ -99,7 +98,6 @@ items:
       - ""
       - "§7This dye also displays a §6special"
       - "§6particle effect §7when equipped!"
-    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
     source: "Legacy Fire Sale item (Mar 28 2026), 375 SkyBlock Gems; no longer obtainable except trading"
     components:
       - id: SKULL_HEAD
@@ -329,7 +327,6 @@ items:
       - ""
       - "§7Animates the color of an armor piece"
       - "§7between §a#64D400§7 and §a#65D400§7!"
-    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
     source: "Legacy Fire Sale item (Jul 19 2025), 375 SkyBlock Gems; no longer obtainable except trading"
     components:
       - id: SKULL_HEAD
@@ -402,7 +399,6 @@ items:
       - ""
       - "§7This dye also displays a §6special"
       - "§6particle effect §7when equipped!"
-    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
     source: "Legacy Fire Sale item (Apr 1 2026), 375 SkyBlock Gems; no longer obtainable except trading"
     components:
       - id: SKULL_HEAD
@@ -440,7 +436,6 @@ items:
       - ""
       - "§7Animates the color of an armor piece"
       - "§7between §c#CA3B00§7 and §c#C63900§7!"
-    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
     source: "Legacy Fire Sale item (Oct 26 2024), 375 SkyBlock Gems; no longer obtainable except trading"
     components:
       - id: SKULL_HEAD
@@ -476,7 +471,6 @@ items:
       - ""
       - "§7Animates the color of an armor piece"
       - "§7between §a#87FF37§7 and §a#006944§7!"
-    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
     source: "Legacy Fire Sale item (Mar 2024), 375 SkyBlock Gems; no longer obtainable except trading"
     components:
       - id: SKULL_HEAD
@@ -649,7 +643,7 @@ items:
       - ""
       - "§7Animates the color of an armor piece"
       - "§7between §b#064DC3§7 and §b#0554C9§7!"
-    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Legacy Fire Sale item (Mar 15 2025), 375 SkyBlock Gems; no longer obtainable except trading"
     components:
       - id: SKULL_HEAD
@@ -667,7 +661,6 @@ items:
       - ""
       - "§7Animates the color of an armor piece"
       - "§7between §d#FB87FF§7 and §d#ED87FF§7!"
-    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
     source: "Legacy Fire Sale item (Sep 2024), 375 SkyBlock Gems; no longer obtainable except trading"
     components:
       - id: SKULL_HEAD
@@ -742,7 +735,6 @@ items:
       - ""
       - "§7This dye also displays a §6special"
       - "§6particle effect §7when equipped!"
-    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
     source: "Legacy Fire Sale item (Jul 2024), 375 SkyBlock Gems; no longer obtainable except trading"
     components:
       - id: SKULL_HEAD
@@ -813,7 +805,6 @@ items:
       - ""
       - "§7Animates the color of an armor piece"
       - "§7between §c#F06766§7 and §c#310417§7!"
-    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
     source: "Legacy Fire Sale item (May 2024), 375 SkyBlock Gems; no longer obtainable except trading"
     components:
       - id: SKULL_HEAD
@@ -997,7 +988,6 @@ items:
       - ""
       - "§7Animates the color of an armor piece"
       - "§7between §9#034150§7 and §9#009295§7!"
-    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
     source: "Legacy Fire Sale item (Feb 2024), 375 SkyBlock Gems; no longer obtainable except trading"
     components:
       - id: SKULL_HEAD

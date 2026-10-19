@@ -8,13 +8,14 @@ import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceDarkAuctionCo
 import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceDianaMobCommand;
 import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceDropCommand;
 import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceEruptionCommand;
+import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceFireSaleCommand;
 
 import java.util.List;
 import java.util.Map;
 
 @CommandParameters(labels = "force",
-        description = "Forces a drop, the next Diana mob, a Dark Auction or a Volcano eruption",
-        usage = "/force <drop|diana|darkauction|eruption> ...",
+        description = "Forces a drop, the next Diana mob, a Dark Auction, a Volcano eruption or a Fire Sale",
+        usage = "/force <drop|diana|darkauction|eruption|firesale> ...",
         permission = Rank.STAFF,
         allowsConsole = false)
 public class ForceCommand extends CommandGroup {
@@ -23,7 +24,8 @@ public class ForceCommand extends CommandGroup {
         return List.of(new ForceDropCommand(),
                 new ForceDianaMobCommand(),
                 new ForceDarkAuctionCommand(),
-                new ForceEruptionCommand());
+                new ForceEruptionCommand(),
+                new ForceFireSaleCommand());
     }
 
     @Override
@@ -32,6 +34,7 @@ public class ForceCommand extends CommandGroup {
                 Map.entry("forcedianamob", "force diana"),
                 Map.entry("dianamob", "force diana"),
                 Map.entry("forcedarkauction", "force darkauction"),
-                Map.entry("forceeruption", "force eruption"));
+                Map.entry("forceeruption", "force eruption"),
+                Map.entry("firesale", "force firesale"));
     }
 }

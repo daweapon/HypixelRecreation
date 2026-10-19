@@ -13,7 +13,7 @@ final class TaylorGems {
 
     static <S> void slot(ViewLayout<S> layout, int slot) {
         layout.slot(slot, (s, c) -> item((SkyBlockPlayer) c.player()),
-                (click, c) -> c.player().sendMessage("<a>Gems can be purchased from our webstore at <b>store.hypixel.net<a>!"));
+                (click, c) -> c.player().sendMessage("<a>Gems are handed out by staff on this server."));
     }
 
     private static ItemStack.Builder item(SkyBlockPlayer player) {
@@ -27,9 +27,7 @@ final class TaylorGems {
                 <7> - <d>Account & Profile Upgrades
 
                 <7>You have: <a>{} Gems
-                <8>Gems can be purchased from our
-                <8>webstore at <b>store.hypixel.net<8>!
-
-                <e>Click to get link!""", StringUtility.commaify(player.getGems()));
+                <8>Gems are handed out by staff on
+                <8>this server.""", StringUtility.commaify(player.getGems()));
     }
 }

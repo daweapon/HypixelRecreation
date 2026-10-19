@@ -1,9 +1,5 @@
 package dev.daweapon.type.hub.gui.elizabeth;
 
-import net.kyori.adventure.inventory.Book;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.event.ClickEvent;
-import net.kyori.adventure.text.format.TextColor;
 import net.minestom.server.event.inventory.InventoryCloseEvent;
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.Inventory;
@@ -14,7 +10,12 @@ import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import dev.daweapon.type.generic.gui.inventory.HypixelInventoryGUI;
 import dev.daweapon.type.generic.gui.inventory.item.GUIClickableItem;
 import dev.daweapon.type.generic.gui.inventory.item.GUIItem;
+import dev.daweapon.type.skyblockgeneric.firesale.ActiveFireSale;
+import dev.daweapon.type.skyblockgeneric.firesale.FireSale;
+import dev.daweapon.type.skyblockgeneric.firesale.FireSaleService;
+import dev.daweapon.type.skyblockgeneric.item.updater.NonPlayerItemUpdater;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.commons.StringUtility;
 
 import dev.daweapon.type.generic.user.HypixelPlayer;
 
@@ -63,17 +64,11 @@ public class GUIFIRESales extends HypixelInventoryGUI {
                 }
             });
         }
+        FireSaleService.latest().ifPresentOrElse(this::showSale, this::showNoSale);
         set(new GUIClickableItem(49) {
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                p.openBook(Book.builder()
-                        .addPage(Component.text("Purchase ranks, gems and more on our webstore!")
-                                .appendNewline()
-                                .appendNewline()
-                                .append(Component.text("      "))
-                                .append(Component.text("VISIT STORE").clickEvent(ClickEvent.openUrl("http://bit.ly/4aG54lt")).color(TextColor.fromHexString("#00AAAA"))))
-                        .build()
-                );
+                p.sendMessage("<a>Gems are handed out by staff on this server.");
             }
 
             @Override
@@ -84,18 +79,84 @@ public class GUIFIRESales extends HypixelInventoryGUI {
                         <8>Elizabeth
 
                         <7>Gems: <a>{:,}
-                        <8>Purchase on store.hypixel.net!
+                        <8>Handed out by staff!
 
                         <7>Bits: <b>{:,}
                         <8>Earn from Booster Cookies!
 
                         <7>Fame Rank: <e>
                         <8>Rank up by spending gems & bits!
-                        <e>Click to get link!""", player.getGems(), player.getBits()));
+                        """, player.getGems(), player.getBits()));
             }
         });
         updateItemStacks(getInventory(), getPlayer());
     }
+    private void showNoSale() {
+        set(new GUIItem(22) {
+            public ItemStack.Builder getItem(HypixelPlayer p) {
+                return ItemStacks.item(Material.BARRIER, """
+                        <c>No Fire Sale
+                        <7>There is no Fire Sale running
+                        <7>right now. <a>Elizabeth <7>will call you
+                        <7>when the next one starts!""");
+            }
+        });
+    }
+
+    private void showSale(ActiveFireSale active) {
+        FireSale sale = active.sale();
+        int[] slots = saleSlots(sale.items().size());
+        boolean over = active.ended(System.currentTimeMillis());
+        for (int index = 0; index < slots.length; index++) {
+            String itemId = sale.items().get(index);
+            set(new GUIClickableItem(slots[index]) {
+                @Override
+                public void run(InventoryPreClickEvent e, HypixelPlayer p) {
+                    SkyBlockPlayer player = (SkyBlockPlayer) p;
+                    player.sendMessage(FireSaleService.purchase(player, active, itemId));
+                    new GUIFIRESales().open(player);
+                }
+
+                @Override
+                public ItemStack.Builder getItem(HypixelPlayer p) {
+                    SkyBlockPlayer player = (SkyBlockPlayer) p;
+                    ItemStack.Builder stack = new NonPlayerItemUpdater(FireSaleService.buildItem(itemId)).getUpdatedItem();
+                    String stock = sale.unlimited() ? "<a>Unlimited" : "<a>" + StringUtility.commaify((int) active.remaining()) + " <7>of <a>" + StringUtility.commaify((int) sale.stock());
+                    String unavailable = sale.unavailableReason(itemId);
+                    String action = over ? "<c>This Fire Sale has ended!"
+                            : unavailable != null ? "<c>" + unavailable
+                            : player.getGems() < sale.gems() ? "<c>You cannot afford this!"
+                            : "<e>Click to purchase!";
+                    return ItemStacks.appendLore(stack, """
+                            \s
+                            <7>Cost
+                            <a>{} Gems
+                            \s
+                            <7>Stock left: {}
+                            <7>Ends in: <e>{}
+                            \s
+                            <7>You have: <a>{} Gems
+                            \s
+                            {}""", StringUtility.commaify(sale.gems()), stock, remainingText(active), StringUtility.commaify(player.getGems()), action);
+                }
+            });
+        }
+    }
+
+    private static String remainingText(ActiveFireSale active) {
+        long seconds = Math.max(0, (active.endsAt() - System.currentTimeMillis()) / 1000);
+        return seconds >= 3600 ? seconds / 3600 + "h " + seconds % 3600 / 60 + "m" : seconds / 60 + "m " + seconds % 60 + "s";
+    }
+
+    private static int[] saleSlots(int count) {
+        return switch (count) {
+            case 1 -> new int[]{22};
+            case 2 -> new int[]{21, 23};
+            case 3 -> new int[]{20, 22, 24};
+            default -> java.util.stream.IntStream.range(19, 19 + Math.min(count, 7)).toArray();
+        };
+    }
+
     @Override
     public boolean allowHotkeying() {
         return false;

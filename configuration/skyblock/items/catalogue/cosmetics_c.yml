@@ -11,7 +11,6 @@ items:
           skull_texture: 28c456c9bd879ed222abe8dcc8f1b0591df5abdfe4c237874980523fd6640135
       - id: SKULL_HEAD
         texture: 28c456c9bd879ed222abe8dcc8f1b0591df5abdfe4c237874980523fd6640135
-    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
     source: "Taylor's Fall 2026 Seasonal Bundle: 250 SkyBlock Gems"
   - id: AWAKENED_EYE_BACKPACK
     material: player_head
@@ -37,7 +36,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Taylor's Spring 2024 Seasonal Bundle: 350 SkyBlock Gems"
   - id: BACKPACK_CAULDRON
     material: player_head
@@ -63,7 +62,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Taylor's Fall 2025 Seasonal Bundle: 375 SkyBlock Gems"
   - id: BAMBOO_BARN_SKIN
     material: stick
@@ -130,7 +129,7 @@ items:
         animated: true
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Taylor's Summer 2024 Seasonal Bundle: 1,350 SkyBlock Gems"
   - id: BINGO_DISPLAY
     material: coal_block
@@ -164,7 +163,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on December 13, 2025: 650 SkyBlock Gems, limited stock 950"
   - id: BIOHAZARD_SPACE_TEAL
     material: player_head
@@ -187,7 +186,6 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
     source: "Fire Sale hosted on December 13, 2025: 650 SkyBlock Gems, limited stock 950"
   - id: BLOOD_MOON_FISH_ORB
     material: player_head
@@ -273,7 +271,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Taylor's Fall 2025 Seasonal Bundle: 1,800 SkyBlock Gems"
   - id: CHAOS_TERROR
     material: player_head
@@ -331,7 +329,6 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
     source: "Fire Sale hosted on March 14, 2026: 1,800 SkyBlock Gems, limited stock 10,000"
   - id: CHOCOLATE_FACTORY_BARN_SKIN
     material: player_head
@@ -447,7 +444,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Taylor's Winter 2024 Seasonal Bundle: 650 SkyBlock Gems"
   - id: DOUBLE_ICE_CREAM_FLUX
     material: player_head
@@ -478,7 +475,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Taylor's Summer 2025 Seasonal Bundle: 1,350 SkyBlock Gems"
   - id: DRAGON_WYVERN
     material: player_head
@@ -567,7 +564,7 @@ items:
         animated: true
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on August 20, 2023: 1,350 SkyBlock Gems, limited stock 12,500"
   - id: FESTIVE_JERRY_PERSONALITY
     material: player_head
@@ -606,7 +603,6 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
     source: "Fire Sale hosted on May 2, 2026: 950 SkyBlock Gems, limited stock 4,000"
   - id: FISHY_PENGUIN_PERSONALITY
     material: player_head
@@ -620,7 +616,7 @@ items:
           skull_texture: b3983cd47149d76b89f89a58450b9f798911c80299ab5a13fc4bde95fc04d509
       - id: SKULL_HEAD
         texture: b3983cd47149d76b89f89a58450b9f798911c80299ab5a13fc4bde95fc04d509
-    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Taylor's 2025 Winter Bundle"
   - id: FLOWER_POT_BARN_SKIN
     material: player_head
@@ -659,7 +655,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on June 1, 2024: 650 SkyBlock Gems, limited stock 4,000"
   - id: GARDEN_WARRIOR_FERMENTO
     material: player_head
@@ -775,7 +771,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on October 3, 2026: 650 SkyBlock Gems, limited stock 950"
   - id: GLACITE_GUARDIAN_LIGHT
     material: player_head
@@ -798,7 +794,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on October 3, 2026: 650 SkyBlock Gems, limited stock 950"
   - id: GLISTENING_MELON_FLUX
     material: player_head
@@ -828,7 +824,7 @@ items:
         animated: true
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on March 10, 2023: 1,350 SkyBlock Gems, limited stock unlimited"
   - id: GOBLIN_HELMET_BABY
     material: player_head
@@ -851,7 +847,6 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
     source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
   - id: GOBLIN_HELMET_GOLDEN
     material: player_head
@@ -874,7 +869,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
   - id: GOLDEN_APPLE_FLUX
     material: player_head
@@ -904,7 +899,7 @@ items:
         animated: true
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on March 10, 2023: 1,350 SkyBlock Gems, limited stock unlimited"
   - id: GREAT_SHARK_MAGMA_LORD
     material: player_head
@@ -934,7 +929,6 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
     source: "Fire Sale hosted on August 10, 2024: 1,800 SkyBlock Gems, limited stock 17,500"
   - id: HARVEST_BARN_SKIN
     material: player_head
@@ -977,7 +971,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Taylor's Spring 2026 Seasonal Bundle: 950 SkyBlock Gems"
   - id: HIVE_BARN_SKIN
     material: terracotta
@@ -1040,7 +1034,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
   - id: HOT_COCOA_BACKPACK
     material: player_head
@@ -1066,7 +1060,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Taylor's Winter 2024 Seasonal Bundle: 350 SkyBlock Gems"
   - id: JERRY_NEW_YEAR_26
     material: player_head
@@ -1119,7 +1113,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on January 22, 2023: 650 SkyBlock Gems, limited stock 8,000"
   - id: MAIN_STREET_BARN_SKIN
     material: player_head
@@ -1179,7 +1173,7 @@ items:
         animated: true
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Taylor's Spring 2026 Seasonal Bundle: 1,350 SkyBlock Gems"
   - id: MUSHROOM_BARN_SKIN
     material: red_mushroom
@@ -1241,7 +1235,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
   - id: ORCHARD_GREENHOUSE_SKIN
     material: apple
@@ -1282,7 +1276,6 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
     source: "Fire Sale hosted on June 15, 2024: 950 SkyBlock Gems, limited stock 7,500"
   - id: PENGUIN_PERSONALITY
     material: player_head
@@ -1339,7 +1332,7 @@ items:
           skull_texture: beb13a2b616c967ed23d8b036beea180abe6a4a994c3112b05eb2de3c84bcfa5
       - id: SKULL_HEAD
         texture: beb13a2b616c967ed23d8b036beea180abe6a4a994c3112b05eb2de3c84bcfa5
-    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Taylor's 2025 Winter Bundle"
   - id: PRECURSOR_EYE_OCULUS
     material: player_head
@@ -1369,7 +1362,6 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
     source: "Fire Sale hosted on December 6, 2025: 1,350 SkyBlock Gems, limited stock 4,000"
   - id: PROTECTOR_BABY
     material: player_head
@@ -1392,7 +1384,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
   - id: PUFFERFISH_PERSONALITY
     material: player_head
@@ -1432,7 +1424,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on April 5, 2021: 650 SkyBlock Gems, limited stock unlimited"
   - id: REAPER_ONI_MASK
     material: player_head
@@ -1457,7 +1449,7 @@ items:
         animated: true
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on August 26, 2023: 1,350 SkyBlock Gems, limited stock 9,000"
   - id: REAPER_SPIRIT
     material: player_head
@@ -1483,7 +1475,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on September 19, 2020: 1,250 SkyBlock Gems, limited stock 1,000"
   - id: ROBOT_PERSONALITY
     material: player_head
@@ -1497,7 +1489,7 @@ items:
           skull_texture: 909011385f19c680f8bb39cb6b75991dd47c1712dcc2763489bb82ec0c9cf442
       - id: SKULL_HEAD
         texture: 909011385f19c680f8bb39cb6b75991dd47c1712dcc2763489bb82ec0c9cf442
-    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Taylor's 2026 Spring Bundle"
   - id: SCARECROW_PERSONALITY
     material: player_head
@@ -1535,7 +1527,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on March 30, 2021: 650 SkyBlock Gems, limited stock unlimited"
   - id: SHADOW_ASSASSIN_SLY_FOX
     material: player_head
@@ -1561,7 +1553,7 @@ items:
         animated: true
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on May 6, 2023: 1,350 SkyBlock Gems, limited stock 6,500"
   - id: SHARK_SCALE_HOODIE_PENGUIN
     material: player_head
@@ -1588,7 +1580,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on February 7, 2026: 950 SkyBlock Gems, limited stock 2,000"
   - id: SKULL_PERSONALITY
     material: player_head
@@ -1627,7 +1619,7 @@ items:
         animated: true
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on December 25, 2020: 650 SkyBlock Gems, limited stock 1,000"
   - id: SPRING_BARN_BARN_SKIN
     material: hay_block
@@ -1664,7 +1656,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
   - id: SUPERIOR_BABY
     material: player_head
@@ -1687,7 +1679,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
   - id: TARANTULA_BLACK_WIDOW
     material: player_head
@@ -1711,7 +1703,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on October 23, 2020: 650 SkyBlock Gems, limited stock 1,500"
   - id: THERMAL_THERMODYNAMIC
     material: player_head
@@ -1737,7 +1729,6 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
     source: "Taylor's Summer 2026 Seasonal Bundle: 950 SkyBlock Gems"
   - id: THUNDER_BIKER_AZURE
     material: player_head
@@ -1760,7 +1751,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on November 8, 2025: 650 SkyBlock Gems, limited stock 950"
   - id: THUNDER_BIKER_TEAL
     material: player_head
@@ -1783,7 +1774,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on November 8, 2025: 650 SkyBlock Gems, limited stock 950"
   - id: TRADING_POST_BARN_SKIN
     material: oak_fence
@@ -1823,7 +1814,7 @@ items:
         animated: true
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on May 27, 2022: 1,350 SkyBlock Gems, limited stock 7,500"
   - id: UNSTABLE_BABY
     material: player_head
@@ -1847,7 +1838,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
   - id: WARDEN_SPARTAN
     material: player_head
@@ -1876,7 +1867,6 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
     source: "Taylor's Summer 2026 Seasonal Bundle: 1,800 SkyBlock Gems"
   - id: WATER_HYDRA_HEAD_ICE_HYDRA
     material: player_head
@@ -1936,7 +1926,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
   - id: WISP_SPIRIT
     material: player_head
@@ -1962,7 +1952,6 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
     source: "Taylor's Fall 2026 Seasonal Bundle: 950 SkyBlock Gems"
   - id: WITHER_GOGGLES_CYBERPUNK
     material: player_head
@@ -1987,7 +1976,7 @@ items:
         animated: true
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on January 13, 2023: 1,350 SkyBlock Gems, limited stock 10,000"
   - id: YOUNG_BABY
     material: player_head
@@ -2010,7 +1999,7 @@ items:
         animated: false
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
   - id: ZOMBIE_EYE_PERSONALITY
     material: player_head
@@ -2024,5 +2013,4 @@ items:
           skull_texture: 3ccdec4a9ea0845d383c8de0c6abea56f2edf0160e5d912b9ca7d7569f3be5ef
       - id: SKULL_HEAD
         texture: 3ccdec4a9ea0845d383c8de0c6abea56f2edf0160e5d912b9ca7d7569f3be5ef
-    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
     source: "Taylor's Fall 2026 Seasonal Bundle: 250 SkyBlock Gems"

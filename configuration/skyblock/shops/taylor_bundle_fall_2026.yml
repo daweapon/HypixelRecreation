@@ -1,0 +1,58 @@
+# Taylor's Fall 2026 Seasonal Bundle (wiki Taylor, Seasonal Bundles).
+title: Seasonal Bundles
+slots: DEFAULT
+entries:
+  - item: PET_SKIN_ENDER_DRAGON_SMOL
+    name: "<f>Smol Ender Dragon Skin"
+    material: player_head
+    cost: { gems: 1800 }
+  - item: PUMPKIN_FLUX
+    name: "<d>Pumpkin Power Orb Skin"
+    material: player_head
+    cost: { gems: 1350 }
+  - item: PRIMORDIAL_HUNTER
+    name: "<d>Hunter Skin"
+    material: player_head
+    cost: { gems: 1350 }
+  - item: HARVEST_GREENHOUSE_SKIN
+    name: "<6>Harvest Greenhouse Skin"
+    material: player_head
+    cost: { gems: 950 }
+  - item: WISP_SPIRIT
+    name: "<6>Wisp Spirit Skin"
+    material: player_head
+    cost: { gems: 950 }
+  - item: HARVEST_BARN_SKIN
+    name: "<6>Harvest Barn Skin"
+    material: player_head
+    cost: { gems: 950 }
+  - item: EXPLOSIFALL_RUNE
+    name: "<6>Explosifall Rune III"
+    material: player_head
+    cost: { gems: 950 }
+    rune_level: 3
+  - item: FLOWING_FALL_RUNE
+    name: "<6>Flowing Fall Rune III"
+    material: player_head
+    cost: { gems: 950 }
+    rune_level: 3
+  - item: PET_SKIN_SEAL_PUP
+    name: "<5>Pup Seal Skin"
+    material: player_head
+    cost: { gems: 650 }
+  - item: DYE_SLUDGE
+    name: "<d>Sludge Dye"
+    material: player_head
+    cost: { gems: 375 }
+  - item: DYE_SPIRIT
+    name: "<d>Spirit Dye"
+    material: player_head
+    cost: { gems: 375 }
+  - item: ZOMBIE_EYE_PERSONALITY
+    name: "<f>Zombie Eye Minion Skin"
+    material: player_head
+    cost: { gems: 250 }
+  - item: APOTHEJERRY_PERSONALITY
+    name: "<f>Apothejerry Minion Skin"
+    material: player_head
+    cost: { gems: 250 }

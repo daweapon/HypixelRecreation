@@ -38,7 +38,7 @@ items:
     material: player_head
     name: "Baby Seal Backpack Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -63,7 +63,7 @@ items:
     material: player_head
     name: "Cooler Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -139,7 +139,7 @@ items:
     material: player_head
     name: "Hazard Control Skin"
     rarity: LEGENDARY
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    source: "Fire Sale on 2026-09-05, 950 SkyBlock Gems"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -165,7 +165,7 @@ items:
     material: player_head
     name: "Red Space Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -187,7 +187,7 @@ items:
     material: player_head
     name: "Yellow Space Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -209,7 +209,7 @@ items:
     material: player_head
     name: "Blue Egged Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -261,7 +261,7 @@ items:
     material: player_head
     name: "Candy Corn Superior Dragon Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -283,7 +283,7 @@ items:
     material: player_head
     name: "Chef Minion Skin"
     rarity: COMMON
-    unavailable: "Taylor seasonal bundle for 250 Gems (store content); the seasonal bundles are not built"
+    source: "Taylor's Summer 2026 Seasonal Bundle, 250 SkyBlock Gems"
     components:
       - id: MINION_SKIN
         name: "Chef"
@@ -398,7 +398,7 @@ items:
     material: player_head
     name: "Phone Booth Power Orb Skin"
     rarity: MYTHIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    source: "Taylor's Summer 2026 Seasonal Bundle, 1,350 SkyBlock Gems"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -456,7 +456,7 @@ items:
     material: player_head
     name: "Enderpack Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -481,7 +481,7 @@ items:
     material: player_head
     name: "Fairy Backpack Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -506,7 +506,7 @@ items:
     material: player_head
     name: "Leaf Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -592,7 +592,7 @@ items:
     material: player_head
     name: "Fossil Muncher Minion Skin"
     rarity: COMMON
-    unavailable: "Taylor seasonal bundle for 250 Gems (store content); the seasonal bundles are not built"
+    source: "Taylor's Summer 2026 Seasonal Bundle, 250 SkyBlock Gems"
     components:
       - id: MINION_SKIN
         name: "Fossil Muncher"
@@ -611,7 +611,7 @@ items:
     material: player_head
     name: "Iceberg Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -661,7 +661,7 @@ items:
     material: player_head
     name: "Black Gift Backpack Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -686,7 +686,7 @@ items:
     material: player_head
     name: "Green Gift Backpack Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -727,7 +727,7 @@ items:
     material: player_head
     name: "Dark Guardian Glacite Helmet Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -749,7 +749,7 @@ items:
     material: player_head
     name: "Purple Guardian Glacite Helmet Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    source: "Fire Sale on 2026-10-03, 650 SkyBlock Gems"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -794,7 +794,7 @@ items:
     material: player_head
     name: "Diamond Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -816,7 +816,7 @@ items:
     material: player_head
     name: "Thief Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -852,7 +852,7 @@ items:
     material: player_head
     name: "Green Egged Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -915,7 +915,7 @@ items:
     material: player_head
     name: "Ender Holiday Chest Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -940,7 +940,7 @@ items:
     material: player_head
     name: "Teal Holiday Chest Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1159,7 +1159,7 @@ items:
     material: player_head
     name: "North Star Backpack Skin"
     rarity: LEGENDARY
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1209,7 +1209,7 @@ items:
     material: player_head
     name: "Owl Mage Minion Skin"
     rarity: COMMON
-    unavailable: "Taylor seasonal bundle for 250 Gems (store content); the seasonal bundles are not built"
+    source: "Taylor's Summer 2026 Seasonal Bundle, 250 SkyBlock Gems"
     components:
       - id: MINION_SKIN
         name: "Owl Mage"
@@ -1228,7 +1228,7 @@ items:
     material: player_head
     name: "Pastel Superior Dragon Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1250,7 +1250,7 @@ items:
     material: player_head
     name: "Reinforced Skin"
     rarity: LEGENDARY
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1386,7 +1386,7 @@ items:
     material: player_head
     name: "Pumpkin Power Orb Skin"
     rarity: MYTHIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    source: "Taylor's Fall 2026 Seasonal Bundle, 1,350 SkyBlock Gems"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1419,7 +1419,7 @@ items:
     material: player_head
     name: "Rabbit Onesie Jerry Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1441,7 +1441,7 @@ items:
     material: player_head
     name: "Red Oni Reaper Mask Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1463,7 +1463,7 @@ items:
     material: player_head
     name: "Reindeer Backpack Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1562,7 +1562,7 @@ items:
     material: player_head
     name: "Seal Hoodie Skin"
     rarity: LEGENDARY
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1589,7 +1589,7 @@ items:
     material: player_head
     name: "Smol Jerry Minion Skin"
     rarity: COMMON
-    unavailable: "Taylor seasonal bundle for 250 Gems (store content); the seasonal bundles are not built"
+    source: "Taylor's Summer 2026 Seasonal Bundle, 250 SkyBlock Gems"
     components:
       - id: MINION_SKIN
         name: "Smol Jerry"
@@ -1608,7 +1608,7 @@ items:
     material: player_head
     name: "Paladin Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1630,7 +1630,7 @@ items:
     material: player_head
     name: "Starknight Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1743,7 +1743,7 @@ items:
     material: player_head
     name: "Thunder Black Biker Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    source: "Fire Sale on 2025-11-08, 650 SkyBlock Gems"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1765,7 +1765,7 @@ items:
     material: player_head
     name: "Thunder Storm Knight Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1846,7 +1846,7 @@ items:
     material: player_head
     name: "Baby Hydra Skin"
     rarity: EPIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1868,7 +1868,7 @@ items:
     material: player_head
     name: "Wolf Pack Werewolf Skin"
     rarity: MYTHIC
-    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"

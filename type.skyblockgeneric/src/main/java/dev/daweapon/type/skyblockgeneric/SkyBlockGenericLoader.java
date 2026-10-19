@@ -89,6 +89,7 @@ import dev.daweapon.type.skyblockgeneric.hunting.HuntrapService;
 import dev.daweapon.type.skyblockgeneric.compactor.PersonalCompactorService;
 import dev.daweapon.type.skyblockgeneric.deletor.PersonalDeletorService;
 import dev.daweapon.type.skyblockgeneric.staff.MaxStickService;
+import dev.daweapon.type.skyblockgeneric.firesale.FireSaleService;
 import dev.daweapon.type.skyblockgeneric.carnival.Carnival;
 import dev.daweapon.type.skyblockgeneric.item.ItemConfigParser;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
@@ -181,6 +182,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         MaxStickService.initialize();
         SkyBlockAchievements.initialize();
         Carnival.initialize();
+        FireSaleService.initialize();
         PlayerItemUpdater.updateLoop(MinecraftServer.getSchedulerManager());
         File configDir = new File("./configuration/skyblock");
         File itemsDir = new File(configDir, "items");

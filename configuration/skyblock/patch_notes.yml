@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "gems-store"
+    name: "The Gems Store Update"
+    date: "18th October 2026"
+    material: emerald
+    title: "The Gems Store Update"
+    book: "gems_store_update.yml"
   - version: "crimson-activation"
     name: "The Crimson Isle Activation Update"
     date: "18th October 2026"

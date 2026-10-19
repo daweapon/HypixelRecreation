@@ -88,7 +88,7 @@ final class ToyBoxButtons {
 
     static List<ToyBoxButton> currencies() {
         return List.of(
-                of(Material.EMERALD, "<a>5k Gems", "<8>Get rich quick.", "<7>Set your gem purse to 5,000.", p -> p.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.GEMS, DatapointInteger.class).setValue(5_000)),
+                of(Material.EMERALD, "<a>5k Gems", "<8>Get rich quick.", "<7>Gain <a>5,000 Gems<7>.", p -> p.addGems(5_000)),
                 of(Material.SEA_LANTERN, "<a>Big ol' chunk o' Whispers!", "<8>To turn your tears to roses.", "<7>Get 1,000,000 Forest Whispers.", p -> p.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.FOREST_WHISPERS, DatapointLong.class).setValue(1_000_000L)),
                 of(Material.BONE_BLOCK, "<d>Fossil Essence", "<8>Older than time itself.", "<7>Gain <d>100,000 Fossil Essence<7>.", p -> Essences.add(p, EssenceType.FOSSIL, 100_000)),
                 of(Material.NETHER_STAR, "<d>Every Essence", "<8>The full collection.", "<7>Gain <d>100,000<7> of every essence type.", p -> {

@@ -101,6 +101,7 @@ public final class MaxStickService {
     private static final int MOB_TYPE_COIN_REWARD = 1000;
 
     private static final int MAX_BITS = 100_000_000;
+    private static final int MAX_GEMS = 100_000;
 
     private static final int MAX_CONTEST_MEDALS = 10_000;
     private static final int LUCIUS_FINAL_TIER_DARK_AUCTION_PURCHASES = 7;
@@ -153,6 +154,7 @@ public final class MaxStickService {
             new Step("Mob types", MaxStickService::maxMobTypes),
             new Step("Fame", MaxStickService::maxFame),
             new Step("Bits", MaxStickService::giveMaxBits),
+            new Step("Gems", MaxStickService::giveMaxGems),
             new Step("Dark Auction calendar", MaxStickService::unlockDarkAuctionCalendar),
             new Step("Farming contests", MaxStickService::maxFarmingContests),
             new Step("Garden", dev.daweapon.type.skyblockgeneric.garden.GardenService::maxOut),
@@ -340,6 +342,10 @@ public final class MaxStickService {
 
     private static void giveMaxBits(SkyBlockPlayer player) {
         player.setBits(MAX_BITS);
+    }
+
+    private static void giveMaxGems(SkyBlockPlayer player) {
+        player.setGems(MAX_GEMS);
     }
 
     // Real Hypixel only shows Dark Auction on the Calendar once a player has physically visited

@@ -6,6 +6,7 @@ import dev.daweapon.type.generic.command.HypixelCommand;
 import dev.daweapon.type.generic.user.categories.Rank;
 import dev.daweapon.type.skyblockgeneric.command.groups.set.BitsCommand;
 import dev.daweapon.type.skyblockgeneric.command.groups.set.CoinsCommand;
+import dev.daweapon.type.skyblockgeneric.command.groups.set.GemsCommand;
 import dev.daweapon.type.skyblockgeneric.command.groups.set.SetBestiaryCommand;
 import dev.daweapon.type.skyblockgeneric.command.groups.set.SetCollectionCommand;
 import dev.daweapon.type.skyblockgeneric.command.groups.set.SetEssenceCommand;
@@ -19,8 +20,8 @@ import java.util.List;
 import java.util.Map;
 
 @CommandParameters(labels = "set",
-        description = "Sets a profile value: coins, bits, experience levels, essence, reputation, pet level or rarity, bestiary, collection or a statistic",
-        usage = "/set <coins|bits|xp|essence|reputation|petlevel|petrarity|bestiary|collection|stat> ...",
+        description = "Sets a profile value: coins, bits, Gems, experience levels, essence, reputation, pet level or rarity, bestiary, collection or a statistic",
+        usage = "/set <coins|bits|gems|xp|essence|reputation|petlevel|petrarity|bestiary|collection|stat> ...",
         permission = Rank.STAFF,
         allowsConsole = false)
 public class SetCommand extends CommandGroup {
@@ -28,6 +29,7 @@ public class SetCommand extends CommandGroup {
     protected List<HypixelCommand> subcommands() {
         return List.of(new CoinsCommand(),
                 new BitsCommand(),
+                new GemsCommand(),
                 new XpCommand(),
                 new SetEssenceCommand(),
                 new SetReputationCommand(),
@@ -43,6 +45,7 @@ public class SetCommand extends CommandGroup {
         return Map.ofEntries(Map.entry("coins", "set coins"),
                 Map.entry("bits", "set bits"),
                 Map.entry("bit", "set bits"),
+                Map.entry("gems", "set gems"),
                 Map.entry("xp", "set xp"),
                 Map.entry("experience", "set xp"),
                 Map.entry("setessence", "set essence"),

@@ -1,0 +1,12 @@
+# Taylor's Seasonal Bundle rotation. The latest season whose start date has passed is the current bundle.
+# Set override to a season id to pin the bundle regardless of the date.
+override: ""
+seasons:
+  - id: summer_2026
+    label: Summer Bundle
+    shop: taylor_bundle_summer_2026
+    starts: "2026-06-21"
+  - id: fall_2026
+    label: Fall Bundle
+    shop: taylor_bundle_fall_2026
+    starts: "2026-09-22"

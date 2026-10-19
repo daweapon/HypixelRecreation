@@ -1,0 +1,58 @@
+# Taylor's Summer 2026 Seasonal Bundle (wiki Taylor, Seasonal Bundles).
+title: Seasonal Bundles
+slots: DEFAULT
+entries:
+  - item: WARDEN_SPARTAN
+    name: "<f>Spartan Warden Helmet Skin"
+    material: player_head
+    cost: { gems: 1800 }
+  - item: PET_SKIN_BLACK_CAT_LITTER
+    name: "<d>Litter Black Cat Skin"
+    material: player_head
+    cost: { gems: 1350 }
+    unavailable: "Animated skin; animated head textures are not supported yet"
+  - item: PET_SKIN_FLYING_FISH_HUNGRY
+    name: "<d>Hungry Flying Fish Skin"
+    material: player_head
+    cost: { gems: 1350 }
+    unavailable: "Animated skin; animated head textures are not supported yet"
+  - item: DOUBLE_PHONE_BOOTH_FLUX
+    name: "<d>Phone Booth Power Orb Skin"
+    material: player_head
+    cost: { gems: 1350 }
+  - item: THERMAL_THERMODYNAMIC
+    name: "<6>Thermal Thermodynamic Helmet Skin"
+    material: player_head
+    cost: { gems: 950 }
+  - item: SHIPWRECK_GREENHOUSE_SKIN
+    name: "<6>Shipwreck Greenhouse Skin"
+    material: player_head
+    cost: { gems: 650 }
+  - item: YACHT_BARN_SKIN
+    name: "<6>Yacht Barn Skin"
+    material: player_head
+    cost: { gems: 650 }
+  - item: DYE_CHARCOAL
+    name: "<d>Charcoal Dye"
+    material: player_head
+    cost: { gems: 375 }
+  - item: DYE_BEACH
+    name: "<d>Beach Dye"
+    material: player_head
+    cost: { gems: 375 }
+  - item: CHEF_PERSONALITY
+    name: "<f>Chef Minion Skin"
+    material: player_head
+    cost: { gems: 250 }
+  - item: FOSSIL_MUNCHER_PERSONALITY
+    name: "<f>Fossil Muncher Minion Skin"
+    material: player_head
+    cost: { gems: 250 }
+  - item: OWL_MAGE_PERSONALITY
+    name: "<f>Owl Mage Minion Skin"
+    material: player_head
+    cost: { gems: 250 }
+  - item: SMOL_JERRY_PERSONALITY
+    name: "<f>Smol Jerry Minion Skin"
+    material: player_head
+    cost: { gems: 250 }

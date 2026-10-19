@@ -1,32 +1,19 @@
-# Taylor's Collection, her permanent cosmetics (wiki Taylor/UI).
-# Item ids are estimated from the cosmetic names.
+# Taylor's Collection, her permanent cosmetics (wiki Taylor, Taylor's Collection).
 title: Taylor's Collection
 slots: DEFAULT
 entries:
-  - item: SUPER_PLUSHIE_GOLDEN_DRAGON_SKIN
-    name: "<4>Super Plushie Golden Dragon Skin"
+  - item: PET_SKIN_GOLDEN_DRAGON_SWAP_PLUSHIE
+    name: "<f>Super Plushie Golden Dragon Skin"
     material: player_head
     cost: { gems: 1800 }
-  - item: SUPER_PLUSHIE_ENDER_DRAGON_SKIN
-    name: "<4>Super Plushie Ender Dragon Skin"
+    unavailable: "Animated skin; animated head textures are not supported yet"
+  - item: PET_SKIN_ENDER_DRAGON_SWAP_PLUSHIE
+    name: "<f>Super Plushie Ender Dragon Skin"
     material: player_head
     cost: { gems: 1800 }
-  - item: NECRON_DIAMOND_KNIGHT
-    name: "<d>Knight Skin"
-    material: player_head
-    cost: { gems: 1350 }
-  - item: SUPERIOR_DRAGON_DRAKE
-    name: "<d>Superior Drake Skin"
-    material: player_head
-    cost: { gems: 1350 }
     unavailable: "Animated skin; animated head textures are not supported yet"
-  - item: UNSTABLE_DRAGON_DRAKE
-    name: "<d>Unstable Drake Skin"
-    material: player_head
-    cost: { gems: 1350 }
-    unavailable: "Animated skin; animated head textures are not supported yet"
-  - item: WISE_DRAGON_DRAKE
-    name: "<d>Wise Drake Skin"
+  - item: PROTECTOR_DRAGON_DRAKE
+    name: "<d>Protector Drake Skin"
     material: player_head
     cost: { gems: 1350 }
     unavailable: "Animated skin; animated head textures are not supported yet"
@@ -35,18 +22,13 @@ entries:
     material: player_head
     cost: { gems: 1350 }
     unavailable: "Animated skin; animated head textures are not supported yet"
-  - item: YOUNG_DRAGON_DRAKE
-    name: "<d>Young Drake Skin"
-    material: player_head
-    cost: { gems: 1350 }
-    unavailable: "Animated skin; animated head textures are not supported yet"
-  - item: PROTECTOR_DRAGON_DRAKE
-    name: "<d>Protector Drake Skin"
-    material: player_head
-    cost: { gems: 1350 }
-    unavailable: "Animated skin; animated head textures are not supported yet"
   - item: OLD_DRAGON_DRAKE
     name: "<d>Old Drake Skin"
+    material: player_head
+    cost: { gems: 1350 }
+    unavailable: "Animated skin; animated head textures are not supported yet"
+  - item: SUPERIOR_DRAGON_DRAKE
+    name: "<d>Superior Drake Skin"
     material: player_head
     cost: { gems: 1350 }
     unavailable: "Animated skin; animated head textures are not supported yet"
@@ -55,39 +37,46 @@ entries:
     material: player_head
     cost: { gems: 1350 }
     unavailable: "Animated skin; animated head textures are not supported yet"
-  - item: DRAGON_HYDRA_SKIN
-    name: "<5>Dragon Hydra Skin"
+  - item: UNSTABLE_DRAGON_DRAKE
+    name: "<d>Unstable Drake Skin"
+    material: player_head
+    cost: { gems: 1350 }
+    unavailable: "Animated skin; animated head textures are not supported yet"
+  - item: YOUNG_DRAGON_DRAKE
+    name: "<d>Young Drake Skin"
+    material: player_head
+    cost: { gems: 1350 }
+    unavailable: "Animated skin; animated head textures are not supported yet"
+  - item: WISE_DRAGON_DRAKE
+    name: "<d>Wise Drake Skin"
+    material: player_head
+    cost: { gems: 1350 }
+    unavailable: "Animated skin; animated head textures are not supported yet"
+  - item: NECRON_DIAMOND_KNIGHT
+    name: "<d>Knight Skin"
+    material: player_head
+    cost: { gems: 1350 }
+  - item: PET_SKIN_MOOSHROOM_COW_MYCELIYUM_BURGER
+    name: "<5>Myceliyum Burger Mooshroom Cow Skin"
     material: player_head
     cost: { gems: 650 }
-  - item: HOLLOW_ROCK_SKIN
-    name: "<5>Hollow Rock Skin"
-    material: player_head
-    cost: { gems: 650 }
-  - item: GERMAN_WOLF_SKIN
-    name: "<5>German Wolf Skin"
-    material: player_head
-    cost: { gems: 650 }
-  - item: CLAY_GOLEM_SKIN
-    name: "<5>Clay Golem Skin"
-    material: player_head
-    cost: { gems: 650 }
-  - item: SOCK_MONKEY_SKIN
+  - item: PET_SKIN_MONKEY_SOCK
     name: "<5>Sock Monkey Skin"
     material: player_head
     cost: { gems: 650 }
-  - item: BALD_EAGLE_GRIFFIN_SKIN
-    name: "<5>Bald Eagle Griffin Skin"
-    material: player_head
-    cost: { gems: 650 }
-  - item: BBQ_PIGMAN_SKIN
-    name: "<5>BBQ Pigman Skin"
-    material: player_head
-    cost: { gems: 650 }
-  - item: ROAST_CHICKEN_SKIN
+  - item: PET_SKIN_CHICKEN_ROAST
     name: "<5>Roast Chicken Skin"
     material: player_head
     cost: { gems: 650 }
-  - item: MYCELIYUM_BURGER_MOOSHROOM_COW_SKIN
-    name: "<5>Myceliyum Burger Mooshroom Cow Skin"
+  - item: PET_SKIN_PIGMAN_BBQ
+    name: "<5>BBQ Pigman Skin"
+    material: player_head
+    cost: { gems: 650 }
+  - item: PET_SKIN_WOLF_GERMAN
+    name: "<5>German Wolf Skin"
+    material: player_head
+    cost: { gems: 650 }
+  - item: PET_SKIN_IRON_GOLEM_CLAY
+    name: "<5>Clay Golem Skin"
     material: player_head
     cost: { gems: 650 }

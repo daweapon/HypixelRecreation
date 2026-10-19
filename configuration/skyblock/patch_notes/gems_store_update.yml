@@ -1,0 +1,22 @@
+title: "The Gems Store Update"
+date: "18th October 2026"
+intro:
+  - "Taylor's shop and Elizabeth's Fire Sales are open. Gems are handed out by staff on this server, so there is no webstore."
+sections:
+  - heading: "Taylor"
+    colour: "<a>"
+    lines:
+      - "Seasonal Bundles now show the current season, which follows the date. The Summer 2026 and Fall 2026 bundles are stocked with the wiki items and prices."
+      - "Taylor's Collection sells the Super Plushie dragons, the Drake skins, the Knight skin and six Epic pet skins."
+      - "Rune III items in the shops now arrive at level III. Animated skins stay unavailable because animated heads are not supported."
+  - heading: "Fire Sales"
+    colour: "<6>"
+    lines:
+      - "Elizabeth's Fire Sales tab shows the running sale with its stock, time left and your Gems. Stock is shared across every server and a sale ends when it sells out."
+      - "All 120 Fire Sales from September 2023 to October 2026 are catalogued, with real prices and stock. Staff replay them with force firesale."
+      - "A chat announcement goes out when a sale starts and ends. The Fire Sales widget shows the sale in your tab list."
+  - heading: "Gems and the catalogue"
+    colour: "<e>"
+    lines:
+      - "Staff can set Gems with set gems. The Centauri Toy Box now adds 5,000 Gems and max profile gives Gems."
+      - "Fire Sale and Taylor items that were marked Not active yet are now obtainable. Gem items that no sale ever stocked say so."

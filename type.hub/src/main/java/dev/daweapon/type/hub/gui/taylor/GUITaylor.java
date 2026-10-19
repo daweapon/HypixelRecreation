@@ -9,6 +9,9 @@ import dev.daweapon.type.generic.gui.v2.StatelessView;
 import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
 import dev.daweapon.type.generic.gui.v2.ViewLayout;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
+import dev.daweapon.type.skyblockgeneric.taylor.TaylorSeasons;
+
+import java.time.LocalDate;
 
 public class GUITaylor extends StatelessView {
     private static final String TAYLOR_TEXTURE = "18ca0c89bef8c4e7e521b113821ffdf00e7b5eb552a378f9037cbec655dd27c8";
@@ -20,6 +23,7 @@ public class GUITaylor extends StatelessView {
 
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
+        TaylorSeasons.Season season = TaylorSeasons.current(LocalDate.now());
         Components.fill(layout);
         Components.close(layout, 49);
 
@@ -35,9 +39,9 @@ public class GUITaylor extends StatelessView {
                 <7>items <c>will not <7>be returning in future
                 <7>bundles.
 
-                <7>Current bundle: <6>Fall Bundle
+                <7>Current bundle: <6>{}
 
-                <e>Click to view!"""), (click, c) -> c.push(new GUITaylorCatalogue("taylor_bundle")));
+                <e>Click to view!""", season.label()), (click, c) -> c.push(new GUITaylorCatalogue(season.shop())));
         layout.slot(24, ItemStacks.head(TAYLOR_TEXTURE, """
                 <a>Taylor's Collection
                 <7>Crafted by <a>Taylor <7>herself, these

@@ -1,0 +1,723 @@
+# Past SkyBlock Fire Sales (wiki Fire Sales, Previous Sales). Each sale lists the item ids it sells.
+# stock: -1 means unlimited. Real Hypixel never repeats a sale; staff replay them with /force firesale.
+sales:
+  - id: "2023-09-23"
+    name: "Gemstone Divan Helmet"
+    rarity: ULTIMATE
+    gems: 1350
+    stock: 10000
+    items: [GEMSTONE_DIVAN]
+  - id: "2023-09-30"
+    name: "Dark Sasquatch Baby Yeti"
+    rarity: EPIC
+    gems: 650
+    stock: 5000
+    items: [PET_SKIN_BABY_YETI_DARK_SASQUATCH]
+  - id: "2023-10-07"
+    name: "Ender Knight"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 8000
+    items: [FINAL_DESTINATION_ENDER_KNIGHT]
+  - id: "2023-10-14"
+    name: "Husky Wolf"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 9000
+    items: [PET_SKIN_WOLF_HUSKY]
+  - id: "2023-10-21"
+    name: "Redback"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 6000
+    items: [TARANTULA_REDBACK]
+  - id: "2023-10-28"
+    name: "Bone Bat"
+    rarity: EPIC
+    gems: 650
+    stock: 3000
+    items: [PET_SKIN_BAT_BONE]
+  - id: "2023-11-04"
+    name: "Primal Fear Rune III"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 15000
+    items: [PRIMAL_FEAR_RUNE]
+  - id: "2023-11-11"
+    name: "Caduceus Mender"
+    rarity: ULTIMATE
+    gems: 1350
+    stock: 6000
+    items: [CADUCEUS_MENDING_CROWN]
+  - id: "2023-11-18"
+    name: "Mr Claws Rat"
+    rarity: EPIC
+    gems: 650
+    stock: 1500
+    items: [PET_SKIN_RAT_MR_CLAWS]
+  - id: "2023-11-25"
+    name: "Rubber Chicken"
+    rarity: EPIC
+    gems: 650
+    stock: 1000
+    items: [PET_SKIN_CHICKEN_RUBBER]
+  - id: "2023-12-02"
+    name: "Azure Sea Slug"
+    rarity: EPIC
+    gems: 650
+    stock: 2000
+    items: [PET_SKIN_SLUG_AZURE_SEA_SLUG]
+  - id: "2023-12-09"
+    name: "Four Seasons Griffin"
+    rarity: ULTIMATE
+    gems: 1800
+    stock: 10000
+    items: [PET_SKIN_FOUR_SEASONS_GRIFFIN]
+  - id: "2023-12-16"
+    name: "Bark Tunes Rune III"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 8000
+    items: [BARK_TUNES_RUNE]
+  - id: "2023-12-23"
+    name: "Brain Freeze Zombie"
+    rarity: EPIC
+    gems: 650
+    stock: 2000
+    items: [PET_SKIN_ZOMBIE_BRAIN_FREEZE]
+  - id: "2023-12-30"
+    name: "Plushie Snowman"
+    rarity: EPIC
+    gems: 650
+    stock: 3000
+    items: [PET_SKIN_SNOWMAN_PLUSHIE]
+  - id: "2024-01-06"
+    name: "Pink Plushie Elephant"
+    rarity: EPIC
+    gems: 650
+    stock: 1500
+    items: [PET_SKIN_ELEPHANT_PINK_PLUSHIE]
+  - id: "2024-01-13"
+    name: "Astronaut Monkey"
+    rarity: EPIC
+    gems: 650
+    stock: 2000
+    items: [PET_SKIN_MONKEY_ASTRONAUT]
+  - id: "2024-01-20"
+    name: "Cherry Blossom Mithril Golem"
+    rarity: EPIC
+    gems: 650
+    stock: 5000
+    items: [PET_SKIN_MITHRIL_GOLEM_CHERRY_BLOSSOM]
+  - id: "2024-01-27"
+    name: "Warden Dye"
+    rarity: MYTHIC
+    gems: 375
+    stock: 40000
+    items: [DYE_WARDEN]
+  - id: "2024-02-03"
+    name: "Baby Skin"
+    rarity: EPIC
+    gems: 650
+    stock: 1000
+    items: [GOBLIN_HELMET_BABY]
+  - id: "2024-02-10"
+    name: "Ancient Golden Dragon"
+    rarity: ULTIMATE
+    gems: 1800
+    stock: 15000
+    items: [PET_SKIN_GOLDEN_DRAGON_ANCIENT]
+  - id: "2024-02-24"
+    name: "BeeLoved Bee"
+    rarity: EPIC
+    gems: 650
+    stock: 1500
+    items: [PET_SKIN_BEE_BEELOVED]
+  - id: "2024-03-09"
+    name: "The End Barn"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 6000
+    items: [END_BARN_SKIN]
+  - id: "2024-03-16"
+    name: "Lucky Dye"
+    rarity: MYTHIC
+    gems: 375
+    stock: 40000
+    items: [DYE_LUCKY]
+  - id: "2024-03-23"
+    name: "Greenbottle Tarantula"
+    rarity: EPIC
+    gems: 650
+    stock: 2000
+    items: [PET_SKIN_TARANTULA_GREENBOTTLE]
+  - id: "2024-03-30"
+    name: "Plushie Rabbit"
+    rarity: EPIC
+    gems: 650
+    stock: 2000
+    items: [PET_SKIN_RABBIT_PLUSHIE]
+  - id: "2024-04-06"
+    name: "Harvester Helmet"
+    rarity: ULTIMATE
+    gems: 1800
+    stock: 15000
+    items: [FERMENTO_ULTIMATE]
+  - id: "2024-04-20"
+    name: "End Golem"
+    rarity: EPIC
+    gems: 650
+    stock: 4000
+    items: [PET_SKIN_GOLEM_END]
+  - id: "2024-04-27"
+    name: "Cavern Glacite Golem"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 4000
+    items: [PET_SKIN_GLACITE_GOLEM_CAVERN]
+  - id: "2024-05-11"
+    name: "Rose Dye"
+    rarity: MYTHIC
+    gems: 375
+    stock: 40000
+    items: [DYE_ROSE]
+  - id: "2024-05-18"
+    name: "Real Grandma Wolf"
+    rarity: EPIC
+    gems: 650
+    stock: 5000
+    items: [PET_SKIN_GRANDMA_WOLF_REAL]
+  - id: "2024-06-01"
+    name: "Sandstorm Cat"
+    rarity: EPIC
+    gems: 650
+    stock: 4000
+    items: [BERSERKER_SANDSTORM_CAT]
+  - id: "2024-06-08"
+    name: "Chromari Squid"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 8500
+    items: [PET_SKIN_SQUID_CHROMARI]
+  - id: "2024-06-15"
+    name: "Panda Spirit"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 7500
+    items: [PANDA_SPIRIT]
+  - id: "2024-06-29"
+    name: "Harlequin Flying Fish"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 7500
+    items: [PET_SKIN_FLYING_FISH_HARLEQUIN]
+  - id: "2024-07-06"
+    name: "Sand Castle Barn"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 6000
+    items: [SAND_CASTLE_BARN_SKIN]
+  - id: "2024-07-13"
+    name: "Portal Dye"
+    rarity: MYTHIC
+    gems: 375
+    stock: 60000
+    items: [DYE_PORTAL]
+  - id: "2024-07-27"
+    name: "Midnight Dolphin"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 10000
+    items: [PET_SKIN_DOLPHIN_MIDNIGHT]
+  - id: "2024-08-03"
+    name: "Hermit Beach Ball Ammonite"
+    rarity: EPIC
+    gems: 650
+    stock: 2500
+    items: [PET_SKIN_AMMONITE_HERMIT_BEACH_BALL]
+  - id: "2024-08-10"
+    name: "Great Shark Magma Lord"
+    rarity: ULTIMATE
+    gems: 1800
+    stock: 17500
+    items: [GREAT_SHARK_MAGMA_LORD]
+  - id: "2024-08-24"
+    name: "Moonbloom Mooshroom Cow"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 7500
+    items: [PET_SKIN_MOOSHROOM_COW_MOONBLOOM]
+  - id: "2024-08-31"
+    name: "White Lion"
+    rarity: EPIC
+    gems: 650
+    stock: 6500
+    items: [PET_SKIN_LION_WHITE]
+  - id: "2024-09-07"
+    name: "Pastel Sky Dye"
+    rarity: MYTHIC
+    gems: 375
+    stock: 60000
+    items: [DYE_PASTEL_SKY]
+  - id: "2024-09-21"
+    name: "Blizzard Bal"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 10000
+    items: [PET_SKIN_BAL_BLIZZARD]
+  - id: "2024-10-02"
+    name: "Armaron Armadillo"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 10000
+    items: [PET_SKIN_ARMADILLO_ARMARON]
+  - id: "2024-10-05"
+    name: "Loafed Black Cat"
+    rarity: EPIC
+    gems: 650
+    stock: 7500
+    items: [PET_SKIN_BLACK_CAT_LOAF_CAT_BLACK]
+  - id: "2024-10-19"
+    name: "Fenrir Wolf"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 7500
+    items: [PET_SKIN_WOLF_FENRIR]
+  - id: "2024-10-26"
+    name: "Lava Dye"
+    rarity: MYTHIC
+    gems: 375
+    stock: 60000
+    items: [DYE_LAVA]
+  - id: "2024-11-02"
+    name: "Mummy Jerry"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 7500
+    items: [PET_SKIN_JERRY_MUMMY]
+  - id: "2024-11-16"
+    name: "Candy Slime Spirit"
+    rarity: EPIC
+    gems: 650
+    stock: 3500
+    items: [PET_SKIN_CANDY_SLIME_SPIRIT]
+  - id: "2024-11-23"
+    name: "Despair Enderman"
+    rarity: EPIC
+    gems: 650
+    stock: 7500
+    items: [PET_SKIN_ENDERMAN_DESPAIR]
+  - id: "2024-11-30"
+    name: "Corrupt Wither Goggles Helmet"
+    rarity: ULTIMATE
+    gems: 1800
+    stock: 20000
+    items: [CORRUPT_WITHER_GOGGLES]
+  - id: "2024-12-21"
+    name: "Glacial Hedgehog"
+    rarity: EPIC
+    gems: 650
+    stock: 7500
+    items: [PET_SKIN_HEDGEHOG_GLACIAL]
+  - id: "2024-12-24"
+    name: "Aurora Dye"
+    rarity: MYTHIC
+    gems: 375
+    stock: -1
+    items: [DYE_AURORA]
+  - id: "2024-12-28"
+    name: "Ornamental Rune III"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 12500
+    items: [ORNAMENTAL_RUNE]
+  - id: "2025-01-04"
+    name: "Fossil T-Rex"
+    rarity: EPIC
+    gems: 650
+    stock: 7500
+    items: [PET_SKIN_TYRANNOSAURUS_FOSSIL]
+  - id: "2025-01-18"
+    name: "Silbrrrfish Silverfish"
+    rarity: EPIC
+    gems: 650
+    stock: 7500
+    items: [PET_SKIN_SILVERFISH_SILBRRRFISH]
+  - id: "2025-01-25"
+    name: "Melting Snowman"
+    rarity: EPIC
+    gems: 650
+    stock: 7500
+    items: [PET_SKIN_SNOWMAN_MELTING]
+  - id: "2025-02-01"
+    name: "Cake Snail"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 7500
+    items: [PET_SKIN_SNAIL_CAKE]
+  - id: "2025-02-15"
+    name: "Lion Tamarin Monkey"
+    rarity: EPIC
+    gems: 650
+    stock: 5000
+    items: [PET_SKIN_MONKEY_LION_TAMARIN]
+  - id: "2025-02-22"
+    name: "Banana Slug"
+    rarity: EPIC
+    gems: 650
+    stock: 6000
+    items: [PET_SKIN_SLUG_BANANA]
+  - id: "2025-03-01"
+    name: "Cardboard Box Black Cat"
+    rarity: EPIC
+    gems: 650
+    stock: 5000
+    items: [PET_SKIN_BLACK_CAT_CARDBOARD_BOX]
+  - id: "2025-03-29"
+    name: "Cute Jellyfish"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 7500
+    items: [PET_SKIN_JELLYFISH_CUTE]
+  - id: "2025-04-05"
+    name: "Catgirl Black Cat"
+    rarity: ULTIMATE
+    gems: 1800
+    stock: 25000
+    items: [PET_SKIN_BLACK_CAT_CATGIRL]
+  - id: "2025-04-19"
+    name: "Panther Ocelot"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 5000
+    items: [PET_SKIN_OCELOT_PANTHER]
+  - id: "2025-04-26"
+    name: "Pink Chick Chicken"
+    rarity: EPIC
+    gems: 650
+    stock: 3000
+    items: [PET_SKIN_CHICKEN_CHICK_PINK]
+  - id: "2025-05-03"
+    name: "Galaxy Parrot"
+    rarity: EPIC
+    gems: 650
+    stock: 7500
+    items: [PET_SKIN_PARROT_GALAXY]
+  - id: "2025-05-17"
+    name: "Bamboo Giraffe"
+    rarity: EPIC
+    gems: 650
+    stock: 3000
+    items: [PET_SKIN_GIRAFFE_BAMBOO]
+  - id: "2025-05-24"
+    name: "Red Panda Ocelot"
+    rarity: EPIC
+    gems: 650
+    stock: 7500
+    items: [PET_SKIN_OCELOT_RED_PANDA]
+  - id: "2025-05-31"
+    name: "Jinn Goblin"
+    rarity: EPIC
+    gems: 650
+    stock: 4000
+    items: [PET_SKIN_GOBLIN_JINN]
+  - id: "2025-06-21"
+    name: "Void Mammoth"
+    rarity: EPIC
+    gems: 650
+    stock: 4000
+    items: [PET_SKIN_MAMMOTH_VOID]
+  - id: "2025-06-28"
+    name: "Gateway Endermite"
+    rarity: EPIC
+    gems: 650
+    stock: 5000
+    items: [PET_SKIN_ENDERMITE_GATEWAY]
+  - id: "2025-07-12"
+    name: "Pina Coolada Barn"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 5000
+    items: [PINA_COOLADA_BARN_SKIN]
+  - id: "2025-07-19"
+    name: "Frog Dye"
+    rarity: MYTHIC
+    gems: 375
+    stock: 60000
+    items: [DYE_FROG]
+  - id: "2025-07-26"
+    name: "Seagull Phoenix"
+    rarity: EPIC
+    gems: 650
+    stock: 5000
+    items: [PET_SKIN_PHOENIX_SEAGULL]
+  - id: "2025-08-16"
+    name: "Molten Glacite Golem"
+    rarity: EPIC
+    gems: 650
+    stock: 2000
+    items: [PET_SKIN_GLACITE_GOLEM_MOLTEN]
+  - id: "2025-08-23"
+    name: "Shell Shulked Turtle"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 7500
+    items: [PET_SKIN_TURTLE_SHELL_SHULKED]
+  - id: "2025-09-06"
+    name: "Spirit Orca Blue Whale"
+    rarity: ULTIMATE
+    gems: 1800
+    stock: 7500
+    items: [PET_SKIN_WHALE_SPIRIT_ORCA]
+  - id: "2025-09-13"
+    name: "Dark Green Sheep"
+    rarity: EPIC
+    gems: 650
+    stock: 250
+    items: [PET_SKIN_SHEEP_GREEN]
+  - id: "2025-09-27"
+    name: "Soul Slice Rune III"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 7500
+    items: [AXE_SOUL_SLICE_RUNE]
+  - id: "2025-10-11"
+    name: "Dark Blue Plushie Elephant"
+    rarity: EPIC
+    gems: 650
+    stock: 950
+    items: [PET_SKIN_ELEPHANT_DARK_BLUE_PLUSHIE]
+  - id: "2025-10-18"
+    name: "Spectre"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 7500
+    items: [REAPER_SPECTRE]
+  - id: "2025-11-01"
+    name: "Sorrowful Samurai"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 4500
+    items: [SORROW_SAMURAI]
+  - id: "2025-11-08"
+    name: "Thunder Black Biker"
+    rarity: EPIC
+    gems: 650
+    stock: 950
+    items: [THUNDER_BIKER_BLACK]
+  - id: "2025-11-22"
+    name: "Gummy Worm Scatha"
+    rarity: ULTIMATE
+    gems: 1800
+    stock: 6500
+    items: [PET_SKIN_SCATHA_GUMMY]
+  - id: "2025-11-29"
+    name: "Turkey Rune III"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 4000
+    items: [TURKEY_RUNE]
+  - id: "2025-12-06"
+    name: "Oculus"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 4000
+    items: [PRECURSOR_EYE_OCULUS]
+  - id: "2025-12-13"
+    name: "Teal Space"
+    rarity: EPIC
+    gems: 650
+    stock: 950
+    items: [BIOHAZARD_SPACE_TEAL]
+  - id: "2025-12-20"
+    name: "Snow Crow"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 2500
+    items: [PET_SKIN_CROW_SNOW]
+  - id: "2025-12-25"
+    name: "Blazing Crimson Helmet"
+    rarity: ULTIMATE
+    gems: 1800
+    stock: 12500
+    items: [BLAZING_CRIMSON]
+  - id: "2026-01-03"
+    name: "Crowned Rune III"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 3000
+    items: [CROWNED_RUNE]
+  - id: "2026-01-10"
+    name: "Fading Rainbow Rune III"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 5000
+    items: [AXE_RAINBOW_RUNE]
+  - id: "2026-01-24"
+    name: "Crystal Glacite Golem"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 3500
+    items: [PET_SKIN_GLACITE_GOLEM_CRYSTAL]
+  - id: "2026-01-31"
+    name: "Burning Hedgehog"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 3500
+    items: [PET_SKIN_HEDGEHOG_BURNING]
+  - id: "2026-02-07"
+    name: "Fox Hoodie"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 2000
+    items: [SHARK_SCALE_HOODIE_FOX]
+  - id: "2026-02-21"
+    name: "Lioness Lion"
+    rarity: EPIC
+    gems: 650
+    stock: 950
+    items: [PET_SKIN_LION_LIONESS_NEW]
+  - id: "2026-02-28"
+    name: "Endercat Enderman"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 3500
+    items: [PET_SKIN_ENDERMAN_ENDERCAT]
+  - id: "2026-03-14"
+    name: "Chaos Terror Helmet"
+    rarity: ULTIMATE
+    gems: 1800
+    stock: 10000
+    items: [CHAOS_TERROR]
+  - id: "2026-03-28"
+    name: "Black Opal Dye"
+    rarity: MYTHIC
+    gems: 375
+    stock: 40000
+    items: [DYE_BLACK_OPAL]
+  - id: "2026-04-01"
+    name: "Jerry Dye"
+    rarity: MYTHIC
+    gems: 375
+    stock: 16767
+    items: [DYE_JERRY]
+  - id: "2026-04-04"
+    name: "Garden Bunny Rabbit"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 3500
+    items: [PET_SKIN_RABBIT_GARDEN_BUNNY]
+  - id: "2026-04-18"
+    name: "Rainbow Carpet Rune III"
+    rarity: LEGENDARY
+    gems: 350
+    stock: 5000
+    items: [RAINBOW_CARPET_RUNE]
+  - id: "2026-04-25"
+    name: "Dante's Uprising Greenhouse"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 4000
+    items: [DANTE_GREENHOUSE_SKIN]
+  - id: "2026-05-02"
+    name: "Trunk"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 4000
+    items: [FIG_TRUNK]
+  - id: "2026-05-16"
+    name: "Baby Spinosaurus"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 5000
+    items: [PET_SKIN_SPINOSAURUS_BABY]
+  - id: "2026-05-23"
+    name: "Iceberg Ankylosaurus"
+    rarity: EPIC
+    gems: 650
+    stock: 1000
+    items: [PET_SKIN_ANKYLOSAURUS_ICEBERG]
+  - id: "2026-05-30"
+    name: "Copper Mammoth"
+    rarity: EPIC
+    gems: 650
+    stock: 1000
+    items: [PET_SKIN_MAMMOTH_COPPER]
+  - id: "2026-06-13"
+    name: "Sea Leopard Seal"
+    rarity: EPIC
+    gems: 650
+    stock: 1250
+    items: [PET_SKIN_SEAL_SEA_LEOPARD]
+  - id: "2026-06-27"
+    name: "Baby T-Rex"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 3500
+    items: [PET_SKIN_TYRANNOSAURUS_BABY]
+  - id: "2026-07-04"
+    name: "Baby Jade Dragon"
+    rarity: ULTIMATE
+    gems: 1800
+    stock: 12500
+    items: [PET_SKIN_JADE_DRAGON_BABY]
+  - id: "2026-07-11"
+    name: "Harmony Rune III"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 5000
+    items: [HARMONY_RUNE]
+  - id: "2026-07-18"
+    name: "Geode Mithril Golem"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 3500
+    items: [PET_SKIN_MITHRIL_GOLEM_GEODE]
+  - id: "2026-07-25"
+    name: "Highland Orange Mooshroom Cow"
+    rarity: EPIC
+    gems: 650
+    stock: 1000
+    items: [PET_SKIN_MOOSHROOM_COW_HIGHLAND_ORANGE]
+  - id: "2026-08-08"
+    name: "Plushie Tuxedo Sloth"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 3500
+    items: [PET_SKIN_SLOTH_TUXEDO]
+  - id: "2026-08-15"
+    name: "Barkshatter Rune III"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 5000
+    items: [AXE_SHATTER_RUNE]
+  - id: "2026-08-22"
+    name: "Shelled Ammonite"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 3500
+    items: [PET_SKIN_AMMONITE_SHELLED]
+  - id: "2026-09-05"
+    name: "Hazard Control"
+    rarity: LEGENDARY
+    gems: 950
+    stock: 3000
+    items: [BIOHAZARD_CONTROL]
+  - id: "2026-09-12"
+    name: "Tidal Bowl Flying Fish"
+    rarity: MYTHIC
+    gems: 1350
+    stock: 2000
+    items: [PET_SKIN_FLYING_FISH_BOWL_TIDAL]
+  - id: "2026-10-03"
+    name: "Purple Guardian Glacite Helmet"
+    rarity: EPIC
+    gems: 650
+    stock: 950
+    items: [GLACITE_GUARDIAN_PURPLE]
+  - id: "2026-10-10"
+    name: "Burning Frog Skin"
+    rarity: EPIC
+    gems: 650
+    stock: 1250
+    items: [PET_SKIN_FROG_BURNING]

@@ -24,7 +24,8 @@ public record CatalogueEntry(
         @Nullable ReputationRequirement requirement,
         @Nullable String enchantment,
         int enchantmentLevel,
-        int minionTier
+        int minionTier,
+        int runeLevel
 ) {
     public static final String MISSING_ITEM_REASON = "<c>This item is not in the game yet!";
 
@@ -45,7 +46,8 @@ public record CatalogueEntry(
                 ReputationRequirement.parse(raw.get("requires")),
                 raw.get("enchantment") == null ? null : String.valueOf(raw.get("enchantment")),
                 raw.get("enchantment_level") instanceof Number level ? level.intValue() : 1,
-                raw.get("tier") instanceof Number tier ? tier.intValue() : 0
+                raw.get("tier") instanceof Number tier ? tier.intValue() : 0,
+                raw.get("rune_level") instanceof Number runeLevel ? runeLevel.intValue() : 0
         );
     }
 
@@ -67,6 +69,7 @@ public record CatalogueEntry(
         if (minionTier > 0) {
             item.getAttributeHandler().setMinionData(new ItemAttributeMinionData.MinionData(minionTier, 0));
         }
+        if (runeLevel > 0) item.getAttributeHandler().setRuneLevel(runeLevel);
         return item;
     }
 
