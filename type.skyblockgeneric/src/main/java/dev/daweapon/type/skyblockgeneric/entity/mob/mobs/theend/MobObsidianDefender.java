@@ -4,12 +4,11 @@ import net.minestom.server.entity.EntityType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import dev.daweapon.type.skyblockgeneric.crystalhollows.mob.CrystalHollowsMobSpec;
-import dev.daweapon.type.skyblockgeneric.entity.mob.impl.RegionPopulator;
 import dev.daweapon.type.skyblockgeneric.region.RegionType;
 
 import java.util.List;
 
-public class MobObsidianDefender extends EndMob implements RegionPopulator {
+public class MobObsidianDefender extends EndMob {
     public MobObsidianDefender() {
         super(EntityType.WITHER_SKELETON);
     }
@@ -35,8 +34,4 @@ public class MobObsidianDefender extends EndMob implements RegionPopulator {
         return EndMobSpecs.OBSIDIAN_DEFENDER_EXTRAS;
     }
 
-    @Override
-    public List<Populator> getPopulators() {
-        return List.of(new Populator(RegionType.DRAGONS_NEST, 4));
-    }
 }

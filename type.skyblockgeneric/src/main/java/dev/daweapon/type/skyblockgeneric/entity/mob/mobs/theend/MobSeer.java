@@ -6,14 +6,13 @@ import net.minestom.server.entity.ai.GoalSelector;
 import net.minestom.server.instance.Instance;
 import dev.daweapon.type.skyblockgeneric.crystalhollows.mob.CrystalHollowsMobSpec;
 import dev.daweapon.type.skyblockgeneric.entity.mob.ai.RandomRegionStrollGoal;
-import dev.daweapon.type.skyblockgeneric.entity.mob.impl.RegionPopulator;
 import dev.daweapon.type.skyblockgeneric.mythological.ability.MobProjectile;
 import dev.daweapon.type.skyblockgeneric.region.RegionType;
 import dev.daweapon.type.skyblockgeneric.utility.MobAttackService;
 
 import java.util.List;
 
-public class MobSeer extends EndMob implements RegionPopulator {
+public class MobSeer extends EndMob {
     private static final int SHOT_INTERVAL = 40;
     private static final double SHOT_RANGE = 16;
     private static final double ARROW_SPEED = 1.4;
@@ -57,8 +56,4 @@ public class MobSeer extends EndMob implements RegionPopulator {
         new MobEndermiteHigh().setInstance(instance, position);
     }
 
-    @Override
-    public List<Populator> getPopulators() {
-        return List.of(new Populator(RegionType.DRAGONS_NEST, 4));
-    }
 }

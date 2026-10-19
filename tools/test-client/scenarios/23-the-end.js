@@ -64,6 +64,17 @@ module.exports = {
             return [...seen].join(' | ');
         });
 
+        await t.step('Endermen spawn on the End island', async () => {
+            await bot.command('/tp -520 80 -270', { settleMs: 3000 });
+            await bot.waitFor(() => bot.entities({ radius: 110, names: ['Enderman'] }).length > 0, { timeoutMs: 90000, what: 'an Enderman' });
+            return bot.entities({ radius: 110, names: ['Enderman'] }).length;
+        });
+
+        await t.step('Seers and Obsidian Defenders spawn in the Nest', async () => {
+            await bot.command('/tp -650 6 -300', { settleMs: 3000 });
+            await bot.waitFor(() => bot.entities({ radius: 110, names: ['Seer'] }).length > 0 && bot.entities({ radius: 110, names: ['Obsidian Defender'] }).length > 0, { timeoutMs: 90000, what: 'a Seer and an Obsidian Defender' });
+        });
+
         await t.step('Tyzzo opens his menu with the shop and the Draconic Altar', async () => {
             await bot.command('/tp -596 5 -270', { settleMs: 2500 });
             await bot.waitFor(() => bot.findNpc('Tyzzo'), { timeoutMs: 20000, what: 'Tyzzo' });

@@ -83,6 +83,14 @@ class Probe {
                     break;
                 }
             }
+        } else if (a[0].equals("grid")) {
+            int x0 = Integer.parseInt(a[2]), z0 = Integer.parseInt(a[3]), x1 = Integer.parseInt(a[4]), z1 = Integer.parseInt(a[5]), st = Integer.parseInt(a[6]);
+            int ylo = Integer.parseInt(a[7]), yhi = Integer.parseInt(a[8]);
+            for (int x = x0; x <= x1; x += st) for (int z = z0; z <= z1; z += st) for (int y = ylo; y <= yhi; y++) {
+                String b = block(x, y, z);
+                if (!isAir(b) && !b.contains("water") && !b.contains("lava") && isAir(block(x, y + 1, z)) && isAir(block(x, y + 2, z)) && isAir(block(x, y + 3, z)))
+                    System.out.println(x + " " + (y + 1) + " " + z + " " + b.replace("minecraft:", ""));
+            }
         } else if (a[0].equals("find")) {
             Set<String> names = new HashSet<>(Arrays.asList(a).subList(7, a.length));
             int x0 = Integer.parseInt(a[2]), z0 = Integer.parseInt(a[3]), x1 = Integer.parseInt(a[4]), z1 = Integer.parseInt(a[5]);

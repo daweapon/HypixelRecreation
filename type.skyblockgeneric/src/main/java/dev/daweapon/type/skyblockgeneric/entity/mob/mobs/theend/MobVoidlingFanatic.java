@@ -5,14 +5,13 @@ import net.minestom.server.entity.EntityType;
 import net.minestom.server.instance.Instance;
 import dev.daweapon.commons.skyblock.item.Rarity;
 import dev.daweapon.type.skyblockgeneric.crystalhollows.mob.CrystalHollowsMobSpec;
-import dev.daweapon.type.skyblockgeneric.entity.mob.impl.RegionPopulator;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.crystalhollows.boss.PetDropTable;
 import dev.daweapon.type.skyblockgeneric.region.RegionType;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
-public class MobVoidlingFanatic extends EndMob implements RegionPopulator {
+public class MobVoidlingFanatic extends EndMob {
     public MobVoidlingFanatic() {
         super(EntityType.ENDERMAN);
     }
@@ -35,8 +34,4 @@ public class MobVoidlingFanatic extends EndMob implements RegionPopulator {
                 .roll(player, this);
     }
 
-    @Override
-    public List<Populator> getPopulators() {
-        return List.of(new Populator(RegionType.VOID_SEPULTURE, 3));
-    }
 }

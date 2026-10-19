@@ -40,6 +40,7 @@ public class TypeTheEndLoader implements SkyBlockTypeLoader {
     public void afterInitialize(MinecraftServer server) {
         PlayerDeathOverrides.register(RemnantOfTheEye::saves);
         ZealotWaves.start();
+        EndMobSpawner.start();
     }
 
     @Override

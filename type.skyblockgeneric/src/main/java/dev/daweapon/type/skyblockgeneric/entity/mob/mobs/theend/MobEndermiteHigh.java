@@ -2,12 +2,11 @@ package dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend;
 
 import net.minestom.server.entity.EntityType;
 import dev.daweapon.type.skyblockgeneric.crystalhollows.mob.CrystalHollowsMobSpec;
-import dev.daweapon.type.skyblockgeneric.entity.mob.impl.RegionPopulator;
 import dev.daweapon.type.skyblockgeneric.region.RegionType;
 
 import java.util.List;
 
-public class MobEndermiteHigh extends EndMob implements RegionPopulator {
+public class MobEndermiteHigh extends EndMob {
     public MobEndermiteHigh() {
         super(EntityType.ENDERMITE);
     }
@@ -22,8 +21,4 @@ public class MobEndermiteHigh extends EndMob implements RegionPopulator {
         return RegionType.DRAGONS_NEST;
     }
 
-    @Override
-    public List<Populator> getPopulators() {
-        return List.of(new Populator(RegionType.DRAGONS_NEST, 4));
-    }
 }

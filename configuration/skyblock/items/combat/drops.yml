@@ -261,8 +261,8 @@ items:
     material: PLAYER_HEAD
     name: "Summoning Eye"
     components:
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/uncategorized/summoning_eye
+      - id: SKULL_HEAD
+        texture: daa8fc8de6417b48d48c80b443cf5326e3d9da4dbe9b25fcd49549d96168fc0
   - id: TESSELLATED_ENDER_PEARL
     rarity: LEGENDARY
     material: PLAYER_HEAD
