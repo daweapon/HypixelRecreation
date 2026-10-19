@@ -46,6 +46,10 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    inputs.files(fileTree(rootDir) {
+        include("*/src/main/java/**/*.java")
+        include("settings.gradle.kts")
+    }).withPropertyName("repositorySources").withPathSensitivity(PathSensitivity.RELATIVE)
 }
 
 sourceSets {
