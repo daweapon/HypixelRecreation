@@ -79,20 +79,20 @@ public class NPCLapisMiner extends HypixelNPC {
 		return new DialogueSet[]{
 				DialogueSet.builder().key("first").lines(
 						"Hey you! I broke my Lapis Pickaxe - do you think you could bring me another?",
-						"First you'll need to reach <9>Lapis Lazuli Collection III<f>, and then you can craft it for me."
+						"First you'll need to reach <a>Lapis Lazuli Collection III<f>, and then you can craft it for me."
 				).build(),
 				DialogueSet.builder().key("collection").lines(
 						"Some items in SkyBlock can only be crafted when you reach a certain collection requirement.",
-						"To craft me a Lapis Pickaxe, you will need to reach <9>Lapis Lazuli Collection III<f>."
+						"To craft me a Lapis Pickaxe, you will need to reach <a>Lapis Lazuli Collection III<f>."
 				).build(),
 				DialogueSet.builder().key("craft").lines(
-						"Oh! You reached <9>Lapis Lazuli Collection III<f>!",
-						"Any chance you can craft me a new <9>Lapis Pickaxe <f>now?",
-						"Check the <a>Recipe Book <f>in your SkyBlock Menu to learn how to craft it!"
+						"Oh! You reached <a>Lapis Lazuli Collection III<f>!",
+						"Any chance you can craft me a new <a>Lapis Pickaxe <f>now?",
+						"Check the <a>Recipe Book <f>in your <a>SkyBlock Menu <f>to learn how to craft it!"
 				).build(),
 				DialogueSet.builder().key("thanks").lines(
 						"Thank you! I appreciate your support in these trying times.",
-						"For your trouble, here's a <9>Compactor<f>. Place it in a minion upgrade slot and it will automatically turn items into their block form once it's collected enough of them.",
+						"For your trouble, here's a <a>Compactor<f>. Place it in a minion upgrade slot and it will automatically turn items into their block form once it's collected enough of them!",
 						"I use it in my Lapis Minion, those things fill terribly fast!"
 				).build(),
 				DialogueSet.builder().key("idle").lines(

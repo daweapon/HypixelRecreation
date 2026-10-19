@@ -93,7 +93,7 @@ public final class HoppityHitmanService {
             data.setStrayDueAt(now + HoppityEggService.STRAY_GUARANTEE_MS);
         });
         if (opened[0] == null) return false;
-        player.sendMessage("<d><l>HOPPITY'S HUNT <7>You found a <c>Hitman Egg<7>!");
+        player.sendMessage("<d><l>HOPPITY'S HUNT</l> <d>You found a <c>Hitman Egg<d>!");
         HoppityEggService.open(player, RabbitHitman.locationOf(opened[0], EggLocationCatalogue.get()), null, ThreadLocalRandom.current());
         return true;
     }

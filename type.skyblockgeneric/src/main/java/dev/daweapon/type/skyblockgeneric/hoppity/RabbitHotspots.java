@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 public final class RabbitHotspots {
-    public static final double HOTSPOT_SHARE = 0.15;
+    public static final double HOTSPOT_SHARE = 1.0;
     public static final double HOTSPOT_WEIGHT_BONUS = 0.5;
 
     private RabbitHotspots() {

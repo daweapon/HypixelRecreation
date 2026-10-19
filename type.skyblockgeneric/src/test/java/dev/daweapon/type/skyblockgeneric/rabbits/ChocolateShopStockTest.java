@@ -12,13 +12,15 @@ class ChocolateShopStockTest {
     void stockTableMatchesTheWiki() {
         assertEquals(500, ChocolateShopStock.annualStock("SUPREME_CHOCOLATE_BAR"));
         assertEquals(1, ChocolateShopStock.annualStock("EGGLOCATOR"));
-        assertEquals(12, ChocolateShopStock.annualStock("SHARD_RABBIT_MAFIOSO"));
-        assertEquals(9, ChocolateShopStock.annualStock("SHARD_RABBIT_CAT"));
+        assertEquals(24, ChocolateShopStock.annualStock("SHARD_RABBIT_MAFIOSO"));
+        assertEquals(18, ChocolateShopStock.annualStock("SHARD_RABBIT_CAT"));
         assertEquals(3, ChocolateShopStock.annualStock("DARK_CACAO_TRUFFLE"));
-        assertEquals(6, ChocolateShopStock.annualStock("SHARD_RABBIT_NEIGHBOR"));
+        assertEquals(12, ChocolateShopStock.annualStock("SHARD_RABBIT_NEIGHBOR"));
         assertEquals(4, ChocolateShopStock.annualStock("DYE_CHOCOLATE"));
         assertEquals(2, ChocolateShopStock.annualStock("CHOCO_RABBIT_PERSONALITY"));
-        assertEquals(3, ChocolateShopStock.annualStock("SHARD_RABBIT_GODMOTHER"));
+        assertEquals(6, ChocolateShopStock.annualStock("SHARD_RABBIT_GODMOTHER"));
+        assertEquals(1, ChocolateShopStock.annualStock("ZORROS_CAPE"));
+        assertEquals(1, ChocolateShopStock.annualStock("PET_ITEM_CHOCOLATE_SYRINGE"));
         assertEquals(1, ChocolateShopStock.annualStock("STEAMED_CHOCOLATE_FISH"));
         assertEquals(4, ChocolateShopStock.annualStock("HOT_CHOCOLATE_MIXIN"));
         assertEquals(25, ChocolateShopStock.annualStock("CHOCOLATE_FORTUNE"));
@@ -26,8 +28,8 @@ class ChocolateShopStockTest {
 
     @Test
     void itemsWithoutAStockAreUnlimited() {
-        assertFalse(ChocolateShopStock.isLimited("ZORROS_CAPE"));
-        assertEquals(Integer.MAX_VALUE, ChocolateShopStock.remaining("ZORROS_CAPE", 1000));
+        assertFalse(ChocolateShopStock.isLimited("SOMETHING_UNLISTED"));
+        assertEquals(Integer.MAX_VALUE, ChocolateShopStock.remaining("SOMETHING_UNLISTED", 1000));
     }
 
     @Test
@@ -40,8 +42,8 @@ class ChocolateShopStockTest {
         ChocolateFactoryData data = new ChocolateFactoryData();
         data.recordShopPurchase("SHARD_RABBIT_CAT", 471);
         data.recordShopPurchase("SHARD_RABBIT_CAT", 471);
-        assertEquals(7, data.shopRemaining("SHARD_RABBIT_CAT", 471));
-        assertEquals(6, data.shopRemaining("SHARD_RABBIT_NEIGHBOR", 471));
+        assertEquals(16, data.shopRemaining("SHARD_RABBIT_CAT", 471));
+        assertEquals(12, data.shopRemaining("SHARD_RABBIT_NEIGHBOR", 471));
     }
 
     @Test

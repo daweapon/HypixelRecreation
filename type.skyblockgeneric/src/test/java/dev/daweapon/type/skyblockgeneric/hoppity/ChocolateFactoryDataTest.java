@@ -64,6 +64,7 @@ class ChocolateFactoryDataTest {
         data.setHandBakedChocolateLevel(3);
         data.setCoachJackrabbitLevel(2);
         assertTrue(data.prestige());
+        assertEquals(0, data.getChocolate());
         assertEquals(1, data.getPrestigeLevel());
         assertEquals(0, data.getChocolateThisPrestige());
         assertTrue(data.getEmployees().isEmpty());

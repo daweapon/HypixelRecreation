@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import java.util.function.ToDoubleFunction;
 import java.util.random.RandomGenerator;
 
 public final class StrayRabbits {
@@ -18,7 +19,6 @@ public final class StrayRabbits {
     public static final double GOLDEN_CHANCE_PERCENT = 10;
     public static final double GOLDEN_CHANCE_OMEGA_PERCENT = 20;
     public static final int STAMPEDE_STRAYS = 10;
-    private static final double[] RARITY_WEIGHTS = {608, 250, 100, 30, 10, 2, 0.5};
     private static final int[] RARITY_SECONDS = {5, 7, 10, 15, 20, 30, 50};
 
     private StrayRabbits() {
@@ -53,13 +53,15 @@ public final class StrayRabbits {
         return RARITY_SECONDS[rarity.ordinal()] * (huntActive ? 2 : 1);
     }
 
-    public static ChocolateRabbit pickRabbit(UUID player, Set<ChocolateRabbit> found, RandomGenerator random) {
+    public static ChocolateRabbit pickRabbit(UUID player, Set<ChocolateRabbit> found, int factoryLevel,
+                                             ToDoubleFunction<RabbitRarity> weight, RandomGenerator random) {
         List<RabbitRarity> present = new ArrayList<>();
         for (RabbitRarity rarity : RabbitRarity.values()) {
+            if (RabbitRoller.unlockLevel(rarity) > factoryLevel) continue;
             if (found.stream().anyMatch(rabbit -> rabbit.getRarity() == rarity)) present.add(rarity);
         }
         if (present.isEmpty()) return null;
-        RabbitRarity rarity = LootRoll.pick(player, present, ignored -> null, r -> RARITY_WEIGHTS[r.ordinal()], random);
+        RabbitRarity rarity = LootRoll.pick(player, present, ignored -> null, weight, random);
         List<ChocolateRabbit> pool = found.stream().filter(rabbit -> rabbit.getRarity() == rarity).sorted().toList();
         return pool.get(random.nextInt(pool.size()));
     }

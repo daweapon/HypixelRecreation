@@ -15,6 +15,9 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class StrayRabbitsTest {
+    private static final double[] BASE_WEIGHTS = {608, 250, 100, 30, 10, 4, 1};
+    private static final java.util.function.ToDoubleFunction<RabbitRarity> WEIGHTS = rarity -> BASE_WEIGHTS[rarity.ordinal()];
+
     @Test
     void rewardsAreSecondsOfProductionAndDoubleDuringTheHunt() {
         int[] seconds = {5, 7, 10, 15, 20, 30, 50};
@@ -44,12 +47,13 @@ class StrayRabbitsTest {
         Random random = new Random(5);
         int mythic = 0;
         for (int i = 0; i < 5_000; i++) {
-            ChocolateRabbit rabbit = StrayRabbits.pickRabbit(null, found, random);
+            ChocolateRabbit rabbit = StrayRabbits.pickRabbit(null, found, 6, WEIGHTS, random);
             assertTrue(found.contains(rabbit));
             if (rabbit == ChocolateRabbit.DANTE) mythic++;
         }
         assertTrue(mythic > 0 && mythic < 200);
-        assertNull(StrayRabbits.pickRabbit(null, Set.of(), random));
+        assertNull(StrayRabbits.pickRabbit(null, Set.of(), 6, WEIGHTS, random));
+        assertEquals(ChocolateRabbit.AARON, StrayRabbits.pickRabbit(null, found, 1, WEIGHTS, random));
     }
 
     @Test

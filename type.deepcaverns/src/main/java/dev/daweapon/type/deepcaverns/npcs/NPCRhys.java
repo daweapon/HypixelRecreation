@@ -1,6 +1,7 @@
 package dev.daweapon.type.deepcaverns.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
@@ -8,8 +9,8 @@ import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.skyblockgeneric.deepcaverns.DeepCavernsQuests;
-import net.kyori.adventure.key.Key;
-import net.kyori.adventure.sound.Sound;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import net.minestom.server.item.ItemStack;
 
 import java.util.Map;
 
@@ -34,6 +35,11 @@ public class NPCRhys extends HypixelNPC {
 			}
 
 			@Override
+			public Text chatNameText(HypixelPlayer player) {
+				return Text.of("<d>Rhys");
+			}
+
+			@Override
 			public Pos position(HypixelPlayer player) {
 				return new Pos(31.5, 12, 14.5, -90, 0);
 			}
@@ -45,15 +51,13 @@ public class NPCRhys extends HypixelNPC {
 		});
 	}
 
-	private static final Sound YES = Sound.sound(Key.key("entity.villager.yes"), Sound.Source.PLAYER, 1f, 1f);
-
 	@Override
 	public void onClick(NPCInteractEvent event) {
 		SkyBlockPlayer player = (SkyBlockPlayer) event.player();
 		if (isInDialogue(player)) return;
 
 		if (DeepCavernsQuests.rhysComplete(player)) {
-			setDialogue(player, "idle");
+			setDialogue(player, "idle-" + (1 + (int) (Math.random() * 2)));
 			return;
 		}
 		if (!DeepCavernsQuests.miningLevelReached(player)) {
@@ -61,10 +65,18 @@ public class NPCRhys extends HypixelNPC {
 			return;
 		}
 
+		ItemStack held = player.getItemInMainHand();
+		if (held.isAir()) {
+			setDialogue(player, "ask");
+			return;
+		}
+		SkyBlockItem heldItem = new SkyBlockItem(held);
+		ItemType heldType = heldItem.getAttributeHandler().getPotentialType();
 		int delivered = DeepCavernsQuests.rhysOres(player);
-		Map<ItemType, Integer> plan = DeepCavernsQuests.planRhysHandIn(delivered, player::getAmountInInventory);
+		Map<ItemType, Integer> plan = DeepCavernsQuests.planRhysHandIn(delivered,
+				type -> type == heldType ? held.amount() : 0);
 		if (plan.isEmpty()) {
-			setDialogue(player, delivered == 0 ? "ask" : "need");
+			setDialogue(player, "wrong");
 			return;
 		}
 
@@ -78,28 +90,50 @@ public class NPCRhys extends HypixelNPC {
 					player.getAchievementHandler().addProgressByTrigger("skyblock.resourceful_trigger", 1));
 			return;
 		}
-		sendNPCMessage(player, "Thanks for the items! I still need <a>" + (DeepCavernsQuests.RHYS_ORES_REQUIRED - delivered - given)
-				+ " <f>more.", YES);
+		setDialogue(player, "thanks");
 	}
 
 	@Override
 	protected DialogueSet[] dialogues(HypixelPlayer player) {
 		return new DialogueSet[]{
-				DialogueSet.builder().key("level").lines("Come back when you are Mining Level XII!").build(),
+				DialogueSet.builder().key("level").lines(
+						"So you want to visit the <2>Dwarven Mines<f>?",
+						"You must prove yourself worthy of <5>Heart of the Mountain<f>...",
+						"You are no match for the Dwarves of the Deeper Caverns.",
+						"Come back when you are Mining Level XII!"
+				).build(),
 				DialogueSet.builder().key("ask").lines(
-						"So you want to see the Dwarven Mines?",
-						"Bring me <a>15 <f>enchanted ores. Any mix of Enchanted Redstone, Iron Ingot, Coal, Emerald, Lapis Lazuli, Diamond or Gold Ingot will do."
+						"So you want to visit the <2>Dwarven Mines<f>?",
+						"You must prove yourself worthy of <5>Heart of the Mountain<f>...",
+						"You must bring me some valuable materials that peak my interest.",
+						"I would like a total of 15 items. Any from this list will do:",
+						"<8>- <a>Enchanted Redstone Dust",
+						"<8>- <a>Enchanted Iron Ingot",
+						"<8>- <a>Enchanted Coal",
+						"<8>- <a>Enchanted Emerald",
+						"<8>- <a>Enchanted Lapis Lazuli",
+						"<8>- <a>Enchanted Diamond",
+						"<8>- <a>Enchanted Gold Ingot"
 				).build(),
-				DialogueSet.builder().key("need").lines(
-						"I still need more enchanted ores. Redstone, Iron Ingot, Coal, Emerald, Lapis Lazuli, Diamond and Gold Ingot all count."
+				DialogueSet.builder().key("wrong").lines(
+						"That's not an item I'm looking for!",
+						"I would like a total of 15 items. Any from the list will do:",
+						"<8>- <a>Enchanted Redstone Dust",
+						"<8>- <a>Enchanted Iron Ingot",
+						"<8>- <a>Enchanted Coal",
+						"<8>- <a>Enchanted Emerald",
+						"<8>- <a>Enchanted Lapis Lazuli",
+						"<8>- <a>Enchanted Diamond",
+						"<8>- <a>Enchanted Gold Ingot"
 				).build(),
+				DialogueSet.builder().key("thanks").lines("Thank you for the items!").build(),
 				DialogueSet.builder().key("complete").lines(
 						"Perhaps you are someone we can get along with after all.",
-						"The Dwarven Mines and your <5>Heart of the Mountain <f>are open to you. Take the Lift Operator down whenever you are ready."
+						"I'll get your <5>Heart of the Mountain<f>. It's time for a visit!",
+						"Let's go together now. For future trips, remember the <b>Lift Operator<f>."
 				).build(),
-				DialogueSet.builder().key("idle").lines(
-						"The Dwarven Mines are open to you now. Use the Lift Operator to get there."
-				).build()
+				DialogueSet.builder().key("idle-1").lines("I had a sunburn once, I have stayed down there ever since.").build(),
+				DialogueSet.builder().key("idle-2").lines("You can ask the <b>Lift Operator <f>for a ride to the <2>Dwarven Mines<f>!").build()
 		};
 	}
 }

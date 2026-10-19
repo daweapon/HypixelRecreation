@@ -18,6 +18,7 @@ import java.util.function.Consumer;
 @UtilityClass
 public class ChocolateFactoryHelper {
     private static final int SECONDS_PER_HOUR = 3600;
+    private static final double BOOSTER_COOKIE_MULTIPLIER = 0.25;
 
     private static final int HAND_BAKED_MAX_INTERNAL_LEVEL = 9;
     private static final long HAND_BAKED_COST_STEP = 500L;
@@ -47,6 +48,7 @@ public class ChocolateFactoryHelper {
             data.setPetMultiplier(MiscPetHooks.chocolateMultiplierBonus(player));
             data.setShardFlatProduction(RabbitShardBonuses.rabbitCrew(player));
             data.setShardMultiplier(RabbitShardBonuses.chocolateSpeed(player));
+            data.setCookieMultiplier(player.isBoosterCookieActive() ? BOOSTER_COOKIE_MULTIPLIER : 0);
             data.setRabbitYouthLevels(RabbitShardBonuses.rabbitYouth(player));
             data.updateChocolateFromProduction();
         });

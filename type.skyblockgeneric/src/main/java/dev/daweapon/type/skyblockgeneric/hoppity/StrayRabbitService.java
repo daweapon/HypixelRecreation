@@ -72,8 +72,14 @@ public final class StrayRabbitService {
         if (StrayRabbits.isFish(player.getUuid(), random)) {
             return new Stray(slot, ChocolateRabbit.FISH_THE_RABBIT, null, true, expires);
         }
-        ChocolateRabbit rabbit = StrayRabbits.pickRabbit(player.getUuid(), data.getFoundRabbits(), random);
+        ChocolateRabbit rabbit = pick(player, data, random);
         return rabbit == null ? null : new Stray(slot, rabbit, null, false, expires);
+    }
+
+    private static ChocolateRabbit pick(SkyBlockPlayer player, ChocolateFactoryData data, ThreadLocalRandom random) {
+        RabbitRoller.Context context = HoppityEggService.context(player, data, null);
+        return StrayRabbits.pickRabbit(player.getUuid(), data.getFoundRabbits(), data.getFactoryLevel(),
+                rarity -> RabbitRoller.rarityWeight(context, rarity), random);
     }
 
     private static int freeSlot(State state, ThreadLocalRandom random) {
@@ -103,9 +109,13 @@ public final class StrayRabbitService {
         long[] gained = {0};
         boolean[] newRabbit = {false};
         ChocolateFactoryHelper.mutateData(player, data -> {
-            if (stray.fish() && !data.hasFoundRabbit(ChocolateRabbit.FISH_THE_RABBIT)) {
-                data.addFoundRabbit(ChocolateRabbit.FISH_THE_RABBIT);
-                newRabbit[0] = true;
+            if (stray.fish()) {
+                if (data.hasFoundRabbit(ChocolateRabbit.FISH_THE_RABBIT)) {
+                    gained[0] = HoppityEggService.duplicateReward(player, data, ChocolateRabbit.FISH_THE_RABBIT);
+                } else {
+                    data.addFoundRabbit(ChocolateRabbit.FISH_THE_RABBIT);
+                    newRabbit[0] = true;
+                }
                 return;
             }
             gained[0] = Math.max(1, (long) (data.getChocolatePerSecond()
@@ -154,25 +164,33 @@ public final class StrayRabbitService {
 
     private static void catchElDorado(SkyBlockPlayer player) {
         long[] gained = {0};
+        long[] duplicate = {0};
         boolean[] rabbit = {false};
         ChocolateFactoryHelper.mutateData(player, data -> {
             gained[0] = Math.max(1, (long) (data.getChocolatePerSecond() * EL_DORADO_SECONDS));
             data.addChocolate(gained[0]);
             data.setElDoradoCatches(data.getElDoradoCatches() + 1);
-            if (data.getElDoradoCatches() >= EL_DORADO_CATCHES_FOR_RABBIT && !data.hasFoundRabbit(ChocolateRabbit.EL_DORADO)) {
+            if (data.getElDoradoCatches() % EL_DORADO_CATCHES_FOR_RABBIT != 0) return;
+            if (data.hasFoundRabbit(ChocolateRabbit.EL_DORADO)) {
+                duplicate[0] = HoppityEggService.duplicateReward(player, data, ChocolateRabbit.EL_DORADO);
+            } else {
                 data.addFoundRabbit(ChocolateRabbit.EL_DORADO);
                 rabbit[0] = true;
             }
         });
         player.sendMessage("<6><l>GOLDEN RABBIT! <7>El Dorado: <6>+{} Chocolate", ChocolateFactoryHelper.formatChocolate(gained[0]));
         if (rabbit[0]) player.sendMessage("<d><l>NEW RABBIT! {}", ChocolateRabbit.EL_DORADO.getFormattedName());
+        if (duplicate[0] > 0) {
+            player.sendMessage("<d><l>DUPLICATE RABBIT! <7>{} <6>+{} Chocolate", ChocolateRabbit.EL_DORADO.getFormattedName(),
+                    ChocolateFactoryHelper.formatChocolate(duplicate[0]));
+        }
     }
 
     private static void stampede(SkyBlockPlayer player, State state, ThreadLocalRandom random) {
         ChocolateFactoryData data = ChocolateFactoryHelper.getData(player);
         long expires = System.currentTimeMillis() + StrayRabbits.VISIBLE_MS;
         for (int i = 0; i < StrayRabbits.STAMPEDE_STRAYS && state.active.size() < StrayRabbitService.STRAY_SLOTS.length; i++) {
-            ChocolateRabbit rabbit = StrayRabbits.pickRabbit(player.getUuid(), data.getFoundRabbits(), random);
+            ChocolateRabbit rabbit = pick(player, data, random);
             if (rabbit == null) break;
             state.active.add(new Stray(freeSlot(state, random), rabbit, null, false, expires));
         }

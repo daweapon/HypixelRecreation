@@ -5,6 +5,8 @@ import dev.daweapon.type.dwarvenmines.gui.GUIGuide;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.type.generic.data.datapoints.DatapointToggles;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 
@@ -41,6 +43,28 @@ public class NPCRhys extends HypixelNPC {
 
 	@Override
 	public void onClick(NPCInteractEvent event) {
-		new GUIGuide().open(event.player());
+		SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+		if (isInDialogue(player)) return;
+
+		if (player.getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_RHYS_IN_DWARVEN_MINES)) {
+			new GUIGuide().open(player);
+			return;
+		}
+		setDialogue(player, "first").thenRun(() ->
+				player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_RHYS_IN_DWARVEN_MINES, true));
+	}
+
+	@Override
+	protected DialogueSet[] dialogues(HypixelPlayer player) {
+		return new DialogueSet[]{
+				DialogueSet.builder().key("first").lines(
+						"Now that you have your <5>Heart of the Mountain<f>, you have access to all of the deeper areas of the mines!",
+						"You can access the <5>Heart of the Mountain <f>from the Mining Skill menu, and unlock loads of powerful upgrades as you continue your journey!",
+						"We Dwarves inhabit this area. We love it! It is rich in Mithril and even some Titanium.",
+						"You will need a good pickaxe to mine ores here. For Mithril, at least something with a <a>Breaking Power <f>of 4. <5>Bubu <f>just down the street could help you with that!",
+						"If you're looking for better hardware, maybe try checking out the <6>Forge<f>. You could also visit the <b>Royal Palace <f>to talk to the <6><l>King <r>about certain tasks!",
+						"Enjoy our little slice of mining heaven!"
+				).build()
+		};
 	}
 }

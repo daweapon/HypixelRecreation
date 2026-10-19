@@ -24,6 +24,9 @@ public final class DeepCavernsQuests {
     public static final int LAPIS_ASKED = 1;
     public static final int LAPIS_DONE = 2;
     public static final int REDSTONE_COLLECTION_TIER = 2;
+    public static final int REDSTONE_OFFER_NONE = 0;
+    public static final int REDSTONE_OFFER_ACCEPTED = 1;
+    public static final int REDSTONE_OFFER_DECLINED = 2;
     public static final int[] REDSTONE_TIERS = {128, 256, 512, 1024};
 
     private DeepCavernsQuests() {
@@ -107,19 +110,19 @@ public final class DeepCavernsQuests {
         set(player, SkyBlockDataHandler.Data.REDSTONE_MINER_TIER, Math.min(tier, REDSTONE_TIERS.length));
     }
 
-    public static boolean redstoneAccepted(SkyBlockPlayer player) {
-        return value(player, SkyBlockDataHandler.Data.REDSTONE_MINER_ACCEPTED) > 0;
+    public static int redstoneOffer(SkyBlockPlayer player) {
+        return value(player, SkyBlockDataHandler.Data.REDSTONE_MINER_ACCEPTED);
     }
 
-    public static void setRedstoneAccepted(SkyBlockPlayer player, boolean accepted) {
-        set(player, SkyBlockDataHandler.Data.REDSTONE_MINER_ACCEPTED, accepted ? 1 : 0);
+    public static void setRedstoneOffer(SkyBlockPlayer player, int offer) {
+        set(player, SkyBlockDataHandler.Data.REDSTONE_MINER_ACCEPTED, offer);
     }
 
     public static void maxOut(SkyBlockPlayer player) {
         setRhysOres(player, RHYS_ORES_REQUIRED);
         setLapisMinerState(player, LAPIS_DONE);
         setRedstoneTier(player, REDSTONE_TIERS.length);
-        setRedstoneAccepted(player, true);
+        setRedstoneOffer(player, REDSTONE_OFFER_ACCEPTED);
     }
 
     private static int value(SkyBlockPlayer player, SkyBlockDataHandler.Data data) {

@@ -9,10 +9,10 @@ import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
 import dev.daweapon.type.generic.gui.v2.ViewLayout;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointChocolateFactory.ChocolateFactoryData;
-import dev.daweapon.type.skyblockgeneric.hoppity.EggLocation;
-import dev.daweapon.type.skyblockgeneric.hoppity.EggLocationCatalogue;
 import dev.daweapon.type.skyblockgeneric.hoppity.HoppityHitmanService;
 import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateFactoryHelper;
+import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateFactoryLevel;
+import dev.daweapon.type.skyblockgeneric.rabbits.HoppityEggType;
 import dev.daweapon.type.skyblockgeneric.rabbits.RabbitHitman;
 import dev.daweapon.type.skyblockgeneric.rabbits.RabbitShardBonuses;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -30,7 +30,6 @@ public class GUIRabbitHitman implements StatefulView<GUIRabbitHitman.State> {
             28, 29, 30, 31, 32, 33, 34,
             37, 38, 39, 40, 41, 42, 43
     };
-    private static final String HITMAN_TEXTURE = "b79e7f3341b672d9de6564cbaca052a6a723ea466a2e66af35ba1ba855f0d692";
 
     public record State() {
     }
@@ -53,7 +52,8 @@ public class GUIRabbitHitman implements StatefulView<GUIRabbitHitman.State> {
         double reduction = RabbitShardBonuses.hitmanCooldownPercent(viewer);
         int purchased = RabbitHitman.purchasedSlots(data);
         int stored = RabbitHitman.storedEggs(data);
-        int onCooldown = RabbitHitman.slotsOnCooldown(data, now, reduction);
+        int onCooldown = Math.min(RabbitHitman.slotsOnCooldown(data, now, reduction), Math.max(0, purchased - stored));
+        int ready = Math.max(0, purchased - stored - onCooldown);
 
         for (int slot = 0; slot < 54; slot++) {
             layout.slot(slot, (s, c) -> ItemStacks.named(Material.BLACK_STAINED_GLASS_PANE, " "));
@@ -64,36 +64,54 @@ public class GUIRabbitHitman implements StatefulView<GUIRabbitHitman.State> {
             int index = i;
             int slot = SLOTS[i];
             if (i < stored) {
-                layout.slot(slot, (s, c) -> eggItem(data, index), (click, c) -> {
+                layout.slot(slot, (s, c) -> eggItem(), (click, c) -> {
                     SkyBlockPlayer player = (SkyBlockPlayer) c.player();
                     if (!HoppityHitmanService.open(player, index)) {
                         player.sendMessage("<c>Your Rabbit Hitman slots are all on cooldown!");
                     }
                     c.session(State.class).refresh();
                 });
-            } else if (i < stored + onCooldown && i < purchased) {
-                long remaining = RabbitHitman.cooldownRemaining(data, now, reduction, i - stored);
-                layout.slot(slot, (s, c) -> ItemStacks.item(Material.RED_STAINED_GLASS_PANE, Text.of("<c>Slot on cooldown"), List.of(
-                        Text.of("<7>Ready in <e>{}", StringUtility.formatTimeLeft(remaining)))));
+            } else if (i < stored + ready) {
+                layout.slot(slot, (s, c) -> ItemStacks.item(Material.LIME_DYE, 1, Text.of("<a>Egg Slot"), List.of(
+                        Text.of("<7>Once you miss your next egg, your"),
+                        Text.of("<7>Rabbit Hitman will snipe it for you."),
+                        Text.empty(),
+                        Text.of("<a><l>READY"))));
             } else if (i < purchased) {
-                layout.slot(slot, (s, c) -> ItemStacks.item(Material.LIME_STAINED_GLASS_PANE, Text.of("<a>Empty slot"), List.of(
-                        Text.of("<7>Missed eggs are collected here"),
-                        Text.of("<7>automatically."))));
-            } else if (i == purchased && RabbitHitman.canBuyNextSlot(data)) {
-                layout.slot(slot, (s, c) -> buyItem(data, index, (SkyBlockPlayer) c.player()), (click, c) -> {
+                long remaining = RabbitHitman.cooldownRemaining(data, now, reduction, i - stored - ready);
+                layout.slot(slot, (s, c) -> ItemStacks.item(Material.RED_DYE, 1, Text.of("<c>Egg Slot"), List.of(
+                        Text.of("<7>Once you miss your next egg, your"),
+                        Text.of("<7>Rabbit Hitman will snipe it for you."),
+                        Text.empty(),
+                        Text.of("<c>On cooldown: {}", StringUtility.formatTimeLeft(remaining)))));
+            } else {
+                boolean next = i == purchased;
+                layout.slot(slot, (s, c) -> lockedItem(index, next, RabbitHitman.canBuyNextSlot(data)), (click, c) -> {
+                    if (!next) return;
                     SkyBlockPlayer player = (SkyBlockPlayer) c.player();
-                    if (HoppityHitmanService.buyNextSlot(player)) {
+                    if (!RabbitHitman.canBuyNextSlot(ChocolateFactoryHelper.getData(player))) {
+                        player.sendMessage("<c>Requires Chocolate Factory {:roman}!", RabbitHitman.requiredFactoryLevel(index));
+                    } else if (HoppityHitmanService.buyNextSlot(player)) {
                         player.sendMessage("<a>You purchased a Rabbit Hitman slot!");
                     } else {
                         player.sendMessage("<c>You cannot afford this slot!");
                     }
                     c.session(State.class).refresh();
                 });
-            } else {
-                layout.slot(slot, (s, c) -> ItemStacks.item(Material.BARRIER, Text.of("<c>Locked slot"), List.of(
-                        Text.of("<7>Requires <6>Chocolate Factory {}<7>.", RabbitHitman.requiredFactoryLevel(index)))));
             }
         }
+
+        layout.slot(50, (s, c) -> ItemStacks.item(Material.CHEST, 1, Text.of("<a>Claim All"), List.of(
+                Text.of("<7>Open the eggs collected by the"),
+                Text.of("<c>Rabbit Hitman<7>."),
+                Text.empty(),
+                Text.of("<e>Click to claim all!"))), (click, c) -> {
+            SkyBlockPlayer player = (SkyBlockPlayer) c.player();
+            while (RabbitHitman.storedEggs(ChocolateFactoryHelper.getData(player)) > 0 && HoppityHitmanService.open(player, 0)) {
+                continue;
+            }
+            c.session(State.class).refresh();
+        });
 
         Components.back(layout, 48, ctx);
         Components.close(layout, 49);
@@ -104,40 +122,48 @@ public class GUIRabbitHitman implements StatefulView<GUIRabbitHitman.State> {
         long now = System.currentTimeMillis();
         double reduction = RabbitShardBonuses.hitmanCooldownPercent(player);
         int onCooldown = RabbitHitman.slotsOnCooldown(data, now, reduction);
+        String slotCooldown = onCooldown > 0 ? StringUtility.formatTimeLeft(RabbitHitman.cooldownRemaining(data, now, reduction, 0)) : "NOW";
+        String allSlots = onCooldown > 0 ? StringUtility.formatTimeLeft(RabbitHitman.cooldownRemaining(data, now, reduction, onCooldown - 1)) : "NOW";
         List<Text> lore = new ArrayList<>();
-        lore.add(Text.of("<7>The Rabbit Hitman collects the"));
-        lore.add(Text.of("<c>Hitman Eggs <7>you miss during"));
-        lore.add(Text.of("<d>Hoppity's Hunt<7>."));
+        lore.add(Text.of("<7>Hire this private rabbit to hunt eggs"));
+        lore.add(Text.of("<7>for you, they will collect eggs you"));
+        lore.add(Text.of("<7>missed!"));
         lore.add(Text.empty());
-        lore.add(Text.of("<7>Slots: <a>{}<7>/<a>{}", RabbitHitman.purchasedSlots(data), RabbitHitman.MAX_SLOTS));
         lore.add(Text.of("<7>Available eggs: <a>{}", RabbitHitman.storedEggs(data)));
-        lore.add(Text.of("<7>Slots on cooldown: <c>{}", onCooldown));
-        if (onCooldown > 0) {
-            lore.add(Text.of("<7>Next slot ready in: <e>{}", StringUtility.formatTimeLeft(
-                    RabbitHitman.cooldownRemaining(data, now, reduction, 0))));
-        }
-        lore.add(Text.of("<7>Cooldown per slot: <e>{}", StringUtility.formatTimeLeft(RabbitHitman.cooldownPerSlot(reduction))));
-        return ItemStacks.head(HITMAN_TEXTURE, 1, Text.of("<c>Rabbit Hitman"), lore);
+        lore.add(Text.of("<7>Purchased slots: <e>{}<7>/<a>{}", RabbitHitman.purchasedSlots(data), RabbitHitman.MAX_SLOTS));
+        lore.add(Text.of("<7>Slot cooldown: <a>{}", slotCooldown));
+        lore.add(Text.of("<7>All slots in: <a>{}", allSlots));
+        return ItemStacks.item(Material.BOW, 1, Text.of("<c>Rabbit Hitman"), lore);
     }
 
-    private ItemStack.Builder eggItem(ChocolateFactoryData data, int index) {
-        EggLocation location = RabbitHitman.locationOf(data.getHitmanEggs().get(index), EggLocationCatalogue.get());
-        List<Text> lore = new ArrayList<>();
-        if (location != null) {
-            lore.add(Text.of("<7>Location: <a>{}", location.island().getName()));
-            lore.add(Text.of("<7>{}", location.message()));
-            lore.add(Text.empty());
-        }
-        lore.add(Text.of("<e>Click to open!"));
-        return ItemStacks.item(Material.EGG, Text.of("<c>Hitman Egg"), lore);
-    }
-
-    private ItemStack.Builder buyItem(ChocolateFactoryData data, int index, SkyBlockPlayer player) {
-        long price = RabbitHitman.slotPrice(index);
-        boolean affordable = player.getCoins() >= price;
-        return ItemStacks.item(Material.YELLOW_STAINED_GLASS_PANE, Text.of("<e>Purchase slot {}", index + 1), List.of(
-                Text.of("<7>Cost: <6>{} Coins", StringUtility.commaify(price)),
+    private ItemStack.Builder eggItem() {
+        return ItemStacks.head(HoppityEggType.BREAKFAST.getTextureHash(), 1, Text.of("<e>Chocolate Egg"), List.of(
+                Text.of("<7>Rabbit Hitman collected an egg you"),
+                Text.of("<7>missed!"),
                 Text.empty(),
-                affordable ? Text.of("<e>Click to purchase!") : Text.of("<c>Not enough coins!")));
+                Text.of("<e>Click to open!")));
+    }
+
+    private ItemStack.Builder lockedItem(int index, boolean next, boolean canBuyNext) {
+        int required = RabbitHitman.requiredFactoryLevel(index);
+        List<Text> lore = new ArrayList<>(List.of(
+                Text.of("<7>Purchase more Egg Slots so the"),
+                Text.of("<7>Hitman can store more eggs you miss!"),
+                Text.empty(),
+                Text.of("<7>Cost"),
+                Text.of("<6>{} Coins", StringUtility.commaify(RabbitHitman.slotPrice(index))),
+                Text.empty()));
+        if (next && canBuyNext) {
+            lore.add(Text.of("<e>Click to purchase!"));
+        } else if (required > 1 && index >= levelFloor(required)) {
+            lore.add(Text.of("<c>Requires <c>Chocolate Factory {:roman}", required));
+        } else {
+            lore.add(Text.of("<c>Requires previous unlock!"));
+        }
+        return ItemStacks.item(Material.GRAY_DYE, 1, Text.of("<c>Egg Slot"), lore);
+    }
+
+    private static int levelFloor(int level) {
+        return level == 1 ? 0 : ChocolateFactoryLevel.values()[level - 2].getMaxHitmanSlots();
     }
 }

@@ -38,7 +38,7 @@ public final class HoppityEggService {
             data.setTotalEggsFound(data.getTotalEggsFound() + 1);
         });
         if (!first[0]) return false;
-        player.sendMessage("<d><l>HOPPITY'S HUNT <7>You found a " + typeColor(egg.type()) + "{} <7>{}!", egg.type().getDisplayName(),
+        player.sendMessage("<d><l>HOPPITY'S HUNT</l> <d>You found a " + typeColor(egg.type()) + "{} <f>{}<d>!", egg.type().getDisplayName(),
                 egg.location().message());
         open(player, egg.location(), egg.island(), ThreadLocalRandom.current());
         ChocolateFactoryHelper.mutateData(player, data ->
@@ -100,6 +100,13 @@ public final class HoppityEggService {
     private static double sweetBenevolence() {
         return HuntEggSchedule.isHuntActive(SkyBlockCalendar.getElapsed())
                 ? ElectionPerks.multiplier(SkyBlockMayor.Perk.SWEET_BENEVOLENCE) : 1.0;
+    }
+
+    public static long duplicateReward(SkyBlockPlayer player, ChocolateFactoryData data, ChocolateRabbit rabbit) {
+        data.addDuplicate(rabbit);
+        long chocolate = duplicateChocolate(data, rabbit, MiscPetHooks.chocolateDuplicatePercent(player), sweetBenevolence());
+        data.addChocolate(chocolate);
+        return chocolate;
     }
 
     public static long duplicateChocolate(ChocolateFactoryData data, ChocolateRabbit rabbit, double petPercent, double perkMultiplier) {

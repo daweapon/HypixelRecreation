@@ -87,8 +87,8 @@ public class AbiphoneHoppity extends AbiphoneNPC {
             player.sendMessage("<7>Hoppity is offering {} <7>for <6>{} Coins<7>.", offer.rabbit().getFormattedName(),
                     StringUtility.commaify(offer.price()));
             NPCOption.sendOption(player, "hoppity", false, List.of(
-                    new NPCOption.Option("accept", NamedTextColor.GREEN, true, "ACCEPT", _ -> accept(player)),
-                    new NPCOption.Option("decline", NamedTextColor.RED, true, "DECLINE", _ -> decline(player))));
+                    new NPCOption.Option("accept", NamedTextColor.GREEN, true, "Yes", _ -> accept(player)),
+                    new NPCOption.Option("decline", NamedTextColor.RED, true, "No", _ -> decline(player))));
         });
     }
 
@@ -138,8 +138,14 @@ public class AbiphoneHoppity extends AbiphoneNPC {
     @Override
     public DialogueSet[] dialogues(HypixelPlayer player) {
         return new DialogueSet[]{
-                DialogueSet.builder().key("abiphone").lines("Bring me that Fish...but in steamed form!").build(),
-                DialogueSet.builder().key("missing").lines("You don't have what I need! Nice try!").build(),
+                DialogueSet.builder().key("abiphone").lines(
+                        "What? You want my Abiphone contact?",
+                        "Well, tell you what. Help me out with a little something and I'll hook you up.",
+                        "There's this one Fish that keeps munching on my chocolate stash.",
+                        "He's a clever one, that fish. I can never catch him.",
+                        "If I ever get him, I'm making a meal out of him - a little payback for all that chocolate.",
+                        "Bring me a <5>Fish Chocolat \u00e0 la Vapeur <f>and I'll give you my contact. Deal?").build(),
+                DialogueSet.builder().key("missing").lines("Bring me that Fish...but in <c>steamed <f>form!").build(),
                 DialogueSet.builder().key("given").lines("Thank you so much, here is my contact.",
                         "If I have new rabbit arrivals, I'll let you know!").build(),
                 DialogueSet.builder().key("offer").lines("I just got a new Chocolate Rabbit and was wondering if you wanted to buy it.").build(),

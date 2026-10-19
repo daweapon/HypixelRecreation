@@ -165,7 +165,7 @@ public final class HuntEggManager {
         lastAnnouncedYear = year;
         HoppityEggType type = HuntEggSchedule.eggType(latest);
         for (SkyBlockPlayer player : SkyBlockGenericLoader.getLoadedPlayers()) {
-            player.sendMessage("<d><l>HOPPITY'S HUNT <7>A " + HoppityEggService.typeColor(type) + "{} <7>has appeared!", type.getDisplayName());
+            player.sendMessage("<d><l>HOPPITY'S HUNT</l> <d>A " + HoppityEggService.typeColor(type) + "{} <d>has appeared!", type.getDisplayName());
         }
     }
 

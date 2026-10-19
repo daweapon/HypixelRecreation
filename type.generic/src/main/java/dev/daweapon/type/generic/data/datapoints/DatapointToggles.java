@@ -79,6 +79,7 @@ public class DatapointToggles extends Datapoint<DatapointToggles.Toggles> {
             HAS_VISITED_DARK_AUCTION(false),
             HAS_SPOKEN_TO_TIA(false),
             HAS_SPOKEN_TO_LIFT_OPERATOR(false),
+            HAS_SPOKEN_TO_RHYS_IN_DWARVEN_MINES(false),
             HAS_SPOKEN_TO_BUBU(false),
             HAS_SPOKEN_TO_DULIN(false),
             HAS_SPOKEN_TO_DULIN_AT_CAMP(false),

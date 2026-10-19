@@ -277,6 +277,7 @@ public class DatapointChocolateFactory extends SkyBlockDatapoint<DatapointChocol
         private int rabbitYouthLevels;
         private double shardFlatProduction;
         private double shardMultiplier;
+        private double cookieMultiplier;
         private long chocolate;
         private long chocolateAllTime;
         private long lastUpdated = System.currentTimeMillis();
@@ -388,6 +389,8 @@ public class DatapointChocolateFactory extends SkyBlockDatapoint<DatapointChocol
             if (!canPrestige()) return false;
             prestigeLevel++;
             chocolateThisPrestige = 0;
+            chocolate = 0;
+            partialChocolate = 0;
             employees.clear();
             handBakedChocolateLevel = 0;
             timeTowerLevel = 0;
@@ -472,7 +475,7 @@ public class DatapointChocolateFactory extends SkyBlockDatapoint<DatapointChocol
         }
 
         public double getProductionMultiplier() {
-            return getPrestigeMultiplier() + getCoachBonus() + getTimeTowerBonus() + getCollectionMultiplierBonus();
+            return getPrestigeMultiplier() + getCoachBonus() + getTimeTowerBonus() + getCollectionMultiplierBonus() + cookieMultiplier;
         }
 
         public double getEmployeeCostFactor() {
