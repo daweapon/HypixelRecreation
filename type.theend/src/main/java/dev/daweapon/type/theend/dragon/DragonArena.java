@@ -6,6 +6,7 @@ import java.util.List;
 
 public final class DragonArena {
     public static final Pos EGG = new Pos(-672.5, 77, -275.5);
+    public static final Pos EGG_BLOCK = new Pos(-672, 77, -276);
     public static final Pos CENTER = new Pos(-672.5, 40, -275.5);
     public static final double ORBIT_RADIUS = 22;
     public static final double CEILING = 104;

@@ -44,17 +44,18 @@ public final class EnderDragonMob extends CrimsonIsleMob {
 
     private final DragonVariant variant;
     private final Consumer<EnderDragonMob> onDefeated;
-    private final java.util.function.IntSupplier liveCrystals;
+    private final java.util.function.ToIntBiFunction<Pos, Double> crystalsNear;
     private Pos orbitTarget = DragonArena.CENTER;
     private Pos rushTarget;
     private int rushTicks;
     private int hoverTicks;
     private double angle = ThreadLocalRandom.current().nextDouble(Math.PI * 2);
 
-    public EnderDragonMob(DragonVariant variant, java.util.function.IntSupplier liveCrystals, Consumer<EnderDragonMob> onDefeated) {
+    public EnderDragonMob(DragonVariant variant, java.util.function.ToIntBiFunction<Pos, Double> crystalsNear, Consumer<EnderDragonMob> onDefeated) {
         super(profile(variant));
         this.variant = variant;
-        this.liveCrystals = liveCrystals;
+        this.crystalsNear = crystalsNear;
+        setCustomNameVisible(false);
         this.onDefeated = onDefeated;
         setNoGravity(true);
         hasPhysics = false;
@@ -143,7 +144,7 @@ public final class EnderDragonMob extends CrimsonIsleMob {
     }
 
     private void healFromCrystals() {
-        int live = liveCrystals.getAsInt();
+        int live = crystalsNear.applyAsInt(getPosition(), CRYSTAL_RANGE);
         if (live <= 0 || getHealth() >= getMaxHealth()) return;
         setHealth((float) Math.min(getMaxHealth(), getHealth() + getMaxHealth() * CRYSTAL_HEAL_PERCENT_PER_SECOND * live));
         refreshName();

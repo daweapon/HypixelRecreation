@@ -1,6 +1,10 @@
 package dev.daweapon.type.theend.dragon;
 
+import net.kyori.adventure.bossbar.BossBar;
+import net.kyori.adventure.text.Component;
 import net.minestom.server.MinecraftServer;
+import net.minestom.server.entity.Player;
+import net.minestom.server.timer.Task;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.coordinate.Vec;
 import net.minestom.server.instance.Instance;
@@ -25,6 +29,8 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -33,7 +39,6 @@ import java.util.concurrent.ThreadLocalRandom;
 public final class EnderDragonFight {
     public static final int CRYSTALS = 6;
     public static final int CRYSTAL_RESPAWNS = 3;
-    public static final int SUMMON_DELAY_TICKS = 100;
     public static final int EGG_RESPAWN_TICKS = 1200;
     public static final double KNOCKBACK_RADIUS = 30;
     public static final double CRYSTAL_DAMAGE_CREDIT = 1000;
@@ -48,6 +53,10 @@ public final class EnderDragonFight {
     private static final List<Pos> emptySites = new ArrayList<>();
     private static int respawnsLeft;
     private static Map<UUID, Integer> eyesAtStart = Map.of();
+    private static BossBar bar;
+    private static Task barTask;
+    private static final Set<UUID> barViewers = new HashSet<>();
+    private static final int BAR_TICKS = 10;
 
     private EnderDragonFight() {
     }
@@ -68,6 +77,15 @@ public final class EnderDragonFight {
         return phase == Phase.EGG_RESPAWN;
     }
 
+    public static EnderDragonMob dragon() {
+        return dragon;
+    }
+
+    public static int crystalsNear(Pos at, double range) {
+        crystals.removeIf(crystal -> crystal.isRemoved());
+        return (int) crystals.stream().filter(crystal -> crystal.getPosition().distance(at) <= range).count();
+    }
+
     public static int liveCrystals() {
         crystals.removeIf(crystal -> crystal.isRemoved());
         return crystals.size();
@@ -76,8 +94,7 @@ public final class EnderDragonFight {
     public static void onAltarFilled(Instance instance) {
         if (phase != Phase.IDLE || !LEDGER.complete()) return;
         phase = Phase.SUMMONING;
-        MinecraftServer.getSchedulerManager().buildTask(() -> spawn(instance))
-                .delay(TaskSchedule.tick(SUMMON_DELAY_TICKS)).schedule();
+        DragonSpawnAnimation.play(instance, () -> spawn(instance));
     }
 
     private static void spawn(Instance instance) {
@@ -85,13 +102,14 @@ public final class EnderDragonFight {
         eyesAtStart = Map.copyOf(LEDGER.eyesByPlayer());
         active = true;
         phase = Phase.ACTIVE;
-        EnderDragonMob mob = new EnderDragonMob(variant, EnderDragonFight::liveCrystals, EnderDragonFight::defeated);
+        EnderDragonMob mob = new EnderDragonMob(variant, EnderDragonFight::crystalsNear, EnderDragonFight::defeated);
         dragon = mob;
         mob.setInstance(instance, DragonArena.EGG);
         resetFrames(instance);
         convertSleepingEyes(instance);
         knockPlayersBack(instance);
         spawnCrystals(instance);
+        startBar(instance, mob);
         broadcast(instance, Text.of("<5><l>☬ <r><d>The {} <5>has awoken from the Dragon Egg!", variant.displayName()));
     }
 
@@ -151,6 +169,7 @@ public final class EnderDragonFight {
         Instance instance = finished.getInstance();
         active = false;
         phase = Phase.EGG_RESPAWN;
+        stopBar();
         DragonVariant variant = finished.variant();
         List<Map.Entry<UUID, Double>> ranking = finished.getDamageDealt().entrySet().stream()
                 .sorted(Map.Entry.<UUID, Double>comparingByValue(Comparator.reverseOrder())).toList();
@@ -171,6 +190,7 @@ public final class EnderDragonFight {
         MinecraftServer.getSchedulerManager().buildTask(() -> {
             phase = Phase.IDLE;
             if (instance != null) {
+                DragonEgg.place(instance);
                 broadcast(instance, Text.of("<5>The Dragon Egg has respawned!"));
             }
         }).delay(TaskSchedule.tick(EGG_RESPAWN_TICKS)).schedule();
@@ -218,6 +238,7 @@ public final class EnderDragonFight {
     }
 
     public static void abort() {
+        stopBar();
         if (dragon != null) dragon.abandon();
         crystals.forEach(crystal -> {
             if (!crystal.isRemoved()) crystal.remove();
@@ -227,6 +248,49 @@ public final class EnderDragonFight {
         active = false;
         phase = Phase.IDLE;
         LEDGER.clear();
+    }
+
+    private static void startBar(Instance instance, EnderDragonMob mob) {
+        stopBar();
+        bar = BossBar.bossBar(Component.empty(), 1f, BossBar.Color.PINK, BossBar.Overlay.PROGRESS);
+        barTask = MinecraftServer.getSchedulerManager().buildTask(() -> tickBar(instance, mob))
+                .repeat(TaskSchedule.tick(BAR_TICKS)).schedule();
+        tickBar(instance, mob);
+    }
+
+    private static void tickBar(Instance instance, EnderDragonMob mob) {
+        if (bar == null) return;
+        if (mob.isRemoved() || mob.isDead()) {
+            stopBar();
+            return;
+        }
+        float max = mob.getMaxHealth();
+        bar.progress(Math.max(0f, Math.min(1f, mob.getHealth() / max)));
+        bar.name(Text.of("<5><l>{} <r><c>{}<7>/<c>{}<red>❤", mob.variant().displayName(),
+                SkyBlockMob.shortHealth(mob.getHealth()), SkyBlockMob.shortHealth(max)).asComponent());
+        Set<UUID> present = new HashSet<>();
+        for (Player player : instance.getPlayers()) {
+            present.add(player.getUuid());
+            if (barViewers.add(player.getUuid())) player.showBossBar(bar);
+        }
+        for (UUID uuid : new ArrayList<>(barViewers)) {
+            if (present.contains(uuid)) continue;
+            barViewers.remove(uuid);
+            Player gone = MinecraftServer.getConnectionManager().getOnlinePlayerByUuid(uuid);
+            if (gone != null) gone.hideBossBar(bar);
+        }
+    }
+
+    private static void stopBar() {
+        if (barTask != null) barTask.cancel();
+        barTask = null;
+        if (bar == null) return;
+        for (UUID uuid : barViewers) {
+            Player viewer = MinecraftServer.getConnectionManager().getOnlinePlayerByUuid(uuid);
+            if (viewer != null) viewer.hideBossBar(bar);
+        }
+        barViewers.clear();
+        bar = null;
     }
 
     private static void broadcast(Instance instance, Text message) {
