@@ -946,7 +946,7 @@ items:
               type: MAGMA_LORD_BOOTS
               amount: 1
   - id: MAGMA_LORD_NECKLACE
-    material: player_head
+    material: PAPER
     name: 'Magma Lord Necklace'
     rarity: LEGENDARY
     lore:
@@ -959,6 +959,8 @@ items:
       ferocity: 2
       sea_creature_chance: 2.5
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/magma_lord_gauntlet
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
       - id: ITEM_REQUIREMENTS

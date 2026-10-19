@@ -2512,7 +2512,7 @@ items:
       - id: SKULL_HEAD
         texture: 1880725ac40d46542bf7c819801872e0f01b7f9a52a4c48a98d7c94874484c0f
   - id: SKULL_ITEM
-    material: player_head
+    material: SKELETON_SKULL
     name: "Skeleton Skull"
     rarity: RARE
     unavailable: "Source unconfirmed"

@@ -66,6 +66,9 @@ items:
     rarity: UNCOMMON
     material: PLAYER_HEAD
     name: "Emperors Skull"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/emperors_skull
   - id: RUSTY_COIN
     rarity: UNCOMMON
     material: PLAYER_HEAD

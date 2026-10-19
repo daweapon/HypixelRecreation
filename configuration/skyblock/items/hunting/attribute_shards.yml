@@ -618,7 +618,7 @@ items:
       - id: SKULL_HEAD
         texture: 420ede07bb66cef6bc0f583a85bc0f12f5b560aceca84f85994af8fc1d2d2be8
   - id: SHARD_ZOMBIE_SOLDIER
-    material: PLAYER_HEAD
+    material: ZOMBIE_HEAD
     rarity: UNCOMMON
     components:
       - id: ATTRIBUTE_SHARD
@@ -1510,7 +1510,7 @@ items:
       - id: SKULL_HEAD
         texture: ad6e0b20580cb0673858ce820be34b54d5d464719b29b3f9974263511b0ad755
   - id: SHARD_WITHER
-    material: PLAYER_HEAD
+    material: WITHER_SKELETON_SKULL
     rarity: RARE
     components:
       - id: ATTRIBUTE_SHARD
@@ -2560,7 +2560,7 @@ items:
       - id: SKULL_HEAD
         texture: 9518e6d249eaca8fd058b7ef70d88cf5c2f6b0c2cfa44d301b6f070847ce9866
   - id: SHARD_FLORA
-    material: PLAYER_HEAD
+    material: SUNFLOWER
     rarity: LEGENDARY
     unavailable: "Source content not built: Greenhouse"
     components:
