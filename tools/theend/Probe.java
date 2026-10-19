@@ -91,6 +91,28 @@ class Probe {
                 if (!isAir(b) && !b.contains("water") && !b.contains("lava") && isAir(block(x, y + 1, z)) && isAir(block(x, y + 2, z)) && isAir(block(x, y + 3, z)))
                     System.out.println(x + " " + (y + 1) + " " + z + " " + b.replace("minecraft:", ""));
             }
+        } else if (a[0].equals("census")) {
+            int cx = Integer.parseInt(a[2]), cy = Integer.parseInt(a[3]), cz = Integer.parseInt(a[4]), r = Integer.parseInt(a[5]);
+            Map<String, Integer> counts = new TreeMap<>();
+            for (int x = cx - r; x <= cx + r; x++) for (int y = cy - r; y <= cy + r; y++) for (int z = cz - r; z <= cz + r; z++) {
+                String b = block(x, y, z);
+                if (!isAir(b)) counts.merge(b.replace("minecraft:", ""), 1, Integer::sum);
+            }
+            System.out.println(counts.entrySet().stream().sorted((p, q) -> q.getValue() - p.getValue()).limit(9).map(e -> e.getKey() + "=" + e.getValue()).collect(java.util.stream.Collectors.joining(", ")));
+        } else if (a[0].equals("slice")) {
+            int cx = Integer.parseInt(a[2]), cy = Integer.parseInt(a[3]), cz = Integer.parseInt(a[4]), r = Integer.parseInt(a[5]);
+            for (int y = cy + 4; y >= cy - 4; y--) {
+                System.out.println("y=" + y);
+                for (int z = cz - r; z <= cz + r; z++) {
+                    StringBuilder sb = new StringBuilder();
+                    for (int x = cx - r; x <= cx + r; x++) {
+                        String b = block(x, y, z);
+                        char c = isAir(b) ? '.' : b.contains("portal_frame") ? 'F' : b.contains("end_stone") ? 'e' : b.contains("sandstone") || b.contains("sand") ? 's' : b.contains("obsidian") ? 'o' : b.contains("purple") || b.contains("magenta") ? 'p' : '#';
+                        sb.append(c);
+                    }
+                    System.out.println(sb);
+                }
+            }
         } else if (a[0].equals("find")) {
             Set<String> names = new HashSet<>(Arrays.asList(a).subList(7, a.length));
             int x0 = Integer.parseInt(a[2]), z0 = Integer.parseInt(a[3]), x1 = Integer.parseInt(a[4]), z1 = Integer.parseInt(a[5]);
