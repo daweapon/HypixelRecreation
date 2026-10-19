@@ -7,6 +7,7 @@ import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.block.Block;
 import net.minestom.server.timer.TaskSchedule;
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.generic.event.HypixelEventHandler;
@@ -17,7 +18,6 @@ import dev.daweapon.type.skyblockgeneric.essence.EssenceType;
 import dev.daweapon.type.skyblockgeneric.essence.Essences;
 import dev.daweapon.type.skyblockgeneric.event.custom.PlayerKilledSkyBlockMobEvent;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
-import dev.daweapon.type.skyblockgeneric.loottable.LootAffector;
 import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -185,8 +185,7 @@ public final class EnderDragonFight {
             player.getSkills().increase(player, SkillCategories.COMBAT, (double) variant.combatXp());
         }
         List<DragonLoot.Reward> rewards = DragonLoot.plan(variant, quality, eyes, rank, damage,
-                (item, chance) -> LootRoll.roll(player.getUuid(), item,
-                        LootAffector.MAGIC_FIND.getAffector().apply(player, chance, mob)));
+                (item, chance) -> LootRoll.roll(player.getUuid(), item, luckAdjusted(player, mob, item, chance)));
         for (DragonLoot.Reward reward : rewards) {
             SkyBlockItem item = new SkyBlockItem(reward.item(), reward.amount());
             if (reward.rarity() != null) item.getAttributeHandler().setRarity(reward.rarity());
@@ -196,6 +195,13 @@ public final class EnderDragonFight {
         DragonProgress.recordKill(player, variant);
         player.sendMessage(Text.of("<5>You placed <d>#{} <5>with <d>{} <5>damage and earned <d>{} <5>Dragon Essence!",
                 rank, SkyBlockMob.shortHealth(damage), variant.essenceReward()));
+    }
+
+    private static double luckAdjusted(SkyBlockPlayer player, EnderDragonMob mob, ItemType item, double chance) {
+        var statistics = player.getStatistics().allStatistics(player, mob);
+        double luck = statistics.getOverall(ItemStatistic.MAGIC_FIND);
+        if (item == ItemType.ENDER_DRAGON_PET) luck += statistics.getOverall(ItemStatistic.PET_LUCK);
+        return chance * (1 + luck / 100);
     }
 
     private static SkyBlockPlayer killerOf(EnderDragonMob mob) {

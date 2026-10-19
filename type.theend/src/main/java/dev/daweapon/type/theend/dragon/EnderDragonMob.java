@@ -25,6 +25,8 @@ public final class EnderDragonMob extends CrimsonIsleMob {
     private static final int BASE_ATTACK_INTERVAL = 110;
     private static final int CONTACT_INTERVAL = 40;
     private static final int LIGHTNING_DELAY = 20;
+    private static final int HOVER_TICKS = 200;
+    private static final int HOVER_FIREBALL_INTERVAL = 20;
     private static final double RUSH_DAMAGE = 2000;
     private static final double RUSH_TRUE = 550;
     private static final double BOLT_DAMAGE = 1700;
@@ -46,6 +48,7 @@ public final class EnderDragonMob extends CrimsonIsleMob {
     private Pos orbitTarget = DragonArena.CENTER;
     private Pos rushTarget;
     private int rushTicks;
+    private int hoverTicks;
     private double angle = ThreadLocalRandom.current().nextDouble(Math.PI * 2);
 
     public EnderDragonMob(DragonVariant variant, java.util.function.IntSupplier liveCrystals, Consumer<EnderDragonMob> onDefeated) {
@@ -95,6 +98,10 @@ public final class EnderDragonMob extends CrimsonIsleMob {
 
     @Override
     protected void movementTick() {
+        if (hoverTicks > 0) {
+            setVelocity(Vec.ZERO);
+            return;
+        }
         Pos current = getPosition();
         Pos goal = rushTarget != null ? rushTarget : orbitTarget;
         Vec toGoal = goal.sub(current).asVec();
@@ -122,6 +129,10 @@ public final class EnderDragonMob extends CrimsonIsleMob {
     @Override
     protected void onAiTick(int ticks) {
         if (ticks % 20 == 0) healFromCrystals();
+        if (hoverTicks > 0) {
+            hover();
+            return;
+        }
         if (rushTarget != null) {
             continueRush();
             return;
@@ -149,8 +160,13 @@ public final class EnderDragonMob extends CrimsonIsleMob {
         switch (choice) {
             case 0 -> startRush(target.get());
             case 1 -> lightning(target.get());
-            default -> fireball(target.get());
+            default -> hoverTicks = HOVER_TICKS;
         }
+    }
+
+    private void hover() {
+        hoverTicks--;
+        if (hoverTicks % HOVER_FIREBALL_INTERVAL == 0) target().ifPresent(this::fireball);
     }
 
     private void startRush(SkyBlockPlayer target) {
