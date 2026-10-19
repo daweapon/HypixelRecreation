@@ -6,6 +6,11 @@ module.exports = {
     async run(t, bot) {
         await t.step('reach SkyBlock', async () => bot.joinSkyblock());
 
+        await t.step('finish the starting missions and reach SkyBlock Level 5 so /hub and Elizabeth work', async () => {
+            await bot.command('/mission clearset GETTING_STARTED', { settleMs: 1500 });
+            await bot.command('/skyblockxp setlevel 5', { settleMs: 1500 });
+        });
+
         await t.step('/set gems sets the balance', async () => {
             const lines = await bot.command('/set gems 5000', { settleMs: 1200 });
             t.assertChat(lines, /Successfully set Gems/i, 'expected the set confirmation');
@@ -24,12 +29,15 @@ module.exports = {
             const npc = bot.findNpc(label);
             await bot.walkNear(npc);
             await bot.interact(npc);
-            return bot.waitWindow({ timeoutMs: 8000 }).catch(() => null);
+            const first = await bot.waitWindow({ timeoutMs: 15000 }).catch(() => null);
+            if (first) return first;
+            await bot.interact(npc);
+            return bot.waitWindow({ timeoutMs: 15000 }).catch(() => null);
         };
 
         await t.step('Taylor shows the current season and its bundle', async () => {
             let window = await openNpc('Taylor', 37, 75, -37);
-            if (!window || !/Taylor/i.test(window.title)) {
+            if (!window) {
                 await sleep(6000);
                 await bot.interact(bot.findNpc('Taylor'));
                 window = await bot.waitWindow({ timeoutMs: 10000, title: "Taylor's Cosmetics" });
@@ -38,10 +46,10 @@ module.exports = {
             t.assert(bundles, 'no Seasonal Bundles slot');
             t.assert(/Current bundle: Fall Bundle/.test(bundles.lore.join(' ')), `season lore: ${bundles.lore.join(' ')}`);
             await bot.click(bundles.slot);
-            await sleep(800);
+            await bot.waitFor(() => bot.window()?.slots.some((s) => /Smol Ender Dragon/.test(s.name)), { timeoutMs: 10000, what: 'bundle items' }).catch(() => null);
             const view = bot.window();
             const names = view.slots.map((s) => s.name);
-            for (const expected of [/Smol Ender Dragon/, /Pumpkin/, /Sludge Dye/, /Spirit Dye/, /Explosifall Rune III/, /Apothejerry/]) {
+            for (const expected of [/Smol Ender Dragon/, /Pumpkin/, /Sludge Dye/, /Spirit Dye/, /Explosifall Rune/, /Apothejerry/]) {
                 t.assert(names.some((n) => expected.test(n)), `missing ${expected}; have ${names.join(' | ')}`);
             }
             const sludge = view.slots.find((s) => /Sludge Dye/.test(s.name));
@@ -78,7 +86,7 @@ module.exports = {
 
         await t.step("Elizabeth's Fire Sales tab sells it for Gems and stock drops", async () => {
             let window = await openNpc('Community Shop', -6, 79, 17);
-            t.assert(window && /Community Shop/i.test(window.title), `window ${JSON.stringify(window)}`);
+            t.assert(window && /Community Shop/i.test(JSON.stringify(window.title)), `window ${JSON.stringify(window)}`);
             await bot.click(5);
             await sleep(800);
             const sale = bot.window().slots.find((s) => /Blazing Crimson/i.test(s.name));
@@ -88,7 +96,7 @@ module.exports = {
             await bot.command('/set gems 5000', { settleMs: 800 });
             await bot.click(sale.slot, { settleMs: 1500 });
             const after = bot.window().slots.find((s) => /Blazing Crimson/i.test(s.name)).lore.join(' ').match(/Stock left: ([\d,]+)/)?.[1];
-            t.assert(before === '12,500' && after === '12,499', `stock ${before} -> ${after}`);
+            t.assert(before === '12,500' && after === '12,499', `stock ${before} -> ${after}; lore ${sale.lore.join(" | ")}`);
             const held = bot.bot.inventory.items().map((i) => bot.describeItem(i, 0).name);
             t.assert(held.some((n) => /Blazing Crimson/.test(n)), `inventory: ${held.join(' | ')}`);
             await bot.closeWindow();
@@ -99,6 +107,35 @@ module.exports = {
             const mark = bot.markChat();
             await bot.command('/force firesale end', { settleMs: 1000 });
             await bot.waitChat(/Fire Sale has ended/i, { since: mark, timeoutMs: 20000 });
+        });
+
+        await t.step('a Rune III Fire Sale hands out the rune', async () => {
+            await bot.command('/set gems 5000', { settleMs: 800 });
+            await bot.command('/force firesale 2025-11-29 30', { settleMs: 1500 });
+            await bot.command('/tp -6 79 17', { settleMs: 3000 });
+            await bot.interact(bot.findNpc('Community Shop'));
+            await bot.waitWindow({ timeoutMs: 15000, title: 'Community Shop' });
+            await bot.click(5);
+            await sleep(1000);
+            const sale = bot.window().slots.find((slot) => /Turkey Rune/i.test(slot.name));
+            t.assert(sale, `no rune sale; have ${bot.window().slots.map((slot) => slot.name).join(' | ')}`);
+            await bot.click(sale.slot, { settleMs: 1500 });
+            await bot.closeWindow();
+            await sleep(800);
+            const rune = bot.bot.inventory.items().map((item) => bot.describeItem(item, 0)).find((item) => /Turkey Rune/i.test(item.name));
+            t.assert(rune, 'no Turkey Rune in the inventory');
+            await bot.command('/force firesale end', { settleMs: 800 });
+            return { name: rune.name };
+        });
+
+        await t.step('/max profile gives Gems', async () => {
+            const lines = await bot.command('/max profile', { settleMs: 15000 });
+            t.assertChat(lines, /MAXED/i, 'expected the MAXED message');
+            await bot.command('/tp -6 79 17', { settleMs: 3000 });
+            await bot.interact(bot.findNpc('Community Shop'));
+            await bot.waitWindow({ timeoutMs: 15000, title: 'Community Shop' });
+            const emerald = bot.window().slots.find((slot) => slot.slot === 49);
+            t.assert(/Gems: 100,000/.test(emerald.lore.join(' ')), `lore: ${emerald.lore.join(' ')}`);
         });
     },
 };

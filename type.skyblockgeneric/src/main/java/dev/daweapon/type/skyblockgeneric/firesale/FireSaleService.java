@@ -1,7 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.firesale;
 
 import net.minestom.server.MinecraftServer;
-import net.minestom.server.timer.TaskSchedule;
 import dev.daweapon.commons.data.SharedData;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.StringUtility;
@@ -17,14 +16,13 @@ import java.util.Optional;
 public final class FireSaleService {
     public static final long DEFAULT_DURATION_MINUTES = 24 * 60;
     public static final int RUNE_LEVEL = 3;
+    private static final long REFRESH_MILLIS = 2_000;
     private static final String ACTIVE_KEY = "hsb:firesale:active";
     private static final String SOLD_KEY = "hsb:firesale:sold";
     private static final String LAST_KEY = "hsb:firesale:last";
-    private static final long CACHE_MILLIS = 2_000;
     private static final long ANNOUNCE_WINDOW_MILLIS = 60_000;
 
     private static volatile ActiveFireSale cached;
-    private static volatile long cachedAt;
     private static String announcedKey = "";
     private static boolean announcedEnd = true;
 
@@ -32,16 +30,19 @@ public final class FireSaleService {
     }
 
     public static void initialize() {
-        MinecraftServer.getSchedulerManager().buildTask(FireSaleService::announce)
-                .delay(TaskSchedule.seconds(10)).repeat(TaskSchedule.seconds(5)).schedule();
+        Thread.startVirtualThread(() -> {
+            while (true) {
+                try {
+                    Thread.sleep(REFRESH_MILLIS);
+                } catch (InterruptedException interrupted) {
+                    return;
+                }
+                refreshAndAnnounce();
+            }
+        });
     }
 
     public static Optional<ActiveFireSale> latest() {
-        long now = System.currentTimeMillis();
-        if (now - cachedAt > CACHE_MILLIS) {
-            cached = readActive();
-            cachedAt = now;
-        }
         return Optional.ofNullable(cached);
     }
 
@@ -64,7 +65,7 @@ public final class FireSaleService {
             jedis.set(ACTIVE_KEY, sale.id() + "|" + now + "|" + (now + durationMinutes * 60_000));
             jedis.set(LAST_KEY, sale.id());
         }
-        cachedAt = 0;
+        cached = readActive();
         return true;
     }
 
@@ -73,7 +74,7 @@ public final class FireSaleService {
         try (Jedis jedis = SharedData.jedisPool().getResource()) {
             jedis.del(ACTIVE_KEY);
         }
-        cachedAt = 0;
+        cached = readActive();
         return true;
     }
 
@@ -85,12 +86,12 @@ public final class FireSaleService {
         if (unavailable != null) return "<c>" + unavailable;
         if (player.getGems() < sale.gems()) return "<c>You cannot afford this!";
         if (!reserve(sale)) {
-            cachedAt = 0;
+            cached = readActive();
             return "<c>This Fire Sale is sold out!";
         }
         player.removeGems(sale.gems());
         player.addAndUpdateItem(buildItem(itemId));
-        cachedAt = 0;
+        cached = readActive();
         return "<a>You purchased <6>" + sale.name() + " <a>for <a>" + StringUtility.commaify(sale.gems()) + " Gems<a>!";
     }
 
@@ -135,10 +136,10 @@ public final class FireSaleService {
         }
     }
 
-    private static void announce() {
+    private static void refreshAndAnnounce() {
         try {
             if (SharedData.jedisPool() == null) return;
-            cachedAt = 0;
+            cached = readActive();
             Optional<ActiveFireSale> current = active();
             if (current.isPresent()) {
                 ActiveFireSale sale = current.get();

@@ -121,23 +121,14 @@ public class GUIFIRESales extends HypixelInventoryGUI {
                 public ItemStack.Builder getItem(HypixelPlayer p) {
                     SkyBlockPlayer player = (SkyBlockPlayer) p;
                     ItemStack.Builder stack = new NonPlayerItemUpdater(FireSaleService.buildItem(itemId)).getUpdatedItem();
-                    String stock = sale.unlimited() ? "<a>Unlimited" : "<a>" + StringUtility.commaify((int) active.remaining()) + " <7>of <a>" + StringUtility.commaify((int) sale.stock());
+                    String stock = sale.unlimited() ? "Unlimited" : StringUtility.commaify((int) active.remaining()) + " <7>of <a>" + StringUtility.commaify((int) sale.stock());
                     String unavailable = sale.unavailableReason(itemId);
                     String action = over ? "<c>This Fire Sale has ended!"
                             : unavailable != null ? "<c>" + unavailable
                             : player.getGems() < sale.gems() ? "<c>You cannot afford this!"
                             : "<e>Click to purchase!";
-                    return ItemStacks.appendLore(stack, """
-                            \s
-                            <7>Cost
-                            <a>{} Gems
-                            \s
-                            <7>Stock left: {}
-                            <7>Ends in: <e>{}
-                            \s
-                            <7>You have: <a>{} Gems
-                            \s
-                            {}""", StringUtility.commaify(sale.gems()), stock, remainingText(active), StringUtility.commaify(player.getGems()), action);
+                    return ItemStacks.appendLore(stack, " \n<7>Cost\n<a>" + StringUtility.commaify(sale.gems()) + " Gems\n \n<7>Stock left: <a>" + stock
+                            + "\n<7>Ends in: <e>" + remainingText(active) + "\n \n<7>You have: <a>" + StringUtility.commaify(player.getGems()) + " Gems\n \n" + action);
                 }
             });
         }
