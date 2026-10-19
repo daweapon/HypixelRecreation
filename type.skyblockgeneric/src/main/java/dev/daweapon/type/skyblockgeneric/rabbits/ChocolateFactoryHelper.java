@@ -41,10 +41,13 @@ public class ChocolateFactoryHelper {
         mutateData(player, data -> {
             if (accessoryPerSecond > 0) {
                 double seconds = Math.max(0, System.currentTimeMillis() - data.getLastUpdated()) / 1000D;
-                double multiplier = data.getShrineMultiplier() * data.getTimeTowerMultiplier() * data.getCoachMultiplier();
+                double multiplier = data.getProductionMultiplier();
                 data.setPartialChocolate(data.getPartialChocolate() + accessoryPerSecond * multiplier * seconds);
             }
             data.setPetMultiplier(MiscPetHooks.chocolateMultiplierBonus(player));
+            data.setShardFlatProduction(RabbitShardBonuses.rabbitCrew(player));
+            data.setShardMultiplier(RabbitShardBonuses.chocolateSpeed(player));
+            data.setRabbitYouthLevels(RabbitShardBonuses.rabbitYouth(player));
             data.updateChocolateFromProduction();
         });
     }
@@ -60,6 +63,12 @@ public class ChocolateFactoryHelper {
                 .get(SkyBlockDataHandler.Data.CHOCOLATE_FACTORY, DatapointChocolateFactory.class)
                 .setValue(data);
         HoppitysHuntXP.syncSkyBlockXP(player);
+    }
+
+    public static boolean prestige(SkyBlockPlayer player) {
+        boolean[] done = {false};
+        mutateData(player, data -> done[0] = data.prestige());
+        return done[0];
     }
 
     public static void handleClick(SkyBlockPlayer player) {
@@ -240,12 +249,15 @@ public class ChocolateFactoryHelper {
         return (long) (baseCost * Math.pow(EMPLOYEE_COST_GROWTH, targetLevel));
     }
 
+    public static long getEmployeeCost(DatapointChocolateFactory.ChocolateFactoryData data, String employeeName, int targetLevel) {
+        return (long) (getEmployeeCost(employeeName, targetLevel, data.getFactoryLevel()) * data.getEmployeeCostFactor());
+    }
+
     /**
      * Gets the cost to hire/upgrade an employee (uses player's CF level)
      */
     public static long getEmployeeCost(SkyBlockPlayer player, String employeeName, int targetLevel) {
-        int cfLevel = player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.CHOCOLATE_FACTORY, DatapointChocolateFactory.class).getValue().getPrestigeLevel() + 1; // Prestige 0 = CF1, etc.
-        return getEmployeeCost(employeeName, targetLevel, cfLevel);
+        return getEmployeeCost(getData(player), employeeName, targetLevel);
     }
 
     /**
@@ -351,7 +363,11 @@ public class ChocolateFactoryHelper {
             return false;
         }
 
-        long cost = getEmployeeCost(player, employeeName, targetLevel);
+        if (targetLevel > data.getEmployeeCap(employeeType)) {
+            return false;
+        }
+
+        long cost = getEmployeeCost(data, employeeName, targetLevel);
 
         if (data.removeChocolate(cost)) {
             data.setEmployee(employeeType, targetLevel);
@@ -405,7 +421,7 @@ public class ChocolateFactoryHelper {
         return Prestige.fromLevel(level);
     }
 
-    private static void mutateData(SkyBlockPlayer player, Consumer<DatapointChocolateFactory.ChocolateFactoryData> mutator) {
+    public static void mutateData(SkyBlockPlayer player, Consumer<DatapointChocolateFactory.ChocolateFactoryData> mutator) {
         DatapointChocolateFactory datapoint = player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.CHOCOLATE_FACTORY, DatapointChocolateFactory.class);
         DatapointChocolateFactory.ChocolateFactoryData data = datapoint.getValue();
         mutator.accept(data);

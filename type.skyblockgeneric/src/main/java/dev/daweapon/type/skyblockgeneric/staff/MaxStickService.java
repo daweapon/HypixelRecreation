@@ -88,14 +88,12 @@ public final class MaxStickService {
     private static final int MAX_BACKPACK_SLOTS = 18;
     private static final int MAX_ENDER_CHEST_PAGES = 9;
 
-    private static final long MAX_CHOCOLATE = 1_000_000_000_000L;
     private static final int MAX_RABBIT_BARN_LEVEL = 247;
     private static final int MAX_HAND_BAKED_CHOCOLATE_LEVEL = 10;
     private static final int MAX_TIME_TOWER_LEVEL = 15;
     private static final int MAX_TIME_TOWER_CHARGES = 3;
     private static final int MAX_RABBIT_SHRINE_LEVEL = 20;
     private static final int MAX_COACH_JACKRABBIT_LEVEL = 20;
-    private static final int MAX_EMPLOYEE_LEVEL = 225;
 
     private static final double MOB_TYPE_COMBAT_XP_REWARD = 1000D;
     private static final int MOB_TYPE_COIN_REWARD = 1000;
@@ -507,21 +505,31 @@ public final class MaxStickService {
 
         synchronized (datapoint) {
             DatapointChocolateFactory.ChocolateFactoryData data = datapoint.getValue();
-            data.setChocolate(MAX_CHOCOLATE);
-            data.setChocolateAllTime(MAX_CHOCOLATE);
+            data.setPrestigeLevel(DatapointChocolateFactory.ChocolateFactoryData.MAX_PRESTIGE);
+            data.setChocolate(data.getMaxChocolate());
+            data.setChocolateAllTime(Math.max(data.getChocolateAllTime(), data.getMaxChocolate()));
+            data.setChocolateThisPrestige(data.getMaxChocolate());
             data.setRabbitBarnLevel(MAX_RABBIT_BARN_LEVEL);
             data.setHandBakedChocolateLevel(MAX_HAND_BAKED_CHOCOLATE_LEVEL);
             data.setTimeTowerLevel(MAX_TIME_TOWER_LEVEL);
             data.setTimeTowerCharges(MAX_TIME_TOWER_CHARGES);
             data.setRabbitShrineLevel(MAX_RABBIT_SHRINE_LEVEL);
             data.setCoachJackrabbitLevel(MAX_COACH_JACKRABBIT_LEVEL);
-
-            for (DatapointChocolateFactory.EmployeeType employeeType : DatapointChocolateFactory.EmployeeType.values()) {
-                data.setEmployee(employeeType, MAX_EMPLOYEE_LEVEL);
-            }
+            data.setHitmanSlots(dev.daweapon.type.skyblockgeneric.rabbits.ChocolateFactoryLevel.forPrestige(data.getPrestigeLevel()).getMaxHitmanSlots());
 
             for (ChocolateRabbit rabbit : ChocolateRabbit.values()) {
                 data.addFoundRabbit(rabbit);
+            }
+
+            for (DatapointChocolateFactory.EmployeeType employeeType : DatapointChocolateFactory.EmployeeType.values()) {
+                data.setEmployee(employeeType, data.getEmployeeCap(employeeType));
+            }
+
+            dev.daweapon.type.skyblockgeneric.hoppity.EggLocationCatalogue catalogue = dev.daweapon.type.skyblockgeneric.hoppity.EggLocationCatalogue.get();
+            for (dev.daweapon.type.skyblockgeneric.region.IslandType island : catalogue.islands()) {
+                for (dev.daweapon.type.skyblockgeneric.hoppity.EggLocation location : catalogue.locations(island)) {
+                    data.getUniqueEggLocations().add(location.key());
+                }
             }
 
             datapoint.setValue(data);

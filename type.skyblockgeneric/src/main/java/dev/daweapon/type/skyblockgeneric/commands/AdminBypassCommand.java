@@ -15,6 +15,8 @@ import dev.daweapon.type.generic.user.categories.Rank;
 import dev.daweapon.type.skyblockgeneric.calendar.CalendarEvent;
 import dev.daweapon.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
+import dev.daweapon.type.skyblockgeneric.hoppity.HuntEggManager;
+import dev.daweapon.type.skyblockgeneric.hoppity.HuntEggSchedule;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointUUIDList;
 import dev.daweapon.type.skyblockgeneric.elections.ElectionManager;
 import dev.daweapon.type.skyblockgeneric.forge.ForgeService;
@@ -29,7 +31,7 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @CommandParameters(labels = "adminbypass jumptonextevent skiptoevent",
         description = "Skips the timer to the next occurrence of a SkyBlock event",
-        usage = "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable|skiptospecialmayor|forcemayor <mayor>|resetyear|skipforgetime [slot]",
+        usage = "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable|skiptospecialmayor|forcemayor <mayor>|resetyear|skipforgetime [slot]|hunt <egg 0-278>",
         permission = Rank.STAFF,
         allowsConsole = true)
 public class AdminBypassCommand extends HypixelCommand {
@@ -92,6 +94,8 @@ public class AdminBypassCommand extends HypixelCommand {
         command.addSyntax((sender, context) -> openCookieMenu(sender, "Enchantment Table"), ArgumentType.Literal("etable"));
         command.addSyntax((sender, context) -> forceElectSpecialMayor(sender), ArgumentType.Literal("skiptospecialmayor"));
         command.addSyntax((sender, context) -> resetYear(sender), ArgumentType.Literal("resetyear"));
+        command.addSyntax((sender, context) -> skipToHuntEgg(sender, context.get("hunt_egg")),
+                ArgumentType.Literal("hunt"), ArgumentType.Integer("hunt_egg").between(0, HuntEggSchedule.SPAWNS_PER_HUNT - 1));
         command.addSyntax((sender, context) -> skipForge(sender, null), ArgumentType.Literal("skipforgetime"));
         command.addSyntax((sender, context) -> skipForge(sender, context.get("forge_slot")),
                 ArgumentType.Literal("skipforgetime"), ArgumentType.Integer("forge_slot").between(1, ForgeService.MAX_SLOTS));
@@ -104,6 +108,19 @@ public class AdminBypassCommand extends HypixelCommand {
         });
         command.addSyntax((sender, context) -> forceElectMayor(sender, context.get(mayorArgument)),
                 ArgumentType.Literal("forcemayor"), mayorArgument);
+    }
+
+    private static void skipToHuntEgg(net.minestom.server.command.CommandSender sender, int egg) {
+        long target = (long) (SkyBlockCalendar.getYear() - 1) * SkyBlockCalendar.YEAR + HuntEggSchedule.spawnTickInYear(egg) - 20;
+        if (target <= SkyBlockCalendar.getElapsed()) target += SkyBlockCalendar.YEAR;
+        SkyBlockCalendar.setElapsed(target);
+        int year = HuntEggSchedule.yearOf(target);
+        sender.sendMessage(Text.of("<a>Skipped to just before Hoppity's Hunt egg {} of year {}!", egg, year));
+        if (HuntEggManager.currentIsland() == null) return;
+        dev.daweapon.type.skyblockgeneric.hoppity.ActiveEgg located = HuntEggSchedule.egg(year, egg,
+                HuntEggManager.currentIsland(), dev.daweapon.type.skyblockgeneric.hoppity.EggLocationCatalogue.get());
+        sender.sendMessage(Text.of("<7>On this island it will be at <f>{} {} {} <7>({}).",
+                (int) located.location().x(), (int) located.location().y(), (int) located.location().z(), located.location().zone()));
     }
 
     private static void skipForge(net.minestom.server.command.CommandSender sender, Integer slot) {

@@ -327,6 +327,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         SkyBlockDataHandler.startRepeatSetValueLoop();
         BitsService.startFarming();
         AccessoryEconomyHooks.start();
+        dev.daweapon.type.skyblockgeneric.hoppity.HoppityHitmanService.start();
         BottleOfJyrre.startAging();
         dev.daweapon.type.skyblockgeneric.garden.greenhouse.RosewaterFlask.startAging();
         SnowmanPet.startBlizzard();
@@ -441,6 +442,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         if (mainInstance != null) {
             ServerHolograms.spawnAll(HypixelConst.getInstanceContainer());
             FairySoul.spawnEntities(HypixelConst.getInstanceContainer(), typeLoader.getType());
+            dev.daweapon.type.skyblockgeneric.hoppity.HuntEggManager.start(HypixelConst.getInstanceContainer(), typeLoader.getType());
         }
 
         /**

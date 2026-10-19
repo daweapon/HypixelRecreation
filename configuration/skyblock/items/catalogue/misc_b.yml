@@ -19,6 +19,7 @@ items:
     material: player_head
     name: "Dark Cacao Truffle"
     rarity: RARE
+    unavailable: "Consuming it needs an in-inventory evolving Global Fortune bonus and the Refined Dark Cacao Truffle, neither of which is built"
     source: "Chocolate Shop: 2.5B Chocolate each, up to 3 per SkyBlock year, needs Chocolate Factory IV"
     lore:
       - "§7Consume to boost your §6 Cocoa"
@@ -30,9 +31,6 @@ items:
       - "§7the item §c§oevolves§7!"
       - ""
       - "§7Current Bonus: §6+0 Cocoa Beans Fortune"
-      - ""
-      - ""
-      - "§8Not active yet: Needs the Refined Dark Cacao Truffle (not in the game) and an in-inventory evolving bonus counter"
     components:
       - id: SKULL_HEAD
         texture: db9db373cadbec1912a9ab386d31ceb3e0cd4d6a64f222426588a3b2eb31ed29
@@ -1235,12 +1233,11 @@ items:
       - "§8Cooldown: §a5s"
       - ""
       - "§7Only works during §dHoppity's Hunt§7."
-      - ""
-      - ""
-      - "§8Not active yet: Needs Hoppity's Hunt eggs placed in the world (no egg spawns exist to point at)"
     components:
       - id: SKULL_HEAD
         texture: 14a7ff9a10fdae14446499ef3bc1df13b7888d6cd2e311ccab51b8352c6093b4
+      - id: INTERACTABLE
+        handler_id: EGGLOCATOR
   - id: EGG_PAINTING_STATION
     material: player_head
     name: "Egg Painting Station"

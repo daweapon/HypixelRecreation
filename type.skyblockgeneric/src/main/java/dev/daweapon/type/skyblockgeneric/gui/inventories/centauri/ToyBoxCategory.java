@@ -10,6 +10,7 @@ public enum ToyBoxCategory {
     GARDEN("Garden", Material.SUNFLOWER, "Visitors, pests, the greenhouse, Garden levels and contest rewards.", ToyBoxButtons::garden),
     EXPERIMENTATION("Experimentation", Material.ENCHANTING_TABLE, "Enchanting experience, bottles and the Experimentation Table.", ToyBoxButtons::experimentation),
     CURRENCIES("Currencies and Essence", Material.EMERALD, "Gems, Whispers, Shards and every kind of Essence.", ToyBoxButtons::currencies),
+    HOPPITY("Hoppity's Hunt", Material.RABBIT_FOOT, "Chocolate, rabbits, prestige, the Time Tower and the Rabbit Hitman.", ToyBoxButtons::hoppity),
     DUNGEONS("Dungeons", Material.WITHER_SKELETON_SKULL, "Catacombs experience and other dungeon progression.", ToyBoxButtons::dungeons);
 
     private final String title;

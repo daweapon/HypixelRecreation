@@ -2,7 +2,7 @@
 
 Sorted reference for the current HypixelRecreation source tree. Updated 2026-10-11.
 
-This catalog covers **130 top-level game-server command definitions** (after merging 52 staff commands into subcommand groups, see Merged staff commands), **7 proxy commands**, and the optional Spark command. It describes the remake as implemented, not a promise of complete real-Hypixel parity. Alias research is in [command-alias-audit.md](command-alias-audit.md).
+This catalog covers **131 top-level game-server command definitions** (after merging 52 staff commands into subcommand groups, see Merged staff commands), **7 proxy commands**, and the optional Spark command. It describes the remake as implemented, not a promise of complete real-Hypixel parity. Alias research is in [command-alias-audit.md](command-alias-audit.md).
 
 ## Contents
 
@@ -63,7 +63,7 @@ This catalog covers **130 top-level game-server command definitions** (after mer
 | `/bestiary` | `/be` | Opens the Bestiary menu. Needs the Bestiary unlocked by speaking to Bramass Beastslayer (staff can use `/unlock bestiary`). | DEFAULT | No | `type.skyblockgeneric` |
 | `/calendar` | — | Opens the SkyBlock Calendar. | DEFAULT | No | `type.skyblockgeneric` |
 | `/chips` | `/gardenchips` | Opens the Garden Chips menu, where you level up the chips you have redeemed with Sowdust. | DEFAULT | No | `type.skyblockgeneric` |
-| `/chocolatefactory` | `/cf`, `/factory` | Opens the Chocolate Factory menu. | DEFAULT | No | `type.skyblockgeneric` |
+| `/chocolatefactory` | `/cf`, `/factory` | Opens the Chocolate Factory menu: production, employees, upgrades, prestige, the Rabbit Hitman, stray and golden rabbits. | DEFAULT | No | `type.skyblockgeneric` |
 | `/clearstash [confirm]` | — | Clear your stash. Confirmation is required before deleting the stash. | DEFAULT | No | `type.skyblockgeneric` |
 | `/etable` | `/et`, `/enchantingtable`, `/enchantmenttable`, `/enchantingtablemenu`, `/enchantmenttablemenu` | Opens an Enchantment Table remotely. Requires an active Booster Cookie. | DEFAULT | No | `type.skyblockgeneric` |
 | `/farmingtoolkit` | — | Opens the Farming Toolkit, which stores one of each Specialized Farming Tool. Click a valid tool in your inventory to store it and click a stored tool to take it back. Requires consuming a Farming Toolkit item (SkyMart, 500 Copper) once. | DEFAULT | No | `type.skyblockgeneric` |
@@ -72,6 +72,7 @@ This catalog covers **130 top-level game-server command definitions** (after mer
 | `/huntingbox` | `/hb` | Opens your Hunting Box. | DEFAULT | No | `type.skyblockgeneric` |
 | `/pets` | `/petsmenu`, `/petmenu`, `/viewpetsmenu` | Opens your Pets menu. | DEFAULT | No | `type.skyblockgeneric` |
 | `/pickupstash [item\|material]` | — | Pickup items from your stash. | DEFAULT | No | `type.skyblockgeneric` |
+| `/pity` | — | Shows your Chocolate Rabbit pity progress: a Mythic rabbit is guaranteed every 250th rabbit and a Divine rabbit every 1,250th. Needs Chocolate Factory V or VI for those rarities to count. | DEFAULT | No | `type.skyblockgeneric` |
 | `/rankcolor` | `/rankcolour` | Change your MVP+ rank color. | DEFAULT | No | `type.generic` |
 | `/replay <uuid> [hex]` | — | Watch a specific replay by ID. | DEFAULT | No | `type.generic` |
 | `/replays` | — | View your game replays. | DEFAULT | No | `type.generic` |
@@ -175,7 +176,7 @@ This catalog covers **130 top-level game-server command definitions** (after mer
 
 | Command / syntax | Aliases | Purpose and notes | Minimum rank | Console declared | Module |
 | --- | --- | --- | --- | --- | --- |
-| `/adminbypass <event>`<br>`/adminbypass auction [uuid]`<br>`/adminbypass bin_grace [uuid]`<br>`/adminbypass <auctionhouse\|bazaar\|bank\|etable>`<br>`/adminbypass skiptospecialmayor`<br>`/adminbypass forcemayor <mayor>`<br>`/adminbypass resetyear`<br>`/adminbypass skipforgetime [slot]` | `/jumptonextevent`, `/skiptoevent` | Skips the selected SkyBlock calendar timer, ends an active Auction House listing, removes a BIN listing's 20-second purchase grace period, opens a Cookie-gated menu without an active Booster Cookie, force-elects the next special mayor (Scorpius/Derpy/Jerry, in rotation) for testing without a real election, force-elects a chosen mayor (by ID, e.g. `DIANA`) with all of their perks for testing perks such as the Mythological Ritual, resets this server's local SkyBlock calendar back to Year 1, Early Spring, Day 1, or finishes your active Forge processes (all of them, or only the given slot 1-7, ready to collect). Omitting the UUID targets your newest owned auction; the Cookie-menu bypasses require an in-game player. Event IDs are suggested by the command. The calendar is per-server (not synced), so `resetyear` only affects the server it's run on. | STAFF | Yes | `type.skyblockgeneric` |
+| `/adminbypass <event>`<br>`/adminbypass auction [uuid]`<br>`/adminbypass bin_grace [uuid]`<br>`/adminbypass <auctionhouse\|bazaar\|bank\|etable>`<br>`/adminbypass skiptospecialmayor`<br>`/adminbypass forcemayor <mayor>`<br>`/adminbypass resetyear`<br>`/adminbypass skipforgetime [slot]`<br>`/adminbypass hunt <egg 0-278>` | `/jumptonextevent`, `/skiptoevent` | Skips the selected SkyBlock calendar timer, ends an active Auction House listing, removes a BIN listing's 20-second purchase grace period, opens a Cookie-gated menu without an active Booster Cookie, force-elects the next special mayor (Scorpius/Derpy/Jerry, in rotation) for testing without a real election, force-elects a chosen mayor (by ID, e.g. `DIANA`) with all of their perks for testing perks such as the Mythological Ritual, resets this server's local SkyBlock calendar back to Year 1, Early Spring, Day 1, finishes your active Forge processes (all of them, or only the given slot 1-7, ready to collect), or jumps this server's calendar forward to a second before the given Hoppity's Hunt egg spawns (0 is the first egg of a year, 278 the last; the calendar only moves forward, so a spawn already past this year means next year's). Omitting the UUID targets your newest owned auction; the Cookie-menu bypasses require an in-game player. Event IDs are suggested by the command. The calendar is per-server (not synced), so `resetyear` only affects the server it's run on. | STAFF | Yes | `type.skyblockgeneric` |
 | `/build` | `/buildmode` | Toggles whether or not you are in build mode. | STAFF | No | `type.skyblockgeneric` |
 | `/force <drop\|diana\|darkauction\|eruption\|firesale\|event> ...` | `/forcedrop`, `/forcedianamob`, `/dianamob`, `/forcedarkauction`, `/forceeruption`, `/firesale`, `/forceevent` | Forces a chance-based or timed event the next time it could happen: an item drop, the next Griffin burrow creature, a Dark Auction, a Blazing Volcano eruption, a Fire Sale or a Mining Event. | STAFF | No | `type.skyblockgeneric` |
 | `/gamemode <gamemode>` | `/gm` | Sets a players gamemode. | STAFF | No | `type.generic` |

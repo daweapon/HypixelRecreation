@@ -19,7 +19,12 @@ import dev.daweapon.type.skyblockgeneric.garden.GardenService;
 import dev.daweapon.type.skyblockgeneric.garden.feast.FeastService;
 import dev.daweapon.type.skyblockgeneric.garden.greenhouse.GreenhouseService;
 import dev.daweapon.type.skyblockgeneric.garden.visitor.VisitorService;
+import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointChocolateFactory;
+import dev.daweapon.type.skyblockgeneric.hoppity.HoppityEggService;
 import dev.daweapon.type.skyblockgeneric.hotm.HotmService;
+import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateFactoryHelper;
+import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateFactoryLevel;
+import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateRabbit;
 
 import java.util.List;
 
@@ -97,6 +102,23 @@ final class ToyBoxButtons {
                 }),
                 of(Material.HOPPER, "<d>Max Community Upgrades", "<8>Elizabeth is thrilled.", "<7>Finish every <d>Account <7>and <d>Profile Upgrade <7>at its top tier.", dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgrades::maxAll),
                 unavailable(Material.PRISMARINE_SHARD, "<a>Shards!", "<7>Get 10 of each available Shard."));
+    }
+
+    static List<ToyBoxButton> hoppity() {
+        return List.of(
+                of(Material.COCOA_BEANS, "<6>1B Chocolate", "<8>Sweet tooth.", "<7>Gain <6>1,000,000,000 Chocolate<7>.", p -> ChocolateFactoryHelper.mutateData(p, data -> data.addChocolate(1_000_000_000L))),
+                of(Material.RABBIT_FOOT, "<d>Complete Hoppity's Collection", "<8>Gotta catch 'em all.", "<7>Add every <a>Chocolate Rabbit <7>to your collection.", p -> ChocolateFactoryHelper.mutateData(p, data -> {
+                    for (ChocolateRabbit rabbit : ChocolateRabbit.values()) data.addFoundRabbit(rabbit);
+                })),
+                of(Material.EGG, "<a>Roll a Chocolate Egg", "<8>Skip the hunt.", "<7>Open one <a>Chocolate Egg <7>and roll a rabbit.", p -> HoppityEggService.open(p, null, null, java.util.concurrent.ThreadLocalRandom.current())),
+                of(Material.PLAYER_HEAD, "<a>Egglocator", "<8>Where did that egg go?", "<7>Claim an <a>Egglocator<7>.", p -> ToyBoxActions.give(p, ItemType.EGGLOCATOR)),
+                of(Material.DROPPER, "<6>Prestige Now", "<8>Reset for glory.", "<7>Fill the prestige requirement and <6>prestige <7>your Chocolate Factory.", p -> ChocolateFactoryHelper.mutateData(p, data -> {
+                    data.setChocolateThisPrestige(Math.max(data.getChocolateThisPrestige(), data.getNextPrestigeThreshold()));
+                    data.prestige();
+                })),
+                of(Material.CLOCK, "<d>Fill Time Tower Charges", "<8>Time on tap.", "<7>Set your <d>Time Tower <7>to <a>3 charges<7>.", p -> ChocolateFactoryHelper.mutateData(p, data -> data.setTimeTowerCharges(DatapointChocolateFactory.ChocolateFactoryData.TIME_TOWER_MAX_CHARGES))),
+                of(Material.BOW, "<c>Max Rabbit Hitman Slots", "<8>Hire the whole crew.", "<7>Buy every <c>Rabbit Hitman <7>slot your factory allows.", p -> ChocolateFactoryHelper.mutateData(p, data ->
+                        data.setHitmanSlots(ChocolateFactoryLevel.forPrestige(data.getPrestigeLevel()).getMaxHitmanSlots()))));
     }
 
     static List<ToyBoxButton> dungeons() {

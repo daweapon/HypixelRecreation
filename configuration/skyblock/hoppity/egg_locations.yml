@@ -1,0 +1,211 @@
+# Hoppity's Hunt egg locations (wiki: Chocolate Eggs, checked 2026-10-18). Lotus Atoll and Torrhus are omitted: the islands do not exist.
+HUB:
+  - { zone: "Bazaar Alley", x: -40, y: 73, z: -22, message: "in the Bazaar Alley" }
+  - { zone: "Mining District", x: 20, y: 63, z: -122, message: "behind the Blacksmith building" }
+  - { zone: "Colosseum", x: 160, y: 89, z: 34, message: "atop a tree in the Colosseum" }
+  - { zone: "Farm", x: 49, y: 72, z: -108, message: "near the Wheat Minion" }
+  - { zone: "Farm", x: 42, y: 73, z: -125, message: "next to the Farmhouse" }
+  - { zone: "Fishing Outpost", x: 149, y: 69, z: -41, message: "at the Fisherman's Hut" }
+  - { zone: "Foraging Camp", x: -138, y: 73, z: -14, message: "near the lumber piles" }
+  - { zone: "Graveyard", x: -122, y: 75, z: -179, message: "on the emerald altar" }
+  - { zone: "Mountain", x: -1, y: 144, z: 81, message: "on the Mountain path" }
+  - { zone: "Mountain", x: -39, y: 190, z: 69, message: "on the second highest Mountain peak" }
+  - { zone: "Ruins", x: -186, y: 87, z: 81, message: "within the Ruins" }
+  - { zone: "Unincorporated", x: -7, y: 84, z: 156, message: "in Unincorporated Territory" }
+  - { zone: "Village", x: -14, y: 88, z: -52, message: "on the crane" }
+  - { zone: "Wilderness", x: 125, y: 74, z: 168, message: "near the Dark Auction" }
+  - { zone: "Wilderness", x: 147, y: 113, z: 117, message: "within the red roof treehouse" }
+  - { zone: "Wilderness", x: 161, y: 71, z: 157, message: "within the wither cage" }
+  - { zone: "Wizard Tower", x: 46, y: 73, z: 106, message: "at the base of the Wizard Tower" }
+THE_FARMING_ISLANDS:
+  - { zone: "The Barn", x: 152, y: 72, z: -217, message: "in the pasture" }
+  - { zone: "The Barn", x: 146, y: 81, z: -242, message: "on the second floor of The Barn" }
+  - { zone: "Glowing Mushroom Cave", x: 204, y: 54, z: -503, message: "in Moby's attic" }
+  - { zone: "Jake's House", x: 256, y: 184, z: -564, message: "overlooking the oasis from above" }
+  - { zone: "Trapper's Den", x: 284, y: 102, z: -573, message: "outside the Trapper's Den" }
+  - { zone: "Desert Settlement", x: 175, y: 77, z: -373, message: "beside the well" }
+  - { zone: "Mushroom Desert", x: 143, y: 77, z: -404, message: "beside an animal skull" }
+  - { zone: "Oasis", x: 142, y: 71, z: -453, message: "beneath an oasis bridge" }
+  - { zone: "Windmill", x: 95, y: 83, z: -284, message: "within the windmill" }
+  - { zone: "The Barn", x: 168, y: 92, z: -319, message: "behind the tallest hill" }
+  - { zone: "The Barn", x: 142, y: 90, z: -300, message: "among the path through carrots" }
+  - { zone: "The Barn", x: 136, y: 74, z: -215, message: "on top of a scarecrow" }
+  - { zone: "Desert Settlement", x: 174, y: 78, z: -357, message: "in Mason's house" }
+  - { zone: "Mushroom Desert", x: 163, y: 92, z: -599, message: "on Farmer Jon's table" }
+  - { zone: "The Barn", x: 116, y: 87, z: -222, message: "at the end of the aqueduct" }
+GOLD_MINE:
+  - { zone: "Gold Mine", x: -15, y: 104, z: -313, message: "on top of the entrance" }
+  - { zone: "Gold Mine", x: -19, y: 25, z: -305, message: "next to the Lazy Miner's pickaxe" }
+  - { zone: "Gold Mine", x: -19, y: 143, z: -361, message: "on the top of the mountain" }
+  - { zone: "Gold Mine", x: -25, y: 78, z: -328, message: "near Rusty" }
+  - { zone: "Gold Mine", x: -30, y: 74, z: -293, message: "behind the Gold Forger" }
+  - { zone: "Gold Mine", x: -44, y: 77, z: -303, message: "in the Blacksmith's forge" }
+  - { zone: "Gold Mine", x: 15, y: 75, z: -290, message: "beside a pile of coal" }
+  - { zone: "Gold Mine", x: 17, y: 57, z: -340, message: "on top of platforms near a Fairy Soul" }
+  - { zone: "Gold Mine", x: -18, y: 62, z: -353, message: "at the bottom of the stairs" }
+  - { zone: "Gold Mine", x: -11, y: 68, z: -397, message: "behind the Deep Caverns launch pad" }
+  - { zone: "Gold Mine", x: -22, y: 37, z: -336, message: "next to a hot fire underground" }
+  - { zone: "Gold Mine", x: -25, y: 79, z: -282, message: "on top of a giant crate" }
+  - { zone: "Gold Mine", x: 41, y: 80, z: -311, message: "looking towards the windmill" }
+  - { zone: "Gold Mine", x: -49, y: 94, z: -335, message: "near a fork in the lava" }
+  - { zone: "Gold Mine", x: -2, y: 82, z: -309, message: "above the Iron Forger" }
+DEEP_CAVERNS:
+  - { zone: "Deep Caverns", x: 4, y: 148, z: 88, message: "beneath the launch portal" }
+  - { zone: "Gunpowder Mines", x: 24, y: 156, z: -38, message: "beside Walter" }
+  - { zone: "Gunpowder Mines", x: 22, y: 159, z: 27, message: "atop a platform" }
+  - { zone: "Gunpowder Mines", x: 56, y: 151, z: 23, message: "beside the Gunpowder Mines lift" }
+  - { zone: "Gunpowder Mines", x: 1, y: 153, z: 37, message: "beside a fire at the entrance to the mines" }
+  - { zone: "Deep Caverns", x: 11, y: 176, z: 58, message: "on top of the entrance" }
+  - { zone: "Deep Caverns", x: -34, y: 207, z: 38, message: "atop of the shortest mountain peak" }
+  - { zone: "Diamond Reserve", x: 46, y: 38, z: 22, message: "beside the Diamond Reserve lift" }
+  - { zone: "Slimehill", x: 20, y: 68, z: 43, message: "next to a lily pad pond in Slimehill" }
+  - { zone: "Pigmen's Den", x: 21, y: 104, z: 17, message: "near the Redstone Miner" }
+  - { zone: "Lapis Quarry", x: -11, y: 120, z: 37, message: "next to the lapis miner" }
+  - { zone: "Pigmen's Den", x: 1, y: 110, z: 45, message: "in front of the Pigmen sign" }
+  - { zone: "Obsidian Sanctuary", x: 38, y: 12, z: 20, message: "adjacent to a fossil" }
+  - { zone: "Obsidian Sanctuary", x: 31, y: 12, z: 13, message: "next to Rhys" }
+  - { zone: "Deep Caverns", x: 7, y: 157, z: 63, message: "beside the entrance steps" }
+DWARVEN_MINES:
+  - { zone: "Dwarven Village", x: 13, y: 201, z: -150, message: "behind Banker Broadjaw" }
+  - { zone: "Cliffside Veins", x: 36, y: 128, z: 50, message: "overlooking The Mist" }
+  - { zone: "Divan's Gateway", x: 32, y: 179, z: 103, message: "atop the right massive dwarf statue" }
+  - { zone: "Great Ice Wall", x: -17, y: 128, z: 177, message: "under Divan's Gateway" }
+  - { zone: "Dwarven Mines", x: -1, y: 183, z: 26, message: "underneath a massive crystal" }
+  - { zone: "Dwarven Mines", x: 87, y: 193, z: -44, message: "underneath the gold gate" }
+  - { zone: "Dwarven Mines", x: 91, y: 199, z: -123, message: "near Geo" }
+  - { zone: "Ironman's Guild", x: -73, y: 222, z: -139, message: "in the Ironman's Guild" }
+  - { zone: "Royal Palace", x: 126, y: 197, z: 187, message: "on the Royal Palace table" }
+  - { zone: "Upper Mines", x: -134, y: 174, z: -51, message: "behind Emissary Fraiser" }
+  - { zone: "Goblin Burrows", x: -146, y: 144, z: 148, message: "in the Goblin Burrows gold room" }
+  - { zone: "Hanging Court", x: 78, y: 188, z: 126, message: "looking off the Hanging Court" }
+  - { zone: "The Lift", x: -93, y: 200, z: -122, message: "behind the Lift" }
+  - { zone: "Aristocrat Passage", x: 104, y: 151, z: 142, message: "in a tunnel under the Hanging Court" }
+  - { zone: "The Forge", x: -2, y: 147, z: -52, message: "near lava in The Forge" }
+CRYSTAL_HOLLOWS:
+  - { zone: "Crystal Nucleus", x: 472, y: 106, z: 518, message: "near the Diamond Essence Shop" }
+  - { zone: "Crystal Nucleus", x: 485, y: 65, z: 479, message: "at an entrance to the Magma Fields near Amethyst" }
+  - { zone: "Crystal Nucleus", x: 510, y: 93, z: 470, message: "on a ledge next to the stairwell" }
+  - { zone: "Crystal Nucleus", x: 494, y: 106, z: 556, message: "behind Emissary Sisko" }
+  - { zone: "Crystal Nucleus", x: 553, y: 106, z: 513, message: "in between Jade and Sapphire crystals" }
+  - { zone: "Crystal Nucleus", x: 508, y: 115, z: 564, message: "on top of the Crystal Nucleus" }
+  - { zone: "Crystal Nucleus", x: 463, y: 127, z: 505, message: "on the arms of the Amethyst statue" }
+  - { zone: "Crystal Nucleus", x: 532, y: 69, z: 528, message: "at the base of the Sapphire pillar" }
+  - { zone: "Crystal Nucleus", x: 530, y: 71, z: 465, message: "next to a lava waterfall" }
+  - { zone: "Crystal Nucleus", x: 509, y: 71, z: 480, message: "underneath the stairwell" }
+  - { zone: "Crystal Nucleus", x: 533, y: 108, z: 556, message: "near Geonathan Greatforge" }
+  - { zone: "Crystal Nucleus", x: 477, y: 82, z: 532, message: "on a lower platform" }
+  - { zone: "Crystal Nucleus", x: 557, y: 117, z: 463, message: "near the Mithril Deposits entrance" }
+  - { zone: "Crystal Nucleus", x: 553, y: 100, z: 489, message: "on top of some Gold Ore" }
+  - { zone: "Crystal Nucleus", x: 513, y: 70, z: 513, message: "in the middle of the Crystal Nucleus" }
+SPIDERS_DEN:
+  - { zone: "Arachne's Sanctuary", x: -303, y: 65, z: -182, message: "higher up in Arachne's Sanctuary" }
+  - { zone: "Arachne's Sanctuary", x: -266, y: 72, z: -191, message: "behind an egg in Arachne's Sanctuary" }
+  - { zone: "Archaeologist's Camp", x: -355, y: 111, z: -293, message: "within the Archaeologist's Camp" }
+  - { zone: "Spider Mound", x: -155, y: 86, z: -351, message: "behind the Spider's Den" }
+  - { zone: "Spider's Den", x: -360, y: 85, z: -356, message: "behind the Crimson Isle launch pad" }
+  - { zone: "Spider's Den", x: -353, y: 124, z: -250, message: "on top of the dragon skeleton's horn" }
+  - { zone: "Arachne's Burrow", x: -293, y: 36, z: -271, message: "near a Fairy Soul and Relic" }
+  - { zone: "Gravel Mines", x: -181, y: 61, z: -312, message: "within a Gravel Mines fossil" }
+  - { zone: "Gravel Mines", x: -217, y: 75, z: -345, message: "atop a mushroom in the Gravel Mines" }
+  - { zone: "Spider's Den", x: -202, y: 83, z: -238, message: "beside Haymitch" }
+  - { zone: "Spider's Den", x: -299, y: 97, z: -167, message: "on top of the pond boulder" }
+  - { zone: "Grandma's House", x: -280, y: 115, z: -181, message: "near slain spiders" }
+  - { zone: "Spider's Den", x: -398, y: 139, z: -250, message: "near the stray Fairy Soul" }
+  - { zone: "Grandma's House", x: -283, y: 129, z: -185, message: "on top of the house" }
+  - { zone: "Spider Mound", x: -200, y: 174, z: -313, message: "at the top of the Spider's Den" }
+THE_END:
+  - { zone: "The End", x: -451, y: 50, z: -274, message: "atop a obsidian spike near the entrance" }
+  - { zone: "The End", x: -539, y: 102, z: -271, message: "overlooking the drop down" }
+  - { zone: "Zealot Bruiser Hideout", x: -551, y: 56, z: -239, message: "in the Bruiser Hideout chokepoint" }
+  - { zone: "The End", x: -566, y: 7, z: -316, message: "by the warp to Void Sepulture" }
+  - { zone: "The End", x: -584, y: 211, z: -272, message: "at the highest point" }
+  - { zone: "Void Slate", x: -591, y: 5, z: -276, message: "behind the Draconic Altar" }
+  - { zone: "Dragon's Nest", x: -600, y: 21, z: -255, message: "at the start of the parkour" }
+  - { zone: "Dragon's Nest", x: -667, y: 33, z: -210, message: "atop The Peak" }
+  - { zone: "Dragon's Nest", x: -672, y: 77, z: -276, message: "on top of the Dragon Egg" }
+  - { zone: "Dragon's Nest", x: -714, y: 41, z: -315, message: "at the Dragon's View" }
+  - { zone: "Dragon's Nest", x: -722, y: 56, z: -232, message: "on the End Spire" }
+  - { zone: "The End", x: -778, y: 101, z: -300, message: "behind the race checkpoint" }
+  - { zone: "The End", x: -510, y: 110, z: -250, message: "on the stairs up to the race" }
+  - { zone: "Dragon's Nest", x: -661, y: 5, z: -248, message: "near Zealots and Watchers" }
+  - { zone: "The End", x: -502, y: 103, z: -299, message: "in the Pearl Dealer's shop" }
+CRIMSON_ISLE:
+  - { zone: "Stronghold", x: -270, y: 83, z: -496, message: "in the corner of Bladesoul's room" }
+  - { zone: "The Wasteland", x: -289, y: 127, z: -985, message: "beside the Desperate Engineer" }
+  - { zone: "Odger's Hut", x: -376, y: 207, z: -809, message: "in Odger's Hut" }
+  - { zone: "Cathedral", x: -33, y: 114, z: -937, message: "in front row seats of the Cathedral" }
+  - { zone: "Dojo", x: -237, y: 108, z: -605, message: "behind Master Tao" }
+  - { zone: "Dragontail", x: -694, y: 98, z: -794, message: "within the Dragontail colosseum" }
+  - { zone: "Minion Shop", x: -641, y: 101, z: -822, message: "in the Dragontail Minion Shop" }
+  - { zone: "Forgotten Skull", x: -375, y: 121, z: -1009, message: "on the Forgotten Skull's tooth" }
+  - { zone: "Mage Outpost", x: -295, y: 93, z: -689, message: "on the path through the Mage Outpost" }
+  - { zone: "Magma Chamber", x: -376, y: 63, z: -802, message: "in the middle of the Magma Chamber" }
+  - { zone: "Ruins of Ashfang", x: -469, y: 135, z: -1020, message: "in the Ruins of Ashfang" }
+  - { zone: "Phlegblast Pool", x: -375, y: 83, z: -709, message: "in the Phlegblast Pool" }
+  - { zone: "Scarleton Plaza", x: -62, y: 107, z: -811, message: "in front of the Statue of the Hero" }
+  - { zone: "The Bastion", x: -631, y: 141, z: -926, message: "on the snout of The Bastion skeleton" }
+  - { zone: "Stronghold", x: -358, y: 80, z: -442, message: "on the entrance bridge" }
+THE_PARK:
+  - { zone: "Savanna Woodland", x: -435, y: 107, z: 43, message: "within a gold mine" }
+  - { zone: "Savanna Woodland", x: -454, y: 111, z: 30, message: "behind Master Tactician Funk" }
+  - { zone: "Spruce Woods", x: -364, y: 89, z: 42, message: "at the start of the race" }
+  - { zone: "Jungle Island", x: -488, y: 116, z: -35, message: "near the Galatea launch pad" }
+  - { zone: "Trials of Fire", x: -366, y: 102, z: -94, message: "within the cultist's tent" }
+  - { zone: "Viking Longhouse", x: -336, y: 90, z: 77, message: "behind the Viking Longhouse" }
+  - { zone: "Melody's Plateau", x: -411, y: 109, z: 74, message: "behind Melody ♫" }
+  - { zone: "Birch Park", x: -303, y: 81, z: 4, message: "behind the flower pot" }
+  - { zone: "Birch Park", x: -264, y: 84, z: -21, message: "on the Hub launch pad" }
+  - { zone: "Birch Park", x: -316, y: 75, z: -51, message: "next to the waterfall" }
+  - { zone: "Jungle Island", x: -416, y: 128, z: -112, message: "at the race checkpoint" }
+  - { zone: "Jungle Island", x: -424, y: 118, z: -103, message: "between islands tethered by leaves" }
+  - { zone: "Birch Park", x: -305, y: 76, z: -82, message: "within the Rainmaker shrine" }
+  - { zone: "Howling Cave", x: -373, y: 84, z: -64, message: "in front of Old Shaman Nyko" }
+  - { zone: "Jungle Island", x: -460, y: 119, z: -83, message: "near cracked stone bricks in the Jungle" }
+DUNGEON_HUB:
+  - { zone: "Dungeon Hub", x: 5, y: 11, z: -1, message: "at the Crystal Core" }
+  - { zone: "Dungeon Hub", x: 0, y: 146, z: -78, message: "atop a tall statue" }
+  - { zone: "Dungeon Hub", x: -31, y: 126, z: 44, message: "next to Croesus" }
+  - { zone: "Dungeon Hub", x: -34, y: 119, z: 9, message: "near the Hub Selector" }
+  - { zone: "Dungeon Hub", x: -23, y: 86, z: -3, message: "by the race start" }
+  - { zone: "Dungeon Hub", x: -52, y: 156, z: 0, message: "atop the Catacombs gate" }
+  - { zone: "Dungeon Hub", x: -61, y: 123, z: 4, message: "near Mort" }
+  - { zone: "Dungeon Hub", x: 0, y: 108, z: 0, message: "under the entrance bridge" }
+  - { zone: "Dungeon Hub", x: -5, y: 23, z: 98, message: "atop the Giant Mushroom" }
+  - { zone: "Dungeon Hub", x: -138, y: 21, z: -7, message: "in the Precursor Ruins" }
+  - { zone: "Dungeon Hub", x: -52, y: 120, z: -10, message: "behind Ophelia's desk" }
+  - { zone: "Dungeon Hub", x: -51, y: 125, z: 20, message: "near something that will never arrive" }
+  - { zone: "Dungeon Hub", x: 16, y: 125, z: 3, message: "beside the Hub Island portal" }
+  - { zone: "Dungeon Hub", x: -18, y: 87, z: -27, message: "behind leaderboards" }
+  - { zone: "Dungeon Hub", x: -53, y: 120, z: 8, message: "near Malik" }
+BACKWATER_BAYOU:
+  - { zone: "Backwater Bayou", x: 74, y: 88, z: 1, message: "on a big wheel" }
+  - { zone: "Backwater Bayou", x: 70, y: 80, z: -13, message: "near the smokestacks" }
+  - { zone: "Backwater Bayou", x: 24, y: 67, z: -9, message: "on a lily pad" }
+  - { zone: "Backwater Bayou", x: 14, y: 67, z: 4, message: "under the dock" }
+  - { zone: "Backwater Bayou", x: 4, y: 67, z: 7, message: "in Junker Joel's basement" }
+  - { zone: "Backwater Bayou", x: 17, y: 71, z: 21, message: "near Hattie" }
+  - { zone: "Backwater Bayou", x: 59, y: 79, z: 3, message: "in a pipe" }
+  - { zone: "Backwater Bayou", x: 26, y: 78, z: -28, message: "in Roddy's house" }
+  - { zone: "Backwater Bayou", x: 36, y: 74, z: -25, message: "by a waterfall" }
+  - { zone: "Backwater Bayou", x: 28, y: 59, z: -34, message: "in the Bayou Cave" }
+  - { zone: "Backwater Bayou", x: 61, y: 86, z: 23, message: "on a gear" }
+  - { zone: "Backwater Bayou", x: 36, y: 72, z: 18, message: "on the bridge" }
+  - { zone: "Backwater Bayou", x: -10, y: 72, z: -3, message: "near the Ship" }
+  - { zone: "Backwater Bayou", x: 15, y: 70, z: -15, message: "along the wooden path" }
+  - { zone: "Backwater Bayou", x: 56, y: 81, z: -6, message: "in some vines" }
+GALATEA:
+  - { zone: "Tangleburg", x: -581, y: 113, z: -25, message: "beneath Swoop" }
+  - { zone: "Tangleburg", x: -578, y: 109, z: -1, message: "in Amaury's basement" }
+  - { zone: "Tangleburg", x: -592, y: 113, z: 5, message: "next to the Gravity Condenser" }
+  - { zone: "Tangleburg", x: -599, y: 113, z: -34, message: "in the Banker's basement" }
+  - { zone: "Moonglade Marsh", x: -539, y: 115, z: -30, message: "atop the Galatea launch pad" }
+  - { zone: "North Reaches", x: -678, y: 132, z: -81, message: "beside the highest tree" }
+  - { zone: "Wyrmgrove Tomb", x: -604, y: 107, z: 10, message: "in the middle of a basement library" }
+  - { zone: "Westbound Wetlands", x: -733, y: 95, z: -44, message: "at the bottom of a long vine" }
+  - { zone: "Tangleburg", x: -606, y: 117, z: -8, message: "on David Hunterborough's porch" }
+  - { zone: "South Reaches", x: -627, y: 117, z: 48, message: "next to the cultist's soul campfire" }
+  - { zone: "West Reaches", x: -692, y: 120, z: 5, message: "hidden under stone brick steps" }
+  - { zone: "Moonglade Marsh", x: -688, y: 88, z: 12, message: "in a dripstone cave" }
+  - { zone: "Murkwater Outpost", x: -704, y: 171, z: 1, message: "atop the Murkwater Outpost" }
+  - { zone: "North Reaches", x: -692, y: 113, z: -23, message: "along a spruce bridge" }
+  - { zone: "South Reaches", x: -698, y: 126, z: 80, message: "on Sawyer's bed" }

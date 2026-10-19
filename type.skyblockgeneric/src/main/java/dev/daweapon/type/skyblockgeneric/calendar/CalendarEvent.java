@@ -228,6 +228,27 @@ public record CalendarEvent(
     );
 
     // Once yearly: Autumn 29-31
+    public static CalendarEvent HOPPITYS_HUNT = new CalendarEvent(
+        "hoppitys_hunt",
+        ItemStack.of(Material.RABBIT_FOOT),
+        year -> Text.of("<d>Hoppity's Hunt"),
+        List.of(
+            Text.of("<7>Hoppity has hidden Chocolate Eggs"),
+            Text.of("<7>across the islands! Find them all"),
+            Text.of("<7>to collect Chocolate Rabbits.")
+        ),
+        List.of(0L),
+        Duration.ofHours(31),
+        true,
+        (_, _) -> {
+            Text announcement = Text.parseLenient(
+                    "<d><l>HOPPITY'S HUNT HAS BEGUN! <7>Chocolate Eggs will now appear across the islands. Visit <a>Hoppity <7>in the Hub!");
+            for (SkyBlockPlayer player : SkyBlockGenericLoader.getLoadedPlayers()) {
+                player.sendMessage(announcement.asComponent());
+            }
+        }
+    );
+
     public static CalendarEvent SPOOKY_FESTIVAL = new CalendarEvent(
         "spooky_festival",
         ItemStack.of(Material.JACK_O_LANTERN),
@@ -311,6 +332,7 @@ public record CalendarEvent(
         registerEvent(ELECTION_CLOSE);
         registerEvent(TRAVELING_ZOO);
         registerEvent(SPOOKY_FESTIVAL);
+        registerEvent(HOPPITYS_HUNT);
         registerEvent(SEASON_OF_JERRY);
         registerEvent(FARMING_CONTEST);
         registerEvent(FISHING_FESTIVAL);

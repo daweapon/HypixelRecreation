@@ -206,7 +206,7 @@ items:
       - ""
       - "§7Changes the color of an armor piece"
       - "§7to §6#7B3F00§7!"
-    source: "Chocolate Shop purchase (price not confirmed)"
+    source: "Chocolate Shop: 40,000,000,000 Chocolate (4 per SkyBlock year, Chocolate Factory VI)"
     components:
       - id: SKULL_HEAD
         texture: a15e7208539306f65d68df9be6c3124c48027e307739fc8dc35526febd643c21

@@ -31,9 +31,7 @@ public final class PerkAvailability {
                     "Scorpius pays the playtime-tier bribe when ElectionPerks.isActive(BRIBE) and the player voted for him"),
             missing(Perk.DARKER_AUCTIONS,
                     "The Darker Auction lots (Plasma Nucleus, Hegemony Artifact, book bundles) aren't in this server yet.",
-                    "build the 8-round Darker lot list in DarkAuctionState when ElectionPerks.isActive(DARKER_AUCTIONS)"),
-            partial(Perk.SWEET_BENEVOLENCE, "Duplicate Hoppity rabbits aren't in this server yet, so only Candy and Gifts are boosted.",
-                    "duplicate rabbit chocolate * ElectionPerks.multiplier(SWEET_BENEVOLENCE)")
+                    "build the 8-round Darker lot list in DarkAuctionState when ElectionPerks.isActive(DARKER_AUCTIONS)")
     ));
 
     private PerkAvailability() {}

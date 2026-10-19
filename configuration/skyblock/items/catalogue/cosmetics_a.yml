@@ -302,7 +302,7 @@ items:
     material: player_head
     name: "Choco Rabbit Minion Skin"
     rarity: EPIC
-    unavailable: "Source not documented on the wiki; limited-time cosmetic content that is not built"
+    source: "Chocolate Shop: 2,500,000,000 Chocolate (2 per SkyBlock year, Chocolate Factory V)"
     components:
       - id: MINION_SKIN
         name: "Choco Rabbit"

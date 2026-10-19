@@ -15,6 +15,7 @@ public final class AccessoryHandlers {
             Map.entry("AXE_WOODLAND_DAMAGE", "item/events/AccessoryRunebladeDamageEvent"),
             Map.entry("BAIT_PRESERVATION", "accessory/AccessoryEconomyHooks"),
             Map.entry("CHOCOLATE_PER_SECOND", "accessory/AccessoryEconomyHooks"),
+            Map.entry("UNOBTAINED_RABBIT_ODDS", "accessory/AccessoryEconomyHooks"),
             Map.entry("COINS_PER_MINUTE", "accessory/AccessoryEconomyHooks"),
             Map.entry("COINS_PER_MOB_LEVEL", "accessory/AccessoryEconomyHooks"),
             Map.entry("DOUBLE_BITS_CHANCE", "accessory/AccessoryEconomyHooks"),

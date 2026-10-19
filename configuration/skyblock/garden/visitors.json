@@ -5193,8 +5193,8 @@
           "Oh...stingy, aren't we?"
         ]
       },
-      "available": false,
-      "unavailableReason": "Hoppity's Hunt and the Chocolate Factory are not built",
+      "available": true,
+      "unavailableReason": null,
       "requirementChecks": [],
       "verified": true,
       "notes": null

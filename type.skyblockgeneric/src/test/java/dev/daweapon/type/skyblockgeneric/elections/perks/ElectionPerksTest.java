@@ -41,6 +41,6 @@ class ElectionPerksTest {
             assertFalse(PerkAvailability.gap(perk).orElseThrow().reason().isBlank(), perk.name());
         }
         assertFalse(PerkAvailability.isMissing(Perk.SWEET_BENEVOLENCE));
-        assertFalse(PerkAvailability.isFullyAvailable(Perk.SWEET_BENEVOLENCE));
+        assertTrue(PerkAvailability.isFullyAvailable(Perk.SWEET_BENEVOLENCE));
     }
 }

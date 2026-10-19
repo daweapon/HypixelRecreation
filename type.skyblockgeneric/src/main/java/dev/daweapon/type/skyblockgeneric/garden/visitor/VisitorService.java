@@ -1,6 +1,11 @@
 package dev.daweapon.type.skyblockgeneric.garden.visitor;
 
+import dev.daweapon.type.generic.data.datapoints.DatapointToggles;
+import dev.daweapon.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import dev.daweapon.type.skyblockgeneric.garden.GardenPetBonuses;
+import dev.daweapon.type.skyblockgeneric.hoppity.HoppityEggService;
+import dev.daweapon.type.skyblockgeneric.hoppity.HuntEggSchedule;
+import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateFactoryHelper;
 import dev.daweapon.commons.StringUtility;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.text.Text;
@@ -27,6 +32,8 @@ import java.util.random.RandomGenerator;
 public final class VisitorService {
     public static final double CROP_COOLDOWN_SECONDS = 0.1;
     private static final int BLUEPRINT_GARDEN_LEVEL = 7;
+    private static final int HOPPITY_VISITOR_FACTORY_LEVEL = 3;
+    private static final String RANDOM_RABBIT_REWARD = "Random Chocolate Rabbit";
     private static final RandomGenerator RANDOM = new java.util.Random();
 
     public enum GiveResult {
@@ -88,8 +95,13 @@ public final class VisitorService {
     }
 
     public static boolean eligible(GardenProfile profile, VisitorCatalogue.Visitor visitor) {
+        return eligible(profile, null, visitor);
+    }
+
+    public static boolean eligible(GardenProfile profile, @Nullable SkyBlockPlayer player, VisitorCatalogue.Visitor visitor) {
         VisitorData data = profile.visitors();
-        if (!visitor.available() || visitor.event() != null) return false;
+        if (!visitor.available()) return false;
+        if (visitor.event() != null && !eventVisitorReady(player, visitor)) return false;
         if (visitor.gardenLevel() > GardenProgress.level(profile)) return false;
         VisitorCatalogue.Requirement requirement = visitor.requirement();
         return switch (requirement.kind()) {
@@ -97,6 +109,13 @@ public final class VisitorService {
             case "SERVE_UNIQUE" -> requirement.count() == null || data.uniqueServed() >= requirement.count();
             default -> true;
         };
+    }
+
+    private static boolean eventVisitorReady(@Nullable SkyBlockPlayer player, VisitorCatalogue.Visitor visitor) {
+        if (!"HOPPITYS_HUNT".equals(visitor.event()) || player == null) return false;
+        return HuntEggSchedule.isHuntActive(SkyBlockCalendar.getElapsed())
+                && ChocolateFactoryHelper.getData(player).getFactoryLevel() >= HOPPITY_VISITOR_FACTORY_LEVEL
+                && player.getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_HOPPITY);
     }
 
     public static String talkTarget(@Nullable String text) {
@@ -117,7 +136,7 @@ public final class VisitorService {
         }
         if (visitor == null) {
             var present = data.getPresent().stream().map(VisitorData.Present::getId).collect(java.util.stream.Collectors.toSet());
-            visitor = VisitorGenerator.pick(catalogue, candidate -> eligible(profile, candidate), present, BLOOMING_RARITY_BONUS * (ElectionPerks.isActive(SkyBlockMayor.Perk.BLOOMING_BUSINESS) ? 1 : 0), RANDOM);
+            visitor = VisitorGenerator.pick(catalogue, candidate -> eligible(profile, player, candidate), present, BLOOMING_RARITY_BONUS * (ElectionPerks.isActive(SkyBlockMayor.Perk.BLOOMING_BUSINESS) ? 1 : 0), RANDOM);
         }
         return visitor != null && add(profile, player, visitor, now);
     }
@@ -275,6 +294,11 @@ public final class VisitorService {
     }
 
     private static void giveItem(SkyBlockPlayer player, VisitorCatalogue.Reward reward, List<String> lines) {
+        if (reward.item() == null && RANDOM_RABBIT_REWARD.equals(reward.name())) {
+            HoppityEggService.open(player, null, null, RANDOM);
+            lines.add("<d>" + reward.name());
+            return;
+        }
         ItemType type = reward.item() == null ? null : ItemType.get(reward.item());
         if (type == null) {
             lines.add("<7>" + reward.name() + " <8>(not added yet)");

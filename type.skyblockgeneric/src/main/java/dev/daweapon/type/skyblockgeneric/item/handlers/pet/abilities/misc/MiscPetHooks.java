@@ -89,6 +89,11 @@ public final class MiscPetHooks {
         return PetAbilities.value(player, ItemType.RABBIT_PET, "Chocolate Injections", 0);
     }
 
+    public static double chocolateDuplicatePercent(SkyBlockPlayer player) {
+        if (!loaded(player)) return 0;
+        return PetAbilities.value(player, ItemType.RABBIT_PET, "Chocolate Injections", 1);
+    }
+
     public static void petTick(SkyBlockPlayer player) {
         if (!loaded(player) || player.getInstance() == null || player.isDead()) return;
         long now = System.currentTimeMillis();

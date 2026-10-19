@@ -2846,7 +2846,7 @@ items:
     material: player_head
     name: "Hot Chocolate Mixin"
     rarity: RARE
-    unavailable: "Needs the Chocolate Factory shop and Mixins on God Potions"
+    unavailable: "Needs Mixins on God Potions"
     source: "Chocolate Shop for 1.5B Chocolate (max 4, Chocolate Factory VI)"
     lore:
       - "§8Brewing Ingredient"

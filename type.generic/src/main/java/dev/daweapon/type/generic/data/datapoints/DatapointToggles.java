@@ -173,7 +173,9 @@ public class DatapointToggles extends Datapoint<DatapointToggles.Toggles> {
             HALVE_DARK_AUCTION_CALENDAR_ENTRIES(false),
             HAS_SPOKEN_TO_HATTIE(false),
             HAS_SPOKEN_TO_JOTRAELINE(false),
-            HAS_SPOKEN_TO_BRYNMOR(false);
+            HAS_SPOKEN_TO_BRYNMOR(false),
+            HAS_SPOKEN_TO_HOPPITY(false),
+            HAS_GIVEN_HOPPITY_STEAMED_FISH(false);
 
             private final boolean defaultValue;
 

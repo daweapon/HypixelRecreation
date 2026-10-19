@@ -3511,7 +3511,6 @@ items:
       ferocity: 2
       farming_fortune: 10
       farming_wisdom: 1
-    unavailable: "Needs Zorro in Hoppity's Collection (Zorro rabbit not obtainable yet)"
     source: "Chocolate Shop for 20 billion Chocolate (Chocolate Factory 5, Zorro in Hoppity's Collection)."
     lore:
       - "§7The stats of this Cape §adouble "
@@ -3526,8 +3525,6 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §dZorro §cin Hoppity's Collection."
-      - ""
-      - "§8Not active yet: The doubled stats during Jacob's Farming Contest are active; the 20% extra medal is not applied"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK

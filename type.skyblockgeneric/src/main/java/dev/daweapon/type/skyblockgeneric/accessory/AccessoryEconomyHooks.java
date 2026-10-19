@@ -23,6 +23,7 @@ public final class AccessoryEconomyHooks {
     public static final String THUNDER_CHARGE = "THUNDER_CHARGE";
     public static final String POWDER_GAIN = "POWDER_GAIN";
     public static final String CHOCOLATE_PER_SECOND = "CHOCOLATE_PER_SECOND";
+    public static final String UNOBTAINED_RABBIT_ODDS = "UNOBTAINED_RABBIT_ODDS";
     public static final String POTATO_MINION_SPEED = "POTATO_MINION_SPEED";
     private static final String POTATO_MINION = "POTATO";
 
@@ -78,6 +79,10 @@ public final class AccessoryEconomyHooks {
 
     public static double chocolatePerSecond(SkyBlockPlayer player) {
         return AccessoryHandlerEffects.percent(player, CHOCOLATE_PER_SECOND);
+    }
+
+    public static double unobtainedRabbitPercent(SkyBlockPlayer player) {
+        return AccessoryHandlerEffects.percent(player, UNOBTAINED_RABBIT_ODDS);
     }
 
     public static double thunderChargeBonus(SkyBlockPlayer player) {

@@ -1,0 +1,32 @@
+title: "The Hoppity's Hunt Update"
+date: "18th October 2026"
+intro:
+  - "Hoppity's Hunt is here. Every Early Spring, Spring and Late Spring Chocolate Eggs appear across the islands, and Hoppity is back in the Hub with rabbits to sell."
+sections:
+  - heading: "The Hunt"
+    colour: "<d>"
+    lines:
+      - "The Hunt runs for the first three months of every SkyBlock year. Three eggs appear every SkyBlock day, at 7 AM, 2 PM and 9 PM, and up to six are out at once. The oldest disappears when a new one appears."
+      - "Eggs are in the same place on every server. Right-click one to claim it. Each spawn can only be claimed once per profile, whichever island you are on."
+      - "Every claim rolls a Chocolate Rabbit. Rarer rabbits need a higher Chocolate Factory level. Every 250th rabbit is Mythic and every 1,250th is Divine."
+      - "Duplicate rabbits, and rabbits found with a full Rabbit Barn, give Chocolate instead. Find 15 unique egg spots on an island to unlock its resident rabbit."
+      - "The Egglocator points a particle trail at the nearest egg you have not claimed. Buy it from the Chocolate Shop."
+  - heading: "Hoppity"
+    colour: "<a>"
+    lines:
+      - "Hoppity stands in the Hub during the Hunt and sells seven rabbits each year. Each costs coins, which can come from your Bank if your purse runs short."
+      - "Bring him a Fish Chocolat a la Vapeur to get his Abiphone contact. He may call and offer you a rabbit, including Abi."
+  - heading: "Chocolate Factory"
+    colour: "<6>"
+    lines:
+      - "Prestige now works. Reach the chocolate for your level and click the prestige button to reset your employees and upgrades, except the Rabbit Barn."
+      - "Each level raises the production multiplier, the maximum chocolate, the employee cap and the rarest rabbit you can find."
+      - "Rabbits in your collection now add chocolate per second and a production multiplier. Several Mythic rabbits have their own perks."
+      - "The Rabbit Shrine now raises the odds of finding rarer rabbits. The Time Tower gains a charge every 8 hours, up to 3."
+      - "Stray rabbits wander into the factory menu. Catch one for a few seconds of chocolate, and a golden rabbit can follow a claimed egg."
+      - "The Rabbit Hitman collects eggs you miss. Buy slots, then open the stored eggs from the Hitman menu. The Rabbit Locations filter shows hotspots and resident rabbits."
+      - "The Chocolate Shop now hands out its items and tracks the yearly stock. Use /pity to see how close you are to a guaranteed Mythic or Divine rabbit."
+  - heading: "Not included"
+    colour: "<c>"
+    lines:
+      - "Lotus Atoll and Torrhus eggs, Rabbit Factions and Chocobits are not in yet."

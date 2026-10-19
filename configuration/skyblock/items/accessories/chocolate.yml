@@ -13,8 +13,9 @@ items:
             percent: 10
             text:
               - "Grants <6>+10 Chocolate <7>per second."
-          - type: INACTIVE
-            reason: "Hoppity rabbit odds"
+          - type: HANDLER
+            handler: UNOBTAINED_RABBIT_ODDS
+            percent: 2
             text:
               - "Grants <a>+2% <7>chance to find a"
               - "<a>Chocolate Rabbit <7>that you haven't"
@@ -41,8 +42,9 @@ items:
             percent: 20
             text:
               - "Grants <6>+20 Chocolate <7>per second."
-          - type: INACTIVE
-            reason: "Hoppity rabbit odds"
+          - type: HANDLER
+            handler: UNOBTAINED_RABBIT_ODDS
+            percent: 4
             text:
               - "Grants <a>+4% <7>chance to find a"
               - "<a>Chocolate Rabbit <7>that you haven't"
@@ -69,8 +71,9 @@ items:
             percent: 30
             text:
               - "Grants <6>+30 Chocolate <7>per second."
-          - type: INACTIVE
-            reason: "Hoppity rabbit odds"
+          - type: HANDLER
+            handler: UNOBTAINED_RABBIT_ODDS
+            percent: 6
             text:
               - "Grants <a>+6% <7>chance to find a"
               - "<a>Chocolate Rabbit <7>that you haven't"
@@ -97,8 +100,9 @@ items:
             percent: 40
             text:
               - "Grants <6>+40 Chocolate <7>per second."
-          - type: INACTIVE
-            reason: "Hoppity rabbit odds"
+          - type: HANDLER
+            handler: UNOBTAINED_RABBIT_ODDS
+            percent: 8
             text:
               - "Grants <a>+8% <7>chance to find a"
               - "<a>Chocolate Rabbit <7>that you haven't"
@@ -125,8 +129,9 @@ items:
             percent: 50
             text:
               - "Grants <6>+50 Chocolate <7>per second."
-          - type: INACTIVE
-            reason: "Hoppity rabbit odds"
+          - type: HANDLER
+            handler: UNOBTAINED_RABBIT_ODDS
+            percent: 10
             text:
               - "Grants <a>+10% <7>chance to find a"
               - "<a>Chocolate Rabbit <7>that you haven't"

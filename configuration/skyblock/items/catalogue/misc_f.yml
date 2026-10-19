@@ -37,7 +37,6 @@ items:
     material: player_head
     name: "Fish Chocolat à la Vapeur"
     rarity: EPIC
-    unavailable: "Needs Hoppity's Abiphone contact and Rabbit the Fish; the Chocolate Shop entry does not hand it out yet"
     source: "Chocolate Shop: 50,000,000,000 Chocolate and Rabbit the Fish (Chocolate Factory VI)"
     lore:
       - "§7Give this dish to §aHoppity §7to obtain his"

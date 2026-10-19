@@ -14,7 +14,11 @@ import dev.daweapon.type.generic.gui.v2.ViewLayout;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointChocolateFactory;
+import dev.daweapon.type.skyblockgeneric.calendar.SkyBlockCalendar;
+import dev.daweapon.type.skyblockgeneric.hoppity.EggLocationCatalogue;
+import dev.daweapon.type.skyblockgeneric.hoppity.RabbitHotspots;
 import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateRabbit;
+import dev.daweapon.type.skyblockgeneric.region.IslandType;
 import dev.daweapon.type.skyblockgeneric.rabbits.HoppitysHuntXP;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -45,7 +49,45 @@ public class GUIHoppityCollection implements StatefulView<GUIHoppityCollection.S
             45, 46, 47, 48, 49, 50, 51, 52, 53
     };
 
-    public record State(int page, SortType sortType, FilterType filterType, boolean adminMode) {
+    public record LocationFilter(boolean hotspot, IslandType island) {
+        public static final LocationFilter ALL = new LocationFilter(false, null);
+        public static final LocationFilter HOTSPOT = new LocationFilter(true, null);
+
+        public static List<LocationFilter> options() {
+            List<LocationFilter> options = new ArrayList<>(List.of(ALL, HOTSPOT));
+            for (IslandType island : IslandType.values()) {
+                if (Arrays.stream(ChocolateRabbit.values()).anyMatch(rabbit -> rabbit.getLocation() == island)) {
+                    options.add(new LocationFilter(false, island));
+                }
+            }
+            return options;
+        }
+
+        public String displayName() {
+            if (hotspot) return "Hotspot";
+            return island == null ? "All Rabbits" : island.getName();
+        }
+
+        public LocationFilter step(int direction) {
+            List<LocationFilter> options = options();
+            int index = Math.max(0, options.indexOf(this));
+            return options.get(Math.floorMod(index + direction, options.size()));
+        }
+
+        public boolean matches(ChocolateRabbit rabbit) {
+            if (hotspot) return hotspotIsland(rabbit) != null;
+            return island == null || rabbit.getLocation() == island;
+        }
+    }
+
+    public record State(int page, SortType sortType, FilterType filterType, boolean adminMode, LocationFilter locationFilter) {
+        public State(int page, SortType sortType, FilterType filterType, boolean adminMode) {
+            this(page, sortType, filterType, adminMode, LocationFilter.ALL);
+        }
+    }
+
+    private static IslandType hotspotIsland(ChocolateRabbit rabbit) {
+        return RabbitHotspots.islandFor(SkyBlockCalendar.getYear(), rabbit, EggLocationCatalogue.get().islands());
     }
 
     @Override
@@ -73,7 +115,7 @@ public class GUIHoppityCollection implements StatefulView<GUIHoppityCollection.S
         DatapointChocolateFactory.ChocolateFactoryData data = player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.CHOCOLATE_FACTORY, DatapointChocolateFactory.class).getValue();
         Set<ChocolateRabbit> foundRabbits = data.getFoundRabbits();
 
-        List<ChocolateRabbit> rabbits = getFilteredAndSortedRabbits(foundRabbits, state.sortType(), state.filterType());
+        List<ChocolateRabbit> rabbits = getFilteredAndSortedRabbits(foundRabbits, state.sortType(), state.filterType(), state.locationFilter());
         int totalPages = Math.max(1, (int) Math.ceil(rabbits.size() / (double) RABBITS_PER_PAGE));
         for (int slot : BORDER_SLOTS) {
             layout.slot(slot, (s, c) -> ItemStacks.named(Material.BLACK_STAINED_GLASS_PANE, " "));
@@ -129,11 +171,15 @@ public class GUIHoppityCollection implements StatefulView<GUIHoppityCollection.S
                 <6>Resident <7>rabbits however, can <c>ONLY
                 <7>be found on their respective islands.
 
-                <7>Currently selected: <a>All Rabbits
+                <7>Currently selected: <a>{}
 
                 <b>Right-click to go backwards!
-                <e>Click to cycle!"""),
-                (click, c) -> c.player().sendMessage("<7>Rabbit Locations filter coming soon!"));
+                <e>Click to cycle!""", s.locationFilter().displayName()),
+                (click, c) -> {
+                    int direction = click.click() instanceof Click.Right ? -1 : 1;
+                    c.session(State.class).setState(new State(1, state.sortType(), state.filterType(), state.adminMode(),
+                            state.locationFilter().step(direction)));
+                });
 
         Components.back(layout, 48, ctx);
         Components.close(layout, 49);
@@ -152,7 +198,7 @@ public class GUIHoppityCollection implements StatefulView<GUIHoppityCollection.S
         }, (click, c) -> {
             boolean isRightClick = click.click() instanceof Click.Right;
             SortType newSort = isRightClick ? state.sortType().previous() : state.sortType().next();
-            c.session(State.class).setState(new State(1, newSort, state.filterType(), state.adminMode()));
+            c.session(State.class).setState(new State(1, newSort, state.filterType(), state.adminMode(), state.locationFilter()));
         });
 
         layout.slot(51, (s, c) -> {
@@ -169,21 +215,21 @@ public class GUIHoppityCollection implements StatefulView<GUIHoppityCollection.S
         }, (click, c) -> {
             boolean isRightClick = click.click() instanceof Click.Right;
             FilterType newFilter = isRightClick ? state.filterType().previous() : state.filterType().next();
-            c.session(State.class).setState(new State(1, state.sortType(), newFilter, state.adminMode()));
+            c.session(State.class).setState(new State(1, state.sortType(), newFilter, state.adminMode(), state.locationFilter()));
         });
 
         if (state.page() < totalPages) {
             layout.slot(53, (s, c) -> ItemStacks.item(Material.ARROW, """
                     <a>Next Page
                     <e>Page {}""", s.page() + 1),
-                    (click, c) -> c.session(State.class).setState(new State(state.page() + 1, state.sortType(), state.filterType(), state.adminMode())));
+                    (click, c) -> c.session(State.class).setState(new State(state.page() + 1, state.sortType(), state.filterType(), state.adminMode(), state.locationFilter())));
         }
 
         if (state.page() > 1) {
             layout.slot(45, (s, c) -> ItemStacks.item(Material.ARROW, """
                     <a>Previous Page
                     <e>Page {}""", s.page() - 1),
-                    (click, c) -> c.session(State.class).setState(new State(state.page() - 1, state.sortType(), state.filterType(), state.adminMode())));
+                    (click, c) -> c.session(State.class).setState(new State(state.page() - 1, state.sortType(), state.filterType(), state.adminMode(), state.locationFilter())));
         }
     }
 
@@ -267,6 +313,11 @@ public class GUIHoppityCollection implements StatefulView<GUIHoppityCollection.S
             lore.add(Text.empty());
             lore.add(Text.of("{}", rabbit.getResidentLabel()));
         }
+        IslandType hotspot = hotspotIsland(rabbit);
+        if (hotspot != null) {
+            lore.add(Text.empty());
+            lore.add(Text.of("<9>Hotspot: <7>{}", hotspot.getName()));
+        }
         lore.add(Text.empty());
         lore.add(rabbit.getRarity().getFormattedName());
 
@@ -278,9 +329,10 @@ public class GUIHoppityCollection implements StatefulView<GUIHoppityCollection.S
         }
     }
 
-    private List<ChocolateRabbit> getFilteredAndSortedRabbits(Set<ChocolateRabbit> foundRabbits, SortType sortType, FilterType filterType) {
+    private List<ChocolateRabbit> getFilteredAndSortedRabbits(Set<ChocolateRabbit> foundRabbits, SortType sortType, FilterType filterType, LocationFilter locationFilter) {
         List<ChocolateRabbit> rabbits = Arrays.stream(ChocolateRabbit.values())
                 .filter(rabbit -> {
+                    if (!locationFilter.matches(rabbit)) return false;
                     boolean found = foundRabbits.contains(rabbit);
                     return switch (filterType) {
                         case NONE -> true;

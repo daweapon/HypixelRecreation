@@ -540,6 +540,14 @@ public enum ChocolateRabbit {
         return obtainMethod == null ? null : Text.of(obtainMethod);
     }
 
+    public boolean isUniqueLocationRabbit() {
+        return location != null && requirement != null && requirement.contains("unique egg locations");
+    }
+
+    public boolean isEggRollable() {
+        return requirement == null && obtainMethod == null;
+    }
+
     public Text getRequirement() {
         return requirement == null ? null : Text.of(requirement);
     }
@@ -586,8 +594,8 @@ public enum ChocolateRabbit {
         RARE("9", "RARE", 4, 0.004),
         EPIC("5", "EPIC", 10, 0.005),
         LEGENDARY("6", "LEGENDARY", 0, 0.02),
-        MYTHIC("d", "MYTHIC", 0, 0.05),
-        DIVINE("b", "DIVINE", 0, 0.03);
+        MYTHIC("d", "MYTHIC", 0, 0.0),
+        DIVINE("b", "DIVINE", 0, 0.025);
 
         private final String colorCode;
         private final String displayName;
