@@ -109,6 +109,23 @@ module.exports = {
             await bot.waitChat(/Fire Sale has ended/i, { since: mark, timeoutMs: 20000 });
         });
 
+        await t.step('Fire Sale History: staff click gives the sale item', async () => {
+            await bot.command('/tp -6 79 17', { settleMs: 3000 });
+            await bot.interact(bot.findNpc('Community Shop'));
+            await bot.waitWindow({ timeoutMs: 15000, title: 'Community Shop' });
+            await bot.click(5);
+            await sleep(1000);
+            await bot.click(48, { settleMs: 2000 });
+            await bot.waitFor(() => /Fire Sale History/.test(JSON.stringify(bot.window()?.title)), { timeoutMs: 10000, what: 'the history menu' });
+            const entry = bot.window().slots.find((slot) => slot.slot === 10);
+            t.assert(entry && /Click to give yourself/.test(entry.lore.join(' ')), `entry: ${JSON.stringify(entry)}`);
+            const mark = bot.markChat();
+            await bot.click(10, { settleMs: 4000 });
+            const held = bot.bot.inventory.items().map((item) => bot.describeItem(item, 0).name).join(' | ');
+            t.assert(/Burning Frog|Frog Skin/.test(held) || /Gave you/.test(bot.chatSince(mark).join(' ')), `chat ${JSON.stringify(bot.chatSince(mark))} window ${JSON.stringify(bot.window()?.title)} held ${held}`);
+            await bot.closeWindow();
+        });
+
         await t.step('a Rune III Fire Sale hands out the rune', async () => {
             await bot.command('/set gems 5000', { settleMs: 800 });
             await bot.command('/force firesale 2025-11-29 30', { settleMs: 1500 });
@@ -134,6 +151,7 @@ module.exports = {
             await bot.command('/tp -6 79 17', { settleMs: 3000 });
             await bot.interact(bot.findNpc('Community Shop'));
             await bot.waitWindow({ timeoutMs: 15000, title: 'Community Shop' });
+            await sleep(2000);
             const emerald = bot.window().slots.find((slot) => slot.slot === 49);
             t.assert(/Gems: 100,000/.test(emerald.lore.join(' ')), `lore: ${emerald.lore.join(' ')}`);
         });

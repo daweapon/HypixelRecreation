@@ -65,6 +65,19 @@ public class GUIFIRESales extends HypixelInventoryGUI {
             });
         }
         FireSaleService.latest().ifPresentOrElse(this::showSale, this::showNoSale);
+        set(new GUIClickableItem(48) {
+            @Override
+            public void run(InventoryPreClickEvent e, HypixelPlayer p) {
+                p.closeInventory();
+                dev.daweapon.type.generic.utility.ScheduleUtility.nextTick(() -> p.openView(new GUIFireSaleHistory()));
+            }
+
+            @Override
+            public ItemStack.Builder getItem(HypixelPlayer p) {
+                return ItemStacks.item(Material.BOOK, "<a>Fire Sale History\n<7>Every past Fire Sale.\n \n"
+                        + (p.getRank().isStaff() ? "<e>Click to browse, and click a sale to claim it!" : "<e>Click to browse!"));
+            }
+        });
         set(new GUIClickableItem(49) {
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
