@@ -2,7 +2,7 @@
 
 Sorted reference for the current HypixelRecreation source tree. Updated 2026-10-11.
 
-This catalog covers **131 top-level game-server command definitions** (after merging 52 staff commands into subcommand groups, see Merged staff commands), **7 proxy commands**, and the optional Spark command. It describes the remake as implemented, not a promise of complete real-Hypixel parity. Alias research is in [command-alias-audit.md](command-alias-audit.md).
+This catalog covers **131 top-level game-server command definitions** (after merging 52 staff commands into subcommand groups, see Merged staff commands), **7 proxy commands**, and the optional Spark command. It describes the remake as implemented, not a promise of complete real-Hypixel parity. Alias research is in [command-alias-audit.md](docs/audits/command-alias-audit.md).
 
 ## Contents
 

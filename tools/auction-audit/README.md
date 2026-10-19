@@ -1,6 +1,6 @@
 # Auction audit probe
 
-See [the audit report](../../auction-house-audit.md). `AuctionAuditProbe.java` invokes auction service classes with in-memory fake Mongo collections to check item preservation and reproduce the remaining reported service defects. It does not connect to any external database, spend coins or alter live listings.
+See [the audit report](../../docs/audits/auction-house-audit.md). `AuctionAuditProbe.java` invokes auction service classes with in-memory fake Mongo collections to check item preservation and reproduce the remaining reported service defects. It does not connect to any external database, spend coins or alter live listings.
 
 ```sh
 docker cp service_auctionhouse:/app/ServiceAuctionHouse.jar /tmp/auction-audit-service.jar
@@ -19,4 +19,4 @@ The tests create and drop uniquely named `auction_test_...` databases and verify
 
 Claim integration tests use the same isolated Mongo URI with `--tests "*AuctionClaimsIntegrationTest"`. They cover concurrent receipt creation, profile binding, seller/buyer/refund eligibility and retry serialization. `AuctionClaimsTest` simulates interrupted delivery before/after commit; `AuctionClaimPersistenceTest` verifies transactional profile writes and rejection of stale or incomplete claim snapshots.
 
-The complete targeted auction suite now also requires `AUCTION_TEST_REDIS_URI` pointing to a disposable Redis instance for the real profile/co-op storage test. See [auction-house-profile-ownership.md](../../auction-house-profile-ownership.md) for the command and current results.
+The complete targeted auction suite now also requires `AUCTION_TEST_REDIS_URI` pointing to a disposable Redis instance for the real profile/co-op storage test. See [auction-house-profile-ownership.md](../../docs/audits/auction-house-profile-ownership.md) for the command and current results.

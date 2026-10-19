@@ -34,6 +34,8 @@ player -> Velocity proxy -> HypixelCore game server (one per ServerType/area)
 
 Spawning a player into the main or empty instance is shared: type loaders wrap their scanned events with `SpawnOnJoin.intoMainInstance` or `SpawnOnJoin.intoEmptyInstance`. Do not copy a join handler into a new module.
 
+Chat handlers in the lobby and game modules keep their own message format but route staff, party and non-ASCII sanitising through `ChatChannelRouter` (`type.generic/chat`). The remaining per-module `ActionPlayerDataSpawn`, `ActionPlayerDisconnect` and `ActionPlayerSpawn` classes hold module-specific logic and are not duplicates. Event methods are found with `getDeclaredMethods`, so shared behaviour goes in a helper that a thin annotated handler calls, not in an abstract base class.
+
 ## Messaging
 
 `commons.redis.RedisMessageBus` and the `RedisEnvelope` protocol carry request and reply messages between game servers, services and the proxy. Handlers extend `RedisMessageHandler`. The contract tests live in `commons/src/test/.../redis`.
@@ -42,6 +44,7 @@ Spawning a player into the main or empty instance is shared: type loaders wrap t
 
 - Chance-based rewards go through `LootRoll`, never a bare random call.
 - New commands go into `COMMANDS.md`. New currencies and progression also need Centauri Toy Box buttons and `/max profile` support. See `AGENTS.md`.
+- Chat channel routing goes through `ChatChannelRouter`.
 - Package scanning goes through `PackageScanner`; do not add another copy of the scanning loop.
 - `commons/src/generated` is produced by `commons:generateItemTypes` and is not committed.
 - Tests run in CI on every pull request (`./gradlew shadowJar test`).
@@ -61,3 +64,7 @@ One maintainer, `@daweapon`, owns the whole tree (`.github/CODEOWNERS`). The are
 ## Third-party code and licences
 
 The project is AGPL-3.0 and derives from Swofty's HypixelRecreation; upstream copyright and licence notices stay. Vendored libraries and their licences are in `NOTICE.md`.
+
+## Further reading
+
+`docs/audits/` holds the auction house, bazaar parity, command alias and handoff reports.
