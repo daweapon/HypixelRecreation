@@ -121,4 +121,15 @@ class DragonRulesTest {
         List<DragonLoot.Reward> rewards = DragonLoot.plan(DragonVariant.STRONG, 200, 0, 30, 5, always);
         assertTrue(rewards.stream().noneMatch(reward -> reward.major() && reward.item() != ItemType.get("DYE_PEARLESCENT")));
     }
+
+    @Test
+    void draconicShardIsGuaranteedFromQuality125WithoutSpendingQuality() {
+        DragonLoot.Roller never = (item, chance) -> false;
+        ItemType shard = ItemType.get("SHARD_DRACONIC");
+        assertTrue(DragonLoot.plan(DragonVariant.OLD, 125, 0, 30, 5, never).stream().anyMatch(reward -> reward.item() == shard));
+        assertFalse(DragonLoot.plan(DragonVariant.OLD, 124, 0, 30, 5, never).stream().anyMatch(reward -> reward.item() == shard));
+        DragonLoot.Roller always = (item, chance) -> true;
+        long shards = DragonLoot.plan(DragonVariant.OLD, 1200, 8, 1, 5_000_000, always).stream().filter(reward -> reward.item() == shard).count();
+        assertEquals(1, shards);
+    }
 }

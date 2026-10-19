@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class DragonLoot {
+    public static final int DRACONIC_SHARD_QUALITY = 125;
     public static final double PEARLESCENT_DYE_CHANCE = 0.001;
     public static final double SUPERIOR_PEARLESCENT_DYE_CHANCE = 0.002;
 
@@ -37,6 +38,7 @@ public final class DragonLoot {
             break;
         }
         add(rewards, ItemType.get(variant.fragmentId()), LootQuality.fragments(remaining), null);
+        if (quality >= DRACONIC_SHARD_QUALITY) add(rewards, ItemType.get("SHARD_DRACONIC"), 1, null);
         add(rewards, ItemType.ENDER_PEARL, LootQuality.enderPearls(rank, damage), null);
         add(rewards, ItemType.ENCHANTED_ENDER_PEARL, LootQuality.enchantedEnderPearls(rank), null);
         ItemType dye = ItemType.get("DYE_PEARLESCENT");
