@@ -11,16 +11,16 @@ public final class DragonArena {
     public static final double CEILING = 104;
     public static final int GATE_BOUNCE_RADIUS = 6;
 
-    public static final Pos ALTAR_CENTER = new Pos(-606, 22, -276);
+    public static final Pos ALTAR_CENTER = new Pos(-671, 9, -276);
     public static final List<Pos> ALTAR_FRAMES = List.of(
-            new Pos(-602, 22, -276),
-            new Pos(-603, 22, -273),
-            new Pos(-606, 22, -272),
-            new Pos(-609, 22, -273),
-            new Pos(-610, 22, -276),
-            new Pos(-609, 22, -279),
-            new Pos(-606, 22, -280),
-            new Pos(-603, 22, -279));
+            new Pos(-672, 9, -278),
+            new Pos(-670, 9, -278),
+            new Pos(-669, 9, -277),
+            new Pos(-669, 9, -275),
+            new Pos(-670, 9, -274),
+            new Pos(-672, 9, -274),
+            new Pos(-673, 9, -275),
+            new Pos(-673, 9, -277));
 
     public static final List<Pos> CRYSTAL_SITES = List.of(
             new Pos(-645.5, 5, -275.5),
@@ -42,13 +42,6 @@ public final class DragonArena {
             if (frame.blockX() == x && frame.blockY() == y && frame.blockZ() == z) return i;
         }
         return -1;
-    }
-
-    public static String frameFacing(Pos frame) {
-        double dx = ALTAR_CENTER.x() - frame.x();
-        double dz = ALTAR_CENTER.z() - frame.z();
-        if (Math.abs(dx) >= Math.abs(dz)) return dx > 0 ? "east" : "west";
-        return dz > 0 ? "south" : "north";
     }
 
     public static double flightHeight(DragonVariant variant) {

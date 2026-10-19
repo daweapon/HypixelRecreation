@@ -1,7 +1,7 @@
 const { Vec3 } = require('vec3');
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const sidebarText = (bot) => (bot.sidebar()?.lines ?? []).join(' | ');
-const FRAMES = [[-602, 22, -276], [-603, 22, -273], [-606, 22, -272], [-609, 22, -273], [-610, 22, -276], [-609, 22, -279], [-606, 22, -280], [-603, 22, -279]];
+const FRAMES = [[-672, 9, -278], [-670, 9, -278], [-669, 9, -277], [-669, 9, -275], [-670, 9, -274], [-672, 9, -274], [-673, 9, -275], [-673, 9, -277]];
 
 module.exports = {
     description: 'The End: regions, NPCs and shops, End mobs, altar, Ender Dragon fight, loot, Draconic Altar',
@@ -104,7 +104,7 @@ module.exports = {
 
         await t.step('placing eight Summoning Eyes on the altar wakes a dragon', async () => {
             await bot.command('/item SUMMONING_EYE 8', { settleMs: 1500 });
-            await bot.command('/tp -606 22 -276', { settleMs: 3000 });
+            await bot.command('/tp -671 10 -276', { settleMs: 3000 });
             for (let i = 0; i < FRAMES.length; i++) {
                 const eye = bot.bot.inventory.items().find((item) => /summoning eye/i.test(item.customName ? JSON.stringify(item.customName) : item.displayName));
                 t.assert(eye, `no Summoning Eye left before frame ${i}`);
