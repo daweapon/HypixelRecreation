@@ -59,6 +59,22 @@ public final class ReforgeEffects {
         return 1 + bonus;
     }
 
+    public static double eventPowderPercent(Collection<? extends ReforgeAbility> abilities) {
+        double percent = 0;
+        for (ReforgeAbility ability : abilities) {
+            if (ability instanceof ReforgeAbility.EventPowder effect) percent += effect.eventPowderPercent();
+        }
+        return percent;
+    }
+
+    public static double starPowderPercent(Collection<? extends ReforgeAbility> abilities) {
+        double percent = 0;
+        for (ReforgeAbility ability : abilities) {
+            if (ability instanceof ReforgeAbility.StarPowder effect) percent += effect.starPowderPercent();
+        }
+        return percent;
+    }
+
     public static long titaniumMithrilPowder(Collection<? extends ReforgeAbility> abilities) {
         long powder = 0;
         for (ReforgeAbility ability : abilities) {

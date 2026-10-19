@@ -1,0 +1,114 @@
+# Dwarven Mines Mining Events (wiki Dwarven Mines/Events). Active and passive events run on a 20 minute cadence;
+# only passive events run in the Crystal Hollows. Weights and the first-event delay are not published by Hypixel.
+cadence_minutes: 20
+first_event_minutes: 3
+warning_seconds: 20
+
+events:
+  DOUBLE_POWDER:
+    weight: 20
+    duration_minutes: 20
+  BETTER_TOGETHER:
+    weight: 20
+    duration_minutes: 20
+  MITHRIL_GOURMAND:
+    weight: 20
+    duration_minutes: 10
+  GOBLIN_RAID:
+    weight: 20
+    duration_minutes: 5
+  RAFFLE:
+    weight: 20
+    duration_minutes: 3
+
+better_together:
+  mining_speed_per_player: 250
+  mining_fortune_per_player: 20
+  max_players: 5
+
+mithril_gourmand:
+  tasty_chance_percent: 30
+  goal_min: 100
+  goal_max: 200
+  personal_threshold: 10
+  early_finish_seconds: 60
+  teleport_button_seconds: 20
+  sites:
+    - { name: "Cliffside Veins", x: 49.5, y: 134, z: 40.5, radius: 45 }
+    - { name: "Rampart's Quarry", x: -146.5, y: 149, z: -30.5, radius: 45 }
+    - { name: "Upper Mines", x: -134.5, y: 173, z: -62.5, radius: 45 }
+    - { name: "Royal Mines", x: 84.5, y: 114, z: 134.5, radius: 45 }
+  don_position: { x: 37.5, y: 202, z: -123.5, yaw: 90 }
+
+goblin_raid:
+  goal: 500
+  personal_threshold: 25
+  superprotectron_kills: 10
+  wave_seconds: 12
+  wave_size: 14
+  superprotectron_every_waves: 5
+  site: { name: "The Forge", x: -2.5, y: 149, z: -85.5, radius: 14 }
+
+raffle:
+  min_players: 10
+  min_tickets_for_rewards: 10
+  tickets: 60
+  winners: 3
+  ticket_radius: 30
+  sites:
+    - { name: "Royal Palace", x: 86.5, y: 187, z: 114.5, radius: 12 }
+    - { name: "Divan's Gateway", x: -1.5, y: 138, z: 90.5, radius: 12 }
+    - { name: "Far Reserve", x: -96.5, y: 142, z: 111.5, radius: 12 }
+
+rewards:
+  goblin_raid:
+    high_success: { mining_xp: 30000, hotm_xp: 250, mithril_powder: 20000, per_kill_powder: 100, bits: 30, items: 2 }
+    high_fail: { mining_xp: 20000, hotm_xp: 200, mithril_powder: 10000, per_kill_powder: 50, bits: 20, items: 1 }
+    low_success: { mining_xp: 10000, hotm_xp: 0, mithril_powder: 2000, per_kill_powder: 50, bits: 10, items: 0 }
+    low_fail: { mining_xp: 0, hotm_xp: 0, mithril_powder: 0, per_kill_powder: 50, bits: 0, items: 0 }
+  mithril_gourmand:
+    high_success: { mining_xp: 25000, hotm_xp: 220, mithril_powder: 20000, per_kill_powder: 100, bits: 40, items: 2 }
+    high_fail: { mining_xp: 20000, hotm_xp: 200, mithril_powder: 9500, per_kill_powder: 50, bits: 30, items: 1 }
+    low_success: { mining_xp: 5000, hotm_xp: 0, mithril_powder: 200, per_kill_powder: 50, bits: 20, items: 0 }
+    low_fail: { mining_xp: 0, hotm_xp: 0, mithril_powder: 0, per_kill_powder: 50, bits: 0, items: 0 }
+  raffle:
+    winner: { mining_xp: 20000, hotm_xp: 200, mithril_powder: 30000, per_kill_powder: 75, bits: 20, items: 2 }
+    participant: { mining_xp: 20000, hotm_xp: 200, mithril_powder: 10000, per_kill_powder: 25, bits: 20, items: 1 }
+
+mining_items:
+  - PET_ITEM_MINING_SKILL_BOOST_RARE
+  - FLOWSTATE_BOOK
+  - DWARVEN_OS_ORE_OATS
+  - DWARVEN_TREASURE
+  - PET_ITEM_TITANIUM_MINECART
+
+random:
+  fallen_star:
+    chance_percent_per_ore: 0.02
+    cooldown_minutes: 10
+    duration_seconds: 340
+    bonus_ore_drops: 2
+    bonus_mithril_powder: 2
+    starfall_chance_percent: 2
+    sentries: 4
+    sentry_radius: 6
+    sites:
+      - { name: "Royal Mines", x: 84.5, y: 114, z: 134.5, radius: 30 }
+      - { name: "Far Reserve", x: -96.5, y: 142, z: 111.5, radius: 30 }
+      - { name: "Goblin Burrows", x: -70.5, y: 160, z: 160.5, radius: 30 }
+      - { name: "Upper Mines", x: -134.5, y: 173, z: -62.5, radius: 30 }
+      - { name: "Rampart's Quarry", x: -146.5, y: 149, z: -30.5, radius: 30 }
+      - { name: "Great Ice Wall", x: 0.5, y: 148, z: 156.5, radius: 30 }
+      - { name: "Cliffside Veins", x: 49.5, y: 134, z: 40.5, radius: 30 }
+  powder_ghast:
+    chance_percent_per_mithril: 0.02
+    cooldown_minutes: 10
+    despawn_seconds: 60
+    sites:
+      - { name: "Divan's Gateway", x: -1.5, y: 138, z: 90.5, radius: 25 }
+      - { name: "Rampart's Quarry", x: -146.5, y: 149, z: -30.5, radius: 30 }
+      - { name: "Cliffside Veins", x: 49.5, y: 134, z: 40.5, radius: 30 }
+      - { name: "Forge Basin", x: 0.5, y: 145, z: 23.5, radius: 25 }
+  golden_goblin:
+    chance_percent_per_ore: 0.01
+    lifetime_seconds: 30

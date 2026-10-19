@@ -14,6 +14,8 @@ import dev.daweapon.commons.redis.RedisMessageHandler;
 import dev.daweapon.type.dwarvenmines.gui.GUIFossilExcavator;
 import dev.daweapon.type.dwarvenmines.gui.GUIGemstoneGrinder;
 import dev.daweapon.type.skyblockgeneric.glacite.ColdService;
+import dev.daweapon.type.skyblockgeneric.miningevent.MiningEventScheduler;
+import dev.daweapon.type.skyblockgeneric.miningevent.MiningEventZone;
 import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.generic.SkyBlockTypeLoader;
 import dev.daweapon.type.generic.entity.InteractionEntity;
@@ -45,6 +47,7 @@ public class TypeDwarvenMinesLoader implements SkyBlockTypeLoader {
     @Override
     public void afterInitialize(MinecraftServer server) {
         ColdService.start();
+        MiningEventScheduler.start(MiningEventZone.DWARVEN_MINES);
         Point gemstoneGrinderPos = new Pos(85.5, 199, -116.5);
 
         InteractionEntity gemstoneGrinder = new InteractionEntity(1.1f, 1.1f, (p, event) -> {

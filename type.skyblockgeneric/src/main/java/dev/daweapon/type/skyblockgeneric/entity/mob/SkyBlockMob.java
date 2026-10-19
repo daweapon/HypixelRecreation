@@ -74,6 +74,8 @@ public abstract class SkyBlockMob extends EntityCreature {
     private static final float VANILLA_MAX_HEALTH = 1024;
     private static final double RARE_DROP_CHANCE_PERCENT = 5;
     private static final int NAME_LINE_WIDTH = 2000;
+    private static final long RANGED_PROBE_WINDOW_NANOS = 25_000_000L;
+    private long arrowProbeNanos;
     private float maxHealth;
     private float health;
     @Getter
@@ -216,6 +218,9 @@ public abstract class SkyBlockMob extends EntityCreature {
 
     @Override
     public boolean damage(@NotNull Damage damage) {
+        Damage filtered = filterIncomingDamage(damage);
+        if (filtered == null) return false;
+        damage = filtered;
         boolean toReturn = super.damage(damage);
 
         setHasBeenDamaged(true);
@@ -324,7 +329,16 @@ public abstract class SkyBlockMob extends EntityCreature {
     }
 
     public boolean isImmuneToArrows() {
+        arrowProbeNanos = System.nanoTime();
         return false;
+    }
+
+    protected Damage filterIncomingDamage(Damage damage) {
+        return damage;
+    }
+
+    protected boolean isRangedHit() {
+        return System.nanoTime() - arrowProbeNanos < RANGED_PROBE_WINDOW_NANOS;
     }
 
     public boolean isKuudraForce() {

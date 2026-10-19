@@ -4,6 +4,7 @@ import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.skyblockgeneric.crystalhollows.CrystalHollowsZones;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointCommissions;
 import dev.daweapon.type.skyblockgeneric.entity.mob.SkyBlockMob;
+import dev.daweapon.type.skyblockgeneric.miningevent.MiningEvents;
 import dev.daweapon.type.skyblockgeneric.region.RegionType;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -33,6 +34,7 @@ public final class CommissionProgress {
                 if (commission == null) continue;
                 if (commission.objective.type != type) continue;
                 if (commission.objective.target != target) continue;
+                if (commission.objective.event != EventType.NONE && !MiningEvents.isActive(commission.objective.event)) continue;
 
                 if (!commission.objective.location.isAny() && regionType != null) {
                     if (!commission.objective.location.allows(regionType)) continue;
@@ -89,6 +91,12 @@ public final class CommissionProgress {
             case "YOG" -> Objective.BlockTarget.HOLLOWS_YOG;
             case "THYST" -> Objective.BlockTarget.HOLLOWS_THYST;
             case "BOSS_CORLEONE" -> Objective.BlockTarget.HOLLOWS_BOSS_CORLEONE;
+            case "GOBLIN_WEAKLING_MELEE_2", "GOBLIN_FIRESLINGER", "GOBLIN_KNIFE_THROWER", "GOBLIN_FLAMETHROWER",
+                 "GOBLIN_WEAKLING_MELEE_5", "GOBLIN_WEAKLING_RANGED_5", "GOBLIN_CREEPERTAMER_90", "GOBLIN_BATTLER_60",
+                 "GOBLIN_MURDERLOVER_150", "GOBLIN_GOLEM_150" -> Objective.BlockTarget.GOBLIN;
+            case "GOBLIN", "GOBLIN_2" -> Objective.BlockTarget.GOLDEN_GOBLIN;
+            case "ICE_WALKER" -> Objective.BlockTarget.GLACITE_WALKER;
+            case "TREASURE_HOARDER" -> Objective.BlockTarget.TREASURE_HOARDER;
             default -> null;
         };
     }

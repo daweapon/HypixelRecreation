@@ -1490,7 +1490,6 @@ items:
     material: name_tag
     name: "Raffle Ticket"
     rarity: UNCOMMON
-    unavailable: "Needs Dwarven Mines Raffle events"
     source: "Spawns on the ground during Raffle Events in the Dwarven Mines"
     lore:
       - "§7Bring this back to the raffle box!"
@@ -1742,7 +1741,6 @@ items:
     material: paper
     name: "Tasty Mithril"
     rarity: UNCOMMON
-    unavailable: "Needs the Mithril Gourmand event"
     source: "30% drop from Mithril Ore during the Mithril Gourmand event"
     lore:
       - "§7Perfectly round and appetizing"

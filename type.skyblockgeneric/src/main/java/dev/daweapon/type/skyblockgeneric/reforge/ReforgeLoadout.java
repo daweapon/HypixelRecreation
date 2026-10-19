@@ -41,6 +41,11 @@ public final class ReforgeLoadout {
         }
 
         @Override
+        public boolean nearFallenStar() {
+            return dev.daweapon.type.skyblockgeneric.miningevent.RandomMiningEvents.nearFallenStar(player.getPosition());
+        }
+
+        @Override
         public int armorThornsTiers() {
             return player.getStatistics().getAllOfEnchants(EnchantmentType.THORNS, false).entrySet().stream()
                     .mapToInt(entry -> entry.getKey() * entry.getValue()).sum();
@@ -76,6 +81,14 @@ public final class ReforgeLoadout {
 
     public static double miningExperienceMultiplier(SkyBlockPlayer player) {
         return ReforgeEffects.miningExperienceMultiplier(abilities(player));
+    }
+
+    public static double eventPowderPercent(SkyBlockPlayer player) {
+        return ReforgeEffects.eventPowderPercent(abilities(player));
+    }
+
+    public static double starPowderPercent(SkyBlockPlayer player) {
+        return ReforgeEffects.starPowderPercent(abilities(player));
     }
 
     public static long titaniumMithrilPowder(SkyBlockPlayer player) {

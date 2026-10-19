@@ -11,6 +11,10 @@ public interface ReforgeWorld {
 
     int armorThornsTiers();
 
+    default boolean nearFallenStar() {
+        return false;
+    }
+
     default boolean isOn(Set<ServerType> servers) {
         return server() != null && servers.contains(server());
     }

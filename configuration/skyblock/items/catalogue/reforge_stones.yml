@@ -772,8 +772,7 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 14§c."
-    unavailable: "Mining events (Goblin Raid, Raffle, Double Powder) only exist as an enum for commissions, no running events"
-    source: "Dwarven Mines Mining Event participation, 20% chance per event"
+    source: "Mining Item reward from Goblin Raid, Raffle and Mithril Gourmand (20% per item roll)"
     components:
       - id: REFORGE_STONE
         reforge: royal

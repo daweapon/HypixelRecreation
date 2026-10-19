@@ -17,6 +17,8 @@ import dev.daweapon.type.skyblockgeneric.hotm.HotmSkyMallBuff;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.gathering.MiningPetBonuses;
 import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
+import dev.daweapon.type.skyblockgeneric.miningevent.MithrilGourmandEvent;
+import dev.daweapon.type.skyblockgeneric.miningevent.RandomMiningEvents;
 import dev.daweapon.type.skyblockgeneric.reforge.ReforgeLoadout;
 import dev.daweapon.type.skyblockgeneric.region.RegionType;
 import dev.daweapon.type.skyblockgeneric.region.SkyBlockRegion;
@@ -52,9 +54,12 @@ public class ActionHotmMining implements HypixelEventClass {
     }
 
     private void mineDwarvenMetal(SkyBlockPlayer player, MineableBlock block, CustomBlockBreakEvent event) {
-        if (block == MineableBlock.TITANIUM) {
+        boolean titanium = block == MineableBlock.TITANIUM;
+        RandomMiningEvents.onOreMined(player, event.getPoint(), !titanium);
+        if (titanium) {
             long reforgePowder = ReforgeLoadout.titaniumMithrilPowder(player);
             if (reforgePowder > 0) HotmService.gainPowder(player, HotmPowder.MITHRIL, reforgePowder);
+            RandomMiningEvents.applyFallenStar(player, event.getPoint(), event.getDrops(), false, 0);
             if (HotmService.skyMallBuff(player) == HotmSkyMallBuff.TITANIUM) {
                 event.getDrops().forEach(drop -> drop.setAmount(drop.getAmount() * 5));
             }
@@ -65,7 +70,10 @@ public class ActionHotmMining implements HypixelEventClass {
             case MITHRIL_STRONG -> 5;
             default -> 2;
         } + HotmService.baseBonus(player, HotmPowder.MITHRIL);
-        HotmService.gainPowder(player, HotmPowder.MITHRIL, base);
+        long gained = HotmService.gainPowder(player, HotmPowder.MITHRIL, base);
+        RandomMiningEvents.applyFallenStar(player, event.getPoint(), event.getDrops(), true, gained);
+        MithrilGourmandEvent gourmand = MithrilGourmandEvent.active();
+        if (gourmand != null) gourmand.rollDrop(player, event.getPoint(), event.getDrops());
         if (HotmService.hasPerk(player, "daily_powder")) awardDailyPowder(player);
 
         double chance = HotmService.perkValue(player, "titanium_insanium");

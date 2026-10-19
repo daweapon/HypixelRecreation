@@ -42,6 +42,7 @@ public final class HotmStatistics {
         HotmSkyMallBuff buff = HotmService.skyMallBuff(player);
         if (buff == HotmSkyMallBuff.MINING_SPEED) total = total.addBase(ItemStatistic.MINING_SPEED, 100D);
         if (buff == HotmSkyMallBuff.MINING_FORTUNE) total = total.addBase(ItemStatistic.MINING_FORTUNE, 50D);
+        if (onMiningIsland) total = ItemStatistics.add(total, dev.daweapon.type.skyblockgeneric.miningevent.MiningEvents.statistics(player));
         return ItemStatistics.add(total, HotmAbilities.statistics(player));
     }
 

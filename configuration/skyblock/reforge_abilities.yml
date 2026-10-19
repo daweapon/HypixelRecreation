@@ -148,7 +148,6 @@ ridiculous:
 royal:
   name: "Royal"
   text: "<7>Earn <2>+15% ᠅ Mithril Powder <7>from <b>Mining Events <7>in the <2>Dwarven Mines<7>."
-  unavailable: "Needs Mining Events"
 salty:
   name: "Salty"
   text: "<7>This gives <a>2x stats <7>while on  <c>Jerry's Workshop<7>."
@@ -166,7 +165,6 @@ squeaky:
 stellar:
   name: "Stellar"
   text: "<7>Earn <2>+20% ᠅ Mithril Powder <7>and <6>+75 Mining Fortune <7>when mining <7>near <5> Fallen Stars<7>."
-  unavailable: "Needs Fallen Stars and Mining Events"
 sticky:
   name: "Sticky"
   text: "<7>Grants <d>+2.5 Hunting Fortune <7>towards <9>Water Shards<7>."

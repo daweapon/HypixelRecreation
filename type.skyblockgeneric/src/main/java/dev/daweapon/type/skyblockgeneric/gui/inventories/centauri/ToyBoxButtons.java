@@ -48,6 +48,7 @@ final class ToyBoxButtons {
     static List<ToyBoxButton> mining() {
         return List.of(
                 of(Material.PRISMARINE_CRYSTALS, "<5>50k HOTM Exp", "<8>The power of a pickaxe.", "<7>Gain <5>50,000 HOTM Experience<7>.", p -> HotmService.addExperience(p, 50_000)),
+                of(Material.DIAMOND_ORE, "<b>Mining Event Item", "<8>Garry's favourite.", "<7>Roll one <b>Mining Event<7> reward item.", dev.daweapon.type.skyblockgeneric.miningevent.MiningEventRewards::giveMiningItem),
                 of(Material.GUNPOWDER, "<a>Give 2m powder of each type", "<8>Mindcraft.", "<7>Get 2,000,000 of each powder type: <2>Mithril<7>, <d>Gemstone <7>and <b>Glacite<7>.", p -> HotmService.addPowderToAll(p, 2_000_000)),
                 of(Material.NETHER_STAR, "<5>Tokens of the Mountain", "<8>Spend them wisely.", "<7>Gain <5>10 Tokens of the Mountain<7>.", p -> HotmService.addTokens(p, 10)),
                 of(Material.BEACON, "<5>Max Core of the Mountain", "<8>The heart of it all.", "<7>Set the Core of the Mountain to level 10.", HotmService::maxCore),

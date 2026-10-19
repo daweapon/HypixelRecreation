@@ -503,6 +503,14 @@ public class ItemAttributeHandler {
         ((ItemAttributeDaggerAttunement) item.getAttribute("td_attune_mode")).setValue(mode);
     }
 
+    public String getMiningEventId() {
+        return ((ItemAttributeMiningEventId) item.getAttribute("mining_event_id")).getValue();
+    }
+
+    public void setMiningEventId(String id) {
+        ((ItemAttributeMiningEventId) item.getAttribute("mining_event_id")).setValue(id);
+    }
+
     public int getRadioChannel() {
         return ((ItemAttributeRadioChannel) item.getAttribute("radio_channel")).getValue();
     }

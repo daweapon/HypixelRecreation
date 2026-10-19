@@ -62,6 +62,7 @@ public class TypeCrystalHollowsLoader implements SkyBlockTypeLoader {
         CrystalHollowsBossSpawner.start();
         CrystalDisplays.start();
         KingsScentWater.start();
+        dev.daweapon.type.skyblockgeneric.miningevent.MiningEventScheduler.start(dev.daweapon.type.skyblockgeneric.miningevent.MiningEventZone.CRYSTAL_HOLLOWS);
     }
 
     @Override

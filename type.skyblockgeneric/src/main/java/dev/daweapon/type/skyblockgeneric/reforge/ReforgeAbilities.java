@@ -11,6 +11,8 @@ import dev.daweapon.type.skyblockgeneric.reforge.abilities.FangedAbility;
 import dev.daweapon.type.skyblockgeneric.reforge.abilities.HyperAbility;
 import dev.daweapon.type.skyblockgeneric.reforge.abilities.MagneticAbility;
 import dev.daweapon.type.skyblockgeneric.reforge.abilities.MarshyAbility;
+import dev.daweapon.type.skyblockgeneric.reforge.abilities.RoyalAbility;
+import dev.daweapon.type.skyblockgeneric.reforge.abilities.StellarAbility;
 import dev.daweapon.type.skyblockgeneric.reforge.abilities.MobDamageReductionAbility;
 import dev.daweapon.type.skyblockgeneric.reforge.abilities.PestReforgeAbilities;
 import dev.daweapon.type.skyblockgeneric.reforge.abilities.SaltyAbility;
@@ -62,6 +64,8 @@ public final class ReforgeAbilities {
                 new EruditeAbility(),
                 new CandiedAbility(),
                 new MarshyAbility(),
+                new RoyalAbility(),
+                new StellarAbility(),
                 new PestReforgeAbilities.Beady(),
                 new PestReforgeAbilities.Buzzing(),
                 new PestReforgeAbilities.Squeaky()));

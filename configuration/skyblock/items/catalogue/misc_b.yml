@@ -1081,8 +1081,7 @@ items:
     material: player_head
     name: "Dwarven O's Block Bran"
     rarity: RARE
-    unavailable: "Dwarven Mines Mining Events (the drop source) aren't built"
-    source: "Rare drop during Dwarven Mines Mining Events"
+    source: "10% drop from Scatha in the Crystal Hollows"
     lore:
       - "§8Consumable"
       - ""
@@ -1099,7 +1098,7 @@ items:
     material: player_head
     name: "Dwarven O's Gemstone Grahams"
     rarity: EPIC
-    source: "Rare drop during Dwarven Mines Mining Events"
+    source: "Rare reward from Crystal Nucleus runs"
     lore:
       - "§8Consumable"
       - ""
@@ -1117,8 +1116,8 @@ items:
     material: player_head
     name: "Dwarven O's Metallic Minis"
     rarity: LEGENDARY
-    unavailable: "Dwarven Mines Mining Events (the drop source) aren't built"
-    source: "Rare drop during Dwarven Mines Mining Events"
+    unavailable: "Dropped by Frozen Corpses in Glacite Mineshafts, which are not built"
+    source: "Frozen Corpse drop in Glacite Mineshafts"
     lore:
       - "§8Consumable"
       - ""
@@ -1136,7 +1135,6 @@ items:
     material: player_head
     name: "Dwarven O's Ore Oats"
     rarity: UNCOMMON
-    unavailable: "Dwarven Mines Mining Events (the drop source) aren't built"
     source: "Rare drop during Dwarven Mines Mining Events"
     lore:
       - "§8Consumable"

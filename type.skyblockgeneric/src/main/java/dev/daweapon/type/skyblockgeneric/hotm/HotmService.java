@@ -237,10 +237,23 @@ public final class HotmService {
         if (powder == HotmPowder.MITHRIL) amount = GatheringPetBonuses.mithrilPowder(player, amount);
         else amount = MiningPetBonuses.powder(player, powder, amount);
         amount = AccessoryEconomyHooks.powderGained(player, amount);
+        if (dev.daweapon.type.skyblockgeneric.miningevent.MiningEvents.doublePowder()) amount *= 2;
         DatapointHOTM.PlayerHOTMData data = data(player);
         data.addPowder(powder, amount);
         save(player, data);
+        if (powder == HotmPowder.MITHRIL) {
+            dev.daweapon.type.skyblockgeneric.commission.CommissionProgress.update(player,
+                    dev.daweapon.type.skyblockgeneric.commission.ObjectiveType.COLLECT,
+                    dev.daweapon.type.skyblockgeneric.commission.Objective.BlockTarget.MITHRIL, (int) amount, null);
+        }
         return amount;
+    }
+
+    public static void addFlatPowder(SkyBlockPlayer player, HotmPowder powder, long amount) {
+        if (amount <= 0) return;
+        DatapointHOTM.PlayerHOTMData data = data(player);
+        data.addPowder(powder, amount);
+        save(player, data);
     }
 
     public static long dailyPowderAmount(SkyBlockPlayer player) {

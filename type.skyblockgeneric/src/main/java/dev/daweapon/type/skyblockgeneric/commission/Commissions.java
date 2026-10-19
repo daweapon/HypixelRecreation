@@ -169,7 +169,7 @@ public class Commissions {
 					false
 			),
 
-			new Commission("Golden Goblin Slayer", CommissionCategory.SITUATIONAL,
+			new Commission("Elusive Goblin Slayer", CommissionCategory.SITUATIONAL,
 					new Objective(ObjectiveType.SLAY, Objective.BlockTarget.GOLDEN_GOBLIN, 1, LocationSelector.any(), EventType.NONE),
 					false
 			),
@@ -260,11 +260,34 @@ public class Commissions {
 			Commission picked = selectRandomCommission(pool, usedNames);
 			return picked != null ? picked : selectRandomCommission(HOLLOWS, usedNames);
 		}
-		if (slotIndex % 2 == 0) {
-			return selectRandomCommission(consistentPool(player), usedNames);
-		}
-		Commission picked = selectRandomCommission(SITUATIONAL, usedNames);
-		return picked != null ? picked : selectRandomCommission(consistentPool(player), usedNames);
+		if (slotIndex == 0) return selectRandomCommission(nonEventPool(player), usedNames);
+		if (slotIndex == 1) return pickOr(eventPool(), nonEventPool(player), usedNames);
+		long events = usedNames.stream().map(Commissions::getCommissionByName).filter(c -> c != null && isEventDependent(c)).count();
+		if (events >= MAX_EVENT_COMMISSIONS) return pickOr(nonEventPool(player), eventPool(), usedNames);
+		List<Commission> all = new ArrayList<>(nonEventPool(player));
+		all.addAll(eventPool());
+		return selectRandomCommission(all, usedNames);
+	}
+
+	private static final int MAX_EVENT_COMMISSIONS = 3;
+
+	private static Commission pickOr(List<Commission> first, List<Commission> fallback, List<String> usedNames) {
+		Commission picked = selectRandomCommission(first, usedNames);
+		return picked != null ? picked : selectRandomCommission(fallback, usedNames);
+	}
+
+	public static boolean isEventDependent(Commission commission) {
+		return commission.objective.event != EventType.NONE || commission.name.equals("Elusive Goblin Slayer");
+	}
+
+	private static List<Commission> eventPool() {
+		return SITUATIONAL.stream().filter(Commissions::isEventDependent).toList();
+	}
+
+	private static List<Commission> nonEventPool(SkyBlockPlayer player) {
+		List<Commission> pool = new ArrayList<>(consistentPool(player));
+		SITUATIONAL.stream().filter(commission -> !isEventDependent(commission)).forEach(pool::add);
+		return pool;
 	}
 
 	private static List<Commission> hollowsNonCrystalPool() {

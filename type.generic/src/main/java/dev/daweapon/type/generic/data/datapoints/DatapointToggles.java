@@ -143,6 +143,7 @@ public class DatapointToggles extends Datapoint<DatapointToggles.Toggles> {
             HAS_SPOKEN_TO_MORT(false),
             HAS_SPOKEN_TO_OPHELIA(false),
             HAS_SPOKEN_TO_TAYLOR(false),
+            HAS_SPOKEN_TO_GARRY(false),
             HAS_SPOKEN_TO_VINCENT(false),
             HAS_SPOKEN_TO_WIZARD(false),
             HAS_SPOKEN_TO_RICHARD(false),

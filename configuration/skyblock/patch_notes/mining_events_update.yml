@@ -1,0 +1,29 @@
+title: "The Mining Events Update"
+date: "18th October 2026"
+intro:
+  - "The Dwarven Mines now has Mining Events, and Old Man Garry is waiting in the Dwarven Village to tell you about them."
+sections:
+  - heading: "Events"
+    colour: "<b>"
+    lines:
+      - "An event starts every 20 minutes in the Dwarven Mines, with a warning 20 seconds before. The Crystal Hollows runs the passive events too."
+      - "2x Powder doubles every kind of powder you gain. Better Together gives 250 Mining Speed and 20 Mining Fortune for each other player in your zone, up to 5."
+      - "Goblin Raid sends waves of raiders at the Forge. Kill 500 to win, and slay at least 25 yourself for the big rewards. Superprotectrons count as 10 kills and shield the goblins around them."
+      - "Raffle puts a Raffle Box in the Royal Palace, Divan's Gateway or the Far Reserve. Gather tickets, deposit at least 10 and three winners get extra. It needs 10 players or it is cancelled."
+      - "Mithril Gourmand lets Mithril Ore drop Tasty Mithril in one area. Feed it to Don Expresso in the Dwarven Tavern before the time runs out."
+  - heading: "Rewards"
+    colour: "<a>"
+    lines:
+      - "Active events pay Mining XP, HotM XP, Mithril Powder, Bits with a Booster Cookie and Mining Items. Mining Items are Mining Exp Boost, a Flowstate I book, Dwarven O's Ore Oats, Dwarven Treasure or a Titanium Minecart."
+      - "Royal reforge gives 15 percent more Mithril Powder from events. Dwarven Treasure and Mining Raffle Tickets are obtainable now."
+  - heading: "Random occurrences"
+    colour: "<5>"
+    lines:
+      - "Fallen Stars can crash while you mine Mithril. Nearby ore and powder are boosted, Starfall can drop and Star Sentries guard the star. Stellar reforge works near them."
+      - "Powder Ghasts can appear in four zones and only arrows hurt them. Golden Goblins can spawn while mining too. Luck of the Cave makes all of these more likely."
+  - heading: "Commissions"
+    colour: "<e>"
+    lines:
+      - "Goblin, Glacite Walker and Treasure Hoarder commissions now count their kills. Event commissions only progress while their event runs."
+      - "Golden Goblin Slayer is now Elusive Goblin Slayer and counts Diamond Goblins. You always get at least one event and one normal commission."
+      - "Gone with the Wind is not included because Hypixel removed it."

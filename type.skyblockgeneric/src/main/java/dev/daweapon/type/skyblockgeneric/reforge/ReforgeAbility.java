@@ -27,6 +27,14 @@ public interface ReforgeAbility {
         double bonusFraction();
     }
 
+    interface EventPowder extends ReforgeAbility {
+        double eventPowderPercent();
+    }
+
+    interface StarPowder extends ReforgeAbility {
+        double starPowderPercent();
+    }
+
     interface TitaniumPowder extends ReforgeAbility {
         long bonusMithrilPowder();
     }
