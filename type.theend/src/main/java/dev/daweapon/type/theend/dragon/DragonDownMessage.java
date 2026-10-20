@@ -10,6 +10,7 @@ public final class DragonDownMessage {
     public static final int RULE_WIDTH = 52;
     private static final String RULE = "<a><l>" + "▬".repeat(RULE_WIDTH);
     private static final String[] ORDINALS = {"1st", "2nd", "3rd"};
+    private static final String[] PLACE_COLOURS = {"<e>", "<6>", "<c>"};
     private static final double CHAT_CHAR_PIXELS = 6;
     private static final double SPACE_PIXELS = 4;
 
@@ -43,20 +44,20 @@ public final class DragonDownMessage {
         lines.add(centre("<6><l>" + title, title.length()));
         if (finalBlow != null) {
             String text = finalBlow.plain() + " dealt the final blow.";
-            lines.add(centre("<f>" + finalBlow.markup() + " <e>dealt the final blow.", text.length()));
+            lines.add(centre(finalBlow.markup() + " <7>dealt the final blow.", text.length()));
         }
         for (int i = 0; i < top.size() && i < ORDINALS.length; i++) {
             Damager damager = top.get(i);
             String amount = damage(damager.damage());
             String plain = ordinal(i + 1) + " Damager - " + damager.name().plain() + " - " + amount;
-            lines.add(centre("<e><l>" + ordinal(i + 1) + " Damager <7>- " + damager.name().markup()
+            lines.add(centre(PLACE_COLOURS[i] + "<l>" + ordinal(i + 1) + " Damager <7>- " + damager.name().markup()
                     + " <7>- <e>" + amount, plain.length()));
         }
         if (ownPosition > 0) {
             String own = "Your Damage: " + damage(ownDamage) + " (Position #" + ownPosition + ")";
             lines.add(centre("<e>Your Damage: <a>" + damage(ownDamage) + " <7>(Position #" + ownPosition + ")", own.length()));
             String reward = "+" + essence + " Dragon Essence";
-            lines.add(centre("<b>" + reward, reward.length()));
+            lines.add(centre("<d>" + reward, reward.length()));
         }
         lines.add(RULE);
         return lines;

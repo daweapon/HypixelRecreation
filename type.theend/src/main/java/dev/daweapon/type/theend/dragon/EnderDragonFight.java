@@ -112,7 +112,7 @@ public final class EnderDragonFight {
         spawnCrystals(instance);
         gateStage = 0;
         startBar(instance, mob);
-        broadcast(instance, Text.of("<5>The {} <5>has spawned!", variant.displayName()));
+        broadcast(instance, Text.of("<d>The {} has spawned!", variant.displayName()));
     }
 
     private static void convertSleepingEyes(Instance instance) {
@@ -122,7 +122,7 @@ public final class EnderDragonFight {
             while (skyBlockPlayer.removeItemFromPlayer(ItemType.SLEEPING_EYE, 1)) converted++;
             if (converted == 0) continue;
             skyBlockPlayer.addAndUpdateItem(ItemType.REMNANT_OF_THE_EYE, converted);
-            skyBlockPlayer.sendMessage(Text.of("<5>Your Sleeping Eyes have been awoken by the magic of the Dragon. They are now Remnants of the Eye!"));
+            skyBlockPlayer.sendMessage(Text.of("<d>Your Sleeping Eyes have been awoken by the magic of the Dragon. They are now Remnants of the Eye!"));
         }
     }
 
@@ -158,7 +158,7 @@ public final class EnderDragonFight {
         if (dragon != null) dragon.credit(player.getUuid(), CRYSTAL_DAMAGE_CREDIT);
         ItemType fragment = ItemType.get("CRYSTAL_FRAGMENT");
         if (fragment != null) player.addAndUpdateItem(fragment, 1);
-        broadcast(instance, Text.of("<5>{} <d>has destroyed an Ender Crystal!", player.getUsername()));
+        broadcast(instance, Text.of("{}{}<d> destroyed an Ender Crystal!", player.getRankPrefix(), player.getUsername()));
         if (respawnsLeft <= 0 || phase != Phase.ACTIVE) return;
         respawnsLeft--;
         int delay = 1200 + ThreadLocalRandom.current().nextInt(1200);
@@ -198,7 +198,7 @@ public final class EnderDragonFight {
                 DragonEgg.restore(instance);
                 DragonGlass.restore(instance);
                 DragonLootSite.restore(instance);
-                broadcast(instance, Text.of("<5>The Dragon Egg has respawned!"));
+                broadcast(instance, Text.of("<d>The Dragon Egg has respawned!"));
             }
         }).delay(TaskSchedule.tick(EGG_RESPAWN_TICKS)).schedule();
     }
@@ -326,7 +326,7 @@ public final class EnderDragonFight {
     private static void announceGate(Instance instance, EnderDragonMob mob) {
         double total = mob.getDamageDealt().values().stream().mapToDouble(Double::doubleValue).sum();
         String[] messages = DragonGate.messagesFor(gateStage, total);
-        for (String message : messages) broadcast(instance, Text.of("<d>{}", message));
+        for (String message : messages) broadcast(instance, Text.of("<d><l>{}", message));
         gateStage += messages.length;
     }
 

@@ -52,8 +52,12 @@ public class ActionAltarInteract implements HypixelEventClass {
         EyeLedger ledger = EnderDragonFight.ledger();
         String ending = ledger.complete() ? " Brace yourselves!" : "";
         player.getInstance().getPlayers().forEach(nearby -> {
-            String who = nearby == player ? "You" : player.getUsername();
-            nearby.sendMessage(Text.of("<d>{} <5>placed a Summoning Eye!{} <7>({}/{})", who, ending, ledger.count(), EyeLedger.FRAMES));
+            if (nearby == player) {
+                nearby.sendMessage(Text.of("<d>You placed a Summoning Eye!{} <a>({}/{})", ending, ledger.count(), EyeLedger.FRAMES));
+                return;
+            }
+            nearby.sendMessage(Text.of("{}{}<d> placed a Summoning Eye!{} <a>({}/{})", player.getRankPrefix(),
+                    player.getUsername(), ending, ledger.count(), EyeLedger.FRAMES));
         });
         EnderDragonFight.onAltarFilled(player.getInstance());
     }
@@ -79,7 +83,7 @@ public class ActionAltarInteract implements HypixelEventClass {
         if (placed.get().recombobulated()) eye.getAttributeHandler().setRecombobulated(true);
         player.addAndUpdateItem(eye);
         setEye(event, false);
-        player.sendMessage(Text.of("<d>You withdrew your Summoning Eye! <7>({}/{} <7>placed)", ledger.count(), EyeLedger.FRAMES));
+        player.sendMessage(Text.of("<d>You withdrew your Summoning Eye! <a>({}/{})", ledger.count(), EyeLedger.FRAMES));
     }
 
     private void setEye(PlayerBlockInteractEvent event, boolean eye) {
