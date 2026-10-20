@@ -137,7 +137,7 @@ public class GUISkyBlockMenu extends StatelessView {
         layout.slot(23, (s, c) -> ItemStacks.item(Material.WRITABLE_BOOK, 1,
             Text.key("gui_sbmenu.main.quests"),
             Text.keyLines("gui_sbmenu.main.quests.lore")
-        ), (click, c) -> c.push(new GUIMissionLog()));
+        ), (click, c) -> c.push(new dev.daweapon.type.skyblockgeneric.gui.inventories.chapters.GUIQuestsAndChapters()));
 
         layout.autoUpdating(24, (s, c) -> ItemStacks.item(Material.CLOCK, 1,
                 Text.key("gui_sbmenu.main.calendar"), getCalendarLore(ctx)),

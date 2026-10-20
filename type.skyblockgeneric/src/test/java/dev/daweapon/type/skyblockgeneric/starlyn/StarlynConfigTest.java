@@ -147,7 +147,7 @@ class StarlynConfigTest {
         assertEquals(10, helix.prizes());
         assertEquals(2148, helix.amountOf(ItemType.ENCHANTED_HELIX_LOG));
         assertEquals(286, helix.amountOf(ItemType.HELIXIS));
-        assertNull(fortune(miria, "helix_fortune").statistic());
+        assertEquals(dev.daweapon.commons.skyblock.statistics.ItemStatistic.HELIX_FORTUNE, fortune(miria, "helix_fortune").statistic());
     }
 
     @Test

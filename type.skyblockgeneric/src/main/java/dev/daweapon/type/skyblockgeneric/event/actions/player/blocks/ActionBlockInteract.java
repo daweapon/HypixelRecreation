@@ -42,6 +42,12 @@ public class ActionBlockInteract implements HypixelEventClass {
             return;
         }
 
+        if (event.getHand() == net.minestom.server.entity.PlayerHand.MAIN
+                && dev.daweapon.type.skyblockgeneric.moonglade.MarshGathering.handle(player, event.getBlockPosition(), event.getBlock())) {
+            event.setCancelled(true);
+            return;
+        }
+
         if (!SkyBlockBlock.isSkyBlockBlock(event.getBlock())) return;
 
         SkyBlockBlock block = new SkyBlockBlock(event.getBlock());

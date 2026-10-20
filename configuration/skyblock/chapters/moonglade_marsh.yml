@@ -85,8 +85,6 @@ chapters:
         description: "You might encouter creatures when collecting <d>berries<7>!"
         rewards: { hotf: 500 }
         trigger: berries.collect
-        available: false
-        unavailable: "Berry bushes are not built"
       - id: bonbon_shard
         title: "Obtain a Shard using a Lushlilac Bonbon."
         description: "Killing monsters while under the effect of a <c>Salt<7> can give you a chance at catching their Shard!"
@@ -130,8 +128,6 @@ chapters:
         description: "<f>Sea Lumies<7> can be found underwater."
         rewards: { hotf: 500 }
         trigger: sealumies.collect
-        available: false
-        unavailable: "Sea Lumies are not built"
       - id: wetwing
         title: "Fish up a Wetwing"
         description: "They are so cute!"

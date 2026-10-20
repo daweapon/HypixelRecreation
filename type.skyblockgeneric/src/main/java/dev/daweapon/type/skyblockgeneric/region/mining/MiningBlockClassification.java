@@ -26,6 +26,10 @@ public record MiningBlockClassification(ItemStatistic baseSkillFortune, ItemStat
         return new MiningBlockClassification(ItemStatistic.FORAGING_FORTUNE, ItemStatistic.MANGROVE_FORTUNE);
     }
 
+    public static MiningBlockClassification helixForagingBlock() {
+        return new MiningBlockClassification(ItemStatistic.FORAGING_FORTUNE, ItemStatistic.HELIX_FORTUNE);
+    }
+
     //Mining Sub-Categories
     public static MiningBlockClassification oreBlock() {
         return new MiningBlockClassification(ItemStatistic.MINING_FORTUNE, ItemStatistic.ORE_FORTUNE);

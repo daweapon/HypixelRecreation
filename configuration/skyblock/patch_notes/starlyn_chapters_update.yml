@@ -19,7 +19,9 @@ sections:
     colour: "<a>"
     lines:
       - "Axe Toss, Homing Axe and Ricochet unlock axe throwing at trees."
-      - "Free Trial, Timber, Precision Cutting and Starlyn Supreme are now available. Timber is a new Foraging stat."
+      - "Free Trial, Timber, Precision Cutting, Starlyn Supreme and Collector are now available. Timber is a new Foraging stat."
+      - "Click Lushlilac bushes and break sea pickles on Moonglade Marsh to gather Lushlilac and Sea Lumies. They count for contests and chapters."
+      - "The SkyBlock Menu has a Quests & Chapters menu."
   - heading: "Wolf Slayer and coffee"
     colour: "<6>"
     lines:
@@ -29,8 +31,7 @@ sections:
     colour: "<c>"
     lines:
       - "Miria's Contest and shop are built but wait for Torrhus Canyon."
-      - "Lushlilac and Sea Lumies cannot be gathered yet, so they give no contest points."
   - heading: "Still locked"
     colour: "<c>"
     lines:
-      - "Monster Hunter, Collector, Beekeeper and Two-for-one."
+      - "Monster Hunter, Beekeeper and Two-for-one."

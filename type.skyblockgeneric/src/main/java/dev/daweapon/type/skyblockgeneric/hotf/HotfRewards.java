@@ -110,6 +110,10 @@ public final class HotfRewards {
         return chance > 0 && LootRoll.roll(player.getUuid(), null, chance);
     }
 
+    public static long gatherWhispers(SkyBlockPlayer player, long base) {
+        return addBoosted(player, HotfCurrency.FOREST, base);
+    }
+
     private static long addBoosted(SkyBlockPlayer player, HotfCurrency currency, long base) {
         long boosted = Math.round(base * HotfService.whisperMultiplier(player));
         if (currency == HotfCurrency.FOREST) boosted += ReforgeLoadout.forestWhispers(player, base);

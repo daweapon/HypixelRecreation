@@ -72,6 +72,7 @@ public enum ItemStatistic {
 
     FIG_FORTUNE("Fig Fortune", NamedTextColor.GREEN, NamedTextColor.GOLD, false, PackSprite.STAT_FORAGING_FORTUNE),
     MANGROVE_FORTUNE("Mangrove Fortune", NamedTextColor.GREEN, NamedTextColor.GOLD, false, PackSprite.STAT_FORAGING_FORTUNE),
+    HELIX_FORTUNE("Helix Fortune", NamedTextColor.GREEN, NamedTextColor.GOLD, false, PackSprite.STAT_FORAGING_FORTUNE),
 
     // Wisdom Stats
     ALCHEMY_WISDOM("Alchemy Wisdom", NamedTextColor.GREEN, NamedTextColor.DARK_AQUA, false, PackSprite.STAT_WISDOM),
@@ -210,7 +211,7 @@ public enum ItemStatistic {
             case SUNFLOWER_FORTUNE -> Material.SUNFLOWER;
             case MOONFLOWER_FORTUNE -> Material.BLUE_ORCHID;
             case WILD_ROSE_FORTUNE -> Material.ROSE_BUSH;
-            case FIG_FORTUNE, MANGROVE_FORTUNE -> Material.PAPER;
+            case FIG_FORTUNE, MANGROVE_FORTUNE, HELIX_FORTUNE -> Material.PAPER;
             case HUNTER_FORTUNE -> Material.PRISMARINE_SHARD;
             case PULL -> Material.COBWEB;
             case FISHING_SPEED -> Material.FISHING_ROD;

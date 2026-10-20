@@ -107,12 +107,12 @@ class HotfRegistryTest {
 
     @Test
     void foragingLeftoverNodesUnlockedAndTheRestStayLockedWithAReason() {
-        for (String id : java.util.List.of("timber", "free_trial", "precision_cutting")) {
+        for (String id : java.util.List.of("timber", "free_trial", "precision_cutting", "collector")) {
             assertTrue(registry.perk(id).available(), id);
         }
-        for (String id : java.util.List.of("collector", "monster_hunter")) {
-            assertFalse(registry.perk(id).available(), id);
-        }
+        assertFalse(registry.perk("monster_hunter").available());
+        assertEquals(2, registry.perk("collector").value(1), 1e-9);
+        assertEquals(100, registry.perk("collector").value(50), 1e-9);
         assertEquals(0.1, registry.perk("timber").value(1), 1e-9);
         assertEquals(1.0, registry.perk("timber").value(10), 1e-9);
         assertEquals(dev.daweapon.commons.skyblock.statistics.ItemStatistic.TIMBER, registry.perk("timber").effects().getFirst().statistic());

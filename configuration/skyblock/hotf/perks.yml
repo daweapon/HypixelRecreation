@@ -60,8 +60,6 @@ perks:
     maxLevel: 50
     exponent: 2.9
     offset: 1
-    available: false
-    unavailable: "Lushlilac bushes and Berries do not exist and Island Resources are not gatherable"
     lore:
       - "Berries and Island Resources have a <a>{value}%<7> chance to drop double resources."
     effects:

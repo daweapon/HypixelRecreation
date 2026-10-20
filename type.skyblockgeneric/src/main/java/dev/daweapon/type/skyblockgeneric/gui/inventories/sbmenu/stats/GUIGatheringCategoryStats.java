@@ -479,7 +479,7 @@ public class GUIGatheringCategoryStats extends StatelessView {
             ItemStatistic.NETHER_WART_FORTUNE, ItemStatistic.SUNFLOWER_FORTUNE,
             ItemStatistic.MOONFLOWER_FORTUNE, ItemStatistic.WILD_ROSE_FORTUNE)),
         FORAGING("<2>Foraging Stats", Material.JUNGLE_SAPLING, List.of("<7>Stats that influence drops", "<7>received while foraging."), List.of(
-            ItemStatistic.SWEEP, ItemStatistic.TIMBER, ItemStatistic.FORAGING_FORTUNE, ItemStatistic.FIG_FORTUNE, ItemStatistic.MANGROVE_FORTUNE)),
+            ItemStatistic.SWEEP, ItemStatistic.TIMBER, ItemStatistic.FORAGING_FORTUNE, ItemStatistic.FIG_FORTUNE, ItemStatistic.MANGROVE_FORTUNE, ItemStatistic.HELIX_FORTUNE)),
         FISHING("<b>Fishing Stats", Material.FISHING_ROD, List.of("<7>Stats that influence what and", "<7>how quickly you catch fish."), List.of(
             ItemStatistic.FISHING_SPEED, ItemStatistic.SEA_CREATURE_CHANCE, ItemStatistic.DOUBLE_HOOK_CHANCE,
             ItemStatistic.TROPHY_FISH_CHANCE, ItemStatistic.TREASURE_CHANCE)),
