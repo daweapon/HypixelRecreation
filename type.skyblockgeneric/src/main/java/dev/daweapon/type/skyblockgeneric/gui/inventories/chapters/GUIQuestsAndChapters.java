@@ -7,6 +7,8 @@ import dev.daweapon.type.generic.gui.v2.StatelessView;
 import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
 import dev.daweapon.type.generic.gui.v2.ViewLayout;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterIsland;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterService;
 import dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.questlog.GUIMissionLog;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -48,6 +50,21 @@ public class GUIQuestsAndChapters extends StatelessView {
                 return;
             }
             c.push(new GUIChapters());
+        });
+        layout.slot(22, ItemStacks.item(Material.BOOK, """
+                <6>Torrhus Canyon Chapters
+                <8>/chapters
+
+                <7>View your progression through the
+                <6>Torrhus Canyon <7>Chapters!
+
+                <e>Click to view!"""), (_, c) -> {
+            SkyBlockPlayer player = (SkyBlockPlayer) c.player();
+            if (!ChapterService.isOpen(player, ChapterIsland.TORRHUS_CANYON)) {
+                player.sendMessage("<c>Talk to Helia in Torrhus Canyon to unlock your Torrhus Chapters!");
+                return;
+            }
+            c.push(new GUIChapters(ChapterIsland.TORRHUS_CANYON));
         });
         layout.slot(24, ItemStacks.item(Material.WRITABLE_BOOK, """
                 <a>Quest Log

@@ -24,22 +24,31 @@ public final class HotfRewards {
 
     public static void onLogCut(SkyBlockPlayer player, ItemType logType) {
         if (!HotfService.onForagingIsland()) return;
-        if (logType != ItemType.FIG_LOG && logType != ItemType.MANGROVE_LOG) return;
+        HotfCurrency currency = logCurrency(logType);
+        if (currency == null) return;
         long base = BASE_GIFT_WHISPERS_PER_LOG + (coreBonusesActive(player) ? CORE_LOG_WHISPERS : 0);
-        addBoosted(player, HotfCurrency.FOREST, base);
-        claimDailyWish(player);
+        addBoosted(player, currency, base);
+        claimDailyWish(player, currency);
     }
 
-    private static void claimDailyWish(SkyBlockPlayer player) {
+    public static HotfCurrency logCurrency(ItemType logType) {
+        if (logType == ItemType.FIG_LOG || logType == ItemType.MANGROVE_LOG) return HotfCurrency.FOREST;
+        if (logType == ItemType.HELIX_LOG) return HotfCurrency.DESERT;
+        return null;
+    }
+
+    private static void claimDailyWish(SkyBlockPlayer player, HotfCurrency currency) {
         double amount = HotfService.perkValue(player, "daily_wishes");
         if (amount <= 0) return;
         DatapointHOTF.PlayerHOTFData data = HotfService.data(player);
         long today = HotfService.dailyDay();
-        if (data.getWishDay() == today) return;
-        data.setWishDay(today);
+        boolean desert = currency == HotfCurrency.DESERT && HotfRegistry.get().desertWhispersEnabled();
+        if ((desert ? data.getDesertWishDay() : data.getWishDay()) == today) return;
+        if (desert) data.setDesertWishDay(today);
+        else data.setWishDay(today);
         HotfService.save(player, data);
-        addBoosted(player, HotfCurrency.FOREST, Math.round(amount));
-        player.sendMessage("<a>Daily Wishes<7> granted <3>+{} Forest Whispers<7>!", String.format("%,d", Math.round(amount)));
+        addBoosted(player, currency, Math.round(amount));
+        player.sendMessage("<a>Daily Wishes<7> granted {}+{} {}<7>!", desert ? "<6>" : "<3>", String.format("%,d", Math.round(amount)), desert ? "Desert Whispers" : "Forest Whispers");
     }
 
     public static long giftWhispers(SkyBlockPlayer player, HotfCurrency currency, long base) {
@@ -111,7 +120,11 @@ public final class HotfRewards {
     }
 
     public static long gatherWhispers(SkyBlockPlayer player, long base) {
-        return addBoosted(player, HotfCurrency.FOREST, base);
+        return gatherWhispers(player, HotfCurrency.FOREST, base);
+    }
+
+    public static long gatherWhispers(SkyBlockPlayer player, HotfCurrency currency, long base) {
+        return addBoosted(player, currency, base);
     }
 
     private static long addBoosted(SkyBlockPlayer player, HotfCurrency currency, long base) {

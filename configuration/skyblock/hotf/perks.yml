@@ -1,9 +1,9 @@
 # Heart of the Forest perks and abilities laid out as in real Hypixel: tier is the tree row (1 at the bottom), col the menu column (1-7).
 # Cost to reach level N (N >= 2) = floor((N + offset) ^ exponent) whispers, or linearBase + linearSlope * N when linearBase is set; level 1 costs only the token.
 # Effect value at level L = min(cap, base + perLevel * L). A perk marked available: false stays in the tree with its unavailable reason.
-# desertWhispers: false charges Forest Whispers for the perks that real Hypixel prices in Desert Whispers (Torrhus Canyon is not built yet).
+# desertWhispers: false charges Forest Whispers for the perks that real Hypixel prices in Desert Whispers.
 tokenCostPerPerk: 1
-desertWhispers: false
+desertWhispers: true
 perks:
   - id: sweep
     name: "Sweep"
@@ -176,7 +176,8 @@ perks:
     linearBase: 200
     linearSlope: 18
     lore:
-      - "Gain <3>{value} Forest Whispers<7> from the first type of log cut on Galatea every day."
+      - "Gain <3>{value} Forest Whispers<7> from the first type of log cut on Moonglade Marsh every day."
+      - "Gain <6>{value} Desert Whispers<7> from the first <6>Helix Log<7> cut on Torrhus Canyon every day."
     effects:
       - {key: main, base: 0, perLevel: 400, scope: ALWAYS}
   - id: early_bird
@@ -406,8 +407,6 @@ perks:
     maxLevel: 100
     exponent: 2.45
     offset: 1
-    available: false
-    unavailable: "Miria's Contest needs Torrhus Canyon, which is not built yet"
     lore:
       - "Grants a <a>{value}%<7> chance to receive an extra Safari Ticket from Miria's Contest rewards."
     effects:

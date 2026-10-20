@@ -190,3 +190,27 @@ items:
     lore:
       - "§7Grants access to the §2Critter Safari§7"
       - "§7and starts you with §a32 Critter Capsules§7."
+  - id: ECONOMY_SAFARI_TICKET
+    rarity: RARE
+    material: NAME_TAG
+    name: "Economy Safari Ticket"
+    lore:
+      - "§7Grants access to the §2Critter Safari§7"
+      - "§7and starts you with §a40 Critter Capsules§7."
+      - "§7Gain §a+10% §2Safari Essence §7and §3+5☯ Hunting Wisdom§7."
+  - id: PREMIUM_SAFARI_TICKET
+    rarity: EPIC
+    material: NAME_TAG
+    name: "Premium Safari Ticket"
+    lore:
+      - "§7Grants access to the §2Critter Safari§7"
+      - "§7and starts you with §a48 Critter Capsules§7."
+      - "§7Gain §a+25% §2Safari Essence §7and §3+15☯ Hunting Wisdom§7."
+  - id: FIRST_CLASS_SAFARI_TICKET
+    rarity: LEGENDARY
+    material: NAME_TAG
+    name: "First-Class Safari Ticket"
+    lore:
+      - "§7Grants access to the §2Critter Safari§7"
+      - "§7and starts you with §a56 Critter Capsules§7."
+      - "§7Gain §a+50% §2Safari Essence §7and §3+25☯ Hunting Wisdom§7."

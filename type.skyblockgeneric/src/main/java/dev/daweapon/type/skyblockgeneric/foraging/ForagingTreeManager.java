@@ -79,6 +79,7 @@ public final class ForagingTreeManager {
         ServerType serverType = HypixelConst.getTypeLoader().getType();
         if (serverType != ServerType.SKYBLOCK_THE_PARK
                 && serverType != ServerType.SKYBLOCK_GALATEA
+                && serverType != ServerType.SKYBLOCK_TORRHUS_CANYON
                 && serverType != ServerType.SKYBLOCK_HUB) return false;
         Material material = Material.fromKey(block.key());
         return material != null && material.key().value().endsWith("_leaves");
@@ -384,7 +385,7 @@ public final class ForagingTreeManager {
         if (material == null) return null;
 
         ServerType serverType = HypixelConst.getTypeLoader().getType();
-        if (serverType == ServerType.SKYBLOCK_GALATEA) {
+        if (serverType == ServerType.SKYBLOCK_GALATEA || serverType == ServerType.SKYBLOCK_TORRHUS_CANYON) {
             if (material == Material.STRIPPED_SPRUCE_LOG || material == Material.STRIPPED_SPRUCE_WOOD) {
                 return TreeKind.FIG;
             }

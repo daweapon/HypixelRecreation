@@ -67,16 +67,25 @@ public final class ChapterService {
     }
 
     public static boolean isComplete(SkyBlockPlayer player, Chapter chapter) {
-        return data(player).getChapters().contains(chapter.number());
+        return data(player).getChapters().contains(chapter.key());
+    }
+
+    public static boolean isOpen(SkyBlockPlayer player, ChapterIsland island) {
+        if (!HotfService.isUnlocked(player)) return false;
+        return island.gateTrigger() == null || data(player).trigger(island.gateTrigger()) > 0;
     }
 
     public static boolean isUnlocked(SkyBlockPlayer player, Chapter chapter) {
-        if (!HotfService.isUnlocked(player)) return false;
-        return chapter.number() == 1 || data(player).getChapters().contains(chapter.number() - 1);
+        if (!isOpen(player, chapter.island())) return false;
+        return chapter.number() == 1 || data(player).getChapters().contains(chapter.key() - 1);
     }
 
     public static boolean allComplete(SkyBlockPlayer player) {
-        return ready(player) && data(player).getChapters().size() >= ChapterRegistry.get().chapters().size();
+        return allComplete(player, ChapterIsland.MOONGLADE_MARSH);
+    }
+
+    public static boolean allComplete(SkyBlockPlayer player, ChapterIsland island) {
+        return ready(player) && ChapterRegistry.of(island).chapters().stream().allMatch(chapter -> isComplete(player, chapter));
     }
 
     public static long tasksDone(SkyBlockPlayer player, Chapter chapter) {
@@ -84,30 +93,39 @@ public final class ChapterService {
     }
 
     public static void evaluate(SkyBlockPlayer player) {
-        if (!ready(player) || !HotfService.isUnlocked(player) || allComplete(player)) return;
+        if (!ready(player) || !HotfService.isUnlocked(player)) return;
         if (!EVALUATING.add(player.getUuid())) return;
         try {
-            for (Chapter chapter : ChapterRegistry.get().chapters()) {
-                if (isComplete(player, chapter)) continue;
-                for (ChapterTask task : chapter.availableTasks()) {
-                    if (isDone(player, task) || progress(player, task) < task.amount()) continue;
-                    markTask(player, task);
-                    completeTask(player, task);
-                }
-                if (tasksDone(player, chapter) < chapter.availableTasks().size()) return;
-                markChapter(player, chapter);
-                completeChapter(player, chapter);
+            for (ChapterRegistry registry : ChapterRegistry.all()) {
+                if (isOpen(player, registry.island()) && !allComplete(player, registry.island())) evaluate(player, registry);
             }
         } finally {
             EVALUATING.remove(player.getUuid());
         }
     }
 
+    private static void evaluate(SkyBlockPlayer player, ChapterRegistry registry) {
+        for (Chapter chapter : registry.chapters()) {
+            if (isComplete(player, chapter)) continue;
+            for (ChapterTask task : chapter.availableTasks()) {
+                if (isDone(player, task) || progress(player, task) < task.amount()) continue;
+                markTask(player, task);
+                completeTask(player, task);
+            }
+            if (tasksDone(player, chapter) < chapter.availableTasks().size()) return;
+            markChapter(player, chapter);
+            completeChapter(player, chapter);
+        }
+    }
+
     public static void maxOut(SkyBlockPlayer player) {
         DatapointChapters.ChaptersData data = data(player);
-        for (Chapter chapter : ChapterRegistry.get().chapters()) {
-            chapter.availableTasks().forEach(task -> data.getTasks().add(task.id()));
-            data.getChapters().add(chapter.number());
+        for (ChapterRegistry registry : ChapterRegistry.all()) {
+            if (registry.island().gateTrigger() != null) data.getTriggers().putIfAbsent(registry.island().gateTrigger(), 1L);
+            for (Chapter chapter : registry.chapters()) {
+                chapter.availableTasks().forEach(task -> data.getTasks().add(task.id()));
+                data.getChapters().add(chapter.key());
+            }
         }
         datapoint(player).setValue(data);
         syncSkyBlockXp(player);
@@ -115,8 +133,10 @@ public final class ChapterService {
 
     public static void syncSkyBlockXp(SkyBlockPlayer player) {
         int xp = 0;
-        for (Chapter chapter : ChapterRegistry.get().chapters()) {
-            if (isComplete(player, chapter)) xp += chapter.completion().skyBlockXp();
+        for (ChapterRegistry registry : ChapterRegistry.all()) {
+            for (Chapter chapter : registry.chapters()) {
+                if (isComplete(player, chapter)) xp += chapter.completion().skyBlockXp();
+            }
         }
         player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.CHAPTERS, xp);
     }
@@ -129,7 +149,7 @@ public final class ChapterService {
 
     private static void markChapter(SkyBlockPlayer player, Chapter chapter) {
         DatapointChapters.ChaptersData data = data(player);
-        data.getChapters().add(chapter.number());
+        data.getChapters().add(chapter.key());
         datapoint(player).setValue(data);
     }
 
@@ -142,12 +162,13 @@ public final class ChapterService {
     private static void completeChapter(SkyBlockPlayer player, Chapter chapter) {
         grant(player, chapter.completion());
         syncSkyBlockXp(player);
-        player.sendMessage("<2><l>CHAPTER COMPLETE! <r><2>{} <7>- <a>Chapter {}", ChapterRegistry.get().island(), chapter.roman());
+        String island = chapter.island().displayName();
+        player.sendMessage("<2><l>CHAPTER COMPLETE! <r><2>{} <7>- <a>Chapter {}", island, chapter.roman());
         chapter.completion().lines().forEach(line -> player.sendMessage(Text.read("  " + line)));
-        if (chapter.number() < ChapterRegistry.get().chapters().size()) {
+        if (chapter.number() < ChapterRegistry.of(chapter.island()).chapters().size()) {
             player.sendMessage("<a>Chapter {} tasks unlocked!", Chapter.ROMAN[chapter.number() + 1]);
         } else {
-            player.sendMessage("<a>You completed every Chapter of the <2>{}<a>!", ChapterRegistry.get().island());
+            player.sendMessage("<a>You completed every Chapter of the <2>{}<a>!", island);
         }
     }
 
@@ -161,8 +182,10 @@ public final class ChapterService {
             player.getHuntingData().addShards(shard.id(), amount);
         });
         reward.items().forEach((item, amount) -> player.addAndUpdateItem(item, amount));
-        if (reward.whispers() > 0) {
+        if (reward.safariEssence() > 0) Essences.add(player, EssenceType.SAFARI, reward.safariEssence());
+        if (reward.whispers() > 0 || reward.desertWhispers() > 0) {
             HotfService.addWhispers(player, HotfCurrency.FOREST, reward.whispers());
+            HotfService.addWhispers(player, HotfCurrency.DESERT, reward.desertWhispers());
             HotfService.syncSkyBlockXp(player);
         }
     }

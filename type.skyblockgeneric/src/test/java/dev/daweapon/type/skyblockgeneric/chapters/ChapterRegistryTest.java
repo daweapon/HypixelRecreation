@@ -86,4 +86,22 @@ class ChapterRegistryTest {
         assertTrue(lines.size() > 1);
         lines.forEach(line -> assertTrue(ChapterText.strip(line).length() <= 36, line));
     }
+
+    @Test
+    void torrhusCanyonHasSevenChaptersAndSixtyFiveTasks() {
+        ChapterRegistry torrhus = ChapterRegistry.load(Path.of("../configuration/skyblock/chapters/torrhus_canyon.yml"), ChapterIsland.TORRHUS_CANYON);
+        assertEquals(List.of(3, 6, 9, 14, 14, 9, 10), torrhus.chapters().stream().map(chapter -> chapter.tasks().size()).toList());
+        assertEquals(65, torrhus.taskCount());
+        assertEquals(List.of(5, 10, 15, 20, 25, 30, 35), torrhus.chapters().stream().map(chapter -> chapter.completion().skyBlockXp()).toList());
+        Set<String> ids = new HashSet<>();
+        registry.chapters().forEach(chapter -> chapter.tasks().forEach(task -> ids.add(task.id())));
+        for (Chapter chapter : torrhus.chapters()) {
+            assertFalse(chapter.availableTasks().isEmpty(), "chapter " + chapter.number());
+            assertEquals(ChapterIsland.TORRHUS_CANYON.keyOffset() + chapter.number(), chapter.key());
+            for (ChapterTask task : chapter.tasks()) {
+                assertTrue(ids.add(task.id()), task.id());
+                assertEquals(task.available(), task.unavailable() == null, task.id());
+            }
+        }
+    }
 }

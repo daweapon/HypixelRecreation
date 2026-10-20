@@ -44,6 +44,7 @@ public final class BalanceConfigurations {
             Map.entry(ServerType.SKYBLOCK_CRYSTAL_HOLLOWS, List.of(JOINABLE_SERVER_CHECK)),
             Map.entry(ServerType.SKYBLOCK_THE_PARK, DEFAULT_CHAIN),
             Map.entry(ServerType.SKYBLOCK_GALATEA, DEFAULT_CHAIN),
+            Map.entry(ServerType.SKYBLOCK_TORRHUS_CANYON, DEFAULT_CHAIN),
             Map.entry(ServerType.SKYBLOCK_BACKWATER_BAYOU, DEFAULT_CHAIN),
             Map.entry(ServerType.SKYBLOCK_JERRYS_WORKSHOP, DEFAULT_CHAIN),
             Map.entry(ServerType.PROTOTYPE_LOBBY, DEFAULT_CHAIN),

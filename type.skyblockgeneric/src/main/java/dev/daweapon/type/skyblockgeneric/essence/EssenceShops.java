@@ -166,7 +166,7 @@ public final class EssenceShops {
             case MINING -> server == ServerType.SKYBLOCK_DWARVEN_MINES || server == ServerType.SKYBLOCK_CRYSTAL_HOLLOWS;
             case SPIDERS_DEN -> server == ServerType.SKYBLOCK_SPIDERS_DEN;
             case THE_END -> server == ServerType.SKYBLOCK_THE_END;
-            case FORAGING -> server == ServerType.SKYBLOCK_GALATEA;
+            case FORAGING -> server == ServerType.SKYBLOCK_GALATEA || server == ServerType.SKYBLOCK_TORRHUS_CANYON;
             case ANYWHERE -> true;
         };
     }

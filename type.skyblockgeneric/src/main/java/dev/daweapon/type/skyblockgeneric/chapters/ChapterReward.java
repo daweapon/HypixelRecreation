@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 public record ChapterReward(long hotf, Map<SkillCategories, Long> skills, long forestEssence, int skyBlockXp,
-                            Map<String, Integer> shards, Map<ItemType, Integer> items, long whispers) {
+                            Map<String, Integer> shards, Map<ItemType, Integer> items, long whispers,
+                            long desertWhispers, long safariEssence) {
 
     public List<String> lines() {
         List<String> lines = new ArrayList<>();
@@ -19,6 +20,8 @@ public record ChapterReward(long hotf, Map<SkillCategories, Long> skills, long f
         shards.forEach((name, amount) -> lines.add("<8>+<a>" + amount + " <f>" + name + " Shard"));
         items.forEach((item, amount) -> lines.add("<8>+<a>" + amount + "x <color:" + item.rarity.getColor() + ">" + item.getDisplayName()));
         if (whispers > 0) lines.add("<8>+<3>" + format(whispers) + " <7>Forest Whispers");
+        if (desertWhispers > 0) lines.add("<8>+<6>" + format(desertWhispers) + " <7>Desert Whispers");
+        if (safariEssence > 0) lines.add("<8>+<2>" + format(safariEssence) + " <7>Safari Essence");
         return lines;
     }
 

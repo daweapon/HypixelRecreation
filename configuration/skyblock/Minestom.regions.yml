@@ -854,6 +854,69 @@ regions:
     y2: 122
     z2: 20
     serverType: SKYBLOCK_GALATEA
+  - id: torrhus_canyon
+    type: TORRHUS_CANYON
+    x1: -1000
+    y1: 0
+    z1: -200
+    x2: -300
+    y2: 255
+    z2: 600
+    serverType: SKYBLOCK_TORRHUS_CANYON
+  - id: mirias_hut
+    type: MIRIAS_HUT
+    x1: -664
+    y1: 90
+    z1: 210
+    x2: -644
+    y2: 110
+    z2: 231
+    serverType: SKYBLOCK_TORRHUS_CANYON
+  - id: critter_safari_entrance
+    type: CRITTER_SAFARI_ENTRANCE
+    x1: -735
+    y1: 85
+    z1: 126
+    x2: -706
+    y2: 110
+    z2: 156
+    serverType: SKYBLOCK_TORRHUS_CANYON
+  - id: torrhus_springs
+    type: TORRHUS_SPRINGS
+    x1: -660
+    y1: 55
+    z1: 150
+    x2: -600
+    y2: 176
+    z2: 215
+    serverType: SKYBLOCK_TORRHUS_CANYON
+  - id: spring_shallows
+    type: SPRING_SHALLOWS
+    x1: -652
+    y1: 140
+    z1: 175
+    x2: -636
+    y2: 162
+    z2: 195
+    serverType: SKYBLOCK_TORRHUS_CANYON
+  - id: spring_depths
+    type: SPRING_DEPTHS
+    x1: -675
+    y1: 55
+    z1: 150
+    x2: -600
+    y2: 140
+    z2: 215
+    serverType: SKYBLOCK_TORRHUS_CANYON
+  - id: ants_cave
+    type: ANTS_CAVE
+    x1: -640
+    y1: 60
+    z1: 195
+    x2: -600
+    y2: 90
+    z2: 225
+    serverType: SKYBLOCK_TORRHUS_CANYON
   - id: crimson_isle
     type: CRIMSON_ISLE
     x1: -768

@@ -21,6 +21,7 @@ public enum TabLocation {
     CRYSTAL_HOLLOWS("crystal_hollows", "Crystal Hollows", Material.AMETHYST_SHARD),
     CRIMSON_ISLE("crimson_isle", "Crimson Isle", Material.NETHERRACK),
     GALATEA("galatea", "Galatea", Material.AZALEA_LEAVES),
+    TORRHUS_CANYON("torrhus_canyon", "Torrhus Canyon", Material.SAND),
     BACKWATER_BAYOU("backwater_bayou", "Backwater Bayou", Material.LILY_PAD),
     JERRYS_WORKSHOP("jerrys_workshop", "Jerry's Workshop", Material.SNOW_BLOCK),
     DUNGEON_HUB("dungeon_hub", "Dungeon Hub", Material.SKELETON_SKULL),
@@ -37,7 +38,7 @@ public enum TabLocation {
     }
 
     public String widgetsTitle() {
-        boolean on = this == PRIVATE_ISLAND || this == HUB || this == GALATEA || this == THE_PARK
+        boolean on = this == PRIVATE_ISLAND || this == HUB || this == GALATEA || this == TORRHUS_CANYON || this == THE_PARK
                 || this == THE_END || this == THE_FARMING_ISLANDS || this == JERRYS_WORKSHOP;
         return "Widgets " + (on ? "on " : "in ") + displayName;
     }

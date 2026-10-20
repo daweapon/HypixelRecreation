@@ -22,6 +22,7 @@ These server types are part of the SkyBlock gamemode and share SkyBlock-specific
 | `SKYBLOCK_DWARVEN_MINES`       | Dwarven Mines    | `hypixel_skyblock_dwarven_mines.polar`                  |
 | `SKYBLOCK_THE_PARK`            | The Park         | `hypixel_skyblock_the_park.polar`                       |
 | `SKYBLOCK_GALATEA`             | Galatea          | `hypixel_skyblock_galatea.polar`                        |
+| `SKYBLOCK_TORRHUS_CANYON`      | Torrhus Canyon   | `hypixel_skyblock_torrhus_canyon.polar`                 |
 | `SKYBLOCK_BACKWATER_BAYOU`     | Backwater Bayou  | `hypixel_skyblock_backwater_bayou.polar`                |
 | `SKYBLOCK_JERRYS_WORKSHOP`     | Jerry's Workshop | `hypixel_skyblock_jerrys_workshop.polar`                |
 
@@ -189,6 +190,7 @@ All `.polar` world files go in `configuration/world/` unless noted otherwise. Th
 | `hypixel_skyblock_dwarven_mines.polar`   | `configuration/world/`        | SKYBLOCK_DWARVEN_MINES                    |
 | `hypixel_skyblock_the_park.polar`        | `configuration/world/`        | SKYBLOCK_THE_PARK                         |
 | `hypixel_skyblock_galatea.polar`         | `configuration/world/`        | SKYBLOCK_GALATEA                          |
+| `hypixel_skyblock_torrhus_canyon.polar`  | `configuration/world/`        | SKYBLOCK_TORRHUS_CANYON                   |
 | `hypixel_skyblock_backwater_bayou.polar` | `configuration/world/`        | SKYBLOCK_BACKWATER_BAYOU                  |
 | `hypixel_skyblock_jerrys_workshop.polar` | `configuration/world/`        | SKYBLOCK_JERRYS_WORKSHOP                  |
 | `hypixel_main_lobby.polar`               | `configuration/world/`        | MAIN_LOBBY                                |

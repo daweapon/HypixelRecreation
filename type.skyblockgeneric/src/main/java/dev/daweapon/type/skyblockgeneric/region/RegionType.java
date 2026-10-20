@@ -275,6 +275,7 @@ public enum RegionType {
     MURKWATER_SHALLOWS("Murkwater Shallows", NamedTextColor.DARK_AQUA, GalateaForagingConfiguration.class),
     NORTH_WETLANDS("North Wetlands", NamedTextColor.DARK_GREEN, GalateaForagingConfiguration.class),
 
+    TORRHUS_CANYON("Torrhus Canyon", NamedTextColor.GOLD),
     ANTS_CAVE("Ant's Cave"),
     DESERT_TEMPLE("Desert Temple"),
     HOTSPOT_HAVEN("Hotspot Haven"),

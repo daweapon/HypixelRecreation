@@ -1,0 +1,26 @@
+title: "The Torrhus Canyon Update"
+date: "20th October 2026"
+intro:
+  - "The second island of Galatea is here: Torrhus Canyon, home of Helia and Miria, with Helix trees and Desert Whispers."
+sections:
+  - heading: "Torrhus Canyon"
+    colour: "<6>"
+    lines:
+      - "Reach it from Moonglade Marsh, or with /warp torrhus. Helix trees give Helix Logs, Desert Whispers and Tree Gifts."
+      - "Talk to Helia for the Torrhus Chapters, then head down the Spring Path to find Miria."
+  - heading: "Desert Whispers"
+    colour: "<6>"
+    lines:
+      - "Heart of the Forest perks from Tier 4 to Tier 8 and Center of the Forest levels 4 and 5 now cost Desert Whispers."
+      - "Cut Helix Logs, open Helix Tree Gifts and place in Miria's Contest to earn them. Daily Wishes pays Desert Whispers for your first Helix Log of the day."
+      - "Forest Whispers above 12,500,000 are converted to Desert Whispers one to one the first time you log in."
+  - heading: "Miria's Contest"
+    colour: "<d>"
+    lines:
+      - "Miria hosts a Starlyn Contest every SkyBlock Day. Reach Uncommon or better for a Safari Ticket."
+      - "Spend Miria's Coupons in her shop: Miria's Power, Helix Fortune, Personal Bests, a Sloth pet, talismans, shards and books."
+      - "Two-for-one gives a chance at a second Safari Ticket."
+  - heading: "Torrhus Chapters"
+    colour: "<2>"
+    lines:
+      - "Seven chapters of tasks from Helia. Tasks for content that does not exist yet are marked Not available yet and do not hold a chapter back."

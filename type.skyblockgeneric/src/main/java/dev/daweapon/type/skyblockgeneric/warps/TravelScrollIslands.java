@@ -74,7 +74,7 @@ public enum TravelScrollIslands {
 			(unused) -> "The marshes of Galatea, where the forests need your help.", ServerType.SKYBLOCK_GALATEA,
 			List.of(TravelScrollType.MOONGLADE_MURKWATER_LOCH)),
 	TORRHUS_CANYON("torrhus", "<6>Torrhus Canyon", TravelScrollType.Textures.SLOTH,
-			(unused) -> "A sun-baked canyon full of rare critters.", null,
+			(unused) -> "A sun-baked canyon full of rare critters.", ServerType.SKYBLOCK_TORRHUS_CANYON,
 			List.of(TravelScrollType.TORRHUS_SPRINGS, TravelScrollType.TORRHUS_CRITTER_SAFARI)),
 	LOTUS_ATOLL("lotus", "<b>Lotus Atoll", TravelScrollType.Textures.TURTLE,
 			(unused) -> "A ring of islands in the open sea.", null)

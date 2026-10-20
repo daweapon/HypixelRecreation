@@ -2,6 +2,7 @@ package dev.daweapon.type.skyblockgeneric.gui.inventories.chapters;
 
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import dev.daweapon.type.skyblockgeneric.chapters.Chapter;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterIsland;
 import dev.daweapon.type.skyblockgeneric.chapters.ChapterRegistry;
 import dev.daweapon.type.skyblockgeneric.chapters.ChapterService;
 import dev.daweapon.type.skyblockgeneric.chapters.ChapterTask;
@@ -17,6 +18,24 @@ final class ChapterItems {
     static final String HINA_TEXTURE = "513be4d37a35840024b26f8d623ff14119e761784592f1a2cc4b01fca8fb7b2";
 
     private ChapterItems() {
+    }
+
+    static final String HELIA_TEXTURE = "ac9dd7cc7ec4af23de1ea938b1d2bf20942ae9a649aa304d5d87b1eaed0cb2af";
+
+    static ItemStack.Builder guide(ChapterIsland island) {
+        return island == ChapterIsland.TORRHUS_CANYON ? helia() : hina();
+    }
+
+    static ItemStack.Builder helia() {
+        return ItemStacks.head(HELIA_TEXTURE, """
+                <b>Helia
+                <7>Helia knows every secret of the
+                <6>Torrhus Canyon<7>, the second island of
+                <2>Galatea<7>.
+
+                <7>Complete her tasks to earn rewards
+                <7>for each task, and even greater
+                <7>ones for finishing a whole chapter.""");
     }
 
     static ItemStack.Builder hina() {
@@ -39,7 +58,7 @@ final class ChapterItems {
         String colour = complete ? "<a>" : unlocked ? "<e>" : "<c>";
         long done = ChapterService.tasksDone(player, chapter);
         List<String> lines = new ArrayList<>();
-        lines.add("<2>" + ChapterRegistry.get().island() + " <7>- " + colour + "Chapter " + chapter.number());
+        lines.add("<2>" + chapter.island().displayName() + " <7>- " + colour + "Chapter " + chapter.number());
         lines.addAll(ChapterText.wrap(chapter.description()));
         lines.add("");
         lines.add("<7>Tasks completed: " + colour + done + "<7>/<a>" + chapter.availableTasks().size());
@@ -79,7 +98,7 @@ final class ChapterItems {
         lines.add("");
         lines.add("<7>Complete every task to obtain these rewards:");
         chapter.completion().lines().forEach(line -> lines.add("  " + line));
-        if (chapter.number() < ChapterRegistry.get().chapters().size()) {
+        if (chapter.number() < ChapterRegistry.of(chapter.island()).chapters().size()) {
             lines.add("  <a>Unlocks Chapter " + (chapter.number() + 1) + " Tasks!");
         }
         lines.add("");

@@ -465,6 +465,21 @@ public enum LaunchPads {
             .text(new String[]{"<b>Travel to:", "<a>The Park"})
             .build()
     ),
+
+    TORRHUS_CANYON_TO_GALATEA(
+        getSlimeBlocksNear(new Pos(-720, 95, 136)),
+        ServerType.SKYBLOCK_TORRHUS_CANYON,
+        ServerType.SKYBLOCK_GALATEA,
+        new Pos(-542.5, 108, -26.5, 45, 0),
+        player -> player.sendTo(ServerType.SKYBLOCK_GALATEA),
+        _ -> true,
+        "",
+        player -> PlayerHolograms.ExternalPlayerHologram.builder()
+            .pos(new Pos(-720, 96.1, 136))
+            .player(player)
+            .text(new String[]{"<b>Travel to:", "<2>Moonglade Marsh"})
+            .build()
+    ),
     ;
 
     private static final List<LaunchPads> launchPads = new ArrayList<>();

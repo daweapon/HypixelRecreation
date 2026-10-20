@@ -16,6 +16,7 @@ public enum CustomWorlds {
 	SKYBLOCK_CRYSTAL_HOLLOWS("hypixel_skyblock_crystal_hollows"),
 	SKYBLOCK_THE_PARK("hypixel_skyblock_the_park"),
 	SKYBLOCK_GALATEA("hypixel_skyblock_galatea"),
+	SKYBLOCK_TORRHUS_CANYON("hypixel_skyblock_torrhus_canyon"),
 	SKYBLOCK_BACKWATER_BAYOU("hypixel_skyblock_backwater_bayou"),
 	SKYBLOCK_JERRYS_WORKSHOP("hypixel_skyblock_jerrys_workshop"),
 	SKYBLOCK_DUNGEON_HUB("hypixel_skyblock_dungeon_hub"),

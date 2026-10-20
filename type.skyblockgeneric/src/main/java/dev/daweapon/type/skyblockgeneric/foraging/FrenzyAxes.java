@@ -44,7 +44,8 @@ public final class FrenzyAxes {
     }
 
     public static boolean countsLogsHere() {
-        return HypixelConst.getTypeLoader().getType() == ServerType.SKYBLOCK_GALATEA;
+        ServerType type = HypixelConst.getTypeLoader().getType();
+        return type == ServerType.SKYBLOCK_GALATEA || type == ServerType.SKYBLOCK_TORRHUS_CANYON;
     }
 
     public static void recordLogs(SkyBlockPlayer player, int slot, int logs) {

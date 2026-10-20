@@ -144,7 +144,7 @@ public final class MaxStickService {
             new Step("Slayers", MaxStickService::maxSlayers),
             new Step("Heart of the Mountain", MaxStickService::maxHotm),
             new Step("Heart of the Forest", dev.daweapon.type.skyblockgeneric.hotf.HotfService::maxOut),
-            new Step("Hina's Chapters", dev.daweapon.type.skyblockgeneric.chapters.ChapterService::maxOut),
+            new Step("Chapters", dev.daweapon.type.skyblockgeneric.chapters.ChapterService::maxOut),
             new Step("Romero and Juliette", dev.daweapon.type.skyblockgeneric.romero.RomeroJulietteQuest::maxOut),
             new Step("Fairy Souls", MaxStickService::maxFairySouls),
             new Step("Bestiary", MaxStickService::maxBestiary),

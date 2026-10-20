@@ -7,6 +7,7 @@ import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
 import dev.daweapon.type.generic.gui.v2.ViewLayout;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
 import dev.daweapon.type.skyblockgeneric.chapters.Chapter;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterIsland;
 import dev.daweapon.type.skyblockgeneric.chapters.ChapterRegistry;
 import dev.daweapon.type.skyblockgeneric.chapters.ChapterTask;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -18,10 +19,12 @@ public class GUIChapter extends StatelessView {
     private static final int HINA_SLOT = 4;
     private static final int PER_ROW = 7;
     private static final int[] SINGLE_ROW_COLUMNS = {3, 5, 7};
+    private final ChapterIsland island;
     private final Chapter chapter;
 
-    public GUIChapter(int number) {
-        this.chapter = ChapterRegistry.get().chapter(number);
+    public GUIChapter(ChapterIsland island, int number) {
+        this.island = island;
+        this.chapter = ChapterRegistry.of(island).chapter(number);
     }
 
     private int taskRows() {
@@ -39,14 +42,14 @@ public class GUIChapter extends StatelessView {
     @Override
     public ViewConfiguration<DefaultState> configuration() {
         InventoryType type = totalRows() <= 5 ? InventoryType.CHEST_5_ROW : InventoryType.CHEST_6_ROW;
-        return new ViewConfiguration<>("Hina - Chapter " + chapter.number(), type);
+        return new ViewConfiguration<>(island.guide() + " - Chapter " + chapter.number(), type);
     }
 
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
-        layout.slot(HINA_SLOT, ChapterItems.hina());
+        layout.slot(HINA_SLOT, ChapterItems.guide(island));
         List<ChapterTask> tasks = chapter.tasks();
         for (int row = 0; row < taskRows(); row++) {
             int from = row * PER_ROW;

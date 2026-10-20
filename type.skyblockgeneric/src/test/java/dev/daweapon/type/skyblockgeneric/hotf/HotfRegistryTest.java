@@ -86,10 +86,10 @@ class HotfRegistryTest {
     }
 
     @Test
-    void desertPerksFallBackToForestWhispersUntilTorrhusExists() {
-        assertFalse(registry.desertWhispersEnabled());
-        assertEquals(HotfCurrency.FOREST, registry.perk("forest_speed").currency());
-        assertEquals(HotfCurrency.FOREST, registry.coreLevel(5).currency());
+    void desertPerksChargeDesertWhispers() {
+        assertTrue(registry.desertWhispersEnabled());
+        assertEquals(HotfCurrency.DESERT, registry.perk("forest_speed").currency());
+        assertEquals(HotfCurrency.DESERT, registry.coreLevel(5).currency());
     }
 
     @Test

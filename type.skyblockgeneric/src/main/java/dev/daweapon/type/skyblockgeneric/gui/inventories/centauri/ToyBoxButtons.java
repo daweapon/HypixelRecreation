@@ -104,6 +104,11 @@ final class ToyBoxButtons {
                     p.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.FOREST_WHISPERS, DatapointLong.class).setValue(1_000_000L);
                     HotfService.syncSkyBlockXp(p);
                 }),
+                of(Material.NAME_TAG, "<2>Safari Tickets", "<8>Ticket to ride.", "<7>Get one of every <2>Critter Safari <7>ticket.", p -> {
+                    for (String ticket : List.of("BASIC_SAFARI_TICKET", "ECONOMY_SAFARI_TICKET", "PREMIUM_SAFARI_TICKET", "FIRST_CLASS_SAFARI_TICKET")) {
+                        p.addAndUpdateItem(ItemType.get(ticket));
+                    }
+                }),
                 of(Material.SAND, "<6>Desert Whispers", "<8>Torrhus sends its regards.", "<7>Get 1,000,000 Desert Whispers.", p -> {
                     HotfService.setWhispers(p, HotfCurrency.DESERT, 1_000_000L);
                     HotfService.syncSkyBlockXp(p);

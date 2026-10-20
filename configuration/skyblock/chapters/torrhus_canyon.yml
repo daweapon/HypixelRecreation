@@ -1,0 +1,500 @@
+island: Torrhus Canyon
+chapters:
+  - number: 1
+    description: "Begin your journey through <6>Torrhus Canyon<7>."
+    tasks:
+      - id: t1_miria
+        title: "Talk to Miria"
+        description: "<b>Miria<7> is one of the <d>Starlyn Sisters<7>. She holds <b>Miria's Contests<7> across <6>Torrhus Canyon<7> each day."
+        rewards: { desertWhispers: 250 }
+        trigger: npc.miria
+      - id: t1_helix_gift
+        title: "Open a Helix Tree Gift"
+        description: "<6>Helix Trees<7> are native to <6>Torrhus Canyon<7>. They have higher <c>Toughness<7> than <a>Fig<7> and <2>Mangrove Trees<7> and require you to entirely cut the <6>Beige<7> twin helix before moving on to the <c>Red<7> one to avoid a <c>Sweep Penalty<7>!"
+        rewards: { items: { HELIX_LOG: 64 } }
+        live: "treegifts:HELIX"
+        amount: 1
+      - id: t1_honeyhive
+        title: "Loot a Honeyhive"
+        description: "<6>Honeyhives<7> can be found around <6>Torrhus Canyon<7> - there's even one right by the entrance of the island! You can reach into them in search of <e>Loot<7>, such as <9>Shards<7> and <6>Honeycomb<7>. They refill after a while and are the main source of the <a>Honeycomb Collection.<7>"
+        rewards: { items: { HONEYCOMB: 16 } }
+        trigger: honeyhive.loot
+        available: false
+        unavailable: "Honeyhives are not built"
+    completion:
+      hotf: 250
+      foraging: 2500
+      skyblockXp: 5
+      shards: { Honeybuzz: 1 }
+  - number: 2
+    description: "Learn the way around and complete your first <e>Hunts<7>."
+    tasks:
+      - id: t2_helix_gifts_10
+        title: "Obtain 10 Helix Tree Gifts"
+        description: "Having more <2>∮ Sweep<7> will let you cut down these hardy trees faster! Remember to entirely cut the <6>Beige<7> twin helix before moving on to the <c>Red<7> one to avoid a <c>Sweep Penalty<7>!"
+        rewards: { items: { ENCHANTED_HELIX_LOG: 1 } }
+        live: "treegifts:HELIX"
+        amount: 10
+      - id: t2_miria_daily
+        title: "Participate in Miria's Contest"
+        description: "<b>Miria<7> will reward for participating in her daily <d>Starlyn Contests<7> while on <6>Torrhus Canyon<7>!"
+        rewards: { desertWhispers: 500 }
+        trigger: miria.participated
+      - id: t2_bunbun
+        title: "Hunt a Bunbun"
+        description: "<f>Bunbuns<7> hop freely around <6>Torrhus Canyon<7>. You can hunt them using a <2>Lasso<7>."
+        rewards: { hunting: 500 }
+        trigger: hunt.bunbun
+        available: false
+        unavailable: "Critter hunting with Lassos is not built"
+      - id: t2_firefox
+        title: "Hunt a Firefox"
+        description: "<f>Firefoxes<7> frequently spawn from <a>Helix Tree Gifts<7>. You can hunt them using a <2>Lasso<7>."
+        rewards: { hunting: 1000 }
+        trigger: hunt.firefox
+        available: false
+        unavailable: "Critter hunting with Lassos is not built"
+      - id: t2_groundhog
+        title: "Hunt a Groundhog"
+        description: "<f>Groundhogs<7> frequently spawn from <a>Helix Tree Gifts<7>. You can hunt them using a <2>Lasso<7>."
+        rewards: { hunting: 1000 }
+        trigger: hunt.groundhog
+        available: false
+        unavailable: "Critter hunting with Lassos is not built"
+      - id: t2_freddy
+        title: "Purchase a Hint from Freddy"
+        description: "<a>Freddy<7> knows where just about every <a>Critter<7> that is native to <6>Torrhus Canyon<7> can be found. He will share his wisdom with you - for a price."
+        rewards: { desertWhispers: 1000 }
+        trigger: freddy.hint
+        available: false
+        unavailable: "Freddy is not built"
+    completion:
+      hotf: 500
+      foraging: 5000
+      skyblockXp: 10
+      desertWhispers: 1000
+      shards: { Bunbun: 1, Firefox: 1, Groundhog: 1 }
+  - number: 3
+    description: "Take your first steps into the <2>Critter Safari<7>!"
+    tasks:
+      - id: t3_helix_gifts_25
+        title: "Obtain 25 Helix Tree Gifts"
+        description: "Don't forget to claim your <6>Rewards<7> for reaching specific <a>Helix Tree Milestones<7> by talking to <2>Swoop<7> back in the <2>Moonglade Marsh<7>! Remember to entirely cut the <6>Beige<7> twin helix before moving on to the <c>Red<7> one to avoid a <c>Sweep Penalty<7>!"
+        rewards: { items: { ENCHANTED_HELIX_LOG: 2 } }
+        live: "treegifts:HELIX"
+        amount: 25
+      - id: t3_miria_uncommon
+        title: "Reach <a>UNCOMMON<base> in Miria's Contest"
+        description: "Finishing in the <a>UNCOMMON<7> bracket will give you a <2>Basic Safari Ticket<7>, which can be used to enter the <2>Critter Safari<7>!"
+        rewards: { items: { BASIC_SAFARI_TICKET: 1 } }
+        trigger: miria.bracket
+        amount: 2
+      - id: t3_drybark
+        title: "Hunt a Drybark"
+        description: "<9>Drybarks<7> occasionally spawn from <a>Helix Tree Gifts<7>. You can hunt them using a <2>Lasso<7>."
+        rewards: { hunting: 2500 }
+        trigger: hunt.drybark
+        available: false
+        unavailable: "Critter hunting with Lassos is not built"
+      - id: t3_puck
+        title: "Hunt a Puck"
+        description: "<9>Pucks<7> occasionally spawn from <a>Helix Tree Gifts<7>. You can hunt them using a <2>Lasso<7>."
+        rewards: { hunting: 2500 }
+        trigger: hunt.puck
+        available: false
+        unavailable: "Critter hunting with Lassos is not built"
+      - id: t3_floor_drop
+        title: "Pick up a Floor Drop"
+        description: "You can find a whole new set of <e>Floor Drops<7> in <6>Torrhus Canyon<7>, including <a>Dung Beetle Shards<7>."
+        rewards: { desertWhispers: 2500 }
+        trigger: floordrop.pickup
+        available: false
+        unavailable: "Floor Drops are not built"
+      - id: t3_fun_sized_pot
+        title: "Craft a Fun-Sized Pot of Honeycomb"
+        description: "The <a>Fun-Sized Pot of Honeycomb<7> unlocks at <a>Honeycomb Collection I<7>. Smear it on a <a>Tree<7>, wait a while, and a rare <a>critter<7> will show up! The type of <a>critter<7> attracted depends upon the type of <a>Tree<7> that was smeared."
+        rewards: { items: { FUN_SIZED_POT_OF_HONEYCOMB: 1 } }
+        trigger: pot.craft
+        available: false
+        unavailable: "Fun-Sized Pot of Honeycomb crafting is not built"
+      - id: t3_safari_belt
+        title: "Obtain a Safari Belt from Andrea"
+        description: "<a>Andrea<7> works at the <2>Critter Safari Entrance<7>. She'll give you your very own <f>Safari Belt<7>, which upgrades as you progress through her <a>Safari Milestones<7>."
+        rewards: { safariEssence: 10 }
+        trigger: andrea.belt
+        available: false
+        unavailable: "The Safari Belt and Andrea are not built"
+      - id: t3_enter_safari
+        title: "Enter the Critter Safari"
+        description: "Talk to the <e>Safari Manager<7> by the <2>Critter Safari Entrance<7> to visit the <2>Critter Safari<7>! You'll need any tier of <a>Safari Ticket<7> to enter, which is given as a reward from placing highly in <d>Miria's Contests<7>!"
+        rewards: { safariEssence: 10 }
+        trigger: safari.enter
+        available: false
+        unavailable: "The Critter Safari is not built"
+      - id: t3_safari_unique_5
+        title: "Catch 5 Unique Critters in the Critter Safari"
+        description: "The <2>Critter Safari<7> is comprised of <a>4<7> unique biomes, each with its own set of <a>Critters<7> for you to <e>Hunt<7>!"
+        rewards: { safariEssence: 10 }
+        trigger: safari.unique
+        amount: 5
+        available: false
+        unavailable: "The Critter Safari is not built"
+    completion:
+      hotf: 1000
+      foraging: 10000
+      skyblockXp: 15
+      desertWhispers: 2500
+      safariEssence: 25
+      items: { TORRHUS_SAFARI_ENTRANCE_TRAVEL_SCROLL: 1 }
+      shards: { Drybark: 1, Puck: 1, Dung Beetle: 1 }
+  - number: 4
+    description: "Head down the <6>Spring Path<7> and take in the sights!"
+    tasks:
+      - id: t4_helix_gifts_100
+        title: "Obtain 100 Helix Tree Gifts"
+        description: "Don't forget to claim your <6>Rewards<7> for reaching specific <a>Helix Tree Milestones<7> by talking to <2>Swoop<7> back in the <2>Moonglade Marsh<7>! Remember to entirely cut the <6>Beige<7> twin helix before moving on to the <c>Red<7> one to avoid a <c>Sweep Penalty<7>!"
+        rewards: { items: { ENCHANTED_HELIX_LOG: 8 } }
+        live: "treegifts:HELIX"
+        amount: 100
+      - id: t4_miria_rare
+        title: "Reach <9>RARE<base> in Miria's Contest"
+        description: "Finishing in the <9>RARE<7> bracket will give you an <9>Economy Safari Ticket<7>, which gives better perks than a regular ticket when you use it to enter the <2>Critter Safari<7>."
+        rewards: { items: { ECONOMY_SAFARI_TICKET: 1 } }
+        trigger: miria.bracket
+        amount: 3
+      - id: t4_hideonsun
+        title: "Hunt a Hideonsun"
+        description: "<f>Hideonsuns<7> are found hidden around <6>Torrhus Canyon<7>. Their orange hue helps them blend in with the environment, so keep an eye out!"
+        rewards: { hunting: 2500 }
+        trigger: hunt.hideonsun
+        available: false
+        unavailable: "Critter hunting with Lassos is not built"
+      - id: t4_grizzly_bear
+        title: "Hunt a Grizzly Bear"
+        description: "<6>Grizzly Bears<7> are a particularly rare spawn from <a>Helix Tree Gifts<7>. You can try to hunt them using a <2>Lasso<7> - but be prepared for a fight if it breaks!"
+        rewards: { hunting: 10000 }
+        trigger: hunt.grizzly_bear
+        available: false
+        unavailable: "Critter hunting with Lassos is not built"
+      - id: t4_dustybit
+        title: "Hunt a Dustybit"
+        description: "<a>Dustybits<7> live around the <6>Spring Path<7>. Chase them down to get their <9>Shard<7>!"
+        rewards: { hunting: 2500 }
+        trigger: hunt.dustybit
+        available: false
+        unavailable: "Critter hunting is not built"
+      - id: t4_mountain_goat
+        title: "Hunt a Mountain Goat"
+        description: "<5>Mountain Goats<7> live on the <6>Spring Path<7> and are especially tenacious. Keep your distance when hunting them with a <2>Lasso<7> - they'll try to headbutt you away!"
+        rewards: { hunting: 5000 }
+        trigger: hunt.mountain_goat
+        available: false
+        unavailable: "Critter hunting with Lassos is not built"
+      - id: t4_sepialot
+        title: "Hunt a Sepialot"
+        description: "<a>Sepialots<7> live around the <6>Spring Path<7> and <b>Torrhus Springs<7>. Sneak up on them with a <9>Fishing Net<7> to <e>Hunt<7> them!"
+        rewards: { hunting: 2500 }
+        trigger: hunt.sepialot
+        available: false
+        unavailable: "Critter hunting with Fishing Nets is not built"
+      - id: t4_solar
+        title: "Hunt a Solar"
+        description: "<a>Solars<7> live near the surface of <6>Torrhus Springs<7>. You can hunt them using a <9>Fishing Net<7>."
+        rewards: { hunting: 2500 }
+        trigger: hunt.solar
+        available: false
+        unavailable: "Critter hunting with Fishing Nets is not built"
+      - id: t4_haggard
+        title: "Catch a Haggard while Fishing"
+        description: "This is a <f>COMMON<7> <3>Sea Creature<7> found in <6>Torrhus Canyon<7>."
+        rewards: { fishing: 500 }
+        trigger: fish.haggard
+        available: false
+        unavailable: "Torrhus sea creatures are not built"
+      - id: t4_brineling
+        title: "Catch a Brineling while Fishing"
+        description: "This is an <a>UNCOMMON<7> <3>Sea Creature<7> found in <6>Torrhus Canyon<7>."
+        rewards: { fishing: 1000 }
+        trigger: fish.brineling
+        available: false
+        unavailable: "Torrhus sea creatures are not built"
+      - id: t4_sprawl
+        title: "Catch a Sprawl while Fishing"
+        description: "This is a <9>RARE<7> <3>Sea Creature<7> found in <6>Torrhus Canyon<7>."
+        rewards: { fishing: 1500 }
+        trigger: fish.sprawl
+        available: false
+        unavailable: "Torrhus sea creatures are not built"
+      - id: t4_ruby_veilshroom
+        title: "Obtain Ruby Veilshrooms"
+        description: "<f>Ruby Veilshroom<7> are found around <6>Torrhus Canyon<7> and also drop from <6>Torrhus Sea Creatures<7>. Gather them to progress through the <a>Ruby Veilshroom Collection<7>."
+        rewards: { items: { RUBY_VEILSHROOM: 32 } }
+        live: "items:RUBY_VEILSHROOM"
+      - id: t4_safari_perk
+        title: "Purchase a Perk from the Safari Essence Shop"
+        description: "All of the <2>Safari Essence<7> you gain from catching <a>Critters<7> in the <2>Critter Safari<7> can be used to purchase useful <a>Perks<7> from <6>Archie<7>!"
+        rewards: { desertWhispers: 2500 }
+        trigger: safari_shop.buy
+        available: false
+        unavailable: "The Safari Essence Shop is not built"
+      - id: t4_safari_unique_10
+        title: "Catch 10 Unique Critters in the Critter Safari"
+        description: "The <2>Critter Safari<7> is comprised of <a>4<7> unique biomes, each with its own set of <a>Critters<7> for you to <e>Hunt<7>!"
+        rewards: { safariEssence: 25 }
+        trigger: safari.unique
+        amount: 10
+        available: false
+        unavailable: "The Critter Safari is not built"
+    completion:
+      hotf: 1500
+      foraging: 20000
+      skyblockXp: 20
+      desertWhispers: 5000
+      safariEssence: 50
+      shards: { Mountain Goat: 1, Sprawl: 1, Hideonsun: 1 }
+  - number: 5
+    description: "Dive deeper and find what's hidden in <b>Torrhus Springs<7>."
+    tasks:
+      - id: t5_helix_gifts_250
+        title: "Obtain 250 Helix Tree Gifts"
+        description: "Don't forget to claim your <6>Rewards<7> for reaching specific <a>Helix Tree Milestones<7> by talking to <2>Swoop<7> back in the <2>Moonglade Marsh<7>! Remember to entirely cut the <6>Beige<7> twin helix before moving on to the <c>Red<7> one to avoid a <c>Sweep Penalty<7>!"
+        rewards: { items: { ENCHANTED_HELIX_LOG: 16 } }
+        live: "treegifts:HELIX"
+        amount: 250
+      - id: t5_miria_epic
+        title: "Reach <5>EPIC<base> in Miria's Contest"
+        description: "Finishing in the <5>EPIC<7> bracket will give you a <5>Premium Safari Ticket<7>. Use it to enhance your <2>Critter Safari<7> experience with some sweet perks!"
+        rewards: { items: { PREMIUM_SAFARI_TICKET: 1 } }
+        trigger: miria.bracket
+        amount: 4
+      - id: t5_pot_attract
+        title: "Use a Pot of Honey to attract a Critter to a Tree"
+        description: "Some <a>Critters<7> will only be attracted to <a>Trees<7> that have been coated with <6>Honeycomb<7>. Each type of <a>Tree<7> attracts its own set of mobs - including those back in the <2>Moonglade Marsh<7>!"
+        rewards: { items: { FAMILY_SIZED_POT_OF_HONEYCOMB: 1 } }
+        trigger: pot.attract
+        available: false
+        unavailable: "Pots of Honeycomb and tree critters are not built"
+      - id: t5_blue_jay
+        title: "Hunt a Blue Jay"
+        description: "<f>Blue Jays<7> live in the highest peaks of <6>Torrhus Heights<7>. Sneak up on them with a <2>Lasso<7> to <e>Hunt<7> them!"
+        rewards: { hunting: 2500 }
+        trigger: hunt.blue_jay
+        available: false
+        unavailable: "Critter hunting with Lassos is not built"
+      - id: t5_goldolot
+        title: "Hunt a Goldolot"
+        description: "<9>Goldolots<7> are a rare mutation of a <a>Sepialot<7>. Sneak up on them with a <9>Fishing Net<7> to <e>Hunt<7> them!"
+        rewards: { hunting: 5000 }
+        trigger: hunt.goldolot
+        available: false
+        unavailable: "Critter hunting with Fishing Nets is not built"
+      - id: t5_ember
+        title: "Hunt an Ember"
+        description: "<a>Embers<7> live deeper down in <3>Torrhus Springs<7>. You can hunt them using a <9>Fishing Net<7>."
+        rewards: { hunting: 2500 }
+        trigger: hunt.ember
+        available: false
+        unavailable: "Critter hunting with Fishing Nets is not built"
+      - id: t5_kill_ant
+        title: "Kill an Ant"
+        description: "<f>Ants<7> live in <6>Ant's Cave<7>, which is accessed through <3>Torrhus Springs<7>. They're <a>Pests<7>, so you'll need a <a>Vacuum<7> to kill them! If you're lucky, they might drop an <f>Ant Shard<7> when killed."
+        rewards: { hunting: 2500 }
+        trigger: kill.ant
+        available: false
+        unavailable: "Ant's Cave and Ants are not built"
+      - id: t5_kill_queen_ant
+        title: "Kill a Queen Ant"
+        description: "<d>Queen Ants<7> live among the colony in <6>Ant's Cave<7>, but are much rarer. They are more likely to spawn from <e>Anthills<7> that you destroy. Being part of the <d>Elusive<7> family, they'll always drop a <a>Queen Ant Shard<7> when killed."
+        rewards: { hunting: 10000 }
+        trigger: kill.queen_ant
+        available: false
+        unavailable: "Ant's Cave and Queen Ants are not built"
+      - id: t5_stingray
+        title: "Catch a Stingray Shard"
+        description: "<9>Stingray Shards<7> can be caught as <6>Treasure<7> when fishing anywhere in <6>Torrhus Canyon<7>."
+        rewards: { fishing: 2500 }
+        live: "shards:Stingray"
+      - id: t5_giant_water_bug
+        title: "Catch a Giant Water Bug"
+        description: "There is a <d>Fishing Hotspot<7> deep down in <3>Torrhus Springs<7> that is the only place you can fish up <9>Giant Water Bug Shards<7>."
+        rewards: { fishing: 2500 }
+        live: "shards:Giant Water Bug"
+      - id: t5_sanger
+        title: "Purchase a Shard from Sanger"
+        description: "<2>Sanger<7> is an elusive man who sells <9>Shards<7> from the <d>Evasive<7> family. He can be pretty hard to find, though, as he doesn't stick around in one place for more than a day."
+        rewards: { desertWhispers: 5000 }
+        trigger: sanger.buy
+        available: false
+        unavailable: "Sanger is not built"
+      - id: t5_andrea_milestone
+        title: "Claim a Safari Milestone from Andrea"
+        description: "Hunting <a>Critters<7> in the <2>Critter Safari<7> will progress you through <a>Andrea's<7> various <2>Safari Milestones<7>. Claim them to upgrade your <f>Safari Belt<7>!"
+        rewards: { safariEssence: 25 }
+        trigger: andrea.milestone
+        available: false
+        unavailable: "Andrea's Safari Milestones are not built"
+      - id: t5_safari_unique_20
+        title: "Catch 20 Unique Critters in the Critter Safari"
+        description: "The <2>Critter Safari<7> is comprised of <a>4<7> unique biomes, each with its own set of <a>Critters<7> for you to <e>Hunt<7>!"
+        rewards: { safariEssence: 50 }
+        trigger: safari.unique
+        amount: 20
+        available: false
+        unavailable: "The Critter Safari is not built"
+      - id: t5_maxim_booster
+        title: "Purchase a Booster Upgrade from Maxim"
+        description: "<6>Maxim<7> sells <9>Booster Upgrades<7>, which can be applied to a piece of <2>Foraging Gear<7> with an active <f>Common Booster<7> to upgrade it into an <a>Uncommon Booster<7>, increasing its stats."
+        rewards: { desertWhispers: 5000 }
+        trigger: maxim.booster
+        available: false
+        unavailable: "Maxim and Booster Upgrades are not built"
+    completion:
+      hotf: 2000
+      foraging: 30000
+      skyblockXp: 25
+      desertWhispers: 10000
+      safariEssence: 75
+      shards: { Giant Water Bug: 1, Queen Ant: 1, Blue Jay: 1 }
+  - number: 6
+    description: "Search high and low for the rarest <a>Critters<7>!."
+    tasks:
+      - id: t6_helix_gifts_500
+        title: "Obtain 500 Helix Tree Gifts"
+        description: "Don't forget to claim your <6>Rewards<7> for reaching specific <a>Helix Tree Milestones<7> by talking to <2>Swoop<7> back in the <2>Moonglade Marsh<7>! Remember to entirely cut the <6>Beige<7> twin helix before moving on to the <c>Red<7> one to avoid a <c>Sweep Penalty<7>!"
+        rewards: { items: { ENCHANTED_HELIX_LOG: 32 } }
+        live: "treegifts:HELIX"
+        amount: 500
+      - id: t6_miria_legendary
+        title: "Reach <6>LEGENDARY<base> in Miria's Contest"
+        description: "Finishing in the <6>LEGENDARY<7> bracket will give you a <6>First-Class Safari Ticket<7>. This is the highest tier of ticket available, and grants you the best perks while in the <2>Critter Safari<7>."
+        rewards: { items: { FIRST_CLASS_SAFARI_TICKET: 1 } }
+        trigger: miria.bracket
+        amount: 5
+      - id: t6_helix_chopper
+        title: "Hold a Helix Chopper"
+        description: "The <5>Helix Chopper<7> is an upgrade to the <9>Figstone Splitter<7> that can be crafted upon reaching <a>Helix Collection VI<7>."
+        rewards: { desertWhispers: 10000 }
+        live: "items:HELIX_CHOPPER"
+      - id: t6_water_snake
+        title: "Hunt a Water Snake"
+        description: "<a>Water Snakes<7> are large <a>Critters<7> that live deep down in <3>Torrhus Springs<7>. You can hunt them using a <5>Turbo Fishing Net<7> or better."
+        rewards: { hunting: 5000 }
+        trigger: hunt.water_snake
+        available: false
+        unavailable: "Critter hunting with Fishing Nets is not built"
+      - id: t6_tiki
+        title: "Hunt a Sneaky Tiki, Shrieky Tiki, or Cheeky Tiki"
+        description: "Various Tikis live high up in <6>Torrhus Heights<7>. Solve their puzzle to awaken them and then hunt it using a <5>Pocket Black Hole<7>!"
+        rewards: { hunting: 5000 }
+        trigger: hunt.tiki
+        available: false
+        unavailable: "Tikis and the Pocket Black Hole are not built"
+      - id: t6_beeheemoth
+        title: "Hunt a Beeheemoth"
+        description: "<5>Beeheemoths<7> are a massive type of a bee that sometimes appear at a random point on the map. You'll need a whole group of people with <2>Lassos<7> to <e>Hunt<7> it!"
+        rewards: { hunting: 5000 }
+        trigger: hunt.beeheemoth
+        available: false
+        unavailable: "Beeheemoths and group Lasso hunting are not built"
+      - id: t6_torrid
+        title: "Catch a Torrid while Fishing"
+        description: "This is an <5>EPIC<7> <3>Sea Creature<7> found in <6>Torrhus Canyon<7>."
+        rewards: { fishing: 2000 }
+        trigger: fish.torrid
+        available: false
+        unavailable: "Torrhus sea creatures are not built"
+      - id: t6_silkbreeze
+        title: "Catch a Silkbreeze while Fishing"
+        description: "This is a <6>LEGENDARY<7> <3>Sea Creature<7> found in <6>Torrhus Canyon<7>."
+        rewards: { fishing: 3500 }
+        trigger: fish.silkbreeze
+        available: false
+        unavailable: "Torrhus sea creatures are not built"
+      - id: t6_safari_unique_30
+        title: "Catch 30 Unique Critters in the Critter Safari"
+        description: "The <2>Critter Safari<7> is comprised of <a>4<7> unique biomes, each with its own set of <a>Critters<7> for you to <e>Hunt<7>!"
+        rewards: { safariEssence: 75 }
+        trigger: safari.unique
+        amount: 30
+        available: false
+        unavailable: "The Critter Safari is not built"
+    completion:
+      hotf: 3000
+      foraging: 45000
+      skyblockXp: 30
+      desertWhispers: 15000
+      safariEssence: 100
+      shards: { Beeheemoth: 1, Torrid: 1, Water Snake: 1 }
+  - number: 7
+    description: "Activate the <d>Starborn Temple<7> and gear up for your next challange."
+    tasks:
+      - id: t7_helix_gifts_1000
+        title: "Obtain 1000 Helix Tree Gifts"
+        description: "Don't forget to claim your <6>Rewards<7> for reaching specific <a>Helix Tree Milestones<7> by talking to <2>Swoop<7> back in the <2>Moonglade Marsh<7>! Remember to entirely cut the <6>Beige<7> twin helix before moving on to the <c>Red<7> one to avoid a <c>Sweep Penalty<7>!"
+        rewards: { items: { ENCHANTED_HELIX_LOG: 64 } }
+        live: "treegifts:HELIX"
+        amount: 1000
+      - id: t7_miria_hidden
+        title: "Reach a Hidden Bracket in Miria's Contest"
+        description: "Rumors speak of <3>Hidden Brackets<7> above <6>LEGENDARY<7> in <3>Miria's Contests<7>, known only to a select few and obtained by even fewer."
+        rewards: { items: { FIRST_CLASS_SAFARI_TICKET: 2 } }
+        trigger: miria.bracket
+        amount: 6
+      - id: t7_helix_armor
+        title: "Wear a Full Set of Helix Armor"
+        description: "The <5>Helix Armor<7> is an upgrade to the <9>Fig Armor<7> that can be crafted upon reaching <a>Helix Collection VIII<7>."
+        rewards: { desertWhispers: 10000 }
+        live: "worn:HELIX_ARMOR_HELMET,HELIX_ARMOR_CHESTPLATE,HELIX_ARMOR_LEGGINGS,HELIX_ARMOR_BOOTS"
+        amount: 4
+      - id: t7_honeycomb_necklace
+        title: "Hold a Honeycomb Necklace"
+        description: "The <5>Honeycomb Necklace<7> is an upgrade to the <9>Mangrove Locket<7> that can be crafted upon reaching <a>Honeycomb Collection IX<7>."
+        rewards: { desertWhispers: 10000 }
+        live: "items:HONEYCOMB_NECKLACE"
+      - id: t7_veilshroom_bracelet
+        title: "Hold a Veilshroom Bracelet"
+        description: "The <5>Veilshroom Bracelet<7> is an upgrade to the <9>Mangrove Grippers<7> that can be crafted upon reaching <a>Ruby Veilshroom Collection IX<7>."
+        rewards: { desertWhispers: 10000 }
+        live: "items:VEILSHROOM_BRACELET"
+      - id: t7_giant_isopod
+        title: "Catch a Giant Isopod while Fishing"
+        description: "This is a <d>MYTHIC<7> <3>Sea Creature<7> found in <6>Torrhus Canyon<7>."
+        rewards: { fishing: 5000 }
+        trigger: fish.giant_isopod
+        available: false
+        unavailable: "Torrhus sea creatures are not built"
+      - id: t7_ant_upgrade_stone
+        title: "Purchase a Tier XII Upgrade Stone from Ant"
+        description: "<2>Ant<7> sells a number of <6>Tier XII Upgrade Stones<7> for <a>Foraging Minions<7>."
+        rewards: { desertWhispers: 10000 }
+        trigger: ant.stone
+        available: false
+        unavailable: "The Ant NPC is not built"
+      - id: t7_starborn_temple
+        title: "Activate the Starborn Temple"
+        description: "Some believe an ancient <d>Starborn Temple<7> sits in the depths of <3>Torrhus Springs<7>."
+        rewards: { desertWhispers: 10000 }
+        trigger: starborn.activate
+        available: false
+        unavailable: "The Starborn Temple is not built"
+      - id: t7_safari_belt_mythic
+        title: "Upgrade your Safari Belt to <d>MYTHIC<base>"
+        description: "Max out <a>Andrea's<7> <2>Safari Milestones<7> to make your <f>Safari Belt<7> as strong as possible!"
+        rewards: { safariEssence: 100 }
+        trigger: andrea.belt_mythic
+        available: false
+        unavailable: "The Safari Belt and Andrea are not built"
+      - id: t7_critterdex
+        title: "Complete the Critterdex"
+        description: "Will you become only the second <e>Hunter<7> to complete the entire <a>Critterdex<7>? Do nepo babies really count, though?"
+        rewards: { safariEssence: 100 }
+        trigger: critterdex.complete
+        available: false
+        unavailable: "The Critterdex is not built"
+    completion:
+      hotf: 4000
+      foraging: 60000
+      skyblockXp: 35
+      desertWhispers: 20000
+      safariEssence: 150
+      items: { FIRST_CLASS_SAFARI_TICKET: 4 }

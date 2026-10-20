@@ -1,4 +1,4 @@
-package dev.daweapon.type.galatea.torrhus;
+package dev.daweapon.type.galatea.torrhus.npcs;
 
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
@@ -7,6 +7,7 @@ import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.entity.npc.trait.NPCAbiphoneTrait;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
 import dev.daweapon.type.skyblockgeneric.gui.inventories.starlyn.GUIStarlyn;
 import dev.daweapon.type.skyblockgeneric.starlyn.StarlynContests;
 import dev.daweapon.type.skyblockgeneric.starlyn.StarlynSister;
@@ -88,6 +89,7 @@ public class NPCMiria extends HypixelNPC implements NPCAbiphoneTrait {
         SkyBlockPlayer skyBlockPlayer = (SkyBlockPlayer) player;
         setDialogue(player, "ready").thenRun(() -> {
             StarlynContests.markMet(skyBlockPlayer, StarlynSister.MIRIA);
+            ChapterTriggers.fire(skyBlockPlayer, "npc.miria");
             skyBlockPlayer.openView(new GUIStarlyn(StarlynSister.MIRIA));
         });
     }

@@ -57,7 +57,9 @@ public final class HotfService {
     }
 
     public static boolean onForagingIsland() {
-        return HypixelConst.getTypeLoader() != null && HypixelConst.getTypeLoader().getType() == ServerType.SKYBLOCK_GALATEA;
+        if (HypixelConst.getTypeLoader() == null) return false;
+        ServerType type = HypixelConst.getTypeLoader().getType();
+        return type == ServerType.SKYBLOCK_GALATEA || type == ServerType.SKYBLOCK_TORRHUS_CANYON;
     }
 
     public static int tokensEarned(SkyBlockPlayer player) {
@@ -155,6 +157,7 @@ public final class HotfService {
             player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.CENTER_OF_THE_FOREST, 0);
             return;
         }
+        convertExcessForestWhispers(player, data);
         int tier = tier(player);
         double tierXp = 0;
         for (int current = 1; current <= tier; current++) tierXp += registry.tierReward(current).skyBlockXp();
@@ -164,6 +167,19 @@ public final class HotfService {
         for (int level = 1; level <= data.getCoreLevel(); level++) coreXp += registry.coreLevel(level).skyBlockXp();
         player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.HEART_OF_THE_FOREST, tierXp + whisperXp);
         player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.CENTER_OF_THE_FOREST, coreXp);
+    }
+
+    public static final long FOREST_CONVERSION_FLOOR = 12_500_000L;
+
+    private static void convertExcessForestWhispers(SkyBlockPlayer player, DatapointHOTF.PlayerHOTFData data) {
+        if (data.isDesertConverted() || !HotfRegistry.get().desertWhispersEnabled()) return;
+        data.setDesertConverted(true);
+        save(player, data);
+        long forest = whispers(player, HotfCurrency.FOREST);
+        if (forest <= FOREST_CONVERSION_FLOOR) return;
+        long excess = forest - FOREST_CONVERSION_FLOOR;
+        setWhispers(player, HotfCurrency.FOREST, FOREST_CONVERSION_FLOOR);
+        addWhispers(player, HotfCurrency.DESERT, excess);
     }
 
     public record Purchase(int levels, String error) {

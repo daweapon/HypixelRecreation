@@ -5,17 +5,21 @@ import lombok.Getter;
 
 @Getter
 public enum HotfCurrency {
-    FOREST("Forest Whispers", "<3>", SkyBlockDataHandler.Data.FOREST_WHISPERS),
-    DESERT("Desert Whispers", "<6>", SkyBlockDataHandler.Data.DESERT_WHISPERS);
+    FOREST("Forest Whispers", "<3>", "FOREST_WHISPERS"),
+    DESERT("Desert Whispers", "<6>", "DESERT_WHISPERS");
 
     private final String displayName;
     private final String colour;
-    private final SkyBlockDataHandler.Data datapoint;
+    private final String datapointName;
 
-    HotfCurrency(String displayName, String colour, SkyBlockDataHandler.Data datapoint) {
+    HotfCurrency(String displayName, String colour, String datapointName) {
         this.displayName = displayName;
         this.colour = colour;
-        this.datapoint = datapoint;
+        this.datapointName = datapointName;
+    }
+
+    public SkyBlockDataHandler.Data getDatapoint() {
+        return SkyBlockDataHandler.Data.valueOf(datapointName);
     }
 
     public String coloured() {

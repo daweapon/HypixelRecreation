@@ -135,7 +135,7 @@ public final class AttributeEffectService {
                     dev.daweapon.type.skyblockgeneric.calendar.SkyBlockCalendar.getHour() >= 6 && dev.daweapon.type.skyblockgeneric.calendar.SkyBlockCalendar.getHour() < 20;
             case NIGHT ->
                     dev.daweapon.type.skyblockgeneric.calendar.SkyBlockCalendar.getHour() < 6 || dev.daweapon.type.skyblockgeneric.calendar.SkyBlockCalendar.getHour() >= 20;
-            case FORAGING_ISLAND -> server == ServerType.SKYBLOCK_GALATEA || server == ServerType.SKYBLOCK_THE_PARK;
+            case FORAGING_ISLAND -> server == ServerType.SKYBLOCK_GALATEA || server == ServerType.SKYBLOCK_TORRHUS_CANYON || server == ServerType.SKYBLOCK_THE_PARK;
             case FISHING_ISLAND ->
                     server == ServerType.SKYBLOCK_BACKWATER_BAYOU || server == ServerType.SKYBLOCK_JERRYS_WORKSHOP;
             case MINING_ISLAND -> server == ServerType.SKYBLOCK_DWARVEN_MINES || server == ServerType.SKYBLOCK_CRYSTAL_HOLLOWS || server == ServerType.SKYBLOCK_DEEP_CAVERNS
