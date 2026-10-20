@@ -177,7 +177,7 @@ public final class EnderDragonFight {
         DragonVariant variant = finished.variant();
         List<Map.Entry<UUID, Double>> ranking = finished.getDamageDealt().entrySet().stream()
                 .sorted(Map.Entry.<UUID, Double>comparingByValue(Comparator.reverseOrder())).toList();
-        if (instance != null) broadcast(instance, Text.of("<5><l>☬ <r><d>The {} <5>has been defeated!", variant.displayName()));
+        if (instance != null) announceDown(instance, finished, variant, ranking);
         if (instance != null) DragonLootSite.build(instance, DragonLootSite.nearestFloor(finished.getPosition()));
         double top = ranking.isEmpty() ? 0 : ranking.getFirst().getValue();
         for (int i = 0; i < ranking.size(); i++) {
@@ -196,6 +196,7 @@ public final class EnderDragonFight {
             phase = Phase.IDLE;
             if (instance != null) {
                 DragonEgg.restore(instance);
+                DragonGlass.restore(instance);
                 DragonLootSite.restore(instance);
                 broadcast(instance, Text.of("<5>The Dragon Egg has respawned!"));
             }
@@ -220,8 +221,6 @@ public final class EnderDragonFight {
         }
         Essences.add(player, EssenceType.DRAGON, variant.essenceReward());
         DragonProgress.recordKill(player, variant);
-        player.sendMessage(Text.of("<5>You placed <d>#{} <5>with <d>{} <5>damage and earned <d>{} <5>Dragon Essence!",
-                rank, SkyBlockMob.shortHealth(damage), variant.essenceReward()));
     }
 
     private static double luckAdjusted(SkyBlockPlayer player, EnderDragonMob mob, ItemType item, double chance) {
@@ -229,6 +228,37 @@ public final class EnderDragonFight {
         double luck = statistics.getOverall(ItemStatistic.MAGIC_FIND);
         if (item == ItemType.ENDER_DRAGON_PET) luck += statistics.getOverall(ItemStatistic.PET_LUCK);
         return chance * (1 + luck / 100);
+    }
+
+    private static void announceDown(Instance instance, EnderDragonMob mob, DragonVariant variant,
+                                     List<Map.Entry<UUID, Double>> ranking) {
+        SkyBlockPlayer killer = killerOf(mob);
+        DragonDownMessage.Name finalBlow = killer == null ? null : nameOf(killer);
+        List<DragonDownMessage.Damager> top = ranking.stream().limit(3)
+                .map(entry -> new DragonDownMessage.Damager(nameOf(entry.getKey()), entry.getValue())).toList();
+        for (Player viewer : instance.getPlayers()) {
+            int position = 0;
+            double own = 0;
+            for (int i = 0; i < ranking.size(); i++) {
+                if (!ranking.get(i).getKey().equals(viewer.getUuid())) continue;
+                position = i + 1;
+                own = ranking.get(i).getValue();
+            }
+            DragonDownMessage.lines(variant.displayName(), finalBlow, top, position, own, variant.essenceReward())
+                    .forEach(line -> viewer.sendMessage(Text.parse(line)));
+        }
+    }
+
+    private static DragonDownMessage.Name nameOf(UUID uuid) {
+        Player online = MinecraftServer.getConnectionManager().getOnlinePlayerByUuid(uuid);
+        if (online instanceof SkyBlockPlayer player) return nameOf(player);
+        return new DragonDownMessage.Name("<7>Disconnected", "Disconnected");
+    }
+
+    private static DragonDownMessage.Name nameOf(SkyBlockPlayer player) {
+        boolean ranked = player.getRank() != dev.daweapon.type.generic.user.categories.Rank.DEFAULT;
+        return new DragonDownMessage.Name(Text.of("{}{}", player.getRankPrefix(), player.getUsername()).serialize(),
+                (ranked ? "[MVP+] " : "") + player.getUsername());
     }
 
     private static SkyBlockPlayer killerOf(EnderDragonMob mob) {
@@ -247,7 +277,10 @@ public final class EnderDragonFight {
     public static void abort() {
         stopBar();
         Instance current = HypixelConst.getInstanceContainer();
-        if (current != null) DragonLootSite.restore(current);
+        if (current != null) {
+            DragonLootSite.restore(current);
+            DragonGlass.restore(current);
+        }
         if (dragon != null) dragon.abandon();
         crystals.forEach(crystal -> {
             if (!crystal.isRemoved()) crystal.remove();

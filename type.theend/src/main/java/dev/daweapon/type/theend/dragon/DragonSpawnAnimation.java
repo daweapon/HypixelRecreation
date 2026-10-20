@@ -19,13 +19,14 @@ public final class DragonSpawnAnimation {
     public static final int RISE_TICKS = GlassRise.RISE_TICKS;
     public static final int STEP_TICKS = 2;
     private static final double BASE_Y = GlassRise.BASE_Y;
-    private static final Pos COLUMN_CORNER = new Pos(-672, BASE_Y, -276);
+    private static final Pos COLUMN_CORNER = new Pos(DragonGlass.COLUMN_X, BASE_Y, DragonGlass.COLUMN_Z);
     private static final double COLUMN_WIDTH = 1;
 
     private DragonSpawnAnimation() {
     }
 
     public static void play(Instance instance, Runnable onBurst) {
+        DragonGlass.remove(instance);
         Entity column = display(instance, Block.PURPLE_STAINED_GLASS, COLUMN_CORNER, new Vec(COLUMN_WIDTH, 0.05, COLUMN_WIDTH));
         Entity tip = display(instance, Block.LIGHT_BLUE_STAINED_GLASS, COLUMN_CORNER, new Vec(COLUMN_WIDTH, 1, COLUMN_WIDTH));
         instance.playSound(Sound.sound(Key.key("block.beacon.activate"), Sound.Source.HOSTILE, 6f, 0.7f),

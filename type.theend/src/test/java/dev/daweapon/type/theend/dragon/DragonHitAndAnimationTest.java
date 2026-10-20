@@ -33,4 +33,26 @@ class DragonHitAndAnimationTest {
         assertEquals(4, DragonGate.messagesFor(0, 5_000_000).length);
         assertEquals(0, DragonGate.messagesFor(4, 5_000_000).length);
     }
+
+    @Test
+    void downMessageListsTopThreeThenTheViewersOwnDamage() {
+        var top = java.util.List.of(
+                new DragonDownMessage.Damager(new DragonDownMessage.Name("<b>[MVP+] A", "[MVP+] A"), 11_595_396),
+                new DragonDownMessage.Damager(new DragonDownMessage.Name("<a>B", "B"), 845_550),
+                new DragonDownMessage.Damager(new DragonDownMessage.Name("<7>C", "C"), 92_737));
+        var lines = DragonDownMessage.lines("Wise Dragon", new DragonDownMessage.Name("<a>B", "B"), top, 4, 50_440, 5);
+        assertTrue(lines.getFirst().contains("▬") && lines.getLast().contains("▬"));
+        assertTrue(lines.stream().anyMatch(line -> line.contains("WISE DRAGON DOWN!")));
+        assertTrue(lines.stream().anyMatch(line -> line.contains("dealt the final blow.")));
+        assertTrue(lines.stream().anyMatch(line -> line.contains("1st Damager") && line.contains("11,595,396")));
+        assertTrue(lines.stream().anyMatch(line -> line.contains("3rd Damager") && line.contains("92,737")));
+        assertTrue(lines.stream().anyMatch(line -> line.contains("Your Damage: <a>50,440") && line.contains("Position #4")));
+        assertTrue(lines.stream().anyMatch(line -> line.contains("+5 Dragon Essence")));
+    }
+
+    @Test
+    void spectatorsGetNoPersonalLines() {
+        var lines = DragonDownMessage.lines("Old Dragon", null, java.util.List.of(), 0, 0, 5);
+        assertTrue(lines.stream().noneMatch(line -> line.contains("Your Damage") || line.contains("Essence")));
+    }
 }
