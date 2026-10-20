@@ -7,6 +7,7 @@ import net.minestom.server.instance.Instance;
 import net.minestom.server.timer.TaskSchedule;
 import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.skyblockgeneric.entity.mob.SkyBlockMob;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobEndermanBottom;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobEndermanHigh;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobEndermanLow;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobEndermanMid;
@@ -24,7 +25,7 @@ import java.util.function.Supplier;
 
 public final class EndMobSpawner {
     public static final int CHECK_SECONDS = 5;
-    public static final double PLAYER_RANGE = 90;
+    public static final double PLAYER_RANGE = 110;
     public static final double MIN_DISTANCE = 12;
 
     public static final List<Pos> LOW = List.of(
@@ -51,9 +52,10 @@ public final class EndMobSpawner {
     }
 
     private static final List<Plan> PLANS = List.of(
-            new Plan(MobEndermanLow.class, MobEndermanLow::new, LOW, 3),
+            new Plan(MobEndermanHigh.class, MobEndermanHigh::new, LOW, 3),
             new Plan(MobEndermanMid.class, MobEndermanMid::new, MID, 2),
-            new Plan(MobEndermanHigh.class, MobEndermanHigh::new, HIGH, 2),
+            new Plan(MobEndermanLow.class, MobEndermanLow::new, HIGH, 2),
+            new Plan(MobEndermanBottom.class, () -> new MobEndermanBottom(true), NEST, 5),
             new Plan(MobEndermiteLow.class, MobEndermiteLow::new, LOW, 2),
             new Plan(MobSeer.class, MobSeer::new, NEST, 4),
             new Plan(MobObsidianDefender.class, MobObsidianDefender::new, NEST, 4),
