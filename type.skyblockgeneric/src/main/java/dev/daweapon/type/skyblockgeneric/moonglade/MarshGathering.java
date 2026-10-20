@@ -34,8 +34,14 @@ public final class MarshGathering {
     }
 
     public static double doubleChance(SkyBlockPlayer player) {
-        double percent = HotfService.perkValue(player, COLLECTOR_PERK)
-                + AttributeEffectService.value(player.getHuntingData(), AttributeId.parse(YUMMY_ATTRIBUTE));
+        return doubleChance(player, MarshResource.LUSHLILAC);
+    }
+
+    public static double doubleChance(SkyBlockPlayer player, MarshResource resource) {
+        double percent = HotfService.perkValue(player, COLLECTOR_PERK);
+        if (resource != MarshResource.RUBY_VEILSHROOM) {
+            percent += AttributeEffectService.value(player.getHuntingData(), AttributeId.parse(YUMMY_ATTRIBUTE));
+        }
         return Math.min(100, percent);
     }
 
@@ -50,7 +56,7 @@ public final class MarshGathering {
         ScheduleUtility.delay(() -> {
             instance.setBlock(position, block);
             DEPLETED.remove(key);
-        }, resource.getRespawnTicks());
+        }, resource.rollRespawnTicks());
         harvest(player, resource, position);
         return true;
     }
@@ -62,7 +68,7 @@ public final class MarshGathering {
     private static void harvest(SkyBlockPlayer player, MarshResource resource, Point position) {
         int base = resource.rollAmount();
         int amount = base;
-        if (LootRoll.roll(player.getUuid(), resource.getItem(), doubleChance(player))) amount += base;
+        if (LootRoll.roll(player.getUuid(), resource.getItem(), doubleChance(player, resource))) amount += base;
 
         deliver(player, resource.getItem(), amount);
         List<SkyBlockItem> drops = new ArrayList<>();

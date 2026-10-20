@@ -33,6 +33,7 @@ public class DatapointHOTF extends SkyBlockDatapoint<DatapointHOTF.PlayerHOTFDat
 			json.put("wishDay", value.wishDay);
 			json.put("desertWishDay", value.desertWishDay);
 			json.put("desertConverted", value.desertConverted);
+			json.put("hiveLootedAt", new JSONObject(value.hiveLootedAt));
 			json.put("freeTrialDay", value.freeTrialDay);
 			json.put("lotteryDay", value.lotteryDay);
 			json.put("lotteryEffect", value.lotteryEffect == null ? "" : value.lotteryEffect);
@@ -63,6 +64,8 @@ public class DatapointHOTF extends SkyBlockDatapoint<DatapointHOTF.PlayerHOTFDat
 				data.wishDay = obj.optLong("wishDay", -1L);
 				data.desertWishDay = obj.optLong("desertWishDay", -1L);
 				data.desertConverted = obj.optBoolean("desertConverted", false);
+				JSONObject hives = obj.optJSONObject("hiveLootedAt");
+				if (hives != null) hives.keySet().forEach(key -> data.hiveLootedAt.put(key, hives.getLong(key)));
 				data.freeTrialDay = obj.optLong("freeTrialDay", -1L);
 				data.lotteryDay = obj.optLong("lotteryDay", -1L);
 				data.lotteryEffect = obj.optString("lotteryEffect", "").isEmpty() ? null : obj.getString("lotteryEffect");
@@ -90,6 +93,7 @@ public class DatapointHOTF extends SkyBlockDatapoint<DatapointHOTF.PlayerHOTFDat
 			cloned.wishDay = value.wishDay;
 			cloned.desertWishDay = value.desertWishDay;
 			cloned.desertConverted = value.desertConverted;
+			cloned.hiveLootedAt.putAll(value.hiveLootedAt);
 			cloned.freeTrialDay = value.freeTrialDay;
 			cloned.lotteryDay = value.lotteryDay;
 			cloned.lotteryEffect = value.lotteryEffect;
@@ -124,6 +128,7 @@ public class DatapointHOTF extends SkyBlockDatapoint<DatapointHOTF.PlayerHOTFDat
 		private long wishDay = -1L;
 		private long desertWishDay = -1L;
 		private boolean desertConverted;
+		private final Map<String, Long> hiveLootedAt = new LinkedHashMap<>();
 		private long freeTrialDay = -1L;
 		private long lotteryDay = -1L;
 		private String lotteryEffect;

@@ -6,7 +6,7 @@ sections:
   - heading: "Torrhus Canyon"
     colour: "<6>"
     lines:
-      - "Reach it from Moonglade Marsh, or with /warp torrhus. Helix trees give Helix Logs, Desert Whispers and Tree Gifts."
+      - "Reach it from the launch pad at the back of Moonglade Marsh (Foraging XII and Heart of the Forest Tier 4), or with /warp torrhus. Helix trees give Helix Logs, Desert Whispers and Tree Gifts."
       - "Talk to Helia for the Torrhus Chapters, then head down the Spring Path to find Miria."
   - heading: "Honeyhives and Ruby Veilshrooms"
     colour: "<6>"

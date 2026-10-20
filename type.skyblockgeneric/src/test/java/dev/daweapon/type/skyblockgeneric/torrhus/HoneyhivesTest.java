@@ -44,8 +44,9 @@ class HoneyhivesTest {
 
     @Test
     void cooldownLastsAnHourAndTheHologramShowsIt() {
-        UUID player = UUID.randomUUID();
-        assertEquals(0, Honeyhives.millisLeft(player, new Pos(1, 2, 3), 0));
+        assertEquals(0, Honeyhives.millisLeft((Long) null, 0));
+        assertEquals(3_000_000L, Honeyhives.millisLeft(0L, 600_000L));
+        assertEquals(0, Honeyhives.millisLeft(0L, 3_600_001L));
         assertArrayEquals(new String[]{"<6>Honeyhive", "<a>Click to loot!"}, Honeyhives.hologramText(0));
         assertEquals("<6>Honeyhive", Honeyhives.hologramText(1000)[0]);
         assertEquals(3_600_000L, Honeyhives.COOLDOWN_MILLIS);

@@ -466,11 +466,28 @@ public enum LaunchPads {
             .build()
     ),
 
+    GALATEA_TO_TORRHUS_CANYON(
+        getSlimeBlocksNear(new Pos(-728.5, 98, 89.5)),
+        ServerType.SKYBLOCK_GALATEA,
+        ServerType.SKYBLOCK_TORRHUS_CANYON,
+        new Pos(-720, 94, 141, -45, 0),
+        player -> player.sendTo(ServerType.SKYBLOCK_TORRHUS_CANYON),
+        LaunchPads::canEnterTorrhus,
+        "<c>You must be at least Foraging Level XII and have Heart of the Forest Tier 4 to join this island!",
+        player -> PlayerHolograms.ExternalPlayerHologram.builder()
+            .pos(new Pos(-728.5, 99.5, 89.5))
+            .player(player)
+            .text(canEnterTorrhus(player)
+                ? new String[]{"<f>Travel to:", "<a>Torrhus Canyon"}
+                : new String[]{"<f>Travel to:", "<a>Torrhus Canyon", "<c>Requires Foraging Level 12", "<c>Heart of the Forest Tier 4"})
+            .build()
+    ),
+
     TORRHUS_CANYON_TO_GALATEA(
         getSlimeBlocksNear(new Pos(-720, 95, 136)),
         ServerType.SKYBLOCK_TORRHUS_CANYON,
         ServerType.SKYBLOCK_GALATEA,
-        new Pos(-542.5, 108, -26.5, 45, 0),
+        new Pos(-728.5, 99, 86.5, 180, 0),
         player -> player.sendTo(ServerType.SKYBLOCK_GALATEA),
         _ -> true,
         "",
@@ -576,6 +593,12 @@ public enum LaunchPads {
             }
         }
         return null;
+    }
+
+    private static boolean canEnterTorrhus(SkyBlockPlayer player) {
+        return player.getSkills().getCurrentLevel(SkillCategories.FORAGING) >= 12
+            && dev.daweapon.type.skyblockgeneric.hotf.HotfService.isUnlocked(player)
+            && dev.daweapon.type.skyblockgeneric.hotf.HotfService.tier(player) >= 4;
     }
 
     private static List<Pos> getSlimeBlocksNear(Pos pos) {

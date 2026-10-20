@@ -10,6 +10,8 @@ import dev.daweapon.type.generic.event.HypixelEventHandler;
 import dev.daweapon.type.generic.utility.ScheduleUtility;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
 import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
+import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointHOTF;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
 import dev.daweapon.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
 import dev.daweapon.type.skyblockgeneric.event.custom.ShardCaughtEvent;
 import dev.daweapon.type.skyblockgeneric.hunting.AttributeDefinition;
@@ -26,6 +28,7 @@ import net.minestom.server.item.Material;
 import net.minestom.server.timer.ExecutionType;
 import net.minestom.server.timer.Scheduler;
 import net.minestom.server.timer.TaskSchedule;
+import org.jetbrains.annotations.Nullable;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.IOException;
@@ -50,7 +53,6 @@ public final class Honeyhives {
     private static final double HOLOGRAM_DROP = 0.8;
     private static final double HOLOGRAM_SPACING = 0.4;
 
-    private static final Map<UUID, Map<Long, Long>> LOOTED_AT = new ConcurrentHashMap<>();
     private static final Map<UUID, Map<Long, Shown>> SHOWN = new ConcurrentHashMap<>();
 
     private Honeyhives() {
@@ -81,19 +83,35 @@ public final class Honeyhives {
         }
     }
 
-    public static long millisLeft(UUID player, Point position, long now) {
-        Long lootedAt = LOOTED_AT.getOrDefault(player, Map.of()).get(key(position));
+    public static long millisLeft(@Nullable Long lootedAt, long now) {
         return lootedAt == null ? 0 : Math.max(0, lootedAt + COOLDOWN_MILLIS - now);
+    }
+
+    public static long millisLeft(SkyBlockPlayer player, Point position, long now) {
+        return millisLeft(HotfService.data(player).getHiveLootedAt().get(String.valueOf(key(position))), now);
+    }
+
+    private static void markLooted(SkyBlockPlayer player, Point position, long now) {
+        DatapointHOTF.PlayerHOTFData data = HotfService.data(player);
+        data.getHiveLootedAt().values().removeIf(lootedAt -> millisLeft(lootedAt, now) == 0);
+        data.getHiveLootedAt().put(String.valueOf(key(position)), now);
+        HotfService.save(player, data);
+    }
+
+    private static void clearLooted(SkyBlockPlayer player, Point position) {
+        DatapointHOTF.PlayerHOTFData data = HotfService.data(player);
+        data.getHiveLootedAt().remove(String.valueOf(key(position)));
+        HotfService.save(player, data);
     }
 
     public static boolean handle(SkyBlockPlayer player, Point position, Block block) {
         if (!block.compare(Block.BEE_NEST) || !isHoneyhiveServer() || player.getSkyblockDataHandler() == null) return false;
-        long left = millisLeft(player.getUuid(), position, System.currentTimeMillis());
+        long left = millisLeft(player, position, System.currentTimeMillis());
         if (left > 0) {
             player.sendMessage("<c>This Honeyhive is empty! It will refill in <e>{}<c>.", StringUtility.formatTimeLeft(left));
             return true;
         }
-        LOOTED_AT.computeIfAbsent(player.getUuid(), _ -> new ConcurrentHashMap<>()).put(key(position), System.currentTimeMillis());
+        markLooted(player, position, System.currentTimeMillis());
         loot(player, position);
         return true;
     }
@@ -142,10 +160,7 @@ public final class Honeyhives {
         ChapterTriggers.fire(player, CHAPTER_TRIGGER);
         double refill = AttributeEffectService.value(player.getHuntingData(), AttributeId.parse(HONEY_REFILL));
         if (refill > 0 && ThreadLocalRandom.current().nextDouble() * 100 < refill) {
-            LOOTED_AT.computeIfPresent(player.getUuid(), (_, looted) -> {
-                looted.remove(key(position));
-                return looted;
-            });
+            clearLooted(player, position);
             player.sendMessage("<e>The Honeyhive instantly refilled!");
         }
     }
@@ -189,7 +204,7 @@ public final class Honeyhives {
                 if (current != null) PlayerHolograms.removeExternalPlayerHologram(shown.remove(key).hologram());
                 continue;
             }
-            String[] text = hologramText(millisLeft(player.getUuid(), hive, now));
+            String[] text = hologramText(millisLeft(player, hive, now));
             String joined = String.join("\n", text);
             if (current != null && current.text().equals(joined)) continue;
             if (current != null) PlayerHolograms.removeExternalPlayerHologram(current.hologram());

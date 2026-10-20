@@ -69,4 +69,13 @@ class MarshResourceTest {
     void helixFortuneIsAForagingStatistic() {
         assertEquals("Helix Fortune", ItemStatistic.HELIX_FORTUNE.getDisplayName());
     }
+
+    @Test
+    void veilshroomRespawnsAfterFiftyToFiftyFiveSeconds() {
+        for (int i = 0; i < 200; i++) {
+            int ticks = MarshResource.RUBY_VEILSHROOM.rollRespawnTicks();
+            assertTrue(ticks >= 50 * 20 && ticks <= 55 * 20);
+        }
+        assertEquals(30 * 20, MarshResource.LUSHLILAC.rollRespawnTicks());
+    }
 }

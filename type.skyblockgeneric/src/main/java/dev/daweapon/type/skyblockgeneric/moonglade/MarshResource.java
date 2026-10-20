@@ -13,9 +13,9 @@ import java.util.concurrent.ThreadLocalRandom;
 
 @Getter
 public enum MarshResource {
-    LUSHLILAC(ItemType.LUSHLILAC, StarlynResource.LUSHLILAC, Material.FLOWERING_AZALEA, "berries.collect", 1, 1, 25, 100, 30 * 20, HotfCurrency.FOREST, ServerType.SKYBLOCK_GALATEA),
-    SEA_LUMIES(ItemType.SEA_LUMIES, StarlynResource.SEA_LUMIES, Material.SEA_PICKLE, "sealumies.collect", 1, 4, 3.75, 0, 10 * 20, HotfCurrency.FOREST, ServerType.SKYBLOCK_GALATEA),
-    RUBY_VEILSHROOM(ItemType.RUBY_VEILSHROOM, StarlynResource.RUBY_VEILSHROOM, Material.CRIMSON_FUNGUS, "veilshroom.collect", 4, 4, 16, 200, 52 * 20 + 10, HotfCurrency.DESERT, ServerType.SKYBLOCK_TORRHUS_CANYON);
+    LUSHLILAC(ItemType.LUSHLILAC, StarlynResource.LUSHLILAC, Material.FLOWERING_AZALEA, "berries.collect", 1, 1, 25, 100, 30 * 20, 0, HotfCurrency.FOREST, ServerType.SKYBLOCK_GALATEA),
+    SEA_LUMIES(ItemType.SEA_LUMIES, StarlynResource.SEA_LUMIES, Material.SEA_PICKLE, "sealumies.collect", 1, 4, 3.75, 0, 10 * 20, 0, HotfCurrency.FOREST, ServerType.SKYBLOCK_GALATEA),
+    RUBY_VEILSHROOM(ItemType.RUBY_VEILSHROOM, StarlynResource.RUBY_VEILSHROOM, Material.CRIMSON_FUNGUS, "veilshroom.collect", 4, 4, 16, 200, 50 * 20, 5 * 20, HotfCurrency.DESERT, ServerType.SKYBLOCK_TORRHUS_CANYON);
 
     private final ItemType item;
     private final StarlynResource contestResource;
@@ -26,11 +26,12 @@ public enum MarshResource {
     private final double foragingXpPerItem;
     private final long forestWhispers;
     private final int respawnTicks;
+    private final int respawnJitterTicks;
     private final HotfCurrency currency;
     private final ServerType island;
 
     MarshResource(ItemType item, StarlynResource contestResource, Material source, String chapterTrigger, int minimum, int maximum,
-                  double foragingXpPerItem, long forestWhispers, int respawnTicks, HotfCurrency currency, ServerType island) {
+                  double foragingXpPerItem, long forestWhispers, int respawnTicks, int respawnJitterTicks, HotfCurrency currency, ServerType island) {
         this.item = item;
         this.contestResource = contestResource;
         this.source = source;
@@ -40,8 +41,13 @@ public enum MarshResource {
         this.foragingXpPerItem = foragingXpPerItem;
         this.forestWhispers = forestWhispers;
         this.respawnTicks = respawnTicks;
+        this.respawnJitterTicks = respawnJitterTicks;
         this.currency = currency;
         this.island = island;
+    }
+
+    public int rollRespawnTicks() {
+        return respawnTicks + (respawnJitterTicks == 0 ? 0 : ThreadLocalRandom.current().nextInt(respawnJitterTicks + 1));
     }
 
     public int rollAmount() {
