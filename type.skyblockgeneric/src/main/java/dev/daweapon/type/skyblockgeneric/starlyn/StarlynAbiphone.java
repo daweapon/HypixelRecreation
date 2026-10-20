@@ -69,10 +69,16 @@ public abstract class StarlynAbiphone extends AbiphoneNPC {
         StarlynProfile.Entry latest = StarlynContests.data((SkyBlockPlayer) player, sister).claimable().stream()
                 .max(Comparator.comparingLong(StarlynProfile.Entry::getDay)).orElse(null);
         if (latest != null) {
-            sets.add(DialogueSet.builder().key("results").lines("Hey, the results for my latest contest are in! You reached the "
-                    + latest.getBracket().formatted() + " <r><f>bracket with <a>" + StringUtility.commaify(latest.score()) + " points<f>!").build());
+            sets.add(DialogueSet.builder().key("results").lines(resultLines(latest)).build());
         }
         return sets.toArray(DialogueSet[]::new);
+    }
+
+    String[] resultLines(StarlynProfile.Entry entry) {
+        return new String[]{
+                "You reached the " + entry.getBracket().formatted() + " <r><f>Bracket in my contest!",
+                "You earned a total of <b>" + StringUtility.commaify(entry.score()) + " <f>points!",
+                "Come see me at " + sister.getIsland() + " <f>or <6><l>CLICK HERE <r><f>to claim your rewards!"};
     }
 
     @Override

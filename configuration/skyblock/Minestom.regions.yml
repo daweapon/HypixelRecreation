@@ -865,21 +865,21 @@ regions:
     serverType: SKYBLOCK_TORRHUS_CANYON
   - id: mirias_hut
     type: MIRIAS_HUT
-    x1: -664
-    y1: 90
-    z1: 210
+    x1: -660
+    y1: 94
+    z1: 214
     x2: -644
-    y2: 110
-    z2: 231
+    y2: 108
+    z2: 229
     serverType: SKYBLOCK_TORRHUS_CANYON
   - id: critter_safari_entrance
     type: CRITTER_SAFARI_ENTRANCE
-    x1: -735
-    y1: 85
-    z1: 126
-    x2: -706
-    y2: 110
-    z2: 156
+    x1: -740
+    y1: 90
+    z1: 170
+    x2: -710
+    y2: 112
+    z2: 198
     serverType: SKYBLOCK_TORRHUS_CANYON
   - id: torrhus_springs
     type: TORRHUS_SPRINGS
@@ -912,10 +912,55 @@ regions:
     type: ANTS_CAVE
     x1: -640
     y1: 60
-    z1: 195
-    x2: -600
-    y2: 90
-    z2: 225
+    z1: 186
+    x2: -574
+    y2: 92
+    z2: 215
+    serverType: SKYBLOCK_TORRHUS_CANYON
+  - id: torrhus_heights
+    type: TORRHUS_HEIGHTS
+    x1: -800
+    y1: 135
+    z1: 100
+    x2: -470
+    y2: 255
+    z2: 360
+    serverType: SKYBLOCK_TORRHUS_CANYON
+  - id: spring_path
+    type: SPRING_PATH
+    x1: -640
+    y1: 95
+    z1: 205
+    x2: -585
+    y2: 125
+    z2: 230
+    serverType: SKYBLOCK_TORRHUS_CANYON
+  - id: pangolin_hideaway
+    type: PANGOLIN_HIDEAWAY
+    x1: -552
+    y1: 88
+    z1: 218
+    x2: -530
+    y2: 102
+    z2: 236
+    serverType: SKYBLOCK_TORRHUS_CANYON
+  - id: hotspot_haven
+    type: HOTSPOT_HAVEN
+    x1: -668
+    y1: 95
+    z1: 156
+    x2: -640
+    y2: 113
+    z2: 180
+    serverType: SKYBLOCK_TORRHUS_CANYON
+  - id: desert_temple
+    type: DESERT_TEMPLE
+    x1: -626
+    y1: 33
+    z1: 230
+    x2: -594
+    y2: 62
+    z2: 258
     serverType: SKYBLOCK_TORRHUS_CANYON
   - id: crimson_isle
     type: CRIMSON_ISLE

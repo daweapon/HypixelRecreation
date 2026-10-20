@@ -807,8 +807,7 @@ items:
     material: paper
     name: "Ruby Veilshroom"
     rarity: COMMON
-    unavailable: "Source unconfirmed"
-    source: "Collection item (exact source unconfirmed)"
+    source: "Harvested from Ruby Veilshrooms in the Torrhus Springs caves"
     lore:
       - "§8Collection Item"
       - ""

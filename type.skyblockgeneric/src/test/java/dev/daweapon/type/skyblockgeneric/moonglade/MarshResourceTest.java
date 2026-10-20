@@ -46,6 +46,16 @@ class MarshResourceTest {
     }
 
     @Test
+    void veilshroomsYieldFourAndPayDesertWhispersOnTorrhus() {
+        assertEquals(ItemType.RUBY_VEILSHROOM, MarshResource.RUBY_VEILSHROOM.getItem());
+        assertEquals(4, MarshResource.RUBY_VEILSHROOM.rollAmount());
+        assertEquals(dev.daweapon.type.skyblockgeneric.hotf.HotfCurrency.DESERT, MarshResource.RUBY_VEILSHROOM.getCurrency());
+        assertEquals(dev.daweapon.commons.ServerType.SKYBLOCK_TORRHUS_CANYON, MarshResource.RUBY_VEILSHROOM.getIsland());
+        assertSame(MarshResource.RUBY_VEILSHROOM, MarshResource.ofBlock(Block.CRIMSON_FUNGUS));
+        assertEquals(Block.AIR, MarshResource.RUBY_VEILSHROOM.depletedBlock(Block.CRIMSON_FUNGUS));
+    }
+
+    @Test
     void collectorDoublesUpToOneHundredPercentAndYummyIsInTheCatalogue() throws Exception {
         HotfRegistry registry = HotfRegistry.load(Path.of("../configuration/skyblock/hotf"));
         assertTrue(registry.perk(MarshGathering.COLLECTOR_PERK).available());

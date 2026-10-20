@@ -19,8 +19,6 @@ chapters:
         description: "<6>Honeyhives<7> can be found around <6>Torrhus Canyon<7> - there's even one right by the entrance of the island! You can reach into them in search of <e>Loot<7>, such as <9>Shards<7> and <6>Honeycomb<7>. They refill after a while and are the main source of the <a>Honeycomb Collection.<7>"
         rewards: { items: { HONEYCOMB: 16 } }
         trigger: honeyhive.loot
-        available: false
-        unavailable: "Honeyhives are not built"
     completion:
       hotf: 250
       foraging: 2500

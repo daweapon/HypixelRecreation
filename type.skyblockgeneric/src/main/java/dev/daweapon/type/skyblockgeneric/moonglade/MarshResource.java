@@ -1,6 +1,8 @@
 package dev.daweapon.type.skyblockgeneric.moonglade;
 
+import dev.daweapon.commons.ServerType;
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfCurrency;
 import dev.daweapon.type.skyblockgeneric.starlyn.StarlynResource;
 import lombok.Getter;
 import net.minestom.server.instance.block.Block;
@@ -11,8 +13,9 @@ import java.util.concurrent.ThreadLocalRandom;
 
 @Getter
 public enum MarshResource {
-    LUSHLILAC(ItemType.LUSHLILAC, StarlynResource.LUSHLILAC, Material.FLOWERING_AZALEA, "berries.collect", 1, 1, 25, 100, 30 * 20),
-    SEA_LUMIES(ItemType.SEA_LUMIES, StarlynResource.SEA_LUMIES, Material.SEA_PICKLE, "sealumies.collect", 1, 4, 3.75, 0, 10 * 20);
+    LUSHLILAC(ItemType.LUSHLILAC, StarlynResource.LUSHLILAC, Material.FLOWERING_AZALEA, "berries.collect", 1, 1, 25, 100, 30 * 20, HotfCurrency.FOREST, ServerType.SKYBLOCK_GALATEA),
+    SEA_LUMIES(ItemType.SEA_LUMIES, StarlynResource.SEA_LUMIES, Material.SEA_PICKLE, "sealumies.collect", 1, 4, 3.75, 0, 10 * 20, HotfCurrency.FOREST, ServerType.SKYBLOCK_GALATEA),
+    RUBY_VEILSHROOM(ItemType.RUBY_VEILSHROOM, StarlynResource.RUBY_VEILSHROOM, Material.CRIMSON_FUNGUS, "veilshroom.collect", 4, 4, 16, 200, 52 * 20 + 10, HotfCurrency.DESERT, ServerType.SKYBLOCK_TORRHUS_CANYON);
 
     private final ItemType item;
     private final StarlynResource contestResource;
@@ -23,9 +26,11 @@ public enum MarshResource {
     private final double foragingXpPerItem;
     private final long forestWhispers;
     private final int respawnTicks;
+    private final HotfCurrency currency;
+    private final ServerType island;
 
     MarshResource(ItemType item, StarlynResource contestResource, Material source, String chapterTrigger, int minimum, int maximum,
-                  double foragingXpPerItem, long forestWhispers, int respawnTicks) {
+                  double foragingXpPerItem, long forestWhispers, int respawnTicks, HotfCurrency currency, ServerType island) {
         this.item = item;
         this.contestResource = contestResource;
         this.source = source;
@@ -35,6 +40,8 @@ public enum MarshResource {
         this.foragingXpPerItem = foragingXpPerItem;
         this.forestWhispers = forestWhispers;
         this.respawnTicks = respawnTicks;
+        this.currency = currency;
+        this.island = island;
     }
 
     public int rollAmount() {

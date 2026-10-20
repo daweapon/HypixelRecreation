@@ -8,6 +8,11 @@ sections:
     lines:
       - "Reach it from Moonglade Marsh, or with /warp torrhus. Helix trees give Helix Logs, Desert Whispers and Tree Gifts."
       - "Talk to Helia for the Torrhus Chapters, then head down the Spring Path to find Miria."
+  - heading: "Honeyhives and Ruby Veilshrooms"
+    colour: "<6>"
+    lines:
+      - "Right-click a Honeyhive for 16 to 64 Honeycomb plus coins, Enchanted Honeycomb or a Honeybuzz or Queen Bee Shard. Each hive refills after 60 minutes."
+      - "Ruby Veilshrooms grow in the Springs caves. Each one gives 4 Ruby Veilshrooms and Desert Whispers, and grows back after about a minute."
   - heading: "Desert Whispers"
     colour: "<6>"
     lines:
@@ -20,6 +25,11 @@ sections:
       - "Miria hosts a Starlyn Contest every SkyBlock Day. Reach Uncommon or better for a Safari Ticket."
       - "Spend Miria's Coupons in her shop: Miria's Power, Helix Fortune, Personal Bests, a Sloth pet, talismans, shards and books."
       - "Two-for-one gives a chance at a second Safari Ticket."
+  - heading: "Sidebar and zones"
+    colour: "<e>"
+    lines:
+      - "While you take part in Agatha's or Miria's Contest the sidebar shows the time left, your bracket and what the next bracket needs."
+      - "Whispers you earn appear on the sidebar, and every Torrhus zone shows its New Area Discovered tips the first time you enter it."
   - heading: "Torrhus Chapters"
     colour: "<2>"
     lines:

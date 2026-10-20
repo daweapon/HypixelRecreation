@@ -131,6 +131,7 @@ public final class HotfRewards {
         long boosted = Math.round(base * HotfService.whisperMultiplier(player));
         if (currency == HotfCurrency.FOREST) boosted += ReforgeLoadout.forestWhispers(player, base);
         HotfService.addWhispers(player, currency, boosted);
+        WhisperTracker.record(player, boosted);
         return boosted;
     }
 }

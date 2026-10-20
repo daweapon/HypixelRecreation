@@ -159,6 +159,13 @@ public class SkyBlockScoreboard {
             if (hasCopper) {
                 copperLine.line(Text.key("scoreboard.skyblock.copper_line", StringUtility.commaify(Math.floor(garden.getCopper()))));
             }
+            dev.daweapon.type.skyblockgeneric.hotf.WhisperTracker.Snapshot whispers = dev.daweapon.type.skyblockgeneric.hotf.HotfService.onForagingIsland()
+                ? dev.daweapon.type.skyblockgeneric.hotf.WhisperTracker.recent(player, System.currentTimeMillis()) : null;
+            TextBody.Section whisperLine = purse.child("whispers").when(() -> whispers != null);
+            if (whispers != null) {
+                whisperLine.line(Text.key("scoreboard.skyblock.whispers_line",
+                    dev.daweapon.type.skyblockgeneric.starlyn.StarlynSidebar.compact(whispers.total()), whispers.delta()));
+            }
             boolean hasSowdust = garden.getSowdust() >= 1;
             TextBody.Section sowdustLine = purse.child("sowdust").when(() -> hasSowdust);
             if (hasSowdust) {
@@ -252,7 +259,18 @@ public class SkyBlockScoreboard {
             }
         }
 
-        boolean objectiveAllowed = !challenge && !electionRoom && !darkAuction && !seasonalEventActive && !contestShown;
+        dev.daweapon.type.skyblockgeneric.starlyn.StarlynSidebar.Lines starlyn = !electionRoom && !challenge && !darkAuction
+            && !seasonalEventActive && !contestShown ? dev.daweapon.type.skyblockgeneric.starlyn.StarlynSidebar.of(player) : null;
+        boolean starlynShown = starlyn != null;
+        TextBody.Section starlynContest = body.section("starlyn_contest").when(() -> starlynShown);
+        if (starlynShown) {
+            starlynContest.line(BLANK);
+            starlynContest.line(Text.parse(starlyn.title()));
+            starlynContest.line(Text.parse(starlyn.bracket()));
+            starlynContest.line(Text.parse(starlyn.requirement()));
+        }
+
+        boolean objectiveAllowed = !challenge && !electionRoom && !darkAuction && !seasonalEventActive && !contestShown && !starlynShown;
         boolean missionObjective = objectiveAllowed && region != null
             && !missionData.getActiveMissions(region.getType()).isEmpty();
         QuestObjective questObjective = objectiveAllowed && !missionObjective ? QuestObjectives.current(player) : null;

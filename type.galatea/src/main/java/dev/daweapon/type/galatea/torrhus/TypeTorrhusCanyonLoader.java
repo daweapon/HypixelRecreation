@@ -13,6 +13,8 @@ import dev.daweapon.type.generic.tab.TablistManager;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
 import dev.daweapon.type.skyblockgeneric.tab.SkyBlockTablistManager;
 import dev.daweapon.type.skyblockgeneric.tab.TabLocation;
+import dev.daweapon.type.skyblockgeneric.user.QuestObjectives;
+import dev.daweapon.type.skyblockgeneric.torrhus.Honeyhives;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
 import org.jetbrains.annotations.Nullable;
@@ -31,11 +33,13 @@ public class TypeTorrhusCanyonLoader implements SkyBlockTypeLoader {
 
     @Override
     public void onInitialize(MinecraftServer server) {
+        QuestObjectives.register(HeliaObjective::of);
         Logger.info("TypeTorrhusCanyonLoader initialized!");
     }
 
     @Override
     public void afterInitialize(MinecraftServer server) {
+        Honeyhives.register(MinecraftServer.getSchedulerManager());
     }
 
     @Override

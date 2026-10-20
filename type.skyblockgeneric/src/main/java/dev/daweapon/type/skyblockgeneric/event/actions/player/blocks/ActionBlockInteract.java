@@ -43,6 +43,12 @@ public class ActionBlockInteract implements HypixelEventClass {
         }
 
         if (event.getHand() == net.minestom.server.entity.PlayerHand.MAIN
+                && dev.daweapon.type.skyblockgeneric.torrhus.Honeyhives.handle(player, event.getBlockPosition(), event.getBlock())) {
+            event.setCancelled(true);
+            return;
+        }
+
+        if (event.getHand() == net.minestom.server.entity.PlayerHand.MAIN
                 && dev.daweapon.type.skyblockgeneric.moonglade.MarshGathering.handle(player, event.getBlockPosition(), event.getBlock())) {
             event.setCancelled(true);
             return;

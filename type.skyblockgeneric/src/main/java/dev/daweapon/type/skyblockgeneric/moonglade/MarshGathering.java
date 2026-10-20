@@ -1,6 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.moonglade;
 
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.generic.event.HypixelEventHandler;
 import dev.daweapon.type.generic.utility.ScheduleUtility;
 import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
@@ -40,7 +41,7 @@ public final class MarshGathering {
 
     public static boolean handle(SkyBlockPlayer player, Point position, Block block) {
         MarshResource resource = MarshResource.ofBlock(block);
-        if (resource == null || !HotfService.onForagingIsland() || player.getSkyblockDataHandler() == null) return false;
+        if (resource == null || !HotfService.onForagingIsland() || !onIslandOf(resource) || player.getSkyblockDataHandler() == null) return false;
         Instance instance = player.getInstance();
         if (instance == null) return true;
         long key = ((long) position.blockX() & 0x3FFFFFFL) << 38 | ((long) position.blockZ() & 0x3FFFFFFL) << 12 | (position.blockY() & 0xFFFL);
@@ -54,6 +55,10 @@ public final class MarshGathering {
         return true;
     }
 
+    private static boolean onIslandOf(MarshResource resource) {
+        return HypixelConst.getTypeLoader().getType() == resource.getIsland();
+    }
+
     private static void harvest(SkyBlockPlayer player, MarshResource resource, Point position) {
         int base = resource.rollAmount();
         int amount = base;
@@ -65,7 +70,7 @@ public final class MarshGathering {
         HypixelEventHandler.callCustomEvent(new CustomBlockBreakEvent(player, resource.getSource(), position, drops, false));
 
         player.getSkills().increase(player, SkillCategories.FORAGING, resource.getForagingXpPerItem() * base);
-        if (resource.getForestWhispers() > 0) HotfRewards.gatherWhispers(player, resource.getForestWhispers());
+        if (resource.getForestWhispers() > 0) HotfRewards.gatherWhispers(player, resource.getCurrency(), resource.getForestWhispers());
         for (int i = 0; i < base; i++) StarlynContests.recordGather(player, resource.getContestResource());
         ChapterTriggers.fire(player, resource.getChapterTrigger());
     }
