@@ -106,6 +106,7 @@ public final class VisitorService {
         VisitorCatalogue.Requirement requirement = visitor.requirement();
         return switch (requirement.kind()) {
             case "TALK_TO_NPC" -> data.getTalkedTo().contains(talkTarget(requirement.text()));
+            case "QUEST" -> player != null && dev.daweapon.type.skyblockgeneric.romero.RomeroJulietteQuest.isCompleted(player);
             case "SERVE_UNIQUE" -> requirement.count() == null || data.uniqueServed() >= requirement.count();
             default -> true;
         };

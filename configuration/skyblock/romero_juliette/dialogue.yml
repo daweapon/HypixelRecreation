@@ -1,0 +1,302 @@
+# Romero and Juliette dialogue, copied from the Hypixel SkyBlock Wiki (Romero and Juliette pages, 2026-10-20).
+# {player} is replaced with the player name. Each key is an ordered list of NPC lines.
+romero:
+  bring-item:
+    - "Bring the item I gave you to <e>Juliette<f>!"
+  bring-item-missing:
+    - "Bring the item I gave you to <e>Juliette<f>!"
+    - "If you lost the item, we can fix that! Although, you will have to cover my expenses, considering the sentimental value... <e><l>[CLICK]"
+  r1-start:
+    - "I'm... trying to find gold..."
+    - "but I can only find <e>clay <f>and <e>granite <f>here!"
+    - "I heard of a <6>gold mine <f>in the <a>Savanna Woodland<f>."
+    - "I'd like to craft a gift for my beloved <e>Juliette<f>."
+    - "Could you find some <6>gold <f>for me, please?"
+  r1-complete:
+    - "Thank you so much!"
+    - "Here, could you do me a favor and bring this gift back to <e>Juliette<f>?"
+  r2-start:
+    - "Groceries?"
+    - "<b>Haha!"
+    - "I'm here to get a flower bouquet for <e>Juliette<f>."
+    - "Could you help out and get some flowers?"
+  r2-wrong-flower:
+    - "I was thinking of a bouquet of <c>roses<f>."
+  r2-1-poppy:
+    - "Just one? That's not much of a bouquet!"
+  r2-2-7-poppies:
+    - "Going to need a few more than that!"
+  r2-8-11-poppies:
+    - "I love roses! Can you get more?"
+  r2-12-14-poppies:
+    - "That's a lot of flowers! Maybe a few more..."
+  r2-complete:
+    - "Wow, They're <d><o>beautiful<f>!"
+    - "Please bring the bouquet to <e>Juliette<f>!"
+  r3-start:
+    - "I love <a>emeralds<f>!"
+    - "There's <a>emerald <f>on everything I like!"
+    - "This one can't be dislodged!"
+    - "Could you bring me some <a>emerald<f>?"
+  r3-insufficient:
+    - "I'm going to need a full stack of those!"
+  r3-enchanted-emerald:
+    - "Very cool, but regular emeralds will do the trick."
+  r3-enchanted-block:
+    - "Although I adore this pristine piece of emerald, I don't need it yet."
+  r3-block:
+    - "I don't need a whole block!"
+  r3-complete:
+    - "<a>Am"
+    - "-<a>az<f>-"
+    - "-<a>ing<f>!"
+    - "Now bring this gift to <e>Juliette<f>!"
+  r4-start:
+    - "Hey, you again!"
+    - "I wanted mushrooms to concoct a stew,"
+    - "but these <c>big red <f>ones won't cut it."
+    - "I need some decent mushrooms."
+  r4-red-mushroom:
+    - "I can't cook a gourmet  stew with tiny mushrooms!"
+    - "I need bigger ones!"
+  r4-brown-mushroom:
+    - "That's not the color of mushroom I'm looking for."
+  r4-red-block:
+    - "<a>Sweet! <f>Just what I need!"
+    - "<c>EXCEPT<f>... Could you enchant it?"
+    - "I need the perfect stew for my beloved <e>Juliette<f>."
+  r4-brown-block:
+    - "That's a big mushroom that I don't need."
+    - "It's well known that good stews aren't made from brown mushrooms."
+  r4-enchanted-brown-block:
+    - "I need <c>red mushrooms<f>."
+  r4-complete:
+    - "<a>Fantastic!"
+    - "There's some stew for <e>Juliette<f>!"
+    - "<a>Mmh! <f>Tastes great!"
+  r5-start:
+    - "<b><o>So cold! <f>I wish I had <6>coffee <f>right now..."
+    - "I want to reach the <e>moon <f>for <e>Juliette<f>."
+    - "Literally!"
+    - "I wish I could jump like a <a>Rabbit <f>and grab a chunk of it."
+  r5-wrong-potion:
+    - "A potion might do the trick, but not quite that one."
+  r5-rabbit-not-6:
+    - "Rabbit potion? Sounds <a>great<f>!"
+    - "Although... could you bring a more <b>potent one?"
+    - "I don't want to take any chances!"
+  r5-no-coffee:
+    - "<a>Awesome <f>potion!"
+    - "Any chance you could have it taste like <6>coffee<f>?"
+    - "Come back with a <6>caffeinated <f>beverage, thanks!"
+  r5-complete:
+    - "<a>Thanks!"
+    - "See ya later!"
+    - "Bring the chunk to <e>Juliette<f>!"
+  r6-start:
+    - "Hi friend!"
+    - "I want to make a <c>secret gift <f>for <e>Juliette<f>."
+    - "I collected tons of <6>gold<f>..."
+    - "Now I just need <c>enough heat <f>to melt it!"
+  r6-flint:
+    - "That's not even close to <c>hot<f>!"
+  r6-lava:
+    - "*tastes it*"
+    - "This is the kind of lava I need..."
+    - "Except I need <c>hotter<f>."
+  r6-magical-lava:
+    - "This is too magical for my taste."
+  r6-complete:
+    - "<a>Perfect!"
+    - "Thank you so much for helping with all my gift ideas."
+    - "Can you bring this one to <e>Juliette<f>?"
+  r7-start:
+    - "I'm trying to solve this <b>Rubix Prism<f>."
+    - "Going to need someone wicked <b>smart <f>to solve it."
+  r7-int-250:
+    - "You're pretty smart."
+    - "I bet you wish you were <b>smarter<f>, though!"
+  r7-int-500:
+    - "While very astute."
+    - "you don't have quite what it takes for the <b>Prism<f>!"
+  r7-int-750:
+    - "Can you somehow get even more <b>intelligence<f>?"
+  r7-int-900:
+    - "I can definitely see it, your brain barely fits your head."
+    - "Just not quite <b>genius <f>enough to solve the <b>Prism<f>!"
+  r7-int-1150:
+    - "If I was to quantify it, I'd say you need <b>1,291 Intelligence<f>."
+  r7-complete:
+    - "<a>Incredible!"
+    - "You solved the Prism!"
+    - "Please, bring it to <e>Juliette <f>and show her how smart I am."
+  r8-start:
+    - "<e>Juliette <f>keeps talking to me about this other person."
+    - "I don't know what's going, they meet <o>over and over<f>!"
+    - "Our <c>love <f>is stronger than theirs!"
+    - "I'm waiting for this other person to show up."
+    - "I'll need my <a>favorite weapon<f>, can you fetch it for me?"
+  r8-jerry:
+    - "Wow."
+  r8-emerald:
+    - "That's not even a weapon!"
+    - "I <a>do <f>like it though!"
+  r8-weak-sword:
+    - "That sword is <c>weak!"
+    - "Besides, would you really give it to me?"
+  r8-complete:
+    - "This is <a>exactly <f>what I need!"
+    - "Now I just have to wait for the pretendent."
+    - "Please bring this poem to <e>Juliette<f>."
+    - "I hope she'll see the reason."
+  r9-start:
+    - "It's you, {player}!"
+    - "I need your help to win <e>Juliette <f>back."
+    - "My plan is to assemble the greatest <c>bouquet <f>ever!"
+    - "I need a <d><o>ridiculous <f>amount of flowers."
+  r9-complete:
+    - "That's <a>exquisite<f>!!"
+    - "With this, I can get enough flowers to win <e>Juliette <f>back!"
+  r10-before-suit:
+    - "{player}! You're the <e>best person <f>to turn the day into something memorable!"
+    - "But first, you should <6>wear something nice<f>!"
+  r10-after-suit:
+    - "<a>Looking slick!"
+    - "You really look stunning!"
+    - "<a>Thank you <f>so much for reuniting <e>Juliette <f>and I."
+    - "Please, one last time, give this to <e>Juliette<f>."
+  idle:
+    - "I love <e>Juliette<f>!"
+  garden-start:
+    - "Fancy seeing you here, friend! Today is a special day for me, as I am seeing Juliette! Think you can help me get her some flowers?"
+  garden-complete:
+    - "You're a lifesaver! Today's going to be the best day ever! Well, after my wedding day, that is."
+  garden-deny:
+    - "Just because I see Juliette every day doesn't mean it's not a reason to celebrate."
+juliette:
+  not-holding:
+    - "You found <e>Romero<f>?"
+    - "Did he have anything for me?"
+    - "<7>(Hold Romero's gift to progress)"
+  j1-start:
+    - "Nice to meet you!"
+    - "Could you find my dear <e>Romero<f>?"
+    - "He's in a cave somewhere under the <a>Savanna Woodland<f>."
+    - "..."
+    - "Oh!"
+    - "He wears glasses and blends well in a crowd!"
+  j1-complete:
+    - "You found <e>Romero<f>? That's weird, I just saw him!"
+    - "He wanted me to have this? <d>So sweet<f>!"
+    - "..."
+    - "A <e>yellow rock<f>? What's the point of <o>that<f>?"
+    - "Here, <a>you keep it<f>!"
+    - "Since you're here, can you find <e>Romero <f>again?"
+    - "He said he was getting groceries at the downtown markets."
+  j2-start:
+    - "Since you're here, can you find <e>Romero <f>again?"
+    - "He said he was getting groceries at the downtown markets."
+  j2-complete:
+    - "<e>Romero<f>? He just came over with the groceries."
+    - "These <c>flowers <f>are for me?"
+    - "That's <d>so kind <f>of you!"
+    - "<o>You know I'm with Romero, right?"
+    - "Dear, sorry for the inconvenience..."
+    - "Can you please find <e>Romero <f>again?"
+    - "He's at some sort of <a>emerald <f>altar..."
+  j3-start:
+    - "Dear, sorry for the inconvenience..."
+    - "Can you please find <e>Romero <f>again?"
+    - "He's at some sort of <a>emerald <f>altar..."
+  j3-complete:
+    - "<d>Oof! <f>Why did you bring this all the way here?"
+    - "How is that a <o>gift<f>?"
+    - "Just <a>keep it<f>! I don't want this!"
+    - "What I want is <e>Romero<f>!"
+    - "For some reason, he's now looking for..."
+    - "The <c>largest<f>, most <4>evil <f>patch of fungus ever!"
+  j4-start:
+    - "What I want is <e>Romero<f>!"
+    - "For some reason, he's now looking for..."
+    - "The <c>largest<f>, most <4>evil <f>patch of fungus ever!"
+  j4-complete:
+    - "Stew? I <d>love <f>stew!"
+    - "..."
+    - "<c>!!!"
+    - "<c>Yuck!!!"
+    - "<c>Yuck!!!"
+    - "<c>Yuck!!!"
+    - "<c>Yuck!!!"
+    - "<c>Yuck!!!"
+    - "<c><l>DISGUSTING!"
+    - "Is that a stew from <c>hell<f>?"
+    - "Maybe <e>Romero <f>should give you cooking lessons!"
+    - "Oh! I love <e>Romero<f>! <o>He <f>has so many skills."
+    - "Did you know he likes <e>photography<f>?"
+    - "Just now, he went to take pictures of the old castle."
+    - "Go find him!"
+  j5-start:
+    - "Oh! I love <e>Romero<f>! <o>He <f>has so many skills."
+    - "Did you know he likes <e>photography<f>?"
+    - "Just now, he went to take pictures of the old castle."
+    - "Go find him!"
+  j5-complete:
+    - "You really believe that this is from the Moon?"
+    - "How? Someone flew up there?"
+    - "<a>Thanks<f>, I guess."
+    - "Actually, I heard <e>Romero <f>flew close to the <c>Sun<f>."
+    - "Sounds more like a metaphor, like..."
+    - "He went to where <6>gold <f>is smelted."
+    - "Please find him, wherever that is!"
+  j6-start:
+    - "Actually, I heard <e>Romero <f>flew close to the <c>Sun<f>."
+    - "Sounds more like a metaphor, like..."
+    - "He went to where <6>gold <f>is smelted."
+    - "Please find him, wherever that is!"
+  j6-complete:
+    - "This is a <d>wonderful <f>gift!"
+    - "I will keep this one for myself."
+    - "Sometimes, some things have to remain a mystery."
+    - "About something not so secret, can you get in touch with <e>Romero<f>?"
+    - "He told me he's in <a>his home<f>."
+  j7-start:
+    - "About something not so secret, can you get in touch with <e>Romero<f>?"
+    - "He told me he's in <a>his home<f>."
+  j7-complete:
+    - "Uh? <e>Romero <f>solved his cube?"
+    - "That's unbelievable."
+    - "No, really, I don't believe it at all."
+    - "I don't know why <e>Romero <f>is trying to be so unlike himself lately."
+    - "I <d>like <f>him just the way he is!"
+    - "He says he's getting equipment for a duel."
+    - "Can you find <e>Romero <f>before he hurts himself?"
+  j8-start:
+    - "I don't know why <e>Romero <f>is trying to be so unlike himself lately."
+    - "I <d>like <f>him just the way he is!"
+    - "He says he's getting equipment for a duel."
+    - "Can you find <e>Romero <f>before he hurts himself?"
+  j8-complete:
+    - "This is a <d>wonderful <f>poem."
+    - "But, does he really think there's someone else?"
+    - "I can't possibly imagine why he'd think that."
+    - "<e>Romero <f>went to meditate at his retreat."
+    - "It's the smallest house in <a>SkyBlock<f>."
+    - "Please find him, I'm worried!"
+  j9-start:
+    - "<e>Romero <f>went to meditate at his retreat."
+    - "It's the smallest house in <a>SkyBlock<f>."
+    - "Please find him, I'm worried!"
+  j9-complete:
+    - "Another gift from <e>Romero<f>?"
+    - "Thank <d>you <f>for delivering it."
+    - "I don't know <o>how <e>Romero <f>has such hard a time understanding that <d>I LOVE HIM<f>."
+    - "I like him <d>just the way he is<f>!"
+    - "I <c>don't <f>need tons of gifts to know <o>that<f>."
+  j10-before-suit:
+    - "It's decided, this is the day!"
+    - "We're making it official!"
+  j10-after-suit:
+    - "We can't <a>thank you <f>enough for bringing us together!"
+    - "You're the <d>best<f>, {player}!"
+  idle:
+    - "I love <e>Romero<f>!"

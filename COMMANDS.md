@@ -78,6 +78,7 @@ This catalog covers **131 top-level game-server command definitions** (after mer
 | `/replay <uuid> [hex]` | — | Watch a specific replay by ID. | DEFAULT | No | `type.generic` |
 | `/replays` | — | View your game replays. | DEFAULT | No | `type.generic` |
 | `/rngmeter` | `/experimentrngmeter` | Opens the Experimentation Table RNG Meter, where you pick a Superpairs drop to make guaranteed once the meter fills. | DEFAULT | No | `type.skyblockgeneric` |
+| `/romerorestore` | — | Buys back the quest item Romero gave you for Juliette if you lost it, for 100,000 coins. Internal entry point behind the clickable [CLICK] in Romero's dialogue; only works while you are carrying a gift for Juliette. | DEFAULT | No | `type.skyblockgeneric` |
 | `/selectnpcoption <npc> <option>` | — | Selects an option from an NPC dialogue. Internal NPC dialogue entry point; both arguments are required. | DEFAULT | No | `type.skyblockgeneric` |
 | `/sphinxanswer <sphinx> <choice>` | — | Answers a Sphinx's riddle during Diana's Mythological Ritual. Internal entry point behind the clickable answers; only the player who dug the Sphinx up can answer, once. | DEFAULT | No | `type.skyblockgeneric` |
 | `/slayer start <type> <tier>; /slayer status; /slayer cancel` | — | Starts and manages Slayer quests. Starts a quest, displays status, or cancels it; progression and cost checks apply. | DEFAULT | No | `type.skyblockgeneric` |

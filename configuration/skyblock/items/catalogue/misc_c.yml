@@ -596,7 +596,6 @@ items:
     material: player_head
     name: "Flower Maelstrom"
     rarity: EPIC
-    unavailable: "Needs the Romero and Juliette quest line"
     source: "Step 9 of the Romero and Juliette quest"
     lore:
       - "§8Quest Item"

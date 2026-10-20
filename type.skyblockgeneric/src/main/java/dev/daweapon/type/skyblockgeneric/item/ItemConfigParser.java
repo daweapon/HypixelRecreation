@@ -616,7 +616,7 @@ public class ItemConfigParser {
 					int duration = safeConfig.getInt("effect_duration", 180);
 					int amplifier = safeConfig.getInt("effect_amplifier", 0);
 					int alchemyXp = safeConfig.getInt("alchemy_xp", 0);
-					yield new BrewingIngredientComponent(brewingTime, effect, duration, amplifier, alchemyXp);
+					yield new BrewingIngredientComponent(brewingTime, effect, duration, amplifier, alchemyXp, safeConfig.getString("potion_base", null));
 				}
 				case "POTION_DATA" -> {
 					String effect = safeConfig.getString("effect", "SPEED");

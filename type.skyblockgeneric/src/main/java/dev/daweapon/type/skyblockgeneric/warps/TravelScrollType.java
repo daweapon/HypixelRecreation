@@ -79,7 +79,7 @@ public enum TravelScrollType {
             "Spawn in the <b>Howling Cave <7>beneath the <a>Birch Park<7>.",
             Textures.WOLF,
             new ScrollUnlockFound("The Park"),
-            new Pos(-332.5, 90, -54.5, 0, 0),
+            new Pos(-372.5, 84, -60.5, -153, 0),
             Rank.MVP_PLUS),
     PARK_JUNGLE_ISLAND("jungle", "<a>The Park <7>- <2>Jungle Island",
             "Spawn on the <2>Jungle Island<7>.",

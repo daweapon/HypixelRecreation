@@ -359,6 +359,15 @@ regions:
     y2: 59
     z2: -122
     serverType: THE_PARK
+  - id: howling_cave
+    type: HOWLING_CAVE
+    x1: -406
+    y1: 92
+    z1: -90
+    x2: -363
+    y2: 75
+    z2: -40
+    serverType: THE_PARK
   - id: trial_of_fire
     type: TRIALS_OF_FIRE
     x1: -369

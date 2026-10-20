@@ -604,7 +604,6 @@ items:
     material: sunflower
     name: "Rose Bouquet"
     rarity: COMMON
-    unavailable: "Needs the Juliette Rubix quest in the Park, which is not built"
     source: "Juliette quest item (The Park)"
     lore:
       - "§8Quest Item"
@@ -2944,7 +2943,6 @@ items:
     material: player_head
     name: "Solved Rubix Prism"
     rarity: EPIC
-    unavailable: "Needs the Juliette Rubix quest in the Park, which is not built"
     source: "Juliette quest item (The Park)"
     lore:
       - "§8Quest Item"

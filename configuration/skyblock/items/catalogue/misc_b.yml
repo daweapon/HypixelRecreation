@@ -3435,7 +3435,6 @@ items:
     material: emerald_block
     name: "Fake Emerald Altar"
     rarity: UNCOMMON
-    unavailable: "The Romero and Juliette quest isn't built"
     source: "Romero gives it for 64 Emerald during the Romero and Juliette quest"
     lore:
       - "§8Quest Item"

@@ -27,7 +27,7 @@ public class SavannaWoodlandConfiguration extends SkyBlockRegenConfiguration {
 
     @Override
     public List<Material> getMineableBlocks(Instance instance, Point point) {
-        return List.of(Material.ACACIA_LOG, Material.ACACIA_LEAVES, Material.ACACIA_WOOD);
+        return List.of(Material.ACACIA_LOG, Material.ACACIA_LEAVES, Material.ACACIA_WOOD, Material.GOLD_ORE);
     }
 
     @Override

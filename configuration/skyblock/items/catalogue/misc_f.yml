@@ -1883,7 +1883,6 @@ items:
     material: gold_nugget
     name: "Very Official Yellow Rock of Love!"
     rarity: LEGENDARY
-    unavailable: "Needs the Romero and Juliette quest (The Park NPCs have no quest yet)"
     source: "Romero and Juliette quest item"
     lore:
       - "§8Quest Item"
@@ -2303,7 +2302,6 @@ items:
     material: rabbit_stew
     name: "Mushroom & Warts Stew"
     rarity: RARE
-    unavailable: "Needs the Romero and Juliette quest (The Park NPCs have no quest yet)"
     source: "Romero and Juliette quest item"
     lore:
       - "§8Quest Item"
@@ -3143,7 +3141,6 @@ items:
     material: player_head
     name: "Secret Gift for Juliette"
     rarity: EPIC
-    unavailable: "Needs the Romero and Juliette quest (The Park NPCs have no quest yet)"
     source: "Romero and Juliette quest item"
     lore:
       - "§8Quest Item"
@@ -3263,7 +3260,6 @@ items:
     material: gold_nugget
     name: "Yellow Rock"
     rarity: COMMON
-    unavailable: "Needs the Romero and Juliette quest (The Park NPCs have no quest yet)"
     source: "Romero and Juliette quest item"
     lore:
       - "§8Quest Item"

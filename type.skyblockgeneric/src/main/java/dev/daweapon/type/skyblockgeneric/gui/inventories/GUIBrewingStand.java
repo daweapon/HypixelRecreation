@@ -348,7 +348,7 @@ public class GUIBrewingStand extends HypixelInventoryGUI implements RefreshingGU
             return potion;
         } else if (effectName.equals("AWKWARD") || effectName.equals("THICK") || effectName.equals("MUNDANE")) {
             // Creating a base potion from water bottle
-            newData = new ItemAttributePotionData.PotionData(effectName, 1, 0, false, false);
+            newData = new ItemAttributePotionData.PotionData(effectName, 1, 0, false, false, brewComp.getPotionBase());
         } else if (currentData != null && currentData.getEffectType().equals("AWKWARD")) {
             // Creating an effect potion from awkward potion
             newData = new ItemAttributePotionData.PotionData(
@@ -356,7 +356,8 @@ public class GUIBrewingStand extends HypixelInventoryGUI implements RefreshingGU
                     amplifier + 1, // Level = amplifier + 1
                     baseDuration,
                     false,
-                    false
+                    false,
+                    currentData.getBase()
             );
         } else if (currentData != null && currentData.getEffectType().equals("WATER")) {
             // Some potions can be brewed directly from water (e.g., Weakness)
@@ -426,7 +427,7 @@ public class GUIBrewingStand extends HypixelInventoryGUI implements RefreshingGU
             }
         }
 
-        return new ItemAttributePotionData.PotionData(effectType, level, duration, isSplash, isExtended);
+        return new ItemAttributePotionData.PotionData(effectType, level, duration, isSplash, isExtended, currentData.getBase());
     }
 
     private Rarity getRarityForLevel(int level) {

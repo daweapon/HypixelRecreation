@@ -30,6 +30,7 @@ import dev.daweapon.type.skyblockgeneric.mission.SkyBlockMission;
 import dev.daweapon.type.skyblockgeneric.mission.missions.thepark.jungle.*;
 import dev.daweapon.type.skyblockgeneric.race.RaceInstance;
 import dev.daweapon.type.skyblockgeneric.race.RaceManager;
+import dev.daweapon.type.skyblockgeneric.thepark.HowlingCaveSpawner;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Quaternionf;
@@ -183,6 +184,7 @@ public class TypeTheParkLoader implements SkyBlockTypeLoader, RaceInstance {
 
 		TrialOfFire.init();
 		RyanScene.init();
+		HowlingCaveSpawner.start();
 	}
 
 	private boolean shouldRenderTraps(SkyBlockPlayer player) {

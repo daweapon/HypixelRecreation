@@ -6644,8 +6644,8 @@
           "Just because I see Juliette every day doesn't mean it's not a reason to celebrate."
         ]
       },
-      "available": false,
-      "unavailableReason": "depends on an unbuilt quest: Love's Trial Quest",
+      "available": true,
+      "unavailableReason": null,
       "requirementChecks": [],
       "verified": true,
       "notes": "Georik says Wild Rose only; wiki item list (Sunflower, Moonflower, Wild Rose) preferred"

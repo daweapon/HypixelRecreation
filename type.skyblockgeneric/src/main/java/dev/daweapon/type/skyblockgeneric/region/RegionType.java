@@ -71,7 +71,7 @@ public enum RegionType {
 
     // The Park
     BIRCH_PARK("Birch Park", NamedTextColor.GREEN, BirchParkConfiguration.class),
-    HOWLING_CAVE("Howling Cave"),
+    HOWLING_CAVE("Howling Cave", NamedTextColor.GREEN),
     SPRUCE_WOODS("Spruce Woods", NamedTextColor.GREEN, SpruceWoodsConfiguration.class),
     VIKING_LONGHOUSE("Viking Longhouse", NamedTextColor.AQUA, SpruceWoodsConfiguration.class),
     DARK_THICKET("Dark Thicket", NamedTextColor.GREEN, DarkOakConfiguration.class),

@@ -748,7 +748,6 @@ items:
     material: bone
     name: "Weak Wolf Catalyst"
     rarity: RARE
-    unavailable: "Needs the Soul of the Alpha mob (not built)"
     source: "0.089% (1 in 1,013) drop from the Soul of the Alpha"
     components:
       - id: SELLABLE

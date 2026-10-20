@@ -216,6 +216,8 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         SlayerRegistry.loadAll();
         HotmRegistry.get();
         dev.daweapon.type.skyblockgeneric.hotf.HotfRegistry.get();
+        dev.daweapon.type.skyblockgeneric.romero.RomeroDialogue.get();
+        dev.daweapon.type.skyblockgeneric.romero.RomeroJulietteQuest.registerCrimsonStep();
 
         /**
          * Register commands

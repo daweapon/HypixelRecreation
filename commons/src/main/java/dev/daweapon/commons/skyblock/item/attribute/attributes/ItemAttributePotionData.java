@@ -40,8 +40,9 @@ public class ItemAttributePotionData extends ItemAttribute<ItemAttributePotionDa
             int baseDurationSeconds = Integer.parseInt(parts[2]);
             boolean isSplash = parts.length > 3 && Boolean.parseBoolean(parts[3]);
             boolean isExtended = parts.length > 4 && Boolean.parseBoolean(parts[4]);
+            String base = parts.length > 5 && !parts[5].isEmpty() ? parts[5] : null;
 
-            return new PotionData(effectType, level, baseDurationSeconds, isSplash, isExtended);
+            return new PotionData(effectType, level, baseDurationSeconds, isSplash, isExtended, base);
         } catch (NumberFormatException e) {
             return null;
         }
@@ -55,7 +56,8 @@ public class ItemAttributePotionData extends ItemAttribute<ItemAttributePotionDa
                data.level + ":" +
                data.baseDurationSeconds + ":" +
                data.isSplash + ":" +
-               data.isExtended;
+               data.isExtended + ":" +
+               (data.base == null ? "" : data.base);
     }
 
     @Getter
@@ -68,6 +70,11 @@ public class ItemAttributePotionData extends ItemAttribute<ItemAttributePotionDa
         private int baseDurationSeconds; // Base duration before Alchemy/splash modifiers
         private boolean isSplash;
         private boolean isExtended;
+        private String base;
+
+        public PotionData(String effectType, int level, int baseDurationSeconds, boolean isSplash, boolean isExtended) {
+            this(effectType, level, baseDurationSeconds, isSplash, isExtended, null);
+        }
 
         /**
          * Create a simple potion data with default flags

@@ -214,6 +214,13 @@ items:
         display: Basic Brew
       - id: CUSTOM_DISPLAY_NAME
         display_name: Black Coffee
+      - id: BREWING_INGREDIENT
+        brewing_time_seconds: 20
+        effect: AWKWARD
+        effect_duration: 0
+        effect_amplifier: 0
+        alchemy_xp: 5
+        potion_base: BLACK_COFFEE
       - id: NOT_FINISHED_YET
       - id: SELLABLE
         value: 50.0
@@ -237,6 +244,13 @@ items:
         display: Basic Brew
       - id: CUSTOM_DISPLAY_NAME
         display_name: Cheap Coffee
+      - id: BREWING_INGREDIENT
+        brewing_time_seconds: 20
+        effect: AWKWARD
+        effect_duration: 0
+        effect_amplifier: 0
+        alchemy_xp: 5
+        potion_base: CHEAP_COFFEE
       - id: NOT_FINISHED_YET
       - id: SKULL_HEAD
         texture: a88b212ba4d8ffd300fb5056e45aa4dc25de587e09606d68f87b91b7315ee4d9
@@ -258,6 +272,13 @@ items:
         display: Basic Brew
       - id: CUSTOM_DISPLAY_NAME
         display_name: Decent Coffee
+      - id: BREWING_INGREDIENT
+        brewing_time_seconds: 20
+        effect: AWKWARD
+        effect_duration: 0
+        effect_amplifier: 0
+        alchemy_xp: 5
+        potion_base: DECENT_COFFEE
       - id: NOT_FINISHED_YET
       - id: SKULL_HEAD
         texture: 7ea0f7757185be9df5b2fc9d85d40642ea4fdb4515f314da18f59c696e5be9

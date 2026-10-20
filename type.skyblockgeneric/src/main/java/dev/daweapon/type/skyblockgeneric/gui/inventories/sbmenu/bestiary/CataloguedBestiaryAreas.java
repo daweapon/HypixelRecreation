@@ -5,6 +5,10 @@ import dev.daweapon.type.generic.gui.inventory.item.GUIMaterial;
 import dev.daweapon.type.skyblockgeneric.entity.mob.BestiaryMob;
 import dev.daweapon.type.skyblockgeneric.entity.mob.CataloguedBestiaryMob;
 import dev.daweapon.type.skyblockgeneric.entity.mob.MobType;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.thepark.HowlingCaveMobSpecs;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.thepark.MobHowlingSpirit;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.thepark.MobPackSpirit;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.thepark.MobSoulOfTheAlpha;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobEndermanHigh;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobEndermanLow;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobEndermanMid;
@@ -124,9 +128,10 @@ public final class CataloguedBestiaryAreas {
     };
 
     public static final BestiaryEntry[] THE_PARK = {
-            family("HOWLING_SPIRIT", "Howling Spirit", "Howling at the moon.", 3, 15, MobType.ANIMAL, "69d1d3113ec43ac2961dd59f28175fb4718873c6c448dfca8722317d67"),
-            family("PACK_SPIRIT", "Pack Spirit", "Spirits of long-dead wolves, still prowling the caves for prey.", 3, 15, MobType.ANIMAL, "69d1d3113ec43ac2961dd59f28175fb4718873c6c448dfca8722317d67"),
-            family("SOUL_OF_THE_ALPHA", "Soul of the Alpha", "Ghastly leader of the pack.", 4, 15, MobType.ANIMAL, "d359537c15534f61c1cd886bc118774ed22280e7cdab6613870160aad4ca39"),
+            liveFamily("Howling Spirit", "Howling at the moon.", HowlingCaveMobSpecs.SPIRIT_TEXTURE, new MobHowlingSpirit()),
+            liveFamily("Pack Spirit", "Spirits of long-dead wolves, still prowling the caves for prey.", HowlingCaveMobSpecs.SPIRIT_TEXTURE,
+                    new MobPackSpirit()),
+            liveFamily("Soul of the Alpha", "Ghastly leader of the pack.", HowlingCaveMobSpecs.ALPHA_TEXTURE, new MobSoulOfTheAlpha()),
     };
 
     public static final BestiaryEntry[] JERRY = {

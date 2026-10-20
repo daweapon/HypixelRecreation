@@ -154,6 +154,10 @@ public class ActionNewZoneDisplay implements HypixelEventClass {
                 Text.of("Chop down Dark Oak Logs."),
                 Text.of("Talk to <c>Ryan <f>about the <6>Trial of Fire<f>."));
 
+            case HOWLING_CAVE -> onNewZone(player, RegionType.HOWLING_CAVE,
+                Text.of("Fight for your life against wolves from the past."),
+                Text.of("Trade with Old Shaman Nyko."));
+
             case TRIALS_OF_FIRE -> onNewZone(player, RegionType.TRIALS_OF_FIRE,
                 Text.of("Compete in a <6>Trial of Fire<f>."));
 

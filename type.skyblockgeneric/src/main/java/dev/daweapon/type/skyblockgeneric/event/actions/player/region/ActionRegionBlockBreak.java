@@ -192,6 +192,11 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
                 customDrops.clear();
                 customDrops.add(new SkyBlockItem(crystalOre.getDrop(), java.util.concurrent.ThreadLocalRandom.current()
                         .nextInt(CrystalHollowsOre.MIN_ROUGH_DROP, CrystalHollowsOre.MAX_ROUGH_DROP + 1)));
+            } else if (dev.daweapon.type.skyblockgeneric.romero.YellowRock.isSource(material, breakRegionType)) {
+                customDrops.clear();
+                if (!dev.daweapon.type.skyblockgeneric.romero.YellowRock.silkTouch(new SkyBlockItem(player.getItemInMainHand()))) {
+                    customDrops.add(new SkyBlockItem(ItemType.get("YELLOW_ROCK"), 1));
+                }
             } else if (HardStone.isHardStone(material, breakRegionType)) {
                 customDrops.clear();
                 customDrops.add(new SkyBlockItem(ItemType.HARD_STONE, 1));
@@ -217,7 +222,7 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
 
                 try {
                     MineableBlock mineableBlock = MineableBlock.get(block, region == null ? null : region.getType());
-                    if (mineableBlock != null) {
+                    if (mineableBlock != null && !dev.daweapon.type.skyblockgeneric.romero.YellowRock.isRock(dropItem)) {
                         double baseFortune = player.getStatistics().allStatistics().getOverall(mineableBlock.getBlockType().baseSkillFortune());
                         double specificFortune = player.getStatistics().allStatistics().getOverall(mineableBlock.getBlockType().specificBlockFortune());
                         double fortune = baseFortune + specificFortune

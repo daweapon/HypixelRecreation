@@ -422,6 +422,9 @@ public class SkyBlockDataHandler extends DataHandler {
         HOTF("hotf", false, false, false,
                 DatapointHOTF.class, new DatapointHOTF("hotf")),
 
+        ROMERO_QUEST("romero_quest", false, false, false,
+                DatapointRomero.class, new DatapointRomero("romero_quest")),
+
         MINION_DATA("minions", false, true, false,
                 DatapointMinionData.class, new DatapointMinionData("minions")),
 

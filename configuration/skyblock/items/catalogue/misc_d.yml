@@ -1828,7 +1828,6 @@ items:
     material: end_stone
     name: "Chunk of the Moon"
     rarity: RARE
-    unavailable: "Needs the Romero and Juliette quest in The Park"
     source: "Romero and Juliette quest (The Park); repurchasable from Rusty for 100,000 Coins"
     lore:
       - "§8Quest Item"
@@ -3088,7 +3087,6 @@ items:
     material: paper
     name: "Poem of True Love"
     rarity: EPIC
-    unavailable: "Needs the Romero and Juliette quest in The Park"
     source: "Romero and Juliette quest (The Park)"
     lore:
       - "§8Quest Item"
@@ -3251,7 +3249,6 @@ items:
     material: player_head
     name: "Poorly Wrapped Rock"
     rarity: COMMON
-    unavailable: "Needs the Romero and Juliette quest in The Park"
     source: "Romero and Juliette quest (The Park); repurchasable from Rusty for 100,000 Coins"
     lore:
       - "§8Quest Item"

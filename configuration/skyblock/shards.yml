@@ -161,11 +161,20 @@
       ],
       "sources": [
         {
+          "type": "MOB",
+          "mobs": [
+            "PACK_SPIRIT_30",
+            "HOWLING_SPIRIT_35"
+          ]
+        },
+        {
+          "type": "BLACK_HOLE"
+        },
+        {
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "C7",
@@ -2439,6 +2448,12 @@
         }
       ],
       "sources": [
+        {
+          "type": "MOB",
+          "mobs": [
+            "SOUL_OF_THE_ALPHA_55"
+          ]
+        },
         {
           "type": "TRAP"
         },
