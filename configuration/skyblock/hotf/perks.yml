@@ -61,7 +61,7 @@ perks:
     exponent: 2.9
     offset: 1
     available: false
-    unavailable: "Berries and Island Resources are not built yet"
+    unavailable: "Lushlilac bushes and Berries do not exist and Island Resources are not gatherable"
     lore:
       - "Berries and Island Resources have a <a>{value}%<7> chance to drop double resources."
     effects:
@@ -72,8 +72,6 @@ perks:
     tier: 2
     col: 6
     maxLevel: 1
-    available: false
-    unavailable: "Axe throwing is not built yet"
     lore: []
   - id: deep_waters
     name: "Deep Waters"
@@ -202,10 +200,8 @@ perks:
     tier: 4
     col: 7
     maxLevel: 1
-    available: false
-    unavailable: "Particle-marked logs are not built yet"
     lore:
-      - "A particle appears on every nearby tree. Cutting the marked log grants <a>+10 Sweep<7> on that hit."
+      - "A particle appears on every nearby tree. Cutting the marked log grants you a <a>+10 <2>Sweep<7> on that hit."
   - id: tree_whisperer
     name: "Tree Whisperer"
     kind: PERK
@@ -222,10 +218,8 @@ perks:
     tier: 5
     col: 6
     maxLevel: 1
-    available: false
-    unavailable: "Safari Tickets are not built yet"
     lore:
-      - "The first Tree Gift opened every day will contain a <a>Basic Safari Ticket<7>."
+      - "The first <2>Tree Gift<7> you obtain every day will contain a <2>Basic Safari Ticket<7>."
   - id: homing_axe
     name: "Homing Axe"
     kind: PERK
@@ -233,10 +227,9 @@ perks:
     tier: 6
     col: 1
     maxLevel: 1
-    available: false
-    unavailable: "Axe throwing is not built yet"
     lore:
       - "Axe Throwing gains permanent homing abilities towards trees on Galatea."
+      - "The axe homes on logs regardless if it would follows the optimal cutting style of the tree."
   - id: forest_fisher
     name: "Forest Fisher"
     kind: PERK
@@ -273,8 +266,6 @@ perks:
     maxLevel: 100
     exponent: 2.6
     offset: 1
-    available: false
-    unavailable: "Starlyn Contests are not built yet"
     lore:
       - "Gain <a>{value}%<7> more points towards Starlyn Contests."
     effects:
@@ -337,8 +328,6 @@ perks:
     maxLevel: 10
     exponent: 5.5
     offset: 1
-    available: false
-    unavailable: "Axe throwing is not built yet"
     lore:
       - "Your Axe has a <a>{value}%<7> chance to bounce to a nearby tree when thrown."
     effects:
@@ -367,7 +356,7 @@ perks:
     col: 1
     maxLevel: 1
     available: false
-    unavailable: "Critter hunting rewards are not built yet"
+    unavailable: "Critters, the Moonglade Marsh and Critter Capsule/Lasso/Fishing Net hunting are not built; no Critter mob type or capture event exists"
     lore:
       - "Hunting a Critter grants <3>+25 Forest Whispers<7> on the Moonglade Marsh."
   - id: forest_speed
@@ -406,12 +395,10 @@ perks:
     maxLevel: 10
     exponent: 5.0
     offset: 7
-    available: false
-    unavailable: "The Timber statistic is not built yet"
     lore:
-      - "Grants <6>+{value} Timber<7>."
+      - "Grants <4>{value} Timber<7>."
     effects:
-      - {key: main, base: 0, perLevel: 0.1, scope: ALWAYS}
+      - {key: main, stat: TIMBER, base: 0, perLevel: 0.1, scope: ALWAYS}
   - id: two_for_one
     name: "Two-for-one"
     kind: PERK
@@ -422,7 +409,7 @@ perks:
     exponent: 2.45
     offset: 1
     available: false
-    unavailable: "Miria's Contest is not built yet"
+    unavailable: "Miria's Contest needs Torrhus Canyon, which is not built yet"
     lore:
       - "Grants a <a>{value}%<7> chance to receive an extra Safari Ticket from Miria's Contest rewards."
     effects:

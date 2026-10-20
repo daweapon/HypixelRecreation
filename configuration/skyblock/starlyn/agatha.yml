@@ -1,0 +1,163 @@
+sister: AGATHA
+serverType: SKYBLOCK_GALATEA
+points:
+  treeGift: 10
+  logsPerHundred: {FIG: 3, MANGROVE: 6}
+  hunting:
+    default: 30
+    byShard: {Verdant: 3, Azure: 3, Mossybit: 6, Cod: 6, Coralot: 15, Salmon: 15, Lumisquid: 15, Spike: 15, Shellwise: 45, Mudworm: 45}
+  fishing: {seaCreature: 10, treasure: 25, catch: 4}
+  combat: 8
+  gathering: {LUSHLILAC: 9, SEA_LUMIES: 2}
+brackets:
+  - {bracket: COMMON, points: 25, coupons: 10, whispers: 2500, essence: 10, foragingXp: 10000, hotfXp: 100, bits: 15, prizeChance: 0}
+  - {bracket: UNCOMMON, points: 250, coupons: 15, whispers: 5000, essence: 20, foragingXp: 20000, hotfXp: 200, bits: 30, prizeChance: 0}
+  - {bracket: RARE, points: 1000, coupons: 20, whispers: 7500, essence: 30, foragingXp: 30000, hotfXp: 350, bits: 45, prizeChance: 0}
+  - {bracket: EPIC, points: 2000, coupons: 25, whispers: 10500, essence: 40, foragingXp: 40000, hotfXp: 500, bits: 60, prizeChance: 10}
+  - {bracket: LEGENDARY, points: 3000, coupons: 30, whispers: 12500, essence: 50, foragingXp: 50000, hotfXp: 700, bits: 75, prizeChance: 20}
+  - {bracket: MYTHIC, points: 5000, coupons: 35, whispers: 15000, essence: 60, foragingXp: 50000, hotfXp: 700, bits: 90, prizeChance: 20}
+  - {bracket: DIVINE, points: 8000, coupons: 40, whispers: 17500, essence: 70, foragingXp: 50000, hotfXp: 750, bits: 105, prizeChance: 20}
+  - {bracket: SPECIAL, points: 12000, coupons: 45, whispers: 20000, essence: 80, foragingXp: 50000, hotfXp: 750, bits: 120, prizeChance: 20}
+milestones:
+  - {number: 1, threshold: 0}
+  - {number: 2, threshold: 100, foragingXp: 2500, essence: 100, whisperBuffPercent: 50}
+  - {number: 3, threshold: 500, foragingXp: 10000, essence: 250, whisperBuffPercent: 100}
+  - {number: 4, threshold: 1500, foragingXp: 20000, essence: 500, whisperBuffPercent: 150}
+  - {number: 5, threshold: 3000, foragingXp: 30000, essence: 1000, whisperBuffPercent: 200}
+shop:
+  - kind: LEVEL_CAP
+    id: level_cap
+    icon: JUNGLE_SAPLING
+    tiers:
+      - {award: AGATHA_MILESTONE_4_FORAGING_LEVEL_CAP, milestone: 4, coupons: 250, prizes: 2}
+      - {award: AGATHA_MILESTONE_5_FORAGING_LEVEL_CAP, milestone: 4, coupons: 500, prizes: 5}
+  - kind: POWER
+    id: power
+    name: "Agatha's Power"
+    icon: DIAMOND_AXE
+    tiers:
+      - {milestone: 1, coupons: 20, sweep: 5}
+      - {milestone: 2, coupons: 30, sweep: 10}
+      - {milestone: 3, coupons: 40, sweep: 15}
+      - {milestone: 4, coupons: 50, sweep: 20}
+      - {milestone: 5, coupons: 60, sweep: 25}
+  - kind: FORTUNE
+    id: fig_fortune
+    name: "Fig Fortune"
+    tree: FIG
+    statistic: FIG_FORTUNE
+    iconItem: FIG_LOG
+    milestone: 1
+    perLevel: 4
+    maxLevel: 50
+    couponStep: 5
+    couponCap: 125
+    logItem: ENCHANTED_FIG_LOG
+    logs: [2, 4, 6, 12, 16, 24, 32, 40, 36, 72, 88, 112, 136, 160, 192, 224, 272, 320, 400]
+    materialItem: FIGSTONE
+    material: [3, 4, 5, 6, 8]
+    materialAfter: 10
+    prizeFromLevel: 41
+  - kind: PERSONAL_BEST
+    id: fig_personal_best
+    name: "Fig Personal Best"
+    tree: FIG
+    icon: PAPER
+    milestone: 1
+    coupons: 12
+  - kind: FORTUNE
+    id: mangrove_fortune
+    name: "Mangrove Fortune"
+    tree: MANGROVE
+    statistic: MANGROVE_FORTUNE
+    iconItem: MANGROVE_LOG
+    milestone: 1
+    perLevel: 4
+    maxLevel: 50
+    couponStep: 5
+    couponCap: 125
+    logItem: ENCHANTED_MANGROVE_LOG
+    logs: [2, 4, 6, 12, 16, 24, 32, 40, 36, 72, 88, 112, 136, 160, 192, 224, 272, 320, 400]
+    materialItem: MANGCORE
+    material: [3, 4, 5, 6, 8]
+    materialAfter: 10
+    prizeFromLevel: 41
+  - kind: PERSONAL_BEST
+    id: mangrove_personal_best
+    name: "Mangrove Personal Best"
+    tree: MANGROVE
+    icon: PAPER
+    milestone: 3
+    coupons: 24
+  - kind: ITEM
+    id: crow_shard
+    milestone: 2
+    coupons: 15
+    give: {type: SHARD, shard: C19}
+  - kind: ITEM
+    id: heron_shard
+    milestone: 4
+    coupons: 15
+    give: {type: SHARD, shard: U16}
+  - kind: ITEM
+    id: frog_pet
+    milestone: 1
+    coupons: 20
+    give: {type: PET, item: FROG_PET, rarity: COMMON}
+  - kind: ITEM
+    id: small_frog_treat
+    milestone: 2
+    coupons: 30
+    give: {type: ITEM, item: SMALL_FROG_TREAT}
+  - kind: ITEM
+    id: medium_frog_treat
+    milestone: 3
+    coupons: 40
+    give: {type: ITEM, item: MEDIUM_FROG_TREAT}
+  - kind: ITEM
+    id: large_frog_treat
+    milestone: 4
+    coupons: 50
+    give: {type: ITEM, item: LARGE_FROG_TREAT}
+  - kind: ITEM
+    id: giant_frog_treat
+    milestone: 5
+    coupons: 60
+    give: {type: ITEM, item: GIANT_FROG_TREAT}
+  - kind: ITEM
+    id: moonglade_jewel
+    milestone: 1
+    coupons: 50
+    give: {type: ITEM, item: MOONGLADE_JEWEL}
+  - kind: ITEM
+    id: fighting_booster
+    milestone: 4
+    coupons: 100
+    give: {type: ITEM, item: FIGHTING_BOOSTER}
+  - kind: ITEM
+    id: forest_pledge_book
+    milestone: 3
+    coupons: 30
+    give: {type: BOOK, enchant: FOREST_PLEDGE, level: 3}
+  - kind: ITEM
+    id: moonglade_talisman
+    milestone: 1
+    coupons: 30
+    give: {type: ITEM, item: MOONGLADE_TALISMAN}
+  - kind: ITEM
+    id: moonglade_ring
+    milestone: 3
+    coupons: 30
+    requires: {MOONGLADE_TALISMAN: 1}
+    give: {type: ITEM, item: MOONGLADE_RING}
+  - kind: ITEM
+    id: moonglade_artifact
+    milestone: 5
+    coupons: 30
+    requires: {MOONGLADE_RING: 1}
+    give: {type: ITEM, item: MOONGLADE_ARTIFACT}
+  - kind: ITEM
+    id: shiniest
+    milestone: 5
+    prizes: 20
+    give: {type: ITEM, item: SHINIEST}

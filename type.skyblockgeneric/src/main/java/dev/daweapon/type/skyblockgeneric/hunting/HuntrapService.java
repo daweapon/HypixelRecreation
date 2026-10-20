@@ -134,6 +134,8 @@ public final class HuntrapService {
         }
         int amount = AttributeEffectService.fortunateAmount(player, caught);
         player.getHuntingData().addShards(caught.id(), amount);
+        dev.daweapon.type.generic.event.HypixelEventHandler.callCustomEvent(new dev.daweapon.type.skyblockgeneric.event.custom.ShardCaughtEvent(
+                player, caught, amount, dev.daweapon.type.skyblockgeneric.event.custom.ShardCaughtEvent.Source.HUNTRAP, false));
         HuntrapTier tier = HuntrapTier.valueOf(current.tier());
         player.addAndUpdateItem(tier.itemType());
         player.getHuntingData().getTraps().remove(current);

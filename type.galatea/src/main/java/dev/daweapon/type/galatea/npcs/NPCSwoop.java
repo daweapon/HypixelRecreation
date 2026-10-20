@@ -1,6 +1,11 @@
 package dev.daweapon.type.galatea.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import java.util.List;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
@@ -27,6 +32,11 @@ public class NPCSwoop extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<b>Swoop");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(-579.5, 114, -23.5, 24, 0);
             }
@@ -40,6 +50,33 @@ public class NPCSwoop extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-        event.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (isInDialogue(player)) return;
+        if (!HotfService.isUnlocked(player)) {
+            player.sendMessage("<e>[NPC] <b>Swoop<f>: <7>{}<f>! Have you talked to <b>Hina <f>at the front of the island to get your hands on a <a>Heart of the Forest<f>?", player.getUsername());
+            return;
+        }
+        if (!ChapterTriggers.done(player, "npc.swoop")) {
+            setDialogue(player, "first-interaction").thenRun(() -> ChapterTriggers.fire(player, "npc.swoop"));
+            return;
+        }
+        player.notImplemented();
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return List.of(
+                DialogueSet.builder().key("first-interaction")
+                        .line("Hello <7>{}<f>!", player.getUsername())
+                        .line("<f>Welcome to <2>Galatea<f>!")
+                        .line("<f>I hear you've been busy in <a>The Park<f>. Charlie's a good friend.")
+                        .line("<f>Friends of my friends are my enemies - whoops, my friends I mean!")
+                        .line("<f>You might be wondering why I'm on top of this bush?")
+                        .line("<f>I'm camping it to get the <d>berries <f>before someone else.")
+                        .line("<f>...")
+                        .line("<f>I'm joking! I would never do such thing, haha!")
+                        .line("<f>Never.")
+                        .build()
+        ).toArray(DialogueSet[]::new);
     }
 }

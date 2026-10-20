@@ -140,7 +140,7 @@ public enum SkyBlockEmblems {
             new SkyBlockEmblem("Diamond Mining Helix", Material.DIAMOND_PICKAXE, "<b>ᛝ", null),
             new SkyBlockEmblem("Foraging Clover", Material.OAK_SAPLING, "<7>☘", null),
             new SkyBlockEmblem("Golden Foraging Clover", Material.OAK_SAPLING, "<6>☘", null),
-            new SkyBlockEmblem("Agatha's Jewel", Material.EMERALD, "<7>ꖘ", null),
+            new SkyBlockEmblem("Agatha's Jewel", Material.EMERALD, "<7>ꖘ", SkyBlockLevelCause.getStarlynMilestoneCause("agatha", 5)),
             new SkyBlockEmblem("Gardener", Material.WHEAT, "<7>ꀾ", null),
             new SkyBlockEmblem("Golden Gardener", Material.WHEAT, "<6>ꀾ", null),
             new SkyBlockEmblem("Collecting Top Hat", Material.LEATHER_HELMET, "<7>ᱪ",

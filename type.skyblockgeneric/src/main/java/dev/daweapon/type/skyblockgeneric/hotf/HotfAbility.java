@@ -5,6 +5,9 @@ import net.minestom.server.item.Material;
 
 @Getter
 public enum HotfAbility {
+    AXE_TOSS("Axe Toss", Material.GOLDEN_AXE,
+            new int[]{10, 10, 10, 10, 10}, new int[]{120, 115, 110, 105, 100},
+            "Grants all Axes the ability to be thrown at trees with <e>Right-Click<7>. Axe Throwing suffers no <a>Sweep<7> penalty for <a>{duration}s<7>."),
     DAMAGE_BOOST("Damage Boost", Material.IRON_AXE,
             new int[]{10, 10, 10, 10, 10}, new int[]{120, 115, 110, 105, 100},
             "Your axe deals <a>double <c>Damage<7> to creatures on <a>Galatea<7> for <a>{duration}s<7>."),

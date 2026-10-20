@@ -425,6 +425,9 @@ public class SkyBlockDataHandler extends DataHandler {
         ROMERO_QUEST("romero_quest", false, false, false,
                 DatapointRomero.class, new DatapointRomero("romero_quest")),
 
+        CHAPTERS("chapters", false, false, false,
+                DatapointChapters.class, new DatapointChapters("chapters")),
+
         MINION_DATA("minions", false, true, false,
                 DatapointMinionData.class, new DatapointMinionData("minions")),
 
@@ -729,6 +732,9 @@ public class SkyBlockDataHandler extends DataHandler {
 
         FARMING_CONTESTS("farming_contests", false, false, false,
                 DatapointFarmingContests.class, new DatapointFarmingContests("farming_contests")),
+
+        STARLYN("starlyn", false, false, false,
+                DatapointStarlyn.class, new DatapointStarlyn("starlyn")),
 
         CARNIVAL("carnival", false, false, false,
                 DatapointCarnival.class, new DatapointCarnival("carnival")),

@@ -5,6 +5,8 @@ import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
 import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointHOTF;
+import dev.daweapon.type.skyblockgeneric.hotf.throwing.AxeThrowing;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Map;
@@ -87,6 +89,9 @@ public final class HotfAbilities {
         data.getAbilityReadyAt().put(ability.name(), System.currentTimeMillis() + ability.cooldown(level) * 1000L);
         HotfService.save(player, data);
         player.sendMessage("<a>You used <6>{}<a>!", ability.getDisplayName());
+        if (ability == HotfAbility.AXE_TOSS) {
+            AxeThrowing.throwWithCooldown(player, new SkyBlockItem(player.getItemInMainHand()), null);
+        }
         return true;
     }
 
@@ -102,6 +107,7 @@ public final class HotfAbilities {
 
     public static void clear(UUID player) {
         ACTIVE_UNTIL.remove(player);
+        AxeThrowing.clear(player);
         SLICER_SWEEP.remove(player);
     }
 }

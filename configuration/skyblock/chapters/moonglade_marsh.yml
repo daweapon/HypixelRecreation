@@ -1,0 +1,476 @@
+island: Moonglade Marsh
+chapters:
+  - number: 1
+    description: "Begin your journey through the forest."
+    tasks:
+      - id: swoop
+        title: "Talk to Swoop"
+        description: "<b>Swoop<7> will teach you the basics of Foraging on <2>Galatea<7>."
+        rewards: { foraging: 100 }
+        trigger: npc.swoop
+      - id: fusion_machine
+        title: "Use the Fusion Machine"
+        description: "The <5>Fusion Machine<7> will be extremely useful in your <a>Hunting<7> journey."
+        rewards: { hunting: 100 }
+        trigger: fusion.use
+      - id: david
+        title: "Talk to David and his Hunters"
+        description: "<b>David<7>'s quest teaches you the ropes of <a>Hunting<7>."
+        rewards: { hunting: 100 }
+        trigger: npc.david
+    completion:
+      hotf: 200
+      foraging: 1500
+      skyblockXp: 5
+      shards: { Phanpyre: 1, Cod: 1, Lapis Zombie: 1 }
+  - number: 2
+    description: "It's time to explore and face new creatures and challenges."
+    tasks:
+      - id: fig_gifts_10
+        title: "Obtain 10 Fig Tree Gifts"
+        description: "Remember to start from the trunk!"
+        rewards: { whispers: 200 }
+        live: "treegifts:FIG"
+        amount: 10
+      - id: agatha_daily
+        title: "Participate in a Daily Agatha Contest"
+        description: "<b>Agatha<7> will reward you every day for participating in her contests!"
+        rewards: { hotf: 100 }
+        trigger: agatha.participated
+      - id: chillshots
+        title: "Kill Chillshots"
+        description: "<c>Chillshots<7> and <c>Chillblades<7> can be found in a hidden cavern under the <b>Village<7>."
+        rewards: { combat: 1000 }
+        trigger: kill.chillshot
+        available: false
+        unavailable: "Chillshots and Chillblades are not built"
+      - id: verdant
+        title: "Catch Verdant Shards"
+        description: "<f>Verdant<7> are green tropical fishes found in lakes and rivers."
+        rewards: { hunting: 500 }
+        live: "shards:Verdant"
+      - id: azure
+        title: "Catch Azure Shards"
+        description: "<f>Azure<7> are rarer, blue variants of Tropical Fishes."
+        rewards: { hunting: 500 }
+        live: "shards:Azure"
+    completion:
+      hotf: 500
+      foraging: 5000
+      skyblockXp: 10
+      items: { PRIME_LUSHLILAC_BONBON: 1 }
+      whispers: 200
+  - number: 3
+    description: "<2>Galatea<7> rewards those who pay attention."
+    tasks:
+      - id: fig_gifts_100
+        title: "Obtain 100 Fig Tree Gifts"
+        description: "Best to find a friend to cut trees together!"
+        rewards: { whispers: 2000 }
+        live: "treegifts:FIG"
+        amount: 100
+      - id: agatha_uncommon
+        title: "Reach <a>UNCOMMON<base> in Agatha's Contest"
+        description: "You can earn points from many activities in <2>Galatea<7>!"
+        rewards: { foraging: 2000 }
+        trigger: agatha.bracket
+        amount: 2
+      - id: fig_hew
+        title: "Hold a Fig Hew"
+        description: "You can find the recipe of the <9>Fig Hew<7> in the <e>Fig Collection<7>!"
+        rewards: { foraging: 2000 }
+        live: "items:FIG_AXE"
+      - id: berries
+        title: "Collect Berries from Bushes"
+        description: "You might encouter creatures when collecting <d>berries<7>!"
+        rewards: { hotf: 500 }
+        trigger: berries.collect
+        available: false
+        unavailable: "Berry bushes are not built"
+      - id: bonbon_shard
+        title: "Obtain a Shard using a Lushlilac Bonbon."
+        description: "Killing monsters while under the effect of a <c>Salt<7> can give you a chance at catching their Shard!"
+        rewards: { hunting: 750 }
+        trigger: shard.salt
+      - id: mossybit
+        title: "Catch Mossybit Shards"
+        description: "<a>Frogs<7> jump around the center lake!"
+        rewards: { hunting: 750 }
+        live: "shards:Mossybit"
+      - id: ground
+        title: "Find something on the ground..."
+        description: "If something shines on the ground, click on it!"
+        rewards: { foraging: 1000 }
+        trigger: ground.find
+        available: false
+        unavailable: "Shining ground spots are not built"
+    completion:
+      hotf: 1000
+      foraging: 10000
+      skyblockXp: 15
+      shards: { Mossybit: 3 }
+      whispers: 1000
+  - number: 4
+    description: "The halfway point in your adventure."
+    tasks:
+      - id: fig_gifts_250
+        title: "Obtain 250 Fig Tree Gifts"
+        description: "With extremely high <2>∮ Sweep<7>, you might be able to cut more than 30 logs in a row!"
+        rewards: { whispers: 6000 }
+        live: "treegifts:FIG"
+        amount: 250
+      - id: agatha_rare
+        title: "Reach <9>RARE<base> in Agatha's Contest"
+        description: "Gather <2>∮ Sweep<7> and <6>☘ Foraging Fortune<7> to gain more points from Trees!"
+        rewards: { foraging: 3000 }
+        trigger: agatha.bracket
+        amount: 3
+      - id: sea_lumies
+        title: "Collect Sea Lumies"
+        description: "<f>Sea Lumies<7> can be found underwater."
+        rewards: { hotf: 500 }
+        trigger: sealumies.collect
+        available: false
+        unavailable: "Sea Lumies are not built"
+      - id: wetwing
+        title: "Fish up a Wetwing"
+        description: "They are so cute!"
+        rewards: { fishing: 2000 }
+        trigger: fish.wetwing
+        available: false
+        unavailable: "Wetwing cannot be fished up yet"
+      - id: kiara
+        title: "Buy a Shard from Kiara"
+        description: "<b>Kiara<7> sells Amphibians and Reptiles, useful for <5>Fusions<7>!"
+        rewards: { hunting: 1000 }
+        trigger: kiara.buy
+        available: false
+        unavailable: "Kiara's shard shop is not built"
+      - id: cod
+        title: "Catch Cod Shards"
+        description: "<f>Cods<7> faint when they spin enough!"
+        rewards: { hunting: 1000 }
+        live: "shards:Cod"
+      - id: salmon
+        title: "Catch Salmon Shards"
+        description: "<a>Salmon<7> can be found in the lake."
+        rewards: { hunting: 1000 }
+        live: "shards:Salmon"
+      - id: tune_beacon
+        title: "Tune a beacon"
+        description: "The beacon can be found near the old tower."
+        rewards: { hotf: 200 }
+        trigger: beacon.tune
+        available: false
+        unavailable: "Beacons are not built"
+      - id: rosemary
+        title: "Level up a perk in Rosemary's Shop"
+        description: "<b>Rosemary<7> might have the best view of the island from up there."
+        rewards: { whispers: 6000 }
+        trigger: rosemary.perk
+    completion:
+      hotf: 2500
+      foraging: 25000
+      hunting: 5000
+      skyblockXp: 20
+      shards: { Salmon: 3, Cod: 3 }
+      whispers: 2000
+  - number: 5
+    description: "You're ready for complex hunts and hidden treasures. Only true foragers thrive this deep."
+    tasks:
+      - id: mangrove_gifts_10
+        title: "Obtain 10 Mangrove Tree Gifts"
+        description: "Always start from the branches with <a>Mangrove<7> Trees."
+        rewards: { whispers: 6000 }
+        live: "treegifts:MANGROVE"
+        amount: 10
+      - id: agatha_epic
+        title: "Reach <5>EPIC<base> in Agatha's Contest"
+        description: "<b>Agatha<7> must be proud."
+        rewards: { foraging: 4000 }
+        trigger: agatha.bracket
+        amount: 4
+      - id: sweep_50
+        title: "Reach 50 Sweep"
+        description: "You should be able to take down <a>Mangrove<7> Trees down now!"
+        rewards: { foraging: 4000 }
+        live: "stat:SWEEP"
+        amount: 50
+      - id: figstone_splitter
+        title: "Hold a Figstone Splitter"
+        description: "The <5>Figstone Splitter<7> is the upgrade of the <9>Fig Hew<7>."
+        rewards: { foraging: 4000 }
+        live: "items:FIGSTONE_AXE"
+      - id: flexbone
+        title: "Fish a Flexbone in the Tomb Floodway"
+        description: "Treasure chances are increased in the <c>Tomb Floodway<7>."
+        rewards: { fishing: 3000 }
+        trigger: fish.flexbone
+        available: false
+        unavailable: "Flexbones cannot be fished up yet"
+      - id: hideonleaf
+        title: "Catch Hideonleaf Shards"
+        description: "<f>Shulkers<7> get easily bothered if you stand on their shell."
+        rewards: { hunting: 1250 }
+        live: "shards:Hideonleaf"
+      - id: coralot
+        title: "Catch Coralot Shards"
+        description: "<f>Axolotl<7> get easily scared when you move."
+        rewards: { hunting: 1250 }
+        live: "shards:Coralot"
+      - id: dreadwing
+        title: "Catch Dreadwing Shards"
+        description: "And those aren't even the largest <9>Phantoms<7>."
+        rewards: { hunting: 1250 }
+        live: "shards:Dreadwing"
+      - id: mudworm
+        title: "Find a Mudworm"
+        description: "Lots of creatures live inside the ground."
+        rewards: { hunting: 1250 }
+        live: "shards:Mudworm"
+      - id: huntrap_1
+        title: "Obtain a Shard using a Huntrap."
+        description: "Traps can be crafted using <a>Tender Wood<7>!"
+        rewards: { hunting: 1250 }
+        trigger: shard.huntrap
+      - id: fusion_only
+        title: "Obtain a Shard only obtainable from a Fusion"
+        description: "Some shards can only be obtained through <5>fusions<7>!"
+        rewards: { hunting: 1250 }
+        trigger: shard.fusiononly
+      - id: booster
+        title: "Apply a Booster"
+        description: "<3>Boosters<7> can be applied on any Foraging gear!"
+        rewards: { foraging: 4000 }
+        trigger: booster.apply
+        available: false
+        unavailable: "Boosters cannot be applied yet"
+    completion:
+      hotf: 5000
+      foraging: 50000
+      hunting: 7500
+      forestEssence: 20
+      skyblockXp: 25
+      shards: { Hideonleaf: 3, Coralot: 3, Sparrow: 1 }
+      whispers: 3000
+  - number: 6
+    description: "It's time to go deeper. The old forest continues underwater."
+    tasks:
+      - id: mangrove_gifts_100
+        title: "Obtain 100 Mangrove Tree Gifts"
+        description: "<a>Mangrove<7> Trees require at least 70 <2>Sweep<7> to start being truly efficient."
+        rewards: { whispers: 20000 }
+        live: "treegifts:MANGROVE"
+        amount: 100
+      - id: agatha_legendary
+        title: "Reach <6>LEGENDARY<base> in Agatha's Contest"
+        description: "You are now a master of the <2>Moonglade Marsh<7>."
+        rewards: { foraging: 5000 }
+        trigger: agatha.bracket
+        amount: 5
+      - id: starborn_temple
+        title: "Become a Starborn Temple Benefactor"
+        description: "Legends say a <d>Starborn Temple<7> can be found in a secret under water room."
+        rewards: { whispers: 10000 }
+        trigger: starborn.benefactor
+        available: false
+        unavailable: "The Starborn Temple is not built"
+      - id: pressure_resistance
+        title: "Get at least 100 Pressure Resistance"
+        description: "There are layers to this lake, with rooms deep beneath it."
+        rewards: { foraging: 1000 }
+        live: "stat:PRESSURE_RESISTANCE"
+        amount: 100
+      - id: drowned
+        title: "Kill Drowned Creatures"
+        description: "<9>Drowned<7> are hiding under the lake."
+        rewards: { combat: 5000 }
+        trigger: kill.drowned
+        available: false
+        unavailable: "The lake's Drowned creatures are not built"
+      - id: piranha
+        title: "Find a Piranha"
+        description: "<9>Piranhas<7> sometimes get baited by fishing bobbers in the <2>Moonglade Marsh<7>."
+        rewards: { hunting: 1500 }
+        live: "shards:Piranha"
+      - id: stridersurfer
+        title: "Catch Stridersurfer Shards"
+        description: "Those <c>lava creatures<7> hide themselves in a corner of the island, out of shame."
+        rewards: { hunting: 1500 }
+        live: "shards:Stridersurfer"
+      - id: elemental
+        title: "Fuse into Elemental Shards"
+        description: "Elemental Shards are the purest forms of creatures."
+        rewards: { hunting: 1500 }
+        trigger: fusion.elemental
+      - id: huntrap_5
+        title: "Obtain 5 Shards using a Huntrap"
+        description: "You can place up to 5 <a>Huntraps<7>, anywhere in the world!"
+        rewards: { hunting: 1500 }
+        trigger: shard.huntrap
+        amount: 5
+      - id: bonbon_25
+        title: "Obtain 25 Shards using a Lushlilac Bonbon"
+        description: "A good hunter always eats a <c>Salt<7> before a long fighting session."
+        rewards: { hunting: 1500 }
+        trigger: shard.salt
+        amount: 25
+      - id: boosters_3
+        title: "Apply 3 different boosters on the same item"
+        description: "You should apply <3>boosters<7> on all your Foraging gear."
+        rewards: { foraging: 5000 }
+        trigger: booster.three
+        available: false
+        unavailable: "Boosters cannot be applied yet"
+      - id: upgrade_beacon
+        title: "Upgrade a Beacon"
+        description: "<9>Beaconmites<7> allow you to find Signal Enhancers, but how can you find a <9>Beaconmite<7>..."
+        rewards: { whispers: 10000 }
+        trigger: beacon.upgrade
+        available: false
+        unavailable: "Beacons are not built"
+      - id: agatha_level_4
+        title: "Reach Agatha Level 4"
+        description: "Friendship level up!"
+        rewards: { foraging: 5000 }
+        trigger: agatha.milestone
+        amount: 4
+      - id: brian
+        title: "Complete the Tier X of Brian's challenge"
+        description: "<3>Brian<7> is just so much cooler than <3>Ryan<7>."
+        rewards: { whispers: 10000 }
+        trigger: brian.tier10
+        available: false
+        unavailable: "Brian's challenge is not built"
+      - id: hotf_tier_4
+        title: "Reach HOTF Tier 4"
+        description: "Almost there!"
+        rewards: { foraging: 5000 }
+        live: "hotftier"
+        amount: 4
+    completion:
+      hotf: 10000
+      foraging: 75000
+      hunting: 12500
+      forestEssence: 50
+      skyblockXp: 30
+      shards: { Drowned: 3, Piranha: 1, Seagull: 1, Beaconmite: 1 }
+      whispers: 5000
+  - number: 7
+    description: "Mastery lies ahead. This chapter tests everything you've learned."
+    tasks:
+      - id: mangrove_gifts_500
+        title: "Obtain 500 Mangrove Tree Gifts"
+        description: "Don't worry, they grow back."
+        rewards: { whispers: 30000 }
+        live: "treegifts:MANGROVE"
+        amount: 500
+      - id: fig_armor
+        title: "Wear a full set of the Fig Armor"
+        description: "The ultimate Forager Build. For now at least."
+        rewards: { foraging: 25000 }
+        live: "worn:FIG_HELMET,FIG_CHESTPLATE,FIG_LEGGINGS,FIG_BOOTS"
+        amount: 4
+      - id: sweep_200
+        title: "Reach 200 ∮ Sweep"
+        description: "<a>Truffle<7> Trees or <a>Pinerise<7> Trees require thousands of ∮ Sweep! But what are those?"
+        rewards: { foraging: 25000 }
+        live: "stat:SWEEP"
+        amount: 200
+      - id: beaconmite
+        title: "Find a Beaconmite"
+        description: "Those bugs can rarely be found inside beacons!"
+        rewards: { hunting: 2000 }
+        trigger: beaconmite.find
+        available: false
+        unavailable: "Beacons are not built"
+      - id: invisibug
+        title: "Catch an Invisibug"
+        description: "???"
+        rewards: { hunting: 2000 }
+        live: "shards:Invisibug"
+      - id: lumisquid
+        title: "Catch Lumisquid Shards"
+        description: "You'll need a ton of <9>Pressure Resistance<7> for those. Or just a Huntrap."
+        rewards: { hunting: 2000 }
+        live: "shards:Lumisquid"
+      - id: shellwise
+        title: "Catch Shellwise Shards"
+        description: "<5>Shellwise<7> are wise and tanky."
+        rewards: { hunting: 2000 }
+        live: "shards:Shellwise"
+      - id: joydive
+        title: "Catch Joydive Shards"
+        description: "<9>Joydive<7> tends to hide in their hole if threatened."
+        rewards: { hunting: 2000 }
+        live: "shards:Joydive"
+      - id: spike
+        title: "Catch Spike Shards"
+        description: "You really shouldn't get close to them."
+        rewards: { hunting: 2000 }
+        live: "shards:Spike"
+      - id: huntrap_25
+        title: "Obtain 25 Shards using a Huntrap"
+        description: "Patience is a Hunter's strength."
+        rewards: { hunting: 2000 }
+        trigger: shard.huntrap
+        amount: 25
+      - id: max_foraging_attribute
+        title: "Max out a Foraging Attribute"
+        description: "Built different."
+        rewards: { hunting: 2000 }
+        live: "attrmax:FORAGING"
+      - id: chameleon_fusion
+        title: "Fuse with a Chameleon"
+        description: "The strangest of creatures."
+        rewards: { hunting: 2000 }
+        trigger: fusion.chameleon
+      - id: pandas
+        title: "Obtain a Bambuleaf, Mochibear, and Bambloom"
+        description: "Different <a>Pandas<7> appear during different seasons and some can only be obtained from <5>fusions<7>!"
+        rewards: { hunting: 2000 }
+        live: "shards:Bambuleaf,Mochibear,Bambloom"
+        amount: 3
+      - id: shiniest
+        title: "Purchase a Shiniest"
+        description: "<6>Jade Dragon<7>'s favorite."
+        rewards: { whispers: 40000 }
+        trigger: shiniest.purchase
+        available: false
+        unavailable: "Agatha's Shiniest shop is not built"
+      - id: tree_the_fish
+        title: "Find a Tree the Fish"
+        description: "Those can rarely be found in <9>Tree Gifts<7>."
+        rewards: { foraging: 10000 }
+        trigger: find.tree_the_fish
+        live: "items:TREE_THE_FISH"
+      - id: swamp_the_fish
+        title: "Find a Swamp the Fish"
+        description: "Those can rarely be found while fishing in <2>Galatea<7>."
+        rewards: { fishing: 10000 }
+        trigger: find.swamp_the_fish
+        available: false
+        unavailable: "Swamp the Fish has no source yet"
+      - id: mob_the_fish
+        title: "Find a Mob the Fish"
+        description: "Those can rarely be found while killing monsters while on <2>Galatea<7>."
+        rewards: { combat: 10000 }
+        trigger: find.mob_the_fish
+        available: false
+        unavailable: "Mob the Fish has no source yet"
+      - id: coral
+        title: "Show 15 Different Fish to Coral"
+        description: "Coral the Fish?"
+        rewards: { whispers: 40000 }
+        trigger: coral.fish
+        amount: 15
+        available: false
+        unavailable: "Coral the Fish is not built"
+    completion:
+      hotf: 20000
+      foraging: 150000
+      hunting: 20000
+      forestEssence: 100
+      skyblockXp: 35
+      shards: { Invisibug: 1, Lumisquid: 1, Joydive: 1, Spike: 1, Chameleon: 1, Bambloom: 1 }
+      whispers: 10000

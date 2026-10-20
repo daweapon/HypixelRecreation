@@ -1,6 +1,11 @@
 package dev.daweapon.type.galatea.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import java.util.List;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
@@ -27,6 +32,11 @@ public class NPCKysha extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<b>Kysha");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(-601.5, 115, -12, -180, 0);
             }
@@ -40,6 +50,36 @@ public class NPCKysha extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-        event.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (isInDialogue(player)) return;
+        if (!HotfService.isUnlocked(player)) {
+            player.sendMessage("<e>[NPC] <b>Kysha<f>: <7>{}<f>! Have you talked to <b>Hina <f>at the front of the island to get your hands on a <a>Heart of the Forest<f>?", player.getUsername());
+            return;
+        }
+        if (!ChapterTriggers.done(player, "npc.kysha")) {
+            setDialogue(player, "first-interaction").thenRun(() -> ChapterTriggers.fire(player, "npc.kysha"));
+            return;
+        }
+        player.notImplemented();
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return List.of(
+                DialogueSet.builder().key("first-interaction")
+                        .line("Hi <7>{}<f>!", player.getUsername())
+                        .line("Now, it's time to teach you the true purpose of <a>hunting<f>.")
+                        .line("Every Shard you collect goes into your <a>Hunting Box<f>, located in the <a>Hunting Skill Menu<f>.")
+                        .line("There are two things you can do with those Shards.")
+                        .line("<f>You can either <c>syphon <f>or <5>fuse <f>them.")
+                        .line("<f>Syphoning is key - it lets you permanently gain the <c>attribute <f>of the creature it came from.")
+                        .line("Attributes are very much like <2>Pet <f>abilities in a way.")
+                        .line("But hunting lets you harness those powers independently of the creature.")
+                        .line("The <5>Precursors <f>built a machine that merges the genetic essence of two creatures.")
+                        .line("We call this process <5>fusion<f>.")
+                        .line("To fuse, combine <a>5 <f>Shards of one creature with <a>5 <f>Shards of another in the Fusion Machine.")
+                        .line("The fusion process can uncover creatures that haven't been discovered yet!")
+                        .build()
+        ).toArray(DialogueSet[]::new);
     }
 }

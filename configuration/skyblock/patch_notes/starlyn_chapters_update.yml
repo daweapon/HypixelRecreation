@@ -1,0 +1,36 @@
+title: "The Starlyn and Chapters Update"
+date: "20th October 2026"
+intro:
+  - "Hina now guides you through Moonglade Marsh with Chapters, and Agatha hosts a Starlyn Contest every SkyBlock Day."
+sections:
+  - heading: "Hina's Chapters"
+    colour: "<2>"
+    lines:
+      - "Seven chapters and 69 tasks for Moonglade Marsh. Talk to Hina once your Heart of the Forest is unlocked, or use /chapters."
+      - "Finishing a chapter unlocks the next one and pays HotF Exp, skill XP, Forest Essence, shards and Whispers."
+      - "Tasks whose content does not exist yet are marked Not available yet and do not hold your chapter back."
+  - heading: "Starlyn Contests"
+    colour: "<d>"
+    lines:
+      - "Talk to Swoop, David Hunterborough and Kysha, then to Agatha near the lake. A contest runs every SkyBlock Day."
+      - "Cut trees, collect Tree Gifts, hunt, fish and fight on Moonglade Marsh to earn points. Reach brackets from Common to Special for coupons, Whispers, Forest Essence, Foraging XP, HotF Exp and Bits."
+      - "Spend Agatha's Coupons in her shop through five milestones: Agatha's Power, Fig and Mangrove Fortune, Personal Bests, pets, talismans and shards."
+  - heading: "Heart of the Forest"
+    colour: "<a>"
+    lines:
+      - "Axe Toss, Homing Axe and Ricochet unlock axe throwing at trees."
+      - "Free Trial, Timber, Precision Cutting and Starlyn Supreme are now available. Timber is a new Foraging stat."
+  - heading: "Wolf Slayer and coffee"
+    colour: "<6>"
+    lines:
+      - "Pack Spirits, Howling Spirits and Souls of the Alpha in the Howling Cave now count towards Wolf Slayer."
+      - "Cheap, Decent and Black Coffee add 5, 8 and 12 Speed to Speed, Adrenaline, Agility and Rabbit potions."
+  - heading: "Different from Hypixel"
+    colour: "<c>"
+    lines:
+      - "Miria's Contest and shop are built but wait for Torrhus Canyon."
+      - "Lushlilac and Sea Lumies cannot be gathered yet, so they give no contest points."
+  - heading: "Still locked"
+    colour: "<c>"
+    lines:
+      - "Monster Hunter, Collector, Beekeeper and Two-for-one."

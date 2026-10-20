@@ -49,7 +49,10 @@ final class ToyBoxButtons {
 
     static List<ToyBoxButton> uncategorised() {
         return List.of(
-                unavailable(Material.OAK_LOG, "<a>Fill Agatha's Rewards", "<7>Grant 25 contest rewards."));
+                of(Material.OAK_LOG, "<a>Fill Agatha's Rewards", "<8>Agatha never has to know.", "<7>Grant 25 top-bracket rewards from <b>Agatha's Contests<7>.",
+                        p -> dev.daweapon.type.skyblockgeneric.starlyn.StarlynContests.fillRewards(p, dev.daweapon.type.skyblockgeneric.starlyn.StarlynSister.AGATHA, 25)),
+                of(Material.JUNGLE_LOG, "<6>Fill Miria's Rewards", "<8>Torrhus sends its regards.", "<7>Grant 25 top-bracket rewards from <b>Miria's Contests<7>.",
+                        p -> dev.daweapon.type.skyblockgeneric.starlyn.StarlynContests.fillRewards(p, dev.daweapon.type.skyblockgeneric.starlyn.StarlynSister.MIRIA, 25)));
     }
 
     static List<ToyBoxButton> mining() {
@@ -121,6 +124,7 @@ final class ToyBoxButtons {
                 of(Material.NETHER_STAR, "<2>Tokens of the Forest", "<8>Spend them wisely.", "<7>Gain <2>10 Tokens of the Forest<7>.", p -> HotfService.addTokens(p, 10)),
                 of(Material.DARK_OAK_LOG, "<2>Max Center of the Forest", "<8>The heart of it all.", "<7>Set the Center of the Forest to level 5.", HotfService::maxCore),
                 of(Material.BEACON, "<2>Max Heart of the Forest", "<8>Every perk at the top.", "<7>Max the tier, the Center and every available perk.", HotfService::maxOut),
+                of(Material.WRITABLE_BOOK, "<2>Complete Hina's Chapters", "<8>Hina couldn't be prouder.", "<7>Complete every available <2>Moonglade Marsh <7>Chapter task.", dev.daweapon.type.skyblockgeneric.chapters.ChapterService::maxOut),
                 of(Material.REDSTONE_BLOCK, "<c>Reset HotF Perks", "<8>A fresh start.", "<7>Reset every Heart of the Forest perk.", HotfService::reset));
     }
 

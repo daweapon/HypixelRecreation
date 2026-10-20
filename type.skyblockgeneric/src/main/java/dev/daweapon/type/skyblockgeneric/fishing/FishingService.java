@@ -20,6 +20,8 @@ import dev.daweapon.type.skyblockgeneric.entity.FishingHook;
 import dev.daweapon.type.skyblockgeneric.fishing.bait.FishingBaitService;
 import dev.daweapon.type.skyblockgeneric.fishing.catches.CatchAwardContext;
 import dev.daweapon.type.skyblockgeneric.fishing.catches.CatchPayload;
+import dev.daweapon.type.generic.event.HypixelEventHandler;
+import dev.daweapon.type.skyblockgeneric.event.custom.FishCaughtEvent;
 import dev.daweapon.type.skyblockgeneric.fishing.hotspot.FishingHotspotService;
 import dev.daweapon.type.skyblockgeneric.fishing.item.FishingItemSupport;
 import dev.daweapon.type.skyblockgeneric.fishing.resolver.FishingCatchResolver;
@@ -155,6 +157,25 @@ public final class FishingService {
                 && Math.random() * 100 < sinker.getBaitPreservationChance();
     }
 
+    private static void announceCatch(SkyBlockPlayer player, CatchPayload payload) {
+        switch (payload) {
+            case CatchPayload.Multi multi -> multi.payloads().forEach(each -> announceCatch(player, each));
+            case CatchPayload.Item item -> fire(player, item.fromTreasure() ? FishCaughtEvent.Kind.TREASURE : FishCaughtEvent.Kind.ITEM, item.itemId(), null);
+            case CatchPayload.Treasure treasure -> fire(player, FishCaughtEvent.Kind.TREASURE, treasure.itemId(), treasure.quality());
+            case CatchPayload.SeaCreature seaCreature -> {
+                for (int i = 0; i < seaCreature.spawnCount(); i++) fire(player, FishCaughtEvent.Kind.SEA_CREATURE, seaCreature.seaCreatureId(), null);
+            }
+            case CatchPayload.TrophyFish trophy -> fire(player, FishCaughtEvent.Kind.TROPHY_FISH, trophy.definitionId(), null);
+            case CatchPayload.Essence essence -> fire(player, FishCaughtEvent.Kind.ESSENCE, essence.type().name(), null);
+            case CatchPayload.Quest quest -> fire(player, FishCaughtEvent.Kind.QUEST, quest.itemId(), null);
+            case CatchPayload.Special special -> fire(player, FishCaughtEvent.Kind.ITEM, special.itemId(), null);
+        }
+    }
+
+    private static void fire(SkyBlockPlayer player, FishCaughtEvent.Kind kind, String id, String quality) {
+        HypixelEventHandler.callCustomEvent(new FishCaughtEvent(player, kind, id, quality));
+    }
+
     private static void awardCatch(SkyBlockPlayer player, SkyBlockItem rod, FishingHook hook, CatchPayload payload,
                                    FishingContext context) {
         markFirstFishToggle(player);
@@ -163,6 +184,7 @@ public final class FishingService {
         SkyBlockRegion region = player.getRegion();
         payload = PetEvents.fishCaught(player, payload, region == null ? null : region.getType().name(), context);
         payload.apply(new CatchAwardContext(player, rod, hook.getSpawnPosition()));
+        announceCatch(player, payload);
         dev.daweapon.type.skyblockgeneric.crystalhollows.FairyGrottoFishing.onCatch(player, region == null ? null : region.getType(), rodMedium(rod));
         GatheringPetDrops.fishCaught(player, rodMedium(rod), payload);
 

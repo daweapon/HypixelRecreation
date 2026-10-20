@@ -106,6 +106,19 @@ class HotfRegistryTest {
     }
 
     @Test
+    void foragingLeftoverNodesUnlockedAndTheRestStayLockedWithAReason() {
+        for (String id : java.util.List.of("timber", "free_trial", "precision_cutting")) {
+            assertTrue(registry.perk(id).available(), id);
+        }
+        for (String id : java.util.List.of("collector", "monster_hunter")) {
+            assertFalse(registry.perk(id).available(), id);
+        }
+        assertEquals(0.1, registry.perk("timber").value(1), 1e-9);
+        assertEquals(1.0, registry.perk("timber").value(10), 1e-9);
+        assertEquals(dev.daweapon.commons.skyblock.statistics.ItemStatistic.TIMBER, registry.perk("timber").effects().getFirst().statistic());
+    }
+
+    @Test
     void halfFullAndHalfEmptyExcludeEachOther() {
         assertEquals("half_empty", registry.perk("half_full").exclusive());
         assertEquals("half_full", registry.perk("half_empty").exclusive());

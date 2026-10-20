@@ -6,7 +6,7 @@ items:
     components:
       - id: PET
         pet_name: "Frog"
-        source: { text: "Agatha", active: false }
+        source: { text: "Agatha", active: true }
         pet_type: FORAGING
         rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
         skull_texture: 45852a95928897746012988fbd5dbaa1b70b7a5fb65157016f4ff3f245374c08

@@ -1,6 +1,8 @@
 package dev.daweapon.type.skyblockgeneric.hunting;
 
+import dev.daweapon.type.generic.event.HypixelEventHandler;
 import dev.daweapon.type.skyblockgeneric.consumable.Salt;
+import dev.daweapon.type.skyblockgeneric.event.custom.ShardCaughtEvent;
 import dev.daweapon.type.skyblockgeneric.item.components.AttributeShardComponent;
 import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
 import dev.daweapon.commons.text.Text;
@@ -29,6 +31,8 @@ public final class CharmingService {
                 (skillChance + charmedChance) * 100 + Salt.charmChanceBonus(player, mob))) return false;
         int amount = AttributeEffectService.fortunateAmount(player, definition);
         player.getHuntingData().addShards(definition.id(), amount);
+        HypixelEventHandler.callCustomEvent(new ShardCaughtEvent(player, definition, amount, ShardCaughtEvent.Source.CHARM,
+                Salt.charmChanceBonus(player, mob) > 0));
         player.getSkills().increase(player, SkillCategories.HUNTING, huntingExperience(definition));
         player.sendMessage("<d><l>CHARM! </l><a>Captured <e>{}x <a>{} <7>from <c>{}<7>!",
                 amount, definition.shardName(), mob.getDisplayName());

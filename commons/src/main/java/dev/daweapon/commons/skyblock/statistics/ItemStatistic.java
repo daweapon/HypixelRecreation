@@ -47,6 +47,7 @@ public enum ItemStatistic {
     GEMSTONE_SPREAD("Gemstone Spread", NamedTextColor.GREEN, NamedTextColor.YELLOW, false, PackSprite.STAT_GEMSTONE_SPREAD),
     HUNTER_FORTUNE("Hunter Fortune", NamedTextColor.GREEN, NamedTextColor.LIGHT_PURPLE, false, PackSprite.STAT_HUNTER_FORTUNE),
     SWEEP("Sweep", NamedTextColor.GREEN, NamedTextColor.DARK_GREEN, false, PackSprite.STAT_SWEEP),
+    TIMBER("Timber", NamedTextColor.GREEN, NamedTextColor.DARK_RED, false, PackSprite.STAT_SWEEP),
     SOULFLOW("Soulflow", NamedTextColor.DARK_AQUA, NamedTextColor.DARK_AQUA, false, PackSprite.STAT_SOULFLOW),
 
     // Sub-Gathering Stats

@@ -1,6 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.hotf;
 
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointHOTF;
 import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
 import dev.daweapon.type.skyblockgeneric.reforge.ReforgeLoadout;
@@ -80,6 +81,28 @@ public final class HotfRewards {
         }
         data.setTreesToday(data.getTreesToday() + 1);
         HotfService.save(player, data);
+    }
+
+    public static boolean timberFells(SkyBlockPlayer player) {
+        double chance = player.getStatistics().allStatistics().getOverall(ItemStatistic.TIMBER);
+        return chance > 0 && LootRoll.roll(player.getUuid(), null, Math.min(100, chance));
+    }
+
+    public static boolean claimFreeTrial(SkyBlockPlayer player) {
+        if (!HotfService.hasPerk(player, "free_trial")) return false;
+        DatapointHOTF.PlayerHOTFData data = HotfService.data(player);
+        long today = HotfService.dailyDay();
+        if (data.getFreeTrialDay() == today) return false;
+        ItemType ticket = ItemType.get("BASIC_SAFARI_TICKET");
+        if (ticket == null) return false;
+        data.setFreeTrialDay(today);
+        HotfService.save(player, data);
+        player.addAndUpdateItem(ticket);
+        return true;
+    }
+
+    public static boolean freeTrialUsedToday(SkyBlockPlayer player) {
+        return HotfService.data(player).getFreeTrialDay() == HotfService.dailyDay();
     }
 
     public static boolean doubleEssence(SkyBlockPlayer player) {

@@ -12,6 +12,8 @@ import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.metadata.display.BlockDisplayMeta;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.block.Block;
+import net.minestom.server.network.packet.server.play.ParticlePacket;
+import net.minestom.server.particle.Particle;
 import net.minestom.server.item.Material;
 import net.minestom.server.timer.Task;
 import net.minestom.server.timer.TaskSchedule;
@@ -21,6 +23,8 @@ import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.generic.entity.hologram.HologramEntity;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfRewards;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
 import dev.daweapon.type.skyblockgeneric.hunting.AttributeEffectService;
 import dev.daweapon.type.skyblockgeneric.hunting.AttributeId;
 import dev.daweapon.type.skyblockgeneric.hunting.AttributeRarity;
@@ -31,6 +35,7 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Tracks the trees embedded in the Park and Galatea maps. Trees are discovered
@@ -40,6 +45,10 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class ForagingTreeManager {
     private static final int MAX_TREE_BLOCKS = 4096;
     private static final int MAX_LOGS_PER_SWEEP = 35;
+    private static final double PRECISION_CUTTING_SWEEP = 10;
+    private static final int MARK_SCAN_RADIUS = 6;
+    private static final int MARK_SCAN_UP = 8;
+    private static final int MARK_SCAN_DOWN = 3;
     /**
      * Public-island trees remain felled for roughly thirty seconds.
      */
@@ -115,6 +124,8 @@ public final class ForagingTreeManager {
         if (kind == null) return List.of();
 
         TrackedTree tree = getOrDiscoverTree(instance, hit, hitBlock, kind);
+        boolean precisionHit = hit.equals(tree.marks.get(player.getUuid()));
+        if (precisionHit) tree.marks.remove(player.getUuid());
 
         double sweep = tool.hasComponent(AxeComponent.class)
                 ? player.getStatistics().allStatistics().getOverall(ItemStatistic.SWEEP) + extraSweep
@@ -129,11 +140,13 @@ public final class ForagingTreeManager {
                     .filter(definition -> player.getHuntingData().level(definition.id()) > 0).count();
             sweep += AttributeEffectService.value(player.getHuntingData(), AttributeId.parse("C20")) * commonAttributes;
             sweep += FrenzyAxes.bonusSweep(tool);
+            if (precisionHit) sweep += PRECISION_CUTTING_SWEEP;
             sweep *= sweepScale;
         }
         TreePart hitPart = tree.parts.getOrDefault(hit, TreePart.TRUNK);
         boolean correctOrder = tree.isCorrectPart(hitPart);
         int logCount = calculateLogs(sweep, tree.kind.toughness(hitPart), tree.kind != TreeKind.BASIC && !correctOrder);
+        if (tool.hasComponent(AxeComponent.class) && tree.broken.isEmpty() && HotfRewards.timberFells(player)) logCount = tree.originalBlocks.size();
 
         List<BlockPosition> selected = selectConnectedLogs(instance, tree, hit, logCount);
         if (selected.isEmpty()) return List.of();
@@ -170,6 +183,38 @@ public final class ForagingTreeManager {
             }
         }
         return harvested;
+    }
+
+    public static void showPrecisionMarks(SkyBlockPlayer player) {
+        Instance instance = player.getInstance();
+        if (instance == null || !HotfService.onForagingIsland() || !HotfService.hasPerk(player, "precision_cutting")) return;
+        Pos origin = player.getPosition();
+        BlockPosition center = BlockPosition.from(origin);
+        for (int x = -MARK_SCAN_RADIUS; x <= MARK_SCAN_RADIUS; x++) {
+            for (int z = -MARK_SCAN_RADIUS; z <= MARK_SCAN_RADIUS; z++) {
+                if (instance.getChunkAt(center.x + x, center.z + z) == null) continue;
+                for (int y = -MARK_SCAN_DOWN; y <= MARK_SCAN_UP; y++) {
+                    BlockPosition candidate = center.add(x, y, z);
+                    Block block = instance.getBlock(candidate.asPoint());
+                    TreeKind kind = getTreeKind(block);
+                    if (kind != null) getOrDiscoverTree(instance, candidate, block, kind);
+                }
+            }
+        }
+        Map<BlockPosition, TrackedTree> index = TREES.get(instance);
+        if (index == null) return;
+        Set<TrackedTree> nearby = Collections.newSetFromMap(new IdentityHashMap<>());
+        for (TrackedTree tree : index.values()) {
+            if (tree.isFullyBroken() || tree.center().distance(origin) > MARK_SCAN_RADIUS * 2) continue;
+            nearby.add(tree);
+        }
+        for (TrackedTree tree : nearby) {
+            BlockPosition mark = tree.markFor(instance, player.getUuid());
+            if (mark == null) continue;
+            ParticlePacket packet = new ParticlePacket(Particle.HAPPY_VILLAGER, true, true,
+                    mark.x + 0.5, mark.y + 1.1, mark.z + 0.5, 0.2f, 0.2f, 0.2f, 0f, 3);
+            player.sendPacket(packet);
+        }
     }
 
     private static TrackedTree getOrDiscoverTree(Instance instance, BlockPosition hit, Block hitBlock, TreeKind kind) {
@@ -411,6 +456,7 @@ public final class ForagingTreeManager {
         private final Map<BlockPosition, Block> originalBlocks;
         private final Map<BlockPosition, Block> originalLeaves;
         private final Map<BlockPosition, TreePart> parts;
+        private final Map<UUID, BlockPosition> marks = new ConcurrentHashMap<>();
         private final Set<BlockPosition> broken = new LinkedHashSet<>();
         private final Set<BlockPosition> brokenLeaves = new LinkedHashSet<>();
         private final Map<UUID, Contribution> contributions = new HashMap<>();
@@ -424,6 +470,20 @@ public final class ForagingTreeManager {
             this.originalBlocks = originalBlocks;
             this.originalLeaves = originalLeaves;
             this.parts = parts;
+        }
+
+        private BlockPosition markFor(Instance instance, UUID player) {
+            BlockPosition current = marks.get(player);
+            if (current != null && !instance.getBlock(current.asPoint()).air()) return current;
+            List<BlockPosition> candidates = originalBlocks.keySet().stream()
+                    .filter(position -> !instance.getBlock(position.asPoint()).air()).toList();
+            if (candidates.isEmpty()) {
+                marks.remove(player);
+                return null;
+            }
+            BlockPosition chosen = candidates.get(ThreadLocalRandom.current().nextInt(candidates.size()));
+            marks.put(player, chosen);
+            return chosen;
         }
 
         private boolean isFullyBroken() {

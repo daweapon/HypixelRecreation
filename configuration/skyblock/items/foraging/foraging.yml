@@ -183,3 +183,10 @@ items:
         value: 50.0
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/foraging_2/wet_water
+  - id: BASIC_SAFARI_TICKET
+    rarity: UNCOMMON
+    material: NAME_TAG
+    name: "Basic Safari Ticket"
+    lore:
+      - "§7Grants access to the §2Critter Safari§7"
+      - "§7and starts you with §a32 Critter Capsules§7."

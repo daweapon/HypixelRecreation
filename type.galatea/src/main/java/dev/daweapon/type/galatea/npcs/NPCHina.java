@@ -5,6 +5,8 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterService;
+import dev.daweapon.type.skyblockgeneric.gui.inventories.chapters.GUIChapters;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -54,7 +56,8 @@ public class NPCHina extends HypixelNPC {
         SkyBlockPlayer player = (SkyBlockPlayer) event.player();
         if (isInDialogue(player)) return;
         if (HotfService.isUnlocked(player)) {
-            player.notImplemented();
+            if (ChapterService.allComplete(player)) setDialogue(player, "chapters-complete");
+            else player.openView(new GUIChapters());
             return;
         }
         if (player.getSkills().getCurrentLevel(SkillCategories.FORAGING) < REQUIRED_FORAGING_LEVEL) {
@@ -64,7 +67,7 @@ public class NPCHina extends HypixelNPC {
         setDialogue(player, "first-interaction").thenRun(() -> {
             HotfService.unlock(player);
             player.sendMessage(Text.of("<a><l>HEART OF THE FOREST <r><f>has been unlocked! Open your <a>SkyBlock Menu <f>to find it. <hover:'<e>Click to open!'><click:run:'/hotf'><e><l>[CLICK HERE TO OPEN]</click></hover>"));
-            setDialogue(player, "tasks");
+            setDialogue(player, "tasks").thenRun(() -> ChapterService.evaluate(player));
         });
     }
 
@@ -84,7 +87,13 @@ public class NPCHina extends HypixelNPC {
                 DialogueSet.builder().key("tasks").lines(
                         "I also have tasks for you to do while on this island.",
                         "For each task I will reward you handsomely!"
-                ).build()
+                ).build(),
+                DialogueSet.builder().key("chapters-complete")
+                        .line("You've done what few even try. Each creature you met each tree you felled, it all shaped you. And now, you shape <2>Galatea<7>.")
+                        .line("Look at you. Sweeping like a storm, hunting like a whisper. I couldn't be prouder.")
+                        .line("You've mastered every path I know.")
+                        .line("Congratulations <b>{}<f>.", player.getUsername())
+                        .build()
         ).toArray(DialogueSet[]::new);
     }
 }

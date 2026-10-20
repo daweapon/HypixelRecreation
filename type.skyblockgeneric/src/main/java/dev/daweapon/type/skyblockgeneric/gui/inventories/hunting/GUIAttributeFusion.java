@@ -67,6 +67,9 @@ public class GUIAttributeFusion implements StatefulView<GUIAttributeFusion.State
                             boolean newShard = data.shardCount(result.definition().id()) == 0;
                             if (AttributeFusionService.fuse(data, first, second, result)) {
                                 player.getAchievementHandler().addProgressByTrigger("skyblock.evolution_trigger", 1);
+                                dev.daweapon.type.generic.event.HypixelEventHandler.callCustomEvent(new dev.daweapon.type.skyblockgeneric.event.custom.ShardCaughtEvent(
+                                        player, result.definition(), result.amount(), dev.daweapon.type.skyblockgeneric.event.custom.ShardCaughtEvent.Source.FUSION, false));
+                                if (result.type() == AttributeFusionService.FusionType.CHAMELEON) dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers.fire(player, "fusion.chameleon");
                                 if (newShard) player.getAchievementHandler().completeAchievement("skyblock.amalgamation");
                                 player.getSkills().increase(player, SkillCategories.HUNTING, switch (result.definition().rarity()) {
                                     case COMMON -> 75D;

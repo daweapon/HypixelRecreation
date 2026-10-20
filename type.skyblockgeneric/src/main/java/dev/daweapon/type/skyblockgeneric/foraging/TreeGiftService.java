@@ -1,5 +1,8 @@
 package dev.daweapon.type.skyblockgeneric.foraging;
 
+import dev.daweapon.type.generic.event.HypixelEventHandler;
+import dev.daweapon.type.skyblockgeneric.event.custom.ShardCaughtEvent;
+import dev.daweapon.type.skyblockgeneric.event.custom.TreeGiftReceivedEvent;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfCurrency;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfRewards;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
@@ -72,6 +75,7 @@ public final class TreeGiftService {
             default -> 10;
         } * scaled * HotfService.experienceMultiplier(player));
         TreeGiftMilestones.recordGift(player, treeType);
+        HypixelEventHandler.callCustomEvent(new TreeGiftReceivedEvent(player, treeType));
         increase(player, SkyBlockDataHandler.Data.FOREST_ESSENCE, essence);
         HotfService.addExperience(player, Math.round(PetEvents.xpGained(player, PetEvent.XpType.HOTF, null, hotfExperience)));
         player.getSkills().increase(player, SkillCategories.FORAGING, (double) foragingXp);
@@ -110,11 +114,13 @@ public final class TreeGiftService {
             if (bonus.shard != null) {
                 if (definition == null) continue;
                 player.getHuntingData().addShards(definition.id(), 1);
+                HypixelEventHandler.callCustomEvent(new ShardCaughtEvent(player, definition, 1, ShardCaughtEvent.Source.TREE_GIFT, false));
                 Text shardText = Text.of("<color:{}>{}", definition.rarity().itemRarity().getColor(), definition.shardName());
                 rewards.add(shardText);
                 bonusMessages.add(shardText.append(" <7>(<a>{}<7>)", chance(bonus.chance)));
             } else if (bonus.item != null) {
                 player.addAndUpdateItem(bonus.item);
+                if (bonus.item == ItemType.TREE_THE_FISH) dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers.fire(player, "find.tree_the_fish");
                 Text itemText = Text.of("<color:{}>{}", bonus.item.rarity.getColor(), bonus.item.getDisplayName());
                 rewards.add(itemText);
                 bonusMessages.add(itemText.append(" <7>(<a>{}<7>)", chance(bonus.chance)));
@@ -125,6 +131,10 @@ public final class TreeGiftService {
             player.addAndUpdateItem(ItemType.SIGNAL_ENHANCER);
             rewards.add(Text.of("<6>Signal Enhancer"));
             bonusMessages.add(Text.of("<6>Signal Enhancer <7>(<a>{}<7>)", chance(signalChance)));
+        }
+        if (HotfRewards.claimFreeTrial(player)) {
+            rewards.add(Text.of("<2>Basic Safari Ticket"));
+            bonusMessages.add(Text.of("<2>Basic Safari Ticket <7>(<a>Free Trial<7>)"));
         }
         int percent = (int) Math.round(share * 100);
         Text body = Text.of("<2><l>▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n")

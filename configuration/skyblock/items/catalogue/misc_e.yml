@@ -1570,8 +1570,7 @@ items:
     material: player_head
     name: "Shiniest"
     rarity: LEGENDARY
-    unavailable: "Needs Agatha's shop (Jade Dragon event), which is not built"
-    source: "Agatha's Shop"
+    source: "Agatha's Shop: 20 Agatha's Prize at Milestone V"
     lore:
       - "§7Purchased from §bAgatha's Shop§7!"
       - ""

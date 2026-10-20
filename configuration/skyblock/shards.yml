@@ -546,6 +546,9 @@
       "family": "OTHER",
       "skill": "FORAGING",
       "description": "Grants <sbstat:sweep:+5> towards Fig Trees",
+      "huntInfo": [
+        "This shard can be purchased from Agatha for Agatha's Coupon after reaching Agatha Milestone II."
+      ],
       "effects": [
         {
           "type": "STATISTIC_PER_LEVEL",
@@ -2041,6 +2044,9 @@
       "family": "OTHER",
       "skill": "FORAGING",
       "description": "Grants +10 <sbstat:sweep> towards Mangrove Trees",
+      "huntInfo": [
+        "This shard can be purchased from Agatha for Agatha's Coupon after reaching Agatha Milestone IV."
+      ],
       "effects": [
         {
           "type": "STATISTIC_PER_LEVEL",

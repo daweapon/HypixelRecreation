@@ -1,6 +1,11 @@
 package dev.daweapon.type.galatea.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import java.util.List;
 import dev.daweapon.type.galatea.gui.GUIDavid;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
@@ -28,6 +33,11 @@ public class NPCDavidHunterborough extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<b>David Hunterborough");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(-593.5, 114, -13.5, -101, 0);
             }
@@ -41,6 +51,32 @@ public class NPCDavidHunterborough extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (isInDialogue(player)) return;
+        if (!HotfService.isUnlocked(player)) {
+            player.sendMessage("<e>[NPC] <b>David Hunterborough<f>: <7>{}<f>! Have you talked to <b>Hina <f>at the front of the island to get your hands on a <a>Heart of the Forest<f>?", player.getUsername());
+            return;
+        }
+        if (!ChapterTriggers.done(player, "npc.david")) {
+            setDialogue(player, "first-interaction").thenRun(() -> ChapterTriggers.fire(player, "npc.david"));
+            return;
+        }
         event.player().openView(new GUIDavid());
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return List.of(
+                DialogueSet.builder().key("first-interaction")
+                        .line("Greetings!")
+                        .line("<f>I'm <b>David Hunterborough<f>, the island's <a>Hunting Specialist<f>.")
+                        .line("<f>Hunting has been around for eons, perfected by advanced beings known as the <5>Precursors<f>.")
+                        .line("<f>They discovered that within every creature lies a power unique to its kind.")
+                        .line("<f>Some creatures can be <d>tamed<f>, granting you their full power, as you may have seen with <2>Pets<f>.")
+                        .line("<f>But most creatures cannot be tamed, so hunters extract what we call a <9>Shard<f>.")
+                        .line("<f>It represents the creature's biological footprint, its core <c>attribute<f>.")
+                        .line("<f>By using a Shard, you harness that unique power yourself.")
+                        .build()
+        ).toArray(DialogueSet[]::new);
     }
 }

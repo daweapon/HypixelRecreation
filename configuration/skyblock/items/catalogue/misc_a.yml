@@ -282,7 +282,6 @@ items:
     material: name_tag
     name: "Agatha's Coupon"
     rarity: UNCOMMON
-    unavailable: "Needs Agatha's Starlyn Contest"
     source: "Starlyn Contest rewards (10-45 coupons by bracket); spent in Agatha's shop"
     components:
       - id: SELLABLE

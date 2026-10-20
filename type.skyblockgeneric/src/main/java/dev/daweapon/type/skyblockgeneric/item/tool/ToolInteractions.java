@@ -7,6 +7,7 @@ import net.minestom.server.instance.block.Block;
 import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.skyblockgeneric.event.actions.player.region.ActionRegionBlockBreak;
 import dev.daweapon.type.skyblockgeneric.foraging.ForagingTreeManager;
+import dev.daweapon.type.skyblockgeneric.hotf.throwing.AxeThrowing;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.region.SkyBlockRegion;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -53,16 +54,9 @@ public final class ToolInteractions {
     }
 
     private static void throwAxe(SkyBlockPlayer player, SkyBlockItem item, @Nullable Point clicked) {
-        if (HypixelConst.isIslandServer() || player.getInstance() == null) return;
-        Point target = clicked != null ? clicked : player.getTargetBlockPosition(THROWING_AXE_RANGE);
-        if (target == null) return;
-        Block block = player.getInstance().getBlock(target);
-        if (!ForagingTreeManager.isTreeLog(block)) return;
-        SkyBlockRegion region = SkyBlockRegion.getRegionOfPosition(target);
-        if (region == null) return;
         if (!player.getAbilityHandler().canUseAbility(item, THROWING_AXE_COOLDOWN_TICKS)) return;
+        if (!AxeThrowing.launch(player, item, clicked)) return;
         player.getAbilityHandler().startAbilityCooldown(item);
-        ActionRegionBlockBreak.harvestTree(player, item, region, target, THROWING_AXE_SWEEP_SCALE);
     }
 
     private static void sculpt(SkyBlockPlayer player, @Nullable Point clicked) {

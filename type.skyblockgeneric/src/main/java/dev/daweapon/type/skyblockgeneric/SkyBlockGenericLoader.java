@@ -329,6 +329,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
          */
         SkyBlockDataHandler.startRepeatSetValueLoop();
         BitsService.startFarming();
+        dev.daweapon.type.skyblockgeneric.foraging.PrecisionCutting.start();
         AccessoryEconomyHooks.start();
         dev.daweapon.type.skyblockgeneric.hoppity.HoppityHitmanService.start();
         BottleOfJyrre.startAging();

@@ -138,9 +138,12 @@ public class GUIEssenceShop extends StatelessView {
 
     private void buy(EssenceShop<CataloguePerk> shop, SkyBlockPlayer player, CataloguePerk perk) {
         switch (shop.buy(player, perk)) {
-            case BOUGHT -> player.sendMessage("<a>You unlocked <e>{}<a>!", perk.getMaxTier() > 1
-                    ? perk.getDisplayName() + " " + StringUtility.getAsRomanNumeral(EssencePerks.tier(player, perk))
-                    : perk.getDisplayName());
+            case BOUGHT -> {
+                player.sendMessage("<a>You unlocked <e>{}<a>!", perk.getMaxTier() > 1
+                        ? perk.getDisplayName() + " " + StringUtility.getAsRomanNumeral(EssencePerks.tier(player, perk))
+                        : perk.getDisplayName());
+                if (essence == EssenceType.FOREST) dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers.fire(player, "rosemary.perk");
+            }
             case UNAVAILABLE -> player.sendMessage("<c>{}", perk.getUnavailableReason());
             case TOO_POOR -> player.sendMessage("<c>You don't have enough {}!", essence.getFullName());
             case MAXED -> {}

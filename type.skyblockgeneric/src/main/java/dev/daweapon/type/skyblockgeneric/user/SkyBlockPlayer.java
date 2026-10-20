@@ -296,6 +296,7 @@ public class SkyBlockPlayer extends HypixelPlayer {
     }
 
     public boolean hasCustomCollectionAward(CustomCollectionAward award) {
+        if (dev.daweapon.type.skyblockgeneric.starlyn.StarlynShop.ownsAward(this, award)) return true;
         Map.Entry<ItemType, Integer> entry = CustomCollectionAward.AWARD_CACHE.get(award);
         if (entry == null) return false;
 

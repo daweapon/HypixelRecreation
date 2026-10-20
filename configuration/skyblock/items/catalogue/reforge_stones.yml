@@ -1631,7 +1631,6 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 12§c."
-    unavailable: "Agatha's shop/coupons not built"
     source: "Bought from Agatha for 50 Agatha's Coupons"
     components:
       - id: REFORGE_STONE

@@ -61,6 +61,7 @@ public final class ItemStatistics {
             case GEMSTONE_SPREAD -> List.of("<7>Chance to automatically mine adjacent", "<7>Gemstones.");
             case PRISTINE -> List.of("<7>Chance to increase the quality of a", "<7>Gemstone when it is dropped.");
             case SWEEP -> List.of("<7>Sweep is the ability to cut multiple", "<7>logs at once.");
+            case TIMBER -> List.of("<7>Chance to fell an entire tree on your", "<7>first melee axe cut.");
             case PULL -> List.of("<7>Pull controls which fish you can grab", "<7>and how quickly fishing nets work.");
             case FISHING_SPEED -> List.of("<7>Fishing Speed decreases the delay", "<7>before a fish appears.");
             case SEA_CREATURE_CHANCE -> List.of("<7>Your chance to catch Sea Creatures", "<7>while fishing.");

@@ -31,6 +31,7 @@ public class DatapointHOTF extends SkyBlockDatapoint<DatapointHOTF.PlayerHOTFDat
 			json.put("treesDay", value.treesDay);
 			json.put("treesToday", value.treesToday);
 			json.put("wishDay", value.wishDay);
+			json.put("freeTrialDay", value.freeTrialDay);
 			json.put("lotteryDay", value.lotteryDay);
 			json.put("lotteryEffect", value.lotteryEffect == null ? "" : value.lotteryEffect);
 			return json.toString();
@@ -58,6 +59,7 @@ public class DatapointHOTF extends SkyBlockDatapoint<DatapointHOTF.PlayerHOTFDat
 				data.treesDay = obj.optLong("treesDay", -1L);
 				data.treesToday = obj.optInt("treesToday", 0);
 				data.wishDay = obj.optLong("wishDay", -1L);
+				data.freeTrialDay = obj.optLong("freeTrialDay", -1L);
 				data.lotteryDay = obj.optLong("lotteryDay", -1L);
 				data.lotteryEffect = obj.optString("lotteryEffect", "").isEmpty() ? null : obj.getString("lotteryEffect");
 				return data;
@@ -82,6 +84,7 @@ public class DatapointHOTF extends SkyBlockDatapoint<DatapointHOTF.PlayerHOTFDat
 			cloned.treesDay = value.treesDay;
 			cloned.treesToday = value.treesToday;
 			cloned.wishDay = value.wishDay;
+			cloned.freeTrialDay = value.freeTrialDay;
 			cloned.lotteryDay = value.lotteryDay;
 			cloned.lotteryEffect = value.lotteryEffect;
 			return cloned;
@@ -113,6 +116,7 @@ public class DatapointHOTF extends SkyBlockDatapoint<DatapointHOTF.PlayerHOTFDat
 		private long treesDay = -1L;
 		private int treesToday;
 		private long wishDay = -1L;
+		private long freeTrialDay = -1L;
 		private long lotteryDay = -1L;
 		private String lotteryEffect;
 

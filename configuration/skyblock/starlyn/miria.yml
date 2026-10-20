@@ -1,0 +1,142 @@
+sister: MIRIA
+serverType: SKYBLOCK_TORRHUS_CANYON
+points:
+  treeGift: 10
+  logsPerHundred: {HELIX: 9}
+  hunting:
+    byRarity: {COMMON: 9, UNCOMMON: 25, RARE: 50, EPIC: 100, LEGENDARY: 200}
+  fishing: {seaCreature: 10, catch: 10, treasureByQuality: {GOOD: 50, GREAT: 250, OUTSTANDING: 750}}
+  combat: 4
+  gathering: {HONEYCOMB: 1, RUBY_VEILSHROOM: 8}
+brackets:
+  - {bracket: COMMON, points: 50, coupons: 10, whispers: 3000, essence: 20, foragingXp: 15000, hotfXp: 150, bits: 15, prizeChance: 0}
+  - {bracket: UNCOMMON, points: 250, coupons: 15, whispers: 5000, essence: 30, foragingXp: 30000, hotfXp: 250, bits: 30, prizeChance: 0, safariTicket: BASIC_SAFARI_TICKET}
+  - {bracket: RARE, points: 1000, coupons: 20, whispers: 8000, essence: 40, foragingXp: 45000, hotfXp: 400, bits: 45, prizeChance: 0, safariTicket: ECONOMY_SAFARI_TICKET}
+  - {bracket: EPIC, points: 2500, coupons: 25, whispers: 12000, essence: 50, foragingXp: 60000, hotfXp: 550, bits: 60, prizeChance: 10, safariTicket: PREMIUM_SAFARI_TICKET}
+  - {bracket: LEGENDARY, points: 5000, coupons: 30, whispers: 18000, essence: 50, foragingXp: 75000, hotfXp: 900, bits: 75, prizeChance: 20, safariTicket: FIRST_CLASS_SAFARI_TICKET}
+  - {bracket: MYTHIC, points: 10000, coupons: 35, whispers: 24000, essence: 70, foragingXp: 75000, hotfXp: 900, bits: 90, prizeChance: 20, safariTicket: FIRST_CLASS_SAFARI_TICKET}
+  - {bracket: DIVINE, points: 15000, coupons: 40, whispers: 30000, essence: 80, foragingXp: 75000, hotfXp: 900, bits: 105, prizeChance: 20, safariTicket: FIRST_CLASS_SAFARI_TICKET}
+  - {bracket: SPECIAL, points: 20000, coupons: 45, whispers: 36000, essence: 90, foragingXp: 75000, hotfXp: 900, bits: 120, prizeChance: 20, safariTicket: FIRST_CLASS_SAFARI_TICKET}
+milestones:
+  - {number: 1, threshold: 0}
+  - {number: 2, threshold: 100, foragingXp: 25000, essence: 100, whisperBuffPercent: 50}
+  - {number: 3, threshold: 500, foragingXp: 50000, essence: 250, whisperBuffPercent: 100}
+  - {number: 4, threshold: 1500, foragingXp: 75000, essence: 500, whisperBuffPercent: 150}
+  - {number: 5, threshold: 3000, foragingXp: 100000, essence: 750, whisperBuffPercent: 200}
+shop:
+  - kind: LEVEL_CAP
+    id: level_cap
+    icon: JUNGLE_SAPLING
+    tiers:
+      - {award: MIRIA_MILESTONE_4_FORAGING_LEVEL_CAP, milestone: 4, coupons: 250, prizes: 2}
+      - {award: MIRIA_MILESTONE_5_FORAGING_LEVEL_CAP, milestone: 5, coupons: 500, prizes: 5}
+  - kind: POWER
+    id: power
+    name: "Miria's Power"
+    icon: DIAMOND_AXE
+    tiers:
+      - {milestone: 1, coupons: 20, sweep: 5}
+      - {milestone: 2, coupons: 30, sweep: 10}
+      - {milestone: 3, coupons: 40, sweep: 15}
+      - {milestone: 4, coupons: 50, sweep: 20}
+      - {milestone: 5, coupons: 60, sweep: 25}
+  - kind: FORTUNE
+    id: helix_fortune
+    name: "Helix Fortune"
+    tree: HELIX
+    iconItem: ENCHANTED_HELIX_LOG
+    milestone: 1
+    perLevel: 4
+    maxLevel: 50
+    couponStep: 5
+    couponCap: 125
+    logItem: ENCHANTED_HELIX_LOG
+    logs: [2, 4, 6, 12, 16, 24, 32, 40, 36, 72, 88, 112, 136, 160, 192, 224, 272, 320, 400]
+    materialItem: HELIXIS
+    material: [3, 4, 5, 6, 8]
+    materialAfter: 10
+    prizeFromLevel: 41
+  - kind: PERSONAL_BEST
+    id: helix_personal_best
+    name: "Miria Personal Best"
+    tree: HELIX
+    icon: PAPER
+    milestone: 1
+    coupons: 36
+  - kind: ITEM
+    id: sloth_pet
+    milestone: 1
+    coupons: 20
+    give: {type: PET, item: SLOTH_PET, rarity: COMMON}
+  - kind: ITEM
+    id: torrhus_talisman
+    milestone: 1
+    coupons: 30
+    give: {type: ITEM, item: TORRHUS_TALISMAN}
+  - kind: ITEM
+    id: extremely_mild_adhesive
+    milestone: 1
+    coupons: 100
+    give: {type: ITEM, item: EXTREMELY_MILD_ADHESIVE}
+  - kind: ITEM
+    id: woodpecker_shard
+    milestone: 2
+    coupons: 15
+    give: {type: SHARD, shard: U76}
+  - kind: ITEM
+    id: small_sloth_claw
+    milestone: 2
+    coupons: 30
+    give: {type: ITEM, item: SMALL_SLOTH_CLAW}
+  - kind: ITEM
+    id: medium_sloth_claw
+    milestone: 3
+    coupons: 40
+    give: {type: ITEM, item: MEDIUM_SLOTH_CLAW}
+  - kind: ITEM
+    id: petalfall_book
+    milestone: 3
+    coupons: 20
+    give: {type: BOOK, enchant: PETALFALL, level: 1}
+  - kind: ITEM
+    id: torrhus_ring
+    milestone: 3
+    coupons: 30
+    requires: {TORRHUS_TALISMAN: 1}
+    give: {type: ITEM, item: TORRHUS_RING}
+  - kind: ITEM
+    id: rubber_snorkel
+    milestone: 3
+    coupons: 125
+    give: {type: ITEM, item: RUBBER_SNORKEL}
+  - kind: ITEM
+    id: vulture_shard
+    milestone: 4
+    coupons: 25
+    give: {type: SHARD, shard: R19}
+  - kind: ITEM
+    id: large_sloth_claw
+    milestone: 4
+    coupons: 50
+    give: {type: ITEM, item: LARGE_SLOTH_CLAW}
+  - kind: ITEM
+    id: winding_ivy
+    milestone: 4
+    coupons: 250
+    give: {type: ITEM, item: WINDING_IVY}
+  - kind: ITEM
+    id: torrhus_artifact
+    milestone: 5
+    coupons: 30
+    requires: {TORRHUS_RING: 1}
+    give: {type: ITEM, item: TORRHUS_ARTIFACT}
+  - kind: ITEM
+    id: giant_sloth_claw
+    milestone: 5
+    coupons: 60
+    give: {type: ITEM, item: GIANT_SLOTH_CLAW}
+  - kind: ITEM
+    id: vial_of_spring_water
+    milestone: 5
+    prizes: 10
+    give: {type: ITEM, item: VIAL_OF_SPRING_WATER}

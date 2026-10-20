@@ -9,6 +9,7 @@ import dev.daweapon.type.skyblockgeneric.hotf.HotfCurrency;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfLottery;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfPerk;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfRegistry;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfRewards;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfTierReward;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -41,6 +42,10 @@ public final class HotfTooltips {
 
         if (!single) text.append("\n<7>Level ").append(maxed ? String.valueOf(level) : Math.max(level, 1) + "/" + perk.maxLevel());
         text.append("\n\n").append(lore(player, perk, Math.max(level, 1)));
+        if (perk.id().equals("free_trial") && level > 0 && HotfRewards.freeTrialUsedToday(player)) {
+            long minutes = HotfService.millisUntilDailyReset() / 60_000L;
+            text.append("\n<c>Resets in: ").append(minutes / 60).append("h ").append(minutes % 60).append("m");
+        }
         if (!perk.available()) {
             text.append("\n\n<c>Not available yet: ").append(perk.unavailable()).append(".");
             return text.toString();

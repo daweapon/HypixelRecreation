@@ -129,7 +129,7 @@ public enum SkyBlockXPSource {
     UPGRADED_RELAYS(Group.MISCELLANEOUS, null, 45, Availability.NOT_IN_GAME, Material.LIGHTNING_ROD),
     TAMING_CAP_INCREASES(Group.MISCELLANEOUS, null, 100, Availability.NOT_IN_GAME, Material.WOLF_SPAWN_EGG),
     HOOTIE_UPGRADES(Group.MISCELLANEOUS, null, 65, Availability.NOT_IN_GAME, Material.FEATHER),
-    STARLYN_SISTER_LEVELS(Group.MISCELLANEOUS, null, 40, Availability.NOT_IN_GAME, Material.NETHER_STAR),
+    STARLYN_SISTER_LEVELS(Group.MISCELLANEOUS, null, 40, Availability.LIVE, Material.NETHER_STAR),
     BEACON_TIERS(Group.MISCELLANEOUS, null, 40, Availability.NOT_IN_GAME, Material.BEACON),
     ATTRIBUTE_LEVELS(Group.MISCELLANEOUS, null, 3240, Availability.LIVE, Material.PRISMARINE_SHARD),
     FISH_FAMILY(Group.MISCELLANEOUS, null, 45, Availability.NOT_IN_GAME, Material.COD),
@@ -145,7 +145,7 @@ public enum SkyBlockXPSource {
     // ----- Story Tasks (1,132 XP) -----
     RIFT_GUIDE(Group.STORY, null, 360, Availability.NOT_IN_GAME, Material.ENDER_EYE),
     COMPLETE_OBJECTIVES(Group.STORY, null, 212, Availability.LIVE, Material.ENCHANTED_BOOK),
-    CHAPTERS(Group.STORY, null, 560, Availability.NOT_IN_GAME, Material.WRITABLE_BOOK),
+    CHAPTERS(Group.STORY, null, 560, Availability.LIVE, Material.WRITABLE_BOOK),
 
     // ----- Consumables Tasks (299 XP) -----
     METAPHYSICAL_SERUM(Group.CONSUMABLES, null, 15, Availability.LIVE, Material.POTION),
