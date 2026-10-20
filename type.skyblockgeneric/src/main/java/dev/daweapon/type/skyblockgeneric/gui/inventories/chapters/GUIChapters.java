@@ -30,7 +30,7 @@ public class GUIChapters extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>(island.guide() + "'s Chapters", InventoryType.CHEST_4_ROW);
+        return new ViewConfiguration<>(island == ChapterIsland.TORRHUS_CANYON ? "Torrhus Canyon" : island.guide() + "'s Chapters", InventoryType.CHEST_4_ROW);
     }
 
     @Override

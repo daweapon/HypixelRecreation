@@ -24,7 +24,7 @@ public class NPCMiria extends HypixelNPC implements NPCAbiphoneTrait {
         super(new HumanConfiguration() {
             @Override
             public String[] holograms(HypixelPlayer player) {
-                return new String[]{"<b>Miria", "<e><l>CLICK"};
+                return new String[]{"<d>STARLYN CONTESTS", "<b>Miria", "<e><l>CLICK"};
             }
 
             @Override

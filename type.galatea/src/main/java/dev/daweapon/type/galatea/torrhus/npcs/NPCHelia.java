@@ -20,7 +20,7 @@ public class NPCHelia extends HypixelNPC {
         super(new HumanConfiguration() {
             @Override
             public String[] holograms(HypixelPlayer player) {
-                return new String[]{"<2>Helia", "<e><l>CLICK"};
+                return new String[]{"<6><l>TORRHUS CHAPTERS", "<a>Helia", "<e><l>CLICK"};
             }
 
             @Override
