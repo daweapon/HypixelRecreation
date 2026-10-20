@@ -142,6 +142,7 @@ public final class MaxStickService {
             new Step("Bank", MaxStickService::maxBank),
             new Step("Slayers", MaxStickService::maxSlayers),
             new Step("Heart of the Mountain", MaxStickService::maxHotm),
+            new Step("Heart of the Forest", dev.daweapon.type.skyblockgeneric.hotf.HotfService::maxOut),
             new Step("Fairy Souls", MaxStickService::maxFairySouls),
             new Step("Bestiary", MaxStickService::maxBestiary),
             new Step("Backpack slots", MaxStickService::maxBackpackSlots),

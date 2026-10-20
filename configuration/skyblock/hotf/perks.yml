@@ -1,0 +1,454 @@
+# Heart of the Forest perks and abilities laid out as in real Hypixel: tier is the tree row (1 at the bottom), col the menu column (1-7).
+# Cost to reach level N (N >= 2) = floor((N + offset) ^ exponent) whispers, or linearBase + linearSlope * N when linearBase is set; level 1 costs only the token.
+# Effect value at level L = min(cap, base + perLevel * L). A perk marked available: false stays in the tree with its unavailable reason.
+# desertWhispers: false charges Forest Whispers for the perks that real Hypixel prices in Desert Whispers (Torrhus Canyon is not built yet).
+tokenCostPerPerk: 1
+desertWhispers: false
+perks:
+  - id: sweep
+    name: "Sweep"
+    kind: PERK
+    currency: FOREST
+    tier: 1
+    col: 4
+    maxLevel: 50
+    exponent: 3.0
+    offset: 1
+    lore:
+      - "Increase <a>Sweep<7> by <a>{value}<7>."
+    effects:
+      - {key: main, stat: SWEEP, base: 0, perLevel: 1, scope: ALWAYS}
+  - id: damage_boost
+    name: "Damage Boost"
+    kind: ABILITY
+    tier: 2
+    col: 2
+    maxLevel: 1
+    lore: []
+  - id: luck_of_the_forest
+    name: "Luck of the Forest"
+    kind: PERK
+    currency: FOREST
+    tier: 2
+    col: 3
+    maxLevel: 40
+    exponent: 3.07
+    offset: 1
+    lore:
+      - "Tree Gifts grant <a>{value}%<7> more loot."
+    effects:
+      - {key: main, base: 0, perLevel: 0.5, scope: ALWAYS}
+  - id: foraging_fortune
+    name: "Foraging Fortune"
+    kind: PERK
+    currency: FOREST
+    tier: 2
+    col: 4
+    maxLevel: 50
+    exponent: 3.05
+    offset: 1
+    lore:
+      - "Increase <6>Foraging Fortune<7> by <6>{value}<7>."
+    effects:
+      - {key: main, stat: FORAGING_FORTUNE, base: 0, perLevel: 3, scope: ALWAYS}
+  - id: collector
+    name: "Collector"
+    kind: PERK
+    currency: FOREST
+    tier: 2
+    col: 5
+    maxLevel: 50
+    exponent: 2.9
+    offset: 1
+    available: false
+    unavailable: "Berries and Island Resources are not built yet"
+    lore:
+      - "Berries and Island Resources have a <a>{value}%<7> chance to drop double resources."
+    effects:
+      - {key: main, base: 0, perLevel: 2, scope: ALWAYS}
+  - id: axe_toss
+    name: "Axe Toss"
+    kind: ABILITY
+    tier: 2
+    col: 6
+    maxLevel: 1
+    available: false
+    unavailable: "Axe throwing is not built yet"
+    lore: []
+  - id: deep_waters
+    name: "Deep Waters"
+    kind: PERK
+    currency: FOREST
+    tier: 3
+    col: 2
+    maxLevel: 50
+    exponent: 2.9
+    offset: 1
+    lore:
+      - "Increase <9>Pressure Resistance<7> by <9>{value}<7>."
+    effects:
+      - {key: main, stat: PRESSURE_RESISTANCE, base: 0, perLevel: 1, scope: ALWAYS}
+  - id: hunters_luck
+    name: "Hunter's Luck"
+    kind: PERK
+    currency: FOREST
+    tier: 3
+    col: 4
+    maxLevel: 50
+    exponent: 3.2
+    offset: 1
+    lore:
+      - "Grants <d>{value} Hunter Fortune<7>."
+    effects:
+      - {key: main, stat: HUNTER_FORTUNE, base: 0, perLevel: 1, scope: ALWAYS}
+  - id: galateas_might
+    name: "Galatea's Might"
+    kind: PERK
+    currency: FOREST
+    tier: 3
+    col: 6
+    maxLevel: 50
+    exponent: 3.2
+    offset: 1
+    lore:
+      - "Gain <a>+{value}%<7> <c>Combat Stats<7> on <a>Galatea<7>."
+    effects:
+      - {key: main, base: 0, perLevel: 0.5, scope: FORAGING_ISLAND}
+  - id: lottery
+    name: "Lottery"
+    kind: PERK
+    currency: DESERT
+    tier: 4
+    col: 1
+    maxLevel: 1
+    lore:
+      - "Every SkyBlock day, you receive a random effect."
+      - ""
+      - "<a>Possible Buffs"
+      - "<8>■ <7>Gain <6>+50 Fig Fortune<7>."
+      - "<8>■ <7>Gain <6>+50 Mangrove Fortune<7>."
+      - "<8>■ <7>Gain <a>+5% Sweep<7>."
+      - ""
+      - "{lottery_effect}"
+    effects:
+      - {key: main, base: 0, perLevel: 0, scope: ALWAYS}
+  - id: foraging_madness
+    name: "Foraging Madness"
+    kind: PERK
+    currency: DESERT
+    tier: 4
+    col: 2
+    maxLevel: 1
+    lore:
+      - "Increase <a>Sweep<7> by <a>10<7> and <6>Foraging Fortune<7> by <6>50<7>."
+    effects:
+      - {key: main, stat: SWEEP, base: 10, perLevel: 0, scope: ALWAYS}
+      - {key: second, stat: FORAGING_FORTUNE, base: 50, perLevel: 0, scope: ALWAYS}
+  - id: iron_lungs
+    name: "Iron Lungs"
+    kind: PERK
+    currency: DESERT
+    tier: 4
+    col: 3
+    maxLevel: 50
+    exponent: 2.9
+    offset: 1
+    lore:
+      - "Grants <3>+{value} Respiration<7>."
+    effects:
+      - {key: main, stat: RESPIRATION, base: 0, perLevel: 1, scope: ALWAYS}
+  - id: gifts_250
+    name: "250 Gifts"
+    kind: PERK
+    currency: DESERT
+    tier: 4
+    col: 4
+    maxLevel: 40
+    exponent: 3.07
+    offset: 1
+    lore:
+      - "The first <a>250<7> Tree Gifts of the day grant <a>{value}%<7> more loot and <a>20<7> extra Whispers."
+    effects:
+      - {key: main, base: 0, perLevel: 1, scope: ALWAYS}
+  - id: daily_wishes
+    name: "Daily Wishes"
+    kind: PERK
+    currency: DESERT
+    tier: 4
+    col: 5
+    maxLevel: 100
+    linearBase: 200
+    linearSlope: 18
+    lore:
+      - "Gain <3>{value} Forest Whispers<7> from the first type of log cut on Galatea every day."
+    effects:
+      - {key: main, base: 0, perLevel: 400, scope: ALWAYS}
+  - id: early_bird
+    name: "Early Bird"
+    kind: PERK
+    currency: DESERT
+    tier: 4
+    col: 6
+    maxLevel: 1
+    lore:
+      - "Increases <a>Sweep<7> by <a>20<7> and <6>Foraging Fortune<7> by <6>100<7> for the first <a>250<7> trees cut each day."
+    effects:
+      - {key: main, stat: SWEEP, base: 20, perLevel: 0, scope: ALWAYS}
+      - {key: second, stat: FORAGING_FORTUNE, base: 100, perLevel: 0, scope: ALWAYS}
+  - id: precision_cutting
+    name: "Precision Cutting"
+    kind: PERK
+    currency: DESERT
+    tier: 4
+    col: 7
+    maxLevel: 1
+    available: false
+    unavailable: "Particle-marked logs are not built yet"
+    lore:
+      - "A particle appears on every nearby tree. Cutting the marked log grants <a>+10 Sweep<7> on that hit."
+  - id: tree_whisperer
+    name: "Tree Whisperer"
+    kind: PERK
+    currency: DESERT
+    tier: 5
+    col: 2
+    maxLevel: 1
+    lore:
+      - "Tree Gifts give <3>+200 Forest Whispers<7>."
+  - id: free_trial
+    name: "Free Trial"
+    kind: PERK
+    currency: DESERT
+    tier: 5
+    col: 6
+    maxLevel: 1
+    available: false
+    unavailable: "Safari Tickets are not built yet"
+    lore:
+      - "The first Tree Gift opened every day will contain a <a>Basic Safari Ticket<7>."
+  - id: homing_axe
+    name: "Homing Axe"
+    kind: PERK
+    currency: DESERT
+    tier: 6
+    col: 1
+    maxLevel: 1
+    available: false
+    unavailable: "Axe throwing is not built yet"
+    lore:
+      - "Axe Throwing gains permanent homing abilities towards trees on Galatea."
+  - id: forest_fisher
+    name: "Forest Fisher"
+    kind: PERK
+    currency: DESERT
+    tier: 6
+    col: 2
+    maxLevel: 40
+    exponent: 3.07
+    offset: 1
+    lore:
+      - "Grants <b>{value} Fishing Speed<7> and <3>{value2} Sea Creature Chance<7> while on Foraging Islands."
+    effects:
+      - {key: main, stat: FISHING_SPEED, base: 5, perLevel: 0.5, scope: FORAGING_ISLAND}
+      - {key: second, stat: SEA_CREATURE_CHANCE, base: 1, perLevel: 0.1, scope: FORAGING_ISLAND}
+  - id: strength_boost
+    name: "Strength Boost"
+    kind: PERK
+    currency: DESERT
+    tier: 6
+    col: 3
+    maxLevel: 50
+    exponent: 3.1
+    offset: 1
+    lore:
+      - "Grants <c>+{value} Strength<7> while on Foraging Islands."
+    effects:
+      - {key: main, stat: STRENGTH, base: 0, perLevel: 2, scope: FORAGING_ISLAND}
+  - id: starlyn_supreme
+    name: "Starlyn Supreme"
+    kind: PERK
+    currency: DESERT
+    tier: 6
+    col: 4
+    maxLevel: 100
+    exponent: 2.6
+    offset: 1
+    available: false
+    unavailable: "Starlyn Contests are not built yet"
+    lore:
+      - "Gain <a>{value}%<7> more points towards Starlyn Contests."
+    effects:
+      - {key: main, base: 0, perLevel: 0.2, scope: ALWAYS}
+  - id: speed_boost
+    name: "Speed Boost"
+    kind: PERK
+    currency: DESERT
+    tier: 6
+    col: 5
+    maxLevel: 50
+    exponent: 3.1
+    offset: 1
+    lore:
+      - "Grants <f>+{value} Speed<7> while on Foraging Islands."
+    effects:
+      - {key: main, stat: SPEED, base: 0, perLevel: 2, scope: FORAGING_ISLAND}
+  - id: efficient_forager
+    name: "Efficient Forager"
+    kind: PERK
+    currency: DESERT
+    tier: 6
+    col: 6
+    maxLevel: 100
+    exponent: 2.6
+    offset: 1
+    lore:
+      - "Grants <3>+{value} Foraging Wisdom<7>."
+    effects:
+      - {key: main, stat: FORAGING_WISDOM, base: 5, perLevel: 0.1, scope: ALWAYS}
+  - id: maniac_slicer
+    name: "Maniac Slicer"
+    kind: ABILITY
+    tier: 6
+    col: 7
+    maxLevel: 1
+    lore: []
+  - id: half_empty
+    name: "Half Empty"
+    kind: PERK
+    currency: DESERT
+    tier: 7
+    col: 2
+    maxLevel: 25
+    exponent: 4.1
+    offset: 1
+    exclusive: half_full
+    lore:
+      - "Gain <6>{value} Foraging Fortune<7> and <a>{value2} Sweep<7> for each player on the current island with <c>Half Full<7> enabled, up to 5 players."
+      - "<8>Conflicts with Half Full."
+    effects:
+      - {key: main, base: 0, perLevel: 1, scope: ALWAYS}
+      - {key: second, base: 0, perLevel: 0.4, scope: ALWAYS}
+  - id: ricochet
+    name: "Ricochet"
+    kind: PERK
+    currency: DESERT
+    tier: 7
+    col: 4
+    maxLevel: 10
+    exponent: 5.5
+    offset: 1
+    available: false
+    unavailable: "Axe throwing is not built yet"
+    lore:
+      - "Your Axe has a <a>{value}%<7> chance to bounce to a nearby tree when thrown."
+    effects:
+      - {key: main, base: 0, perLevel: 1, scope: ALWAYS}
+  - id: half_full
+    name: "Half Full"
+    kind: PERK
+    currency: DESERT
+    tier: 7
+    col: 6
+    maxLevel: 25
+    exponent: 4.1
+    offset: 1
+    exclusive: half_empty
+    lore:
+      - "Gain <6>{value} Foraging Fortune<7> and <a>{value2} Sweep<7> for each player on the current island with <a>Half Empty<7> enabled, up to 5 players."
+      - "<8>Conflicts with Half Empty."
+    effects:
+      - {key: main, base: 0, perLevel: 1, scope: ALWAYS}
+      - {key: second, base: 0, perLevel: 0.4, scope: ALWAYS}
+  - id: monster_hunter
+    name: "Monster Hunter"
+    kind: PERK
+    currency: DESERT
+    tier: 8
+    col: 1
+    maxLevel: 1
+    available: false
+    unavailable: "Critter hunting rewards are not built yet"
+    lore:
+      - "Hunting a Critter grants <3>+25 Forest Whispers<7> on the Moonglade Marsh."
+  - id: forest_speed
+    name: "Forest Speed"
+    kind: PERK
+    currency: DESERT
+    tier: 8
+    col: 2
+    maxLevel: 50
+    exponent: 3.4
+    offset: 1
+    lore:
+      - "Gain <a>{value}%<7> of your total <f>Speed<7> as <6>Foraging Fortune<7> and <a>Sweep<7>."
+      - "<8>(Caps at 500 Speed)."
+    effects:
+      - {key: main, base: 0, perLevel: 0.2, scope: ALWAYS}
+  - id: essence_fortune
+    name: "Essence Fortune"
+    kind: PERK
+    currency: DESERT
+    tier: 8
+    col: 3
+    maxLevel: 50
+    exponent: 3.2
+    offset: 1
+    lore:
+      - "Every time you obtain <d>Forest Essence<7>, there is a <a>{value}%<7> chance for it to double."
+    effects:
+      - {key: main, base: 0, perLevel: 0.5, scope: ALWAYS}
+  - id: timber
+    name: "Timber"
+    kind: PERK
+    currency: DESERT
+    tier: 8
+    col: 4
+    maxLevel: 10
+    exponent: 5.0
+    offset: 7
+    available: false
+    unavailable: "The Timber statistic is not built yet"
+    lore:
+      - "Grants <6>+{value} Timber<7>."
+    effects:
+      - {key: main, base: 0, perLevel: 0.1, scope: ALWAYS}
+  - id: two_for_one
+    name: "Two-for-one"
+    kind: PERK
+    currency: DESERT
+    tier: 8
+    col: 5
+    maxLevel: 100
+    exponent: 2.45
+    offset: 1
+    available: false
+    unavailable: "Miria's Contest is not built yet"
+    lore:
+      - "Grants a <a>{value}%<7> chance to receive an extra Safari Ticket from Miria's Contest rewards."
+    effects:
+      - {key: main, base: 0, perLevel: 0.25, scope: ALWAYS}
+  - id: forest_strength
+    name: "Forest Strength"
+    kind: PERK
+    currency: DESERT
+    tier: 8
+    col: 6
+    maxLevel: 50
+    exponent: 3.4
+    offset: 1
+    lore:
+      - "Gain <a>{value}%<7> of your total <c>Strength<7> as <6>Foraging Fortune<7> and <a>Sweep<7>."
+      - "<8>(Caps at 1,000 Strength)."
+    effects:
+      - {key: main, base: 0, perLevel: 0.1, scope: ALWAYS}
+  - id: beekeeper
+    name: "Beekeeper"
+    kind: PERK
+    currency: DESERT
+    tier: 8
+    col: 7
+    maxLevel: 1
+    available: false
+    unavailable: "Honeyhives and honeycomb trees are not built yet"
+    lore:
+      - "Every SkyBlock day, gain a random effect."

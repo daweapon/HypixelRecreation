@@ -65,7 +65,8 @@ public class PlayerActionDamageMob implements HypixelEventClass {
                 * dev.daweapon.type.skyblockgeneric.slayer.inferno.BlazeSlayerGear.outgoingMultiplier(player, mob)
                 * dev.daweapon.type.skyblockgeneric.slayer.zombie.ZombieSlayerGear.outgoingMultiplier(player, mob)
                 * dev.daweapon.type.skyblockgeneric.enchantment.impl.EnchantmentHabaneroTactics.outgoingMultiplier(player, mob)
-                * dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.outgoingMultiplier(player, mob);
+                * dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.outgoingMultiplier(player, mob)
+                * dev.daweapon.type.skyblockgeneric.hotf.HotfAbilities.outgoingMultiplier(player);
         boolean critical = hit.getValue();
 
         PlayerDamageMobValueUpdateEvent valueEvent = new PlayerDamageMobValueUpdateEvent(

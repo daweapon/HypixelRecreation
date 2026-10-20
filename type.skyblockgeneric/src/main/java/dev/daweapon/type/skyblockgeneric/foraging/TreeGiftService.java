@@ -1,6 +1,11 @@
 package dev.daweapon.type.skyblockgeneric.foraging;
 
+import dev.daweapon.type.skyblockgeneric.hotf.HotfCurrency;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfRewards;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
 import dev.daweapon.type.skyblockgeneric.item.components.AttributeShardComponent;
+import dev.daweapon.type.skyblockgeneric.item.handlers.pet.abstr.PetEvent;
+import dev.daweapon.type.skyblockgeneric.user.pets.PetEvents;
 import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
 import net.minestom.server.entity.Player;
 import net.minestom.server.instance.Instance;
@@ -13,7 +18,6 @@ import dev.daweapon.type.skyblockgeneric.hunting.AttributeEffectService;
 import dev.daweapon.type.skyblockgeneric.hunting.AttributeId;
 import dev.daweapon.type.skyblockgeneric.hunting.AttributeRegistry;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
-import dev.daweapon.type.skyblockgeneric.reforge.ReforgeLoadout;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -35,9 +39,10 @@ public final class TreeGiftService {
             Player rawPlayer = instance.getPlayerByUuid(entry.getKey());
             if (!(rawPlayer instanceof SkyBlockPlayer player)) continue;
             double share = total == 0 ? 0 : entry.getValue() / (double) total;
-            double rewardScale = share < 0.20 ? 0 : share < 0.33 ? 0.5 : 1;
+            HotfRewards.recordTree(player);
+            double rewardScale = share < 0.10 ? 0 : share < 0.20 ? 1 : share < 0.33 ? 1.5 : 2;
             if (rewardScale == 0) {
-                player.sendMessage("<c>You need to cut at least 20% of the tree to receive a Tree Gift!");
+                player.sendMessage("<c>You need to cut at least 10% of the tree to receive a Tree Gift!");
                 continue;
             }
             awardPlayer(player, treeType, sizeMultiplier, rewardScale, share);
@@ -49,23 +54,31 @@ public final class TreeGiftService {
         List<Text> rewards = new ArrayList<>();
         List<Text> bonusMessages = new ArrayList<>();
         int scaled = Math.max(1, (int) Math.round(multiplier * rewardScale));
-        int essence = switch (treeType) {
+        double lootBonus = 1 + HotfRewards.lootBonusPercent(player) / 100D;
+        int essence = (int) Math.round(switch (treeType) {
             case "MANGROVE" -> 3;
             case "HELIX" -> 4;
             default -> 2;
-        } * scaled;
+        } * scaled * lootBonus);
+        if (HotfRewards.doubleEssence(player)) essence *= 2;
         int foragingXp = switch (treeType) {
-            case "MANGROVE" -> 1250;
+            case "MANGROVE" -> 500;
             case "HELIX" -> 1500;
-            default -> 1000;
+            default -> 100;
         } * scaled;
+        long hotfExperience = Math.round(switch (treeType) {
+            case "MANGROVE" -> 20;
+            case "HELIX" -> 30;
+            default -> 10;
+        } * scaled * HotfService.experienceMultiplier(player));
         TreeGiftMilestones.recordGift(player, treeType);
         increase(player, SkyBlockDataHandler.Data.FOREST_ESSENCE, essence);
-        increase(player, SkyBlockDataHandler.Data.HOTF_EXPERIENCE, 10L * scaled);
+        HotfService.addExperience(player, Math.round(PetEvents.xpGained(player, PetEvent.XpType.HOTF, null, hotfExperience)));
         player.getSkills().increase(player, SkillCategories.FORAGING, (double) foragingXp);
+        HotfRewards.recordGift(player);
         rewards.add(Text.of("<a>Forest Essence <7>x<f>{}", essence));
         rewards.add(Text.of("<a>Foraging Experience <7>x<f>{}", foragingXp));
-        rewards.add(Text.of("<a>HOTF Experience <7>x<f>{}", 10 * scaled));
+        rewards.add(Text.of("<a>HOTF Experience <7>x<f>{}", hotfExperience));
         if (treeType.equals("FIG")) {
             int tender = ThreadLocalRandom.current().nextInt(scaled + 1);
             if (LootRoll.claim(player.getUuid(), List.of(ItemType.TENDER_WOOD)) != null) tender = Math.max(1, tender);
@@ -77,24 +90,19 @@ public final class TreeGiftService {
             if (vinesap > 0) player.addAndUpdateItem(ItemType.VINESAP, vinesap);
             rewards.add(Text.of("<a>Vinesap <7>x<f>0-{}", scaled));
         }
-        long whispersAwarded;
         if (treeType.equals("HELIX")) {
-            whispersAwarded = 225L * scaled;
-            increase(player, SkyBlockDataHandler.Data.FOREST_WHISPERS, 225L * scaled);
-            rewards.add(Text.of("<a>Forest Whispers <7>x<f>{}", 75 * scaled));
-            rewards.add(Text.of("<a>Forest Whispers <7>x<f>{}", 150 * scaled));
+            long whispers = HotfRewards.giftWhispers(player, HotfCurrency.DESERT, ThreadLocalRandom.current().nextLong(75L * scaled, 150L * scaled + 1));
+            rewards.add(Text.of("<6>Desert Whispers <7>x<f>{}", whispers));
         } else {
-            int whispers = ThreadLocalRandom.current().nextInt(20 * scaled, 40 * scaled + 1);
-            whispersAwarded = whispers;
-            increase(player, SkyBlockDataHandler.Data.FOREST_WHISPERS, whispers);
-            rewards.add(Text.of("<a>Forest Whispers <7>x<f>{}", whispers));
+            long whispers = HotfRewards.giftWhispers(player, HotfCurrency.FOREST, ThreadLocalRandom.current().nextLong(20L * scaled, 40L * scaled + 1));
+            rewards.add(Text.of("<3>Forest Whispers <7>x<f>{}", whispers));
         }
-        increase(player, SkyBlockDataHandler.Data.FOREST_WHISPERS, ReforgeLoadout.forestWhispers(player, whispersAwarded));
+        HotfService.syncSkyBlockXp(player);
         List<Bonus> bonuses = bonuses(treeType);
         int guaranteedRewards = rewards.size();
         double treeLurker = AttributeEffectService.value(player.getHuntingData(), AttributeId.parse("C24")) / 100D;
         for (Bonus bonus : bonuses) {
-            double chance = bonus.chance * scaled;
+            double chance = bonus.chance * scaled * lootBonus;
             if (bonus.shard != null) chance *= 1 + treeLurker;
             AttributeDefinition definition = bonus.shard == null ? null : AttributeRegistry.findByShard(bonus.shard).orElse(null);
             ItemType bonusItem = definition != null ? AttributeShardComponent.itemType(definition) : bonus.item;

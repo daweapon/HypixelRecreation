@@ -215,6 +215,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         FishingRegistry.loadAll();
         SlayerRegistry.loadAll();
         HotmRegistry.get();
+        dev.daweapon.type.skyblockgeneric.hotf.HotfRegistry.get();
 
         /**
          * Register commands

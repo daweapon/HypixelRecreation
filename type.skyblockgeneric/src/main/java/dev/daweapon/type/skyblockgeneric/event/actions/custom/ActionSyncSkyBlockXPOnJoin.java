@@ -40,6 +40,7 @@ public class ActionSyncSkyBlockXPOnJoin implements HypixelEventClass {
             MythologicalItemHandlers::syncSkyBlockXP,
             CollectedMobTypes::syncSkyBlockXP,
             HotmService::syncSkyBlockXp,
+            dev.daweapon.type.skyblockgeneric.hotf.HotfService::syncSkyBlockXp,
             dev.daweapon.type.skyblockgeneric.crystalhollows.CrystalNucleus::syncSkyBlockXp);
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

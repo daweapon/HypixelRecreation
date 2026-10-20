@@ -151,6 +151,14 @@ public class GUISkyBlockMenu extends StatelessView {
             }, (click, c) -> c.push(new dev.daweapon.type.skyblockgeneric.gui.inventories.hotm.GUIHotm()));
         }
 
+        else if (dev.daweapon.type.skyblockgeneric.hotf.HotfService.onForagingIsland()) {
+            layout.slot(10, (s, c) -> {
+                SkyBlockPlayer player = (SkyBlockPlayer) c.player();
+                int tier = dev.daweapon.type.skyblockgeneric.hotf.HotfService.tier(player);
+                return ItemStacks.item(Material.JUNGLE_SAPLING, "<2>Heart of the Forest\n<7>Spend Tokens and Whispers on foraging perks.\n\n<7>Tier: <2>" + tier + "\n\n<e>Click to view!");
+            }, (click, c) -> c.push(new dev.daweapon.type.skyblockgeneric.gui.inventories.hotf.GUIHotf()));
+        }
+
         else if (dev.daweapon.type.generic.HypixelConst.isGardenServer()) {
             layout.slot(10, (s, c) -> {
                 SkyBlockPlayer player = (SkyBlockPlayer) c.player();

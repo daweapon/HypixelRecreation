@@ -60,6 +60,15 @@ public class GUISkillCategory extends StatelessView {
                     <e>Click to open!"""), (_, c) -> c.push(new GUIHotm()));
         }
 
+        if (category == SkillCategories.FORAGING) {
+            layout.slot(39, ItemStacks.item(Material.JUNGLE_SAPLING, """
+                    <2>Heart of the Forest
+                    <7>Spend Tokens of the Forest and
+                    <7>Whispers on permanent foraging perks.
+
+                    <e>Click to open!"""), (_, c) -> c.push(new dev.daweapon.type.skyblockgeneric.gui.inventories.hotf.GUIHotf()));
+        }
+
         // Bestiary button for combat
         if (category == SkillCategories.COMBAT && player.getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_BRAMASS_BEASTSLAYER)) {
             layout.slot(39, (s, c) -> {

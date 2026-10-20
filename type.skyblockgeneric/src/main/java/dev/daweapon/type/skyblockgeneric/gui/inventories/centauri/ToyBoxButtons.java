@@ -21,6 +21,8 @@ import dev.daweapon.type.skyblockgeneric.garden.greenhouse.GreenhouseService;
 import dev.daweapon.type.skyblockgeneric.garden.visitor.VisitorService;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointChocolateFactory;
 import dev.daweapon.type.skyblockgeneric.hoppity.HoppityEggService;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfCurrency;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
 import dev.daweapon.type.skyblockgeneric.hotm.HotmService;
 import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateFactoryHelper;
 import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateFactoryLevel;
@@ -95,7 +97,14 @@ final class ToyBoxButtons {
     static List<ToyBoxButton> currencies() {
         return List.of(
                 of(Material.EMERALD, "<a>5k Gems", "<8>Get rich quick.", "<7>Gain <a>5,000 Gems<7>.", p -> p.addGems(5_000)),
-                of(Material.SEA_LANTERN, "<a>Big ol' chunk o' Whispers!", "<8>To turn your tears to roses.", "<7>Get 1,000,000 Forest Whispers.", p -> p.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.FOREST_WHISPERS, DatapointLong.class).setValue(1_000_000L)),
+                of(Material.SEA_LANTERN, "<a>Big ol' chunk o' Whispers!", "<8>To turn your tears to roses.", "<7>Get 1,000,000 Forest Whispers.", p -> {
+                    p.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.FOREST_WHISPERS, DatapointLong.class).setValue(1_000_000L);
+                    HotfService.syncSkyBlockXp(p);
+                }),
+                of(Material.SAND, "<6>Desert Whispers", "<8>Torrhus sends its regards.", "<7>Get 1,000,000 Desert Whispers.", p -> {
+                    HotfService.setWhispers(p, HotfCurrency.DESERT, 1_000_000L);
+                    HotfService.syncSkyBlockXp(p);
+                }),
                 of(Material.BONE_BLOCK, "<d>Fossil Essence", "<8>Older than time itself.", "<7>Gain <d>100,000 Fossil Essence<7>.", p -> Essences.add(p, EssenceType.FOSSIL, 100_000)),
                 of(Material.NETHER_STAR, "<d>Every Essence", "<8>The full collection.", "<7>Gain <d>100,000<7> of every essence type.", p -> {
                     for (EssenceType type : EssenceType.values()) Essences.add(p, type, 100_000);
@@ -103,6 +112,16 @@ final class ToyBoxButtons {
                 of(Material.ENDER_EYE, "<5>Summoning Eyes", "<8>Wake the dragon.", "<7>Get <5>8 Summoning Eyes <7>for the Dragon's Nest altar.", p -> ToyBoxActions.give(p, ItemType.SUMMONING_EYE, 8)),
                 of(Material.HOPPER, "<d>Max Community Upgrades", "<8>Elizabeth is thrilled.", "<7>Finish every <d>Account <7>and <d>Profile Upgrade <7>at its top tier.", dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgrades::maxAll),
                 unavailable(Material.PRISMARINE_SHARD, "<a>Shards!", "<7>Get 10 of each available Shard."));
+    }
+
+    static List<ToyBoxButton> foraging() {
+        return List.of(
+                of(Material.JUNGLE_SAPLING, "<2>Unlock Heart of the Forest", "<8>Hina would be proud.", "<7>Unlock the <2>Heart of the Forest<7> without talking to Hina.", HotfService::unlock),
+                of(Material.OAK_LOG, "<2>50k HotF Exp", "<8>The power of an axe.", "<7>Gain <2>50,000 HotF Experience<7>.", p -> HotfService.addExperience(p, 50_000)),
+                of(Material.NETHER_STAR, "<2>Tokens of the Forest", "<8>Spend them wisely.", "<7>Gain <2>10 Tokens of the Forest<7>.", p -> HotfService.addTokens(p, 10)),
+                of(Material.DARK_OAK_LOG, "<2>Max Center of the Forest", "<8>The heart of it all.", "<7>Set the Center of the Forest to level 5.", HotfService::maxCore),
+                of(Material.BEACON, "<2>Max Heart of the Forest", "<8>Every perk at the top.", "<7>Max the tier, the Center and every available perk.", HotfService::maxOut),
+                of(Material.REDSTONE_BLOCK, "<c>Reset HotF Perks", "<8>A fresh start.", "<7>Reset every Heart of the Forest perk.", HotfService::reset));
     }
 
     static List<ToyBoxButton> hoppity() {

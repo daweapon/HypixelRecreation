@@ -275,6 +275,7 @@ public class PlayerStatistics {
 
         total = dev.daweapon.type.skyblockgeneric.item.armor.ArmorAbilityEffects.finalise(player, total);
         total = dev.daweapon.type.skyblockgeneric.item.equipment.passive.EquipmentPassives.finalise(player, total);
+        total = dev.daweapon.type.skyblockgeneric.hotf.HotfStatistics.derived(player, total);
         return ZoneRuleService.capStatistics(player, StatOverrides.apply(player,
                 dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.withRaisedSpeedCap(player, total)));
     }

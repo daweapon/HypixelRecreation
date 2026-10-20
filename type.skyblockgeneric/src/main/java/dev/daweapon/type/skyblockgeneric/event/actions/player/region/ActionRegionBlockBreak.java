@@ -303,6 +303,7 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
                                 ForagingTreeManager.HarvestedLog harvested, double extraFortune) {
         Material originalMaterial = Material.fromKey(harvested.originalBlock().key());
         if (originalMaterial == null) return;
+        dev.daweapon.type.skyblockgeneric.hotf.HotfRewards.onLogCut(player, harvested.dropType());
 
         SkyBlockItem brokenItem = harvested.dropType() == null
                 ? new SkyBlockItem(originalMaterial)

@@ -1,0 +1,35 @@
+title: "The Heart of the Forest Update"
+date: "20th October 2026"
+intro:
+  - "Galatea gets its own skill tree. Talk to Hina in Tangleburg's Path, cut trees, and spend Whispers on foraging perks."
+sections:
+  - heading: "Heart of the Forest"
+    colour: "<2>"
+    lines:
+      - "Hina unlocks your Heart of the Forest once you reach Foraging XII. Open it with /hotf, from the Foraging skill menu, or from your SkyBlock Menu while on Galatea."
+      - "Eight tiers of HotF Exp give you 15 Tokens of the Forest. The Center of the Forest gives 2 more. Every perk costs one Token to unlock and Whispers to level up."
+      - "35 perks and axe abilities sit in the tree. Sweep, Foraging Fortune, Luck of the Forest, Deep Waters, Hunter's Luck, Galatea's Might, Lottery, Iron Lungs, 250 Gifts, Daily Wishes, Early Bird, Tree Whisperer, Forest Fisher, Strength Boost, Speed Boost, Efficient Forager, Half Full, Half Empty, Forest Speed, Forest Strength and Essence Fortune work now."
+      - "Resetting refunds your Whispers and Tokens. Tiers and the Center of the Forest stay."
+  - heading: "Center of the Forest"
+    colour: "<a>"
+    lines:
+      - "Level it with Whispers for Tokens, a higher axe ability level and extra Whispers from logs and Tree Gifts. The Whispers you spend here are never refunded."
+  - heading: "Axe abilities"
+    colour: "<6>"
+    lines:
+      - "Right-click an axe to use your selected ability. Damage Boost doubles your damage against creatures on Galatea. Maniac Slicer turns all of your Mana into Sweep."
+  - heading: "Tree Gifts"
+    colour: "<e>"
+    lines:
+      - "You now need to cut 10% of a tree for a Tree Gift. Cut 20% for 50% more rewards and 33% for double rewards."
+      - "Gifts pay Foraging experience, HotF Exp and Whispers by tree type, and every log you cut pays Forest Whispers."
+      - "Your Whispers now count for SkyBlock XP."
+  - heading: "Different from Hypixel"
+    colour: "<c>"
+    lines:
+      - "Torrhus Canyon is not here yet, so perks that cost Desert Whispers cost Forest Whispers instead."
+  - heading: "Not here yet"
+    colour: "<c>"
+    lines:
+      - "Axe throwing perks (Axe Toss, Homing Axe, Ricochet), Collector, Precision Cutting, Free Trial, Monster Hunter, Timber, Beekeeper, Starlyn Supreme and Two-for-one show why they are locked."
+      - "Hina's chapters, Agatha and Miria's contests and shops, and Torrhus Canyon."

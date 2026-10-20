@@ -416,6 +416,12 @@ public class SkyBlockDataHandler extends DataHandler {
         HOTF_EXPERIENCE("hotf_experience", false, false, false,
                 DatapointLong.class, new DatapointLong("hotf_experience", 0L)),
 
+        DESERT_WHISPERS("desert_whispers", false, false, false,
+                DatapointLong.class, new DatapointLong("desert_whispers", 0L)),
+
+        HOTF("hotf", false, false, false,
+                DatapointHOTF.class, new DatapointHOTF("hotf")),
+
         MINION_DATA("minions", false, true, false,
                 DatapointMinionData.class, new DatapointMinionData("minions")),
 

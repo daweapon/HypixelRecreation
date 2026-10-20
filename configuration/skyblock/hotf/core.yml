@@ -1,0 +1,17 @@
+# Center of the Forest. Costs are paid once and are never refunded by a reset.
+levels:
+  - {level: 1, currency: FOREST, cost: 0, tokens: 1, skyBlockXp: 25, reward: "<5>+1 Token of the Forest"}
+  - {level: 2, currency: FOREST, cost: 50000, skyBlockXp: 35, reward: "<a>+1 Axe Ability Level"}
+  - {level: 3, currency: FOREST, cost: 100000, skyBlockXp: 50, reward: "<a>+20 Whispers per Tree Gift and +2 per log cut"}
+  - {level: 4, currency: DESERT, cost: 200000, skyBlockXp: 65, reward: "<a>+5 Tracking on Tree Gifts"}
+  - {level: 5, currency: DESERT, cost: 300000, tokens: 1, skyBlockXp: 75, reward: "<5>+1 Token of the Forest"}
+# Experience is the cumulative HotF EXP needed to reach the tier.
+tiers:
+  - {tier: 1, experience: 0, tokens: 1, skyBlockXp: 35, rewards: []}
+  - {tier: 2, experience: 3000, tokens: 2, skyBlockXp: 45, rewards: ["<6>Axe Abilities: Damage Boost and Axe Toss"]}
+  - {tier: 3, experience: 12000, tokens: 2, skyBlockXp: 60, rewards: []}
+  - {tier: 4, experience: 37000, tokens: 2, skyBlockXp: 75, rewards: ["<6>Access to the Torrhus Canyon"]}
+  - {tier: 5, experience: 97000, tokens: 2, skyBlockXp: 90, rewards: ["<a>+Foraging Clover Emblem"]}
+  - {tier: 6, experience: 197000, tokens: 2, skyBlockXp: 110, rewards: ["<6>Axe Ability: Maniac Slicer"]}
+  - {tier: 7, experience: 347000, tokens: 2, skyBlockXp: 130, rewards: ["<a>+Golden Foraging Clover Emblem"]}
+  - {tier: 8, experience: 547000, tokens: 2, skyBlockXp: 180, rewards: []}
