@@ -193,7 +193,7 @@ regions:
     x1: -600
     y1: 0
     z1: -350
-    x2: -545
+    x2: -566
     y2: 30
     z2: -292
     serverType: THE_END

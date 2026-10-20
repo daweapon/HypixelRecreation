@@ -48,6 +48,7 @@ public class TypeTheEndLoader implements SkyBlockTypeLoader {
         DragonGlass.captureSoon();
         ChallengeSidebar.register(DragonSidebar::lines);
         DragonMeleeRedirect.install();
+        SepulturePads.install();
         ZealotWaves.start();
         EndMobSpawner.start();
     }

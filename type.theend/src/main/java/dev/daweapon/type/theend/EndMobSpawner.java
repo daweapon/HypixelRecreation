@@ -45,8 +45,7 @@ public final class EndMobSpawner {
             new Pos(-610.5, 11, -248.5), new Pos(-698.5, 9, -296.5), new Pos(-650.5, 5, -272.5), new Pos(-690.5, 5, -328.5),
             new Pos(-722.5, 8, -344.5), new Pos(-690.5, 15, -376.5), new Pos(-690.5, 10, -312.5), new Pos(-682.5, 5, -280.5));
     public static final List<Pos> SEPULTURE = List.of(
-            new Pos(-584.5, 27, -314.5), new Pos(-568.5, 7, -318.5), new Pos(-564.5, 31, -346.5), new Pos(-584.5, 12, -342.5),
-            new Pos(-552.5, 21, -330.5), new Pos(-596.5, 11, -334.5), new Pos(-556.5, 21, -310.5), new Pos(-552.5, 21, -298.5));
+            new Pos(-592.5, 11, -338.5), new Pos(-572.5, 8, -314.5), new Pos(-588.5, 26, -346.5), new Pos(-588.5, 26, -326.5), new Pos(-584.5, 10, -310.5), new Pos(-580.5, 12, -346.5), new Pos(-580.5, 26, -334.5), new Pos(-588.5, 10, -294.5));
 
     private record Plan(Class<? extends SkyBlockMob> type, Supplier<SkyBlockMob> factory, List<Pos> spots, int minimum) {
     }

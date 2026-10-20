@@ -12,10 +12,11 @@ import dev.daweapon.type.skyblockgeneric.region.RegionType;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import dev.daweapon.type.theend.SepulturePads;
+
 public class ActionEndAccessGate implements HypixelEventClass {
     public static final int ISLAND_COMBAT_LEVEL = 12;
     public static final int SEPULTURE_COMBAT_LEVEL = 25;
-    private static final Pos SEPULTURE_EXIT = new Pos(-596.5, 5, -271.5);
 
     public static boolean meetsIslandLevel(int combatLevel) {
         return combatLevel >= ISLAND_COMBAT_LEVEL;
@@ -39,7 +40,8 @@ public class ActionEndAccessGate implements HypixelEventClass {
         if (event.getTo() != RegionType.VOID_SEPULTURE) return;
         SkyBlockPlayer player = event.getPlayer();
         if (player.getRank().isStaff() || meetsSepultureLevel(combatLevel(player))) return;
-        player.teleport(SEPULTURE_EXIT);
+        SepulturePads.markUsed(player);
+        player.teleport(SepulturePads.EXIT);
         player.sendMessage("<c>You must have Combat " + SEPULTURE_COMBAT_LEVEL + " unlocked to enter the Void Sepulture!");
     }
 
