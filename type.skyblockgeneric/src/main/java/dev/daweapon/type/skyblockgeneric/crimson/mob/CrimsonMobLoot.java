@@ -107,7 +107,7 @@ public final class CrimsonMobLoot {
         }
     }
 
-    private static void announceRareDrop(SkyBlockPlayer player, SkyBlockMob mob, SkyBlockItem item) {
+    public static void announceRareDrop(SkyBlockPlayer player, SkyBlockMob mob, SkyBlockItem item) {
         Text name = item.getDisplayNameText();
         List<Text> enchantments = item.getAttributeHandler().getEnchantments().map(ItemLore::enchantmentTitle).toList();
         if (!enchantments.isEmpty()) {

@@ -178,6 +178,7 @@ public final class EnderDragonFight {
         List<Map.Entry<UUID, Double>> ranking = finished.getDamageDealt().entrySet().stream()
                 .sorted(Map.Entry.<UUID, Double>comparingByValue(Comparator.reverseOrder())).toList();
         if (instance != null) broadcast(instance, Text.of("<5><l>☬ <r><d>The {} <5>has been defeated!", variant.displayName()));
+        if (instance != null) DragonLootSite.build(instance, DragonLootSite.nearestFloor(finished.getPosition()));
         double top = ranking.isEmpty() ? 0 : ranking.getFirst().getValue();
         for (int i = 0; i < ranking.size(); i++) {
             SkyBlockPlayer player = SkyBlockGenericLoader.getFromUUID(ranking.get(i).getKey());
@@ -195,6 +196,7 @@ public final class EnderDragonFight {
             phase = Phase.IDLE;
             if (instance != null) {
                 DragonEgg.restore(instance);
+                DragonLootSite.restore(instance);
                 broadcast(instance, Text.of("<5>The Dragon Egg has respawned!"));
             }
         }).delay(TaskSchedule.tick(EGG_RESPAWN_TICKS)).schedule();
@@ -213,7 +215,8 @@ public final class EnderDragonFight {
         for (DragonLoot.Reward reward : rewards) {
             SkyBlockItem item = new SkyBlockItem(reward.item(), reward.amount());
             if (reward.rarity() != null) item.getAttributeHandler().setRarity(reward.rarity());
-            CrimsonMobLoot.deliver(player, mob, item, reward.major());
+            if (reward.major()) CrimsonMobLoot.announceRareDrop(player, mob, item);
+            DragonLootSite.drop(mob.getInstance(), player, item);
         }
         Essences.add(player, EssenceType.DRAGON, variant.essenceReward());
         DragonProgress.recordKill(player, variant);
@@ -243,6 +246,8 @@ public final class EnderDragonFight {
 
     public static void abort() {
         stopBar();
+        Instance current = HypixelConst.getInstanceContainer();
+        if (current != null) DragonLootSite.restore(current);
         if (dragon != null) dragon.abandon();
         crystals.forEach(crystal -> {
             if (!crystal.isRemoved()) crystal.remove();
