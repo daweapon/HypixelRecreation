@@ -54,7 +54,7 @@ slayers:
     enabled: true
     unlock: { type: TARANTULA_BROODFATHER, tier: II }
     bossMobTypes: [WOODLAND]
-    targetMobIds: [RUIN_WOLF, OLD_WOLF]
+    targetMobIds: [RUIN_WOLF, OLD_WOLF, PACK_SPIRIT_30, HOWLING_SPIRIT_35, SOUL_OF_THE_ALPHA_55]
     levels:
       - { level: 1, requiredXp: 10, title: Noob }
       - { level: 2, requiredXp: 30, title: Novice }

@@ -37,6 +37,7 @@ public class PotionEffectService {
         // Delegate to handler
         PotionEffectHandler handler = effectType.getHandler();
         handler.applyToPlayer(player, level, durationMs);
+        CoffeeBase.apply(player, effectType, potionData.getBase(), durationMs);
 
         // Send feedback message
         sendPotionMessage(player, effectType, level, durationMs);
@@ -66,6 +67,7 @@ public class PotionEffectService {
 
         // Delegate to handler (handler handles distance modifier)
         handler.applySplashToPlayer(player, level, baseDurationMs, distance);
+        CoffeeBase.apply(player, effectType, potionData.getBase(), (long) (baseDurationMs * handler.getDistanceModifier(distance)));
     }
 
     /**
