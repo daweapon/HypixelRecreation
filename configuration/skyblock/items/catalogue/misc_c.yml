@@ -2531,7 +2531,6 @@ items:
     material: stripped_mangrove_log
     name: "Helix Log"
     rarity: COMMON
-    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
     source: "Helix Trees and 100% mob drops in Torrhus Canyon"
     lore:
       - "§8Collection Item"
@@ -2542,6 +2541,9 @@ items:
       - "§7foragers."
       - ""
       - "§eRight-click to view recipes!"
+    components:
+      - id: SELLABLE
+        value: 20.0
   - id: HEMOBOMB
     material: player_head
     name: "Hemobomb"

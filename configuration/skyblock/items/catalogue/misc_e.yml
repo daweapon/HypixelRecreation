@@ -815,6 +815,8 @@ items:
       - "§7to gain its blazing red coloring, it"
       - "§7now exudes a unique warmth."
     components:
+      - id: SELLABLE
+        value: 5.0
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/foraging_3/resources/ruby_veilshroom
   - id: RUFFLED_FEATHER

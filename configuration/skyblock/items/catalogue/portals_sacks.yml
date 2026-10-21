@@ -3119,11 +3119,29 @@ items:
     lore:
       - "§7Island: §aTorrhus Canyon"
       - "§7Teleport: §eSpawn"
-    unavailable: "Needs the Torrhus Canyon island"
     source: "Travel scroll; recipe 512x HELIX_LOG, 16x ENCHANTED_ENDER_PEARL (needs Helix Log I)"
     components:
       - id: TRAVEL_SCROLL
         island: torrhus
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: HELIX_LOG
+                amount: 64
+              B:
+                type: ENCHANTED_ENDER_PEARL
+                amount: 16
+            result:
+              type: TORRHUS_CANYON_TRAVEL_SCROLL
+              amount: 1
   - id: TORRHUS_SAFARI_ENTRANCE_PORTAL
     material: player_head
     name: "Portal to the Critter Safari Entrance"
@@ -3177,11 +3195,29 @@ items:
     lore:
       - "§7Island: §aTorrhus Canyon"
       - "§7Teleport: §eTorrhus Springs"
-    unavailable: "Needs the Torrhus Canyon island"
     source: "Travel scroll; recipe 128x RUBY_VEILSHROOM, 16x ENCHANTED_ENDER_PEARL (needs Ruby Veilshroom I)"
     components:
       - id: TRAVEL_SCROLL
         scroll_type: TORRHUS_SPRINGS
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: RUBY_VEILSHROOM
+                amount: 16
+              B:
+                type: ENCHANTED_ENDER_PEARL
+                amount: 16
+            result:
+              type: TORRHUS_SPRINGS_TRAVEL_SCROLL
+              amount: 1
   - id: TRAPPER_DEN_PORTAL
     material: player_head
     name: "Portal to the Trapper's Den"

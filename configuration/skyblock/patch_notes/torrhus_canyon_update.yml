@@ -37,6 +37,12 @@ sections:
       - "Torrhus treasure holds Enchanted Ruby Veilshrooms, Enchanted Helix Logs, Helixis and the Stingray, Sepialot, Ember, Water Snake, Solar and Goldolot Shards. Caught shards go straight to your Hunting Box."
       - "The Hotspot Haven hotspot turns Great catches into a Giant Water Bug Shard and Outstanding catches into 4 to 8, boosted by Hunter Fortune."
       - "The six Catch tasks in Torrhus Chapters now work, and the creatures have Bestiary and Sea Creature Guide entries."
+  - heading: "Collections, Scrolls and Fairy Souls"
+    colour: "<a>"
+    lines:
+      - "The Helix Log and Ruby Veilshroom Collections are here. Helix Log I unlocks the Travel Scroll to Torrhus Canyon and Ruby Veilshroom I the Travel Scroll to Torrhus Springs. Helix Log IX raises your Foraging level cap by one."
+      - "Twelve Fairy Souls are hidden around Torrhus Canyon, and they show up in the Fairy Souls Guide."
+      - "Fig Log IX and Mangrove Log IX now also pay their Foraging XP."
   - heading: "Torrhus Chapters"
     colour: "<2>"
     lines:

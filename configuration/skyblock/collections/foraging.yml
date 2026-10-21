@@ -420,6 +420,10 @@ collections:
         - type: XP
           data:
             xp: 4
+        - type: SKILL_XP
+          data:
+            skill: FORAGING
+            xp: 100000
         - type: CUSTOM_AWARD
           data:
             customAward: FIG_FORAGING_LEVEL_CAP
@@ -544,9 +548,180 @@ collections:
         - type: XP
           data:
             xp: 4
+        - type: SKILL_XP
+          data:
+            skill: FORAGING
+            xp: 110000
         - type: CUSTOM_AWARD
           data:
             customAward: MANGROVE_FORAGING_LEVEL_CAP
+- itemType: HELIX_LOG
+  rewards:
+    - amount: 500
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: TORRHUS_CANYON_TRAVEL_SCROLL
+    - amount: 1000
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: ENCHANTED_HELIX_LOG
+    - amount: 2500
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: LUMBERJACK_TALISMAN
+    - amount: 5000
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: TORRHUS_CANYON_PORTAL
+    - amount: 10000
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: LUMBERJACK_RING
+    - amount: 25000
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: HELIXIS
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: HELIX_CHOPPER
+    - amount: 50000
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: SHARD_HAWK
+    - amount: 100000
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: LUMBERJACK_ARTIFACT
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: HELIX_ARMOR_HELMET
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: HELIX_ARMOR_CHESTPLATE
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: HELIX_ARMOR_LEGGINGS
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: HELIX_ARMOR_BOOTS
+    - amount: 150000
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: SKILL_XP
+          data:
+            skill: FORAGING
+            xp: 150000
+        - type: CUSTOM_AWARD
+          data:
+            customAward: HELIX_FORAGING_LEVEL_CAP
+- itemType: RUBY_VEILSHROOM
+  rewards:
+    - amount: 25
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: TORRHUS_SPRINGS_TRAVEL_SCROLL
+    - amount: 100
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: ENCHANTED_RUBY_VEILSHROOM
+    - amount: 250
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: ACCRETION_TALISMAN
+    - amount: 500
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: SHARD_JUNE_BUG
+    - amount: 1000
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: ACCRETION_RING
+    - amount: 2500
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: VEILSHROOM_BUNCH
+    - amount: 5000
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: ACCRETION_ARTIFACT
+    - amount: 10000
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: LARGE_POCKET_BLACK_HOLE
+    - amount: 25000
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: VEILSHROOM_BRACELET
 - itemType: VINESAP
   rewards:
     - amount: 10

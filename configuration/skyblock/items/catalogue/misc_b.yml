@@ -1628,7 +1628,6 @@ items:
     material: stripped_mangrove_log
     name: "Enchanted Helix Log"
     rarity: UNCOMMON
-    unavailable: "The Helix Log collection item isn't in the game"
     source: "Crafted from 160 Helix Log (Helix Log collection II)"
     lore:
       - "§8Collection Item"
@@ -1636,6 +1635,12 @@ items:
       - "§7A hardened mass of helix logs all"
       - "§7wrapped around each other in a"
       - "§7spiral."
+    components:
+      - id: ENCHANTED
+        recipe_type: FORAGING
+        item_id: HELIX_LOG
+      - id: SELLABLE
+        value: 3200.0
   - id: ENCHANTED_HONEYCOMB
     material: honeycomb
     name: "Enchanted Honeycomb"
@@ -1692,7 +1697,6 @@ items:
     material: paper
     name: "Enchanted Ruby Veilshroom"
     rarity: UNCOMMON
-    unavailable: "The Ruby Veilshroom collection item isn't in the game"
     source: "Crafted from 160 Ruby Veilshroom (Ruby Veilshroom collection II)"
     lore:
       - "§8Collection Item"
@@ -1702,6 +1706,11 @@ items:
       - "§7relentless heat of the blazing sun"
       - "§7beating down upon them."
     components:
+      - id: ENCHANTED
+        recipe_type: FORAGING
+        item_id: RUBY_VEILSHROOM
+      - id: SELLABLE
+        value: 800.0
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/foraging_3/resources/ruby_veilshroom
   - id: ENCHANTED_TIME_CLOCK

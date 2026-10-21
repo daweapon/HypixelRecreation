@@ -18,7 +18,7 @@ public class GUIFairySoulsGuide extends StatelessView {
     private static final int[] LOCATION_SLOTS = {
             11, 12, 13, 14, 15, 16,
             19, 20, 21, 22, 23, 24, 25,
-            28, 29, 30
+            28, 29, 30, 31
     };
 
     @Override
@@ -93,6 +93,7 @@ public class GUIFairySoulsGuide extends StatelessView {
         GOLD_MINE("Gold Mine", "73bc965d579c3c6039f0a17eb7c2e6faf538c7a5de8e60ec7a719360d0a857a9", FairySoulZone.GOLD_MINE),
         THE_PARK("The Park", "a221f813dacee0fef8c59f76894dbb26415478d9ddfc44c2e708a6d3b7549b", FairySoulZone.THE_PARK),
         GALATEA("Galatea", "a211ac81698c229d8ef2fae89f62a6a961b30d8b82b97161863090e90bff02a5", FairySoulZone.GALATEA),
+        TORRHUS_CANYON("Torrhus Canyon", "a211ac81698c229d8ef2fae89f62a6a961b30d8b82b97161863090e90bff02a5", FairySoulZone.TORRHUS_CANYON),
         BACKWATER_BAYOU("Backwater Bayou", "1c0cd33590f64d346d98cdd01606938742e715dda6737353306a44f81c8ba426", FairySoulZone.BACKWATER_BAYOU),
         LOTUS_ATOLL("Lotus Atoll", "1c0cd33590f64d346d98cdd01606938742e715dda6737353306a44f81c8ba426", FairySoulZone.LOTUS_ATOLL),
         SAFARI("Safari", "686718d85e25b006f2c8f160f619b23c8fd6ae75ddf1c06308ec0f539d931703", FairySoulZone.SAFARI);
