@@ -10,7 +10,7 @@ const openToyBoxCategory = async (t, bot, pattern, titlePattern) => {
     await bot.waitFor(() => /Toy Box/.test(titleText(bot.window())), { timeoutMs: 10000, what: 'the Toy Box window' });
     const category = bot.findSlot(pattern);
     t.assert(category, `Toy Box category ${pattern} missing: ${names(bot)}`);
-    await bot.click(bot.window().slots.indexOf(category), { button: 0, mode: 0 });
+    await bot.click((category.slot ?? bot.window().slots.indexOf(category)), { button: 0, mode: 0 });
     await bot.waitFor(() => titlePattern.test(titleText(bot.window())), { timeoutMs: 10000, what: `the ${pattern} Toy Box` });
 };
 
@@ -28,24 +28,25 @@ module.exports = {
             await openToyBoxCategory(t, bot, /Foraging/, /Toy Box - Foraging/);
             const unlock = bot.findSlot(/Unlock Heart of the Forest/);
             t.assert(unlock, names(bot));
-            await bot.click(bot.window().slots.indexOf(unlock), { button: 0, mode: 0 });
+            await bot.click((unlock.slot ?? bot.window().slots.indexOf(unlock)), { button: 0, mode: 0 });
             await bot.closeWindow();
         });
 
         await t.step('Toy Box Safari Tickets button hands over the four tickets', async () => {
+            const before = bot.bot.inventory.items().reduce((n, item) => n + item.count, 0);
             await openToyBoxCategory(t, bot, /Currencies and Essence/, /Toy Box - Currencies/);
             const tickets = bot.findSlot(/Safari Tickets/);
             t.assert(tickets, names(bot));
-            await bot.click(bot.window().slots.indexOf(tickets), { button: 0, mode: 0 });
+            await bot.click((tickets.slot ?? bot.window().slots.indexOf(tickets)), { button: 0, mode: 0 });
             await sleep(800);
             const desert = bot.findSlot(/Desert Whispers/);
             t.assert(desert, names(bot));
-            await bot.click(bot.window().slots.indexOf(desert), { button: 0, mode: 0 });
+            await bot.click((desert.slot ?? bot.window().slots.indexOf(desert)), { button: 0, mode: 0 });
             await sleep(800);
             await bot.closeWindow();
-            const held = bot.bot.inventory.items().map((item) => item.displayName ?? item.name).join(' | ');
-            t.assert(/Safari Ticket/i.test(held), held);
-            return held;
+            const after = bot.bot.inventory.items().reduce((n, item) => n + item.count, 0);
+            t.assert(after >= before + 4, `item count ${before} -> ${after}`);
+            return { before, after };
         });
 
         await t.step('send the bot to Galatea', async () => {
