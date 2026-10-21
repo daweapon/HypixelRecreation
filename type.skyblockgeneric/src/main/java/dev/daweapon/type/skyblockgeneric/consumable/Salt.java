@@ -1,12 +1,12 @@
 package dev.daweapon.type.skyblockgeneric.consumable;
 
+import dev.daweapon.commons.ServerType;
+import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.skyblockgeneric.accessory.DungeonAccessoryHook;
 import dev.daweapon.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.seacreature.SeaCreatureMob;
 import dev.daweapon.type.skyblockgeneric.item.handlers.interactable.InteractableItemConfig;
 import dev.daweapon.type.skyblockgeneric.item.handlers.interactable.InteractableRegistry;
-import dev.daweapon.type.skyblockgeneric.region.RegionType;
-import dev.daweapon.type.skyblockgeneric.region.SkyBlockRegion;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Map;
@@ -17,8 +17,7 @@ public enum Salt {
     CANDYCOMB("Candycomb", 1.25, 12, (player, mob) -> DungeonAccessoryHook.isInDungeon(player)),
     OCEANDY("Oceandy", 1.25, 12, (player, mob) -> mob instanceof SeaCreatureMob),
     BRINE_TONIC("Brine Tonic", 2.5, 24, (player, mob) -> {
-        SkyBlockRegion region = player.getRegion();
-        return mob instanceof SeaCreatureMob && region != null && region.getType() == RegionType.MOONGLADE_MARSH;
+        return mob instanceof SeaCreatureMob && HypixelConst.getTypeLoader().getType() == ServerType.SKYBLOCK_GALATEA;
     }),
     LUSHLILAC_BONBON("Lushlilac Bonbon", 0.625, 12, (player, mob) -> true),
     PRIME_LUSHLILAC_BONBON("Prime Lushlilac Bonbon", 0.75, 18, (player, mob) -> true),

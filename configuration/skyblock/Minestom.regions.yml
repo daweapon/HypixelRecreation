@@ -863,6 +863,321 @@ regions:
     y2: 122
     z2: 20
     serverType: SKYBLOCK_GALATEA
+  - id: tangleburg
+    type: TANGLEBURG
+    x1: -615
+    y1: 95
+    z1: -45
+    x2: -558
+    y2: 150
+    z2: 22
+    serverType: SKYBLOCK_GALATEA
+  - id: fusion_house
+    type: FUSION_HOUSE
+    x1: -609
+    y1: 108
+    z1: -22
+    x2: -593
+    y2: 126
+    z2: -6
+    serverType: SKYBLOCK_GALATEA
+  - id: swampcut_inc
+    type: SWAMPCUT_INC
+    x1: -587
+    y1: 106
+    z1: -7
+    x2: -572
+    y2: 124
+    z2: 9
+    serverType: SKYBLOCK_GALATEA
+  - id: tangleburg_library
+    type: TANGLEBURG_LIBRARY
+    x1: -602
+    y1: 106
+    z1: 5
+    x2: -588
+    y2: 124
+    z2: 21
+    serverType: SKYBLOCK_GALATEA
+  - id: tangleburg_bank
+    type: TANGLEBURG_BANK
+    x1: -608
+    y1: 108
+    z1: -43
+    x2: -592
+    y2: 126
+    z2: -27
+    serverType: SKYBLOCK_GALATEA
+  - id: evergreen_plateau
+    type: EVERGREEN_PLATEAU
+    x1: -595
+    y1: 95
+    z1: 25
+    x2: -525
+    y2: 150
+    z2: 90
+    serverType: SKYBLOCK_GALATEA
+  - id: south_reaches
+    type: SOUTH_REACHES
+    x1: -712
+    y1: 105
+    z1: 55
+    x2: -662
+    y2: 170
+    z2: 95
+    serverType: SKYBLOCK_GALATEA
+  - id: south_wetlands
+    type: SOUTH_WETLANDS
+    x1: -660
+    y1: 80
+    z1: 52
+    x2: -585
+    y2: 130
+    z2: 105
+    serverType: SKYBLOCK_GALATEA
+  - id: moonglades_edge
+    type: MOONGLADES_EDGE
+    x1: -745
+    y1: 80
+    z1: 28
+    x2: -695
+    y2: 140
+    z2: 98
+    serverType: SKYBLOCK_GALATEA
+  - id: murkwater_loch
+    type: MURKWATER_LOCH
+    x1: -692
+    y1: 60
+    z1: -35
+    x2: -612
+    y2: 115
+    z2: 55
+    serverType: SKYBLOCK_GALATEA
+  - id: murkwater_shallows
+    type: MURKWATER_SHALLOWS
+    x1: -665
+    y1: 75
+    z1: -30
+    x2: -625
+    y2: 100
+    z2: 8
+    serverType: SKYBLOCK_GALATEA
+  - id: murkwater_depths
+    type: MURKWATER_DEPTHS
+    x1: -655
+    y1: 56
+    z1: -22
+    x2: -617
+    y2: 84
+    z2: 22
+    serverType: SKYBLOCK_GALATEA
+  - id: north_wetlands
+    type: NORTH_WETLANDS
+    x1: -655
+    y1: 80
+    z1: -95
+    x2: -598
+    y2: 110
+    z2: -42
+    serverType: SKYBLOCK_GALATEA
+  - id: red_house
+    type: RED_HOUSE
+    x1: -640
+    y1: 90
+    z1: -95
+    x2: -620
+    y2: 118
+    z2: -77
+    serverType: SKYBLOCK_GALATEA
+  - id: north_reaches
+    type: NORTH_REACHES
+    x1: -692
+    y1: 100
+    z1: -78
+    x2: -632
+    y2: 150
+    z2: -34
+    serverType: SKYBLOCK_GALATEA
+  - id: side_ember_way
+    type: SIDE_EMBER_WAY
+    x1: -690
+    y1: 70
+    z1: -92
+    x2: -656
+    y2: 125
+    z2: -66
+    serverType: SKYBLOCK_GALATEA
+  - id: westbound_wetlands
+    type: WESTBOUND_WETLANDS
+    x1: -735
+    y1: 80
+    z1: -62
+    x2: -690
+    y2: 110
+    z2: -20
+    serverType: SKYBLOCK_GALATEA
+  - id: west_reaches
+    type: WEST_REACHES
+    x1: -765
+    y1: 105
+    z1: -13
+    x2: -695
+    y2: 155
+    z2: 35
+    serverType: SKYBLOCK_GALATEA
+  - id: verdant_summit
+    type: VERDANT_SUMMIT
+    x1: -765
+    y1: 105
+    z1: -45
+    x2: -725
+    y2: 150
+    z2: -13
+    serverType: SKYBLOCK_GALATEA
+  - id: murkwater_outpost
+    type: MURKWATER_OUTPOST
+    x1: -712
+    y1: 140
+    z1: -10
+    x2: -692
+    y2: 200
+    z2: 12
+    serverType: SKYBLOCK_GALATEA
+  - id: tranquil_pass
+    type: TRANQUIL_PASS
+    x1: -720
+    y1: 85
+    z1: -8
+    x2: -698
+    y2: 108
+    z2: 20
+    serverType: SKYBLOCK_GALATEA
+  - id: tranquility_sanctum
+    type: TRANQUILITY_SANCTUM
+    x1: -750
+    y1: 85
+    z1: -12
+    x2: -722
+    y2: 110
+    z2: 16
+    serverType: SKYBLOCK_GALATEA
+  - id: ancient_ruins
+    type: ANCIENT_RUINS
+    x1: -658
+    y1: 50
+    z1: 28
+    x2: -616
+    y2: 78
+    z2: 68
+    serverType: SKYBLOCK_GALATEA
+  - id: forest_temple
+    type: FOREST_TEMPLE
+    x1: -646
+    y1: 56
+    z1: 69
+    x2: -627
+    y2: 76
+    z2: 85
+    serverType: SKYBLOCK_GALATEA
+  - id: drowned_reliquary
+    type: DROWNED_RELIQUARY
+    x1: -720
+    y1: 45
+    z1: -16
+    x2: -686
+    y2: 72
+    z2: 16
+    serverType: SKYBLOCK_GALATEA
+  - id: squid_cave
+    type: SQUID_CAVE
+    x1: -628
+    y1: 28
+    z1: -18
+    x2: -592
+    y2: 46
+    z2: 14
+    serverType: SKYBLOCK_GALATEA
+  - id: kelpwoven_tunnels
+    type: KELPWOVEN_TUNNELS
+    x1: -616
+    y1: 56
+    z1: -34
+    x2: -588
+    y2: 78
+    z2: -6
+    serverType: SKYBLOCK_GALATEA
+  - id: bubbleboost_column
+    type: BUBBLEBOOST_COLUMN
+    x1: -588
+    y1: 54
+    z1: -26
+    x2: -564
+    y2: 78
+    z2: 0
+    serverType: SKYBLOCK_GALATEA
+  - id: dive_ember_pass
+    type: DIVE_EMBER_PASS
+    x1: -660
+    y1: 54
+    z1: -50
+    x2: -630
+    y2: 80
+    z2: -20
+    serverType: SKYBLOCK_GALATEA
+  - id: stride_ember_fissure
+    type: STRIDE_EMBER_FISSURE
+    x1: -690
+    y1: 64
+    z1: -70
+    x2: -656
+    y2: 92
+    z2: -38
+    serverType: SKYBLOCK_GALATEA
+  - id: reefguard_pass
+    type: REEFGUARD_PASS
+    x1: -702
+    y1: 48
+    z1: -3
+    x2: -670
+    y2: 76
+    z2: 29
+    serverType: SKYBLOCK_GALATEA
+  - id: driptoad_pass
+    type: DRIPTOAD_PASS
+    x1: -698
+    y1: 58
+    z1: 48
+    x2: -676
+    y2: 84
+    z2: 74
+    serverType: SKYBLOCK_GALATEA
+  - id: driptoad_delve
+    type: DRIPTOAD_DELVE
+    x1: -700
+    y1: 72
+    z1: 56
+    x2: -666
+    y2: 98
+    z2: 80
+    serverType: SKYBLOCK_GALATEA
+  - id: tomb_floodway
+    type: TOMB_FLOODWAY
+    x1: -592
+    y1: 80
+    z1: 10
+    x2: -562
+    y2: 104
+    z2: 40
+    serverType: SKYBLOCK_GALATEA
+  - id: wyrmgrove_tomb
+    type: WYRMGROVE_TOMB
+    x1: -600
+    y1: 78
+    z1: -16
+    x2: -570
+    y2: 104
+    z2: 14
+    serverType: SKYBLOCK_GALATEA
   - id: torrhus_canyon
     type: TORRHUS_CANYON
     x1: -1000

@@ -14,6 +14,7 @@ import dev.daweapon.type.skyblockgeneric.crystalhollows.CrystalHollowsZoneTips;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
 import dev.daweapon.type.skyblockgeneric.event.custom.PlayerRegionChangeEvent;
 import dev.daweapon.type.skyblockgeneric.region.RegionType;
+import dev.daweapon.type.skyblockgeneric.moonglade.GalateaZoneTips;
 import dev.daweapon.type.skyblockgeneric.torrhus.TorrhusZoneTips;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -214,6 +215,8 @@ public class ActionNewZoneDisplay implements HypixelEventClass {
                 if (hollowsTips != null) onNewZone(player, event.getTo(), hollowsTips);
                 Text[] torrhusTips = TorrhusZoneTips.of(event.getTo());
                 if (torrhusTips != null) onNewZone(player, event.getTo(), torrhusTips);
+                Text[] galateaTips = GalateaZoneTips.of(event.getTo());
+                if (galateaTips != null) onNewZone(player, event.getTo(), galateaTips);
             }
         }
     }

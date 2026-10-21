@@ -40,7 +40,7 @@ items:
       - id: ACCESSORY
         effects:
           - type: STAT
-            regions: [FOREST, GRAVEYARD, WILDERNESS, MOONGLADE_MARSH]
+            regions: [FOREST, GRAVEYARD, WILDERNESS]
             statistics: { speed: 10 }
             text:
               - "Increases your <f> Speed <7>by <a>+10"
@@ -48,7 +48,7 @@ items:
               - "<2>Wilderness<7>, <a>The Park<7>, <2>Moonglade"
               - "<2>Marsh<7>, and <6>Torrhus Canyon<7>."
           - type: STAT
-            servers: [SKYBLOCK_THE_PARK]
+            servers: [SKYBLOCK_THE_PARK, SKYBLOCK_GALATEA, SKYBLOCK_TORRHUS_CANYON]
             statistics: { speed: 10 }
       - id: SKULL_HEAD
         texture: 907a913471a5bbbb4c0a7f233d78c27628cf0e516a2fb46360cd0e370c508345
