@@ -15,7 +15,7 @@ const openToyBoxCategory = async (t, bot, pattern, titlePattern) => {
 };
 
 module.exports = {
-    description: 'Torrhus Canyon: arrival, Helia objective, Helia chapters menu, Miria, Safari Tickets and Desert Whispers Toy Box buttons, Honeyhive loot and cooldown, Ruby Veilshroom gathering',
+    description: 'Galatea zone names and launch pad, Torrhus Canyon: arrival, Helia objective, Helia chapters menu, Miria, Safari Tickets and Desert Whispers Toy Box buttons, Honeyhive loot and cooldown, Ruby Veilshroom gathering',
     async run(t, bot) {
         await t.step('reach SkyBlock', async () => bot.joinSkyblock());
 
@@ -48,12 +48,39 @@ module.exports = {
             return held;
         });
 
-        await t.step('send the bot to Torrhus Canyon', async () => {
+        await t.step('send the bot to Galatea', async () => {
             await sleep(3000);
-            bot.say('/sendto SKYBLOCK_TORRHUS_CANYON');
-            await bot.waitFor(() => /Torrhus/i.test(sidebarText(bot)), { timeoutMs: 60000, what: 'the Torrhus sidebar' }).catch(async () => {
+            bot.say('/sendto SKYBLOCK_GALATEA');
+            await bot.waitFor(() => /Galatea|Tangleburg|Marsh/i.test(sidebarText(bot)), { timeoutMs: 60000, what: 'the Galatea sidebar' }).catch(async () => {
+                bot.say('/sendto SKYBLOCK_GALATEA');
+                await bot.waitFor(() => /Galatea|Tangleburg|Marsh/i.test(sidebarText(bot)), { timeoutMs: 90000, what: 'the Galatea sidebar' });
+            });
+            return sidebarText(bot);
+        });
+
+        await t.step('every Galatea zone shows its own name on the sidebar', async () => {
+            const zones = [
+                [-585, 113, -30, 'Tangleburg'], [-601, 115, -14, 'Fusion House'], [-562, 111, 44, 'Evergreen Plateau'],
+                [-690, 120, 70, 'South Reaches'], [-720, 95, 47, "Moonglade's Edge"], [-645, 86, -12, 'Murkwater Shallows'],
+                [-635, 72, 0, 'Murkwater Depths'], [-625, 95, -53, 'North Wetlands'], [-740, 119, -22, 'Verdant Summit'],
+                [-702, 162, 2, 'Murkwater Outpost'], [-610, 31, -6, 'Squid Cave'], [-636, 60, 75, 'Forest Temple']
+            ];
+            const seen = [];
+            for (const [x, y, z, name] of zones) {
+                await bot.command(`/tp ${x} ${y} ${z}`, { settleMs: 2500 });
+                await bot.waitFor(() => sidebarText(bot).includes(name), { timeoutMs: 15000, what: `the ${name} sidebar` });
+                t.assert(!/Moonglade Marsh/.test(sidebarText(bot)), `${name} still reads Moonglade Marsh: ${sidebarText(bot)}`);
+                seen.push(name);
+            }
+            return seen;
+        });
+
+        await t.step('the Moonglade\'s Edge launch pad sends the bot to Torrhus Canyon', async () => {
+            await bot.command('/tp -728 99 89', { settleMs: 1000 });
+            await bot.waitFor(() => /Torrhus/i.test(sidebarText(bot)), { timeoutMs: 90000, what: 'the Torrhus sidebar' }).catch(async () => {
                 bot.say('/sendto SKYBLOCK_TORRHUS_CANYON');
                 await bot.waitFor(() => /Torrhus/i.test(sidebarText(bot)), { timeoutMs: 90000, what: 'the Torrhus sidebar' });
+                t.assert(false, 'the launch pad did not move the bot; /sendto had to be used');
             });
             return sidebarText(bot);
         });
@@ -112,6 +139,33 @@ module.exports = {
             await bot.waitFor(() => bot.bot.blockAt(target.position)?.name !== 'crimson_fungus', { timeoutMs: 10000, what: 'the veilshroom to be harvested' });
             await bot.waitFor(() => bot.bot.blockAt(target.position)?.name === 'crimson_fungus', { timeoutMs: 90000, what: 'the veilshroom to regrow' });
             return { at: target.position.toString(), chat: bot.chatSince(mark) };
+        });
+
+        await t.step('each Torrhus sea creature spawns with its catch message', async () => {
+            await bot.command('/tp -643 157 186', { settleMs: 3000 });
+            const messages = {
+                HAGGARD: /Haggard stumbles to the shore/, BRINELING: /Brineling interrupts you/, SPRAWL: /Sprawl emerges from the blue/,
+                TORRID: /laughter of a Torrid/, SILKBREEZE: /Silkbreeze/, GIANT_ISOPOD: /Giant Isopod was dredged up/
+            };
+            for (const [id, pattern] of Object.entries(messages)) {
+                const mark = bot.markChat();
+                bot.say(`/spawn ${id}`);
+                await bot.waitChat(pattern, { since: mark, timeoutMs: 15000 });
+            }
+        });
+
+        await t.step('fishing in the Springs catches Torrhus sea creatures or treasure', async () => {
+            await bot.command('/max profile', { settleMs: 4000 });
+            await bot.command('/item FISHING_ROD', { settleMs: 1500 });
+            await bot.command('/tp -643 157 186', { settleMs: 3000 });
+            const mark = bot.markChat();
+            const caught = /Haggard|Brineling|Sprawl|Torrid|Silkbreeze|Giant Isopod|CATCH!|You found/;
+            for (let attempt = 0; attempt < 12 && !caught.test(bot.chatSince(mark).join(' ')); attempt++) {
+                await bot.useHotbarItem(/Fishing Rod/, { settleMs: 8000 });
+            }
+            const lines = bot.chatSince(mark);
+            t.assert(caught.test(lines.join(' ')), lines.join(' | '));
+            return lines;
         });
     }
 };
