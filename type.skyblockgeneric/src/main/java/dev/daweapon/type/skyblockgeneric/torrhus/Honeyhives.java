@@ -158,6 +158,7 @@ public final class Honeyhives {
         HypixelEventHandler.callCustomEvent(new CustomBlockBreakEvent(player, Material.BEE_NEST, position, drops, false));
         for (int i = 0; i < honeycomb; i++) StarlynContests.recordGather(player, StarlynResource.HONEYCOMB);
         ChapterTriggers.fire(player, CHAPTER_TRIGGER);
+        dev.daweapon.type.skyblockgeneric.hunting.creature.trigger.CreatureTriggers.onHoneyhiveOpened(player, position);
         double refill = AttributeEffectService.value(player.getHuntingData(), AttributeId.parse(HONEY_REFILL));
         if (refill > 0 && ThreadLocalRandom.current().nextDouble() * 100 < refill) {
             clearLooted(player, position);

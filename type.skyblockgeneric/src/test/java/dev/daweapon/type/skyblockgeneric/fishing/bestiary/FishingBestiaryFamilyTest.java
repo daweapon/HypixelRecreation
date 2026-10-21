@@ -29,7 +29,8 @@ class FishingBestiaryFamilyTest {
         assertEquals(6, FishingBestiaryFamily.in(FishingBestiarySection.WINTER).length);
         assertEquals(6, FishingBestiaryFamily.in(FishingBestiarySection.BACKWATER_BAYOU).length);
         assertEquals(6, FishingBestiaryFamily.in(FishingBestiarySection.TORRHUS_CANYON).length);
-        assertEquals(71, FishingBestiaryFamily.values().length);
+        assertEquals(7, FishingBestiaryFamily.in(FishingBestiarySection.MOONGLADE_MARSH).length);
+        assertEquals(78, FishingBestiaryFamily.values().length);
     }
 
     @Test

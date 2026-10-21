@@ -35,6 +35,7 @@ public final class SpawnableMobs {
         sources.addAll(registeredMobs());
         sources.addAll(mythologicalCreatures());
         sources.addAll(gardenPests());
+        sources.addAll(huntingCreatures());
         for (Entry entry : sources) byKey.putIfAbsent(normalize(entry.id()), entry);
         return List.copyOf(byKey.values());
     }
@@ -47,6 +48,7 @@ public final class SpawnableMobs {
         sources.addAll(registeredMobs());
         sources.addAll(mythologicalCreatures());
         sources.addAll(gardenPests());
+        sources.addAll(huntingCreatures());
         for (Entry entry : sources) {
             if (seen.putIfAbsent(normalize(entry.id()), entry) != null) duplicates.add(entry);
         }
@@ -108,6 +110,20 @@ public final class SpawnableMobs {
                 for (int i = 0; i < amount; i++) {
                     MythologicalCreatureMob.of(creature, creature.allVariants().getFirst())
                             .setInstance(player.getInstance(), player.getPosition());
+                }
+                return amount;
+            }));
+        }
+        return entries;
+    }
+
+    private static List<Entry> huntingCreatures() {
+        List<Entry> entries = new ArrayList<>();
+        for (dev.daweapon.type.skyblockgeneric.hunting.creature.CreatureSpec spec
+                : dev.daweapon.type.skyblockgeneric.hunting.creature.CreatureCatalog.all()) {
+            entries.add(new Entry(spec.id(), spec.name(), (player, amount) -> {
+                for (int i = 0; i < amount; i++) {
+                    dev.daweapon.type.skyblockgeneric.hunting.creature.CreatureSpawner.spawnAt(spec, player.getInstance(), player.getPosition());
                 }
                 return amount;
             }));

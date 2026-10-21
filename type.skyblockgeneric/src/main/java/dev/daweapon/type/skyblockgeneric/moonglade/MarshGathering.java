@@ -79,6 +79,7 @@ public final class MarshGathering {
         if (resource.getForestWhispers() > 0) HotfRewards.gatherWhispers(player, resource.getCurrency(), resource.getForestWhispers());
         for (int i = 0; i < base; i++) StarlynContests.recordGather(player, resource.getContestResource());
         ChapterTriggers.fire(player, resource.getChapterTrigger());
+        dev.daweapon.type.skyblockgeneric.hunting.creature.trigger.CreatureTriggers.onHarvest(player, resource.getItem(), position);
     }
 
     private static void deliver(SkyBlockPlayer player, ItemType item, int amount) {

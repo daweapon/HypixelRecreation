@@ -1,0 +1,763 @@
+creatures:
+  - id: "ANT"
+    name: "Ant"
+    island: "TORRHUS_CANYON"
+    kind: "MOB"
+    level: 32
+    health: 2500
+    damage: 250
+    speed: 100
+    entity: "SILVERFISH"
+    mobTypes: ["PEST", "ANIMAL"]
+    shard: "Ant"
+    capture: "CHARM"
+    special: "VACUUM_ONLY"
+    medium: "LAND"
+    behavior: "AGGRESSIVE"
+    xp: {"hunting": 0, "combat": 0, "farming": 48, "fishing": 0}
+    orbs: 35
+    coins: 10
+    drops: [{"item": "HELIX_LOG", "min": 2, "max": 4, "chance": 100}, {"item": "ENCHANTED_HELIX_LOG", "min": 1, "max": 1, "chance": 1}]
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_1", "maxTier": 10, "lore": "Ants are not meant to serve grasshoppers!"}
+    spawn:
+      regions: ["ANTS_CAVE"]
+      points: []
+      max: 12
+      trigger: {"type": "ANT_HILL_BREAK", "min": 2, "max": 4}
+    messages: [{"when": "hill_destroyed", "text": "<7><o>You destroyed an anthill, angering the ants inside!"}, {"when": "queen_nearby", "text": "<7><o>The Ants are protecting their Queen! You'll have to kill them first!"}]
+    notes: "Ants spawn throughout Ant's Cave. Additionally, 2-4 Ants spawn when breaking an Ant Hill. Ants can only be damaged with a Vacuum due to being a Pest. If a Queen Ant spawns with a group of Ants, the Queen Ant becomes immune to damage until the Ants are killed. Shard via Charm (common). Estimate: speed, max alive, entity."
+  - id: "BEEHEEMOTH"
+    name: "Beeheemoth"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 105
+    health: 1000000
+    damage: 100
+    speed: 120
+    entity: "BEE"
+    mobTypes: ["AIRBORNE", "CRITTER"]
+    shard: "Beeheemoth"
+    capture: "LASSO"
+    staminaBars: 1
+    special: "TIMED_FLY_AWAY_5M"
+    medium: "AIR"
+    behavior: "FLY"
+    xp: {"hunting": 0, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 115
+    coins: 35
+    drops: [{"item": "ENCHANTED_HONEYCOMB", "min": 1, "max": 1, "chance": 100}, {"item": "FUN_SIZED_POT_OF_HONEYCOMB", "min": 1, "max": 1, "chance": 50}, {"item": "FAMILY_SIZED_POT_OF_HONEYCOMB", "min": 8, "max": 8, "chance": 25}, {"item": "JUMBO_POT_OF_HONEYCOMB", "min": 8, "max": 8, "chance": 10}, {"item": "BEHEMOTH_POT_OF_HONEYCOMB", "min": 8, "max": 8, "chance": 1}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_4", "maxTier": 10, "lore": "Defies all scientific reasoning - how can it even fly?"}
+    spawn:
+      regions: ["TORRHUS_SPRINGS", "CRITTER_SAFARI_ENTRANCE"]
+      points: []
+      max: 1
+      trigger: {"type": "TIMED", "minMinutes": 8, "maxMinutes": 13, "despawnMinutes": 5, "minDamage": 5}
+    messages: [{"when": "spawn", "text": "<5><l>BEEHEEMOTH! <e>A <5>Beeheemoth <e>has spawned at <7>{location}<e>!"}, {"when": "stamina_75", "text": "<5><l>BEEHEEMOTH! <e>The <5>Beeheemoth <e>is starting to slow down!"}, {"when": "stamina_50", "text": "<5><l>BEEHEEMOTH! <e>The <5>Beeheemoth <e>is getting more fatigued!"}, {"when": "stamina_25", "text": "<5><l>BEEHEEMOTH! <e>The <5>Beeheemoth <e>is exhausted - not long now!"}, {"when": "flew_away", "text": "<5><l>BEEHEEMOTH! <e>The <5>Beeheemoth <e>got bored and flew away!"}]
+    notes: "Beeheemoth spawns every ~8-13 minutes at one of several zones in the Torrhus Canyon, those being: the Mega Tree near Treehugger Timothy, Torrhus Springs, and Critter Safari Entrance. Beeheemoths fly around Torrhus Canyon. If the player throws a Lasso at a Beeheemoth, it latches onto the Beeheemoth and depletes its stamina. Upon running out of stamina, the Beeheemoth is defeated and drops loot. At least 5 damage must be dealt to roll the drops (staff). Flies away after 5 minutes alive. Estimate: stamina bars (wiki gives none), speed, entity; exact spawn coordinates not on wiki; wiki id says level 158 but infobox level is 105."
+  - id: "BLUE_JAY"
+    name: "Blue Jay"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 9
+    health: 1000
+    damage: 25
+    speed: 100
+    entity: "PARROT"
+    mobTypes: ["AIRBORNE", "TIMID", "CRITTER"]
+    shard: "Blue Jay"
+    capture: "LASSO"
+    staminaBars: 1
+    special: "STAND_STILL_10S"
+    medium: "AIR"
+    behavior: "STATIONARY"
+    xp: {"hunting": 75, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 9
+    coins: 3
+    drops: [{"item": "HELIX_LOG", "min": 8, "max": 16, "chance": 100}, {"item": "EGG", "min": 2, "max": 4, "chance": 100}, {"item": "ENCHANTED_HELIX_LOG", "min": 1, "max": 1, "chance": 10}, {"item": "ENCHANTED_EGG", "min": 1, "max": 1, "chance": 1}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_1", "maxTier": 10, "lore": "High up in the sky, and your problems seem so far away."}
+    spawn:
+      regions: ["TORRHUS_HEIGHTS", "TORRHUS_SPRINGS"]
+      points: []
+      max: 8
+    messages: [{"when": "too_early", "text": "<7><o>Blue Jay got scared!"}]
+    notes: "Blue Jays are found high up on Torrhus Canyon, often on trees within the Torrhus Heights or Torrhus Springs. They can occasionally be found in groups. Blue Jays idle on the canopy of Helix Trees or by their bases, provided they are not under a Tree Protection Order. Upon standing within about a dozen blocks of a Blue Jay, a red /!\\ appears on its name tag. At this point, if the player idles for 1 second, then an invisible countdown begins: after 6 seconds, the alert turns yellow; after 10 seconds, the alert disappears and the player can cast their Lasso. If at any point during the countdown, any nearby player moves or the tree is felled, the Blue Jay will flee to another tree. Critters table says 8s; the mob page says 10s (used). Estimate: stamina bars, speed, max alive."
+  - id: "BUNBUN"
+    name: "Bunbun"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 4
+    health: 250
+    damage: 25
+    speed: 100
+    entity: "RABBIT"
+    mobTypes: ["CRITTER"]
+    shard: "Bunbun"
+    capture: "LASSO"
+    staminaBars: 1
+    special: null
+    medium: "LAND"
+    behavior: "HOP"
+    xp: {"hunting": 75, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 4
+    coins: 1
+    drops: [{"item": "HELIX_LOG", "min": 2, "max": 4, "chance": 100}, {"item": "ENCHANTED_HELIX_LOG", "min": 1, "max": 1, "chance": 1}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_1", "maxTier": 10, "lore": "So cute you just want to take one home."}
+    spawn:
+      regions: ["TORRHUS_CANYON"]
+      points: []
+      max: 10
+    messages: []
+    notes: "Bunbuns spawn throughout the Torrhus Canyon. Bunbuns hop around the Torrhus Canyon. The player must deplete the Bunbun's single stamina bar before they can be caught to drop their loot. Estimate: speed, max alive."
+  - id: "CHEEKY_TIKI"
+    name: "Cheeky Tiki"
+    island: "TORRHUS_CANYON"
+    kind: "MOB"
+    level: 71
+    health: 50000
+    damage: 300
+    speed: 100
+    entity: "IRON_GOLEM"
+    mobTypes: ["CONSTRUCT", "WOODLAND"]
+    shard: "Cheeky Tiki"
+    capture: "BLACK_HOLE"
+    special: "TOTEM_PUZZLE"
+    medium: "LAND"
+    behavior: "AGGRESSIVE"
+    xp: {"hunting": 0, "combat": 106, "farming": 0, "fishing": 0}
+    orbs: 78
+    coins: 23
+    drops: [{"item": "HELIX_LOG", "min": 16, "max": 32, "chance": 100}, {"item": "ENCHANTED_HELIX_LOG", "min": 1, "max": 1, "chance": 20}]
+    bestiary: {"family": "Tiki", "main": false}
+    spawn:
+      regions: []
+      points: [[-596, 128, 284], [-729, 143, 179], [-731, 134, 153], [-600, 137, 153], [-614, 124, 281], [-667, 133, 263], [-674, 143, 146], [-591, 139, 175], [-661, 125, 245], [-687, 131, 219], [-573, 136, 184], [-587, 152, 239], [-625, 133, 283], [-700, 132, 288], [-714, 135, 290], [-742, 136, 231], [-637, 142, 161], [-731, 130, 172], [-759, 125, 245], [-560, 144, 191], [-544, 139, 208], [-545, 131, 213], [-603, 172, 231]]
+      max: 23
+    messages: [{"when": "hit_sleeping", "text": "<8><o>You feel the Totem starting to move faintly..."}, {"when": "awaken", "text": "<8><o>Looks like you woke the Tiki up!"}]
+    notes: "Cheeky Tikis spawn as a totem of heads in the Torrhus Canyon and Torrhus Heights. When left-clicked, the clicked head and the one above it (or the bottom one, if the top one is clicked), will rotate clockwise from the head-down point of view, and the opposite direction when right-clicked. If the top 2 heads are facing the same direction, they will stop rotating. When all three are facing the same direction, the Cheeky Tiki awakens and attacks the player. When the player awakens a Cheeky Tiki, it chases after them while blowing smoke from the top head. Shard via Black Hole (uncommon). Spawn points are the wiki Coords list with x negated; the point marked currently bugged (-735, 128, 268) is left out. Estimate: speed, entity IRON_GOLEM."
+  - id: "DRYBARK"
+    name: "Drybark"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 80
+    health: 50000
+    damage: 500
+    speed: 100
+    entity: "ENDERMAN"
+    mobTypes: ["WOODLAND", "ANIMAL", "CRITTER"]
+    shard: "Drybark"
+    capture: "LASSO"
+    staminaBars: 3
+    special: "LOOK_AWAY_TELEPORT_ATTACK"
+    medium: "LAND"
+    behavior: "STATIONARY"
+    xp: {"hunting": 300, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 88
+    coins: 26
+    drops: [{"item": "ENCHANTED_HELIX_LOG", "min": 1, "max": 2, "chance": 100}, {"item": "PET_ITEM_FORAGING_SKILL_BOOST_RARE", "min": 1, "max": 1, "chance": 0.1}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_3", "maxTier": 10, "lore": "Ancient tales warn children to be weary of any strange-looking trees."}
+    spawn:
+      regions: ["TORRHUS_CANYON"]
+      points: []
+      max: 2
+      trigger: {"type": "TREE_BREAK", "chance": 5, "gift": true}
+    messages: []
+    notes: "A Drybark has a 5% chance to spawn when breaking a tree and obtaining its Tree Gift on the Torrhus Canyon. This chance can be increased to 7.5% with the Tree Lurker attribute. Drybarks stand still and do not attack if the player is looking at them. If the player turns their back to a Drybark, it will teleport behind the player and attack. Critters table: they deal 5% (unconfirmed) of the player's HP if the player looks away. Estimate: speed, entity ENDERMAN, max alive; Foraging Exp Boost drop uses the Rare pet item (wiki shows a rarity placeholder)."
+  - id: "DUSTYBIT"
+    name: "Dustybit"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 9
+    health: 500
+    damage: 50
+    speed: 100
+    entity: "ARMADILLO"
+    mobTypes: ["SUBTERRANEAN", "CRITTER"]
+    shard: "Dustybit"
+    capture: "SPECIAL"
+    special: "CLICK_HOP_4"
+    medium: "LAND"
+    behavior: "HOP"
+    xp: {"hunting": 150, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 9
+    coins: 3
+    drops: [{"item": "RUBY_VEILSHROOM", "min": 2, "max": 4, "chance": 100}, {"item": "ENCHANTED_RUBY_VEILSHROOM", "min": 1, "max": 1, "chance": 1}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_2", "maxTier": 10, "lore": "They burrow under the sand to keep cool."}
+    spawn:
+      regions: ["TORRHUS_SPRINGS"]
+      points: []
+      max: 6
+    messages: [{"when": "exhausted", "text": "<7><o>The Dustybit is exhausted..."}]
+    notes: "Dustybits spawn on the land surrounding the Torrhus Springs. Dustybits walk or swim around before briefly standing still. If the player clicks on a Dustybit, it will gain a green glowing effect and jump away with a trail of green particles up to 4 times. If another player interacts with the Dustybit, it will instead gain a white glowing effect. After the 4th jump, the Dustybit grows tired and drops a Dustybit Shard. The amount of times a Dustybit jumps can be reduced by the Frog Legs attribute. Estimate: speed, max alive, entity ARMADILLO."
+  - id: "EMBER"
+    name: "Ember"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 4
+    health: 250
+    damage: 25
+    speed: 100
+    entity: "TROPICAL_FISH"
+    mobTypes: ["AQUATIC", "CRITTER"]
+    shard: "Ember"
+    capture: "FISHING_NET"
+    minNet: "BASIC"
+    special: null
+    medium: "WATER"
+    behavior: "WANDER"
+    xp: {"hunting": 150, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 4
+    coins: 1
+    drops: [{"item": "RUBY_VEILSHROOM", "min": 2, "max": 4, "chance": 100}, {"item": "ENCHANTED_RUBY_VEILSHROOM", "min": 1, "max": 1, "chance": 1}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_2", "maxTier": 10, "lore": "Schools of them light the way for each other."}
+    spawn:
+      regions: ["SPRING_DEPTHS"]
+      points: []
+      max: 10
+    messages: []
+    notes: "Embers spawn throughout the Spring Depths, which is within the Torrhus Springs on the Torrhus Canyon. Embers swim around briefly before standing still, allowing the player to catch the Ember with a Fishing Net, dropping its loot and an Ember Shard. Fishing Net page: any net tier works. Estimate: speed, max alive, entity."
+  - id: "FIREFOX"
+    name: "Firefox"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 32
+    health: 2500
+    damage: 250
+    speed: 130
+    entity: "FOX"
+    mobTypes: ["WOODLAND", "ANIMAL", "CRITTER"]
+    shard: "Firefox"
+    capture: "LASSO"
+    staminaBars: 1
+    special: "FLEE"
+    medium: "LAND"
+    behavior: "WANDER"
+    xp: {"hunting": 75, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 35
+    coins: 10
+    drops: [{"item": "HELIX_LOG", "min": 16, "max": 32, "chance": 100}, {"item": "ENCHANTED_HELIX_LOG", "min": 1, "max": 1, "chance": 20}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_1", "maxTier": 10, "lore": "Firefoxes glow so brightly in the dark that they can be spotted from nearly a mile away on a clear night."}
+    spawn:
+      regions: ["TORRHUS_CANYON"]
+      points: []
+      max: 2
+      trigger: {"type": "TREE_BREAK", "chance": 15}
+    messages: []
+    notes: "A Firefox has a 15% chance to spawn when breaking a tree in the Torrhus Canyon. Firefoxes attempt to run from nearby players. If a player throws a Lasso at a Firefox, it latches onto the Firefox and can be reeled in for capture. Successfully catching a Firefox grants a Firefox Shard and +75 Hunting XP. The amount of Attribute Shards dropped is affected by hunting fortune. Wiki intro wrongly says Galatea. Estimate: speed, max alive."
+  - id: "GOLDOLOT"
+    name: "Goldolot"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 13
+    health: 1000
+    damage: 50
+    speed: 100
+    entity: "AXOLOTL"
+    mobTypes: ["CRITTER", "TIMID", "ELUSIVE"]
+    shard: "Goldolot"
+    capture: "FISHING_NET"
+    altCapture: "LASSO"
+    staminaBars: 1
+    minNet: "BASIC"
+    special: "STAND_STILL_8S"
+    medium: "WATER"
+    behavior: "WANDER"
+    xp: {"hunting": 300, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 14
+    coins: 4
+    drops: [{"item": "RUBY_VEILSHROOM", "min": 8, "max": 16, "chance": 100}, {"item": "ENCHANTED_RUBY_VEILSHROOM", "min": 1, "max": 1, "chance": 10}]
+    shardChance: 100
+    bestiary: {"family": "Sepialot", "main": false}
+    spawn:
+      regions: ["SPRING_DEPTHS", "SPRING_PATH"]
+      points: []
+      max: 6
+      trigger: {"type": "REPLACES", "mob": "SEPIALOT", "chance": 20}
+    messages: [{"when": "too_early", "text": "<7><o>Goldolot got scared!"}]
+    notes: "Goldolot has a 20% chance to replace Sepialot spawns in Spring Depths and Spring Path. Goldolots swim around before standing still. If a player approaches a Goldolot, a red warning sign appears above its head. After 5 seconds of the player standing still, the warning sign turns yellow. After another 3 seconds, the warning sign disappears and the Goldolot can be caught with a Fishing Net or a Lasso. Attempting to throw a Fishing Net while the warning sign is active causes the Goldolot to run away and not award an Attribute Shard. Fishing Net page: any net tier works. Estimate: speed, max alive, lasso stamina bars, entity AXOLOTL."
+  - id: "GRIZZLY_BEAR"
+    name: "Grizzly Bear"
+    island: "TORRHUS_CANYON"
+    kind: "MOB"
+    level: 101
+    health: 200000
+    damage: 400
+    speed: 130
+    entity: "POLAR_BEAR"
+    mobTypes: ["WOODLAND", "ANIMAL", "ELUSIVE"]
+    shard: "Grizzly Bear"
+    capture: "SPECIAL"
+    altCapture: "CHARM"
+    staminaBars: 3
+    special: "GRIZZLY_LASSO_THEN_BLACK_HOLE"
+    medium: "LAND"
+    behavior: "AGGRESSIVE"
+    xp: {"hunting": 1000, "combat": 151, "farming": 0, "fishing": 0}
+    orbs: 111
+    coins: 33
+    drops: [{"item": "ENCHANTED_HELIX_LOG", "min": 8, "max": 16, "chance": 100}, {"item": "HELIXIS", "min": 1, "max": 1, "chance": 10}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_5", "maxTier": 10, "lore": "On rainy days it becomes a drizzly bear."}
+    spawn:
+      regions: ["TORRHUS_CANYON"]
+      points: []
+      max: 1
+      trigger: {"type": "TREE_BREAK", "chance": 1}
+    messages: [{"when": "broke_free", "text": "<c>The <6>Grizzly Bear <c>broke free from your lasso!"}, {"when": "lasso_destroyed", "text": "<7><o>The Grizzly Bear destroyed your Lasso! Guess you'll have to fight it!"}]
+    notes: "A Grizzly Bear has a 1% chance to spawn when breaking a tree in the Torrhus Canyon. Grizzly Bears attempt to charge at the Player trying to lasso it, breaking free from the lasso if they damage the Player. After the player depletes the Grizzly Bear's stamina, the Grizzly Bear will break free from the lasso with the message. The Player must then damage the Grizzly Bear with an axe until it is almost defeated, then finish hunting it with a Black Hole. The Grizzly Bear cannot be killed by an axe and will remain at 1 HP. However, it takes fall damage and can thus die without rewarding shards. It charges when each bar of its health is depleted (about when the game says REEL). Elusive, so the shard is guaranteed. Estimate: stamina bars (wiki gives none), speed, max alive."
+  - id: "GROUNDHOG"
+    name: "Groundhog"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 42
+    health: 5000
+    damage: 350
+    speed: 100
+    entity: "WOLF"
+    mobTypes: ["WOODLAND", "ANIMAL", "CRITTER"]
+    shard: "Groundhog"
+    capture: "LASSO"
+    staminaBars: 1
+    special: "LASSO_THROWS_PLAYER"
+    medium: "LAND"
+    behavior: "WANDER"
+    xp: {"hunting": 75, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 46
+    coins: 14
+    drops: [{"item": "HELIX_LOG", "min": 16, "max": 32, "chance": 100}, {"item": "ENCHANTED_HELIX_LOG", "min": 1, "max": 1, "chance": 20}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_1", "maxTier": 10, "lore": "The complex tunnel systems of Torrhus Canyon are hotly contested by many creatures, Groundhogs included."}
+    spawn:
+      regions: ["TORRHUS_CANYON"]
+      points: []
+      max: 3
+      trigger: {"type": "TREE_BREAK", "chance": 15, "gift": true}
+    messages: []
+    notes: "A Groundhog has a 15% chance to spawn when breaking a tree and obtaining its Tree Gift on the Torrhus Canyon. This chance can be increased to 22.5% with the Tree Lurker attribute. Groundhogs slowly move around. If a player throws a Lasso at it, it angers it, causing the Groundhog to attack and lure in the player towards them. While being lassoed, they throw the player around as they move. Estimate: speed, max alive, entity WOLF."
+  - id: "HIDEONSUN"
+    name: "Hideonsun"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 24
+    health: 5000
+    damage: 50
+    speed: 100
+    entity: "SHULKER"
+    mobTypes: ["CUBIC", "CRITTER"]
+    shard: "Hideonsun"
+    capture: "SPECIAL"
+    special: "REFLECT_BULLET_3"
+    medium: "LAND"
+    behavior: "STATIONARY"
+    xp: {"hunting": 75, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 26
+    coins: 8
+    drops: [{"item": "HELIX_LOG", "min": 16, "max": 32, "chance": 100}, {"item": "ENCHANTED_HELIX_LOG", "min": 1, "max": 1, "chance": 20}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_1", "maxTier": 10, "lore": "Its coloring helps it blend in with the rest of the canyon."}
+    spawn:
+      regions: ["TORRHUS_CANYON"]
+      points: []
+      max: 8
+    messages: [{"when": "bullet_returned", "text": "<7><o>Hideonsun throws the bullet back!"}, {"when": "defeated", "text": "<7><o>Hideonsun lost the fight!"}]
+    notes: "Hideonsuns spawn around various locations in Torrhus Canyon. Hideonsuns shoot bullets at a player after being stood on. If a player hits the bullet back 3 times, the Hideonsun tires out and drops a Hideonsun Shard. The bullet can pass through blocks both ways; a Cow Hat grants immunity to the Levitation inflicted by the projectile; Fishing Nets can deflect it. Variants: yellow, orange and brown shulker. Spawn coordinates not on wiki. Estimate: speed, max alive."
+  - id: "HIVETHIEF"
+    name: "Hivethief"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 80
+    health: 50000
+    damage: 500
+    speed: 100
+    entity: "BEE"
+    mobTypes: ["CUBIC", "AIRBORNE", "CRITTER"]
+    shard: "Hivethief"
+    capture: "LASSO"
+    staminaBars: 3
+    special: "LASSO_DRAG_UP"
+    medium: "AIR"
+    behavior: "FLY"
+    xp: {"hunting": 300, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 88
+    coins: 26
+    drops: [{"item": "ENCHANTED_HONEYCOMB", "min": 4, "max": 8, "chance": 100}, {"item": "ENCHANTED_HELIX_LOG", "min": 8, "max": 16, "chance": 100}, {"item": "HELIXIS", "min": 1, "max": 1, "chance": 15}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_4", "maxTier": 10, "lore": "The bee equivalent of a UFO."}
+    spawn:
+      regions: ["TORRHUS_CANYON"]
+      points: []
+      max: 2
+      trigger: {"type": "HONEY_ON_TREE", "tree": "HELIX", "chance": 16.7}
+    messages: []
+    notes: "A Hivethief has a 16.7% chance to spawn after applying a Fun-Sized, Family-Sized, Jumbo, or Behemoth Pot of Honeycomb to a Helix Tree with a Tree Protection Order. A Hivethief will slowly fly around by default. It cannot be damaged by regular sources. When attached to a player's Lasso, it will start quickly flying upwards, dragging the player upwards with them. Keeping the Lasso attached to it long enough will capture the Hivethief. While being lassoed, they throw the player around as they move and fly upwards (Critters table). Estimate: speed, max alive, entity BEE."
+  - id: "HONEYBUZZ"
+    name: "Honeybuzz"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 9
+    health: 500
+    damage: 50
+    speed: 100
+    entity: "BEE"
+    mobTypes: ["AIRBORNE", "CRITTER"]
+    shard: "Honeybuzz"
+    capture: "LASSO"
+    staminaBars: 1
+    special: null
+    medium: "AIR"
+    behavior: "FLY"
+    xp: {"hunting": 75, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 9
+    coins: 3
+    drops: [{"item": "HONEYCOMB", "min": 2, "max": 4, "chance": 100}, {"item": "ENCHANTED_HONEYCOMB", "min": 1, "max": 1, "chance": 1}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_2", "maxTier": 10, "lore": "So cute you just want to take one home."}
+    spawn:
+      regions: ["TORRHUS_CANYON"]
+      points: []
+      max: 4
+      trigger: {"type": "HONEYHIVE_OPEN", "chance": 50}
+    messages: [{"when": "spawn", "text": "<f><o>A <7>Honeybuzz <f><o>appeared, angry at you for stealing its honey!"}]
+    notes: "A Honeybuzz has a 50% chance to be spawned from opening up a Honeyhive on the Torrhus Canyon. A Honeybuzz will slowly fly around in the air like a regular Bee. It cannot be damaged regularly; instead, the player must Hunt it using a Lasso to kill it. Estimate: speed, max alive."
+  - id: "MOUNTAIN_GOAT"
+    name: "Mountain Goat"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 55
+    health: 20000
+    damage: 250
+    speed: 100
+    entity: "GOAT"
+    mobTypes: ["CRITTER"]
+    shard: "Mountain Goat"
+    capture: "LASSO"
+    staminaBars: 5
+    special: "LASSO_CHARGE_BREAKS"
+    medium: "LAND"
+    behavior: "WANDER"
+    xp: {"hunting": 500, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 60
+    coins: 18
+    drops: [{"item": "HELIX_LOG", "min": 32, "max": 64, "chance": 100}, {"item": "ENCHANTED_HELIX_LOG", "min": 1, "max": 1, "chance": 40}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_4", "maxTier": 10, "lore": "Sometimes all that stands between you and the summit is an angry goat."}
+    spawn:
+      regions: ["SPRING_PATH", "TORRHUS_HEIGHTS"]
+      points: []
+      max: 6
+    messages: []
+    notes: "Mountain Goats spawn around the Spring Path and Torrhus Heights on the Torrhus Canyon. Mountain Goats slowly walk around passively. When caught with a Lasso, they will try and charge the player, dealing immense amounts of Knockback. They have 5 stamina bars. While lassoed, it will release itself from the lasso upon contact with the player. Estimate: speed, max alive."
+  - id: "PANGOLIN"
+    name: "Pangolin"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 14
+    health: 2500
+    damage: 25
+    speed: 100
+    entity: "ARMADILLO"
+    mobTypes: ["CRITTER", "TIMID", "ANIMAL"]
+    shard: "Pangolin"
+    capture: "LASSO"
+    staminaBars: 3
+    special: "CURL_WHEN_NEAR_10"
+    medium: "LAND"
+    behavior: "WANDER"
+    xp: {"hunting": 300, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 15
+    coins: 4
+    drops: [{"item": "ENCHANTED_HELIX_LOG", "min": 1, "max": 2, "chance": 100}, {"item": "HELIXIS", "min": 1, "max": 1, "chance": 1}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_3", "maxTier": 10, "lore": "Rolls into a tight ball when threatened."}
+    spawn:
+      regions: ["PANGOLIN_HIDEAWAY"]
+      points: []
+      max: 4
+    messages: []
+    notes: "Pangolins can spawn in Pangolin Hideaway areas (Pangolin Dens). Pangolins will compact into a ball when a player gets within about 10 blocks and in line of sight (wiki: confirmation needed). They can be attached to a Lasso from further away to be killed to obtain their loot. Pangolins have 3 stamina bars. Estimate: speed, max alive, spawn chance in dens (none on wiki), entity ARMADILLO."
+  - id: "PARCHED"
+    name: "Parched"
+    island: "TORRHUS_CANYON"
+    kind: "MOB"
+    level: 58
+    health: 25000
+    damage: 250
+    speed: 100
+    entity: "HUSK"
+    mobTypes: ["WOODLAND", "UNDEAD"]
+    shard: "Parched"
+    capture: "BLACK_HOLE"
+    altCapture: "CHARM"
+    special: "SELF_HEAL_ONCE_25"
+    medium: "LAND"
+    behavior: "AGGRESSIVE"
+    xp: {"hunting": 0, "combat": 87, "farming": 0, "fishing": 0}
+    orbs: 63
+    coins: 19
+    drops: [{"item": "ENCHANTED_HONEYCOMB", "min": 2, "max": 4, "chance": 100}, {"item": "ENCHANTED_HELIX_LOG", "min": 4, "max": 8, "chance": 100}]
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_3", "maxTier": 10, "lore": "It shall remain thirsty, no matter how much it drinks."}
+    spawn:
+      regions: ["TORRHUS_CANYON"]
+      points: []
+      max: 2
+      trigger: {"type": "HONEY_ON_TREE", "tree": "HELIX", "chance": 33.3}
+    messages: []
+    notes: "A Parched has a 33.3% chance to spawn after applying a Fun-Sized, Family-Sized, Jumbo, or Behemoth Pot of Honeycomb to a Helix Tree with a Tree Protection Order. A Parched will slowly move around like a Zombie. Being a Woodland mob, it can only be attacked with an Axe or Huntaxe. It will attack the player when they attack them. Parched can also heal itself once (unconfirmed) for 25% of its max HP. Shard via Charm or Black Hole (uncommon). Estimate: speed, max alive, entity HUSK."
+  - id: "POLLENDART"
+    name: "Pollendart"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 24
+    health: 2500
+    damage: 100
+    speed: 100
+    entity: "BEE"
+    mobTypes: ["CRITTER", "AIRBORNE"]
+    shard: "Pollendart"
+    capture: "LASSO"
+    staminaBars: 1
+    special: null
+    medium: "AIR"
+    behavior: "FLY"
+    xp: {"hunting": 75, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 26
+    coins: 8
+    drops: [{"item": "ENCHANTED_HONEYCOMB", "min": 1, "max": 2, "chance": 100}, {"item": "ENCHANTED_HELIX_LOG", "min": 2, "max": 4, "chance": 100}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_2", "maxTier": 10, "lore": "Nobody has ever reported being stung by one."}
+    spawn:
+      regions: ["TORRHUS_CANYON"]
+      points: []
+      max: 3
+      trigger: {"type": "HONEY_ON_TREE", "tree": "HELIX", "chance": 50}
+    messages: []
+    notes: "A Pollendart has a 50% chance to spawn after applying a Fun-Sized, Family-Sized, Jumbo, or Behemoth Pot of Honeycomb to a Helix Tree with a Tree Protection Order. A Pollendart will slowly float around like a Bee or Honeybuzz. It cannot be damaged regularly; instead, the player must attach a Lasso to it to kill it. Estimate: speed, max alive."
+  - id: "PUCK"
+    name: "Puck"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 58
+    health: 25000
+    damage: 250
+    speed: 130
+    entity: "VEX"
+    mobTypes: ["WOODLAND", "AIRBORNE", "CRITTER"]
+    shard: "Puck"
+    capture: "LASSO"
+    staminaBars: 3
+    special: "LASSO_FLY_CHARGE"
+    medium: "AIR"
+    behavior: "FLY"
+    xp: {"hunting": 300, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 63
+    coins: 19
+    drops: [{"item": "ENCHANTED_HELIX_LOG", "min": 1, "max": 2, "chance": 100}, {"item": "BOTTLED_MISCHIEF", "min": 1, "max": 1, "chance": 5}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_3", "maxTier": 10, "lore": "If they seem to be behaving, it means they've done bad elsewhere."}
+    spawn:
+      regions: ["TORRHUS_CANYON"]
+      points: []
+      max: 2
+      trigger: {"type": "TREE_BREAK", "chance": 5, "gift": true}
+    messages: []
+    notes: "A Puck has a 5% chance to spawn when breaking a tree in the Torrhus Canyon (Critters table: after receiving a Helix Tree Gift). Pucks fly towards nearby players to attack them. If a player throws a Lasso at a Puck, it latches onto the Puck and can be reeled in for capture. While being lassoed, they fly around and charge at the player to deal damage. They have 3 stamina bars. Wiki intro wrongly says Galatea. Estimate: speed, max alive, entity VEX."
+  - id: "QUEEN_ANT"
+    name: "Queen Ant"
+    island: "TORRHUS_CANYON"
+    kind: "MOB"
+    level: 69
+    health: 25000
+    damage: 500
+    speed: 100
+    entity: "SILVERFISH"
+    mobTypes: ["PEST", "ANIMAL", "ELUSIVE"]
+    shard: "Queen Ant"
+    capture: "CHARM"
+    special: "QUEEN_GUARDED_BY_ANTS"
+    medium: "LAND"
+    behavior: "AGGRESSIVE"
+    xp: {"hunting": 0, "combat": 0, "farming": 104, "fishing": 0}
+    orbs: 75
+    coins: 23
+    drops: [{"item": "ENCHANTED_HELIX_LOG", "min": 1, "max": 2, "chance": 100}, {"item": "HELIXIS", "min": 1, "max": 1, "chance": 0.1}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": 2, "maxTier": 5, "lore": "Ruler of Torrhus Canyon's ant colony."}
+    spawn:
+      regions: ["ANTS_CAVE"]
+      points: []
+      max: 1
+      trigger: {"type": "ANT_HILL_BREAK", "chancePerAnt": 2.5}
+    messages: [{"when": "hill_destroyed", "text": "<7><o>You destroyed an anthill and angered its residents!"}, {"when": "ants_nearby", "text": "<7><o>The Ants are protecting their Queen! You'll have to kill them first!"}]
+    notes: "Queen Ants have a 2.5% chance to spawn per each Ant when breaking an Anthill in Ant's Cave. The chance to spawn can be increased with Tracking (Queen Tracker attribute multiplies the base 2.5% per ant roll). Queen Ants can only be damaged with a Vacuum due to being a Pest. Until all of the Ants that spawned with the Queen Ant are killed, the Queen Ant remains immune to damage. Shard via Charm (uncommon); Elusive, so the shard is guaranteed. Estimate: speed, entity SILVERFISH."
+  - id: "SEPIALOT"
+    name: "Sepialot"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 9
+    health: 500
+    damage: 50
+    speed: 100
+    entity: "SQUID"
+    mobTypes: ["CRITTER", "AQUATIC", "TIMID"]
+    shard: "Sepialot"
+    capture: "FISHING_NET"
+    altCapture: "LASSO"
+    staminaBars: 1
+    minNet: "BASIC"
+    special: "STAND_STILL_8S"
+    medium: "WATER"
+    behavior: "WANDER"
+    xp: {"hunting": 150, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 9
+    coins: 3
+    drops: [{"item": "RUBY_VEILSHROOM", "min": 2, "max": 4, "chance": 100}, {"item": "ENCHANTED_RUBY_VEILSHROOM", "min": 1, "max": 1, "chance": 1}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "family": "Sepialot", "bracket": "HUNTING_2", "maxTier": 10, "lore": "Though afraid of people, they get along with the other denizens of Torrhus."}
+    spawn:
+      regions: ["SPRING_DEPTHS", "SPRING_PATH"]
+      points: []
+      max: 6
+    messages: [{"when": "too_early", "text": "<7><o>Sepialot got scared!"}]
+    notes: "Sepialots spawn in the Spring Depths and Spring Path. It has a 20% chance to be replaced with Goldolot. Sepialots swim around before standing still. If a player approaches a Sepialot, a red warning sign appears above its head. After 5 seconds of the player standing still, the warning sign turns yellow. After another 3 seconds, the warning sign disappears and the Sepialot can be caught with a Fishing Net or a Lasso. Attempting to throw a Fishing Net while the warning sign is active causes the Sepialot to run away and not award an Attribute Shard. Fishing Net page: any net tier works. Estimate: speed, max alive, lasso stamina bars, entity SQUID."
+  - id: "SHRIEKY_TIKI"
+    name: "Shrieky Tiki"
+    island: "TORRHUS_CANYON"
+    kind: "MOB"
+    level: 71
+    health: 50000
+    damage: 300
+    speed: 100
+    entity: "IRON_GOLEM"
+    mobTypes: ["CONSTRUCT", "WOODLAND"]
+    shard: "Shrieky Tiki"
+    capture: "BLACK_HOLE"
+    special: "TOTEM_PUZZLE"
+    medium: "LAND"
+    behavior: "AGGRESSIVE"
+    xp: {"hunting": 0, "combat": 106, "farming": 0, "fishing": 0}
+    orbs: 78
+    coins: 23
+    drops: [{"item": "HELIX_LOG", "min": 16, "max": 32, "chance": 100}, {"item": "ENCHANTED_HELIX_LOG", "min": 1, "max": 1, "chance": 20}]
+    bestiary: {"family": "Tiki", "main": false}
+    spawn:
+      regions: []
+      points: [[-596, 128, 284], [-729, 143, 179], [-731, 134, 153], [-600, 137, 153], [-614, 124, 281], [-667, 133, 263], [-674, 143, 146], [-591, 139, 175], [-661, 125, 245], [-687, 131, 219], [-573, 136, 184], [-587, 152, 239], [-625, 133, 283], [-700, 132, 288], [-714, 135, 290], [-742, 136, 231], [-637, 142, 161], [-731, 130, 172], [-759, 125, 245], [-560, 144, 191], [-544, 139, 208], [-545, 131, 213], [-603, 172, 231]]
+      max: 23
+    messages: [{"when": "hit_sleeping", "text": "<8><o>You feel the Totem starting to move faintly..."}, {"when": "awaken", "text": "<8><o>Looks like you woke the Tiki up!"}]
+    notes: "Shrieky Tikis spawn as a totem of heads in the Torrhus Canyon and Torrhus Heights. When left-clicked, the clicked head and the one above it (or the bottom one, if the top one is clicked), will rotate clockwise from the head-down point of view, and the opposite direction when right-clicked. If the top 2 heads are facing the same direction, they will stop rotating. When all three are facing the same direction, the Shrieky Tiki awakens and attacks the player. When the player awakens a Shrieky Tiki, it chases after them while blowing smoke from the top head. Shard via Black Hole (uncommon). Spawn points are the wiki Coords list with x negated; the point marked currently bugged (-735, 128, 268) is left out. Estimate: speed, entity IRON_GOLEM."
+  - id: "SNEAKY_TIKI"
+    name: "Sneaky Tiki"
+    island: "TORRHUS_CANYON"
+    kind: "MOB"
+    level: 71
+    health: 50000
+    damage: 300
+    speed: 100
+    entity: "IRON_GOLEM"
+    mobTypes: ["CONSTRUCT", "WOODLAND"]
+    shard: "Sneaky Tiki"
+    capture: "BLACK_HOLE"
+    special: "TOTEM_PUZZLE"
+    medium: "LAND"
+    behavior: "AGGRESSIVE"
+    xp: {"hunting": 0, "combat": 106, "farming": 0, "fishing": 0}
+    orbs: 78
+    coins: 23
+    drops: [{"item": "HELIX_LOG", "min": 16, "max": 32, "chance": 100}, {"item": "ENCHANTED_HELIX_LOG", "min": 1, "max": 1, "chance": 20}]
+    bestiary: {"section": "TORRHUS_CANYON", "family": "Tiki", "bracket": "HUNTING_2", "maxTier": 10, "lore": "They lie dormant but aware, looking to spook fatigued explorers."}
+    spawn:
+      regions: []
+      points: [[-596, 128, 284], [-729, 143, 179], [-731, 134, 153], [-614, 124, 281], [-667, 133, 263], [-674, 143, 146], [-591, 139, 175], [-661, 125, 245], [-687, 131, 219], [-573, 136, 184], [-587, 152, 239], [-625, 133, 283], [-700, 132, 288], [-714, 135, 290], [-742, 136, 231], [-637, 142, 161], [-731, 130, 172], [-759, 125, 245], [-560, 144, 191], [-544, 139, 208], [-545, 131, 213], [-603, 172, 231], [-678, 164, 174]]
+      max: 23
+    messages: [{"when": "hit_sleeping", "text": "<8><o>You feel the Totem starting to move faintly..."}, {"when": "awaken", "text": "<8><o>Looks like you woke the Tiki up!"}]
+    notes: "Sneaky Tikis spawn as a totem of heads in the Torrhus Canyon and Torrhus Heights. When left-clicked, the clicked head and the one above it (or the bottom one, if the top one is clicked), will rotate clockwise from the head-down point of view, and the opposite direction when right-clicked. If the top 2 heads are facing the same direction, they will stop rotating. When all three are facing the same direction, the Sneaky Tiki awakens and attacks the player. When the player awakens a Sneaky Tiki, it chases after them while blowing smoke from the top head. Shard via Black Hole (uncommon). Spawn points are the wiki Coords list with x negated; the point marked currently bugged (-735, 128, 268) is left out. Estimate: speed, entity IRON_GOLEM."
+  - id: "SOLAR"
+    name: "Solar"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 2
+    health: 100
+    damage: 25
+    speed: 100
+    entity: "TROPICAL_FISH"
+    mobTypes: ["AQUATIC", "CRITTER"]
+    shard: "Solar"
+    capture: "FISHING_NET"
+    minNet: "BASIC"
+    special: null
+    medium: "WATER"
+    behavior: "WANDER"
+    xp: {"hunting": 150, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 2
+    coins: 1
+    drops: [{"item": "RUBY_VEILSHROOM", "min": 1, "max": 2, "chance": 100}, {"item": "ENCHANTED_RUBY_VEILSHROOM", "min": 1, "max": 1, "chance": 0.5}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_2", "maxTier": 10, "lore": "They enter a motionless, drifting state when they run out of stored sunlight."}
+    spawn:
+      regions: ["SPRING_SHALLOWS", "SPRING_DEPTHS"]
+      points: []
+      max: 10
+    messages: []
+    notes: "Solars spawn throughout the Spring Shallows and Spring Depths. Solars swim around briefly before standing still, allowing the player to catch the Solar with a Fishing Net, dropping its loot and Attribute Shard. Fishing Net page: any net tier works. Estimate: speed, max alive, entity."
+  - id: "TIMIL"
+    name: "Timil"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 1
+    health: 50
+    damage: 1
+    speed: 100
+    entity: "COD"
+    mobTypes: ["AQUATIC", "CRITTER", "TIMID"]
+    shard: "Timil"
+    capture: "FISHING_NET"
+    minNet: "BASIC"
+    special: null
+    medium: "WATER"
+    behavior: "WANDER"
+    xp: {"hunting": 75, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 1
+    coins: 1
+    drops: [{"item": "RAW_FISH", "min": 1, "max": 1, "chance": 100}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_1", "maxTier": 10, "lore": "Spooks at the slightest change in water pressure."}
+    spawn:
+      regions: ["TORRHUS_CANYON"]
+      points: []
+      max: 12
+    messages: []
+    notes: "Timils spawn in water of the Torrhus Canyon, often times in groups. Timils swim in groups or alone. Fishing Net page: any net tier works. Wiki drop Raw Cod mapped to RAW_FISH. Estimate: speed, max alive, which water zones (wiki says only water of the Torrhus Canyon)."
+  - id: "WATER_SNAKE"
+    name: "Water Snake"
+    island: "TORRHUS_CANYON"
+    kind: "CRITTER"
+    level: 25
+    health: 1000
+    damage: 300
+    speed: 110
+    entity: "SALMON"
+    mobTypes: ["AQUATIC", "CRITTER"]
+    shard: "Water Snake"
+    capture: "FISHING_NET"
+    minNet: "TURBO"
+    special: "NET_ANGERS_ATTACK"
+    medium: "WATER"
+    behavior: "WANDER"
+    xp: {"hunting": 150, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 27
+    coins: 8
+    drops: [{"item": "RUBY_VEILSHROOM", "min": 32, "max": 64, "chance": 100}, {"item": "ENCHANTED_RUBY_VEILSHROOM", "min": 1, "max": 1, "chance": 20}]
+    shardChance: 100
+    bestiary: {"section": "TORRHUS_CANYON", "bracket": "HUNTING_2", "maxTier": 10, "lore": "Bites first, asks questions later."}
+    spawn:
+      regions: ["SPRING_SHALLOWS", "SPRING_DEPTHS"]
+      points: []
+      max: 6
+    messages: []
+    notes: "Water Snakes spawn throughout the Spring Shallows and Spring Depths. Water Snakes swim around. If a player throws a Fishing Net at a Water Snake, it angers it, causing the Water Snake to attack. Fishing Net page: requires a Turbo Fishing Net or better. Wiki id says level 35, infobox and drops table say 25 (used). Pathfinding can fail and strand it on land. Estimate: speed, max alive, entity SALMON."

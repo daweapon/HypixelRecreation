@@ -1578,9 +1578,10 @@ items:
       - "§7Grants §d5 Hunting Fortune §7on"
       - "§cCombat Shards §7caught with this Black"
       - "§7Hole!"
-    unavailable: "Needs Black Hole deployable (pulls low-HP mobs)"
     source: "Crafted; recipe 2x VEILSHROOM_BUNCH, 8x BOTTLED_MISCHIEF, 5x HELIXIS, 1x MEDIUM_POCKET_BLACK_HOLE (needs Ruby Veilshroom VIII)"
     components:
+      - id: INTERACTABLE
+        handler_id: HUNTING_BLACK_HOLE
       - id: SKULL_HEAD
         texture: c4bd37827f3f55b838b64afe7f90c0d77eb400d50ddfea70ff35c29868fe8c45
   - id: LARGE_SLAYER_SACK
@@ -2120,9 +2121,10 @@ items:
       - "§7Grants §d2.5 Hunting Fortune §7on"
       - "§cCombat Shards §7caught with this Black"
       - "§7Hole!"
-    unavailable: "Needs Black Hole deployable (pulls low-HP mobs)"
     source: "Crafted"
     components:
+      - id: INTERACTABLE
+        handler_id: HUNTING_BLACK_HOLE
       - id: SKULL_HEAD
         texture: 55b70f094e01679508dd5bca39640ed9ec5c6c6792fbd8f57c03b3a12f9c0a92
   - id: MEDIUM_SLAYER_SACK
@@ -2950,9 +2952,10 @@ items:
       - ""
       - "§7Monsters below §a10% §7HP can even get"
       - "§7their §9Shard §7captured!"
-    unavailable: "Needs Black Hole deployable (pulls low-HP mobs)"
     source: "Crafted"
     components:
+      - id: INTERACTABLE
+        handler_id: HUNTING_BLACK_HOLE
       - id: SKULL_HEAD
         texture: d61b87f1a1040a8b922ca51be9c0bc6d6fc71ba5d745c6bf659cbd0d9a9cf4fc
   - id: SMALL_SLAYER_SACK

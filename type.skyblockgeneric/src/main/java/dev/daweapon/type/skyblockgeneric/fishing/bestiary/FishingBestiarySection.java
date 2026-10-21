@@ -44,6 +44,11 @@ public enum FishingBestiarySection {
             "<7>View all of the <3>Sea Creatures <7>that",
             "<7>you've killed while fishing in",
             "<6>Torrhus Canyon<7>."),
+    MOONGLADE_MARSH("<2>Moonglade Marsh", 33,
+            new GUIMaterial("a3b9003ba2d05562c75119b8a62185c67130e9282f7acbac4bc2824c21eb95d9"),
+            "<7>View all of the <3>Sea Creatures <7>that",
+            "<7>you've killed while fishing in",
+            "<2>Moonglade Marsh<7>."),
     ;
 
     private final String displayName;

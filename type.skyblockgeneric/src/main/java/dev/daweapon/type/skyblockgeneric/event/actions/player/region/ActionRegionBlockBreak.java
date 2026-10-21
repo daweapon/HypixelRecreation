@@ -77,6 +77,11 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
             return;
         }
 
+        if (dev.daweapon.type.skyblockgeneric.hunting.creature.trigger.CreatureTriggers.onBlockBreak(player, event.getBlockPosition(), event.getBlock())) {
+            event.setCancelled(true);
+            return;
+        }
+
         if (HypixelConst.isGardenServer() && GardenPlotLock.isLocked(event.getInstance(), event.getBlockPosition().x(), event.getBlockPosition().z())) {
             event.setCancelled(true);
             player.sendMessage("<c>This plot is being pasted right now, you cannot change it until it finishes!");

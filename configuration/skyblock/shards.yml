@@ -95,7 +95,14 @@
       ],
       "sources": [
         {
-          "type": "LASSO"
+          "type": "LASSO",
+          "mobs": [
+            "PHANPYRE"
+          ],
+          "locations": [
+            "MOONGLADE_MARSH"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         },
         {
           "type": "TRAP"
@@ -129,7 +136,14 @@
           "type": "TRAP"
         },
         {
-          "type": "FISHING_NET"
+          "type": "FISHING_NET",
+          "mobs": [
+            "COD"
+          ],
+          "locations": [
+            "MURKWATER_LOCH"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         },
         {
           "type": "FISHING"
@@ -196,7 +210,14 @@
       ],
       "sources": [
         {
-          "type": "LASSO"
+          "type": "LASSO",
+          "mobs": [
+            "PHANFLARE"
+          ],
+          "locations": [
+            "MOONGLADE_MARSH"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         },
         {
           "type": "TRAP"
@@ -290,6 +311,13 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "OTHER",
+          "mobs": [
+            "HIDEONLEAF"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
       "fusion_cost": 5
@@ -317,7 +345,14 @@
           "type": "TRAP"
         },
         {
-          "type": "FISHING_NET"
+          "type": "FISHING_NET",
+          "mobs": [
+            "VERDANT"
+          ],
+          "locations": [
+            "MOONGLADE_MARSH"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         },
         {
           "type": "FISHING"
@@ -354,7 +389,23 @@
           ]
         },
         {
-          "type": "BLACK_HOLE"
+          "type": "BLACK_HOLE",
+          "mobs": [
+            "CHILLBLADE",
+            "CHILLSHOT"
+          ],
+          "locations": [
+            "WYRMGROVE_TOMB"
+          ],
+          "island": "SKYBLOCK_GALATEA"
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "CHILLBLADE",
+            "CHILLSHOT"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
       "fusion_cost": 5
@@ -415,6 +466,12 @@
         },
         {
           "type": "BLACK_HOLE"
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "BOGGED"
+          ]
         }
       ],
       "fusion_cost": 5
@@ -498,13 +555,21 @@
       ],
       "sources": [
         {
-          "type": "LASSO"
+          "type": "LASSO",
+          "mobs": [
+            "BIRRIES"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         },
         {
           "type": "TRAP"
         },
         {
-          "type": "FISHING_NET"
+          "type": "FISHING_NET",
+          "mobs": [
+            "BIRRIES"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
       "fusion_cost": 5
@@ -595,6 +660,12 @@
         },
         {
           "type": "BLACK_HOLE"
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "TADGANG"
+          ]
         }
       ],
       "fusion_cost": 2
@@ -679,13 +750,35 @@
       ],
       "sources": [
         {
-          "type": "LASSO"
+          "type": "LASSO",
+          "mobs": [
+            "CORALOT"
+          ],
+          "locations": [
+            "MOONGLADES_EDGE",
+            "MURKWATER_LOCH",
+            "NORTH_WETLANDS",
+            "SOUTH_WETLANDS",
+            "WESTBOUND_WETLANDS"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         },
         {
           "type": "TRAP"
         },
         {
-          "type": "FISHING_NET"
+          "type": "FISHING_NET",
+          "mobs": [
+            "CORALOT"
+          ],
+          "locations": [
+            "MOONGLADES_EDGE",
+            "MURKWATER_LOCH",
+            "NORTH_WETLANDS",
+            "SOUTH_WETLANDS",
+            "WESTBOUND_WETLANDS"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
       "fusion_cost": 2
@@ -865,6 +958,16 @@
         },
         {
           "type": "FISHING"
+        },
+        {
+          "type": "FISHING_NET",
+          "mobs": [
+            "AZURE"
+          ],
+          "locations": [
+            "MOONGLADE_MARSH"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
       "fusion_cost": 5
@@ -925,10 +1028,19 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "STAG_BEETLE"
+          ],
+          "locations": [
+            "MOONGLADE_MARSH"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "C32",
@@ -1195,10 +1307,22 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "ANT"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
+        },
+        {
+          "type": "TRAP",
+          "locations": [
+            "ANTS_CAVE"
+          ]
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "C41",
@@ -1283,10 +1407,19 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "OTHER",
+          "mobs": [
+            "HIDEONSUN"
+          ],
+          "locations": [
+            "TORRHUS_CANYON"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "C44",
@@ -1313,10 +1446,15 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "HAGGARD"
+          ]
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "C45",
@@ -1342,10 +1480,19 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "HONEYHOG"
+          ],
+          "locations": [
+            "MOONGLADE_MARSH"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "C46",
@@ -1402,10 +1549,15 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "BRINELING"
+          ]
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "C48",
@@ -1485,10 +1637,19 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "FIREFOX"
+          ],
+          "locations": [
+            "TORRHUS_CANYON"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "C55",
@@ -1514,10 +1675,19 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "GROUNDHOG"
+          ],
+          "locations": [
+            "TORRHUS_CANYON"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "C56",
@@ -1544,10 +1714,25 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "FISHING_NET",
+          "mobs": [
+            "TIMIL"
+          ],
+          "locations": [
+            "TORRHUS_CANYON"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
+        },
+        {
+          "type": "TRAP",
+          "locations": [
+            "SPRING_PATH"
+          ]
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "C58",
@@ -1574,10 +1759,20 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "BLUE_JAY"
+          ],
+          "locations": [
+            "TORRHUS_HEIGHTS",
+            "TORRHUS_SPRINGS"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "C61",
@@ -1604,10 +1799,25 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "BUNBUN"
+          ],
+          "locations": [
+            "TORRHUS_CANYON"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
+        },
+        {
+          "type": "TRAP",
+          "locations": [
+            "TORRHUS_CANYON"
+          ]
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "C64",
@@ -1634,10 +1844,19 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "HONEYBUZZ"
+          ],
+          "locations": [
+            "TORRHUS_CANYON"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting, Honeyhive); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "C67",
@@ -1663,10 +1882,19 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "POLLENDART"
+          ],
+          "locations": [
+            "TORRHUS_CANYON"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U1",
@@ -1938,6 +2166,16 @@
         },
         {
           "type": "FUSION"
+        },
+        {
+          "type": "OTHER",
+          "mobs": [
+            "MOSSYBIT"
+          ],
+          "locations": [
+            "MURKWATER_LOCH"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
       "fusion_cost": 2
@@ -1999,10 +2237,15 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "WETWING"
+          ]
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U15",
@@ -2175,7 +2418,14 @@
           "type": "TRAP"
         },
         {
-          "type": "FISHING_NET"
+          "type": "FISHING_NET",
+          "mobs": [
+            "SALMON"
+          ],
+          "locations": [
+            "MURKWATER_LOCH"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         },
         {
           "type": "FISHING"
@@ -2311,6 +2561,16 @@
       "sources": [
         {
           "type": "TRAP"
+        },
+        {
+          "type": "OTHER",
+          "mobs": [
+            "BAMBULEAF"
+          ],
+          "locations": [
+            "TRANQUILITY_SANCTUM"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
       "fusion_cost": 5
@@ -2431,6 +2691,12 @@
         },
         {
           "type": "BLACK_HOLE"
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "ENT"
+          ]
         }
       ],
       "fusion_cost": 5
@@ -2496,6 +2762,16 @@
       "sources": [
         {
           "type": "TRAP"
+        },
+        {
+          "type": "OTHER",
+          "mobs": [
+            "MOCHIBEAR"
+          ],
+          "locations": [
+            "TRANQUILITY_SANCTUM"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
       "fusion_cost": 5
@@ -2649,6 +2925,12 @@
         },
         {
           "type": "BLACK_HOLE"
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "STRIDERSURFER"
+          ]
         }
       ],
       "fusion_cost": 5
@@ -2992,10 +3274,20 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "FISHING_NET",
+          "mobs": [
+            "WATER_SNAKE"
+          ],
+          "locations": [
+            "SPRING_DEPTHS",
+            "SPRING_SHALLOWS"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 2,
-      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+      "fusion_cost": 2
     },
     {
       "id": "U51",
@@ -3138,10 +3430,31 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "FISHING_NET",
+          "mobs": [
+            "SEPIALOT"
+          ],
+          "locations": [
+            "SPRING_DEPTHS",
+            "SPRING_PATH"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "SEPIALOT"
+          ],
+          "locations": [
+            "SPRING_DEPTHS",
+            "SPRING_PATH"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 2,
-      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+      "fusion_cost": 2
     },
     {
       "id": "U57",
@@ -3317,10 +3630,26 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "FISHING_NET",
+          "mobs": [
+            "SOLAR"
+          ],
+          "locations": [
+            "SPRING_DEPTHS",
+            "SPRING_SHALLOWS"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
+        },
+        {
+          "type": "TRAP",
+          "locations": [
+            "SPRING_SHALLOWS"
+          ]
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U63",
@@ -3346,10 +3675,26 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "BLACK_HOLE",
+          "mobs": [
+            "PARCHED"
+          ],
+          "locations": [
+            "TORRHUS_CANYON"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "PARCHED"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U64",
@@ -3405,10 +3750,19 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "OTHER",
+          "mobs": [
+            "DUSTYBIT"
+          ],
+          "locations": [
+            "TORRHUS_SPRINGS"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U67",
@@ -3434,10 +3788,19 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "WOODLOUSE"
+          ],
+          "locations": [
+            "MOONGLADE_MARSH"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U68",
@@ -3464,10 +3827,19 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "FISHING_NET",
+          "mobs": [
+            "EMBER"
+          ],
+          "locations": [
+            "SPRING_DEPTHS"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U69",
@@ -3493,10 +3865,16 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "BLACK_HOLE",
+          "mobs": [
+            "CHEEKY_TIKI"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U70",
@@ -3552,10 +3930,15 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "SPRAWL"
+          ]
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U72",
@@ -3581,10 +3964,16 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "BLACK_HOLE",
+          "mobs": [
+            "SNEAKY_TIKI"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U73",
@@ -3640,10 +4029,16 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "BLACK_HOLE",
+          "mobs": [
+            "SHRIEKY_TIKI"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U76",
@@ -3698,10 +4093,19 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "BLACK_HOLE",
+          "mobs": [
+            "HONEYMITE"
+          ],
+          "locations": [
+            "MOONGLADE_MARSH"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U79",
@@ -3729,10 +4133,22 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "QUEEN_ANT"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
+        },
+        {
+          "type": "TRAP",
+          "locations": [
+            "ANTS_CAVE"
+          ]
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Mob Drops, Huntraps); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U82",
@@ -4380,7 +4796,10 @@
       ],
       "sources": [
         {
-          "type": "TRAP"
+          "type": "TRAP",
+          "locations": [
+            "DROWNED_RELIQUARY"
+          ]
         },
         {
           "type": "SALT",
@@ -4389,7 +4808,25 @@
           ]
         },
         {
-          "type": "BLACK_HOLE"
+          "type": "BLACK_HOLE",
+          "mobs": [
+            "TIDETOT",
+            "SEACURSE",
+            "HYDROSPEAR"
+          ],
+          "locations": [
+            "DROWNED_RELIQUARY"
+          ],
+          "island": "SKYBLOCK_GALATEA"
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "TIDETOT",
+            "SEACURSE",
+            "HYDROSPEAR"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
       "fusion_cost": 5
@@ -5053,7 +5490,14 @@
           "type": "TRAP"
         },
         {
-          "type": "FISHING_NET"
+          "type": "FISHING_NET",
+          "mobs": [
+            "LUMISQUID"
+          ],
+          "locations": [
+            "SQUID_CAVE"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
       "fusion_cost": 5
@@ -5154,7 +5598,14 @@
       ],
       "sources": [
         {
-          "type": "LASSO"
+          "type": "LASSO",
+          "mobs": [
+            "DREADWING"
+          ],
+          "locations": [
+            "MOONGLADE_MARSH"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         },
         {
           "type": "TRAP"
@@ -5169,7 +5620,14 @@
           "type": "FUSION"
         },
         {
-          "type": "BLACK_HOLE"
+          "type": "BLACK_HOLE",
+          "mobs": [
+            "DREADWING"
+          ],
+          "locations": [
+            "MOONGLADE_MARSH"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         },
         {
           "type": "TREE_GIFT"
@@ -5200,7 +5658,15 @@
           "type": "TRAP"
         },
         {
-          "type": "FISHING_NET"
+          "type": "FISHING_NET",
+          "mobs": [
+            "JOYDIVE"
+          ],
+          "locations": [
+            "MURKWATER_DEPTHS",
+            "MURKWATER_SHALLOWS"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
       "fusion_cost": 5
@@ -5330,10 +5796,19 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "HEWVER"
+          ],
+          "locations": [
+            "MOONGLADE_MARSH"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "R56",
@@ -5589,10 +6064,19 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "HIVETHIEF"
+          ],
+          "locations": [
+            "TORRHUS_CANYON"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "R65",
@@ -6167,10 +6651,19 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "PUCK"
+          ],
+          "locations": [
+            "TORRHUS_CANYON"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "R86",
@@ -6255,10 +6748,19 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "PANGOLIN"
+          ],
+          "locations": [
+            "PANGOLIN_HIDEAWAY"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "R89",
@@ -6315,10 +6817,19 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "MURKBAT"
+          ],
+          "locations": [
+            "MOONGLADE_MARSH"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "R92",
@@ -6345,10 +6856,31 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "FISHING_NET",
+          "mobs": [
+            "GOLDOLOT"
+          ],
+          "locations": [
+            "SPRING_DEPTHS",
+            "SPRING_PATH"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "GOLDOLOT"
+          ],
+          "locations": [
+            "SPRING_DEPTHS",
+            "SPRING_PATH"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 2,
-      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+      "fusion_cost": 2
     },
     {
       "id": "R94",
@@ -6403,10 +6935,15 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "TORRID"
+          ]
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "R97",
@@ -6432,10 +6969,19 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "DRYBARK"
+          ],
+          "locations": [
+            "TORRHUS_CANYON"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "E1",
@@ -6983,6 +7529,12 @@
         },
         {
           "type": "BLACK_HOLE"
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "THE_LOCH_EMPEROR"
+          ]
         }
       ],
       "fusion_cost": 5
@@ -7145,7 +7697,14 @@
           "type": "TRAP"
         },
         {
-          "type": "FISHING_NET"
+          "type": "FISHING_NET",
+          "mobs": [
+            "SHELLWISE"
+          ],
+          "locations": [
+            "MURKWATER_DEPTHS"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
       "fusion_cost": 2
@@ -7543,10 +8102,15 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "SILKBREEZE"
+          ]
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "E45",
@@ -7630,10 +8194,15 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "GIANT_ISOPOD"
+          ]
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "E48",
@@ -7743,10 +8312,20 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "BEEHEEMOTH"
+          ],
+          "locations": [
+            "CRITTER_SAFARI_ENTRANCE",
+            "TORRHUS_SPRINGS"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "E54",
@@ -7823,10 +8402,26 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "LASSO",
+          "mobs": [
+            "MOUNTAIN_GOAT"
+          ],
+          "locations": [
+            "SPRING_PATH",
+            "TORRHUS_HEIGHTS"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
+        },
+        {
+          "type": "TRAP",
+          "locations": [
+            "SPRING_PATH"
+          ]
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "E60",
@@ -8035,6 +8630,12 @@
           "type": "SALT",
           "mobs": [
             "nessie"
+          ]
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "NESSIE"
           ]
         }
       ],
@@ -8263,7 +8864,15 @@
           "type": "TRAP"
         },
         {
-          "type": "FISHING_NET"
+          "type": "FISHING_NET",
+          "mobs": [
+            "SPIKE"
+          ],
+          "locations": [
+            "KELPWOVEN_TUNNELS",
+            "MURKWATER_SHALLOWS"
+          ],
+          "island": "SKYBLOCK_GALATEA"
         }
       ],
       "fusion_cost": 5
@@ -8871,10 +9480,26 @@
       "sources": [
         {
           "type": "FUSION"
+        },
+        {
+          "type": "OTHER",
+          "mobs": [
+            "GRIZZLY_BEAR"
+          ],
+          "locations": [
+            "TORRHUS_CANYON"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
+        },
+        {
+          "type": "MOB",
+          "mobs": [
+            "GRIZZLY_BEAR"
+          ],
+          "island": "SKYBLOCK_TORRHUS_CANYON"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "L41",

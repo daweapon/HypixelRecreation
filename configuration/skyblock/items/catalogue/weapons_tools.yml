@@ -23,7 +23,7 @@ items:
       - "§8§oSupra omnes, Apex Praedator solus"
       - "§8§oregnat."
       - ""
-      - "§8Not active yet: Absorptio and Vis Temperata need the Hunting creature system (Forest creatures to weaken and capture; only Huntraps exist)"
+      - "§8Not active yet: Absorptio needs the stored-weapon system, which is not built; Vis Temperata works"
     components:
       - id: AXE
         axe_strength: 12
@@ -107,7 +107,7 @@ items:
       - ""
       - "§8§oFera fugit, cursus sequitur."
       - ""
-      - "§8Not active yet: Absorptio and Vis Temperata need the Hunting creature system (Forest creatures to weaken and capture; only Huntraps exist)"
+      - "§8Not active yet: Absorptio needs the stored-weapon system, which is not built; Vis Temperata works"
     components:
       - id: AXE
         axe_strength: 12
@@ -332,7 +332,7 @@ items:
       - ""
       - "§8§oTitanum ruina, mundi mutatio."
       - ""
-      - "§8Not active yet: Absorptio and Vis Temperata need the Hunting creature system (Forest creatures to weaken and capture; only Huntraps exist)"
+      - "§8Not active yet: Absorptio needs the stored-weapon system, which is not built; Vis Temperata works"
     components:
       - id: AXE
         axe_strength: 12
@@ -441,7 +441,7 @@ items:
       - ""
       - "§8§oSilva vocat, Dominus respondet."
       - ""
-      - "§8Not active yet: Absorptio and Vis Temperata need the Hunting creature system (Forest creatures to weaken and capture; only Huntraps exist)"
+      - "§8Not active yet: Absorptio needs the stored-weapon system, which is not built; Vis Temperata works"
     components:
       - id: AXE
         axe_strength: 12
@@ -575,7 +575,7 @@ items:
       - ""
       - "§8§oEx tenebris, primus venator surgit."
       - ""
-      - "§8Not active yet: Absorptio and Vis Temperata need the Hunting creature system (Forest creatures to weaken and capture; only Huntraps exist)"
+      - "§8Not active yet: Absorptio needs the stored-weapon system, which is not built; Vis Temperata works"
     components:
       - id: AXE
         axe_strength: 12
@@ -652,8 +652,9 @@ items:
       - "§7Lasso each time their §9stamina"
       - "§7depletes."
       - ""
-      - "§8Not active yet: Lasso needs the Hunting creature system (Forest creatures with stamina; only Huntraps exist)"
     components:
+      - id: INTERACTABLE
+        handler_id: HUNTING_LASSO
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -763,8 +764,9 @@ items:
       - "§7fish to catch them!"
       - "§8Cooldown: §a0.5s"
       - ""
-      - "§8Not active yet: Fishing nets need the Hunting creature system (swimming Water creatures; only Huntraps exist)"
     components:
+      - id: INTERACTABLE
+        handler_id: HUNTING_FISHING_NET
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -922,8 +924,9 @@ items:
       - "§7Grants §d+2.5 Hunting Fortune §7on"
       - "§2Forest Shards §7caught with this Lasso."
       - ""
-      - "§8Not active yet: Lasso needs the Hunting creature system (Forest creatures with stamina; only Huntraps exist)"
     components:
+      - id: INTERACTABLE
+        handler_id: HUNTING_LASSO
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -974,8 +977,9 @@ items:
       - "§7Grants §d+5 Hunting Fortune §7on"
       - "§2Forest Shards §7caught with this Lasso."
       - ""
-      - "§8Not active yet: Lasso needs the Hunting creature system (Forest creatures with stamina; only Huntraps exist)"
     components:
+      - id: INTERACTABLE
+        handler_id: HUNTING_LASSO
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -1129,9 +1133,9 @@ items:
     material: paper
     name: "Gigantic Fishing Net"
     rarity: LEGENDARY
+    source: "Crafted from 128 Enchanted Sea Lumies, 32 Sublime Silk, 1 Reinforced Netting, 1 Turbo Fishing Net and 64 Flexbone (Sea Lumies X)"
     default_statistics:
       pull: 100
-    unavailable: "Needs Reinforced Netting, Sublime Silk (not in the game yet)"
     lore:
       - "§8Hunting Tool"
       - ""
@@ -1146,8 +1150,9 @@ items:
       - "§7Grants §d+10 Hunting Fortune §7on"
       - "§9Water Shards §7caught with this net."
       - ""
-      - "§8Not active yet: Fishing nets need the Hunting creature system (swimming Water creatures; only Huntraps exist)"
     components:
+      - id: INTERACTABLE
+        handler_id: HUNTING_FISHING_NET
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/foraging_3/nets/gigantic_fishing_net
   - id: HYDRO_CAN_1000
@@ -1405,8 +1410,9 @@ items:
       - "§7Grants §d+2.5 Hunting Fortune §7on"
       - "§9Water Shards §7caught with this net."
       - ""
-      - "§8Not active yet: Fishing nets need the Hunting creature system (swimming Water creatures; only Huntraps exist)"
     components:
+      - id: INTERACTABLE
+        handler_id: HUNTING_FISHING_NET
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -1711,8 +1717,9 @@ items:
       - "§7Grants §d+5 Hunting Fortune §7on"
       - "§9Water Shards §7caught with this net."
       - ""
-      - "§8Not active yet: Fishing nets need the Hunting creature system (swimming Water creatures; only Huntraps exist)"
     components:
+      - id: INTERACTABLE
+        handler_id: HUNTING_FISHING_NET
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -1759,8 +1766,9 @@ items:
       - ""
       - "§a Critters §7lose stamina §220% §7faster."
       - ""
-      - "§8Not active yet: Lasso needs the Hunting creature system (Forest creatures with stamina; only Huntraps exist)"
     components:
+      - id: INTERACTABLE
+        handler_id: HUNTING_LASSO
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED

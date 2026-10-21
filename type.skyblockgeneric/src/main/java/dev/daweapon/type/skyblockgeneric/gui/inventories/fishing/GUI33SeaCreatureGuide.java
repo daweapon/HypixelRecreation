@@ -218,7 +218,84 @@ public final class GUI33SeaCreatureGuide extends SeaCreatureGuidePage {
             <c>Requirements:
             <7>- <a>Fishing Skill 15
             <7>- <b>Water
-            <7>- <6>Torrhus Canyon""")
+            <7>- <6>Torrhus Canyon"""),
+        head(31, "a3b9003ba2d05562c75119b8a62185c67130e9282f7acbac4bc2824c21eb95d9", """
+            <7>[Lvl <k>?] ????? (</k><f><l>Common</l><7>)
+            <9>⚓ Aquatic<7>, <f>🦴 Skeletal
+
+            <c>Drops:
+            <7>- <k>???????</k>
+
+            <c>Requirements:
+            <7>- <a>Fishing Skill 5
+            <7>- <b>Water
+            <7>- <2>Moonglade Marsh"""),
+        head(32, "30519f79e5829136c3df10b6bd727db255717c87e5c102892ef67e7f46929515", """
+            <7>[Lvl <k>?] ????? (</k><5><l>Epic</l><7>)
+            <2>⸙ Woodland<7>, <9>⚓ Aquatic
+
+            <c>Drops:
+            <7>- <k>???????</k>
+
+            <c>Requirements:
+            <7>- <a>Fishing Skill 12
+            <7>- <b>Water
+            <7>- <2>Moonglade Marsh"""),
+        head(33, "3d6c9f43510cb90d24493e07b7cf8ca9f54132d09a257f20b7048022e3b1b707", """
+            <7>[Lvl <k>?] ????? (</k><d><l>Mythic</l><7>)
+            <9>⚓ Aquatic<7>, <a>☮ Animal<7>, <d>❃ Elusive
+
+            <c>Drops:
+            <7>- <k>???????</k>
+
+            <c>Requirements:
+            <7>- <a>Fishing Skill 25
+            <7>- <b>Water
+            <7>- <2>Moonglade Marsh"""),
+        head(34, "620971f4dd71592a6065944487da2adf22987d5d0cccf6085dff7a6767d1b21a", """
+            <7>[Lvl <k>?] ????? (</k><9><l>Rare</l><7>)
+            <c>♆ Magmatic<7>, <2>༕ Undead<7>, <2>⸙ Woodland
+
+            <c>Drops:
+            <7>- <k>???????</k>
+
+            <c>Requirements:
+            <7>- <a>Fishing Skill 17
+            <7>- <c>Lava
+            <7>- <2>Moonglade Marsh"""),
+        head(37, "1608d86ffb297bf93b7190d24bc3b2dc094f8086740f7541a752fbe661f175fc", """
+            <7>[Lvl <k>?] ????? (</k><9><l>Rare</l><7>)
+            <9>⚓ Aquatic<7>, <a>☮ Animal
+
+            <c>Drops:
+            <7>- <k>???????</k>
+
+            <c>Requirements:
+            <7>- <a>Fishing Skill 9
+            <7>- <b>Water
+            <7>- <2>Moonglade Marsh"""),
+        head(38, "46c15b527e4872249c91797435521cb77651b567e57518304f5f131e49ded652", """
+            <7>[Lvl <k>?] ????? (</k><6><l>Legendary</l><7>)
+            <9>⚓ Aquatic<7>, <f>🦴 Skeletal<7>, <d>❃ Elusive
+
+            <c>Drops:
+            <7>- <k>???????</k>
+
+            <c>Requirements:
+            <7>- <a>Fishing Skill 20
+            <7>- <b>Water
+            <7>- <2>Moonglade Marsh"""),
+        head(39, "e4654095755fa5fb994e69d5661b0ca2286815b006f8d3d18933f2aa7ec44f56", """
+            <7>[Lvl <k>?] ????? (</k><a><l>Uncommon</l><7>)
+            <9>⚓ Aquatic<7>, <2>༕ Undead<7>, <a>☮ Animal
+
+            <c>Drops:
+            <7>- <k>???????</k>
+
+            <c>Requirements:
+            <7>- <a>Fishing Skill 7
+            <7>- <b>Water
+            <7>- <2>Moonglade Marsh""")
         );
     }
 }

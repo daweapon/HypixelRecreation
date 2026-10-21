@@ -1025,7 +1025,6 @@ items:
     material: paper
     name: "Fun-Sized Pot of Honeycomb"
     rarity: UNCOMMON
-    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
     source: "Crafted from 64 Honeycomb and 64 Helix Log (Honeycomb I)"
     lore:
       - "§8Consumed on use"
@@ -1045,6 +1044,30 @@ items:
     components:
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/foraging_3/honey/pots/honey_pot_fun_sized
+      - id: INTERACTABLE
+        handler_id: HONEYCOMB_POT_LATHER
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern:
+              - "OOO"
+              - "OAO"
+              - "OBO"
+            ingredients:
+              A:
+                type: HONEYCOMB
+                amount: 64
+              B:
+                type: HELIX_LOG
+                amount: 64
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: FUN_SIZED_POT_OF_HONEYCOMB
+              amount: 1
   - id: FURNACE_PLUS
     material: player_head
     name: "Furnace+"
@@ -3531,7 +3554,6 @@ items:
     material: paper
     name: "Jumbo Pot of Honeycomb"
     rarity: EPIC
-    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
     source: "Crafted from 16 Enchanted Honeycomb and 1 Helixis (Honeycomb V)"
     lore:
       - "§8Consumed on use"
@@ -3551,6 +3573,30 @@ items:
     components:
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/foraging_3/honey/pots/honey_pot_jumbo
+      - id: INTERACTABLE
+        handler_id: HONEYCOMB_POT_LATHER
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern:
+              - "OOO"
+              - "OAO"
+              - "OBO"
+            ingredients:
+              A:
+                type: ENCHANTED_HONEYCOMB
+                amount: 16
+              B:
+                type: HELIXIS
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: JUMBO_POT_OF_HONEYCOMB
+              amount: 8
   - id: JUNGLE_BED
     material: player_head
     name: "Jungle Bed"

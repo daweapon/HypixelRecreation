@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CollectionConfigTest {
     private static final Map<String, Integer> EXPECTED_COUNTS = Map.of(
-            "farming.yml", 20, "mining.yml", 25, "combat.yml", 11, "foraging.yml", 14, "fishing.yml", 12);
+            "farming.yml", 20, "mining.yml", 25, "combat.yml", 11, "foraging.yml", 15, "fishing.yml", 12);
 
     @Test
     void everyCategoryHasTheWikiCollectionCount() throws Exception {

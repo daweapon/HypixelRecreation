@@ -56,7 +56,14 @@ public class BestiaryData {
             90, 100, 120, 140, 160, 180, 200
     };
 
-    private final List<int[]> brackets = List.of(BRACKET_1, BRACKET_2, BRACKET_3, BRACKET_4, BRACKET_5, BRACKET_6, BRACKET_7, BRACKET_8);
+    private static final int[] HUNTING_1 = {1, 5, 10, 20, 35, 50, 65, 85, 105, 125};
+    private static final int[] HUNTING_2 = {1, 5, 10, 15, 25, 40, 55, 70, 85, 100};
+    private static final int[] HUNTING_3 = {1, 5, 10, 15, 20, 25, 35, 45, 60, 75};
+    private static final int[] HUNTING_4 = {1, 3, 6, 10, 15, 20, 25, 30, 40, 50};
+    private static final int[] HUNTING_5 = {1, 2, 3, 4, 6, 8, 10, 15, 20, 25};
+
+    private final List<int[]> brackets = List.of(BRACKET_1, BRACKET_2, BRACKET_3, BRACKET_4, BRACKET_5, BRACKET_6, BRACKET_7, BRACKET_8,
+            HUNTING_1, HUNTING_2, HUNTING_3, HUNTING_4, HUNTING_5);
 
     private enum BestiaryTierRewards {
         TIER_1(2, 2, 2, 50),

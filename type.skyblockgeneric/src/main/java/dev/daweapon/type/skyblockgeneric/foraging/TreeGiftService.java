@@ -76,6 +76,7 @@ public final class TreeGiftService {
         } * scaled * HotfService.experienceMultiplier(player));
         TreeGiftMilestones.recordGift(player, treeType);
         HypixelEventHandler.callCustomEvent(new TreeGiftReceivedEvent(player, treeType));
+        dev.daweapon.type.skyblockgeneric.hunting.creature.trigger.CreatureTriggers.onTreeGift(player, treeType);
         increase(player, SkyBlockDataHandler.Data.FOREST_ESSENCE, essence);
         HotfService.addExperience(player, Math.round(PetEvents.xpGained(player, PetEvent.XpType.HOTF, null, hotfExperience)));
         player.getSkills().increase(player, SkillCategories.FORAGING, (double) foragingXp);

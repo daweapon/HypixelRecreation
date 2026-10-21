@@ -125,6 +125,7 @@ public final class ForagingTreeManager {
         if (kind == null) return List.of();
 
         TrackedTree tree = getOrDiscoverTree(instance, hit, hitBlock, kind);
+        if (dev.daweapon.type.skyblockgeneric.hunting.creature.trigger.TreeProtectionOrders.blocksFelling(player, tree.ref())) return List.of();
         boolean precisionHit = hit.equals(tree.marks.get(player.getUuid()));
         if (precisionHit) tree.marks.remove(player.getUuid());
 
@@ -184,6 +185,13 @@ public final class ForagingTreeManager {
             }
         }
         return harvested;
+    }
+
+    public static @org.jetbrains.annotations.Nullable TreeRef treeAt(Instance instance, Point point) {
+        Block block = instance.getBlock(point);
+        TreeKind kind = getTreeKind(block);
+        if (kind == null || kind == TreeKind.BASIC) return null;
+        return getOrDiscoverTree(instance, BlockPosition.from(point), block, kind).ref();
     }
 
     public static void showPrecisionMarks(SkyBlockPlayer player) {
@@ -403,6 +411,9 @@ public final class ForagingTreeManager {
         return (name.endsWith("_log") || name.endsWith("_wood")) ? TreeKind.BASIC : null;
     }
 
+    public record TreeRef(String kind, long id, Pos base) {
+    }
+
     public record HarvestedLog(Point position, Block originalBlock, ItemType dropType) {
     }
 
@@ -485,6 +496,15 @@ public final class ForagingTreeManager {
             BlockPosition chosen = candidates.get(ThreadLocalRandom.current().nextInt(candidates.size()));
             marks.put(player, chosen);
             return chosen;
+        }
+
+        private TreeRef ref() {
+            BlockPosition anchor = originalBlocks.keySet().stream()
+                    .min(Comparator.comparingInt(BlockPosition::y).thenComparingInt(BlockPosition::x).thenComparingInt(BlockPosition::z))
+                    .orElseThrow();
+            long id = ((long) anchor.x & 0x3FFFFFFL) << 38 | ((long) anchor.z & 0x3FFFFFFL) << 12 | (anchor.y & 0xFFFL);
+            Pos hologram = hologramPosition();
+            return new TreeRef(kind.name(), id, new Pos(hologram.x(), anchor.y + 1, hologram.z()));
         }
 
         private boolean isFullyBroken() {
@@ -611,7 +631,9 @@ public final class ForagingTreeManager {
             if (kind == TreeKind.BASIC) return;
             Map<UUID, Integer> amounts = new HashMap<>();
             contributions.forEach((uuid, contribution) -> amounts.put(uuid, contribution.logs));
+            dev.daweapon.type.skyblockgeneric.hunting.creature.trigger.CreatureTriggers.onTreeFelled(instance, ref(), amounts);
             TreeGiftService.award(instance, kind.name(), amounts, originalBlocks.size());
+            dev.daweapon.type.skyblockgeneric.hunting.creature.trigger.CreatureTriggers.treeFinished(instance);
         }
 
         private void scheduleLooseLeafRegeneration(Instance instance, BlockPosition leaf) {

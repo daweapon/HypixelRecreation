@@ -42,8 +42,6 @@ chapters:
         description: "<c>Chillshots<7> and <c>Chillblades<7> can be found in a hidden cavern under the <b>Village<7>."
         rewards: { combat: 1000 }
         trigger: kill.chillshot
-        available: false
-        unavailable: "Chillshots and Chillblades are not built"
       - id: verdant
         title: "Catch Verdant Shards"
         description: "<f>Verdant<7> are green tropical fishes found in lakes and rivers."
@@ -133,8 +131,6 @@ chapters:
         description: "They are so cute!"
         rewards: { fishing: 2000 }
         trigger: fish.wetwing
-        available: false
-        unavailable: "Wetwing cannot be fished up yet"
       - id: kiara
         title: "Buy a Shard from Kiara"
         description: "<b>Kiara<7> sells Amphibians and Reptiles, useful for <5>Fusions<7>!"
@@ -282,8 +278,6 @@ chapters:
         description: "<9>Drowned<7> are hiding under the lake."
         rewards: { combat: 5000 }
         trigger: kill.drowned
-        available: false
-        unavailable: "The lake's Drowned creatures are not built"
       - id: piranha
         title: "Find a Piranha"
         description: "<9>Piranhas<7> sometimes get baited by fishing bobbers in the <2>Moonglade Marsh<7>."

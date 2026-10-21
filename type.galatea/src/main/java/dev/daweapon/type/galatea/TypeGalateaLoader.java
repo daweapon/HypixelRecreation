@@ -35,7 +35,7 @@ public class TypeGalateaLoader implements SkyBlockTypeLoader {
 
     @Override
     public void afterInitialize(MinecraftServer server) {
-
+        dev.daweapon.type.skyblockgeneric.hunting.creature.CreatureSpawner.start();
     }
 
     @Override

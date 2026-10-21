@@ -110,7 +110,8 @@ class HotfRegistryTest {
         for (String id : java.util.List.of("timber", "free_trial", "precision_cutting", "collector")) {
             assertTrue(registry.perk(id).available(), id);
         }
-        assertFalse(registry.perk("monster_hunter").available());
+        assertTrue(registry.perk("monster_hunter").available());
+        assertFalse(registry.perk("beekeeper").available());
         assertEquals(2, registry.perk("collector").value(1), 1e-9);
         assertEquals(100, registry.perk("collector").value(50), 1e-9);
         assertEquals(0.1, registry.perk("timber").value(1), 1e-9);

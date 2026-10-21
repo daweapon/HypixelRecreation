@@ -53,7 +53,7 @@ class ActivatedCatalogueTest {
                 assertTrue(text.contains("need") || text.contains("unconfirmed"), item.get("id") + ": " + text);
             }
         }
-        assertEquals(14, notes);
+        assertEquals(6, notes);
     }
 
     @Test

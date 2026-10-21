@@ -19,7 +19,7 @@ public class GUIBestiary extends StatelessView {
     private static final int[] DISPLAY_SLOTS = {
             10, 11, 12, 13, 14, 15, 16,
             19, 20, 21, 22, 23, 24, 25,
-            29, 30, 32, 33
+            29, 30, 32, 33, 34
     };
 
     private enum BestiaryRegions {
@@ -34,7 +34,8 @@ public class GUIBestiary extends StatelessView {
         DWARVEN_MINES("<2>Dwarven Mines", new GUIMaterial("6b20b23c1aa2be0270f016b4c90d6ee6b8330a17cfef87869d6ad60b2ffbf3b5"), BestiaryCategories.DWARVEN_MINES, "<7>View all of the mobs that you've", "<7>found and killed in the <2>Dwarven Mines<7>."),
         CRYSTAL_HALLOWS("<5>Crystal Hallows", new GUIMaterial("21dbe30b027acbceb612563bd877cd7ebb719ea6ed1399027dcee58bb9049d4a"), BestiaryCategories.CRYSTAL_HOLLOWS, "<7>View all of the mobs that you've", "<7>found and killed in the <5>Crystal", "<5>Hollows<7>."),
         THE_PARK("<3>The Park", new GUIMaterial("a221f813dacee0fef8c59f76894dbb26415478d9ddfc44c2e708a6d3b7549b"), BestiaryCategories.THE_PARK, "<7>View all of the mobs that you've", "<7>found and killed in <3>The Park<7>."),
-        GALATEA("<2>Galatea", new GUIMaterial("9336d7cc95cbf6689f5e8c954294ec8d1efc494a4031325bb427bc81d56a484d"), null, "<7>View all of the mobs that you've", "<7>found and killed in <2>Galatea<7>."),
+        GALATEA("<2>Galatea", new GUIMaterial("9336d7cc95cbf6689f5e8c954294ec8d1efc494a4031325bb427bc81d56a484d"), BestiaryCategories.MOONGLADE_MARSH, "<7>View all of the mobs that you've", "<7>found and killed in <2>Galatea<7>."),
+        TORRHUS_CANYON("<6>Torrhus Canyon", new GUIMaterial("9336d7cc95cbf6689f5e8c954294ec8d1efc494a4031325bb427bc81d56a484d"), BestiaryCategories.TORRHUS_CANYON, "<7>View all of the mobs that you've", "<7>found and killed in <6>Torrhus Canyon<7>."),
         SPOOKY_FESTIVAL("<6>Spooky Festival", new GUIMaterial(Material.JACK_O_LANTERN), null, "<7>View all of the mobs that you've", "<7>found and killed during the <6>Spooky", "<6>Festival<7>."),
         CATACOMBS("<c>Catacombs", new GUIMaterial("964e1c3e315c8d8fffc37985b6681c5bd16a6f97ffd07199e8a05efbef103793"), null, "<7>View all of the mobs that you've", "<7>found and killed in <c>The Catacombs<7>."),
         FISHING("<3>Fishing", new GUIMaterial(Material.FISHING_ROD), null, "<7>View all of the <3>Sea Creatures <7>that", "<7>you've killed while fishing."),

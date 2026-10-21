@@ -19,7 +19,10 @@ public class ActionCharmingMobKill implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, phase = EventPhase.GAMEPLAY)
     public void run(PlayerKilledSkyBlockMobEvent event) {
-        CharmingService.tryCharm(event.getPlayer(), event.getKilledMob());
+        if (!(event.getKilledMob() instanceof dev.daweapon.type.skyblockgeneric.hunting.creature.HuntingCreatureMob creature)
+                || creature.isCharmable()) {
+            CharmingService.tryCharm(event.getPlayer(), event.getKilledMob());
+        }
         double coins = AttributeEffectService.value(event.getPlayer().getHuntingData(), AttributeId.parse("C27"));
         if (coins > 0) event.getPlayer().addCoins(coins);
         long now = System.currentTimeMillis();

@@ -354,8 +354,6 @@ perks:
     tier: 8
     col: 1
     maxLevel: 1
-    available: false
-    unavailable: "Critters, the Moonglade Marsh and Critter Capsule/Lasso/Fishing Net hunting are not built; no Critter mob type or capture event exists"
     lore:
       - "Hunting a Critter grants <3>+25 Forest Whispers<7> on the Moonglade Marsh."
   - id: forest_speed

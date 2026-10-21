@@ -1010,7 +1010,6 @@ items:
     material: paper
     name: "Behemoth Pot of Honeycomb"
     rarity: LEGENDARY
-    unavailable: "Tree Protection Orders and critter attraction aren't built"
     source: "Mob drop (Galatea)"
     lore:
       - "§8Consumed on use"
@@ -1031,6 +1030,8 @@ items:
     components:
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/foraging_3/honey/pots/honey_pot_behemoth
+      - id: INTERACTABLE
+        handler_id: HONEYCOMB_POT_LATHER
   - id: BERBERIS_BLOWGUN
     material: stick
     name: "Berberis Blowgun"

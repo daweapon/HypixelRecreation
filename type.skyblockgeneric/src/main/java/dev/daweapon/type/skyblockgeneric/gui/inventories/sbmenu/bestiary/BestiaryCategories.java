@@ -21,6 +21,8 @@ public enum BestiaryCategories {
     THE_END("<d>The End", CataloguedBestiaryAreas.THE_END),
     THE_PARK("<3>The Park", CataloguedBestiaryAreas.THE_PARK),
     JERRY("<6>Jerry", CataloguedBestiaryAreas.JERRY),
+    MOONGLADE_MARSH("<2>Moonglade Marsh", dev.daweapon.type.skyblockgeneric.hunting.creature.HuntingBestiary.section("MOONGLADE_MARSH")),
+    TORRHUS_CANYON("<6>Torrhus Canyon", dev.daweapon.type.skyblockgeneric.hunting.creature.HuntingBestiary.section("TORRHUS_CANYON")),
     DWARVEN_MINES("<2>Dwarven Mines", BestiaryCategory.DWARVEN_MINES.values()),
     MYTHOLOGICAL_CREATURES("<b>Mythological Creatures", BestiaryCategory.MYTHOLOGICAL_CREATURES.values()),
     CRYSTAL_HOLLOWS("<5>Crystal Hollows", BestiaryCategory.CRYSTAL_HOLLOWS.values()),

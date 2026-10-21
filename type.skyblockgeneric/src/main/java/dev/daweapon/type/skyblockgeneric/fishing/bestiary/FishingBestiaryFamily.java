@@ -154,6 +154,21 @@ public enum FishingBestiaryFamily implements BestiaryEntry {
             head("6bbe6a78b8b9b1bee4458fae633deca7dc9da31589b98903c9e871efcb416aea"), "SPRAWL"),
     TORRID(FishingBestiarySection.TORRHUS_CANYON, "Torrid", "Always up to no good. When they get together with Pucks, even more trouble is caused.", 7, 20,
             head("9da145254a59efce57186e6c99b64ba0e86803a4496cdbe8c96cc13dda71aa24"), "TORRID"),
+
+    BOGGED(FishingBestiarySection.MOONGLADE_MARSH, "Bogged", "Learn to swim before you learn to dive!", 4, 15,
+            head("a3b9003ba2d05562c75119b8a62185c67130e9282f7acbac4bc2824c21eb95d9"), "BOGGED"),
+    ENT(FishingBestiarySection.MOONGLADE_MARSH, "Ent", "Thinks photosynthesis is a surface-plant propaganda invented by leafy elites to sell fertilizers.", 7, 20,
+            head("30519f79e5829136c3df10b6bd727db255717c87e5c102892ef67e7f46929515"), "ENT"),
+    NESSIE(FishingBestiarySection.MOONGLADE_MARSH, "Nessie", "Whispers of a monster lurking in the loch permeate Galatea.", 8, 15,
+            head("3d6c9f43510cb90d24493e07b7cf8ca9f54132d09a257f20b7048022e3b1b707"), "NESSIE"),
+    STRIDERSURFER(FishingBestiarySection.MOONGLADE_MARSH, "Stridersurfer", "Ugliest crossover.", 6, 20,
+            head("620971f4dd71592a6065944487da2adf22987d5d0cccf6085dff7a6767d1b21a"), "STRIDERSURFER"),
+    TADGANG(FishingBestiarySection.MOONGLADE_MARSH, "Tadgang", "They grow up so fast.", 6, 20,
+            head("1608d86ffb297bf93b7190d24bc3b2dc094f8086740f7541a752fbe661f175fc"), "TADGANG"),
+    THE_LOCH_EMPEROR(FishingBestiarySection.MOONGLADE_MARSH, "The Loch Emperor", "What exists within the Loch without his knowledge exists without his consent.", 6, 15,
+            head("46c15b527e4872249c91797435521cb77651b567e57518304f5f131e49ded652"), "THE_LOCH_EMPEROR"),
+    WETWING(FishingBestiarySection.MOONGLADE_MARSH, "Wetwing", "It's not like chickens can really fly anyways.", 4, 15,
+            head("e4654095755fa5fb994e69d5661b0ca2286815b006f8d3d18933f2aa7ec44f56"), "WETWING"),
     ;
 
     private final FishingBestiarySection section;

@@ -37,6 +37,13 @@ sections:
       - "Torrhus treasure holds Enchanted Ruby Veilshrooms, Enchanted Helix Logs, Helixis and the Stingray, Sepialot, Ember, Water Snake, Solar and Goldolot Shards. Caught shards go straight to your Hunting Box."
       - "The Hotspot Haven hotspot turns Great catches into a Giant Water Bug Shard and Outstanding catches into 4 to 8, boosted by Hunter Fortune."
       - "The six Catch tasks in Torrhus Chapters now work, and the creatures have Bestiary and Sea Creature Guide entries."
+  - heading: "Moonglade Marsh Fishing"
+    colour: "<2>"
+    lines:
+      - "Fish in the water of Moonglade Marsh on Galatea for Bogged (Fishing 5), Wetwing (7), Tadgang (9), Ent (12), The Loch Emperor (20) and Nessie (25). They drop Sea Lumies, Mangrove Logs, their enchanted forms, Gill Membranes, Wet Water, Mangcore and more."
+      - "Lava fishing in Moonglade Marsh (Fishing 17) can now catch a Stridersurfer, which drops Gill Membranes and Sturdy Bones."
+      - "Moonglade Marsh treasure holds Fig and Mangrove Logs, coins and the Verdant, Cod, Azure, Piranha, Salmon and Eel Shards. Caught shards go straight to your Hunting Box."
+      - "The Loch Emperor can drop the Flying Fish pet. The Wetwing task in the Moonglade Marsh chapters now works, and every creature has Bestiary and Sea Creature Guide entries."
   - heading: "Collections, Scrolls and Fairy Souls"
     colour: "<a>"
     lines:

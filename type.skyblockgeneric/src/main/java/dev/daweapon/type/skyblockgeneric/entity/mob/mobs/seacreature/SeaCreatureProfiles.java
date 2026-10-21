@@ -284,7 +284,9 @@ public final class SeaCreatureProfiles {
             WATER_WORM, POISONED_WATER_WORM, ABYSSAL_MINER,
             // Lava
             LAVA_BLAZE, LAVA_PIGMAN, FLAMING_WORM
-    ), dev.daweapon.type.skyblockgeneric.fishing.torrhus.TorrhusSeaCreatures.PROFILES.stream()).toList();
+    ), java.util.stream.Stream.concat(
+            dev.daweapon.type.skyblockgeneric.fishing.torrhus.TorrhusSeaCreatures.PROFILES.stream(),
+            dev.daweapon.type.skyblockgeneric.fishing.galatea.GalateaSeaCreatures.PROFILES.stream())).toList();
 
     private static SkyBlockLootTable drops(SkyBlockLootTable.LootRecord... records) {
         return new SkyBlockLootTable() {

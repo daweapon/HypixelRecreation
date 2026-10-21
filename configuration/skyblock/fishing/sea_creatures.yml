@@ -219,3 +219,33 @@ seaCreatures:
     requiredFishingLevel: 15
     skillXp: 4650
     tags: [WATER, MYTHIC]
+
+  # ---------- Moonglade Marsh (weights live in tables.yml) ----------
+  - id: BOGGED
+    requiredFishingLevel: 5
+    skillXp: 187
+    tags: [WATER, COMMON]
+  - id: WETWING
+    requiredFishingLevel: 7
+    skillXp: 460
+    tags: [WATER, UNCOMMON]
+  - id: TADGANG
+    requiredFishingLevel: 9
+    skillXp: 362
+    tags: [WATER, RARE]
+  - id: ENT
+    requiredFishingLevel: 12
+    skillXp: 900
+    tags: [WATER, EPIC]
+  - id: THE_LOCH_EMPEROR
+    requiredFishingLevel: 20
+    skillXp: 2020
+    tags: [WATER, LEGENDARY]
+  - id: NESSIE
+    requiredFishingLevel: 25
+    skillXp: 7300
+    tags: [WATER, MYTHIC]
+  - id: STRIDERSURFER
+    requiredFishingLevel: 17
+    skillXp: 775
+    tags: [LAVA, RARE]

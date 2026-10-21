@@ -429,6 +429,77 @@ tables:
         weight: 100
       - seaCreatureId: GIANT_ISOPOD
         weight: 25
+  # Moonglade Marsh (wiki: Sea_Creatures/List/Moonglade_Marsh, Treasure/Loot/Moonglade_Marsh). Sea Creature Chance is rolled once,
+  # then a creature is picked by weight. Tomb Floodway-only treasure (Flexbone and its shard rows) and Swamp the Fish are not built.
+  # Treasure quality shares are taken from Torrhus Canyon.
+  - id: MOONGLADE_MARSH
+    serverTypes:
+      - SKYBLOCK_GALATEA
+    mediums:
+      - WATER
+    weightedSeaCreatures: true
+    weightedItems:
+      - { itemId: FIG_LOG, weight: 100, min: 40, max: 40 }
+      - { itemId: MANGROVE_LOG, weight: 70, min: 40, max: 40 }
+    treasureQualities:
+      - name: GOOD
+        share: 89
+        entries:
+          - { itemId: FIG_LOG, weight: 100, min: 100, max: 100 }
+          - { itemId: MANGROVE_LOG, weight: 70, min: 100, max: 100 }
+          - { itemId: SHARD_VERDANT, weight: 50, min: 1, max: 1 }
+          - { itemId: COINS, weight: 50, min: 25000, max: 50000 }
+          - { itemId: SHARD_COD, weight: 40, min: 1, max: 1 }
+          - { itemId: SHARD_AZURE, weight: 40, min: 1, max: 1 }
+          - { itemId: SHARD_PIRANHA, weight: 15.5, min: 1, max: 1 }
+          - { itemId: SHARD_EEL, weight: 0.05, min: 1, max: 1 }
+      - name: GREAT
+        share: 10
+        entries:
+          - { itemId: ENCHANTED_FIG_LOG, weight: 100, min: 2, max: 2 }
+          - { itemId: ENCHANTED_MANGROVE_LOG, weight: 70, min: 2, max: 2 }
+          - { itemId: SHARD_SALMON, weight: 20, min: 1, max: 1 }
+      - name: OUTSTANDING
+        share: 1
+        entries:
+          - { itemId: ENCHANTED_FIG_LOG, weight: 100, min: 10, max: 10 }
+          - { itemId: ENCHANTED_MANGROVE_LOG, weight: 70, min: 10, max: 10 }
+          - { itemId: COINS, weight: 50, min: 500000, max: 1000000 }
+          - { itemId: SHARD_EEL, weight: 20, min: 1, max: 1 }
+    items: [ ]
+    treasures: [ ]
+    junk: [ ]
+    seaCreatures:
+      - seaCreatureId: BOGGED
+        weight: 5000
+      - seaCreatureId: WETWING
+        weight: 2875
+      - seaCreatureId: TADGANG
+        weight: 1500
+      - seaCreatureId: ENT
+        weight: 500
+      - seaCreatureId: THE_LOCH_EMPEROR
+        weight: 100
+      - seaCreatureId: NESSIE
+        weight: 25
+  # Moonglade Marsh lava: Stridersurfer is the only creature (wiki: 100% of Sea Creature Chance). The wiki has no lava loot
+  # page for Moonglade Marsh, so the non-creature catch is a Magmafish like the Crystal Hollows lava pool.
+  - id: MOONGLADE_MARSH_LAVA
+    serverTypes:
+      - SKYBLOCK_GALATEA
+    regions: [ ]
+    mediums:
+      - LAVA
+    weightedSeaCreatures: true
+    items:
+      - itemId: MAGMAFISH
+        chance: 100
+        amount: 1
+        skillXp: 10
+    junk: [ ]
+    seaCreatures:
+      - seaCreatureId: STRIDERSURFER
+        weight: 200
   # Crystal Hollows (wiki: Sea_Creatures/List/Crystal_Hollows). Region tables come first so they win over the server-wide pools.
   # Poisoned Water Worm weight is an estimate; the wiki gives none.
   - id: CRYSTAL_HOLLOWS_PRECURSOR_LAVA

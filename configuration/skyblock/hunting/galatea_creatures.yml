@@ -1,0 +1,801 @@
+creatures:
+  - id: "PHANPYRE"
+    name: "Phanpyre"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 1
+    health: 200
+    damage: 1
+    speed: 130
+    entity: "PHANTOM"
+    mobTypes: ["CRITTER", "WOODLAND", "AIRBORNE"]
+    shard: "Phanpyre"
+    capture: "LASSO"
+    staminaBars: 1
+    special: "SWOOP_AT_PLAYER"
+    medium: "AIR"
+    behavior: "FLY"
+    xp: {"hunting": 75, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 1
+    coins: 1
+    drops: []
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_1", "maxTier": 10, "lore": "Still young, its wings are particularly frail."}
+    spawn:
+      regions: ["MOONGLADE_MARSH"]
+      points: []
+      max: 4
+      trigger: {"type": "TREE_BREAK", "chance": 11.8}
+    messages: []
+    notes: "Phanpyres have a 11.8% chance to spawn when breaking a tree on Moonglade Marsh. Phanpyres fly around before swooping in at a player. If a player throws a Lasso at a Phanpyre, it latches onto a Phanpyre and can be reeled in for capture. Successfully catching a Phanpyre drops an Attribute Shard. Estimate: speed, max alive."
+  - id: "PHANFLARE"
+    name: "Phanflare"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 1
+    health: 200
+    damage: 1
+    speed: 130
+    entity: "PHANTOM"
+    mobTypes: ["CRITTER", "WOODLAND", "AIRBORNE"]
+    shard: "Phanflare"
+    capture: "LASSO"
+    staminaBars: 2
+    special: "SWOOP_AT_PLAYER"
+    medium: "AIR"
+    behavior: "FLY"
+    xp: {"hunting": 75, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 1
+    coins: 1
+    drops: []
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_1", "maxTier": 10, "lore": "Still young, its wings are particularly frail."}
+    spawn:
+      regions: ["MOONGLADE_MARSH"]
+      points: []
+      max: 4
+      trigger: {"type": "TREE_BREAK", "chance": 7.1}
+    messages: []
+    notes: "Phanflares have a 7.1% chance to spawn when breaking a tree on Moonglade Marsh. Phanflares fly around before swooping in at a player. If a player throws a Lasso at a Phanflare, it latches onto a Phanflare and can be reeled in for capture. Estimate: speed, max alive."
+  - id: "DREADWING"
+    name: "Dreadwing"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 1
+    health: 200
+    damage: 1
+    speed: 140
+    entity: "PHANTOM"
+    mobTypes: ["CRITTER", "WOODLAND", "AIRBORNE"]
+    shard: "Dreadwing"
+    capture: "LASSO"
+    altCapture: "BLACK_HOLE"
+    staminaBars: 5
+    special: "SWOOP_AT_PLAYER"
+    medium: "AIR"
+    behavior: "FLY"
+    xp: {"hunting": 300, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 1
+    coins: 1
+    drops: []
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_3", "maxTier": 10, "lore": "It silently soars through the skies, its presence only betrayed by its shadow."}
+    spawn:
+      regions: ["MOONGLADE_MARSH"]
+      points: []
+      max: 2
+      trigger: {"type": "TREE_BREAK", "chance": 1.2}
+    messages: []
+    notes: "Dreadwings have a 1.2% chance to spawn when breaking a tree on Moonglade Marsh. Dreadwings fly around before swooping in at a player. If a player throws a Lasso at a Dreadwing, it latches onto a Dreadwing and can be reeled in for capture. It can also be hit with Axes and captured with Pocket Black Holes (wiki Critters/Moonglade Marsh). Estimate: speed, max alive."
+  - id: "CHILLBLADE"
+    name: "Chillblade"
+    island: "GALATEA"
+    kind: "MOB"
+    level: 15
+    health: 400
+    damage: 200
+    speed: 100
+    entity: "SKELETON"
+    mobTypes: ["WOODLAND", "SKELETAL"]
+    shard: "Chill"
+    capture: "BLACK_HOLE"
+    altCapture: "CHARM"
+    special: null
+    medium: "LAND"
+    behavior: "AGGRESSIVE"
+    xp: {"hunting": 0, "combat": 22, "farming": 0, "fishing": 0}
+    orbs: 16
+    coins: 5
+    drops: [{"item": "BONE", "min": 2, "max": 3, "chance": 100}, {"item": "RUNEBLADE_TALISMAN", "min": 1, "max": 1, "chance": 5}, {"item": "ENCHANTED_BOOK", "enchant": "STEALTH", "level": 1, "min": 1, "max": 1, "chance": 0.1}, {"item": "ENCHANTED_BOOK", "enchant": "WOODSPLITTER", "level": 6, "min": 1, "max": 1, "chance": 0.1}]
+    bestiary: {"section": "MOONGLADE_MARSH", "family": "Chill", "bracket": "HUNTING_2", "maxTier": 10, "lore": "No chill."}
+    spawn:
+      regions: ["WYRMGROVE_TOMB"]
+      points: []
+      max: 8
+    messages: []
+    notes: "Chillblades spawn in the Wyrmgrove Tomb in Galatea. Chillblades wander when idle. Upon detecting a player within 5 blocks, they attack with their sword. Shard via Charm or Black Hole (common). Estimate: speed, max alive."
+    shardRarity: "COMMON"
+  - id: "CHILLSHOT"
+    name: "Chillshot"
+    island: "GALATEA"
+    kind: "MOB"
+    level: 14
+    health: 400
+    damage: 150
+    speed: 100
+    entity: "SKELETON"
+    mobTypes: ["WOODLAND", "SKELETAL"]
+    shard: "Chill"
+    capture: "BLACK_HOLE"
+    altCapture: "CHARM"
+    special: "RANGED_BOW_10"
+    medium: "LAND"
+    behavior: "AGGRESSIVE"
+    xp: {"hunting": 0, "combat": 21, "farming": 0, "fishing": 0}
+    orbs: 15
+    coins: 4
+    drops: [{"item": "BONE", "min": 2, "max": 3, "chance": 100}, {"item": "RUNEBLADE_TALISMAN", "min": 1, "max": 1, "chance": 5}, {"item": "ENCHANTED_BOOK", "enchant": "STEALTH", "level": 1, "min": 1, "max": 1, "chance": 0.1}, {"item": "ENCHANTED_BOOK", "enchant": "WOODSPLITTER", "level": 6, "min": 1, "max": 1, "chance": 0.1}]
+    bestiary: {"family": "Chill", "main": false}
+    spawn:
+      regions: ["WYRMGROVE_TOMB"]
+      points: []
+      max: 8
+    messages: []
+    notes: "Chillshots spawn in the Wyrmgrove Tomb in Galatea. Chillshots wander when idle. Upon detecting a player within 10 blocks, they attack with their bow. If they cannot see the player, a Chillshot moves to get into range. Shard via Charm or Black Hole (common). Estimate: speed, max alive."
+    shardRarity: "COMMON"
+  - id: "TIDETOT"
+    name: "Tidetot"
+    island: "GALATEA"
+    kind: "MOB"
+    level: 38
+    health: 4000
+    damage: 300
+    speed: 80
+    entity: "DROWNED"
+    mobTypes: ["WOODLAND", "AQUATIC", "UNDEAD"]
+    shard: "Drowned"
+    capture: "BLACK_HOLE"
+    altCapture: "CHARM"
+    special: null
+    medium: "WATER"
+    behavior: "AGGRESSIVE"
+    xp: {"hunting": 0, "combat": 57, "farming": 0, "fishing": 0}
+    orbs: 41
+    coins: 12
+    drops: [{"item": "GILL_MEMBRANE", "min": 1, "max": 1, "chance": 100}, {"item": "GILL_MEMBRANE", "min": 1, "max": 1, "chance": 40}]
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_4", "maxTier": 10, "lore": "They are a little washed up."}
+    spawn:
+      regions: ["DROWNED_RELIQUARY"]
+      points: []
+      max: 6
+    messages: []
+    notes: "Tidetots can be found in the Drowned Reliquary, accessed through the Reefguard Pass from the Murkwater Depths. Tidetot slowly swims towards the player to hit them. Shard (Drowned) via Charm or Black Hole (rare). Estimate: speed, max alive. Medium WATER: swimming Drowned mob in a flooded zone, treated as an ordinary combat mob."
+    shardRarity: "RARE"
+  - id: "SEACURSE"
+    name: "Seacurse"
+    island: "GALATEA"
+    kind: "MOB"
+    level: 42
+    health: 5000
+    damage: 330
+    speed: 80
+    entity: "DROWNED"
+    mobTypes: ["WOODLAND", "UNDEAD", "AQUATIC"]
+    shard: "Drowned"
+    capture: "BLACK_HOLE"
+    altCapture: "CHARM"
+    special: null
+    medium: "WATER"
+    behavior: "AGGRESSIVE"
+    xp: {"hunting": 0, "combat": 63, "farming": 0, "fishing": 0}
+    orbs: 46
+    coins: 14
+    drops: [{"item": "GILL_MEMBRANE", "min": 1, "max": 1, "chance": 100}, {"item": "GILL_MEMBRANE", "min": 1, "max": 1, "chance": 40}]
+    bestiary: {"family": "Tidetot", "main": false}
+    spawn:
+      regions: ["DROWNED_RELIQUARY"]
+      points: []
+      max: 6
+    messages: []
+    notes: "Seacurses can be found in the Drowned Reliquary, accessed through the Reefguard Pass from the Murkwater Depths. Seacurse slowly swims towards the player to hit them. Shard (Drowned) via Charm or Black Hole (rare). Estimate: speed, max alive."
+    shardRarity: "RARE"
+  - id: "HYDROSPEAR"
+    name: "Hydrospear"
+    island: "GALATEA"
+    kind: "MOB"
+    level: 49
+    health: 6000
+    damage: 500
+    speed: 80
+    entity: "DROWNED"
+    mobTypes: ["WOODLAND", "UNDEAD", "AQUATIC"]
+    shard: "Drowned"
+    capture: "BLACK_HOLE"
+    altCapture: "CHARM"
+    special: "THROW_AXE_500"
+    medium: "WATER"
+    behavior: "AGGRESSIVE"
+    xp: {"hunting": 0, "combat": 73, "farming": 0, "fishing": 0}
+    orbs: 53
+    coins: 16
+    drops: [{"item": "GILL_MEMBRANE", "min": 1, "max": 1, "chance": 100}, {"item": "GILL_MEMBRANE", "min": 1, "max": 1, "chance": 40}, {"item": "STURDY_BONE", "min": 1, "max": 1, "chance": 10}]
+    bestiary: {"family": "Tidetot", "main": false}
+    spawn:
+      regions: ["DROWNED_RELIQUARY"]
+      points: []
+      max: 4
+    messages: []
+    notes: "Hydrospears can be found in the Drowned Reliquary, accessed through the Reefguard Pass from the Murkwater Depths. Hydrospear slowly swims towards the player to hit them. Every few seconds Hydrospear throws an axe towards the player that deals 500 damage. Shard (Drowned) via Charm or Black Hole (rare). Estimate: speed, max alive, throw interval."
+    shardRarity: "RARE"
+  - id: "AZURE"
+    name: "Azure"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 2
+    health: 100
+    damage: 25
+    speed: 100
+    entity: "TROPICAL_FISH"
+    mobTypes: ["AQUATIC", "WOODLAND"]
+    shard: "Azure"
+    capture: "FISHING_NET"
+    minNet: "BASIC"
+    special: null
+    medium: "WATER"
+    behavior: "WANDER"
+    xp: {"hunting": 75, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 2
+    coins: 1
+    drops: []
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_1", "maxTier": 10, "lore": "Nibbles away at underwater plants."}
+    spawn:
+      regions: ["MOONGLADE_MARSH"]
+      points: []
+      max: 10
+    messages: []
+    notes: "Azures spawn in water all around the Moonglade Marsh. Azures swim alone or in schools before standing still. If a player throws a Fishing Net, it catches the Azure and drops its Attribute Shard. Estimate: entity (wiki gives none), speed, max alive."
+  - id: "COD"
+    name: "Cod"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 1
+    health: 80
+    damage: 20
+    speed: 110
+    entity: "COD"
+    mobTypes: ["AQUATIC", "WOODLAND"]
+    shard: "Cod"
+    capture: "FISHING_NET"
+    minNet: "BASIC"
+    special: "SPIN_METER_90"
+    medium: "WATER"
+    behavior: "WANDER"
+    xp: {"hunting": 150, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 1
+    coins: 1
+    drops: []
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_1", "maxTier": 10, "lore": "Capable of reaching high speeds that allow it to shake off potential predators."}
+    spawn:
+      regions: ["MURKWATER_LOCH"]
+      points: []
+      max: 10
+    messages: [{"when": "spin_start", "text": "<a>The Cod started spinning!"}, {"when": "knocked_out", "text": "<e>##% spin! The Cod got knocked out!"}, {"when": "exploded", "text": "<c>The Cod was spinning too fast and exploded!"}]
+    notes: "Cod spawn in water in the Murkwater Loch. Cod swim alone or in schools. When the player throws a Fishing Net, they begin to spin. Throwing a Fishing Net again increases the Cod's spin meter. Upon reaching 90%, the Cod faints and drops a Cod Shard. Going over 100% causes the Cod to explode and award nothing. Spin gained per throw is not on the wiki (estimate needed)."
+  - id: "SALMON"
+    name: "Salmon"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 1
+    health: 80
+    damage: 20
+    speed: 110
+    entity: "SALMON"
+    mobTypes: ["AQUATIC", "WOODLAND"]
+    shard: "Salmon"
+    capture: "FISHING_NET"
+    minNet: "BASIC"
+    special: "PULL_SYMBOLS_4"
+    medium: "WATER"
+    behavior: "WANDER"
+    xp: {"hunting": 150, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 1
+    coins: 1
+    drops: []
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_2", "maxTier": 10, "lore": "Particularly sensitive to the pressure of the water in which it resides."}
+    spawn:
+      regions: ["MURKWATER_LOCH"]
+      points: []
+      max: 10
+    messages: [{"when": "symbol", "text": "<7><o>You slowed the Salmon down!"}, {"when": "exhausted", "text": "<7><o>The Salmon is exhausted!"}]
+    notes: "Salmon spawn in water in the Murkwater Loch. Salmon swim alone or in schools. When the player throws a Fishing Net, it slows down and gains a symbol above its head. After reaching 4 symbols, the Salmon becomes exhausted and drops a Salmon Shard. The amount of symbols gained is based on the player's pull (Moonglade Marsh capture table)."
+  - id: "BIRRIES"
+    name: "Birries"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 1
+    health: 1
+    damage: 60
+    speed: 110
+    entity: "TADPOLE"
+    mobTypes: ["CRITTER"]
+    shard: "Birries"
+    capture: "FISHING_NET"
+    altCapture: "LASSO"
+    staminaBars: 1
+    minNet: "BASIC"
+    special: null
+    medium: "LAND"
+    behavior: "HOP"
+    xp: {"hunting": 75, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 1
+    coins: 1
+    drops: []
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_1", "maxTier": 10, "lore": "Capable of eating its entire body weight in berries."}
+    spawn:
+      regions: []
+      points: []
+      max: 4
+      trigger: {"type": "HARVEST", "items": ["LUSHLILAC", "SEA_LUMIES"], "chance": 10}
+    messages: []
+    notes: "Birries have a 10% chance to spawn when collecting Lushlilacs or Sea Lumies. Birries repeatedly jump around if on land or swim if in water. They can be caught with a Fishing Net or Lasso (1 stamina bar). Estimate: speed, max alive."
+  - id: "CORALOT"
+    name: "Coralot"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 1
+    health: 1
+    damage: 0
+    speed: 100
+    entity: "AXOLOTL"
+    mobTypes: ["CRITTER", "AQUATIC", "TIMID"]
+    shard: "Coralot"
+    capture: "FISHING_NET"
+    altCapture: "LASSO"
+    staminaBars: 1
+    minNet: "BASIC"
+    special: "STAND_STILL_8S"
+    medium: "WATER"
+    behavior: "WANDER"
+    xp: {"hunting": 150, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 1
+    coins: 1
+    drops: []
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_1", "maxTier": 10, "lore": "Capable of regenerating its limbs."}
+    spawn:
+      regions: ["MURKWATER_LOCH", "MOONGLADES_EDGE", "WESTBOUND_WETLANDS", "NORTH_WETLANDS", "SOUTH_WETLANDS"]
+      points: []
+      max: 8
+    messages: [{"when": "too_early", "text": "<7><o>Coralot got scared!"}]
+    notes: "Coralots spawn in water in the Murkwater Loch, Moonglade's Edge, Westbound Wetlands, North Wetlands and South Wetlands. Coralots swim around before standing still. If a player approaches a Coralot, a red warning sign appears above its head. After 5 seconds of the player standing still, the warning sign turns yellow. After another 3 seconds, the warning sign disappears and the Coralot can be caught with a Fishing Net or a Lasso. Attempting to catch the Coralot while the warning sign is active causes it to disappear and not award its Attribute Shard. Damage not on wiki (0). Lasso stamina assumed 1 (estimate)."
+  - id: "JOYDIVE"
+    name: "Joydive"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 1
+    health: 200
+    damage: 0
+    speed: 120
+    entity: "DOLPHIN"
+    mobTypes: ["CRITTER", "AQUATIC", "TIMID"]
+    shard: "Joydive"
+    capture: "FISHING_NET"
+    minNet: "MEDIUM"
+    special: "CAVE_HIDE_3"
+    medium: "WATER"
+    behavior: "WANDER"
+    xp: {"hunting": 300, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 1
+    coins: 1
+    drops: []
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_3", "maxTier": 10, "lore": "Gets a rush from diving as deep as it can before surfacing at speed."}
+    spawn:
+      regions: ["MURKWATER_SHALLOWS", "MURKWATER_DEPTHS"]
+      points: []
+      max: 3
+    messages: [{"when": "health_100", "text": "<7><o>Joydive is weakening..."}, {"when": "fainted", "text": "<7><o>Joydive fainted!"}]
+    notes: "Joydives spawn in the water of the Murkwater Shallows and Murkwater Depths. Joydives swim around before standing still. If a player throws a Fishing Net at a Joydive, it will swim into one of 3 caves. Only after stopping inside a cave, the Joydive can take damage from a Fishing Net. They cannot be damaged from regular damage sources. Joydives will start drowning if they spend too long underwater; if one dies in this manner, nobody receives shards. Moonglade table: Medium Fishing Net or better (Fishing Nets page says any net; used MEDIUM). Damage not on wiki (0)."
+  - id: "LUMISQUID"
+    name: "Lumisquid"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 1
+    health: 400
+    damage: 0
+    speed: 100
+    entity: "GLOW_SQUID"
+    mobTypes: ["CRITTER", "AQUATIC", "WOODLAND"]
+    shard: "Lumisquid"
+    capture: "FISHING_NET"
+    minNet: "MEDIUM"
+    special: "SHRINK_TELEPORT_3"
+    medium: "WATER"
+    behavior: "WANDER"
+    xp: {"hunting": 300, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 1
+    coins: 1
+    drops: []
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_3", "maxTier": 10, "lore": "Dwells in the depths, luring in small fish with its lights."}
+    spawn:
+      regions: ["SQUID_CAVE"]
+      points: []
+      max: 3
+    messages: []
+    notes: "Lumisquids spawn in the Squid Cave. Lumisquids swim around in the Squid Cave. When hit with a Medium Fishing Net or better, Lumisquid will shrink and teleport a few blocks away on the first and second hits, and be captured on the third. Moonglade table: upon being hit, applies Blindness for 2 seconds, teleports to a nearby location, and shrinks. Damage not on wiki (0)."
+  - id: "MOSSYBIT"
+    name: "Mossybit"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 9
+    health: 500
+    damage: 50
+    speed: 100
+    entity: "FROG"
+    mobTypes: ["CRITTER", "WOODLAND", "ANIMAL"]
+    shard: "Mossybit"
+    capture: "SPECIAL"
+    special: "CLICK_HOP_4"
+    medium: "LAND"
+    behavior: "HOP"
+    xp: {"hunting": 150, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 9
+    coins: 3
+    drops: []
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_2", "maxTier": 10, "lore": "These frogs are agile jumpers."}
+    spawn:
+      regions: ["MURKWATER_LOCH"]
+      points: []
+      max: 6
+    messages: [{"when": "exhausted", "text": "<7><o>The Mossybit is exhausted..."}]
+    notes: "Mossybits spawn on the land surrounding the Murkwater Loch. Mossybits walk or swim around before briefly standing still. If the player clicks on a Mossybit, it will gain a green glowing effect and jump away with a trail of green particles up to 4 times. If another player interacts with the Mossybit, it will instead gain a white glowing effect. After the 4th jump, the Mossybit grows tired and drops a Mossybit Shard. The amount of times a Mossybit jumps can be reduced by the Frog Legs attribute."
+  - id: "SHELLWISE"
+    name: "Shellwise"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 1
+    health: 1500
+    damage: 0
+    speed: 90
+    entity: "TURTLE"
+    mobTypes: ["CRITTER", "AQUATIC", "ANIMAL"]
+    shard: "Shellwise"
+    capture: "FISHING_NET"
+    minNet: "BASIC"
+    special: "SHARDS_BY_MAX_HP"
+    medium: "WATER"
+    behavior: "WANDER"
+    xp: {"hunting": 500, "combat": 5, "farming": 0, "fishing": 0}
+    orbs: 1
+    coins: 1
+    drops: []
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_4", "maxTier": 10, "lore": "Lives for dozens of years taking one day at a time."}
+    spawn:
+      regions: ["MURKWATER_DEPTHS"]
+      points: [[-663, 60, -4], [-662, 60, 26], [-645, 60, -3], [-644, 60, 27], [-634, 60, -9], [-628, 60, 14]]
+      max: 3
+      trigger: {"type": "SKYBLOCK_HOUR", "chance": 50}
+    messages: []
+    notes: "A Shellwise has a 50% chance to spawn in the Murkwater Depths at the beginning of each SkyBlock Hour. There is a limit of 3 Shellwises that may be alive at once in each lobby. Shellwises swim around in the Murkwater Depths. They cannot be damaged from regular damage sources but can be caught using a Basic Fishing Net or better. Upon reaching 0 HP, they drop Shellwise Shards depending on their max HP (1,000 HP = 1, 1,500 HP = 2, 2,000 HP = 3). Hunting Fortune acts as a multiplier to the base amount. Moonglade table says Turbo Fishing Net; the Shellwise and Fishing Nets pages say any net (used BASIC). Entity TURTLE is an estimate. Drop count 1-3 in the table is the per-variant shard count."
+    healthVariants: [{"id": "SHELLWISE_10", "health": 1000, "shards": 1}, {"id": "SHELLWISE_12", "health": 1500, "shards": 2}, {"id": "SHELLWISE_14", "health": 2000, "shards": 3}]
+  - id: "SPIKE"
+    name: "Spike"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 1
+    health: 150
+    damage: 0
+    speed: 110
+    entity: "PUFFERFISH"
+    mobTypes: ["CRITTER", "AQUATIC", "ANIMAL"]
+    shard: "Spike"
+    capture: "FISHING_NET"
+    minNet: "TURBO"
+    special: "ONLY_FROM_10_BLOCKS"
+    medium: "WATER"
+    behavior: "WANDER"
+    xp: {"hunting": 1000, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 1
+    coins: 1
+    drops: []
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_5", "maxTier": 10, "lore": "Has a symbiotic relationship with the dolphins of Murkwater Loch."}
+    spawn:
+      regions: ["MURKWATER_SHALLOWS", "KELPWOVEN_TUNNELS"]
+      points: []
+      max: 4
+    messages: []
+    notes: "Spikes spawn in the Murkwater Shallows and Kelpwoven Tunnels (infobox says Murkwater Depths and Kelpwoven Tunnels). Spikes swim around in the Murkwater Depths. They have to be attacked from a distance, meaning they effectively require a Turbo Fishing Net to attack due to its Throw Distance bonus. They take 10 damage per hit regardless of the player's Pull. Can only be captured from 10 blocks away. Damage not on wiki (0)."
+    netDamage: 10
+  - id: "BAMBULEAF"
+    name: "Bambuleaf"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 1
+    health: 400
+    damage: 0
+    speed: 90
+    entity: "PANDA"
+    mobTypes: ["CRITTER", "WOODLAND", "ANIMAL"]
+    shard: "Bambuleaf"
+    capture: "SPECIAL"
+    special: "FEED_BAMBOO_40_44"
+    medium: "LAND"
+    behavior: "WANDER"
+    xp: {"hunting": 150, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 1
+    coins: 1
+    drops: []
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_2", "maxTier": 10, "lore": "Gorges itself on bamboo, never knowing when to stop."}
+    spawn:
+      regions: ["TRANQUILITY_SANCTUM"]
+      points: []
+      max: 3
+      season: "EARLY_SPRING_TO_LATE_SUMMER"
+    messages: [{"when": "hit", "text": "<c>Don’t hit the pandas! Try feeding them instead!"}, {"when": "caught", "text": "<7><o>Bambuleaf ate too much and passed out! You caught it!"}, {"when": "no_space", "text": "<c>This location is too small for the panda to grow! Push the panda around!"}]
+    notes: "Bambuleafs spawn in the Tranquility Sanctum from early spring to late summer. Bambuleafs can be fed Bamboo to grow in size. If the player feeds a Bambuleaf 40-44 Bamboo, it will pass out and drop a Bambuleaf Shard. Punching them causes them to flee from the player for a few blocks; they ignore collision and cannot be pushed. Damage not on wiki (0). Which SkyBlock months count as early/late is an estimate."
+    feedBamboo: {"min": 40, "max": 44}
+  - id: "MOCHIBEAR"
+    name: "Mochibear"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 1
+    health: 400
+    damage: 0
+    speed: 90
+    entity: "PANDA"
+    mobTypes: ["CRITTER", "WOODLAND", "ANIMAL"]
+    shard: "Mochibear"
+    capture: "SPECIAL"
+    special: "FEED_BAMBOO_40_44"
+    medium: "LAND"
+    behavior: "WANDER"
+    xp: {"hunting": 150, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 1
+    coins: 1
+    drops: []
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_2", "maxTier": 10, "lore": "Its particularly thick fur causes it to frequently overheat, so it stays near water."}
+    spawn:
+      regions: ["TRANQUILITY_SANCTUM"]
+      points: []
+      max: 3
+      season: "EARLY_AUTUMN_TO_LATE_WINTER"
+    messages: [{"when": "hit", "text": "<c>Don’t hit the pandas! Try feeding them instead!"}, {"when": "caught", "text": "<7><o>Mochibear ate too much and passed out! You caught it!"}, {"when": "no_space", "text": "<c>This location is too small for the panda to grow! Push the panda around!"}]
+    notes: "Mochibears spawn in the Tranquility Sanctum from early autumn to late winter. Mochibears can be fed Bamboo to grow in size. If the player feeds a Mochibear 40-44 Bamboo, it will pass out and drop a Mochibear Shard. Punching them causes them to flee from the player for a few blocks; they ignore collision and cannot be pushed. Damage not on wiki (0). Which SkyBlock months count as early/late is an estimate."
+    feedBamboo: {"min": 40, "max": 44}
+  - id: "HIDEONLEAF"
+    name: "Hideonleaf"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 14
+    health: 2500
+    damage: 25
+    speed: 100
+    entity: "SHULKER"
+    mobTypes: ["CRITTER", "WOODLAND"]
+    shard: "Hideonleaf"
+    capture: "SPECIAL"
+    special: "REFLECT_BULLET_3"
+    medium: "LAND"
+    behavior: "STATIONARY"
+    xp: {"hunting": 75, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 15
+    coins: 4
+    drops: []
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_1", "maxTier": 10, "lore": "Watch the foliage for the slightest sign of movement."}
+    spawn:
+      regions: []
+      points: [[-532, 121, 41], [-536, 122, 70], [-542, 114, -32], [-542, 122, -12], [-549, 116, -33], [-550, 118, -3], [-559, 124, 79], [-562, 121, -3], [-563, 108, 18], [-578, 126, 24], [-582, 97, 57], [-582, 117, -46], [-590, 122, -51], [-591, 113, 38], [-592, 95, 39], [-592, 95, 83], [-592, 95, 91], [-594, 119, -47], [-596, 112, -39], [-596, 113, 23], [-601, 113, 14], [-603, 99, 20], [-609, 113, -36], [-613, 103, -6], [-618, 96, 96], [-623, 118, 40], [-625, 96, 62], [-629, 116, -39], [-632, 89, 43], [-634, 115, 53], [-660, 97, 62], [-666, 88, 49], [-668, 118, 87], [-670, 114, -76], [-672, 115, -73], [-675, 126, -61], [-676, 131, -78], [-677, 120, 64], [-688, 95, 57], [-693, 119, 85], [-698, 102, 31], [-700, 111, -68], [-700, 119, 18], [-703, 94, 78], [-707, 117, 64], [-712, 119, 83], [-719, 96, 24], [-728, 94, 29], [-741, 114, -42], [-745, 119, -13], [-762, 119, -15]]
+      max: 51
+    messages: [{"when": "hit_back", "text": "<7><o>Hideonleaf throws the bullet back!"}, {"when": "defeated", "text": "<7><o>Hideonleaf lost the fight!"}]
+    notes: "Hideonleafs spawn around various green blocks on the Moonglade Marsh (51 fixed points). Hideonleafs shoot bullets at a player after being stood on. If a player hits the bullet back 3 times, the Hideonleaf tires out and drops a Hideonleaf Shard. Bullets pass through blocks. Wearing a Cow Hat grants immunity to the Levitation effect from its projectile. Fishing Nets can deflect projectiles."
+  - id: "HONEYHOG"
+    name: "Honeyhog"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 32
+    health: 2500
+    damage: 250
+    speed: 100
+    entity: "PIG"
+    mobTypes: ["CRITTER", "WOODLAND"]
+    shard: "Honeyhog"
+    capture: "LASSO"
+    staminaBars: 1
+    special: "LASSO_CHARGE_BREAKS"
+    medium: "LAND"
+    behavior: "WANDER"
+    xp: {"hunting": 75, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 35
+    coins: 10
+    drops: [{"item": "ENCHANTED_HONEYCOMB", "min": 1, "max": 2, "chance": 100}, {"item": "ENCHANTED_FIG_LOG", "min": 2, "max": 4, "chance": 100}]
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_2", "maxTier": 10, "lore": "Though still an adolescent, it will defend honey with its life."}
+    spawn:
+      regions: ["MOONGLADE_MARSH"]
+      points: []
+      max: 2
+      trigger: {"type": "HONEY_ON_TREE", "tree": "FIG", "chance": 50}
+    messages: [{"when": "lasso_broken", "text": "<c>The <f>Honeyhog <c>broke free from your lasso!"}]
+    notes: "A Honeyhog has a 50% chance to spawn after applying a Fun-Sized, Family-Sized, Jumbo, or Behemoth Pot of Honeycomb to a Fig Tree with a Tree Protection Order. A Honeyhog walks around on the ground by default. If the player throws a Lasso at it, it begins to charge towards them. If the Honeyhog touches the player, it breaks the Lasso. Reeling in the Honeyhog captures it. Estimate: entity PIG, stamina bars (1), max alive."
+  - id: "HONEYMITE"
+    name: "Honeymite"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 52
+    health: 20000
+    damage: 200
+    speed: 100
+    entity: "SILVERFISH"
+    mobTypes: ["WOODLAND", "ARTHROPOD"]
+    shard: "Honeymite"
+    capture: "BLACK_HOLE"
+    special: null
+    medium: "LAND"
+    behavior: "AGGRESSIVE"
+    xp: {"hunting": 150, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 57
+    coins: 17
+    drops: [{"item": "ENCHANTED_HONEYCOMB", "min": 4, "max": 8, "chance": 100}, {"item": "ENCHANTED_FIG_LOG", "min": 8, "max": 16, "chance": 100}]
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_3", "maxTier": 10, "lore": "Loves honey, the bees are just collateral."}
+    spawn:
+      regions: ["MOONGLADE_MARSH"]
+      points: []
+      max: 2
+      trigger: {"type": "HONEY_ON_TREE", "tree": "FIG", "chance": 33.3}
+    messages: []
+    notes: "A Honeymite has a 33.3% chance to spawn after applying a Fun-Sized, Family-Sized, Jumbo, or Behemoth Pot of Honeycomb to a Fig Tree with a Tree Protection Order. A Honeymite walks around on the ground by default. Shard via Charm or Black Hole (uncommon). Behavior AGGRESSIVE is an estimate. Estimate: entity SILVERFISH, max alive. Wiki infobox lacks the Critter mob type though the page calls it a Critter."
+  - id: "HEWVER"
+    name: "Hewver"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 69
+    health: 50000
+    damage: 250
+    speed: 100
+    entity: "HOGLIN"
+    mobTypes: ["WOODLAND"]
+    shard: "Hewver"
+    capture: "LASSO"
+    staminaBars: 1
+    special: "LASSO_CHARGE_BREAKS"
+    medium: "LAND"
+    behavior: "WANDER"
+    xp: {"hunting": 300, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 75
+    coins: 23
+    drops: [{"item": "ENCHANTED_HONEYCOMB", "min": 4, "max": 8, "chance": 100}, {"item": "ENCHANTED_FIG_LOG", "min": 8, "max": 16, "chance": 100}, {"item": "FIGSTONE", "min": 1, "max": 1, "chance": 15}]
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_4", "maxTier": 10, "lore": "Unaware it even eats critters, just thinks the floor tastes nice."}
+    spawn:
+      regions: ["MOONGLADE_MARSH"]
+      points: []
+      max: 1
+      trigger: {"type": "HONEY_ON_TREE", "tree": "FIG", "chance": 16.7}
+    messages: [{"when": "lasso_broken", "text": "<f><o>The strength of the <9><o>Hewver's <f><o>snout broke your <b><o>Lasso<f><o>."}]
+    notes: "A Hewver has a 16.7% chance to spawn after applying a Fun-Sized, Family-Sized, Jumbo, or Behemoth Pot of Honeycomb to a Fig Tree with a Tree Protection Order. A Hewver walks around on the ground by default while sucking in nearby mobs. If the player throws a Lasso at it, it begins to move towards them. If the Hewver touches the player, it breaks the Lasso. Reeling in the Hewver captures it. Estimate: entity HOGLIN, stamina bars (1), max alive. Nearby-mob suction has no special id."
+  - id: "STAG_BEETLE"
+    name: "Stag Beetle"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 29
+    health: 5000
+    damage: 100
+    speed: 100
+    entity: "BEE"
+    mobTypes: ["CRITTER", "ARTHROPOD"]
+    shard: "Stag Beetle"
+    capture: "LASSO"
+    staminaBars: 1
+    special: "LASSO_CHARGE_BREAKS"
+    medium: "LAND"
+    behavior: "WANDER"
+    xp: {"hunting": 75, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 31
+    coins: 9
+    drops: [{"item": "ENCHANTED_HONEYCOMB", "min": 1, "max": 2, "chance": 100}, {"item": "ENCHANTED_MANGROVE_LOG", "min": 2, "max": 4, "chance": 100}]
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_2", "maxTier": 10, "lore": "Reaches a new level of intimidating once you realize it can fly."}
+    spawn:
+      regions: ["MOONGLADE_MARSH"]
+      points: []
+      max: 2
+      trigger: {"type": "HONEY_ON_TREE", "tree": "MANGROVE", "chance": 50}
+    messages: [{"when": "lasso_broken", "text": "<c>The <f>Stag Beetle <c>broke free from your lasso!"}]
+    notes: "A Stag Beetle has a 50% chance to spawn after applying honey pots to a Mangrove Tree with a Tree Protection Order (wiki sentence is garbled). A Stag Beetle walks around on the ground by default. If the player throws a Lasso at it, it begins to fly towards them. If the Stag Beetle touches the player, it breaks the Lasso. Reeling in the Stag Beetle captures it. Estimate: entity BEE, stamina bars (1), max alive."
+  - id: "WOODLOUSE"
+    name: "Woodlouse"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 1
+    health: 1000
+    damage: 1
+    speed: 100
+    entity: "ENDERMITE"
+    mobTypes: ["CRITTER", "ARTHROPOD"]
+    shard: "Woodlouse"
+    capture: "LASSO"
+    staminaBars: 1
+    special: null
+    medium: "LAND"
+    behavior: "WANDER"
+    xp: {"hunting": 150, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 1
+    coins: 1
+    drops: [{"item": "ENCHANTED_HONEYCOMB", "min": 2, "max": 4, "chance": 100}, {"item": "ENCHANTED_MANGROVE_LOG", "min": 4, "max": 8, "chance": 100}]
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_3", "maxTier": 10, "lore": "Lives on land and has a set of gills, how strange!"}
+    spawn:
+      regions: ["MOONGLADE_MARSH"]
+      points: []
+      max: 3
+      trigger: {"type": "HONEY_ON_TREE", "tree": "MANGROVE", "chance": 33.3}
+    messages: []
+    notes: "A Woodlouse has a 33.3% chance to spawn after applying honey pots to a Mangrove Tree with a Tree Protection Order. A Woodlouse walks around on the ground. If the player throws a Lasso at it, it does not react. Reeling in the Woodlouse captures it. Estimate: entity ENDERMITE, stamina bars (1), max alive."
+  - id: "MURKBAT"
+    name: "Murkbat"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 58
+    health: 25000
+    damage: 250
+    speed: 70
+    entity: "BAT"
+    mobTypes: ["AIRBORNE", "CRITTER"]
+    shard: "Murkbat"
+    capture: "LASSO"
+    special: "LASSO_DRAG_UP"
+    medium: "AIR"
+    behavior: "FLY"
+    xp: {"hunting": 300, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 63
+    coins: 19
+    drops: [{"item": "ENCHANTED_HONEYCOMB", "min": 4, "max": 8, "chance": 100}, {"item": "ENCHANTED_MANGROVE_LOG", "min": 8, "max": 16, "chance": 100}, {"item": "MANGCORE", "min": 1, "max": 1, "chance": 15}]
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_4", "maxTier": 10, "lore": "Drawn to the scent of mangrove trees."}
+    spawn:
+      regions: ["MOONGLADE_MARSH"]
+      points: []
+      max: 1
+      trigger: {"type": "HONEY_ON_TREE", "tree": "MANGROVE", "chance": 16.7}
+    messages: []
+    notes: "A Murkbat has a 16.7% chance to spawn after applying honey pots to a Mangrove Tree with a Tree Protection Order. A Murkbat will slowly fly around by default. It cannot be damaged by regular sources. When attached to a player's Lasso, it will start quickly flying upwards, dragging the player upwards with them. Keeping the Lasso attached to it long enough will capture the Murkbat. Estimate: entity BAT, speed, max alive, attach duration."
+  - id: "VERDANT"
+    name: "Verdant"
+    island: "GALATEA"
+    kind: "CRITTER"
+    level: 1
+    health: 80
+    damage: 20
+    speed: 100
+    entity: "TROPICAL_FISH"
+    mobTypes: ["AQUATIC", "WOODLAND"]
+    shard: "Verdant"
+    capture: "FISHING_NET"
+    minNet: "BASIC"
+    special: null
+    medium: "WATER"
+    behavior: "WANDER"
+    xp: {"hunting": 75, "combat": 0, "farming": 0, "fishing": 0}
+    orbs: 1
+    coins: 1
+    drops: []
+    shardChance: 100
+    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_1", "maxTier": 10, "lore": "Nibbles away at underwater plants."}
+    spawn:
+      regions: ["MOONGLADE_MARSH"]
+      points: []
+      max: 10
+    messages: []
+    notes: "Verdants spawn in water all around the Moonglade Marsh. Verdants swim alone or in schools before standing still. If a player throws a Fishing Net, it catches the Verdant and drops its Attribute. Estimate: entity (wiki gives none), speed, max alive. Bestiary lore identical to Azure on the wiki."

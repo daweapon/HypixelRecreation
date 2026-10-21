@@ -29,6 +29,7 @@ public class InteractableRegistry {
 
     static {
         MythologicalItemHandlers.registerInteractables();
+        dev.daweapon.type.skyblockgeneric.hunting.creature.HuntingTools.registerInteractables();
         dev.daweapon.type.skyblockgeneric.hoppity.Egglocator.registerInteractables();
         BottleOfJyrre.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.Salt.registerInteractables();
@@ -44,6 +45,7 @@ public class InteractableRegistry {
         CrimsonItemHandlers.registerInteractables();
         dev.daweapon.type.skyblockgeneric.crystalhollows.GoblinEggs.registerInteractables();
         dev.daweapon.type.skyblockgeneric.crystalhollows.MetalDetector.registerInteractables();
+        dev.daweapon.type.skyblockgeneric.hunting.creature.trigger.HoneycombPots.registerInteractables();
         ReaperPepper.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.VialOfVenom.registerInteractables();
         dev.daweapon.type.skyblockgeneric.item.utility.BiomeSticks.registerInteractables();

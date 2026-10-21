@@ -722,6 +722,89 @@ collections:
         - type: RECIPE_UNLOCK
           data:
             unlockedItemType: VEILSHROOM_BRACELET
+- itemType: HONEYCOMB
+  rewards:
+    - amount: 50
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: HONEYCOMB_TALISMAN
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: FUN_SIZED_POT_OF_HONEYCOMB
+    - amount: 200
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: ENCHANTED_HONEYCOMB
+    - amount: 500
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: HONEYCOMB_RING
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: FAMILY_SIZED_POT_OF_HONEYCOMB
+    - amount: 1000
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: SHARD_HONEY_BADGER
+    - amount: 2000
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: HONEYCOMB_ARTIFACT
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: JUMBO_POT_OF_HONEYCOMB
+    - amount: 5000
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: ENCHANTED_HONEYCOMB_BLOCK
+    - amount: 10000
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: SHARD_QUEEN_BEE
+    - amount: 20000
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: BEE_SALIVA
+    - amount: 50000
+      rewards:
+        - type: XP
+          data:
+            xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: HONEYCOMB_NECKLACE
 - itemType: VINESAP
   rewards:
     - amount: 10

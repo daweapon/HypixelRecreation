@@ -20,7 +20,7 @@ import java.util.Map;
  * catches. Each source rolls its rarities rarest first and gives at most one pet.
  */
 public final class GatheringPetDrops {
-    private static final String LOCH_EMPEROR = "THE_SEA_EMPEROR";
+    private static final java.util.Set<String> LOCH_EMPERORS = java.util.Set.of("THE_SEA_EMPEROR", "THE_LOCH_EMPEROR");
     private static final Map<Rarity, Double> FLYING_FISH = rarestFirst(
             Rarity.LEGENDARY, 0.5, Rarity.EPIC, 2, Rarity.RARE, 4);
     private static final Map<Rarity, Double> SQUID = rarestFirst(
@@ -31,7 +31,7 @@ public final class GatheringPetDrops {
     }
 
     public static void mobKilled(SkyBlockPlayer player, SkyBlockMob mob) {
-        if (!(mob instanceof SeaCreatureMob seaCreature) || !LOCH_EMPEROR.equals(seaCreature.getSeaCreatureId())) return;
+        if (!(mob instanceof SeaCreatureMob seaCreature) || !LOCH_EMPERORS.contains(seaCreature.getSeaCreatureId())) return;
         SkyBlockItem pet = roll(player, ItemType.FLYING_FISH_PET, FLYING_FISH);
         if (pet == null) return;
         player.addAndUpdateItem(pet);
