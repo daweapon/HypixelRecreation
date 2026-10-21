@@ -39,6 +39,11 @@ public enum FishingBestiarySection {
             "<7>View all of the <3>Sea Creatures <7>that",
             "<7>you've killed while fishing in the",
             "<a>Backwater Bayou<7>."),
+    TORRHUS_CANYON("<6>Torrhus Canyon", 32,
+            new GUIMaterial("837be7781a3ae4454f4670e1686dc17a07dd321d6f670ba80f91e391f0763321"),
+            "<7>View all of the <3>Sea Creatures <7>that",
+            "<7>you've killed while fishing in",
+            "<6>Torrhus Canyon<7>."),
     ;
 
     private final String displayName;

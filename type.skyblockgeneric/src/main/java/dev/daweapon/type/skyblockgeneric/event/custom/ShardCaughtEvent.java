@@ -7,7 +7,7 @@ import net.minestom.server.event.trait.PlayerInstanceEvent;
 
 @Getter
 public class ShardCaughtEvent implements PlayerInstanceEvent {
-    public enum Source { CHARM, HUNTRAP, FUSION, TREE_GIFT, HONEYHIVE }
+    public enum Source { CHARM, HUNTRAP, FUSION, TREE_GIFT, HONEYHIVE, FISHING }
 
     private final SkyBlockPlayer player;
     private final AttributeDefinition shard;

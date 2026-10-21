@@ -6,6 +6,9 @@ import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.type.skyblockgeneric.enchantment.EnchantmentType;
 import dev.daweapon.type.skyblockgeneric.fishing.FishingContext;
 import dev.daweapon.type.skyblockgeneric.fishing.catches.CatchPayload;
+import dev.daweapon.type.skyblockgeneric.fishing.catches.ShardCatches;
+import dev.daweapon.type.skyblockgeneric.fishing.hotspot.FishingHotspotService;
+import dev.daweapon.type.skyblockgeneric.hunting.AttributeEffectService;
 import dev.daweapon.type.skyblockgeneric.fishing.registry.FishingTableDefinition;
 import dev.daweapon.type.skyblockgeneric.fishing.registry.FishingTableDefinition.TreasureQuality;
 import dev.daweapon.type.skyblockgeneric.fishing.registry.FishingTableDefinition.WeightedLoot;
@@ -40,6 +43,8 @@ final class QualityTreasureRoller {
         if (LootRoll.roll(uuid, null, treasureChance)) {
             TreasureQuality quality = pickQuality(uuid, table.treasureQualities(), qualityBonus(context));
             if (rollTreasureDye(uuid, quality)) return treasureDye(quality);
+            Optional<CatchPayload> overridden = hotspotOverride(context, quality);
+            if (overridden.isPresent()) return overridden.get();
             List<WeightedLoot> pool = available(quality.entries());
             if (!pool.isEmpty()) {
                 WeightedLoot loot = LootRoll.pick(uuid, pool, QualityTreasureRoller::itemOf, WeightedLoot::weight, ThreadLocalRandom.current());
@@ -55,10 +60,24 @@ final class QualityTreasureRoller {
         UUID uuid = context.player().getUuid();
         TreasureQuality quality = pickQuality(uuid, table.treasureQualities(), qualityBonus(context));
         if (rollTreasureDye(uuid, quality)) return Optional.of(treasureDye(quality));
+        Optional<CatchPayload> overridden = hotspotOverride(context, quality);
+        if (overridden.isPresent()) return overridden;
         List<WeightedLoot> pool = available(quality.entries());
         if (pool.isEmpty()) return Optional.empty();
         WeightedLoot loot = LootRoll.pick(uuid, pool, QualityTreasureRoller::itemOf, WeightedLoot::weight, ThreadLocalRandom.current());
         return Optional.of(new CatchPayload.Treasure(loot.itemId(), amount(loot), TREASURE_XP, quality.name()));
+    }
+
+    private static Optional<CatchPayload> hotspotOverride(FishingContext context, TreasureQuality quality) {
+        return FishingHotspotService.activeAt(context.player(), context.medium(), context.hookPosition())
+                .map(hotspot -> hotspot.definition().treasureOverrides().get(quality.name()))
+                .map(override -> {
+                    int amount = override.min() >= override.max() ? override.min()
+                            : ThreadLocalRandom.current().nextInt(override.min(), override.max() + 1);
+                    int fortunate = ShardCatches.definitionOf(override.itemId())
+                            .map(shard -> AttributeEffectService.fortunateAmount(context.player(), shard)).orElse(1);
+                    return new CatchPayload.Treasure(override.itemId(), amount * fortunate, TREASURE_XP, quality.name());
+                });
     }
 
     private static boolean rollTreasureDye(UUID uuid, TreasureQuality quality) {

@@ -30,6 +30,13 @@ sections:
     lines:
       - "While you take part in Agatha's or Miria's Contest the sidebar shows the time left, your bracket and what the next bracket needs."
       - "Whispers you earn appear on the sidebar, and every Torrhus zone shows its New Area Discovered tips the first time you enter it."
+  - heading: "Torrhus Fishing"
+    colour: "<3>"
+    lines:
+      - "Fish in the Torrhus Springs (Fishing 15) for Haggard, Brineling, Sprawl, Torrid, Silkbreeze and the Giant Isopod. They drop Helix Logs, Ruby Veilshrooms and their enchanted forms, plus Sea Brine, Helixis, Veilshroom Bunches and more."
+      - "Torrhus treasure holds Enchanted Ruby Veilshrooms, Enchanted Helix Logs, Helixis and the Stingray, Sepialot, Ember, Water Snake, Solar and Goldolot Shards. Caught shards go straight to your Hunting Box."
+      - "The Hotspot Haven hotspot turns Great catches into a Giant Water Bug Shard and Outstanding catches into 4 to 8, boosted by Hunter Fortune."
+      - "The six Catch tasks in Torrhus Chapters now work, and the creatures have Bestiary and Sea Creature Guide entries."
   - heading: "Torrhus Chapters"
     colour: "<2>"
     lines:

@@ -84,6 +84,11 @@ public sealed interface CatchPayload {
                 ctx.player().sendMessage(header() + " <b>You found <6>" + String.format("%,d", amount) + " Coins<b>.");
                 return;
             }
+            var shard = ShardCatches.definitionOf(itemId);
+            if (shard.isPresent()) {
+                ShardCatches.award(ctx.player(), shard.get(), amount, header());
+                return;
+            }
             ItemType type = ItemType.valueOf(itemId);
             SkyBlockItem item = new SkyBlockItem(type);
             item.setAmount(amount);

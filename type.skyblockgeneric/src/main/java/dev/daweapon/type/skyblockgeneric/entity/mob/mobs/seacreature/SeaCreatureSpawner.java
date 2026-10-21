@@ -18,7 +18,10 @@ import dev.daweapon.type.skyblockgeneric.fishing.festival.FestivalShark;
 import dev.daweapon.type.skyblockgeneric.fishing.lava.LavaSeaCreature;
 import dev.daweapon.type.skyblockgeneric.fishing.lava.LavaSeaCreatures;
 import dev.daweapon.type.skyblockgeneric.fishing.festival.SharkMob;
+import dev.daweapon.type.skyblockgeneric.fishing.torrhus.TorrhusSeaCreatures;
 import dev.daweapon.type.skyblockgeneric.fishing.winter.ReindrakeMob;
+import dev.daweapon.commons.ServerType;
+import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.skyblockgeneric.fishing.winter.WinterSeaCreature;
 import dev.daweapon.type.skyblockgeneric.fishing.winter.WinterSeaCreatureMob;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -104,6 +107,11 @@ public final class SeaCreatureSpawner {
         Instance instance = angler.getInstance();
         if (instance == null) {
             return null;
+        }
+
+        if (TorrhusSeaCreatures.GIANT_ISOPOD.equals(seaCreatureId)
+                && HypixelConst.getTypeLoader().getType() == ServerType.SKYBLOCK_TORRHUS_CANYON) {
+            position = TorrhusSeaCreatures.ISOPOD_SPAWN;
         }
 
         SkyBlockMob mob = FACTORIES.getOrDefault(seaCreatureId, (ignored, spawned) -> SeaCreatureMob.create(spawned))

@@ -152,7 +152,73 @@ public final class GUI33SeaCreatureGuide extends SeaCreatureGuidePage {
             <7>- <a>Fishing Skill 47
             <7>- <c>Lava
             <7>- <d>Fishing Hotspot
-            <7>- <c>Crimson Isle""")
+            <7>- <c>Crimson Isle"""),
+        head(24, "837be7781a3ae4454f4670e1686dc17a07dd321d6f670ba80f91e391f0763321", """
+            <7>[Lvl <k>?] ????? (</k><f><l>Common</l><7>)
+            <9>⚓ Aquatic<7>, <f>🦴 Skeletal
+
+            <c>Drops:
+            <7>- <k>???????</k>
+
+            <c>Requirements:
+            <7>- <a>Fishing Skill 15
+            <7>- <b>Water
+            <7>- <6>Torrhus Canyon"""),
+        head(25, "18ddf45f2a16e662c667541422cbbd944398b1a90c500b03308b1c99c10003d3", """
+            <7>[Lvl <k>?] ????? (</k><a><l>Uncommon</l><7>)
+            <9>⚓ Aquatic<7>, <a>☮ Animal
+
+            <c>Drops:
+            <7>- <k>???????</k>
+
+            <c>Requirements:
+            <7>- <a>Fishing Skill 15
+            <7>- <b>Water
+            <7>- <6>Torrhus Canyon"""),
+        head(26, "6bbe6a78b8b9b1bee4458fae633deca7dc9da31589b98903c9e871efcb416aea", """
+            <7>[Lvl <k>?] ????? (</k><9><l>Rare</l><7>)
+            <9>⚓ Aquatic<7>, <7>✈ Airborne
+
+            <c>Drops:
+            <7>- <k>???????</k>
+
+            <c>Requirements:
+            <7>- <a>Fishing Skill 15
+            <7>- <b>Water
+            <7>- <6>Torrhus Canyon"""),
+        head(28, "9da145254a59efce57186e6c99b64ba0e86803a4496cdbe8c96cc13dda71aa24", """
+            <7>[Lvl <k>?] ????? (</k><5><l>Epic</l><7>)
+            <9>⚓ Aquatic<7>, <7>✈ Airborne
+
+            <c>Drops:
+            <7>- <k>???????</k>
+
+            <c>Requirements:
+            <7>- <a>Fishing Skill 15
+            <7>- <b>Water
+            <7>- <6>Torrhus Canyon"""),
+        head(29, "2630c3171c4028544ff979ba87fa03102aacbc1e917ace9984d8ee51a9bbd5ba", """
+            <7>[Lvl <k>?] ????? (</k><6><l>Legendary</l><7>)
+            <9>⚓ Aquatic<7>, <7>✈ Airborne<7>, <d>❃ Elusive
+
+            <c>Drops:
+            <7>- <k>???????</k>
+
+            <c>Requirements:
+            <7>- <a>Fishing Skill 15
+            <7>- <b>Water
+            <7>- <6>Torrhus Canyon"""),
+        head(30, "3fcb203b029aac4958407daf4072a01a353105162373ce7e559c669d78325bcb", """
+            <7>[Lvl <k>?] ????? (</k><d><l>Mythic</l><7>)
+            <9>⚓ Aquatic<7>, <4>Ж Arthropod<7>, <d>❃ Elusive
+
+            <c>Drops:
+            <7>- <k>???????</k>
+
+            <c>Requirements:
+            <7>- <a>Fishing Skill 15
+            <7>- <b>Water
+            <7>- <6>Torrhus Canyon""")
         );
     }
 }

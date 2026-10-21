@@ -374,6 +374,61 @@ tables:
         weight: 100
       - seaCreatureId: REINDRAKE
         weight: 25
+  # Torrhus Canyon (wiki: Sea_Creatures/List/Torrhus_Canyon, Treasure/Loot/Torrhus_Canyon). Sea Creature Chance is rolled once,
+  # then a creature is picked by weight. Fish the Fish (0.05% non-sea-creature replacement) is not built.
+  - id: TORRHUS_CANYON
+    serverTypes:
+      - SKYBLOCK_TORRHUS_CANYON
+    mediums:
+      - WATER
+    weightedSeaCreatures: true
+    weightedItems:
+      - { itemId: RUBY_VEILSHROOM, weight: 100, min: 1, max: 1 }
+      - { itemId: HELIX_LOG, weight: 100, min: 2, max: 4 }
+    treasureQualities:
+      - name: GOOD
+        share: 89
+        entries:
+          - { itemId: ENCHANTED_RUBY_VEILSHROOM, weight: 100, min: 1, max: 2 }
+          - { itemId: ENCHANTED_HELIX_LOG, weight: 100, min: 4, max: 8 }
+          - { itemId: SHARD_SEPIALOT, weight: 14.28, min: 1, max: 1 }
+          - { itemId: SHARD_STINGRAY, weight: 7.14, min: 1, max: 1 }
+          - { itemId: SHARD_WATER_SNAKE, weight: 7.14, min: 1, max: 1 }
+          - { itemId: SHARD_SOLAR, weight: 7.14, min: 1, max: 1 }
+          - { itemId: SHARD_EMBER, weight: 7.14, min: 1, max: 1 }
+      - name: GREAT
+        share: 10
+        entries:
+          - { itemId: ENCHANTED_RUBY_VEILSHROOM, weight: 100, min: 8, max: 16 }
+          - { itemId: ENCHANTED_HELIX_LOG, weight: 100, min: 16, max: 32 }
+          - { itemId: SHARD_SEPIALOT, weight: 13.33, min: 2, max: 4 }
+          - { itemId: SHARD_STINGRAY, weight: 13.33, min: 2, max: 4 }
+          - { itemId: SHARD_EMBER, weight: 6.67, min: 2, max: 4 }
+          - { itemId: SHARD_WATER_SNAKE, weight: 6.67, min: 2, max: 4 }
+          - { itemId: SHARD_GOLDOLOT, weight: 6.67, min: 1, max: 1 }
+      - name: OUTSTANDING
+        share: 1
+        entries:
+          - { itemId: ENCHANTED_RUBY_VEILSHROOM, weight: 100, min: 32, max: 64 }
+          - { itemId: HELIXIS, weight: 100, min: 1, max: 2 }
+          - { itemId: SHARD_STINGRAY, weight: 16.67, min: 4, max: 8 }
+          - { itemId: SHARD_GOLDOLOT, weight: 16.67, min: 4, max: 8 }
+    items: [ ]
+    treasures: [ ]
+    junk: [ ]
+    seaCreatures:
+      - seaCreatureId: HAGGARD
+        weight: 5000
+      - seaCreatureId: BRINELING
+        weight: 2875
+      - seaCreatureId: SPRAWL
+        weight: 1500
+      - seaCreatureId: TORRID
+        weight: 500
+      - seaCreatureId: SILKBREEZE
+        weight: 100
+      - seaCreatureId: GIANT_ISOPOD
+        weight: 25
   # Crystal Hollows (wiki: Sea_Creatures/List/Crystal_Hollows). Region tables come first so they win over the server-wide pools.
   # Poisoned Water Worm weight is an estimate; the wiki gives none.
   - id: CRYSTAL_HOLLOWS_PRECURSOR_LAVA

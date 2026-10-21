@@ -207,22 +207,16 @@ chapters:
         description: "This is a <f>COMMON<7> <3>Sea Creature<7> found in <6>Torrhus Canyon<7>."
         rewards: { fishing: 500 }
         trigger: fish.haggard
-        available: false
-        unavailable: "Torrhus sea creatures are not built"
       - id: t4_brineling
         title: "Catch a Brineling while Fishing"
         description: "This is an <a>UNCOMMON<7> <3>Sea Creature<7> found in <6>Torrhus Canyon<7>."
         rewards: { fishing: 1000 }
         trigger: fish.brineling
-        available: false
-        unavailable: "Torrhus sea creatures are not built"
       - id: t4_sprawl
         title: "Catch a Sprawl while Fishing"
         description: "This is a <9>RARE<7> <3>Sea Creature<7> found in <6>Torrhus Canyon<7>."
         rewards: { fishing: 1500 }
         trigger: fish.sprawl
-        available: false
-        unavailable: "Torrhus sea creatures are not built"
       - id: t4_ruby_veilshroom
         title: "Obtain Ruby Veilshrooms"
         description: "<f>Ruby Veilshroom<7> are found around <6>Torrhus Canyon<7> and also drop from <6>Torrhus Sea Creatures<7>. Gather them to progress through the <a>Ruby Veilshroom Collection<7>."
@@ -399,15 +393,11 @@ chapters:
         description: "This is an <5>EPIC<7> <3>Sea Creature<7> found in <6>Torrhus Canyon<7>."
         rewards: { fishing: 2000 }
         trigger: fish.torrid
-        available: false
-        unavailable: "Torrhus sea creatures are not built"
       - id: t6_silkbreeze
         title: "Catch a Silkbreeze while Fishing"
         description: "This is a <6>LEGENDARY<7> <3>Sea Creature<7> found in <6>Torrhus Canyon<7>."
         rewards: { fishing: 3500 }
         trigger: fish.silkbreeze
-        available: false
-        unavailable: "Torrhus sea creatures are not built"
       - id: t6_safari_unique_30
         title: "Catch 30 Unique Critters in the Critter Safari"
         description: "The <2>Critter Safari<7> is comprised of <a>4<7> unique biomes, each with its own set of <a>Critters<7> for you to <e>Hunt<7>!"
@@ -459,8 +449,6 @@ chapters:
         description: "This is a <d>MYTHIC<7> <3>Sea Creature<7> found in <6>Torrhus Canyon<7>."
         rewards: { fishing: 5000 }
         trigger: fish.giant_isopod
-        available: false
-        unavailable: "Torrhus sea creatures are not built"
       - id: t7_ant_upgrade_stone
         title: "Purchase a Tier XII Upgrade Stone from Ant"
         description: "<2>Ant<7> sells a number of <6>Tier XII Upgrade Stones<7> for <a>Foraging Minions<7>."

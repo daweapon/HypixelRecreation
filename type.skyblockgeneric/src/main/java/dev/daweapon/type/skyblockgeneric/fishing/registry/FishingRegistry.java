@@ -209,11 +209,24 @@ public final class FishingRegistry {
                 intValue(entry, "durationSeconds", 120),
                 parseStatistics(buffs, defaultHotspotBuffs()),
                 parseSeaCreatureRolls((List<Map<String, Object>>) entry.get("seaCreatures")),
-                spawnPoints
+                spawnPoints,
+                parseTreasureOverrides(castMap(entry.get("treasureOverrides")))
             ));
         }
     }
 
+
+    private static Map<String, HotspotDefinition.TreasureOverride> parseTreasureOverrides(@Nullable Map<String, Object> values) {
+        Map<String, HotspotDefinition.TreasureOverride> result = new LinkedHashMap<>();
+        if (values == null) return result;
+        for (Map.Entry<String, Object> entry : values.entrySet()) {
+            Map<String, Object> override = castMap(entry.getValue());
+            int min = intValue(override, "min", intValue(override, "amount", 1));
+            result.put(entry.getKey().toUpperCase(),
+                new HotspotDefinition.TreasureOverride(string(override, "itemId"), min, intValue(override, "max", min)));
+        }
+        return result;
+    }
 
     private static ItemStatistics parseStatistics(@Nullable Map<String, Object> values) {
         return parseStatistics(values, Map.of());

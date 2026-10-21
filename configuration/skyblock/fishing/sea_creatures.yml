@@ -193,3 +193,29 @@ seaCreatures:
     requiredFishingLevel: 35
     skillXp: 4650
     tags: [WATER, MYTHIC]
+
+  # ---------- Torrhus Canyon (weights live in tables.yml) ----------
+  - id: HAGGARD
+    requiredFishingLevel: 15
+    skillXp: 330
+    tags: [WATER, COMMON]
+  - id: BRINELING
+    requiredFishingLevel: 15
+    skillXp: 580
+    tags: [WATER, UNCOMMON]
+  - id: SPRAWL
+    requiredFishingLevel: 15
+    skillXp: 887
+    tags: [WATER, RARE]
+  - id: TORRID
+    requiredFishingLevel: 15
+    skillXp: 1275
+    tags: [WATER, EPIC]
+  - id: SILKBREEZE
+    requiredFishingLevel: 15
+    skillXp: 2100
+    tags: [WATER, LEGENDARY]
+  - id: GIANT_ISOPOD
+    requiredFishingLevel: 15
+    skillXp: 4650
+    tags: [WATER, MYTHIC]

@@ -276,7 +276,7 @@ public final class SeaCreatureProfiles {
             .droppedBook(EnchantmentType.PISCARY, 6)
             .build();
 
-    public static final List<SeaCreatureProfile> CANONICAL = List.of(
+    public static final List<SeaCreatureProfile> CANONICAL = java.util.stream.Stream.concat(java.util.stream.Stream.of(
             // Water
             SQUID, SEA_WALKER, NIGHT_SQUID, SEA_GUARDIAN,
             SEA_WITCH, SEA_ARCHER, MONSTER_OF_THE_DEEP, CATFISH, CARROT_KING,
@@ -284,7 +284,7 @@ public final class SeaCreatureProfiles {
             WATER_WORM, POISONED_WATER_WORM, ABYSSAL_MINER,
             // Lava
             LAVA_BLAZE, LAVA_PIGMAN, FLAMING_WORM
-    );
+    ), dev.daweapon.type.skyblockgeneric.fishing.torrhus.TorrhusSeaCreatures.PROFILES.stream()).toList();
 
     private static SkyBlockLootTable drops(SkyBlockLootTable.LootRecord... records) {
         return new SkyBlockLootTable() {

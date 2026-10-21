@@ -15,8 +15,12 @@ public record HotspotDefinition(
     int durationSeconds,
     ItemStatistics buffs,
     List<dev.daweapon.type.skyblockgeneric.fishing.registry.FishingTableDefinition.SeaCreatureRoll> seaCreatures,
-    List<SpawnPoint> spawnPoints
+    List<SpawnPoint> spawnPoints,
+    java.util.Map<String, TreasureOverride> treasureOverrides
 ) {
+    public record TreasureOverride(String itemId, int min, int max) {
+    }
+
     public record SpawnPoint(
         String serverType,
         double x,

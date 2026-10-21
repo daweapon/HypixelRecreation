@@ -54,3 +54,22 @@ hotspots:
       - { x: -459, y: 98, z: -751 }
       - { x: -386, y: 73, z: -917 }
       - { x: -398, y: 43, z: -459 }
+  # Torrhus Canyon: the Hotspot Haven pool is a permanent hotspot (wiki: Hotspot_Haven). Great and Outstanding catches
+  # become Giant Water Bug Shards (wiki and the staff quote on the shard page; Treasure/Loot says Good and Great).
+  - id: TORRHUS_HOTSPOT_HAVEN
+    displayName: Hotspot Haven
+    medium: WATER
+    serverType: SKYBLOCK_TORRHUS_CANYON
+    durationSeconds: 3600
+    maxActive: 1
+    buffs:
+      FISHING_SPEED: 15
+      SEA_CREATURE_CHANCE: 5
+      DOUBLE_HOOK_CHANCE: 2
+      TROPHY_FISH_CHANCE: 5
+      TREASURE_CHANCE: 1
+    treasureOverrides:
+      GREAT: { itemId: SHARD_GIANT_WATER_BUG, min: 1, max: 1 }
+      OUTSTANDING: { itemId: SHARD_GIANT_WATER_BUG, min: 4, max: 8 }
+    spawnPoints:
+      - { x: -652, y: 102, z: 168 }

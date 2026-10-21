@@ -8,6 +8,7 @@ import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
 import dev.daweapon.type.skyblockgeneric.chapters.ChapterProbe;
 import dev.daweapon.type.skyblockgeneric.chapters.ChapterService;
 import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
+import dev.daweapon.type.skyblockgeneric.event.custom.FishCaughtEvent;
 import dev.daweapon.type.skyblockgeneric.event.custom.ShardCaughtEvent;
 import dev.daweapon.type.skyblockgeneric.event.custom.TreeGiftReceivedEvent;
 import dev.daweapon.type.skyblockgeneric.hunting.AttributeDefinition;
@@ -57,5 +58,11 @@ public class ActionChapterTriggers implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void onTreeGift(TreeGiftReceivedEvent event) {
         ChapterService.evaluate(event.getPlayer());
+    }
+
+    @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
+    public void onFish(FishCaughtEvent event) {
+        if (event.getKind() != FishCaughtEvent.Kind.SEA_CREATURE) return;
+        ChapterTriggers.fire(event.getPlayer(), "fish." + event.getId().toLowerCase());
     }
 }

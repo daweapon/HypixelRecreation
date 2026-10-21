@@ -141,6 +141,19 @@ public enum FishingBestiaryFamily implements BestiaryEntry {
             head("645f2c0bbfe3b8b19b7452072db69a5f59da38ff61415545156e5701e1be756d")),
     TRASH_GOBBLER(FishingBestiarySection.BACKWATER_BAYOU, "Trash Gobbler", "Yummers!", 4, 15,
             head("18ae7046da98dcb33f3ed42f1dc41d08ac8dfa5db3a3860de5b1b5c056804187")),
+
+    BRINELING(FishingBestiarySection.TORRHUS_CANYON, "Brineling", "An old soul who\u2019s ready for a fight!", 4, 15,
+            head("18ddf45f2a16e662c667541422cbbd944398b1a90c500b03308b1c99c10003d3"), "BRINELING"),
+    GIANT_ISOPOD(FishingBestiarySection.TORRHUS_CANYON, "Giant Isopod", "And you thought the Giant Water Bugs were big...", 8, 15,
+            head("3fcb203b029aac4958407daf4072a01a353105162373ce7e559c669d78325bcb"), "GIANT_ISOPOD"),
+    HAGGARD(FishingBestiarySection.TORRHUS_CANYON, "Haggard", "An old soul who\u2019s ready for a fight!", 4, 15,
+            head("837be7781a3ae4454f4670e1686dc17a07dd321d6f670ba80f91e391f0763321"), "HAGGARD"),
+    SILKBREEZE(FishingBestiarySection.TORRHUS_CANYON, "Silkbreeze", "It weaves silk at impressive speeds as it moves.", 6, 15,
+            head("2630c3171c4028544ff979ba87fa03102aacbc1e917ace9984d8ee51a9bbd5ba"), "SILKBREEZE"),
+    SPRAWL(FishingBestiarySection.TORRHUS_CANYON, "Sprawl", "A distant relative of the Puck, it\u2019s always scheming.", 6, 20,
+            head("6bbe6a78b8b9b1bee4458fae633deca7dc9da31589b98903c9e871efcb416aea"), "SPRAWL"),
+    TORRID(FishingBestiarySection.TORRHUS_CANYON, "Torrid", "Always up to no good. When they get together with Pucks, even more trouble is caused.", 7, 20,
+            head("9da145254a59efce57186e6c99b64ba0e86803a4496cdbe8c96cc13dda71aa24"), "TORRID"),
     ;
 
     private final FishingBestiarySection section;
