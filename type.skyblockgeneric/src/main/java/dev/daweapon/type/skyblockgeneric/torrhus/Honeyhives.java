@@ -50,7 +50,7 @@ public final class Honeyhives {
     public static final String HONEY_HAUL = "C64";
     public static final String HONEY_REFILL = "E49";
     private static final double HOLOGRAM_RANGE = 40;
-    private static final double HOLOGRAM_DROP = 0.8;
+    private static final double HOLOGRAM_DROP = -0.2;
     private static final double HOLOGRAM_SPACING = 0.4;
 
     private static final Map<UUID, Map<Long, Shown>> SHOWN = new ConcurrentHashMap<>();
