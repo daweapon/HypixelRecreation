@@ -6,12 +6,12 @@ import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.List;
+import dev.daweapon.type.galatea.gui.GUISwoop;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 
-// Decorative Swoop NPC, found in Galatea.
 public class NPCSwoop extends HypixelNPC {
 
     public NPCSwoop() {
@@ -60,7 +60,7 @@ public class NPCSwoop extends HypixelNPC {
             setDialogue(player, "first-interaction").thenRun(() -> ChapterTriggers.fire(player, "npc.swoop"));
             return;
         }
-        player.notImplemented();
+        player.openView(new GUISwoop());
     }
 
     @Override

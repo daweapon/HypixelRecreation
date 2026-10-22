@@ -1,0 +1,199 @@
+hints:
+  - id: ant
+    name: "Ant"
+    shard: "Ant"
+    coins: 5000
+    lines:
+      - "<f>Ants<f>?"
+      - "<f>Hmm, them little fellas live down in <6>Ant's Cave<f>..."
+      - "<f>That thing's deep down in <b>Torrhus Springs<f>."
+      - "<f>Be sure to bring a <a>Vacuum <f>with ya - you'll need it to suck 'em up."
+  - id: beeheemoth
+    name: "Beeheemoth"
+    shard: "Beeheemoth"
+    coins: 20000
+    lines:
+      - "<5>Beeheemoths<f>? Even I dunno where they come from."
+      - "<f>They just show up sometimes, yaknow? Flying high around the island."
+      - "<f>Listen out for a loud humming and keep yer eyes peeled and <2>Lasso <f>at the ready, I'd say."
+  - id: blue_jay
+    name: "Blue Jay"
+    shard: "Blue Jay"
+    coins: 5000
+    lines:
+      - "<f>Blue Jays<f>? Them little guys live up in <6>Torrhus Heights<f>."
+      - "<f>Climb up high, <2>Lasso <f>in hand, and sneak up on 'em."
+  - id: bunbun
+    name: "Bunbun"
+    shard: "Bunbun"
+    coins: 5000
+    lines:
+      - "<f>Bunbuns<f>? You ain't seen one yet?"
+      - "<f>They're everywhere, hoppin' around!"
+  - id: drybark
+    name: "Drybark"
+    shard: "Drybark"
+    coins: 15000
+    lines:
+      - "<f>Them there <9>Drybarks <f>spawn from <6>Helix Tree Gifts<f>."
+      - "<f>Keep an eye on 'em while you get yer <2>Lasso <f>out."
+      - "<f>Don't blink, or they'll come right atcha."
+  - id: dustybit
+    name: "Dustybit"
+    shard: "Dustybit"
+    coins: 10000
+    lines:
+      - "<f>Them frogs known as <a>Dustybits <f>leap around the <6>Spring Path<f>."
+      - "<f>Chase 'em down, following them after each leap, an' eventually they'll get too tired to run any more."
+      - "<f>It's a battle of attrition, I'll say, you versus the beast."
+  - id: ember
+    name: "Ember"
+    shard: "Ember"
+    coins: 10000
+    lines:
+      - "<f>Them <a>Embers <f>live in <b>Torrhus Springs<f>, I believe."
+      - "<f>They be quite deep down, compared to <a>Solars<f>."
+      - "<f>Catch 'em all in yer <9>Fishing Net<f>."
+  - id: firefox
+    name: "Firefox"
+    plural: "Firefoxes"
+    shard: "Firefox"
+    coins: 5000
+    lines:
+      - "<f>Pop open a <6>Helix Tree Gift<f>, ye might find a <f>Firefox<f>."
+      - "<f>They be quite timid, and won't cause yer <2>Lasso <f>any problems."
+  - id: goldolot
+    name: "Goldolot"
+    shard: "Goldolot"
+    coins: 15000
+    lines:
+      - "<f>Hmm, the <9>Goldolot<f>."
+      - "<f>That be a rare mutation of the <a>Sepialot <f>that sometimes appears in <b>Torrhus Springs<f>."
+      - "<f>I would say, hmm, maybe a <a>20% <f>chance o' replacin' it."
+      - "<f>Sneak up on it and catch it in yer <9>Fishing Net<f>."
+  - id: groundhog
+    name: "Groundhog"
+    shard: "Groundhog"
+    coins: 5000
+    lines:
+      - "<f>If I recall, them Groundhogs spawn from <6>Helix Tree Gifts<f>."
+      - "<f>They're quite feisty, but use that there <2>Lasso <f>to tire 'em out."
+  - id: hideonsun
+    name: "Hideonsun"
+    shard: "Hideonsun"
+    coins: 5000
+    lines:
+      - "<f>Hideonsun<f>, hmm, sneaky buggers."
+      - "<f>Keep yer eyes peeled for any strange lookin' <6>Orange Boxes<f>."
+      - "<f>They blend into the environment real well."
+      - "<f>Once ya find one, jump on its head or give it a punch to wake it up."
+  - id: hivethief
+    name: "Hivethief"
+    shard: "Hivethief"
+    coins: 15000
+    lines:
+      - "<f>I seen a <9>Hivethief <f>or two show up sometimes."
+      - "<f>They come by when you smear a <6>Helix Tree <f>with <6>Honeycomb<f>."
+      - "<f>Me good friend <6>Honey <f>knows more about all that than me."
+  - id: honeybuzz
+    name: "Honeybuzz"
+    plural: "Honeybuzz"
+    shard: "Honeybuzz"
+    coins: 5000
+    lines:
+      - "<f>Groups of <f>Honeybuzz <f>live within <6>Honeyhives <f>'round the island."
+      - "<f>Stick yer hand in and you might just find one!"
+  - id: mountain_goat
+    name: "Mountain Goat"
+    shard: "Mountain Goat"
+    coins: 20000
+    lines:
+      - "<f>The <5>Mountain Goat <f>live right up high."
+      - "<f>On the <6>Spring Path <f>and other tall points is where you'll find 'em."
+      - "<f>Keep yer distance when you <2>Lasso <f>'em, though - their headbutt will send yer flying."
+  - id: pangolin
+    name: "Pangolin"
+    shard: "Pangolin"
+    coins: 15000
+    lines:
+      - "<f>Them <9>Pangolins <f>be right scared of their own shadow, I tell ya."
+      - "<f>Sneak up on 'em, quiet as you can, and <2>Lasso <f>'em before they can turn into a ball."
+      - "<f>If they do curl up, yer gonna have to wait a while until they let their guard down again."
+  - id: parched
+    name: "Parched"
+    plural: "Parched"
+    shard: "Parched"
+    coins: 10000
+    lines:
+      - "<f>Them <a>Parched <f>be really thirsty."
+      - "<f>If you smear a <6>Helix Tree <f>with <6>Honey<f>, they might show up."
+      - "<f>The lovely <6>Honey <f>knows more about all that stuff than I do."
+  - id: pollendart
+    name: "Pollendart"
+    shard: "Pollendart"
+    coins: 5000
+    lines:
+      - "<f>Them <f>Pollendarts <f>love their <6>Honey<f>, I know that much!"
+      - "<f>If you smear a <6>Helix Tree <f>with <6>Honey<f>, they might come."
+      - "<f>Miss <6>Honey <f>knows more about all that than I do. Ask her!"
+  - id: puck
+    name: "Puck"
+    shard: "Puck"
+    coins: 15000
+    lines:
+      - "<f>Open up a <6>Helix Tree Gift<f>, ye might find a <9>Puck<f>."
+      - "<f>They be mischievous little buggers, but they ain't as strong as a well-placed <2>Lasso<f>, I can tell yer that much."
+  - id: queen_ant
+    name: "Queen Ant"
+    shard: "Queen Ant"
+    coins: 10000
+    lines:
+      - "<f>Ah, the <a>Queen Ant<f>. A special one, she is."
+      - "<f>Dive deep down into <b>Torrhus Springs<f>, make yer way into <6>Ant's Cave<f>."
+      - "<f>You'll rarely find her scuttlin' about on the cave floor."
+      - "<f>She's more likely to come out if ya start destroyin' the <e>Anthills<f>, though."
+  - id: sepialot
+    name: "Sepialot"
+    shard: "Sepialot"
+    coins: 10000
+    lines:
+      - "<a>Sepialot<f>, huh, that thing be up in <b>Torrhus Springs<f>."
+      - "<f>Sneak up on it and catch it in yer <9>Fishing Net <f>before it sees ya."
+  - id: tiki_trio
+    name: "Tiki Trio"
+    shard: "Sneaky Tiki"
+    coins: 10000
+    lines:
+      - "<f>Hur hur hur hurr! That <a>Tiki Trio<f>, I hate 'em, I really do!"
+      - "<f>The <a>Sneaky Tiki<f>, <a>Shrieky Tiki<f>, and <a>Cheeky Tiki<f>."
+      - "<f>I can't tell ya which one I hate the most. But I can tell ya which one I hate the least - none of 'em!"
+      - "<f>You can find 'em up in <6>Torrhus Heights<f>."
+      - "<f>They'll stay still, unmovin', until you solve their puzzle."
+      - "<f>Then they'll come to life and blitz 'ya."
+      - "<f>Fend 'em off, and catch 'em in a <c>Pocket Black Hole<f>."
+      - "<f>Ah, just thinkin 'bout them has me blood boilin'..."
+  - id: solar
+    name: "Solar"
+    shard: "Solar"
+    coins: 10000
+    lines:
+      - "<f>Eh, them <a>Solars <f>live in <b>Torrhus Springs<f>, too."
+      - "<f>They be needing light to function, so they be up near the surface."
+      - "<f>Scoop em up in yer <9>Fishing Net<f>."
+  - id: timil
+    name: "Timil"
+    shard: "Timil"
+    coins: 5000
+    lines:
+      - "<f>Are ye blind, kid?"
+      - "<f>Turn around and look into that there <9>Pond<f>!"
+      - "<f>It's completely overflowin' with <f>Timil<f>!"
+  - id: water_snake
+    name: "Water Snake"
+    shard: "Water Snake"
+    coins: 10000
+    lines:
+      - "<a>Water Snakes<f>, huh..."
+      - "<f>They be livin in the deepest depths of <b>Torrhus Springs<f>."
+      - "<f>Get all of yer best divin' gear on, and them pay 'em a visit."
+      - "<f>Bring yer biggest net, too - a <5>Turbo Fishing Net <f>or better should do the trick."

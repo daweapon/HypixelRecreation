@@ -429,8 +429,52 @@ tables:
         weight: 100
       - seaCreatureId: GIANT_ISOPOD
         weight: 25
+  # Tomb Floodway (wiki: Tomb_Floodway, Treasure/Loot/Moonglade_Marsh): no sea creatures, +10 Treasure Chance in code (TombFishing),
+  # Flexbone replaces 25% of treasure in code, and the four tomb-only shard rows join the Good pool. Must precede MOONGLADE_MARSH.
+  - id: MOONGLADE_TOMB_FLOODWAY
+    regions:
+      - TOMB_FLOODWAY
+    mediums:
+      - WATER
+    weightedSeaCreatures: true
+    weightedItems:
+      - { itemId: FIG_LOG, weight: 100, min: 40, max: 40 }
+      - { itemId: MANGROVE_LOG, weight: 70, min: 40, max: 40 }
+    treasureQualities:
+      - name: GOOD
+        share: 89
+        entries:
+          - { itemId: FIG_LOG, weight: 100, min: 100, max: 100 }
+          - { itemId: MANGROVE_LOG, weight: 70, min: 100, max: 100 }
+          - { itemId: SHARD_VERDANT, weight: 50, min: 1, max: 1 }
+          - { itemId: COINS, weight: 50, min: 25000, max: 50000 }
+          - { itemId: SHARD_COD, weight: 40, min: 1, max: 1 }
+          - { itemId: SHARD_AZURE, weight: 40, min: 1, max: 1 }
+          - { itemId: SHARD_PIRANHA, weight: 15.5, min: 1, max: 1 }
+          - { itemId: SHARD_VERDANT, weight: 5.54, min: 1, max: 1 }
+          - { itemId: SHARD_COD, weight: 3.7, min: 1, max: 1 }
+          - { itemId: SHARD_AZURE, weight: 1.85, min: 1, max: 1 }
+          - { itemId: SHARD_SALMON, weight: 0.95, min: 1, max: 1 }
+          - { itemId: SHARD_EEL, weight: 0.05, min: 1, max: 1 }
+      - name: GREAT
+        share: 10
+        entries:
+          - { itemId: ENCHANTED_FIG_LOG, weight: 100, min: 2, max: 2 }
+          - { itemId: ENCHANTED_MANGROVE_LOG, weight: 70, min: 2, max: 2 }
+          - { itemId: SHARD_SALMON, weight: 20, min: 1, max: 1 }
+      - name: OUTSTANDING
+        share: 1
+        entries:
+          - { itemId: ENCHANTED_FIG_LOG, weight: 100, min: 10, max: 10 }
+          - { itemId: ENCHANTED_MANGROVE_LOG, weight: 70, min: 10, max: 10 }
+          - { itemId: COINS, weight: 50, min: 500000, max: 1000000 }
+          - { itemId: SHARD_EEL, weight: 20, min: 1, max: 1 }
+    items: [ ]
+    treasures: [ ]
+    junk: [ ]
+    seaCreatures: [ ]
   # Moonglade Marsh (wiki: Sea_Creatures/List/Moonglade_Marsh, Treasure/Loot/Moonglade_Marsh). Sea Creature Chance is rolled once,
-  # then a creature is picked by weight. Tomb Floodway-only treasure (Flexbone and its shard rows) and Swamp the Fish are not built.
+  # then a creature is picked by weight. Tomb Floodway has its own table above; Swamp the Fish is rolled in code (FishFamilyDrops).
   # Treasure quality shares are taken from Torrhus Canyon.
   - id: MOONGLADE_MARSH
     serverTypes:

@@ -1,12 +1,13 @@
 package dev.daweapon.type.galatea.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.type.skyblockgeneric.moonglade.beacon.MoongladeBeacon;
 
-// NPC found in Galatea.
 public class NPCBoris extends HypixelNPC {
 
     public NPCBoris() {
@@ -27,6 +28,11 @@ public class NPCBoris extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<b>Boris");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(-684.5, 129, 64.5, -180, 0);
             }
@@ -36,10 +42,27 @@ public class NPCBoris extends HypixelNPC {
                 return true;
             }
         });
+        MoongladeBeacon.start();
     }
 
     @Override
     public void onClick(NPCInteractEvent event) {
-        event.player().notImplemented();
+        if (isInDialogue(event.player())) return;
+        setDialogue(event.player(), "beacon");
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.builder().key("beacon").lines(
+                        "Howdy!",
+                        "This Beacon here is <o>incredibly</o> ancient.",
+                        "Some even believe it's a <5>Precursor <f>relic!",
+                        "It radiates a strange energy that we must stabilize by fine-tuning its frequencies.",
+                        "Occasionally the signal falters, and we have to recalibrate it.",
+                        "Over, and over, and over again.",
+                        "Why? I wish I knew why..."
+                ).build()
+        };
     }
 }

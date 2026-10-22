@@ -125,6 +125,7 @@ public final class BlackHoleService {
     public static double captureSeconds(SkyBlockPlayer owner, HuntingCreatureMob mob) {
         int level = CreatureCapture.shardOf(mob.spec()).map(AttributeDefinition::rarity).map(rarity -> rarity.ordinal() + 1).orElse(2);
         double pressure = AttributeEffectService.value(owner.getHuntingData(), AttributeId.parse("R9")) / 100D;
-        return Math.max(0.5, level * 2D * (1 - pressure));
+        double temple = dev.daweapon.type.skyblockgeneric.torrhus.StarbornBenefactors.speedBonus(owner);
+        return Math.max(0.5, level * 2D * (1 - pressure - temple));
     }
 }

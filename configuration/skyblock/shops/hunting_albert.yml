@@ -1,0 +1,11 @@
+title: Albert
+slots: [21, 23]
+entries:
+  - item: SMALL_POCKET_BLACK_HOLE
+    name: "<a>Small Pocket Black Hole"
+    material: player_head
+    cost: { coins: 100000, items: { FIG_LOG: 64 } }
+  - item: MEDIUM_POCKET_BLACK_HOLE
+    name: "<9>Medium Pocket Black Hole"
+    material: player_head
+    cost: { coins: 1000000, items: { ENCHANTED_MANGROVE_LOG: 64, ENCHANTED_OBSIDIAN: 64, SMALL_POCKET_BLACK_HOLE: 1 } }

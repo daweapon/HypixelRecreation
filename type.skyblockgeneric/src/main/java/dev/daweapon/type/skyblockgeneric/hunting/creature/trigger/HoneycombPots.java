@@ -46,6 +46,7 @@ public final class HoneycombPots {
         }
         if (!TreeProtectionOrders.place(player, tree, minutes)) return;
         TimedConsumables.consumeHeld(player, item);
+        dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers.fire(player, "pot.attract");
         if (minutes == 0) player.sendMessage("<a>You lathered the tree with <6>Honeycomb<a>!");
         else player.sendMessage("<a>You lathered the tree with <6>Honeycomb<a>! A <a>Critter <a>will be attracted in <e>{}m<a>.", minutes);
     }

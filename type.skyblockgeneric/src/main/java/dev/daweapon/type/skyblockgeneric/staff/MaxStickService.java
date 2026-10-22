@@ -145,7 +145,10 @@ public final class MaxStickService {
             new Step("Heart of the Mountain", MaxStickService::maxHotm),
             new Step("Heart of the Forest", dev.daweapon.type.skyblockgeneric.hotf.HotfService::maxOut),
             new Step("Chapters", dev.daweapon.type.skyblockgeneric.chapters.ChapterService::maxOut),
+            new Step("Moonglade Beacon and Blue Flames", dev.daweapon.type.skyblockgeneric.foraging.ForagingMaxing::maxOut),
             new Step("Romero and Juliette", dev.daweapon.type.skyblockgeneric.romero.RomeroJulietteQuest::maxOut),
+            new Step("Starborn Temples", player -> player.getHuntingData().setCounter(
+                    dev.daweapon.type.skyblockgeneric.torrhus.StarbornTemple.DESERT.activeKey(), 1)),
             new Step("Fairy Souls", MaxStickService::maxFairySouls),
             new Step("Bestiary", MaxStickService::maxBestiary),
             new Step("Backpack slots", MaxStickService::maxBackpackSlots),

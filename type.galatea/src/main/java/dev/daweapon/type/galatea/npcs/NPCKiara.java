@@ -5,9 +5,14 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import java.util.List;
+import dev.daweapon.type.generic.entity.npc.trait.NPCAbiphoneTrait;
+import dev.daweapon.type.skyblockgeneric.hunting.npc.HuntingShardShopView;
 
-// Decorative Kiara NPC, found in Galatea.
-public class NPCKiara extends HypixelNPC {
+public class NPCKiara extends HypixelNPC implements NPCAbiphoneTrait {
 
     public NPCKiara() {
         super(new HumanConfiguration() {
@@ -27,6 +32,11 @@ public class NPCKiara extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<b>Kiara");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(-654, 113, -70, 0, 0);
             }
@@ -38,8 +48,42 @@ public class NPCKiara extends HypixelNPC {
         });
     }
 
+    private static final String MET = "npc.kiara";
+    public static final String CONTACT = "kiara";
+
+    @Override
+    public String getAbiphoneKey() {
+        return CONTACT;
+    }
+
     @Override
     public void onClick(NPCInteractEvent event) {
-        event.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (isInDialogue(player)) return;
+        if (!ChapterTriggers.done(player, MET)) {
+            setDialogue(player, "first-interaction").thenRun(() -> {
+                ChapterTriggers.fire(player, MET);
+                player.openView(shop());
+            });
+            return;
+        }
+        player.openView(shop());
+    }
+
+    public static HuntingShardShopView shop() {
+        return HuntingShardShopView.kiara();
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return List.of(
+                DialogueSet.builder().key("first-interaction").lines(
+                        "Hello!",
+                        "Are you a fan of <a>Reptiles <f>and <b>Amphibians<f>? I can't get enough of them!",
+                        "They're so precious and cute!",
+                        "They can be very hard to find, but they all have unique abilities.",
+                        "Their genetics differ from most other creatures.",
+                        "In the <5>Fusion Machine<f>, fusing shards with a Reptile often yields powerful results.").build()
+        ).toArray(DialogueSet[]::new);
     }
 }

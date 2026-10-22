@@ -92,7 +92,8 @@ public final class AttributeEffectService {
 
     public static double hunterFortune(SkyBlockPlayer player, AttributeDefinition hunted) {
         double fortune = player.getStatistics().allStatistics().getOverall(ItemStatistic.HUNTER_FORTUNE)
-                + dev.daweapon.type.skyblockgeneric.reforge.ReforgeLoadout.hunterFortune(player, hunted);
+                + dev.daweapon.type.skyblockgeneric.reforge.ReforgeLoadout.hunterFortune(player, hunted)
+                + dev.daweapon.type.skyblockgeneric.torrhus.StarbornBenefactors.willHunterFortune(player);
         String karma = switch (hunted.rarity()) {
             case COMMON -> "C35";
             case UNCOMMON -> "U8";

@@ -18,11 +18,11 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Wiki Fishing Net: Galatea and Lotus Atoll only. A throw hits every swimming creature in front of the player within
  * the net's reach; Verdant and Birries are caught at once, others take Pull damage and are caught when it runs out.
- * The damage per Pull point (5) and the 40 degree aim cone are estimates; the wiki gives neither.
+ * Damage is one point per Pull (video: 125 Pull did 125 damage to a 1,000 HP creature); the 40 degree aim cone is an estimate.
  */
 public final class FishingNetService {
     public static final long COOLDOWN_MS = 500;
-    private static final double PULL_DAMAGE_PER_POINT = 5;
+    private static final double PULL_DAMAGE_PER_POINT = 1;
     private static final double CONE_COSINE = Math.cos(Math.toRadians(40));
     private static final Set<String> INSTANT = Set.of("VERDANT", "BIRRIES");
     private static final Set<ServerType> ALLOWED = Set.of(ServerType.SKYBLOCK_GALATEA, ServerType.SKYBLOCK_TORRHUS_CANYON);

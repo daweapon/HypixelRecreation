@@ -62,7 +62,17 @@ public class ActionChapterTriggers implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void onFish(FishCaughtEvent event) {
-        if (event.getKind() != FishCaughtEvent.Kind.SEA_CREATURE) return;
-        ChapterTriggers.fire(event.getPlayer(), "fish." + event.getId().toLowerCase());
+        String id = event.getId().toLowerCase();
+        switch (event.getKind()) {
+            case SEA_CREATURE -> ChapterTriggers.fire(event.getPlayer(), "fish." + id);
+            case TREASURE -> {
+                if ("flexbone".equals(id)) ChapterTriggers.fire(event.getPlayer(), "fish.flexbone");
+            }
+            case ITEM -> {
+                if (id.endsWith("_the_fish")) ChapterTriggers.fire(event.getPlayer(), "find." + id);
+            }
+            default -> {
+            }
+        }
     }
 }

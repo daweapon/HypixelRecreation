@@ -5,9 +5,14 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
+import dev.daweapon.type.skyblockgeneric.shop.catalogue.CatalogueShopView;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// NPC found in Galatea.
 public class NPCAlan extends HypixelNPC {
+    private static final String FIRST_TRIGGER = "npc.alan";
 
     public NPCAlan() {
         super(new HumanConfiguration() {
@@ -27,6 +32,11 @@ public class NPCAlan extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<b>Alan");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(-625.5, 116, -36.5, 0, 0);
             }
@@ -40,6 +50,42 @@ public class NPCAlan extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-        event.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (isInDialogue(player)) return;
+        if (!HotfService.isUnlocked(player)) {
+            player.sendMessage("<e>[NPC] <b>Alan<f>: <7>{}<f>! Have you talked to <b>Hina <f>at the front of the island to get your hands on a <a>Heart of the Forest<f>?", player.getUsername());
+            return;
+        }
+        if (!ChapterTriggers.done(player, "npc.david")) {
+            setDialogue(player, "before-david");
+            return;
+        }
+        if (ChapterTriggers.done(player, FIRST_TRIGGER)) {
+            player.openView(new CatalogueShopView("alan"));
+            return;
+        }
+        setDialogue(player, "first-interaction").thenRun(() -> {
+            ChapterTriggers.fire(player, FIRST_TRIGGER);
+            player.openView(new CatalogueShopView("alan"));
+        });
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.builder().key("before-david").lines(
+                        "Greetings, adventurer!",
+                        "You should talk to <b>David Hunterborough <f>to learn more about <a>Hunting<f>!"
+                ).build(),
+                DialogueSet.builder().key("first-interaction").lines(
+                        "Greetings, adventurer!",
+                        "Have you dipped your toes into the world of <a>Hunting<f>?",
+                        "There's an art to it! The right tools make all the difference.",
+                        "Take these <a>Huntaxes<f>, for example. Sturdy, sharp, beautifully balanced.",
+                        "I stumbled upon the design while clearing out a damp, old shed.",
+                        "Surprisingly easy to use, too!",
+                        "In exchange, I only ask for a few valuables."
+                ).build()
+        };
     }
 }

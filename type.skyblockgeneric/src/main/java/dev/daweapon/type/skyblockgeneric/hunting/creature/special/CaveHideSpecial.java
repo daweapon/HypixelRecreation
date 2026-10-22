@@ -20,7 +20,7 @@ final class CaveHideSpecial implements CreatureSpecial {
     private static final double ARRIVED_DISTANCE_SQUARED = 2.25;
     private static final long TRAVEL_LIMIT_TICKS = 160;
     private static final long STAY_TICKS = 200;
-    private static final double DAMAGE_PER_PULL = 5;
+    private static final double DAMAGE_PER_PULL = 1;
     private static final double WEAKENING_HEALTH = 100;
 
     private final Map<HuntingCreatureMob, State> states = Collections.synchronizedMap(new WeakHashMap<>());

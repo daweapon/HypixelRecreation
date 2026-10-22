@@ -96,7 +96,8 @@ public final class HotfAbilities {
     }
 
     public static double outgoingMultiplier(SkyBlockPlayer player) {
-        return HotfService.onForagingIsland() && isActive(player, HotfAbility.DAMAGE_BOOST) ? 2 : 1;
+        double boost = HotfService.onForagingIsland() && isActive(player, HotfAbility.DAMAGE_BOOST) ? 2 : 1;
+        return boost * dev.daweapon.type.skyblockgeneric.foraging.booster.ForagingBoosters.fightingMultiplier(player);
     }
 
     public static ItemStatistics statistics(SkyBlockPlayer player) {

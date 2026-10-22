@@ -1,0 +1,23 @@
+title: Booster Upgrades
+slots: [11, 12, 13, 14, 15]
+entries:
+  - item: SWEEP_BOOSTER_UNCOMMON
+    name: "<a>Uncommon Sweep Booster Upgrade"
+    material: paper
+    cost: { items: { FIGSTONE: 1, MANGCORE: 1, HELIXIS: 1 } }
+  - item: FIGHTING_BOOSTER_UNCOMMON
+    name: "<a>Uncommon Fighting Booster Upgrade"
+    material: paper
+    cost: { items: { FIGSTONE: 1, MANGCORE: 1, HELIXIS: 1 } }
+  - item: FORAGING_FORTUNE_BOOSTER_UNCOMMON
+    name: "<a>Uncommon Foraging Fortune Booster Upgrade"
+    material: paper
+    cost: { items: { FIGSTONE: 1, MANGCORE: 1, HELIXIS: 1 } }
+  - item: FORAGING_WISDOM_BOOSTER_UNCOMMON
+    name: "<a>Uncommon Foraging Wisdom Booster Upgrade"
+    material: paper
+    cost: { items: { FIGSTONE: 1, MANGCORE: 1, HELIXIS: 1 } }
+  - item: HUNTING_WISDOM_BOOSTER_UNCOMMON
+    name: "<a>Uncommon Hunting Wisdom Booster Upgrade"
+    material: paper
+    cost: { items: { FIGSTONE: 1, MANGCORE: 1, HELIXIS: 1 } }

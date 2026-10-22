@@ -123,6 +123,8 @@ items:
     name: "Common Sweep Booster"
     rarity: COMMON
     components:
+      - id: ANVIL_COMBINABLE
+        handler_id: BOOSTER_SWEEP_COMMON
       - id: SKULL_HEAD
         texture: bd6a0624b440449a5719518392fa182a91cb890db35ad4410aae47f85c2d619b
   - id: FORAGING_WISDOM_BOOSTER
@@ -130,6 +132,8 @@ items:
     name: "Common Foraging Wisdom Booster"
     rarity: COMMON
     components:
+      - id: ANVIL_COMBINABLE
+        handler_id: BOOSTER_FORAGING_WISDOM_COMMON
       - id: SKULL_HEAD
         texture: 81f4910eeb6670df13d9a12338324190e62ee3db483ab3e7f2b4ca93b53b0e79
   - id: TREE_THE_FISH

@@ -1,0 +1,25 @@
+title: Nemo
+slots: DEFAULT
+entries:
+  - item: SNORKELING_HELMET
+    name: "<a>Snorkeling Visor"
+    material: leather_helmet
+    cost: { coins: 50000 }
+  - item: SNORKELING_CHESTPLATE
+    name: "<a>Snorkeling Vest"
+    material: leather_chestplate
+    cost: { coins: 50000 }
+  - item: SNORKELING_LEGGINGS
+    name: "<a>Snorkeling Pants"
+    material: leather_leggings
+    cost: { coins: 50000 }
+  - item: SNORKELING_BOOTS
+    name: "<a>Snorkeling Shoes"
+    material: leather_boots
+    cost: { coins: 50000 }
+  - item: ENCHANTED_BOOK
+    name: "<f>Enchanted Book (Respiration IV)"
+    material: enchanted_book
+    enchantment: RESPIRATION
+    enchantment_level: 4
+    cost: { coins: 4000000, items: { SEA_LUMIES: 32 } }

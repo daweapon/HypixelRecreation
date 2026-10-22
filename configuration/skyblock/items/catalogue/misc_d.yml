@@ -1802,7 +1802,6 @@ items:
     material: player_head
     name: "Mob the Fish"
     rarity: SPECIAL
-    unavailable: "Needs Galatea mob kills (Moonglade Marsh and Torrhus Canyon mobs are not built)"
     source: "0.05% from any mob on Moonglade Marsh or Torrhus Canyon; every 2,500th Moonglade Marsh kill is guaranteed"
     lore:
       - "§7Am I a parasite?"

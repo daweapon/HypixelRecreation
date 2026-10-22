@@ -20,8 +20,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Wiki Lasso: throw it at a forest creature, its stamina bar drains, and once the bar is low a right-click reels the
- * creature in; a creature with several bars needs one reel per bar. Reeling too early, looking away or reeling too
- * late lets go and the stamina regenerates. Throw range per tier, the 12%/s drain and the reel window are estimates.
+ * creature in; a creature has one stamina bar per shard rarity level (1 to 5) and needs one reel per bar. Reeling too
+ * early, looking away or reeling too late lets go. Several players lassoing one creature empty its bar at once, and
+ * higher lassos drain faster (video: second tier +20%, Everstretch +60%). Throw ranges, the base 12%/s drain and the
+ * reel window are estimates.
  */
 public final class LassoService {
     public static final double REEL_THRESHOLD = 20;
@@ -33,15 +35,21 @@ public final class LassoService {
     private static final int TICK_STEP = 2;
 
     public enum Tier {
-        ABYSMAL(ItemType.ABYSMAL_LASSO, 8), VINERIP(ItemType.VINERIP_LASSO, 10),
-        ENTANGLER(ItemType.ENTANGLER_LASSO, 12), EVERSTRETCH(ItemType.EVERSTRETCH_LASSO, 14);
+        ABYSMAL(ItemType.ABYSMAL_LASSO, 8, 1.0), VINERIP(ItemType.VINERIP_LASSO, 10, 1.2),
+        ENTANGLER(ItemType.ENTANGLER_LASSO, 12, 1.4), EVERSTRETCH(ItemType.EVERSTRETCH_LASSO, 14, 1.6);
 
         private final ItemType item;
         private final double range;
+        private final double drain;
 
-        Tier(ItemType item, double range) {
+        Tier(ItemType item, double range, double drain) {
             this.item = item;
             this.range = range;
+            this.drain = drain;
+        }
+
+        public double drain() {
+            return drain;
         }
 
         public ItemType item() {
@@ -64,8 +72,12 @@ public final class LassoService {
         private Session(HuntingCreatureMob mob, Tier tier) {
             this.mob = mob;
             this.tier = tier;
-            this.barsLeft = Math.max(1, mob.spec().staminaBars());
+            this.barsLeft = barsFor(mob.spec());
         }
+    }
+
+    static int barsFor(CreatureSpec spec) {
+        return CreatureCapture.shardOf(spec).map(shard -> shard.rarity().ordinal() + 1).orElse(Math.max(1, spec.staminaBars()));
     }
 
     private static final Map<UUID, Session> SESSIONS = new ConcurrentHashMap<>();
@@ -122,11 +134,10 @@ public final class LassoService {
             return;
         }
         if (mob.special().map(special -> !special.allowLasso(player, mob)).orElse(false)) return;
-        if (isLassoed(mob)) {
-            player.sendMessage("<c>Someone else is already lassoing this creature!");
-            return;
-        }
         SESSIONS.put(player.getUuid(), new Session(mob, tier));
+        if (SESSIONS.values().stream().filter(other -> other.mob == mob).count() > 1) {
+            SESSIONS.values().stream().filter(other -> other.mob == mob).forEach(other -> other.stamina = 0);
+        }
         player.sendMessage("<a>You threw your Lasso at the <f>{}<a>! <7>Reel it in when its stamina runs low.", mob.spec().name());
         startTicking();
     }
@@ -218,7 +229,7 @@ public final class LassoService {
         long ticks = mob.getAliveTicks();
         mob.special().ifPresent(special -> special.onLassoTick(player, mob, ticks));
         if (SESSIONS.get(player.getUuid()) != session) return;
-        double drain = DRAIN_PER_SECOND * (TICK_STEP * 50 / 1000D)
+        double drain = DRAIN_PER_SECOND * session.tier.drain() * (TICK_STEP * 50 / 1000D)
                 * (1 + dev.daweapon.type.skyblockgeneric.hunting.AttributeEffectService.value(player.getHuntingData(),
                 dev.daweapon.type.skyblockgeneric.hunting.AttributeId.parse("E9")) / 100D);
         session.stamina = Math.max(0, session.stamina - drain);
@@ -226,7 +237,7 @@ public final class LassoService {
         if (session.stamina <= REEL_THRESHOLD && session.reelDeadline == 0) {
             session.reelDeadline = now + REEL_WINDOW_MS;
             player.showTitle(Title.title(Component.text(""), net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer.legacySection()
-                    .deserialize("§a§lREEL IN!"), Title.Times.times(Duration.ZERO, Duration.ofMillis(900), Duration.ofMillis(100))));
+                    .deserialize("§a§lREEL"), Title.Times.times(Duration.ZERO, Duration.ofMillis(900), Duration.ofMillis(100))));
         }
         if (session.reelDeadline != 0 && now > session.reelDeadline) {
             player.sendMessage("<c>You were too slow! The creature regained its stamina and escaped!");

@@ -497,7 +497,6 @@ items:
     material: player_head
     name: "Fish the Fish"
     rarity: SPECIAL
-    unavailable: "Needs Torrhus Canyon fishing (not built)"
     source: "Fished in Torrhus Canyon (0.05%, pity guarantee after 2,500 treasure catches)"
     lore:
       - "§7Shrimp was the GOAT!"
@@ -1160,7 +1159,6 @@ items:
     material: player_head
     name: "Acacia Minion XII Upgrade Stone"
     rarity: LEGENDARY
-    unavailable: "Needs the Ant NPC in Torrhus Canyon (Galatea), which is not built"
     source: "Ant in Torrhus Springs"
     lore:
       - "§7Use this item to upgrade a §bAcacia"
@@ -1175,7 +1173,6 @@ items:
     material: player_head
     name: "Birch Minion XII Upgrade Stone"
     rarity: LEGENDARY
-    unavailable: "Needs the Ant NPC in Torrhus Canyon (Galatea), which is not built"
     source: "Ant in Torrhus Springs"
     lore:
       - "§7Use this item to upgrade a §bBirch"
@@ -1207,7 +1204,6 @@ items:
     material: player_head
     name: "Dark Oak Minion XII Upgrade Stone"
     rarity: LEGENDARY
-    unavailable: "Needs the Ant NPC in Torrhus Canyon (Galatea), which is not built"
     source: "Ant in Torrhus Springs"
     lore:
       - "§7Use this item to upgrade a §bDark Oak"
@@ -1239,7 +1235,6 @@ items:
     material: player_head
     name: "Jungle Minion XII Upgrade Stone"
     rarity: LEGENDARY
-    unavailable: "Needs the Ant NPC in Torrhus Canyon (Galatea), which is not built"
     source: "Ant in Torrhus Springs"
     lore:
       - "§7Use this item to upgrade a §bJungle"
@@ -1271,7 +1266,6 @@ items:
     material: player_head
     name: "Oak Minion XII Upgrade Stone"
     rarity: LEGENDARY
-    unavailable: "Needs the Ant NPC in Torrhus Canyon (Galatea), which is not built"
     source: "Ant in Torrhus Springs for 1,024 Enchanted Oak Log and 2,000,000 Coins"
     lore:
       - "§7Use this item to upgrade a §bOak Minion"
@@ -1301,7 +1295,6 @@ items:
     material: player_head
     name: "Spruce Minion XII Upgrade Stone"
     rarity: LEGENDARY
-    unavailable: "Needs the Ant NPC in Torrhus Canyon (Galatea), which is not built"
     source: "Ant in Torrhus Springs"
     lore:
       - "§7Use this item to upgrade a §bSpruce"

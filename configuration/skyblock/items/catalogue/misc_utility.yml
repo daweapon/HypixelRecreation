@@ -174,11 +174,9 @@ items:
     material: paper
     name: "Common Fighting Booster"
     rarity: COMMON
-    unavailable: "Booster system (Galatea boosters combined onto foraging gear) isn't built"
     source: "Galatea booster rewards"
     lore:
       - "§8Booster"
-      - "§8Combinable in Anvil"
       - ""
       - "§7Applies the §b४ Fighting §7booster when"
       - "§7combined with Foraging Armor,"
@@ -187,17 +185,17 @@ items:
       - "§7Increases damage against Foraging"
       - "§7Island creatures."
     components:
+      - id: ANVIL_COMBINABLE
+        handler_id: BOOSTER_FIGHTING_COMMON
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/boosters/common/booster_fighting
   - id: FIGHTING_BOOSTER_UNCOMMON
     material: paper
     name: "Uncommon Fighting Booster Upgrade"
     rarity: UNCOMMON
-    unavailable: "Booster system (Galatea boosters combined onto foraging gear) isn't built"
     source: "Upgrade of a Common Fighting Booster"
     lore:
       - "§8Booster"
-      - "§8Combinable in Anvil"
       - ""
       - "§7Apply to an item with a §fCommon"
       - "§fFighting Booster §7to upgrade it to an"
@@ -205,17 +203,17 @@ items:
       - "§7increases damage against §2Foraging"
       - "§2Island §7mobs."
     components:
+      - id: ANVIL_COMBINABLE
+        handler_id: BOOSTER_FIGHTING_UNCOMMON
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/boosters/uncommon/booster_fighting_upgraded
   - id: FORAGING_FORTUNE_BOOSTER
     material: paper
     name: "Common Foraging Fortune Booster"
     rarity: COMMON
-    unavailable: "Booster system (Galatea boosters combined onto foraging gear) isn't built"
-    source: "Galatea booster rewards"
+    source: "Purchased from Sawyer for 50,000 Coins"
     lore:
       - "§8Booster"
-      - "§8Combinable in Anvil"
       - ""
       - "§7Applies the §b⎋ Foraging Fortune"
       - "§7booster when combined with Foraging"
@@ -223,17 +221,17 @@ items:
       - ""
       - "§7Grants §6 Foraging Fortune§7."
     components:
+      - id: ANVIL_COMBINABLE
+        handler_id: BOOSTER_FORAGING_FORTUNE_COMMON
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/boosters/common/booster_foraging_fortune
   - id: FORAGING_FORTUNE_BOOSTER_UNCOMMON
     material: paper
     name: "Uncommon Foraging Fortune Booster Upgrade"
     rarity: UNCOMMON
-    unavailable: "Booster system (Galatea boosters combined onto foraging gear) isn't built"
     source: "Upgrade of a Common Foraging Fortune Booster"
     lore:
       - "§8Booster"
-      - "§8Combinable in Anvil"
       - ""
       - "§7Apply to an item with a §fCommon"
       - "§fForaging Fortune Booster §7to"
@@ -242,17 +240,17 @@ items:
       - "§7the amount of §6 Foraging Fortune §7it"
       - "§7gives."
     components:
+      - id: ANVIL_COMBINABLE
+        handler_id: BOOSTER_FORAGING_FORTUNE_UNCOMMON
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/boosters/uncommon/booster_foraging_fortune_upgraded
   - id: FORAGING_WISDOM_BOOSTER_UNCOMMON
     material: paper
     name: "Uncommon Foraging Wisdom Booster Upgrade"
     rarity: UNCOMMON
-    unavailable: "Booster system (Galatea boosters combined onto foraging gear) isn't built"
     source: "Upgrade of a Common Foraging Wisdom Booster"
     lore:
       - "§8Booster"
-      - "§8Combinable in Anvil"
       - ""
       - "§7Apply to an item with a §fCommon"
       - "§fForaging Wisdom Booster §7to upgrade"
@@ -260,6 +258,8 @@ items:
       - "§aBooster§7, which increases the amount"
       - "§7of §3☯ Foraging Wisdom §7it gives."
     components:
+      - id: ANVIL_COMBINABLE
+        handler_id: BOOSTER_FORAGING_WISDOM_UNCOMMON
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/boosters/uncommon/booster_foraging_wisdom_upgraded
   - id: FROGS_SPIRIT_SCROLL
@@ -345,11 +345,9 @@ items:
     material: paper
     name: "Common Hunting Wisdom Booster"
     rarity: COMMON
-    unavailable: "Booster system (Galatea boosters combined onto foraging gear) isn't built"
     source: "Galatea booster rewards"
     lore:
       - "§8Booster"
-      - "§8Combinable in Anvil"
       - ""
       - "§7Applies the §b☯ Common Hunting Wisdom"
       - "§7booster when combined with Foraging"
@@ -357,17 +355,17 @@ items:
       - ""
       - "§7Grants §3☯ Hunting Wisdom§7."
     components:
+      - id: ANVIL_COMBINABLE
+        handler_id: BOOSTER_HUNTING_WISDOM_COMMON
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/boosters/common/booster_hunting_wisdom
   - id: HUNTING_WISDOM_BOOSTER_UNCOMMON
     material: paper
     name: "Uncommon Hunting Wisdom Booster Upgrade"
     rarity: UNCOMMON
-    unavailable: "Booster system (Galatea boosters combined onto foraging gear) isn't built"
     source: "Upgrade of a Common Hunting Wisdom Booster"
     lore:
       - "§8Booster"
-      - "§8Combinable in Anvil"
       - ""
       - "§7Apply to an item with a §fCommon"
       - "§fHunting Wisdom Booster §7to upgrade it"
@@ -375,6 +373,8 @@ items:
       - "§aBooster§7, which increases the amount"
       - "§7of §3☯ Hunting Wisdom §7it gives."
     components:
+      - id: ANVIL_COMBINABLE
+        handler_id: BOOSTER_HUNTING_WISDOM_UNCOMMON
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/boosters/uncommon/booster_hunting_wisdom_upgraded
   - id: ICY_ARROW
@@ -515,11 +515,9 @@ items:
     material: paper
     name: "Uncommon Sweep Booster Upgrade"
     rarity: UNCOMMON
-    unavailable: "Booster system (Galatea boosters combined onto foraging gear) isn't built"
     source: "Upgrade of a Common Sweep Booster"
     lore:
       - "§8Booster"
-      - "§8Combinable in Anvil"
       - ""
       - "§7Apply to an item with a §fCommon Sweep"
       - "§fBooster §7to upgrade it to an"
@@ -527,6 +525,8 @@ items:
       - "§7increases the amount of §2 Sweep §7it"
       - "§7gives."
     components:
+      - id: ANVIL_COMBINABLE
+        handler_id: BOOSTER_SWEEP_UNCOMMON
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/boosters/uncommon/booster_sweep_upgraded
   - id: VITAMIN_LIFE

@@ -40,6 +40,7 @@ public class TypeTorrhusCanyonLoader implements SkyBlockTypeLoader {
     @Override
     public void afterInitialize(MinecraftServer server) {
         Honeyhives.register(MinecraftServer.getSchedulerManager());
+        dev.daweapon.type.skyblockgeneric.torrhus.DesertTemple.register(MinecraftServer.getSchedulerManager());
         dev.daweapon.type.skyblockgeneric.hunting.creature.CreatureSpawner.start();
     }
 

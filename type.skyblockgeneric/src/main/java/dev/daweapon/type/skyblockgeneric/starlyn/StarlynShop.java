@@ -2,6 +2,7 @@ package dev.daweapon.type.skyblockgeneric.starlyn;
 
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.skyblock.item.Rarity;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
 import dev.daweapon.type.skyblockgeneric.collection.CustomCollectionAward;
 import dev.daweapon.type.skyblockgeneric.enchantment.EnchantmentType;
 import dev.daweapon.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
@@ -25,6 +26,8 @@ import java.util.Map;
 
 public final class StarlynShop {
     public static final String LEVEL_CAP_ID = "level_cap";
+    public static final String SHINIEST_ID = "shiniest";
+    public static final String SHINIEST_TRIGGER = "shiniest.purchase";
 
     private StarlynShop() {
     }
@@ -165,6 +168,7 @@ public final class StarlynShop {
         SkyBlockItem created = create(item.give(), 1);
         player.addAndUpdateItem(created);
         player.sendMessage("<a>You bought " + created.getDisplayName() + "<a>!");
+        if (item.id().equals(SHINIEST_ID)) ChapterTriggers.fire(player, SHINIEST_TRIGGER);
         return null;
     }
 

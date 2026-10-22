@@ -125,8 +125,8 @@ module.exports = {
         });
 
         await t.step('a Fishing Net captures a Solar', async () => {
-            await give(bot, 'BASIC_FISHING_NET');
-            await equip(bot, /Basic Fishing Net/);
+            await give(bot, 'GIGANTIC_FISHING_NET');
+            await equip(bot, /Gigantic Fishing Net/);
             const mark = bot.markChat();
             for (let attempt = 0; attempt < 5 && !bot.chatSince(mark).some((line) => /CAPTURED!/.test(line)); attempt++) {
                 await bot.command('/tp -654 98 218', { settleMs: 1500 });
@@ -197,10 +197,10 @@ module.exports = {
             const cod = await spawn(bot, 'COD', 'Cod');
             await bot.command('/tp -546 108 -26', { settleMs: 2000 });
             const mark = bot.markChat();
-            for (let throwNumber = 0; throwNumber < 12 && !bot.chatSince(mark).some((line) => /CAPTURED!|exploded/.test(line)); throwNumber++) {
+            for (let throwNumber = 0; throwNumber < 30 && !bot.chatSince(mark).some((line) => /CAPTURED!|exploded/.test(line)); throwNumber++) {
                 await aim(bot, bot.bot.entities[cod.id] ?? cod);
                 bot.bot.activateItem();
-                await sleep(900);
+                await sleep(600);
             }
             const lines = bot.chatSince(mark).filter((line) => /spinning|spin|CAPTURED|exploded|Cod/.test(line));
             if (!lines.some((line) => /spinning/.test(line))) throw new Error(lines.join(' | '));

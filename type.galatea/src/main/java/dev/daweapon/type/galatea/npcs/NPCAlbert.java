@@ -5,8 +5,13 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import java.util.List;
+import dev.daweapon.type.skyblockgeneric.hunting.npc.HuntingNpcCatalogueView;
 
-// NPC found in Galatea.
 public class NPCAlbert extends HypixelNPC {
 
     public NPCAlbert() {
@@ -27,6 +32,11 @@ public class NPCAlbert extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<b>Albert");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(-592.5, 113, 8.5, -180, 0);
             }
@@ -38,8 +48,34 @@ public class NPCAlbert extends HypixelNPC {
         });
     }
 
+    private static final String MET = "npc.albert";
+
     @Override
     public void onClick(NPCInteractEvent event) {
-        event.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (isInDialogue(player)) return;
+        if (!HotfService.isUnlocked(player)) {
+            player.sendMessage("<e>[NPC] <b>Albert<f>: <7>{}<f>! Have you talked to <b>Hina <f>at the front of the island to get your hands on a <a>Heart of the Forest<f>?", player.getUsername());
+            return;
+        }
+        if (!ChapterTriggers.done(player, MET)) {
+            setDialogue(player, "first-interaction").thenRun(() -> {
+                ChapterTriggers.fire(player, MET);
+                player.openView(new HuntingNpcCatalogueView("hunting_albert", null));
+            });
+            return;
+        }
+        player.openView(new HuntingNpcCatalogueView("hunting_albert", null));
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return List.of(
+                DialogueSet.builder().key("first-interaction").lines(
+                        "Hello!",
+                        "This device right next to me is a <d>Gravity Condenser<f>.",
+                        "I didn't build it, but I know how to use it.",
+                        "If you bring me the right materials, and the proper fee, then I'll craft you a <5>Pocket Black Hole<f>.").build()
+        ).toArray(DialogueSet[]::new);
     }
 }

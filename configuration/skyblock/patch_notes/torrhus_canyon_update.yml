@@ -50,6 +50,26 @@ sections:
       - "The Helix Log and Ruby Veilshroom Collections are here. Helix Log I unlocks the Travel Scroll to Torrhus Canyon and Ruby Veilshroom I the Travel Scroll to Torrhus Springs. Helix Log IX raises your Foraging level cap by one."
       - "Twelve Fairy Souls are hidden around Torrhus Canyon, and they show up in the Fairy Souls Guide."
       - "Fig Log IX and Mangrove Log IX now also pay their Foraging XP."
+  - heading: "Hunting on Galatea and Torrhus"
+    colour: "<e>"
+    lines:
+      - "Critters now roam Moonglade Marsh and Torrhus Canyon, along with Tikis, Ants, Parched and the Chill and Drowned mobs. Critters ignore normal hits: use the tool for the job."
+      - "Lassos (Abysmal to Everstretch) catch forest critters: throw, wait until the stamina bar runs low, then reel in once per bar. Fishing Nets catch swimming critters, and a Huntaxe plus a Pocket Black Hole captures combat creatures. Every catch gives the creature's Attribute Shard and Hunting XP."
+      - "Fig, Mangrove and Helix trees give critters too: cut them for Phanpyre, Phanflare, Dreadwing, Firefox, Puck and more, or lather a tree with a Pot of Honeycomb (Fun-Sized, Family-Sized, Jumbo, Behemoth) to attract a Honey critter. The Honeycomb Collection unlocks the pots."
+      - "Honeyhives can release an angry Honeybuzz, the Beeheemoth appears every ten minutes or so around the Torrhus Springs, and Monster Hunter now pays Forest Whispers on the Moonglade Marsh."
+      - "The Moonglade Marsh and Torrhus Canyon have their own Bestiary sections."
+  - heading: "Hunters, Shops and the Beacon"
+    colour: "<6>"
+    lines:
+      - "Auryon hands out the Abysmal Lasso and Jaeger the Basic Fishing Net. Albert sells Gravity Condensers, Kiara and Sanger sell Elusive and Reptile Shards, Freddy sells hunting hints, Ant sells the Tier XII Generator Upgrade Stones and Maxim sells Booster Upgrades. Alan, Amaury, Nemo and Sawyer have their shops, and Dax gives a free Small Huntrap."
+      - "Boosters can be applied in the Anvil to Axes, Armor and Equipment: Sweep, Foraging Fortune, Foraging Wisdom, Hunting Wisdom and Fighting, in common and uncommon form."
+      - "Tune the Moonglade Beacon next to Boris for stacks of Fig and Mangrove Fortune that last 20 minutes island-wide, and use a Signal Enhancer to improve it. Tuning can find a Beaconmite Shard."
+      - "Brian runs the Trial of Blue Flames: stand in the soul campfire to start a trial and earn Soul Campfire badges. Swoop now tracks tree milestones and pays Sweep and Foraging XP."
+  - heading: "Fish the Fish and the Desert Temple"
+    colour: "<b>"
+    lines:
+      - "Fish the Fish, Swamp the Fish and Mob the Fish are very rare catches and drops, and the Tomb Floodway on the Moonglade Marsh can give a Flexbone."
+      - "Solve the Desert Temple button puzzle and the statue puzzle on Torrhus Canyon to activate the Starborn Temple."
   - heading: "Torrhus Chapters"
     colour: "<2>"
     lines:

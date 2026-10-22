@@ -1,8 +1,12 @@
 package dev.daweapon.type.skyblockgeneric.foraging;
 
+import dev.daweapon.commons.StringUtility;
+import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
+import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointTreeGifts;
 import dev.daweapon.type.skyblockgeneric.levels.SkyBlockXPSource;
+import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
@@ -33,8 +37,30 @@ public final class TreeGiftMilestones {
     }
 
     public static void recordGift(SkyBlockPlayer player, String treeType) {
-        datapoint(player).increment(treeType);
+        int before = milestones(datapoint(player).count(treeType));
+        int gifts = datapoint(player).increment(treeType);
         syncSkyBlockXP(player);
+        int after = milestones(gifts);
+        for (int tier = before + 1; tier <= after; tier++) awardMilestone(player, treeType, tier);
+    }
+
+    public static int count(SkyBlockPlayer player, String treeType) {
+        return player.getSkyblockDataHandler() == null ? 0 : datapoint(player).count(treeType);
+    }
+
+    public static ItemStatistics sweepStatistics(SkyBlockPlayer player) {
+        if (player.getSkyblockDataHandler() == null) return ItemStatistics.empty();
+        int sweep = TreeMilestoneRewards.totalSweep(datapoint(player).getValue());
+        return sweep == 0 ? ItemStatistics.empty() : ItemStatistics.empty().addBase(ItemStatistic.SWEEP, (double) sweep);
+    }
+
+    private static void awardMilestone(SkyBlockPlayer player, String treeType, int tier) {
+        long xp = TreeMilestoneRewards.foragingXp(treeType, tier);
+        if (xp > 0) player.getSkills().increase(player, SkillCategories.FORAGING, (double) xp);
+        player.getStatistics().invalidateStatistics();
+        player.sendMessage("<a><l>TREE MILESTONE! <r><f>{} Tree Milestone {} <7>(<2>+{} ∮ Sweep<7>, <3>+{} Foraging Experience<7>, <b>+{} SkyBlock XP<7>)",
+                treeType.charAt(0) + treeType.substring(1).toLowerCase(), StringUtility.getAsRomanNumeral(tier),
+                TreeMilestoneRewards.sweepPerTier(treeType), StringUtility.commaify((int) xp), XP_PER_MILESTONE);
     }
 
     public static void syncSkyBlockXP(SkyBlockPlayer player) {

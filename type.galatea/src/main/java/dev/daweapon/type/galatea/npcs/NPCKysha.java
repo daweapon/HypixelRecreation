@@ -6,13 +6,18 @@ import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
+import dev.daweapon.type.generic.entity.npc.trait.NPCAbiphoneTrait;
+import dev.daweapon.type.skyblockgeneric.gui.inventories.hunting.GUIAttributeFusion;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 
-// Decorative Kysha NPC, found in Galatea.
-public class NPCKysha extends HypixelNPC {
+public class NPCKysha extends HypixelNPC implements NPCAbiphoneTrait {
+    public static final String CONTACT = "kysha";
+    private static final List<String> IDLE_LINES = List.of("We are still discovering Shards every year!", "Fusions are infinite!");
+
 
     public NPCKysha() {
         super(new HumanConfiguration() {
@@ -60,7 +65,13 @@ public class NPCKysha extends HypixelNPC {
             setDialogue(player, "first-interaction").thenRun(() -> ChapterTriggers.fire(player, "npc.kysha"));
             return;
         }
-        player.notImplemented();
+        sendNPCMessage(player, IDLE_LINES.get(ThreadLocalRandom.current().nextInt(IDLE_LINES.size())));
+        player.openView(new GUIAttributeFusion());
+    }
+
+    @Override
+    public String getAbiphoneKey() {
+        return CONTACT;
     }
 
     @Override

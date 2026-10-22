@@ -668,7 +668,6 @@ items:
     material: cooked_salmon
     name: "Swamp the Fish"
     rarity: SPECIAL
-    unavailable: "Needs Moonglade Marsh fishing (not built)"
     source: "0.05% (1 in 2,000) replacement of a non-sea-creature catch in Moonglade Marsh"
     lore:
       - "§7I once tried a clear pond. Too shiny."

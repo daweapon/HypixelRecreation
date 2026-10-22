@@ -1639,7 +1639,6 @@ items:
       health: 60
       defense: 55
       pressure_resistance: 10
-    unavailable: "Needs the Nemo NPC shop"
     source: "Bought from Nemo (Visor 50,000, Vest 80,000, Pants 70,000, Shoes 40,000 Coins)"
     lore:
       - "§4❣ §cRequires §aForaging Skill 16§c."
@@ -1663,7 +1662,6 @@ items:
       health: 100
       defense: 100
       pressure_resistance: 10
-    unavailable: "Needs the Nemo NPC shop"
     source: "Bought from Nemo (Visor 50,000, Vest 80,000, Pants 70,000, Shoes 40,000 Coins)"
     lore:
       - "§4❣ §cRequires §aForaging Skill 16§c."
@@ -1687,7 +1685,6 @@ items:
       health: 65
       defense: 60
       pressure_resistance: 10
-    unavailable: "Needs the Nemo NPC shop"
     source: "Bought from Nemo (Visor 50,000, Vest 80,000, Pants 70,000, Shoes 40,000 Coins)"
     lore:
       - "§4❣ §cRequires §aForaging Skill 16§c."
@@ -1709,7 +1706,6 @@ items:
       health: 75
       defense: 85
       pressure_resistance: 10
-    unavailable: "Needs the Nemo NPC shop"
     source: "Bought from Nemo (Visor 50,000, Vest 80,000, Pants 70,000, Shoes 40,000 Coins)"
     lore:
       - "§4❣ §cRequires §aForaging Skill 16§c."

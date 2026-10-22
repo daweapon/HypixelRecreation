@@ -54,6 +54,7 @@ public final class HuntrapService {
             if (pool.stream().allMatch(value -> value.category() == AttributeDefinition.AttributeCategory.FOREST)) {
                 duration = Math.round(duration / (1D + AttributeEffectService.value(player.getHuntingData(), AttributeId.parse("U11")) / 100D));
             }
+            duration = Math.round(duration * (1D - dev.daweapon.type.skyblockgeneric.torrhus.StarbornBenefactors.speedBonus(player)));
             DatapointHunting.PlacedHuntrap trap = new DatapointHunting.PlacedHuntrap(world, position.x(),
                     position.y(), position.z(), tier.name(), now, now + duration, null);
             player.getHuntingData().getTraps().add(trap);

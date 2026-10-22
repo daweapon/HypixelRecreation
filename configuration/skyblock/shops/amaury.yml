@@ -1,0 +1,27 @@
+title: Amaury
+slots: DEFAULT
+entries:
+  - item: SERIOUSLY_DAMAGED_AXE
+    name: "<f>Seriously Damaged Axe"
+    material: wooden_axe
+    cost: { coins: 5000 }
+  - item: DECENT_AXE
+    name: "<a>Decent Axe"
+    material: stone_axe
+    cost: { coins: 1000000, items: { SERIOUSLY_DAMAGED_AXE: 1 } }
+  - item: CANOPY_HELMET
+    name: "<a>Canopy Mask"
+    material: leather_helmet
+    cost: { coins: 120000 }
+  - item: CANOPY_CHESTPLATE
+    name: "<a>Canopy Shirt"
+    material: leather_chestplate
+    cost: { coins: 140000 }
+  - item: CANOPY_LEGGINGS
+    name: "<a>Canopy Pants"
+    material: leather_leggings
+    cost: { coins: 130000 }
+  - item: CANOPY_BOOTS
+    name: "<a>Canopy Sandals"
+    material: leather_boots
+    cost: { coins: 110000 }

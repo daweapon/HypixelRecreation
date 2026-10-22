@@ -1,0 +1,7 @@
+title: Sawyer
+slots: SINGLE_SLOT
+entries:
+  - item: FORAGING_FORTUNE_BOOSTER
+    name: "<f>Common Foraging Fortune Booster"
+    material: paper
+    cost: { coins: 50000 }

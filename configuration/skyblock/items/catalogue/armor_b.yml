@@ -353,6 +353,7 @@ items:
         g: '102'
         b: '51'
   - id: CANOPY_HELMET
+    source: "Bought from Amaury for 120,000 coins"
     material: player_head
     name: "Canopy Mask"
     rarity: UNCOMMON
@@ -360,7 +361,6 @@ items:
       health: 60
       defense: 25
       sweep: 6
-    unavailable: "Needs Galatea foraging content"
     lore:
       - "§4❣ §cRequires §aForaging Skill 12§c."
     components:

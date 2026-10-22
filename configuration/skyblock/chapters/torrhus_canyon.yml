@@ -58,8 +58,6 @@ chapters:
         description: "<a>Freddy<7> knows where just about every <a>Critter<7> that is native to <6>Torrhus Canyon<7> can be found. He will share his wisdom with you - for a price."
         rewards: { desertWhispers: 1000 }
         trigger: freddy.hint
-        available: false
-        unavailable: "Freddy is not built"
     completion:
       hotf: 500
       foraging: 5000
@@ -280,8 +278,6 @@ chapters:
         description: "<2>Sanger<7> is an elusive man who sells <9>Shards<7> from the <d>Evasive<7> family. He can be pretty hard to find, though, as he doesn't stick around in one place for more than a day."
         rewards: { desertWhispers: 5000 }
         trigger: sanger.buy
-        available: false
-        unavailable: "Sanger is not built"
       - id: t5_andrea_milestone
         title: "Claim a Safari Milestone from Andrea"
         description: "Hunting <a>Critters<7> in the <2>Critter Safari<7> will progress you through <a>Andrea's<7> various <2>Safari Milestones<7>. Claim them to upgrade your <f>Safari Belt<7>!"
@@ -302,8 +298,6 @@ chapters:
         description: "<6>Maxim<7> sells <9>Booster Upgrades<7>, which can be applied to a piece of <2>Foraging Gear<7> with an active <f>Common Booster<7> to upgrade it into an <a>Uncommon Booster<7>, increasing its stats."
         rewards: { desertWhispers: 5000 }
         trigger: maxim.booster
-        available: false
-        unavailable: "Maxim and Booster Upgrades are not built"
     completion:
       hotf: 2000
       foraging: 30000
@@ -412,15 +406,11 @@ chapters:
         description: "<2>Ant<7> sells a number of <6>Tier XII Upgrade Stones<7> for <a>Foraging Minions<7>."
         rewards: { desertWhispers: 10000 }
         trigger: ant.stone
-        available: false
-        unavailable: "The Ant NPC is not built"
       - id: t7_starborn_temple
         title: "Activate the Starborn Temple"
         description: "Some believe an ancient <d>Starborn Temple<7> sits in the depths of <3>Torrhus Springs<7>."
         rewards: { desertWhispers: 10000 }
         trigger: starborn.activate
-        available: false
-        unavailable: "The Starborn Temple is not built"
       - id: t7_safari_belt_mythic
         title: "Upgrade your Safari Belt to <d>MYTHIC<base>"
         description: "Max out <a>Andrea's<7> <2>Safari Milestones<7> to make your <f>Safari Belt<7> as strong as possible!"

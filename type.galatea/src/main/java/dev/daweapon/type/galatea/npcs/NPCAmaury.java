@@ -5,8 +5,9 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.shop.catalogue.CatalogueShopView;
 
-// NPC found in Galatea.
 public class NPCAmaury extends HypixelNPC {
 
     public NPCAmaury() {
@@ -27,6 +28,11 @@ public class NPCAmaury extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<b>Amaury");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(-578.5, 114, 2, 104, 0);
             }
@@ -40,6 +46,6 @@ public class NPCAmaury extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-        event.player().notImplemented();
+        event.player().openView(new CatalogueShopView("amaury"));
     }
 }

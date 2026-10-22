@@ -39,6 +39,7 @@ public class AnvilCombineRegistry {
         dev.daweapon.type.skyblockgeneric.item.utility.PocketSackInASack.registerAnvilCombine();
         dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneContactsTrio.registerAnvilCombine();
         dev.daweapon.type.skyblockgeneric.accessory.enrichment.Enrichments.registerAnvilCombine();
+        dev.daweapon.type.skyblockgeneric.foraging.booster.ForagingBoosters.registerAnvilCombines();
         register("HOT_POTATO_BOOK", new AnvilCombineHandler(
                 (upgradeItem, sacrificeItem) -> {
                     HotPotatoableComponent hotPotatoable = upgradeItem.getComponent(HotPotatoableComponent.class);

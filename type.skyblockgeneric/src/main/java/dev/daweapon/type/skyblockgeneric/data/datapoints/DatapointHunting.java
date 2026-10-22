@@ -26,6 +26,7 @@ public class DatapointHunting extends SkyBlockDatapoint<DatapointHunting.Hunting
             JSONArray traps = new JSONArray();
             value.traps.forEach(trap -> traps.put(trap.toJson()));
             json.put("traps", traps);
+            json.put("counters", new JSONObject(value.counters));
             return json.toString();
         }
 
@@ -37,6 +38,7 @@ public class DatapointHunting extends SkyBlockDatapoint<DatapointHunting.Hunting
             readIntMap(object.optJSONObject("shards"), data.shards);
             readIntMap(object.optJSONObject("syphoned"), data.syphoned);
             readLongMap(object.optJSONObject("discoveredAt"), data.discoveredAt);
+            readLongMap(object.optJSONObject("counters"), data.counters);
             JSONArray disabled = object.optJSONArray("disabled");
             if (disabled != null) for (int i = 0; i < disabled.length(); i++) data.disabled.add(disabled.getString(i));
             JSONArray traps = object.optJSONArray("traps");
@@ -48,7 +50,7 @@ public class DatapointHunting extends SkyBlockDatapoint<DatapointHunting.Hunting
         @Override
         public HuntingData clone(HuntingData value) {
             return new HuntingData(new HashMap<>(value.shards), new HashMap<>(value.syphoned),
-                    new HashSet<>(value.disabled), new HashMap<>(value.discoveredAt), new ArrayList<>(value.traps));
+                    new HashSet<>(value.disabled), new HashMap<>(value.discoveredAt), new ArrayList<>(value.traps), new HashMap<>(value.counters));
         }
 
         private void readIntMap(JSONObject json, Map<String, Integer> destination) {
@@ -77,6 +79,20 @@ public class DatapointHunting extends SkyBlockDatapoint<DatapointHunting.Hunting
         private Set<String> disabled = new HashSet<>();
         private Map<String, Long> discoveredAt = new HashMap<>();
         private List<PlacedHuntrap> traps = new ArrayList<>();
+        private Map<String, Long> counters = new HashMap<>();
+
+        public long counter(String key) {
+            return counters.getOrDefault(key, 0L);
+        }
+
+        public void setCounter(String key, long value) {
+            if (value == 0) counters.remove(key);
+            else counters.put(key, value);
+        }
+
+        public long incrementCounter(String key) {
+            return counters.merge(key, 1L, Long::sum);
+        }
 
         public int shardCount(String id) {
             return shards.getOrDefault(id, 0);

@@ -5,9 +5,14 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.galatea.gui.GUIBoosterInfo;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
+import dev.daweapon.type.skyblockgeneric.shop.catalogue.CatalogueShopView;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// Decorative Sawyer NPC, found in Galatea.
 public class NPCSawyer extends HypixelNPC {
+    private static final String FIRST_TRIGGER = "npc.sawyer";
 
     public NPCSawyer() {
         super(new HumanConfiguration() {
@@ -27,6 +32,11 @@ public class NPCSawyer extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<b>Sawyer");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(-691.5, 121, 81.5, 135, 0);
             }
@@ -40,6 +50,33 @@ public class NPCSawyer extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-        event.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (isInDialogue(player)) return;
+        if (player.isSneaking()) {
+            player.openView(new GUIBoosterInfo());
+            return;
+        }
+        if (ChapterTriggers.done(player, FIRST_TRIGGER)) {
+            player.openView(new CatalogueShopView("sawyer"));
+            return;
+        }
+        setDialogue(player, "first-interaction").thenRun(() -> {
+            ChapterTriggers.fire(player, FIRST_TRIGGER);
+            player.openView(new CatalogueShopView("sawyer"));
+        });
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.builder().key("first-interaction").lines(
+                        "Hey there!",
+                        "Have you encountered any <9>boosters<f>?",
+                        "They're special enhancements that can be applied to your <2>Foraging Gear<f>.",
+                        "You can attach them to any item unlocked by the <a>Foraging Skill <f>right at an anvil.",
+                        "No need to choose just one - you can stack multiple boosters on the same item!",
+                        "I've got a Foraging Fortune Booster if you're interested!"
+                ).build()
+        };
     }
 }

@@ -5,9 +5,15 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import java.util.List;
 
-// Decorative Oden NPC, found in Galatea.
 public class NPCOden extends HypixelNPC {
+    private static final List<String> BLACK_HOLES = List.of("SMALL_POCKET_BLACK_HOLE", "MEDIUM_POCKET_BLACK_HOLE");
+
 
     public NPCOden() {
         super(new HumanConfiguration() {
@@ -27,6 +33,11 @@ public class NPCOden extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<b>Oden");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(-584.5, 113, -40.5, 49, 0);
             }
@@ -40,6 +51,31 @@ public class NPCOden extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-        event.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (isInDialogue(player)) return;
+        if (!HotfService.isUnlocked(player)) {
+            player.sendMessage("<e>[NPC] <b>Oden<f>: <7>{}<f>! Have you talked to <b>Hina <f>at the front of the island to get your hands on a <a>Heart of the Forest<f>?", player.getUsername());
+            return;
+        }
+        setDialogue(player, ownsBlackHole(player) ? "idle" : "black-hole");
+    }
+
+    private static boolean ownsBlackHole(SkyBlockPlayer player) {
+        for (String id : BLACK_HOLES) {
+            ItemType type = ItemType.get(id);
+            if (type != null && player.countItem(type) > 0) return true;
+        }
+        return false;
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.builder().key("black-hole").lines(
+                        "As you can see, the best way to hunt <c>Combat <f>creatures is with a <5>Pocket Black Hole<f>.",
+                        "If you want one, you should go talk to <b>Albert<f>, in the Village."
+                ).build(),
+                DialogueSet.builder().key("idle").lines("I'm still trying to hone my Hunting Skills.").build()
+        };
     }
 }

@@ -174,7 +174,7 @@ public sealed interface CatchPayload {
             ctx.player().addAndUpdateItem(type, amount);
             ctx.player().getCollection().increase(ctx.player(), type, amount);
             Text prefix = corrupted ? Text.of("<5><l>CORRUPTED! ") : Text.of("<d><l>WONDROUS CATCH! ");
-            ctx.player().sendMessage(prefix.append("<7>You found <a>{}<7>!", itemId));
+            ctx.player().sendMessage(prefix.append("<7>You found <a>{}<7>!", new SkyBlockItem(type).getDisplayName()));
         }
     }
 }

@@ -6,6 +6,8 @@ import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
 import dev.daweapon.type.skyblockgeneric.elections.ElectionManager;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import java.time.LocalDate;
+import java.time.ZoneOffset;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.IntSupplier;
@@ -14,7 +16,8 @@ public record PurchaseLimit(String id, int limit, Period period) {
 
     public enum Period {
         MAYORSHIP(() -> ElectionManager.getElectionData().getMayorElectedYear()),
-        YEAR(SkyBlockCalendar::getYear);
+        YEAR(SkyBlockCalendar::getYear),
+        DAY(() -> (int) LocalDate.now(ZoneOffset.UTC).toEpochDay());
 
         private final IntSupplier id;
 

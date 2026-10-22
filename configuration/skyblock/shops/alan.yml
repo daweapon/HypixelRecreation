@@ -1,0 +1,11 @@
+title: Alan
+slots: DEFAULT
+entries:
+  - item: VENATOR_GENESIS
+    name: "<a>Worn Huntaxe - Genesis"
+    material: wooden_axe
+    cost: { coins: 25000 }
+  - item: SILVA_DOMINUS
+    name: "<a>Sharpened Huntaxe - Dominus"
+    material: stone_axe
+    cost: { coins: 300000, items: { VENATOR_GENESIS: 1 } }

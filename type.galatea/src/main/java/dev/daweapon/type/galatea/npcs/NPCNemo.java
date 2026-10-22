@@ -5,9 +5,13 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.galatea.gui.GUINemoShop;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// Decorative Nemo NPC, found in Galatea.
 public class NPCNemo extends HypixelNPC {
+    private static final String FIRST_TRIGGER = "npc.nemo";
 
     public NPCNemo() {
         super(new HumanConfiguration() {
@@ -27,6 +31,11 @@ public class NPCNemo extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<b>Nemo");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(-619.5, 87, -6.5, -45, 0);
             }
@@ -40,6 +49,27 @@ public class NPCNemo extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-        event.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (isInDialogue(player)) return;
+        if (ChapterTriggers.done(player, FIRST_TRIGGER)) {
+            player.openView(new GUINemoShop());
+            return;
+        }
+        setDialogue(player, "interaction").thenRun(() -> {
+            ChapterTriggers.fire(player, FIRST_TRIGGER);
+            player.openView(new GUINemoShop());
+        });
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.builder().key("interaction").lines(
+                        "Have you explored... <o>*inhales*</o>... the depths of the lake yet?",
+                        "The deeper you venture... <o>*exhales*</o>... the greater the pressure becomes.",
+                        "It's essential... <o>*inhales*</o>... to equip yourself with ample... <o>*exhales*</o>... <3>⚶ Respiration <f>and <9>❍ Pressure Resistance<f>.",
+                        "Without these... <o>*inhales*</o>... accessing the lower chambers will be <o>*exhales*</o>... impossible."
+                ).build()
+        };
     }
 }

@@ -5,8 +5,16 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import java.util.List;
+import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.skyblockgeneric.hunting.npc.HuntingToolClaimView;
+import dev.daweapon.type.skyblockgeneric.hunting.npc.HuntingTutorialProgress;
+import java.util.concurrent.ThreadLocalRandom;
 
-// NPC found in Galatea.
 public class NPCAuryon extends HypixelNPC {
 
     public NPCAuryon() {
@@ -27,6 +35,11 @@ public class NPCAuryon extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<b>Auryon");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(-557.5, 111, 48.5, 135, 0);
             }
@@ -38,8 +51,79 @@ public class NPCAuryon extends HypixelNPC {
         });
     }
 
+    private static final String MET = "npc.auryon";
+    private static final String CLAIMED = "auryon.lasso";
+    private static final String HUNTED = "auryon.hunted";
+    private static final String PHANPYRE = "PHANPYRE";
+
     @Override
     public void onClick(NPCInteractEvent event) {
-        event.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (isInDialogue(player)) return;
+        if (!HotfService.isUnlocked(player)) {
+            player.sendMessage("<e>[NPC] <b>Auryon<f>: <7>{}<f>! Have you talked to <b>Hina <f>at the front of the island to get your hands on a <a>Heart of the Forest<f>?", player.getUsername());
+            return;
+        }
+        if (!ChapterTriggers.done(player, MET)) {
+            setDialogue(player, "first-interaction").thenRun(() -> {
+                ChapterTriggers.fire(player, MET);
+                player.openView(claimView());
+            });
+            return;
+        }
+        if (!ChapterTriggers.done(player, CLAIMED)) {
+            player.openView(claimView());
+            return;
+        }
+        if (!HuntingTutorialProgress.hunted(player, PHANPYRE)) {
+            if (player.getAmountInInventory(ItemType.ABYSMAL_LASSO) == 0) {
+                player.openView(claimView());
+                return;
+            }
+            setDialogue(player, "before-hunt");
+            return;
+        }
+        if (!ChapterTriggers.done(player, HUNTED)) {
+            setDialogue(player, "after-hunt").thenRun(() -> ChapterTriggers.fire(player, HUNTED));
+            return;
+        }
+        if (!ChapterTriggers.done(player, "npc.david")) {
+            setDialogue(player, "before-david");
+            return;
+        }
+        setDialogue(player, ThreadLocalRandom.current().nextBoolean() ? "idle-phanpyre" : "idle-lasso");
+    }
+
+    private HuntingToolClaimView claimView() {
+        return new HuntingToolClaimView("Abysmal Lasso", ItemType.ABYSMAL_LASSO, false, player -> {
+            ChapterTriggers.fire(player, CLAIMED);
+            setDialogue(player, "after-accept");
+        });
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return List.of(
+                DialogueSet.builder().key("first-interaction").lines(
+                        "Hello!",
+                        "I was cutting a tree when a <c>Phanpyre <f>suddenly appeared.",
+                        "Hunting <2>Forest <f>creatures is very different from <9>Water <f>or <c>Combat <f>creatures.",
+                        "For this one, you need a Lasso.",
+                        "I have a spare one here, take it.").build(),
+                DialogueSet.builder().key("after-accept").lines(
+                        "Great! Now throw the Lasso at the <c>Phanpyre<f>!",
+                        "When its stamina bar empties, <a>right-click <f>to reel it in!").build(),
+                DialogueSet.builder().key("before-hunt").lines(
+                        "Great, now throw the Lasso at the Phanpyre and hold on!",
+                        "Once their stamina bar is down, <e><l>RIGHT CLICK <r><f>your Lasso to Reel!").build(),
+                DialogueSet.builder().key("after-hunt").lines(
+                        "Alright alright alright!",
+                        "That's what I'm talking about!",
+                        "This Lasso isn't the best, but it gets the job done.",
+                        "You should head back to <b>David Hunterborough<f>.").build(),
+                DialogueSet.builder().key("before-david").lines("You should go back to <b>David Hunterborough<f>.").build(),
+                DialogueSet.builder().key("idle-phanpyre").lines("I keep finding Phanpyres, but what I'm really looking for are Dreadwings.").build(),
+                DialogueSet.builder().key("idle-lasso").lines("Have you got a better Lasso yet? I'm still looking for a better one myself.").build()
+        ).toArray(DialogueSet[]::new);
     }
 }

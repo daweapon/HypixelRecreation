@@ -37,12 +37,18 @@ final class QualityTreasureRoller {
         UUID uuid = context.player().getUuid();
         CatchPayload forced = forced(uuid, table);
         if (forced != null) return forced;
+        Optional<CatchPayload> pity = FishFamilyDrops.pity(context.player(), table.id(), NORMAL_XP);
+        if (pity.isPresent()) return pity.get();
 
-        double treasureChance = FishingLootResolver.playerStatistic(context, ItemStatistic.TREASURE_CHANCE);
+        double treasureChance = FishingLootResolver.playerStatistic(context, ItemStatistic.TREASURE_CHANCE)
+                + TombFishing.treasureChanceBonus(table.id());
         if (context.bait() != null) treasureChance += context.bait().getTreasureChanceBonus();
         if (LootRoll.roll(uuid, null, treasureChance)) {
             TreasureQuality quality = pickQuality(uuid, table.treasureQualities(), qualityBonus(context));
+            FishFamilyDrops.countTreasure(context.player(), table.id());
             if (rollTreasureDye(uuid, quality)) return treasureDye(quality);
+            Optional<CatchPayload> flexbone = TombFishing.flexbone(context, table.id(), quality.name(), TREASURE_XP);
+            if (flexbone.isPresent()) return flexbone.get();
             Optional<CatchPayload> overridden = hotspotOverride(context, quality);
             if (overridden.isPresent()) return overridden.get();
             List<WeightedLoot> pool = available(quality.entries());
@@ -51,6 +57,8 @@ final class QualityTreasureRoller {
                 return new CatchPayload.Treasure(loot.itemId(), amount(loot), TREASURE_XP, quality.name());
             }
         }
+        Optional<CatchPayload> fish = FishFamilyDrops.chance(context.player(), table.id(), NORMAL_XP);
+        if (fish.isPresent()) return fish.get();
         List<WeightedLoot> normal = available(table.weightedItems());
         WeightedLoot loot = LootRoll.pick(uuid, normal, QualityTreasureRoller::itemOf, WeightedLoot::weight, ThreadLocalRandom.current());
         return new CatchPayload.Item(loot.itemId(), amount(loot), NORMAL_XP, false);
@@ -59,7 +67,10 @@ final class QualityTreasureRoller {
     static Optional<CatchPayload> treasure(FishingContext context, FishingTableDefinition table) {
         UUID uuid = context.player().getUuid();
         TreasureQuality quality = pickQuality(uuid, table.treasureQualities(), qualityBonus(context));
+        FishFamilyDrops.countTreasure(context.player(), table.id());
         if (rollTreasureDye(uuid, quality)) return Optional.of(treasureDye(quality));
+        Optional<CatchPayload> flexbone = TombFishing.flexbone(context, table.id(), quality.name(), TREASURE_XP);
+        if (flexbone.isPresent()) return flexbone;
         Optional<CatchPayload> overridden = hotspotOverride(context, quality);
         if (overridden.isPresent()) return overridden;
         List<WeightedLoot> pool = available(quality.entries());

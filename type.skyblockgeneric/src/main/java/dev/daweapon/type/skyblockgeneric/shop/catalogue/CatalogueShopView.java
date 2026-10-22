@@ -46,7 +46,11 @@ public class CatalogueShopView extends ShopView {
         if (entry.itemId().equals("BIOFUEL")) shopItem.onPurchase(GardenQuests::fuelPurchased);
         ReputationRequirement requirement = entry.requirement();
         if (requirement != null) shopItem.lockedWhen(viewer -> requirement.isMet(viewer) ? null : requirement.lockLine());
-        return shopItem;
+        return decorate(entry, shopItem, player);
+    }
+
+    protected ShopItem decorate(CatalogueEntry entry, ShopItem item, SkyBlockPlayer player) {
+        return item;
     }
 
     @Override

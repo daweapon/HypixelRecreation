@@ -3187,8 +3187,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U48",
@@ -3902,8 +3901,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U71",
@@ -5408,8 +5406,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "R42",
@@ -6721,8 +6718,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "R88",
@@ -7671,8 +7667,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "E26",

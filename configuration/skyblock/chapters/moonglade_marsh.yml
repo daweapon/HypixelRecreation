@@ -136,8 +136,6 @@ chapters:
         description: "<b>Kiara<7> sells Amphibians and Reptiles, useful for <5>Fusions<7>!"
         rewards: { hunting: 1000 }
         trigger: kiara.buy
-        available: false
-        unavailable: "Kiara's shard shop is not built"
       - id: cod
         title: "Catch Cod Shards"
         description: "<f>Cods<7> faint when they spin enough!"
@@ -153,8 +151,6 @@ chapters:
         description: "The beacon can be found near the old tower."
         rewards: { hotf: 200 }
         trigger: beacon.tune
-        available: false
-        unavailable: "Beacons are not built"
       - id: rosemary
         title: "Level up a perk in Rosemary's Shop"
         description: "<b>Rosemary<7> might have the best view of the island from up there."
@@ -198,8 +194,6 @@ chapters:
         description: "Treasure chances are increased in the <c>Tomb Floodway<7>."
         rewards: { fishing: 3000 }
         trigger: fish.flexbone
-        available: false
-        unavailable: "Flexbones cannot be fished up yet"
       - id: hideonleaf
         title: "Catch Hideonleaf Shards"
         description: "<f>Shulkers<7> get easily bothered if you stand on their shell."
@@ -235,8 +229,6 @@ chapters:
         description: "<3>Boosters<7> can be applied on any Foraging gear!"
         rewards: { foraging: 4000 }
         trigger: booster.apply
-        available: false
-        unavailable: "Boosters cannot be applied yet"
     completion:
       hotf: 5000
       foraging: 50000
@@ -265,8 +257,6 @@ chapters:
         description: "Legends say a <d>Starborn Temple<7> can be found in a secret under water room."
         rewards: { whispers: 10000 }
         trigger: starborn.benefactor
-        available: false
-        unavailable: "The Starborn Temple is not built"
       - id: pressure_resistance
         title: "Get at least 100 Pressure Resistance"
         description: "There are layers to this lake, with rooms deep beneath it."
@@ -310,15 +300,11 @@ chapters:
         description: "You should apply <3>boosters<7> on all your Foraging gear."
         rewards: { foraging: 5000 }
         trigger: booster.three
-        available: false
-        unavailable: "Boosters cannot be applied yet"
       - id: upgrade_beacon
         title: "Upgrade a Beacon"
         description: "<9>Beaconmites<7> allow you to find Signal Enhancers, but how can you find a <9>Beaconmite<7>..."
         rewards: { whispers: 10000 }
         trigger: beacon.upgrade
-        available: false
-        unavailable: "Beacons are not built"
       - id: agatha_level_4
         title: "Reach Agatha Level 4"
         description: "Friendship level up!"
@@ -330,8 +316,6 @@ chapters:
         description: "<3>Brian<7> is just so much cooler than <3>Ryan<7>."
         rewards: { whispers: 10000 }
         trigger: brian.tier10
-        available: false
-        unavailable: "Brian's challenge is not built"
       - id: hotf_tier_4
         title: "Reach HOTF Tier 4"
         description: "Almost there!"
@@ -372,8 +356,6 @@ chapters:
         description: "Those bugs can rarely be found inside beacons!"
         rewards: { hunting: 2000 }
         trigger: beaconmite.find
-        available: false
-        unavailable: "Beacons are not built"
       - id: invisibug
         title: "Catch an Invisibug"
         description: "???"
@@ -426,8 +408,6 @@ chapters:
         description: "<6>Jade Dragon<7>'s favorite."
         rewards: { whispers: 40000 }
         trigger: shiniest.purchase
-        available: false
-        unavailable: "Agatha's Shiniest shop is not built"
       - id: tree_the_fish
         title: "Find a Tree the Fish"
         description: "Those can rarely be found in <9>Tree Gifts<7>."
@@ -439,15 +419,13 @@ chapters:
         description: "Those can rarely be found while fishing in <2>Galatea<7>."
         rewards: { fishing: 10000 }
         trigger: find.swamp_the_fish
-        available: false
-        unavailable: "Swamp the Fish has no source yet"
+        live: "items:SWAMP_THE_FISH"
       - id: mob_the_fish
         title: "Find a Mob the Fish"
         description: "Those can rarely be found while killing monsters while on <2>Galatea<7>."
         rewards: { combat: 10000 }
         trigger: find.mob_the_fish
-        available: false
-        unavailable: "Mob the Fish has no source yet"
+        live: "items:MOB_THE_FISH"
       - id: coral
         title: "Show 15 Different Fish to Coral"
         description: "Coral the Fish?"

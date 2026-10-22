@@ -5,9 +5,13 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.galatea.gui.GUIDax;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// Decorative Dax NPC, found in Galatea.
 public class NPCDax extends HypixelNPC {
+    private static final String MET_TRIGGER = "npc.dax";
 
     public NPCDax() {
         super(new HumanConfiguration() {
@@ -27,6 +31,11 @@ public class NPCDax extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<b>Dax");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(-705.5, 94, 33.5, 45, 0);
             }
@@ -40,6 +49,38 @@ public class NPCDax extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-        event.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (isInDialogue(player)) return;
+        if (ChapterTriggers.done(player, GUIDax.CLAIMED_TRIGGER)) {
+            setDialogue(player, "claimed");
+            return;
+        }
+        if (ChapterTriggers.done(player, MET_TRIGGER)) {
+            player.openView(new GUIDax());
+            return;
+        }
+        setDialogue(player, "first-interaction").thenRun(() -> {
+            ChapterTriggers.fire(player, MET_TRIGGER);
+            player.openView(new GUIDax());
+        });
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.builder().key("first-interaction").lines(
+                        "Have you got yourself a <c>Huntrap <f>yet?",
+                        "I <o>love</o> these things.",
+                        "Just set one up on any island, walk away, and when you come back, something's waiting for you!",
+                        "You can place them where monsters tend to show up, or even dunk one underwater if you're feeling bold.",
+                        "I've caught creatures I'd never be able to snag on my own.",
+                        "Ooh! Look! I think I just caught something!",
+                        "Anyways, maybe I should give you my spare <c>Huntrap<f>..."
+                ).build(),
+                DialogueSet.builder().key("claimed").lines(
+                        "I've been cutting Fig Trees lately to gather more Tender Wood.",
+                        "Once I have enough I will craft myself better Huntraps!"
+                ).build()
+        };
     }
 }

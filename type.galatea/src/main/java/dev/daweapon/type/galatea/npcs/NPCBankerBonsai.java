@@ -5,8 +5,9 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.gui.inventories.banker.GUIBanker;
 
-// Banker NPC found in Galatea.
 public class NPCBankerBonsai extends HypixelNPC {
 
     public NPCBankerBonsai() {
@@ -27,6 +28,11 @@ public class NPCBankerBonsai extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<b>Banker Bonsai");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(-598.719, 116, -37.312, 6, 0);
             }
@@ -40,6 +46,6 @@ public class NPCBankerBonsai extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-        event.player().notImplemented();
+        new GUIBanker().open(event.player());
     }
 }

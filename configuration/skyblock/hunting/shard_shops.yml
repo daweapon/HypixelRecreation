@@ -1,0 +1,20 @@
+shops:
+  sanger:
+    title: Sanger's Shop
+    slots: [20, 21, 22, 23, 24]
+    contactBonus: 0
+    offers:
+      - { shard: U70, coins: 250000, stock: 10 }
+      - { shard: U47, coins: 250000, stock: 10 }
+      - { shard: R87, coins: 500000, stock: 6 }
+      - { shard: R40, coins: 500000, stock: 6 }
+      - { shard: E25, coins: 750000, stock: 3 }
+  kiara:
+    title: Kiara
+    slots: [20, 21, 23, 24]
+    contactBonus: 1
+    offers:
+      - { shard: U21, coins: 100000, stock: 10 }
+      - { shard: R45, coins: 300000, stock: 6 }
+      - { shard: R53, coins: 350000, stock: 6 }
+      - { shard: R61, coins: 600000, stock: 4 }
