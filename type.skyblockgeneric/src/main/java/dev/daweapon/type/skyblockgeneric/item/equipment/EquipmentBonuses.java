@@ -78,7 +78,7 @@ public final class EquipmentBonuses {
                     .withBase(ItemStatistic.COMBAT_WISDOM, SHRIVELED_COMBAT_WISDOM)
                     .withBase(ItemStatistic.MAGIC_FIND, SHRIVELED_MAGIC_FIND).build());
         }
-        if (situation.region() == RegionType.MUSHROOM_DESERT && worn.containsKey("PELT_BELT")) {
+        if (dev.daweapon.type.skyblockgeneric.trapper.MushroomDesert.contains(situation.region()) && worn.containsKey("PELT_BELT")) {
             result = ItemStatistics.add(result, ItemStatistics.builder().withBase(ItemStatistic.SPEED, PELT_BELT_SPEED).build());
         }
         if (worn.containsKey("DRAGONFUSE_GLOVE") && ASPECT_OF_THE_DRAGONS.equals(situation.heldItemId())) {

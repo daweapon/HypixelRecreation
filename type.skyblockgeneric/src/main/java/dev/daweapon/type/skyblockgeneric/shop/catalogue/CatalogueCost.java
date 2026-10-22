@@ -12,6 +12,7 @@ import dev.daweapon.type.skyblockgeneric.shop.type.CopperShopPrice;
 import dev.daweapon.type.skyblockgeneric.shop.type.EssenceShopPrice;
 import dev.daweapon.type.skyblockgeneric.shop.type.GemShopPrice;
 import dev.daweapon.type.skyblockgeneric.shop.type.KernelShopPrice;
+import dev.daweapon.type.skyblockgeneric.shop.type.PeltShopPrice;
 import dev.daweapon.type.skyblockgeneric.shop.type.PestShopPrice;
 import dev.daweapon.type.skyblockgeneric.shop.type.ItemShopPrice;
 import dev.daweapon.type.skyblockgeneric.shop.type.MinionShopPrice;
@@ -22,12 +23,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public record CatalogueCost(double coins, int gems, int bits, int copper, int pests, int kernels, Map<String, Integer> items, Map<String, Integer> minions, @Nullable String essenceType, int essence) {
+public record CatalogueCost(double coins, int gems, int bits, int copper, int pests, int kernels, int pelts, Map<String, Integer> items, Map<String, Integer> minions, @Nullable String essenceType, int essence) {
 
     @SuppressWarnings("unchecked")
     public static CatalogueCost parse(@Nullable Object raw) {
         if (!(raw instanceof Map<?, ?> map)) {
-            return new CatalogueCost(0, 0, 0, 0, 0, 0, Map.of(), Map.of(), null, 0);
+            return new CatalogueCost(0, 0, 0, 0, 0, 0, 0, Map.of(), Map.of(), null, 0);
         }
         Map<String, Integer> items = new LinkedHashMap<>();
         Object rawItems = map.get("items");
@@ -46,6 +47,7 @@ public record CatalogueCost(double coins, int gems, int bits, int copper, int pe
                 number(map.get("copper")).intValue(),
                 number(map.get("pests")).intValue(),
                 number(map.get("kernels")).intValue(),
+                number(map.get("pelts")).intValue(),
                 items,
                 minions,
                 essence.isEmpty() ? null : String.valueOf(essence.get("type")),
@@ -85,6 +87,7 @@ public record CatalogueCost(double coins, int gems, int bits, int copper, int pe
         if (copper > 0) parts.add(new CopperShopPrice(copper));
         if (pests > 0) parts.add(new PestShopPrice(pests));
         if (kernels > 0) parts.add(new KernelShopPrice(kernels));
+        if (pelts > 0) parts.add(new PeltShopPrice(pelts));
         if (essence > 0 && essenceKind() != null) parts.add(new EssenceShopPrice(essenceKind(), essence));
         items.forEach((id, amount) -> parts.add(new ItemShopPrice(ItemType.get(id), amount)));
         minions.forEach((id, tier) -> parts.add(new MinionShopPrice(ItemType.get(id), tier)));
@@ -101,6 +104,7 @@ public record CatalogueCost(double coins, int gems, int bits, int copper, int pe
         if (copper > 0) lines.add(Text.of("<c>{} Copper", StringUtility.commaify(copper)));
         if (pests > 0) lines.add(Text.of("<2>{} Pests", StringUtility.commaify(pests)));
         if (kernels > 0) lines.add(Text.of("<e>{} Kernels", StringUtility.commaify(kernels)));
+        if (pelts > 0) lines.add(Text.of("<5>{} Pelt{}", StringUtility.commaify(pelts), pelts == 1 ? "" : "s"));
         if (essence > 0) lines.add(Text.of("<d>{} {} Essence", StringUtility.commaify(essence), StringUtility.toNormalCase(essenceType)));
         items.forEach((id, amount) -> lines.add(Text.of("<a>{} <8>x{}", StringUtility.toNormalCase(id), amount)));
         minions.forEach((id, tier) -> lines.add(Text.of("<9>{} {}", StringUtility.toNormalCase(id), StringUtility.getAsRomanNumeral(tier))));

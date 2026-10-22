@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "farming-islands"
+    name: "The Farming Islands Update"
+    date: "22nd October 2026"
+    material: wheat
+    title: "The Farming Islands Update"
+    book: "farming_islands_update.yml"
   - version: "private-island-portals"
     name: "The Private Island Update"
     date: "21st October 2026"

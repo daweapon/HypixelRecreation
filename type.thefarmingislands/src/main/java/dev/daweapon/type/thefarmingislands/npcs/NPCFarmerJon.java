@@ -41,6 +41,18 @@ public class NPCFarmerJon extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        if (isInDialogue(e.player())) return;
+        setDialogue(e.player(), "hello");
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.builder().key("hello").lines(
+                        "I've been living on this island for 10 years.",
+                        "Before that, I used to compete in sugar cane contests.",
+                        "I've now retired to this house to live out the rest of my days."
+                ).build()
+        };
     }
 }

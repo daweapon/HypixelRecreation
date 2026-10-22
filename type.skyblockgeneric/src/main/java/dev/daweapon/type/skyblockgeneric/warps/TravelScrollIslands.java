@@ -31,7 +31,7 @@ public enum TravelScrollIslands {
 			(unused) -> "Group up with friends and take on challenging Dungeons.", ServerType.SKYBLOCK_DUNGEON_HUB),
 	THE_BARN("barn", "<a>The Barn", TravelScrollType.Textures.BARN,
 			(unused) -> "Gather crops and fight the animals that roam the Farming Islands.", ServerType.SKYBLOCK_THE_FARMING_ISLANDS,
-			List.of(TravelScrollType.FARMING_MUSHROOM_DESERT, TravelScrollType.FARMING_TRAPPERS_DEN)),
+			List.of(TravelScrollType.FARMING_MUSHROOM_DESERT, TravelScrollType.FARMING_TRAPPERS_DEN, TravelScrollType.FARMING_GLOWING_MUSHROOM_CAVE)),
 	THE_PARK("park", "<a>The Park", TravelScrollType.Textures.PARK,
 			(unused) -> "Chop down trees and explore the forests of the Park.", ServerType.SKYBLOCK_THE_PARK,
 			TravelScrollType.THE_PARK, List.of(TravelScrollType.PARK_HOWLING_CAVE, TravelScrollType.PARK_JUNGLE_ISLAND)),

@@ -1,7 +1,14 @@
 package dev.daweapon.type.thefarmingislands.npcs;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.event.ClickEvent;
+import dev.daweapon.commons.StringUtility;
+import dev.daweapon.type.generic.entity.npc.NPCOption;
+import dev.daweapon.type.skyblockgeneric.hiker.HikerQuest;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.type.thefarmingislands.treasurehunter.TreasureHunter;
+import dev.daweapon.type.thefarmingislands.treasurehunter.TreasureHunterConfig;
+import net.kyori.adventure.text.format.NamedTextColor;
+import java.util.List;
+import java.util.function.Consumer;
 import net.minestom.server.coordinate.Pos;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
@@ -41,6 +48,46 @@ public class NPCTreasureHunter extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        TreasureHunterConfig.Hint hint = TreasureHunter.activeHint(player);
+        if (hint != null) {
+            sendNPCMessage(player, "Did you forget the tip?");
+            sendNPCMessage(player, "Just for you I'll tell you it again at no charge!");
+            sendNPCMessage(player, hint.text());
+            sendNPCMessage(player, "Remember, you need to DIG to find the treasure!");
+            return;
+        }
+        long cooldown = TreasureHunter.millisOnCooldown(player, System.currentTimeMillis());
+        if (cooldown > 0) {
+            sendNPCMessage(player, "Sorry I dont have any more info.");
+            sendNPCMessage(player, "Come back in <b>{}<f> SkyBlock days and I might know something new.", Math.max(1, Math.ceilDiv(cooldown, HikerQuest.SKYBLOCK_DAY_MILLIS)));
+            return;
+        }
+        int tierIndex = TreasureHunter.rollTierIndex(player);
+        int fee = TreasureHunterConfig.get().tiers().get(tierIndex).fee();
+        sendNPCMessage(player, "Hello adventurer!");
+        sendNPCMessage(player, "I'm the Treasure Hunter, I've been searching for treasure all over this island.");
+        sendNPCMessage(player, "Rumor has it that there are rare stones and other valuable bounty hidden in the ground all over the island.");
+        sendNPCMessage(player, "Tell you what, for a small price I'll give you the info I know about.");
+        player.sendMessage("<b><l>Pay {} coins for the info?", StringUtility.commaify(fee));
+        NPCOption.sendOption(player, "treasure_hunter", true, List.of(
+                option("yes", NamedTextColor.GREEN, "YES", () -> accept(player, tierIndex)),
+                option("no", NamedTextColor.RED, "NO", () -> sendNPCMessage(player, "If you change your mind, you know where to find me!"))));
+    }
+
+    private void accept(SkyBlockPlayer player, int tierIndex) {
+        if (TreasureHunter.activeHint(player) != null || TreasureHunter.millisOnCooldown(player, System.currentTimeMillis()) > 0) return;
+        if (!TreasureHunter.buyHint(player, tierIndex)) {
+            sendNPCMessage(player, "Are you trying to scam me?");
+            sendNPCMessage(player, "You don't have enough money.");
+            sendNPCMessage(player, "Come back when you have enough for the tip.");
+            return;
+        }
+        sendNPCMessage(player, TreasureHunter.activeHint(player).text());
+    }
+
+    private static NPCOption.Option option(String key, NamedTextColor colour, String label, Runnable action) {
+        Consumer<HypixelPlayer> consumer = _ -> action.run();
+        return new NPCOption.Option(key, colour, true, label, consumer);
     }
 }

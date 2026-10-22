@@ -249,3 +249,12 @@ seaCreatures:
     requiredFishingLevel: 17
     skillXp: 775
     tags: [LAVA, RARE]
+  # ---------- Oasis (weights live in tables.yml) ----------
+  - id: OASIS_SHEEP
+    requiredFishingLevel: 10
+    skillXp: 40
+    tags: [WATER, UNCOMMON]
+  - id: OASIS_RABBIT
+    requiredFishingLevel: 10
+    skillXp: 40
+    tags: [WATER, UNCOMMON]

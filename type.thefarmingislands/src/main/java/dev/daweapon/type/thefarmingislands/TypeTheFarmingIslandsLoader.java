@@ -10,6 +10,7 @@ import dev.daweapon.commons.redis.RedisMessageHandler;
 import dev.daweapon.type.generic.SkyBlockTypeLoader;
 
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
+import dev.daweapon.type.thefarmingislands.mob.BarnMobSpawner;
 
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.tab.TablistManager;
@@ -36,7 +37,7 @@ public class TypeTheFarmingIslandsLoader implements SkyBlockTypeLoader {
 
     @Override
     public void afterInitialize(MinecraftServer server) {
-
+        dev.daweapon.type.thefarmingislands.shepherd.ShepherdKeep.start();
     }
 
     @Override
@@ -87,6 +88,6 @@ public class TypeTheFarmingIslandsLoader implements SkyBlockTypeLoader {
 
     @Override
     public @Nullable CustomWorlds getMainInstance() {
-        return CustomWorlds.SKYBLOCK_HUB;
+        return CustomWorlds.SKYBLOCK_FARMING_ISLANDS;
     }
 }

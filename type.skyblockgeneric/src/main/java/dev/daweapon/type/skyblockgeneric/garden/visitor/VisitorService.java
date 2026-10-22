@@ -101,12 +101,15 @@ public final class VisitorService {
     public static boolean eligible(GardenProfile profile, @Nullable SkyBlockPlayer player, VisitorCatalogue.Visitor visitor) {
         VisitorData data = profile.visitors();
         if (!visitor.available()) return false;
+        if (player != null && dev.daweapon.type.skyblockgeneric.farming.lab.LabQuest.BETH.equals(visitor.id())
+                && !dev.daweapon.type.skyblockgeneric.farming.lab.LabQuest.canVisit(player, profile)) return false;
         if (visitor.event() != null && !eventVisitorReady(player, visitor)) return false;
         if (visitor.gardenLevel() > GardenProgress.level(profile)) return false;
         VisitorCatalogue.Requirement requirement = visitor.requirement();
         return switch (requirement.kind()) {
             case "TALK_TO_NPC" -> data.getTalkedTo().contains(talkTarget(requirement.text()));
             case "QUEST" -> player != null && dev.daweapon.type.skyblockgeneric.romero.RomeroJulietteQuest.isCompleted(player);
+            case "HIKER_QUEST" -> player != null && dev.daweapon.type.skyblockgeneric.hiker.HikerQuest.isCompleted(player);
             case "SERVE_UNIQUE" -> requirement.count() == null || data.uniqueServed() >= requirement.count();
             default -> true;
         };
@@ -371,8 +374,10 @@ public final class VisitorService {
         player.sendMessage(Text.of(" <8>+<b>{} Bits", offer.bits()));
         extra.forEach(line -> player.sendMessage(Text.parse(" <8>+" + line)));
         player.sendMessage(Text.of("<b><m>                                                    "));
-        if (visitor != null && !visitor.acceptLines().isEmpty()) {
-            player.sendMessage(Text.of("<e>[NPC] " + name + "<f>: {}", VisitorText.fill(visitor.acceptLines().getFirst(), player)));
+        if (visitor != null) {
+            for (String line : VisitorDialogue.accept(visitor, player)) {
+                player.sendMessage(Text.of("<e>[NPC] " + name + "<f>: {}", VisitorText.fill(line, player)));
+            }
         }
     }
 

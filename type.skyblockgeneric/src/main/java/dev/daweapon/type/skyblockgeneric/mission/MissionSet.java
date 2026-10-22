@@ -3,7 +3,7 @@ package dev.daweapon.type.skyblockgeneric.mission;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import dev.daweapon.type.skyblockgeneric.mission.missions.*;
-import dev.daweapon.type.skyblockgeneric.mission.missions.barn.MissionCraftWheatMinion;
+import dev.daweapon.type.skyblockgeneric.mission.missions.barn.*;
 import dev.daweapon.type.skyblockgeneric.mission.missions.garden.*;
 import dev.daweapon.type.skyblockgeneric.mission.missions.barn.MissionTalkToFarmHand;
 import dev.daweapon.type.skyblockgeneric.mission.missions.barn.MissionTalkToFarmhandAgain;
@@ -39,7 +39,9 @@ public enum MissionSet {
     TIMBER(MissionTalkToLumberjack.class, MissionBreakOaklog.class, MissionTalkToLumberjackAgain.class),
     INTO_THE_WOODS(MissionTravelToThePark.class, MissionTalkToCharlie.class, MissionCollectBirchLogs.class, MissionGiveCharlieBirchLogs.class, MissionClaimTheTrousers.class, MissionTalkToCharlieAgain.class),
     FIRST_HARVEST(MissionTalkToFarmer.class, MissionCollectWheat.class, MissionTalkToFarmerAgain.class),
-    BACK_AT_THE_BARNYARD(MissionTalkToFarmHand.class, MissionCraftWheatMinion.class, MissionTalkToFarmhandAgain.class),
+    BACK_AT_THE_BARNYARD(MissionTalkToFarmHand.class, MissionCraftWheatMinion.class, MissionTalkToFarmhandAgain.class, MissionFarmhandAddPet.class, MissionFarmhandSummonPet.class,
+            MissionFarmhandCollectPotato.class, MissionFarmhandCollectCarrot.class, MissionFarmhandCollectMelon.class, MissionFarmhandCollectPumpkin.class,
+            MissionFarmhandCollectLeather.class, MissionFarmhandCollectChicken.class, MissionFarmhandCollectPork.class, MissionReachFarmingFive.class),
     CARPENTRY(MissionGiveWoolToCarpenter.class),
     LOST_AND_FOUND(MissionFindLazyMinerPickaxe.class, MissionTalkToLazyMiner.class),
     THE_CAMPFIRE_CULT(MissionTravelToTheDarkThicket.class, MissionFindTheCampfire.class, MissionSneakUpOnRyan.class, MissionCompleteTrialOfFireOne.class, MissionTalkToRyan.class, MissionCollectDarkOakLogs.class, MissionGiveRyanDarkOakLogs.class),

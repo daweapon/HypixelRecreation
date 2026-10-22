@@ -1817,3 +1817,75 @@ regions:
     y2: 174
     z2: 713
     serverType: SKYBLOCK_CRYSTAL_HOLLOWS
+  - id: mushroom_desert_1
+    type: MUSHROOM_DESERT
+    x1: 120
+    y1: 0
+    z1: -620
+    x2: 420
+    y2: 220
+    z2: -335
+    serverType: THE_FARMING_ISLANDS
+  - id: trappers_den_1
+    type: TRAPPERS_DEN
+    x1: 260
+    y1: 90
+    z1: -565
+    x2: 305
+    y2: 130
+    z2: -525
+    serverType: THE_FARMING_ISLANDS
+  - id: shepherd_keep_1
+    type: SHEPHERD_KEEP
+    x1: 365
+    y1: 40
+    z1: -395
+    x2: 410
+    y2: 130
+    z2: -350
+    serverType: THE_FARMING_ISLANDS
+  - id: oasis_1
+    type: OASIS
+    x1: 300
+    y1: 40
+    z1: -455
+    x2: 345
+    y2: 130
+    z2: -415
+    serverType: THE_FARMING_ISLANDS
+  - id: jake_house_1
+    type: JAKE_HOUSE
+    x1: 245
+    y1: 160
+    z1: -580
+    x2: 278
+    y2: 200
+    z2: -552
+    serverType: THE_FARMING_ISLANDS
+  - id: mushroom_gorge_1
+    type: MUSHROOM_GORGE
+    x1: 255
+    y1: 20
+    z1: -520
+    x2: 300
+    y2: 95
+    z2: -470
+    serverType: THE_FARMING_ISLANDS
+  - id: desert_settlement_1
+    type: DESERT_SETTLEMENT
+    x1: 140
+    y1: 40
+    z1: -400
+    x2: 235
+    y2: 130
+    z2: -340
+    serverType: THE_FARMING_ISLANDS
+  - id: glowing_mushroom_cave_1
+    type: GLOWING_MUSHROOM_CAVE
+    x1: 168
+    y1: 30
+    z1: -525
+    x2: 250
+    y2: 75
+    z2: -465
+    serverType: THE_FARMING_ISLANDS

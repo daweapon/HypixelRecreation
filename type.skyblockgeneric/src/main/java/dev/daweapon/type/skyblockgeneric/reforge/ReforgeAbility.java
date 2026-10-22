@@ -77,6 +77,10 @@ public interface ReforgeAbility {
         double pestDamageMultiplier();
     }
 
+    interface SeaCreatureChum extends ReforgeAbility {
+        int extraChum();
+    }
+
     interface PestCooldown extends ReforgeAbility {
         double cooldownReductionPercent();
     }

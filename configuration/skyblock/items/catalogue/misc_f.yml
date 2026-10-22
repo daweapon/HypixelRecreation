@@ -727,14 +727,11 @@ items:
     material: repeater
     name: "Talbot's Theodolite"
     rarity: RARE
-    unavailable: "Needs Talbot's Mushroom Desert hunt and Pelts"
     source: "Talbot: 80 Pelts"
-    lore:
-      - "§6Ability: Track  §e§lRIGHT CLICK"
-      - "§7Indicates the approximate height difference"
-      - "§7and angle between you and your tracked mob."
-      - "§8Mana Cost: §b100"
-      - "§8Cooldown: §a10s"
+    components:
+      - id: ABILITY
+        abilities:
+          - THEODOLITE_TRACK
   - id: TALL_NUTCRACKER
     material: player_head
     name: "Extra Large Nutcracker"

@@ -660,7 +660,11 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/celeste_wand
   - id: CHICKEN_AXE
     material: STONE_AXE
+    name: "Advanced Chicken Axe"
     rarity: UNCOMMON
+    lore:
+      - "§7Chickens killed with this drop §a2"
+      - "§7additional §fFeather §7and §fRaw Chicken§7."
     default_statistics:
       damage: 20
     components:
@@ -710,7 +714,11 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/conjuring
   - id: COW_AXE
     material: STONE_AXE
+    name: "Advanced Cow Axe"
     rarity: UNCOMMON
+    lore:
+      - "§7Cows killed with this drop §a2"
+      - "§7additional §fRaw Beef§7."
     default_statistics:
       damage: 20
     components:
@@ -2010,7 +2018,11 @@ items:
         item_model: hypixel_skyblock:item/island_relevant/rift/zones/mirrorcosm/crafting_room/crafts/wob
   - id: MUSHROOM_COW_AXE
     material: STONE_AXE
+    name: "Advanced Mooshroom Axe"
     rarity: UNCOMMON
+    lore:
+      - "§7Mooshrooms killed with this drop §a2"
+      - "§7additional §fRed Mushroom §7and §fLeather§7."
     default_statistics:
       damage: 20
     components:
@@ -2124,7 +2136,11 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/pigman_sword
   - id: PIG_AXE
     material: STONE_AXE
+    name: "Advanced Pig Axe"
     rarity: UNCOMMON
+    lore:
+      - "§7Pigs killed with this drop §a2"
+      - "§7additional §fRaw Porkchop§7."
     default_statistics:
       damage: 20
     components:
@@ -2215,7 +2231,11 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/prismarine_bow
   - id: RABBIT_AXE
     material: STONE_AXE
+    name: "Advanced Rabbit Axe"
     rarity: UNCOMMON
+    lore:
+      - "§7Rabbits killed with this drop §a2"
+      - "§7additional §fRaw Rabbit§7, §fRabbit Hide§7, and §fRabbit's Foot§7."
     default_statistics:
       damage: 20
     components:
@@ -2517,7 +2537,11 @@ items:
         item_model: hypixel_skyblock:item/island_relevant/rift/zones/castle/super_sharp_and_stabby_steak_stake
   - id: SHEEP_AXE
     material: STONE_AXE
+    name: "Advanced Sheep Axe"
     rarity: UNCOMMON
+    lore:
+      - "§7Sheeps killed with this drop §a2"
+      - "§7additional §fWhite Wool §7and §fRaw Mutton§7."
     default_statistics:
       damage: 20
     components:

@@ -1921,7 +1921,7 @@ items:
     material: player_head
     name: "Glowing Mush Mixin"
     rarity: RARE
-    unavailable: "Mixins are not wired to God Potions; Moby (Fishing) shop is not built"
+    unavailable: "Mixins are not wired to God Potions yet"
     source: "Moby: 64 Full Chum Bucket and 80 Glowing Mushroom"
     lore:
       - "§8Brewing Ingredient"

@@ -6,7 +6,9 @@ import net.kyori.adventure.title.Title;
 import net.minestom.server.instance.Instance;
 import dev.daweapon.type.skyblockgeneric.garden.GardenPetBonuses;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
+import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.garden.GardenLayout;
 import dev.daweapon.type.skyblockgeneric.garden.feast.FeastService;
 import dev.daweapon.type.skyblockgeneric.garden.GardenProfile;
@@ -27,6 +29,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public final class PestService {
     public static final String PEST_VEST = "PEST_VEST";
+    public static final double BROWN_BANDANA_PER_TIER = 0.2;
+    public static final double BROWN_BANDANA_MAX = 45;
 
     private PestService() {
     }
@@ -36,10 +40,16 @@ public final class PestService {
     }
 
     public static int bonusChance(SkyBlockPlayer player, GardenProfile profile) {
-        double stat = player.getStatistics().allStatistics().getOverall(ItemStatistic.BONUS_PEST_CHANCE);
+        double stat = player.getStatistics().allStatistics().getOverall(ItemStatistic.BONUS_PEST_CHANCE) + brownBandana(player);
         return (int) Math.floor(stat) + profile.pests().getPermanentBonusChance()
                 + (int) FeastService.feastPestChance(player)
                 + (int) Math.floor(dev.daweapon.type.skyblockgeneric.garden.chip.ChipService.bonus(profile.chips(), dev.daweapon.type.skyblockgeneric.garden.chip.GardenChip.VERMIN_VAPORIZER));
+    }
+
+    public static double brownBandana(SkyBlockPlayer player) {
+        SkyBlockItem pet = player.getPetData().getEnabledPet();
+        if (pet == null || pet.getAttributeHandler().getPetHeldItem() != ItemType.BROWN_BANDANA) return 0;
+        return Math.min(BROWN_BANDANA_MAX, BROWN_BANDANA_PER_TIER * PestBestiary.totalTiers(player));
     }
 
     public static int fortuneLoss(SkyBlockPlayer player, GardenProfile profile) {

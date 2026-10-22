@@ -3,6 +3,9 @@ package dev.daweapon.type.skyblockgeneric.shop.catalogue;
 import net.minestom.server.item.Material;
 import dev.daweapon.commons.StringUtility;
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.commons.skyblock.item.Rarity;
+import dev.daweapon.commons.skyblock.item.attribute.attributes.ItemAttributePotionData;
+import dev.daweapon.type.skyblockgeneric.potion.PotionEffectType;
 import dev.daweapon.commons.skyblock.item.attribute.attributes.ItemAttributeMinionData;
 import dev.daweapon.type.skyblockgeneric.enchantment.EnchantmentType;
 import dev.daweapon.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
@@ -25,7 +28,8 @@ public record CatalogueEntry(
         @Nullable String enchantment,
         int enchantmentLevel,
         int minionTier,
-        int runeLevel
+        int runeLevel,
+        @Nullable String potion
 ) {
     public static final String MISSING_ITEM_REASON = "<c>This item is not in the game yet!";
 
@@ -47,7 +51,8 @@ public record CatalogueEntry(
                 raw.get("enchantment") == null ? null : String.valueOf(raw.get("enchantment")),
                 raw.get("enchantment_level") instanceof Number level ? level.intValue() : 1,
                 raw.get("tier") instanceof Number tier ? tier.intValue() : 0,
-                raw.get("rune_level") instanceof Number runeLevel ? runeLevel.intValue() : 0
+                raw.get("rune_level") instanceof Number runeLevel ? runeLevel.intValue() : 0,
+                raw.get("potion") == null ? null : String.valueOf(raw.get("potion"))
         );
     }
 
@@ -70,6 +75,13 @@ public record CatalogueEntry(
             item.getAttributeHandler().setMinionData(new ItemAttributeMinionData.MinionData(minionTier, 0));
         }
         if (runeLevel > 0) item.getAttributeHandler().setRuneLevel(runeLevel);
+        if (potion != null) {
+            String[] parts = potion.split(":");
+            PotionEffectType effect = PotionEffectType.valueOf(parts[0]);
+            item.getAttributeHandler().setPotionData(new ItemAttributePotionData.PotionData(
+                    effect.name(), Integer.parseInt(parts[1]), effect.getBaseSecondsDuration(), false, false));
+            item.getAttributeHandler().setRarity(Rarity.COMMON);
+        }
         return item;
     }
 

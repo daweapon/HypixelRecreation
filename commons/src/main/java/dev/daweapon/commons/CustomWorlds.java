@@ -7,6 +7,7 @@ public enum CustomWorlds {
 	SKYBLOCK_ISLAND_TEMPLATE("hypixel_skyblock_island_template"),
 	SKYBLOCK_GARDEN_TEMPLATE("hypixel_skyblock_garden_template"),
 	SKYBLOCK_HUB("hypixel_skyblock_hub"),
+	SKYBLOCK_FARMING_ISLANDS("hypixel_skyblock_farming_islands"),
 	SKYBLOCK_SPIDERS_DEN("hypixel_skyblock_spiders_den"),
 	SKYBLOCK_THE_END("hypixel_skyblock_the_end"),
 	SKYBLOCK_CRIMSON_ISLE("hypixel_skyblock_crimson_isle"),

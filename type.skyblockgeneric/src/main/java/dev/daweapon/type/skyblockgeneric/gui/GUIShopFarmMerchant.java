@@ -1,8 +1,7 @@
-package dev.daweapon.type.hub.gui;
+package dev.daweapon.type.skyblockgeneric.gui;
 
 import net.minestom.server.item.Material;
 import dev.daweapon.commons.skyblock.item.ItemType;
-import dev.daweapon.type.skyblockgeneric.gui.ShopView;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.shop.type.CoinShopPrice;
 
@@ -28,6 +27,8 @@ public class GUIShopFarmMerchant extends ShopView {
         attachItem(ShopItem.Stackable(new SkyBlockItem(ItemType.ENCHANTED_BONE_MEAL), 3, new CoinShopPrice(6)));
         attachItem(ShopItem.Single(new SkyBlockItem(ItemType.ROOKIE_HOE), 1, new CoinShopPrice(10)));
         attachItem(ShopItem.Single(new SkyBlockItem(ItemType.ROOKIE_FARMING_AXE), 1, new CoinShopPrice(10)));
+        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.BEGINNER_AGRONOMY_SACK), 1, new CoinShopPrice(1_000)));
+        attachItem(ShopItem.Stackable(new SkyBlockItem(ItemType.HOPPER), 1, new CoinShopPrice(100)));
 
     }
 }

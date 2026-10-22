@@ -1,0 +1,50 @@
+tiers:
+  - fee: 100
+    weight: 60
+    rewards:
+      - { item: RED_MUSHROOM, amount: 16, weight: 1 }
+      - { item: BROWN_MUSHROOM, amount: 16, weight: 1 }
+      - { item: MUTTON, amount: 16, weight: 1 }
+      - { item: SAND, amount: 16, weight: 1 }
+      - { item: POTATO, amount: 16, weight: 1 }
+      - { item: CARROT, amount: 16, weight: 1 }
+  - fee: 1000
+    weight: 30
+    rewards:
+      - { item: ENCHANTED_SAND, amount: 10, weight: 1 }
+      - { item: ENCHANTED_SUGAR, amount: 5, weight: 1 }
+      - { item: ENCHANTED_RED_MUSHROOM, amount: 5, weight: 1 }
+      - { item: ENCHANTED_BROWN_MUSHROOM, amount: 5, weight: 1 }
+      - { item: ENCHANTED_CACTUS_GREEN, amount: 5, weight: 1 }
+      - { item: ENCHANTED_SEEDS, amount: 5, weight: 1 }
+  - fee: 50000
+    weight: 10
+    rewards:
+      - { item: ENCHANTED_SUGAR_CANE, amount: 2, weight: 30 }
+      - { item: ENCHANTED_COOKED_MUTTON, amount: 1, weight: 30 }
+      - { item: ENCHANTED_COOKIE, amount: 1, weight: 30 }
+      - { item: BULKY_STONE, amount: 1, weight: 10 }
+hints:
+  - { text: "In the Mushroom Gorge where blue meets the ceiling and floor, you will find what you are looking for.", pos: [209, 41, -522] }
+  - { text: "I seem to recall seeing something near the well in the village.", pos: [170, 76, -375] }
+  - { text: "I saw some treasure by a cow skull near the village.", pos: [143, 76, -401] }
+  - { text: "There's this guy who says he has the best sheep in the world. I think I saw something around his hut.", pos: [392, 83, -367] }
+  - { text: "I remember there was a stone pillar made only of cobblestone in the oasis, could be something there.", pos: [118, 63, -408] }
+  - { text: "There was a haystack with a crop greener than usual around it, I think there is something near there.", pos: [338, 82, -387] }
+  - { text: "Some dirt was kicked up by the water pool in the overgrown Mushroom Cave. Have a look over there.", pos: [238, 56, -405] }
+  - { text: "There are some small ruins out in the desert, might want to check them out.", pos: [318, 101, -466] }
+  - { text: "I was at the upper oasis today, I recall seeing something on the cobblestone stepping stones.", pos: [189, 76, -463] }
+  - { text: "Near a melon patch inside a tunnel in the mountain I spotted something.", pos: [254, 100, -570] }
+  - { text: "I spotted something by an odd looking mushroom on one of the ledges in the Mushroom Gorge, you should check it out.", pos: [309, 72, -553] }
+  - { text: "I was in the desert earlier, and I saw something near a red sand rock.", pos: [357, 82, -324] }
+  - { text: "There's a single piece of tall grass growing in the desert, I saw something there.", pos: [283, 75, -363] }
+  - { text: "Something caught my eye by the red sand near the bridge over the gorge.", pos: [306, 104, -490] }
+  - { text: "I found something by a mossy stone pillar in the oasis, you should take a look.", pos: [181, 93, -542] }
+  - { text: "I saw something near a farmer's cart, you should check it out.", pos: [155, 89, -593] }
+  - { text: "I thought I saw something near the smallest stone pillar in the oasis.", pos: [94, 64, -450] }
+  - { text: "I was down near the lower oasis yesterday, I think I saw something under the bridge.", pos: [142, 69, -448] }
+  - { text: "There's a treasure chest somewhere in a small cave in the gorge.", pos: [258, 69, -491] }
+  - { text: "There's a small house in the gorge, I saw some treasure near there.", pos: [297, 86, -562] }
+  - { text: "Down in the glowing Mushroom Cave, there was a weird looking mushroom, check it out.", pos: [181, 46, -453] }
+  - { text: "There are some old stone structures in the Mushroom Gorge, give them a look.", pos: [225, 53, -501] }
+  - { text: "There's this guy who collects animals to experiment on, I think I saw something near his house.", pos: [261, 179, -561] }

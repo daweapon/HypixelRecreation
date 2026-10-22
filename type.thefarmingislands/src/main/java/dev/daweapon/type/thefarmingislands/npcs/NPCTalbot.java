@@ -1,6 +1,11 @@
 package dev.daweapon.type.thefarmingislands.npcs;
 
 import net.kyori.adventure.text.Component;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
+import dev.daweapon.type.skyblockgeneric.hunting.npc.HuntingNpcCatalogueView;
+import dev.daweapon.type.generic.entity.npc.trait.NPCAbiphoneTrait;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.minestom.server.coordinate.Pos;
 import dev.daweapon.type.generic.user.HypixelPlayer;
@@ -9,7 +14,7 @@ import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 
-public class NPCTalbot extends HypixelNPC { //only there if Finnegan is mayor
+public class NPCTalbot extends HypixelNPC implements NPCAbiphoneTrait { //only there if Finnegan is mayor
     public NPCTalbot() {
         super(new HumanConfiguration() {
             @Override
@@ -28,6 +33,11 @@ public class NPCTalbot extends HypixelNPC { //only there if Finnegan is mayor
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<e>Talbot");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(285, 104, -549, 0, 0);
             }
@@ -41,6 +51,27 @@ public class NPCTalbot extends HypixelNPC { //only there if Finnegan is mayor
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        if (isInDialogue(player)) return;
+        if (!ChapterTriggers.done(player, "npc.talbot")) {
+            setDialogue(player, "first-interaction").thenRun(() -> {
+                ChapterTriggers.fire(player, "npc.talbot");
+                player.openView(new HuntingNpcCatalogueView("talbot", null));
+            });
+            return;
+        }
+        player.openView(new HuntingNpcCatalogueView("talbot", null));
+    }
+
+    @Override
+    public String getAbiphoneKey() {
+        return "talbot";
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+            DialogueSet.builder().key("first-interaction").lines("Hey, I'm <e>Talbot<f>!").build()
+        };
     }
 }

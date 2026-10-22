@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.mission.missions.barn;
 
+import dev.daweapon.type.skyblockgeneric.farmhand.FarmhandQuest;
 import dev.daweapon.type.skyblockgeneric.mission.MissionData;
 import dev.daweapon.type.skyblockgeneric.mission.SkyBlockMission;
 import dev.daweapon.type.skyblockgeneric.region.RegionType;
@@ -16,7 +17,7 @@ public class MissionTalkToFarmhandAgain extends SkyBlockMission {
 
     @Override
     public String getName() {
-        return "Talk to the Farmhand";
+        return "Show the Farmhand a Wheat Minion";
     }
 
     @Override
@@ -26,7 +27,8 @@ public class MissionTalkToFarmhandAgain extends SkyBlockMission {
 
     @Override
     public void onEnd(SkyBlockPlayer player, Map<String, Object> customData, MissionData.ActiveMission mission) {
-
+        FarmhandQuest.giveChickenPet(player);
+        FarmhandQuest.startPetLessons(player);
     }
 
     @Override

@@ -49,7 +49,7 @@ class SkyBlockXpConnectionsTest {
     @Test
     void travelScrollsAreFifteenEachAndSkipUnobtainableOnes() {
         List<String> all = Arrays.stream(TravelScrollType.values()).map(TravelScrollType::getInternalName).toList();
-        assertEquals(27 * 15, TravelScrollAwards.skyBlockXp(all));
+        assertEquals(28 * 15, TravelScrollAwards.skyBlockXp(all));
         assertEquals(30, TravelScrollAwards.skyBlockXp(List.of("castle", "museum", "dragontail", "bogus")));
         assertEquals(SkyBlockXPSource.FAST_TRAVELS_UNLOCKED.getMaxXP(), 24 * TravelScrollAwards.XP_PER_SCROLL);
     }

@@ -401,7 +401,6 @@ items:
         description:
           - "<7>Gain <2>+0.2<glyph:stat_bonus_pest_chance> Bonus Pest Chance <7>for"
           - "<7>every <3>Pest Bestiary <7>tier unlocked."
-        inactive: true
       - id: SKULL_HEAD
         texture: 674e061e6d853822bbad56d079357c248c9a40de494f20eae0078a0a02ef0da7
   - id: BEJEWELED_COLLAR

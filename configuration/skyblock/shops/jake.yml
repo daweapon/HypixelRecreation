@@ -1,0 +1,36 @@
+title: Jake
+slots: [10, 11, 12, 13, 14, 15, 29, 31, 33]
+entries:
+  - item: SHEEP_AXE
+    name: "<a>Advanced Sheep Axe"
+    material: stone_axe
+    cost: { coins: 1000, items: { BASIC_SHEEP_AXE: 1 } }
+  - item: RABBIT_AXE
+    name: "<a>Advanced Rabbit Axe"
+    material: stone_axe
+    cost: { coins: 1000, items: { BASIC_RABBIT_AXE: 1 } }
+  - item: MUSHROOM_COW_AXE
+    name: "<a>Advanced Mooshroom Axe"
+    material: stone_axe
+    cost: { coins: 1000, items: { BASIC_MUSHROOM_COW_AXE: 1 } }
+  - item: CHICKEN_AXE
+    name: "<a>Advanced Chicken Axe"
+    material: stone_axe
+    cost: { coins: 1000, items: { BASIC_CHICKEN_AXE: 1 } }
+  - item: COW_AXE
+    name: "<a>Advanced Cow Axe"
+    material: stone_axe
+    cost: { coins: 1000, items: { BASIC_COW_AXE: 1 } }
+  - item: PIG_AXE
+    name: "<a>Advanced Pig Axe"
+    material: stone_axe
+    cost: { coins: 1000, items: { BASIC_PIG_AXE: 1 } }
+  - item: HARDENED_WOOD
+    name: "<a>Hardened Wood"
+    cost: { coins: 15000 }
+  - item: LUCKY_DICE
+    name: "<5>Lucky Dice"
+    cost: { coins: 1000000 }
+  - item: GOLDEN_BALL
+    name: "<6>Golden Ball"
+    cost: { coins: 1000000 }

@@ -77,6 +77,6 @@ public class JakeNpc extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        ((SkyBlockPlayer) e.player()).openView(new GUICropAnalyzer());
+        dev.daweapon.type.skyblockgeneric.farming.lab.CropAnalyzerAccess.open((SkyBlockPlayer) e.player());
     }
 }

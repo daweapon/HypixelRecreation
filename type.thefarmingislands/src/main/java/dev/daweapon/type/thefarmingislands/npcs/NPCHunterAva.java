@@ -1,6 +1,8 @@
 package dev.daweapon.type.thefarmingislands.npcs;
 
 import net.kyori.adventure.text.Component;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.minestom.server.coordinate.Pos;
 import dev.daweapon.type.generic.user.HypixelPlayer;
@@ -28,6 +30,11 @@ public class NPCHunterAva extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<e>Hunter Ava");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(319.5, 102, -470, 0, 60);
             }
@@ -41,6 +48,18 @@ public class NPCHunterAva extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        if (isInDialogue(player)) return;
+        setDialogue(player, "hunting");
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+            DialogueSet.builder().key("hunting").lines(
+                    "I'm hunting an <6>Elusive<f> animal.",
+                    "If you want to hunt animals too, go talk to <e>Trevor<f>!",
+                    "You can find him just past the bridge in his den.").build()
+        };
     }
 }

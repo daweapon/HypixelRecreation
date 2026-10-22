@@ -1,0 +1,53 @@
+title: Husbandry Merchant
+slots: DEFAULT
+entries:
+  - item: RAW_BEEF
+    stackable: true
+    cost: { coins: 20 }
+  - item: LEATHER
+    stackable: true
+    cost: { coins: 15 }
+  - item: RAW_PORKCHOP
+    stackable: true
+    cost: { coins: 20 }
+  - item: RAW_CHICKEN
+    stackable: true
+    cost: { coins: 20 }
+  - item: FEATHER
+    stackable: true
+    cost: { coins: 15 }
+  - item: EGG
+    stackable: true
+    cost: { coins: 15 }
+  - item: MUTTON
+    stackable: true
+    cost: { coins: 25 }
+  - item: WHITE_WOOL
+    stackable: true
+    cost: { coins: 10 }
+  - item: RAW_RABBIT
+    stackable: true
+    cost: { coins: 20 }
+  - item: RABBIT_HIDE
+    stackable: true
+    cost: { coins: 25 }
+  - item: RABBIT_FOOT
+    stackable: true
+    cost: { coins: 30 }
+  - item: BASIC_CHICKEN_AXE
+    cost: { coins: 500 }
+  - item: BASIC_COW_AXE
+    cost: { coins: 500 }
+  - item: BASIC_MUSHROOM_COW_AXE
+    cost: { coins: 500 }
+  - item: BASIC_PIG_AXE
+    cost: { coins: 500 }
+  - item: BASIC_SHEEP_AXE
+    cost: { coins: 500 }
+  - item: BASIC_RABBIT_AXE
+    cost: { coins: 500 }
+  - item: BEGINNER_HUSBANDRY_SACK
+    cost: { coins: 1000 }
+  - item: HOPPER
+    stackable: true
+    cost: { coins: 100 }

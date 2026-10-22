@@ -295,7 +295,6 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 25§c."
-    unavailable: "Treasure Hunter NPC is a stub (onClick calls notImplemented); treasure mechanic missing; wiki gives no rate"
     source: "Rare treasure from the Treasure Hunter NPC (rate not listed on wiki)"
     components:
       - id: REFORGE_STONE
@@ -1170,7 +1169,6 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 12§c."
-    unavailable: "Jake/Oasis animals not built"
     source: "Bought from Jake for 15,000 coins after delivering an Oasis Sheep"
     components:
       - id: REFORGE_STONE
@@ -1386,7 +1384,6 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 24§c."
-    unavailable: "Jake/Oasis animals not built"
     source: "Bought from Jake for 1,000,000 coins after delivering an Oasis Rabbit"
     components:
       - id: REFORGE_STONE

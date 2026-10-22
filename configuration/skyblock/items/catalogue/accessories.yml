@@ -2032,7 +2032,6 @@ items:
     default_statistics:
       fishing_speed: 1
       sea_creature_chance: 1
-    unavailable: "Moby shop stock and Full Chum Bucket only placeholders"
     source: "Moby sells it for 2 Full Chum Buckets + 10 Glowing Mushrooms"
     lore:
       - "§7Earn §6+20 Coins §7and §3+10 Fishing XP"
@@ -2043,8 +2042,6 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aFishing Skill 12§c."
-      - ""
-      - "§8Not active yet: Needs the Chum Bucket deposit system for other players' buckets"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BRACELET
@@ -2280,9 +2277,7 @@ items:
     name: "Pelt Belt"
     rarity: EPIC
     default_statistics:
-      speed: 30
       farming_wisdom: 1
-    unavailable: "Pelts (Trapper) currency not built; NPCTalbot has no shop"
     source: "Bought from Talbot for 250 Pelts."
     lore:
       - "§7Gain §f+30 Speed §7while in the"
@@ -2292,8 +2287,6 @@ items:
       - "§eRight-click to equip!"
       - ""
       - "§8This item can be reforged!"
-      - ""
-      - "§8Not active yet: The Mushroom Desert Speed is active; Pelts from tracker quests do not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -2401,7 +2394,6 @@ items:
     rarity: EPIC
     default_statistics:
       bonus_pest_chance: 10
-    unavailable: "Talbot's Pelt shop is not built"
     source: "Bought from Talbot for 250 Pelts."
     lore:
       - "§7Decreases the spawn cooldown of §2"

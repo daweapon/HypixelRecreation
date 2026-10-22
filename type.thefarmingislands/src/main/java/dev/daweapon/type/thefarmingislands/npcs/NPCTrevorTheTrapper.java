@@ -1,6 +1,10 @@
 package dev.daweapon.type.thefarmingislands.npcs;
 
 import net.kyori.adventure.text.Component;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.type.skyblockgeneric.trapper.TrapperService;
+import dev.daweapon.type.generic.entity.npc.trait.NPCAbiphoneTrait;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.minestom.server.coordinate.Pos;
 import dev.daweapon.type.generic.user.HypixelPlayer;
@@ -9,7 +13,7 @@ import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 
-public class NPCTrevorTheTrapper extends HypixelNPC {
+public class NPCTrevorTheTrapper extends HypixelNPC implements NPCAbiphoneTrait {
     public NPCTrevorTheTrapper() {
         super(new HumanConfiguration() {
             @Override
@@ -28,6 +32,11 @@ public class NPCTrevorTheTrapper extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<e>Trevor");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(281.5, 104, -542.5, 180, 0);
             }
@@ -41,6 +50,13 @@ public class NPCTrevorTheTrapper extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        if (isInDialogue(player)) return;
+        TrapperService.offer(player, message -> sendNPCMessage(player, "<f>" + message));
+    }
+
+    @Override
+    public String getAbiphoneKey() {
+        return "trevor";
     }
 }

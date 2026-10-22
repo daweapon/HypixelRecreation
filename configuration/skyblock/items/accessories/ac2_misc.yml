@@ -196,8 +196,8 @@ items:
           - type: TEXT
             text:
               - "<8>A mystery was solved!"
-          - type: INACTIVE
-            reason: "Trevor's pelt hunts aren't in the game yet."
+          - type: HANDLER
+            handler: PELT_BONUS
             text:
               - "Increases the number of pelts"
               - "obtained when hunting animals by <a>+1<7>."
@@ -214,15 +214,16 @@ items:
       - id: ACCESSORY
         dynamic_max_rarity: RARE
         effects:
-          - type: INACTIVE
-            reason: "Trevor's pelt hunts aren't in the game yet."
+          - type: HANDLER
+            handler: PELT_MULTIPLIER
             text:
-              - "Earn <a>x1.1 <5>Pelts <7>from tracker quests."
+              - "Earn <5>x1.1 <7>(Common), <5>x1.25 <7>(Uncommon)"
+              - "or <5>x1.5 <7>(Rare) <5>Pelts <7>from tracker quests."
               - ""
-              - "Collect <5>100 Pelts <7>to upgrade this"
-              - "accessory to <a>UNCOMMON<7>."
-              - ""
-              - "Collected: <5>0 pelts"
+              - "Collect <5>100 Pelts <7>to upgrade this to"
+              - "<a>UNCOMMON<7> and <5>500 Pelts <7>for <9>RARE<7>."
+              - "<9>RARE <7>also raises the odds of finding"
+              - "<5>Endangered <7>and <6>Elusive <7>animals by <a>10%<7>."
       - id: SKULL_HEAD
         texture: 3ae0da20c8598e91f322b6e8a7b0ee2c81f1b61e74386c437e75f446ffccc5e
 

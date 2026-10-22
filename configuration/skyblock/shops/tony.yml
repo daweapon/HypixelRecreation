@@ -1,0 +1,78 @@
+title: Tony
+slots: [11, 12, 13, 14, 15, 20, 21, 22, 23, 24, 29, 30, 31, 32, 33]
+entries:
+  - item: COCOA_BEANS_MINION
+    tier: 12
+    name: "<9>Cocoa Beans Minion XII"
+    material: paper
+    cost: { pelts: 75, items: { ENCHANTED_COOKIE: 16 }, minions: { COCOA_BEANS_MINION: 11 } }
+  - item: PUMPKIN_MINION
+    tier: 12
+    name: "<9>Pumpkin Minion XII"
+    material: paper
+    cost: { pelts: 75, items: { ENCHANTED_PUMPKIN: 1024 }, minions: { PUMPKIN_MINION: 11 } }
+  - item: CHICKEN_MINION
+    tier: 12
+    name: "<9>Chicken Minion XII"
+    material: paper
+    cost: { pelts: 75, items: { ENCHANTED_RAW_CHICKEN: 1024 }, minions: { CHICKEN_MINION: 11 } }
+  - item: MUSHROOM_MINION
+    tier: 12
+    name: "<9>Mushroom Minion XII"
+    material: paper
+    cost: { pelts: 75, items: { ENCHANTED_BROWN_MUSHROOM: 512, ENCHANTED_RED_MUSHROOM: 512 }, minions: { MUSHROOM_MINION: 11 } }
+  - item: CACTUS_MINION
+    tier: 12
+    name: "<9>Cactus Minion XII"
+    material: paper
+    cost: { pelts: 75, items: { ENCHANTED_CACTUS_GREEN: 32 }, minions: { CACTUS_MINION: 11 } }
+  - item: PIG_MINION
+    tier: 12
+    name: "<9>Pig Minion XII"
+    material: paper
+    cost: { pelts: 75, items: { ENCHANTED_GRILLED_PORK: 16 }, minions: { PIG_MINION: 11 } }
+  - item: WHEAT_MINION
+    tier: 12
+    name: "<9>Wheat Minion XII"
+    material: paper
+    cost: { pelts: 75, items: { ENCHANTED_WHEAT: 1024 }, minions: { WHEAT_MINION: 11 } }
+  - item: COW_MINION
+    tier: 12
+    name: "<9>Cow Minion XII"
+    material: paper
+    cost: { pelts: 75, items: { ENCHANTED_LEATHER: 1024 }, minions: { COW_MINION: 11 } }
+  - item: SUGAR_CANE_MINION
+    tier: 12
+    name: "<9>Sugar Cane Minion XII"
+    material: paper
+    cost: { pelts: 75, items: { ENCHANTED_SUGAR_CANE: 32 }, minions: { SUGAR_CANE_MINION: 11 } }
+  - item: MELON_MINION
+    tier: 12
+    name: "<9>Melon Minion XII"
+    material: paper
+    cost: { pelts: 75, items: { ENCHANTED_MELON: 32 }, minions: { MELON_MINION: 11 } }
+  - item: NETHER_WART_MINION
+    tier: 12
+    name: "<9>Nether Wart Minion XII"
+    material: paper
+    cost: { pelts: 75, items: { ENCHANTED_NETHER_WART: 1024 }, minions: { NETHER_WART_MINION: 11 } }
+  - item: CARROT_MINION
+    tier: 12
+    name: "<9>Carrot Minion XII"
+    material: paper
+    cost: { pelts: 75, items: { ENCHANTED_GOLDEN_CARROT: 32 }, minions: { CARROT_MINION: 11 } }
+  - item: POTATO_MINION
+    tier: 12
+    name: "<9>Potato Minion XII"
+    material: paper
+    cost: { pelts: 75, items: { ENCHANTED_BAKED_POTATO: 32 }, minions: { POTATO_MINION: 11 } }
+  - item: SHEEP_MINION
+    tier: 12
+    name: "<9>Sheep Minion XII"
+    material: paper
+    cost: { pelts: 75, items: { ENCHANTED_COOKED_MUTTON: 16 }, minions: { SHEEP_MINION: 11 } }
+  - item: RABBIT_MINION
+    tier: 12
+    name: "<9>Rabbit Minion XII"
+    material: paper
+    cost: { pelts: 75, items: { ENCHANTED_COOKED_RABBIT: 16 }, minions: { RABBIT_MINION: 11 } }

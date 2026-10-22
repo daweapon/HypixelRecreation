@@ -29,8 +29,8 @@ public final class GreenhouseWorld {
         if (!instance.isChunkLoaded(at)) return;
         built.add(plot);
         dev.daweapon.type.generic.entity.InteractionEntity click = new dev.daweapon.type.generic.entity.InteractionEntity(1.2f, 1.6f,
-                (player, event) -> ((dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer) player)
-                        .openView(new dev.daweapon.type.skyblockgeneric.gui.inventories.garden.GUICropAnalyzer()));
+                (player, event) -> dev.daweapon.type.skyblockgeneric.farming.lab.CropAnalyzerAccess
+                        .open((dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer) player));
         click.setInstance(instance, at);
         Entity label = new Entity(EntityType.TEXT_DISPLAY);
         label.setNoGravity(true);

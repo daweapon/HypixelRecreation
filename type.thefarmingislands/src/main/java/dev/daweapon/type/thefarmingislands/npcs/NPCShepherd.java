@@ -1,7 +1,9 @@
 package dev.daweapon.type.thefarmingislands.npcs;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.event.ClickEvent;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
+import dev.daweapon.type.skyblockgeneric.trapper.Pelts;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.type.thefarmingislands.shepherd.ShepherdKeep;
 import net.minestom.server.coordinate.Pos;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
@@ -10,6 +12,10 @@ import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 
 public class NPCShepherd extends HypixelNPC {
+    private static final String TALKED = "shepherd.talked";
+    private static final String SHEARED = "shepherd.sheared";
+    private static final int REWARD_PELTS = 4;
+
     public NPCShepherd() {
         super(new HumanConfiguration() {
             @Override
@@ -41,6 +47,29 @@ public class NPCShepherd extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        if (ChapterTriggers.done(player, SHEARED)) {
+            sendNPCMessage(player, "My sheep are some of the best in the world!");
+            return;
+        }
+        if (!ChapterTriggers.done(player, TALKED)) {
+            ChapterTriggers.fire(player, TALKED);
+            sendNPCMessage(player, "Hello traveler!");
+            sendNPCMessage(player, "Welcome to my keep, my sheep are some of the best in the world.");
+            sendNPCMessage(player, "They have regenerative properties that allow for them to regenerate their wool faster than normal!");
+            sendNPCMessage(player, "I'm feeling tired today.");
+            sendNPCMessage(player, "Could you shear all my sheep at once?");
+            sendNPCMessage(player, "I will have a reward if you do so!");
+            return;
+        }
+        if (!ShepherdKeep.allSheared()) {
+            sendNPCMessage(player, "You didn't shear enough sheep!");
+            return;
+        }
+        ChapterTriggers.fire(player, SHEARED);
+        sendNPCMessage(player, "Thanks for helping me out!");
+        sendNPCMessage(player, "Please accept this as a token of my gratitude!");
+        Pelts.add(player, REWARD_PELTS);
+        player.sendMessage("<5>+{} Pelts", REWARD_PELTS);
     }
 }

@@ -72,7 +72,6 @@ items:
     material: player_head
     name: "Empty Chum Bucket"
     rarity: COMMON
-    unavailable: "Needs Moby's Chum Bucket shop and Chum Bucket placement (not built)"
     source: "Bought from Moby for 8 Glowing Mushroom and 2,000 coins"
     lore:
       - "§7Place it down next to water."
@@ -154,7 +153,6 @@ items:
     material: player_head
     name: "Full Chum Bucket"
     rarity: UNCOMMON
-    unavailable: "Needs Moby and Chum Bucket placement (not built)"
     source: "Filled by depositing 10 Chum into a placed Empty Chum Bucket, or crafted from 10 Chum and an Empty Chum Bucket"
     lore:
       - "§7The result of a hard day's labor!"

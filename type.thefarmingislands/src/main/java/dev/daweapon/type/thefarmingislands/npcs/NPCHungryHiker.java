@@ -1,7 +1,10 @@
 package dev.daweapon.type.thefarmingislands.npcs;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.event.ClickEvent;
+import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.skyblockgeneric.hiker.HikerQuest;
+import dev.daweapon.type.skyblockgeneric.romero.RomeroInteraction;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.minestom.server.item.ItemStack;
 import net.minestom.server.coordinate.Pos;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
@@ -11,7 +14,26 @@ import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 
 public class NPCHungryHiker extends HypixelNPC {
     public NPCHungryHiker() {
+        this(new Pos(269.5, 48, -480.5, -130, 0), false);
+    }
+
+    protected NPCHungryHiker(Pos position, boolean atHut) {
         super(new HumanConfiguration() {
+            @Override
+            public String chatName(HypixelPlayer player) {
+                return "<e>Hungry Hiker";
+            }
+
+            @Override
+            public boolean visible(HypixelPlayer player) {
+                SkyBlockPlayer skyBlockPlayer = (SkyBlockPlayer) player;
+                if (skyBlockPlayer.getSkyblockDataHandler() == null) return false;
+                int state = HikerQuest.state(skyBlockPlayer);
+                return atHut
+                        ? state == HikerQuest.FINISHED || state == HikerQuest.REWARDED
+                        : state == HikerQuest.NOT_STARTED || state == HikerQuest.ACTIVE;
+            }
+
             @Override
             public String[] holograms(HypixelPlayer player) {
                 return new String[]{"Hungry Hiker", "<e><l>CLICK"};
@@ -29,7 +51,7 @@ public class NPCHungryHiker extends HypixelNPC {
 
             @Override
             public Pos position(HypixelPlayer player) {
-                return new Pos(269, 48, -480, -130, 0);
+                return position;
             }
 
             @Override
@@ -41,6 +63,64 @@ public class NPCHungryHiker extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        long now = System.currentTimeMillis();
+        int state = HikerQuest.state(player);
+        if (state == HikerQuest.FINISHED) {
+            sendNPCMessage(player, "Thank you for feeding me all those days.");
+            sendNPCMessage(player, "To show my gratitude, please have this!");
+            player.addAndUpdateItem(ItemType.PET_ITEM_FARMING_SKILL_BOOST_UNCOMMON);
+            HikerQuest.markRewarded(player);
+            return;
+        }
+        if (state == HikerQuest.REWARDED) {
+            sendNPCMessage(player, "Thank you again for feeding me all those days!");
+            return;
+        }
+        if (state == HikerQuest.NOT_STARTED) {
+            HikerQuest.start(player);
+            sendNPCMessage(player, "Hello there, stranger!");
+            sendNPCMessage(player, "I fell down into this ravine a couple days ago and can't climb out.");
+            sendNPCMessage(player, "My friend Jake said he would come get me but he hasn't arrived yet.");
+            sendNPCMessage(player, "Could you bring me food until he gets here?");
+            askForFood(player);
+            return;
+        }
+        ItemStack held = player.getItemInMainHand();
+        String heldId = RomeroInteraction.heldId(player);
+        HikerQuest.Food food = HikerQuest.food(player);
+        switch (HikerQuest.feed(player, heldId, held.amount(), now)) {
+            case TOO_SOON -> {
+                sendNPCMessage(player, "I appreciate the effort but you recently gave me food.");
+                sendNPCMessage(player, "Come back later with more food!");
+            }
+            case NOTHING_HELD -> askForFood(player);
+            case WRONG_FOOD -> {
+                sendNPCMessage(player, "This isn't the food I wanted, please get me the correct food.");
+                sendNPCMessage(player, "I asked for food that is <7>{}<f>.", food.clue());
+            }
+            case WRONG_AMOUNT -> {
+                sendNPCMessage(player, "This isn't the correct amount I asked for.");
+                sendNPCMessage(player, "I asked for <7>{}<f> of this item.", food.amount());
+            }
+            case FED -> {
+                player.setItemInMainHand(ItemStack.AIR);
+                sendNPCMessage(player, "Thanks for the food.");
+                sendNPCMessage(player, "This should fill me up for 144 SkyBlock days.");
+                sendNPCMessage(player, "Come back before then so I don't perish!");
+            }
+            case FINISHED -> {
+                player.setItemInMainHand(ItemStack.AIR);
+                sendNPCMessage(player, "Thanks for the food!");
+                sendNPCMessage(player, "I think I see Jake on the edge of the ravine!");
+                sendNPCMessage(player, "Thank you for feeding me all these days, meet me at the house near the portal and I will give you something to show my gratitude!");
+            }
+        }
+    }
+
+    private void askForFood(SkyBlockPlayer player) {
+        HikerQuest.Food food = HikerQuest.food(player);
+        sendNPCMessage(player, "Could you get me <7>{}<f> of this food?", food.amount());
+        sendNPCMessage(player, "The food I want is <7>{}<f>.", food.clue());
     }
 }

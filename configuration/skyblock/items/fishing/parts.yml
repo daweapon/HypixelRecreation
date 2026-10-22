@@ -135,7 +135,7 @@ items:
   - id: CHUM_SINKER
     material: PLAYER_HEAD
     name: "Chum Sinker"
-    rarity: RARE
+    rarity: COMMON
     components:
       - id: FISHING_ROD_PART
         category: SINKER

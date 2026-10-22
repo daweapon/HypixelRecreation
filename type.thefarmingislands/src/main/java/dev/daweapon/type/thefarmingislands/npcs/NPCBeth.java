@@ -1,8 +1,8 @@
 package dev.daweapon.type.thefarmingislands.npcs;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.event.ClickEvent;
 import net.minestom.server.coordinate.Pos;
+import dev.daweapon.type.skyblockgeneric.farming.lab.LabQuest;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
@@ -41,6 +41,41 @@ public class NPCBeth extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        if (isInDialogue(player)) return;
+        setDialogue(player, dialogueFor(player));
+    }
+
+    private static String dialogueFor(SkyBlockPlayer player) {
+        LabQuest.Stage stage = LabQuest.stage(player);
+        int visits = LabQuest.acceptedVisits(player);
+        return switch (stage) {
+            case VISITING -> visits == 0 ? "none" : "during";
+            case NOTE -> "coordinates";
+            case OPENED, LAB1 -> "during";
+            case LAB1_DONE, LAB2_PENDING, LAB2_STARTED, LAB2_LEVER -> "after-lab";
+            case COMPLETE -> "complete";
+        };
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.builder().key("none").lines(
+                        "That Jake fellow is a bit suspicious.",
+                        "He says he can't leave his house but I've seen him walking around all the time...").build(),
+                DialogueSet.builder().key("during").lines(
+                        "I keep thinking about Jake's behavior...",
+                        "I know I'll catch him doing something!").build(),
+                DialogueSet.builder().key("coordinates").lines(
+                        "Did you figure out the meaning of the note yet?",
+                        "Maybe you should go to the cave where I followed him. I remember there were a lot of mushrooms.").build(),
+                DialogueSet.builder().key("after-lab").lines(
+                        "Seems that I have misjudged Jake, he might not have been as suspicious as I thought.",
+                        "The plushie he gave me is quite cute actually!").build(),
+                DialogueSet.builder().key("complete").lines(
+                        "Thanks again for helping me discovering the truth about Jake.",
+                        "Can't believe he had a second secret lab to hide!").build()
+        };
     }
 }

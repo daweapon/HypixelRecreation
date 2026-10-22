@@ -695,8 +695,7 @@ items:
       - ""
       - "§7Changes the color of an armor piece"
       - "§7to #50414C!"
-    unavailable: "Trevor's Trapper quest not built (NPC is a stub)"
-    source: "Trapper animals in the Mushroom Desert: 1/250k Trackable ... 1/10k Elusive"
+    source: "Trapper animals in the Mushroom Desert: 1/250k Trackable, 1/200k Untrackable, 1/150k Undetected, 1/100k Endangered, 1/10k Elusive"
     components:
       - id: SKULL_HEAD
         texture: 6ff0a1171af85b48605871bb66d1d04c9f60531b61cb0b181f4c096f05dc2e54

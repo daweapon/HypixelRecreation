@@ -243,8 +243,8 @@ public class VisitorNpc extends HypixelNPC {
     @Override
     public void onClick(NPCInteractEvent event) {
         SkyBlockPlayer player = (SkyBlockPlayer) event.player();
-        if (!visitor.offerLines().isEmpty()) {
-            sendNPCMessage(player, VisitorText.fill(visitor.offerLines().getFirst(), player));
+        for (String line : VisitorDialogue.offer(visitor, player)) {
+            sendNPCMessage(player, VisitorText.fill(line, player));
         }
         player.openView(new GUIVisitor(visitor.id()));
     }

@@ -1,0 +1,34 @@
+title: "The Farming Islands Update"
+date: "22nd October 2026"
+intro:
+  - "The Barn and the Mushroom Desert finally have people to talk to. Trevor hands out Trapper tasks, Talbot and Tony spend your Pelts, and the Barn, Windmill and Desert quests are in."
+sections:
+  - heading: "Trevor the Trapper"
+    colour: "<5>"
+    lines:
+      - "Talk to Trevor in the Trapper's Den and accept a task: an animal appears somewhere in the Mushroom Desert that only you can see, and you have 10 minutes to hunt it down. Wait 20 seconds between tasks."
+      - "Trackable, Untrackable, Undetected, Endangered and Elusive animals have 100 to 10,000 health and pay 2 to 16 Pelts, Hunting XP and coins. They run when they spot you, so sneak up. Cows turn invisible, pigs make you sick, sheep ram you, rabbits bounce, horses sprint, and Endangered and Elusive animals blind you. Elusive animals vanish if they see you."
+      - "Pelt Belt and Jake's Plushie add +1 Pelt each, and the Trapper Crest multiplies the total by 1.1, 1.25 or 1.5. It upgrades itself after 100 and 500 Pelts, and at Rare also finds more Endangered and Elusive animals. Enderman Slayer 9 raises the Elusive odds too."
+      - "Animals have a tiny chance to drop a Pelt Dye. Tammy and Hunter Ava explain the basics."
+  - heading: "Talbot and Tony"
+    colour: "<5>"
+    lines:
+      - "Talbot sells the Travel Scroll to the Trapper's Den, Talbot's Theodolite, the Pelt Belt, the Trapper Crest, the Brown Bandana and the Pest Vest for Pelts."
+      - "Tony upgrades any of the 15 Tier XI farming minions to Tier XII for 75 Pelts and a stack of enchanted materials."
+      - "Talbot's Theodolite shows the height and direction of your tracked animal. The Brown Bandana adds Bonus Pest Chance for every Pest Bestiary tier. Both Trevor, Talbot and Tony have Abiphone contacts."
+  - heading: "The Barn"
+    colour: "<a>"
+    lines:
+      - "Farmhand now follows the current quest chain and gives you a Chicken Pet. The Husbandry Merchant sells the six Basic axes, the Windmill Operator trades the shared Farm Merchant stock after a favour, and cows, pigs and chickens roam the Barn."
+  - heading: "Quests across the Desert"
+    colour: "<e>"
+    lines:
+      - "Shear every sheep in Shepherd's Keep at once for 4 Pelts. The Treasure Hunter sells hints to buried treasure: dig where he says. The Friendly Hiker and the Hungry Hiker need feeding ten times for a Farming Exp Boost pet item."
+  - heading: "Jake, Moby and Beth"
+    colour: "<6>"
+    lines:
+      - "Bring Jake an animal to open his shop for everyone. Moby teaches chumming and sells Chum Buckets, and Beth's Garden visits lead to a secret lab beneath the Glowing Mushroom Cave."
+  - heading: "A placeholder Mushroom Desert"
+    colour: "<7>"
+    lines:
+      - "The Farming Islands world now has a Mushroom Desert to walk on. It is a stand-in: every NPC sits where it does on Hypixel, but the terrain is generated."

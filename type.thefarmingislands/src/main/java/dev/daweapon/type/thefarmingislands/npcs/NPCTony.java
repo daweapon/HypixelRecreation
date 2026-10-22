@@ -1,6 +1,10 @@
 package dev.daweapon.type.thefarmingislands.npcs;
 
 import net.kyori.adventure.text.Component;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.type.skyblockgeneric.hunting.npc.HuntingNpcCatalogueView;
+import dev.daweapon.type.generic.entity.npc.trait.NPCAbiphoneTrait;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.minestom.server.coordinate.Pos;
 import dev.daweapon.type.generic.user.HypixelPlayer;
@@ -9,7 +13,7 @@ import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 
-public class NPCTony extends HypixelNPC {
+public class NPCTony extends HypixelNPC implements NPCAbiphoneTrait {
     public NPCTony() {
         super(new HumanConfiguration() {
             @Override
@@ -28,6 +32,11 @@ public class NPCTony extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<e>Tony");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(278.5, 104, -544.5, -160, 0);
             }
@@ -41,6 +50,12 @@ public class NPCTony extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        player.openView(new HuntingNpcCatalogueView("tony", null));
+    }
+
+    @Override
+    public String getAbiphoneKey() {
+        return "tony";
     }
 }

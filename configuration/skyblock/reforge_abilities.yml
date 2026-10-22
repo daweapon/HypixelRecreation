@@ -171,7 +171,6 @@ sticky:
 stiff:
   name: "Stiff"
   text: "<3>Sea Creatures <7>killed with this <b>Fishing <b>Rod <7>drop <a>+1 Chum<7>."
-  unavailable: "Needs Chum drops from sea creatures killed with a fishing rod"
 suspicious:
   name: "Suspicious"
   text: "<7>Adds <c>+15 Damage <7>to this item's <7>base stats."

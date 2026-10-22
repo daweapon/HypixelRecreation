@@ -6,7 +6,7 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
-import dev.daweapon.type.hub.gui.GUIShopFarmMerchant;
+import dev.daweapon.type.skyblockgeneric.gui.GUIShopFarmMerchant;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 // NPC for the Hub's Farm Merchant, who sells and buys harvested crops via the Farmer Shop GUI

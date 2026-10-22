@@ -41,6 +41,18 @@ public class NPCMason extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        if (isInDialogue(e.player())) return;
+        setDialogue(e.player(), "hello");
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.builder().key("hello").lines(
+                        "I think the Treasure Hunter is a scammer.",
+                        "I paid for one of his tips and all it led me to was a dirty shoelace.",
+                        "His tips are just not worth it..."
+                ).build()
+        };
     }
 }

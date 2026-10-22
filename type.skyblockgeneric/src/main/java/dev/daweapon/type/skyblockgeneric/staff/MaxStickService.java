@@ -196,6 +196,7 @@ public final class MaxStickService {
             new Step("Catacombs level", dev.daweapon.type.skyblockgeneric.dungeons.CatacombsProgress::maxOut),
             new Step("Crimson town", CrimsonTownProgress::maxOut),
             new Step("Pets", MaxPets::maxOut),
+            new Step("Farming Islands quests", dev.daweapon.type.skyblockgeneric.trapper.FarmingIslandsMaxing::maxOut),
             new Step("Abiphone contacts", dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneContactXP::maxOut),
             new Step("Accessory Bag", MaxAccessories::maxOut),
             new Step("Accessory powers", MaxPowers::maxOut),

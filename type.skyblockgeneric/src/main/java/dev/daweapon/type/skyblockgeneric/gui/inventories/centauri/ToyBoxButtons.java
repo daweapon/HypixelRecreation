@@ -117,6 +117,7 @@ final class ToyBoxButtons {
                     HotfService.setWhispers(p, HotfCurrency.DESERT, 1_000_000L);
                     HotfService.syncSkyBlockXp(p);
                 }),
+                of(Material.RABBIT_HIDE, "<5>Pelts", "<8>Trevor owes you.", "<7>Gain <5>1,000 Pelts<7>.", p -> dev.daweapon.type.skyblockgeneric.trapper.Pelts.add(p, 1_000)),
                 of(Material.BONE_BLOCK, "<d>Fossil Essence", "<8>Older than time itself.", "<7>Gain <d>100,000 Fossil Essence<7>.", p -> Essences.add(p, EssenceType.FOSSIL, 100_000)),
                 of(Material.NETHER_STAR, "<d>Every Essence", "<8>The full collection.", "<7>Gain <d>100,000<7> of every essence type.", p -> {
                     for (EssenceType type : EssenceType.values()) Essences.add(p, type, 100_000);

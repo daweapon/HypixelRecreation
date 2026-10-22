@@ -174,6 +174,11 @@ public abstract class SkyBlockMob extends EntityCreature {
         // override this
     }
 
+    protected void restrictViewers(java.util.function.Predicate<Player> rule) {
+        updateViewableRule(rule);
+        nameDisplayEntity.updateViewableRule(rule);
+    }
+
     private Key deathSound() {
         String entity = getEntityType() == EntityType.MANNEQUIN ? "player"
                 : getEntityType().name().toLowerCase().replace("minecraft:", "");

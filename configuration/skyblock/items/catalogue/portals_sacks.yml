@@ -941,9 +941,10 @@ items:
     lore:
       - "§7Island: §aMushroom Desert"
       - "§7Teleport: §eGlowing Mushroom Cave"
-    unavailable: "Needs the Glowing Mushroom Cave warp location"
-    source: "Travel scroll"
-    components: []
+    source: "Bought from Moby for 64 Full Chum Buckets and 32 Glowing Mushrooms"
+    components:
+      - id: TRAVEL_SCROLL
+        scroll_type: FARMING_GLOWING_MUSHROOM_CAVE
   - id: HOWLING_CAVE_PORTAL
     material: player_head
     name: "Portal to the Howling Cave"

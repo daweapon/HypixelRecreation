@@ -286,7 +286,9 @@ public final class SeaCreatureProfiles {
             LAVA_BLAZE, LAVA_PIGMAN, FLAMING_WORM
     ), java.util.stream.Stream.concat(
             dev.daweapon.type.skyblockgeneric.fishing.torrhus.TorrhusSeaCreatures.PROFILES.stream(),
-            dev.daweapon.type.skyblockgeneric.fishing.galatea.GalateaSeaCreatures.PROFILES.stream())).toList();
+            java.util.stream.Stream.concat(
+                    dev.daweapon.type.skyblockgeneric.fishing.galatea.GalateaSeaCreatures.PROFILES.stream(),
+                    dev.daweapon.type.skyblockgeneric.fishing.oasis.OasisSeaCreatures.PROFILES.stream()))).toList();
 
     private static SkyBlockLootTable drops(SkyBlockLootTable.LootRecord... records) {
         return new SkyBlockLootTable() {

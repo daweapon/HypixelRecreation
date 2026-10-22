@@ -1,6 +1,8 @@
 package dev.daweapon.type.thefarmingislands.npcs;
 
 import net.kyori.adventure.text.Component;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.minestom.server.coordinate.Pos;
 import dev.daweapon.type.generic.user.HypixelPlayer;
@@ -28,6 +30,11 @@ public class NPCTammy extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<e>Tammy");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(284.5, 104, -544.5, -160, 0);
             }
@@ -41,6 +48,17 @@ public class NPCTammy extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        if (isInDialogue(player)) return;
+        setDialogue(player, "tiers");
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+            DialogueSet.builder().key("tiers").lines(
+                    "Different tiers of animals have different sets of abilities.",
+                    "Different animals also have unique abilities too!").build()
+        };
     }
 }

@@ -47,6 +47,8 @@ public final class AccessoryHandlers {
             Map.entry("GIFT_BOOST", "gifts/GiftBoosts"),
             Map.entry("HATCESSORY_PARTY_TIME", "accessory/hatcessory/Hatcessories"),
             Map.entry("INTIMIDATION", "entity/mob/ai/Intimidation"),
+            Map.entry("PELT_BONUS", "trapper/TrapperRewards"),
+            Map.entry("PELT_MULTIPLIER", "trapper/TrapperRewards"),
             Map.entry("PERSONAL_COMPACTOR", "compactor/PersonalCompactorService"),
             Map.entry("PERSONAL_DELETOR", "deletor/PersonalDeletorService"),
             Map.entry("SHARK_TOOTH_CHANCE", "fishing/festival/SharkToothNecklace"),

@@ -1,0 +1,32 @@
+items:
+  - id: LEAD
+    material: lead
+    name: "Lead"
+    rarity: COMMON
+    lore:
+      - "§7Right-click an animal to lead it"
+      - "§7behind you. Right-click it again"
+      - "§7to let it go."
+      - ""
+      - "§8Bring animals to §eJake §8with this."
+    components:
+      - id: SELLABLE
+        value: 4.0
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - "AA "
+              - "AB "
+              - "  A"
+            ingredients:
+              A:
+                type: STRING
+                amount: 1
+              B:
+                type: SLIME_BALL
+                amount: 1
+            result:
+              type: LEAD
+              amount: 2

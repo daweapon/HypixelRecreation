@@ -1479,7 +1479,7 @@ items:
     material: shears
     name: "Moby's Shears"
     rarity: RARE
-    unavailable: "Needs Galatea (Moby)"
+    source: "Bought from Moby."
     lore:
       - "§7Collects §a+1 Glowing Mushroom§7!"
     components:

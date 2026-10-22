@@ -420,6 +420,7 @@ items:
       - "§7harvest a §aCrop§7."
       - ""
       - "§eRight-click to view rarity scaling!"
+    source: "Bought from Jake for 1,000,000 coins after bringing him The Loch Emperor"
     components:
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/reforge_stones/golden_ball

@@ -1,0 +1,9 @@
+cooldown_seconds: 20
+time_limit_minutes: 10
+spawn_zones:
+  - { name: "Desert Settlement", x1: 130, z1: -440, x2: 235, z2: -345, min_y: 40, max_y: 140 }
+  - { name: "Oasis", x1: 300, z1: -455, x2: 345, z2: -415, min_y: 40, max_y: 140 }
+  - { name: "Archaeological Site", x1: 330, z1: -525, x2: 400, z2: -445, min_y: 40, max_y: 140 }
+  - { name: "Desert Mountain", x1: 195, z1: -565, x2: 250, z2: -485, min_y: 40, max_y: 160 }
+  - { name: "Mushroom Gorge", x1: 255, z1: -520, x2: 300, z2: -470, min_y: 30, max_y: 140 }
+  - { name: "Shepherd's Keep", x1: 360, z1: -400, x2: 410, z2: -350, min_y: 40, max_y: 140 }

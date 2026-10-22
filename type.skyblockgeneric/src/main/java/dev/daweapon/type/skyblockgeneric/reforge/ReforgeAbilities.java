@@ -19,6 +19,7 @@ import dev.daweapon.type.skyblockgeneric.reforge.abilities.SaltyAbility;
 import dev.daweapon.type.skyblockgeneric.reforge.abilities.SeaCreatureDefenseAbility;
 import dev.daweapon.type.skyblockgeneric.reforge.abilities.StatisticAbilities;
 import dev.daweapon.type.skyblockgeneric.reforge.abilities.StickyAbility;
+import dev.daweapon.type.skyblockgeneric.reforge.abilities.StiffAbility;
 import dev.daweapon.type.skyblockgeneric.entity.mob.MobType;
 
 import java.nio.file.Path;
@@ -60,6 +61,7 @@ public final class ReforgeAbilities {
                 new DimensionalAbility(),
                 new BountifulAbility(),
                 new StickyAbility(),
+                new StiffAbility(),
                 new BloodSoakedAbility(),
                 new EruditeAbility(),
                 new CandiedAbility(),

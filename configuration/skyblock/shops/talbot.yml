@@ -1,0 +1,27 @@
+title: Talbot
+slots: [10, 11, 12, 14, 15, 16]
+entries:
+  - item: TRAPPER_DEN_TRAVEL_SCROLL
+    name: "<9>Travel Scroll to the Trapper's Den"
+    material: map
+    cost: { pelts: 100 }
+  - item: TALBOTS_THEODOLITE
+    name: "<9>Talbot's Theodolite"
+    material: repeater
+    cost: { pelts: 80 }
+  - item: PELT_BELT
+    name: "<5>Pelt Belt"
+    material: paper
+    cost: { pelts: 250 }
+  - item: TRAPPER_CREST
+    name: "<f>Trapper Crest"
+    material: player_head
+    cost: { pelts: 340 }
+  - item: BROWN_BANDANA
+    name: "<5>Brown Bandana"
+    material: paper
+    cost: { pelts: 200 }
+  - item: PEST_VEST
+    name: "<5>Pest Vest"
+    material: paper
+    cost: { pelts: 250 }

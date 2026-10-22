@@ -12,6 +12,9 @@ public class ActionVisitorTalkedTo implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void run(NPCInteractEvent event) {
         if (!(event.player() instanceof SkyBlockPlayer player) || event.getNpc() == null) return;
-        VisitorService.talkedTo(player, event.getNpc().getName());
+        String className = event.getNpc().getName();
+        String displayName = event.getNpc().getName(player);
+        VisitorService.talkedTo(player, className);
+        if (!displayName.equalsIgnoreCase(className)) VisitorService.talkedTo(player, displayName);
     }
 }

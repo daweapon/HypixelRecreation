@@ -207,16 +207,7 @@
         "count": null,
         "items": []
       },
-      "rewards": [
-        {
-          "type": "ITEM",
-          "item": "JAKE_PLUSHIE",
-          "name": "Jake's Plushie",
-          "amount": 1,
-          "chancePercent": null,
-          "note": null
-        }
-      ],
+      "rewards": [],
       "dialogue": {
         "offer": [
           "I think I am really onto something here.",
@@ -817,7 +808,7 @@
       "gardenLevel": 1,
       "requirement": {
         "text": "Complete Hiker's Quest",
-        "kind": "QUEST",
+        "kind": "HIKER_QUEST",
         "count": null
       },
       "event": null,
@@ -838,11 +829,11 @@
       "rewards": [
         {
           "type": "ITEM",
-          "item": "PET_ITEM_FARMING_SKILL_BOOST_RARE",
+          "item": "PET_ITEM_FARMING_SKILL_BOOST_UNCOMMON",
           "name": "Farming Exp Boost (30%)",
           "amount": 1,
           "chancePercent": null,
-          "note": "rare pet item; sheet: 30% Farming EXP Boost"
+          "note": "uncommon pet item per wiki (30% Farming EXP Boost)"
         }
       ],
       "dialogue": {
@@ -856,8 +847,8 @@
           "I guess I'll just go hungry then..."
         ]
       },
-      "available": false,
-      "unavailableReason": "depends on an unbuilt quest: Complete Hiker's Quest",
+      "available": true,
+      "unavailableReason": null,
       "requirementChecks": [],
       "verified": true,
       "notes": null
@@ -2845,9 +2836,12 @@
           "You condemn me to doing my own work? How can you do this to me!"
         ]
       },
-      "available": false,
-      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Farmhand",
-      "requirementChecks": [],
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:FARMHAND"
+      ],
       "verified": true,
       "notes": null
     },

@@ -1,7 +1,7 @@
 package dev.daweapon.type.thefarmingislands.npcs;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.event.ClickEvent;
+import dev.daweapon.type.skyblockgeneric.hiker.HikerQuest;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.minestom.server.coordinate.Pos;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
@@ -41,6 +41,27 @@ public class NPCFriendlyHiker extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        long now = System.currentTimeMillis();
+        int state = HikerQuest.state(player);
+        if (state == HikerQuest.FINISHED || state == HikerQuest.REWARDED) {
+            sendNPCMessage(player, "Thank you for saving my friend!");
+            return;
+        }
+        if (state == HikerQuest.STARVED) {
+            if (!HikerQuest.restartReady(player, now)) {
+                sendNPCMessage(player, "My hiking buddy still hasn't returned. I'm afraid the worst has happened and he's starved to death...");
+                sendNPCMessage(player, "I'm going to send someone down soon to find him.");
+                return;
+            }
+            HikerQuest.restart(player);
+            sendNPCMessage(player, "My last hiking buddy didn't make it out of the gorge...");
+            sendNPCMessage(player, "My new hiking buddy went there a couple days ago to explore but he hasn't come back!");
+            sendNPCMessage(player, "Could you go check up on him?");
+            return;
+        }
+        sendNPCMessage(player, "My hiking buddy has been missing for a couple days...");
+        sendNPCMessage(player, "He said he was going to go explore the gorge, but that was a while ago.");
+        sendNPCMessage(player, "I'm getting worried, could you go check on him?");
     }
 }
