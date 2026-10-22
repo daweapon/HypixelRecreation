@@ -6,9 +6,11 @@ import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.event.phase.EventPhase;
 import dev.daweapon.type.generic.event.phase.PhasedEvent;
 import dev.daweapon.type.skyblockgeneric.event.custom.ItemCraftEvent;
+import dev.daweapon.type.skyblockgeneric.item.ItemQuantifiable;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.components.CraftableComponent;
 import dev.daweapon.type.skyblockgeneric.item.components.SellableComponent;
+import dev.daweapon.type.skyblockgeneric.item.crafting.ShapelessRecipe;
 import dev.daweapon.type.skyblockgeneric.item.crafting.SkyBlockRecipe;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -32,7 +34,15 @@ public class ActionSkillCarpentryGain implements HypixelEventClass {
         Map<String, Integer> rawItems = new HashMap<>();
         double npcSellValue = 0;
 
-        collectRawItems(craftedItem, craftedItem.getAmount(), rawItems);
+        if (!craftedItem.hasComponent(CraftableComponent.class) && event.getRecipe() instanceof ShapelessRecipe carpentry
+                && carpentry.getRecipeType() == SkyBlockRecipe.RecipeType.CARPENTRY) {
+            int crafts = craftedItem.getAmount() / Math.max(1, carpentry.getResult().getAmount());
+            for (ItemQuantifiable ingredient : carpentry.getIngredientList()) {
+                collectRawItems(ingredient.getItem(), ingredient.getAmount() * crafts, rawItems);
+            }
+        } else {
+            collectRawItems(craftedItem, craftedItem.getAmount(), rawItems);
+        }
 
         for (Map.Entry<String, Integer> entry : rawItems.entrySet()) {
             String itemId = entry.getKey();

@@ -5,6 +5,7 @@ import dev.daweapon.type.generic.event.EventNodes;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.event.phase.EventPhase;
 import dev.daweapon.type.generic.event.phase.PhasedEvent;
+import dev.daweapon.type.skyblockgeneric.consumable.MushroomSoupFlight;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
 import dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
@@ -22,6 +23,7 @@ public class ActionCombatPetTick implements HypixelEventClass {
         long ticks = player.getAliveTicks();
         if (ticks % SCAN_TICKS != 0) return;
         if (SkyBlockDataHandler.getUser(player) == null) return;
+        MushroomSoupFlight.tick(player);
         CombatPetHooks.petTick(player);
         MiscPetHooks.petTick(player);
         if (ticks % SYNC_TICKS == 0) PetEquipEffects.apply(player);

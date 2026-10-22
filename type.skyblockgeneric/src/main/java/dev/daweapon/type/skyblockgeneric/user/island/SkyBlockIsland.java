@@ -55,6 +55,8 @@ public class SkyBlockIsland {
     @Setter
     private IslandPortals portals = null;
     @Setter
+    private dev.daweapon.type.skyblockgeneric.user.island.furniture.IslandFurniture furniture = null;
+    @Setter
     private long lastSaved = 0;
     @Setter
     private Integer islandVersion;

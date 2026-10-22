@@ -254,7 +254,6 @@ items:
     material: stick
     name: "Deep Ocean Biome Stick"
     rarity: COMMON
-    unavailable: "Changing the biome of a private island isn't built"
     source: "Crafted from an Enchanted Ink Sac and 2 Sticks"
     lore:
       - "§7Allows you to change the biome at"
@@ -265,6 +264,28 @@ items:
       - "§7change the radius it effects."
       - ""
       - "§7Selected Radius: §b3"
+    components:
+      - id: INTERACTABLE
+        handler_id: DEEP_OCEAN_BIOME_STICK
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "  A"
+              - " B "
+              - "B  "
+            ingredients:
+              A:
+                type: ENCHANTED_INK_SAC
+                amount: 1
+              B:
+                type: STICK
+                amount: 1
+            result:
+              type: DEEP_OCEAN_BIOME_STICK
+              amount: 1
   - id: DEFUSE_KIT
     material: shears
     name: "Defuse Kit"
@@ -284,7 +305,6 @@ items:
     material: stick
     name: "Desert Biome Stick"
     rarity: COMMON
-    unavailable: "Changing the biome of a private island isn't built"
     source: "Crafted from 64 Sand and 2 Sticks"
     lore:
       - "§7Allows you to change the biome at"
@@ -295,6 +315,28 @@ items:
       - "§7change the radius it effects."
       - ""
       - "§7Selected Radius: §b3"
+    components:
+      - id: INTERACTABLE
+        handler_id: DESERT_BIOME_STICK
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "  A"
+              - " B "
+              - "B  "
+            ingredients:
+              A:
+                type: SAND
+                amount: 64
+              B:
+                type: STICK
+                amount: 1
+            result:
+              type: DESERT_BIOME_STICK
+              amount: 1
   - id: DESERT_ISLAND
     material: player_head
     name: "Desert Island"
@@ -336,7 +378,6 @@ items:
     material: player_head
     name: "Desk"
     rarity: COMMON
-    unavailable: "Furniture placement and the Carpentry Table aren't built"
     source: "Crafted at the Carpentry Table (Carpentry VII)"
     lore:
       - "§8Furniture"
@@ -345,6 +386,8 @@ items:
       - "§7world. Some furniture is interactable"
       - "§7while some are purely cosmetic."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 4c3e8c194c9f14fd98c2347a4cc4fcc3d755d948bdc58e42926d9d6f45b620a5
   - id: DETECTIVE_SCANNER
@@ -413,7 +456,6 @@ items:
     material: player_head
     name: "Diamond Chest+"
     rarity: RARE
-    unavailable: "Furniture placement and the Carpentry Table aren't built"
     source: "Crafted at the Carpentry Table (Carpentry XX) from 12 Chests and 64 Enchanted Diamond"
     lore:
       - "§8Furniture"
@@ -422,6 +464,8 @@ items:
       - "§7You can store three pages of items"
       - "§7in this chest!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: e6eb06ba8d6c09320bf754bb98e75090a02a49456e117e9af666b24fe7647bb8
   - id: DIAMOND_LIVID_HEAD
@@ -666,7 +710,6 @@ items:
     material: player_head
     name: "Dining Chair"
     rarity: COMMON
-    unavailable: "Furniture placement and the Carpentry Table aren't built"
     source: "Crafted at the Carpentry Table"
     lore:
       - "§8Furniture"
@@ -675,13 +718,14 @@ items:
       - "§7This simple dining chair can be sat"
       - "§7on by a single player."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 2735f2301d0810bdceb3f8dd256ef0c0c02eedc6e047ba3e59edeb037c8fdf2f
   - id: DINING_TABLE
     material: player_head
     name: "Dining Table"
     rarity: COMMON
-    unavailable: "Furniture placement and the Carpentry Table aren't built"
     source: "Crafted at the Carpentry Table"
     lore:
       - "§8Furniture"
@@ -689,6 +733,8 @@ items:
       - "§7This purely cosmetic item is great to"
       - "§7place chairs around."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 8a6d4d516a9b40530c278d7f13a506326ac0a742e50693b1a1c10ae4c1470216
   - id: DIRTY_FINGERNAILS
@@ -1328,7 +1374,6 @@ items:
     material: player_head
     name: "Emerald Chest+"
     rarity: RARE
-    unavailable: "Furniture placement and the Carpentry Table aren't built"
     source: "Crafted at the Carpentry Table (Carpentry XX) from 12 Chests and 64 Enchanted Emerald"
     lore:
       - "§8Furniture"
@@ -1337,6 +1382,8 @@ items:
       - "§7You can store three pages of items"
       - "§7in this chest!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 81c5aae6aea09400d2718a21e62de40e23ab530b6f8f486cd33b6614c1f47da0
   - id: EMMETT_POINTER
@@ -1759,20 +1806,20 @@ items:
     material: player_head
     name: "Enchanting Table+"
     rarity: RARE
-    unavailable: "Furniture placement and the Carpentry Table aren't built"
     source: "Crafted at the Carpentry Table (Carpentry XXII), or bought from the Furniture Shop for 10,000 Coins"
     lore:
       - "§8Furniture"
       - ""
       - "§7Opens the Enchantment Table!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 9ec83ab2059ccfeaa36c3f4f20daa9503d483a530fbdb80f940940aa81d2c61
   - id: ENDER_PLUS
     material: player_head
     name: "Ender Chest+"
     rarity: RARE
-    unavailable: "Furniture placement and the Carpentry Table aren't built"
     source: "Crafted at the Carpentry Table (Carpentry XX) from 12 Chests and 64 Enchanted Obsidian"
     lore:
       - "§8Furniture"
@@ -1781,13 +1828,14 @@ items:
       - "§7You can store three pages of items"
       - "§7in this chest!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 51c772096fff488474064a2b49a56377ad5000bb6093b5b16cee1fe50875603a
   - id: ENDSTONE_CHEST
     material: player_head
     name: "End Stone Chest+"
     rarity: RARE
-    unavailable: "Furniture placement and the Carpentry Table aren't built"
     source: "Crafted at the Carpentry Table (Carpentry XX) from 12 Chests and 64 Enchanted End Stone"
     lore:
       - "§8Furniture"
@@ -1796,6 +1844,8 @@ items:
       - "§7You can store three pages of items"
       - "§7in this chest!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: fb19d10a32df93a139150b6fb75bacd55ca48ebbb8e1ac230cb9287d015dbdb2
   - id: ENDSTONE_IDOL
@@ -1817,7 +1867,6 @@ items:
     material: stick
     name: "End Biome Stick"
     rarity: COMMON
-    unavailable: "Changing the biome of a private island isn't built"
     source: "Crafted from 64 End Stone and 2 Sticks"
     lore:
       - "§7Allows you to change the biome at"
@@ -1828,6 +1877,28 @@ items:
       - "§7change the radius it effects."
       - ""
       - "§7Selected Radius: §b3"
+    components:
+      - id: INTERACTABLE
+        handler_id: END_BIOME_STICK
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "  A"
+              - " B "
+              - "B  "
+            ingredients:
+              A:
+                type: END_STONE
+                amount: 64
+              B:
+                type: STICK
+                amount: 1
+            result:
+              type: END_BIOME_STICK
+              amount: 1
   - id: ENSNARED_SNAIL
     material: player_head
     name: "Ensnared Snail"

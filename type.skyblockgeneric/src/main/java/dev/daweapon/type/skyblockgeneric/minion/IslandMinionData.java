@@ -174,6 +174,7 @@ public class IslandMinionData {
                 percentageSpeedIncrease += (int) AccessoryEconomyHooks.potatoMinionSpeedPercent(instance, minion.name());
                 percentageSpeedIncrease += (int) dev.daweapon.type.skyblockgeneric.island.IslandUtilityBlocks.minionSpeedPercent(instance, minion.isMining());
                 percentageSpeedIncrease += (int) dev.daweapon.type.skyblockgeneric.island.IslandUtilityBlocks.crystalSpeedPercent(instance, minion);
+                percentageSpeedIncrease += (int) dev.daweapon.type.skyblockgeneric.beacon.BeaconService.minionSpeedPercent(instance);
             }
 
             return percentageSpeedIncrease;

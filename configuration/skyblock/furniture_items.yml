@@ -1,0 +1,426 @@
+# Placeable furniture. Keyed by catalogue item id.
+# carpentry: Carpentry level needed to place and craft. interaction: NONE SIT BED TOGGLE MINION_CHAIR CRAFTING ENCHANTING ANVIL CARPENTRY.
+# scale: head display scale (1.0 = one block). width/height: click hitbox. seats: riders for SIT. recipe: Carpentry Table ingredients.
+furniture:
+  CARPENTRY_BENCH:
+    carpentry: 0
+    interaction: CARPENTRY
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  STOOL:
+    carpentry: 0
+    interaction: SIT
+    scale: 0.7
+    width: 0.7
+    height: 0.7
+    seats: 1
+    recipe:
+      STICK: 4
+      DARK_OAK_PLANKS: 1
+      WHITE_WOOL: 1
+  COFFEE_TABLE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.2
+    width: 1.2
+    height: 0.6
+    recipe:
+      STICK: 4
+      DARK_OAK_PLANKS: 4
+      WHITE_WOOL: 4
+  DINING_CHAIR:
+    carpentry: 0
+    interaction: SIT
+    scale: 0.9
+    width: 0.8
+    height: 1.0
+    seats: 1
+    recipe:
+      STICK: 10
+      DARK_OAK_PLANKS: 2
+      WHITE_WOOL: 1
+  DINING_TABLE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.5
+    width: 1.5
+    height: 0.9
+    recipe:
+      STICK: 8
+      DARK_OAK_PLANKS: 12
+      WHITE_WOOL: 12
+  MINION_CHAIR:
+    carpentry: 1
+    interaction: MINION_CHAIR
+    scale: 1.0
+    width: 1.0
+    height: 1.4
+    recipe:
+      IRON_INGOT: 1
+      STICK: 2
+      DARK_OAK_PLANKS: 4
+      STONE: 4
+  SKYBLOCK_CHAIR:
+    carpentry: 1
+    interaction: SIT
+    scale: 0.9
+    width: 0.8
+    height: 1.0
+    seats: 1
+    recipe:
+      DARK_OAK_PLANKS: 4
+      STONE: 4
+  FANCY_FLOWER_POT:
+    carpentry: 2
+    interaction: NONE
+    scale: 0.8
+    width: 0.8
+    height: 0.8
+    recipe:
+      IRON_INGOT: 6
+      DIRT: 1
+      TERRACOTTA: 8
+      ROSE_BUSH: 1
+  SKYBLOCK_BENCH:
+    carpentry: 3
+    interaction: SIT
+    scale: 1.3
+    width: 1.6
+    height: 0.8
+    seats: 2
+    recipe:
+      DARK_OAK_PLANKS: 16
+      STONE: 6
+  SKYBLOCK_TABLE:
+    carpentry: 4
+    interaction: NONE
+    scale: 1.5
+    width: 1.5
+    height: 0.9
+    recipe:
+      DARK_OAK_PLANKS: 12
+      STONE: 4
+  ARMOR_SHOWCASE:
+    carpentry: 5
+    interaction: NONE
+    scale: 1.2
+    width: 1.0
+    height: 2.0
+    recipe:
+      IRON_INGOT: 6
+      STICK: 6
+      STONE: 1
+  SCARECROW:
+    carpentry: 6
+    interaction: NONE
+    scale: 1.6
+    width: 1.0
+    height: 2.0
+    recipe:
+      HAY_BALE: 1
+      STICK: 8
+      BROWN_WOOL: 4
+      WHEAT: 4
+      PUMPKIN: 1
+  DESK:
+    carpentry: 7
+    interaction: NONE
+    scale: 1.4
+    width: 1.4
+    height: 1.0
+    recipe:
+      FEATHER: 1
+      TERRACOTTA: 1
+      DARK_OAK_PLANKS: 16
+      OAK_PLANKS: 1
+  BOOKCASE:
+    carpentry: 8
+    interaction: NONE
+    scale: 1.5
+    width: 1.2
+    height: 2.0
+    recipe:
+      DARK_OAK_PLANKS: 12
+      BOOKSHELF: 4
+  SMALL_SHELVES:
+    carpentry: 9
+    interaction: NONE
+    scale: 1.2
+    width: 1.0
+    height: 1.2
+    recipe:
+      DARK_OAK_PLANKS: 12
+      OAK_TRAPDOOR: 2
+  WEAPON_RACK:
+    carpentry: 10
+    interaction: NONE
+    scale: 1.3
+    width: 1.2
+    height: 1.4
+    recipe:
+      STICK: 8
+      STONE: 4
+  CAMPFIRE:
+    carpentry: 11
+    interaction: TOGGLE
+    scale: 1.0
+    width: 1.0
+    height: 0.7
+    recipe:
+      STICK: 16
+      ENCHANTED_IRON_INGOT: 1
+  TIKI_TORCH:
+    carpentry: 12
+    interaction: NONE
+    scale: 1.0
+    width: 0.6
+    height: 1.8
+    recipe:
+      STICK: 4
+      FLINT_AND_STEEL: 1
+      NETHERRACK: 1
+  FIREPLACE:
+    carpentry: 13
+    interaction: NONE
+    scale: 1.8
+    width: 1.8
+    height: 1.6
+    recipe:
+      IRON_INGOT: 4
+      FURNACE: 1
+      GLASS_BOTTLE: 2
+      STONE: 16
+      RED_CARPET: 6
+  FURNACE_PLUS:
+    carpentry: 13
+    interaction: NONE
+    scale: 1.2
+    width: 1.0
+    height: 1.2
+    recipe:
+      IRON_INGOT: 4
+      FURNACE: 1
+      ENCHANTED_COAL: 1
+  CHEST_SHELVES:
+    carpentry: 14
+    interaction: NONE
+    scale: 1.4
+    width: 1.2
+    height: 1.2
+    recipe:
+      DARK_OAK_PLANKS: 12
+      OAK_TRAPDOOR: 2
+      CHEST: 4
+  BEST_WEAPON_RACK:
+    carpentry: 15
+    interaction: NONE
+    scale: 1.3
+    width: 1.2
+    height: 1.4
+    recipe:
+      OAK_PLANKS: 3
+      RED_CARPET: 3
+      STONE: 2
+      ENCHANTING_TABLE: 1
+      ENCHANTED_EYE_OF_ENDER: 1
+  HAY_BED:
+    carpentry: 16
+    interaction: BED
+    scale: 1.5
+    width: 1.4
+    height: 0.8
+    recipe:
+      HAY_BALE: 10
+      OAK_PLANKS: 6
+  LARGE_BED:
+    carpentry: 16
+    interaction: BED
+    scale: 1.8
+    width: 1.8
+    height: 0.9
+    recipe:
+      WHITE_WOOL: 10
+      OAK_PLANKS: 6
+  WATER_TROUGH:
+    carpentry: 17
+    interaction: NONE
+    scale: 1.5
+    width: 1.5
+    height: 0.8
+    recipe:
+      STONE: 2
+      DARK_OAK_PLANKS: 4
+      WATER_BUCKET: 2
+  FOOD_TROUGH:
+    carpentry: 17
+    interaction: NONE
+    scale: 1.5
+    width: 1.5
+    height: 0.8
+    recipe:
+      STONE: 2
+      DARK_OAK_PLANKS: 4
+      HAY_BALE: 2
+  MEDIUM_SHELVES:
+    carpentry: 18
+    interaction: NONE
+    scale: 1.5
+    width: 1.3
+    height: 1.6
+    recipe:
+      DARK_OAK_PLANKS: 24
+      OAK_TRAPDOOR: 4
+      CHEST: 1
+  CRAFTING_PLUS:
+    carpentry: 19
+    interaction: CRAFTING
+    scale: 1.2
+    width: 1.0
+    height: 1.2
+    recipe:
+      DARK_OAK_PLANKS: 14
+      OAK_PLANKS: 4
+      STONE: 10
+      STICK: 3
+      IRON_HOE: 2
+  WOOD_CHEST:
+    carpentry: 20
+    interaction: NONE
+    scale: 1.2
+    width: 1.0
+    height: 1.0
+    recipe:
+      CHEST: 12
+      OAK_PLANKS: 64
+  DIAMOND_CHEST:
+    carpentry: 20
+    interaction: NONE
+    scale: 1.2
+    width: 1.0
+    height: 1.0
+    recipe:
+      CHEST: 12
+      DIAMOND: 64
+  EMERALD_CHEST:
+    carpentry: 20
+    interaction: NONE
+    scale: 1.2
+    width: 1.0
+    height: 1.0
+    recipe:
+      CHEST: 12
+      EMERALD: 64
+  IRON_CHEST:
+    carpentry: 20
+    interaction: NONE
+    scale: 1.2
+    width: 1.0
+    height: 1.0
+    recipe:
+      CHEST: 12
+      IRON_INGOT: 64
+  GOLD_CHEST:
+    carpentry: 20
+    interaction: NONE
+    scale: 1.2
+    width: 1.0
+    height: 1.0
+    recipe:
+      CHEST: 12
+      GOLD_INGOT: 64
+  LAPIS_CHEST:
+    carpentry: 20
+    interaction: NONE
+    scale: 1.2
+    width: 1.0
+    height: 1.0
+    recipe:
+      CHEST: 12
+      LAPIS_LAZULI: 64
+  REDSTONE_CHEST:
+    carpentry: 20
+    interaction: NONE
+    scale: 1.2
+    width: 1.0
+    height: 1.0
+    recipe:
+      CHEST: 12
+      REDSTONE: 64
+  ENDER_PLUS:
+    carpentry: 20
+    interaction: NONE
+    scale: 1.2
+    width: 1.0
+    height: 1.0
+    recipe:
+      CHEST: 12
+      EYE_OF_ENDER: 64
+  ENDSTONE_CHEST:
+    carpentry: 20
+    interaction: NONE
+    scale: 1.2
+    width: 1.0
+    height: 1.0
+    recipe:
+      CHEST: 12
+      END_STONE: 64
+  BREWING_PLUS:
+    carpentry: 21
+    interaction: NONE
+    scale: 1.2
+    width: 1.0
+    height: 1.2
+    recipe:
+      BREWING_STAND: 1
+      OAK_PLANKS: 4
+      STONE: 4
+      WATER_BOTTLE: 5
+  ENCHANTING_PLUS:
+    carpentry: 22
+    interaction: ENCHANTING
+    scale: 1.3
+    width: 1.2
+    height: 1.2
+    recipe:
+      DARK_OAK_PLANKS: 12
+      ENCHANTING_TABLE: 1
+      BOOKSHELF: 40
+      SKELETON_TALISMAN: 1
+      RED_CARPET: 1
+  BLACKSMITH_PLUS:
+    carpentry: 23
+    interaction: ANVIL
+    scale: 1.3
+    width: 1.2
+    height: 1.2
+    recipe:
+      DARK_OAK_PLANKS: 20
+      OAK_PLANKS: 3
+      STONE: 5
+      STICK: 1
+      ANVIL: 1
+      IRON_SHOVEL: 1
+      IRON_PICKAXE: 1
+  SKULL_CHEST:
+    carpentry: 24
+    interaction: NONE
+    scale: 1.3
+    width: 1.1
+    height: 1.1
+    recipe:
+      CHEST: 12
+      SKELETON_TALISMAN: 4
+      BONE: 64
+  GRANDFATHER_CLOCK:
+    carpentry: 25
+    interaction: NONE
+    scale: 1.8
+    width: 1.0
+    height: 2.4
+    recipe:
+      CLOCK: 1
+      ENCHANTED_GOLD_BLOCK: 1
+      ENCHANTED_IRON_BLOCK: 1
+      DARK_OAK_PLANKS: 16
+      STICK: 2

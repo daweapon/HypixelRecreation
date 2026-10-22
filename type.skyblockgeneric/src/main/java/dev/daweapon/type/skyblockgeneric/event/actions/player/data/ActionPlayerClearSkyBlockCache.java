@@ -31,6 +31,7 @@ public class ActionPlayerClearSkyBlockCache implements HypixelEventClass {
         SkyBlockScoreboard.removeCache(player);
         player.getPetData().updatePetEntityImpl(null);
         PetEquipEffects.release(player.getUuid());
+        dev.daweapon.type.skyblockgeneric.consumable.MushroomSoupFlight.release(player.getUuid());
         dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks.release(player.getUuid());
         dev.daweapon.type.skyblockgeneric.hoppity.StrayRabbitService.release(player.getUuid());
         MobAggroLog.clear(player.getUuid());

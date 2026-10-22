@@ -19,7 +19,6 @@ items:
     material: player_head
     name: "Redstone Chest+"
     rarity: RARE
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built)"
     source: "Carpentry XX: Furniture crafting"
     lore:
       - "§8Furniture"
@@ -28,6 +27,8 @@ items:
       - "§7You can store three pages of items"
       - "§7in this chest!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 68c15fbe6728818d565e97a92dec9b467ebd2025d8671d3bc77acb9801ee9fbc
   - id: RED_TENT
@@ -1117,7 +1118,6 @@ items:
     material: player_head
     name: "Scarecrow"
     rarity: COMMON
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built)"
     source: "Carpentry VI: Furniture crafting, or Furniture Shop for 120 Coins"
     lore:
       - "§8Furniture"
@@ -1127,6 +1127,8 @@ items:
       - "§7cosmetic scarecrow is a great"
       - "§7addition to any farm."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: a17740e6a5edd8d4f39c7f0a9064a84b6e4c20d3db55557d723ce7db3ad7cc46
   - id: SCARF_FRAGMENT
@@ -2499,7 +2501,6 @@ items:
     material: player_head
     name: "Skull Chest++"
     rarity: RARE
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built)"
     source: "Carpentry XXIV: Furniture crafting"
     lore:
       - "§8Furniture"
@@ -2508,6 +2509,8 @@ items:
       - "§7You can store six pages of items in"
       - "§7this chest!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 1880725ac40d46542bf7c819801872e0f01b7f9a52a4c48a98d7c94874484c0f
   - id: SKULL_ITEM
@@ -2539,7 +2542,6 @@ items:
     material: player_head
     name: "Dark Oak Bench"
     rarity: COMMON
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built)"
     source: "Carpentry III: Furniture crafting"
     lore:
       - "§8Furniture"
@@ -2548,13 +2550,14 @@ items:
       - "§7This stylized bench seats up to two"
       - "§7players."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: f540b33a20dd306487f23a4de5313f81b7750a9f3ad549e50d2f0a3f052a2279
   - id: SKYBLOCK_CHAIR
     material: player_head
     name: "Dark Oak Chair"
     rarity: COMMON
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built)"
     source: "Carpentry I: Furniture crafting"
     lore:
       - "§8Furniture"
@@ -2563,19 +2566,22 @@ items:
       - "§7This stylized chair seats a single"
       - "§7player."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: dc151c026f8efd2d981294a9f4765788248fcb3af8a6075ff32e4aeaffda3d1d
   - id: SKYBLOCK_TABLE
     material: player_head
     name: "Dark Oak Table"
     rarity: COMMON
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built)"
     source: "Carpentry IV: Furniture crafting"
     lore:
       - "§8Furniture"
       - ""
       - "§7This stylized table is purely cosmetic."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: e674db446fe81d093a156c3bdceba692d4f1b41d95519172ddc7af22442601be
   - id: SLAYER_ENERGY_DRINK
@@ -2795,7 +2801,6 @@ items:
     material: player_head
     name: "Small Shelves"
     rarity: COMMON
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built)"
     source: "Carpentry IX: Furniture crafting"
     lore:
       - "§8Furniture"
@@ -2803,6 +2808,8 @@ items:
       - "§7These cosmetic small shelves look"
       - "§7great in any build."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: b0a5da6a1abc5b4e909567ede33398e2e5ba53eed62a54030eb42535e180b57d
   - id: SMALL_XTREE

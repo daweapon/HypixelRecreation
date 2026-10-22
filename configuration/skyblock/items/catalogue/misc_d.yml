@@ -154,7 +154,6 @@ items:
     material: player_head
     name: "Lapis Chest+"
     rarity: RARE
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built)"
     source: "Carpentry Table (Carpentry 20): 12 Chests and 64 Lapis Lazuli"
     lore:
       - "§8Furniture"
@@ -163,19 +162,22 @@ items:
       - "§7You can store three pages of items"
       - "§7in this chest!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 84321146f2903ba8f4aedafe83ccfb38ade03096c33121071f1f844fcd28694d
   - id: LARGE_BED
     material: player_head
     name: "Large Bed"
     rarity: COMMON
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built)"
     source: "Carpentry Table (Carpentry 16): 10 White Wool and 6 Oak Planks"
     lore:
       - "§8Furniture"
       - ""
       - "§7Use to set your spawn location!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 70aaac15f9bbaf816cfadb010876d72dfb044735b13d7bdc0989c52b0f63477c
   - id: LARGE_ENCHANTED_CHEST
@@ -981,7 +983,6 @@ items:
     material: player_head
     name: "Magical Mushroom Soup"
     rarity: UNCOMMON
-    unavailable: "Temporary island flight from a consumable is not built"
     source: "Crafted from 1 Glowstone Dust, 1 Red Mushroom, 1 Brown Mushroom, 1 Redstone, 1 Bowl (recipe unlocked by Mushroom IV)"
     lore:
       - "§7Consuming this soup on your private"
@@ -991,6 +992,8 @@ items:
       - "§7Leaving the island will pause the"
       - "§7effect!"
     components:
+      - id: INTERACTABLE
+        handler_id: MAGIC_MUSHROOM_SOUP
       - id: SKULL_HEAD
         texture: b2683286a912eedc224974b2d4afb7fa545b13ae61d19f3cdf990e51a505aef1
       - id: SELLABLE
@@ -1192,7 +1195,6 @@ items:
     material: player_head
     name: "Medium Shelves"
     rarity: COMMON
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built)"
     source: "Carpentry Table (Carpentry 18): 24 Dark Oak Planks, 4 Wooden Trapdoors and a Chest"
     lore:
       - "§8Furniture"
@@ -1201,6 +1203,8 @@ items:
       - "§7You can store three pages of items"
       - "§7in this chest!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: cecfd74ae2ac3fd6f9b954097ad606efab66f4c0799c2724db4a649d38bf1d38
   - id: MELON_JUICE
@@ -1497,7 +1501,6 @@ items:
     material: player_head
     name: "Minion Chair"
     rarity: COMMON
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built)"
     source: "Carpentry Table (Carpentry 1): 1 Iron Ingot, 2 Sticks, 4 Dark Oak Planks and 4 Stone"
     lore:
       - "§8Furniture"
@@ -1506,6 +1509,8 @@ items:
       - "§7This stylized chair can seat a single"
       - "§7minion."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 20f9c5a838ff62569bef624bf037dd28a3d5872cc0597b9e809c5337e1d77010
   - id: MINI_FISH_BOWL
@@ -3405,8 +3410,6 @@ items:
       - "§2Dwarven Mines§7."
       - ""
       - "§7Has a single use and can be stacked."
-      - ""
-      - "§8Not active yet: Needs Beacons (the Beacon block and its power timer are not built)"
     components:
       - id: SELLABLE
         value: 1920.0

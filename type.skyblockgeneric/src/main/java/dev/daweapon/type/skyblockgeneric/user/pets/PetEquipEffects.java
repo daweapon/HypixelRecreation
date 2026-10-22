@@ -4,6 +4,8 @@ import net.minestom.server.entity.GameMode;
 import net.minestom.server.entity.attribute.Attribute;
 import net.minestom.server.entity.attribute.AttributeInstance;
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.generic.HypixelConst;
+import dev.daweapon.type.skyblockgeneric.consumable.MushroomSoupFlight;
 import dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.PetPerkMath;
 import dev.daweapon.type.skyblockgeneric.item.handlers.pet.definition.PetConditions;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -40,7 +42,9 @@ public final class PetEquipEffects {
     }
 
     public static boolean canFly(SkyBlockPlayer player) {
-        return PetAbilities.has(player, ItemType.PHOENIX_PET, "Magic Bird") && PetConditions.onPrivateIsland();
+        if (PetAbilities.has(player, ItemType.PHOENIX_PET, "Magic Bird") && PetConditions.onPrivateIsland()) return true;
+        if (!HypixelConst.isPrivateWorldServer()) return false;
+        return player.getBoosterCookieExpirationDate() > System.currentTimeMillis() || MushroomSoupFlight.grantsFlight(player);
     }
 
     private static void applyJumpBoost(SkyBlockPlayer player) {

@@ -16,6 +16,8 @@ public enum BlockType {
     MINION_STORAGE(dev.daweapon.type.skyblockgeneric.block.blocks.BlockMinionStorage.class),
     PORTABLE_CAMPFIRE(BlockPortableCampfire.class),
     EXPERIMENTATION_TABLE(dev.daweapon.type.skyblockgeneric.block.blocks.BlockExperimentationTable.class),
+    TELEPORT_PAD(dev.daweapon.type.skyblockgeneric.block.blocks.BlockTeleportPad.class),
+    BEACON(dev.daweapon.type.skyblockgeneric.block.blocks.BlockBeacon.class),
     ;
 
     public final Class<? extends CustomSkyBlockBlock> clazz;

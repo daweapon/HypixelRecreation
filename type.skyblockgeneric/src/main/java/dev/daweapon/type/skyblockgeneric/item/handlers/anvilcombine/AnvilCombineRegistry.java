@@ -35,6 +35,7 @@ public class AnvilCombineRegistry {
         dev.daweapon.type.skyblockgeneric.garden.pest.PestBooks.registerAnvilCombines();
         dev.daweapon.type.skyblockgeneric.item.utility.SilexUpgrade.registerAnvilCombine();
         Recombobulation.registerAnvilCombine();
+        dev.daweapon.type.skyblockgeneric.user.island.portal.PortalizerCombine.registerAnvilCombine();
         dev.daweapon.type.skyblockgeneric.garden.tool.FarmingToolItems.registerAnvilCombines();
         dev.daweapon.type.skyblockgeneric.item.utility.PocketSackInASack.registerAnvilCombine();
         dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneContactsTrio.registerAnvilCombine();

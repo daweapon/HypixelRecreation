@@ -40,6 +40,7 @@ final class SpareStatistics {
         spare = ItemStatistics.add(spare, CarnivalStatistics.all(player));
         spare = ItemStatistics.add(spare, dev.daweapon.type.skyblockgeneric.collection.CollectionStatistics.all(player));
         spare = ItemStatistics.add(spare, dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgradeStatistics.all(player));
+        spare = ItemStatistics.add(spare, dev.daweapon.type.skyblockgeneric.beacon.BeaconStatistics.all(player));
         spare = ItemStatistics.add(spare, IceEssenceShop.statistics(player));
         spare = ItemStatistics.add(spare, dev.daweapon.type.skyblockgeneric.essence.FossilEssenceShop.statistics(player));
         spare = ItemStatistics.add(spare, CrimsonEssenceShop.statistics(player));

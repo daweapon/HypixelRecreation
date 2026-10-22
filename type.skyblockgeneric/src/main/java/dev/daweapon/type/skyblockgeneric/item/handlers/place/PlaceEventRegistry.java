@@ -55,6 +55,8 @@ public class PlaceEventRegistry {
         register(SprayCanHandlers.HANDLER_ID, SprayCanHandlers.place());
         register(IslandPortalPlacement.HANDLER_ID, IslandPortalPlacement.handler());
         register(InfiniTorchPlacement.HANDLER_ID, InfiniTorchPlacement.handler());
+        register(dev.daweapon.type.skyblockgeneric.user.island.furniture.FurniturePlacement.HANDLER_ID,
+                dev.daweapon.type.skyblockgeneric.user.island.furniture.FurniturePlacement.handler());
         register("CARROT_CRYSTAL_PLACE", (event, player, item) -> {
 
         });

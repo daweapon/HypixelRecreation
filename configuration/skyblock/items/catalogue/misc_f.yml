@@ -152,7 +152,6 @@ items:
     material: player_head
     name: "Stool"
     rarity: COMMON
-    unavailable: "Needs the Carpentry Table and private island furniture placement"
     source: "Carpentry Table (no Carpentry level needed): 4 Stick, Dark Oak Planks, White Wool"
     lore:
       - "§8Furniture"
@@ -161,22 +160,10 @@ items:
       - "§7This simple stool can be sat on by a"
       - "§7player."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 48d9c8ce9052fa91ac7acf6a998e964c6b192c154738d01009e3f6128fdedc71
-      - id: DEFAULT_CRAFTABLE
-        recipes:
-          - type: SHAPELESS
-            recipe-type: CARPENTRY
-            ingredients:
-              - type: STICK
-                amount: 4
-              - type: DARK_OAK_PLANKS
-                amount: 1
-              - type: WHITE_WOOL
-                amount: 1
-            result:
-              type: STOOL
-              amount: 1
   - id: STORM_IN_A_BOTTLE
     material: player_head
     name: "Storm in a Bottle"
@@ -547,7 +534,6 @@ items:
     material: player_head
     name: "Mystical Mushroom Soup"
     rarity: RARE
-    unavailable: "Needs private island flight"
     source: "Crafting (Mushroom VII)"
     lore:
       - "§7Consuming this soup on your private"
@@ -556,9 +542,9 @@ items:
       - ""
       - "§7Leaving the island will pause the"
       - "§7effect!"
-      - ""
-      - "§8Not active yet: Needs private island flight (not built)"
     components:
+      - id: INTERACTABLE
+        handler_id: SUPER_MAGIC_MUSHROOM_SOUP
       - id: SKULL_HEAD
         texture: 91e5d0c23ec1a1f813c0c63f112e55b7b1c87fecd3269c0fdbce96d03b558c08
       - id: DEFAULT_CRAFTABLE
@@ -702,7 +688,6 @@ items:
     material: stick
     name: "Taiga Biome Stick"
     rarity: COMMON
-    unavailable: "Needs private island biome changing"
     source: "Crafting: 64 Spruce Leaves and 2 Sticks"
     lore:
       - "§7Allows you to change the biome at"
@@ -714,10 +699,13 @@ items:
       - ""
       - "§7Selected Radius: §b3"
     components:
+      - id: INTERACTABLE
+        handler_id: TAIGA_BIOME_STICK
       - id: DEFAULT_CRAFTABLE
+        default-craftable: false
         recipes:
           - type: SHAPED
-            recipe-type: NONE
+            recipe-type: FORAGING
             pattern:
               - OOA
               - OBO
@@ -1011,7 +999,6 @@ items:
     material: end_portal_frame
     name: "Teleport Pad"
     rarity: UNCOMMON
-    unavailable: "Needs private island block placement of Teleport Pads"
     source: "Trade 1 Enchanted Eye of Ender for 2 (Ender Pearl VII)"
     lore:
       - "§7Places a Teleport Pad down,"
@@ -1019,6 +1006,19 @@ items:
       - "§7other Teleport Pad on your"
       - "§7private island!"
       - "§8Maximum of 56 per island."
+    components:
+      - id: PLACEABLE
+        block_type: TELEPORT_PAD
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPELESS
+            recipe-type: COMBAT
+            ingredients:
+              - type: ENCHANTED_EYE_OF_ENDER
+                amount: 1
+            result:
+              type: TELEPORT_PAD
+              amount: 2
   - id: THEORETICAL_HOE
     material: iron_hoe
     name: "Mathematical Hoe Blueprint"
@@ -1152,7 +1152,6 @@ items:
     material: player_head
     name: "Tiki Torch"
     rarity: COMMON
-    unavailable: "Needs the Carpentry Table and private island furniture placement"
     source: "Carpentry Table (Carpentry 12): 4 Stick, Flint and Steel, Netherrack"
     lore:
       - "§8Furniture"
@@ -1160,22 +1159,10 @@ items:
       - "§7This cosmetic furniture adds a"
       - "§7tropical atmosphere to any build."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 18c7f83f9d49283a55c59d7145169cc3a58d54250e4656b617e8e15cb9fe3e7b
-      - id: DEFAULT_CRAFTABLE
-        recipes:
-          - type: SHAPELESS
-            recipe-type: CARPENTRY
-            ingredients:
-              - type: STICK
-                amount: 4
-              - type: FLINT_AND_STEEL
-                amount: 1
-              - type: NETHERRACK
-                amount: 1
-            result:
-              type: TIKI_TORCH
-              amount: 1
   - id: TIME_GUN
     material: diamond_horse_armor
     name: "Time Gun"
@@ -1429,7 +1416,6 @@ items:
     material: polar_bear_spawn_egg
     name: "Training Dummy"
     rarity: UNCOMMON
-    unavailable: "Needs placeable Training Dummies on the private island"
     source: "Crafting (Pumpkin V): 32 Sponge around an Enchanted Pumpkin and an Armor Stand (Furniture)"
     lore:
       - "§7Places a Training Dummy that can be"
@@ -2371,7 +2357,6 @@ items:
     material: player_head
     name: "Water Trough"
     rarity: COMMON
-    unavailable: "Needs the Carpentry Table and private island furniture placement"
     source: "Carpentry Table (Carpentry 17): 2 Stone, 4 Dark Oak Planks, 2 Water Bucket"
     lore:
       - "§8Furniture"
@@ -2379,27 +2364,14 @@ items:
       - "§7An infinite source of water for"
       - "§7buckets and bottles."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 71465300d5d6f79c52ca93c08d54b85aa830d4373a246681abe6d76692b5d0d4
-      - id: DEFAULT_CRAFTABLE
-        recipes:
-          - type: SHAPELESS
-            recipe-type: CARPENTRY
-            ingredients:
-              - type: STONE
-                amount: 2
-              - type: DARK_OAK_PLANKS
-                amount: 4
-              - type: WATER_BUCKET
-                amount: 2
-            result:
-              type: WATER_TROUGH
-              amount: 1
   - id: WEAPON_RACK
     material: player_head
     name: "Weapon Rack"
     rarity: UNCOMMON
-    unavailable: "Needs the Carpentry Table and private island furniture placement"
     source: "Carpentry Table (Carpentry 10): 8 Stick, 4 Stone"
     lore:
       - "§8Furniture"
@@ -2410,20 +2382,10 @@ items:
       - "§74 weapons (swords, pickaxes, or"
       - "§7axes)."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 834ebcc7d1a187156adce27cbf5d4e1f368c18b36aa4ccee6c20b3c2ecf38e56
-      - id: DEFAULT_CRAFTABLE
-        recipes:
-          - type: SHAPELESS
-            recipe-type: CARPENTRY
-            ingredients:
-              - type: STICK
-                amount: 8
-              - type: STONE
-                amount: 4
-            result:
-              type: WEAPON_RACK
-              amount: 1
   - id: WEATHER_NODE
     material: lapis_block
     name: "Weather Node"
@@ -3088,7 +3050,6 @@ items:
     material: player_head
     name: "Wood Chest+"
     rarity: UNCOMMON
-    unavailable: "Needs the Carpentry Table and private island furniture placement"
     source: "Carpentry Table (Carpentry 20): 12 Chest, 64 Oak Planks, or the Furniture Shop for 15,000 coins"
     lore:
       - "§8Furniture"
@@ -3097,20 +3058,10 @@ items:
       - "§7You can store three pages of items"
       - "§7in this chest!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: e24a4d32d43d1c2a946be64635c31a07d0300cfdcabf6f23c4f8242077ccdb6e
-      - id: DEFAULT_CRAFTABLE
-        recipes:
-          - type: SHAPELESS
-            recipe-type: CARPENTRY
-            ingredients:
-              - type: CHEST
-                amount: 12
-              - type: OAK_PLANKS
-                amount: 64
-            result:
-              type: WOOD_CHEST
-              amount: 1
   - id: WOOD_SINGULARITY
     material: player_head
     name: "Wood Singularity"

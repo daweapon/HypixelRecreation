@@ -276,6 +276,14 @@ items:
     rarity: LEGENDARY
     material: PLAYER_HEAD
     name: "Scorched Power Crystal"
+    lore:
+      - "§7Powers §bBeacons §7for up to §348 hours"
+      - "§7at a time!"
+      - ""
+      - "§7Grants §a+20% §7more of the Beacon's"
+      - "§7profile stat and §6+1% §7more minion speed."
+      - ""
+      - "§7Has a single use and can be stacked."
     components:
       - id: SELLABLE
         value: 350000.0

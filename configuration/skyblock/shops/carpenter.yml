@@ -1,0 +1,33 @@
+title: Furniture Shop
+slots: DEFAULT
+entries:
+  - item: SCARECROW
+    name: "<f>Scarecrow"
+    cost: { coins: 120 }
+  - item: WEAPON_RACK
+    name: "<a>Weapon Rack"
+    cost: { coins: 100 }
+  - item: ARMOR_SHOWCASE
+    name: "<a>Armor Stand"
+    cost: { coins: 100 }
+  - item: FANCY_FLOWER_POT
+    name: "<f>Flower Pot"
+    cost: { coins: 150 }
+  - item: ENCHANTING_PLUS
+    name: "<9>Enchanting Table+"
+    cost: { coins: 10000 }
+  - item: CRAFTING_PLUS
+    name: "<9>Crafting Table+"
+    cost: { coins: 10000 }
+  - item: FURNACE_PLUS
+    name: "<9>Furnace+"
+    cost: { coins: 15000 }
+  - item: WOOD_CHEST
+    name: "<a>Wood Chest+"
+    cost: { coins: 15000 }
+  - item: FIREPLACE
+    name: "<f>Fireplace"
+    cost: { coins: 10000 }
+  - item: CHEST_SHELVES
+    name: "<f>Chest Storage"
+    cost: { coins: 15000 }

@@ -263,6 +263,13 @@ public class SkyBlockItem {
 		return item;
 	}
 
+	public void convertTo(ItemType type) {
+		int keptAmount = amount;
+		attributes = new ArrayList<>();
+		loadAsItemType(type);
+		amount = keptAmount;
+	}
+
 	public List<String> getConfigLore() {
 		return config.getLore();
 	}

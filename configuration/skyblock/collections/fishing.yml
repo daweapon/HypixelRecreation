@@ -149,6 +149,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: DEEP_OCEAN_BIOME_STICK
   - amount: 400
     rewards:
     - type: XP

@@ -29,13 +29,26 @@ public final class BiomeSticks {
     }
 
     private static final List<Stick> STICKS = List.of(
+            new Stick("BIRCH_FOREST_BIOME_STICK", "minecraft:birch_forest", "Birch Forest"),
+            new Stick("DEEP_OCEAN_BIOME_STICK", "minecraft:deep_ocean", "Deep Ocean"),
+            new Stick("DESERT_BIOME_STICK", "minecraft:desert", "Desert"),
+            new Stick("END_BIOME_STICK", "minecraft:the_end", "End"),
+            new Stick("FOREST_BIOME_STICK", "minecraft:forest", "Forest"),
             new Stick("JUNGLE_BIOME_STICK", "minecraft:jungle", "Jungle"),
+            new Stick("MESA_BIOME_STICK", "minecraft:badlands", "Mesa"),
+            new Stick("MUSHROOM_BIOME_STICK", "minecraft:mushroom_fields", "Mushroom"),
+            new Stick("NETHER_BIOME_STICK", "minecraft:nether_wastes", "Nether"),
             new Stick("ROOFED_FOREST_BIOME_STICK", "minecraft:dark_forest", "Roofed Forest"),
-            new Stick("SAVANA_BIOME_STICK", "minecraft:savanna", "Savanna"));
+            new Stick("SAVANA_BIOME_STICK", "minecraft:savanna", "Savanna"),
+            new Stick("TAIGA_BIOME_STICK", "minecraft:snowy_taiga", "Taiga"));
 
     private static final Map<UUID, Integer> RADIUS = new ConcurrentHashMap<>();
 
     private BiomeSticks() {
+    }
+
+    public static List<Stick> sticks() {
+        return STICKS;
     }
 
     public static void registerInteractables() {
@@ -71,6 +84,19 @@ public final class BiomeSticks {
 
     private static int cellZ(long packed) {
         return (int) packed;
+    }
+
+    public static void setBiome(Chunk chunk, RegistryKey<Biome> biome) {
+        int minY = chunk.getInstance().getCachedDimensionType().minY();
+        int maxY = minY + chunk.getInstance().getCachedDimensionType().height();
+        int originX = chunk.getChunkX() * 16;
+        int originZ = chunk.getChunkZ() * 16;
+        for (int x = 0; x < 16; x += BIOME_CELL) {
+            for (int z = 0; z < 16; z += BIOME_CELL) {
+                for (int y = minY; y < maxY; y += BIOME_CELL) chunk.setBiome(originX + x, y, originZ + z, biome);
+            }
+        }
+        chunk.sendChunk();
     }
 
     private static void cycleRadius(SkyBlockPlayer player) {

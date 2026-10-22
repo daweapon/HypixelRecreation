@@ -3,7 +3,6 @@ items:
     material: player_head
     name: "Flower Pot"
     rarity: COMMON
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Carpentry / Furniture Shop (the wiki lists Flower Pot, Carpentry II or 150 Coins; Fancy variant unconfirmed)"
     lore:
       - "§8Furniture"
@@ -11,6 +10,8 @@ items:
       - "§7This cosmetic flower pot looks great"
       - "§7in a garden."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 5b463bcc47419302f232c78019e42a30d509b22966d054f514b76feed152d43e
   - id: FARMING_FOR_DUMMIES
@@ -381,7 +382,6 @@ items:
     material: player_head
     name: "Fireplace"
     rarity: COMMON
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Carpentry XIII"
     lore:
       - "§8Furniture"
@@ -389,6 +389,8 @@ items:
       - "§7This cosmetic fireplace looks great"
       - "§7in any build."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 164226245a2cabd91fa51535cca98e917987e4642a6ad9943217b330d7c91e51
   - id: FIRE_IN_A_BOTTLE
@@ -629,7 +631,6 @@ items:
     material: player_head
     name: "Food Trough"
     rarity: COMMON
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Carpentry XVII"
     lore:
       - "§8Furniture"
@@ -637,6 +638,8 @@ items:
       - "§7This purely cosmetic item looks great"
       - "§7as part of an animal farm."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 780186b7e1142e5fc640611d6788428b66a2eb0ee94d820268a132ad2cb769a9
   - id: FORESTS_FAVOR
@@ -664,7 +667,6 @@ items:
     material: stick
     name: "Forest Biome Stick"
     rarity: COMMON
-    unavailable: "Private island biome changing isn't built"
     source: "Crafted from 64 Oak Leaves and 2 Sticks (Oak Log V)"
     lore:
       - "§7Allows you to change the biome at"
@@ -676,7 +678,10 @@ items:
       - ""
       - "§7Selected Radius: §b3"
     components:
+      - id: INTERACTABLE
+        handler_id: FOREST_BIOME_STICK
       - id: DEFAULT_CRAFTABLE
+        default-craftable: false
         recipes:
           - type: SHAPED
             recipe-type: FORAGING
@@ -1071,13 +1076,14 @@ items:
     material: player_head
     name: "Furnace+"
     rarity: RARE
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Carpentry XIII or 15,000 Coins from the Furniture Shop"
     lore:
       - "§8Furniture"
       - ""
       - "§7Opens the Furnace!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: ac94993a9c88025eaaeccca8d61a71d812cac5cf7361ccfd29187993193429be
   - id: GARDEN_SCYTHE
@@ -1854,7 +1860,6 @@ items:
     material: player_head
     name: "Gold Chest+"
     rarity: RARE
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Carpentry (chest furniture)"
     lore:
       - "§8Furniture"
@@ -1863,6 +1868,8 @@ items:
       - "§7You can store three pages of items"
       - "§7in this chest!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 2be9c344af2aa6f12a42045a849c31c5230d4658eef31d0a794fc8903e1f74d1
   - id: GOLD_LIVID_HEAD
@@ -2063,7 +2070,6 @@ items:
     material: player_head
     name: "Grandfather Clock"
     rarity: EPIC
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Carpentry XXV"
     lore:
       - "§8Furniture"
@@ -2072,6 +2078,8 @@ items:
       - "§7accurately tells the time in your"
       - "§7SkyBlock island."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 54779d4338d1032018deeff9f17347098c77e2321e29cffcca542eca0bbe4526
   - id: GRAPPLING_HOOK
@@ -2351,13 +2359,14 @@ items:
     material: player_head
     name: "Hay Bed"
     rarity: COMMON
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Carpentry XVI"
     lore:
       - "§8Furniture"
       - ""
       - "§7Use to set your spawn location!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 1e52619ea4ab42fc036ebcdf507720e17cc4aeaf00e4f9bf06ba8ad24464b140
   - id: HEALING_MELON
@@ -3252,7 +3261,6 @@ items:
     material: player_head
     name: "Iron Chest+"
     rarity: RARE
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Carpentry (chest furniture)"
     lore:
       - "§8Furniture"
@@ -3261,6 +3269,8 @@ items:
       - "§7You can store three pages of items"
       - "§7in this chest!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 6de2a08e71d0b5326a597df028dd7c15fa4cf221caac2810e2891fb84ee57c9f
   - id: ISOPOD_HUSK

@@ -448,6 +448,8 @@ items:
       - ""
       - "§7Selected Radius: §b3"
     components:
+      - id: INTERACTABLE
+        handler_id: MESA_BIOME_STICK
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -481,6 +483,8 @@ items:
       - ""
       - "§7Selected Radius: §b3"
     components:
+      - id: INTERACTABLE
+        handler_id: MUSHROOM_BIOME_STICK
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -514,6 +518,8 @@ items:
       - ""
       - "§7Selected Radius: §b3"
     components:
+      - id: INTERACTABLE
+        handler_id: NETHER_BIOME_STICK
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:

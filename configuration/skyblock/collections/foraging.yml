@@ -46,6 +46,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: FOREST_BIOME_STICK
   - amount: 2000
     rewards:
     - type: XP
@@ -114,6 +117,9 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: ENCHANTED_SPRUCE_LOG
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: TAIGA_BIOME_STICK
   - amount: 5000
     rewards:
     - type: XP
@@ -178,6 +184,9 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: SMALL_FORAGING_SACK
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BIRCH_FOREST_BIOME_STICK
   - amount: 5000
     rewards:
     - type: XP

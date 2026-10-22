@@ -11,6 +11,7 @@ import dev.daweapon.type.generic.gui.inventory.HypixelInventoryGUI;
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import dev.daweapon.type.generic.gui.inventory.item.GUIClickableItem;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.type.skyblockgeneric.gui.inventories.islandsettings.GUIIslandBiome;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 // Main menu GUI for Jerry the Assistant on the Island: patch notes, deliveries, guesting, and moving Jerry.
@@ -77,6 +78,23 @@ public class GUIJerry extends HypixelInventoryGUI {
                         <7>players across the SkyBlock universe!
 
                         <e>Click to learn!""");
+            }
+        });
+
+        set(new GUIClickableItem(22) {
+            @Override
+            public void run(InventoryPreClickEvent e, HypixelPlayer p) {
+                ((SkyBlockPlayer) p).openView(new GUIIslandBiome());
+            }
+
+            @Override
+            public ItemStack.Builder getItem(HypixelPlayer p) {
+                return ItemStacks.item(Material.GRASS_BLOCK, """
+                        <a>Change Island Biome
+                        <7>Change the biome of your whole
+                        <7>Private Island.
+
+                        <e>Click to choose!""");
             }
         });
 

@@ -483,7 +483,6 @@ items:
     material: player_head
     name: "Armor Stand"
     rarity: UNCOMMON
-    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
     source: "Carpentry Table: Iron Ingot 6, Stick 6, Stone (Carpentry 5); Furniture Shop for 100 coins"
     lore:
       - "§8Furniture"
@@ -494,6 +493,8 @@ items:
       - "§7off a full set of armor, plus a single"
       - "§7weapon (sword, pickaxe, or axe)."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 70f50ea46644bedf8dfa53af977f8c206e7f3ee4e0faae6e5c8278d77c207ad7
   - id: ARMOR_STAND
@@ -806,7 +807,6 @@ items:
     material: beacon
     name: "Beacon I"
     rarity: RARE
-    unavailable: "Needs the Beacon block and Power Crystals on the Private Island, which aren't built"
     source: "Crafted from 192 Enchanted Mithril, 64 Starfall and 5 Sand (Mithril IX, Heart of the Mountain 1)"
     lore:
       - "§7Tier: §bI"
@@ -819,11 +819,13 @@ items:
       - "§7the §2Dwarven Mines§7."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 1§c."
+    components:
+      - id: PLACEABLE
+        block_type: BEACON
   - id: BEACON_2
     material: beacon
     name: "Beacon II"
     rarity: RARE
-    unavailable: "Needs the Beacon block and Power Crystals on the Private Island, which aren't built"
     source: "Forge: upgrade of the previous Beacon tier with Refined Mithril (and Plasma for IV-V)"
     lore:
       - "§7Tier: §bII"
@@ -836,11 +838,13 @@ items:
       - "§7the §2Dwarven Mines§7."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 2§c."
+    components:
+      - id: PLACEABLE
+        block_type: BEACON
   - id: BEACON_3
     material: beacon
     name: "Beacon III"
     rarity: EPIC
-    unavailable: "Needs the Beacon block and Power Crystals on the Private Island, which aren't built"
     source: "Forge: upgrade of the previous Beacon tier with Refined Mithril (and Plasma for IV-V)"
     lore:
       - "§7Tier: §bIII"
@@ -853,11 +857,13 @@ items:
       - "§7the §2Dwarven Mines§7."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 3§c."
+    components:
+      - id: PLACEABLE
+        block_type: BEACON
   - id: BEACON_4
     material: beacon
     name: "Beacon IV"
     rarity: EPIC
-    unavailable: "Needs the Beacon block and Power Crystals on the Private Island, which aren't built"
     source: "Forge: upgrade of the previous Beacon tier with Refined Mithril (and Plasma for IV-V)"
     lore:
       - "§7Tier: §bIV"
@@ -870,11 +876,13 @@ items:
       - "§7the §2Dwarven Mines§7."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 4§c."
+    components:
+      - id: PLACEABLE
+        block_type: BEACON
   - id: BEACON_5
     material: beacon
     name: "Beacon V"
     rarity: EPIC
-    unavailable: "Needs the Beacon block and Power Crystals on the Private Island, which aren't built"
     source: "Forge: upgrade of the previous Beacon tier with Refined Mithril (and Plasma for IV-V)"
     lore:
       - "§7Tier: §bV"
@@ -887,6 +895,9 @@ items:
       - "§7the §2Dwarven Mines§7."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+    components:
+      - id: PLACEABLE
+        block_type: BEACON
   - id: BEAR_BED
     material: player_head
     name: "Bear Bed"
@@ -1077,7 +1088,6 @@ items:
     material: player_head
     name: "Weapon Rack+"
     rarity: COMMON
-    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
     source: "Carpentry Table: Oak Planks 3, Red Carpet 3, Stone 2, Enchantment Table, Enchanted Eye of Ender (Carpentry 15)"
     lore:
       - "§8Furniture"
@@ -1088,6 +1098,8 @@ items:
       - "§7pickaxe, or axe) including a hologram"
       - "§7with stats!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 8a62f131b750866c8de2bfc7e23498fbb5fd21309aae67534bdc2f69fce17e86
   - id: BINGO_CARD
@@ -1110,7 +1122,6 @@ items:
     material: stick
     name: "Birch Forest Biome Stick"
     rarity: COMMON
-    unavailable: "Needs the Biome Sticks system on the Private Island"
     source: "Biome Stick (Private Island)"
     lore:
       - "§7Allows you to change the biome at"
@@ -1121,6 +1132,28 @@ items:
       - "§7change the radius it effects."
       - ""
       - "§7Selected Radius: §b3"
+    components:
+      - id: INTERACTABLE
+        handler_id: BIRCH_FOREST_BIOME_STICK
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern:
+              - "  A"
+              - " B "
+              - "B  "
+            ingredients:
+              A:
+                type: BIRCH_LEAVES
+                amount: 64
+              B:
+                type: STICK
+                amount: 1
+            result:
+              type: BIRCH_FOREST_BIOME_STICK
+              amount: 1
   - id: BIRD_HOUSE
     material: player_head
     name: "Bird House"
@@ -1140,13 +1173,14 @@ items:
     material: player_head
     name: "Blacksmith+"
     rarity: COMMON
-    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
     source: "Carpentry Table: Dark Oak Planks 20, Oak Planks 3, Stone 5, Stick, Anvil, Iron Shovel, Iron Pickaxe (Carpentry 23)"
     lore:
       - "§8Furniture"
       - ""
       - "§7Opens the Anvil menu!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 6254a059231f986b7bbf843700e87295a4fce2d79dd98f67b064430c28070c83
   - id: BLACK_CAT_PLUSH
@@ -1395,7 +1429,6 @@ items:
     material: player_head
     name: "Bookcase"
     rarity: COMMON
-    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
     source: "Carpentry Table: Dark Oak Planks 12, Bookshelf 4 (Carpentry 8)"
     lore:
       - "§8Furniture"
@@ -1403,6 +1436,8 @@ items:
       - "§7This cosmetic bookcase will make you"
       - "§7appear smarter to your friends."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: f5596680fd1f838a94dc638ab6893f9395c1df2802718b0ebba19a997a2d9b3f
   - id: BOOKWORM_BOOK
@@ -1680,13 +1715,14 @@ items:
     material: player_head
     name: "Brewing+"
     rarity: COMMON
-    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
     source: "Carpentry Table: Brewing Stand, Oak Planks 4, Stone 4, Water Bottle 5 (Carpentry 21)"
     lore:
       - "§8Furniture"
       - ""
       - "§7Opens the Brewing Stand menu!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 3b1b5b765d437082a6d5e086f03ee1f39e76c3f36bcbd29cb7322097f6d7a149
   - id: BRIDGE_EGG
@@ -2168,13 +2204,14 @@ items:
     material: player_head
     name: "Fire Pit"
     rarity: COMMON
-    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
     source: "Carpentry Table: Stick 16, Enchanted Iron Ingot (Carpentry 11)"
     lore:
       - "§8Furniture"
       - ""
       - "§7Right-click to toggle the campfire!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 3f13df626cfaffdc36458372bab57a263c00b0772bac26c5174cf375b8d44761
   - id: CANDLE_ARCH
@@ -2284,7 +2321,6 @@ items:
     material: player_head
     name: "Carpentry Table"
     rarity: COMMON
-    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
     source: "Crafted from 10 Oak Planks, 2 Crafting Table and 4 Stick"
     lore:
       - "§8Furniture"
@@ -2294,8 +2330,34 @@ items:
       - "§7your unlocked furniture through the"
       - "§7Carpentry Table."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: f39d778f398861446f55bba98fb7fc65bd6ba238f6ca85015ee0d132a44931fd
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: CARPENTRY
+            pattern:
+              - ABA
+              - AAA
+              - COC
+            ingredients:
+              A:
+                type: OAK_PLANKS
+                amount: 2
+              B:
+                type: CRAFTING_TABLE
+                amount: 2
+              C:
+                type: STICK
+                amount: 2
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: CARPENTRY_BENCH
+              amount: 1
   - id: CARROT_BED
     material: player_head
     name: "Carrot Bed"
@@ -2543,7 +2605,6 @@ items:
     material: player_head
     name: "Chest Storage"
     rarity: COMMON
-    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
     source: "Carpentry Table: Dark Oak Planks 12, Wooden Trapdoor 2, Chest 4 (Carpentry 14); Furniture Shop for 15,000 coins"
     lore:
       - "§8Furniture"
@@ -2552,6 +2613,8 @@ items:
       - "§7This extra large chest looks great"
       - "§7in any build."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: a280d9e5a4a4c98af0ae94cf109808a91d0a80b5cd3fbbffdf64ad5924210ed7
   - id: CHICKEN_COOP
@@ -2714,7 +2777,6 @@ items:
     material: player_head
     name: "Coffee Table"
     rarity: COMMON
-    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
     source: "Carpentry Table: Stick 4, Dark Oak Planks 4, White Wool 4"
     lore:
       - "§8Furniture"
@@ -2722,6 +2784,8 @@ items:
       - "§7This cosmetic smaller table fits well"
       - "§7with a single chair."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: f0950b05122a0b51e9ce91485f2f7c179964696a9e36386d49005e9e51d39a9f
   - id: COFFIN
@@ -3017,13 +3081,14 @@ items:
     material: player_head
     name: "Crafting Table+"
     rarity: RARE
-    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
     source: "Carpentry Table: Dark Oak Planks 14, Oak Planks 4, Stone 10, Stick 3, Iron Hoe 2 (Carpentry 19); Furniture Shop for 10,000 coins"
     lore:
       - "§8Furniture"
       - ""
       - "§7Opens the Crafting menu!"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 40ded1ffc6e9b3cd284102a22bd396d68cf70df263240407f17db8587eb4710d
   - id: CREATIVE_MIND

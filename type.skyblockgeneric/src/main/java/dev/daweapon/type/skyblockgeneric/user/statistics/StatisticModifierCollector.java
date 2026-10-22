@@ -222,6 +222,8 @@ final class StatisticModifierCollector {
             StatisticSourceType.OTHER, StatisticModifierType.PROGRESSION, null, Material.PAINTING, null);
         addModifier(modifiers, "Community Shop Upgrades", dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgradeStatistics.all(player),
             StatisticSourceType.OTHER, StatisticModifierType.PROGRESSION, null, Material.HOPPER, null);
+        addModifier(modifiers, "Beacon", dev.daweapon.type.skyblockgeneric.beacon.BeaconStatistics.all(player),
+            StatisticSourceType.OTHER, StatisticModifierType.PROGRESSION, null, Material.BEACON, null);
         addModifier(modifiers, "Garden Chips", dev.daweapon.type.skyblockgeneric.garden.chip.ChipStatistics.all(player),
             StatisticSourceType.OTHER, StatisticModifierType.PROGRESSION, null, Material.PAPER, null);
         addModifier(modifiers, "Anita's Accessory", FarmingContestStatistics.anitaAccessory(player),

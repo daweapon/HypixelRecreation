@@ -509,6 +509,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: END_BIOME_STICK
   - amount: 250
     rewards:
     - type: XP
@@ -1542,6 +1545,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: DESERT_BIOME_STICK
   - amount: 1000
     rewards:
     - type: XP

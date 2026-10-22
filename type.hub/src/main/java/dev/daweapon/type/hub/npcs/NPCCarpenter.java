@@ -8,6 +8,7 @@ import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.type.skyblockgeneric.mission.MissionData;
 import dev.daweapon.type.skyblockgeneric.mission.missions.MissionGiveWoolToCarpenter;
+import dev.daweapon.type.skyblockgeneric.shop.catalogue.CatalogueShopView;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.stream.Stream;
@@ -67,7 +68,7 @@ public class NPCCarpenter extends HypixelNPC {
             return;
         }
         if (data.hasCompleted(MissionGiveWoolToCarpenter.class)) {
-            setDialogue(player, "spoke-again");
+            setDialogue(player, "spoke-again").thenRun(() -> player.openView(new CatalogueShopView("carpenter")));
         }
     }
 
@@ -90,8 +91,7 @@ public class NPCCarpenter extends HypixelNPC {
                         ).build(),
                 DialogueSet.builder()
                         .key("spoke-again").lines(
-                                "Check out the Furniture Shop downstairs!",
-                                "The Furniture Shop is downstairs. Purchase cool furniture down there!"
+                                "Take a look at the <a>Furniture Shop<f>! Everything in here can also be crafted at a Carpentry Table."
                         ).build()
         ).toArray(DialogueSet[]::new);
     }

@@ -24,7 +24,8 @@ public class ActionPlayerFall implements HypixelEventClass {
         Pos newPosition = event.getNewPosition();
         Pos currentPosition = player.getPosition();
 
-        if (player.isFlying() || player.getGameMode().equals(GameMode.CREATIVE) || player.isInLaunchpad()) {
+        if (player.isFlying() || player.getGameMode().equals(GameMode.CREATIVE) || player.isInLaunchpad()
+                || dev.daweapon.type.skyblockgeneric.consumable.MushroomSoupFlight.protectsFromFall(player)) {
             player.setFallHeight(currentPosition.blockY());
             return;
         }
