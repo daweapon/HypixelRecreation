@@ -37,10 +37,37 @@ public class GUITreeMilestones extends StatelessView {
                 <a>{} Tree Milestones
                 <7>Obtaining <2>Tree Gifts <7>from <a>{} Trees
                 <7>will grant you extra rewards!""", tree.display, tree.display));
+        layout.slot(50, ItemStacks.item(Material.IRON_AXE, breakdown()));
         for (int index = 0; index < TreeGiftMilestones.TIER_GIFTS.length; index++) {
             int tier = index + 1;
             layout.slot(19 + index, (_, c) -> milestone((SkyBlockPlayer) c.player(), tier));
         }
+    }
+
+    private String breakdown() {
+        int[] steps;
+        int base;
+        switch (tree.type) {
+            case "MANGROVE" -> {
+                base = 50;
+                steps = new int[]{5, 15, 25, 50, 75, 100};
+            }
+            case "HELIX" -> {
+                base = 150;
+                steps = new int[]{10, 30, 60, 100, 150, 200};
+            }
+            default -> {
+                base = 7;
+                steps = new int[]{2, 5, 8, 12, 16, 20};
+            }
+        }
+        int[] until = {3, 6, 9, 12, 15, 20};
+        StringBuilder text = new StringBuilder("<a>" + tree.display + " Tree Sweep Breakdown\n<2>" + base + " Sweep <7>needed to cut <e>1 <7>Log");
+        for (int index = 0; index < steps.length; index++) {
+            text.append("\n<2>+").append(steps[index]).append(" Sweep <7>per log until <e>").append(until[index]).append(" <7>Logs");
+            if (index == steps.length - 1) text.append(" <7>(<c><l>MAX!<7>)");
+        }
+        return text.toString();
     }
 
     private ItemStack.Builder milestone(SkyBlockPlayer player, int tier) {

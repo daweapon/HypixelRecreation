@@ -111,7 +111,7 @@ class HotfRegistryTest {
             assertTrue(registry.perk(id).available(), id);
         }
         assertTrue(registry.perk("monster_hunter").available());
-        assertFalse(registry.perk("beekeeper").available());
+        assertTrue(registry.perk("beekeeper").available());
         assertEquals(2, registry.perk("collector").value(1), 1e-9);
         assertEquals(100, registry.perk("collector").value(50), 1e-9);
         assertEquals(0.1, registry.perk("timber").value(1), 1e-9);

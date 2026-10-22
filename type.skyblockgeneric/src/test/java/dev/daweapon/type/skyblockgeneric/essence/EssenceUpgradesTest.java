@@ -26,7 +26,9 @@ class EssenceUpgradesTest {
     @Test
     void salvageTableMatchesTheWiki() {
         Map<String, EssenceUpgrades.Salvage> salvage = EssenceUpgrades.loadSalvage(DIRECTORY.resolve("essence_salvage.json"));
-        assertEquals(21, salvage.size());
+        assertEquals(32, salvage.size());
+        assertEquals(5, salvage.get("SWEEP_BOOSTER").amount());
+        assertEquals(dev.daweapon.type.skyblockgeneric.essence.EssenceType.FOREST, salvage.get("SIGNAL_ENHANCER").essence());
         assertEquals(5, salvage.get("RAMPART_HELMET").amount());
         assertEquals(3, salvage.get("FLAMING_FIST").items().get("LEATHER_CLOTH"));
     }

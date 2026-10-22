@@ -6,6 +6,7 @@ import dev.daweapon.type.skyblockgeneric.hotf.HotfAbilities;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfAbility;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfCoreLevel;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfCurrency;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfBeekeeper;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfLottery;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfPerk;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfRegistry;
@@ -116,6 +117,11 @@ public final class HotfTooltips {
             if (line.equals("{lottery_effect}")) {
                 HotfLottery effect = HotfLottery.current(player);
                 if (effect != null) lines.add("<a>Your Current Effect\n<8>■ <7>Gain " + effect.getDescription() + "<7>.");
+                continue;
+            }
+            if (line.equals("{beekeeper_effect}")) {
+                HotfBeekeeper effect = HotfBeekeeper.current(player);
+                if (effect != null) lines.add("<a>Your Current Effect\n<8>■ " + effect.getDescription() + "<7>.");
                 continue;
             }
             lines.add(line.startsWith("<") ? line : "<7>" + line);

@@ -432,8 +432,6 @@ chapters:
         rewards: { whispers: 40000 }
         trigger: coral.fish
         amount: 15
-        available: false
-        unavailable: "Coral the Fish is not built"
     completion:
       hotf: 20000
       foraging: 150000

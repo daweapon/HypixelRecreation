@@ -57,7 +57,7 @@ public final class TorrhusSeaCreatures {
                     Drop.chance("DISTANT_ECHO", 1), Drop.oneIn("DYE_AQUAMARINE", 50_000)),
             profile(GIANT_ISOPOD, "Giant Isopod", 186, EntityType.SILVERFISH, 500_000, 500, 4_650, 934,
                     "A Giant Isopod was dredged up from the depths!",
-                    SeaCreatureBehaviour.aggressive(1.5, 20, 24),
+                    SeaCreatureBehaviour.isopodDiving(SeaCreatureBehaviour.aggressive(1.5, 20, 24)),
                     List.of(MobType.AQUATIC, MobType.ARTHROPOD, MobType.ELUSIVE),
                     Drop.always("ENCHANTED_HELIX_LOG", 16, 32), Drop.always("ENCHANTED_RUBY_VEILSHROOM", 8),
                     Drop.chance("VEILSHROOM_BUNCH", 5), Drop.chance("HELIXIS", 5), Drop.chance("ISOPOD_HUSK", 2),

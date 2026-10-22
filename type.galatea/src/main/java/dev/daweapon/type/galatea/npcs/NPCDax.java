@@ -7,6 +7,7 @@ import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.galatea.gui.GUIDax;
+import dev.daweapon.type.galatea.npcs.dax.DaxHuntrap;
 import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -45,6 +46,7 @@ public class NPCDax extends HypixelNPC {
                 return true;
             }
         });
+        new DaxHuntrap(new Pos(-705.5, 94, 33.5), MET_TRIGGER);
     }
 
     @Override

@@ -10,9 +10,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 2 }
+            statistics: { defense: 4 }
             text:
-              - "Grants <a>+2 Defense <7>while burning."
+              - "Grants <a>+4 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 2"
@@ -33,9 +33,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 3 }
+            statistics: { defense: 6 }
             text:
-              - "Grants <a>+3 Defense <7>while burning."
+              - "Grants <a>+6 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 3"
@@ -56,9 +56,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 4 }
+            statistics: { defense: 8 }
             text:
-              - "Grants <a>+4 Defense <7>while burning."
+              - "Grants <a>+8 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 4"
@@ -79,9 +79,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 5 }
+            statistics: { defense: 10 }
             text:
-              - "Grants <a>+5 Defense <7>while burning."
+              - "Grants <a>+10 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 5"
@@ -102,9 +102,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 6 }
+            statistics: { defense: 12 }
             text:
-              - "Grants <a>+6 Defense <7>while burning."
+              - "Grants <a>+12 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 6"
@@ -125,9 +125,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 7 }
+            statistics: { defense: 14 }
             text:
-              - "Grants <a>+7 Defense <7>while burning."
+              - "Grants <a>+14 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 7"
@@ -148,9 +148,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 8 }
+            statistics: { defense: 16 }
             text:
-              - "Grants <a>+8 Defense <7>while burning."
+              - "Grants <a>+16 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 8"
@@ -171,9 +171,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 9 }
+            statistics: { defense: 18 }
             text:
-              - "Grants <a>+9 Defense <7>while burning."
+              - "Grants <a>+18 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 9"
@@ -194,9 +194,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 10 }
+            statistics: { defense: 20 }
             text:
-              - "Grants <a>+10 Defense <7>while burning."
+              - "Grants <a>+20 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 10"
@@ -217,9 +217,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 11 }
+            statistics: { defense: 22 }
             text:
-              - "Grants <a>+11 Defense <7>while burning."
+              - "Grants <a>+22 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 11"
@@ -240,9 +240,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 12 }
+            statistics: { defense: 24 }
             text:
-              - "Grants <a>+12 Defense <7>while burning."
+              - "Grants <a>+24 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 12"
@@ -263,9 +263,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 13 }
+            statistics: { defense: 26 }
             text:
-              - "Grants <a>+13 Defense <7>while burning."
+              - "Grants <a>+26 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 13"
@@ -286,9 +286,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 14 }
+            statistics: { defense: 28 }
             text:
-              - "Grants <a>+14 Defense <7>while burning."
+              - "Grants <a>+28 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 14"
@@ -309,9 +309,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 15 }
+            statistics: { defense: 30 }
             text:
-              - "Grants <a>+15 Defense <7>while burning."
+              - "Grants <a>+30 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 15"
@@ -332,9 +332,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 16 }
+            statistics: { defense: 32 }
             text:
-              - "Grants <a>+16 Defense <7>while burning."
+              - "Grants <a>+32 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 16"
@@ -355,9 +355,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 17 }
+            statistics: { defense: 34 }
             text:
-              - "Grants <a>+17 Defense <7>while burning."
+              - "Grants <a>+34 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 17"
@@ -378,9 +378,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 18 }
+            statistics: { defense: 36 }
             text:
-              - "Grants <a>+18 Defense <7>while burning."
+              - "Grants <a>+36 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 18"
@@ -401,9 +401,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 19 }
+            statistics: { defense: 38 }
             text:
-              - "Grants <a>+19 Defense <7>while burning."
+              - "Grants <a>+38 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 19"
@@ -424,9 +424,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 20 }
+            statistics: { defense: 40 }
             text:
-              - "Grants <a>+20 Defense <7>while burning."
+              - "Grants <a>+40 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 20"
@@ -447,9 +447,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 21 }
+            statistics: { defense: 42 }
             text:
-              - "Grants <a>+21 Defense <7>while burning."
+              - "Grants <a>+42 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 21"
@@ -472,9 +472,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 22 }
+            statistics: { defense: 44 }
             text:
-              - "Grants <a>+22 Defense <7>while burning."
+              - "Grants <a>+44 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames XXII"
@@ -497,9 +497,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 23 }
+            statistics: { defense: 46 }
             text:
-              - "Grants <a>+23 Defense <7>while burning."
+              - "Grants <a>+46 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 23"
@@ -522,9 +522,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 24 }
+            statistics: { defense: 48 }
             text:
-              - "Grants <a>+24 Defense <7>while burning."
+              - "Grants <a>+48 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 24"
@@ -547,9 +547,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 25 }
+            statistics: { defense: 50 }
             text:
-              - "Grants <a>+25 Defense <7>while burning."
+              - "Grants <a>+50 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 25"
@@ -572,9 +572,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 26 }
+            statistics: { defense: 52 }
             text:
-              - "Grants <a>+26 Defense <7>while burning."
+              - "Grants <a>+52 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 26"
@@ -597,9 +597,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 27 }
+            statistics: { defense: 54 }
             text:
-              - "Grants <a>+27 Defense <7>while burning."
+              - "Grants <a>+54 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 27"
@@ -622,9 +622,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 28 }
+            statistics: { defense: 56 }
             text:
-              - "Grants <a>+28 Defense <7>while burning."
+              - "Grants <a>+56 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 28"
@@ -647,9 +647,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 29 }
+            statistics: { defense: 58 }
             text:
-              - "Grants <a>+29 Defense <7>while burning."
+              - "Grants <a>+58 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 29"
@@ -672,9 +672,9 @@ items:
         effects:
           - type: HANDLER
             handler: WHILE_BURNING
-            statistics: { defense: 30 }
+            statistics: { defense: 60 }
             text:
-              - "Grants <a>+30 Defense <7>while burning."
+              - "Grants <a>+60 Defense <7>while burning."
           - type: TEXT
             text:
               - "<3>Trial of Blue Flames 30"

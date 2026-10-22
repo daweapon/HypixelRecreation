@@ -1,0 +1,12 @@
+torrhus_canyon:
+  maxActive: 5
+  spawnSeconds: 12
+  minDistance: 10
+  maxDistance: 35
+  lifetimeSeconds: 900
+  rewards:
+    - {type: SHARD, shard: "Dung Beetle", weight: 200}
+    - {type: WHISPERS, amount: 250, weight: 100}
+    - {type: WHISPERS, amount: 500, weight: 50}
+    - {type: ITEM, item: "HELIX_LOG", amount: 32, weight: 100}
+    - {type: ITEM, item: "HELIX_LOG", amount: 64, weight: 50}

@@ -94,8 +94,6 @@ chapters:
         description: "You can find a whole new set of <e>Floor Drops<7> in <6>Torrhus Canyon<7>, including <a>Dung Beetle Shards<7>."
         rewards: { desertWhispers: 2500 }
         trigger: floordrop.pickup
-        available: false
-        unavailable: "Floor Drops are not built"
       - id: t3_fun_sized_pot
         title: "Craft a Fun-Sized Pot of Honeycomb"
         description: "The <a>Fun-Sized Pot of Honeycomb<7> unlocks at <a>Honeycomb Collection I<7>. Smear it on a <a>Tree<7>, wait a while, and a rare <a>critter<7> will show up! The type of <a>critter<7> attracted depends upon the type of <a>Tree<7> that was smeared."

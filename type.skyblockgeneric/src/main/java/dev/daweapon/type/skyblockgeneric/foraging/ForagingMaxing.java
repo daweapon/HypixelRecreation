@@ -12,7 +12,8 @@ public final class ForagingMaxing {
 
     public static void maxOut(SkyBlockPlayer player) {
         BlueFlamesTrial.maxOut(player);
-        ChapterTriggers.atLeast(player, MoongladeBeacon.LEVEL_TRIGGER, BeaconRules.MAX_LEVEL);
+        for (dev.daweapon.type.skyblockgeneric.moonglade.beacon.BeaconSite site : dev.daweapon.type.skyblockgeneric.moonglade.beacon.BeaconSite.values())
+            ChapterTriggers.atLeast(player, site.levelTrigger(), BeaconRules.MAX_LEVEL);
         MoongladeBeacon.syncSkyBlockXp(player);
     }
 }

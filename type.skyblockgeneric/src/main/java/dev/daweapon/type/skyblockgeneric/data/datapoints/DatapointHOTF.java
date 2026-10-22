@@ -37,6 +37,9 @@ public class DatapointHOTF extends SkyBlockDatapoint<DatapointHOTF.PlayerHOTFDat
 			json.put("freeTrialDay", value.freeTrialDay);
 			json.put("lotteryDay", value.lotteryDay);
 			json.put("lotteryEffect", value.lotteryEffect == null ? "" : value.lotteryEffect);
+			json.put("sweepDetails", value.sweepDetails);
+			json.put("beekeeperDay", value.beekeeperDay);
+			json.put("beekeeperEffect", value.beekeeperEffect == null ? "" : value.beekeeperEffect);
 			return json.toString();
 		}
 
@@ -69,6 +72,9 @@ public class DatapointHOTF extends SkyBlockDatapoint<DatapointHOTF.PlayerHOTFDat
 				data.freeTrialDay = obj.optLong("freeTrialDay", -1L);
 				data.lotteryDay = obj.optLong("lotteryDay", -1L);
 				data.lotteryEffect = obj.optString("lotteryEffect", "").isEmpty() ? null : obj.getString("lotteryEffect");
+				data.sweepDetails = obj.optBoolean("sweepDetails", false);
+				data.beekeeperDay = obj.optLong("beekeeperDay", -1L);
+				data.beekeeperEffect = obj.optString("beekeeperEffect", "").isEmpty() ? null : obj.getString("beekeeperEffect");
 				return data;
 			} catch (Exception e) {
 				return new PlayerHOTFData();
@@ -97,6 +103,9 @@ public class DatapointHOTF extends SkyBlockDatapoint<DatapointHOTF.PlayerHOTFDat
 			cloned.freeTrialDay = value.freeTrialDay;
 			cloned.lotteryDay = value.lotteryDay;
 			cloned.lotteryEffect = value.lotteryEffect;
+			cloned.sweepDetails = value.sweepDetails;
+			cloned.beekeeperDay = value.beekeeperDay;
+			cloned.beekeeperEffect = value.beekeeperEffect;
 			return cloned;
 		}
 	};
@@ -132,6 +141,9 @@ public class DatapointHOTF extends SkyBlockDatapoint<DatapointHOTF.PlayerHOTFDat
 		private long freeTrialDay = -1L;
 		private long lotteryDay = -1L;
 		private String lotteryEffect;
+		private boolean sweepDetails;
+		private long beekeeperDay = -1L;
+		private String beekeeperEffect;
 
 		public int perkLevel(String perkId) {
 			return perkLevels.getOrDefault(perkId, 0);

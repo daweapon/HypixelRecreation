@@ -7,6 +7,7 @@ import dev.daweapon.type.generic.gui.v2.StatelessView;
 import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
 import dev.daweapon.type.generic.gui.v2.ViewLayout;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
+import dev.daweapon.type.skyblockgeneric.foraging.SweepDetails;
 import dev.daweapon.type.skyblockgeneric.foraging.TreeGiftMilestones;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.minestom.server.inventory.InventoryType;
@@ -63,7 +64,13 @@ public class GUISwoop extends StatelessView {
                 <7>Participation Requirements:
                 <8>■ <c>10% <7>to get a <2>Tree Gift<7>.
                 <8>■ <e>20% <7>to get <e>50% <7>more rewards.
-                <8>■ <a>33% <7>to get <a>double <7>rewards!"""));
+                <8>■ <a>33% <7>to get <a>double <7>rewards!
+
+                <e>Click to view Tree Gift loot tables!"""), (_, c) -> c.push(new GUITreeGifts()));
+        layout.slot(50, (_, c) -> sweepDetails((SkyBlockPlayer) c.player()), (_, c) -> {
+            SweepDetails.toggle((SkyBlockPlayer) c.player());
+            c.session(Object.class).refresh();
+        });
         layout.slot(34, ItemStacks.item(Material.SWEET_BERRIES, """
                 <d>Berries
                 <7>There are bushes throughout
@@ -73,6 +80,22 @@ public class GUISwoop extends StatelessView {
 
                 <7>And who knows, you might even wake
                 <7>up some creatures inside of them!"""));
+    }
+
+    private static ItemStack.Builder sweepDetails(SkyBlockPlayer player) {
+        boolean on = SweepDetails.enabled(player);
+        return ItemStacks.item(on ? Material.LIME_DYE : Material.GRAY_DYE, String.join("\n",
+                "<c>Sweep Details",
+                "<7>You want to know exactly what is",
+                "<7>happening when you cut a Tree?",
+                "<7>With this chat message you will see",
+                "<7>all the details you need to",
+                "<7>understand if you are cutting trees",
+                "<7>correctly!",
+                "",
+                "<7>Toggled: " + (on ? "<a>ON" : "<c>OFF"),
+                "",
+                "<e>Click to toggle!"));
     }
 
     private static void tree(ViewLayout<DefaultState> layout, int slot, TreeMilestoneView tree) {

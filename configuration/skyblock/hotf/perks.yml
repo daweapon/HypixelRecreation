@@ -430,7 +430,13 @@ perks:
     tier: 8
     col: 7
     maxLevel: 1
-    available: false
-    unavailable: "Honeyhives and honeycomb trees are not built yet"
     lore:
       - "Every SkyBlock day, gain a random effect."
+      - ""
+      - "<a>Possible Buffs"
+      - "<8>■ <6>Honeyhives<7> refill <a>20%<7> faster."
+      - "<8>■ <a>Trees<7> lathered with <6>Honeycomb<7> attract <a>Critters 20%<7> faster."
+      - "<8>■ <7>Gain <6>2 Honeycomb<7> from <6>Honeyhives<7> and lathering <a>Trees<7> with <6>Honeycomb<7>."
+      - "<8>■ <a>Trees<7> lathered with <6>Honeycomb<7> have a <a>25%<7> chance to attract a second <a>Critter<7>."
+      - ""
+      - "{beekeeper_effect}"

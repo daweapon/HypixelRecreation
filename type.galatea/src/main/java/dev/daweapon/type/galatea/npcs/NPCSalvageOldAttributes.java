@@ -5,9 +5,13 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.galatea.gui.GUIAttributeTransfer;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// NPC in Galatea related to salvaging old item attributes (currently unimplemented on click).
 public class NPCSalvageOldAttributes extends HypixelNPC {
+    private static final String MET_TRIGGER = "npc.salvage_old_attributes";
 
     public NPCSalvageOldAttributes() {
         super(new HumanConfiguration() {
@@ -27,6 +31,11 @@ public class NPCSalvageOldAttributes extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<b>Salvage Old Attributes");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(-594.5, 114, -17.5, 0, 0);
             }
@@ -40,6 +49,26 @@ public class NPCSalvageOldAttributes extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-        event.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (isInDialogue(player)) return;
+        if (ChapterTriggers.done(player, MET_TRIGGER)) {
+            player.openView(new GUIAttributeTransfer());
+            return;
+        }
+        setDialogue(player, "first-interaction").thenRun(() -> {
+            ChapterTriggers.fire(player, MET_TRIGGER);
+            player.openView(new GUIAttributeTransfer());
+        });
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.builder().key("first-interaction").lines(
+                        "<o>Beep boop.",
+                        "This is a Bio-Anvil. <o>Beep<f>.",
+                        "If you still have attributes on items, you can use it to transfer them into your <a>Hunting Box<f>. <o>Boop<f>."
+                ).build()
+        };
     }
 }

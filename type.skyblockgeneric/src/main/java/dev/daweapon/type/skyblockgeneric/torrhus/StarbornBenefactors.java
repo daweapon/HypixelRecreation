@@ -63,6 +63,23 @@ public final class StarbornBenefactors {
         return benefactor(player, StarbornTemple.DESERT) ? StarbornTemple.SPEED_BONUS : 0;
     }
 
+    private static long surrenderOtherTemples(SkyBlockPlayer player, StarbornTemple chosen, long now) {
+        long carried = 0;
+        for (StarbornTemple other : StarbornTemple.values()) {
+            if (other == chosen) continue;
+            long expiry = player.getHuntingData().counter(other.benefactorKey());
+            carried += StarbornTemple.carriedOver(now, expiry);
+            if (expiry <= now) continue;
+            player.getHuntingData().setCounter(other.benefactorKey(), 0);
+            try (Jedis jedis = SharedData.jedisPool().getResource()) {
+                jedis.zrem(other.redisKey(), player.getUuid().toString());
+            } catch (RuntimeException ignored) {
+            }
+            CACHE.remove(other);
+        }
+        return carried;
+    }
+
     public static Result donate(SkyBlockPlayer player, StarbornTemple temple, int days, boolean withCoins) {
         if (!activated(player, temple)) return Result.NOT_ACTIVATED;
         if (withCoins) {
@@ -72,11 +89,13 @@ public final class StarbornBenefactors {
             if (player.getAmountInInventory(temple.donationItem()) < StarbornTemple.itemCost(days)) return Result.CANNOT_AFFORD;
             player.removeItemFromPlayer(temple.donationItem(), StarbornTemple.itemCost(days));
         }
-        long expiry = StarbornTemple.extend(System.currentTimeMillis(), player.getHuntingData().counter(temple.benefactorKey()), days);
+        long now = System.currentTimeMillis();
+        long carried = surrenderOtherTemples(player, temple, now);
+        long expiry = StarbornTemple.extend(now, Math.max(now, player.getHuntingData().counter(temple.benefactorKey())) + carried, days);
         player.getHuntingData().setCounter(temple.benefactorKey(), expiry);
         try (Jedis jedis = SharedData.jedisPool().getResource()) {
             jedis.zadd(temple.redisKey(), expiry, player.getUuid().toString());
-            jedis.zremrangeByScore(temple.redisKey(), 0, System.currentTimeMillis());
+            jedis.zremrangeByScore(temple.redisKey(), 0, now);
         } catch (RuntimeException ignored) {
         }
         CACHE.remove(temple);

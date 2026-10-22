@@ -157,20 +157,16 @@ public final class TreeGiftService {
 
     private static List<Bonus> bonuses(String treeType) {
         if (treeType.equals("FIG")) return List.of(
-                new Bonus("Phanpyre", null, .118), new Bonus(null, ItemType.STRETCHING_STICKS, .10),
-                new Bonus("Phanflare", null, .071), new Bonus("Dreadwing", null, .012),
+                new Bonus(null, ItemType.STRETCHING_STICKS, .10),
                 new Bonus(null, ItemType.SWEEP_BOOSTER, .005), new Bonus(null, ItemType.FORAGING_WISDOM_BOOSTER, .003),
                 new Bonus("Hummingbird", null, .0015), new Bonus("Chameleon", null, .0008),
                 new Bonus(null, ItemType.TREE_THE_FISH, .0005));
         if (treeType.equals("MANGROVE")) return List.of(
-                new Bonus("Phanpyre", null, .118), new Bonus("Phanflare", null, .071),
-                new Bonus(null, ItemType.DEEP_ROOT, .04), new Bonus("Dreadwing", null, .012),
+                new Bonus(null, ItemType.DEEP_ROOT, .04),
                 new Bonus(null, ItemType.SWEEP_BOOSTER, .01), new Bonus(null, ItemType.FORAGING_WISDOM_BOOSTER, .005),
                 new Bonus("Hummingbird", null, .0025), new Bonus("Chameleon", null, .0008),
                 new Bonus(null, ItemType.TREE_THE_FISH, .0005));
-        return List.of(new Bonus("Firefox", null, .15), new Bonus("Groundhog", null, .15),
-                new Bonus("Drybark", null, .05), new Bonus("Puck", null, .05),
-                new Bonus("Grizzly Bear", null, .01), new Bonus("Hummingbird", null, .003),
+        return List.of(new Bonus("Hummingbird", null, .003),
                 new Bonus("Chameleon", null, .001), new Bonus(null, ItemType.TREE_THE_FISH, .0005));
     }
 

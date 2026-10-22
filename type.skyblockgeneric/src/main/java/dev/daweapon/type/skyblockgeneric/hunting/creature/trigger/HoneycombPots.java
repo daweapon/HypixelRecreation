@@ -3,6 +3,7 @@ package dev.daweapon.type.skyblockgeneric.hunting.creature.trigger;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.skyblockgeneric.consumable.TimedConsumables;
 import dev.daweapon.type.skyblockgeneric.foraging.ForagingTreeManager;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfBeekeeper;
 import dev.daweapon.type.skyblockgeneric.foraging.ForagingTreeManager.TreeRef;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.handlers.interactable.InteractableItemConfig;
@@ -46,6 +47,10 @@ public final class HoneycombPots {
         }
         if (!TreeProtectionOrders.place(player, tree, minutes)) return;
         TimedConsumables.consumeHeld(player, item);
+        if (HotfBeekeeper.active(player, HotfBeekeeper.EXTRA_HONEYCOMB)) {
+            player.addAndUpdateItem(ItemType.HONEYCOMB, HotfBeekeeper.EXTRA_HONEYCOMB_AMOUNT);
+            player.sendMessage("<6>Beekeeper<7> gave you <6>{} Honeycomb<7>!", HotfBeekeeper.EXTRA_HONEYCOMB_AMOUNT);
+        }
         dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers.fire(player, "pot.attract");
         if (minutes == 0) player.sendMessage("<a>You lathered the tree with <6>Honeycomb<a>!");
         else player.sendMessage("<a>You lathered the tree with <6>Honeycomb<a>! A <a>Critter <a>will be attracted in <e>{}m<a>.", minutes);

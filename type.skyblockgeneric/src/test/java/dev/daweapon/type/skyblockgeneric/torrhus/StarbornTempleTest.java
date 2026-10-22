@@ -47,4 +47,12 @@ class StarbornTempleTest {
         assertTrue(StarbornTemple.benefactorActive(now + 1, now));
         assertFalse(StarbornTemple.benefactorActive(now, now));
     }
+
+    @Test
+    void surrenderedTempleTimeIsCarriedOver() {
+        long now = 1_000_000;
+        assertEquals(0, StarbornTemple.carriedOver(now));
+        assertEquals(0, StarbornTemple.carriedOver(now, 0, now - 5));
+        assertEquals(StarbornTemple.DAY_MILLIS, StarbornTemple.carriedOver(now, now + StarbornTemple.DAY_MILLIS, 0));
+    }
 }

@@ -1,6 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.hunting.creature.trigger;
 
 import dev.daweapon.type.generic.utility.ScheduleUtility;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfBeekeeper;
 import dev.daweapon.type.skyblockgeneric.foraging.ForagingTreeManager.TreeRef;
 import dev.daweapon.type.skyblockgeneric.hunting.creature.CreatureSpec;
 import dev.daweapon.type.skyblockgeneric.hunting.creature.HuntingCreatureMob;
@@ -54,7 +55,10 @@ public final class TreeProtectionOrders {
         Order order = new Order(player.getInstance(), tree, player.getUuid());
         if (ACTIVE.putIfAbsent(tree.id(), order) != null) return false;
         if (minutes <= 0) resolve(order);
-        else ScheduleUtility.delay(() -> resolve(order), minutes * 60 * 20);
+        else {
+            boolean faster = HotfBeekeeper.active(player, HotfBeekeeper.FASTER_CRITTERS);
+            ScheduleUtility.delay(() -> resolve(order), (int) Math.max(1, Math.round(minutes * 60 * 20 * HotfBeekeeper.speedFactor(faster))));
+        }
         return true;
     }
 
@@ -70,6 +74,14 @@ public final class TreeProtectionOrders {
             if (owner instanceof SkyBlockPlayer player) {
                 if (mob == null) player.sendMessage("<7><o>The Honeycomb on your tree went untouched...");
                 else player.sendMessage("<a>A <6>{} <a>was attracted to the <6>Honeycomb <a>on your tree!", chosen.name());
+                if (HotfBeekeeper.active(player, HotfBeekeeper.SECOND_CRITTER)
+                        && LootRoll.roll(order.owner(), TriggerSupport.shardItem(chosen), HotfBeekeeper.SECOND_CRITTER_PERCENT)) {
+                    CreatureSpec second = LootRoll.pick(order.owner(), candidates, TriggerSupport::shardItem,
+                            spec -> spec.spawn().trigger().chance(), ThreadLocalRandom.current());
+                    HuntingCreatureMob extra = TriggerSupport.spawn(second, order.instance(),
+                            TriggerSupport.scatter(order.instance(), order.tree().base(), second, SPAWN_RADIUS));
+                    if (extra != null) player.sendMessage("<a>Your <6>Beekeeper <a>luck attracted a second critter, a <6>{}<a>!", second.name());
+                }
             }
         }
     }

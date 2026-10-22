@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.entity.mob.mobs.seacreature;
 
+import java.util.ArrayList;
 import java.util.List;
 import net.minestom.server.entity.ai.GoalSelector;
 import net.minestom.server.entity.ai.TargetSelector;
@@ -9,6 +10,7 @@ import net.minestom.server.utils.time.TimeUnit;
 import dev.daweapon.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import dev.daweapon.type.skyblockgeneric.entity.mob.ai.VanillaMeleeAttackGoal;
 import dev.daweapon.type.skyblockgeneric.entity.mob.ai.VanillaRandomStrollGoal;
+import dev.daweapon.type.skyblockgeneric.fishing.torrhus.IsopodDiveGoal;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 /**
@@ -20,6 +22,7 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 public sealed interface SeaCreatureBehaviour
         permits SeaCreatureBehaviour.Passive,
                 SeaCreatureBehaviour.Aggressive,
+                SeaCreatureBehaviour.IsopodDiving,
                 SeaCreatureBehaviour.Custom {
 
     List<GoalSelector> goals(SkyBlockMob self);
@@ -32,6 +35,10 @@ public sealed interface SeaCreatureBehaviour
 
     static Aggressive aggressive(double speed, int attackCooldownTicks, int aggroRange) {
         return new Aggressive(speed, attackCooldownTicks, aggroRange);
+    }
+
+    static IsopodDiving isopodDiving(Aggressive base) {
+        return new IsopodDiving(base);
     }
 
     static Custom of(List<GoalSelector> goals, List<TargetSelector> targets) {
@@ -65,6 +72,21 @@ public sealed interface SeaCreatureBehaviour
                     new LastEntityDamagerTarget(self, aggroRange),
                     new ClosestEntityTarget(self, aggroRange, entity -> entity instanceof SkyBlockPlayer)
             );
+        }
+    }
+
+    record IsopodDiving(Aggressive base) implements SeaCreatureBehaviour {
+        @Override
+        public List<GoalSelector> goals(SkyBlockMob self) {
+            List<GoalSelector> goals = new ArrayList<>();
+            goals.add(new IsopodDiveGoal(self));
+            goals.addAll(base.goals(self));
+            return goals;
+        }
+
+        @Override
+        public List<TargetSelector> targets(SkyBlockMob self) {
+            return base.targets(self);
         }
     }
 

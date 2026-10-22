@@ -7,13 +7,16 @@ import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.galatea.npcs.oden.OdenChillshotQuest;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.List;
 
 public class NPCOden extends HypixelNPC {
     private static final List<String> BLACK_HOLES = List.of("SMALL_POCKET_BLACK_HOLE", "MEDIUM_POCKET_BLACK_HOLE");
-
+    private static final String MET_TRIGGER = "npc.oden";
+    private final OdenChillshotQuest quest;
 
     public NPCOden() {
         super(new HumanConfiguration() {
@@ -47,6 +50,7 @@ public class NPCOden extends HypixelNPC {
                 return true;
             }
         });
+        quest = new OdenChillshotQuest(new Pos(-584.5, 113, -40.5), player -> setDialogue(player, "after-hunt"));
     }
 
     @Override
@@ -55,6 +59,17 @@ public class NPCOden extends HypixelNPC {
         if (isInDialogue(player)) return;
         if (!HotfService.isUnlocked(player)) {
             player.sendMessage("<e>[NPC] <b>Oden<f>: <7>{}<f>! Have you talked to <b>Hina <f>at the front of the island to get your hands on a <a>Heart of the Forest<f>?", player.getUsername());
+            return;
+        }
+        if (!ChapterTriggers.done(player, MET_TRIGGER)) {
+            setDialogue(player, "first-interaction").thenRun(() -> {
+                ChapterTriggers.fire(player, MET_TRIGGER);
+                quest.start(player);
+            });
+            return;
+        }
+        if (!ChapterTriggers.done(player, OdenChillshotQuest.DONE_TRIGGER)) {
+            setDialogue(player, "before-hunt").thenRun(() -> quest.start(player));
             return;
         }
         setDialogue(player, ownsBlackHole(player) ? "idle" : "black-hole");
@@ -71,6 +86,20 @@ public class NPCOden extends HypixelNPC {
     @Override
     protected DialogueSet[] dialogues(HypixelPlayer player) {
         return new DialogueSet[]{
+                DialogueSet.builder().key("first-interaction").lines(
+                        "<b>David Hunterborough <f>is sending you?",
+                        "I see.",
+                        "Quick, help me deal with this <c>Chillshot<f>!",
+                        "<a>Weaken it<f>, but <c>do not kill it<f>! Punch it towards my <5>Black Hole<f>!",
+                        "Monsters here only take damage from <a>axes<f>!",
+                        "<f>Use your <a>Huntaxe <f>on them!"
+                ).build(),
+                DialogueSet.builder().key("before-hunt").lines("Quick, help me deal with this Chillshot!").build(),
+                DialogueSet.builder().key("after-hunt").lines(
+                        "Great work! You handled that <c>Chillshot <f>like a professional hunter!",
+                        "As you saw, the best way to deal with monsters here is to use a <5>Black Hole<f>.",
+                        "<f>If you'd like one, you can purchase a <5>Pocket Black Hole<f> from <b>Albert<f> over in the village."
+                ).build(),
                 DialogueSet.builder().key("black-hole").lines(
                         "As you can see, the best way to hunt <c>Combat <f>creatures is with a <5>Pocket Black Hole<f>.",
                         "If you want one, you should go talk to <b>Albert<f>, in the Village."

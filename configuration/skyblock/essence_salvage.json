@@ -21,6 +21,17 @@
   "RAMPART_CHESTPLATE": {"type": "CRIMSON", "essence": 5},
   "RAMPART_HELMET": {"type": "CRIMSON", "essence": 5},
   "RAMPART_LEGGINGS": {"type": "CRIMSON", "essence": 5},
-  "SWORD_OF_BAD_HEALTH": {"type": "CRIMSON", "essence": 5}
+  "SWORD_OF_BAD_HEALTH": {"type": "CRIMSON", "essence": 5},
+  "SIGNAL_ENHANCER": {"type": "FOREST", "essence": 5},
+  "SWEEP_BOOSTER": {"type": "FOREST", "essence": 5},
+  "FORAGING_WISDOM_BOOSTER": {"type": "FOREST", "essence": 5},
+  "FIGHTING_BOOSTER": {"type": "FOREST", "essence": 5},
+  "HUNTING_WISDOM_BOOSTER_COMMON": {"type": "FOREST", "essence": 5},
+  "FORAGING_FORTUNE_BOOSTER": {"type": "FOREST", "essence": 5},
+  "SWEEP_BOOSTER_UNCOMMON": {"type": "FOREST", "essence": 5},
+  "FORAGING_WISDOM_BOOSTER_UNCOMMON": {"type": "FOREST", "essence": 5},
+  "FIGHTING_BOOSTER_UNCOMMON": {"type": "FOREST", "essence": 5},
+  "HUNTING_WISDOM_BOOSTER_UNCOMMON": {"type": "FOREST", "essence": 5},
+  "FORAGING_FORTUNE_BOOSTER_UNCOMMON": {"type": "FOREST", "essence": 5}
  }
 }

@@ -4233,8 +4233,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Floor Drops, Huntraps); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U91",

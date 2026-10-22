@@ -190,7 +190,7 @@ class AccessoriesBatch3Test {
                 .getOverall(ItemStatistic.HUNTER_FORTUNE), 0.0001);
         assertEquals(30, first("CAMPFIRE_TALISMAN_29", AccessoryEffectKind.HANDLER).statistics()
                 .getOverall(ItemStatistic.HEALTH_REGENERATION), 0.0001);
-        assertEquals(9, first("SOUL_CAMPFIRE_TALISMAN_8", AccessoryEffectKind.HANDLER).statistics()
+        assertEquals(18, first("SOUL_CAMPFIRE_TALISMAN_8", AccessoryEffectKind.HANDLER).statistics()
                 .getOverall(ItemStatistic.DEFENSE), 0.0001);
         assertEquals(0.3, new SkyBlockItem(ItemType.BEASTMASTER_CREST_LEGENDARY).getAttributeHandler().getStatistics()
                 .getOverall(ItemStatistic.HEALTH), 0.0001);

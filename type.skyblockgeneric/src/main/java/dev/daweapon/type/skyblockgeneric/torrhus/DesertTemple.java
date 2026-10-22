@@ -13,6 +13,7 @@ import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.LivingEntity;
 import net.minestom.server.instance.block.Block;
+import net.minestom.server.network.packet.server.play.BlockChangePacket;
 import net.minestom.server.timer.ExecutionType;
 import net.minestom.server.timer.Scheduler;
 import net.minestom.server.timer.TaskSchedule;
@@ -32,6 +33,8 @@ public final class DesertTemple {
     private static final int INTERIOR_MIN_Y = 40, INTERIOR_MAX_Y = 56;
     private static final int ALTAR_MIN_X = -614, ALTAR_MAX_X = -610, ALTAR_Y = 44, ALTAR_Z = 252;
     private static final int BUTTON_Z = 232;
+    private static final int DOOR_MIN_X = -613, DOOR_MAX_X = -611, DOOR_MIN_Y = 43, DOOR_MAX_Y = 44, DOOR_MIN_Z = 233, DOOR_MAX_Z = 235;
+    private static final double DOOR_RANGE_SQUARED = 70 * 70;
     private static final String BANNER = "<5><l>" + "▬".repeat(40);
 
     private static final Map<String, ColorPuzzle.Color> BUTTONS = new HashMap<>();
@@ -68,6 +71,7 @@ public final class DesertTemple {
     private static final class Session {
         private final ColorPuzzle colors = new ColorPuzzle();
         private boolean entrance;
+        private final TempleDoorState door = new TempleDoorState();
         private StatuePuzzle statues;
         private final Map<StatuePuzzle.Animal, Entity> models = new EnumMap<>(StatuePuzzle.Animal.class);
         private final List<Entity> entities = new ArrayList<>();
@@ -136,6 +140,10 @@ public final class DesertTemple {
             online.add(player.getUuid());
             if (player.getSkyblockDataHandler() == null || player.getInstance() == null) return;
             Session session = SESSIONS.get(player.getUuid());
+            if (session == null && StarbornBenefactors.activated(player, StarbornTemple.DESERT) && nearDoor(player.getPosition())) {
+                session = SESSIONS.computeIfAbsent(player.getUuid(), _ -> new Session());
+            }
+            if (session != null) updateDoor(player, session);
             boolean wanted = session != null && session.entrance && insideTemple(player.getPosition())
                     && !StarbornBenefactors.activated(player, StarbornTemple.DESERT);
             if (wanted && session.statues == null) spawnStatues(player, session);
@@ -146,6 +154,36 @@ public final class DesertTemple {
             removeStatues(entry.getValue());
             return true;
         });
+    }
+
+    private static boolean nearDoor(Point position) {
+        double dx = position.x() - (DOOR_MIN_X + DOOR_MAX_X) / 2.0;
+        double dy = position.y() - DOOR_MIN_Y;
+        double dz = position.z() - DOOR_MIN_Z;
+        return dx * dx + dy * dy + dz * dz <= DOOR_RANGE_SQUARED;
+    }
+
+    private static void updateDoor(SkyBlockPlayer player, Session session) {
+        if (!nearDoor(player.getPosition())) return;
+        boolean activated = StarbornBenefactors.activated(player, StarbornTemple.DESERT);
+        TempleDoorState.Change change = session.door.update(session.entrance, activated, player.getPosition().z());
+        if (change == TempleDoorState.Change.SLAMMED) {
+            player.sendMessage("<7><o>The door slams down behind you...");
+        }
+        boolean open = session.door.state() == TempleDoorState.State.OPEN;
+        if (open || change != TempleDoorState.Change.NONE) showDoor(player, open);
+    }
+
+    private static void showDoor(SkyBlockPlayer player, boolean open) {
+        for (int x = DOOR_MIN_X; x <= DOOR_MAX_X; x++) {
+            for (int y = DOOR_MIN_Y; y <= DOOR_MAX_Y; y++) {
+                for (int z = DOOR_MIN_Z; z <= DOOR_MAX_Z; z++) {
+                    Pos position = new Pos(x, y, z);
+                    Block shown = open ? Block.AIR : player.getInstance().getBlock(position);
+                    player.sendPacket(new BlockChangePacket(position, shown));
+                }
+            }
+        }
     }
 
     private static void spawnStatues(SkyBlockPlayer player, Session session) {

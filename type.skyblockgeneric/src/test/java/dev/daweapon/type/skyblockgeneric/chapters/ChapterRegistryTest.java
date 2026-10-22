@@ -57,7 +57,7 @@ class ChapterRegistryTest {
     void unavailableTasksAreExactlyTheUnbuiltContent() {
         Set<String> unavailable = new HashSet<>();
         registry.chapters().forEach(chapter -> chapter.tasks().stream().filter(task -> !task.available()).forEach(task -> unavailable.add(task.id())));
-        assertEquals(Set.of("ground", "coral"), unavailable);
+        assertEquals(Set.of("ground"), unavailable);
     }
 
     @Test

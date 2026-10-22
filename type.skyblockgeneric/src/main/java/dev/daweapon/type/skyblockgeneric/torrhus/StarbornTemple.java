@@ -71,6 +71,12 @@ public enum StarbornTemple {
         return Math.max(now, currentExpiry) + days * DAY_MILLIS;
     }
 
+    public static long carriedOver(long now, long... otherExpiries) {
+        long carried = 0;
+        for (long expiry : otherExpiries) carried += Math.max(0, expiry - now);
+        return carried;
+    }
+
     public static boolean benefactorActive(long expiry, long now) {
         return expiry > now;
     }

@@ -11,6 +11,7 @@ import dev.daweapon.type.generic.utility.ScheduleUtility;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
 import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointHOTF;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfBeekeeper;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
 import dev.daweapon.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
 import dev.daweapon.type.skyblockgeneric.event.custom.ShardCaughtEvent;
@@ -84,11 +85,19 @@ public final class Honeyhives {
     }
 
     public static long millisLeft(@Nullable Long lootedAt, long now) {
-        return lootedAt == null ? 0 : Math.max(0, lootedAt + COOLDOWN_MILLIS - now);
+        return millisLeft(lootedAt, now, COOLDOWN_MILLIS);
+    }
+
+    public static long millisLeft(@Nullable Long lootedAt, long now, long cooldown) {
+        return lootedAt == null ? 0 : Math.max(0, lootedAt + cooldown - now);
+    }
+
+    public static long cooldownMillis(SkyBlockPlayer player) {
+        return Math.round(COOLDOWN_MILLIS * HotfBeekeeper.speedFactor(HotfBeekeeper.active(player, HotfBeekeeper.HIVE_REFILL)));
     }
 
     public static long millisLeft(SkyBlockPlayer player, Point position, long now) {
-        return millisLeft(HotfService.data(player).getHiveLootedAt().get(String.valueOf(key(position))), now);
+        return millisLeft(HotfService.data(player).getHiveLootedAt().get(String.valueOf(key(position))), now, cooldownMillis(player));
     }
 
     private static void markLooted(SkyBlockPlayer player, Point position, long now) {
@@ -120,6 +129,7 @@ public final class Honeyhives {
         ThreadLocalRandom random = ThreadLocalRandom.current();
         player.sendMessage("<7><o>You stick your hand into the honeyhive and feel around...");
         int honeycomb = HoneyhiveLoot.honeycomb(random);
+        if (HotfBeekeeper.active(player, HotfBeekeeper.EXTRA_HONEYCOMB)) honeycomb += HotfBeekeeper.EXTRA_HONEYCOMB_AMOUNT;
         double haul = AttributeEffectService.value(player.getHuntingData(), AttributeId.parse(HONEY_HAUL));
         if (haul > 0 && random.nextDouble() * 100 < haul) honeycomb *= 2;
         HoneyhiveLoot.Kind kind = HoneyhiveLoot.pick(player.getUuid(), random);

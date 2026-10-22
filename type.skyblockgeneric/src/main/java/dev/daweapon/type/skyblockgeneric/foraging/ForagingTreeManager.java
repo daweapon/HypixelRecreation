@@ -147,7 +147,9 @@ public final class ForagingTreeManager {
         }
         TreePart hitPart = tree.parts.getOrDefault(hit, TreePart.TRUNK);
         boolean correctOrder = tree.isCorrectPart(hitPart);
-        int logCount = calculateLogs(sweep, tree.kind.toughness(hitPart), tree.kind != TreeKind.BASIC && !correctOrder);
+        boolean wrongOrder = tree.kind != TreeKind.BASIC && !correctOrder;
+        int logCount = calculateLogs(sweep, tree.kind.toughness(hitPart), wrongOrder);
+        if (tree.kind != TreeKind.BASIC) SweepDetails.report(player, tree.kind.name(), hitPart.name(), sweep, tree.kind.toughness(hitPart), wrongOrder, logCount);
         if (tool.hasComponent(AxeComponent.class) && tree.broken.isEmpty() && HotfRewards.timberFells(player)) logCount = tree.originalBlocks.size();
 
         List<BlockPosition> selected = selectConnectedLogs(instance, tree, hit, logCount);

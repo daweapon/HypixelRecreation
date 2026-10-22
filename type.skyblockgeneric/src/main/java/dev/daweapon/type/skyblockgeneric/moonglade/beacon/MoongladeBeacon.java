@@ -41,7 +41,7 @@ public final class MoongladeBeacon {
     }
 
     public static boolean onBeaconServer() {
-        return HypixelConst.getTypeLoader() != null && HypixelConst.getTypeLoader().getType() == ServerType.SKYBLOCK_GALATEA;
+        return BeaconSite.current().isPresent();
     }
 
     public static void start() {
@@ -54,9 +54,17 @@ public final class MoongladeBeacon {
         }, TaskSchedule.seconds(1), TaskSchedule.seconds(1));
     }
 
+    public static BeaconSite site() {
+        return BeaconSite.current().orElse(BeaconSite.MOONGLADE);
+    }
+
     public static int level(SkyBlockPlayer player) {
+        return level(player, site());
+    }
+
+    public static int level(SkyBlockPlayer player, BeaconSite site) {
         if (player.getSkyblockDataHandler() == null) return 0;
-        return (int) Math.min(BeaconRules.MAX_LEVEL, ChapterService.data(player).trigger(LEVEL_TRIGGER));
+        return (int) Math.min(BeaconRules.MAX_LEVEL, ChapterService.data(player).trigger(site.levelTrigger()));
     }
 
     public static int activeStacks() {
@@ -75,17 +83,16 @@ public final class MoongladeBeacon {
     public static ItemStatistics statistics(SkyBlockPlayer player) {
         double fortune = fortune(player);
         if (fortune <= 0) return ItemStatistics.empty();
-        return ItemStatistics.builder()
-                .withBase(ItemStatistic.FIG_FORTUNE, fortune)
-                .withBase(ItemStatistic.MANGROVE_FORTUNE, fortune)
-                .build();
+        ItemStatistics.Builder builder = ItemStatistics.builder();
+        for (ItemStatistic statistic : site().statistics()) builder.withBase(statistic, fortune);
+        return builder.build();
     }
 
     public static void completeTuning(SkyBlockPlayer player) {
         STACKS.add(System.currentTimeMillis() + BeaconRules.STACK_MILLIS);
         SkyBlockGenericLoader.forEachLoadedPlayer(other -> other.sendMessage(
-                "<9>Moonglade Beacon <8>» <b>{} <f>tuned the frequency! Everyone on the island gains <b>+1 Stack <f>for <a>20min<f>.",
-                player.getUsername()));
+                "<9>{} <8>» <b>{} <f>tuned the frequency! Everyone on the island gains <b>+1 Stack <f>for <a>20min<f>.",
+                site().displayName(), player.getUsername()));
         refreshAll();
         ChapterTriggers.fire(player, TUNE_TRIGGER);
         rollBeaconmite(player);
@@ -98,12 +105,12 @@ public final class MoongladeBeacon {
             player.sendMessage("<c>You need a Signal Enhancer to do that!");
             return false;
         }
-        ChapterTriggers.atLeast(player, LEVEL_TRIGGER, level + 1L);
+        ChapterTriggers.atLeast(player, site().levelTrigger(), level + 1L);
         ChapterTriggers.fire(player, UPGRADE_TRIGGER);
         syncSkyBlockXp(player);
         player.getStatistics().invalidateStatistics();
-        player.sendMessage("<9>Moonglade Beacon <8>» <a>Signal strength improved to <b>{}<a>! <7>(Stack limit <a>{}<7>, <6>+{}☘ <7>per Stack)",
-                level + 1, BeaconRules.stackLimit(level + 1), BeaconRules.format(BeaconRules.fortunePerStack(level + 1)));
+        player.sendMessage("<9>{} <8>» <a>Signal strength improved to <b>{}<a>! <7>(Stack limit <a>{}<7>, <6>+{}☘ <7>per Stack)",
+                site().displayName(), level + 1, BeaconRules.stackLimit(level + 1), BeaconRules.format(BeaconRules.fortunePerStack(level + 1)));
         rollBeaconmite(player);
         return true;
     }
@@ -129,8 +136,8 @@ public final class MoongladeBeacon {
         if (!LootRoll.roll(player.getUuid(), AttributeShardComponent.itemType(definition),
                 BeaconRules.beaconmitePercent(level(player)))) return;
         player.getHuntingData().addShards(definition.id(), 1);
-        HypixelEventHandler.callCustomEvent(new ShardCaughtEvent(player, definition, 1, ShardCaughtEvent.Source.TREE_GIFT, false));
+        HypixelEventHandler.callCustomEvent(new ShardCaughtEvent(player, definition, 1, ShardCaughtEvent.Source.BEACON, false));
         ChapterTriggers.fire(player, BEACONMITE_TRIGGER);
-        player.sendMessage(Text.of("<9>Moonglade Beacon <8>» <f>A <9>Beaconmite Shard <f>was drawn out of the signal!"));
+        player.sendMessage(Text.of("<9>" + site().displayName() + " <8>» <f>A <9>Beaconmite Shard <f>was drawn out of the signal!"));
     }
 }
