@@ -1,0 +1,13 @@
+title: "The Private Island Update"
+date: "21st October 2026"
+intro:
+  - "Your island is now yours to build on. The first part of the Private Island update lets you place portals."
+sections:
+  - heading: "Island Portals"
+    colour: "<b>"
+    lines:
+      - "Place a portal item on a block of your island. The portal appears on top of that block, facing you, and needs a clear space 9 blocks wide, 5 deep and 15 tall."
+      - "Walk into the portal to travel. Destinations still check your skill requirements, for example Mining 12 for the Dwarven Mines."
+      - "Right-click the frame of a portal to delete it. You do not get it back."
+      - "All 38 portal items can be placed now. Portals to Lotus Atoll and The Rift are placeable but wait for those islands to open."
+      - "Your starter Hub portal is now a normal portal, so it can be deleted too. Portals are saved with your island."

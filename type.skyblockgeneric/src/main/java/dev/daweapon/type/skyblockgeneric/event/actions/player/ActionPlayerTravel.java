@@ -17,6 +17,9 @@ import dev.daweapon.type.skyblockgeneric.mission.MissionData;
 import dev.daweapon.type.skyblockgeneric.mission.MissionSet;
 import dev.daweapon.type.skyblockgeneric.mission.missions.MissionUseTeleporter;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.type.skyblockgeneric.user.island.SkyBlockIsland;
+import dev.daweapon.type.skyblockgeneric.user.island.portal.PlacedPortal;
+import dev.daweapon.type.skyblockgeneric.user.island.portal.PortalCatalog;
 import dev.daweapon.type.skyblockgeneric.utility.WarpPortal;
 
 import java.time.Duration;
@@ -50,6 +53,11 @@ public class ActionPlayerTravel implements HypixelEventClass {
                 return;
             }
 
+            if (HypixelConst.isIslandServer()) {
+                travelThroughIslandPortal(player);
+                return;
+            }
+
             player.sendTo(HypixelConst.getTypeLoader().getType() == ServerType.SKYBLOCK_HUB ? ServerType.SKYBLOCK_DUNGEON_HUB : ServerType.SKYBLOCK_HUB);
         }
 
@@ -76,5 +84,14 @@ public class ActionPlayerTravel implements HypixelEventClass {
                 player.sendMessage("<d>Warped to <b>{}<d>!", warp.text());
             }
         });
+    }
+
+    private void travelThroughIslandPortal(SkyBlockPlayer player) {
+        SkyBlockIsland island = SkyBlockIsland.forInstance(player.getInstance());
+        if (island == null || island.getPortals() == null) return;
+        PlacedPortal portal = island.getPortals().activePortalAt(
+                player.getPosition().blockX(), player.getPosition().blockY(), player.getPosition().blockZ());
+        if (portal == null) return;
+        PortalCatalog.get(portal.itemId()).travel(player);
     }
 }

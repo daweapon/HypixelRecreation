@@ -11,9 +11,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 35e248da2e108f09813a6b848a0fcef111300978180eda41d3d1a7a8e4dba3c3
   - id: ARACHNE_SANCTUARY_TRAVEL_SCROLL
@@ -41,9 +42,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 2461ec3bd654f62ca9a393a32629e21b4e497c877d3f3380bcf2db0e20fc0244
   - id: BASE_CAMP_TRAVEL_SCROLL
@@ -377,9 +379,10 @@ items:
       - ""
       - "§7§8The portal will spawn facing"
       - "§8you on the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 21dbe30b027acbceb612563bd877cd7ebb719ea6ed1399027dcee58bb9049d4a
   - id: CRYSTAL_HOLLOWS_TRAVEL_SCROLL
@@ -406,9 +409,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 34d42f9c461cee1997b67bf3610c6411bf852b9e5db607bbf626527cfb42912c
   - id: CRYSTAL_NUCLEUS_TRAVEL_SCROLL
@@ -439,9 +443,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe; recipe 48x WEB, 80x GRAVEL, 16x ENDER_PEARL (needs Gravel III)"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 2ff708485e8630e6a54da44c995461619d378dfcf5cf714bc22a069a386a3df2
   - id: DANGER_1_TRAVEL_SCROLL
@@ -485,9 +490,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe; recipe 48x OBSIDIAN, 80x ENDER_STONE, 16x ENCHANTED_ENDER_PEARL (needs End Stone III)"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 82215cd7ba40e7009c51fd1abf21d9d88126dd7827bd7c4ec29952ec7bd5efc7
   - id: DANGER_3_TRAVEL_SCROLL
@@ -535,9 +541,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 7ab83858ebc8ee85c3e54ab13aabfcc1ef2ad446d6a900e471c3f33b78906a5b
   - id: DRAGON_NEST_PORTAL
@@ -552,9 +559,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: ecf1b3540fd2f603ccf42677c8e8cae7cffb0e1ae23c61c522298ec44d312dcc
   - id: DRAGON_NEST_TRAVEL_SCROLL
@@ -582,9 +590,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 6b20b23c1aa2be0270f016b4c90d6ee6b8330a17cfef87869d6ad60b2ffbf3b5
   - id: FARMING_1_PORTAL
@@ -599,9 +608,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe; recipe 48x CARROT_ITEM, 80x POTATO_ITEM, 16x ENDER_PEARL (needs Potato II)"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 4d3a6bd98ac1833c664c4909ff8d2dc62ce887bdcf3cc5b3848651ae5af6b
   - id: FARMING_1_TRAVEL_SCROLL
@@ -650,9 +660,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe; recipe 48x INK_SACK-3, 80x CACTUS, 16x ENDER_PEARL (needs Cocoa Beans III)"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 30ded7697755d52ae64875814a778168fdd5f9b98e28305904a73843a8469136
   - id: FARMING_2_TRAVEL_SCROLL
@@ -700,9 +711,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 1c0cd33590f64d346d98cdd01606938742e715dda6737353306a44f81c8ba426
   - id: FORAGING_1_PORTAL
@@ -717,9 +729,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe; recipe 128x LOG-2, 16x ENDER_PEARL (needs Birch Log III)"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: a221f813dacee0fef8c59f76894dbb26415478d9ddfc44c2e708a6d3b7549b
   - id: FORAGING_2_PORTAL
@@ -734,9 +747,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe; recipe 128x LOG-1, 16x ENDER_PEARL (needs Spruce Log III)"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 966cbdef8efb914d43a213be66b5396f75e5c1b9124f76f67d7cd32525748
   - id: FORAGING_3_PORTAL
@@ -751,9 +765,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe; recipe 128x LOG-3, 16x ENDER_PEARL (needs Jungle Log III)"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 1cefc19380683015e47c666e5926b15ee57ab33192f6a7e429244cdffcc262
   - id: FORAGING_4_PORTAL
@@ -768,9 +783,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe; recipe 128x LOG_2, 16x ENDER_PEARL (needs Acacia Log III)"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 96a3bba2b7a2b4fa46945b1471777abe4599695545229e782259aed41d6
   - id: FORAGING_5_PORTAL
@@ -785,9 +801,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe; recipe 128x LOG_2-1, 16x ENDER_PEARL (needs Dark Oak Log III)"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 18a2be84bd6ce7f46bc4a1fa034cf6fdf63d6200578acc75f9f318164b3967b
   - id: FORGE_PORTAL
@@ -802,9 +819,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 6bc7408983a93902e87bc21dba3069b2feeadc9bcc7a76792f10d7b31c16d8ae
   - id: FORGE_TRAVEL_SCROLL
@@ -910,9 +928,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 9b688545e326e4f1fd1c405873d9c5b8bbe69dd26889ce3dea10b4d9e3d7b4db
   - id: GLOWING_MUSHROOM_CAVE_TRAVEL_SCROLL
@@ -937,9 +956,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 33120943b55a9728dd6df39fa51fd59ca514869ff369b39e01ad2eaf81584300
   - id: HUB_CASTLE_PORTAL
@@ -954,9 +974,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 6b7e1056f2b7e988845f83dcaa9e68cb851f614c05f7227e8c87c0d8f87df53f
   - id: HUB_CRYPTS_PORTAL
@@ -971,9 +992,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 1efe1d481c24cdb6be07cb1b7e1387a3065897a0534e53af4db694e7da658ab6
   - id: HUB_PORTAL
@@ -987,9 +1009,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: d7cc6687423d0570d556ac53e0676cb563bbdd9717cd8269bdebed6f6d4e7bf8
   - id: KUUDRA_SKULL_PORTAL
@@ -1004,9 +1027,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: fcde48e63fc2c52abcd3a56d254af95ba0d8ad179f7b7dfea79a13fe55cdeee2
   - id: LARGE_BAIT_SACK
@@ -1665,9 +1689,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 67bfd7f90468e5c6ac14ca14bfad982f90770d0a9efa1df9f66f91a05c81fef7
   - id: LOTUS_ATOLL_TRAVEL_SCROLL
@@ -2225,9 +2250,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe; recipe 48x IRON_ORE, 80x GOLD_ORE, 16x ENCHANTED_ENDER_PEARL"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: d8573ed917444316b0b28dd9927fd68e56f6625fcfa73ad80b8770d5139891b1
   - id: MINING_1_TRAVEL_SCROLL
@@ -2275,9 +2301,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe; recipe 48x REDSTONE_BLOCK, 80x LAPIS_BLOCK, 16x ENDER_PEARL (needs Diamond III)"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 74213dc6dc4b1641defd333f4a4732cc714dd677718fa10f140a6939c12aa32b
   - id: MINING_2_TRAVEL_SCROLL
@@ -2363,9 +2390,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 1d0f7add6063bf27dadb2b62ed0efa809ef28d96b896bf1ee675b4f7b5b1282e
   - id: MURKWATER_TRAVEL_SCROLL
@@ -2410,9 +2438,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 438cf3f8e54afc3b3f91d20a49f324dca1486007fe545399055524c17941f4dc
   - id: OVERFLUX_POWER_ORB
@@ -2543,9 +2572,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: f26192609d6c46ade73e807fc40dbc3a1a1afbb456ae165785b0fe834dd1cb57
   - id: RIFT_WIZARD_TOWER_TRAVEL_SCROLL
@@ -3039,9 +3069,10 @@ items:
       - ""
       - "§7§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: b20657e24b56e1b2f8fc219da1de788c0c24f36388b1a409d0cd2d8dba44aa3b
   - id: SPIDERS_DEN_TOP_TRAVEL_SCROLL
@@ -3093,9 +3124,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 9d83d0494939dba5f27a1dcba7031d5feff44d6efe8d8623e12052470d0a6674
   - id: TORRHUS_CANYON_PORTAL
@@ -3110,9 +3142,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe; recipe 8x ENCHANTED_HELIX_LOG, 16x ENCHANTED_ENDER_PEARL"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 1c3be0c6a5a6fca77b4504c2cf9359da83516cf5808642f4407ba12fe9407464
   - id: TORRHUS_CANYON_TRAVEL_SCROLL
@@ -3157,9 +3190,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: c1e3157115a3f206e5df5301e685ebb4a6a9627ebdaa09b21d500d85315485c4
   - id: TORRHUS_SAFARI_ENTRANCE_TRAVEL_SCROLL
@@ -3186,9 +3220,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 29c1fb923e363b02929de8207c8013ea3c7e4b3933047fc9ca2bb08b8dc07254
   - id: TORRHUS_SPRINGS_TRAVEL_SCROLL
@@ -3233,9 +3268,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 6102f82148461ced1f7b62e326eb2db3a94a33cba81d4281452af4d8aeca4991
   - id: TRAPPER_DEN_TRAVEL_SCROLL
@@ -3282,9 +3318,10 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: eb07594e2df273921a77c101d0bfdfa1115abed5b9b2029eb496ceba9bdbb4b3
   - id: VOID_SEPULTURE_TRAVEL_SCROLL
@@ -3385,8 +3422,9 @@ items:
       - ""
       - "§8The portal will spawn facing you on"
       - "§8the block you click on."
-    unavailable: "Needs private island portal placement"
     source: "Crafted by the matching collection recipe"
     components:
+      - id: PLACE_EVENT
+        handler_id: ISLAND_PORTAL_PLACE
       - id: SKULL_HEAD
         texture: 2f69ab2f4e7341ac262597083ca38ad01bfbbf8730fbfbdd10ca90aee337a2dd

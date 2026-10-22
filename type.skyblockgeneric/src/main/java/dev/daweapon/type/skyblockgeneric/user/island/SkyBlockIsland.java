@@ -22,6 +22,7 @@ import dev.daweapon.type.skyblockgeneric.data.monogdb.CoopDatabase;
 import dev.daweapon.type.skyblockgeneric.data.monogdb.IslandDatabase;
 import dev.daweapon.type.skyblockgeneric.minion.IslandMinionData;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.type.skyblockgeneric.user.island.portal.IslandPortals;
 import dev.daweapon.type.skyblockgeneric.utility.JerryInformation;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
@@ -51,6 +52,8 @@ public class SkyBlockIsland {
     private JerryInformation jerryInformation = null;
     @Setter
     private IslandMinionData minionData = null;
+    @Setter
+    private IslandPortals portals = null;
     @Setter
     private long lastSaved = 0;
     @Setter
@@ -171,6 +174,12 @@ public class SkyBlockIsland {
 
     public static Collection<SkyBlockIsland> loaded() {
         return loadedIslands.values();
+    }
+
+    public static @Nullable SkyBlockIsland forInstance(net.minestom.server.instance.Instance instance) {
+        return loadedIslands.values().stream()
+                .filter(island -> island.islandInstance != null && island.islandInstance == instance)
+                .findFirst().orElse(null);
     }
 
     public static boolean hasIsland(UUID islandID) {

@@ -1,0 +1,115 @@
+portals:
+  ARACHNE_SANCTUARY_PORTAL:
+    label: "<a>Arachne's Sanctuary"
+    scroll: arachne
+  BASE_CAMP_PORTAL:
+    label: "<a>Dwarven Base Camp"
+    scroll: basecamp
+  CRYSTAL_HOLLOWS_PORTAL:
+    label: "<a>Crystal Hollows"
+    island: crystals
+  CRYSTAL_NUCLEUS_PORTAL:
+    label: "<a>Crystal Nucleus"
+    scroll: nucleus
+  DANGER_1_PORTAL:
+    label: "<a>Spider's Den"
+    island: spider
+  DANGER_3_PORTAL:
+    label: "<a>The End"
+    island: end
+  DARK_AUCTION_PORTAL:
+    label: "<a>Dark Auction"
+    scroll: da
+  DRAGON_NEST_PORTAL:
+    label: "<a>Dragon's Nest"
+    scroll: drag
+  DWARVEN_MINES_PORTAL:
+    label: "<a>Dwarven Mines"
+    island: dwarven
+  FARMING_1_PORTAL:
+    label: "<a>The Barn"
+    island: barn
+  FARMING_2_PORTAL:
+    label: "<a>Mushroom Island"
+    scroll: desert
+  FISHING_1_PORTAL:
+    label: "<a>Backwater Bayou"
+    island: bayou
+  FORAGING_1_PORTAL:
+    label: "<a>Birch Park"
+    scroll: park
+  FORAGING_2_PORTAL:
+    label: "<a>Spruce Woods"
+    scroll: park
+  FORAGING_3_PORTAL:
+    label: "<a>Jungle Island"
+    scroll: jungle
+  FORAGING_4_PORTAL:
+    label: "<a>Savanna Woodland"
+    scroll: park
+  FORAGING_5_PORTAL:
+    label: "<a>Dark Thicket"
+    scroll: park
+  FORGE_PORTAL:
+    label: "<a>The Forge"
+    scroll: forge
+  GLOWING_MUSHROOM_CAVE_PORTAL:
+    label: "<a>Glowing Mushroom Cave"
+    scroll: desert
+  HOWLING_CAVE_PORTAL:
+    label: "<a>Howling Cave"
+    scroll: howl
+  HUB_CASTLE_PORTAL:
+    label: "<a>Hub Castle"
+    scroll: castle
+  HUB_CRYPTS_PORTAL:
+    label: "<a>Hub Crypts"
+    scroll: crypts
+  HUB_PORTAL:
+    label: "<a>Hub Island"
+    island: hub
+  KUUDRA_SKULL_PORTAL:
+    label: "<a>Forgotten Skull"
+    scroll: kuudra
+  LOTUS_ATOLL_PORTAL:
+    label: "<a>Lotus Atoll"
+    island: lotus
+  MINING_1_PORTAL:
+    label: "<a>Gold Mine"
+    island: gold
+  MINING_2_PORTAL:
+    label: "<a>Deep Caverns"
+    island: deep
+  MURKWATER_LOCH_PORTAL:
+    label: "<a>Murkwater Loch"
+    scroll: murkwater
+  MUSEUM_PORTAL:
+    label: "<a>Museum"
+    scroll: museum
+  RIFT_WIZARD_TOWER_PORTAL:
+    label: "<a>The Rift"
+    island: rift
+  SMOLDERING_TOMB_PORTAL:
+    label: "<a>Smoldering Tomb"
+    scroll: smold
+  TOP_OF_SPIDERS_DEN_PORTAL:
+    label: "<a>Top of the Nest"
+    scroll: nest
+  TORRHUS_CANYON_PORTAL:
+    label: "<a>Torrhus Canyon"
+    island: torrhus
+  TORRHUS_SAFARI_ENTRANCE_PORTAL:
+    label: "<a>Critter Safari Entrance"
+    scroll: safari
+  TORRHUS_SPRINGS_PORTAL:
+    label: "<a>Torrhus Springs"
+    scroll: springs
+  TRAPPER_DEN_PORTAL:
+    label: "<a>Trapper's Den"
+    scroll: trapper
+  VOID_SEPULTURE_PORTAL:
+    label: "<a>Void Sepulture"
+    scroll: void
+  WIZARD_TOWER_PORTAL:
+    label: "<a>Wizard Tower"
+    scroll: wizard

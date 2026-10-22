@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "private-island-portals"
+    name: "The Private Island Update"
+    date: "21st October 2026"
+    material: nether_star
+    title: "The Private Island Update"
+    book: "private_island_update.yml"
   - version: "torrhus-canyon"
     name: "The Torrhus Canyon Update"
     date: "20th October 2026"

@@ -9,6 +9,7 @@ import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointMinionData;
 import dev.daweapon.type.skyblockgeneric.item.components.MinionComponent;
 import dev.daweapon.type.skyblockgeneric.minion.IslandMinionData;
 import dev.daweapon.type.skyblockgeneric.spray.SprayCanHandlers;
+import dev.daweapon.type.skyblockgeneric.user.island.portal.IslandPortalPlacement;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -52,6 +53,7 @@ public class PlaceEventRegistry {
                     minionData.getMinions().size(), slots);
         });
         register(SprayCanHandlers.HANDLER_ID, SprayCanHandlers.place());
+        register(IslandPortalPlacement.HANDLER_ID, IslandPortalPlacement.handler());
         register(InfiniTorchPlacement.HANDLER_ID, InfiniTorchPlacement.handler());
         register("CARROT_CRYSTAL_PLACE", (event, player, item) -> {
 
