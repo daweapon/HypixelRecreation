@@ -176,6 +176,8 @@ items:
       - "\xA77This exclusive \xA7cHoliday \xA77cosmetic can"
       - "\xA77be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 215ba31cde2671b8f176de6a9ffd008035f0590d63ee240be6e8921cd2037a45
 

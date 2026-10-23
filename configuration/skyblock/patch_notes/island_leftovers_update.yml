@@ -1,0 +1,32 @@
+title: "The Island Finishing Touches Update"
+date: "23rd October 2026"
+intro:
+  - "The Bits Shop items that did nothing now work, your Private Island got weather, working storage furniture and the Advent Calendar, and Jerry can swap your Hub Portal."
+sections:
+  - heading: "Bits Shop"
+    colour: "<d>"
+    lines:
+      - "Autopets: consume an Autopet Rules 2-Pack for two rule slots (up to 28) and manage them from the Autopets button in the Pets menu. A rule equips a pet when you log in, gain skill XP, enter an island or combat, gain a collection, kill a mob, start a slayer quest, see a slayer boss spawn, click the Experimentation Table, dig a Griffin burrow, open a winter gift, throw a fishing hook or an event starts. Each rule takes up to five exceptions."
+      - "Hologram: place it on your island, right-click it to write up to three lines of text (35 characters each, & colour codes) with /hgl, pick a particle colour, or hide the model."
+      - "Builder's Wand: Grand Architect now refuses more than 241 blocks, can be undone from the chat message, and left-clicking opens the wand's built-in storage."
+      - "Block Zapper: right-click the face of a block you placed to zap up to 164 connected blocks into your inventory, with an undo."
+  - heading: "Private Island"
+    colour: "<a>"
+    lines:
+      - "Jerry can remove your Hub Portal once any skill is level V, and sells a new one for 100 coins."
+      - "The Teleport Pad trade now needs the Ender Pearl Collection VII."
+      - "A Portalizer in the anvil with a Travel Scroll that has no portal shows the Error lore."
+      - "Weather Node: craft it with Prismarine Shard Collection VI, then use it in Settings, Island Settings, Island Properties to choose sunny, raining or thundering weather."
+      - "Training Dummies can now be killed and come back after five seconds."
+      - "The End biome only spawns Endermen, and the Nether biome only Chickens and Slimes."
+      - "Fixed an island being unloaded just as you arrived, which made Beacons, furniture and portals refuse to place."
+  - heading: "Furniture"
+    colour: "<6>"
+    lines:
+      - "Chest furniture keeps its items across three pages (six for the Skull Chest and Chest Shelves), and Furnace+ is a real furnace that keeps cooking while it is closed."
+      - "A chest that still holds items cannot be picked up."
+  - heading: "Advent Calendar"
+    colour: "<c>"
+    lines:
+      - "Open it with /sbadvent in December and claim each day's gifts, coins and rank furniture: Advent Calendar Display, Rocking Chair, Christmas Tree, Festive Mailbox, Snowglobe, Bundled Snowman, Hot Chocolate and Cookies and the Holiday Train."
+      - "The Advent sprays and skins are not given yet."

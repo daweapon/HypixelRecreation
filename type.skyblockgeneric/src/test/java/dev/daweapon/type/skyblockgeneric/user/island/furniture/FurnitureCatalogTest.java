@@ -46,8 +46,8 @@ class FurnitureCatalogTest {
     }
 
     @Test
-    void fortyThreeFurnitureAreDefined() {
-        assertEquals(43, FurnitureCatalog.all().size());
+    void sixtyFiveFurnitureAreDefined() {
+        assertEquals(65, FurnitureCatalog.all().size());
         assertEquals(41, FurnitureCatalog.values().stream().filter(FurnitureDefinition::isCraftable).count());
     }
 
@@ -65,7 +65,9 @@ class FurnitureCatalogTest {
             Map<String, Object> head = component(item, "SKULL_HEAD");
             if (place == null || !FurniturePlacement.HANDLER_ID.equals(place.get("handler_id"))) problems.add(definition.itemId() + " has no place handler");
             if (head == null || String.valueOf(head.get("texture")).isBlank()) problems.add(definition.itemId() + " has no head texture");
-            if (item.get("unavailable") != null) problems.add(definition.itemId() + " is still unavailable");
+            if (item.get("unavailable") != null && !String.valueOf(item.get("unavailable")).startsWith("No normal source")) {
+                problems.add(definition.itemId() + " is still unavailable");
+            }
         }
         assertTrue(problems.isEmpty(), problems.toString());
     }

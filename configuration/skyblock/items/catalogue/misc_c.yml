@@ -274,7 +274,6 @@ items:
     material: player_head
     name: "Festive Mailbox"
     rarity: EPIC
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Advent Calendar holiday reward"
     lore:
       - "§8Furniture"
@@ -283,6 +282,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: e3446d5462e2a29471bf4a861ecc25aaf6e796c33dcb96c0a6c7106add201068
   - id: FIESTA_FLASK
@@ -2735,7 +2736,6 @@ items:
     material: player_head
     name: "Holiday Train"
     rarity: EPIC
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Advent Calendar holiday reward"
     lore:
       - "§8Furniture"
@@ -2744,6 +2744,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 6ef3599c145d372ea986987763e2498d21b567d71fbf7e23d5fa8197e9ad1d
   - id: HOLY_ICE
@@ -2857,7 +2859,6 @@ items:
     material: player_head
     name: "Hot Chocolate and Cookies"
     rarity: EPIC
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Holiday reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -2866,6 +2867,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 268d81f2a495cf767e97d56ebcb4df7bb1df0559d2735cbc99f7c78eeff4f68f
   - id: HOT_CHOCOLATE_MIXIN

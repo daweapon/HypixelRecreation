@@ -442,3 +442,163 @@ furniture:
     scale: 0.5
     width: 0.5
     height: 0.5
+  ADVENT_CALENDAR_DISPLAY:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 0.9
+    height: 1.2
+
+  BUNDLED_SNOWMAN:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 0.8
+    height: 1.4
+
+  ROCKING_CHAIR:
+    carpentry: 0
+    interaction: SIT
+    scale: 0.9
+    width: 0.8
+    height: 1.0
+    seats: 1
+
+  SNOWGLOBE:
+    carpentry: 0
+    interaction: NONE
+    scale: 0.7
+    width: 0.7
+    height: 0.8
+
+  FESTIVE_MAILBOX:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 0.7
+    height: 1.2
+
+  HOLIDAY_TRAIN:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.6
+    width: 1.6
+    height: 0.8
+
+  HOT_CHOCOLATE_AND_COOKIES:
+    carpentry: 0
+    interaction: NONE
+    scale: 0.6
+    width: 0.6
+    height: 0.5
+
+  CHRISTMAS_TREE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.6
+    width: 1.0
+    height: 2.0
+  BEAR_BED:
+    carpentry: 0
+    interaction: BED
+    scale: 1.4
+    width: 1.4
+    height: 0.6
+
+  BEAR_BENCH:
+    carpentry: 0
+    interaction: SIT
+    scale: 1.4
+    width: 1.6
+    height: 0.9
+    seats: 2
+
+  BEAR_BOOKSHELF:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.4
+    width: 1.2
+    height: 1.6
+
+  BEAR_CHAIR:
+    carpentry: 0
+    interaction: SIT
+    scale: 0.9
+    width: 0.8
+    height: 1.0
+    seats: 1
+
+  BEAR_SIDE_TABLE:
+    carpentry: 0
+    interaction: NONE
+    scale: 0.8
+    width: 0.8
+    height: 0.8
+
+  CANDY_CANE_CHAIR:
+    carpentry: 0
+    interaction: SIT
+    scale: 0.9
+    width: 0.8
+    height: 1.0
+    seats: 1
+
+  CANDY_CANE_TABLE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 0.9
+
+  REANIMATED_PAINTING:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.2
+    width: 1.2
+    height: 1.2
+
+  ROCKING_REINDEER:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.2
+
+  SALEM_FIREPLACE:
+    carpentry: 0
+    interaction: TOGGLE
+    scale: 1.6
+    width: 1.4
+    height: 1.6
+
+  SALEM_LARGE_SOFA:
+    carpentry: 0
+    interaction: SIT
+    scale: 1.6
+    width: 2.0
+    height: 1.0
+    seats: 3
+
+  SALEM_SMALL_SOFA:
+    carpentry: 0
+    interaction: SIT
+    scale: 1.4
+    width: 1.4
+    height: 1.0
+    seats: 2
+
+  SKELETON_CHAIR:
+    carpentry: 0
+    interaction: SIT
+    scale: 0.9
+    width: 0.8
+    height: 1.0
+    seats: 1
+
+  DOLLHOUSE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.4
+    width: 1.4
+    height: 1.4
+

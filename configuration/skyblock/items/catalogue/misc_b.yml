@@ -836,7 +836,7 @@ items:
     material: player_head
     name: "Dollhouse"
     rarity: EPIC
-    unavailable: "Furniture placement and the Carpentry Table aren't built; seasonal source unverified"
+    unavailable: "No normal source is confirmed on the wiki; it can be placed once given by staff"
     source: "Holiday cosmetic reward (exact source unverified)"
     lore:
       - "§8Furniture"
@@ -845,6 +845,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 718699bae9f1e02a7a65183bd0079489e4e615daddce3c92649cded312b226dc
   - id: DRAGON_EGG_IN_A_BOX

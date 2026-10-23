@@ -223,7 +223,6 @@ items:
     material: player_head
     name: "Advent Calendar Display"
     rarity: EPIC
-    unavailable: "Needs the placeable furniture system (Private Island furniture), which isn't built"
     source: "Advent Calendar: Day 1 of the 2022 calendar (all ranks)"
     lore:
       - "§8Furniture"
@@ -232,6 +231,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 3125a00621b3e2fe2282d120d05c5e0f587a5456f87cb32e3584476f53491515
   - id: AGARICUS_CAP
@@ -902,7 +903,7 @@ items:
     material: player_head
     name: "Bear Bed"
     rarity: EPIC
-    unavailable: "Needs the placeable furniture system (not built); source not confirmed on the wiki"
+    unavailable: "No normal source is confirmed on the wiki; it can be placed once given by staff"
     source: "Seasonal furniture (exact Reward Bundle not confirmed on the wiki)"
     lore:
       - "§8Furniture"
@@ -911,13 +912,15 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: a100e177e2624ba949588eff81389332eec1d39085aa11c05b3f41c702416e89
   - id: BEAR_BENCH
     material: player_head
     name: "Bear Bench"
     rarity: EPIC
-    unavailable: "Needs the placeable furniture system (not built); source not confirmed on the wiki"
+    unavailable: "No normal source is confirmed on the wiki; it can be placed once given by staff"
     source: "Seasonal furniture (exact Reward Bundle not confirmed on the wiki)"
     lore:
       - "§8Furniture"
@@ -926,13 +929,15 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: a100e177e2624ba949588eff81389332eec1d39085aa11c05b3f41c702416e89
   - id: BEAR_BOOKSHELF
     material: player_head
     name: "Bear Bookshelf"
     rarity: EPIC
-    unavailable: "Needs the placeable furniture system (not built); source not confirmed on the wiki"
+    unavailable: "No normal source is confirmed on the wiki; it can be placed once given by staff"
     source: "Seasonal furniture (exact Reward Bundle not confirmed on the wiki)"
     lore:
       - "§8Furniture"
@@ -941,13 +946,15 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: a100e177e2624ba949588eff81389332eec1d39085aa11c05b3f41c702416e89
   - id: BEAR_CHAIR
     material: player_head
     name: "Bear Chair"
     rarity: EPIC
-    unavailable: "Needs the placeable furniture system (not built); source not confirmed on the wiki"
+    unavailable: "No normal source is confirmed on the wiki; it can be placed once given by staff"
     source: "Seasonal furniture (exact Reward Bundle not confirmed on the wiki)"
     lore:
       - "§8Furniture"
@@ -956,13 +963,15 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: a100e177e2624ba949588eff81389332eec1d39085aa11c05b3f41c702416e89
   - id: BEAR_SIDE_TABLE
     material: player_head
     name: "Bear Side Table"
     rarity: EPIC
-    unavailable: "Needs the placeable furniture system (not built); source not confirmed on the wiki"
+    unavailable: "No normal source is confirmed on the wiki; it can be placed once given by staff"
     source: "Seasonal furniture (exact Reward Bundle not confirmed on the wiki)"
     lore:
       - "§8Furniture"
@@ -971,6 +980,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: a100e177e2624ba949588eff81389332eec1d39085aa11c05b3f41c702416e89
   - id: BEDWARS_WOOL
@@ -1861,7 +1872,6 @@ items:
     material: player_head
     name: "Bundled Snowman"
     rarity: EPIC
-    unavailable: "Needs the placeable furniture system (Private Island furniture), which isn't built"
     source: "Advent Calendar: Day 20 of the 2022 calendar (all ranks)"
     lore:
       - "§8Furniture"
@@ -1870,6 +1880,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: e0d6af15a0f3c30d7e71c1941c337430fc095437a6624509d965697aeb26fa08
   - id: BUNNY
@@ -2265,7 +2277,7 @@ items:
     material: player_head
     name: "Candy Cane Bench"
     rarity: EPIC
-    unavailable: "Needs the placeable furniture system (not built); source not confirmed on the wiki"
+    unavailable: "No normal source is confirmed on the wiki; it can be placed once given by staff"
     source: "Seasonal furniture (exact Reward Bundle not confirmed on the wiki)"
     lore:
       - "§8Furniture"
@@ -2274,13 +2286,15 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: f046efbda962604416591d10bd14b3c75797b0a77c50b8b7842ab406d499b504
   - id: CANDY_CANE_TABLE
     material: player_head
     name: "Candy Cane Table"
     rarity: EPIC
-    unavailable: "Needs the placeable furniture system (not built); source not confirmed on the wiki"
+    unavailable: "No normal source is confirmed on the wiki; it can be placed once given by staff"
     source: "Seasonal furniture (exact Reward Bundle not confirmed on the wiki)"
     lore:
       - "§8Furniture"
@@ -2289,6 +2303,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 27c7140dad90e301aa58a464ca841c9785dce2e0b3cd22378dd3bb0a35e7473b
   - id: CANDY_THE_FISH

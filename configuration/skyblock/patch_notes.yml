@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "island-finishing-touches"
+    name: "The Island Finishing Touches Update"
+    date: "23rd October 2026"
+    material: crafting_table
+    title: "The Island Finishing Touches Update"
+    book: "island_leftovers_update.yml"
   - version: "leaderboards"
     name: "The Leaderboards Update"
     date: "23rd October 2026"

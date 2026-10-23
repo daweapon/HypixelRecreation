@@ -3,7 +3,7 @@ items:
     material: player_head
     name: "Reanimated Painting"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Source unconfirmed"
+    unavailable: "No normal source is confirmed on the wiki; it can be placed once given by staff"
     source: "Seasonal furniture cosmetic (exact source unconfirmed)"
     lore:
       - "§8Furniture"
@@ -13,6 +13,8 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: f02a8b572619e86420155a988342c3c7fb1b8177a250aaa97f8dfc4e1ac81f07
   - id: REDSTONE_CHEST
@@ -470,7 +472,6 @@ items:
     material: player_head
     name: "Rocking Chair"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); needs the Advent Calendar"
     source: "Advent Calendar 2022, day 8 (MVP+ reward)"
     lore:
       - "§8Furniture"
@@ -479,13 +480,15 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 300fc72e90b748dc2936c4093d62a22fef9c937ef83c70ca76bcd500b4421c0b
   - id: ROCKING_REINDEER
     material: player_head
     name: "Rocking Reindeer"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Source unconfirmed"
+    unavailable: "No normal source is confirmed on the wiki; it can be placed once given by staff"
     source: "Seasonal furniture cosmetic (exact source unconfirmed)"
     lore:
       - "§8Furniture"
@@ -494,6 +497,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 8fc1cb4f71ffe28eeebda60eb07f1cfe0b77a8f03bdad331e59b5e9698c3926f
   - id: ROCK_THE_FISH
@@ -843,7 +848,7 @@ items:
     material: player_head
     name: "Salem Fireplace"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Source unconfirmed"
+    unavailable: "No normal source is confirmed on the wiki; it can be placed once given by staff"
     source: "Seasonal furniture cosmetic (exact source unconfirmed)"
     lore:
       - "§8Furniture"
@@ -853,13 +858,15 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: d20cb73f207b07d259ca1eef7cade302c7ea104b8a0c240b897a577971122e56
   - id: SALEM_LARGE_SOFA
     material: player_head
     name: "Salem Large Sofa"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Source unconfirmed"
+    unavailable: "No normal source is confirmed on the wiki; it can be placed once given by staff"
     source: "Seasonal furniture cosmetic (exact source unconfirmed)"
     lore:
       - "§8Furniture"
@@ -869,13 +876,15 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: d81fcffb53acbc7c00c53bc7121ca259371b5b76c001dc52139e1804c287e54
   - id: SALEM_SMALL_SOFA
     material: player_head
     name: "Salem Small Sofa"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Source unconfirmed"
+    unavailable: "No normal source is confirmed on the wiki; it can be placed once given by staff"
     source: "Seasonal furniture cosmetic (exact source unconfirmed)"
     lore:
       - "§8Furniture"
@@ -885,6 +894,8 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: d81fcffb53acbc7c00c53bc7121ca259371b5b76c001dc52139e1804c287e54
   - id: SALTED_SUNFLOWER_SEEDS
@@ -1864,7 +1875,7 @@ items:
     material: player_head
     name: "Skeleton Chair"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Source unconfirmed"
+    unavailable: "No normal source is confirmed on the wiki; it can be placed once given by staff"
     source: "Seasonal furniture cosmetic (exact source unconfirmed)"
     lore:
       - "§8Furniture"
@@ -1874,6 +1885,8 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 1500ba86771f29706ae73c621a2f9addba3c8278fca2d1da317a30f3482815e4
   - id: SKELETON_GRUNT_BOOTS
@@ -2880,7 +2893,6 @@ items:
     material: player_head
     name: "Snowglobe"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); needs the Advent Calendar"
     source: "Advent Calendar 2022, day 17 (VIP+ reward)"
     lore:
       - "§8Furniture"
@@ -2889,6 +2901,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 13229f8525726684fb0227dad7621f05f0b8b5d58a8693fd0ea0688349f1d53c
   - id: SNOWMAN

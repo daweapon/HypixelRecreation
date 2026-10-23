@@ -2,7 +2,7 @@
 
 Sorted reference for the current HypixelRecreation source tree. Updated 2026-10-11.
 
-This catalog covers **133 top-level game-server command definitions** (after merging 52 staff commands into subcommand groups, see Merged staff commands), **7 proxy commands**, and the optional Spark command. It describes the remake as implemented, not a promise of complete real-Hypixel parity. Alias research is in [command-alias-audit.md](docs/audits/command-alias-audit.md).
+This catalog covers **134 top-level game-server command definitions** (after merging 52 staff commands into subcommand groups, see Merged staff commands), **7 proxy commands**, and the optional Spark command. It describes the remake as implemented, not a promise of complete real-Hypixel parity. Alias research is in [command-alias-audit.md](docs/audits/command-alias-audit.md).
 
 ## Contents
 
@@ -83,6 +83,7 @@ This catalog covers **133 top-level game-server command definitions** (after mer
 | `/replays` | — | View your game replays. | DEFAULT | No | `type.generic` |
 | `/rngmeter` | `/experimentrngmeter` | Opens the Experimentation Table RNG Meter, where you pick a Superpairs drop to make guaranteed once the meter fills. | DEFAULT | No | `type.skyblockgeneric` |
 | `/romerorestore` | — | Buys back the quest item Romero gave you for Juliette if you lost it, for 100,000 coins. Internal entry point behind the clickable [CLICK] in Romero's dialogue; only works while you are carrying a gift for Juliette. | DEFAULT | No | `type.skyblockgeneric` |
+| `/sbadvent`<br>`/sbadvent preview <day\|0>` | `/adventcalendar` | Opens the Advent Calendar: claim each December day's gifts, coins and rank-gated furniture (day 1-25, the 2022 table). `preview` is staff-only and pretends it is that day (0 turns it off) so the calendar can be tested outside December. | DEFAULT | No | `type.skyblockgeneric` |
 | `/selectnpcoption <npc> <option>` | — | Selects an option from an NPC dialogue. Internal NPC dialogue entry point; both arguments are required. | DEFAULT | No | `type.skyblockgeneric` |
 | `/sphinxanswer <sphinx> <choice>` | — | Answers a Sphinx's riddle during Diana's Mythological Ritual. Internal entry point behind the clickable answers; only the player who dug the Sphinx up can answer, once. | DEFAULT | No | `type.skyblockgeneric` |
 | `/slayer start <type> <tier>; /slayer status; /slayer cancel` | — | Starts and manages Slayer quests. Starts a quest, displays status, or cancels it; progression and cost checks apply. | DEFAULT | No | `type.skyblockgeneric` |
