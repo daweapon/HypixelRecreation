@@ -698,6 +698,7 @@ final class CaptureSession implements EventSink {
         JsonArray mergeArray = new JsonArray();
         merges.forEach(mergeArray::add);
         root.add("mergedWorlds", mergeArray);
+        root.add("npcs", entities.npcs());
 
         JsonObject counts = new JsonObject();
         streams.counts().forEach(counts::addProperty);
@@ -771,7 +772,7 @@ final class CaptureSession implements EventSink {
                 | `sounds.jsonl` | every sound the server played |
                 | `particles.jsonl` | every particle effect the server spawned |
                 | `blocks.jsonl` | block updates after the world was first captured |
-                | `entities.jsonl` | entity spawns, removals, metadata, equipment, and a sampled position track |
+                | `entities.jsonl` | entity spawns, removals, metadata, equipment, a sampled position track, and `entity:npc` events with each NPC's skin texture, signature, hologram lines and position (all of them are also listed under `npcs` in `session.json`) |
                 | `outbound.jsonl` | what the player did: chat, commands, clicks, interactions |
 
                 Text is recorded twice: `legacy` carries section-sign colour codes, `json` carries the raw

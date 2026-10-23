@@ -9,7 +9,18 @@ import net.minecraft.network.protocol.game.ClientboundRemoveEntitiesPacket;
 import net.minecraft.network.protocol.game.ClientboundSetEntityDataPacket;
 import net.minecraft.network.protocol.game.ClientboundSetEquipmentPacket;
 import net.minecraft.network.syncher.SynchedEntityData;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.world.entity.Display;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.decoration.ArmorStand;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.phys.AABB;
+import java.lang.reflect.Method;
+import java.util.LinkedHashMap;
+import java.util.UUID;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -25,6 +36,7 @@ final class EntityTracker {
 
     private final EventSink sink;
     private final Map<Integer, double[]> lastPositions = new HashMap<>();
+    private final Map<UUID, JsonObject> npcs = new LinkedHashMap<>();
 
     private int trackCountdown;
     private int samples;
@@ -36,6 +48,12 @@ final class EntityTracker {
 
     int spawnCount() {
         return spawnCount;
+    }
+
+    JsonArray npcs() {
+        JsonArray array = new JsonArray();
+        npcs.values().forEach(array::add);
+        return array;
     }
 
     void reset() {
@@ -94,6 +112,7 @@ final class EntityTracker {
                 continue;
             }
 
+            captureNpc(client, entity);
             int id = entity.getId();
             seen.add(id);
             double[] position = {entity.getX(), entity.getY(), entity.getZ(), entity.getYRot(), entity.getXRot()};
@@ -126,6 +145,94 @@ final class EntityTracker {
         payload.addProperty("count", entities.size());
         payload.add("entities", entities);
         sink.emit("entities", "entity:track", payload);
+    }
+
+    private void captureNpc(Minecraft client, Entity entity) {
+        if (entity == client.player || !(entity instanceof LivingEntity) || entity instanceof ArmorStand) {
+            return;
+        }
+        GameProfile profile = profileOf(entity);
+        boolean human = entity instanceof Player || profile != null;
+        if (!human && entity.getCustomName() == null) {
+            return;
+        }
+        JsonObject previous = npcs.get(entity.getUUID());
+        if (previous != null && Math.abs(previous.get("x").getAsDouble() - entity.getX()) < 0.5
+                && Math.abs(previous.get("z").getAsDouble() - entity.getZ()) < 0.5) {
+            return;
+        }
+        JsonObject json = new JsonObject();
+        json.addProperty("uuid", entity.getUUID().toString());
+        json.addProperty("id", entity.getId());
+        json.addProperty("type", entity.getType().toShortString());
+        json.addProperty("x", CaptureJson.round(entity.getX()));
+        json.addProperty("y", CaptureJson.round(entity.getY()));
+        json.addProperty("z", CaptureJson.round(entity.getZ()));
+        json.addProperty("yaw", CaptureJson.round(entity.getYRot()));
+        json.addProperty("pitch", CaptureJson.round(entity.getXRot()));
+        if (entity.getCustomName() != null) {
+            json.addProperty("name", StringUtility.toLegacyString(entity.getCustomName()));
+        }
+        JsonArray lines = overheadLines(client, entity);
+        json.add("holograms", lines);
+        if (profile != null) {
+            json.addProperty("profileName", profile.name());
+            for (Property property : profile.properties().get("textures")) {
+                json.addProperty("texture", property.value());
+                json.addProperty("signature", property.signature());
+                break;
+            }
+        }
+        npcs.put(entity.getUUID(), json);
+        sink.emit("entities", "entity:npc", json);
+    }
+
+    private static JsonArray overheadLines(Minecraft client, Entity npc) {
+        JsonArray lines = new JsonArray();
+        if (!(npc.level() instanceof ClientLevel level)) {
+            return lines;
+        }
+        AABB box = npc.getBoundingBox().inflate(0.5, 2.5, 0.5);
+        java.util.List<Entity> found = new java.util.ArrayList<>();
+        for (Entity entity : level.entitiesForRendering()) {
+            if (entity != npc && entity.getBoundingBox().intersects(box)
+                    && (entity instanceof Display.TextDisplay || entity instanceof ArmorStand) && entity.hasCustomName()) {
+                found.add(entity);
+            }
+        }
+        found.sort((a, b) -> Double.compare(b.getY(), a.getY()));
+        for (Entity entity : found) {
+            lines.add(StringUtility.toLegacyString(entity.getCustomName()));
+        }
+        return lines;
+    }
+
+    private static GameProfile profileOf(Entity entity) {
+        if (entity instanceof Player player) {
+            return player.getGameProfile();
+        }
+        for (String name : new String[]{"getProfile", "profile", "getGameProfile"}) {
+            try {
+                Method method = entity.getClass().getMethod(name);
+                Object value = method.invoke(entity);
+                if (value instanceof GameProfile profile) {
+                    return profile;
+                }
+                if (value != null) {
+                    for (String inner : new String[]{"partialProfile", "gameProfile", "profile"}) {
+                        try {
+                            Object nested = value.getClass().getMethod(inner).invoke(value);
+                            if (nested instanceof GameProfile profile) {
+                                return profile;
+                            }
+                        } catch (ReflectiveOperationException ignored) {
+                        }
+                    }
+                }
+            } catch (ReflectiveOperationException ignored) {
+            }
+        }
+        return null;
     }
 
     private static boolean moved(double[] previous, double[] position) {

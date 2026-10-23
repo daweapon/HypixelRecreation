@@ -23,7 +23,7 @@ Polar world; switching worlds never overwrites an earlier one, and a transition 
 you just left (a death, a rejoin) is merged instead of duplicated. Alongside the worlds it records GUIs and
 every item and component in them, your inventory, chat, the scoreboard, tab, boss bars, titles, sounds,
 particles, block changes, entities, and your own clicks and commands, one JSON object per line under
-`streams/`. `session.json` indexes the lot and `README.md` inside the session explains the format.
+`streams/`. NPCs (player-type entities, mannequins and named mobs) are captured with their skin texture, signature, overhead hologram lines and position as `entity:npc` events and in the `npcs` list of `session.json`. `session.json` indexes the lot and `README.md` inside the session explains the format.
 
 - `/getskins <radius>` Gets the information of player's or NPC's skins in the defined radius.
 - `/getarmorstandcolors <radius>` Gets the color information of armor stands in the defined radius.
