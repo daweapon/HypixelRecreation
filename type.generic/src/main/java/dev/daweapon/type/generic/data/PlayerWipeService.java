@@ -121,6 +121,7 @@ public final class PlayerWipeService {
         wipeAccount(new LiveAccountStore(playerUuid));
 
         int leaderboards = LeaderboardService.removeFromAllLeaderboards(playerUuid);
+        for (UUID profileId : profiles) leaderboards += LeaderboardService.removeFromAllLeaderboards(profileId);
         long ownedRows = wipeOwnedCollections(playerUuid, profiles);
 
         return new Result(profiles, islands, leaderboards, ownedRows);

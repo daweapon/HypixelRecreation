@@ -65,6 +65,7 @@ public class GUIProfileSelect extends StatelessView {
 
                     SkyBlockPlayerProfiles profiles = player.getProfiles();
                     profiles.removeProfile(profileUuid);
+                    dev.daweapon.type.skyblockgeneric.leaderboard.SkyBlockLeaderboards.forget(profileUuid);
                     new UserDatabase(player.getUuid()).saveProfiles(profiles);
 
                     UUID islandId = ProfileSwitcher.islandOf(profileUuid);

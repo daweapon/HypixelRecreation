@@ -12,6 +12,8 @@ import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
 import dev.daweapon.type.generic.gui.v2.ViewLayout;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointSlayer;
+import dev.daweapon.type.skyblockgeneric.leaderboard.SkyBlockBoards;
+import dev.daweapon.type.skyblockgeneric.leaderboard.SkyBlockLeaderboards;
 import dev.daweapon.type.skyblockgeneric.slayer.SlayerDefinition;
 import dev.daweapon.type.skyblockgeneric.slayer.SlayerRegistry;
 import dev.daweapon.type.skyblockgeneric.slayer.SlayerService;
@@ -66,7 +68,7 @@ public class GUISlayer extends StatelessView {
 
                 <c>Not available yet!"""));
 
-        layout.slot(29, (s, c) -> leaderboardItem());
+        layout.slot(29, (s, c) -> leaderboardItem((SkyBlockPlayer) c.player(), c));
         layout.slot(30, (s, c) -> activeQuestItem((SkyBlockPlayer) c.player()), (click, c) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
             if (!SlayerService.status(player).active()) return;
@@ -111,12 +113,16 @@ public class GUISlayer extends StatelessView {
         return ItemStacks.item(style.material(), Text.of("<c>☠ " + colour + "{}", style.type().displayName()), lore);
     }
 
-    private ItemStack.Builder leaderboardItem() {
+    private ItemStack.Builder leaderboardItem(SkyBlockPlayer player, ViewContext ctx) {
         List<Text> lore = new ArrayList<>();
         lore.add(Text.of("<8>Ultimate bragging rights"));
         lore.add(Text.empty());
         for (SlayerMenuStyle style : SlayerMenuStyle.values()) {
-            lore.add(Text.of("<7>{}: <8>N/A", style.type().displayName()));
+            int rank = SkyBlockBoards.byId(SkyBlockBoards.slayerId(style.type()))
+                    .map(board -> SkyBlockLeaderboards.cachedRank(player, board, () -> ctx.session(DefaultState.class).refresh()))
+                    .orElse(-1);
+            lore.add(rank > 0 ? Text.of("<7>{}: <a>#{}", style.type().displayName(), rank)
+                    : Text.of("<7>{}: <8>N/A", style.type().displayName()));
         }
         return ItemStacks.item(Material.EXPERIENCE_BOTTLE, Text.of("<b>Slayer Leaderboards"), lore);
     }

@@ -16,6 +16,7 @@ import java.util.UUID;
 
 public class LeaderboardService {
     private static final String PREFIX = "leaderboard:";
+    private static final String META_PREFIX = "leaderboard-meta:";
     private static JedisPool jedisPool;
     private static volatile boolean initialized = false;
     private static volatile boolean connecting = false;
@@ -256,11 +257,54 @@ public class LeaderboardService {
         }
     }
 
+    public static void putMemberMeta(UUID member, Map<String, String> always, Map<String, String> ifAbsent) {
+        if (!isInitialized()) return;
+        try (Jedis jedis = jedisPool.getResource()) {
+            String key = META_PREFIX + member;
+            var pipeline = jedis.pipelined();
+            if (!always.isEmpty()) pipeline.hset(key, always);
+            ifAbsent.forEach((field, value) -> pipeline.hsetnx(key, field, value));
+            pipeline.sync();
+        } catch (Exception e) {
+            Logger.warn(e, "Failed to store leaderboard metadata for {}", member);
+        }
+    }
+
+    public static Map<String, String> getMemberMeta(UUID member) {
+        if (!isInitialized()) return Map.of();
+        try (Jedis jedis = jedisPool.getResource()) {
+            return jedis.hgetAll(META_PREFIX + member);
+        } catch (Exception e) {
+            Logger.warn(e, "Failed to read leaderboard metadata for {}", member);
+            return Map.of();
+        }
+    }
+
+    public static List<String> listKeys(String keyPrefix) {
+        if (!isInitialized()) return List.of();
+        List<String> keys = new ArrayList<>();
+        try (Jedis jedis = jedisPool.getResource()) {
+            ScanParams params = new ScanParams().match(PREFIX + keyPrefix + "*").count(500);
+            String cursor = ScanParams.SCAN_POINTER_START;
+            do {
+                ScanResult<String> scan = jedis.scan(cursor, params);
+                for (String key : scan.getResult()) {
+                    if ("zset".equals(jedis.type(key))) keys.add(key.substring(PREFIX.length()));
+                }
+                cursor = scan.getCursor();
+            } while (!ScanParams.SCAN_POINTER_START.equals(cursor));
+        } catch (Exception e) {
+            Logger.warn(e, "Failed to list leaderboard keys under {}", keyPrefix);
+        }
+        return keys;
+    }
+
     public static int removeFromAllLeaderboards(UUID playerUuid) {
         if (!isInitialized()) return 0;
 
         int removed = 0;
         try (Jedis jedis = jedisPool.getResource()) {
+            jedis.del(META_PREFIX + playerUuid);
             ScanParams params = new ScanParams().match(PREFIX + "*").count(500);
             String cursor = ScanParams.SCAN_POINTER_START;
             do {

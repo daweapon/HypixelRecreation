@@ -1,0 +1,11 @@
+title: "The Leaderboards Update"
+date: "23rd October 2026"
+intro:
+  - "See how your profiles stack up. Type /leaderboard (or /lb) to browse the SkyBlock leaderboards."
+sections:
+  - heading: "SkyBlock Leaderboards"
+    colour: "<6>"
+    lines:
+      - "Boards for SkyBlock Level, Fairy Souls, every skill, total skill XP, every Slayer boss, total Slayer XP and every collection you have started."
+      - "Each profile is ranked on its own, so switching profiles never overwrites your old score. Rankings update whenever your profile saves."
+      - "Maddox's Slayer menu now shows your rank for each boss. Staff are not ranked."
