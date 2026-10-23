@@ -529,6 +529,7 @@ items:
     material: player_head
     name: "Festive Skeleton Minion Skin"
     rarity: COMMON
+    source: "Holiday reward bundle (Salesman, MVP rank reward)"
     components:
       - id: MINION_SKIN
         name: "Festive Skeleton"
@@ -572,6 +573,7 @@ items:
     material: player_head
     name: "Fish Minion Skin"
     rarity: COMMON
+    source: "Summer reward bundle (Salesman, MVP+ rank reward)"
     components:
       - id: MINION_SKIN
         name: "Fish"
@@ -1004,6 +1006,7 @@ items:
     material: player_head
     name: "Killer Minion Skin"
     rarity: COMMON
+    source: "Halloween reward bundle (Salesman, MVP++ rank reward)"
     components:
       - id: MINION_SKIN
         name: "Killer"
@@ -1339,6 +1342,7 @@ items:
     material: player_head
     name: "Present Minion Skin"
     rarity: COMMON
+    source: "Holiday reward bundle (Salesman, MVP+ rank reward)"
     components:
       - id: MINION_SKIN
         name: "Present"
@@ -1539,6 +1543,7 @@ items:
     material: player_head
     name: "Shark Minion Skin"
     rarity: COMMON
+    source: "Summer reward bundle (Salesman, MVP++ rank reward)"
     components:
       - id: MINION_SKIN
         name: "Shark"
@@ -1782,6 +1787,7 @@ items:
     material: player_head
     name: "Hyacinth Tropical Bird Minion Skin"
     rarity: COMMON
+    source: "Easter reward bundle (Salesman, VIP+ rank reward)"
     components:
       - id: MINION_SKIN
         name: "Hyacinth Tropical Bird"
