@@ -69,7 +69,8 @@ public class GUILeaderboardView extends StatelessView {
     }
 
     private String unitLabel() {
-        return StringUtility.toNormalCase(page.board().unit());
+        String unit = page.board().unit();
+        return unit.equals(unit.toUpperCase()) ? unit : Character.toUpperCase(unit.charAt(0)) + unit.substring(1);
     }
 
     private static String format(double score) {
