@@ -1,6 +1,20 @@
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const names = (bot) => bot.window().slots.map((slot) => `${slot.name} ${slot.lore.join(' ')}`).join(' | ');
 
+const sidebarText = (bot) => (bot.sidebar()?.lines ?? []).join(' | ');
+
+const sendTo = async (bot, type, pattern, attempts = 4) => {
+    for (let attempt = 1; attempt <= attempts; attempt++) {
+        bot.say(`/sendto ${type}`);
+        try {
+            await bot.waitFor(() => pattern.test(sidebarText(bot)), { timeoutMs: 60000, what: `the ${type} sidebar` });
+            return;
+        } catch (error) {
+            if (attempt === attempts) throw error;
+        }
+    }
+};
+
 module.exports = {
     description: 'One-time mayors: Dante vendor and Goons, Technoblade Shrine, relics, Technoshop, perks',
     async run(t, bot) {
@@ -9,6 +23,7 @@ module.exports = {
             await bot.command('/mission clearset GETTING_STARTED', { settleMs: 1500 });
             await bot.command('/set coins 50000000', { settleMs: 800 });
             await sleep(3000);
+            await sendTo(bot, 'SKYBLOCK_HUB', /Village|Hub|Bazaar|Auction|Museum|Community/i);
         });
 
         await t.step('forcing Dante installs him and his perks', async () => {
