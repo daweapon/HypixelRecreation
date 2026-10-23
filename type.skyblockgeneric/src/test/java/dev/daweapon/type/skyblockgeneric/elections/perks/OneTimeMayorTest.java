@@ -60,6 +60,25 @@ class OneTimeMayorTest {
         assertEquals(2D, perks.factor(Perk.POTATO_CROWNS_RADIANCE));
     }
 
+    @Test
+    void danteElectionsOfferFiveCloneCandidates() {
+        ElectionData data = new ElectionData();
+        data.setCurrentMayor("DANTE");
+        data.startNewElection(130);
+
+        assertEquals(5, data.getCandidates().size());
+        assertTrue(data.getCandidates().stream().allMatch(candidate -> candidate.getMayorName().equals("DANTE")));
+        assertTrue(data.getCandidates().stream().allMatch(candidate -> candidate.getMinisterPerk() == null));
+    }
+
+    @Test
+    void retiredAndOneTimeMayorsCannotBeMinister() {
+        assertFalse(SkyBlockMayor.BARRY.canBeMinister());
+        assertFalse(SkyBlockMayor.getRegularMayors().contains(SkyBlockMayor.BARRY));
+        assertFalse(SkyBlockMayor.DANTE.canBeMinister());
+        assertTrue(SkyBlockMayor.DIANA.canBeMinister());
+    }
+
     private static ElectionData election(String mayor, List<String> perks) {
         ElectionData data = new ElectionData();
         data.setCurrentMayor(mayor);

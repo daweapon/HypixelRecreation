@@ -980,15 +980,7 @@ items:
     default_statistics:
       health: 8
       defense: 8
-    unavailable: "Needs Dante and the Resistance mayor event"
-    source: "Dante Resistance event reward (exact source unconfirmed)."
-    lore:
-      - "§6Full Set Bonus: Power of the Resistance §7(0/4)"
-      - "§7Provides a damage bonus while"
-      - "§7fighting against Dante, and reduces"
-      - "§7damage taken from Dante."
-      - ""
-      - "§8Not active yet: Power of the Resistance needs Dante"
+    source: "Resistance General reward: staff hand it out with /uprising gear general."
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -1003,15 +995,7 @@ items:
     default_statistics:
       health: 15
       defense: 15
-    unavailable: "Needs Dante and the Resistance mayor event"
-    source: "Dante Resistance event reward (exact source unconfirmed)."
-    lore:
-      - "§6Full Set Bonus: Power of the Resistance §7(0/4)"
-      - "§7Provides a damage bonus while"
-      - "§7fighting against Dante, and reduces"
-      - "§7damage taken from Dante."
-      - ""
-      - "§8Not active yet: Power of the Resistance needs Dante"
+    source: "Resistance General reward: staff hand it out with /uprising gear general."
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -1022,15 +1006,7 @@ items:
     default_statistics:
       health: 10
       defense: 10
-    unavailable: "Needs Dante and the Resistance mayor event"
-    source: "Dante Resistance event reward (exact source unconfirmed)."
-    lore:
-      - "§6Full Set Bonus: Power of the Resistance §7(0/4)"
-      - "§7Provides a damage bonus while"
-      - "§7fighting against Dante, and reduces"
-      - "§7damage taken from Dante."
-      - ""
-      - "§8Not active yet: Power of the Resistance needs Dante"
+    source: "Resistance General reward: staff hand it out with /uprising gear general."
     components:
       - id: SKULL_HEAD
         texture: 74cf3c5f24c9bf8b9031e8aed5337b6a07f819cde8c622085545162f8a693060
@@ -1043,15 +1019,7 @@ items:
     default_statistics:
       health: 12
       defense: 12
-    unavailable: "Needs Dante and the Resistance mayor event"
-    source: "Dante Resistance event reward (exact source unconfirmed)."
-    lore:
-      - "§6Full Set Bonus: Power of the Resistance §7(0/4)"
-      - "§7Provides a damage bonus while"
-      - "§7fighting against Dante, and reduces"
-      - "§7damage taken from Dante."
-      - ""
-      - "§8Not active yet: Power of the Resistance needs Dante"
+    source: "Resistance General reward: staff hand it out with /uprising gear general."
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -2538,8 +2506,7 @@ items:
     material: player_head
     name: "Happy Mask"
     rarity: UNCOMMON
-    unavailable: "Trade NPC unconfirmed (4 Enchanted Emerald)"
-    source: "Trade: 4 Enchanted Emerald (NPC unconfirmed)."
+    source: "Buy from Dante for 100 coins while Dante is mayor."
     lore:
       - "§7Wear this mask to show your support"
       - "§7for Dante."
@@ -3015,8 +2982,7 @@ items:
     rarity: LEGENDARY
     default_statistics:
       speed: 1
-    unavailable: "Trade NPC unconfirmed (50 Emerald)"
-    source: "Trade: 50 Emerald (NPC unconfirmed)."
+    source: "Technoshop during Technoblade's term: 2 Enchanted Pork and 10,000 coins (once per profile)."
     lore:
       - "§7Wear this mask to show your support"
       - "§7for the Dante resistance."

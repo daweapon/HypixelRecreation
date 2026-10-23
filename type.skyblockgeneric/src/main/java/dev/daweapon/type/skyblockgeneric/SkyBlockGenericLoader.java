@@ -151,6 +151,9 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
     public void initialize(MinecraftServer server) {
         SkyBlockGenericLoader.server = server;
         SkyBlockTextScopes.init();
+        dev.daweapon.commons.skyblock.statistics.ItemStatistics.setCapLifted(statistic ->
+                statistic == dev.daweapon.commons.skyblock.statistics.ItemStatistic.SPEED
+                        && dev.daweapon.type.skyblockgeneric.elections.perks.ElectionPerks.isActive(dev.daweapon.type.skyblockgeneric.elections.SkyBlockMayor.Perk.UNLIMITED_SPEED));
         CustomWorlds mainInstance = typeLoader.getMainInstance();
 
         /**
@@ -183,6 +186,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         SkyBlockAchievements.initialize();
         Carnival.initialize();
         FireSaleService.initialize();
+        dev.daweapon.type.skyblockgeneric.technoblade.TechnobladeShrine.initialize();
         PlayerItemUpdater.updateLoop(MinecraftServer.getSchedulerManager());
         File configDir = new File("./configuration/skyblock");
         File itemsDir = new File(configDir, "items");

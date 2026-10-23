@@ -26,6 +26,7 @@ public final class KillAccessories {
     public static void onKill(SkyBlockPlayer player, SkyBlockMob mob) {
         devour(player, mob);
         reap(player);
+        dev.daweapon.type.skyblockgeneric.technoblade.BloodGodCrest.onKill(player);
     }
 
     private static void devour(SkyBlockPlayer player, SkyBlockMob mob) {

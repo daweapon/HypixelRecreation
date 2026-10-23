@@ -32,6 +32,7 @@ final class ItemStatisticsCalculator {
         statistics = getHotPotatoBookStatistics(item, statistics);
         statistics = ItemStatistics.add(statistics, MythologicalGear.extraItemStatistics(item, player));
         statistics = ItemStatistics.add(statistics, SnowSuit.extraItemStatistics(item, player));
+        statistics = ItemStatistics.add(statistics, dev.daweapon.type.skyblockgeneric.technoblade.ArtOfWar.statistics(item));
         statistics = ItemStatistics.add(statistics, CrimsonGear.extraItemStatistics(item, player));
         statistics = ItemStatistics.add(statistics, ReforgeLoadout.statistics(item, player));
         statistics = ItemStatistics.add(statistics, dev.daweapon.type.skyblockgeneric.item.tool.ToolPassives.extraItemStatistics(item, player));

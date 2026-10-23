@@ -340,6 +340,11 @@ public record CalendarEvent(
 
     @Override
     public List<Long> times() {
+        if (dev.daweapon.type.skyblockgeneric.dante.DanteEventCancellation.cancels(id)) return List.of();
+        return scheduledTimes();
+    }
+
+    private List<Long> scheduledTimes() {
         PerkOccurrence extra = PERK_OCCURRENCES.get(id);
         return extra == null ? times : extra.addTo(times);
     }
@@ -373,7 +378,7 @@ public record CalendarEvent(
 
     private static void registerEvent(CalendarEvent event) {
         allEvents.add(event);
-        for (Long time : event.times()) {
+        for (Long time : event.scheduledTimes()) {
             eventCache.computeIfAbsent(time, k -> new ArrayList<>()).add(event);
         }
     }

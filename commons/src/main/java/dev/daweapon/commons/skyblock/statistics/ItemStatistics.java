@@ -239,6 +239,12 @@ public final class ItemStatistics {
         return create(base, additive, multiplicative);
     }
 
+    private static volatile java.util.function.Predicate<ItemStatistic> capLifted = stat -> false;
+
+    public static void setCapLifted(java.util.function.Predicate<ItemStatistic> capLifted) {
+        ItemStatistics.capLifted = capLifted;
+    }
+
     public Map<ItemStatistic, Double> getOverall() {
         Map<ItemStatistic, Double> result = new EnumMap<>(ItemStatistic.class);
         for (ItemStatistic stat : STATISTICS) result.put(stat, getOverall(stat));
@@ -249,7 +255,7 @@ public final class ItemStatistics {
         if (stat == null) return 0D;
         double value = getBase(stat) * getAdditive(stat) * getMultiplicative(stat);
         Double cap = stat.getCap();
-        return cap == null ? value : Math.min(value, cap);
+        return cap == null || capLifted.test(stat) ? value : Math.min(value, cap);
     }
 
     public @NonNull Double getBase(@Nullable ItemStatistic stat) {

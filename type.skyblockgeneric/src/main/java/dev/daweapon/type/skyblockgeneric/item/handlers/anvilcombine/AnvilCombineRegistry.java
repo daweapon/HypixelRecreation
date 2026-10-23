@@ -33,6 +33,7 @@ public class AnvilCombineRegistry {
         HollyDye.registerAnvilCombine();
         EnchantLevelBoost.registerAnvilCombines();
         dev.daweapon.type.skyblockgeneric.garden.pest.PestBooks.registerAnvilCombines();
+        dev.daweapon.type.skyblockgeneric.technoblade.ArtOfWar.registerAnvilCombine();
         dev.daweapon.type.skyblockgeneric.item.utility.SilexUpgrade.registerAnvilCombine();
         Recombobulation.registerAnvilCombine();
         dev.daweapon.type.skyblockgeneric.user.island.portal.PortalizerCombine.registerAnvilCombine();

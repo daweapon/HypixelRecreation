@@ -21,6 +21,7 @@ public class ActionPlayerInteractFairySoul implements HypixelEventClass {
             FairySoul fairySoul = entitySoul.parent;
             if (fairySoul == null || !FairySoulGates.mayCollect(player, fairySoul)) return;
 
+            dev.daweapon.type.skyblockgeneric.technoblade.AncientPigEffects.onFairySoulClicked(player);
             fairySoul.collect(player);
         }
     }

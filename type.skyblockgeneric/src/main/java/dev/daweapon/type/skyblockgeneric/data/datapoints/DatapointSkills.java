@@ -172,6 +172,7 @@ public class DatapointSkills extends SkyBlockDatapoint<DatapointSkills.PlayerSki
             double wisdom = player.getStatistics().allStatistics().getOverall(category.getWisdomStatistic());
             double modifiedValue = value * (1D + wisdom / 100D) * ElectionPerks.multiplier(SkyBlockMayor.Perk.MOAR_SKILLZ)
                     * ElectionPerks.multiplier(SkyBlockMayor.Perk.BLOOD_GODS_BLESSING)
+                    * dev.daweapon.type.skyblockgeneric.technoblade.AncientPigEffects.skillExperienceMultiplier(category)
                     * MiscPetHooks.learningMultiplier(player);
             if (category == SkillCategories.RUNECRAFTING) modifiedValue *= RunecraftingSkill.rankMultiplier(player.getRank());
             setRaw(player, category, getRaw(category) + modifiedValue);

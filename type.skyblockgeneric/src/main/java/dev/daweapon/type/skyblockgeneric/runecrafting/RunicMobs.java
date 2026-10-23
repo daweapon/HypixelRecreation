@@ -33,7 +33,8 @@ public final class RunicMobs {
     }
 
     public static void rollSpawn(SkyBlockMob mob) {
-        if (rollSpawn(ThreadLocalRandom.current())) mob.makeRunic();
+        double chance = SPAWN_CHANCE_PERCENT * dev.daweapon.type.skyblockgeneric.technoblade.AncientPigEffects.runicChanceMultiplier();
+        if (ThreadLocalRandom.current().nextDouble() * 100 < chance) mob.makeRunic();
     }
 
     public static double damageMultiplier(SkyBlockMob mob) {

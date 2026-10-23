@@ -29,12 +29,6 @@ public final class PerkAvailability {
                     "blessing strength * ElectionPerks.multiplier(BENEDICTION)"),
             missing(Perk.BRIBE, "Profile playtime isn't tracked yet, and the bribe is paid by playtime.",
                     "Scorpius pays the playtime-tier bribe when ElectionPerks.isActive(BRIBE) and the player voted for him"),
-            missing(Perk.INCREASED_SECURITY, "Goons and the Hub's official buildings aren't in this server yet.",
-                    "gate official building regions behind HAPPY_MASK / DANTE_TALISMAN when ElectionPerks.isActive(INCREASED_SECURITY)"),
-            missing(Perk.SHRINE_OF_THE_BLOOD_GOD, "The Blood God Shrine, the Ancient Pig and Shiny Pigs aren't in this server yet.",
-                    "spawn the Shrine and Shiny Pigs when ElectionPerks.isActive(SHRINE_OF_THE_BLOOD_GOD)"),
-            partial(Perk.UNLIMITED_SPEED, "The +50 Speed applies, but the 400 Speed cap is still enforced.",
-                    "skip ItemStatistic.SPEED.getCap() when ElectionPerks.isActive(UNLIMITED_SPEED)"),
             missing(Perk.DARKER_AUCTIONS,
                     "The Darker Auction lots (Plasma Nucleus, Hegemony Artifact, book bundles) aren't in this server yet.",
                     "build the 8-round Darker lot list in DarkAuctionState when ElectionPerks.isActive(DARKER_AUCTIONS)")

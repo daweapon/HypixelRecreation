@@ -1046,18 +1046,20 @@ items:
     material: book
     name: "The Art of War"
     rarity: LEGENDARY
-    unavailable: "Needs the Year of the Pig event (Piggy) and anvil stat modifiers"
-    source: "Piggy during the Year of the Pig: 5,000,000 coins, 256 Shiny Token and an Enchanted Cooked Porkchop"
+    source: "Technoshop during Technoblade's term: 5,000,000 coins and 2 Enchanted Grilled Pork."
     lore:
       - "§8Combinable in Anvil"
       - ""
       - "§7Grants §c+5 Strength §7when applied"
-      - "§7to a weapon. Can only be applied to"
-      - "§7an item once."
+      - "§7to a weapon or axe. Can only be applied"
+      - "§7to an item once."
       - ""
       - "§8In the midst of chaos, there is also"
       - "§8opportunity."
       - "§8 - Sun Tzu"
+    components:
+      - id: ANVIL_COMBINABLE
+        handler_id: THE_ART_OF_WAR
   - id: THE_CAKE
     material: cake
     name: "The Cake"

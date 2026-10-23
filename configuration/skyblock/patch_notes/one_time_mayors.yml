@@ -7,9 +7,12 @@ sections:
     colour: "<c>"
     lines:
       - "Economy Restoration doubles Auction House and Bazaar taxes, adds a 10% coin tax to NPC shops, charges 5 coins a minute to chat and 2 coins to travel between islands."
-      - "Increase Security, the Goons and the Hub's official buildings are not built yet."
+      - "Increase Security puts Goons outside the Bank, Auction House, Bazaar Alley and Farmhouse: only players wearing a Happy Mask or carrying Dante's Talisman or Ring get in. The Traveling Zoo, Spooky Festival and Season of Jerry are cancelled and the Hub stays at midnight."
+      - "Dante sells the Happy Mask and Dante's Talisman in the Community Center. While he rules, elections are five Dante clones and every vote counts for all of them."
+      - "Staff can start the Uprising with /uprising: everyone gets the Staff and Armor of the Rising Sun and fights Dante's Goons and Dante himself."
   - heading: "Mayor Technoblade"
     colour: "<d>"
     lines:
       - "Blood God's Blessing gives 50% more skill experience, Unlimited Speed adds 50 Speed, Potato Crown's Radiance doubles the output of farming minions and Anarchy removes Auction House and Bazaar taxes."
-      - "The Shrine of the Blood God, with its Ancient Pig and Shiny Pigs, is not built yet, and the 400 Speed cap still applies."
+      - "The Shrine of the Blood God stands near the Museum. Find its 7 hidden Shiny Relics and the Ancient Pig appears, gives out the Flying Pig and grants a new shrine buff every 20 minutes."
+      - "The Technoshop, in the mayor menu and beside the shrine, sells the Pig Mask, the Blood God Crest and The Art of War. Shiny Pigs wait for the Year of the Pig."

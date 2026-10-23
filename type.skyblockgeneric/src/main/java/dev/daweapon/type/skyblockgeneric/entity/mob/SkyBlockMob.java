@@ -422,8 +422,9 @@ public abstract class SkyBlockMob extends EntityCreature {
     protected void awardDrop(SkyBlockPlayer player, ItemType itemType, SkyBlockLootTable.LootRecord record) {
         if (SkyBlockLootTable.LootRecord.isNone(record)) return;
 
-        int amount = GatheringPetBonuses.squidDropAmount(player, this,
-                CombatPetHooks.collectionDropAmount(player, itemType, record.getAmount()));
+        int amount = dev.daweapon.type.skyblockgeneric.technoblade.AncientPigEffects.dropAmount(
+                GatheringPetBonuses.squidDropAmount(player, this,
+                        CombatPetHooks.collectionDropAmount(player, itemType, record.getAmount())));
         SkyBlockItem item = createDrop(itemType, amount);
         ItemType droppedItemLinker = item.getAttributeHandler().getPotentialType();
         if (record.getChancePercent() < RARE_DROP_CHANCE_PERCENT) announceRareDrop(player, item);

@@ -46,7 +46,7 @@ public final class AccessoryStats {
             else if (effect.kind() == AccessoryEffectKind.HANDLER)
                 total = ItemStatistics.add(total, AccessoryHandlerStats.of(player, effect));
         }
-        return total;
+        return ItemStatistics.add(total, dev.daweapon.type.skyblockgeneric.technoblade.BloodGodCrest.statistics(owned.item()));
     }
 
     /** Multiplier on damage a mob deals to the player; each matching reduction stacks multiplicatively. */

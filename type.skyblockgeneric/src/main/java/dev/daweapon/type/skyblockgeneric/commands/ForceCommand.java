@@ -10,13 +10,14 @@ import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceDropCommand;
 import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceEruptionCommand;
 import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceEventCommand;
 import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceFireSaleCommand;
+import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceShrineCommand;
 
 import java.util.List;
 import java.util.Map;
 
 @CommandParameters(labels = "force",
-        description = "Forces a drop, the next Diana mob, a Dark Auction, a Volcano eruption, a Fire Sale or a Mining Event",
-        usage = "/force <drop|diana|darkauction|eruption|firesale|event> ...",
+        description = "Forces a drop, the next Diana mob, a Dark Auction, a Volcano eruption, a Fire Sale, a Mining Event or the Blood God Shrine",
+        usage = "/force <drop|diana|darkauction|eruption|firesale|event|shrine> ...",
         permission = Rank.STAFF,
         allowsConsole = false)
 public class ForceCommand extends CommandGroup {
@@ -27,7 +28,8 @@ public class ForceCommand extends CommandGroup {
                 new ForceDarkAuctionCommand(),
                 new ForceEruptionCommand(),
                 new ForceFireSaleCommand(),
-                new ForceEventCommand());
+                new ForceEventCommand(),
+                new ForceShrineCommand());
     }
 
     @Override

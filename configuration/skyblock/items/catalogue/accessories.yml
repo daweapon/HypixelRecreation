@@ -2893,8 +2893,7 @@ items:
     material: player_head
     name: "Shiny Relic #1-7"
     rarity: SPECIAL
-    unavailable: "Legacy, effectively unobtainable"
-    source: "Legacy item from Shiny Orbs (about 1/20,000,000); now only via player trading."
+    source: "Found hidden in the Hub while Technoblade's Blood God Shrine stands (one of seven)."
     components:
       - id: SKULL_HEAD
         texture: 522dc618e396f96b0ff7bb50135e3cb00b71f0d62f392ecb0f82732ce339f102

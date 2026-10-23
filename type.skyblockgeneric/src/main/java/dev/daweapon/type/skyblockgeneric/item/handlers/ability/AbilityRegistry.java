@@ -269,6 +269,7 @@ public class AbilityRegistry {
 
         register(new BuildersWandAbility());
         CrimsonAbilities.register();
+        dev.daweapon.type.skyblockgeneric.dante.DanteAbilities.register();
         dev.daweapon.type.skyblockgeneric.trapper.TalbotsTheodolite.register();
 
         register(new RegisteredAbility(

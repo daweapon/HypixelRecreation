@@ -1404,13 +1404,16 @@ items:
           signature: SOQb/wJC4uwWbZOKEdbt9k6yVTvofC/ax8qME9rSairtZhZe4vuA7iV+QVXi9rYP1ssh9gMCyeuIA7+jcQ1xwg4l+TUzZUUTV9zPz+lvKTKdQNFLHbfUWo452MTy3Gf79UbRQprkCBSgi8Tl4NPwlIVxFV7s+D+/agS4oga6skqvZDX5/lakZBVWeed6gJtgBOsRJQZWAolJrOK7nz1wLR2I5w4nWKZhuKsHa5Xe47OKwopEuGLH8ZH4hjovY77vszmjJ6g31dq92WnKKhwkifb9k520FYlwZcH1tbXf5h8RBqoT7dylBlMuQg3MaRqn3QMb1ZeU8Y/3On/VmWP8GGH/rv44MoBQ0bNlG9ZI3b2qhRF5lCVER2cRt2J2U2NNLFTL8AkcHNqWt8bVnlFIFPzhypdVRzUKi6xOtDVwQZmvlHUPnQUbH30Xkb99nducU0JNcQPIFIV1WDdEXKvM7541zVBl3tqQogUVqfHza+wzH3uQZUGqY2xmQA70HcQDby35d4ilQh++AMoqK/J97Z3QIde/znWEv2M3z9IF1no+GRmclq/bM4MAcdhN5PxsH60hOINwwVmQCtPV8spWQHYia5zM8nXuyOsEfKNQBLuJHUXirHKf3kiWiRbt5aTqtkUHh1k2DYpAiHViAlY2cpWHnwUByxiRTDAoDUEMaLw=
   - id: GENERALS_HOPE_OF_THE_RESISTANCE
     material: SUNFLOWER
-    name: "General's Hope of the Resistance"
+    name: "Staff of the Rising Sun"
     rarity: LEGENDARY
     components:
       - id: STANDARD_ITEM
         standard_item_type: SWORD
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/staff_of_the_rising_sun_2
+      - id: ABILITY
+        abilities:
+          - RAY_OF_HOPE_GENERAL
   - id: GHOUL_BUSTER
     material: IRON_HOE
     rarity: EPIC
@@ -1671,12 +1674,16 @@ items:
         item_model: hypixel_skyblock:item/island_relevant/crimson_isle/armors/hollow/hollow_wand
   - id: HOPE_OF_THE_RESISTANCE
     material: SUNFLOWER
+    name: "Staff of the Rising Sun"
     rarity: EPIC
     components:
       - id: STANDARD_ITEM
         standard_item_type: SWORD
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/staff_of_the_rising_sun
+      - id: ABILITY
+        abilities:
+          - RAY_OF_HOPE
   - id: HORSEMAN_SCYTHE
     material: DIAMOND_HOE
     rarity: LEGENDARY

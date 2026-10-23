@@ -54,7 +54,8 @@ public final class AccessoryHandlers {
             Map.entry("SHARK_TOOTH_CHANCE", "fishing/festival/SharkToothNecklace"),
             Map.entry("SHOP_DISCOUNT", "shop/ShopDiscount"),
             Map.entry("SUNSHADE", "entity/mob/mobs/crimsonisle/MobDiveGhast"),
-            Map.entry("VOTE_WEIGHT", "elections/ElectionManager")
+            Map.entry("VOTE_WEIGHT", "elections/ElectionManager"),
+            Map.entry("BLOOD_GOD_CREST", "technoblade/BloodGodCrest")
     ));
 
     private AccessoryHandlers() {

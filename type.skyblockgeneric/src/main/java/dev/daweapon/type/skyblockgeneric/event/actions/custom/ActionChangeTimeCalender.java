@@ -12,7 +12,7 @@ public class ActionChangeTimeCalender implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void run(CalenderHourlyUpdateEvent event) {
         int hour = event.hour();
-        long minecraftTime = (hour * 1000L + 6000) % 24000;
+        long minecraftTime = dev.daweapon.type.skyblockgeneric.dante.DanteSunlight.worldTime(hour);
 
         SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
             player.getInstance().setTime(minecraftTime);

@@ -59,7 +59,7 @@ public enum SkyBlockMayor {
         new Perk[]{Perk.MARAUDER, Perk.BENEDICTION, Perk.EZPZ}
     ),
     BARRY(
-        "Barry", Kind.REGULAR,
+        "Barry", Kind.RETIRED,
         "ewogICJ0aW1lc3RhbXAiIDogMTU5Nzc4MDg1NjQ5NCwKICAicHJvZmlsZUlkIiA6ICI0MWQzYWJjMmQ3NDk0MDBjOTA5MGQ1NDM0ZDAzODMxYiIsCiAgInByb2ZpbGVOYW1lIiA6ICJNZWdha2xvb24iLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjA0YzU5MWIxNjQ3NDZlODQ4ZjNkNmE0NTFlZTg3YTYyZGQxOTNlNWM0NWU5NGVkNzhlNzJkZjExOWFjYTQyNiIKICAgIH0KICB9Cn0=",
         null,
         new Perk[]{Perk.ARCANE_CATALYST, Perk.ASTRAL_NEGOTIATOR, Perk.MAGIC_XP_BOOST}
@@ -125,6 +125,10 @@ public enum SkyBlockMayor {
         return kind == Kind.SPECIAL;
     }
 
+    public boolean canBeMinister() {
+        return kind == Kind.REGULAR;
+    }
+
     public boolean isOneTime() {
         return kind == Kind.ONE_TIME;
     }
@@ -132,7 +136,8 @@ public enum SkyBlockMayor {
     public enum Kind {
         REGULAR,
         SPECIAL,
-        ONE_TIME
+        ONE_TIME,
+        RETIRED
     }
 
     @Getter

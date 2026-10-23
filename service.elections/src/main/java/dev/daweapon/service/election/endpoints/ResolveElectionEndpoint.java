@@ -24,7 +24,7 @@ public class ResolveElectionEndpoint implements RedisMessageHandler
 
     private static final Gson GSON = new Gson();
 
-    private static final List<String> SPECIAL_MAYORS = List.of("SCORPIUS", "DERPY", "JERRY");
+    private static final List<String> SPECIAL_MAYORS = List.of("SCORPIUS", "DERPY", "JERRY", "DANTE", "TECHNOBLADE");
 
     // Mirrors the perk pool defined per-candidate in SkyBlockMayor.java (type.skyblockgeneric). This
     // service module can't depend on that enum directly, so the full perk list per regular mayor is
@@ -81,22 +81,21 @@ public class ResolveElectionEndpoint implements RedisMessageHandler
             }
 
             List<Map.Entry<String, Long>> sorted = new ArrayList<>(tallies.entrySet());
-            sorted.sort((a, b) -> Long.compare(b.getValue(), a.getValue()));
+            Map<String, Integer> candidateOrder = new HashMap<>();
+            for (int i = 0; i < candidates.size(); i++) {
+                candidateOrder.put((String) candidates.get(i).get("mayorName"), i);
+            }
+            sorted.sort((a, b) -> {
+                int byVotes = Long.compare(b.getValue(), a.getValue());
+                return byVotes != 0 ? byVotes
+                        : Integer.compare(candidateOrder.getOrDefault(a.getKey(), Integer.MAX_VALUE), candidateOrder.getOrDefault(b.getKey(), Integer.MAX_VALUE));
+            });
 
             if (sorted.isEmpty()) {
                 return new ResolveElectionProtocol.ResolveElectionResponse(false, GSON.toJson(data), true, null);
             }
 
-            long topVotes = sorted.getFirst().getValue();
-            List<Map.Entry<String, Long>> tied = sorted.stream()
-                    .filter(e -> e.getValue() == topVotes).toList();
-
-            String winnerName;
-            if (tied.size() > 1) {
-                winnerName = tied.get(ThreadLocalRandom.current().nextInt(tied.size())).getKey();
-            } else {
-                winnerName = sorted.getFirst().getKey();
-            }
+            String winnerName = sorted.getFirst().getKey();
 
             Map<String, Object> winnerCandidate = candidates.stream()
                     .filter(c -> winnerName.equals(c.get("mayorName")))
@@ -128,7 +127,7 @@ public class ResolveElectionEndpoint implements RedisMessageHandler
                 data.put("currentMinisterColor", null);
             } else {
                 String secondPlace = sorted.stream()
-                        .filter(e -> !e.getKey().equals(winnerName))
+                        .filter(e -> !e.getKey().equals(winnerName) && !SPECIAL_MAYORS.contains(e.getKey()))
                         .findFirst().map(Map.Entry::getKey).orElse(null);
 
                 if (secondPlace != null) {
@@ -152,6 +151,10 @@ public class ResolveElectionEndpoint implements RedisMessageHandler
                     if (designatedMinisterPerk != null) {
                         data.put("ministerPerk", designatedMinisterPerk);
                     }
+                } else {
+                    data.put("currentMinister", null);
+                    data.put("ministerPerk", null);
+                    data.put("currentMinisterColor", null);
                 }
             }
 

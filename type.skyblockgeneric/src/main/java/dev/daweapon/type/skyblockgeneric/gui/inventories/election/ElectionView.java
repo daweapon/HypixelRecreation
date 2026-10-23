@@ -132,7 +132,7 @@ public class ElectionView extends StatelessView {
 
         lore.add(Text.of("<8><m>--------------------------"));
 
-        if (!mayor.isSpecial()) {
+        if (mayor.canBeMinister()) {
             lore.add(Text.empty());
             lore.add(Text.key("gui_election.view.candidate.minister_note_1", color));
             lore.add(Text.key("gui_election.view.candidate.minister_note_2"));

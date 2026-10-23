@@ -100,6 +100,10 @@ public class MayorMenuView extends StatelessView {
             DianaOffice.layoutMayor(layout);
         }
 
+        if (mayor == SkyBlockMayor.TECHNOBLADE) {
+            dev.daweapon.type.skyblockgeneric.technoblade.TechnoshopButton.layout(layout);
+        }
+
         int resultsSlot = DianaOffice.isDiana(mayor) ? DianaOffice.MAYOR_RESULTS_SLOT : 15;
         layout.slot(resultsSlot, (s, c) -> {
             ElectionData.ElectionResult lastResult = data.getLastElectionResult();

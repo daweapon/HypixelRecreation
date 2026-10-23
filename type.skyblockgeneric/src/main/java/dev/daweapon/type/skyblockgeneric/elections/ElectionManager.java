@@ -230,6 +230,7 @@ public class ElectionManager {
         if (!validCandidate) return CompletableFuture.completedFuture(null);
 
         UUID accountId = player.getUuid();
+        if (SkyBlockMayor.DANTE.name().equals(electionData.getCurrentMayor()) && playerVoteCache.containsKey(accountId)) return CompletableFuture.completedFuture(null);
         long voteWeight = computeVoteWeight(player);
 
         return SERVICE.<CastVoteProtocol.CastVoteMessage,

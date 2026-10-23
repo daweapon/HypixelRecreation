@@ -227,7 +227,7 @@ public class PlayerStatistics {
         }
         stats = ItemStatistics.add(stats, dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.PetAuras.statistics(player));
 
-        return stats;
+        return dev.daweapon.type.skyblockgeneric.technoblade.AncientPigEffects.petStatistics(stats);
     }
 
     public ItemStatistics spareStatistics() {
@@ -272,6 +272,7 @@ public class PlayerStatistics {
         ActivePerks perks = ElectionPerks.current();
         total = ItemStatistics.add(total, MayorPerkStatistics.flatBonuses(perks, !HypixelConst.isIslandServer()));
         total = MayorPerkStatistics.applyScaling(perks, total, enemy instanceof SlayerBossMob);
+        total = ItemStatistics.add(total, dev.daweapon.type.skyblockgeneric.technoblade.AncientPigEffects.infusion(player));
 
         total = dev.daweapon.type.skyblockgeneric.item.armor.ArmorAbilityEffects.finalise(player, total);
         total = dev.daweapon.type.skyblockgeneric.item.equipment.passive.EquipmentPassives.finalise(player, total);

@@ -1,0 +1,15 @@
+effect_interval_minutes: 20
+effect_window_hours: 48
+shrine: { x: 15.5, y: 71, z: -8.5 }
+ancient_pig: { x: 15.5, y: 76, z: -8.5, yaw: 90 }
+technoshop_pig: { x: 17.5, y: 71, z: -8.5, yaw: 90 }
+relic_hover_radius: 2.5
+relic_hover_height: 74
+relics:
+  - { x: -16.5, y: 71, z: -57.5, hint: "near the north-west market stalls" }
+  - { x: 64.5, y: 72, z: -113.5, hint: "far to the north-east, past the farms" }
+  - { x: -86.5, y: 73, z: -94.5, hint: "at the western edge of the Village" }
+  - { x: 126, y: 73, z: 165, hint: "at the far south-east of the Hub" }
+  - { x: 42.5, y: 70, z: -22.25, hint: "close to the Village centre" }
+  - { x: -124, y: 73, z: -42.5, hint: "far west of the Auction House" }
+  - { x: 80.5, y: 74, z: 53.5, hint: "to the south-east of the Community Center" }

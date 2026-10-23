@@ -121,16 +121,17 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Kill counter"
+          - type: HANDLER
+            handler: BLOOD_GOD_CREST
             text:
               - "Tracks a counter for each mob"
               - "killed while worn."
               - ""
               - "Gain <c>+1 Strength <7>for each digit"
               - "on the counter. <8>(Max 7)"
-              - ""
-              - "Counter: <c>None yet!"
+      - id: LORE_UPDATE
+        handler_id: BLOOD_GOD_CREST
+        is_absolute: false
       - id: SKULL_HEAD
         texture: 5b8b51eaefe0e3a10ad7fa1627801d2ce4412b4e432685906192f83283708233
 
@@ -204,6 +205,10 @@ items:
               - "Found in a hidden warehouse. Not"
               - "very useful but still pretty nice to"
               - "wear."
+          - type: TEXT
+            text:
+              - "Counts as Dante's Talisman for the"
+              - "goons guarding official buildings."
       - id: SKULL_HEAD
         texture: a375dfabb5a764c31810e160ce3dceafe5bd6e99c10f9cb77db01fbd3e2c0e28
 
@@ -218,12 +223,12 @@ items:
             text:
               - "Official medal proving your eternal"
               - "support for Dante."
-          - type: INACTIVE
-            reason: "Dante goons"
+          - type: TEXT
             text:
               - "Can be shown to goons in place of a"
               - "Happy Mask for entry into official"
-              - "buildings."
+              - "buildings. Everyone in your co-op"
+              - "shares it while it is carried."
       - id: SKULL_HEAD
         texture: cf92982f1a302310643a20ce51623f8199b7545e70dc6b93ed6bd61dc42ff213
 

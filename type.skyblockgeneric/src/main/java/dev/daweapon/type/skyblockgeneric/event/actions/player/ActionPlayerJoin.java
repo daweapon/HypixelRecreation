@@ -13,7 +13,7 @@ public class ActionPlayerJoin implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false, phase = EventPhase.SPAWN)
     public void onPlayerJoin(PlayerSpawnEvent event) {
         int hour = SkyBlockCalendar.getHour();
-        long minecraftTime = (hour * 1000L + 6000) % 24000;
+        long minecraftTime = dev.daweapon.type.skyblockgeneric.dante.DanteSunlight.worldTime(hour);
         event.getPlayer().getInstance().setTime(minecraftTime);
     }
 

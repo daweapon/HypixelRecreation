@@ -93,11 +93,18 @@ public class ElectionData {
         voteTallies.putAll(newTallies);
     }
 
+    private static final int DANTE_CLONES = 5;
+
     public void startNewElection(int year) {
         this.electionYear = year;
         this.electionOpen = true;
         this.voteTallies.clear();
         this.candidates.clear();
+
+        if (SkyBlockMayor.DANTE.name().equals(currentMayor)) {
+            startDanteElection();
+            return;
+        }
 
         boolean isSpecialYear = (year % 8 == 0);
 
@@ -134,12 +141,11 @@ public class ElectionData {
             candidate.setMayorName(specialCandidate.name());
             candidate.setIndex(candidates.size());
             candidate.setActivePerks(Arrays.stream(specialCandidate.getAllPerks()).map(Enum::name).toList());
-            assignMinisterPerk(candidate);
             candidates.add(candidate);
         }
 
         SkyBlockMayor returningMinister = getMinisterEnum();
-        if (longTermInvestmentActive() && returningMinister != null && !returningMinister.isSpecial()) {
+        if (longTermInvestmentActive() && returningMinister != null && returningMinister.canBeMinister()) {
             boolean alreadyInElection = candidates.stream()
                     .anyMatch(c -> c.getMayorName().equals(returningMinister.name()));
             if (!alreadyInElection) {
@@ -150,6 +156,16 @@ public class ElectionData {
                 assignMinisterPerk(returning);
                 candidates.add(returning);
             }
+        }
+    }
+
+    private void startDanteElection() {
+        for (int i = 0; i < DANTE_CLONES; i++) {
+            CandidateData clone = new CandidateData();
+            clone.setMayorName(SkyBlockMayor.DANTE.name());
+            clone.setIndex(i);
+            clone.setActivePerks(Arrays.stream(SkyBlockMayor.DANTE.getAllPerks()).map(Enum::name).toList());
+            candidates.add(clone);
         }
     }
 

@@ -32,6 +32,7 @@ public class LoreRegistry {
         SnowSuit.registerLore();
         PartyEquipment.registerLore();
         dev.daweapon.type.skyblockgeneric.foraging.FrenzyAxes.registerLore();
+        dev.daweapon.type.skyblockgeneric.technoblade.BloodGodCrest.registerLore();
         KuudraTeethPlaqueLore.register();
         dev.daweapon.type.skyblockgeneric.crystalhollows.PrehistoricEggs.registerLore();
         dev.daweapon.type.skyblockgeneric.garden.tool.FarmingTools.registerLore();
