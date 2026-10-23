@@ -38,6 +38,7 @@ public class TypeTheFarmingIslandsLoader implements SkyBlockTypeLoader {
     @Override
     public void afterInitialize(MinecraftServer server) {
         dev.daweapon.type.thefarmingislands.shepherd.ShepherdKeep.start();
+        BarnMobSpawner.start();
     }
 
     @Override
