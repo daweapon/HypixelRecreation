@@ -82,7 +82,6 @@ items:
     material: player_head
     name: "Basketball Minion Skin"
     rarity: COMMON
-    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
     source: "MVP+ rank reward bundle"
     components:
       - id: MINION_SKIN
@@ -409,7 +408,6 @@ items:
     material: player_head
     name: "Cyclops Minion Skin"
     rarity: COMMON
-    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
     source: "MVP++ rank reward bundle"
     components:
       - id: MINION_SKIN
@@ -491,7 +489,6 @@ items:
     material: player_head
     name: "Easter Egg Minion Skin"
     rarity: COMMON
-    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
     source: "MVP+ rank reward bundle"
     components:
       - id: MINION_SKIN
@@ -554,7 +551,6 @@ items:
     material: player_head
     name: "Festive Zombie Minion Skin"
     rarity: COMMON
-    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
     source: "MVP+ rank reward bundle"
     components:
       - id: MINION_SKIN
@@ -918,7 +914,6 @@ items:
     material: player_head
     name: "Hermit Crab Minion Skin"
     rarity: COMMON
-    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
     source: "MVP+ rank reward bundle"
     components:
       - id: MINION_SKIN
@@ -1121,7 +1116,6 @@ items:
     material: player_head
     name: "Mummy Minion Skin"
     rarity: COMMON
-    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
     source: "MVP++ rank reward bundle"
     components:
       - id: MINION_SKIN
@@ -1284,7 +1278,6 @@ items:
     material: player_head
     name: "Pink Bunny Minion Skin"
     rarity: COMMON
-    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
     source: "MVP++ rank reward bundle"
     components:
       - id: MINION_SKIN
@@ -1399,7 +1392,6 @@ items:
     material: player_head
     name: "Pumpkin Minion Skin"
     rarity: COMMON
-    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
     source: "MVP+ rank reward bundle"
     components:
       - id: MINION_SKIN
@@ -1456,7 +1448,6 @@ items:
     material: player_head
     name: "Reindeer Minion Skin"
     rarity: COMMON
-    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
     source: "MVP rank reward bundle"
     components:
       - id: MINION_SKIN
@@ -1560,7 +1551,6 @@ items:
     material: player_head
     name: "Snowman Minion Skin"
     rarity: COMMON
-    unavailable: "Advent Calendar day 25 reward; the Advent Calendar is not built"
     source: "Day 25 reward of the Advent Calendar"
     components:
       - id: MINION_SKIN
@@ -1727,7 +1717,6 @@ items:
     material: player_head
     name: "Blue Gold Tropical Bird Minion Skin"
     rarity: COMMON
-    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
     source: "MVP++ rank reward bundle"
     components:
       - id: MINION_SKIN
@@ -1741,7 +1730,6 @@ items:
     material: player_head
     name: "Undead Minion Skin"
     rarity: COMMON
-    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
     source: "MVP+ rank reward bundle"
     components:
       - id: MINION_SKIN
@@ -1798,7 +1786,6 @@ items:
     material: player_head
     name: "White Tiger Minion Skin"
     rarity: COMMON
-    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
     source: "MVP+ rank reward bundle"
     components:
       - id: MINION_SKIN

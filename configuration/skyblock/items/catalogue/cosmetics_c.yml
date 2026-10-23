@@ -237,7 +237,6 @@ items:
           skull_texture: 520a37b5d079eb79d87ed5eda2cf95a5ae761062eb09499ef33078410883ca72
       - id: SKULL_HEAD
         texture: 520a37b5d079eb79d87ed5eda2cf95a5ae761062eb09499ef33078410883ca72
-    unavailable: "Needs Hypixel rank reward bundles"
     source: "Easter Reward Bundle (MVP+ rank reward)"
   - id: CAMPFIRE_FLUX
     material: player_head
@@ -578,7 +577,6 @@ items:
           skull_texture: 82dc3d2f0d57db39d0d0453e2b0def91daae15eee318cfae8c0866331430d114
       - id: SKULL_HEAD
         texture: 82dc3d2f0d57db39d0d0453e2b0def91daae15eee318cfae8c0866331430d114
-    unavailable: "Needs Hypixel rank reward bundles"
     source: "Holidays Reward Bundle (rank reward)"
   - id: FIG_TRUNK
     material: player_head
@@ -696,7 +694,6 @@ items:
           skull_texture: ff63e81efc0310b7dab2b1f3f7861f6cdffa36c43f95af7808a3e71eba76c82c
       - id: SKULL_HEAD
         texture: ff63e81efc0310b7dab2b1f3f7861f6cdffa36c43f95af7808a3e71eba76c82c
-    unavailable: "Needs Hypixel rank reward bundles"
     source: "Halloween Reward Bundle (rank reward)"
   - id: GIFT_GOLD_BACKPACK
     material: player_head
@@ -1091,7 +1088,6 @@ items:
           skull_texture: 5b78c5dd4e856989c3c946cb861d73b327660f07a98eec67588ce7d754cb08ba
       - id: SKULL_HEAD
         texture: 5b78c5dd4e856989c3c946cb861d73b327660f07a98eec67588ce7d754cb08ba
-    unavailable: "Needs Hypixel rank reward bundles"
     source: "Easter Reward Bundle (MVP++ rank reward)"
   - id: LUNAR_RABBIT_HAT
     material: player_head
@@ -1289,7 +1285,6 @@ items:
           skull_texture: a67f533f64b5ed4970adb79a8ac33c0d61c6d8043bc9d22e72104644a4a4218b
       - id: SKULL_HEAD
         texture: a67f533f64b5ed4970adb79a8ac33c0d61c6d8043bc9d22e72104644a4a4218b
-    unavailable: "Needs Hypixel rank reward bundles"
     source: "Holidays Reward Bundle (rank reward)"
   - id: PESTHUNTERS_LAIR_BARN_SKIN
     material: dirt
@@ -1398,7 +1393,6 @@ items:
           skull_texture: 5b2026c57676bc9577bc7d1ed6a3f8aba8c3ccadae896a5414d0315e7ee103ff
       - id: SKULL_HEAD
         texture: 5b2026c57676bc9577bc7d1ed6a3f8aba8c3ccadae896a5414d0315e7ee103ff
-    unavailable: "Needs Hypixel rank reward bundles"
     source: "Summer Reward Bundle (rank reward)"
   - id: PURPLE_EGG
     material: player_head
@@ -1503,7 +1497,6 @@ items:
           skull_texture: 1ebc6bd15bebd1193f78c12d35afec0be6a07a2eaa9180c3f499dc3662898961
       - id: SKULL_HEAD
         texture: 1ebc6bd15bebd1193f78c12d35afec0be6a07a2eaa9180c3f499dc3662898961
-    unavailable: "Needs Hypixel rank reward bundles"
     source: "Halloween Reward Bundle (rank reward)"
   - id: SHADOW_ASSASSIN_ADMIRAL
     material: player_head
@@ -1594,7 +1587,6 @@ items:
           skull_texture: 6f2e776757064382d28a518b88d98bd48c66a14168b57e6b6576efe30014111a
       - id: SKULL_HEAD
         texture: 6f2e776757064382d28a518b88d98bd48c66a14168b57e6b6576efe30014111a
-    unavailable: "Needs Hypixel rank reward bundles"
     source: "Halloween Reward Bundle (rank reward)"
   - id: SNOW_SNOWGLOBE
     material: player_head

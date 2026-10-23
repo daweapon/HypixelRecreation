@@ -62,7 +62,8 @@ public final class GUISprayCan implements StatefulView<GUISprayCan.State> {
             return;
         }
         SprayCanData can = data.get();
-        List<Spray> sprays = state.filter().apply(SprayCatalogue.all());
+        java.util.List<String> owned = dev.daweapon.type.skyblockgeneric.rewardbundle.RewardBundleService.ownedSprays(player);
+        List<Spray> sprays = state.filter().apply(SprayCatalogue.all(), owned);
         int pages = Math.max(1, (sprays.size() + SPRAY_SLOTS.length - 1) / SPRAY_SLOTS.length);
         int page = Math.min(state.page(), pages - 1);
 
@@ -70,7 +71,7 @@ public final class GUISprayCan implements StatefulView<GUISprayCan.State> {
             int index = page * SPRAY_SLOTS.length + i;
             if (index >= sprays.size()) break;
             Spray spray = sprays.get(index);
-            layout.slot(SPRAY_SLOTS[i], (s, c) -> sprayItem(spray, can), (click, c) -> clickSpray(player, click, c, spray));
+            layout.slot(SPRAY_SLOTS[i], (s, c) -> sprayItem(spray, can, owned), (click, c) -> clickSpray(player, click, c, spray));
         }
 
         if (page > 0) {
@@ -87,7 +88,7 @@ public final class GUISprayCan implements StatefulView<GUISprayCan.State> {
         layout.slot(INK_STORAGE_SLOT, (s, c) -> inkStorageItem(can), (click, c) -> refill(player, state, c));
     }
 
-    private ItemStack.Builder sprayItem(Spray spray, SprayCanData can) {
+    private ItemStack.Builder sprayItem(Spray spray, SprayCanData can, List<String> owned) {
         boolean selected = spray.id().equals(can.getSelectedSpray());
         List<Text> lore = new ArrayList<>();
         spray.lore().forEach(line -> lore.add(Text.of("<7>{}", line)));
@@ -97,10 +98,13 @@ public final class GUISprayCan implements StatefulView<GUISprayCan.State> {
             spray.ink().forEach((dye, percent) -> lore.add(dye.loreLine(percent, can.inkOf(dye) >= percent)));
         }
         lore.add(Text.empty());
-        if (!spray.isUnlocked()) {
+        if (!spray.isUnlockedFor(owned)) {
             String reason = spray.source().unavailableReason();
             lore.add(Text.of("<c>Locked!"));
-            if (reason != null) lore.add(Text.of("<8>{}", reason));
+            if (spray.isOwnedButUnpainted(owned)) lore.add(Text.of("<8>You own this spray, but its artwork isn't ready yet."));
+            else if (spray.source() == dev.daweapon.type.skyblockgeneric.spray.SpraySource.REWARD_BUNDLE) lore.add(Text.of("<8>Claim it from the Salesman's Reward Bundles."));
+            else if (spray.source() == dev.daweapon.type.skyblockgeneric.spray.SpraySource.ADVENT_CALENDAR) lore.add(Text.of("<8>Claim it from the Advent Calendar."));
+            else if (reason != null) lore.add(Text.of("<8>{}", reason));
             return ItemStacks.item(Material.GRAY_DYE, 1, Text.of("<c>{}", spray.name()), lore);
         }
         if (spray.hasDirections()) {
@@ -115,7 +119,7 @@ public final class GUISprayCan implements StatefulView<GUISprayCan.State> {
     }
 
     private void clickSpray(SkyBlockPlayer player, ClickContext<State> click, ViewContext ctx, Spray spray) {
-        if (!spray.isUnlocked()) {
+        if (!spray.isUnlockedFor(dev.daweapon.type.skyblockgeneric.rewardbundle.RewardBundleService.ownedSprays(player))) {
             String reason = spray.source().unavailableReason();
             player.sendMessage("<c>You haven't unlocked this spray!" + (reason == null ? "" : " " + reason));
             return;

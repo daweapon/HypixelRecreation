@@ -49,6 +49,10 @@ class GUIAutopetExceptions extends StatelessView {
                         c.player().openView(new GUIAutopetExceptions(draft));
                     });
         }
+        layout.slot(16, ItemStacks.item(Material.LAVA_BUCKET, 1, "<c>Reset Exceptions\n<7>Remove every exception from this rule.\n\n<e>Click to reset!"), (_, c) -> {
+            draft.getExceptions().clear();
+            c.player().openView(new GUIAutopetExceptions(draft));
+        });
         if (exceptions.size() < AutopetRule.MAX_EXCEPTIONS) {
             layout.slot(SLOTS[exceptions.size()], ItemStacks.item(Material.LIME_STAINED_GLASS_PANE, 1,
                     "<a>Add Exception\n<7>" + exceptions.size() + "/" + AutopetRule.MAX_EXCEPTIONS + " used\n\n<e>Click to add!"),

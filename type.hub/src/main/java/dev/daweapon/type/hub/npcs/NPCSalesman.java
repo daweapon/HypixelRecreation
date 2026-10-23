@@ -6,6 +6,11 @@ import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 
+import dev.daweapon.type.skyblockgeneric.gui.inventories.rewardbundle.GUIRewardBundles;
+import dev.daweapon.type.skyblockgeneric.rewardbundle.BundleSeason;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+
+import java.time.LocalDate;
 import java.util.stream.Stream;
 
 public class NPCSalesman extends HypixelNPC {
@@ -14,7 +19,8 @@ public class NPCSalesman extends HypixelNPC {
         super(new HumanConfiguration() {
             @Override
             public String[] holograms(HypixelPlayer player) {
-                return new String[]{"<b>Salesman", "<e><l>CLICK"};
+                BundleSeason season = BundleSeason.current(LocalDate.now());
+                return new String[]{"<b>" + (season == null ? "Salesman" : season.npcName()), "<e><l>CLICK"};
             }
 
             @Override
@@ -37,7 +43,7 @@ public class NPCSalesman extends HypixelNPC {
     @Override
     public void onClick(NPCInteractEvent e) {
         if (isInDialogue(e.player())) return;
-        setDialogue(e.player(), "hello");
+        setDialogue(e.player(), "hello").thenRun(() -> ((SkyBlockPlayer) e.player()).openView(new GUIRewardBundles()));
     }
 
     @Override

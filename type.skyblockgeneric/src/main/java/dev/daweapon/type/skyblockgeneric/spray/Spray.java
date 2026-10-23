@@ -16,6 +16,14 @@ public record Spray(String id, String name, SprayCategory category, SpraySource 
         return source.isUnlocked() && image != null;
     }
 
+    public boolean isUnlockedFor(java.util.Collection<String> owned) {
+        return image != null && (source.isUnlocked() || owned.contains(id));
+    }
+
+    public boolean isOwnedButUnpainted(java.util.Collection<String> owned) {
+        return image == null && owned.contains(id);
+    }
+
     public boolean hasDirections() {
         return directions > 1;
     }

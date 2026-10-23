@@ -25,8 +25,14 @@ sections:
     lines:
       - "Chest furniture keeps its items across three pages (six for the Skull Chest and Chest Shelves), and Furnace+ is a real furnace that keeps cooking while it is closed."
       - "A chest that still holds items cannot be picked up."
+  - heading: "Reward Bundles"
+    colour: "<b>"
+    lines:
+      - "Talk to the Salesman near the Auction House. Every Easter, Summer, Halloween and Holiday reward bundle is open at any time: 127 furniture pieces, 87 sprays and 49 minion skins, gated by your rank."
+      - "Use the season button in the bottom right to switch seasons, or Claim Everything to take all your rank allows."
+      - "Claimed sprays now stay unlocked on your Spray Can. The reward furniture can be placed on your island. Spray artwork for the bundle sprays is not drawn yet."
   - heading: "Advent Calendar"
     colour: "<c>"
     lines:
       - "Open it with /sbadvent in December and claim each day's gifts, coins and rank furniture: Advent Calendar Display, Rocking Chair, Christmas Tree, Festive Mailbox, Snowglobe, Bundled Snowman, Hot Chocolate and Cookies and the Holiday Train."
-      - "The Advent sprays and skins are not given yet."
+      - "Days 3, 5 and 15 add the Snowball Fight, Ugly Christmas Sweater and Sledding sprays and day 25 gives the Snowman Minion Skin. The North Star Rock Skin is not given yet."

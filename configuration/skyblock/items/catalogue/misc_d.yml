@@ -41,7 +41,6 @@ items:
     material: player_head
     name: "Jungle Cabin"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Summer cosmetic reward bundle (rank reward; exact year not listed on the wiki)"
     lore:
       - "§8Furniture"
@@ -50,13 +49,14 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 718699bae9f1e02a7a65183bd0079489e4e615daddce3c92649cded312b226dc
   - id: JUNGLE_CHAIR
     material: player_head
     name: "Jungle Chair"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Summer cosmetic reward bundle (rank reward; exact year not listed on the wiki)"
     lore:
       - "§8Furniture"
@@ -65,13 +65,14 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 85e1d308dc3d7253f32e300eda4d0003fe64a56bf3a5466fd2011b35f403da3b
   - id: JUNGLE_DRESSER
     material: player_head
     name: "Jungle Dresser"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Summer cosmetic reward bundle (rank reward; exact year not listed on the wiki)"
     lore:
       - "§8Furniture"
@@ -80,13 +81,14 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 85e1d308dc3d7253f32e300eda4d0003fe64a56bf3a5466fd2011b35f403da3b
   - id: JUNGLE_TABLE
     material: player_head
     name: "Jungle Table"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Summer cosmetic reward bundle (rank reward; exact year not listed on the wiki)"
     lore:
       - "§8Furniture"
@@ -95,6 +97,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 85e1d308dc3d7253f32e300eda4d0003fe64a56bf3a5466fd2011b35f403da3b
   - id: KEY_TO_KAT_SOUL
@@ -286,7 +290,6 @@ items:
     material: player_head
     name: "Lattice Bench"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Easter reward bundle (Bunny Man, MVP rank, 2023)"
     lore:
       - "§8Furniture"
@@ -295,6 +298,8 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 9d533eb2085aa4732a276d1c6e5a0e5e3c5b4d67e0132b5cc753d7f01523adf3
   - id: LAUNCH_PAD
@@ -369,7 +374,6 @@ items:
     material: player_head
     name: "Lemonade Stand"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Summer cosmetic reward bundle (rank reward; exact year not listed on the wiki)"
     lore:
       - "§8Furniture"
@@ -378,6 +382,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 395449c379d09be6d6f3035a70d88c131f61fa49245f9698b794b41c6a3347d2
   - id: LESSER_ORB_OF_HEALING
@@ -472,7 +478,6 @@ items:
     material: player_head
     name: "Lifeguard Chair"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Summer cosmetic reward bundle (rank reward; exact year not listed on the wiki)"
     lore:
       - "§8Furniture"
@@ -481,13 +486,14 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: c3bde43111f69a7fda6ec6faf2263c827961f390d7c6163ed1231035d1b0b9
   - id: LIFE_PRESERVER
     material: player_head
     name: "Life Preserver"
     rarity: RARE
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Summer reward bundle (MVP rank, 2020)"
     lore:
       - "§8Furniture"
@@ -496,6 +502,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 415884d13433fbd1aa04d815f19f40607e6b18b5c41fd31bb1cd10b12c3e6cce
   - id: LIL_PAD
@@ -1269,7 +1277,6 @@ items:
     material: player_head
     name: "Melon Minion Skin"
     rarity: COMMON
-    unavailable: "Needs Hypixel rank reward bundles"
     source: "Summer reward bundle (VIP+ rank and above, 2019)"
     lore:
       - "§8Minion Skin"
@@ -1532,7 +1539,6 @@ items:
     material: player_head
     name: "Mini Sandcastle"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Summer reward bundle (MVP++ rank, 2021)"
     lore:
       - "§8Furniture"
@@ -1541,6 +1547,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 5918281af905633ad7cb83c7e39b1e5eb252ffa17d0dbc7e2b0abe6f3d19f1c9
   - id: MIRIA_COUPON
@@ -1890,7 +1898,6 @@ items:
     material: player_head
     name: "Mummy Candle"
     rarity: RARE
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Halloween reward bundle (MVP+ rank, 2020)"
     lore:
       - "§8Furniture"
@@ -1900,6 +1907,8 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 3e91e95822fe98cc5a5658e824b1b8cf14d4de92f0e1af24815372435c9eab6
   - id: MUSEUM_TRAVEL_SCROLL
@@ -2631,7 +2640,6 @@ items:
     material: player_head
     name: "Patio Bench"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Summer cosmetic reward bundle (rank reward; exact year not listed on the wiki)"
     lore:
       - "§8Furniture"
@@ -2640,13 +2648,14 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 38a0802c000f711a8f2a3b7afdafb93b27ff1ef7643e387c80bfe7ccb01b41fc
   - id: PATIO_FIRE_PIT
     material: player_head
     name: "Patio Fire Pit"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Summer cosmetic reward bundle (rank reward; exact year not listed on the wiki)"
     lore:
       - "§8Furniture"
@@ -2655,13 +2664,14 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 8c9589fa01feea3f1ae9147ca5e25f5fabce4ef08fb7357316bf67879b589dad
   - id: PATIO_SIDE_TABLE
     material: player_head
     name: "Patio Side Table"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Summer cosmetic reward bundle (rank reward; exact year not listed on the wiki)"
     lore:
       - "§8Furniture"
@@ -2670,13 +2680,14 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 38a0802c000f711a8f2a3b7afdafb93b27ff1ef7643e387c80bfe7ccb01b41fc
   - id: PATIO_SOFA
     material: player_head
     name: "Patio Sofa"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Summer cosmetic reward bundle (rank reward; exact year not listed on the wiki)"
     lore:
       - "§8Furniture"
@@ -2685,13 +2696,14 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 38a0802c000f711a8f2a3b7afdafb93b27ff1ef7643e387c80bfe7ccb01b41fc
   - id: PATIO_STOOL
     material: player_head
     name: "Patio Stool"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Summer cosmetic reward bundle (rank reward; exact year not listed on the wiki)"
     lore:
       - "§8Furniture"
@@ -2700,13 +2712,14 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: d82d3103096622df05c0446d7df0ba38841d06e2b3adcd705d75d265b3da2f64
   - id: PEDESTAL
     material: player_head
     name: "X PEDESTAL"
     rarity: COMMON
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Halloween reward bundle (MVP+ rank, 2019)"
     lore:
       - "§8Furniture"
@@ -2716,6 +2729,8 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 47229daf87d11c4cd62bba45188c398a7d4ab347ed7023e0bd68a93776127f37
   - id: PERFECTLY_CUT_DIAMOND
@@ -2914,7 +2929,6 @@ items:
     material: player_head
     name: "Picnic Set"
     rarity: RARE
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Summer reward bundle (VIP+ rank and above, 2019)"
     lore:
       - "§8Furniture"
@@ -2923,6 +2937,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: a6182b4d13a20338c8231a998a7714db755c964d168ed4c8f79d8254fffa06ab
   - id: PIG_BRAIN_MIXIN
@@ -3913,7 +3929,6 @@ items:
     material: player_head
     name: "Pumpkin Crafting Table"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Halloween reward bundle (MVP++ rank, 2022)"
     lore:
       - "§8Furniture"
@@ -3923,6 +3938,8 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 63fcdc8d87b45019123c0b27db478baeb17cb1087aae3a1b1d05912fed7542a9
   - id: PUMPKIN_DRESSER
@@ -4090,7 +4107,6 @@ items:
     material: player_head
     name: "Rabbit Hutch"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Easter reward bundle (MVP++ rank, 2021)"
     lore:
       - "§8Furniture"
@@ -4099,6 +4115,8 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: fbbe5ec6f73f62be984b0db11b4accc929ec7f1c7222e39d05109a5a6eab1daf
   - id: RABBIT_STEW

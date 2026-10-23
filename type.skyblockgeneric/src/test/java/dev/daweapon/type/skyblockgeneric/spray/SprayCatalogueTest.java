@@ -20,7 +20,7 @@ class SprayCatalogueTest {
 
     @Test
     void catalogueListsEveryHypixelSpray() {
-        assertEquals(132, SPRAYS.size());
+        assertEquals(133, SPRAYS.size());
         assertEquals(21, SPRAYS.values().stream().filter(Spray::isUnlocked).count());
         assertTrue(SPRAYS.values().stream().filter(spray -> !spray.isUnlocked())
                 .allMatch(spray -> spray.source().unavailableReason() != null));

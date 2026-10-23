@@ -429,7 +429,6 @@ items:
     material: player_head
     name: "Fisherman's Cooler"
     rarity: EPIC
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Summer reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -438,6 +437,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: b07081568ca5f26c0ac98e1d7866382d3eeaa3bb6bbd244ac84c01ac3f694b06
   - id: FISHING_CRYSTAL
@@ -510,7 +511,6 @@ items:
     material: player_head
     name: "Flamingo Float"
     rarity: EPIC
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Summer reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -519,6 +519,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 8d9e637e8e6ff3f2edddff595402de324fcf451ad550f690ad18ede050f2a5f2
   - id: FLAVOR_PACKED_FISH
@@ -553,7 +555,6 @@ items:
     material: player_head
     name: "Floral Lamppost"
     rarity: EPIC
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Easter reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -562,13 +563,14 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 484a869ae27c2e2f0b1fb80a934a0c0f40635ce75f639b9a02e8c74c418e79de
   - id: FLORAL_WHEELBARROW
     material: player_head
     name: "Floral Wheelbarrow"
     rarity: EPIC
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Easter reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -577,13 +579,14 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 709ec0d645d0d5aa27100a886ab764f25f7f9d0a60349813c467cfe0ddfbd8ec
   - id: FLOWER_BED
     material: player_head
     name: "Flower Bed"
     rarity: RARE
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Easter reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -592,6 +595,8 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: e38d3edcd6f5a060eccee2ff89fd74a426065d43546c8553e251099d9db85a35
   - id: FLOWER_MAELSTROM
@@ -616,7 +621,6 @@ items:
     material: player_head
     name: "Flying Bats"
     rarity: COMMON
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Halloween reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -626,6 +630,8 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: a85f31382591d2dab0efed4dd31ed385494ad9563409c8a2e0efd05492d60b55
   - id: FOOD_TROUGH
@@ -1102,7 +1108,6 @@ items:
     material: player_head
     name: "Garland"
     rarity: COMMON
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Holiday reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -1111,6 +1116,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: b80c852a263dc58b95fd0a553ae3a203dd5b8db1617a31657667ac238654714
   - id: GELATINOUS_GLOOP
@@ -1331,7 +1338,6 @@ items:
     material: player_head
     name: "Ghost Book"
     rarity: COMMON
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Halloween reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -1341,6 +1347,8 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: a79bcadfe2438c7cc3f3045e3a49270223ebd01c094fe30e536bd80e368a99bd
   - id: GIANTS_EYE_SWORD
@@ -1561,7 +1569,6 @@ items:
     material: player_head
     name: "Gingerbread House"
     rarity: RARE
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Holiday reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -1570,6 +1577,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: e30cbfef20549638c8ab005a7c9d922b5a5b481ecdbc41060b84a98ffad05ac9
   - id: GLACIATED_BRAINS
@@ -2229,7 +2238,6 @@ items:
     material: player_head
     name: "Halloween Candles"
     rarity: COMMON
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Halloween reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -2239,13 +2247,14 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: e99fcc2f7b01a8c4baa225b5c825918cb0fc2eb44e79ffd8b48ddb3484ba5c3d
   - id: HALLOWEEN_SCARECROW
     material: player_head
     name: "Halloween Scarecrow"
     rarity: RARE
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Halloween reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -2255,13 +2264,14 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 5254f337cd64397973a6ee1032835ad1cf4861e77bd6faaf008cb2669fb685d6
   - id: HAMMOCK
     material: player_head
     name: "Hammock"
     rarity: RARE
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Summer reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -2270,13 +2280,14 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 2faa10596f8dcdfd57c839ab532c1d95275f5eb66e1d0ea7f8b7804e201a7269
   - id: HANGING_REAPER
     material: player_head
     name: "Hanging Reaper"
     rarity: RARE
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Halloween reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -2286,13 +2297,14 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 9933485335fc9c38ab32e6bd2cd480c3baf61b0e3f6bca61e0e3cf1f7747c9da
   - id: HAPPY_SNOWMAN
     material: player_head
     name: "Happy Snowman"
     rarity: RARE
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Holiday reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -2301,6 +2313,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 875de593b67fe9e751fda5983a31b827b43eacde43d55a5ac514e88edb64
   - id: HARD_GLASS
@@ -2764,7 +2778,6 @@ items:
     material: player_head
     name: "Hopscotch"
     rarity: EPIC
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Summer reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -2773,6 +2786,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 66aa82842300419d99b094cf46ac90de33bf7b222d34200bf9050521bb2dc9bb
   - id: HORSEZOOKA
@@ -3024,7 +3039,6 @@ items:
     material: player_head
     name: "Ice Chair"
     rarity: RARE
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Holiday reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -3033,13 +3047,14 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 38b3fbb6be9fe77f3153a426b63c8566e127ec12c781c54af0e9e509296b38e9
   - id: ICE_CREAM_CART
     material: player_head
     name: "Ice Cream Cart"
     rarity: EPIC
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Summer reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -3048,13 +3063,14 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 36df9c212a8ad82545f0e59410bfa990ff3e7aabe8ba8c9fdc3d4a5ea2722648
   - id: ICE_CREAM_PERSONALITY
     material: player_head
     name: "Ice Cream Minion Skin"
     rarity: COMMON
-    unavailable: "Rank reward bundles are not built"
     source: "Rank reward bundle (VIP+, MVP, MVP++)"
     lore:
       - "§8Minion Skin"
@@ -3100,7 +3116,6 @@ items:
     material: player_head
     name: "Ice Dinner Table"
     rarity: EPIC
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Holiday reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -3109,13 +3124,14 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 38b3fbb6be9fe77f3153a426b63c8566e127ec12c781c54af0e9e509296b38e9
   - id: ICE_FIREPLACE
     material: player_head
     name: "Ice Fireplace"
     rarity: EPIC
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Holiday reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -3124,13 +3140,14 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 38b3fbb6be9fe77f3153a426b63c8566e127ec12c781c54af0e9e509296b38e9
   - id: ICE_KNIGHT_STATUE
     material: player_head
     name: "Ice Knight Statue"
     rarity: EPIC
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Holiday reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -3139,13 +3156,14 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: db1e9c71bfd51b60ea606e797d0b2c1fd776cac0a0573fd960021155cb40d65
   - id: ICE_LOLLY_PERSONALITY
     material: player_head
     name: "Ice Lolly Minion Skin"
     rarity: COMMON
-    unavailable: "Rank reward bundles are not built"
     source: "Rank reward bundle (VIP, MVP, MVP++)"
     lore:
       - "§8Minion Skin"
@@ -3162,7 +3180,6 @@ items:
     material: player_head
     name: "Ice Sofa"
     rarity: RARE
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Holiday reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -3171,13 +3188,14 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 38b3fbb6be9fe77f3153a426b63c8566e127ec12c781c54af0e9e509296b38e9
   - id: ILLUSION_GLASS
     material: player_head
     name: "Illusion Glass"
     rarity: COMMON
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Halloween reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -3188,6 +3206,8 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 31119530b4902f7a190b54b7b4cb725a511529db45f22b72b6431f6842c25151
   - id: INFINIDIRT_WAND
@@ -3607,7 +3627,6 @@ items:
     material: player_head
     name: "Jungle Bed"
     rarity: EPIC
-    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
     source: "Summer reward bundle cosmetic"
     lore:
       - "§8Furniture"
@@ -3617,5 +3636,7 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 85e1d308dc3d7253f32e300eda4d0003fe64a56bf3a5466fd2011b35f403da3b

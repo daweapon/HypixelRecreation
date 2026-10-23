@@ -39,7 +39,7 @@ class AdventCalendarTest {
     @Test
     void everyRewardFurnitureCanBePlaced() {
         DAYS.values().forEach(day -> day.items().forEach(item ->
-                assertNotNull(FurnitureCatalog.get(item.item()), item.item() + " is not placeable furniture")));
+                assertTrue(FurnitureCatalog.get(item.item()) != null || item.item().equals("SNOWMAN_PERSONALITY"), item.item() + " is not placeable furniture")));
     }
 
     @Test

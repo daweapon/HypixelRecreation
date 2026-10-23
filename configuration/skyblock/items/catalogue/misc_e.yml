@@ -37,7 +37,6 @@ items:
     material: player_head
     name: "Red Tent"
     rarity: RARE
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Rank reward bundle (MVP and above)"
     lore:
       - "§8Furniture"
@@ -46,6 +45,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 5cbe4a5e727cf3f268d1517b320ff0454adc078ee87a1cf5ec4742cd0247677e
   - id: REED_BOAT
@@ -157,7 +158,6 @@ items:
     material: player_head
     name: "Reindeer Plush"
     rarity: RARE
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Rank reward bundle (MVP and above)"
     lore:
       - "§8Furniture"
@@ -166,6 +166,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: a5a109c746094d5deb1b6fb1189fedf70912a727b692df1b07b27438da1858b0
   - id: REINFORCED_NETTING
@@ -995,7 +997,6 @@ items:
     material: player_head
     name: "Sandcastle Minion Skin"
     rarity: COMMON
-    unavailable: "Needs Hypixel rank reward bundles"
     source: "Rank reward bundle (VIP+, MVP+, MVP++), available since 2019"
     lore:
       - "§8Minion Skin"
@@ -2375,7 +2376,6 @@ items:
     material: player_head
     name: "Skeleton Statue"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Rank reward bundle (MVP+ and above)"
     lore:
       - "§8Furniture"
@@ -2385,6 +2385,8 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 2f24ed6875304fa4a1f0c785b2cb6a6a72563e9f3e24ea55e18178452119aa66
   - id: SKELETON_THE_FISH
@@ -2539,7 +2541,6 @@ items:
     material: player_head
     name: "Skull Vase"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Rank reward bundle (MVP++)"
     lore:
       - "§8Furniture"
@@ -2549,6 +2550,8 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 2f24ed6875304fa4a1f0c785b2cb6a6a72563e9f3e24ea55e18178452119aa66
   - id: SKYBLOCK_BENCH
@@ -2619,7 +2622,6 @@ items:
     material: player_head
     name: "Sled"
     rarity: RARE
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Rank reward bundle (MVP+ and above)"
     lore:
       - "§8Furniture"
@@ -2628,6 +2630,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 48b835f886f4f45f3b24ea2e124cee3f737134689e3e9ccae81450ea6af42a
   - id: SLEEPING_EYE
@@ -2799,7 +2803,6 @@ items:
     material: player_head
     name: "Small Pool"
     rarity: RARE
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Rank reward bundle (MVP+ and above)"
     lore:
       - "§8Furniture"
@@ -2808,6 +2811,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 54421782fa9e041ca8cce6aac3a0b337ecc1b971b168ecbeef68b8813ee396db
   - id: SMALL_SHELVES
@@ -2829,7 +2834,6 @@ items:
     material: player_head
     name: "Small Holiday Tree"
     rarity: COMMON
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Rank reward bundle (MVP and above)"
     lore:
       - "§8Furniture"
@@ -2838,6 +2842,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 32fc561ec29f2fa8c51792a8a82f995cb1a9bc57951230c17318b80b68658a61
   - id: SMOLDERING_EMBERS
@@ -3406,7 +3412,6 @@ items:
     material: player_head
     name: "Sprinkler"
     rarity: EPIC
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Rank reward bundle (VIP+ and above)"
     lore:
       - "§8Furniture"
@@ -3415,6 +3420,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 912d8f5b05dad5e96d391df0c65e6ee39544ad4923e65a2c4748d7247ba639b7
   - id: SQUEAKY_MOUSEMAT
@@ -3444,7 +3451,6 @@ items:
     material: player_head
     name: "Stacked Pumpkins"
     rarity: COMMON
-    unavailable: "Needs the furniture placement system (Carpentry furniture is not built); Needs Hypixel rank reward bundles"
     source: "Rank reward bundle (MVP and above)"
     lore:
       - "§8Furniture"
@@ -3454,5 +3460,7 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 81484749184dc6dd853bebac2f509fadf44dc78413fb6de5e371a3320f70668a

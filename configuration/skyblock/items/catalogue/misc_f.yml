@@ -22,7 +22,6 @@ items:
     material: player_head
     name: "Star Decorations"
     rarity: RARE
-    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
     source: "Winter reward bundle furniture (VIP+, 2020)"
     lore:
       - "§8Furniture"
@@ -31,6 +30,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: db16243c225ec8a5162260ffb8d21dd4b6680a7cad8b128ea9eff0bdd7efe2cc
   - id: STEAMED_CHOCOLATE_FISH
@@ -85,7 +86,6 @@ items:
     material: player_head
     name: "Stocking"
     rarity: COMMON
-    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
     source: "Winter reward bundle furniture (VIP, 2019)"
     lore:
       - "§8Furniture"
@@ -94,6 +94,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 91bf5bced7137ca6474979152f64f3a87177dc6298a794bfc032cf2ced487705
   - id: STONE_BRIDGE
@@ -334,7 +336,6 @@ items:
     material: player_head
     name: "Sun Minion Skin"
     rarity: COMMON
-    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
     source: "MVP rank reward bundle (every Summer since 2019)"
     lore:
       - "§8Minion Skin"
@@ -618,7 +619,6 @@ items:
     material: player_head
     name: "Surfboard"
     rarity: EPIC
-    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
     source: "Summer reward bundle furniture (MVP++, 2021)"
     lore:
       - "§8Furniture"
@@ -627,6 +627,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: b2239ccec4c93c16a7109941014df061cb3e370866688b15291bfd842521e861
   - id: SUSPICIOUS_RED_GIFT
@@ -1367,7 +1369,6 @@ items:
     material: player_head
     name: "Totem"
     rarity: EPIC
-    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
     source: "Summer reward bundle furniture, 3 per bundle (MVP++, 2026)"
     lore:
       - "§8Furniture"
@@ -1378,6 +1379,8 @@ items:
       - ""
       - "§8Not active yet: Not the Totem of Corruption"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 4d359da4f70f1bcbe81545fc3a97b65c1d70f3f90198d757845aab198b6e0059
   - id: TOY
@@ -1597,7 +1600,6 @@ items:
     material: player_head
     name: "Turtle Sandbox"
     rarity: EPIC
-    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
     source: "Summer reward bundle furniture, 2 per bundle (MVP, 2026)"
     lore:
       - "§8Furniture"
@@ -1606,6 +1608,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 761cd3e5f7a9bb58a0ed24df94e27513ea61c7a41f33e0180ad9c85f5327f7c5
   - id: TUTTI_FRUTTI_POISON
@@ -2146,7 +2150,6 @@ items:
     material: player_head
     name: "Volleyball Court"
     rarity: EPIC
-    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
     source: "Summer reward bundle furniture (MVP, 2022)"
     lore:
       - "§8Furniture"
@@ -2155,6 +2158,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: d61dc4b8a6d317e723997ee280e528d6b35c6ad979cb28897fe7ddd6b1bd3a80
   - id: VOLT_CRUX
@@ -2580,7 +2585,6 @@ items:
     material: player_head
     name: "Wind Chimes"
     rarity: EPIC
-    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
     source: "Easter reward bundle furniture, 2 per bundle (MVP, 2022)"
     lore:
       - "§8Furniture"
@@ -2589,6 +2593,8 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 29f29ffa4c5b1582c21aef53e406b4e466ae146b07d29ba30de455716fb9e743
   - id: WINTER_ISLAND_CRYSTAL
@@ -2824,7 +2830,6 @@ items:
     material: player_head
     name: "Witch's Broomstick"
     rarity: EPIC
-    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
     source: "Halloween reward bundle furniture (MVP, 2021)"
     lore:
       - "§8Furniture"
@@ -2834,13 +2839,14 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: bd2ca8c2d537cd58e81d9f05b8022c7940bce6091c6d05c6b26cfb82b0c6b90d
   - id: WITCH_HAT
     material: player_head
     name: "Witch Hat"
     rarity: RARE
-    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
     source: "Halloween reward bundle furniture (VIP+, 2022)"
     lore:
       - "§8Furniture"
@@ -2850,6 +2856,8 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 80cf6495ff4a360aa1d681a4f3aa34aad87409c5f7c7dbc920c74d069f6488c8
   - id: WITHER_BOOTS
@@ -3128,7 +3136,6 @@ items:
     material: player_head
     name: "Wreath"
     rarity: RARE
-    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
     source: "Winter reward bundle furniture (MVP++, 2020)"
     lore:
       - "§8Furniture"
@@ -3137,6 +3144,8 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 2984559bfbc40140a9fb474f787f3b686cca3802cb8d2036089dd89a6ee5058d
   - id: WRIGGLEWORM
@@ -3419,7 +3428,6 @@ items:
     material: player_head
     name: "Zombie Grave"
     rarity: COMMON
-    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
     source: "Halloween reward bundle furniture (MVP++, 2019)"
     lore:
       - "§8Furniture"
@@ -3429,6 +3437,8 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 6f7631ab7eb4941ad1c0389d4d051f0918288a52adf0df70a279183a22b12577
   - id: ZOMBIE_KNIGHT_BOOTS

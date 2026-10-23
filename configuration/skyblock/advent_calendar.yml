@@ -1,12 +1,12 @@
 # The 2022 Advent Calendar reward table, reused every December (later calendars are not documented on the wiki).
 # gifts: gift items per day. coins: coins per day. items: furniture and cosmetics, each gated by a rank.
-# Sprays, Minion Skins and Rock Skins from the real calendar are not given yet.
+# sprays: spray ids added to the account, each gated by a rank. unbuilt: rewards that cannot be given yet.
 days:
   1: {gifts: {WHITE_GIFT: 2}, coins: 10000, items: [{item: ADVENT_CALENDAR_DISPLAY, rank: VIP}]}
   2: {gifts: {WHITE_GIFT: 2}, coins: 10000}
-  3: {gifts: {WHITE_GIFT: 2}, coins: 10000, unbuilt: [Snowball Fight Spray]}
+  3: {gifts: {WHITE_GIFT: 2}, coins: 10000, sprays: [{spray: SNOWBALL_FIGHT, rank: VIP_PLUS}]}
   4: {gifts: {WHITE_GIFT: 2}, coins: 10000}
-  5: {gifts: {GREEN_GIFT: 2}, coins: 15000, unbuilt: [Ugly Christmas Sweater Spray]}
+  5: {gifts: {GREEN_GIFT: 2}, coins: 15000, sprays: [{spray: UGLY_CHRISTMAS_SWEATER, rank: MVP}]}
   6: {gifts: {WHITE_GIFT: 2}, coins: 10000}
   7: {gifts: {WHITE_GIFT: 2}, coins: 10000}
   8: {gifts: {WHITE_GIFT: 2}, coins: 10000, items: [{item: ROCKING_CHAIR, rank: MVP_PLUS}]}
@@ -16,7 +16,7 @@ days:
   12: {gifts: {WHITE_GIFT: 3}, coins: 10000, items: [{item: FESTIVE_MAILBOX, rank: VIP_PLUS}]}
   13: {gifts: {WHITE_GIFT: 3}, coins: 10000}
   14: {gifts: {WHITE_GIFT: 3}, coins: 10000}
-  15: {gifts: {RED_GIFT: 1}, coins: 25000, unbuilt: [Sledding Spray]}
+  15: {gifts: {RED_GIFT: 1}, coins: 25000, sprays: [{spray: SLEDDING, rank: MVP}]}
   16: {gifts: {WHITE_GIFT: 3}, coins: 10000}
   17: {gifts: {WHITE_GIFT: 3}, coins: 10000, items: [{item: SNOWGLOBE, rank: MVP_PLUS}]}
   18: {gifts: {WHITE_GIFT: 3}, coins: 10000}
@@ -26,4 +26,4 @@ days:
   22: {gifts: {GREEN_GIFT: 2}, coins: 10000}
   23: {gifts: {GREEN_GIFT: 2}, coins: 10000, items: [{item: HOT_CHOCOLATE_AND_COOKIES, rank: VIP_PLUS}]}
   24: {gifts: {GREEN_GIFT: 2}, coins: 10000}
-  25: {gifts: {RED_GIFT: 3}, coins: 50000, items: [{item: HOLIDAY_TRAIN, rank: MVP_PLUS}], unbuilt: [Snowman Minion Skin, North Star Rock Skin]}
+  25: {gifts: {RED_GIFT: 3}, coins: 50000, items: [{item: SNOWMAN_PERSONALITY, rank: VIP_PLUS}, {item: HOLIDAY_TRAIN, rank: MVP_PLUS}], unbuilt: [North Star Rock Skin]}

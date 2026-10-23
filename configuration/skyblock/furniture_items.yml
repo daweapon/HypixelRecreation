@@ -601,4 +601,686 @@ furniture:
     scale: 1.4
     width: 1.4
     height: 1.4
-
+  BALLOON_CART:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  BBQ:
+    carpentry: 0
+    interaction: TOGGLE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  BEACH_BALL:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  BEACH_CHAIR:
+    carpentry: 0
+    interaction: SIT
+    scale: 0.9
+    width: 0.8
+    height: 1.0
+    seats: 1
+  BEACH_UMBRELLA:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  BEE_HIVE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  BIRD_HOUSE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.8
+    width: 1.8
+    height: 1.8
+  BLACK_CAT_PLUSH:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  BUNNY:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  BUNNY_ARMCHAIR:
+    carpentry: 0
+    interaction: SIT
+    scale: 0.9
+    width: 0.8
+    height: 1.0
+    seats: 1
+  BUNNY_BENCH:
+    carpentry: 0
+    interaction: SIT
+    scale: 1.3
+    width: 1.5
+    height: 1.0
+    seats: 2
+  BUNNY_CABINET:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.8
+    width: 1.8
+    height: 1.8
+  BUNNY_COFFEE_TABLE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.1
+    width: 1.1
+    height: 0.9
+  BUNNY_JERRY:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  BUNNY_PLUSH:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  BUNNY_SOFA:
+    carpentry: 0
+    interaction: SIT
+    scale: 1.6
+    width: 2.0
+    height: 1.0
+    seats: 3
+  BUNNY_TV:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  CANDLE_ARCH:
+    carpentry: 0
+    interaction: TOGGLE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  CANDLE_TABLE:
+    carpentry: 0
+    interaction: TOGGLE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  CANDY_BOWL:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  CARROT_BED:
+    carpentry: 0
+    interaction: BED
+    scale: 1.4
+    width: 1.4
+    height: 0.6
+  CARROT_BEDSIDE_TABLE:
+    carpentry: 0
+    interaction: BED
+    scale: 1.4
+    width: 1.4
+    height: 0.6
+  CARROT_BENCH:
+    carpentry: 0
+    interaction: SIT
+    scale: 1.3
+    width: 1.5
+    height: 1.0
+    seats: 2
+  CARROT_PATCH:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  CARROT_TABLE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.1
+    width: 1.1
+    height: 0.9
+  CAULDRON:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  CHICKEN_COOP:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  CHICK_BED:
+    carpentry: 0
+    interaction: BED
+    scale: 1.4
+    width: 1.4
+    height: 0.6
+  CHICK_DRESSER:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.1
+    width: 1.1
+    height: 0.9
+  CHICK_NEST:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  CHICK_TEA_TABLE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.1
+    width: 1.1
+    height: 0.9
+  COCONUT_DRINK:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  COFFIN:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  COLA_COOLER:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  CRAB:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  CRYSTAL_BALL:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  DECK_CHAIR:
+    carpentry: 0
+    interaction: SIT
+    scale: 0.9
+    width: 0.8
+    height: 1.0
+    seats: 1
+  DINGY:
+    carpentry: 0
+    interaction: SIT
+    scale: 1.3
+    width: 1.5
+    height: 1.0
+    seats: 2
+  EASTER_BASKET:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  EGG_PAINTING_STATION:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  EGG_PILE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  EGG_STACK:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  FANCY_BEACH_CHAIR:
+    carpentry: 0
+    interaction: SIT
+    scale: 0.9
+    width: 0.8
+    height: 1.0
+    seats: 1
+  FISHERMAN_COOLER:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  FLAMINGO:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  FLORAL_LAMPPOST:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  FLORAL_WHEELBARROW:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  FLOWER_BED:
+    carpentry: 0
+    interaction: BED
+    scale: 1.4
+    width: 1.4
+    height: 0.6
+  FLYING_BATS:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  GARLAND:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  GHOST_BOOK:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  GINGERBREAD_HOUSE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.8
+    width: 1.8
+    height: 1.8
+  GREENHOUSE_PLANTER:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.8
+    width: 1.8
+    height: 1.8
+  HALLOWEEN_CANDLES:
+    carpentry: 0
+    interaction: TOGGLE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  HALLOWEEN_SCARECROW:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  HAMMOCK:
+    carpentry: 0
+    interaction: SIT
+    scale: 0.9
+    width: 0.8
+    height: 1.0
+    seats: 1
+  HANGING_REAPER:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  HAPPY_SNOWMAN:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  HAY_BALE_FURNITURE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  HOPSCOTCH:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  HYPIXEL_SANDCASTLE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.8
+    width: 1.8
+    height: 1.8
+  ICE_CHAIR:
+    carpentry: 0
+    interaction: SIT
+    scale: 0.9
+    width: 0.8
+    height: 1.0
+    seats: 1
+  ICE_CREAM_CART:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  ICE_DINNER_TABLE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.1
+    width: 1.1
+    height: 0.9
+  ICE_FIREPLACE:
+    carpentry: 0
+    interaction: TOGGLE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  ICE_KNIGHT_STATUE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  ICE_SOFA:
+    carpentry: 0
+    interaction: SIT
+    scale: 1.6
+    width: 2.0
+    height: 1.0
+    seats: 3
+  ILLUSION_GLASS:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  JUNGLE_BED:
+    carpentry: 0
+    interaction: BED
+    scale: 1.4
+    width: 1.4
+    height: 0.6
+  JUNGLE_CABIN:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.8
+    width: 1.8
+    height: 1.8
+  JUNGLE_CHAIR:
+    carpentry: 0
+    interaction: SIT
+    scale: 0.9
+    width: 0.8
+    height: 1.0
+    seats: 1
+  JUNGLE_DRESSER:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.1
+    width: 1.1
+    height: 0.9
+  JUNGLE_TABLE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.1
+    width: 1.1
+    height: 0.9
+  LATTICE_BENCH:
+    carpentry: 0
+    interaction: SIT
+    scale: 1.3
+    width: 1.5
+    height: 1.0
+    seats: 2
+  LEMONADE_STAND:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  LIFEGUARD_CHAIR:
+    carpentry: 0
+    interaction: SIT
+    scale: 0.9
+    width: 0.8
+    height: 1.0
+    seats: 1
+  LIFE_PRESERVER:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  MINI_SANDCASTLE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.8
+    width: 1.8
+    height: 1.8
+  MUMMY_CANDLE:
+    carpentry: 0
+    interaction: TOGGLE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  NUTCRACKER:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  PATIO_BENCH:
+    carpentry: 0
+    interaction: SIT
+    scale: 1.3
+    width: 1.5
+    height: 1.0
+    seats: 2
+  PATIO_FIRE_PIT:
+    carpentry: 0
+    interaction: TOGGLE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  PATIO_SIDE_TABLE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.1
+    width: 1.1
+    height: 0.9
+  PATIO_SOFA:
+    carpentry: 0
+    interaction: SIT
+    scale: 1.6
+    width: 2.0
+    height: 1.0
+    seats: 3
+  PATIO_STOOL:
+    carpentry: 0
+    interaction: SIT
+    scale: 0.9
+    width: 0.8
+    height: 1.0
+    seats: 1
+  PEDESTAL:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  PICNIC_SET:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  PRESENTS:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  PUMPKIN_CRAFTING_TABLE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.1
+    width: 1.1
+    height: 0.9
+  RABBIT_HUTCH:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  RED_TENT:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  REINDEER_PLUSH:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  SKELETON_STATUE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  SKULL_VASE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  SLED:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  SMALL_POOL:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  SMALL_XTREE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.8
+    width: 1.8
+    height: 1.8
+  SPRINKLER:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  STACKED_PUMPKINS:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  STAR_DECORATIONS:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  STOCKING:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  SURFBOARD:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  TALL_HOLIDAY_TREE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.8
+    width: 1.8
+    height: 1.8
+  TOTEM:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  TURTLE_SANDBOX:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  VOLLEYBALL:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  WIND_CHIMES:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  WITCH_BROOMSTICK:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  WITCH_HAT:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  WREATH:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0
+  ZOMBIE_GRAVE:
+    carpentry: 0
+    interaction: NONE
+    scale: 1.0
+    width: 1.0
+    height: 1.0

@@ -92,6 +92,14 @@ public final class AdventService {
                 player.sendMessage("<c>{} requires " + reward.rank().prefixMarkup() + "<c>!", StringUtility.toNormalCase(reward.item()));
             }
         }
+        for (AdventCalendar.RankedSpray reward : day.sprays()) {
+            if (player.getRank().isEqualOrHigherThan(reward.rank())) {
+                dev.daweapon.type.skyblockgeneric.rewardbundle.RewardBundleService.grantSpray(player, reward.spray());
+                summary.append(", ").append(StringUtility.toNormalCase(reward.spray())).append(" Spray");
+            } else {
+                player.sendMessage("<c>{} Spray requires " + reward.rank().prefixMarkup() + "<c>!", StringUtility.toNormalCase(reward.spray()));
+            }
+        }
         player.sendMessage("<a>You claimed the day {} Advent Calendar reward: <f>{}<a>!", number, summary.toString());
         if (!day.unbuilt().isEmpty()) {
             player.sendMessage("<7>The {} from this day can't be given yet.", String.join(" and ", day.unbuilt()));

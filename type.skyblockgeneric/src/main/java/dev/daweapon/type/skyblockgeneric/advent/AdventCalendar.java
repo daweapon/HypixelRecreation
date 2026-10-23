@@ -19,7 +19,10 @@ public final class AdventCalendar {
     public record RankedItem(String item, Rank rank) {
     }
 
-    public record Day(int number, Map<String, Integer> gifts, int coins, List<RankedItem> items, List<String> unbuilt) {
+    public record RankedSpray(String spray, Rank rank) {
+    }
+
+    public record Day(int number, Map<String, Integer> gifts, int coins, List<RankedItem> items, List<RankedSpray> sprays, List<String> unbuilt) {
     }
 
     private AdventCalendar() {
@@ -47,9 +50,13 @@ public final class AdventCalendar {
                 for (Map<String, Object> item : (List<Map<String, Object>>) entry.getOrDefault("items", List.of())) {
                     items.add(new RankedItem(String.valueOf(item.get("item")), Rank.valueOf(String.valueOf(item.get("rank")))));
                 }
+                List<RankedSpray> sprays = new ArrayList<>();
+                for (Map<String, Object> spray : (List<Map<String, Object>>) entry.getOrDefault("sprays", List.of())) {
+                    sprays.add(new RankedSpray(String.valueOf(spray.get("spray")), Rank.valueOf(String.valueOf(spray.get("rank")))));
+                }
                 List<String> unbuilt = new ArrayList<>();
                 for (Object name : (List<Object>) entry.getOrDefault("unbuilt", List.of())) unbuilt.add(String.valueOf(name));
-                loaded.put(number, new Day(number, gifts, ((Number) entry.getOrDefault("coins", 0)).intValue(), items, unbuilt));
+                loaded.put(number, new Day(number, gifts, ((Number) entry.getOrDefault("coins", 0)).intValue(), items, sprays, unbuilt));
             });
             return loaded;
         } catch (IOException exception) {

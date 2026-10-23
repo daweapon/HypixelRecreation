@@ -1661,3 +1661,10 @@ sprays:
     ink:
       DANDELION_YELLOW: 25
       LIGHT_GRAY_DYE: 10
+  - id: MISTLETOE
+    name: "Mistletoe"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "Seasonal cosmetic"

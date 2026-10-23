@@ -3,7 +3,6 @@ items:
     material: player_head
     name: "Crystal Ball"
     rarity: RARE
-    unavailable: "Furniture placement and the Carpentry Table aren't built; Hypixel rank Reward Bundles aren't built"
     source: "Reward Bundle (MVP++ rank, available since 2020)"
     lore:
       - "§8Furniture"
@@ -13,6 +12,8 @@ items:
       - "§6§7cosmetic can be placed on your"
       - "§7island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 4c77dfd21598a3974fa85919a15c0949fec734451b122189ba215d0a9d8bebf
   - id: DARK_CACAO_TRUFFLE
@@ -202,7 +203,6 @@ items:
     material: player_head
     name: "Deck Chair"
     rarity: RARE
-    unavailable: "Furniture placement and the Carpentry Table aren't built; Hypixel rank Reward Bundles aren't built"
     source: "Reward Bundle (MVP rank, 2 per bundle, available since 2021)"
     lore:
       - "§8Furniture"
@@ -211,6 +211,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 3bf7611882dcf8969e481fe6662a81cb2d332b7501e7b98e8fae30fb34f964a7
   - id: DEEPFRIES
@@ -695,7 +697,6 @@ items:
     material: player_head
     name: "Dingy"
     rarity: RARE
-    unavailable: "Furniture placement and the Carpentry Table aren't built; Hypixel rank Reward Bundles aren't built"
     source: "Reward Bundle (MVP++ rank, available since 2020)"
     lore:
       - "§8Furniture"
@@ -704,6 +705,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: bfb3c6e6655486e767a60d87811ca5cddc33ccff12649a34cb696861a63c8c5d
   - id: DINING_CHAIR
@@ -1215,7 +1218,6 @@ items:
     material: player_head
     name: "Easter Basket"
     rarity: RARE
-    unavailable: "Furniture placement and the Carpentry Table aren't built; Hypixel rank Reward Bundles aren't built"
     source: "Reward Bundle (VIP+ rank, available since 2020)"
     lore:
       - "§8Furniture"
@@ -1224,6 +1226,8 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 83c25a7a188196b18717264ffe837ca348cf719e827179edc4b78cbcb8c7dd8
   - id: ECCENTRIC_PAINTING_BUNDLE
@@ -1290,7 +1294,6 @@ items:
     material: player_head
     name: "Egg Painting Station"
     rarity: EPIC
-    unavailable: "Furniture placement and the Carpentry Table aren't built; Hypixel rank Reward Bundles aren't built"
     source: "Reward Bundle (MVP++ rank, available since 2024)"
     lore:
       - "§8Furniture"
@@ -1300,13 +1303,14 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: dae84f1478cb4b3b48717c325cb44b37d6ac679b9c734146d2bc4585ffec591c
   - id: EGG_PILE
     material: player_head
     name: "Egg Pile"
     rarity: RARE
-    unavailable: "Furniture placement and the Carpentry Table aren't built; Hypixel rank Reward Bundles aren't built"
     source: "Reward Bundle (VIP rank, available since 2020)"
     lore:
       - "§8Furniture"
@@ -1315,13 +1319,14 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: eeb335182db5f3be80fccf6eabe599f4107d4ff0e9f44f34174cefa6e2b5768
   - id: EGG_STACK
     material: player_head
     name: "Egg Stack"
     rarity: RARE
-    unavailable: "Furniture placement and the Carpentry Table aren't built; Hypixel rank Reward Bundles aren't built"
     source: "Reward Bundle (VIP rank, available since 2021)"
     lore:
       - "§8Furniture"
@@ -1330,6 +1335,8 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: c0e9fcc017bca025fdfe15ee7b8247ddc65ef05ffc440727f80e608bb16dfc34
   - id: EGG_THE_FISH
@@ -3620,7 +3627,6 @@ items:
     material: player_head
     name: "Fancy Beach Chair"
     rarity: EPIC
-    unavailable: "Furniture placement and the Carpentry Table aren't built; Hypixel rank Reward Bundles aren't built"
     source: "Reward Bundle (MVP rank, 2 per bundle)"
     lore:
       - "§8Furniture"
@@ -3629,5 +3635,7 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 9e59f84677092143691a5b612ec388ab62b879bd4f7980d355ec77e7f0c7b49c

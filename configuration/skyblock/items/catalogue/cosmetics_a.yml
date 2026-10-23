@@ -529,7 +529,6 @@ items:
     material: player_head
     name: "Festive Skeleton Minion Skin"
     rarity: COMMON
-    unavailable: "MVP rank reward bundle (store content); ranks and the store are not built"
     components:
       - id: MINION_SKIN
         name: "Festive Skeleton"
@@ -573,7 +572,6 @@ items:
     material: player_head
     name: "Fish Minion Skin"
     rarity: COMMON
-    unavailable: "MVP+ rank reward bundle (store content); ranks and the store are not built"
     components:
       - id: MINION_SKIN
         name: "Fish"
@@ -1006,7 +1004,6 @@ items:
     material: player_head
     name: "Killer Minion Skin"
     rarity: COMMON
-    unavailable: "MVP++ rank reward bundle (store content); ranks and the store are not built"
     components:
       - id: MINION_SKIN
         name: "Killer"
@@ -1342,7 +1339,6 @@ items:
     material: player_head
     name: "Present Minion Skin"
     rarity: COMMON
-    unavailable: "MVP+ rank reward bundle (store content); ranks and the store are not built"
     components:
       - id: MINION_SKIN
         name: "Present"
@@ -1543,7 +1539,6 @@ items:
     material: player_head
     name: "Shark Minion Skin"
     rarity: COMMON
-    unavailable: "MVP++ rank reward bundle (store content); ranks and the store are not built"
     components:
       - id: MINION_SKIN
         name: "Shark"
@@ -1787,7 +1782,6 @@ items:
     material: player_head
     name: "Hyacinth Tropical Bird Minion Skin"
     rarity: COMMON
-    unavailable: "VIP+ rank reward bundle (store content); ranks and the store are not built"
     components:
       - id: MINION_SKIN
         name: "Hyacinth Tropical Bird"

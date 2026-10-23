@@ -654,7 +654,6 @@ items:
     material: player_head
     name: "Balloon Cart"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Summer Reward Bundle (Salesman, rank reward, 2026)"
     lore:
       - "§8Furniture"
@@ -663,6 +662,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: ac96d34a3cced4e4bba25119f74ea31f50f43f90cca2fbcbc6bae8625d60dede
   - id: BALLOON_SNAKE
@@ -723,7 +724,6 @@ items:
     material: player_head
     name: "BBQ Grill"
     rarity: RARE
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Summer Reward Bundle (Salesman, rank reward, 2020)"
     lore:
       - "§8Furniture"
@@ -732,24 +732,26 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 91eaea25f3df8e5f0287def72d446bcdfa97be29cb9e615f77601f1591d4c652
   - id: BEACH_BALL
     material: player_head
     name: "Beach Ball"
     rarity: COMMON
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Summer Reward Bundle (Salesman, rank reward, 2019)"
     lore:
       - "§8Decoration Item"
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 5a5ab05ea254c32e3c48f3fdcf9fd9d77d3cba04e6b5ec2e68b3cbdcfac3fd
   - id: BEACH_BALL_PERSONALITY
     material: player_head
     name: "Beach Ball Minion Skin"
     rarity: COMMON
-    unavailable: "Needs Reward Bundles"
     source: "Summer Reward Bundle (Salesman, rank reward)"
     components:
       - id: MINION_SKIN
@@ -763,7 +765,6 @@ items:
     material: player_head
     name: "Beach Chair"
     rarity: RARE
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Summer Reward Bundle (Salesman, rank reward, 2019)"
     lore:
       - "§8Furniture"
@@ -772,6 +773,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 3bf7611882dcf8969e481fe6662a81cb2d332b7501e7b98e8fae30fb34f964a7
   - id: BEACH_CHAIR_PLUS
@@ -793,7 +796,6 @@ items:
     material: player_head
     name: "Beach Umbrella"
     rarity: RARE
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Summer Reward Bundle (Salesman, rank reward, 2021)"
     lore:
       - "§8Furniture"
@@ -802,6 +804,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 5a5ab05ea254c32e3c48f3fdcf9fd9d77d3cba04e6b5ec2e68b3cbdcfac3fd
   - id: BEACON_1
@@ -996,7 +1000,6 @@ items:
     material: player_head
     name: "Bee Hive"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2023)"
     lore:
       - "§8Furniture"
@@ -1005,6 +1008,8 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: d710f9aa326c7205038392aeb12f45ce22cf6a1336b82129668bea1fc46d4285
   - id: BEE_SALIVA
@@ -1169,7 +1174,6 @@ items:
     material: player_head
     name: "Bird House"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2022)"
     lore:
       - "§8Furniture"
@@ -1178,6 +1182,8 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 6cd1e977c2633e2bc4b2809146464cfc7de3ad4f3fe8fc84c102c30adb90e03c
   - id: BLACKSMITH_PLUS
@@ -1198,7 +1204,6 @@ items:
     material: player_head
     name: "Black Cat Plush"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Halloween Reward Bundle (Salesman, rank reward, 2021)"
     lore:
       - "§8Furniture"
@@ -1208,6 +1213,8 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 4137db546ab5991704ea03c53a0592e8d43521f2c9973ff76cb0bd9e910c24a4
   - id: BLACK_CAT_PLUSHIE
@@ -1888,7 +1895,6 @@ items:
     material: player_head
     name: "Bunny"
     rarity: RARE
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2020)"
     lore:
       - "§8Furniture"
@@ -1897,13 +1903,14 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: cec242e667aee44492413ef461b810cac356b74d8718e5cec1f892a6b43e5e1
   - id: BUNNY_ARMCHAIR
     material: player_head
     name: "Bunny Armchair"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2025)"
     lore:
       - "§8Furniture"
@@ -1912,13 +1919,14 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 3586e0407b8e0c390c0473d85c211aab8368ae03063cc56c022f44513bf9f16c
   - id: BUNNY_BENCH
     material: player_head
     name: "Bunny Bench"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2024)"
     lore:
       - "§8Furniture"
@@ -1927,13 +1935,14 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 4c4fb6a873944747b0e7f135bed633c7c9027a88c90d179843c0d20b4e9e76a0
   - id: BUNNY_CABINET
     material: player_head
     name: "Bunny Cabinet"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2025)"
     lore:
       - "§8Furniture"
@@ -1942,13 +1951,14 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 93e668005f5e52f24504e270f20eba7848d8c34bfa39afe6aede016ca2c2907a
   - id: BUNNY_COFFEE_TABLE
     material: player_head
     name: "Bunny Coffee Table"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2025)"
     lore:
       - "§8Furniture"
@@ -1957,13 +1967,14 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 3586e0407b8e0c390c0473d85c211aab8368ae03063cc56c022f44513bf9f16c
   - id: BUNNY_JERRY
     material: player_head
     name: "Bunny Jerry"
     rarity: RARE
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2020)"
     lore:
       - "§8Furniture"
@@ -1972,13 +1983,14 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 822d8e751c8f2fd4c8942c44bdb2f5ca4d8ae8e575ed3eb34c18a86e93b
   - id: BUNNY_PLUSH
     material: player_head
     name: "Bunny Plush"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2026)"
     lore:
       - "§8Furniture"
@@ -1987,13 +1999,14 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: a58bc7e5b178ce2db72ff347373d2a807be6ed431a25cc170149de60f41eb6bd
   - id: BUNNY_SOFA
     material: player_head
     name: "Bunny Sofa"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2025)"
     lore:
       - "§8Furniture"
@@ -2002,13 +2015,14 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 3586e0407b8e0c390c0473d85c211aab8368ae03063cc56c022f44513bf9f16c
   - id: BUNNY_TV
     material: player_head
     name: "Bunny TV"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2025)"
     lore:
       - "§8Furniture"
@@ -2017,6 +2031,8 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: fdea84f6da9d4958d3b3ad38a86202fc26aa654deac2fa0e6839650cc9820dd5
   - id: BUZZYBEES_FANTABULOUS_DISCO_DESTINATION
@@ -2230,7 +2246,6 @@ items:
     material: player_head
     name: "Candle Arch"
     rarity: COMMON
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Winter Reward Bundle (Salesman, rank reward, 2019)"
     lore:
       - "§8Furniture"
@@ -2239,13 +2254,14 @@ items:
       - "§7This exclusive §cHoliday §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: d547c44a25b7e4882078efcc6e22663f41d5a292c5679ab373cdcb7d11aff7c3
   - id: CANDLE_TABLE
     material: player_head
     name: "Candle Table"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Halloween Reward Bundle (Salesman, rank reward, 2021)"
     lore:
       - "§8Furniture"
@@ -2255,13 +2271,14 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: d7ab512029667b4ccf8b537403d9289a3187dfef4ecde18062b102339ab89b77
   - id: CANDY_BOWL
     material: player_head
     name: "Candy Bowl"
     rarity: COMMON
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Halloween Reward Bundle (Salesman, rank reward, 2019)"
     lore:
       - "§8Furniture"
@@ -2271,6 +2288,8 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 526f95ad09322d5d977a5c7bc0d6e4df4e2bd532532e76850aea7f142ff0bfc6
   - id: CANDY_CANE_CHAIR
@@ -2378,7 +2397,6 @@ items:
     material: player_head
     name: "Carrot Bed"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2026)"
     lore:
       - "§8Furniture"
@@ -2387,13 +2405,14 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: a1c217bf43b4d3ef2bfe6e74643e74b1985d312cdc853c135a2c7181f64a6ea4
   - id: CARROT_BEDSIDE_TABLE
     material: player_head
     name: "Carrot Bedside Table"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2026)"
     lore:
       - "§8Furniture"
@@ -2402,13 +2421,14 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: a1c217bf43b4d3ef2bfe6e74643e74b1985d312cdc853c135a2c7181f64a6ea4
   - id: CARROT_BENCH
     material: player_head
     name: "Carrot Bench"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2026)"
     lore:
       - "§8Furniture"
@@ -2417,6 +2437,8 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: a1c217bf43b4d3ef2bfe6e74643e74b1985d312cdc853c135a2c7181f64a6ea4
   - id: CARROT_COLORED_VINYL_SET
@@ -2463,7 +2485,6 @@ items:
     material: player_head
     name: "Carrot Patch"
     rarity: RARE
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2021)"
     lore:
       - "§8Furniture"
@@ -2472,6 +2493,8 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 5bb84ab26528868487253d85ad70aefef1e386c27f5caee376c81d6f7689e48d
   - id: CARROT_STICK
@@ -2504,7 +2527,6 @@ items:
     material: player_head
     name: "Carrot Table"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2026)"
     lore:
       - "§8Furniture"
@@ -2513,6 +2535,8 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: a1c217bf43b4d3ef2bfe6e74643e74b1985d312cdc853c135a2c7181f64a6ea4
   - id: CARROT_ZEST
@@ -2530,7 +2554,6 @@ items:
     material: player_head
     name: "Cauldron"
     rarity: COMMON
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Halloween Reward Bundle (Salesman, rank reward, 2019)"
     lore:
       - "§8Furniture"
@@ -2540,6 +2563,8 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 601d97ff7731bde0e0253286b8c2936fd7e633f137931a4bf41e51e3f8c7d84e
       - id: SELLABLE
@@ -2637,7 +2662,6 @@ items:
     material: player_head
     name: "Chicken Coop"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2021)"
     lore:
       - "§8Furniture"
@@ -2646,13 +2670,14 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: f04c153c0a6e255adf62ea8f8c0d4ce1f968974390bcefc52c1312c2395f3f09
   - id: CHICK_BED
     material: player_head
     name: "Little Chick Bed"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2024)"
     lore:
       - "§8Furniture"
@@ -2662,13 +2687,14 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 40014ce074ea6e719287e74a79615d5929fc6ff42ac81a7e1e45a005f7642179
   - id: CHICK_DRESSER
     material: player_head
     name: "Little Chick Dresser"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2024)"
     lore:
       - "§8Furniture"
@@ -2677,13 +2703,14 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 8f2a517387904329016a8e256c4b55192a6c9b1720e49b5a44019276c9c2fbb3
   - id: CHICK_NEST
     material: player_head
     name: "Chick Nest"
     rarity: RARE
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2020)"
     lore:
       - "§8Furniture"
@@ -2692,13 +2719,14 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 1ff0699cbc491d71e49f702137f4a3ac117c008941a5ccba1203dc27ff30d0
   - id: CHICK_TEA_TABLE
     material: player_head
     name: "Little Chick Tea Table"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Easter Reward Bundle (Bunny Man, rank reward, 2024)"
     lore:
       - "§8Furniture"
@@ -2707,6 +2735,8 @@ items:
       - "§7This exclusive §dEaster §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 64ea584455202be52cc953b9f98d81902b674c6c6d06880a27102358b71d79e1
   - id: CHILLED_PRISTINE_POTATO
@@ -2778,7 +2808,6 @@ items:
     material: player_head
     name: "Coconut Drink"
     rarity: EPIC
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Summer Reward Bundle (Salesman, rank reward, 2026)"
     lore:
       - "§8Furniture"
@@ -2787,6 +2816,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: e403eeb88ac2ae56afb1aeb7322ea067b676576ce37687f5a39fc55e9b752858
   - id: COFFEE_TABLE
@@ -2808,7 +2839,6 @@ items:
     material: player_head
     name: "Coffin"
     rarity: RARE
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Halloween Reward Bundle (Salesman, rank reward, 2020)"
     lore:
       - "§8Furniture"
@@ -2818,6 +2848,8 @@ items:
       - "§7can be placed on your island or"
       - "§7traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 8d44756e0b4ece8d746296a3d5e297e1415f4ba17647ffe228385383d161a9
   - id: COLD_ONES
@@ -3082,7 +3114,6 @@ items:
     material: player_head
     name: "Crab"
     rarity: RARE
-    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
     source: "Summer Reward Bundle (Salesman, rank reward, 2022)"
     lore:
       - "§8Furniture"
@@ -3091,6 +3122,8 @@ items:
       - "§7This exclusive §aSummer §7cosmetic can"
       - "§7be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: b797fe5499191ddec94f50fa6ab9cbc18c9cd6fa1b97e36b4d519b623193d5
   - id: CRAFTING_PLUS

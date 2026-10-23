@@ -54,6 +54,10 @@ public class GUIAdventCalendar extends StatelessView {
             lore.append(player.getRank().isEqualOrHigherThan(item.rank()) ? "<a>" : "<c>").append("1x ").append(StringUtility.toNormalCase(item.item()))
                     .append(" <8>(").append(item.rank().getTitle()).append(")\n");
         }
+        for (AdventCalendar.RankedSpray spray : day.sprays()) {
+            lore.append(player.getRank().isEqualOrHigherThan(spray.rank()) ? "<a>" : "<c>").append(StringUtility.toNormalCase(spray.spray()))
+                    .append(" Spray <8>(").append(spray.rank().getTitle()).append(")\n");
+        }
         day.unbuilt().forEach(name -> lore.append("<8>").append(name).append(" (not given yet)\n"));
         if (claimed.contains(number)) {
             return ItemStacks.item(Material.LIME_STAINED_GLASS_PANE, "<a>Day " + number + "\n" + lore + "\n<a>Already claimed!");

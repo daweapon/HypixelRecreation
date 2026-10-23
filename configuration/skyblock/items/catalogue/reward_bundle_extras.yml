@@ -1,0 +1,81 @@
+items:
+  - id: HAY_BALE_FURNITURE
+    material: player_head
+    name: "Hay Bale"
+    rarity: EPIC
+    source: "Easter reward bundle (Salesman, rank reward)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §6Easter §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
+      - id: SKULL_HEAD
+        texture: e47b37e67a89159bf4acc4a44d4328f4efc0181605142288e5eed1ab8aed913c
+  - id: HYPIXEL_SANDCASTLE
+    material: player_head
+    name: "Hypixel Sandcastle"
+    rarity: EPIC
+    source: "Summer reward bundle (Salesman, rank reward)"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §6Summer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
+      - id: SKULL_HEAD
+        texture: e47b37e67a89159bf4acc4a44d4328f4efc0181605142288e5eed1ab8aed913c
+  - id: GREENHOUSE_PLANTER
+    material: player_head
+    name: "Greenhouse Planter"
+    rarity: EPIC
+    source: "Summer reward bundle (Salesman, rank reward)"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §6Summer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
+      - id: SKULL_HEAD
+        texture: e47b37e67a89159bf4acc4a44d4328f4efc0181605142288e5eed1ab8aed913c
+  - id: COLA_COOLER
+    material: player_head
+    name: "Cola Cooler"
+    rarity: EPIC
+    source: "Summer reward bundle (Salesman, rank reward)"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §6Summer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
+      - id: SKULL_HEAD
+        texture: e47b37e67a89159bf4acc4a44d4328f4efc0181605142288e5eed1ab8aed913c
+  - id: TALL_HOLIDAY_TREE
+    material: player_head
+    name: "Tall Holiday Tree"
+    rarity: EPIC
+    source: "Holiday reward bundle (Salesman, rank reward)"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §6Holiday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
+      - id: SKULL_HEAD
+        texture: e47b37e67a89159bf4acc4a44d4328f4efc0181605142288e5eed1ab8aed913c

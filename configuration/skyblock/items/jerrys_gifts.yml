@@ -148,6 +148,8 @@ items:
       - "\xA77This exclusive \xA7cHoliday \xA77cosmetic can"
       - "\xA77be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: b032e910637300069682116003608e07833313c37bb42f08638609f0be751ef6
 
@@ -162,6 +164,8 @@ items:
       - "\xA77This exclusive \xA7cHoliday \xA77cosmetic can"
       - "\xA77be placed on your island or traded."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 6f5c433908732b512f68461c14ef020bb2f55d96a61cd1d45ea1e7ea899f1a6b
 

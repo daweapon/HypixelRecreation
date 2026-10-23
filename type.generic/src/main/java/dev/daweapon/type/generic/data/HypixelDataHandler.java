@@ -345,6 +345,8 @@ public class HypixelDataHandler extends DataHandler {
 
         COMMUNITY_UPGRADES("community_upgrades", DatapointString.class, new DatapointString("community_upgrades", "")),
         ADVENT_CLAIMS("advent_claims", DatapointString.class, new DatapointString("advent_claims", "")),
+        REWARD_BUNDLE_CLAIMS("reward_bundle_claims", DatapointStringList.class, new DatapointStringList("reward_bundle_claims")),
+        OWNED_SPRAYS("owned_sprays", DatapointStringList.class, new DatapointStringList("owned_sprays")),
         TAB_WIDGET_SETTINGS("tab_widget_settings", DatapointString.class, new DatapointString("tab_widget_settings", "")),
         BAZAAR_DIRECT_MODE("bazaar_direct_mode", DatapointBoolean.class, new DatapointBoolean("bazaar_direct_mode", true)),
         BAZAAR_IGNORED_ITEMS("bazaar_ignored_items", DatapointStringList.class, new DatapointStringList("bazaar_ignored_items")),
