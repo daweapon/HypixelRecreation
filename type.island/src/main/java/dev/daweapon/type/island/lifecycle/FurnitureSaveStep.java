@@ -18,6 +18,7 @@ public class FurnitureSaveStep implements IslandLifecycleStep {
         if (furniture == null) return;
         var database = context.island().getDatabase();
         database.insertOrUpdate(IslandFurniture.DATABASE_KEY, furniture.serialize());
+        database.insertOrUpdate(IslandFurniture.STORAGE_KEY, furniture.serializeStorage());
         String spawn = furniture.serializeSpawn();
         database.insertOrUpdate(IslandFurniture.SPAWN_KEY, spawn == null ? "" : spawn);
         furniture.despawnAll();

@@ -10,5 +10,7 @@ public enum FurnitureInteraction {
     ENCHANTING,
     ANVIL,
     CARPENTRY,
-    HOLOGRAM
+    HOLOGRAM,
+    STORAGE,
+    FURNACE
 }

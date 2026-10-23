@@ -23,6 +23,7 @@ public class FurnitureLoadStep implements IslandLifecycleStep {
         String raw = database.has(IslandFurniture.DATABASE_KEY) ? (String) database.get(IslandFurniture.DATABASE_KEY, String.class) : null;
         String spawn = database.has(IslandFurniture.SPAWN_KEY) ? (String) database.get(IslandFurniture.SPAWN_KEY, String.class) : null;
         IslandFurniture furniture = IslandFurniture.deserialize(raw, spawn);
+        furniture.loadStorage(database.has(IslandFurniture.STORAGE_KEY) ? (String) database.get(IslandFurniture.STORAGE_KEY, String.class) : null);
         context.island().setFurniture(furniture);
         furniture.spawnAll(context.island().getIslandInstance());
         if (furniture.spawnPoint() != null) {

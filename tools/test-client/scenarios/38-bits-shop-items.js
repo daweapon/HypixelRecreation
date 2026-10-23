@@ -117,6 +117,7 @@ module.exports = {
 
         const holo = { x: 6, y: 100, z: 40 };
         await t.step('a Hologram places and opens its menu', async () => {
+            await sleep(8000);
             const at = surface(bot, holo.x, holo.z);
             const chat = await placeOn(t, bot, 'HOLOGRAM', /Hologram/, at, { x: 6, y: 101, z: 36 });
             await bot.command('/clear', { settleMs: 500 });

@@ -38,6 +38,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @Getter
 public class SkyBlockIsland {
     private static final Map<UUID, SkyBlockIsland> loadedIslands = new ConcurrentHashMap<>();
+    private static final long VACANT_GRACE_MILLIS = 10_000;
     private static final AtomicBoolean shutdownHookRegistered = new AtomicBoolean();
 
     private final IslandDatabase database;
@@ -45,6 +46,7 @@ public class SkyBlockIsland {
     private final UUID islandID;
     private Boolean created = false;
     private volatile boolean discarded = false;
+    private volatile long loadedAt;
     private SharedInstance islandInstance;
     private PolarWorld world;
 
@@ -101,6 +103,7 @@ public class SkyBlockIsland {
 
                 this.created = true;
                 IslandLifecycle.run(IslandLifecyclePhase.LOAD, context);
+                this.loadedAt = System.currentTimeMillis();
 
                 future.complete(islandInstance);
                 context.onlineMembers().forEach(HypixelPlayer::setReadyForEvents);
@@ -120,6 +123,7 @@ public class SkyBlockIsland {
             return;
         }
         if (!islandInstance.getPlayers().isEmpty()) return;
+        if (System.currentTimeMillis() - loadedAt < VACANT_GRACE_MILLIS) return;
 
         if (!discarded) {
             IslandLifecycle.run(IslandLifecyclePhase.SAVE, lifecycleContext());

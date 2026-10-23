@@ -35,6 +35,8 @@ final class FurnitureActions {
             case ANVIL -> new GUIAnvil().open(player);
             case CARPENTRY -> openCarpentryTable(owner, player, placed, member);
             case HOLOGRAM -> openHologram(owner, player, placed, member);
+            case STORAGE -> openStorage(owner, player, placed, definition, member);
+            case FURNACE -> openFurnace(owner, player, placed, member);
             case NONE -> {
                 if (member) player.sendMessage("<7>Sneak and right-click to pick up or rotate this furniture.");
             }
@@ -106,7 +108,28 @@ final class FurnitureActions {
         player.openView(new HologramView(owner, placed));
     }
 
+    private static void openStorage(IslandFurniture owner, SkyBlockPlayer player, PlacedFurniture placed, FurnitureDefinition definition, boolean member) {
+        if (!member) {
+            player.sendMessage("<c>Only the island's members can open this!");
+            return;
+        }
+        player.openView(new FurnitureStorageView(owner, placed, definition.storagePages(), 0));
+    }
+
+    private static void openFurnace(IslandFurniture owner, SkyBlockPlayer player, PlacedFurniture placed, boolean member) {
+        if (!member) {
+            player.sendMessage("<c>Only the island's members can use this furnace!");
+            return;
+        }
+        player.openView(new FurnaceView(owner, placed));
+    }
+
     static void pickUp(IslandFurniture owner, SkyBlockPlayer player, PlacedFurniture placed) {
+        if (!owner.storageIsEmpty(placed)) {
+            player.sendMessage("<c>Empty this out before picking it up, or its contents would be lost!");
+            return;
+        }
+        owner.dropStorage(placed);
         owner.remove(placed);
         player.addAndUpdateItem(dev.daweapon.commons.skyblock.item.ItemType.get(placed.itemId()));
         HologramEditing.clear(player, placed);

@@ -59,7 +59,8 @@ public final class FurnitureCatalog {
                 ((Number) entry.getOrDefault("width", 1.0)).floatValue(),
                 ((Number) entry.getOrDefault("height", 1.0)).floatValue(),
                 ((Number) entry.getOrDefault("seats", 0)).intValue(),
-                recipe
+                recipe,
+                ((Number) entry.getOrDefault("storage_pages", 0)).intValue()
         );
     }
 }

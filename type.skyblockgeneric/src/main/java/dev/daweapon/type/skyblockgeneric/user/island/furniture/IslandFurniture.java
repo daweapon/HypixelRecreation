@@ -17,7 +17,10 @@ public class IslandFurniture {
     public static final int STANDARD_LIMIT = 15;
     public static final int CENTURY_CAKE_LIMIT = 20;
 
+    public static final String STORAGE_KEY = "furniture_storage";
+
     private final Map<PlacedFurniture, SpawnedFurniture> placed = new LinkedHashMap<>();
+    private final Map<String, String> storage = new java.util.concurrent.ConcurrentHashMap<>();
     private @Nullable Pos spawnPoint;
 
     public static IslandFurniture deserialize(@Nullable String raw, @Nullable String rawSpawn) {
@@ -43,6 +46,39 @@ public class IslandFurniture {
     public @Nullable String serializeSpawn() {
         if (spawnPoint == null) return null;
         return spawnPoint.x() + "," + spawnPoint.y() + "," + spawnPoint.z() + "," + spawnPoint.yaw();
+    }
+
+    public void loadStorage(@Nullable String raw) {
+        storage.clear();
+        if (raw == null || raw.isBlank()) return;
+        org.json.JSONObject root = new org.json.JSONObject(raw);
+        root.keySet().forEach(key -> storage.put(key, root.getString(key)));
+    }
+
+    public String serializeStorage() {
+        return new org.json.JSONObject(storage).toString();
+    }
+
+    public @Nullable String storageOf(PlacedFurniture furniture) {
+        return storage.get(storageKey(furniture));
+    }
+
+    public void setStorage(PlacedFurniture furniture, @Nullable String contents) {
+        if (contents == null || contents.isBlank()) storage.remove(storageKey(furniture));
+        else storage.put(storageKey(furniture), contents);
+    }
+
+    public boolean storageIsEmpty(PlacedFurniture furniture) {
+        String contents = storageOf(furniture);
+        return contents == null || FurnitureContents.isEmpty(contents);
+    }
+
+    public void dropStorage(PlacedFurniture furniture) {
+        storage.remove(storageKey(furniture));
+    }
+
+    private static String storageKey(PlacedFurniture furniture) {
+        return furniture.x() + "," + furniture.y() + "," + furniture.z();
     }
 
     public List<PlacedFurniture> all() {

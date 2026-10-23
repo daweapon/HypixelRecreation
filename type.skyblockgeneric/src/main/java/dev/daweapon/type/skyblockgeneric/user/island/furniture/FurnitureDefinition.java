@@ -13,8 +13,14 @@ public record FurnitureDefinition(
         float width,
         float height,
         int seats,
-        @Nullable Map<String, Integer> recipe
+        @Nullable Map<String, Integer> recipe,
+        int storagePages
 ) {
+    public FurnitureDefinition(String itemId, int carpentryLevel, FurnitureInteraction interaction, double scale,
+                               float width, float height, int seats, @Nullable Map<String, Integer> recipe) {
+        this(itemId, carpentryLevel, interaction, scale, width, height, seats, recipe, 0);
+    }
+
     public static final String CENTURY_CAKE_PREFIX = "CENTURY_CAKE";
 
     public boolean isCenturyCake() {
