@@ -19,7 +19,8 @@ public final class LabScenes {
     public static final Pos HIDDEN_SECTION_BETH = new Pos(200.576657, 14, -497.9686263);
     public static final Pos HIDDEN_SECTION_JAKE = new Pos(204, 14, -497);
     public static final Pos JAKE_FIRST = new Pos(171.5, 27, -491.5);
-    public static final Pos LEVER = new Pos(175.5, 28, -498.5);
+    public static final Pos LEVER = new Pos(177.5, 29, -497.5);
+    public static final Pos CROP_ANALYZER = new Pos(204.5, 15, -498.5);
     public static final double TRIGGER_RANGE = 5;
 
     private static final double MIN_X = 160;

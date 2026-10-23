@@ -4,10 +4,10 @@ entries:
   - item: EMPTY_CHUM_BUCKET
     name: "<f>Empty Chum Bucket"
     material: player_head
-    cost: { coins: 2000, items: { GLOWING_MUSHROOM: 8 } }
+    cost: { coins: 1940, items: { GLOWING_MUSHROOM: 8 } }
   - item: GLOWY_CHUM_BAIT
     name: "<a>Glowy Chum Bait"
-    material: player_head
+    material: paper
     amount: 16
     cost: { items: { GLOWING_MUSHROOM: 4, FULL_CHUM_BUCKET: 1 } }
   - item: LUMINOUS_BRACELET
@@ -16,7 +16,7 @@ entries:
     cost: { items: { GLOWING_MUSHROOM: 10, FULL_CHUM_BUCKET: 2 } }
   - item: CHUM_SINKER
     name: "<f>Chum Sinker"
-    material: player_head
+    material: paper
     cost: { items: { GLOWING_MUSHROOM: 15, FULL_CHUM_BUCKET: 4 } }
   - item: MOBYS_SHEARS
     name: "<9>Moby's Shears"

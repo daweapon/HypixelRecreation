@@ -66,14 +66,7 @@ public class GUIAllMutations extends StatefulPaginatedView<MutationCatalogue.Mut
         lore.add(Text.of("<7>Growth Surface: <a>{}", mutation.surface()));
         lore.add(Text.of("<7>Growth Stages: <a>{}", mutation.stages()));
         lore.add(Text.empty());
-        if (!mutation.effects().isEmpty()) {
-            lore.add(Text.of("<7>Effects:"));
-            for (GreenhouseEffect effect : mutation.effects()) {
-                lore.add(Text.of("<8>> {}{}", effect.isNegative() ? "<c>" : "<a>", effect.getDisplayName()));
-            }
-            lore.add(Text.empty());
-        }
-        lore.add(Text.of("<7>Spreading Conditions"));
+        lore.add(Text.of("<6>Spreading Conditions"));
         if (!analyzed) {
             lore.add(Text.of("<c>UNKNOWN"));
             lore.add(Text.of("<8>Analyze this mutation to learn them."));
@@ -81,12 +74,19 @@ public class GUIAllMutations extends StatefulPaginatedView<MutationCatalogue.Mut
             lore.add(Text.of("<a>{}", mutation.note() == null ? "Special" : mutation.note()));
         } else {
             for (MutationCatalogue.Condition condition : mutation.conditions()) {
-                lore.add(Text.of("<a>{}x {}", condition.count(), StringUtility.toNormalCase(condition.crop())));
+                lore.add(Text.of("<7>{}x <f>{}", condition.count(), StringUtility.toNormalCase(condition.crop())));
             }
         }
-        if (analyzed && mutation.behaviour() != null) {
+        if (analyzed && !mutation.drops().isEmpty()) {
             lore.add(Text.empty());
-            lore.addAll(Text.of("<7><wrap:30>{}</wrap>", mutation.behaviour()).lines());
+            lore.add(Text.of("<6>Drops"));
+            for (MutationCatalogue.Drop drop : mutation.drops()) {
+                lore.add(Text.of("<7>{}x <f>{}", StringUtility.commaify(drop.amount()), StringUtility.toNormalCase(drop.item())));
+            }
+        }
+        if (analyzed) {
+            lore.add(Text.empty());
+            lore.add(Text.of("<a><l>ANALYZED"));
         }
         Material icon = analyzed ? Material.PLAYER_HEAD : Material.GRAY_DYE;
         dev.daweapon.type.skyblockgeneric.item.SkyBlockItem head = mutation.item() == null ? null : new SkyBlockItem(mutation.item());
