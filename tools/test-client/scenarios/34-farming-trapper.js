@@ -23,9 +23,9 @@ const visit = async (bot, label, x, y, z) => {
 
 const ZONES = {
     'Desert Settlement': [182, 100, -392],
-    Oasis: [322, 100, -435],
+    Oasis: [175, 100, -455],
     'Archaeological Site': [365, 100, -485],
-    'Desert Mountain': [222, 100, -525],
+    'Desert Mountain': [260, 100, -560],
     'Mushroom Gorge': [277, 100, -495],
     "Shepherd's Keep": [385, 100, -375],
 };

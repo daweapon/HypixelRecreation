@@ -1846,12 +1846,12 @@ regions:
     serverType: THE_FARMING_ISLANDS
   - id: oasis_1
     type: OASIS
-    x1: 300
+    x1: 140
     y1: 40
-    z1: -455
-    x2: 345
+    z1: -475
+    x2: 210
     y2: 130
-    z2: -415
+    z2: -435
     serverType: THE_FARMING_ISLANDS
   - id: jake_house_1
     type: JAKE_HOUSE
