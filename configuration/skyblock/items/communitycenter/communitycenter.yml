@@ -33,19 +33,18 @@ items:
         texture: c316a8b96cb9aeea5140dd936c6ebb964efcbfd71ae217d9f70888efb14e7c0
       - id: CUSTOM_DISPLAY_NAME
         display_name: Autopet Rules 2-Pack
-      - id: NOT_FINISHED_YET
+      - id: INTERACTABLE
+        handler_id: AUTOPET_RULES_INTERACT
   - id: BLOCK_ZAPPER
     material: flint
     name: "Block Zapper"
     rarity: EPIC
-    lore:
-      - "§6Ability: Grand... Zapper?  §e§lRIGHT CLICK"
-      - "§7Right-Click a block to zap all"
-      - "§7connected blocks of the same type."
     source: "Bits Shop, 5,000 Bits"
     components:
+      - id: ABILITY
+        abilities:
+          - ZAPPER
       - id: ENCHANTED
-      - id: NOT_FINISHED_YET
   - id: BOOSTER_COOKIE
     material: cookie
     name: "Booster Cookie"
@@ -90,8 +89,8 @@ items:
       - id: ABILITY
         abilities:
           - GRAND_ARCHITECT
+          - BUILT_IN_STORAGE
       - id: ENCHANTED
-      - id: NOT_FINISHED_YET
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/community_center/bits_shop/builders_wand
   - id: DITTO_BLOB
@@ -155,7 +154,8 @@ items:
     components:
       - id: SKULL_HEAD
         texture: 198528fd7dd066e306403a75e406d620140bec47bb6c77e70e9cd98ded9c9de1
-      - id: NOT_FINISHED_YET
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
   - id: INFERNO_FUEL_BLOCK
     material: player_head
     name: "Inferno Fuel Block"

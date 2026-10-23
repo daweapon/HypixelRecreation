@@ -1,5 +1,5 @@
 # Placeable furniture. Keyed by catalogue item id.
-# carpentry: Carpentry level needed to place and craft. interaction: NONE SIT BED TOGGLE MINION_CHAIR CRAFTING ENCHANTING ANVIL CARPENTRY.
+# carpentry: Carpentry level needed to place and craft. interaction: NONE SIT BED TOGGLE MINION_CHAIR CRAFTING ENCHANTING ANVIL CARPENTRY HOLOGRAM.
 # scale: head display scale (1.0 = one block). width/height: click hitbox. seats: riders for SIT. recipe: Carpentry Table ingredients.
 furniture:
   CARPENTRY_BENCH:
@@ -424,3 +424,9 @@ furniture:
       ENCHANTED_IRON_BLOCK: 1
       DARK_OAK_PLANKS: 16
       STICK: 2
+  HOLOGRAM:
+    carpentry: 0
+    interaction: HOLOGRAM
+    scale: 0.5
+    width: 0.5
+    height: 0.5

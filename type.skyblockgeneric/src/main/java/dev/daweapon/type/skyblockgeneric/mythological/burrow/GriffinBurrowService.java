@@ -130,6 +130,7 @@ public final class GriffinBurrowService implements MythologicalCreatureMob.Liste
                 }
             }
         }
+        dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService.fire(player, dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetTrigger.GRIFFIN_BURROW);
         BurrowEffects.dig(player, burrow.getPosition());
         return true;
     }

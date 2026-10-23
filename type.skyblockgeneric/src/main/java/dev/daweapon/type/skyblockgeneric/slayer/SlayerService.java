@@ -62,6 +62,7 @@ public final class SlayerService {
         SlayerQuest quest = new SlayerQuest(type, tier, System.currentTimeMillis(), 0, false, null);
         data.setActiveQuest(quest);
         save(player, data);
+        dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService.fire(player, dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetTrigger.SLAYER_QUEST_START);
         player.sendMessage("<5><l>SLAYER QUEST STARTED!");
         player.sendMessage("<7>Slay {} mobs to summon <c>{}<7>.", type.categoryName(), tierDefinition.displayName(type));
         return StartResult.started(quest);
@@ -137,6 +138,7 @@ public final class SlayerService {
             SlayerBossMob boss = spawnBoss(player, definition, tierDefinition, mob.getPosition());
             if (boss != null) {
                 progressedQuest = progressedQuest.markBossSpawned(boss.getUuid());
+                dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService.fire(player, dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetTrigger.BOSS_SPAWN, quest.type().name());
                 player.sendMessage("<c><l>SLAYER BOSS SPAWNED!");
                 player.sendMessage("<7>Kill <c>{}<7> to complete your quest.", tierDefinition.displayName(quest.type()));
             }

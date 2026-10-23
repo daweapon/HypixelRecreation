@@ -141,6 +141,7 @@ public class ReindrakeMob extends WinterSeaCreatureMob {
     private void giveGift(SkyBlockPlayer player, ItemType gift) {
         SkyBlockItem item = new SkyBlockItem(gift);
         player.addAndUpdateItem(item);
+        dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService.fire(player, dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetTrigger.WINTER_GIFT);
         player.sendMessage(Text.of("<a><l>GIFT! </l><7>The <4>Reindrake <7>dropped a {}<7>!", item.getDisplayNameText()));
     }
 

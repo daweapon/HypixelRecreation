@@ -214,6 +214,11 @@ public final class SkyBlockDomain implements PlayerDataDomain<SkyBlockDataHandle
             MathUtility.delay(() -> {
                 if (!player.isOnline()) return;
                 player.getPetData().updatePetEntityImpl(player);
+                dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService.fire(player, dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetTrigger.LOGIN);
+                MathUtility.delay(() -> {
+                    if (player.isOnline()) dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService.fire(player,
+                            dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetTrigger.ENTER_ISLAND, HypixelConst.getTypeLoader().getType().name());
+                }, 3);
             }, 20);
 
             TravelScrollIslands island = TravelScrollIslands.getFromType(HypixelConst.getTypeLoader().getType());

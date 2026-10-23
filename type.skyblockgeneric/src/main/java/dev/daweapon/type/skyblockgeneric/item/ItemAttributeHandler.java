@@ -222,8 +222,12 @@ public class ItemAttributeHandler {
         }
     }
 
+    private boolean storesBackpackData() {
+        return item.hasComponent(BackpackComponent.class) || getPotentialType() == ItemType.BUILDERS_WAND;
+    }
+
     public ItemAttributeBackpackData.BackpackData getBackpackData() {
-        if (item.hasComponent(BackpackComponent.class)) {
+        if (storesBackpackData()) {
             return ((ItemAttributeBackpackData) item.getAttribute("backpack_data")).getValue();
         } else {
             throw new RuntimeException("Item is not a backpack");
@@ -231,7 +235,7 @@ public class ItemAttributeHandler {
     }
 
     public void setBackpackData(ItemAttributeBackpackData.BackpackData data) {
-        if (item.hasComponent(BackpackComponent.class)) {
+        if (storesBackpackData()) {
             ((ItemAttributeBackpackData) item.getAttribute("backpack_data")).setValue(data);
         } else {
             throw new RuntimeException("Item is not a backpack");

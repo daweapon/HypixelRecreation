@@ -34,6 +34,7 @@ final class FurnitureActions {
             case ENCHANTING -> new GUIEnchantmentTable().open(player);
             case ANVIL -> new GUIAnvil().open(player);
             case CARPENTRY -> openCarpentryTable(owner, player, placed, member);
+            case HOLOGRAM -> openHologram(owner, player, placed, member);
             case NONE -> {
                 if (member) player.sendMessage("<7>Sneak and right-click to pick up or rotate this furniture.");
             }
@@ -100,9 +101,15 @@ final class FurnitureActions {
         player.openView(new GUICarpentryTable(owner, placed));
     }
 
+    private static void openHologram(IslandFurniture owner, SkyBlockPlayer player, PlacedFurniture placed, boolean member) {
+        if (!member) return;
+        player.openView(new HologramView(owner, placed));
+    }
+
     static void pickUp(IslandFurniture owner, SkyBlockPlayer player, PlacedFurniture placed) {
         owner.remove(placed);
         player.addAndUpdateItem(dev.daweapon.commons.skyblock.item.ItemType.get(placed.itemId()));
+        HologramEditing.clear(player, placed);
         if (placed.data() != null && FurnitureCatalog.get(placed.itemId()).interaction() == FurnitureInteraction.MINION_CHAIR) {
             SkyBlockItem minion = FurnitureEntities.minionItem(placed.data());
             if (minion != null) player.addAndUpdateItem(minion);

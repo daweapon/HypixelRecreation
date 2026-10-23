@@ -32,6 +32,7 @@ public class FishingRodComponent extends SkyBlockItemComponent {
                         if (metadata != null && metadata.getLegacyConversionTarget() != null) {
 							return;
 						}
+						dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService.fire(player, dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetTrigger.FISHING_HOOK);
 						new FishingHook(player, item).spawn(player.getInstance());
 					}
 				},

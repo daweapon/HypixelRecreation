@@ -35,6 +35,8 @@ public class ActionPlayerClearSkyBlockCache implements HypixelEventClass {
         dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks.release(player.getUuid());
         dev.daweapon.type.skyblockgeneric.hoppity.StrayRabbitService.release(player.getUuid());
         MobAggroLog.clear(player.getUuid());
+        dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService.forget(player);
+        dev.daweapon.type.skyblockgeneric.user.island.furniture.HologramEditing.forget(player);
         PlayerItemOrigin.clearCache(player.getUuid());
         ActionPlayerStrayTooFar.startedStray.remove(player.getUuid());
         CustomEventCaller.clearCache(player);

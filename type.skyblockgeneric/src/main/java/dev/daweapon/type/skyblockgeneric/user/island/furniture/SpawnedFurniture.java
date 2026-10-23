@@ -13,6 +13,7 @@ final class SpawnedFurniture {
     final List<FurnitureSeat> seats = new ArrayList<>();
     @Nullable LivingEntity minion;
     @Nullable Task flames;
+    @Nullable LivingEntity text;
 
     SpawnedFurniture(LivingEntity display, LivingEntity hitbox) {
         this.display = display;
@@ -24,6 +25,7 @@ final class SpawnedFurniture {
         hitbox.remove();
         if (minion != null) minion.remove();
         if (flames != null) flames.cancel();
+        if (text != null) text.remove();
         seats.forEach(seat -> {
             new ArrayList<>(seat.getPassengers()).forEach(seat::removePassenger);
             if (!seat.isRemoved()) seat.remove();

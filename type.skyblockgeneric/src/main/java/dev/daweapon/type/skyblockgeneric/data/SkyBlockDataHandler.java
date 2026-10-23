@@ -626,6 +626,9 @@ public class SkyBlockDataHandler extends DataHandler {
         PET_TRAINING("pet_training", false, false, false,
                 DatapointPetTraining.class, new DatapointPetTraining("pet_training")),
 
+        AUTOPETS("autopets", false, false, false,
+                DatapointAutopets.class, new DatapointAutopets("autopets")),
+
         RIFT_PRISM_IMBUED("rift_prism_imbued", false, false, false,
                 DatapointBoolean.class, new DatapointBoolean("rift_prism_imbued", false)),
 

@@ -52,6 +52,12 @@ public class PlayerKilledSkyBlockMobEvent implements PlayerInstanceEvent {
         // Handle kill event pets
         SkyBlockItem pet = player.getPetData().getEnabledPet();
         player.getPetData().dispatch(new PetEvent.Kill(player, pet, killedMob));
+
+        java.util.List<String> autopetParams = new java.util.ArrayList<>();
+        autopetParams.add(killedMob.getEntityType().key().value());
+        if (killedMob.getMobTypes().contains(dev.daweapon.type.skyblockgeneric.entity.mob.MobType.MYTHOLOGICAL)) autopetParams.add(dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetOptions.MYTHOLOGICAL_MOB);
+        if (killedMob instanceof dev.daweapon.type.skyblockgeneric.entity.mob.mobs.seacreature.SeaCreatureMob) autopetParams.add(dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetOptions.SEA_CREATURE);
+        dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService.fire(player, dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetTrigger.KILL_MOB, autopetParams.toArray(String[]::new));
     }
 
     @Override

@@ -9,7 +9,9 @@ import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.components.SkullHeadComponent;
 import dev.daweapon.type.skyblockgeneric.minion.MinionRegistry;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.type.skyblockgeneric.entity.TextDisplayEntity;
 import net.minestom.server.MinecraftServer;
+import net.minestom.server.color.Color;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.coordinate.Vec;
 import net.minestom.server.entity.EntityType;
@@ -23,6 +25,7 @@ import net.minestom.server.timer.TaskSchedule;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 final class FurnitureEntities {
     static final String TOGGLED_ON = "on";
@@ -35,7 +38,9 @@ final class FurnitureEntities {
 
     static SpawnedFurniture spawn(Instance instance, IslandFurniture owner, PlacedFurniture placed, FurnitureDefinition definition) {
         Pos pos = positionOf(placed);
-        LivingEntity display = displayEntity(headStack(definition.itemId()), definition.scale(), definition.scale() / 2);
+        HologramSettings hologram = definition.interaction() == FurnitureInteraction.HOLOGRAM ? HologramSettings.decode(placed.data()) : null;
+        ItemStack stack = hologram != null && !hologram.modelVisible() ? ItemStack.AIR : headStack(definition.itemId());
+        LivingEntity display = displayEntity(stack, definition.scale(), definition.scale() / 2);
         display.setInstance(instance, pos);
 
         InteractionEntity hitbox = new InteractionEntity(definition.width(), definition.height(),
@@ -53,7 +58,24 @@ final class FurnitureEntities {
         if (definition.interaction() == FurnitureInteraction.TOGGLE && TOGGLED_ON.equals(placed.data())) {
             startFlames(instance, pos, definition, spawned);
         }
+        if (hologram != null) startHologram(instance, pos, definition, hologram, spawned);
         return spawned;
+    }
+
+    private static void startHologram(Instance instance, Pos pos, FurnitureDefinition definition, HologramSettings hologram, SpawnedFurniture spawned) {
+        if (hologram.hasText()) {
+            String joined = hologram.lines().stream().map(line -> line.replace('&', '\u00a7')).collect(Collectors.joining("\n"));
+            TextDisplayEntity text = new TextDisplayEntity(Text.legacy(joined), meta -> meta.setScale(new Vec(1, 1, 1)));
+            text.setInstance(instance, pos.add(0, definition.height() + 0.4 + 0.15 * hologram.lines().size(), 0));
+            spawned.text = text;
+        }
+        if (hologram.particle() == null) return;
+        Color colour = HologramColours.of(hologram.particle());
+        double y = pos.y() + definition.height() * 0.6;
+        spawned.flames = MinecraftServer.getSchedulerManager().buildTask(() -> {
+            ParticlePacket dust = new ParticlePacket(Particle.DUST.withColor(colour), pos.x(), y, pos.z(), 0.2f, 0.2f, 0.2f, 0f, 3);
+            instance.getPlayers().forEach(viewer -> viewer.sendPacket(dust));
+        }).repeat(TaskSchedule.tick(8)).schedule();
     }
 
     static Pos positionOf(PlacedFurniture placed) {

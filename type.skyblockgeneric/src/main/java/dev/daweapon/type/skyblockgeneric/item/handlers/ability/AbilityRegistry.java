@@ -17,7 +17,9 @@ import dev.daweapon.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import dev.daweapon.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
 import dev.daweapon.type.skyblockgeneric.item.handlers.ability.abilities.AbilityDamage;
 import dev.daweapon.type.skyblockgeneric.item.handlers.bow.Salvation;
+import dev.daweapon.type.skyblockgeneric.item.handlers.ability.abilities.BlockZapperAbility;
 import dev.daweapon.type.skyblockgeneric.item.handlers.ability.abilities.BuildersWandAbility;
+import dev.daweapon.type.skyblockgeneric.item.handlers.ability.abilities.BuildersWandStorageAbility;
 import dev.daweapon.type.skyblockgeneric.item.handlers.ability.abilities.CreeperVeil;
 import dev.daweapon.type.skyblockgeneric.item.handlers.ability.abilities.CrimsonAbilities;
 import dev.daweapon.type.skyblockgeneric.item.handlers.ability.abilities.ExplosionSound;
@@ -268,6 +270,8 @@ public class AbilityRegistry {
 //		));
 
         register(new BuildersWandAbility());
+        register(new BuildersWandStorageAbility());
+        register(new BlockZapperAbility());
         CrimsonAbilities.register();
         dev.daweapon.type.skyblockgeneric.dante.DanteAbilities.register();
         dev.daweapon.type.skyblockgeneric.trapper.TalbotsTheodolite.register();

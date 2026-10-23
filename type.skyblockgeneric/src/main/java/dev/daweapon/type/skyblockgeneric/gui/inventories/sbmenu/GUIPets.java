@@ -153,6 +153,10 @@ public class GUIPets extends PaginatedView<SkyBlockItem, GUIPets.PetsState> {
                         Text.keyLines("gui_sbmenu.pets.exp_sharing.lore")),
                 (click, c) -> c.push(new GUIPetExpSharing()));
 
+        layout.slot(6, (s, c) -> ItemStacks.item(Material.REPEATER, 1,
+                        "<6>Autopets\n<7>Equip pets automatically when\n<7>something happens.\n\n<e>Click to view!"),
+                (click, c) -> c.player().openView(new dev.daweapon.type.skyblockgeneric.gui.inventories.autopet.GUIAutopets()));
+
         layout.slot(47, (s, c) -> ItemStacks.item(Material.DIAMOND, 1,
                 Text.key("gui_sbmenu.pets.score"), petScoreLore((SkyBlockPlayer) c.player())));
 

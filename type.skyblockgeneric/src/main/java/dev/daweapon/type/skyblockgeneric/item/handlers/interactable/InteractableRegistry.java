@@ -111,6 +111,10 @@ public class InteractableRegistry {
         register("BOOSTER_COOKIE_INTERACT", InteractableItemConfig.builder().rightClickHandler(
                 (player, item) -> new GUIBoosterCookie().open(player)
         ).build());
+        register("AUTOPET_RULES_INTERACT", InteractableItemConfig.builder().rightClickHandler((player, item) -> {
+            if (!dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService.consumePack(player)) return;
+            player.setItemInMainHand(player.getItemInMainHand().withAmount(player.getItemInMainHand().amount() - 1));
+        }).build());
         register("GOD_POTION_INTERACT", InteractableItemConfig.builder().rightClickHandler(
                 (player, item) -> GodPotionService.consume(player, item)
         ).build());

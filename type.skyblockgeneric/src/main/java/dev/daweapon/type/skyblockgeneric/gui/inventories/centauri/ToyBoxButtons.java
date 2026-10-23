@@ -52,7 +52,8 @@ final class ToyBoxButtons {
                 of(Material.OAK_LOG, "<a>Fill Agatha's Rewards", "<8>Agatha never has to know.", "<7>Grant 25 top-bracket rewards from <b>Agatha's Contests<7>.",
                         p -> dev.daweapon.type.skyblockgeneric.starlyn.StarlynContests.fillRewards(p, dev.daweapon.type.skyblockgeneric.starlyn.StarlynSister.AGATHA, 25)),
                 of(Material.JUNGLE_LOG, "<6>Fill Miria's Rewards", "<8>Torrhus sends its regards.", "<7>Grant 25 top-bracket rewards from <b>Miria's Contests<7>.",
-                        p -> dev.daweapon.type.skyblockgeneric.starlyn.StarlynContests.fillRewards(p, dev.daweapon.type.skyblockgeneric.starlyn.StarlynSister.MIRIA, 25)));
+                        p -> dev.daweapon.type.skyblockgeneric.starlyn.StarlynContests.fillRewards(p, dev.daweapon.type.skyblockgeneric.starlyn.StarlynSister.MIRIA, 25)),
+                of(Material.REPEATER, "<6>Max Autopet Rules", "<8>The pets pick themselves.", "<7>Unlock all <a>28 <7>Autopet rule slots.", dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService::maxOut));
     }
 
     static List<ToyBoxButton> mining() {

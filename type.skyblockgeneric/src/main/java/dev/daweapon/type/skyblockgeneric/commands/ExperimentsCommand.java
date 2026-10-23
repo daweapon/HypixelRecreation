@@ -16,6 +16,7 @@ public class ExperimentsCommand extends HypixelCommand {
     public void registerUsage(MinestomCommand command) {
         command.setDefaultExecutor((sender, _) -> {
             if (!permissionCheck(sender)) return;
+            dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService.fire((SkyBlockPlayer) sender, dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetTrigger.EXPERIMENTATION_TABLE);
             ((SkyBlockPlayer) sender).openView(new GUIExperimentationTable());
         });
     }

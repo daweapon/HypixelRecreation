@@ -2,7 +2,7 @@
 
 Sorted reference for the current HypixelRecreation source tree. Updated 2026-10-11.
 
-This catalog covers **131 top-level game-server command definitions** (after merging 52 staff commands into subcommand groups, see Merged staff commands), **7 proxy commands**, and the optional Spark command. It describes the remake as implemented, not a promise of complete real-Hypixel parity. Alias research is in [command-alias-audit.md](docs/audits/command-alias-audit.md).
+This catalog covers **133 top-level game-server command definitions** (after merging 52 staff commands into subcommand groups, see Merged staff commands), **7 proxy commands**, and the optional Spark command. It describes the remake as implemented, not a promise of complete real-Hypixel parity. Alias research is in [command-alias-audit.md](docs/audits/command-alias-audit.md).
 
 ## Contents
 
@@ -44,10 +44,12 @@ This catalog covers **131 top-level game-server command definitions** (after mer
 | `/coopstats` | — | Shows each co-op member's mining/farming contribution. | DEFAULT | No | `type.skyblockgeneric` |
 | `/coopview <player>` | — | Shows the named player's current co-op members. | DEFAULT | No | `type.skyblockgeneric` |
 | `/coopvote <accept\|deny>` | — | Votes on an active co-op add/kick vote. | DEFAULT | No | `type.skyblockgeneric` |
+| `/hgl <text\|clear>` | — | Sets the text of the Hologram line you picked in the Hologram menu (up to 35 characters, `&` colour and formatting codes). `clear` empties the line. Own island only. | DEFAULT | No | `type.skyblockgeneric` |
 | `/ignore <add\|remove\|list> [player]` | — | Blocks a player from visiting your island. | DEFAULT | No | `type.skyblockgeneric` |
 | `/islandprivacy <public\|friends\|private>` | — | Sets who can visit your island. | DEFAULT | No | `type.skyblockgeneric` |
 | `/sbkick <player>` | — | Kicks a guest off your island. | DEFAULT | No | `type.skyblockgeneric` |
 | `/sbkickall` | — | Kicks every guest off your island. | DEFAULT | No | `type.skyblockgeneric` |
+| `/undobuild <wand\|zap>` | — | Undoes your last Builder's Wand build or Block Zapper zap. Clicked from the chat message; expires after 60 seconds. | DEFAULT | No | `type.skyblockgeneric` |
 | `/visit <player>` | — | Visits another player's SkyBlock island. | DEFAULT | No | `type.skyblockgeneric` |
 
 ### Menus and progression

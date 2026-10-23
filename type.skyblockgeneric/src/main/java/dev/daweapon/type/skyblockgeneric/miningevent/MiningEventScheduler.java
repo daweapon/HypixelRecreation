@@ -121,6 +121,7 @@ public final class MiningEventScheduler {
         }
         MiningEvents.setCurrent(event);
         event.begin(System.currentTimeMillis(), MiningEventConfig.get().durationMillis(type));
+        MiningEvents.players().forEach(player -> dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService.fire(player, dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetTrigger.EVENT_START, type.name()));
     }
 
     private static MiningEvent create(MiningEventType type) {

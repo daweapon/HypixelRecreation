@@ -37,6 +37,7 @@ public final class AttackService {
                 damage
         ));
         if (!applied) return false;
+        dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService.fire(attacker, dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetTrigger.ENTER_COMBAT);
         dev.daweapon.type.skyblockgeneric.slayer.inferno.TacticalInsertion.recordDamage(attacker, damage);
 
         String entityName = target.getEntityType().name().toLowerCase(Locale.ROOT).replace("minecraft:", "");

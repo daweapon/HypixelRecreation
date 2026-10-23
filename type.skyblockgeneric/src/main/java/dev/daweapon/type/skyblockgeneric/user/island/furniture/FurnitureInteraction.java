@@ -9,5 +9,6 @@ public enum FurnitureInteraction {
     CRAFTING,
     ENCHANTING,
     ANVIL,
-    CARPENTRY
+    CARPENTRY,
+    HOLOGRAM
 }

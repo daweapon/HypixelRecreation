@@ -67,6 +67,7 @@ public class BlockExperimentationTable implements CustomSkyBlockBlock, BlockPlac
             event.getInstance().setBlock(event.getBlockPosition(), Block.AIR);
             return;
         }
+        dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService.fire(player, dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetTrigger.EXPERIMENTATION_TABLE);
         player.openView(new GUIExperimentationTable());
     }
 
