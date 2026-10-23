@@ -95,6 +95,7 @@ final class CaptureSession implements EventSink {
     private final PlayerTracker player;
     private final HudTracker hud;
     private final EntityTracker entities;
+    private final NpcGuiProbe probe = new NpcGuiProbe();
     private final LocalDateTime startedAt = LocalDateTime.now();
     private final long startedAtMs = System.currentTimeMillis();
     private final List<WorldSegment> segments = new ArrayList<>();
@@ -128,6 +129,7 @@ final class CaptureSession implements EventSink {
         this.hud = new HudTracker(this);
         this.entities = new EntityTracker(this);
         Files.createDirectories(worldsDirectory);
+        ModelCollector.use(directory.resolve("models"));
     }
 
     static CaptureSession open(String name, boolean raw) throws IOException {
@@ -227,6 +229,7 @@ final class CaptureSession implements EventSink {
         run(() -> player.tick(client));
         run(() -> hud.tick(client));
         run(() -> entities.tick(client));
+        run(() -> probe.tick(client, entities));
 
         if (--indexCountdown <= 0) {
             indexCountdown = INDEX_INTERVAL_TICKS;
@@ -557,6 +560,7 @@ final class CaptureSession implements EventSink {
 
         emitSessionStop();
         stopped = true;
+        ModelCollector.release();
 
         int converted = 0;
         if (convertPolar) {
@@ -641,6 +645,10 @@ final class CaptureSession implements EventSink {
         streams.flush();
     }
 
+    NpcGuiProbe probe() {
+        return probe;
+    }
+
     FullCapture.Status status() {
         return new FullCapture.Status(
                 name,
@@ -699,6 +707,7 @@ final class CaptureSession implements EventSink {
         merges.forEach(mergeArray::add);
         root.add("mergedWorlds", mergeArray);
         root.add("npcs", entities.npcs());
+        root.addProperty("modelFiles", ModelCollector.exported());
 
         JsonObject counts = new JsonObject();
         streams.counts().forEach(counts::addProperty);

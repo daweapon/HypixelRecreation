@@ -41,9 +41,25 @@ public final class FullCaptureCommand {
                         .executes(context -> split(context, null))
                         .then(ClientCommands.argument("label", StringArgumentType.word())
                                 .executes(context -> split(context, StringArgumentType.getString(context, "label")))))
+                .then(ClientCommands.literal("npcs")
+                        .then(ClientCommands.literal("on").executes(context -> npcs(context, "on")))
+                        .then(ClientCommands.literal("off").executes(context -> npcs(context, "off")))
+                        .then(ClientCommands.literal("now").executes(context -> npcs(context, "now")))
+                        .then(ClientCommands.literal("reset").executes(context -> npcs(context, "reset")))
+                        .then(ClientCommands.literal("status").executes(context -> npcs(context, "status"))))
                 .then(ClientCommands.literal("note")
                         .then(ClientCommands.argument("text", StringArgumentType.greedyString())
                                 .executes(context -> note(context, StringArgumentType.getString(context, "text")))));
+    }
+
+    private static int npcs(CommandContext<FabricClientCommandSource> context, String mode) {
+        try {
+            feedback(context, "§a" + FullCapture.npcGuis(mode));
+            return 1;
+        } catch (IllegalStateException exception) {
+            feedback(context, "§c" + exception.getMessage());
+            return 0;
+        }
     }
 
     private static int start(CommandContext<FabricClientCommandSource> context, String name, boolean raw) {

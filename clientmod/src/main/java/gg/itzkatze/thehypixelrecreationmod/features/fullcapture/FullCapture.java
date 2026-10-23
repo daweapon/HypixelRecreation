@@ -54,6 +54,13 @@ public final class FullCapture {
         }
     }
 
+    public static String npcGuis(String mode) {
+        if (session == null) {
+            throw new IllegalStateException("No full capture is running.");
+        }
+        return session.probe().command(mode);
+    }
+
     public static void tick() {
         if (session != null) {
             session.tick();

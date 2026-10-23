@@ -88,6 +88,7 @@ public final class CaptureJson {
             return JsonNull.INSTANCE;
         }
 
+        ModelCollector.item(stack);
         JsonObject json = new JsonObject();
         json.addProperty("item", BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
         json.addProperty("count", stack.getCount());

@@ -58,6 +58,10 @@ final class EntityTracker {
         return spawnCount;
     }
 
+    boolean isNpc(UUID uuid) {
+        return npcs.containsKey(uuid);
+    }
+
     JsonArray npcs() {
         JsonArray array = new JsonArray();
         npcs.values().forEach(array::add);
@@ -268,7 +272,9 @@ final class EntityTracker {
             TagValueOutput output = TagValueOutput.createWithContext(ProblemReporter.DISCARDING, entity.level().registryAccess());
             entity.save(output);
             CompoundTag tag = output.buildResult();
-            json.add("nbt", CaptureJson.nbt(tag));
+            var nbtJson = CaptureJson.nbt(tag);
+            json.add("nbt", nbtJson);
+            ModelCollector.scanJson(nbtJson);
         } catch (RuntimeException exception) {
             json.addProperty("nbtError", String.valueOf(exception.getMessage()));
         }

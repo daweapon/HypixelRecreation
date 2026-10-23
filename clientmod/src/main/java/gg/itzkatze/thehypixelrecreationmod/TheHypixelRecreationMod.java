@@ -33,6 +33,7 @@ public final class TheHypixelRecreationMod implements ClientModInitializer {
 	private static void registerCommands() {
 		PlayerSkinCommand.register();
 		RavengardNPCCommand.register();
+		ModelCaptureCommand.register();
 		GetArmorStandArmorColorsCommand.register();
 		GetArmorStandInfos.register();
 		GetScoreboardInfo.register();
