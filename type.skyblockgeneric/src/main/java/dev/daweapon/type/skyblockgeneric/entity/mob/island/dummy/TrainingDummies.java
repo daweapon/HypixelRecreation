@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class TrainingDummies {
     public static final String STORAGE_KEY = "training_dummies";
-    public static final int RESPAWN_TICKS = 100;
+    public static final int RESPAWN_TICKS = 1;
     private static final Map<UUID, TrainingDummySet> LOADED = new ConcurrentHashMap<>();
 
     private TrainingDummies() {

@@ -17,7 +17,7 @@ sections:
       - "The Teleport Pad trade now needs the Ender Pearl Collection VII."
       - "A Portalizer in the anvil with a Travel Scroll that has no portal shows the Error lore."
       - "Weather Node: craft it with Prismarine Shard Collection VI, then use it in Settings, Island Settings, Island Properties to choose sunny, raining or thundering weather."
-      - "Training Dummies can now be killed and come back after five seconds."
+      - "Training Dummies can now be killed and come straight back."
       - "The End biome only spawns Endermen, and the Nether biome only Chickens and Slimes."
       - "Fixed an island being unloaded just as you arrived, which made Beacons, furniture and portals refuse to place."
   - heading: "Furniture"
