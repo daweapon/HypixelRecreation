@@ -10,8 +10,8 @@ import dev.daweapon.type.generic.data.domain.PlayerDataService;
 import dev.daweapon.type.skyblockgeneric.data.*;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointUUIDList;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointAuctionStatistics;
-import dev.daweapon.type.skyblockgeneric.elections.SkyBlockMayor;
-import dev.daweapon.type.skyblockgeneric.elections.perks.ElectionPerks;
+import dev.daweapon.type.skyblockgeneric.elections.perks.TaxPerks;
+import dev.daweapon.type.skyblockgeneric.elections.perks.TaxPerks;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -37,7 +37,7 @@ public final class AuctionClaims {
                 });
                 if (!allowed[0]) return;
                 var response=new ProxyService(ServiceType.AUCTION_HOUSE).handleRequest(new AuctionClaimProtocol(),
-                        new Request(auction,player.getUuid(),profile,(int) ElectionPerks.factor(SkyBlockMayor.Perk.QUAD_TAXES))).get(10,TimeUnit.SECONDS);
+                        new Request(auction,player.getUuid(),profile,(int) TaxPerks.auctionAndBazaarMultiplier())).get(10,TimeUnit.SECONDS);
                 if (!response.success()) { player.sendMessage("<c>"+response.error()); return; }
                 Receipt receipt=response.receipt();
                 if (receipt==null || !auction.equals(receipt.auction()) || !profile.equals(receipt.profile())

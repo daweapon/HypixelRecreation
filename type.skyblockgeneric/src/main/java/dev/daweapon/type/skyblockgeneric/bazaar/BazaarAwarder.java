@@ -6,8 +6,8 @@ import dev.daweapon.commons.skyblock.bazaar.SuccessfulBazaarTransaction;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointCompletedBazaarTransactions;
-import dev.daweapon.type.skyblockgeneric.elections.SkyBlockMayor;
-import dev.daweapon.type.skyblockgeneric.elections.perks.ElectionPerks;
+import dev.daweapon.type.skyblockgeneric.elections.perks.TaxPerks;
+import dev.daweapon.type.skyblockgeneric.elections.perks.TaxPerks;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.json.JSONObject;
 import org.tinylog.Logger;
@@ -187,7 +187,7 @@ public class BazaarAwarder {
             double pricePerUnit = transaction.actualPricePerUnit();
             double grossEarnings = pricePerUnit * quantity;
             double taxTaken = Math.min(grossEarnings,
-                    transaction.taxTaken() * ElectionPerks.factor(SkyBlockMayor.Perk.QUAD_TAXES));
+                    transaction.taxTaken() * TaxPerks.auctionAndBazaarMultiplier());
             double netEarnings = grossEarnings - taxTaken;
 
             // Get display name for the item

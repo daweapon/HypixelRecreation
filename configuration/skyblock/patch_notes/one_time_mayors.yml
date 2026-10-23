@@ -1,0 +1,15 @@
+title: "Dante and Technoblade"
+date: "23rd October 2026"
+intro:
+  - "Two one-time mayors from SkyBlock's history can now take office. They never appear in the election or the special mayor rotation: only staff can install them."
+sections:
+  - heading: "Mayor Dante"
+    colour: "<c>"
+    lines:
+      - "Economy Restoration doubles Auction House and Bazaar taxes, adds a 10% coin tax to NPC shops, charges 5 coins a minute to chat and 2 coins to travel between islands."
+      - "Increase Security, the Goons and the Hub's official buildings are not built yet."
+  - heading: "Mayor Technoblade"
+    colour: "<d>"
+    lines:
+      - "Blood God's Blessing gives 50% more skill experience, Unlimited Speed adds 50 Speed, Potato Crown's Radiance doubles the output of farming minions and Anarchy removes Auction House and Bazaar taxes."
+      - "The Shrine of the Blood God, with its Ancient Pig and Shiny Pigs, is not built yet, and the 400 Speed cap still applies."

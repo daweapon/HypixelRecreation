@@ -59,7 +59,8 @@ public abstract class MinionAction {
         SkyBlockItem fuel = extensionData.getFuel();
         double fuelMultiplier = fuel == null ? 1.0
                 : fuel.getComponent(MinionFuelComponent.class).getOutputMultiplier();
-        double outputMultiplier = fuelMultiplier * ElectionPerks.factor(SkyBlockMayor.Perk.TURBO_MINIONS);
+        double outputMultiplier = fuelMultiplier * ElectionPerks.factor(SkyBlockMayor.Perk.TURBO_MINIONS)
+                * (MinionCategories.isFarming(islandMinion.getMinion()) ? ElectionPerks.factor(SkyBlockMayor.Perk.POTATO_CROWNS_RADIANCE) : 1D);
 
         boolean flintShovel = extensionData.hasMinionUpgrade(ItemType.FLINT_SHOVEL);
         for (SkyBlockItem item : items) {

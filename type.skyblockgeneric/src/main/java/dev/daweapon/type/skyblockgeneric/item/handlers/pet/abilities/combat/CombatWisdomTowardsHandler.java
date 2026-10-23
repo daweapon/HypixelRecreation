@@ -21,7 +21,8 @@ public final class CombatWisdomTowardsHandler implements PetAbilityHandler {
         OtherLoot loot = kill.mob().getOtherLoot();
         if (loot == null || loot.getSkillXPAmount() <= 0) return;
         double extra = loot.getSkillXPAmount() * context.value(0) / 100D
-                * ElectionPerks.multiplier(SkyBlockMayor.Perk.MOAR_SKILLZ);
+                * ElectionPerks.multiplier(SkyBlockMayor.Perk.MOAR_SKILLZ)
+                * ElectionPerks.multiplier(SkyBlockMayor.Perk.BLOOD_GODS_BLESSING);
         if (extra <= 0) return;
         SkyBlockPlayer player = kill.player();
         DatapointSkills.PlayerSkills skills = player.getSkills();

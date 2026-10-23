@@ -42,7 +42,11 @@ public final class PerkMagnitudes {
             Map.entry(Perk.TURBO_MINIONS, 2D),
             Map.entry(Perk.DOUBLE_MOBS_HP, 2D),
             Map.entry(Perk.MOAR_SKILLZ, 50D),
-            Map.entry(Perk.STATSPOCALYPSE, 10D)
+            Map.entry(Perk.STATSPOCALYPSE, 10D),
+            Map.entry(Perk.ECONOMY_RESTORATION, 2D),
+            Map.entry(Perk.BLOOD_GODS_BLESSING, 50D),
+            Map.entry(Perk.UNLIMITED_SPEED, 50D),
+            Map.entry(Perk.POTATO_CROWNS_RADIANCE, 2D)
     ));
 
     private PerkMagnitudes() {}

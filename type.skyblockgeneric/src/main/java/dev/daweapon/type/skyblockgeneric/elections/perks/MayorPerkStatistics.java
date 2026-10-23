@@ -26,6 +26,7 @@ public final class MayorPerkStatistics {
             bonuses = addBase(bonuses, perks, Perk.MINING_FIESTA, ItemStatistic.MINING_WISDOM);
             bonuses = addBase(bonuses, perks, Perk.MINING_FIESTA, ItemStatistic.MINING_FORTUNE);
         }
+        bonuses = addBase(bonuses, perks, Perk.UNLIMITED_SPEED, ItemStatistic.SPEED);
         bonuses = addBase(bonuses, perks, Perk.MAGIC_XP_BOOST, ItemStatistic.ALCHEMY_WISDOM);
         bonuses = addBase(bonuses, perks, Perk.MAGIC_XP_BOOST, ItemStatistic.ENCHANTING_WISDOM);
         bonuses = addBase(bonuses, perks, Perk.HUNTRESS_INTUITION, ItemStatistic.TRACKING);

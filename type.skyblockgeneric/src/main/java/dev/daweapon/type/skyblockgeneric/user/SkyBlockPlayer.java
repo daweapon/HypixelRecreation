@@ -394,6 +394,13 @@ public class SkyBlockPlayer extends HypixelPlayer {
     }
 
     @Override
+    public void sendTo(ServerType type, boolean force) {
+        if (!force && type != HypixelConst.getTypeLoader().getType() && type.name().startsWith("SKYBLOCK_")
+                && !dev.daweapon.type.skyblockgeneric.elections.perks.TaxPerks.chargeIslandToll(this)) return;
+        super.sendTo(type, force);
+    }
+
+    @Override
     public void kill() {
         if (PlayerDeathOverrides.handle(this)) return;
         NPCConversations.server().release(getUuid());

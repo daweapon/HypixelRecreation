@@ -30,6 +30,8 @@ public class ActionPlayerChat implements HypixelEventClass {
         SkyBlockDataHandler dataHandler = player.getSkyblockDataHandler();
         if (dataHandler == null) return;
 
+        if (!dev.daweapon.type.skyblockgeneric.elections.perks.TaxPerks.chargeChatFee(player)) return;
+
         Rank rank = player.getRank();
         dev.daweapon.type.skyblockgeneric.abiphone.ChatAnswers.observe(player, event.getRawMessage());
         String finalMessage = ChatChannelRouter.route(player, event.getRawMessage()).orElse(null);

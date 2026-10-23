@@ -2,6 +2,7 @@ package dev.daweapon.type.skyblockgeneric.shop;
 
 import dev.daweapon.type.skyblockgeneric.accessory.AccessoryOwnership;
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.skyblockgeneric.elections.perks.TaxPerks;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
@@ -29,6 +30,6 @@ public final class ShopDiscount {
     }
 
     public static double apply(SkyBlockPlayer player, double coins) {
-        return coins * (1 - fraction(player));
+        return coins * (1 - fraction(player)) * TaxPerks.npcShopMultiplier();
     }
 }

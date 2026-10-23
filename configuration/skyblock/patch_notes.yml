@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "one-time-mayors"
+    name: "Dante and Technoblade"
+    date: "23rd October 2026"
+    material: player_head
+    title: "Dante and Technoblade"
+    book: "one_time_mayors.yml"
   - version: "farming-islands"
     name: "The Farming Islands Update"
     date: "22nd October 2026"
