@@ -18,6 +18,13 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.ProblemReporter;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.level.storage.TagValueOutput;
 import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
 import java.util.UUID;
@@ -37,6 +44,7 @@ final class EntityTracker {
     private final EventSink sink;
     private final Map<Integer, double[]> lastPositions = new HashMap<>();
     private final Map<UUID, JsonObject> npcs = new LinkedHashMap<>();
+    private final Map<UUID, String> details = new HashMap<>();
 
     private int trackCountdown;
     private int samples;
@@ -58,6 +66,7 @@ final class EntityTracker {
 
     void reset() {
         lastPositions.clear();
+        details.clear();
     }
 
     void onAdd(ClientboundAddEntityPacket packet) {
@@ -112,6 +121,7 @@ final class EntityTracker {
                 continue;
             }
 
+            captureDetail(entity);
             captureNpc(client, entity);
             int id = entity.getId();
             seen.add(id);
@@ -147,6 +157,124 @@ final class EntityTracker {
         sink.emit("entities", "entity:track", payload);
     }
 
+    private static final java.util.Set<String> VOLATILE = java.util.Set.of(
+            "Pos", "Motion", "Rotation", "FallDistance", "Air", "Health", "HurtTime", "Fire", "OnGround", "AbsorptionAmount");
+
+    private void captureDetail(Entity entity) {
+        JsonObject detail = detail(entity);
+        JsonObject stable = detail.deepCopy();
+        stable.remove("position");
+        stable.remove("health");
+        if (stable.has("nbt") && stable.get("nbt").isJsonObject()) {
+            VOLATILE.forEach(stable.getAsJsonObject("nbt")::remove);
+        }
+        String signature = stable.toString();
+        if (signature.equals(details.put(entity.getUUID(), signature))) {
+            return;
+        }
+        sink.emit("entities", "entity:detail", detail);
+    }
+
+    static JsonObject detail(Entity entity) {
+        JsonObject json = new JsonObject();
+        json.addProperty("id", entity.getId());
+        json.addProperty("uuid", entity.getUUID().toString());
+        json.addProperty("type", BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString());
+        JsonObject position = new JsonObject();
+        position.addProperty("x", CaptureJson.round(entity.getX()));
+        position.addProperty("y", CaptureJson.round(entity.getY()));
+        position.addProperty("z", CaptureJson.round(entity.getZ()));
+        position.addProperty("yaw", CaptureJson.round(entity.getYRot()));
+        position.addProperty("pitch", CaptureJson.round(entity.getXRot()));
+        position.addProperty("headYaw", CaptureJson.round(entity.getYHeadRot()));
+        if (entity instanceof LivingEntity body) {
+            position.addProperty("bodyYaw", CaptureJson.round(body.getVisualRotationYInDegrees()));
+        }
+        json.add("position", position);
+        JsonObject box = new JsonObject();
+        box.addProperty("width", CaptureJson.round(entity.getBbWidth()));
+        box.addProperty("height", CaptureJson.round(entity.getBbHeight()));
+        box.addProperty("eyeHeight", CaptureJson.round(entity.getEyeHeight()));
+        json.add("boundingBox", box);
+        json.addProperty("pose", entity.getPose().name());
+        json.addProperty("invisible", entity.isInvisible());
+        json.addProperty("glowing", entity.isCurrentlyGlowing());
+        json.addProperty("onFire", entity.isOnFire());
+        json.addProperty("sneaking", entity.isCrouching());
+        json.addProperty("sprinting", entity.isSprinting());
+        json.addProperty("silent", entity.isSilent());
+        json.addProperty("noGravity", entity.isNoGravity());
+        json.addProperty("customNameVisible", entity.isCustomNameVisible());
+        if (entity.getCustomName() != null) {
+            json.add("customName", CaptureJson.component(entity.getCustomName()));
+        }
+        if (entity.getVehicle() != null) {
+            json.addProperty("vehicle", entity.getVehicle().getUUID().toString());
+        }
+        JsonArray passengers = new JsonArray();
+        for (Entity passenger : entity.getPassengers()) {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("uuid", passenger.getUUID().toString());
+            entry.addProperty("id", passenger.getId());
+            entry.addProperty("type", passenger.getType().toShortString());
+            passengers.add(entry);
+        }
+        json.add("passengers", passengers);
+        JsonArray tags = new JsonArray();
+        entity.entityTags().forEach(tags::add);
+        json.add("tags", tags);
+        if (entity.getTeam() != null) {
+            json.addProperty("team", entity.getTeam().getName());
+        }
+        JsonObject data = new JsonObject();
+        var values = entity.getEntityData().getNonDefaultValues();
+        if (values != null) {
+            for (SynchedEntityData.DataValue<?> value : values) {
+                data.add(String.valueOf(value.id()), CaptureJson.encode(value.value()));
+            }
+        }
+        json.add("syncedData", data);
+        if (entity instanceof LivingEntity living) {
+            json.addProperty("health", CaptureJson.round(living.getHealth()));
+            json.addProperty("maxHealth", CaptureJson.round(living.getMaxHealth()));
+            json.addProperty("baby", living.isBaby());
+            JsonObject equipment = new JsonObject();
+            for (EquipmentSlot slot : EquipmentSlot.values()) {
+                var stack = living.getItemBySlot(slot);
+                if (!stack.isEmpty()) {
+                    equipment.add(slot.getName(), CaptureJson.item(stack));
+                }
+            }
+            json.add("equipment", equipment);
+            JsonArray effects = new JsonArray();
+            for (MobEffectInstance effect : living.getActiveEffects()) {
+                JsonObject entry = new JsonObject();
+                entry.addProperty("effect", effect.getEffect().getRegisteredName());
+                entry.addProperty("amplifier", effect.getAmplifier());
+                entry.addProperty("duration", effect.getDuration());
+                effects.add(entry);
+            }
+            json.add("effects", effects);
+            JsonObject attributes = new JsonObject();
+            living.getAttributes().getSyncableAttributes().forEach((AttributeInstance attribute) -> {
+                JsonObject entry = new JsonObject();
+                entry.addProperty("base", attribute.getBaseValue());
+                entry.addProperty("value", attribute.getValue());
+                attributes.add(attribute.getAttribute().getRegisteredName(), entry);
+            });
+            json.add("attributes", attributes);
+        }
+        try {
+            TagValueOutput output = TagValueOutput.createWithContext(ProblemReporter.DISCARDING, entity.level().registryAccess());
+            entity.save(output);
+            CompoundTag tag = output.buildResult();
+            json.add("nbt", CaptureJson.nbt(tag));
+        } catch (RuntimeException exception) {
+            json.addProperty("nbtError", String.valueOf(exception.getMessage()));
+        }
+        return json;
+    }
+
     private void captureNpc(Minecraft client, Entity entity) {
         if (entity == client.player || !(entity instanceof LivingEntity) || entity instanceof ArmorStand) {
             return;
@@ -173,8 +301,8 @@ final class EntityTracker {
         if (entity.getCustomName() != null) {
             json.addProperty("name", StringUtility.toLegacyString(entity.getCustomName()));
         }
-        JsonArray lines = overheadLines(client, entity);
-        json.add("holograms", lines);
+        json.add("holograms", overheadLines(client, entity));
+        json.add("detail", detail(entity));
         if (profile != null) {
             json.addProperty("profileName", profile.name());
             for (Property property : profile.properties().get("textures")) {

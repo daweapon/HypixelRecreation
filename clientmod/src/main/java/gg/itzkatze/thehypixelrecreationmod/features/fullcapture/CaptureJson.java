@@ -287,7 +287,7 @@ public final class CaptureJson {
         return json.isEmpty() ? new JsonPrimitive(String.valueOf(value)) : json;
     }
 
-    private static JsonElement nbt(Tag tag) {
+    static JsonElement nbt(Tag tag) {
         try {
             return NbtOps.INSTANCE.convertTo(JsonOps.INSTANCE, tag);
         } catch (Exception exception) {
