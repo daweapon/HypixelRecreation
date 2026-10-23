@@ -163,8 +163,8 @@ public final class PlayerDataService {
             try {
                 domain.applyToPlayer(player);
             } catch (Exception e) {
-                Logger.error("Failed to apply data domain {} to player {}, skipping so remaining domains still load",
-                        domain.getClass().getSimpleName(), player.getUuid(), e);
+                Logger.error(e, "Failed to apply data domain {} to player {}, skipping so remaining domains still load",
+                        domain.getClass().getSimpleName(), player.getUuid());
             }
         }
     }
