@@ -25,6 +25,16 @@ every item and component in them, your inventory, chat, the scoreboard, tab, bos
 particles, block changes, entities, and your own clicks and commands, one JSON object per line under
 `streams/`. NPCs (player-type entities, mannequins and named mobs) are captured with their skin texture, signature, overhead hologram lines and position as `entity:npc` events and in the `npcs` list of `session.json`. Every entity also gets an `entity:detail` event (re-emitted whenever it changes) with its full saved NBT, synced data, pose, flags, equipment, attributes, effects, passengers, vehicle, team and tags. `session.json` indexes the lot and `README.md` inside the session explains the format.
 
+- `/fullcapture npcs on|off|now|reset|status` makes the capture open NPC GUIs for you: with `on`, every NPC you
+  walk within about 4.5 blocks of is right-clicked once, its GUI (if any) is recorded and closed again, and its
+  dialogue lands in the chat stream. `now` sweeps the NPCs currently in reach once, `reset` forgets which were tried.
+  It needs to be in reach, so walk the island with it on.
+- Item and block models are exported automatically while a capture runs: every `item_model` seen on an item, GUI slot
+  or display entity is copied with its item definition, model parents and textures from the loaded resource packs into
+  `models/assets/<namespace>/...` inside the session.
+- `/capturemodels [radius]` (default 24) does that on demand without a capture: it saves the held item's and every
+  nearby entity's models plus their full detail (`entities.json`) under `.minecraft/model-captures/<timestamp>`.
+  Stand next to the Crop Analyzer and run it.
 - `/getskins <radius>` Gets the information of player's or NPC's skins in the defined radius.
 - `/getarmorstandcolors <radius>` Gets the color information of armor stands in the defined radius.
 - `/getarmorstandinfos <radius>` Gets the position information of armor stands in the defined radius. (wip)
