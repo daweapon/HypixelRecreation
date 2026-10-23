@@ -8,7 +8,9 @@ module.exports = {
         await t.step('reach SkyBlock and walk to the Hub Salesman', async () => {
             await bot.joinSkyblock();
             await sleep(3000);
+            await bot.command('/mission clearset GETTING_STARTED', { settleMs: 1500 });
             await bot.command('/hub', { settleMs: 6000 });
+            await bot.waitFor(() => /Village|Hub/i.test((bot.sidebar()?.lines ?? []).join(' ')) && !/Your Island/.test((bot.sidebar()?.lines ?? []).join(' ')), { timeoutMs: 60000, what: 'the Hub sidebar' });
             await sleep(6000);
         });
 
