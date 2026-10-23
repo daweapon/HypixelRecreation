@@ -71,4 +71,9 @@ public class FurnitureStorageView extends StatelessView {
         for (int slot = 0; slot < FurnitureContents.PAGE_SLOTS; slot++) stacks.add(ctx.inventory().getItemStack(slot));
         owner.setStorage(furniture, FurnitureContents.withPage(owner.storageOf(furniture), pages, page, stacks));
     }
+
+    @Override
+    public boolean onBottomClick(dev.daweapon.type.generic.gui.v2.context.ClickContext<DefaultState> click, ViewContext ctx) {
+        return true;
+    }
 }

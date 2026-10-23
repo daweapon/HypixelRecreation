@@ -7,6 +7,7 @@ import dev.daweapon.type.skyblockgeneric.user.island.SkyBlockIsland;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
+import java.util.function.ToIntFunction;
 
 public final class HubPortalRules {
     public static final int REMOVAL_SKILL_LEVEL = 5;
@@ -16,8 +17,11 @@ public final class HubPortalRules {
     }
 
     public static boolean canRemove(SkyBlockPlayer player) {
-        return Arrays.stream(SkillCategories.values())
-                .anyMatch(skill -> player.getSkills().getCurrentLevel(skill) >= REMOVAL_SKILL_LEVEL);
+        return canRemove(skill -> player.getSkills().getCurrentLevel(skill));
+    }
+
+    static boolean canRemove(ToIntFunction<SkillCategories> levelOf) {
+        return Arrays.stream(SkillCategories.values()).anyMatch(skill -> levelOf.applyAsInt(skill) >= REMOVAL_SKILL_LEVEL);
     }
 
     public static boolean isHubPortal(PlacedPortal portal) {

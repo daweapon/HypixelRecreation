@@ -39,7 +39,10 @@ const openAt = async (t, bot, target) => {
 const inventorySlot = (bot, matcher) => {
     const window = bot.bot.currentWindow;
     const start = window.inventoryStart ?? window.slots.length - 36;
-    return window.slots.findIndex((item, index) => index >= start && item && matcher.test(item.displayName));
+    const owned = bot.bot.inventory.slots.findIndex((item, index) => index >= 9 && index <= 44 && item
+        && matcher.test(item.customName ? JSON.stringify(item.customName) : item.displayName));
+    if (owned < 0) return -1;
+    return owned <= 35 ? start + owned - 9 : start + 27 + (owned - 36);
 };
 
 module.exports = {
@@ -69,28 +72,30 @@ module.exports = {
 
         await t.step('items put in the chest survive closing and reopening', async () => {
             await bot.closeWindow();
-            await bot.command('/item COAL 7', { settleMs: 1000 });
+            await bot.command('/item OAK_PLANKS 7', { settleMs: 1000 });
             await openAt(t, bot, chest);
-            const from = inventorySlot(bot, /Coal/);
-            t.assert(from >= 0, 'no coal in the inventory');
+            const from = inventorySlot(bot, /Oak Planks/);
+            t.assert(from >= 0, 'no planks in the inventory');
             await bot.click(from, { settleMs: 500 });
             await bot.click(10, { settleMs: 800 });
+            const placed = bot.window().slots.find((entry) => entry.slot === 10);
+            t.assert(placed, 'the item did not land in the chest slot; cursor=' + JSON.stringify(bot.bot.inventory.selectedItem?.name) + ' from=' + from);
             await bot.closeWindow();
             await sleep(500);
             await openAt(t, bot, chest);
             const slot = bot.window().slots.find((entry) => entry.slot === 10);
-            t.assert(slot && /Coal/.test(slot.name), JSON.stringify(slot));
+            t.assert(slot && /Oak Planks/.test(slot.name), JSON.stringify(slot));
             return slot.name + ' x' + slot.count;
         });
 
         await t.step('the chest page buttons move between pages and keep each page', async () => {
             await bot.click(53, { settleMs: 1200 });
             await bot.waitWindow({ timeoutMs: 6000, title: 'Page 2/3' });
-            t.assert(!bot.window().slots.some((slot) => slot.slot === 10 && /Coal/.test(slot.name)), 'page 2 should be empty');
+            t.assert(!bot.window().slots.some((slot) => slot.slot === 10 && /Oak Planks/.test(slot.name)), 'page 2 should be empty');
             await bot.click(45, { settleMs: 1200 });
             await bot.waitWindow({ timeoutMs: 6000, title: 'Page 1/3' });
             const slot = bot.window().slots.find((entry) => entry.slot === 10);
-            t.assert(slot && /Coal/.test(slot.name), JSON.stringify(slot));
+            t.assert(slot && /Oak Planks/.test(slot.name), JSON.stringify(slot));
             await bot.closeWindow();
         });
 
@@ -114,13 +119,13 @@ module.exports = {
             furnace = await placeFurniture(t, bot, 'FURNACE_PLUS', /Furnace/, 11, 40);
             await bot.command('/clear', { settleMs: 500 });
             await bot.command('/item IRON_ORE 2', { settleMs: 1000 });
-            await bot.command('/item COAL 1', { settleMs: 1000 });
+            await bot.command('/item OAK_PLANKS 2', { settleMs: 1000 });
             await openAt(t, bot, furnace);
             t.assert(/Furnace/.test(titleText(bot.window())), titleText(bot.window()));
             const ore = inventorySlot(bot, /Iron Ore/);
             await bot.click(ore, { settleMs: 500 });
             await bot.click(0, { settleMs: 500 });
-            const coal = inventorySlot(bot, /Coal/);
+            const coal = inventorySlot(bot, /Oak Planks/);
             await bot.click(coal, { settleMs: 500 });
             await bot.click(1, { settleMs: 500 });
             await sleep(13000);
@@ -146,7 +151,7 @@ module.exports = {
             await sleep(6000);
             await openAt(t, bot, chest);
             const slot = bot.window().slots.find((entry) => entry.slot === 10);
-            t.assert(slot && /Coal/.test(slot.name), JSON.stringify(slot));
+            t.assert(slot && /Oak Planks/.test(slot.name), JSON.stringify(slot));
             await bot.closeWindow();
             await openAt(t, bot, furnace);
             const output = bot.window().slots.find((entry) => entry.slot === 2);

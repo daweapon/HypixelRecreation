@@ -4,7 +4,7 @@ const titleText = (window) => JSON.stringify(window?.title ?? '');
 const slotsText = (bot) => bot.window().slots.map((slot) => `${slot.slot}:${slot.name} ${slot.lore.join(' ')}`).join(' | ');
 
 const surface = (bot, x, z) => {
-    for (let y = 112; y >= 90; y--) {
+    for (let y = 120; y >= 60; y--) {
         const block = bot.bot.blockAt(new Vec3(x, y, z));
         if (block && block.name !== 'air' && block.name !== 'beacon') return { x, y: y + 1, z };
     }
@@ -24,8 +24,15 @@ const placeOn = async (t, bot, itemId, matcher, target, stand) => {
     return bot.chatSince(mark).join(' | ');
 };
 
+const holdItem = async (bot, matcher) => {
+    const item = bot.bot.inventory.items().find((candidate) => matcher.test(candidate.customName ? JSON.stringify(candidate.customName) : candidate.displayName));
+    if (!item) throw new Error(`no inventory item matching ${matcher}`);
+    await bot.bot.equip(item, 'hand');
+    await sleep(300);
+};
+
 const useWithFace = async (bot, matcher, at, face) => {
-    await bot.useHotbarItem(matcher, { settleMs: 300 }).catch(() => {});
+    await holdItem(bot, matcher);
     const block = bot.bot.blockAt(new Vec3(at.x, at.y, at.z));
     await bot.bot.lookAt(block.position.offset(0.5, 1, 0.5), true);
     const mark = bot.markChat();
@@ -42,78 +49,82 @@ module.exports = {
             await bot.command('/mission clearset GETTING_STARTED', { settleMs: 1500 });
         });
 
-        await t.step('an Autopet Rules 2-Pack unlocks two slots', async () => {
-            await bot.command('/item AUTOPET_RULES_2_PACK', { settleMs: 1000 });
-            const mark = bot.markChat();
-            await bot.useHotbarItem(/Autopet Rules/, { settleMs: 300 });
-            await sleep(1200);
-            const chat = bot.chatSince(mark).join(' | ');
-            t.assert(/unlocked/i.test(chat) && /2\/28/.test(chat), chat);
-            return chat;
-        });
+        const part = process.env.BITS_PART ?? 'all';
+        if (part !== 'build') {
+            await t.step('an Autopet Rules 2-Pack unlocks two slots', async () => {
+                await bot.command('/item AUTOPET_RULES_2_PACK', { settleMs: 1000 });
+                const mark = bot.markChat();
+                await bot.useHotbarItem(/Autopet Rules/, { settleMs: 300 });
+                await sleep(1200);
+                const chat = bot.chatSince(mark).join(' | ');
+                t.assert(/unlocked/i.test(chat) && /2\/28/.test(chat), chat);
+                return chat;
+            });
 
-        await t.step('max the profile (adds pets and all 28 rule slots), then a further pack is refused', async () => {
-            await bot.command('/max profile', { settleMs: 6000 });
-            await sleep(12000);
-            await bot.command('/clear', { settleMs: 1500 });
-            await bot.command('/item AUTOPET_RULES_2_PACK', { settleMs: 1000 });
-            const mark = bot.markChat();
-            await bot.useHotbarItem(/Autopet Rules/, { settleMs: 300 });
-            await sleep(1200);
-            const chat = bot.chatSince(mark).join(' | ');
-            t.assert(/maximum/i.test(chat), chat);
-            await bot.command('/clear', { settleMs: 500 });
-            return chat;
-        });
+            await t.step('max the profile (adds pets and all 28 rule slots), then a further pack is refused', async () => {
+                await bot.command('/max profile', { settleMs: 6000 });
+                await sleep(12000);
+                await bot.command('/clear', { settleMs: 1500 });
+                await bot.command('/item AUTOPET_RULES_2_PACK', { settleMs: 1000 });
+                const mark = bot.markChat();
+                await bot.useHotbarItem(/Autopet Rules/, { settleMs: 300 });
+                await sleep(1200);
+                const chat = bot.chatSince(mark).join(' | ');
+                t.assert(/maximum/i.test(chat), chat);
+                await bot.command('/clear', { settleMs: 500 });
+                return chat;
+            });
 
-        await t.step('the Pets menu opens the Autopets menu with 28 open slots', async () => {
-            await bot.command('/pets', { settleMs: 2000 });
-            await bot.waitWindow({ timeoutMs: 8000 });
-            await bot.click(6);
-            await bot.waitWindow({ timeoutMs: 8000, title: 'Autopets' });
-            const text = slotsText(bot);
-            t.assert(/Create Rule #1/.test(text) && /Create Rule #28/.test(text) && !/Locked Rule Slot/.test(text), text);
-        });
+            await t.step('the Pets menu opens the Autopets menu with 28 open slots', async () => {
+                await bot.command('/pets', { settleMs: 2000 });
+                await bot.waitWindow({ timeoutMs: 8000 });
+                await bot.click(6);
+                await bot.waitWindow({ timeoutMs: 8000, title: 'Autopets' });
+                const text = slotsText(bot);
+                t.assert(/Create Rule #1/.test(text) && /Create Rule #28/.test(text) && !/Locked Rule Slot/.test(text), text);
+            });
 
-        await t.step('a LOGIN rule can be built through the menus and saved', async () => {
-            await bot.click(10);
-            await bot.waitWindow({ timeoutMs: 8000, title: 'Autopet Rule' });
-            await bot.click(10);
-            await bot.waitWindow({ timeoutMs: 8000, title: 'Select Trigger' });
-            const triggers = slotsText(bot);
-            t.assert(/On login/.test(triggers) && /Not available yet/.test(triggers), triggers);
-            await bot.click(10);
-            await bot.waitWindow({ timeoutMs: 8000, title: 'Autopet Rule' });
-            await bot.click(13);
-            await bot.waitWindow({ timeoutMs: 8000, title: 'Select Pet' });
-            await bot.click(10);
-            await bot.waitWindow({ timeoutMs: 8000, title: 'Autopet Rule' });
-            const rule = slotsText(bot);
-            t.assert(/Save Rule/.test(rule), rule);
-            await bot.click(22);
-            await bot.waitWindow({ timeoutMs: 8000, title: 'Autopets' });
-            const menu = slotsText(bot);
-            t.assert(/Rule #1/.test(menu) && /On login/.test(menu), menu);
-            await bot.closeWindow();
-            return menu.slice(0, 400);
-        });
+            await t.step('a LOGIN rule can be built through the menus and saved', async () => {
+                await bot.click(10);
+                await bot.waitWindow({ timeoutMs: 8000, title: 'Autopet Rule' });
+                await bot.click(10);
+                await bot.waitWindow({ timeoutMs: 8000, title: 'Select Trigger' });
+                const triggers = slotsText(bot);
+                t.assert(/On login/.test(triggers) && /Not available yet/.test(triggers), triggers);
+                await bot.click(10);
+                await bot.waitWindow({ timeoutMs: 8000, title: 'Autopet Rule' });
+                await bot.click(13);
+                await bot.waitWindow({ timeoutMs: 8000, title: 'Select Pet' });
+                await bot.click(10);
+                await bot.waitWindow({ timeoutMs: 8000, title: 'Autopet Rule' });
+                const rule = slotsText(bot);
+                t.assert(/Save Rule/.test(rule), rule);
+                await bot.click(22);
+                await bot.waitWindow({ timeoutMs: 8000, title: 'Autopets' });
+                const menu = slotsText(bot);
+                t.assert(/Rule #1/.test(menu) && /On login/.test(menu), menu);
+                await bot.closeWindow();
+                return menu.slice(0, 400);
+            });
 
-        await t.step('the rule equips its pet on the next login', async () => {
-            await bot.command('/pets', { settleMs: 2000 });
-            await bot.waitWindow({ timeoutMs: 8000 });
-            const active = bot.window().slots.find((slot) => /despawn/i.test(slot.lore.join(' ')));
-            if (active) await bot.click(active.slot);
-            await bot.closeWindow();
-            await bot.disconnect();
-            await sleep(45000);
-            await bot.connect();
-            const mark = bot.markChat();
-            await bot.joinSkyblock({ timeoutMs: 240000 });
-            await sleep(6000);
-            const chat = bot.chatSince(mark).filter((line) => /Autopet/.test(line)).join(' | ');
-            t.assert(/equipped/.test(chat), chat || 'no Autopet message');
-            return chat;
-        });
+            await t.step('the rule equips its pet on the next login', async () => {
+                await bot.command('/pets', { settleMs: 2000 });
+                await bot.waitWindow({ timeoutMs: 8000 });
+                const active = bot.window().slots.find((slot) => /despawn/i.test(slot.lore.join(' ')));
+                if (active) await bot.click(active.slot);
+                await bot.closeWindow();
+                await bot.disconnect();
+                await sleep(45000);
+                await bot.connect();
+                const mark = bot.markChat();
+                await bot.joinSkyblock({ timeoutMs: 240000 });
+                await sleep(6000);
+                const chat = bot.chatSince(mark).filter((line) => /Autopet/.test(line)).join(' | ');
+                t.assert(/equipped/.test(chat), chat || 'no Autopet message');
+                return chat;
+            });
+        }
+        if (part === 'autopet') return;
 
         const holo = { x: 6, y: 100, z: 40 };
         await t.step('a Hologram places and opens its menu', async () => {
@@ -159,21 +170,22 @@ module.exports = {
             return chat;
         });
 
-        const stand = { x: 14, y: 101, z: 30 };
-        const blockA = surface(bot, 14, 34);
-        const blockB = surface(bot, 15, 34);
-        await t.step('two dirt blocks are placed to practise on', async () => {
-            await bot.command('/item DIRT 64', { settleMs: 1000 });
+        const standGround = surface(bot, 8, 36);
+        const stand = { x: 8, y: standGround.y, z: 36 };
+        const blockA = surface(bot, 8, 40);
+        const blockB = surface(bot, 9, 40);
+        await t.step('two plank blocks are placed to practise on', async () => {
+            await bot.command('/item OAK_PLANKS 64', { settleMs: 1000 });
             await bot.command(`/tp ${stand.x} ${stand.y} ${stand.z}`, { settleMs: 1500 });
             for (const target of [blockA, blockB]) {
-                await bot.useHotbarItem(/Dirt/, { settleMs: 300 }).catch(() => {});
+                await holdItem(bot, /Oak Planks/);
                 const ground = bot.bot.blockAt(new Vec3(target.x, target.y - 1, target.z));
                 await bot.bot.lookAt(new Vec3(target.x + 0.5, target.y, target.z + 0.5), true);
                 await bot.bot.placeBlock(ground, new Vec3(0, 1, 0)).catch(() => {});
                 await sleep(800);
             }
             const placed = [blockA, blockB].map((p) => bot.bot.blockAt(new Vec3(p.x, p.y, p.z))?.name);
-            t.assert(placed.every((name) => name === 'dirt'), placed.join(','));
+            t.assert(placed.every((name) => name === 'oak_planks'), placed.join(','));
         });
 
         await t.step('the Block Zapper zaps both blocks and the undo puts them back', async () => {
@@ -187,16 +199,16 @@ module.exports = {
             const undo = bot.chatSince(mark).join(' | ');
             t.assert(/Unzapped/.test(undo), undo);
             const back = bot.bot.blockAt(new Vec3(blockA.x, blockA.y, blockA.z));
-            t.assert(back.name === 'dirt', back.name);
+            t.assert(back.name === 'oak_planks', back.name);
             return { chat, undo };
         });
 
-        await t.step('the Builder\'s Wand extends the dirt and the undo removes it', async () => {
+        await t.step('the Builder\'s Wand extends the planks and the undo removes it', async () => {
             await bot.command('/item BUILDERS_WAND', { settleMs: 1000 });
             const chat = await useWithFace(bot, /Builder/, blockA, new Vec3(0, 1, 0));
             t.assert(/You built/.test(chat), chat);
             const raised = bot.bot.blockAt(new Vec3(blockA.x, blockA.y + 1, blockA.z));
-            t.assert(raised.name === 'dirt', raised.name);
+            t.assert(raised.name === 'oak_planks', raised.name);
             const mark = bot.markChat();
             await bot.command('/undobuild wand', { settleMs: 1500 });
             const undo = bot.chatSince(mark).join(' | ');

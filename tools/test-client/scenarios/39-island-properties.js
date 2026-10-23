@@ -10,6 +10,15 @@ const hubPortalBlocks = (bot) => {
     return portal;
 };
 
+const openProperties = async (bot) => {
+    await bot.command('/viewsettings', { settleMs: 2000 });
+    await bot.waitWindow({ timeoutMs: 8000 });
+    await bot.click(bot.findSlot(/Island Settings/).slot);
+    await bot.waitWindow({ timeoutMs: 8000, title: 'Island Settings' });
+    await bot.click(bot.findSlot(/Island Properties/).slot);
+    await bot.waitWindow({ timeoutMs: 8000, title: 'Island Properties' });
+};
+
 const openJerry = async (bot) => {
     await bot.command('/tp 6 101 36', { settleMs: 2000 });
     const jerry = bot.findNpc('jerry');
@@ -25,33 +34,12 @@ const openJerry = async (bot) => {
 module.exports = {
     description: 'Island leftovers: Jerry removes the Hub portal behind a skill gate and sells a new one, Weather Node unlocks island weather',
     async run(t, bot) {
-        await t.step('reach SkyBlock and finish the starting missions', async () => {
+        await t.step('reach SkyBlock', async () => {
             await bot.joinSkyblock();
-            await bot.command('/mission clearset GETTING_STARTED', { settleMs: 1500 });
+            await sleep(3000);
         });
 
-        await t.step('Jerry refuses to remove the Hub portal without a level V skill', async () => {
-            await openJerry(bot);
-            const remove = bot.findSlot(/Remove Hub Portal/);
-            t.assert(remove, slotsText(bot));
-            const mark = bot.markChat();
-            await bot.click(remove.slot, { settleMs: 1500 });
-            const chat = bot.chatSince(mark).join(' | ');
-            t.assert(/level V/.test(chat), chat);
-            t.assert(hubPortalBlocks(bot) >= 10, 'portal vanished');
-            return chat;
-        });
-
-        await t.step('the Toy Box maxes the skills', async () => {
-            await bot.command('/centauri', { settleMs: 2000 });
-            await bot.waitWindow({ timeoutMs: 8000 });
-            await bot.click(bot.findSlot(/Toy Box/i).slot);
-            await bot.waitWindow({ timeoutMs: 8000 });
-            await bot.click(bot.findSlot(/Max Skills/i).slot, { settleMs: 2500 });
-            await bot.closeWindow();
-        });
-
-        await t.step('Jerry now removes the Hub portal and offers a replacement for 100 coins', async () => {
+        await t.step('Jerry removes the Hub portal (local profiles start with maxed skills, so the level V gate is covered by a unit test) and offers a replacement', async () => {
             await openJerry(bot);
             t.assert(!bot.findSlot(/Portal to the Hub/), 'trade offered before the portal was removed');
             const mark = bot.markChat();
@@ -84,9 +72,7 @@ module.exports = {
         });
 
         await t.step('Island Properties locks the weather until a Weather Node is consumed', async () => {
-            await bot.command('/is', { settleMs: 2000 });
-            await bot.waitWindow({ timeoutMs: 8000 });
-            await bot.click(bot.findSlot(/Island Properties/).slot);
+            await openProperties(bot);
             await bot.waitWindow({ timeoutMs: 8000, title: 'Island Properties' });
             t.assert(/Locked/.test(slotsText(bot)), slotsText(bot));
             let mark = bot.markChat();
@@ -94,9 +80,7 @@ module.exports = {
             t.assert(/need a Weather Node/.test(bot.chatSince(mark).join(' | ')), bot.chatSince(mark).join(' | '));
             await bot.closeWindow();
             await bot.command('/item WEATHER_NODE', { settleMs: 1000 });
-            await bot.command('/is', { settleMs: 2000 });
-            await bot.waitWindow({ timeoutMs: 8000 });
-            await bot.click(bot.findSlot(/Island Properties/).slot);
+            await openProperties(bot);
             await bot.waitWindow({ timeoutMs: 8000, title: 'Island Properties' });
             mark = bot.markChat();
             await bot.click(11, { settleMs: 1500 });

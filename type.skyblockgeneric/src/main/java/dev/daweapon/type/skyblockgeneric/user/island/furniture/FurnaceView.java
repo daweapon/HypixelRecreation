@@ -82,4 +82,9 @@ public class FurnaceView extends StatelessView {
         furnace.cookProgress = stored.cookProgress;
         return furnace;
     }
+
+    @Override
+    public boolean onBottomClick(dev.daweapon.type.generic.gui.v2.context.ClickContext<DefaultState> click, ViewContext ctx) {
+        return true;
+    }
 }
