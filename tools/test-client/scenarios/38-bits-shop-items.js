@@ -101,15 +101,17 @@ module.exports = {
         await t.step('the rule equips its pet on the next login', async () => {
             await bot.command('/pets', { settleMs: 2000 });
             await bot.waitWindow({ timeoutMs: 8000 });
+            const active = bot.window().slots.find((slot) => /despawn/i.test(slot.lore.join(' ')));
+            if (active) await bot.click(active.slot);
             await bot.closeWindow();
             await bot.disconnect();
-            await sleep(15000);
+            await sleep(45000);
             await bot.connect();
             const mark = bot.markChat();
-            await bot.joinSkyblock();
+            await bot.joinSkyblock({ timeoutMs: 240000 });
             await sleep(6000);
-            const chat = bot.chatSince(mark).join(' | ');
-            t.assert(/Autopet/.test(chat) && /equipped/.test(chat), chat);
+            const chat = bot.chatSince(mark).filter((line) => /Autopet/.test(line)).join(' | ');
+            t.assert(/equipped/.test(chat), chat || 'no Autopet message');
             return chat;
         });
 

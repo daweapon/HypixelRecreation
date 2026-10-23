@@ -69,6 +69,10 @@ public class GUIIslandSettings extends StatelessView {
                     + summary);
         }, (click, c) -> c.push(new GUIIslandSettingsCoop()));
 
+        layout.slot(22, (s, c) -> ItemStacks.item(Material.COMPARATOR,
+                "<a>Island Properties\n<7>Weather and biome of your island.\n\n<e>Click to open!"),
+                (click, c) -> c.push(new GUIIslandProperties()));
+
         Components.backOrClose(layout, 31, ctx);
     }
 

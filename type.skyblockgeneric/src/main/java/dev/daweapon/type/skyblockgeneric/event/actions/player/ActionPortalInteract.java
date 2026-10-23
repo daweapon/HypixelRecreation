@@ -8,6 +8,7 @@ import dev.daweapon.type.generic.event.phase.PhasedEvent;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import dev.daweapon.type.skyblockgeneric.user.island.SkyBlockIsland;
+import dev.daweapon.type.skyblockgeneric.user.island.portal.HubPortalRules;
 import dev.daweapon.type.skyblockgeneric.user.island.portal.PlacedPortal;
 import dev.daweapon.type.skyblockgeneric.user.island.portal.PortalCatalog;
 import dev.daweapon.type.skyblockgeneric.user.island.portal.PortalDeleteConfirmView;
@@ -34,6 +35,7 @@ public class ActionPortalInteract implements HypixelEventClass {
                 && PortalCatalog.get(held.getAttributeHandler().getPotentialType().name()) != null) return;
 
         event.setBlockingItemUse(true);
+        if (HubPortalRules.isHubPortal(portal) && !HubPortalRules.requireSkill(player)) return;
         PortalDestination destination = PortalCatalog.get(portal.itemId());
         player.openView(new PortalDeleteConfirmView(destination, confirmer -> {
             if (island.getPortals() == null) return;

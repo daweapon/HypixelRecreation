@@ -422,6 +422,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: WEATHER_NODE
   - amount: 800
     rewards:
     - type: XP

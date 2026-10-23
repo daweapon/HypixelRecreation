@@ -27,6 +27,11 @@ public class AnvilCombinableComponent extends SkyBlockItemComponent {
         return handler != null && handler.validateFunction().canApply(player, upgradeItem, sacrificeItem);
     }
 
+    public @org.jetbrains.annotations.Nullable String rejection(SkyBlockItem upgradeItem, SkyBlockItem sacrificeItem) {
+        AnvilCombineHandler handler = AnvilCombineRegistry.getHandler(handlerId);
+        return handler == null || handler.rejectionFunction() == null ? null : handler.rejectionFunction().explain(upgradeItem, sacrificeItem);
+    }
+
     public int applyCostLevels(SkyBlockItem upgradeItem, SkyBlockItem sacrificeItem, SkyBlockPlayer player) {
         AnvilCombineHandler handler = AnvilCombineRegistry.getHandler(handlerId);
         return handler != null

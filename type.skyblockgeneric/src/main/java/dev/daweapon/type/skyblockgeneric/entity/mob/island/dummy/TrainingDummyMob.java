@@ -7,6 +7,7 @@ import dev.daweapon.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import dev.daweapon.type.skyblockgeneric.loottable.OtherLoot;
 import dev.daweapon.type.skyblockgeneric.loottable.SkyBlockLootTable;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
+import dev.daweapon.type.skyblockgeneric.user.island.SkyBlockIsland;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.ai.GoalSelector;
 import net.minestom.server.entity.ai.TargetSelector;
@@ -61,7 +62,6 @@ public class TrainingDummyMob extends SkyBlockMob {
         boolean applied = super.damage(damage);
         if (applied) {
             hits.addLast(new Hit(System.currentTimeMillis(), damage.getAmount()));
-            heal();
             refreshName();
         }
         return applied;
@@ -69,7 +69,15 @@ public class TrainingDummyMob extends SkyBlockMob {
 
     @Override
     public void kill() {
-        heal();
+        PlacedTrainingDummy dummy = placed;
+        SkyBlockIsland island = getInstance() == null ? null : SkyBlockIsland.forInstance(getInstance());
+        if (dummy == null || island == null) {
+            heal();
+            return;
+        }
+        placed = null;
+        remove();
+        TrainingDummies.respawnLater(island, dummy);
     }
 
     @Override

@@ -996,7 +996,7 @@ items:
     material: end_portal_frame
     name: "Teleport Pad"
     rarity: UNCOMMON
-    source: "Trade 1 Enchanted Eye of Ender for 2 (Ender Pearl VII)"
+    source: "Trade 1 Enchanted Eye of Ender for 2 (needs Ender Pearl Collection VII)"
     lore:
       - "§7Places a Teleport Pad down,"
       - "§7allowing you to teleport to any"
@@ -2389,11 +2389,32 @@ items:
     material: lapis_block
     name: "Weather Node"
     rarity: UNCOMMON
-    unavailable: "Needs a Block of Lapis Lazuli item and island weather settings"
     source: "Crafting (Prismarine Shard VI): 8 Enchanted Redstone around a Block of Lapis Lazuli"
     lore:
       - "§7Change the weather on your private"
       - "§7island."
+      - ""
+      - "§eRight-click in the Island Properties"
+      - "§emenu to consume!"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: ENCHANTED_REDSTONE
+                amount: 1
+              B:
+                type: LAPIS_LAZULI_BLOCK
+                amount: 1
+            result:
+              type: WEATHER_NODE
+              amount: 1
   - id: WEIRDER_TUBA
     material: paper
     name: "Weirder Tuba"

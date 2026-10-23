@@ -50,6 +50,15 @@ module.exports = {
             return sidebarText(bot);
         });
 
+        await t.step('the Toy Box maxes the skills the Hub portal removal gate asks for', async () => {
+            await bot.command('/centauri', { settleMs: 2000 });
+            await bot.waitWindow({ timeoutMs: 8000 });
+            await bot.click(bot.findSlot(/Toy Box/i).slot);
+            await bot.waitWindow({ timeoutMs: 8000 });
+            await bot.click(bot.findSlot(/Max Skills/i).slot, { settleMs: 2500 });
+            await bot.closeWindow();
+        });
+
         await t.step('right-clicking the starter Hub portal frame asks before deleting, and delete removes it', async () => {
             await bot.command('/tp 6 101 38', { settleMs: 2500 });
             const before = portalBlocks(bot, spot.x, spot.y, spot.z);

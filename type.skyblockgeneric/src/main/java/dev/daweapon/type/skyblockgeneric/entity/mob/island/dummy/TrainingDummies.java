@@ -1,6 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.entity.mob.island.dummy;
 
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.generic.utility.MathUtility;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import dev.daweapon.type.skyblockgeneric.user.island.SkyBlockIsland;
@@ -12,6 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class TrainingDummies {
     public static final String STORAGE_KEY = "training_dummies";
+    public static final int RESPAWN_TICKS = 100;
     private static final Map<UUID, TrainingDummySet> LOADED = new ConcurrentHashMap<>();
 
     private TrainingDummies() {
@@ -63,6 +65,13 @@ public final class TrainingDummies {
         mob.remove();
         player.addAndUpdateItem(new SkyBlockItem(ItemType.TRAINING_DUMMY));
         player.sendMessage("<a>You picked up the Training Dummy!");
+    }
+
+    public static void respawnLater(SkyBlockIsland island, PlacedTrainingDummy dummy) {
+        MathUtility.delay(() -> {
+            if (island.getIslandInstance() == null || !of(island).all().contains(dummy)) return;
+            spawn(island, dummy);
+        }, RESPAWN_TICKS);
     }
 
     private static void spawn(SkyBlockIsland island, PlacedTrainingDummy dummy) {

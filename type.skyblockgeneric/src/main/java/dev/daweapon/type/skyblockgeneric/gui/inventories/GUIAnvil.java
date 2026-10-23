@@ -304,6 +304,9 @@ public class GUIAnvil extends HypixelInventoryGUI {
                 set(new GUIItem(RESULT_SLOT) {
                     @Override
                     public ItemStack.Builder getItem(HypixelPlayer p) {
+                        String rejection = sacrificeItem.hasComponent(AnvilCombinableComponent.class)
+                                ? sacrificeItem.getComponent(AnvilCombinableComponent.class).rejection(upgradeItem, sacrificeItem) : null;
+                        if (rejection != null) return ItemStacks.item(Material.BARRIER, 1, rejection);
                         return ItemStacks.item(Material.BARRIER, 1, Text.key("gui_anvil.result_error"),
                                 List.of(Text.key("gui_anvil.result_error.lore")));
                     }

@@ -206,6 +206,9 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: ABSOLUTE_ENDER_PEARL
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: TELEPORT_PAD
   - amount: 25000
     rewards:
     - type: XP

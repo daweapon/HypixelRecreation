@@ -40,4 +40,25 @@ class PrivateIslandMobSpawnerTest {
         assertTrue(PrivateIslandMobSpawner.isNight(18000 + 24000L * 5));
         assertFalse(PrivateIslandMobSpawner.isNight(23000));
     }
+
+    @Test
+    void endBiomeOnlySpawnsEndermenAndNetherOnlyChickensAndSlimes() {
+        assertEquals(java.util.Set.of(IslandMobSpecies.ENDERMAN), IslandBiomeRules.onlySpecies("minecraft:the_end"));
+        assertEquals(java.util.Set.of(IslandMobSpecies.SLIME, IslandMobSpecies.CHICKEN), IslandBiomeRules.onlySpecies("minecraft:nether_wastes"));
+        assertEquals(null, IslandBiomeRules.onlySpecies("minecraft:plains"));
+        for (int i = 0; i < 50; i++) {
+            assertEquals(IslandMobSpecies.ENDERMAN, PrivateIslandMobSpawner.pickSpecies(IslandBiomeRules.onlySpecies("minecraft:the_end")));
+            assertTrue(IslandBiomeRules.onlySpecies("minecraft:nether_wastes").contains(PrivateIslandMobSpawner.pickSpecies(IslandBiomeRules.onlySpecies("minecraft:nether_wastes"))));
+        }
+    }
+
+    @Test
+    void everySpeciesHasOneStatRowPerLevel() {
+        for (IslandMobSpecies species : IslandMobSpecies.values()) {
+            assertEquals(species.getMaxLevel(), species.getHealth().length, species.name());
+            assertEquals(species.getMaxLevel(), species.getDamage().length, species.name());
+            assertEquals(species.getMaxLevel(), species.getCoins().length, species.name());
+            assertEquals(species.getMaxLevel(), species.getOrbs().length, species.name());
+        }
+    }
 }

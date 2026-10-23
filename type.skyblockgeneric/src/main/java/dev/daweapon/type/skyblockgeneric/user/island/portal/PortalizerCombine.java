@@ -21,7 +21,19 @@ public final class PortalizerCombine {
                     if (portal != null) upgradeItem.convertTo(portal);
                 },
                 (player, upgradeItem, sacrificeItem) -> portalFor(upgradeItem) != null,
-                (upgradeItem, sacrificeItem, player) -> 0));
+                (upgradeItem, sacrificeItem, player) -> 0,
+                null,
+                (upgradeItem, sacrificeItem) -> isScroll(upgradeItem) && portalFor(upgradeItem) == null ? MISSING_PORTAL_LORE : null));
+    }
+
+    public static final String MISSING_PORTAL_LORE = """
+            <c>Error!
+            <c>This travel scroll doesn't
+            <c>have a portal item. Ask an admin
+            <c>to add one immediately!""";
+
+    private static boolean isScroll(SkyBlockItem item) {
+        return item.hasComponent(TravelScrollComponent.class) || item.hasComponent(IslandTravelScrollComponent.class);
     }
 
     public static @Nullable ItemType portalFor(SkyBlockItem scroll) {

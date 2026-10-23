@@ -58,7 +58,18 @@ public enum IslandMobSpecies {
             () -> List.of(
                     new LootRecord(ItemType.GUNPOWDER, 1, 50),
                     new LootRecord(ItemType.GLOWSTONE_DUST, 1, 50),
-                    new LootRecord(ItemType.GLASS_BOTTLE, 2, 20)));
+                    new LootRecord(ItemType.GLASS_BOTTLE, 2, 20))),
+    SLIME("Slime", EntityType.SLIME, Material.SLIME_BALL, List.of(MobType.CUBIC), 15,
+            new int[]{100, 115, 132, 152, 174, 201, 231, 266, 305, 351, 404, 465, 535, 615, 707},
+            new int[]{20, 23, 26, 29, 33, 37, 42, 47, 53, 60, 68, 77, 87, 98, 111},
+            new int[]{1, 1, 1, 1, 1, 1, 2, 2, 3, 3, 4, 5, 6, 7, 8},
+            new int[]{1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 4, 4, 5, 6},
+            () -> List.of(new LootRecord(ItemType.SLIME_BALL, 1, 100))),
+    CHICKEN("Chicken", EntityType.CHICKEN, Material.FEATHER, List.of(MobType.ANIMAL), 1,
+            new int[]{40}, new int[]{0}, new int[]{1}, new int[]{1},
+            () -> List.of(
+                    new LootRecord(ItemType.FEATHER, 1, 100),
+                    new LootRecord(ItemType.RAW_CHICKEN, 1, 100)));
 
     private final String displayName;
     private final EntityType entityType;

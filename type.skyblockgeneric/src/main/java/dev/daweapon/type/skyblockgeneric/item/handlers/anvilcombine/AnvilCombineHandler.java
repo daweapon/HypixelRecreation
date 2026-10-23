@@ -8,8 +8,18 @@ public record AnvilCombineHandler(
         CombineFunction combineFunction,
         ValidateFunction validateFunction,
         CostFunction costFunction,
-        @Nullable OnCraftFunction onCraftFunction
+        @Nullable OnCraftFunction onCraftFunction,
+        @Nullable RejectionFunction rejectionFunction
 ) {
+    public AnvilCombineHandler(
+            CombineFunction combineFunction,
+            ValidateFunction validateFunction,
+            CostFunction costFunction,
+            @Nullable OnCraftFunction onCraftFunction
+    ) {
+        this(combineFunction, validateFunction, costFunction, onCraftFunction, null);
+    }
+
     // Constructor without onCraftFunction for backwards compatibility
     public AnvilCombineHandler(
             CombineFunction combineFunction,
@@ -17,6 +27,12 @@ public record AnvilCombineHandler(
             CostFunction costFunction
     ) {
         this(combineFunction, validateFunction, costFunction, null);
+    }
+
+    /** Explains in the result slot why a valid-looking combination was refused; null keeps the generic error. */
+    @FunctionalInterface
+    public interface RejectionFunction {
+        @Nullable String explain(SkyBlockItem upgradeItem, SkyBlockItem sacrificeItem);
     }
 
     @FunctionalInterface

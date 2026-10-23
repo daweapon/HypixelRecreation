@@ -13,6 +13,7 @@ import dev.daweapon.type.generic.gui.inventory.item.GUIClickableItem;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.type.skyblockgeneric.gui.inventories.islandsettings.GUIIslandBiome;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.type.skyblockgeneric.user.island.portal.HubPortalRules;
 
 // Main menu GUI for Jerry the Assistant on the Island: patch notes, deliveries, guesting, and moving Jerry.
 public class GUIJerry extends HypixelInventoryGUI {
@@ -97,6 +98,49 @@ public class GUIJerry extends HypixelInventoryGUI {
                         <e>Click to choose!""");
             }
         });
+
+        set(new GUIClickableItem(20) {
+            @Override
+            public void run(InventoryPreClickEvent e, HypixelPlayer p) {
+                SkyBlockPlayer player = (SkyBlockPlayer) p;
+                player.closeInventory();
+                HubPortalRules.removeFromJerry(player);
+            }
+
+            @Override
+            public ItemStack.Builder getItem(HypixelPlayer p) {
+                return ItemStacks.item(Material.ENDER_PEARL, """
+                        <a>Remove Hub Portal
+                        <7>Remove the Portal to the Hub from
+                        <7>your island.
+                        <8>Needs any skill at level V.
+
+                        <e>Click to remove!""");
+            }
+        });
+
+        if (HubPortalRules.hasRemovedHubPortal((SkyBlockPlayer) getPlayer())) {
+            set(new GUIClickableItem(24) {
+                @Override
+                public void run(InventoryPreClickEvent e, HypixelPlayer p) {
+                    SkyBlockPlayer player = (SkyBlockPlayer) p;
+                    player.closeInventory();
+                    HubPortalRules.buyReplacement(player);
+                }
+
+                @Override
+                public ItemStack.Builder getItem(HypixelPlayer p) {
+                    return ItemStacks.item(Material.OBSIDIAN, """
+                            <a>Portal to the Hub
+                            <7>Buy a new Hub Portal to place
+                            <7>on your island.
+
+                            <7>Cost: <6>%d coins
+
+                            <e>Click to buy!""".formatted(HubPortalRules.REPLACEMENT_COST));
+                }
+            });
+        }
 
         set(new GUIClickableItem(35) {
             @Override

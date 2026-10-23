@@ -581,13 +581,17 @@ public class SkyBlockDataHandler extends DataHandler {
                 DatapointString.class, new DatapointString("skin_signature", "null"),
                 (player, datapoint) -> {
                 },
-                (player, datapoint) -> ((DatapointString) datapoint).setValue(player.getSkin().signature())),
+                (player, datapoint) -> {
+                    if (player.getSkin() != null) ((DatapointString) datapoint).setValue(player.getSkin().signature());
+                }),
 
         SKIN_TEXTURE("skin_texture", false, false, false,
                 DatapointString.class, new DatapointString("skin_texture", "null"),
                 (player, datapoint) -> {
                 },
-                (player, datapoint) -> ((DatapointString) datapoint).setValue(player.getSkin().textures())),
+                (player, datapoint) -> {
+                    if (player.getSkin() != null) ((DatapointString) datapoint).setValue(player.getSkin().textures());
+                }),
 
         VISITED_ISLANDS("visited_islands", false, false, false,
                 DatapointStringList.class, new DatapointStringList("visited_islands")),

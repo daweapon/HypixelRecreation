@@ -329,12 +329,16 @@ public class HypixelDataHandler extends DataHandler {
         SKIN_SIGNATURE("skin_signature",
                 DatapointString.class, new DatapointString("skin_signature", "null"),
                 (player, datapoint) -> {},
-                (player, datapoint) -> ((DatapointString) datapoint).setValue(player.getSkin().signature())),
+                (player, datapoint) -> {
+                    if (player.getSkin() != null) ((DatapointString) datapoint).setValue(player.getSkin().signature());
+                }),
 
         SKIN_TEXTURE("skin_texture",
                 DatapointString.class, new DatapointString("skin_texture", "null"),
                 (player, datapoint) -> {},
-                (player, datapoint) -> ((DatapointString) datapoint).setValue(player.getSkin().textures())),
+                (player, datapoint) -> {
+                    if (player.getSkin() != null) ((DatapointString) datapoint).setValue(player.getSkin().textures());
+                }),
 
         HYPIXEL_EXPERIENCE("hypixel_experience",
                 DatapointHypixelExperience.class, new DatapointHypixelExperience("hypixel_experience", 0L)),

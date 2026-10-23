@@ -12,10 +12,12 @@ import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import dev.daweapon.type.skyblockgeneric.user.island.SkyBlockIsland;
 import dev.daweapon.type.skyblockgeneric.user.island.VisitManager;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;
@@ -88,7 +90,7 @@ public final class PrivateIslandMobSpawner {
             Pos position = findSpawn(instance, anchor.getPosition());
             if (position == null) continue;
 
-            PrivateIslandMob mob = PrivateIslandMob.of(pickSpecies(), level);
+            PrivateIslandMob mob = PrivateIslandMob.of(pickSpecies(IslandBiomeRules.onlySpeciesAt(instance, position)), level);
             mob.setSilent(silenced);
             mob.setInstance(instance, position);
             mobs.add(mob);
@@ -104,7 +106,11 @@ public final class PrivateIslandMobSpawner {
                 .orElse(0);
     }
 
-    private static IslandMobSpecies pickSpecies() {
+    static IslandMobSpecies pickSpecies(@Nullable Set<IslandMobSpecies> only) {
+        if (only != null && !only.isEmpty()) {
+            List<IslandMobSpecies> options = List.copyOf(only);
+            return options.get(ThreadLocalRandom.current().nextInt(options.size()));
+        }
         int total = WEIGHTS.values().stream().mapToInt(Integer::intValue).sum();
         int roll = ThreadLocalRandom.current().nextInt(total);
         for (IslandMobSpecies species : IslandMobSpecies.values()) {
