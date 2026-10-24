@@ -38,6 +38,13 @@ particles, block changes, entities, and your own clicks and commands, one JSON o
 - `/getskins <radius>` Gets the information of player's or NPC's skins in the defined radius.
 - `/getarmorstandcolors <radius>` Gets the color information of armor stands in the defined radius.
 - `/getarmorstandinfos <radius>` Gets the position information of armor stands in the defined radius. (wip)
+- `/regioncapture start [name] [serverType]` records which zone you are in from the sidebar location line (the line with the
+  location symbol), the bounding box of every zone you walk through, the exact spots where the zone changed, a thinned
+  track of your position, and every mob you see (type, the name hologram above it, first-seen position, zone).
+  `/regioncapture mark <text>` saves your spot and a note, `status` prints the zones and mob count so far, `export` saves
+  without stopping and `stop` saves and finishes. It writes `.minecraft/region-captures/<name>_<time>.json`
+  (zones, edges, points, transitions, mobs, mobSummary per zone and mob name) and a matching `.yml` in the
+  `Minestom.regions.yml` format with 1 block of padding. Walk along every border for accurate boxes.
 - `/getscoreboardinfo` Prints out the scoreboard information in chat.
 - `/copymaptexture [all]` Copy's the texture of a map to the clipboard.
 - `/chunkexporter start` starts a chunk-only export.

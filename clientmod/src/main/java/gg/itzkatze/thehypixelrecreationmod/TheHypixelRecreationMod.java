@@ -52,6 +52,7 @@ public final class TheHypixelRecreationMod implements ClientModInitializer {
 		RavengardSessionCommand.register();
 		HudCaptureCommand.register();
 		FullCaptureCommand.register();
+		RegionCaptureCommand.register();
 	}
 
 	private static void registerTickHandlers() {
@@ -62,6 +63,7 @@ public final class TheHypixelRecreationMod implements ClientModInitializer {
 			gg.itzkatze.thehypixelrecreationmod.features.packetlog.RavengardSessionLogger.tick();
 			GuiCaptureRecorder.tick(net.minecraft.client.Minecraft.getInstance());
 			FullCapture.tick();
+			gg.itzkatze.thehypixelrecreationmod.features.regioncapture.RegionCapture.tick();
 			SchematicSelection.tick(net.minecraft.client.Minecraft.getInstance());
 		});
 	}
