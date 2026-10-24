@@ -22,6 +22,14 @@ public class AbiphoneSuus extends CrimsonContact {
     }
 
     @Override
+    public boolean wantsToCall(SkyBlockPlayer player) {
+        return CrimsonSideQuests.is(player, CrimsonSideQuests.SUUS_EVER)
+                && CrimsonReputationService.isMember(player, CrimsonFaction.BARBARIAN)
+                && !CrimsonSideQuests.is(player, CrimsonSideQuests.SUUS_TOY)
+                && CrimsonSideQuests.isReady(player, CrimsonSideQuests.SUUS_LAST, CrimsonSideQuests.SUUS_COOLDOWN);
+    }
+
+    @Override
     protected void call(SkyBlockPlayer player) {
         if (!CrimsonReputationService.isMember(player, CrimsonFaction.BARBARIAN)) {
             noAnswer(player);

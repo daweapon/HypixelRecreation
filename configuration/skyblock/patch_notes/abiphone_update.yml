@@ -17,7 +17,7 @@ sections:
       - "Use /call followed by a contact name, such as /call alda, to ring any contact on one of your Abiphones without opening it."
       - "Abiphone Flip+ models can set one Speed Dial contact from the contact's management menu, then left-click the Abiphone to call them."
       - "Abiphone XIII and above include Snake, Abiphone XIV and above Tic Tac Toe against an unbeatable Abiphone, and Abiphone Flip models Ringtones. Your best Snake score and Tic Tac Toe results are kept on the phone."
-      - "The Sumsung G3 and GG Abicases add one and two contact slots, and the Rezar Abicase makes calls ring once."
+      - "The Sumsung G3 and GG Abicases add one and two contact slots, and the Rezar Abicase makes calls ring once. Only one Abicase in your accessory bag has an effect, but Abicases carried in your inventory still count."
       - "Walter now accepts an Enchanted Sulphur Cube once you reach Sulphur Collection VII, and opens his shop when you call him."
   - heading: "New Contacts"
     colour: "<d>"
@@ -31,6 +31,6 @@ sections:
     lines:
       - "Contacts can now ring you. A call shows the contact's name, three RING lines and a clickable [PICK UP]; click it within about 15 seconds to hear them out."
       - "Elizabeth calls when an Account or Profile Upgrade finishes and when a new Fire Sale starts, Agatha and Miria when a Starlyn contest ends, Hoppity when he has a new Chocolate Rabbit for sale, and Fann when a pet finishes training."
-      - "Aranya calls when she is hungry again, Pablo when he needs a new flower, and Kaus and Rollim when they are ready for their next lesson."
+      - "Aranya calls when she is hungry again, Pablo when he needs a new flower, Suus when Turd has lost his toy again, Clerk Seraphine while a Mayor Election is open and you have not voted, and Kaus and Rollim when they are ready for their next lesson."
       - "Do Not Disturb silences a contact's incoming calls, and there is no signal in the Dwarven Mines and Crystal Hollows, so nobody can call you there."
       - "Staff can place a call with /force call."

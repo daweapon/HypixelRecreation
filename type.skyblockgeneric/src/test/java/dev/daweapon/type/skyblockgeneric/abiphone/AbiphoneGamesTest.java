@@ -2,6 +2,7 @@ package dev.daweapon.type.skyblockgeneric.abiphone;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -81,5 +82,13 @@ class AbiphoneGamesTest {
     void gameStatsRoundTrip() {
         AbiphoneGameStats stats = AbiphoneGameStats.parse("").withSnakeScore(7).withSnakeScore(3).withWin().withLoss().withDraw().withDraw();
         assertEquals(new AbiphoneGameStats(7, 1, 1, 2), AbiphoneGameStats.parse(stats.serialize()));
+    }
+
+    @Test
+    void onlyOneBagCaseWorksButInventoryCasesStillDo() {
+        assertEquals(java.util.Set.of("REZAR_ABICASE"), AbiphoneCases.effective(List.of("REZAR_ABICASE", "SUMSUNG_GG_ABICASE"), List.of()));
+        assertEquals(java.util.Set.of("REZAR_ABICASE", "SUMSUNG_GG_ABICASE"), AbiphoneCases.effective(List.of("REZAR_ABICASE"), List.of("SUMSUNG_GG_ABICASE", "DIAMOND_SWORD")));
+        assertEquals(2, AbiphoneCases.contactSlots(java.util.Set.of("SUMSUNG_GG_ABICASE", "SUMSUNG_G3_ABICASE")));
+        assertTrue(AbiphoneCases.singleRing(java.util.Set.of("REZAR_ABICASE")));
     }
 }

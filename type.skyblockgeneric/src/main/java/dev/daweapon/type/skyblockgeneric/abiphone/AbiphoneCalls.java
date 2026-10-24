@@ -1,8 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.abiphone;
 
-import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.text.Text;
-import dev.daweapon.type.skyblockgeneric.accessory.AccessoryOwnership;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.components.AbiphoneComponent;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -19,7 +17,7 @@ public final class AbiphoneCalls {
         AbiphoneItemSettings.recordCall(player, abiphone, npc);
         Ringtone tone = AbiphoneItemSettings.supports(abiphone, AbiphoneComponent.AbiphoneFeature.RINGTONES)
                 ? AbiphoneItemSettings.ringtone(abiphone) : Ringtone.CLASSIC;
-        int rings = AccessoryOwnership.owns(player, ItemType.REZAR_ABICASE) ? 1 : 3;
+        int rings = AbiphoneCases.singleRing(AbiphoneCases.effective(player)) ? 1 : 3;
         ring(player, tone, 1, rings, () -> npc.onCall(player));
     }
 

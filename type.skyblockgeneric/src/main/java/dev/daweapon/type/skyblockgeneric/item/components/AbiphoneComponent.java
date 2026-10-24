@@ -1,9 +1,8 @@
 package dev.daweapon.type.skyblockgeneric.item.components;
 
 import dev.daweapon.commons.StringUtility;
-import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneCalls;
-import dev.daweapon.type.skyblockgeneric.accessory.AccessoryOwnership;
+import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneCases;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import dev.daweapon.type.skyblockgeneric.gui.inventories.abiphone.AbiphoneView;
 import lombok.Getter;
@@ -47,8 +46,7 @@ public class AbiphoneComponent extends SkyBlockItemComponent {
 
 	public static int caseSlots(SkyBlockPlayer player) {
 		if (player == null) return 0;
-		if (AccessoryOwnership.owns(player, ItemType.SUMSUNG_GG_ABICASE)) return 2;
-		return AccessoryOwnership.owns(player, ItemType.SUMSUNG_G3_ABICASE) ? 1 : 0;
+		return AbiphoneCases.contactSlots(AbiphoneCases.effective(player));
 	}
 
 	private List<String> lore(SkyBlockPlayer player, SkyBlockItem abiphone, int maxDiscs, List<AbiphoneFeature> features) {
