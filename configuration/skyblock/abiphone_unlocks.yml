@@ -1,0 +1,546 @@
+contacts:
+  - id: alchemist
+    npc: [NPCAlchemist]
+    stages:
+      - label: "SHOW ABIPHONE"
+        intro:
+          - "An Abiphone? What kind of <5><o>witchcraft <f>is that?"
+          - "I see."
+          - "Turns out I own one too. I never knew what it was called."
+          - "So, you want me to add you?"
+          - "Get me a stack of <9>Mutant Nether Wart<f>."
+        missing:
+          - "You have less warts than I have on my face!"
+        items: [{item: MUTANT_NETHER_WART, amount: 64}]
+    given:
+      - "I was right, you are indeed destined for great things."
+  - id: anita
+    npc: [NPCAnita]
+    head: "4d4e9d2a8c88d0efd750e852732ba05fa3f302e204e2bdc88dad605e2557e2a6"
+    stages:
+      - label: "SHOW MEDAL"
+        intro:
+          - "Hi dear!"
+          - "I only share my contact with those who are on Jacob's contact list."
+          - "Oh and also, you need to have earned a <6><l>GOLD<f> medal in his contest if you want to be on MY list!"
+        missing:
+          - "I only share my contact with those who are on Jacob's contact list, and who have earned a <6><l>GOLD<f> medal in his contest!"
+        check: JACOB_AND_GOLD_MEDAL
+    given:
+      - "Sweet!"
+      - "If I need any farming done back home, I'll be sure to call ya!"
+  - id: bartender
+    npc: [NPCBartender]
+    head: "eedd8f16b202c42b3b5ad457d436cc639952107e361ab1e61b91689e40c78be7"
+    stages:
+      - label: "SHOW SLAYER LEVEL"
+        intro:
+          - "Sorry mate, not much space in the old handheld."
+          - "People always adding me left and right these days, asking if the ol' tav is open or not."
+          - "I tell 'em every time that it's open every day, but when they put down the phone I know they'll call 'n ask again tomorrow."
+          - "Since I'm so limited on space, I've got to be quite particular on who I add."
+          - "You go and reach <c>Spider Slayer 9<f>, and I'll add you. How's that sound?"
+        missing:
+          - "You haven't reached <c>Spider Slayer 9 <f>yet, so I can't add you."
+        check: SPIDER_SLAYER_9
+    given:
+      - "You want me to add ya to my handheld, huh?"
+      - "Looks like you've reached <c>Spider Slayer 9<f>, so you're as good a choice as any I suppose."
+      - "Just don't call me asking when the tavern is open, okay?"
+      - "We're always open..."
+  - id: blacksmith
+    npc: [VillagerBlacksmith]
+    stages:
+      - label: "PAY DEBT"
+        intro:
+          - "You want my contact?"
+          - "Nonono, not happening."
+          - "Well... Actually..."
+          - "No, no absolutely not."
+          - "Unless? Hmm, lemme think about it."
+          - "No for sure, for sure. That would be too much."
+          - "But maybe... If you do something for me."
+          - "I owe a lot of money to someone... Someone important."
+          - "Don't ask me how I got into this situation."
+          - "I owe them <6>32M coins<f>."
+          - "If you help me, I'll allow you to use my services from anywhere."
+        missing:
+          - "You don't have enough coins to pay my debt..."
+        check: BLACKSMITH_DEBT
+    given:
+      - "You are a lifesaver."
+      - "I swear I wont get in that trouble again!"
+  - id: brynmor
+    npc: [NPCBrynmor]
+    head: "9772642ffccfc9e11b350c874f2c84678fc08044b51e7a8e3a0919f8f788ed9a"
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "Eh? My Contact? On my phone?"
+          - "I s'pose you could have it, if you can help me out first."
+          - "One night, one of my regulars got a bit rowdy and took off towards the <2>Abandoned Quarry<f>."
+          - "He was carrying my most beloved antique - my <c>Speckled Teacup<f>."
+          - "By the time I caught up with him, he had already gone and <l>DROPPED IT <f>into the quarry's lake!"
+          - "I fished about for a while, but didn't find nothin' apart from a bunch of grubbers."
+          - "If you ever have the time, could you go to the <2>Abandoned Quarry <f>and fish around for my <c>Speckled Teacup<f>?"
+          - "If you manage to find it, bring it back here and I'll be happy to give you my contact."
+        missing:
+          - "You don't have my beloved <c>Speckled Teacup<f>..."
+        items: [{item: SPECKLED_TEACUP, amount: 1}]
+    given:
+      - "You found it! My <c>Speckled Teacup<f>! How amazing!"
+      - "Lesson learned, I'm never letting anyone borrow it ever again - even my regulars!"
+      - "Thanks for the help, here's my contact."
+  - id: bulvar
+    npc: [NPCBulvar]
+    head: "213cf0ca79a3611b8e05fe9e264fb2bf8d27e464dc12dc6e95dd0ae0c335a561"
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "Hmm? My <3>Abiphone Contact<f>?"
+          - "Well, today might just be your lucky day - again."
+          - "<3>Abiphones <f>ain't much use down here - you'll seldom get a signal, but I do own one."
+          - "Seeing as I'm feeling nice, I'll give you my contact for the small sum of one <5>Silex<f>."
+          - "How about it?"
+        missing:
+          - "I don't know what ya think that is, but it's not a <5>Silex<f>."
+          - "Come back once you've got yourself one."
+        items: [{item: SILEX, amount: 1}]
+    given:
+      - "That'll do it!"
+      - "Cheers friend, once I got that on my <5>Drill <f>I'll be mining like <6>Divan<f>!"
+      - "Oh, and before I forget - here's that contact you were asking for."
+      - "Give me a call in case you ever need some Tier XII <6>Mining Minions<f>."
+  - id: einary
+    npc: [NPCEinary]
+    head: "4a02f4fd2d68a78b8da3a46b3d004ad9472453c80828b7354a2590a17948c198"
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "Ah, my Abiphone contact?"
+          - "You know, I haven't really felt like making friends since I lost my <c>red hoodie<f>."
+          - "That thing was like a part of me!"
+          - "Until I find it, socializing just won't feel the same."
+        missing:
+          - "I'm sorry, I just don't feel like giving my contact this time..."
+        items: [{item: EINARY_RED_HOODIE, amount: 1}]
+    given:
+      - "You found it!"
+      - "My <c>red hoodie<f>!"
+      - "I can't believe it! This means the world to me!"
+      - "Suddenly, life's looking brighter."
+      - "Hey, let's swap contacts! I think this is the beginning of a great friendship."
+  - id: fann
+    npc: [NPCFann]
+    head: "bc1354d525ca150ea27aa06f8d8db498dcc0b59c3f2776dedd83742f539dfa0f"
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "My Abiphone contact, you say?"
+          - "Well, I'm usually a bit guarded about that."
+          - "But..."
+          - "If you treat Hootie to a <c>Bat the Fish<f>, we might just become fast friends!"
+        missing:
+          - "I don't see a <c>Bat the Fish <f>on you..."
+        items: [{item: BAT_THE_FISH, amount: 1}]
+    given:
+      - "Wow, Hootie's absolutely thrilled!"
+      - "Did you know, <c>Bat the Fish <f>only swims at night?"
+      - "Alright, you've earned it."
+      - "I'll add you to my Abiphone contacts!"
+  - id: fear_mongerer
+    npc: [NPCFearMongerer]
+    head: "8d34f38c1bb106e11908ad3cc90162c18b863d678265c84a84a358903f8f7a1c"
+    stages:
+      - label: "GIVE ITEMS"
+        intro:
+          - "You want to be able to call me anytime?"
+          - "Well that's not possible, I'm only available at night."
+          - "If you give me 64 <5>Purple Candy<f> and 6 <9>Ectoplasm<f>, I <o>might <f>give you my contact."
+        missing:
+          - "You don't have what I asked for..."
+        items: [{item: PURPLE_CANDY, amount: 64}, {item: ECTOPLASM, amount: 6}]
+    given:
+      - "Mhm... Your face just isn't very scary..."
+      - "But it's not your fault I suppose, here take my contact."
+  - id: feast_chef_ted
+    npc: [NPCFeastChefTed]
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "Oh I don't give my information to just anyone."
+          - "Only the Feast's top patrons get that luxury."
+          - "Check out my brother Scott's Bakery, I'm sure he'll have something to help you get in contact with me."
+        missing:
+          - "You don't have what I need..."
+        items: [{item: TEDS_CONTACT_BAKED_IN_BREAD, amount: 1}]
+    given:
+      - "Now that's what I call a contact baked in bread! Here, take my contact."
+  - id: gemma
+    npc: [NPCGemma]
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "Hey there."
+          - "You want my <3>Abiphone Contact<f>?"
+          - "You know the signal isn't great down here, right?"
+          - "Well, I suppose it wouldn't do any harm."
+          - "Most of the Dwarves are pretty against all of this newer tech, so I've got plenty of space in my directory."
+          - "How about you bring me a <d>Pure Mithril Gem<f>? I'll trade it for my contact."
+          - "It's such a beautiful gem. Perhaps the most beautiful one of all."
+          - "Well, outside of the fabled <d>Arkenstone<f>, that is."
+        missing:
+          - "As nice as that thing is, it's not a <d>Pure Mithril Gem<f>."
+          - "If you could find me one I'd really appreciate it."
+          - "I've heard they sometimes drop from <b>Diamond Goblins<f>."
+        items: [{item: PET_ITEM_PURE_MITHRIL_GEM, amount: 1}]
+    given:
+      - "Wow! It's beautiful!!"
+      - "Thank you so much - I think I'll fashion it into a necklace."
+      - "Here - take my contact."
+      - "Give me a call if you ever need to use the <b>Diamond Essence Shop<f>!"
+  - id: geo
+    npc: [NPCGeo]
+    head: "4fc93eeb258b47cb7cb499b681e3d66035a443c076284ff3ff50b196a466a58c"
+    stages:
+      - label: "GIVE GEMSTONES"
+        intro:
+          - "Sure I can give you my contact, but first let's play a little game!"
+          - "You have to give me Flawless gemstones in the right order."
+          - "And keep in mind, there's no Jasper nor Opal in here!"
+        missing:
+          - "That's not the correct gemstone!"
+        items:
+          - {item: FLAWLESS_RUBY_GEM, amount: 1}
+          - {item: FLAWLESS_AMBER_GEM, amount: 1}
+          - {item: FLAWLESS_TOPAZ_GEM, amount: 1}
+          - {item: FLAWLESS_JADE_GEM, amount: 1}
+          - {item: FLAWLESS_SAPPHIRE_GEM, amount: 1}
+          - {item: FLAWLESS_AMETHYST_GEM, amount: 1}
+    given:
+      - "Yep, <c>❤ Flawless Ruby Gemstone<f>!"
+      - "Yep, <6>⸕ Flawless Amber Gemstone<f>!"
+      - "Yep, <e>✧ Flawless Topaz Gemstone<f>!"
+      - "Yep, <a>☘ Flawless Jade Gemstone<f>!"
+      - "Yep, <b>✎ Flawless Sapphire Gemstone<f>!"
+      - "Yep, <5>❈ Flawless Amethyst Gemstone<f>!"
+      - "That's it!"
+      - "All gemstones of the rainbow!"
+      - "Superb!"
+  - id: jacob
+    npc: [NPCJacob]
+    head: "7b8bb1b48f4babc67ce39547208fdbed722ca598cdf30681e367c6247cab1918"
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "Howdy!"
+          - "You want my abithingy eh?"
+          - "Ma' always told me to worry of stuff I don't understand."
+          - "I'm far from stupid, don't get me wrong, eh."
+          - "I simply enjoy a more simple life, ye?"
+          - "Ya sure can add my contact, against <a>10 Jacob's Ticket<f>, eh?"
+        missing:
+          - "You don't have what I need! Nice try!"
+        items: [{item: JACOBS_TICKET, amount: 10}]
+    given:
+      - "Ya won't call me too often, eh?"
+  - id: jax
+    npc: [NPCJax]
+    head: "1db85032146106b19f0bed06caa03ab999f08079676804e6e0df2ff1d28e2cb1"
+    stages:
+      - label: "PAY 10 MILLION COINS"
+        intro:
+          - "My Abiphone contact?"
+          - "Listen pal, I've been nice with you but it's strictly business etiquette."
+          - "I'm freaking Jax the Archer, you see those lanterns? I can clear them all in 11 seconds!"
+          - "I'm just that good!"
+          - "If you want my contact you'll have to show me you can hit them all in UNDER 11 seconds."
+          - "Otherwise you'll have to give me <6>10M<f> coins to get my contact, no less."
+          - "What do you say, buddy?"
+        missing:
+          - "You're poor too, huh?"
+          - "Come back when you have the money."
+        check: JAX_COINS
+    given:
+      - "Yep, that's right, I'm the best."
+      - "Consider yourself lucky you only had to pay 10 million, I could easily have added a zero."
+  - id: jotraeline_greatforge
+    npc: [NPCJotraelineGreatforge]
+    stages:
+      - label: "GIVE ABIPHONE"
+        intro:
+          - "You have an <3>Abiphone<f>! I've always wanted an Abiphone Basic!"
+          - "I could tinker with it while I wait here..."
+          - "And if I had one, I would totally add you!"
+        missing:
+          - "Hey it's very nice of you, but I can't take your ONLY Abiphone!"
+        check: DONATE_ABIPHONE
+    given:
+      - "Oooh an <3>Abiphone<f>, thank you so much!"
+      - "Now I can finally add <b>Cole<f>, and you!"
+  - id: junker_joel
+    npc: [NPCJunkerJoel]
+    head: "aa4503e7f161985d02731a306735ae94e407c790f5eb47b63119077dd883476b"
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "You doin' alright there mate?"
+          - "Looking a little queasy."
+          - "Hm, what brings ya to ask?"
+          - "You want me to put my little number thingy in it?"
+          - "Well, now that I think about it, my little girl got me one for my birthday a few months back."
+          - "It's somewhere in my hut. Place isn't too big so it shouldn't be too hard to find."
+          - "However, it's only a wee little <7>Abiphone Basic<f>, so it ain't got many contact slots."
+          - "Matter of fact, I've got seven siblings alone that would probably want to be in it..."
+          - "Tell you what, here's a compromise."
+          - "If you can bring me a <6>Bayou Water Orb<f>, I'll give you my contact."
+          - "That thing is basically the holy grail to a junk collector like me."
+        missing:
+          - "That's not what I asked for!"
+          - "If you forgot, I'm after a <6>Bayou Water Orb<f>!"
+        items: [{item: BAYOU_WATER_ORB, amount: 1}]
+    given:
+      - "Well ain't she a beauty!"
+      - "Cheers, you're always good to this old man."
+      - "You feel like the eighth sibling I never had."
+      - "Here's my number, don't lose it!"
+  - id: kat
+    npc: [NPCKat]
+    head: "eaae812775706b56596683486abeaf857ea1c068cb34a8bc1de9a57c638cf411"
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "Friends? Sure!"
+          - "But hold on, I don't give my contact for everyone."
+        missing:
+          - "You don't have what I need! Nice try!"
+        items: [{item: KAT_FLOWER, amount: 1}]
+    given:
+      - "Aww, you shouldn't have! <a>:3"
+  - id: lumber_merchant
+    npc: [NPCLumberMerchant]
+    head: "7c4f1befa02b09fa349f02986fb4f4b520cb81a0c52ffbb5bddd0740b0f030f5"
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "You want my contact? Sure."
+          - "Let's see..."
+          - "My Axe could do with an upgrade..."
+          - "That's right! A <a>Spruce Axe <f>is what I desire!"
+        missing:
+          - "You don't have what I need! Nice try!"
+        items: [{item: JUNGLE_AXE, amount: 1}]
+    given:
+      - "A <a>Spruce Axe<f>! I sure owe you one!"
+      - "A deal is a deal and I'm a man of my word. Here's my contact."
+  - id: mad_redstone_engineer
+    npc: [NPCMadRedstoneEngineer]
+    head: "ec36394d774ade59c25618494d0515d90f2bd2f2b4472ba3c038d750953f9a43"
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "Woah, you want my contact?"
+          - "I always hear people wanting the <e>Builder's <f>contact, but nobody ever asks for mine..."
+          - "Unfortunately for you, I don't own an abiphone."
+          - "Lucky for you, I have constructed my very own abiphone out of redstone, and it's got infinite contact slots!"
+          - "Simply bring me an <9>Enchanted Redstone Block <f>and I'll add you right in!"
+        missing:
+          - "This ain't no <9>Enchanted Redstone Block<f>, mi amigo..."
+        items: [{item: ENCHANTED_REDSTONE_BLOCK, amount: 1}]
+    given:
+      - "Wahoo! That's the stuff."
+      - "Here's my contact!"
+      - "I'm your guy for anything related to redstone, or to explosions."
+      - "Give me a call if you ever need anything from my shop, I can always make time for another <c>redstone <f>enthusiast."
+  - id: maddox_the_slayer
+    npc: [NPCMaddoxTheSlayer]
+    head: "738c687dd8887c509d55865ebb62ab6087ef743e9425cd5dc6b4c7b93b747ff2"
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "Abi...phone?"
+          - "Give me my Batphone back."
+        missing:
+          - "You don't have what I need! Nice try!"
+        items: [{item: AATROX_BATPHONE, amount: 1}]
+    given:
+      - "I was the first to offer magical over-the-air contact. Don't you forget it."
+  - id: malik
+    npc: [NPCMalik]
+    head: "ad265b004b410052ff15bc09ac8c48e8ef0ca9aa66f37b44644175667f14f606"
+    stages:
+      - label: "GIVE ESSENCE"
+        intro:
+          - "Hello."
+          - "I don't tend to give out my contact to those delving into <c>The Catacombs<f>."
+          - "I used to, but remembering who's still alive and who isn't is a nightmare."
+          - "By the end of any given week, <a>90% <f>of the people in my directory would be <c><o>dead<f>."
+          - "Removing them was a real pain."
+          - "Anyways, I guess I'll add you, but only if you can prove to me that you won't just die like everyone else."
+          - "Survive long enough to collect <a>5,000 <d>Undead Essence<f>, and then bring it to me."
+        missing:
+          - "You don't have enough <d>Undead Essence<f>."
+          - "I asked for <a>5,000 <f>of it."
+          - "Come back when you've got enough."
+        check: UNDEAD_ESSENCE_5000
+    given:
+      - "Thank you."
+      - "Here's my contact."
+      - "I wish you the best of luck in <c>The Catacombs<f>."
+      - "Try to stay alive, for both your sake and mine - I don't feel like expending the minimal effort required to remove you from my contacts."
+  - id: maxwell
+    npc: [NPCMaxwell]
+    head: "44cdf4a842c1dce3ad2cfae40366e539e9f4f057a39bdb777e3c19f2ea686e82"
+    stages:
+      - label: "GIVE ITEMS"
+        intro:
+          - "You want my Abiphone contact?"
+          - "That way you'll be able to access my features from anywhere?"
+          - "Isn't that cheating though?"
+          - "Don't you know you are supposed to walk all the way here every single time?"
+          - "Ah well, times are changing I suppose..."
+          - "Plus it's a magical object, so it's not that bad."
+          - "Now let's see, what should I ask for it..."
+          - "What about some more <a>Luxurious Spool<f>, hum?"
+          - "I'm joking! Bring me <6>Ultimate Carrot Candy <8>x2<f>."
+          - "I have pets to feed."
+        missing:
+          - "You don't have what I need! Nice try!"
+        items: [{item: ULTIMATE_CARROT_CANDY, amount: 2}]
+    given:
+      - "My frogs are going to love that, thanks a lot!"
+  - id: ophelia
+    npc: [NPCOphelia]
+    head: "4aa4b827a9a85c4efc147fc59d0da688ebe7e26d258b553c041da2ed6ec8b6b8"
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "Hmph. I don't know."
+          - "I'm really busy."
+          - "If I give you my contact it's strictly business, right?"
+          - "I like collecting rings. There is one I've been wanting for a while now."
+          - "Have you heard of the <5>Catacombs Expert Ring<f>?"
+          - "I really want it."
+        missing:
+          - "You don't have what I need, nice try!"
+        items: [{item: CATACOMBS_EXPERT_RING, amount: 1}]
+    given:
+      - "For real?"
+      - "I haven't received a present like that...ever I think."
+      - "Here take my contact, and thank you!"
+  - id: oringo
+    npc: [NPCOringo]
+    head: "8d34f38c1bb106e11908ad3cc90162c18b863d678265c84a84a358903f8f7a1c"
+    stages:
+      - label: "GIVE ITEMS"
+        intro:
+          - "My contact?!"
+          - "What an unusual request!"
+          - "I travel a lot and I'm running quite low on <9>Silent Pearl<f>."
+          - "If you bring me <a>64 <f>of them, I'll give you my contact."
+        missing:
+          - "I'm still waiting on those <a>64 <9>Silent Pearls<f>!"
+        items: [{item: SILENT_PEARL, amount: 64}]
+    given:
+      - "Great! Silent Pearls can be pretty useful sometimes."
+  - id: plumber_joe
+    npc: [VillagerPlumberJoe]
+    stages: []
+    given:
+      - "My abiphone? You got it!"
+      - "Call me during business hours and I'll help with your water troubles at a discount!"
+  - id: roddy
+    npc: [NPCRoddy]
+    head: "17cad9f27d74de3e59f2a517d04a282e2cf86e4c5e40639daeca7b1aae7f5a71"
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "You want my contact?"
+          - "I could use a <9>Torn Cloth<f> for my rod parts."
+        missing:
+          - "You don't have a <9>Torn Cloth<f>."
+        items: [{item: TORN_CLOTH, amount: 1}]
+    given:
+      - "That'll do nicely. Here's my contact."
+  - id: rosemary
+    npc: [NPCRosemary]
+    head: "19043d3d31c5e76fda79493fd13e6f8f3161a1a3d8ec74c65792f03406a3a1a3"
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "Hi again."
+          - "It can get quite lonely up here sometimes, so I do a bunch of stuff to pass the time."
+          - "My favorite thing to do at the moment is to collect cool-looking rocks."
+          - "Say, do you think you could get me a <5>Figstone<f>?"
+          - "I'll give you my <3>Abiphone Contact <f>if you do."
+        missing:
+          - "You don't seem to have a <5>Figstone<f>."
+          - "If you ever have a spare one, you know where to find me."
+        items: [{item: FIGSTONE, amount: 1}]
+    given:
+      - "A fine addition to my collection!"
+      - "Here's my number!"
+      - "If you call me I probably won't feel like speaking, but I'll let you use the <2>Forest Essence Shop<f>."
+      - "Like I said before, I'm not too good with people."
+  - id: shifty
+    npc: [NPCShifty]
+    head: "6c01b213574f630616dd00b7a3bc61774fd7d467136476bd7b7a99ec25ee2757"
+    stages:
+      - label: "HAND OVER FANCY DRINKS"
+        intro:
+          - "There ain't many customers around here, so I spend all my time playing Snake on my Abiphone."
+          - "The controls are really bad, right?"
+          - "Anyway, I get bored by this job."
+          - "Not just because of the lack of action, but there's nothing to be proud about the drinks I serve."
+          - "I'm a fan of fancy drinks!"
+          - "And yet Lucius makes me sell addictive garbage!"
+          - "Look... I'll add you as a contact if you can bring me some good drinks, such as a <9>Scarleton Premium <f>and a <9>Red Thornleaf Tea<f>."
+        missing:
+          - "You don't have both beverages in your inventory!"
+        items: [{item: SCARLETON_PREMIUM, amount: 1}, {item: RED_THORNLEAF_TEA, amount: 1}]
+    given:
+      - "Sadly, Lucius heard of our little deal and asked me to hold the drinks for him."
+      - "Here, take my contact anyway."
+  - id: taylor
+    npc: [NPCTaylor]
+    head: "18ca0c89bef8c4e7e521b113821ffdf00e7b5eb552a378f9037cbec655dd27c8"
+    stages: []
+    given:
+      - "Hey adventurer!"
+      - "You're looking quite dapper today!"
+      - "Hm, my <9>Abiphone Contact<f>?"
+      - "Sure, I guess I can do that."
+      - "Give me a call whenever you want to access <b>Taylor's Shop<f>!"
+  - id: tyzzo
+    npc: [NPCTyzzo]
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "You wish for my <3>Abiphone Contact<f>?"
+          - "Are you worthy of it, though?"
+          - "Prove it."
+          - "Bring me a <9>Dragon Scale<f>."
+        missing:
+          - "You do not possess a <9>Dragon Scale<f>."
+          - "You'll sometimes get one from defeating a <5>Young Dragon<f>, though that's no easy task."
+          - "Come back once you've got one."
+        items: [{item: DRAGON_SCALE, amount: 1}]
+    given:
+      - "You actually managed to get a <9>Dragon Scale<f>."
+      - "I guess you are worthy of the title of Dragon Slayer after all."
+      - "Call me whenever you wish to use the <5>Dragon Essence Shop<f>."
+  - id: wool_weaver
+    npc: [NPCWoolWeaver]
+    head: "64e587c08b3403d761cdafe54f4d530cbe14b4c5c2a01e87ea18af11d0e04c20"
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "You want to add m-me... as a contact?"
+          - "I'm so happy!!"
+          - "I'd gladly supply you with colorful blocks anywhere, but I'm running out of supplies."
+          - "Would you mind getting me <a>512 Enchanted Wool<f>?"
+        missing:
+          - "You don't have what I need! Nice try!"
+        items: [{item: ENCHANTED_WOOL, amount: 512}]
+    given:
+      - "Thanks a lot. Call me any time to make your island more <c>v<6>i<e>b<a>r<b>a<9>n<d>t<f>!"

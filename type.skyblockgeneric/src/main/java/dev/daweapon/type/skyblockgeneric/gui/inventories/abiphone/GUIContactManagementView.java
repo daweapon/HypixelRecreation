@@ -94,7 +94,7 @@ public final class GUIContactManagementView implements View<GUIContactManagement
                 Text.of("<7>Silences this contact so they cannot"),
                 Text.of("<7>call you."),
                 Text.empty(),
-                Text.of("<7>Status: {}", enabled ? "<c>Enabled" : "<a>Disabled"),
+                Text.of(enabled ? "<7>Status: <c>Enabled" : "<7>Status: <a>Disabled"),
                 Text.empty(),
                 Text.of("<e>Click to toggle!")));
     }

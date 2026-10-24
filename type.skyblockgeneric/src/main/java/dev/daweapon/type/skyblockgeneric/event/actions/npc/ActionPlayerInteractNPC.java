@@ -8,6 +8,7 @@ import dev.daweapon.type.generic.event.phase.EventPhase;
 import dev.daweapon.type.generic.event.phase.PhasedEvent;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneNPC;
+import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneUnlocks;
 import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneRegistry;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.components.AbiphoneComponent;
@@ -23,12 +24,13 @@ public class ActionPlayerInteractNPC implements HypixelEventClass {
 		HypixelNPC npc = event.getNpc();
 		SkyBlockItem item = new SkyBlockItem(player.getItemInMainHand());
 		if (item.hasComponent(AbiphoneComponent.class)) {
-			if (!(npc instanceof NPCAbiphoneTrait trait)) {
+			String contactKey = npc instanceof NPCAbiphoneTrait trait ? trait.getAbiphoneKey() : AbiphoneUnlocks.contactForNpc(npc.getClass().getSimpleName());
+			if (contactKey == null) {
 				player.sendMessage("<7>[<b>✆<7>] This NPC doesn't own an Abiphone...");
 				event.setCancelled(true);
 				return;
 			}
-			AbiphoneNPC abiphoneNPC = AbiphoneRegistry.getFromId(trait.getAbiphoneKey());
+			AbiphoneNPC abiphoneNPC = AbiphoneRegistry.getFromId(contactKey);
 			if (abiphoneNPC != null) {
 				if (item.getAttributeHandler().hasAbiphoneNPC(abiphoneNPC)) {
 					player.sendMessage("<7>[<b>✆<7>] This NPC is already in your contacts list!");
@@ -41,7 +43,7 @@ public class ActionPlayerInteractNPC implements HypixelEventClass {
 				}
 				abiphoneNPC.onAdd(player, player.getHeldSlot());
 			} else {
-				Logger.warn("NPC " + npc.getClass().getName() + " has an invalid Abiphone key: " + trait.getAbiphoneKey());
+				Logger.warn("NPC " + npc.getClass().getName() + " has an invalid Abiphone key: " + contactKey);
 			}
 			event.setCancelled(true);
 		}

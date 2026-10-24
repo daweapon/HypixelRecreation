@@ -152,6 +152,7 @@ public class Hypixel {
         if (typeLoader instanceof SkyBlockTypeLoader) {
             skyblockLoader = new SkyBlockGenericLoader(typeLoader);
             skyblockLoader.initialize(minecraftServer);
+            AbiphoneCallBindings.register();
         }
         if (typeLoader instanceof RavengardTypeLoader) {
             new RavengardGenericLoader(typeLoader).initialize(minecraftServer);

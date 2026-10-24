@@ -239,6 +239,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
 
         loopThroughPackage("dev.daweapon.type.skyblockgeneric.abiphone.impl", AbiphoneNPC.class)
             .forEach(AbiphoneRegistry::registerContact);
+        dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneUnlocks.registerAll();
 
         // Register entities
         loopThroughPackage("dev.daweapon.type.skyblockgeneric.entity.mob.mobs", SkyBlockMob.class)

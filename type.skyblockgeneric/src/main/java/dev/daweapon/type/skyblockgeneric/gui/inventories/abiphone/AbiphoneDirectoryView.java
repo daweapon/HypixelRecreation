@@ -47,7 +47,7 @@ public final class AbiphoneDirectoryView extends PaginatedView<AbiphoneContact, 
         List<Text> lore = new ArrayList<>();
         lore.add(Text.of("<7>{}", contact.description()));
         lore.add(Text.empty());
-        lore.add(Text.of("<7>Difficulty: {}", contact.difficulty().markup()));
+        lore.add(Text.of("<7>Difficulty: " + contact.difficulty().markup()));
         lore.add(Text.of("<7>Usual location: <b>{}", contact.location()));
         if (!contact.requirement().isBlank()) {
             lore.add(Text.empty());
