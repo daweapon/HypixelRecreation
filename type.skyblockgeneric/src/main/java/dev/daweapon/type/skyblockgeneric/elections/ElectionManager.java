@@ -96,6 +96,10 @@ public class ElectionManager {
         electionData.setCurrentMinisterColor(ElectionData.wireColorForIndex(0));
     }
 
+    public static boolean isElectionOpen() {
+        return electionData != null && electionData.isElectionOpen();
+    }
+
     public static void onElectionStart() {
         int currentYear = SkyBlockCalendar.getYear();
         if (electionData.isElectionOpen()) return;

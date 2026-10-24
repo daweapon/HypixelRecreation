@@ -3,6 +3,7 @@ package dev.daweapon.type.skyblockgeneric.abiphone;
 import dev.daweapon.commons.ServerType;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.HypixelConst;
+import dev.daweapon.type.skyblockgeneric.crimson.questline.CrimsonScene;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.components.AbiphoneComponent;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -73,10 +74,19 @@ public final class AbiphoneIncomingCalls {
 
     public static boolean pickUp(SkyBlockPlayer player, String contactId) {
         Map<String, Consumer<SkyBlockPlayer>> calls = PENDING.get(player.getUuid());
+        if (calls != null && calls.containsKey(contactId) && inConversation(player)) {
+            player.sendMessage("<c>You can't pick up while you are in a conversation!");
+            return true;
+        }
         Consumer<SkyBlockPlayer> action = calls == null ? null : calls.remove(contactId);
         if (action == null) return false;
         action.accept(player);
         return true;
+    }
+
+    private static boolean inConversation(SkyBlockPlayer player) {
+        if (CrimsonScene.isPlaying(player)) return true;
+        return AbiphoneRegistry.getRegisteredContactNPCs().stream().anyMatch(npc -> npc.dialogue().isInDialogue(player));
     }
 
     public static void speak(SkyBlockPlayer player, String contactId, String... lines) {

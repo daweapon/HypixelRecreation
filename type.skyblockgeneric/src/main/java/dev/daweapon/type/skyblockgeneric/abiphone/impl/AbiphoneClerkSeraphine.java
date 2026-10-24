@@ -5,7 +5,9 @@ import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneNPC;
+import dev.daweapon.type.skyblockgeneric.elections.ElectionManager;
 import dev.daweapon.type.skyblockgeneric.gui.inventories.election.ElectionView;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
@@ -21,6 +23,11 @@ public class AbiphoneClerkSeraphine extends AbiphoneNPC {
 	@Override
 	public void onCall(HypixelPlayer player) {
 		player.openView(new ElectionView());
+	}
+
+	@Override
+	public boolean wantsToCall(SkyBlockPlayer player) {
+		return ElectionManager.isElectionOpen() && ElectionManager.getPlayerVote(player.getUuid()) == null;
 	}
 
 	@Override
