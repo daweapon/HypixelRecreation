@@ -13,9 +13,9 @@ import static dev.daweapon.type.skyblockgeneric.crimson.mob.MobDrop.chance;
 import static dev.daweapon.type.skyblockgeneric.crimson.mob.MobDrop.pet;
 
 /**
- * Spider's Den mobs from the wiki mob pages (Aug-Oct 2026 level rework). The wiki publishes no defense or
- * speed, so defense is 0 and speed is an estimate. Voracious Spider tiers between its published ends and the
- * Jockey Skeleton's Burrow level are interpolated. Each Bestiary family shares one id across its variants.
+ * Spider's Den mobs from the wiki mob pages (Aug-Oct 2026 level rework), checked against a live Hypixel
+ * capture on 2026-10-24 (levels and health of every spider variant matched). The wiki publishes no defense or
+ * speed, so defense is 0 and speed is an estimate. Voracious Spider level 11 is interpolated. Each Bestiary family shares one id across its variants.
  */
 public final class SpiderDenMobs {
     private static final String SPIDER_HEAD = "cd541541daaff50896cd258bdbdd4cf80c3ba816735726078bfe393927e57f1";
@@ -96,7 +96,7 @@ public final class SpiderDenMobs {
     public static final CrimsonMobProfile VORACIOUS_MOUND = voracious(9, 300, 80, 13, 9, 3);
 
     public static final List<CrimsonMobProfile> VORACIOUS_BURROW = List.of(
-            voracious(10, 370, 85, 30, 10, 3), voracious(11, 440, 90, 40, 12, 4), voracious(13, 510, 95, 50, 14, 4));
+            voracious(10, 360, 85, 30, 10, 3), voracious(11, 435, 90, 40, 12, 4), voracious(13, 510, 95, 50, 14, 4));
 
     private static CrimsonMobProfile voracious(int level, double health, double damage, long xp, int orbs, int coins) {
         return spider("VORACIOUS_SPIDER", "Voracious Spider", level, health, damage, xp, orbs, coins, 130, 4, 20, VORACIOUS_HEAD)
@@ -134,7 +134,7 @@ public final class SpiderDenMobs {
             .build();
 
     public static final CrimsonMobProfile BROOD_CAVE_SPIDER = CrimsonMobProfile.builder("BROODMOTHER_BROOD", "Cave Spider")
-            .level(10).entity(EntityType.CAVE_SPIDER).stats(100, 40).rewards(0, 0, 0).speed(140)
+            .level(12).entity(EntityType.CAVE_SPIDER).stats(600, 40).rewards(0, 0, 0).speed(140)
             .types(MobType.ARTHROPOD).neverCorrupted().build();
 
     public static List<CrimsonMobProfile> all() {

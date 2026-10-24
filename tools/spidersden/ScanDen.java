@@ -9,6 +9,10 @@ class ScanDen {
     static long key(int x, int z) { return ((long) x << 32) ^ (z & 0xffffffffL); }
 
     static String block(int x, int y, int z) {
+        return blockIn(w, chunks, x, y, z);
+    }
+
+    static String blockIn(PolarWorld w, Map<Long, PolarChunk> chunks, int x, int y, int z) {
         PolarChunk c = chunks.get(key(Math.floorDiv(x, 16), Math.floorDiv(z, 16)));
         if (c == null) return null;
         int s = Math.floorDiv(y, 16) - w.minSection();
@@ -64,6 +68,24 @@ class ScanDen {
         } else if (mode.equals("surface")) {
             int x0 = Integer.parseInt(args[2]), x1 = Integer.parseInt(args[3]), z0 = Integer.parseInt(args[4]), z1 = Integer.parseInt(args[5]), y0 = Integer.parseInt(args[6]), y1 = Integer.parseInt(args[7]), step = Integer.parseInt(args[8]);
             for (int[] p : standable(x0, x1, z0, z1, y0, y1, step)) System.out.println(p[0] + " " + p[1] + " " + p[2] + " " + block(p[0], p[1] - 1, p[2]));
+        } else if (mode.equals("compare")) {
+            PolarWorld other = PolarReader.read(Files.readAllBytes(Path.of(args[2])));
+            Map<Long, PolarChunk> otherChunks = new HashMap<>();
+            for (PolarChunk c : other.chunks()) otherChunks.put(key(c.x(), c.z()), c);
+            int both = 0, onlyThis = 0, onlyOther = 0;
+            long same = 0, differ = 0;
+            for (PolarChunk c : w.chunks()) {
+                if (!otherChunks.containsKey(key(c.x(), c.z()))) { onlyThis++; continue; }
+                both++;
+                for (int x = 0; x < 16; x += 2) for (int z = 0; z < 16; z += 2) for (int y = 0; y < 200; y += 3) {
+                    int bx = c.x() * 16 + x, bz = c.z() * 16 + z;
+                    String a = blockIn(w, chunks, bx, y, bz);
+                    String b = blockIn(other, otherChunks, bx, y, bz);
+                    if (air(a) == air(b)) same++; else differ++;
+                }
+            }
+            for (Long k : otherChunks.keySet()) if (!chunks.containsKey(k)) onlyOther++;
+            System.out.println("this " + w.chunks().size() + " other " + other.chunks().size() + " both " + both + " onlyThis " + onlyThis + " onlyOther " + onlyOther + " sameAirness " + same + " differ " + differ);
         } else if (mode.equals("col")) {
             int x = Integer.parseInt(args[2]), z = Integer.parseInt(args[3]);
             String last = "";

@@ -30,7 +30,7 @@ public final class SpiderDenMobSpawner {
     private static final double PLAYER_RANGE = 100;
     private static final double MIN_DISTANCE = 10;
     private static final int PLACEMENT_TRIES = 12;
-    static final Pos BROODMOTHER_SPOT = new Pos(-231.5, 120, -307.5);
+    static final Pos BROODMOTHER_SPOT = new Pos(-189.5, 176, -310.5);
     static final long BROODMOTHER_RESPAWN_MILLIS = 150_000;
 
     private static final List<Plan> PLANS = new ArrayList<>();
