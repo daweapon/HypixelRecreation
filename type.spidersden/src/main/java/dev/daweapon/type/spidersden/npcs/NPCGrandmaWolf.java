@@ -103,7 +103,7 @@ public class NPCGrandmaWolf extends HypixelNPC {
                 DialogueSet.builder().key("lost-pet").line(
                         "I'm afraid you don't have a <6>Grandma Wolf Pet<f>! Leave this little old Grandma alone!").build(),
                 DialogueSet.builder().key("requirement-uncommon").line(
-                        "I will upgrade your Grandma Wolf Pet to <a>Uncommon<f> when you reach <6>Bestiary Milestone 0<f>.").build(),
+                        "I will upgrade your Grandma Wolf Pet to <a>Uncommon<f> when you reach <6>Bestiary Milestone 5<f>.").build(),
                 DialogueSet.builder().key("requirement-rare").line(
                         "I will upgrade your Grandma Wolf Pet to <9>Rare<f> when you reach <6>Bestiary Milestone 10<f>.").build(),
                 DialogueSet.builder().key("requirement-epic").line(

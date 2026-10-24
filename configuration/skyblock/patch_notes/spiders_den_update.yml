@@ -28,5 +28,5 @@ sections:
     colour: "<6>"
     lines:
       - "Haymitch now talks to you at the Spider's Den spawn. What he says depends on whether you have been up the Spider Mound and on your Combat level."
-      - "Grandma Wolf gives you the Grandma Wolf Pet on your first visit, makes it Uncommon for free, and upgrades it to Rare, Epic and Legendary at Bestiary Milestones 10, 15 and 20."
+      - "Grandma Wolf gives you the Grandma Wolf Pet on your first visit, and upgrades it to Uncommon, Rare, Epic and Legendary at Bestiary Milestones 5, 10, 15 and 20. A Bestiary milestone is one family tier."
       - "Bramass Beastslayer gives you the Beastslayer's Codex once you reach Bestiary Milestone 50."

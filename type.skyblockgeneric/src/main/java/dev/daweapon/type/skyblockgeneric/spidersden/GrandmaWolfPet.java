@@ -11,13 +11,13 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 
 /**
- * Grandma Wolf's pet (wiki: Grandma_Wolf): given on the first visit as Common, then raised to Uncommon for
- * free and to Rare, Epic and Legendary at Bestiary Milestones 10, 15 and 20.
+ * Grandma Wolf's pet (wiki: Grandma_Wolf): given on the first visit as Common, then raised to Uncommon, Rare,
+ * Epic and Legendary at Bestiary Milestones 5, 10, 15 and 20 (wiki: Grandma_Wolf_Pet, confirmed in a player video).
  */
 public final class GrandmaWolfPet {
     public static final String ID = "GRANDMA_WOLF_PET";
     public static final Map<Rarity, Integer> MILESTONES = Map.of(
-            Rarity.UNCOMMON, 0, Rarity.RARE, 10, Rarity.EPIC, 15, Rarity.LEGENDARY, 20);
+            Rarity.UNCOMMON, 5, Rarity.RARE, 10, Rarity.EPIC, 15, Rarity.LEGENDARY, 20);
 
     private GrandmaWolfPet() {
     }

@@ -17,7 +17,7 @@ class GrandmaWolfPetTest {
         assertEquals(Rarity.EPIC, GrandmaWolfPet.next(Rarity.RARE));
         assertEquals(Rarity.LEGENDARY, GrandmaWolfPet.next(Rarity.EPIC));
         assertNull(GrandmaWolfPet.next(Rarity.LEGENDARY));
-        assertEquals(0, GrandmaWolfPet.milestoneFor(Rarity.UNCOMMON));
+        assertEquals(5, GrandmaWolfPet.milestoneFor(Rarity.UNCOMMON));
         assertEquals(10, GrandmaWolfPet.milestoneFor(Rarity.RARE));
         assertEquals(15, GrandmaWolfPet.milestoneFor(Rarity.EPIC));
         assertEquals(20, GrandmaWolfPet.milestoneFor(Rarity.LEGENDARY));
