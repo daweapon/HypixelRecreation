@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.firesale;
 
+import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneIncomingCalls;
 import net.minestom.server.MinecraftServer;
 import dev.daweapon.commons.data.SharedData;
 import dev.daweapon.commons.skyblock.item.ItemType;
@@ -149,6 +150,7 @@ public final class FireSaleService {
                 announcedEnd = false;
                 if (System.currentTimeMillis() - startedAt() > ANNOUNCE_WINDOW_MILLIS) return;
                 broadcast("<6><b>FIRE SALE <r><e>A new Fire Sale started: <6>" + sale.sale().name() + "<e>! Visit <a>Elizabeth <e>in the Community Center.");
+                callElizabeth();
             } else if (!announcedEnd) {
                 announcedEnd = true;
                 broadcast("<6><b>FIRE SALE <r><c>The Fire Sale has ended.");
@@ -156,6 +158,16 @@ public final class FireSaleService {
         } catch (Exception exception) {
             Logger.error(exception, "Fire Sale announcement failed");
         }
+    }
+
+    private static void callElizabeth() {
+        MinecraftServer.getConnectionManager().getOnlinePlayers().stream()
+                .filter(SkyBlockPlayer.class::isInstance)
+                .map(SkyBlockPlayer.class::cast)
+                .forEach(player -> AbiphoneIncomingCalls.ring(player, "elizabeth", caller -> AbiphoneIncomingCalls.speak(caller, "elizabeth",
+                        "Hey, <b>" + caller.getUsername() + "<f>! I just wanted to let you know that a new <c><l>FIRE <c>Sale <f>has started!",
+                        "Give me a call back or swing by the <b>Community Center <f>in person to get your hands on it!",
+                        "Okay, bye now!")));
     }
 
     private static void broadcast(String message) {

@@ -24,6 +24,13 @@ public class AbiphonePablo extends CrimsonContact {
     }
 
     @Override
+    public boolean wantsToCall(SkyBlockPlayer player) {
+        return CrimsonSideQuests.is(player, CrimsonSideQuests.PABLO_EVER)
+                && !CrimsonReputationService.isMember(player, CrimsonFaction.BARBARIAN)
+                && CrimsonSideQuests.isReady(player, CrimsonSideQuests.PABLO_LAST, COOLDOWN);
+    }
+
+    @Override
     protected void call(SkyBlockPlayer player) {
         if (CrimsonReputationService.isMember(player, CrimsonFaction.BARBARIAN)) {
             noAnswer(player);

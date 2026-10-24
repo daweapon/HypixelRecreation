@@ -23,6 +23,8 @@ public final class AbiphoneUnlocks {
     }
 
     public static void registerAll() {
+        FannTrainingCalls.register();
+        AbiphoneReadyCalls.start();
         for (ConfiguredContact.Definition definition : load(FILE)) {
             AbiphoneContact entry = AbiphoneContactCatalogue.byId(definition.id()).orElseThrow();
             AbiphoneRegistry.registerContact(new ConfiguredContact(definition, entry));

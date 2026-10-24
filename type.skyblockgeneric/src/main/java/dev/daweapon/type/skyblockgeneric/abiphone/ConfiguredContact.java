@@ -123,6 +123,19 @@ public final class ConfiguredContact extends AbiphoneNPC {
     }
 
     @Override
+    public boolean wantsToCall(SkyBlockPlayer player) {
+        AbiphoneIncomingHooks.Hook hook = AbiphoneIncomingHooks.get(getId());
+        return hook != null && hook.wants().test(player);
+    }
+
+    @Override
+    public void onIncomingPickUp(SkyBlockPlayer player) {
+        AbiphoneIncomingHooks.Hook hook = AbiphoneIncomingHooks.get(getId());
+        if (hook == null) onCall(player);
+        else hook.pickUp().accept(player);
+    }
+
+    @Override
     public DialogueSet[] dialogues(HypixelPlayer player) {
         List<DialogueSet> sets = new ArrayList<>();
         for (int i = 0; i < definition.stages().size(); i++) {

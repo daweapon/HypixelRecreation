@@ -1,7 +1,7 @@
 title: "The Abiphone Update"
 date: "23rd October 2026"
 intro:
-  - "The Abiphone gets a Contacts Directory listing all 85 contacts, a working sort button, Do Not Disturb, /call, Speed Dial, Snake, Tic Tac Toe and Ringtones."
+  - "The Abiphone gets a Contacts Directory listing all 85 contacts, a working sort button, Do Not Disturb, /call, Speed Dial, Snake, Tic Tac Toe, Ringtones and incoming calls."
 sections:
   - heading: "Contacts Directory"
     colour: "<a>"
@@ -26,3 +26,11 @@ sections:
       - "Right-click each of them with an Abiphone to ask for their contact. Most want an item, and Anita, Bartender, Blacksmith, Jax, Jotraeline and Malik have their own requirements, as on Hypixel."
       - "Calling a contact opens their shop or menu from anywhere."
       - "Contacts for NPCs or areas that are not in the game yet, such as Dusk, Fred and Tia the Fairy, still show in the Contacts Directory as not available."
+  - heading: "Incoming Calls"
+    colour: "<e>"
+    lines:
+      - "Contacts can now ring you. A call shows the contact's name, three RING lines and a clickable [PICK UP]; click it within about 15 seconds to hear them out."
+      - "Elizabeth calls when an Account or Profile Upgrade finishes and when a new Fire Sale starts, Agatha and Miria when a Starlyn contest ends, Hoppity when he has a new Chocolate Rabbit for sale, and Fann when a pet finishes training."
+      - "Aranya calls when she is hungry again, Pablo when he needs a new flower, and Kaus and Rollim when they are ready for their next lesson."
+      - "Do Not Disturb silences a contact's incoming calls, and there is no signal in the Dwarven Mines and Crystal Hollows, so nobody can call you there."
+      - "Staff can place a call with /force call."

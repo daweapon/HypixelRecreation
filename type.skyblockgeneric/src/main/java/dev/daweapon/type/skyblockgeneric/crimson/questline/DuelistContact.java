@@ -22,6 +22,13 @@ public abstract class DuelistContact extends CrimsonContact {
     }
 
     @Override
+    public boolean wantsToCall(SkyBlockPlayer player) {
+        int days = CrimsonSideQuests.duelDays(player, faction);
+        return days > 0 && days < CrimsonSideQuests.DUEL_DAYS && CrimsonReputationService.isMember(player, faction)
+                && CrimsonSideQuests.isReady(player, CrimsonSideQuests.duelLastKey(faction), Duration.ofHours(24));
+    }
+
+    @Override
     protected void call(SkyBlockPlayer player) {
         int days = CrimsonSideQuests.duelDays(player, faction);
         if (!CrimsonReputationService.isMember(player, faction)) {

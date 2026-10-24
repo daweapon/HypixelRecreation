@@ -22,6 +22,12 @@ public class AbiphoneAranya extends CrimsonContact {
     }
 
     @Override
+    public boolean wantsToCall(SkyBlockPlayer player) {
+        return CrimsonSideQuests.get(player, CrimsonTownProgress.ARANYA_LAST_MEAL) != 0
+                && CrimsonSideQuests.isReady(player, CrimsonTownProgress.ARANYA_LAST_MEAL, CrimsonTownProgress.ARANYA_COOLDOWN);
+    }
+
+    @Override
     protected void call(SkyBlockPlayer player) {
         if (CrimsonSideQuests.isReady(player, CrimsonTownProgress.ARANYA_LAST_MEAL, CrimsonTownProgress.ARANYA_COOLDOWN)) {
             int pick = ThreadLocalRandom.current().nextInt(3);

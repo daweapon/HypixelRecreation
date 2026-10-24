@@ -4,6 +4,7 @@ import dev.daweapon.commons.StringUtility;
 import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.generic.utility.ScheduleUtility;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
+import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneIncomingCalls;
 import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneNPC;
 import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneRegistry;
 import dev.daweapon.type.skyblockgeneric.calendar.SkyBlockCalendar;
@@ -232,12 +233,10 @@ public final class StarlynContests {
     }
 
     private static void announce(SkyBlockPlayer player, StarlynSister sister, Entry entry, StarlynBracket bracket) {
-        if (hasContact(player, sister)) {
-            ring(player, sister);
-            return;
-        }
-        player.sendMessage(StarlynDialogue.speaker(sister) + "The contest is over! You reached the " + bracket.formatted()
-                + " <r><f>bracket with <a>" + StringUtility.commaify(entry.score()) + " points<f>! Come see me to claim your <6>rewards<f>.");
+        String line = "The contest is over! You reached the " + bracket.formatted()
+                + " <r><f>bracket with <a>" + StringUtility.commaify(entry.score()) + " points<f>! Come see me to claim your <6>rewards<f>.";
+        AbiphoneIncomingCalls.Result result = AbiphoneIncomingCalls.ring(player, sister.key(), caller -> AbiphoneIncomingCalls.speak(caller, sister.key(), line));
+        if (result == AbiphoneIncomingCalls.Result.NO_CONTACT) player.sendMessage(StarlynDialogue.speaker(sister) + line);
     }
 
     public static boolean hasContact(SkyBlockPlayer player, StarlynSister sister) {
@@ -247,14 +246,6 @@ public final class StarlynContests {
             if (item.hasComponent(AbiphoneComponent.class) && item.getAttributeHandler().hasAbiphoneNPC(contact)) return true;
         }
         return false;
-    }
-
-    private static void ring(SkyBlockPlayer player, StarlynSister sister) {
-        player.sendMessage("<b>✆ " + sister.npcName() + " <f>is calling... <7>Pick up with your Abiphone!");
-        for (int pulse = 0; pulse < 3; pulse++) {
-            ScheduleUtility.delay(() -> player.playSound(Sound.sound(Key.key("block.note_block.pling"),
-                    Sound.Source.PLAYER, 1f, 1.6f), Sound.Emitter.self()), pulse * 8);
-        }
     }
 
     public static int claim(SkyBlockPlayer player, StarlynSister sister, Collection<Long> days) {

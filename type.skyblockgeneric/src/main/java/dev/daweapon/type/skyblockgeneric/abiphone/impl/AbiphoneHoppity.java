@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.abiphone.impl;
 
+import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneIncomingCalls;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -12,6 +13,7 @@ import dev.daweapon.type.generic.entity.npc.NPCOption;
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.type.generic.utility.ScheduleUtility;
+import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneIncomingCalls;
 import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneNPC;
 import dev.daweapon.type.skyblockgeneric.hoppity.HoppityAbiphoneOffer;
 import dev.daweapon.type.skyblockgeneric.hoppity.HoppityCalls;
@@ -76,9 +78,9 @@ public class AbiphoneHoppity extends AbiphoneNPC {
         if (!hasContact(player) || dialogue().isInDialogue(player) || pending.containsKey(player.getUuid())) return;
         boolean ownsAbi = ChocolateFactoryHelper.getData(player).hasFoundRabbit(ChocolateRabbit.ABI);
         HoppityAbiphoneOffer.Offer offer = HoppityAbiphoneOffer.roll(player.getUuid(), ownsAbi, ThreadLocalRandom.current());
-        pending.put(player.getUuid(), offer);
-        ring(player);
-        present(player, offer);
+        if (AbiphoneIncomingCalls.ring(player, ID, caller -> present(caller, offer)) == AbiphoneIncomingCalls.Result.RINGING) {
+            pending.put(player.getUuid(), offer);
+        }
     }
 
     private void present(SkyBlockPlayer player, HoppityAbiphoneOffer.Offer offer) {
@@ -113,14 +115,6 @@ public class AbiphoneHoppity extends AbiphoneNPC {
     private void decline(SkyBlockPlayer player) {
         if (dialogue().isInDialogue(player) || pending.remove(player.getUuid()) == null) return;
         dialogue().setDialogue(player, "declined");
-    }
-
-    private void ring(SkyBlockPlayer player) {
-        player.sendMessage("<b>✆ <a>Hoppity <f>is calling...");
-        for (int pulse = 0; pulse < 3; pulse++) {
-            ScheduleUtility.delay(() -> player.playSound(Sound.sound(Key.key("block.note_block.pling"),
-                    Sound.Source.PLAYER, 1f, 1.6f), Sound.Emitter.self()), pulse * 8);
-        }
     }
 
     private boolean hasContact(SkyBlockPlayer player) {

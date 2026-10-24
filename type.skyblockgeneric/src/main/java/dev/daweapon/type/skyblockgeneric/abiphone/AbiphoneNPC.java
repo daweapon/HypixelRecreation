@@ -31,6 +31,14 @@ public abstract class AbiphoneNPC {
 
 	public abstract void onCall(HypixelPlayer player);
 
+	public boolean wantsToCall(SkyBlockPlayer player) {
+		return false;
+	}
+
+	public void onIncomingPickUp(SkyBlockPlayer player) {
+		onCall(player);
+	}
+
 	public void onAdd(SkyBlockPlayer player, int slot) {
 		player.updateItemInSlot(slot, (i) -> {
 			if (!i.hasComponent(AbiphoneComponent.class)) return;
