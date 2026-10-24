@@ -1,7 +1,8 @@
-package dev.daweapon.type.deepcaverns.gui;
+package dev.daweapon.type.skyblockgeneric.gui.inventories.shop;
 
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.skyblockgeneric.gui.ShopView;
+
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.shop.type.CoinShopPrice;
 

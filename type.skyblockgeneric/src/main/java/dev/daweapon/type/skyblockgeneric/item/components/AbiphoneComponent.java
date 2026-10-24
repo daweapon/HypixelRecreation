@@ -1,6 +1,10 @@
 package dev.daweapon.type.skyblockgeneric.item.components;
 
 import dev.daweapon.commons.StringUtility;
+import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneCalls;
+import dev.daweapon.type.skyblockgeneric.accessory.AccessoryOwnership;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import dev.daweapon.type.skyblockgeneric.gui.inventories.abiphone.AbiphoneView;
 import lombok.Getter;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
@@ -24,10 +28,10 @@ public class AbiphoneComponent extends SkyBlockItemComponent {
 		this.maxContacts = maxContacts;
 		this.features = List.copyOf(features);
 		addInheritedComponent(new LoreUpdateComponent(new LoreConfig(
-				(item, player) -> lore(item, maxDiscs, features), null), false));
+				(item, player) -> lore(player, item, maxDiscs, features), null), false));
 		addInheritedComponent(new InteractableComponent(
 				(player, item) -> player.openView(new AbiphoneView(), new AbiphoneView.State(item)),
-				null,
+				(player, item) -> AbiphoneCalls.speedDial(player, item),
 				null
 		));
 		addInheritedComponent(new TrackedUniqueComponent());
@@ -37,7 +41,17 @@ public class AbiphoneComponent extends SkyBlockItemComponent {
 		return maxContacts + abiphone.getAttributeHandler().getAbiphoneExtraContacts();
 	}
 
-	private List<String> lore(SkyBlockItem abiphone, int maxDiscs, List<AbiphoneFeature> features) {
+	public int contactLimit(SkyBlockPlayer player, SkyBlockItem abiphone) {
+		return contactLimit(abiphone) + caseSlots(player);
+	}
+
+	public static int caseSlots(SkyBlockPlayer player) {
+		if (player == null) return 0;
+		if (AccessoryOwnership.owns(player, ItemType.SUMSUNG_GG_ABICASE)) return 2;
+		return AccessoryOwnership.owns(player, ItemType.SUMSUNG_G3_ABICASE) ? 1 : 0;
+	}
+
+	private List<String> lore(SkyBlockPlayer player, SkyBlockItem abiphone, int maxDiscs, List<AbiphoneFeature> features) {
 		int extra = abiphone.getAttributeHandler().getAbiphoneExtraContacts();
 		List<String> lore = new ArrayList<>(List.of(
 				"<7>A device that can be used to contact",
@@ -45,7 +59,7 @@ public class AbiphoneComponent extends SkyBlockItemComponent {
 				"<7>your contacts!",
 				" ",
 				"<7>Features:",
-				" <7>Maximum Contacts: <b>" + contactLimit(abiphone) + (extra > 0 ? " <8>(+" + extra + " from Contacts Trios)" : "")
+				" <7>Maximum Contacts: <b>" + contactLimit(player, abiphone) + (extra > 0 ? " <8>(+" + extra + " from Contacts Trios)" : "")
 		));
 
 		if (maxDiscs > 0) {

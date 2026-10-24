@@ -4,6 +4,9 @@ import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneItemSettings;
+import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneRegistry;
+import dev.daweapon.type.skyblockgeneric.item.components.AbiphoneComponent;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.List;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
@@ -35,9 +38,17 @@ public final class GUIContactManagementView implements View<GUIContactManagement
         if (AbiphoneItemSettings.supportsDoNotDisturb(state.abiphone())) {
             layout.slot(29, (s, c) -> doNotDisturbButton(AbiphoneItemSettings.isDoNotDisturb(s.abiphone(), s.npc())),
                     (click, viewCtx) -> {
-                        AbiphoneItemSettings.toggleDoNotDisturb(state.abiphone(), state.npc());
+                        AbiphoneItemSettings.toggleDoNotDisturb((SkyBlockPlayer) viewCtx.player(), state.abiphone(), state.npc());
                         viewCtx.session(Object.class).updateUnchecked(o -> o);
                     });
+        }
+
+        if (AbiphoneItemSettings.supports(state.abiphone(), AbiphoneComponent.AbiphoneFeature.SPEED_DIAL)) {
+            layout.slot(33, (s, c) -> speedDialButton(s), (click, viewCtx) -> {
+                boolean current = isSpeedDial(state);
+                AbiphoneItemSettings.setSpeedDial((SkyBlockPlayer) viewCtx.player(), state.abiphone(), current ? "" : state.npc().getId());
+                viewCtx.session(Object.class).updateUnchecked(o -> o);
+            });
         }
 
         layout.slot(31, (s, c) -> ItemStacks.item(
@@ -46,7 +57,7 @@ public final class GUIContactManagementView implements View<GUIContactManagement
                 Text.key("gui_abiphone.management.remove_contact"),
                 Text.keyLines("gui_abiphone.management.remove_contact.lore")
         ), (click, viewCtx) -> {
-            state.abiphone().getAttributeHandler().removeAbiphoneNPC(state.npc());
+            AbiphoneItemSettings.removeContact((SkyBlockPlayer) viewCtx.player(), state.abiphone(), state.npc());
             viewCtx.player().sendMessage(Text.key("gui_abiphone.management.removed_message", state.npc().getName()));
 
             if (!viewCtx.pop()) {
@@ -61,6 +72,21 @@ public final class GUIContactManagementView implements View<GUIContactManagement
         }
 
         Components.close(layout, 49);
+    }
+
+    private static boolean isSpeedDial(State state) {
+        return state.npc().getId().equals(AbiphoneItemSettings.speedDial(state.abiphone()));
+    }
+
+    private static ItemStack.Builder speedDialButton(State state) {
+        AbiphoneNPC current = AbiphoneRegistry.getFromId(AbiphoneItemSettings.speedDial(state.abiphone()));
+        return ItemStacks.lore(ItemStacks.name(ItemStack.builder(Material.CLOCK), "<a>Speed Dial"), List.of(
+                Text.of("<7>Set this contact as your Speed Dial."),
+                Text.of("<7>Left-click your Abiphone to call them."),
+                Text.empty(),
+                Text.of("<7>Current Speed Dial: <a>{}", current == null ? "None" : current.getName()),
+                Text.empty(),
+                Text.of(isSpeedDial(state) ? "<e>Click to clear!" : "<e>Click to set!")));
     }
 
     private static ItemStack.Builder doNotDisturbButton(boolean enabled) {

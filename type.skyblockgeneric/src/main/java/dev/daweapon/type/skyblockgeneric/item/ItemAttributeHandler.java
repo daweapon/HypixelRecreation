@@ -650,6 +650,30 @@ public class ItemAttributeHandler {
         ((ItemAttributeAbiphoneDoNotDisturb) item.getAttribute("abiphone_dnd")).setValue(contactIds);
     }
 
+    public String getAbiphoneSpeedDial() {
+        return ((ItemAttributeAbiphoneSpeedDial) item.getAttribute("abiphone_speed_dial")).getValue();
+    }
+
+    public void setAbiphoneSpeedDial(String value) {
+        ((ItemAttributeAbiphoneSpeedDial) item.getAttribute("abiphone_speed_dial")).setValue(value);
+    }
+
+    public String getAbiphoneRingtone() {
+        return ((ItemAttributeAbiphoneRingtone) item.getAttribute("abiphone_ringtone")).getValue();
+    }
+
+    public void setAbiphoneRingtone(String value) {
+        ((ItemAttributeAbiphoneRingtone) item.getAttribute("abiphone_ringtone")).setValue(value);
+    }
+
+    public String getAbiphoneGameStats() {
+        return ((ItemAttributeAbiphoneGameStats) item.getAttribute("abiphone_game_stats")).getValue();
+    }
+
+    public void setAbiphoneGameStats(String value) {
+        ((ItemAttributeAbiphoneGameStats) item.getAttribute("abiphone_game_stats")).setValue(value);
+    }
+
     public void setStoredPotential(int storedPotential) {
         ((ItemAttributeStoredPotential) item.getAttribute("stored_potential")).setValue(storedPotential);
     }

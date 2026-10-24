@@ -1,7 +1,7 @@
 title: "The Abiphone Update"
 date: "23rd October 2026"
 intro:
-  - "The Abiphone gets a Contacts Directory listing all 85 contacts, a working sort button and Do Not Disturb."
+  - "The Abiphone gets a Contacts Directory listing all 85 contacts, a working sort button, Do Not Disturb, /call, Speed Dial, Snake, Tic Tac Toe and Ringtones."
 sections:
   - heading: "Contacts Directory"
     colour: "<a>"
@@ -14,3 +14,8 @@ sections:
       - "The Sort button now sorts your contacts by First Added, Alphabetical, Last Called, Most Called or Do Not Disturb First."
       - "Abiphone XII and above can set Do Not Disturb on a contact from the contact's management menu."
       - "Abiphone X Blue is now Uncommon and Abiphone XIII Sapphire holds 15 music discs, like Hypixel."
+      - "Use /call followed by a contact name, such as /call alda, to ring any contact on one of your Abiphones without opening it."
+      - "Abiphone Flip+ models can set one Speed Dial contact from the contact's management menu, then left-click the Abiphone to call them."
+      - "Abiphone XIII and above include Snake, Abiphone XIV and above Tic Tac Toe against an unbeatable Abiphone, and Abiphone Flip models Ringtones. Your best Snake score and Tic Tac Toe results are kept on the phone."
+      - "The Sumsung G3 and GG Abicases add one and two contact slots, and the Rezar Abicase makes calls ring once."
+      - "Walter now accepts an Enchanted Sulphur Cube once you reach Sulphur Collection VII, and opens his shop when you call him."

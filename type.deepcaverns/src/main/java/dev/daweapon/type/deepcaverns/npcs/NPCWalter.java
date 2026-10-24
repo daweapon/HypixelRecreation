@@ -1,7 +1,7 @@
 package dev.daweapon.type.deepcaverns.npcs;
 
 import net.minestom.server.coordinate.Pos;
-import dev.daweapon.type.deepcaverns.gui.GUIShopWalter;
+import dev.daweapon.type.skyblockgeneric.gui.inventories.shop.GUIShopWalter;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.entity.npc.trait.NPCAbiphoneTrait;

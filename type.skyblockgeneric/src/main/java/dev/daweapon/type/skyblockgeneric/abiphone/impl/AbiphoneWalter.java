@@ -2,7 +2,10 @@ package dev.daweapon.type.skyblockgeneric.abiphone.impl;
 
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.minestom.server.item.ItemStack;
+import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.deepcaverns.DeepCavernsQuests;
+import dev.daweapon.type.skyblockgeneric.gui.inventories.shop.GUIShopWalter;
 import dev.daweapon.type.generic.data.datapoints.DatapointToggles;
 import dev.daweapon.type.generic.entity.npc.NPCOption;
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
@@ -16,13 +19,15 @@ import java.util.List;
 // Abiphone contact for Walter, the Superboom TNT seller, unlocked by donating an Enchanted Sulphur Cube.
 public class AbiphoneWalter extends AbiphoneNPC {
 
+	private static final int REQUIRED_SULPHUR_TIER = 7;
+
 	public AbiphoneWalter() {
 		super("walter", "Walter", "Sells Superboom TNT.");
 	}
 
 	@Override
 	public void onCall(HypixelPlayer player) {
-
+		player.openView(new GUIShopWalter());
 	}
 
 	@Override
@@ -36,10 +41,17 @@ public class AbiphoneWalter extends AbiphoneNPC {
 						true,
 						"DONATE CUBE",
 						(p) -> {
-							// TODO: check requirements
-							dialogue().setDialogue(player, "donate_cube_no_requirements");
-							// player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_GIVEN_WALTER_CUBE, true);
-							// super.onAdd(player, slot);
+							if (dialogue().isInDialogue(player)) return;
+							boolean ready = DeepCavernsQuests.collectionTier(player, ItemType.SULPHUR) >= REQUIRED_SULPHUR_TIER
+									&& player.getAmountAnywhere(ItemType.ENCHANTED_SULPHUR_CUBE) > 0;
+							if (!ready || !player.removeItemFromPlayer(ItemType.ENCHANTED_SULPHUR_CUBE, 1)) {
+								dialogue().setDialogue(player, "donate_cube_no_requirements");
+								return;
+							}
+							dialogue().setDialogue(player, "donate_cube").thenRun(() -> {
+								player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_GIVEN_WALTER_CUBE, true);
+								super.onAdd(player, slot);
+							});
 						}
 				)));
 			});

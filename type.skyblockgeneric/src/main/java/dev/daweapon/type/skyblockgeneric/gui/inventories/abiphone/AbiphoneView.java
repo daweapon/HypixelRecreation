@@ -1,19 +1,20 @@
 package dev.daweapon.type.skyblockgeneric.gui.inventories.abiphone;
 
-import net.minestom.server.MinecraftServer;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.inventory.click.Click;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
-import net.minestom.server.timer.TaskSchedule;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import dev.daweapon.type.generic.gui.v2.*;
 import dev.daweapon.type.generic.gui.v2.context.ClickContext;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneCalls;
 import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneContactDirectory;
+import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneGameStats;
 import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneItemSettings;
+import dev.daweapon.type.skyblockgeneric.item.components.AbiphoneComponent;
 import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneNPC;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -61,24 +62,10 @@ public final class AbiphoneView extends PaginatedView<AbiphoneNPC, AbiphoneView.
     protected void onItemClick(ClickContext<State> click, ViewContext ctx, AbiphoneNPC npc, int index) {
         if (click.click() instanceof Click.Left) {
             ctx.player().closeInventory();
-            AbiphoneItemSettings.recordCall(click.state().abiphone(), npc);
-            initiateCall(ctx.player(), npc);
+            AbiphoneCalls.call((SkyBlockPlayer) ctx.player(), click.state().abiphone(), npc);
         } else if (click.click() instanceof Click.Right) {
             ctx.push(new GUIContactManagementView(), new GUIContactManagementView.State(click.state().abiphone(), npc));
         }
-    }
-
-    private void initiateCall(HypixelPlayer player, AbiphoneNPC npc) {
-        player.sendMessage(Text.key("gui_abiphone.ring_1"));
-        MinecraftServer.getSchedulerManager().buildTask(() -> {
-            player.sendMessage(Text.key("gui_abiphone.ring_2"));
-            MinecraftServer.getSchedulerManager().buildTask(() -> {
-                player.sendMessage(Text.key("gui_abiphone.ring_3"));
-                MinecraftServer.getSchedulerManager().buildTask(() -> {
-                    npc.onCall(player);
-                }).delay(TaskSchedule.seconds(1)).schedule();
-            }).delay(TaskSchedule.seconds(1)).schedule();
-        }).delay(TaskSchedule.seconds(1)).schedule();
     }
 
     @Override
@@ -98,6 +85,8 @@ public final class AbiphoneView extends PaginatedView<AbiphoneNPC, AbiphoneView.
             });
         });
 
+        layoutFeatures(layout, state);
+
         layout.slot(51, (s, c) -> ItemStacks.item(
                 Material.BOOK,
                 1,
@@ -106,6 +95,41 @@ public final class AbiphoneView extends PaginatedView<AbiphoneNPC, AbiphoneView.
                         AbiphoneContactDirectory.discovered((SkyBlockPlayer) c.player()),
                         AbiphoneContactDirectory.TOTAL)
         ), (click, viewCtx) -> viewCtx.push(new AbiphoneDirectoryView(), new AbiphoneDirectoryView.State(click.state().abiphone(), (SkyBlockPlayer) viewCtx.player())));
+    }
+
+    private void layoutFeatures(ViewLayout<State> layout, State state) {
+        SkyBlockItem phone = state.abiphone();
+        int slot = 46;
+        if (AbiphoneItemSettings.supports(phone, AbiphoneComponent.AbiphoneFeature.SNAKE)) {
+            layout.slot(slot++, (s, c) -> ItemStacks.lore(ItemStacks.name(ItemStack.builder(Material.GREEN_CONCRETE), "<a>Snake"), List.of(
+                    Text.of("<7>Eat apples and grow, but do not"),
+                    Text.of("<7>hit the wall or yourself."),
+                    Text.empty(),
+                    Text.of("<7>Top score: <a>{}", AbiphoneItemSettings.gameStats(phone).snakeBest()),
+                    Text.empty(),
+                    Text.of("<e>Click to play!"))),
+                    (click, viewCtx) -> viewCtx.push(new SnakeView(), new SnakeView.State(phone)));
+        }
+        if (AbiphoneItemSettings.supports(phone, AbiphoneComponent.AbiphoneFeature.TIC_TAC_TOE)) {
+            layout.slot(slot++, (s, c) -> {
+                AbiphoneGameStats stats = AbiphoneItemSettings.gameStats(phone);
+                return ItemStacks.lore(ItemStacks.name(ItemStack.builder(Material.WHITE_WOOL), "<a>Tic Tac Toe"), List.of(
+                        Text.of("<7>Beat the phone at noughts and crosses."),
+                        Text.empty(),
+                        Text.of("<7>Wins: <a>{} <7>Losses: <c>{} <7>Draws: <e>{}", stats.wins(), stats.losses(), stats.draws()),
+                        Text.empty(),
+                        Text.of("<e>Click to play!")));
+            }, (click, viewCtx) -> viewCtx.push(new TicTacToeView(), new TicTacToeView.State(phone)));
+        }
+        if (AbiphoneItemSettings.supports(phone, AbiphoneComponent.AbiphoneFeature.RINGTONES)) {
+            layout.slot(slot, (s, c) -> ItemStacks.lore(ItemStacks.name(ItemStack.builder(Material.NOTE_BLOCK), "<a>Ringtones"), List.of(
+                    Text.of("<7>Pick the sound your Abiphone makes."),
+                    Text.empty(),
+                    Text.of("<7>Selected: <a>{}", AbiphoneItemSettings.ringtone(phone).label),
+                    Text.empty(),
+                    Text.of("<e>Click to choose!"))),
+                    (click, viewCtx) -> viewCtx.push(new RingtoneView(), new RingtoneView.State(phone)));
+        }
     }
 
     private ItemStack.Builder sortButton(SortType current) {
