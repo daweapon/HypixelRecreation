@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "spiders-den"
+    name: "The Spider's Den Update"
+    date: "24th October 2026"
+    material: spider_eye
+    title: "The Spider's Den Update"
+    book: "spiders_den_update.yml"
   - version: "abiphone"
     name: "The Abiphone Update"
     date: "23rd October 2026"

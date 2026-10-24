@@ -1889,3 +1889,75 @@ regions:
     y2: 75
     z2: -465
     serverType: THE_FARMING_ISLANDS
+  - id: spiders_den
+    type: SPIDERS_DEN
+    x1: -512
+    y1: 20
+    z1: -480
+    x2: -17
+    y2: 160
+    z2: -17
+    serverType: SKYBLOCK_SPIDERS_DEN
+  - id: spider_mound
+    type: SPIDER_MOUND
+    x1: -350
+    y1: 82
+    z1: -345
+    x2: -215
+    y2: 170
+    z2: -150
+    serverType: SKYBLOCK_SPIDERS_DEN
+  - id: arachnes_burrow
+    type: ARACHNES_BURROW
+    x1: -340
+    y1: 30
+    z1: -330
+    x2: -215
+    y2: 82
+    z2: -160
+    serverType: SKYBLOCK_SPIDERS_DEN
+  - id: arachnes_sanctuary
+    type: ARACHNES_SANCTUARY
+    x1: -315
+    y1: 30
+    z1: -215
+    x2: -250
+    y2: 80
+    z2: -160
+    serverType: SKYBLOCK_SPIDERS_DEN
+  - id: gravel_mines
+    type: GRAVEL_MINES
+    x1: -330
+    y1: 60
+    z1: -345
+    x2: -250
+    y2: 100
+    z2: -305
+    serverType: SKYBLOCK_SPIDERS_DEN
+  - id: grandmas_house
+    type: GRANDMAS_HOUSE
+    x1: -295
+    y1: 105
+    z1: -205
+    x2: -262
+    y2: 135
+    z2: -170
+    serverType: SKYBLOCK_SPIDERS_DEN
+  - id: michaels_crib
+    type: MICHAELS_CRIB
+    x1: -280
+    y1: 85
+    z1: -300
+    x2: -245
+    y2: 110
+    z2: -270
+    serverType: SKYBLOCK_SPIDERS_DEN
+  - id: archaeologists_camp
+    type: ARCHAEOLOGISTS_CAMP
+    x1: -390
+    y1: 95
+    z1: -315
+    x2: -335
+    y2: 130
+    z2: -265
+    serverType: SKYBLOCK_SPIDERS_DEN

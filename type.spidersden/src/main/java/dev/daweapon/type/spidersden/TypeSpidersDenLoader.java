@@ -1,5 +1,6 @@
 package dev.daweapon.type.spidersden;
 
+import dev.daweapon.type.skyblockgeneric.spidersden.SpiderDenMobSpawner;
 import dev.daweapon.type.generic.event.join.SpawnOnJoin;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
@@ -34,7 +35,7 @@ public class TypeSpidersDenLoader implements SkyBlockTypeLoader {
 
     @Override
     public void afterInitialize(MinecraftServer server) {
-
+        SpiderDenMobSpawner.start();
     }
 
     @Override

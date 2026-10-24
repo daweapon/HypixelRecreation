@@ -1,0 +1,17 @@
+title: "The Spider's Den Update"
+date: "24th October 2026"
+intro:
+  - "The Spider's Den is no longer empty. Spiders, skeletons and a Broodmother now live in the Den, and its zones have names."
+sections:
+  - heading: "Zones"
+    colour: "<c>"
+    lines:
+      - "The Den is now split into the Spider's Den, Spider Mound, Arachne's Burrow, Arachne's Sanctuary, Gravel Mines, Grandma's House, Michael's Crib and Archaeologist's Camp, each with its own zone name."
+  - heading: "Mobs"
+    colour: "<a>"
+    lines:
+      - "Dasher Spiders, Splitter Spiders, Weavers, Voracious Spiders and Spider Jockeys roam the Spider Mound, with stronger versions in Arachne's Burrow. Flint Skeletons guard the Gravel Mines."
+      - "Splitter Spiders split into two Silverfish when they die, Weavers shoot webs that slow you down, and Spider Jockeys ride a Jockey Skeleton that throws Silverfish at you."
+      - "The Broodmother waits at the top of the Spider Mound and releases cave spiders when she dies. She takes at most 300 damage from each hit, and returns two and a half minutes later."
+      - "Every mob counts towards the Spider's Den Bestiary."
+      - "Spiders can drop String, Spider Eyes, Arachne's Calling, Top of Nest Travel Scrolls and the Tarantula Pet. The Broodmother drops a Spider Talisman, and Luxurious Spools."

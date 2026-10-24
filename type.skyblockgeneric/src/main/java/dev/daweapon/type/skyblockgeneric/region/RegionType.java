@@ -118,6 +118,7 @@ public enum RegionType {
     ARACHNES_SANCTUARY("Arachne's Sanctuary", NamedTextColor.DARK_RED),
     ARCHAEOLOGISTS_CAMP("Archaeologist's Camp", NamedTextColor.AQUA),
     GRANDMAS_HOUSE("Grandma's House", NamedTextColor.RED),
+    MICHAELS_CRIB("Michael's Crib", NamedTextColor.GREEN),
     GRAVEL_MINES("Gravel Mines", NamedTextColor.DARK_GRAY),
     SPIDER_MOUND("Spider Mound", NamedTextColor.RED),
 
