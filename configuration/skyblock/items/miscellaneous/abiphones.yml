@@ -32,7 +32,7 @@ items:
   - id: ABIPHONE_X_BLUE
     material: PLAYER_HEAD
     name: "Abiphone X Blue"
-    rarity: COMMON
+    rarity: UNCOMMON
     components:
       - id: ABIPHONE
         max_contacts: 7
@@ -126,7 +126,7 @@ items:
         item_model: hypixel_skyblock:item/abiphones/xiii/abiphone_xiii_sapphire
       - id: ABIPHONE
         max_contacts: 10
-        max_discs: 20
+        max_discs: 15
         features:
           - CONTACTS_DIRECTORY
           - DO_NOT_DISTURB_MODE

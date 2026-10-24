@@ -634,6 +634,22 @@ public class ItemAttributeHandler {
         return ids.contains(npc.getId());
     }
 
+    public String getAbiphoneCallStats() {
+        return ((ItemAttributeAbiphoneCallStats) item.getAttribute("abiphone_call_stats")).getValue();
+    }
+
+    public void setAbiphoneCallStats(String stats) {
+        ((ItemAttributeAbiphoneCallStats) item.getAttribute("abiphone_call_stats")).setValue(stats);
+    }
+
+    public String getAbiphoneDoNotDisturb() {
+        return ((ItemAttributeAbiphoneDoNotDisturb) item.getAttribute("abiphone_dnd")).getValue();
+    }
+
+    public void setAbiphoneDoNotDisturb(String contactIds) {
+        ((ItemAttributeAbiphoneDoNotDisturb) item.getAttribute("abiphone_dnd")).setValue(contactIds);
+    }
+
     public void setStoredPotential(int storedPotential) {
         ((ItemAttributeStoredPotential) item.getAttribute("stored_potential")).setValue(storedPotential);
     }

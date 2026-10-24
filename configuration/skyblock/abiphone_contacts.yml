@@ -1,0 +1,681 @@
+contacts:
+  - id: agatha
+    name: "Agatha"
+    difficulty: EASY
+    location: "Galatea"
+    description: "Hosts Agatha's Contests."
+    requirement: ""
+    usage: "Can be called to open the Agatha's Contest Info interface."
+    aliases: [agatha]
+  - id: alchemist
+    name: "Alchemist"
+    difficulty: MEDIUM
+    location: "Hub"
+    description: "Sells ingredients for your strongest potions."
+    requirement: "Giving 64 Mutant Nether Wart."
+    usage: "Can be called to open their shop interface."
+    aliases: [alc, alch, alchemist]
+  - id: alda
+    name: "Alda"
+    difficulty: EASY
+    location: "Hub"
+    description: "Sells Abiphone Basic."
+    requirement: ""
+    usage: "Can be called to open their shop interface."
+    aliases: [alda]
+  - id: anita
+    name: "Anita"
+    difficulty: HARD
+    location: "Hub"
+    description: "Offers farming items."
+    requirement: "One GOLD medal in any crop and owning Jacob's contact."
+    usage: "Can be called to open their shop interface."
+    aliases: [anita]
+  - id: aranya
+    name: "Aranya"
+    difficulty: EASY
+    location: "Crimson Isle"
+    description: "Just a spider in a human's world. Always hungry."
+    requirement: ""
+    usage: "Calls the player when they are ready to be fed a player again."
+    aliases: [aranya]
+  - id: archie
+    name: "Archie"
+    difficulty: MEDIUM
+    location: "Torrhus Canyon"
+    description: "Runs the ."
+    requirement: "Giving Helixis."
+    usage: "Opens Archie's Safari essence shop."
+    aliases: [archie]
+  - id: bartender
+    name: "Bartender"
+    difficulty: HARD
+    location: "Hub"
+    description: "Sells a variety of useful brews"
+    requirement: "Obtaining Spider Slayer 9."
+    usage: "Opens their interface."
+    aliases: [bartender]
+  - id: blacksmith
+    name: "Blacksmith"
+    difficulty: HARD
+    location: "Hub"
+    description: "Reforges items."
+    requirement: "Paying 32,000,000 coins."
+    usage: "Opens their interface."
+    aliases: [blacksmith]
+  - id: brynmor
+    name: "Brynmor"
+    difficulty: MEDIUM
+    location: "Dwarven Mines"
+    description: "Runs the . Sells mining-related consumables."
+    requirement: "Giving Speckled Teacup."
+    usage: "Opens their interface."
+    aliases: [brynmor]
+  - id: builder
+    name: "Builder"
+    difficulty: MEDIUM
+    location: "Hub"
+    description: "Need to build? Call him."
+    requirement: "Giving Builder's Wand."
+    usage: "Opens their shop interface."
+    aliases: [build, builder]
+  - id: bulvar
+    name: "Bulvar"
+    difficulty: MEDIUM
+    location: "Dwarven Mines"
+    description: "Sells Tier XII Mining Minions."
+    requirement: "Giving Silex."
+    usage: "Opens their shop interface."
+    aliases: [bulvar]
+  - id: captain_ahone
+    name: "Captain Ahone"
+    difficulty: EASY
+    location: "Crimson Isle"
+    description: "Leader of the army."
+    requirement: "Automatically granted during the Mage Faction questline. Can be re-added to an Abiphone by talking to Ziri if previously lost."
+    usage: "Grants certain dialogue necessary to progress in the Mage Faction questline."
+    aliases: [captain_ahone, ahone, captain]
+  - id: carrolyn
+    name: "Carrolyn"
+    difficulty: MEDIUM
+    location: "Crimson Isle"
+    description: "Runs an import business in ."
+    requirement: "Giving Magma Core."
+    usage: "Opens Carrolyn's interface."
+    aliases: [carrolyn]
+  - id: clerk_seraphine
+    name: "Clerk Seraphine"
+    difficulty: EASY
+    location: "Hub"
+    description: "Cast your vote remotely for the upcoming !"
+    requirement: ""
+    usage: "Opens the Mayor voting UI"
+    aliases: [clerk, clerk_seraphine, seraphine]
+  - id: crag
+    name: "Crag"
+    difficulty: MEDIUM
+    location: "Crimson Isle"
+    description: "Doorkeeper to Kuudra."
+    requirement: "Giving Bezal Shard."
+    usage: "Opens their interface."
+    aliases: [crag, kuudra, kuudra_gatekeeper]
+  - id: dalir
+    name: "Dalir"
+    difficulty: EASY
+    location: "Dwarven Mines"
+    description: "Self-proclaimed leader of the ."
+    requirement: "Wear Fallen Star Helmet and attend 3 meetings during which you talk to Dalir using your Abiphone"
+    usage: "Gives some info about when the next Cult of the Fallen Star meeting is and how many total meetings the player has attended."
+    aliases: [dalir]
+  - id: dean
+    name: "Dean"
+    difficulty: EASY
+    location: "Crimson Isle"
+    description: "Always drowning in his research."
+    requirement: "Automatically granted during the Mage Faction questline. Can be re-added to an Abiphone by talking to Ziri if previously lost."
+    usage: "Grants certain dialogue."
+    aliases: [dean]
+  - id: duncan
+    name: "Duncan"
+    difficulty: EASY
+    location: "Dungeon"
+    description: "Sells one thing in Dungeons."
+    requirement: ""
+    usage: "Opens their shop interface."
+    aliases: [duncan]
+  - id: dusk
+    name: "Dusk"
+    difficulty: EASY
+    location: "Hub"
+    description: "Allows virtual Runecrafting through some magical witchcraft."
+    requirement: "Slaying a runic Enderman."
+    usage: "Opens the Runic Pedestal's interface."
+    aliases: [dusk]
+  - id: einary
+    name: "Einary"
+    difficulty: HARD
+    location: "Jerry's Workshop"
+    description: "Jolly old man offering wintry wares."
+    requirement: "Giving Einary's Red Hoodie."
+    usage: "Can be called to open their shop interface."
+    aliases: [einary]
+  - id: elizabeth
+    name: "Elizabeth"
+    difficulty: EASY
+    location: "Hub"
+    description: "Maintains the community shop."
+    requirement: ""
+    usage: "Opens their shop interface."
+    aliases: [community_shop, elizabeth]
+  - id: elle
+    name: "Elle"
+    difficulty: EASY
+    location: "Crimson Isle"
+    description: "Most popular warrior in the Crimson Isle!"
+    requirement: "Automatically given during the Mage Faction questline. Can be re-added to an Abiphone by talking to Ziri if previously lost."
+    usage: "Grants certain dialogue."
+    aliases: [elle]
+  - id: fann
+    name: "Fann"
+    difficulty: MEDIUM
+    location: "Hub"
+    description: "Levels up your pets for you."
+    requirement: "Feed Bat the Fish to Hootie."
+    usage: "Opens their training interface. Calls the player when their pet is ready to pick up."
+    aliases: [fan, fann, pet_trainer]
+  - id: fear_mongerer
+    name: "Fear Mongerer"
+    difficulty: MEDIUM
+    location: "Hub"
+    description: "Holds spooky festivals. Also spooks. And mongers!"
+    requirement: "Giving 64 Purple Candy and 6 Ectoplasm."
+    usage: "Opens their shop interface."
+    aliases: [fear_mongerer, fear, fearmongerer, spooky]
+  - id: feast_baker_scott
+    name: "Feast Baker Scott"
+    difficulty: MEDIUM
+    location: "Hub"
+    description: "Gifted with flour, and yeast, the feast's dedicated baker."
+    requirement: "Obtain Scott's Contact Baked In Bread"
+    usage: "Opens their UI."
+    aliases: [feast_baker_scott, scott]
+  - id: feast_chef_ted
+    name: "Feast Chef Ted"
+    difficulty: MEDIUM
+    location: "Hub"
+    description: "The Grand Feast's head chef! Always cooking."
+    requirement: "Obtain Ted's Contact Baked In Bread."
+    usage: "Opens their UI."
+    aliases: [feast_chef_ted, ted]
+  - id: fred
+    name: "Fred"
+    difficulty: MEDIUM
+    location: "Dwarven Mines"
+    description: "Foreman of the Forge."
+    requirement: "Giving 64 Foul Flesh."
+    usage: "Opens the forging interface."
+    aliases: [forge, forge_foreman, fred]
+  - id: frozen_alex
+    name: "Frozen Alex"
+    difficulty: MEDIUM
+    location: "Jerry's Workshop"
+    description: "Runs the ."
+    requirement: "Giving Enchanted Lava Bucket."
+    usage: "Opens Alex's Ice essence shop."
+    aliases: [alex, frozen, frozen_alex]
+  - id: gemma
+    name: "Gemma"
+    difficulty: MEDIUM
+    location: "Crystal Hollows"
+    description: "Runs the ."
+    requirement: "Giving Pure Mithril Gem."
+    usage: "Opens Gemma's Diamond essence shop."
+    aliases: [gemma, gem]
+  - id: geo
+    name: "Geo"
+    difficulty: HARD
+    location: "Dwarven Mines"
+    description: "Operates the Gemstone Grinder."
+    requirement: "Giving Flawless Ruby, Amber, Topaz, Jade, Sapphire and Amethyst Gemstones, in that order."
+    usage: "Opens the Gemstone Grinder's interface."
+    aliases: [gemstone, geo]
+  - id: george
+    name: "George"
+    difficulty: HARD
+    location: "Hub"
+    description: "Collects and purchases pets."
+    requirement: "Giving three of the following Pets, chosen at random, all at level 1."
+    usage: "Opens their interface."
+    aliases: [george, pet_collector]
+  - id: hoppity
+    name: "Hoppity"
+    difficulty: EASY
+    location: "Hub"
+    description: "Purveyor of Chocolate Rabbits."
+    requirement: "Giving Hoppity a Fish Chocolat a la Vapeur."
+    usage: "Opens their Shop Interface. Calls occasionally to sell a Chocolate Rabbit."
+    aliases: [hoppity]
+  - id: igrupan
+    name: "Igrupan"
+    difficulty: EASY
+    location: "Crimson Isle"
+    description: "Owns a Chicken Coop down in . A bit mad."
+    requirement: "Returning their chickens to them. Can be re-added to an Abiphone by talking to Ziri if previously lost."
+    usage: "Grants certain dialogue."
+    aliases: [igrupan]
+  - id: jacob
+    name: "Jacob"
+    difficulty: MEDIUM
+    location: "Hub"
+    description: "Organizes farming contests."
+    requirement: "Giving 10 Jacob's Ticket."
+    usage: "Opens their interface."
+    aliases: [jacob]
+  - id: jake
+    name: "Jake"
+    difficulty: MEDIUM
+    location: "The Farming Islands"
+    description: "Likes to study animals in his free time."
+    requirement: "Giving Chocoberry"
+    usage: "Opens the Crop Analyzer menu.<!--TODO: make sure this is good-->"
+    aliases: [jake]
+  - id: jax
+    name: "Jax"
+    difficulty: HARD
+    location: "Hub"
+    description: "Sells special arrows."
+    requirement: "Paying 10,000,000 coins or completing Target Practice IV in under 11s."
+    usage: "Opens their interface."
+    aliases: [arrow, arrow_forger, jax]
+  - id: jotraeline_greatforge
+    name: "Jotraeline Greatforge"
+    difficulty: EASY
+    location: "Dwarven Mines"
+    description: "Pro Drill Maintenance representative."
+    requirement: "Giving an Abiphone Basic, X Red, X Blue or XI Yellow that is not your only Abiphone."
+    usage: "Opens their interface."
+    aliases: [jotraeline_greatforge, drill, drill_fuel_mechanic, jot, jotraeline]
+  - id: junker_joel
+    name: "Junker Joel"
+    difficulty: MEDIUM
+    location: "Backwater Bayou"
+    description: "Trade in your Junk in exchange for goodies!"
+    requirement: "Giving Bayou Water Orb."
+    usage: "Opens Junker Joel's interface."
+    aliases: [joel, junker_joel]
+  - id: kat
+    name: "Kat"
+    difficulty: EASY
+    location: "Hub"
+    description: "Upgrades your pets!"
+    requirement: "Giving Kat Flower."
+    usage: "Opens their interface."
+    aliases: [cat, kat, pet_sitter]
+  - id: kaus
+    name: "Kaus"
+    difficulty: MEDIUM
+    location: "Crimson Isle"
+    description: "Surprisingly bad at fighting, but a good student."
+    requirement: ""
+    usage: "Calls the player when they are ready to fight."
+    aliases: [kaus]
+  - id: kiara
+    name: "Kiara"
+    difficulty: HARD
+    location: "Galatea"
+    description: "Sells rare Reptile and Amphibian Shards."
+    requirement: "Giving Chameleon Shard"
+    usage: "Opens their shop interface."
+    aliases: [kiara]
+  - id: kysha
+    name: "Kysha"
+    difficulty: HARD
+    location: "Galatea"
+    description: "Maintains the ."
+    requirement: "Giving Nessie Shard."
+    usage: "Opens the Fushion Machine."
+    aliases: [fusion, fusionmachine, kysha]
+  - id: lumber_merchant
+    name: "Lumber Merchant"
+    difficulty: EASY
+    location: "Hub"
+    description: "Sells useful tools."
+    requirement: "Giving Spruce Axe."
+    usage: "Opens their shop interface."
+    aliases: [lumber, lumber_merchant, lumbermerchant]
+  - id: mad_redstone_engineer
+    name: "Mad Redstone Engineer"
+    difficulty: EASY
+    location: "Hub"
+    description: "Your go-to for all things redstone."
+    requirement: "Giving Enchanted Redstone Block."
+    usage: "Opens the Mad Redstone Engineer's Redstone shop."
+    aliases: [engineer, mad, mad_redstone_engineer, redstone]
+  - id: maddox_the_slayer
+    name: "Maddox the Slayer"
+    difficulty: EASY
+    location: "Hub"
+    description: "Access your from anywhere! And it wouldn't kill you to ask him how he's doing every now and then."
+    requirement: "Giving Maddox Batphone."
+    usage: "Opens their interface."
+    aliases: [maddox_the_slayer, maddox, slayer]
+  - id: malik
+    name: "Malik"
+    difficulty: HARD
+    location: "Dungeon Hub"
+    description: "Runs the Undead and Wither Essence Shops and lets you apply Stars to your gear!."
+    requirement: "Giving 5000 Undead Essence."
+    usage: "Opens Malik's interface."
+    aliases: [malik]
+  - id: marigold
+    name: "Marigold"
+    difficulty: MEDIUM
+    location: "Dwarven Mines"
+    description: "Runs the ."
+    requirement: "Giving Midas Jewel."
+    usage: "Opens Marigold's Gold essence shop."
+    aliases: [marigold]
+  - id: maxwell
+    name: "Maxwell"
+    difficulty: HARD
+    location: "Hub"
+    description: "Does magic with your accessory bag."
+    requirement: "Giving 2 Ultimate Carrot Candy."
+    usage: "Opens their interface."
+    aliases: [max, maxwell]
+  - id: miria
+    name: "Miria"
+    difficulty: MEDIUM
+    location: "Torrhus Canyon"
+    description: "Host Miria's Contest."
+    requirement: "Reaching the Legendary bracket in Miria's Contest."
+    usage: "Can be called to open the Miria's Contest Info interface."
+    aliases: [miria]
+  - id: moby
+    name: "Moby"
+    difficulty: MEDIUM
+    location: "The Farming Islands"
+    description: "Master of chum fishing."
+    requirement: "Giving 64 Full Chum Bucket."
+    usage: "Opens Moby's Interface."
+    aliases: [moby]
+  - id: mort
+    name: "Mort"
+    difficulty: MEDIUM
+    location: "Dungeon Hub"
+    description: "Guards the entrance to the catacombs."
+    requirement: "Giving Saving Grace and subsequently Spirit Bone."
+    usage: "Opens their interface and allows the player to queue for a Dungeon outside the Dungeon Hub."
+    aliases: [dungeon, gatekeeper, mort]
+  - id: odger
+    name: "Odger"
+    difficulty: MEDIUM
+    location: "Crimson Isle"
+    description: "Fillets your Trophy Fish."
+    requirement: "Giving any Trophy Fish."
+    usage: "Opens their interface."
+    aliases: [odger]
+  - id: ophelia
+    name: "Ophelia"
+    difficulty: HARD
+    location: "Dungeon Hub"
+    description: "Sells items useful in Dungeons."
+    requirement: "Giving Catacombs Expert Ring."
+    usage: "Opens their shop interface."
+    aliases: [ophelia]
+  - id: oringo
+    name: "Oringo"
+    difficulty: MEDIUM
+    location: "Hub"
+    description: "Traveling Zookeeper with a variety of exotic pets!"
+    requirement: "Giving 64 Silent Pearl."
+    usage: "Tells the player which pets they are currently offering."
+    aliases: [oringo]
+  - id: pablo
+    name: "Pablo"
+    difficulty: EASY
+    location: "Crimson Isle"
+    description: "Painter in constant need of exquisite dyes."
+    requirement: ""
+    usage: "Calls the player when they need a new flower."
+    aliases: [pablo]
+  - id: phillip
+    name: "Phillip"
+    difficulty: EASY
+    location: "The Garden"
+    description: "Sells useful farming items in exchange for from your vacuum."
+    requirement: "Giving Squeaky Toy."
+    usage: "Opens Phillip's Pest shop."
+    aliases: [pesthunter, pesthunter_phillip, philip, phillip]
+  - id: plumber_joe
+    name: "Plumber Joe"
+    difficulty: EASY
+    location: "Hub"
+    description: "It's Plumber Joe!"
+    requirement: ""
+    usage: "Opens their interface."
+    aliases: [plumber_joe, joe, plumber, plumberjoe]
+  - id: professor_wynd
+    name: "Professor Wynd"
+    difficulty: EASY
+    location: "Hub"
+    description: "Alerts you of the weather!"
+    requirement: "Weather Wand"
+    usage: "Opens their interface. Alerts the player of the upcoming weather."
+    aliases: [professor_wynd, wind, wynd]
+  - id: queen_mismyla
+    name: "Queen Mismyla"
+    difficulty: EASY
+    location: "Dwarven Mines"
+    description: "Access Commissions remotely."
+    requirement: "Giving Royal Pigeon."
+    usage: "Opens the commissions interface."
+    aliases: [mismyla, queen_mismyla, queenmismyla]
+  - id: queen_nyx
+    name: "Queen Nyx"
+    difficulty: HARD
+    location: "Crimson Isle"
+    description: "Queen of the . Pretty busy."
+    requirement: "Reaching 12,000 Mage reputation."
+    usage: "Grants dialogue."
+    aliases: [queen_nyx, nyx, queen, queennyx]
+  - id: roddy
+    name: "Roddy"
+    difficulty: EASY
+    location: "Backwater Bayou"
+    description: "Lets you apply to your Fishing Rods."
+    requirement: "Giving Torn Cloth"
+    usage: "Opens the rod part interface."
+    aliases: [roddy]
+  - id: rollim
+    name: "Rollim"
+    difficulty: MEDIUM
+    location: "Crimson Isle"
+    description: "Needs help with combat, but an optimistic learner."
+    requirement: ""
+    usage: "Calls the player when they are ready to train."
+    aliases: [rollim]
+  - id: rosemary
+    name: "Rosemary"
+    difficulty: EASY
+    location: "Galatea"
+    description: "Runs the Forest Essence Shop."
+    requirement: "Giving Figstone."
+    usage: "Opens Rosemary's Forest essence shop."
+    aliases: [rosemary]
+  - id: rusty
+    name: "Rusty"
+    difficulty: EASY
+    location: "Gold Mine"
+    description: "SkyBlock's Janitor."
+    requirement: ""
+    usage: "Opens their interface."
+    aliases: [janitor, rusty]
+  - id: shaggy
+    name: "Shaggy"
+    difficulty: EASY
+    location: "Spider's Den"
+    description: "Will trade you !"
+    requirement: "Kill Arachne"
+    usage: "Opens Shaggy's interface."
+    aliases: [shaggy]
+  - id: shifty
+    name: "Shifty"
+    difficulty: MEDIUM
+    location: "Hub"
+    description: "Bored bartender be based boldly back behind bar."
+    requirement: "Giving Red Thornleaf Tea and Scarleton Premium."
+    usage: "Opens their interface."
+    aliases: [shady_bartender, shifty]
+  - id: sirih
+    name: "Sirih"
+    difficulty: EASY
+    location: "Crimson Isle"
+    description: "Either writing a novel or oinking."
+    requirement: "Being a member of the Barbarian Faction. Must be in human form when adding contact."
+    usage: "Grants dialogue hinting at when they need to be fed Sulphur."
+    aliases: [sirih]
+  - id: sirius
+    name: "Sirius"
+    difficulty: HARD
+    location: "Hub"
+    description: "Gives all of his contacts a 1% discount on the ! What a guy..."
+    requirement: "Consuming Sirius' Personal Phone Number."
+    usage: "Calls when a Dark Auction is about to happen, and refunds 1% of the price paid on winning Dark Auction bids."
+    aliases: [sirius]
+  - id: spider_tamer
+    name: "Spider Tamer"
+    difficulty: MEDIUM
+    location: "Spider's Den"
+    description: "Runs the Spider Essence Shop."
+    requirement: "Giving Tarantula Pet ()."
+    usage: "Opens the Spider Tamer's Spider essence shop."
+    aliases: [spider, spider_tamer, tamer]
+  - id: st_jerry
+    name: "St. Jerry"
+    difficulty: EASY
+    location: "Jerry's Workshop"
+    description: "Celebrates life all year long, but especially one quarter of it."
+    requirement: "Typing \"I love the warmth of the Holidays despite the snow\" after he says it first."
+    usage: "Gives the player White Gift per SkyBlock Year."
+    aliases: [st_jerry, stjerry]
+  - id: suus
+    name: "Suus"
+    difficulty: EASY
+    location: "Crimson Isle"
+    description: "Her kid seems to keep losing his toy...Hmmmmm..."
+    requirement: "Being a member of the Barbarian Faction"
+    usage: "Tells the player which mob took Turd's Toy."
+    aliases: [suus]
+  - id: talbot
+    name: "Talbot"
+    difficulty: MEDIUM
+    location: "The Farming Islands"
+    description: "Sells useful items in exchange for ."
+    requirement: "Giving 100 Pelts."
+    usage: "Opens Talbot's Interface."
+    aliases: [talbot]
+  - id: taylor
+    name: "Taylor"
+    difficulty: EASY
+    location: "Hub"
+    description: "Runs ."
+    requirement: "No requirement."
+    usage: "Opens Taylor's Shop."
+    aliases: [taylor]
+  - id: terry
+    name: "Terry"
+    difficulty: MEDIUM
+    location: "Jerry's Workshop"
+    description: "Sells a variety of useful fishing Reforge Stones."
+    requirement: "Giving Winter Water Orb."
+    usage: "Opens Terry's Interface."
+    aliases: [terry]
+  - id: tia_the_fairy
+    name: "Tia the Fairy"
+    difficulty: MEDIUM
+    location: "Hub"
+    description: "Is... a fairy."
+    requirement: "Wearing complete Fairy Armor."
+    usage: "Adds a 9f™ Operator Chip to the player's Abiphone."
+    aliases: [tia_the_fairy, fairy, tia, tiathefairy]
+  - id: tomioka
+    name: "Tomioka"
+    difficulty: MEDIUM
+    location: "Dungeon"
+    description: "Sells Enchanted Books in Dungeons."
+    requirement: "Giving Titanic Experience Bottle."
+    usage: "Opens their interface."
+    aliases: [tomioka]
+  - id: tony
+    name: "Tony"
+    difficulty: EASY
+    location: "The Farming Islands"
+    description: "Sells Tier XII Farming Minions."
+    requirement: "Guessing his favorite animal in chat (Horse)."
+    usage: "Opens Tony's TXII Farming Minion shop."
+    aliases: [tony]
+  - id: trevor
+    name: "Trevor"
+    difficulty: HARD
+    location: "The Farming Islands"
+    description: "Hunts animals and trades pelts."
+    requirement: "Giving 24 Pelts and paying 1,000,000 coins."
+    usage: "Offers the player trapper quests."
+    aliases: [trevor]
+  - id: trinity
+    name: "Trinity"
+    difficulty: HARD
+    location: "Dungeon"
+    description: "Sells potions in Dungeons."
+    requirement: "Giving 2 Revive Stones."
+    usage: "Opens their interface."
+    aliases: [trinity]
+  - id: tyzzo
+    name: "Tyzzo"
+    difficulty: EASY
+    location: "The End"
+    description: "Runs the ."
+    requirement: "Giving Dragon Scale."
+    usage: "Opens Tyzzo's Dragon essence shop."
+    aliases: [tyzzo]
+  - id: vincent
+    name: "Vincent"
+    difficulty: MEDIUM
+    location: "Hub"
+    description: "Knows all about Dyes and how to use them!"
+    requirement: "Giving Mole Pet."
+    usage: "Opens their interface. Tells the player the new selected dyes every skyblock year."
+    aliases: [vincent]
+  - id: vulcan
+    name: "Vulcan"
+    difficulty: HARD
+    location: "Crimson Isle"
+    description: "Runs the Crimson Essence Shop."
+    requirement: "Infernal Kuudra Completion."
+    usage: "Opens Vulcan's Crimson essence shop."
+    aliases: [vulcan]
+  - id: walter
+    name: "Walter"
+    difficulty: MEDIUM
+    location: "Deep Caverns"
+    description: "Sells Superboom TNT."
+    requirement: "Giving Enchanted Sulphur Cube and having Sulphur collection level 7."
+    usage: "Opens their interface."
+    aliases: [walter]
+  - id: wool_weaver
+    name: "Wool Weaver"
+    difficulty: MEDIUM
+    location: "Hub"
+    description: "Need colorful blocks? Call her."
+    requirement: "Giving 512 Enchanted Wool."
+    usage: "Opens their shop interface."
+    aliases: [wool_weaver, weaver, wool, woolweaver]
+  - id: zog
+    name: "Zog"
+    difficulty: MEDIUM
+    location: "Hub"
+    description: "Sells pet items."
+    requirement: "Having 5 max level Legendary or higher Pets."
+    usage: "Opens their interface."
+    aliases: [zog]

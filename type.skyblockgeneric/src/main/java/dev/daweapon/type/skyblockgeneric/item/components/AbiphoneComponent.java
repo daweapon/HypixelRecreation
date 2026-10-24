@@ -17,8 +17,12 @@ public class AbiphoneComponent extends SkyBlockItemComponent {
 	@Getter
 	private final int maxContacts;
 
+	@Getter
+	private final List<AbiphoneFeature> features;
+
 	public AbiphoneComponent(int maxContacts, int maxDiscs, List<AbiphoneFeature> features) {
 		this.maxContacts = maxContacts;
+		this.features = List.copyOf(features);
 		addInheritedComponent(new LoreUpdateComponent(new LoreConfig(
 				(item, player) -> lore(item, maxDiscs, features), null), false));
 		addInheritedComponent(new InteractableComponent(

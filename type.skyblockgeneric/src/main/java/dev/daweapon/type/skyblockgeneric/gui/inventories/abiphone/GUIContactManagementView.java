@@ -1,7 +1,10 @@
 package dev.daweapon.type.skyblockgeneric.gui.inventories.abiphone;
 
 import net.minestom.server.inventory.InventoryType;
+import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
+import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneItemSettings;
+import java.util.List;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import dev.daweapon.type.generic.gui.v2.Components;
@@ -29,6 +32,14 @@ public final class GUIContactManagementView implements View<GUIContactManagement
                 "<7>{}", s.npc().getDescription()
         ));
 
+        if (AbiphoneItemSettings.supportsDoNotDisturb(state.abiphone())) {
+            layout.slot(29, (s, c) -> doNotDisturbButton(AbiphoneItemSettings.isDoNotDisturb(s.abiphone(), s.npc())),
+                    (click, viewCtx) -> {
+                        AbiphoneItemSettings.toggleDoNotDisturb(state.abiphone(), state.npc());
+                        viewCtx.session(Object.class).updateUnchecked(o -> o);
+                    });
+        }
+
         layout.slot(31, (s, c) -> ItemStacks.item(
                 Material.FEATHER,
                 1,
@@ -50,6 +61,16 @@ public final class GUIContactManagementView implements View<GUIContactManagement
         }
 
         Components.close(layout, 49);
+    }
+
+    private static ItemStack.Builder doNotDisturbButton(boolean enabled) {
+        return ItemStacks.lore(ItemStacks.name(ItemStack.builder(enabled ? Material.RED_DYE : Material.LIME_DYE), "<c>Do Not Disturb"), List.of(
+                Text.of("<7>Silences this contact so they cannot"),
+                Text.of("<7>call you."),
+                Text.empty(),
+                Text.of("<7>Status: {}", enabled ? "<c>Enabled" : "<a>Disabled"),
+                Text.empty(),
+                Text.of("<e>Click to toggle!")));
     }
 
     public record State(SkyBlockItem abiphone, AbiphoneNPC npc) {}

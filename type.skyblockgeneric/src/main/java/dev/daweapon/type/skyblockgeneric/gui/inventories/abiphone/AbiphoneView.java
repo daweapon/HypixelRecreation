@@ -12,10 +12,13 @@ import dev.daweapon.type.generic.gui.v2.*;
 import dev.daweapon.type.generic.gui.v2.context.ClickContext;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneContactDirectory;
+import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneItemSettings;
 import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneNPC;
-import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneRegistry;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // GUI listing an Abiphone's saved NPC contacts, letting the player call or manage each one
@@ -58,6 +61,7 @@ public final class AbiphoneView extends PaginatedView<AbiphoneNPC, AbiphoneView.
     protected void onItemClick(ClickContext<State> click, ViewContext ctx, AbiphoneNPC npc, int index) {
         if (click.click() instanceof Click.Left) {
             ctx.player().closeInventory();
+            AbiphoneItemSettings.recordCall(click.state().abiphone(), npc);
             initiateCall(ctx.player(), npc);
         } else if (click.click() instanceof Click.Right) {
             ctx.push(new GUIContactManagementView(), new GUIContactManagementView.State(click.state().abiphone(), npc));
@@ -84,15 +88,14 @@ public final class AbiphoneView extends PaginatedView<AbiphoneNPC, AbiphoneView.
 
     @Override
     protected void layoutCustom(ViewLayout<State> layout, State state, ViewContext ctx) {
-        List<AbiphoneNPC> contacts = state.abiphone().getAttributeHandler().getAbiphoneNPCs();
         Components.close(layout, 49);
-        layout.slot(50, (s, c) -> ItemStacks.item(
-                Material.HOPPER,
-                1,
-                Text.key("gui_abiphone.sort_button"),
-                Text.keyLines("gui_abiphone.sort_button.lore")
-        ), (click, viewCtx) -> {
-            // TODO: Implement sorting
+        layout.slot(50, (s, c) -> sortButton(s.sortType()), (click, viewCtx) -> {
+            SortType[] types = SortType.values();
+            int step = click.click() instanceof Click.Right ? types.length - 1 : 1;
+            viewCtx.session(Object.class).updateUnchecked(s -> {
+                State typed = (State) s;
+                return typed.withSortType(types[(typed.sortType().ordinal() + step) % types.length]);
+            });
         });
 
         layout.slot(51, (s, c) -> ItemStacks.item(
@@ -100,11 +103,27 @@ public final class AbiphoneView extends PaginatedView<AbiphoneNPC, AbiphoneView.
                 1,
                 Text.key("gui_abiphone.contacts_directory"),
                 Text.keyLines("gui_abiphone.contacts_directory.lore",
-                        contacts.size(),
-                        AbiphoneRegistry.getRegisteredContactNPCs().size())
-        ), (click, viewCtx) -> {
-            // TODO: Open contacts directory
-        });
+                        AbiphoneContactDirectory.discovered((SkyBlockPlayer) c.player()),
+                        AbiphoneContactDirectory.TOTAL)
+        ), (click, viewCtx) -> viewCtx.push(new AbiphoneDirectoryView(), new AbiphoneDirectoryView.State(click.state().abiphone(), (SkyBlockPlayer) viewCtx.player())));
+    }
+
+    private ItemStack.Builder sortButton(SortType current) {
+        List<Text> lore = new ArrayList<>();
+        lore.add(Text.empty());
+        for (SortType type : SortType.values()) {
+            lore.add(Text.of(type == current ? "<b>▶ {}" : "<7>  {}", type.label));
+        }
+        lore.add(Text.empty());
+        lore.add(Text.of("<b>Right-click to go backwards!"));
+        lore.add(Text.of("<e>Click to switch!"));
+        return ItemStacks.lore(ItemStacks.name(ItemStack.builder(Material.HOPPER), "<a>Sort"), lore);
+    }
+
+    @Override
+    protected List<AbiphoneNPC> getFilteredItems(State state) {
+        List<AbiphoneNPC> items = super.getFilteredItems(state);
+        return AbiphoneItemSettings.sorted(items, state.sortType(), state.abiphone());
     }
 
     @Override
@@ -126,7 +145,7 @@ public final class AbiphoneView extends PaginatedView<AbiphoneNPC, AbiphoneView.
     ) implements PaginatedState<AbiphoneNPC> {
 
         public State(SkyBlockItem abiphone) {
-            this(abiphone, abiphone.getAttributeHandler().getAbiphoneNPCs(), 0, "", SortType.ALPHABETICAL);
+            this(abiphone, abiphone.getAttributeHandler().getAbiphoneNPCs(), 0, "", SortType.FIRST_ADDED);
         }
 
         @Override
@@ -145,11 +164,17 @@ public final class AbiphoneView extends PaginatedView<AbiphoneNPC, AbiphoneView.
     }
 
     public enum SortType {
-        FIRST_ADDED,
-        ALPHABETICAL,
-        LAST_CALLED,
-        MOST_CALLED,
-        DO_NOT_DISTURB_FIRST
+        FIRST_ADDED("First Added"),
+        ALPHABETICAL("Alphabetical"),
+        LAST_CALLED("Last Called"),
+        MOST_CALLED("Most Called"),
+        DO_NOT_DISTURB_FIRST("Do Not Disturb First");
+
+        public final String label;
+
+        SortType(String label) {
+            this.label = label;
+        }
     }
 
 }

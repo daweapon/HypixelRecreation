@@ -1,0 +1,16 @@
+title: "The Abiphone Update"
+date: "23rd October 2026"
+intro:
+  - "The Abiphone gets a Contacts Directory listing all 85 contacts, a working sort button and Do Not Disturb."
+sections:
+  - heading: "Contacts Directory"
+    colour: "<a>"
+    lines:
+      - "Open it from the book in your Abiphone. It lists all 85 contacts with their description, difficulty, usual location and what they need to become a contact. Contacts that are not in the game yet say so."
+      - "Sort by A to Z, Z to A, Difficulty or Usual Location, filter by All Contacts, Not Added or Completed Quest but Not Added, and search by name with the sign. Right-click a button to go backwards."
+  - heading: "Abiphone"
+    colour: "<b>"
+    lines:
+      - "The Sort button now sorts your contacts by First Added, Alphabetical, Last Called, Most Called or Do Not Disturb First."
+      - "Abiphone XII and above can set Do Not Disturb on a contact from the contact's management menu."
+      - "Abiphone X Blue is now Uncommon and Abiphone XIII Sapphire holds 15 music discs, like Hypixel."

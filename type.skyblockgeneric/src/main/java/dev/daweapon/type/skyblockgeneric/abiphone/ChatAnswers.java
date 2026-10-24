@@ -5,20 +5,25 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public final class ChatAnswers {
     private static final long WINDOW_MILLIS = 5 * 60_000L;
     private static final Map<UUID, Pending> PENDING = new ConcurrentHashMap<>();
 
-    private record Pending(Predicate<String> accepts, Runnable onAccepted, long expiresAt) {
+    private record Pending(Predicate<String> accepts, Consumer<String> onAccepted, long expiresAt) {
     }
 
     private ChatAnswers() {
     }
 
     public static void expect(SkyBlockPlayer player, Predicate<String> accepts, Runnable onAccepted) {
-        PENDING.put(player.getUuid(), new Pending(accepts, onAccepted, System.currentTimeMillis() + WINDOW_MILLIS));
+        PENDING.put(player.getUuid(), new Pending(accepts, _ -> onAccepted.run(), System.currentTimeMillis() + WINDOW_MILLIS));
+    }
+
+    public static void expectText(SkyBlockPlayer player, Consumer<String> onAccepted) {
+        PENDING.put(player.getUuid(), new Pending(_ -> true, onAccepted, System.currentTimeMillis() + WINDOW_MILLIS));
     }
 
     public static void observe(SkyBlockPlayer player, String message) {
@@ -30,6 +35,6 @@ public final class ChatAnswers {
         }
         if (!pending.accepts().test(message.trim())) return;
         PENDING.remove(player.getUuid(), pending);
-        pending.onAccepted().run();
+        pending.onAccepted().accept(message.trim());
     }
 }

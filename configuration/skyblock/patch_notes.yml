@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "abiphone"
+    name: "The Abiphone Update"
+    date: "23rd October 2026"
+    material: iron_ingot
+    title: "The Abiphone Update"
+    book: "abiphone_update.yml"
   - version: "island-finishing-touches"
     name: "The Island Finishing Touches Update"
     date: "23rd October 2026"
