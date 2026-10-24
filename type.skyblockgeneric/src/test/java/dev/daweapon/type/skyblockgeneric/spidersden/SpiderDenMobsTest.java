@@ -21,8 +21,8 @@ class SpiderDenMobsTest {
     private static final Path REGIONS = Path.of("../configuration/skyblock/Minestom.regions.yml");
 
     @Test
-    void twentyFourVariantsInTotal() {
-        assertEquals(24, SpiderDenMobs.all().size());
+    void twentySixVariantsInTotal() {
+        assertEquals(26, SpiderDenMobs.all().size());
     }
 
     @Test

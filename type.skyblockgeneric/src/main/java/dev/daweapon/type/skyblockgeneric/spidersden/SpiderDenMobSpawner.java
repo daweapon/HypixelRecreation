@@ -8,6 +8,8 @@ import net.minestom.server.instance.block.Block;
 import net.minestom.server.timer.TaskSchedule;
 import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.spidersden.MobBroodmother;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.spidersden.MobRainSlime;
+import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.spidersden.MobSpiderJockey;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.spidersden.MobSplitterSpider;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.spidersden.MobWeaverSpider;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
 
 /**
@@ -32,6 +35,9 @@ public final class SpiderDenMobSpawner {
     private static final int PLACEMENT_TRIES = 12;
     static final Pos BROODMOTHER_SPOT = new Pos(-189.5, 176, -310.5);
     static final long BROODMOTHER_RESPAWN_MILLIS = 150_000;
+    static final double TOXIC_SLIME_CHANCE = 20;
+    static final int[] GRANDMA_MOUND_BASE = {-300, 60, -215, -255, 100, -165};
+    static final int[] CRIB_MOUND_BASE = {-285, 60, -300, -250, 92, -270};
 
     private static final List<Plan> PLANS = new ArrayList<>();
     private static boolean running;
@@ -51,7 +57,9 @@ public final class SpiderDenMobSpawner {
         zone(RegionType.ARACHNES_BURROW, 4, () -> voracious(true));
         zone(RegionType.ARACHNES_BURROW, 4, () -> new MobSpiderJockey(SpiderDenMobs.JOCKEY_BURROW, SpiderDenMobs.JOCKEY_SKELETON_BURROW));
         zone(RegionType.GRAVEL_MINES, 8, () -> new SpiderDenMob(SpiderDenMobs.FLINT_SKELETON));
-        PLANS.add(new Plan(null, 1, MobBroodmother::new, BROODMOTHER_SPOT, BROODMOTHER_RESPAWN_MILLIS));
+        PLANS.add(new Plan(null, 1, MobBroodmother::new, BROODMOTHER_SPOT, BROODMOTHER_RESPAWN_MILLIS, () -> true, null));
+        rain(GRANDMA_MOUND_BASE, 5);
+        rain(CRIB_MOUND_BASE, 5);
     }
 
     private static SpiderDenMob dasher(boolean burrow) {
@@ -67,7 +75,16 @@ public final class SpiderDenMobSpawner {
     }
 
     private static void zone(RegionType region, int count, Supplier<SpiderDenMob> factory) {
-        PLANS.add(new Plan(region, count, factory, null, 0));
+        PLANS.add(new Plan(region, count, factory, null, 0, () -> true, null));
+    }
+
+    private static void rain(int[] box, int count) {
+        PLANS.add(new Plan(null, count, SpiderDenMobSpawner::rainSlime, null, 0, SpiderDenWeather::rainingHere, box));
+    }
+
+    static SpiderDenMob rainSlime() {
+        boolean toxic = SpiderDenWeather.thunderingHere() && LootRoll.roll(null, null, TOXIC_SLIME_CHANCE);
+        return new MobRainSlime(toxic ? SpiderDenMobs.TOXIC_RAIN_SLIME : SpiderDenMobs.RAIN_SLIME, toxic);
     }
 
     public static synchronized void start() {
@@ -89,15 +106,20 @@ public final class SpiderDenMobSpawner {
         private final Supplier<SpiderDenMob> factory;
         private final Pos fixed;
         private final long respawnMillis;
+        private final BooleanSupplier gate;
+        private final int[] box;
         private final List<SpiderDenMob> alive = new ArrayList<>();
         private long respawnAt;
 
-        private Plan(RegionType region, int count, Supplier<SpiderDenMob> factory, Pos fixed, long respawnMillis) {
+        private Plan(RegionType region, int count, Supplier<SpiderDenMob> factory, Pos fixed, long respawnMillis,
+                     BooleanSupplier gate, int[] box) {
             this.region = region;
             this.count = count;
             this.factory = factory;
             this.fixed = fixed;
             this.respawnMillis = respawnMillis;
+            this.gate = gate;
+            this.box = box;
         }
 
         private void tick(Instance instance) {
@@ -108,6 +130,10 @@ public final class SpiderDenMobSpawner {
                 if (mob.isDead() || mob.isRemoved()) iterator.remove();
             }
             if (hadMobs && alive.isEmpty() && respawnMillis > 0) respawnAt = System.currentTimeMillis() + respawnMillis;
+            if (!gate.getAsBoolean()) {
+                alive.stream().filter(mob -> mob.getDamageDealt().isEmpty()).forEach(SpiderDenMob::remove);
+                return;
+            }
             if (alive.size() >= count || System.currentTimeMillis() < respawnAt) return;
             Pos spot = fixed != null ? fixed : findSpot(instance);
             if (spot == null || !playerNear(instance, spot)) return;
@@ -118,9 +144,8 @@ public final class SpiderDenMobSpawner {
         }
 
         private Pos findSpot(Instance instance) {
-            SkyBlockRegion zone = SkyBlockRegion.getRegions().stream().filter(candidate -> candidate.getType() == region).findFirst().orElse(null);
-            if (zone == null) return null;
-            List<Integer> bounds = zone.getBounds();
+            List<Integer> bounds = bounds();
+            if (bounds == null) return null;
             ThreadLocalRandom random = ThreadLocalRandom.current();
             for (int attempt = 0; attempt < PLACEMENT_TRIES; attempt++) {
                 int x = random.nextInt(bounds.get(0), bounds.get(1) + 1);
@@ -128,10 +153,17 @@ public final class SpiderDenMobSpawner {
                 if (!instance.isChunkLoaded(x >> 4, z >> 4)) continue;
                 Pos ground = groundAt(instance, x, z, bounds.get(2), bounds.get(3));
                 if (ground == null) continue;
+                if (box != null) return ground;
                 SkyBlockRegion at = SkyBlockRegion.getRegionOfPosition(ground);
                 if (at != null && at.getType() == region) return ground;
             }
             return null;
+        }
+
+        private List<Integer> bounds() {
+            if (box != null) return List.of(box[0], box[3], box[1], box[4], box[2], box[5]);
+            SkyBlockRegion zone = SkyBlockRegion.getRegions().stream().filter(candidate -> candidate.getType() == region).findFirst().orElse(null);
+            return zone == null ? null : zone.getBounds();
         }
 
         private static Pos groundAt(Instance instance, int x, int z, int minY, int maxY) {

@@ -1,7 +1,7 @@
 title: "The Spider's Den Update"
 date: "24th October 2026"
 intro:
-  - "The Spider's Den is no longer empty. Spiders, skeletons and a Broodmother now live in the Den, and its zones have names."
+  - "The Spider's Den is no longer empty. Spiders, skeletons and a Broodmother now live in the Den, its zones have names, and it rains."
 sections:
   - heading: "Zones"
     colour: "<c>"
@@ -15,3 +15,18 @@ sections:
       - "The Broodmother waits at the top of the Spider Mound and releases cave spiders when she dies. She takes at most 300 damage from each hit, and returns two and a half minutes later."
       - "Every mob counts towards the Spider's Den Bestiary."
       - "Spiders can drop String, Spider Eyes, Arachne's Calling, Top of Nest Travel Scrolls and the Tarantula Pet. The Broodmother drops a Spider Talisman, and Luxurious Spools."
+  - heading: "Weather"
+    colour: "<b>"
+    lines:
+      - "Every 40 minutes it rains in the Spider's Den for 20 minutes, and every third rain is a thunderstorm. All lobbies share the same weather."
+      - "While it rains you gain +25 Fishing Speed, and Rain Slimes appear at the foot of the mounds by Grandma's House and Michael's Crib. During a thunderstorm 1 in 5 of them is a stronger Toxic Rain Slime."
+  - heading: "Mining"
+    colour: "<8>"
+    lines:
+      - "The Spider's Den now gives you Mining Fatigue. You can still break the gravel in the Gravel Mines at normal Minecraft speed, and it grows back about a second and a half later."
+  - heading: "NPCs"
+    colour: "<6>"
+    lines:
+      - "Haymitch now talks to you at the Spider's Den spawn. What he says depends on whether you have been up the Spider Mound and on your Combat level."
+      - "Grandma Wolf gives you the Grandma Wolf Pet on your first visit, makes it Uncommon for free, and upgrades it to Rare, Epic and Legendary at Bestiary Milestones 10, 15 and 20."
+      - "Bramass Beastslayer gives you the Beastslayer's Codex once you reach Bestiary Milestone 50."

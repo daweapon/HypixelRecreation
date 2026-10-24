@@ -119,7 +119,7 @@ public enum RegionType {
     ARCHAEOLOGISTS_CAMP("Archaeologist's Camp", NamedTextColor.AQUA),
     GRANDMAS_HOUSE("Grandma's House", NamedTextColor.RED),
     MICHAELS_CRIB("Michael's Crib", NamedTextColor.GREEN),
-    GRAVEL_MINES("Gravel Mines", NamedTextColor.DARK_GRAY),
+    GRAVEL_MINES("Gravel Mines", NamedTextColor.DARK_GRAY, SpiderDenGravelConfiguration.class),
     SPIDER_MOUND("Spider Mound", NamedTextColor.RED),
 
     // The End

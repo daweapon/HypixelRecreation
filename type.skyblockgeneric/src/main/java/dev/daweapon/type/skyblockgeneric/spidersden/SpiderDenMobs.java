@@ -24,6 +24,7 @@ public final class SpiderDenMobs {
     private static final String VORACIOUS_HEAD = "8300986ed0a04ea79904f6ae53f49ed3a0ff5b1df62bba622ecbd3777f156df8";
     private static final String JOCKEY_HEAD = "70939373cafe4b1f5397aafd09f3bb1663e7b629a41a75fbdc1860b6bf8b475f";
     private static final String SILVERFISH_HEAD = "da91dab8391af5fda54acd2c0b18fbd819b865e1a8f1d623813fa761e924540";
+    private static final String RAIN_SLIME_HEAD = "895aeec6b842ada8669f846d65bc49762597824ab944f22f45bf3bbb941abe6c";
     private static final String FLINT_HEAD = "88eb68a4d38e9f446b8e99275f160302f366ef10216abf948487e582512bd0f3";
     private static final String BROODMOTHER_HEAD = "cf0622b3998d42b34d5bc760bb2c83fdbc6e68fab05b7ea17b35097ed81190d6";
 
@@ -133,6 +134,16 @@ public final class SpiderDenMobs {
                     pet("TARANTULA_PET", Rarity.EPIC, 0.02).noMagicFind(), pet("TARANTULA_PET", Rarity.LEGENDARY, 0.008).noMagicFind()))
             .build();
 
+    public static final CrimsonMobProfile RAIN_SLIME = CrimsonMobProfile.builder("RAIN_SLIME", "Rain Slime")
+            .level(6).entity(EntityType.SLIME).stats(200, 50).rewards(9, 2, 6).speed(100)
+            .types(MobType.CUBIC).bestiary(4, 15, RAIN_SLIME_HEAD).neverCorrupted()
+            .drops(always("SLIME_BALL", 3, 5)).build();
+
+    public static final CrimsonMobProfile TOXIC_RAIN_SLIME = CrimsonMobProfile.builder("RAIN_SLIME", "Toxic Rain Slime")
+            .level(15).entity(EntityType.SLIME).stats(750, 100).rewards(22, 5, 16).speed(100)
+            .types(MobType.CUBIC).bestiary(4, 15, RAIN_SLIME_HEAD).neverCorrupted()
+            .drops(always("SLIME_BALL", 10, 20), chance("ENCHANTED_SLIME_BALL", 50), chance("POISON_SAMPLE", 5)).build();
+
     public static final CrimsonMobProfile BROOD_CAVE_SPIDER = CrimsonMobProfile.builder("BROODMOTHER_BROOD", "Cave Spider")
             .level(12).entity(EntityType.CAVE_SPIDER).stats(600, 40).rewards(0, 0, 0).speed(140)
             .types(MobType.ARTHROPOD).neverCorrupted().build();
@@ -140,7 +151,7 @@ public final class SpiderDenMobs {
     public static List<CrimsonMobProfile> all() {
         List<CrimsonMobProfile> all = new java.util.ArrayList<>(List.of(DASHER_MOUND, SPLITTER_MOUND, SILVERFISH, WEAVER_MOUND,
                 VORACIOUS_MOUND, JOCKEY_MOUND, JOCKEY_BURROW, JOCKEY_SKELETON_MOUND, JOCKEY_SKELETON_BURROW, FLINT_SKELETON,
-                BROODMOTHER, BROOD_CAVE_SPIDER));
+                BROODMOTHER, BROOD_CAVE_SPIDER, RAIN_SLIME, TOXIC_RAIN_SLIME));
         all.addAll(DASHER_BURROW);
         all.addAll(SPLITTER_BURROW);
         all.addAll(WEAVER_BURROW);

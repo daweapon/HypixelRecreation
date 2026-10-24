@@ -1,12 +1,18 @@
 package dev.daweapon.type.spidersden.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import dev.daweapon.commons.skyblock.item.Rarity;
+import dev.daweapon.type.generic.data.datapoints.DatapointToggles;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.type.skyblockgeneric.bestiary.BestiaryMilestones;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.spidersden.GrandmaWolfPet;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// Decorative Grandma Wolf NPC, found in the Spider's Den.
+// Grandma Wolf, found in her house in the Spider's Den, gives and upgrades the Grandma Wolf Pet.
 public class NPCGrandmaWolf extends HypixelNPC {
     public NPCGrandmaWolf() {
         super(new HumanConfiguration() {
@@ -42,6 +48,68 @@ public class NPCGrandmaWolf extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        DatapointToggles.Toggles toggles = player.getToggles();
+        SkyBlockItem pet = GrandmaWolfPet.owned(player);
+        if (pet == null) {
+            if (toggles.get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_GRANDMA_WOLF)) {
+                setDialogue(player, "lost-pet");
+                return;
+            }
+            if (!GrandmaWolfPet.give(player)) {
+                player.sendMessage("<c>Your Pets menu is full. Make some room, then come back.");
+                return;
+            }
+            setDialogue(player, "initial-hello").thenRun(() ->
+                    toggles.set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_GRANDMA_WOLF, true));
+            return;
+        }
+        Rarity next = GrandmaWolfPet.next(pet.getAttributeHandler().getRarity());
+        if (next == null) {
+            setDialogue(player, "maxed");
+            return;
+        }
+        if (BestiaryMilestones.of(player) < GrandmaWolfPet.milestoneFor(next)) {
+            setDialogue(player, "requirement-" + next.name().toLowerCase());
+            return;
+        }
+        GrandmaWolfPet.upgrade(player, pet, next);
+        setDialogue(player, "upgrade-" + next.name().toLowerCase());
+    }
 
+    @Override
+    public DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.builder().key("initial-hello").lines(
+                        "Oh, " + player.getUsername() + "! I'm having a conundrum! There's so much to kill, yet so little time.",
+                        "I've added the <a>Grandma Wolf Pet<f> to your <a>Pets Menu<f>.",
+                        "The Grandma Wolf is particularly adept at combos. The more mobs you kill in quick succession, the better!",
+                        "If you reach high enough <6>Bestiary Milestones<f>, I will increase the rarity of this pet!",
+                        "The pet does not need to be spawned for combos to work! Happy hunting!").build(),
+                DialogueSet.builder().key("upgrade-uncommon").lines(
+                        "There you go! I've upgraded your <a>Grandma Wolf Pet<f> to <a>Uncommon<f>!",
+                        "Come back when you've reached <6>Bestiary Milestone X<f> to upgrade it to <9>Rare<f>!").build(),
+                DialogueSet.builder().key("upgrade-rare").lines(
+                        "There you go! I've upgraded your <9>Grandma Wolf Pet<f> to <9>Rare<f>!",
+                        "Come back when you've reached <6>Bestiary Milestone XV<f> to upgrade it to <5>Epic<f>!").build(),
+                DialogueSet.builder().key("upgrade-epic").lines(
+                        "There you go! I've upgraded your <5>Grandma Wolf Pet<f> to <5>Epic<f>!",
+                        "Come back when you've reached <6>Bestiary Milestone XX<f> to upgrade it to <6>Legendary<f>!").build(),
+                DialogueSet.builder().key("upgrade-legendary").lines(
+                        "There you go! I've upgraded your <6>Grandma Wolf Pet<f> to <6>Legendary<f>!",
+                        "I'm afraid that's all I can do for you. Thank you for helping this little old Grandma!").build(),
+                DialogueSet.builder().key("maxed").line(
+                        "I've already upgraded your pet to the maximum tier! Leave this little old Grandma alone!").build(),
+                DialogueSet.builder().key("lost-pet").line(
+                        "I'm afraid you don't have a <6>Grandma Wolf Pet<f>! Leave this little old Grandma alone!").build(),
+                DialogueSet.builder().key("requirement-uncommon").line(
+                        "I will upgrade your Grandma Wolf Pet to <a>Uncommon<f> when you reach <6>Bestiary Milestone 0<f>.").build(),
+                DialogueSet.builder().key("requirement-rare").line(
+                        "I will upgrade your Grandma Wolf Pet to <9>Rare<f> when you reach <6>Bestiary Milestone 10<f>.").build(),
+                DialogueSet.builder().key("requirement-epic").line(
+                        "I will upgrade your Grandma Wolf Pet to <5>Epic<f> when you reach <6>Bestiary Milestone 15<f>.").build(),
+                DialogueSet.builder().key("requirement-legendary").line(
+                        "I will upgrade your Grandma Wolf Pet to <6>Legendary<f> when you reach <6>Bestiary Milestone 20<f>.").build(),
+        };
     }
 }

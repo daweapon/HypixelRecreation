@@ -1,16 +1,21 @@
 package dev.daweapon.type.spidersden.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.type.generic.data.datapoints.DatapointToggles;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.type.skyblockgeneric.bestiary.BestiaryMilestones;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 // NPC for Bramass Beastslayer in the Spider's Den, introduces the Bestiary feature.
 public class NPCBramassBeastslayer extends HypixelNPC {
+    private static final int CODEX_MILESTONE = 50;
+    private static final String CODEX_ID = "BEASTSLAYERS_CODEX";
 
     public NPCBramassBeastslayer() {
         super(new HumanConfiguration() {
@@ -47,18 +52,35 @@ public class NPCBramassBeastslayer extends HypixelNPC {
     @Override
     public void onClick(NPCInteractEvent event) {
         SkyBlockPlayer player = (SkyBlockPlayer) event.player();
-        if (!player.getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_BRAMASS_BEASTSLAYER)) {
-            setDialogue(player, "initial-hello").thenRun(() -> {
-                player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_BRAMASS_BEASTSLAYER, true);
+        DatapointToggles.Toggles toggles = player.getToggles();
+        if (!toggles.get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_BRAMASS_BEASTSLAYER)) {
+            setDialogue(player, "initial-hello").thenRun(() ->
+                    toggles.set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_BRAMASS_BEASTSLAYER, true));
+            return;
+        }
+        if (!toggles.get(DatapointToggles.Toggles.ToggleType.HAS_RECEIVED_BEASTSLAYERS_CODEX)
+                && BestiaryMilestones.of(player) >= CODEX_MILESTONE) {
+            setDialogue(player, "milestone-50").thenRun(() -> {
+                player.addAndUpdateItem(new SkyBlockItem(ItemType.get(CODEX_ID)));
+                toggles.set(DatapointToggles.Toggles.ToggleType.HAS_RECEIVED_BEASTSLAYERS_CODEX, true);
+                setDialogue(player, "codex-received");
             });
+            return;
         }
 
-        setDialogue(player, "idle-" + (1 + (int)(Math.random() * 7)));
+        setDialogue(player, "idle-" + (1 + (int) (Math.random() * 7)));
     }
 
     @Override
     public DialogueSet[] dialogues(HypixelPlayer player) {
         return new DialogueSet[] {
+                DialogueSet.builder().key("milestone-50").lines(
+                        "Oh, you reached <3>Bestiary Milestone 50<f>! Few adventurers make it so far, especially in one piece...",
+                        "You're certainly worthy. Here, I want you to have this.").build(),
+                DialogueSet.builder().key("codex-received").lines(
+                        "That Beastslayer's Codex increases its <a>Stats<f> and <d>Rarity<f> as you reach more <3>Bestiary Milestones<f>.",
+                        "It has served me throughout my travels, but those days are now long behind me.",
+                        "Now, go and search the lands far and wide for more mobs to slay - that is the true calling of a <c>Beastmaster<f>!").build(),
                 DialogueSet.builder()
                         .key("initial-hello").lines(
                                 "Hello, adventurer! I am <c>Bramass Beastslayer<f>! I've slain beasts of all sorts across SkyBlock!",

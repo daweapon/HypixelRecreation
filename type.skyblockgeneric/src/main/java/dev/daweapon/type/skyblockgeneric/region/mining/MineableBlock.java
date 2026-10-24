@@ -105,6 +105,7 @@ public enum MineableBlock {
     JASPER_ORE(Material.MAGENTA_STAINED_GLASS, MiningHandlers.pickaxe(4800, 9), MiningBlockClassification.gemstoneBlock()),
 
     // Crimson Isle
+    GRAVEL(Material.GRAVEL, MiningHandlers.hand(60, 60), MiningBlockClassification.blockBlock()),
     MYCELIUM(Material.MYCELIUM, MiningHandlers.hand(12, 6), MiningBlockClassification.blockBlock()),
     RED_SAND(Material.RED_SAND, MiningHandlers.hand(12, 6), MiningBlockClassification.blockBlock()),
     GLOWSTONE(Material.GLOWSTONE, MiningHandlers.hand(9, 4), MiningBlockClassification.blockBlock()),
