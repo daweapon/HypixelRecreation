@@ -3156,8 +3156,7 @@ items:
     material: player_head
     name: "Poisoned Candy"
     rarity: UNCOMMON
-    unavailable: "Needs the Great Spook event (Tyashoi Alchemist quest)"
-    source: "Crafted from 4 Tutti Frutti Poison, 4 Enchanted Poisonous Potato, 1 Simple Carrot Candy"
+    source: "Crafted from 4 Tutti-Frutti Flavored Poison, 4 Enchanted Poisonous Potato and 1 Simple Carrot Candy once you have talked to the Tyashoi Alchemist during the Great Spook"
     lore:
       - "§7§7A delicious, vibrant, and"
       - "§7round candy with an extra kick."

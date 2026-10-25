@@ -47,6 +47,11 @@ public final class FishingLootResolver {
             return questCatch.get();
         }
 
+        Optional<CatchPayload> greatSpook = dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookCatches.resolve(context);
+        if (greatSpook.isPresent()) {
+            return greatSpook.get();
+        }
+
         Optional<CatchPayload> seaCreature = tryResolveSeaCreature(context);
         if (seaCreature.isPresent()) {
             return seaCreature.get();

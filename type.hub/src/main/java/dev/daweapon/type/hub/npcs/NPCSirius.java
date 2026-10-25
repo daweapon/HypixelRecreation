@@ -8,6 +8,8 @@ import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.type.hub.gui.GUIDarkAuction;
 import dev.daweapon.type.skyblockgeneric.darkauction.DarkAuctionHandler;
+import dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookEvent;
+import dev.daweapon.type.skyblockgeneric.greatspook.SiriusRiddle;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.stream.Stream;
@@ -38,7 +40,7 @@ public class NPCSirius extends HypixelNPC {
             @Override
             public Pos position(HypixelPlayer player) {
                 if (DarkAuctionHandler.getLocalState() == null)
-                    return new Pos(0, 3, 0, 0, 0);
+                    return GreatSpookEvent.isActive() ? new Pos(91, 75, 176, 180, 0) : new Pos(0, 3, 0, 0, 0);
 
 
                 switch (DarkAuctionHandler.getLocalState().getPhase()) {
@@ -69,9 +71,15 @@ public class NPCSirius extends HypixelNPC {
 
         SkyBlockPlayer player = (SkyBlockPlayer) e.player();
 
+        if (SiriusRiddle.eligible(player)) {
+            setDialogue(e.player(), "riddle").thenRun(() -> SiriusRiddle.offer(player,
+                    () -> setDialogue(player, "riddle-give").thenRun(() -> SiriusRiddle.give(player))));
+            return;
+        }
+
         // Check if auction is active
         if (!DarkAuctionHandler.isAuctionActive()) {
-            setDialogue(e.player(), "closed");
+            setDialogue(e.player(), GreatSpookEvent.isActive() ? "idle" : "closed");
             return;
         }
 
@@ -104,6 +112,23 @@ public class NPCSirius extends HypixelNPC {
     @Override
     public DialogueSet[] dialogues(HypixelPlayer player) {
         return Stream.of(
+                DialogueSet.builder()
+                        .key("riddle").lines(
+                                "Oh.",
+                                "That's the exact amount of coins I got from selling the first gift my father gave me.",
+                                "It's now my favorite number.",
+                                "I wrote a book about my childhood, do you want it?"
+                        ).build(),
+                DialogueSet.builder()
+                        .key("riddle-give").lines(
+                                "Here, take it.",
+                                "I hope you will like it."
+                        ).build(),
+                DialogueSet.builder()
+                        .key("idle").lines(
+                                "The Dark Auction is not running right now.",
+                                "Come back when the next one starts."
+                        ).build(),
                 DialogueSet.builder()
                         .key("closed").lines(
                                 "You shouldn't have of had been able to click me!"

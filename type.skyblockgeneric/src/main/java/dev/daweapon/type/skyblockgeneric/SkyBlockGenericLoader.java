@@ -187,6 +187,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         Carnival.initialize();
         FireSaleService.initialize();
         dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookEvent.initialize();
+        dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookIngredients.initialize();
         dev.daweapon.type.skyblockgeneric.user.island.furniture.TreeService.initialize();
         dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookAnnouncer.initialize();
         dev.daweapon.type.skyblockgeneric.technoblade.TechnobladeShrine.initialize();
@@ -587,6 +588,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgradeTicker.start();
         dev.daweapon.type.skyblockgeneric.slayer.SlayerRecipeGates.install();
         dev.daweapon.type.skyblockgeneric.experiments.ExperimentRecipeGate.install();
+        dev.daweapon.type.skyblockgeneric.greatspook.PoisonedCandyRecipeGate.install();
 
         /**
          * Cache custom collections

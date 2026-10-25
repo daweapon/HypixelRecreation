@@ -276,6 +276,7 @@ public final class VisitorService {
             }
         }
 
+        dev.daweapon.type.skyblockgeneric.greatspook.EphemeralGratitude.award(player, present);
         boolean blueprint = visitor != null && visitor.id().equals("CARPENTER") && !profile.greenhouse().isBlueprintGiven();
         if (blueprint) profile.greenhouse().setBlueprintGiven(true);
         copper = (int) Math.round(copper * GardenPetBonuses.copperMultiplier(player) * ElectionPerks.multiplier(SkyBlockMayor.Perk.BLOOMING_BUSINESS));

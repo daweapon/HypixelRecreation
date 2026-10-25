@@ -664,8 +664,7 @@ items:
     material: player_head
     name: "Sweet Flesh"
     rarity: UNCOMMON
-    unavailable: "Needs the Sweet Axe"
-    source: "Killing Zombies with a Sweet Axe"
+    source: "Killing Zombies with a Sweet Axe while the Great Spook runs (Tyashoi Alchemist quest)"
     lore:
       - "§7It's strangely sweet and somewhat"
       - "§7sticky..."
@@ -1077,8 +1076,7 @@ items:
     material: paper
     name: "The Soup"
     rarity: UNCOMMON
-    unavailable: "Needs Pablo's soup trade"
-    source: "Pablo after giving him any soup"
+    source: "Pablo in Scarleton, when you hold any soup while talking to him during the Great Spook"
     lore:
       - "§7From a painter in hard times..."
     components:
@@ -2495,8 +2493,7 @@ items:
     material: player_head
     name: "Wet Pumpkin"
     rarity: EPIC
-    unavailable: "Needs the Appalled Pumpkin quest (wearing it and submerging in water)"
-    source: "Wearing an Appalled Pumpkin from the Builder and submerging in water"
+    source: "Wearing an Appalled Pumpkin from the Builder and submerging in water while the Great Spook runs"
     lore:
       - "§7§7A squishy moist mess."
     components:

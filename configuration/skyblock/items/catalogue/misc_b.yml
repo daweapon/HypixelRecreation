@@ -174,8 +174,7 @@ items:
     material: player_head
     name: "Dead Seed"
     rarity: RARE
-    unavailable: "Using Enchanted Bone Meal on Dead Bushes isn't built"
-    source: "Use Enchanted Bone Meal on a Dead Bush"
+    source: "Use Enchanted Bone Meal on a Dead Bush while the Great Spook runs"
     lore:
       - "§7What came first, the dead bush or"
       - "§7the dead seed?"
@@ -188,7 +187,7 @@ items:
     material: player_head
     name: "Decayed Bat"
     rarity: RARE
-    unavailable: "The 2021 Great Spook Roofed Forest Island bat isn't built"
+    unavailable: "Needs the Roofed Forest Island Bat Crystal bats, which aren't built"
     source: "Hit the Bat on a Roofed Forest Island with a Wither Bow firing Icy Arrows (Great Spook 2021)"
     lore:
       - "§7A withering husk of its former self."
@@ -1078,6 +1077,9 @@ items:
       - ""
       - "§7Bring to the §6Keeper of Emerald §7in"
       - "§7the §2Mines of Divan§7."
+    components:
+      - id: ANVIL_COMBINABLE
+        handler_id: SCAVENGED_IRON_HAMMER
   - id: DWARVEN_GOLD_HAMMER
     material: golden_axe
     name: "Scavenged Golden Hammer"
@@ -1088,12 +1090,14 @@ items:
       - ""
       - "§7Bring to the §6Keeper of Gold §7in the"
       - "§2Mines of Divan§7."
+    components:
+      - id: ANVIL_COMBINABLE
+        handler_id: SCAVENGED_IRON_HAMMER
   - id: DWARVEN_IRON_HAMMER
     material: iron_axe
     name: "Scavenged Iron Hammer"
     rarity: SPECIAL
-    unavailable: "Needs the Spider's Den Trapped Spiders and Gold Mine anvil content, which isn't built"
-    source: "Anvil combination of a Scavenged Golden Hammer and a Scavenged Emerald Hammer in the Gold Mine"
+    source: "Anvil combination of a Scavenged Golden Hammer and a Scavenged Emerald Hammer in the Gold Mine while the Tyashoi Alchemist is in the Hub"
     lore:
       - "§7Strong enough to break the"
       - "§7toughest bars."
@@ -1940,8 +1944,7 @@ items:
     material: player_head
     name: "Ephemeral Gratitude"
     rarity: UNCOMMON
-    unavailable: "Needs Garden Visitors, which aren't built"
-    source: "Accept a Garden Visitor's commission within two seconds of it appearing"
+    source: "Accept a Garden Visitor's offer within two seconds of it appearing during the Great Spook"
     lore:
       - "§7Traded in a blink and missed the wink,"
       - "§7it's for those who click first and ask"
@@ -3507,7 +3510,7 @@ items:
     material: player_head
     name: "Fairy Wings"
     rarity: EPIC
-    unavailable: "Needs Dungeons"
+    unavailable: "Needs Dungeons fairy rooms"
     source: "Hit Fairies in The Catacombs with Enchanted Shears while the Tyashoi Alchemist is in the Village"
     lore:
       - "§7No fairies were harmed in the"

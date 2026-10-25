@@ -515,8 +515,8 @@ items:
     material: player_head
     name: "Rogue Flesh"
     rarity: UNCOMMON
-    unavailable: "Source unconfirmed"
-    source: "Source unconfirmed"
+    unavailable: "Needs the Slayer boss despawn timer (3 minutes), which isn't built"
+    source: "Kill a Tier I Revenant Horror when its despawn timer is at 1 second"
     lore:
       - "§7§7The flesh of a rebel."
     components:
@@ -1272,6 +1272,18 @@ items:
     components:
       - id: SKULL_HEAD
         texture: ad9913a661c38f5f700b80798a8c485d332d78345b7671d0a248a84b2099bf4e
+  - id: SECRET_I_POTION
+    material: glass_bottle
+    name: "Secret I Potion"
+    rarity: COMMON
+    unavailable: "Needs the Dungeon secret items (Decoy, Trap, Spirit Leap, Inflatable Jerry), which need the Catacombs"
+    source: "Brewing a Dungeon secret into an Awkward Potion while wearing Monster Hunter, Monster Raider or Lava Sea Creature armor during the Great Spook"
+    lore:
+      - "§7Undrinkable. You really don't want to"
+      - "§7drink this."
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
   - id: SECRET_BINGO_CARD
     material: paper
     name: "Secret Bingo Card"
@@ -1336,8 +1348,7 @@ items:
     material: cod
     name: "Sewer Fish"
     rarity: UNCOMMON
-    unavailable: "Needs The Professor boss fight (Galatea) which is not built"
-    source: "Fishing in The Professor's arena during phase 3 (flooding)"
+    source: "Fishing in the Hub's Sewer while the Great Spook runs (Tyashoi Alchemist quest)"
     lore:
       - "§7Where did you find these? They stink!"
     components:
@@ -1842,8 +1853,7 @@ items:
     material: book
     name: "Shadows indicate riddles, illuminating unseen stars"
     rarity: EPIC
-    unavailable: "Source unconfirmed"
-    source: "Source unconfirmed"
+    source: "Sirius in the Wilderness, when you talk to him during the Great Spook with exactly 7,871,265 coins in your purse"
     lore:
       - "§7§7Penned by the enigmatic"
       - "§7merchant, Sirius, this tome"

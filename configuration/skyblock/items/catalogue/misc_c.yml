@@ -773,8 +773,7 @@ items:
     material: player_head
     name: "Free Spider"
     rarity: EPIC
-    unavailable: "Needs the Great Spook event"
-    source: "Hit the Trapped Spiders' iron bars in the Spider's Den with a Scavenged Iron Hammer"
+    source: "Hit the Trapped Spiders' iron bars in Grandma Wolf's house in the Spider's Den with a Scavenged Iron Hammer during the Great Spook"
     lore:
       - "§7Free at last!"
       - ""
@@ -900,8 +899,7 @@ items:
     material: player_head
     name: "Frozen Spider"
     rarity: LEGENDARY
-    unavailable: "Needs the Great Spook event"
-    source: "Fished in the Spider's Den with an Icy Sinker and Spooky Bait during the Great Spook"
+    source: "Fished in the Spider's Den with an Icy Sinker and Spooky Bait while the Great Spook runs (Tyashoi Alchemist quest)"
     lore:
       - "§7One lonely spider sitting in the pond."
       - "§7Then down came the hook that pulled"

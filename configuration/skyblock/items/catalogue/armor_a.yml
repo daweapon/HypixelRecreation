@@ -2594,7 +2594,7 @@ items:
     default_statistics:
       health: 10
       defense: 5
-    unavailable: "Source unconfirmed"
+    source: "Talk to Jake wearing a Cow Hat with a Cow in his house during the Great Spook (it replaces the Cow Hat)"
     components:
       - id: SKULL_HEAD
         texture: c7b9ef075cfb7d396d6fb4e3770f470284bda0c20579b68c543847e96f25e532

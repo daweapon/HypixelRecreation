@@ -12,9 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TyashoiExperimentsTest {
-    private static final Set<String> MISSING_INGREDIENTS = Set.of(
-            "HEAD_OF_BETRAYAL", "ONION", "LETTUCE", "THE_SOUP", "SECRET_I_POTION");
-
     @Test
     void catalogueHasEveryTyashoiTrade() {
         assertEquals(22, TyashoiExperiments.all().size());
@@ -37,14 +34,14 @@ class TyashoiExperimentsTest {
     }
 
     @Test
-    void onlyKnownIngredientsAreUnbuilt() {
+    void everyIngredientIsACatalogueItem() {
         Set<String> unresolved = new TreeSet<>();
         for (TyashoiExperiment experiment : TyashoiExperiments.all().values()) {
             for (TyashoiExperiment.Cost cost : experiment.costs()) {
                 if (!cost.isCoins() && cost.type() == null) unresolved.add(cost.item());
             }
         }
-        assertEquals(new TreeSet<>(MISSING_INGREDIENTS), unresolved);
+        assertEquals(new TreeSet<String>(), unresolved);
     }
 
     @Test

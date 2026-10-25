@@ -41,7 +41,7 @@ experiments:
     lockout_seconds: 172799
     hint:
       - "Can you really not find a <a>Poisoned Candy<f>?!? This is basic Alchemy!!!"
-    info: [ "<a>Poisoned Candy <f>is crafted from <a>Simple Carrot Candy<f>, <a>Enchanted Poisonous Potatoes <f>and <a>Tutti-Frutti Flavored Poison<f>." ]
+    info: [ "<a>Poisoned Candy <f>is crafted from <a>Simple Carrot Candy<f>, <a>Enchanted Poisonous Potatoes <f>and <a>Tutti-Frutti Flavored Poison <f>from <b>Shifty<f>. Talk to me first to learn the recipe." ]
     success:
       - "Amazing!"
       - "You know candy is bad for you, works well in potions though."
@@ -100,10 +100,10 @@ experiments:
       - "I guess, to be fair, we'll probably both die when <8>The Great Spook <f>comes."
   - id: GREAT_SPOOK_GLOVES
     result: { kind: ITEM, item: GREAT_SPOOK_GLOVES }
-    costs: [ { item: HEAD_OF_BETRAYAL, name: "Head of Betrayal", amount: 1 } ]
+    costs: [ { item: BETRAYAL_HEAD, name: "Head of Betrayal", amount: 1 } ]
     lockout_seconds: 0
     hint: [ "I need a <a>Head of Betrayal<f>." ]
-    info: [ "Talk to <b>Jake <f>wearing a <a>Cow Hat <f>while a <e>Cow <f>is in his house." ]
+    info: [ "Talk to <b>Jake <f>wearing a <a>Cow Hat <f>while a <e>Cow <f>you brought is in his house." ]
     success:
       - "Here we go."
       - "I hope this cow didn't suffer."
@@ -138,7 +138,7 @@ experiments:
     costs: [ { item: GREAT_SPOOK_TALISMAN, amount: 1 }, { item: FREE_SPIDER, amount: 2 } ]
     lockout_seconds: 0
     hint: [ "I need a <f>Great Spook Talisman <f>and <e>2 <a>Free Spiders<f>." ]
-    info: [ "<a>Free Spiders <f>are freed from the iron bars in <b>Shaggy's <f>house with a <a>Scavenged Iron Hammer<f>." ]
+    info: [ "<a>Free Spiders <f>are freed from the iron bars in <b>Grandma Wolf's <f>house with a <a>Scavenged Iron Hammer<f>, made from a Golden and an Emerald Hammer at an Anvil in the <e>Gold Mine<f>." ]
     success:
       - "..."
       - "Well well well."
@@ -152,8 +152,8 @@ experiments:
     costs:
       - { item: GREAT_SPOOK_RING, amount: 1 }
       - { item: BREAD, amount: 2 }
-      - { item: ONION, name: "Onion", amount: 1 }
-      - { item: LETTUCE, name: "Lettuce", amount: 1 }
+      - { item: DECORATION_ONION, name: "Onion", amount: 1 }
+      - { item: DECORATION_LETTUCE, name: "Lettuce", amount: 1 }
       - { item: COOKED_BEEF, name: "Steak", amount: 1 }
       - { item: TASTY_CHEESE, amount: 1 }
       - { item: FRENCH_FRIES, amount: 1 }
@@ -176,7 +176,7 @@ experiments:
     hint:
       - "I'm going to need <a>Ephemeral Gratitude <8>x2<f>."
       - "If you have enough resources in your sacks it should be very easy."
-    info: [ "<a>Ephemeral Gratitude <f>is earned by accepting a <e>Garden Visitor <f>offer within <e>1 second <f>of them arriving." ]
+    info: [ "<a>Ephemeral Gratitude <f>is earned by accepting a <e>Garden Visitor <f>offer within <e>2 seconds <f>of them arriving." ]
     success:
       - "<a>Ephemeral Gratitude <8>x2<f>..."
       - "Didn't I ask for 3?"
@@ -210,7 +210,7 @@ experiments:
       - "In the meantime, take this <5>Eerie Toy<f>."
   - id: GREAT_SPOOK_REFORGING_MANUAL
     result: { kind: ITEM, item: GREAT_SPOOK_REFORGING_MANUAL }
-    costs: [ { item: THE_SOUP, name: "The Soup", amount: 1 } ]
+    costs: [ { item: THE_SOUP_PAINTING, name: "The Soup", amount: 1 } ]
     lockout_seconds: 43199
     hint:
       - "As it turns out, the Great Spook isn't <o>technically <r><f>a nightmare."
@@ -220,7 +220,7 @@ experiments:
       - "It's a shame though, a few years ago this would have been the solution."
       - "I have another idea though, it's a little far-fetched however."
       - "I need <a><o>The Soup<f>."
-    info: [ "<a>The Soup <f>is what <b>Pablo <f>gives you for any kind of soup." ]
+    info: [ "<a>The Soup <f>is what <b>Pablo <f>gives you when you hold any kind of soup while talking to him." ]
     success:
       - "A sad painting, perfect."
       - "This should do the trick."

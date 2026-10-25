@@ -323,8 +323,7 @@ public class GUIAnvil extends HypixelInventoryGUI {
             return;
         }
 
-        SkyBlockItem resultPreview = new SkyBlockItem(upgradeItem.getItemStack());
-        sacrificeItem.getComponent(AnvilCombinableComponent.class).apply(resultPreview, sacrificeItem);
+        SkyBlockItem resultPreview = sacrificeItem.getComponent(AnvilCombinableComponent.class).result(upgradeItem, sacrificeItem);
 
         set(new GUIItem(RESULT_SLOT) {
             @Override
@@ -398,8 +397,7 @@ public class GUIAnvil extends HypixelInventoryGUI {
         player.setLevel(player.getLevel() - requiredLevels);
         EnchantingXpService.awardForLevelsSpent(player, requiredLevels);
 
-        SkyBlockItem result = new SkyBlockItem(upgradeItem.getItemStack());
-        component.apply(result, sacrificeItem);
+        SkyBlockItem result = component.result(upgradeItem, sacrificeItem);
         SkyBlockEnchantingAchievements.onAnvilCombine(player, upgradeItem, sacrificeItem, result, requiredLevels);
 
         upgradeItem = null;

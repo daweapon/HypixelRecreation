@@ -13,7 +13,7 @@ sections:
       - "Tyashoi needs Combat 10. Click him and he opens The Great Spook Experiments. Hand over the right ingredients to trade for Great Spook Armor, Accessories, the Staff, the Sword, the Eerie Pet and its upgrades, and the Great Spook Reforging Manual, Alchemist Recipe and Scary Grimoire."
       - "You can only trade for each item once per profile. The Boo Stone, Great Spook Potion and Great Spook I book only appear after the Manual, Recipe and Grimoire, and cost coins."
       - "If you do not have an ingredient he gives you a hint, and most of them tell you to come back later for more. Ingredients you have not found yet show as ???."
-      - "Many ingredients still cannot be found anywhere. Their sources are being added one by one."
+      - "A few ingredients still cannot be found anywhere. Their sources are being added one by one."
   - heading: "Eerie Pet"
     colour: "<a>"
     lines:
@@ -30,6 +30,13 @@ sections:
       - "While the event runs, killing a mob can summon a Primal Fear, at most once every 6 minutes. Each point of Fear makes it a bit more likely and shortens the wait by 3 seconds (never below 15 seconds). The tablist shows when the next one can appear."
       - "A Primal Fear has 5 health and loses one point per hit. When it dies it turns into one of six manifestations, and each needs its own trick to kill: Deadline (stand still), Darkness Shade (blinds you), Commitment Phobia (sign the paper), Math Teacher (answer in chat), Public Speaking Demon (speak out loud) and Vegan Crawler (it turns you into a random mob for 15 seconds)."
       - "Both the Primal Fear and its manifestation drop Dark Candy, Green Candy and sometimes Purple Candy. Fear also reduces the damage Primal Fears deal by 1% per point."
+  - heading: "Finding Ingredients"
+    colour: "<6>"
+    lines:
+      - "Most of Tyashoi's ingredients can now be found while the event runs. Fish in Spider's Den with an Icy Sinker and Spooky Bait for Frozen Spiders, and in the Hub Sewer for Sewer Fish. Kill Graveyard zombies with a Sweet Axe for Sweet Flesh, use Enchanted Bone Meal on a Dead Bush for Dead Seeds, and wear the Builder's Appalled Pumpkin underwater for a Wet Pumpkin."
+      - "Craft Poisoned Candy, hand any soup to Pablo for The Soup, bring Sirius exactly 7,871,265 coins in your purse for his riddle, and take a Cow to Jake while wearing a Cow Hat for the Head of Betrayal."
+      - "Combine the Scavenged Gold and Emerald Hammers at the Gold Mine anvil for a Scavenged Iron Hammer, and use it on the iron bars at the bottom of Shaggy's house in Spider's Den to free spiders. Accept a Garden visitor within 2 seconds of their arrival for Ephemeral Gratitude."
+      - "Decayed Bats, Rogue Flesh, Fairy Wings, the Secret I Potion, Precious, the Obscure Ending and the Nightmare Nullifier still cannot be found."
   - heading: "Vargul the Unearthed"
     colour: "<c>"
     lines:

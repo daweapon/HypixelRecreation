@@ -22,6 +22,14 @@ public class AnvilCombinableComponent extends SkyBlockItemComponent {
         }
     }
 
+    public SkyBlockItem result(SkyBlockItem upgradeItem, SkyBlockItem sacrificeItem) {
+        var factory = AnvilCombineRegistry.getResult(handlerId);
+        if (factory != null) return factory.apply(upgradeItem, sacrificeItem);
+        SkyBlockItem result = new SkyBlockItem(upgradeItem.getItemStack());
+        apply(result, sacrificeItem);
+        return result;
+    }
+
     public boolean canApply(SkyBlockPlayer player, SkyBlockItem upgradeItem, SkyBlockItem sacrificeItem) {
         AnvilCombineHandler handler = AnvilCombineRegistry.getHandler(handlerId);
         return handler != null && handler.validateFunction().canApply(player, upgradeItem, sacrificeItem);

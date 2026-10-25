@@ -21,10 +21,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
 public class AnvilCombineRegistry {
     private static final Map<String, AnvilCombineHandler> REGISTERED_HANDLERS = new HashMap<>();
+    private static final Map<String, BiFunction<SkyBlockItem, SkyBlockItem, SkyBlockItem>> RESULTS = new HashMap<>();
 
     static {
         MythologicalItemHandlers.registerAnvilCombines();
@@ -39,6 +41,7 @@ public class AnvilCombineRegistry {
         dev.daweapon.type.skyblockgeneric.user.island.portal.PortalizerCombine.registerAnvilCombine();
         dev.daweapon.type.skyblockgeneric.garden.tool.FarmingToolItems.registerAnvilCombines();
         dev.daweapon.type.skyblockgeneric.item.utility.PocketSackInASack.registerAnvilCombine();
+        dev.daweapon.type.skyblockgeneric.greatspook.ScavengedIronHammer.registerAnvilCombine();
         dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneContactsTrio.registerAnvilCombine();
         dev.daweapon.type.skyblockgeneric.accessory.enrichment.Enrichments.registerAnvilCombine();
         dev.daweapon.type.skyblockgeneric.foraging.booster.ForagingBoosters.registerAnvilCombines();
@@ -161,5 +164,13 @@ public class AnvilCombineRegistry {
 
     public static AnvilCombineHandler getHandler(String id) {
         return REGISTERED_HANDLERS.get(id);
+    }
+
+    public static void registerResult(String id, BiFunction<SkyBlockItem, SkyBlockItem, SkyBlockItem> factory) {
+        RESULTS.put(id, factory);
+    }
+
+    public static BiFunction<SkyBlockItem, SkyBlockItem, SkyBlockItem> getResult(String id) {
+        return RESULTS.get(id);
     }
 }
