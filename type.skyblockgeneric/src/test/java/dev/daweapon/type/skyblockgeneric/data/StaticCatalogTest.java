@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class StaticCatalogTest {
     @Test
     void loadsRegionsFromYaml() {
-        assertEquals(210, RegionCatalog.getAllRegions().size());
+        assertEquals(218, RegionCatalog.getAllRegions().size());
         assertEquals(RegionType.VILLAGE, RegionCatalog.getAllRegions().getFirst().getType());
         assertEquals(ServerType.SKYBLOCK_HUB, RegionCatalog.getAllRegions().getFirst().getServerType());
     }

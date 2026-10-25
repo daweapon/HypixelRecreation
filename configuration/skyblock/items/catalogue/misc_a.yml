@@ -453,7 +453,6 @@ items:
     material: paper
     name: "Arachne's Calling"
     rarity: RARE
-    unavailable: "Needs Arachne's Keepers and the Arachne altar summoning, which aren't built"
     source: "Arachne's Keeper mob drop (Spider's Den)"
     lore:
       - "§7Place §a4 §7of these at the §5Altar §7in"

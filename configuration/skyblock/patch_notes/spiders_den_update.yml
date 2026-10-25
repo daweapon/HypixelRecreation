@@ -30,3 +30,12 @@ sections:
       - "Haymitch now talks to you at the Spider's Den spawn. What he says depends on whether you have been up the Spider Mound and on your Combat level."
       - "Grandma Wolf gives you the Grandma Wolf Pet on your first visit, and upgrades it to Uncommon, Rare, Epic and Legendary at Bestiary Milestones 5, 10, 15 and 20. A Bestiary milestone is one family tier."
       - "Bramass Beastslayer gives you the Beastslayer's Codex once you reach Bestiary Milestone 50."
+  - heading: "Arachne"
+    colour: "<4>"
+    lines:
+      - "Arachne's Keepers now roam Arachne's Burrow and Arachne's Sanctuary at nine spots, and each comes back a minute after you kill it. They dash at you, leave webs behind them and poison you, and always drop an Arachne's Calling."
+      - "Place 4 Arachne's Callings on the altar in Arachne's Sanctuary to wake the Level 87 Arachne (20,000 health), or 1 Arachne Crystal for the Level 143 Arachne (100,000 health, Combat 15 needed). Right-click the altar while holding them."
+      - "Each hit on her is capped at 1,000 damage, and arrows and magic do nothing to her. At 50% and 20% health she splits into 10 and then 20 Arachne's Brood, and comes back when you have killed them all. If you have not beaten her within 10 minutes she gets bored and leaves."
+      - "Arachne's Venom Shot hits you from afar and drops you to about 1% health every few seconds. Wear a Cow Hat to ignore it."
+      - "Everyone who hurts her is rewarded by how much damage they did: Soul String, Spider Essence, String, Spider Eyes and a chance at Arachne's Armor, Arachne's Fang, the Arack, an Arachne Shard and the Tarantula Pet. Your first win against each Arachne gives SkyBlock XP."
+      - "Climb to the top of the Spider Mound to earn A Challenging Climb."

@@ -104,7 +104,6 @@ items:
     material: clay_ball
     name: "Dark Queen's Soul"
     rarity: EPIC
-    unavailable: "Needs Arachne (Spider's Den boss), which isn't built"
     source: "Dropped by Arachne"
     lore:
       - "§7A portion of Arachne's Soul that can"

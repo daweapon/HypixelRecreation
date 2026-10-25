@@ -140,7 +140,6 @@ items:
     default_statistics:
       health: 45
       defense: 30
-    unavailable: "Needs Arachne's Keeper (Arachne content not built)"
     source: "Drops from Arachne's Keeper (not auctionable)."
     lore:
       - "§8Tiered Bonus: Arachne's Faithful (0/8)"
@@ -163,7 +162,6 @@ items:
     default_statistics:
       health: 85
       defense: 60
-    unavailable: "Needs Arachne's Keeper (Arachne content not built)"
     source: "Drops from Arachne's Keeper (not auctionable)."
     lore:
       - "§8Tiered Bonus: Arachne's Faithful (0/8)"
@@ -186,7 +184,6 @@ items:
     default_statistics:
       health: 55
       defense: 40
-    unavailable: "Needs Arachne's Keeper (Arachne content not built)"
     source: "Drops from Arachne's Keeper (not auctionable)."
     lore:
       - "§8Tiered Bonus: Arachne's Faithful (0/8)"
@@ -207,7 +204,6 @@ items:
     default_statistics:
       health: 75
       defense: 50
-    unavailable: "Needs Arachne's Keeper (Arachne content not built)"
     source: "Drops from Arachne's Keeper (not auctionable)."
     lore:
       - "§8Tiered Bonus: Arachne's Faithful (0/8)"

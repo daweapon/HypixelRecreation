@@ -7,6 +7,7 @@ import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.block.Block;
 import net.minestom.server.timer.TaskSchedule;
 import dev.daweapon.type.generic.HypixelConst;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.spidersden.MobArachnesKeeper;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.spidersden.MobBroodmother;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.spidersden.MobRainSlime;
 import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
@@ -26,7 +27,7 @@ import java.util.function.Supplier;
 /**
  * Keeps the Spider's Den mobs topped up inside their zones' boxes (Minestom.regions.yml). Hypixel publishes no
  * caps or respawn rates, so every count is an estimate, except the Broodmother's 2.5 minute respawn (wiki
- * 0.27.2). Mobs only spawn near a player, and never inside a smaller zone nested in their own.
+ * 0.27.2) and the Keeper's 1 minute respawn at each of its 9 wiki spots. Mobs only spawn near a player, and never inside a smaller zone nested in their own.
  */
 public final class SpiderDenMobSpawner {
     private static final int TICK_SECONDS = 2;
@@ -34,8 +35,13 @@ public final class SpiderDenMobSpawner {
     private static final double MIN_DISTANCE = 10;
     private static final int PLACEMENT_TRIES = 12;
     static final Pos BROODMOTHER_SPOT = new Pos(-189.5, 176, -310.5);
+    public static final Pos SUMMIT = BROODMOTHER_SPOT;
     static final long BROODMOTHER_RESPAWN_MILLIS = 150_000;
     static final double TOXIC_SLIME_CHANCE = 20;
+    static final long KEEPER_RESPAWN_MILLIS = 60_000;
+    static final List<Pos> KEEPER_SPOTS = List.of(new Pos(-292.5, 47, -167.5), new Pos(-291.5, 47, -183.5), new Pos(-282.5, 47, -195.5),
+            new Pos(-262.5, 49, -191.5), new Pos(-269.5, 47, -166.5), new Pos(-269.5, 61, -159.5), new Pos(-311.5, 43, -232.5),
+            new Pos(-208.5, 44, -259.5), new Pos(-230.5, 57, -307.5));
     static final int[] GRANDMA_MOUND_BASE = {-300, 60, -215, -255, 100, -165};
     static final int[] CRIB_MOUND_BASE = {-285, 60, -300, -250, 92, -270};
 
@@ -58,6 +64,7 @@ public final class SpiderDenMobSpawner {
         zone(RegionType.ARACHNES_BURROW, 4, () -> new MobSpiderJockey(SpiderDenMobs.JOCKEY_BURROW, SpiderDenMobs.JOCKEY_SKELETON_BURROW));
         zone(RegionType.GRAVEL_MINES, 8, () -> new SpiderDenMob(SpiderDenMobs.FLINT_SKELETON));
         PLANS.add(new Plan(null, 1, MobBroodmother::new, BROODMOTHER_SPOT, BROODMOTHER_RESPAWN_MILLIS, () -> true, null));
+        for (Pos spot : KEEPER_SPOTS) PLANS.add(new Plan(null, 1, MobArachnesKeeper::new, spot, KEEPER_RESPAWN_MILLIS, () -> true, null));
         rain(GRANDMA_MOUND_BASE, 5);
         rain(CRIB_MOUND_BASE, 5);
     }

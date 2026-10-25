@@ -148,10 +148,30 @@ public final class SpiderDenMobs {
             .level(12).entity(EntityType.CAVE_SPIDER).stats(600, 40).rewards(0, 0, 0).speed(140)
             .types(MobType.ARTHROPOD).neverCorrupted().build();
 
+    public static final CrimsonMobProfile ARACHNE_LESSER = spider("ARACHNE", "Arachne", 87, 20_000, 300, 652, 261, 217, 160, 7, 15, SPIDER_HEAD)
+            .build();
+
+    public static final CrimsonMobProfile ARACHNE_GREATER = spider("ARACHNE", "Arachne", 143, 100_000, 600, 1_072, 429, 357, 180, 7, 15, SPIDER_HEAD)
+            .build();
+
+    public static final CrimsonMobProfile BROOD_LESSER = spider("ARACHNES_BROOD", "Arachne's Brood", 34, 4_000, 200, 51, 37, 11, 150, 4, 15, SPIDER_HEAD)
+            .drops(always("SPIDER_EYE", 10), always("STRING", 5)).build();
+
+    public static final CrimsonMobProfile BROOD_GREATER = spider("ARACHNES_BROOD", "Arachne's Brood", 62, 20_000, 400, 93, 68, 20, 170, 4, 15, SPIDER_HEAD)
+            .drops(always("SPIDER_EYE", 10), always("STRING", 5)).build();
+
+    public static final CrimsonMobProfile ARACHNES_KEEPER = spider("ARACHNES_KEEPER", "Arachne's Keeper", 31, 3_000, 200, 46, 34, 10, 140, 6, 15, SPIDER_HEAD)
+            .drops(always("ARACHNE_KEEPER_FRAGMENT", 1),
+                    always("SPIDER_EYE", 4), chance("SPIDER_EYE", 75), chance("SPIDER_EYE", 75), chance("SPIDER_EYE", 50), chance("SPIDER_EYE", 50),
+                    always("STRING", 2), chance("STRING", 75), chance("STRING", 50),
+                    chance("ARACHNE_NECKLACE", 2.5), chance("ARACHNE_CLOAK", 2.5), chance("ARACHNE_BELT", 2.5), chance("ARACHNE_GLOVES", 2.5))
+            .build();
+
     public static List<CrimsonMobProfile> all() {
         List<CrimsonMobProfile> all = new java.util.ArrayList<>(List.of(DASHER_MOUND, SPLITTER_MOUND, SILVERFISH, WEAVER_MOUND,
                 VORACIOUS_MOUND, JOCKEY_MOUND, JOCKEY_BURROW, JOCKEY_SKELETON_MOUND, JOCKEY_SKELETON_BURROW, FLINT_SKELETON,
-                BROODMOTHER, BROOD_CAVE_SPIDER, RAIN_SLIME, TOXIC_RAIN_SLIME));
+                BROODMOTHER, BROOD_CAVE_SPIDER, RAIN_SLIME, TOXIC_RAIN_SLIME,
+                ARACHNE_LESSER, ARACHNE_GREATER, BROOD_LESSER, BROOD_GREATER, ARACHNES_KEEPER));
         all.addAll(DASHER_BURROW);
         all.addAll(SPLITTER_BURROW);
         all.addAll(WEAVER_BURROW);

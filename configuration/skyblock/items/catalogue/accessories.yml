@@ -168,7 +168,6 @@ items:
     default_statistics:
       health: 10
       defense: 5
-    unavailable: "Needs Arachne's Keeper (Arachne content not built)"
     source: "Drops from Arachne's Keeper at 2.5% (not auctionable)."
     lore:
       - "§8Tiered Bonus: Arachne's Faithful (0/8)"
@@ -194,7 +193,6 @@ items:
     default_statistics:
       health: 10
       defense: 5
-    unavailable: "Arachne's Keeper mob not built"
     source: "Drops from Arachne's Keeper at 2.5%."
     lore:
       - "§8Tiered Bonus: Arachne's Faithful (0/8)"
@@ -220,7 +218,6 @@ items:
     default_statistics:
       health: 10
       defense: 5
-    unavailable: "Needs Arachne's Keeper (not built)"
     source: "2.5% drop from Arachne's Keeper"
     lore:
       - "§8Tiered Bonus: Arachne's Faithful (0/8)"
@@ -246,7 +243,6 @@ items:
     default_statistics:
       health: 10
       defense: 5
-    unavailable: "Arachne boss not built"
     source: "2.5% drop from Arachne's Keeper"
     lore:
       - "§8Tiered Bonus: Arachne's Faithful (0/8)"

@@ -2,6 +2,7 @@ package dev.daweapon.type.skyblockgeneric.spidersden;
 
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.damage.Damage;
+import net.minestom.server.entity.damage.DamageType;
 import net.minestom.server.instance.Instance;
 import dev.daweapon.type.skyblockgeneric.crimson.mob.CrimsonIsleMob;
 import dev.daweapon.type.skyblockgeneric.crimson.mob.CrimsonMobProfile;
@@ -25,8 +26,13 @@ public class SpiderDenMob extends CrimsonIsleMob {
         return 0;
     }
 
+    protected boolean immuneToMagic() {
+        return false;
+    }
+
     @Override
     protected Damage filterIncomingDamage(Damage damage) {
+        if (immuneToMagic() && damage.getType() == DamageType.MAGIC) return null;
         double cap = hitCap();
         if (cap <= 0 || damage.getAmount() <= cap) return damage;
         return new Damage(damage.getType(), damage.getSource(), damage.getAttacker(), damage.getSourcePosition(), (float) cap);

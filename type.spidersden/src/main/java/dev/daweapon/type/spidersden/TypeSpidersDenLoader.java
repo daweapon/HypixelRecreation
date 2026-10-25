@@ -1,5 +1,6 @@
 package dev.daweapon.type.spidersden;
 
+import dev.daweapon.type.skyblockgeneric.spidersden.ArachneFight;
 import dev.daweapon.type.skyblockgeneric.spidersden.SpiderDenMobSpawner;
 import dev.daweapon.type.skyblockgeneric.spidersden.SpiderDenWeather;
 import dev.daweapon.type.generic.event.join.SpawnOnJoin;
@@ -38,6 +39,7 @@ public class TypeSpidersDenLoader implements SkyBlockTypeLoader {
     public void afterInitialize(MinecraftServer server) {
         SpiderDenMobSpawner.start();
         SpiderDenWeather.start();
+        ArachneFight.start();
     }
 
     @Override

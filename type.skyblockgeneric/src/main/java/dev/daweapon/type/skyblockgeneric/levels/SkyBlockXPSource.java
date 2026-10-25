@@ -87,7 +87,7 @@ public enum SkyBlockXPSource {
     SLAY_DRAGONS(Group.SLAYING, null, 200, Availability.LIVE, Material.DRAGON_EGG),
     DEFEAT_SLAYERS(Group.SLAYING, null, 1125, Availability.LIVE, Material.ROTTEN_FLESH),
     DEFEAT_KUUDRA(Group.SLAYING, null, 300, Availability.NOT_IN_GAME, Material.MAGMA_CREAM),
-    DEFEAT_ARACHNE(Group.SLAYING, null, 60, Availability.NOT_IN_GAME, Material.SPIDER_EYE),
+    DEFEAT_ARACHNE(Group.SLAYING, null, 60, Availability.LIVE, Material.SPIDER_EYE),
 
     // ----- Skill Related Tasks (11,732 XP) -----
     HEART_OF_THE_MOUNTAIN(Group.SKILL_RELATED, SubArea.MINING, 3117, Availability.LIVE, Material.REDSTONE),

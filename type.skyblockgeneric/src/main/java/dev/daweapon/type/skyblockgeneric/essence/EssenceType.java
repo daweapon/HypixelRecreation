@@ -8,7 +8,7 @@ public enum EssenceType {
     WITHER("Wither", "Dungeons aren't in this server yet."),
     UNDEAD("Undead", "Dungeons aren't in this server yet."),
     CRIMSON("Crimson", null),
-    SPIDER("Spider", "Arachne isn't in this server yet."),
+    SPIDER("Spider", null),
     DRAGON("Dragon", null),
     GOLD("Gold", "Dungeons aren't in this server yet."),
     DIAMOND("Diamond", "Dungeons aren't in this server yet."),

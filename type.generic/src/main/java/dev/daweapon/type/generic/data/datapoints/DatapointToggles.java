@@ -124,6 +124,8 @@ public class DatapointToggles extends Datapoint<DatapointToggles.Toggles> {
             HAS_ENTERED_SPIDER_MOUND(false),
             HAS_HEARD_HAYMITCH_MOUND_PRAISE(false),
             HAS_SPOKEN_TO_GRANDMA_WOLF(false),
+            HAS_DEFEATED_ARACHNE_LESSER(false),
+            HAS_DEFEATED_ARACHNE_GREATER(false),
             HAS_SPOKEN_TO_RICK(false),
             HAS_SPOKEN_TO_MICHAEL(false),
             HAS_SPOKEN_TO_IKE(false),

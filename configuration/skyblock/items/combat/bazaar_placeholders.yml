@@ -71,7 +71,6 @@ items:
     material: paper
     name: "Arachne's Fang"
     rarity: UNCOMMON
-    unavailable: "Needs the Arachne boss fight (Arachne's Sanctuary and Arachne's Calling are not built)"
     source: "10% drop from the Lv 300 Arachne (summoned with 4 Arachne's Calling in Arachne's Sanctuary)"
     lore:
       - "§7Straight from the spider's mouth."
@@ -84,7 +83,6 @@ items:
     material: paper
     name: "Arachne Fragment"
     rarity: RARE
-    unavailable: "Needs the Arachne boss fight and Garden visitors (neither is built)"
     source: "Dropped by the Lv 300 Arachne in Spider's Den; Shaggy also gives one as a Garden visitor reward"
     lore:
       - "§7A fragment imbued with the power of"

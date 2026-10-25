@@ -22,7 +22,7 @@ class SpiderDenMobsTest {
 
     @Test
     void twentySixVariantsInTotal() {
-        assertEquals(26, SpiderDenMobs.all().size());
+        assertEquals(31, SpiderDenMobs.all().size());
     }
 
     @Test
