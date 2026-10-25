@@ -28,7 +28,7 @@ sections:
     colour: "<c>"
     lines:
       - "While the event runs, killing a mob can summon a Primal Fear, at most once every 6 minutes. Each point of Fear makes it a bit more likely and shortens the wait by 3 seconds (never below 15 seconds). The tablist shows when the next one can appear."
-      - "A Primal Fear has 5 health and loses one point per hit. When it dies it turns into one of six manifestations, and each needs its own trick to kill: Deadline (stand still), Darkness Shade (blinds you), Commitment Phobia (sign the paper), Math Teacher (answer in chat), Public Speaking Demon (speak out loud) and Vegan Crawler (eat the right food)."
+      - "A Primal Fear has 5 health and loses one point per hit. When it dies it turns into one of six manifestations, and each needs its own trick to kill: Deadline (stand still), Darkness Shade (blinds you), Commitment Phobia (sign the paper), Math Teacher (answer in chat), Public Speaking Demon (speak out loud) and Vegan Crawler (it turns you into a random mob for 15 seconds)."
       - "Both the Primal Fear and its manifestation drop Dark Candy, Green Candy and sometimes Purple Candy. Fear also reduces the damage Primal Fears deal by 1% per point."
   - heading: "Vargul the Unearthed"
     colour: "<c>"

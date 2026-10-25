@@ -1,6 +1,5 @@
 package dev.daweapon.type.skyblockgeneric.greatspook.mob;
 
-import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.EquipmentSlot;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
@@ -8,14 +7,11 @@ import dev.daweapon.type.skyblockgeneric.greatspook.Manifestation;
 import dev.daweapon.type.skyblockgeneric.greatspook.VeganCurse;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class VeganCrawlerMob extends PrimalMob {
-    private static final double FOOD_RADIUS = 3;
     private boolean cursed;
 
     public VeganCrawlerMob(UUID owner, String ownerName) {
@@ -39,28 +35,7 @@ public class VeganCrawlerMob extends PrimalMob {
     public void onMeleeHit(SkyBlockPlayer target) {
         if (cursed || !target.getUuid().equals(owner())) return;
         cursed = true;
-        VeganCurse.Animal animal = VeganCurse.Animal.values()[ThreadLocalRandom.current().nextInt(VeganCurse.Animal.values().length)];
-        VeganCurse.apply(target, animal, foodSpots());
-    }
-
-    private List<Pos> foodSpots() {
-        List<Pos> spots = new ArrayList<>();
-        int count = VeganCurse.FOOD.size();
-        double offset = ThreadLocalRandom.current().nextDouble(Math.PI * 2);
-        for (int i = 0; i < count; i++) {
-            double angle = offset + Math.PI * 2 * i / count;
-            spots.add(getPosition().add(Math.cos(angle) * FOOD_RADIUS, 0, Math.sin(angle) * FOOD_RADIUS));
-        }
-        return spots;
-    }
-
-    @Override
-    protected void onAiTick(int ticks) {
-        if (ticks % 4 != 0 || !cursed) return;
-        ownerPlayer().ifPresent(player -> {
-            VeganCurse.Collected collected = VeganCurse.collected(player);
-            if (collected != null && collected.liked()) finishWithKill(player);
-        });
+        VeganCurse.apply(target, VeganCurse.MOBS.get(ThreadLocalRandom.current().nextInt(VeganCurse.MOBS.size())));
     }
 
     @Override
