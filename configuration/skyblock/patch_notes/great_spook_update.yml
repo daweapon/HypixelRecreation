@@ -1,0 +1,30 @@
+title: "The Great Spook Update"
+date: "24th October 2026"
+intro:
+  - "The Great Spook has begun to creep into the Hub. This is the first part of the event: the Tyashoi Alchemist and what Fear does. Primal Fears, Vargul and the Great Spook Tree are still to come."
+sections:
+  - heading: "The Event"
+    colour: "<5>"
+    lines:
+      - "The Great Spook is a real-life October event and is switched on by staff for now. While it runs the Tyashoi Alchemist stands in the Hub village."
+  - heading: "Tyashoi Alchemist"
+    colour: "<d>"
+    lines:
+      - "Tyashoi needs Combat 10. Click him and he opens The Great Spook Experiments. Hand over the right ingredients to trade for Great Spook Armor, Accessories, the Staff, the Sword, the Eerie Pet and its upgrades, and the Great Spook Reforging Manual, Alchemist Recipe and Scary Grimoire."
+      - "You can only trade for each item once per profile. The Boo Stone, Great Spook Potion and Great Spook I book only appear after the Manual, Recipe and Grimoire, and cost coins."
+      - "If you do not have an ingredient he gives you a hint, and most of them tell you to come back later for more. Ingredients you have not found yet show as ???."
+      - "Many ingredients still cannot be found anywhere. Their sources are being added one by one."
+  - heading: "Eerie Pet"
+    colour: "<a>"
+    lines:
+      - "Trade Ephemeral Gratitude for the Eerie Pet. An Eerie Treat turns it Rare, and an Eerie Toy turns it Legendary. The pet's perks are not active yet."
+  - heading: "Fear"
+    colour: "<5>"
+    lines:
+      - "The Great Spook Sword gains +1 Damage and +1 Strength for every Fear you have."
+      - "Wearing the full Great Spook Armor activates Fearsome, so monsters at or below your total Fear level run away from you. It only works while the event runs."
+      - "The Great Spook Staff spooks other players you punch while wearing the full armor, and makes you look like a Dead Bush when you right-click."
+  - heading: "Staff"
+    colour: "<8>"
+    lines:
+      - "/adminbypass greatspook on, off or auto turns the event on or off on every server."

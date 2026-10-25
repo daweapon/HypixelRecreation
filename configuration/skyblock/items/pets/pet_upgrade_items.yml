@@ -306,7 +306,6 @@ items:
       - ""
       - "<7>Turns your <f><l>COMMON <7>Eerie Pet into"
       - "<7>its <9><l>RARE <7>version."
-      - "<8>(Not active yet)"
     components:
       - id: SKULL_HEAD
         texture: e1bddfe9b2bd0f487d2f37c940d4a50e1726abc3273af47a702855540255e132
@@ -325,7 +324,6 @@ items:
       - ""
       - "<7>Turns your <9><l>RARE <7>Eerie Pet into its"
       - "<6><l>LEGENDARY <7>version."
-      - "<8>(Not active yet)"
     components:
       - id: SKULL_HEAD
         texture: 5b2b755e01ff7229c02ab21f82b5252e809b8b8178ad7980c886cde5e555e58a

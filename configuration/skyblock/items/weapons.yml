@@ -1484,6 +1484,9 @@ items:
     rarity: LEGENDARY
     default_statistics:
       damage: 0
+    lore:
+      - "§7Gains §c+1 Damage §7and §c+1 Strength §7for"
+      - "§7every §5Fear §7you have."
     components:
       - id: STANDARD_ITEM
         standard_item_type: SWORD

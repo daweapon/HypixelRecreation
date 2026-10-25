@@ -75,7 +75,7 @@ public final class ItemStatistics {
             case PET_LUCK -> List.of("<7>Pet Luck improves pet drops and", "<7>the quality of crafted pets.");
             case HEAT_RESISTANCE -> List.of("<7>Increases time spent safely in hot", "<7>environments.");
             case COLD_RESISTANCE -> List.of("<7>Increases time spent safely in cold", "<7>environments.");
-            case FEAR -> List.of("<7>Makes Primal Fears spawn more often", "<7>and reduces their damage.");
+            case FEAR -> List.of("<7>The Fear stat has a couple uses:", "<7>- You take <a>1% <7>less damage from Primal", "<7>  Fears per <a>1 Fear<7>.", "<7>- Primal Fear monsters are a bit more", "<7>  common the more Fear you have.");
             case RESPIRATION -> List.of("<7>Extends underwater breathing time.");
             case PRESSURE_RESISTANCE -> List.of("<7>Reduces the effects of Pressure", "<7>when diving.");
             case TRACKING -> List.of("<7>Increases your chance of finding", "<d>❃ Elusive <7>mobs.");

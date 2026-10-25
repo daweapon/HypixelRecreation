@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "great-spook"
+    name: "The Great Spook Update"
+    date: "24th October 2026"
+    material: jack_o_lantern
+    title: "The Great Spook Update"
+    book: "great_spook_update.yml"
   - version: "spiders-den"
     name: "The Spider's Den Update"
     date: "24th October 2026"

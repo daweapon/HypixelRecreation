@@ -103,7 +103,7 @@ public enum EnchantmentType {
     FEAST(StatEnchantment.of("FEAST").linear(ItemStatistic.OVERBLOOM, 2)),
     FEATHER_FALLING(CatalogueEnchantment.active("FEATHER_FALLING")),
     FOREST_PLEDGE(StatEnchantment.of("FOREST_PLEDGE").linear(ItemStatistic.FORAGING_FORTUNE, 2)),
-    GREAT_SPOOK(CatalogueEnchantment.of("GREAT_SPOOK")),
+    GREAT_SPOOK(StatEnchantment.of("GREAT_SPOOK").linear(ItemStatistic.FEAR, 1)),
     GREEN_THUMB(CatalogueEnchantment.of("GREEN_THUMB")),
     HARVESTING(StatEnchantment.of("HARVESTING").linear(ItemStatistic.FARMING_FORTUNE, 12.5)),
     HECATOMB(CatalogueEnchantment.of("HECATOMB")),

@@ -1153,8 +1153,7 @@ items:
     material: player_head
     name: "Scary Grimoire"
     rarity: EPIC
-    unavailable: "Needs the Great Spook event"
-    source: "2023 Alchemist experiments (Great Spook)"
+    source: "Tyashoi Alchemist for the riddle book from Sirius (Great Spook)"
     lore:
       - "§7Obtained during the §e2023 §5Alchemist"
       - "§7experiments!"

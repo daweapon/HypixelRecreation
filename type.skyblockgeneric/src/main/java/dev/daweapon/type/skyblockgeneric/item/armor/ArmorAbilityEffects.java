@@ -142,7 +142,7 @@ public final class ArmorAbilityEffects {
         }
         if (worn.contains("CLOVER_HELMET")) result = cloverPenalty(result);
         if (worn.contains("RACING_HELMET")) result = racingSpeedCap(result);
-        return result;
+        return dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookFear.finalise(player, result);
     }
 
     public static ItemStatistics hotspotBuffs(SkyBlockPlayer player) {

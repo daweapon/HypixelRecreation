@@ -525,6 +525,7 @@ public abstract class SkyBlockMob extends EntityCreature {
 
         // Drive our own vanilla navigator's path-follow loop.
         this.vanillaNavigator.tick();
+        dev.daweapon.type.skyblockgeneric.greatspook.Fearsome.tick(this);
 
         try {
             super.tick(time);

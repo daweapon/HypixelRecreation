@@ -1119,7 +1119,7 @@ items:
     rarity: EPIC
     default_statistics:
       fear: 5
-    unavailable: "Needs the Great Spook event (Alchemist experiments)"
+    source: "Tyashoi Alchemist for 12 Sweet Flesh (Great Spook)"
     lore:
       - "§6Full Set Bonus: Spooky §7(0/4)"
       - "§7Lets you §8§ospook §7other players while"
@@ -1132,8 +1132,6 @@ items:
       - ""
       - "§7Obtained during the §5Alchemist"
       - "§7experiments!"
-      - ""
-      - "§8Not active yet: Needs the Great Spook event and the Fear stat"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -1147,7 +1145,7 @@ items:
     rarity: EPIC
     default_statistics:
       fear: 5
-    unavailable: "Needs the Great Spook event (Alchemist experiments)"
+    source: "Tyashoi Alchemist for 5 Decayed Bat (Great Spook)"
     lore:
       - "§6Full Set Bonus: Spooky §7(0/4)"
       - "§7Lets you §8§ospook §7other players while"
@@ -1160,8 +1158,6 @@ items:
       - ""
       - "§7Obtained during the §5Alchemist"
       - "§7experiments!"
-      - ""
-      - "§8Not active yet: Needs the Great Spook event and the Fear stat"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -1175,7 +1171,7 @@ items:
     rarity: EPIC
     default_statistics:
       fear: 5
-    unavailable: "Needs the Great Spook event (Alchemist experiments)"
+    source: "Tyashoi Alchemist for 1 Wet Pumpkin (Great Spook)"
     lore:
       - "§6Full Set Bonus: Spooky §7(0/4)"
       - "§7Lets you §8§ospook §7other players while"
@@ -1188,8 +1184,6 @@ items:
       - ""
       - "§7Obtained during the §5Alchemist"
       - "§7experiments!"
-      - ""
-      - "§8Not active yet: Needs the Great Spook event and the Fear stat"
     components:
       - id: STANDARD_ITEM
         standard_item_type: HELMET
@@ -1203,7 +1197,7 @@ items:
     rarity: EPIC
     default_statistics:
       fear: 5
-    unavailable: "Needs the Great Spook event (Alchemist experiments)"
+    source: "Tyashoi Alchemist for 5 Poisoned Candy (Great Spook)"
     lore:
       - "§6Full Set Bonus: Spooky §7(0/4)"
       - "§7Lets you §8§ospook §7other players while"
@@ -1216,8 +1210,6 @@ items:
       - ""
       - "§7Obtained during the §5Alchemist"
       - "§7experiments!"
-      - ""
-      - "§8Not active yet: Needs the Great Spook event and the Fear stat"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS

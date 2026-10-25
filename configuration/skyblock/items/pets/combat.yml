@@ -114,7 +114,7 @@ items:
     components:
       - id: PET
         pet_name: "Eerie"
-        source: { text: "Tyashoi Alchemist", active: false }
+        source: { text: "Tyashoi Alchemist", active: true }
         pet_type: COMBAT
         rarities: [COMMON, RARE, LEGENDARY]
         skull_texture: c3af70c6ff76ba48f24ee8a2063a5b50bbfabf409f4795248a292f8289f47c98

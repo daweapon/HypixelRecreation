@@ -29,7 +29,8 @@ public final class Intimidation {
         if (!(attacker instanceof SkyBlockMob mob) || mob instanceof SeaCreatureMob) return false;
         if (!(target instanceof SkyBlockPlayer player)) return false;
         Integer level = mob.getLevel();
-        return level != null && level <= highestDeterredLevel(player);
+        return level != null && (level <= highestDeterredLevel(player)
+                || dev.daweapon.type.skyblockgeneric.greatspook.Fearsome.frightens(level, player));
     }
 
     static int highestDeterredLevel(SkyBlockPlayer player) {

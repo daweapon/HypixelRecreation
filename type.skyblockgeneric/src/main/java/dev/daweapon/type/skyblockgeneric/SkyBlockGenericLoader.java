@@ -186,6 +186,8 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         SkyBlockAchievements.initialize();
         Carnival.initialize();
         FireSaleService.initialize();
+        dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookEvent.initialize();
+        dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookAnnouncer.initialize();
         dev.daweapon.type.skyblockgeneric.technoblade.TechnobladeShrine.initialize();
         PlayerItemUpdater.updateLoop(MinecraftServer.getSchedulerManager());
         File configDir = new File("./configuration/skyblock");

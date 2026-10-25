@@ -56,6 +56,14 @@ final class ToyBoxButtons {
                 of(Material.CHEST, "<6>Claim Every Reward Bundle", "<8>Rank privileges, all of them.", "<7>Claim every <e>Easter<7>, <e>Summer<7>, <e>Halloween <7>and <e>Holiday <7>bundle reward your rank allows.", p -> {
                     for (var season : dev.daweapon.type.skyblockgeneric.rewardbundle.BundleSeason.values()) dev.daweapon.type.skyblockgeneric.rewardbundle.RewardBundleService.claimAll(p, season);
                 }),
+                of(Material.CAULDRON, "<5>Great Spook Potion", "<8>Twenty thousand coins, saved.", "<7>Claim a <5>Great Spook Potion<7>.", p -> ToyBoxActions.give(p, ItemType.GREAT_SPOOK_POTION)),
+                of(Material.JACK_O_LANTERN, "<5>Toggle Great Spook", "<8>Is it October yet?", "<7>Switch the <5>Great Spook <7>on or off on every server.", p -> {
+                    boolean on = !dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookEvent.isActive();
+                    dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookEvent.setOverride(on);
+                    p.sendMessage(on ? "<a>The Great Spook is now on." : "<c>The Great Spook is now off.");
+                }),
+                of(Material.BARRIER, "<5>Reset Tyashoi's Trades", "<8>The cauldron is clean again.", "<7>Forget every <5>Tyashoi Alchemist <7>trade, hint and lockout on this profile.",
+                        dev.daweapon.type.skyblockgeneric.greatspook.TyashoiProgress::reset),
                 of(Material.REPEATER, "<6>Max Autopet Rules", "<8>The pets pick themselves.", "<7>Unlock all <a>28 <7>Autopet rule slots.", dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService::maxOut));
     }
 

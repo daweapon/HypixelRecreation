@@ -639,6 +639,9 @@ public class SkyBlockDataHandler extends DataHandler {
         LATEST_NEW_YEAR_CAKE_YEAR("latest_new_year_cake_year", false, false, false,
                 DatapointInteger.class, new DatapointInteger("latest_new_year_cake_year", 0)),
 
+        GREAT_SPOOK_EXPERIMENTS("great_spook_experiments", false, false, false,
+                DatapointMapStringLong.class, new DatapointMapStringLong("great_spook_experiments")),
+
         SPOOKY_FESTIVAL_CLAIMED_TIER("spooky_festival_claimed_tier", false, false, false,
                 DatapointInteger.class, new DatapointInteger("spooky_festival_claimed_tier", 0)),
 

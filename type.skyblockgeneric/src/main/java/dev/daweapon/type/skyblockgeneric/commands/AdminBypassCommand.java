@@ -15,6 +15,7 @@ import dev.daweapon.type.generic.user.categories.Rank;
 import dev.daweapon.type.skyblockgeneric.calendar.CalendarEvent;
 import dev.daweapon.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
+import dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookEvent;
 import dev.daweapon.type.skyblockgeneric.hoppity.HuntEggManager;
 import dev.daweapon.type.skyblockgeneric.hoppity.HuntEggSchedule;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointUUIDList;
@@ -31,7 +32,7 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @CommandParameters(labels = "adminbypass jumptonextevent skiptoevent",
         description = "Skips the timer to the next occurrence of a SkyBlock event",
-        usage = "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable|skiptospecialmayor|forcemayor <mayor>|resetyear|skipforgetime [slot]|hunt <egg 0-278>",
+        usage = "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable|skiptospecialmayor|forcemayor <mayor>|resetyear|skipforgetime [slot]|hunt <egg 0-278>|greatspook <on|off|auto>",
         permission = Rank.STAFF,
         allowsConsole = true)
 public class AdminBypassCommand extends HypixelCommand {
@@ -100,6 +101,9 @@ public class AdminBypassCommand extends HypixelCommand {
         command.addSyntax((sender, context) -> skipForge(sender, context.get("forge_slot")),
                 ArgumentType.Literal("skipforgetime"), ArgumentType.Integer("forge_slot").between(1, ForgeService.MAX_SLOTS));
 
+        command.addSyntax((sender, context) -> setGreatSpook(sender, context.get("greatspook_state")),
+                ArgumentType.Literal("greatspook"), ArgumentType.Word("greatspook_state").from("on", "off", "auto"));
+
         ArgumentString mayorArgument = new ArgumentString("mayor");
         mayorArgument.setSuggestionCallback((sender, context, suggestion) -> {
             for (SkyBlockMayor mayor : SkyBlockMayor.values()) {
@@ -108,6 +112,20 @@ public class AdminBypassCommand extends HypixelCommand {
         });
         command.addSyntax((sender, context) -> forceElectMayor(sender, context.get(mayorArgument)),
                 ArgumentType.Literal("forcemayor"), mayorArgument);
+    }
+
+    private static void setGreatSpook(net.minestom.server.command.CommandSender sender, String state) {
+        boolean saved = switch (state) {
+            case "on" -> GreatSpookEvent.setOverride(true);
+            case "off" -> GreatSpookEvent.setOverride(false);
+            default -> GreatSpookEvent.clearOverride();
+        };
+        if (!saved) {
+            sender.sendMessage("<c>Redis is unavailable, so the Great Spook could not be changed.");
+            return;
+        }
+        sender.sendMessage(Text.of("<a>The Great Spook is now <f>{} <a>on every server.",
+                state.equals("auto") ? "following its schedule" : state));
     }
 
     private static void skipToHuntEgg(net.minestom.server.command.CommandSender sender, int egg) {

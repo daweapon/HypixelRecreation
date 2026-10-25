@@ -2128,8 +2128,7 @@ items:
     material: book
     name: "Great Spook Reforging Manual"
     rarity: EPIC
-    unavailable: "Needs the Great Spook event"
-    source: "Tyashoi the Alchemist for 1 The Soup"
+    source: "Tyashoi Alchemist for 1 The Soup (Great Spook)"
     lore:
       - "§7Obtained during the §e2023 §5Alchemist"
       - "§7experiments!"
@@ -2146,7 +2145,6 @@ items:
     rarity: LEGENDARY
     default_statistics:
       fear: 10
-    unavailable: "Needs the Great Spook event"
     source: "Tyashoi the Alchemist for 10 Frozen Spiders"
     lore:
       - "§6Ability: Spooker §e§lLEFT CLICK"
@@ -2162,6 +2160,8 @@ items:
       - "§7Obtained during the §5Alchemist"
       - "§7experiments!"
     components:
+      - id: INTERACTABLE
+        handler_id: GREAT_SPOOK_STAFF
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/great_spook/great_spook_staff
   - id: GREAT_WHITE_TOOTH_MEAL

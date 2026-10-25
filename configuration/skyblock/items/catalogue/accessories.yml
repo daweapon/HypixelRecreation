@@ -1507,7 +1507,6 @@ items:
     rarity: EPIC
     default_statistics:
       fear: 5
-    unavailable: "Great Spook event/Tyashoi Alchemist not built"
     source: "Tyashoi Alchemist sells it for 2 Rogue Flesh during The Great Spook (first purchase each year not soulbound)"
     lore:
       - "§7Obtained during the §5Alchemist"
@@ -1527,7 +1526,6 @@ items:
     rarity: EPIC
     default_statistics:
       fear: 5
-    unavailable: "Needs Great Spook event shop (Tyashoi Alchemist)"
     source: "Bought from the Tyashoi Alchemist for 1 Precious during The Great Spook event."
     lore:
       - "§7Obtained during the §5Alchemist"
@@ -1547,7 +1545,6 @@ items:
     rarity: EPIC
     default_statistics:
       fear: 5
-    unavailable: "Great Spook event shop not built"
     source: "Bought from Tyashoi Alchemist for 1 Head of Betrayal during The Great Spook event only."
     lore:
       - "§7Obtained during the §5Alchemist"
@@ -1567,7 +1564,6 @@ items:
     rarity: EPIC
     default_statistics:
       fear: 5
-    unavailable: "Needs Great Spook event shop and Obscure Ending"
     source: "Great Spook event only: Tyashoi Alchemist for 1 Obscure Ending"
     lore:
       - "§7Obtained during the §5Alchemist"

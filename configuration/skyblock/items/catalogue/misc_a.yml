@@ -302,8 +302,7 @@ items:
     material: paper
     name: "Alchemist Recipe"
     rarity: EPIC
-    unavailable: "Needs the Great Spook Alchemist experiments (2023 event)"
-    source: "Tyashoi Alchemist: 1 Secret Potion (2023 Alchemist experiments)"
+    source: "Tyashoi Alchemist for 1 Secret I Potion (Great Spook)"
     lore:
       - "§7Obtained during the §e2023 §5Alchemist"
       - "§7experiments!"

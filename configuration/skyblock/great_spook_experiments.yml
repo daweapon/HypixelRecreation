@@ -1,0 +1,290 @@
+experiments:
+  - id: GREAT_SPOOK_STAFF
+    result: { kind: ITEM, item: GREAT_SPOOK_STAFF }
+    costs: [ { item: FROZEN_SPIDER, amount: 10 } ]
+    lockout_seconds: 0
+    hint: [ "I need <e>10 <a>Frozen Spiders<f>." ]
+    info: [ "<a>Frozen Spiders <f>bite at an <9>Icy Sinker <f>and <a>Spooky Bait <f>in the <e>Spider's Den<f>." ]
+    success:
+      - "Oh my!"
+      - "This is very stressful, I hope my calculations are correct."
+      - "Well, here goes nothing!"
+      - "Hmmm. Well this is quite embarrassing."
+      - "I don't actually understand what just happened."
+  - id: GREAT_SPOOK_HELMET
+    result: { kind: ITEM, item: GREAT_SPOOK_HELMET }
+    costs: [ { item: WET_PUMPKIN, amount: 1 } ]
+    lockout_seconds: 0
+    hint: [ "I need a <a>Wet Pumpkin<f>." ]
+    info: [ "A <a>Wet Pumpkin <f>comes from an <a>Appalled Pumpkin <f>from the <b>Builder<f>, worn underwater." ]
+    success:
+      - "You know I've heard these make great pies..."
+      - "Anyway, let's throw this in the cauldron."
+      - "Hmmm. I think this confirms it..."
+      - "What did you say? Pfft. You wouldn't understand."
+      - "Pfft. Take your reward, this is a <5>Great Spook Helmet<f>."
+  - id: GREAT_SPOOK_CHESTPLATE
+    result: { kind: ITEM, item: GREAT_SPOOK_CHESTPLATE }
+    costs: [ { item: DECAYED_BAT, amount: 5 } ]
+    lockout_seconds: 259199
+    hint:
+      - "Do you really have feet instead of hands? How hard can it be to get <e>5 <a>Decayed Bats<f>?"
+    info: [ "<a>Decayed Bats <f>drop from <e>Bats <f>on your <b>Private Island <f>shot with a <5>Wither Bow <f>and <9>Icy Arrows<f>." ]
+    success:
+      - "<a>Decayed Bats<f>! Finally!"
+      - "Let's add them to the brew..."
+      - "Oof, that's not good. Not good at all."
+      - "Well, here is your reward. It's a <5>Great Spook Chestplate<f>."
+  - id: GREAT_SPOOK_LEGGINGS
+    result: { kind: ITEM, item: GREAT_SPOOK_LEGGINGS }
+    costs: [ { item: POISONED_CANDY, amount: 5 } ]
+    lockout_seconds: 172799
+    hint:
+      - "Can you really not find a <a>Poisoned Candy<f>?!? This is basic Alchemy!!!"
+    info: [ "<a>Poisoned Candy <f>is crafted from <a>Simple Carrot Candy<f>, <a>Enchanted Poisonous Potatoes <f>and <a>Tutti-Frutti Flavored Poison<f>." ]
+    success:
+      - "Amazing!"
+      - "You know candy is bad for you, works well in potions though."
+      - "Wait..."
+      - "Why were you holding this <a>Poisoned Candy <f>with your bare hands, do you really know NOTHING???"
+      - "Amateurism at its finest!"
+      - "Moving on, let's add this <a>Poisoned Candy <f>to the <d>brew<f>."
+      - "I see..."
+      - "Here, take these <5>Great Spook Leggings<f>, you earned them!"
+  - id: GREAT_SPOOK_BOOTS
+    result: { kind: ITEM, item: GREAT_SPOOK_BOOTS }
+    costs: [ { item: SWEET_FLESH, amount: 12 } ]
+    lockout_seconds: 86399
+    hint:
+      - "I need <e>12 <a>Sweet Flesh<f>."
+      - "You must bring them to me."
+    info: [ "<a>Sweet Flesh <f>drops from <e>Zombies <f>hit with a <a>Sweet Axe <f>from the <b>Lumber Merchant<f>." ]
+    success:
+      - "Perfect! Let me put that <a>Sweet Flesh <f>in the cauldron!"
+      - "Interesting... Most interesting..."
+      - "Well... Here, take these <5>Great Spook Boots<f>!"
+  - id: GREAT_SPOOK_BELT
+    result: { kind: ITEM, item: GREAT_SPOOK_BELT }
+    costs: [ { item: ROGUE_FLESH, amount: 2 } ]
+    lockout_seconds: 86399
+    hint:
+      - "You're already having trouble finding a simple <a>Rogue Flesh<f>?"
+      - "It's quite simple really, you are just lacking patience."
+    info: [ "<a>Rogue Flesh <f>drops from a <e>Tier I Revenant Horror <f>killed with <e>1 second <f>left on its despawn timer." ]
+    success:
+      - "Let's toss this right in."
+      - "Rogue Flesh isn't really an ingredient I use often."
+      - "In fact, this is my first time using it."
+      - "I would say that went... well?"
+  - id: GREAT_SPOOK_CLOAK
+    result: { kind: ITEM, item: GREAT_SPOOK_CLOAK }
+    costs: [ { item: PRECIOUS, amount: 1 } ]
+    lockout_seconds: 86399
+    hint: [ "How to obtain a <9>Precious<f>? Well..." ]
+    info: [ "<9>Precious <f>is what <b>Dirt Guy <f>gives for an <a>InfiniDirt Wand<f>." ]
+    success:
+      - "Just need to throw this right here..."
+      - "Hum, impressive..."
+      - "Oh sorry, not you. I meant the experiment."
+      - "It's...very peculiar..."
+  - id: GREAT_SPOOK_NECKLACE
+    result: { kind: ITEM, item: GREAT_SPOOK_NECKLACE }
+    costs: [ { item: OBSCURE_ENDING, amount: 1 } ]
+    lockout_seconds: 0
+    hint: [ "I need an <a>Obscure Ending<f>." ]
+    info: [ "<b>Guber <f>hands out an <a>Obscure Ending <f>for finishing the <e>End Race <f>with <a>Blindness <f>active." ]
+    success:
+      - "..."
+      - "Wow, if I were you I wouldn't stay too close to this cauldron!"
+      - "If we have to work together, you may as well learn the basic safety procedures..."
+      - "I guess, to be fair, we'll probably both die when <8>The Great Spook <f>comes."
+  - id: GREAT_SPOOK_GLOVES
+    result: { kind: ITEM, item: GREAT_SPOOK_GLOVES }
+    costs: [ { item: HEAD_OF_BETRAYAL, name: "Head of Betrayal", amount: 1 } ]
+    lockout_seconds: 0
+    hint: [ "I need a <a>Head of Betrayal<f>." ]
+    info: [ "Talk to <b>Jake <f>wearing a <a>Cow Hat <f>while a <e>Cow <f>is in his house." ]
+    success:
+      - "Here we go."
+      - "I hope this cow didn't suffer."
+      - "Knowing you, I don't know what to expect anymore."
+  - id: GREAT_SPOOK_SWORD
+    result: { kind: ITEM, item: GREAT_SPOOK_SWORD }
+    costs: [ { item: DEAD_SEED, amount: 5 } ]
+    lockout_seconds: 0
+    hint: [ "I need <e>5 <a>Dead Seeds<f>." ]
+    info: [ "<a>Dead Seeds <f>come from using <a>Enchanted Bone Meal <f>on a <a>Dead Bush<f>." ]
+    success:
+      - "..."
+      - "Ok, this looked better in my head."
+      - "Still... progress."
+      - "We are only a few more terrible ideas away from success."
+  - id: GREAT_SPOOK_TALISMAN
+    result: { kind: ITEM, item: GREAT_SPOOK_TALISMAN }
+    costs: [ { item: FAIRY_WINGS, amount: 5 } ]
+    lockout_seconds: 431999
+    hint:
+      - "<5>Fairy Wings <f>are some of the most important ingredients!"
+      - "Come on, I need them quick!"
+    info: [ "<5>Fairy Wings <f>come from hitting <d>Fairies <f>with <a>Enchanted Shears<f>." ]
+    success:
+      - "<5>Fairy Wings<f>, perfect."
+      - "This is probably a good time to mention that what we are doing is not exactly... legal."
+      - "At least where I'm from it's not legal."
+      - "But I think we have a good dynamic together."
+      - "Furthermore, if I go down, you'll also go down with me. Understand?"
+  - id: GREAT_SPOOK_RING
+    result: { kind: ITEM, item: GREAT_SPOOK_RING }
+    costs: [ { item: GREAT_SPOOK_TALISMAN, amount: 1 }, { item: FREE_SPIDER, amount: 2 } ]
+    lockout_seconds: 0
+    hint: [ "I need a <f>Great Spook Talisman <f>and <e>2 <a>Free Spiders<f>." ]
+    info: [ "<a>Free Spiders <f>are freed from the iron bars in <b>Shaggy's <f>house with a <a>Scavenged Iron Hammer<f>." ]
+    success:
+      - "..."
+      - "Well well well."
+      - "Looks like I saved the world once again."
+      - "This should give us enough time to prepare for <8>The Great Spook<f>."
+      - "Done? Oh, no no no."
+      - "<8>The Great Spook <f>will come, it cannot be stopped."
+      - "I simply delayed it."
+  - id: GREAT_SPOOK_ARTIFACT
+    result: { kind: ITEM, item: GREAT_SPOOK_ARTIFACT }
+    costs:
+      - { item: GREAT_SPOOK_RING, amount: 1 }
+      - { item: BREAD, amount: 2 }
+      - { item: ONION, name: "Onion", amount: 1 }
+      - { item: LETTUCE, name: "Lettuce", amount: 1 }
+      - { item: COOKED_BEEF, name: "Steak", amount: 1 }
+      - { item: TASTY_CHEESE, amount: 1 }
+      - { item: FRENCH_FRIES, amount: 1 }
+    lockout_seconds: 0
+    hint:
+      - "This time I'm going to need a burger."
+      - "It's, hmm, quite important you see."
+      - "No no, not cook, just bring me the ingredients."
+      - "Oh and no tomatoes please, and no pickles, I hate them."
+    info: [ "<a>Onion <f>and <a>Lettuce <f>come from the <b>Builder<f>, <a>French Fries <f>from a <a>Hunter Knife <f>in a <e>Potato Minion<f>." ]
+    success:
+      - "You know, all things considered, I've had worse assistants before."
+      - "You did an alright job, Robyn."
+      - "That's your name, right?"
+      - "Anyhow, I have to prepare for the next <8>Great Spook<f>."
+  - id: EERIE_PET
+    result: { kind: PET, item: EERIE_PET }
+    costs: [ { item: EPHEMERAL_GRATITUDE, amount: 2 } ]
+    lockout_seconds: 43199
+    hint:
+      - "I'm going to need <a>Ephemeral Gratitude <8>x2<f>."
+      - "If you have enough resources in your sacks it should be very easy."
+    info: [ "<a>Ephemeral Gratitude <f>is earned by accepting a <e>Garden Visitor <f>offer within <e>1 second <f>of them arriving." ]
+    success:
+      - "<a>Ephemeral Gratitude <8>x2<f>..."
+      - "Didn't I ask for 3?"
+      - "Anyways, this will work, hold on..."
+      - "It did work, but 3 would have been better."
+      - "Here, take this Great Spook Pet!"
+      - "His nickname is Eerie."
+  - id: EERIE_TREAT
+    result: { kind: ITEM, item: EERIE_TREAT, eerie_upgrade: RARE }
+    costs: [ { item: SEWER_FISH, amount: 10 } ]
+    lockout_seconds: 0
+    hint: [ "I need <e>10 <a>Sewer Fish<f>." ]
+    info: [ "<a>Sewer Fish <f>bite in the <e>Sewer <f>of the Hub." ]
+    success:
+      - "<a>Sewer Fish <8>x10<f>, oof those stink..."
+      - "Hold on, I need to throw them one by one."
+      - "This was embarrassing."
+      - "If you tell anyone that you saw me doing this, the Great Spook will be the least of your worries..."
+      - "Let's not talk about this anymore."
+  - id: EERIE_TOY
+    result: { kind: ITEM, item: EERIE_TOY, eerie_upgrade: LEGENDARY }
+    costs: [ { item: NIGHTMARE_NULLIFIER, amount: 1 } ]
+    lockout_seconds: 0
+    hint: [ "I need a <a>Nightmare Nullifier<f>." ]
+    info: [ "<b>Bednom <f>makes a <a>Nightmare Nullifier <f>for a <a>Black Coffee<f>, one SkyBlock day later." ]
+    success:
+      - "A <a>Nightmare Nullifier<f>! Great!"
+      - "Let's sloooooowly put that bad boy in there."
+      - "Now we just wait."
+      - "I think this should be enough, but it's always hard to tell with experiments like this."
+      - "In the meantime, take this <5>Eerie Toy<f>."
+  - id: GREAT_SPOOK_REFORGING_MANUAL
+    result: { kind: ITEM, item: GREAT_SPOOK_REFORGING_MANUAL }
+    costs: [ { item: THE_SOUP, name: "The Soup", amount: 1 } ]
+    lockout_seconds: 43199
+    hint:
+      - "As it turns out, the Great Spook isn't <o>technically <r><f>a nightmare."
+      - "So the <a>Nightmare Nullifier <f>didn't work, at all."
+      - "It's really just a small change in horror nomenclature they did a little while ago."
+      - "Honestly I don't even know who makes those decisions."
+      - "It's a shame though, a few years ago this would have been the solution."
+      - "I have another idea though, it's a little far-fetched however."
+      - "I need <a><o>The Soup<f>."
+    info: [ "<a>The Soup <f>is what <b>Pablo <f>gives you for any kind of soup." ]
+    success:
+      - "A sad painting, perfect."
+      - "This should do the trick."
+      - "WOW!"
+      - "Alright this did some work. But it's not enough it seems."
+      - "I need to think some more, but take this."
+  - id: BOO_STONE
+    result: { kind: ITEM, item: BOO_STONE }
+    costs: [ { coins: 10000 } ]
+    requires: GREAT_SPOOK_REFORGING_MANUAL
+    lockout_seconds: 0
+    hint: [ "I can only make a <9>Boo Stone <f>once I have the <5>Great Spook Reforging Manual<f>." ]
+    info: []
+    success:
+      - "Here, a <9>Boo Stone<f>."
+      - "Don't ask what's in it."
+  - id: ALCHEMIST_RECIPE
+    result: { kind: ITEM, item: ALCHEMIST_RECIPE }
+    costs: [ { item: SECRET_I_POTION, name: "Secret I Potion", amount: 1 } ]
+    lockout_seconds: 43199
+    hint:
+      - "The painting indeed got us some massive progress."
+      - "So I do have another idea, I think this should be it."
+      - "It's so close, that I think just a few drops from a <5>Potion of Secrets <r><f>will get us there."
+    info: [ "Brew a <e>Dungeon Secret <f>into an <a>Awkward Potion <f>wearing <e>Monster Hunter<f>, <e>Monster Raider <f>or <e>Lava Sea Creature <f>armor." ]
+    success:
+      - "A <5>Potion of Secrets<f>!"
+      - "You must be a decent Alchemist too!"
+      - "Even though this brew is far from perfect, I've seen worse ones."
+      - "Ah ha!"
+      - "The secrets are getting revealed."
+      - "I need to think some more, but take this."
+  - id: GREAT_SPOOK_POTION
+    result: { kind: ITEM, item: GREAT_SPOOK_POTION }
+    costs: [ { coins: 20000 } ]
+    requires: ALCHEMIST_RECIPE
+    lockout_seconds: 0
+    hint: [ "I can only brew a <f>Great Spook Potion <f>once I have the <5>Alchemist Recipe<f>." ]
+    info: []
+    success:
+      - "One <f>Great Spook Potion<f>, fresh from the cauldron."
+  - id: SCARY_GRIMOIRE
+    result: { kind: ITEM, item: SCARY_GRIMOIRE }
+    costs: [ { item: SIRIUS_BOOK, name: "Shadows indicate riddles, illuminating unseen stars", amount: 1 } ]
+    lockout_seconds: 43199
+    hint:
+      - "This is the final step."
+      - "I thought about it a lot and I know <o>exactly <r><f>what we need."
+      - "Once again, it's a little far-fetched, but when I get creative it usually works out."
+      - "For this final ingredient, we are going to need a <5>Shadows indicate riddles, illuminating unseen stars<f>."
+      - "Good luck."
+    info: [ "<b>Sirius <f>hands that book to anyone who shows up with exactly <6>7,871,265 coins <f>in their purse." ]
+    success:
+      - "A painful book, oh my."
+      - "You probably don't want to read this by the way."
+      - "That's it!"
+      - "I did it!"
+      - "The Great Spook!"
+  - id: GREAT_SPOOK_BOOK
+    result: { kind: BOOK, enchantment: GREAT_SPOOK, level: 1 }
+    costs: [ { coins: 30000 } ]
+    requires: SCARY_GRIMOIRE
+    lockout_seconds: 0
+    hint: [ "I can only teach <5>Great Spook <f>once I have the <5>Scary Grimoire<f>." ]
+    info: []
+    success:
+      - "Here, the <5>Great Spook I <f>enchanted book."
