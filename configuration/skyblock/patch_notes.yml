@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "galatea"
+    name: "The Galatea Update"
+    date: "25th October 2026"
+    material: oak_log
+    title: "The Galatea Update"
+    book: "galatea_update.yml"
   - version: "great-spook"
     name: "The Great Spook Update"
     date: "24th October 2026"

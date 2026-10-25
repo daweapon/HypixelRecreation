@@ -114,6 +114,8 @@ final class StatisticModifierCollector {
                 StatisticSourceType.HEART_OF_THE_FOREST, StatisticModifierType.PROGRESSION, null, Material.JUNGLE_SAPLING, null);
         addModifier(modifiers, "Starlyn Contests", dev.daweapon.type.skyblockgeneric.starlyn.StarlynStatistics.statistics(player),
                 StatisticSourceType.OTHER, StatisticModifierType.PROGRESSION, null, Material.EMERALD, null);
+        addModifier(modifiers, "Forest Starborn's Will", dev.daweapon.type.skyblockgeneric.torrhus.StarbornStatistics.statistics(player),
+                StatisticSourceType.OTHER, StatisticModifierType.PROGRESSION, null, Material.NETHER_STAR, null);
         addModifier(modifiers, "Attributes", AttributeEffectService.statistics(player),
                 StatisticSourceType.ATTRIBUTE, StatisticModifierType.ATTRIBUTE, null, Material.PRISMARINE_SHARD, null);
         addTemporaryModifiers(modifiers);

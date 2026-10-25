@@ -17,22 +17,29 @@ public final class ThrownAxeEntity extends Entity {
 
     private final Point target;
     private final Runnable onArrival;
+    private final double blocksPerTick;
     private int flightTicks;
 
-    private ThrownAxeEntity(ItemStack stack, Point target, Runnable onArrival) {
+    private ThrownAxeEntity(ItemStack stack, Point target, double bonus, Runnable onArrival) {
         super(EntityType.ITEM_DISPLAY);
         this.target = target;
         this.onArrival = onArrival;
+        this.blocksPerTick = BLOCKS_PER_TICK * (1 + bonus);
         setNoGravity(true);
+        double scale = 1.2 * (1 + bonus);
         editEntityMeta(ItemDisplayMeta.class, meta -> {
             meta.setItemStack(stack);
-            meta.setScale(new Vec(1.2, 1.2, 1.2));
+            meta.setScale(new Vec(scale, scale, scale));
             meta.setPosRotInterpolationDuration(2);
         });
     }
 
     public static void launch(Instance instance, Pos from, Point target, ItemStack stack, Runnable onArrival) {
-        ThrownAxeEntity axe = new ThrownAxeEntity(stack, target, onArrival);
+        launch(instance, from, target, stack, 0, onArrival);
+    }
+
+    public static void launch(Instance instance, Pos from, Point target, ItemStack stack, double bonus, Runnable onArrival) {
+        ThrownAxeEntity axe = new ThrownAxeEntity(stack, target, bonus, onArrival);
         axe.setInstance(instance, from).thenRun(axe::fly);
     }
 
@@ -41,12 +48,12 @@ public final class ThrownAxeEntity extends Entity {
             if (isRemoved()) return TaskSchedule.stop();
             Vec toTarget = Vec.fromPoint(target).sub(getPosition());
             double distance = toTarget.length();
-            if (distance <= BLOCKS_PER_TICK || ++flightTicks > MAX_FLIGHT_TICKS) {
+            if (distance <= blocksPerTick || ++flightTicks > MAX_FLIGHT_TICKS) {
                 remove();
                 onArrival.run();
                 return TaskSchedule.stop();
             }
-            Vec step = toTarget.normalize().mul(BLOCKS_PER_TICK);
+            Vec step = toTarget.normalize().mul(blocksPerTick);
             Pos next = getPosition().add(step).withView(getPosition().yaw() + 60, 0);
             teleport(next);
             return TaskSchedule.nextTick();

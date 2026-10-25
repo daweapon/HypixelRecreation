@@ -57,6 +57,7 @@ final class SpareStatistics {
         spare = ItemStatistics.add(spare, dev.daweapon.type.skyblockgeneric.fishing.lava.CrimsonFishingGear.statistics(player));
         spare = ItemStatistics.add(spare, dev.daweapon.type.skyblockgeneric.hotf.HotfStatistics.statistics(player));
         spare = ItemStatistics.add(spare, dev.daweapon.type.skyblockgeneric.starlyn.StarlynStatistics.statistics(player));
+        spare = ItemStatistics.add(spare, dev.daweapon.type.skyblockgeneric.torrhus.StarbornStatistics.statistics(player));
 
         return spare;
     }

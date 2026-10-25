@@ -9,8 +9,21 @@ public final class TempleDoorState {
     public static final double ARM_Z = 243;
     public static final double REOPEN_Z = 237.5;
 
+    private final double slamZ;
+    private final double armZ;
+    private final double reopenZ;
     private State state = State.CLOSED;
     private boolean armed;
+
+    public TempleDoorState() {
+        this(SLAM_Z, ARM_Z, REOPEN_Z);
+    }
+
+    public TempleDoorState(double slamZ, double armZ, double reopenZ) {
+        this.slamZ = slamZ;
+        this.armZ = armZ;
+        this.reopenZ = reopenZ;
+    }
 
     public State state() {
         return state;
@@ -29,14 +42,14 @@ public final class TempleDoorState {
                 return moveTo(State.OPEN);
             }
             case OPEN -> {
-                if (z >= SLAM_Z) {
+                if (z >= slamZ) {
                     armed = false;
                     return moveTo(State.SLAMMED);
                 }
             }
             case SLAMMED -> {
-                if (z >= ARM_Z) armed = true;
-                if (armed && z <= REOPEN_Z) return moveTo(State.OPEN);
+                if (z >= armZ) armed = true;
+                if (armed && z <= reopenZ) return moveTo(State.OPEN);
             }
         }
         return Change.NONE;

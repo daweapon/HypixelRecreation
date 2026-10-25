@@ -40,13 +40,15 @@ public final class StarbornBenefactors {
         long now = System.currentTimeMillis();
         long[] cached = CACHE.get(temple);
         if (cached != null && now - cached[1] < COUNT_CACHE_MILLIS) return cached[0];
-        long value = cached == null ? 0 : cached[0];
-        try (Jedis jedis = SharedData.jedisPool().getResource()) {
-            value = jedis.zcount(temple.redisKey(), now, Double.POSITIVE_INFINITY);
-        } catch (RuntimeException ignored) {
-        }
-        CACHE.put(temple, new long[]{value, now});
-        return value;
+        long previous = cached == null ? 0 : cached[0];
+        CACHE.put(temple, new long[]{previous, now});
+        Thread.startVirtualThread(() -> {
+            try (Jedis jedis = SharedData.jedisPool().getResource()) {
+                CACHE.put(temple, new long[]{jedis.zcount(temple.redisKey(), System.currentTimeMillis(), Double.POSITIVE_INFINITY), System.currentTimeMillis()});
+            } catch (RuntimeException ignored) {
+            }
+        });
+        return previous;
     }
 
     public static double will(SkyBlockPlayer player, StarbornTemple temple) {
@@ -59,8 +61,16 @@ public final class StarbornBenefactors {
         return onGalatea() ? will(player, StarbornTemple.DESERT) : 0;
     }
 
+    public static double willForagingFortune(SkyBlockPlayer player) {
+        return onGalatea() ? will(player, StarbornTemple.FOREST) : 0;
+    }
+
     public static double speedBonus(SkyBlockPlayer player) {
         return benefactor(player, StarbornTemple.DESERT) ? StarbornTemple.SPEED_BONUS : 0;
+    }
+
+    public static double axeBonus(SkyBlockPlayer player) {
+        return benefactor(player, StarbornTemple.FOREST) ? StarbornTemple.SPEED_BONUS : 0;
     }
 
     private static long surrenderOtherTemples(SkyBlockPlayer player, StarbornTemple chosen, long now) {

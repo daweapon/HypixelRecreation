@@ -5,8 +5,12 @@ import dev.daweapon.commons.skyblock.item.ItemType;
 import java.util.List;
 
 public enum StarbornTemple {
-    DESERT("Desert", ItemType.ENCHANTED_HELIX_LOG, 0.2,
+    DESERT("Desert", ItemType.ENCHANTED_HELIX_LOG, 0.2, "Hunter Fortune", Benefit.TRAPS,
+            new long[]{0, 1, 10, 25, 50, 100, 250, 500, 1_000, 2_500, 5_000, 10_000, 25_000, 50_000, 100_000, 250_000, 500_000, 1_000_000}),
+    FOREST("Forest", ItemType.ENCHANTED_FIG_LOG, 1.3, "Foraging Fortune", Benefit.AXES,
             new long[]{0, 1, 10, 25, 50, 100, 250, 500, 1_000, 2_500, 5_000, 10_000, 25_000, 50_000, 100_000, 250_000, 500_000, 1_000_000});
+
+    public enum Benefit { TRAPS, AXES }
 
     public static final long COINS_PER_DAY = 70_000;
     public static final int ITEMS_PER_DAY = 2;
@@ -18,13 +22,25 @@ public enum StarbornTemple {
     private final String displayName;
     private final ItemType donationItem;
     private final double perTier;
+    private final String statName;
+    private final Benefit benefit;
     private final long[] thresholds;
 
-    StarbornTemple(String displayName, ItemType donationItem, double perTier, long[] thresholds) {
+    StarbornTemple(String displayName, ItemType donationItem, double perTier, String statName, Benefit benefit, long[] thresholds) {
         this.displayName = displayName;
         this.donationItem = donationItem;
         this.perTier = perTier;
+        this.statName = statName;
+        this.benefit = benefit;
         this.thresholds = thresholds;
+    }
+
+    public String statName() {
+        return statName;
+    }
+
+    public Benefit benefit() {
+        return benefit;
     }
 
     public String displayName() {

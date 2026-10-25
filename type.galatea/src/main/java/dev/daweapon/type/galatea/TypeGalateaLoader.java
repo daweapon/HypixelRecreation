@@ -13,6 +13,7 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.tab.TablistManager;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
+import dev.daweapon.type.skyblockgeneric.foresttemple.ForestTemple;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
@@ -36,6 +37,7 @@ public class TypeGalateaLoader implements SkyBlockTypeLoader {
     @Override
     public void afterInitialize(MinecraftServer server) {
         dev.daweapon.type.skyblockgeneric.hunting.creature.CreatureSpawner.start();
+        ForestTemple.register(MinecraftServer.getSchedulerManager());
     }
 
     @Override
@@ -47,6 +49,7 @@ public class TypeGalateaLoader implements SkyBlockTypeLoader {
     public LoaderValues getLoaderValues() {
         return new LoaderValues(
                 (type) -> switch (type) {
+                    case SKYBLOCK_TORRHUS_CANYON -> new Pos(-728.5, 98, 83, 180, 0);
                     default -> new Pos(-542.5, 108, -26.5, 45, 0);
                 }, // Spawn position
                 true // Announce death messages

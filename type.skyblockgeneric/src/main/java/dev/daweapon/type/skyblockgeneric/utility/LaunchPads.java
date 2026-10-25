@@ -475,11 +475,11 @@ public enum LaunchPads {
         LaunchPads::canEnterTorrhus,
         "<c>You must be at least Foraging Level XII and have Heart of the Forest Tier 4 to join this island!",
         player -> PlayerHolograms.ExternalPlayerHologram.builder()
-            .pos(new Pos(-728.5, 99.5, 89.5))
+            .pos(new Pos(-728, 99.5, 89.5))
             .player(player)
             .text(canEnterTorrhus(player)
-                ? new String[]{"<f>Travel to:", "<a>Torrhus Canyon"}
-                : new String[]{"<f>Travel to:", "<a>Torrhus Canyon", "<c>Requires Foraging Level 12", "<c>Heart of the Forest Tier 4"})
+                ? new String[]{"<b>Travel to:", "<a>Torrhus Canyon"}
+                : new String[]{"<b>Travel to:", "<a>Torrhus Canyon", "<c>Requires Foraging Level 12", "<c>Heart of the Forest Tier 4"})
             .build()
     ),
 
@@ -492,9 +492,9 @@ public enum LaunchPads {
         _ -> true,
         "",
         player -> PlayerHolograms.ExternalPlayerHologram.builder()
-            .pos(new Pos(-720, 96.1, 136))
+            .pos(new Pos(-720, 96.5, 136))
             .player(player)
-            .text(new String[]{"<b>Travel to:", "<2>Moonglade Marsh"})
+            .text(new String[]{"<b>Travel to:", "<a>Moonglade Marsh"})
             .build()
     ),
     ;

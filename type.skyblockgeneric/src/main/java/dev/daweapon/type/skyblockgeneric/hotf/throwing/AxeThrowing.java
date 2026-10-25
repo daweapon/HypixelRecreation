@@ -8,6 +8,7 @@ import dev.daweapon.type.skyblockgeneric.hotf.HotfAbility;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.region.SkyBlockRegion;
+import dev.daweapon.type.skyblockgeneric.torrhus.StarbornBenefactors;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.minestom.server.coordinate.BlockVec;
 import net.minestom.server.coordinate.Point;
@@ -96,7 +97,7 @@ public final class AxeThrowing {
     private static void fly(SkyBlockPlayer player, Instance instance, SkyBlockItem item, Pos from, Point target,
                             double sweepScale, int ricochets) {
         Pos center = new Pos(target.blockX() + 0.5, target.blockY() + 0.5, target.blockZ() + 0.5);
-        ThrownAxeEntity.launch(instance, from, center, item.getItemStack(), () -> {
+        ThrownAxeEntity.launch(instance, from, center, item.getItemStack(), StarbornBenefactors.axeBonus(player), () -> {
             if (!player.isOnline() || player.getInstance() != instance) return;
             Set<Point> cut = new HashSet<>();
             cut.add(new BlockVec(target));
@@ -122,7 +123,7 @@ public final class AxeThrowing {
         if (next == null) return;
         visited.add(new BlockVec(next));
         Pos center = new Pos(next.blockX() + 0.5, next.blockY() + 0.5, next.blockZ() + 0.5);
-        ThrownAxeEntity.launch(instance, from, center, item.getItemStack(), () -> {
+        ThrownAxeEntity.launch(instance, from, center, item.getItemStack(), StarbornBenefactors.axeBonus(player), () -> {
             if (!player.isOnline() || player.getInstance() != instance) return;
             land(player, instance, item, next, sweepScale);
             ricochet(player, instance, item, center, next, sweepScale, ricochets + 1, visited);

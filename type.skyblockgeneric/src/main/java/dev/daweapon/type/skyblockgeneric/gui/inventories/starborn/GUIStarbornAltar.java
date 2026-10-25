@@ -37,14 +37,18 @@ public class GUIStarbornAltar implements View<GUIStarbornAltar.State> {
             return ItemStacks.item(Material.NETHER_STAR, """
                             <d>Will
                             <7>Benefactors: <9>{}
-                            <7>Hunter Fortune: <a>{}
+                            <7>{}: <a>{}
 
                             <7>Benefactor: {}
-                            <7>Your Black Holes and Huntraps work <a>25% <7>faster
+                            <7>{}<7>
                             <7>and the <d>Will <7>bonus is doubled.""",
                     StringUtility.commaify(StarbornBenefactors.count(temple)),
+                    temple.statName(),
                     "%.2f".formatted(StarbornBenefactors.will(player, temple)),
-                    left > 0 ? StringUtility.formatTimeLeft(left) : "Inactive");
+                    left > 0 ? StringUtility.formatTimeLeft(left) : "Inactive",
+                    temple.benefit() == StarbornTemple.Benefit.AXES
+                            ? "Axes you throw are <a>25% <7>larger and <a>25% <7>faster"
+                            : "Your Black Holes and Huntraps work <a>25% <7>faster");
         });
         List<Integer> days = StarbornTemple.DONATION_DAYS;
         for (int i = 0; i < DONATION_SLOTS.length; i++) {

@@ -1,0 +1,20 @@
+title: "The Galatea Update"
+date: "25th October 2026"
+intro:
+  - "Moonglade Marsh and Torrhus Canyon get more people to talk to, a working gate between them, and the Forest Temple."
+sections:
+  - heading: "Torrhus Gate"
+    colour: "<6>"
+    lines:
+      - "The brick gate at Moonglade's Edge launches you to Torrhus Canyon (Foraging XII and Heart of the Forest Tier 4). You land back at the gate when you return."
+  - heading: "Forest Temple"
+    colour: "<2>"
+    lines:
+      - "Light the five lanterns in the Ancient Ruins in order of sea pickles, starting with the lantern next to Tilus, and the guardian opens the door."
+      - "Inside, rotate the carpet pieces until the floor matches the wall to wake the temple. Then donate Enchanted Fig Logs and coins at the altar to become a benefactor."
+      - "The Forest Temple's Will adds Foraging Fortune on Galatea. Benefactors throw axes 25% larger and faster. Only one temple can be active at a time."
+  - heading: "New Faces"
+    colour: "<b>"
+    lines:
+      - "Martin, Pounce, Talia and Tilus now stand around Moonglade Marsh."
+      - "Torrhus Canyon gains Dory, Forager Daniel, Forager Rowan, Hunter McNeil, Treehugger Timothy, Honey and Hunter Jean, whose guide lists the Torrhus sea creatures."
