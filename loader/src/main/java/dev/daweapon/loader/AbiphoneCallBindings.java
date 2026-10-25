@@ -64,7 +64,9 @@ final class AbiphoneCallBindings {
         AbiphoneCallActions.register("plumber_joe", player -> player.openView(new CatalogueShopView("plumber_joe")));
         AbiphoneCallActions.register("rosemary", player -> player.openView(new GUIEssenceShop(EssenceType.FOREST)));
         AbiphoneCallActions.register("roddy", player -> player.openView(new GUIFishingRodParts()));
+        AbiphoneCallActions.register("shaggy", player -> player.openView(new dev.daweapon.type.skyblockgeneric.gui.inventories.spidersden.GUIShaggy()));
         AbiphoneCallActions.register("shifty", player -> player.openView(new CatalogueShopView("shifty")));
+        AbiphoneCallActions.register("spider_tamer", dev.daweapon.type.skyblockgeneric.spidersden.SpiderTamerCall::call);
         AbiphoneCallActions.register("taylor", player -> player.openView(new GUITaylor()));
         AbiphoneCallActions.register("tyzzo", player -> player.openView(new GUITyzzo()));
         AbiphoneCallActions.register("wool_weaver", player -> player.openView(new GUIShopWoolWeaverVibrant()));

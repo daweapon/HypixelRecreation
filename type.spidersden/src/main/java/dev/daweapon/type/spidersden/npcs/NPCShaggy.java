@@ -5,9 +5,18 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
+import dev.daweapon.type.skyblockgeneric.gui.inventories.spidersden.GUIShaggy;
+import dev.daweapon.type.skyblockgeneric.spidersden.ArachneFight;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// Decorative Shaggy NPC, found in the Spider's Den.
+import java.util.concurrent.ThreadLocalRandom;
+
+// Shaggy, on the top floor of Grandma's House, sells Arachne Crystals once the player has beaten Arachne.
 public class NPCShaggy extends HypixelNPC {
+    private static final String MET = "spiders_den.shaggy.met";
+    private static final String OFFERED = "spiders_den.shaggy.offered";
+
     public NPCShaggy() {
         super(new HumanConfiguration() {
             @Override
@@ -41,6 +50,54 @@ public class NPCShaggy extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (!ChapterTriggers.done(player, MET)) {
+            ChapterTriggers.fire(player, MET);
+            setDialogue(player, "intro");
+            return;
+        }
+        if (!ArachneFight.hasDefeatedEither(player)) {
+            setDialogue(player, "hint-" + (1 + ThreadLocalRandom.current().nextInt(2)));
+            return;
+        }
+        if (!ChapterTriggers.done(player, OFFERED)) {
+            ChapterTriggers.fire(player, OFFERED);
+            setDialogue(player, "offer").thenRun(() -> player.openView(new GUIShaggy(() -> crafted(player))));
+            return;
+        }
+        player.openView(new GUIShaggy(() -> crafted(player)));
+    }
 
+    @Override
+    public DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.builder().key("intro").lines(
+                        "I used to think this world was peaceful, but there are some beings that are stronger than I could ever hope to handle...",
+                        "This spider, <4>Arachne<f> - it's way out of my league...",
+                        "I can barely defeat her <5>Keepers<f>...").build(),
+                DialogueSet.builder().key("hint-1").line(
+                        "With enough <9>Arachne's Calling<f>, you can summon her at the <5>Altar<f>.").build(),
+                DialogueSet.builder().key("hint-2").line(
+                        "You can find <c>Arachne's Keepers <f>in <4>Arachne's Sanctuary<f>.").build(),
+                DialogueSet.builder().key("offer").lines(
+                        "Wow, you actually challenged that old witch <4>Arachne<f>! You have some potential kid...",
+                        "Unfortunately, she has fled to bide her time and grow in power.",
+                        "In order to prevent her from growing too strong, we must keep pulling her into this world and weakening her.",
+                        "If you're up for the challenge, I can trade you some <5>Arachne Crystals<f>.",
+                        "When you place one of these crystals at the <5>Altar <f>you'll pull a stronger version of <4>Arachne <f>into this world.",
+                        "While she may drop some rarer items upon defeat, she is a lot stronger.",
+                        "Here, take a look.").build(),
+                DialogueSet.builder().key("crafted").lines(
+                        "Great, this is everything I need! With this I can make the crystal.",
+                        "* Hammer and drilling sounds *",
+                        "* Glass breaking *",
+                        "Here ya go, if you put this on the alter, it will drag that retched creature to this world.",
+                        "But be warned, she is strong, and I have it set up to drag her back if she is not defeated in 10 minutes, for the safety of this whole world.",
+                        "I wish you good luck!").build(),
+        };
+    }
+
+    public void crafted(SkyBlockPlayer player) {
+        setDialogue(player, "crafted");
     }
 }

@@ -6,13 +6,12 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Spider's Den relics"
+          - type: TEXT
             text:
               - "Right-click to point towards the"
               - "nearest <b>Relic<7>!"
-              - ""
-              - "Relics Found: <b>28/28"
+      - id: INTERACTABLE
+        handler_id: ARCHAEOLOGIST_COMPASS
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
 

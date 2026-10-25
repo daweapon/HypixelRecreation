@@ -122,6 +122,10 @@ final class ToyBoxButtons {
                     HotfService.syncSkyBlockXp(p);
                 }),
                 of(Material.RABBIT_HIDE, "<5>Pelts", "<8>Trevor owes you.", "<7>Gain <5>1,000 Pelts<7>.", p -> dev.daweapon.type.skyblockgeneric.trapper.Pelts.add(p, 1_000)),
+                of(Material.SPIDER_EYE, "<4>Arachne's Altar", "<8>She is expecting you.", "<7>Get <a>4 <9>Arachne's Calling<7> and an <5>Arachne Crystal<7>.", p -> {
+                    ToyBoxActions.give(p, ItemType.ARACHNE_KEEPER_FRAGMENT, 4);
+                    ToyBoxActions.give(p, ItemType.ARACHNE_CRYSTAL);
+                }),
                 of(Material.BONE_BLOCK, "<d>Fossil Essence", "<8>Older than time itself.", "<7>Gain <d>100,000 Fossil Essence<7>.", p -> Essences.add(p, EssenceType.FOSSIL, 100_000)),
                 of(Material.NETHER_STAR, "<d>Every Essence", "<8>The full collection.", "<7>Gain <d>100,000<7> of every essence type.", p -> {
                     for (EssenceType type : EssenceType.values()) Essences.add(p, type, 100_000);

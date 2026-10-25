@@ -104,6 +104,7 @@ public final class SpiderDenMobSpawner {
     private static void tick() {
         Instance instance = HypixelConst.getInstanceContainer();
         if (instance == null || instance.getPlayers().isEmpty()) return;
+        SpiderDenRelics.ensureSpawned(instance);
         PLANS.forEach(plan -> plan.tick(instance));
     }
 

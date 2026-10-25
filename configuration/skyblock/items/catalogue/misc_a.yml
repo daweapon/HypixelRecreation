@@ -436,7 +436,6 @@ items:
     material: player_head
     name: "Arachne Crystal"
     rarity: EPIC
-    unavailable: "Needs Arachne's Sanctuary and the Arachne fight (Spider's Den), which aren't built"
     source: "Shaggy: 2 Arachne Fragment, 16 Enchanted Spider Eye, 16 Enchanted String after his Arachne quest"
     lore:
       - "§7Place this at the §5Altar §7in §4Arachne's"

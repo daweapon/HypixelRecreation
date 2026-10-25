@@ -5,10 +5,15 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
 import dev.daweapon.type.skyblockgeneric.essence.EssenceType;
+import dev.daweapon.type.skyblockgeneric.spidersden.ArachneFight;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import dev.daweapon.type.skyblockgeneric.gui.inventories.essence.GUIEssenceShop;
 
 public class NPCSpiderTamer extends HypixelNPC {
+    private static final String THANKED = "spiders_den.spider_tamer.thanked";
+
     public NPCSpiderTamer() {
         super(new HumanConfiguration() {
             @Override
@@ -43,6 +48,29 @@ public class NPCSpiderTamer extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-        event.player().openView(new GUIEssenceShop(EssenceType.SPIDER));
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (!ArachneFight.hasDefeatedEither(player)) {
+            setDialogue(player, "intro");
+            return;
+        }
+        if (!ChapterTriggers.done(player, THANKED)) {
+            ChapterTriggers.fire(player, THANKED);
+            setDialogue(player, "thanks").thenRun(() -> player.openView(new GUIEssenceShop(EssenceType.SPIDER)));
+            return;
+        }
+        player.openView(new GUIEssenceShop(EssenceType.SPIDER));
+    }
+
+    @Override
+    public DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.builder().key("intro").lines(
+                        "Oh...Hi.",
+                        "I like staying here with my spiders, but <4>Arachne<f> started capturing some of them.",
+                        "Can you help?").build(),
+                DialogueSet.builder().key("thanks").lines(
+                        "Thank you so much...",
+                        "If you want, I can help you gain the strength of spiders!").build(),
+        };
     }
 }

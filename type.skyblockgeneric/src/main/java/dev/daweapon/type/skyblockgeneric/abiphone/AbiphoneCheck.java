@@ -1,6 +1,9 @@
 package dev.daweapon.type.skyblockgeneric.abiphone;
 
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.commons.skyblock.item.Rarity;
+import dev.daweapon.type.skyblockgeneric.spidersden.ArachneFight;
+import dev.daweapon.type.skyblockgeneric.user.pets.PetLevels;
 import dev.daweapon.type.skyblockgeneric.essence.EssenceType;
 import dev.daweapon.type.skyblockgeneric.essence.Essences;
 import dev.daweapon.type.skyblockgeneric.farmingcontest.ContestBracket;
@@ -60,6 +63,32 @@ public enum AbiphoneCheck {
         @Override
         public void consume(SkyBlockPlayer player) {
             Essences.take(player, EssenceType.UNDEAD, 5000);
+        }
+    },
+    KILLED_ARACHNE {
+        @Override
+        public boolean test(SkyBlockPlayer player) {
+            return ArachneFight.hasDefeatedEither(player);
+        }
+    },
+    TARANTULA_PET_LEVEL_1 {
+        @Override
+        public boolean test(SkyBlockPlayer player) {
+            return starterTarantula(player) != null;
+        }
+
+        @Override
+        public void consume(SkyBlockPlayer player) {
+            SkyBlockItem pet = starterTarantula(player);
+            if (pet != null) player.getPetData().removePet(pet);
+        }
+
+        private SkyBlockItem starterTarantula(SkyBlockPlayer player) {
+            return player.getPetData().getPetsMap().keySet().stream()
+                    .filter(pet -> pet.getAttributeHandler().getPotentialType() == ItemType.TARANTULA_PET)
+                    .filter(pet -> pet.getAttributeHandler().getRarity() == Rarity.EPIC)
+                    .filter(pet -> PetLevels.level(pet) == 1)
+                    .findFirst().orElse(null);
         }
     },
     DONATE_ABIPHONE {

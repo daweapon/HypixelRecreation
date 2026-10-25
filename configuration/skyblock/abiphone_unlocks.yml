@@ -482,6 +482,30 @@ contacts:
       - "Here's my number!"
       - "If you call me I probably won't feel like speaking, but I'll let you use the <2>Forest Essence Shop<f>."
       - "Like I said before, I'm not too good with people."
+  - id: shaggy
+    npc: [NPCShaggy]
+    stages:
+      - label: "WHAT IS IT?"
+        intro:
+          - "Nice to see you again."
+          - "Hm, you want my <3>Abiphone Contact<f>?"
+          - "That's fair, I suppose."
+          - "Before I give you it, I ask but one thing of you..."
+        missing:
+          - "Defeat <4>Arachne<f>."
+          - "She lives deep underground, in <4>Arachne's Burrow<f>."
+          - "Help take her down and save this island from a horrible fate, and you can have my contact."
+        accepted:
+          - "Kill <4>Arachne<f>."
+          - ".."
+          - "Wait.."
+          - "You've... already killed her?"
+          - "Amazing! Great job!"
+          - "The island is safe! For now, at least..."
+        check: KILLED_ARACHNE
+    given:
+      - "Here, take my contact!"
+      - "Call me anytime you need to get your hands on some <5>Arachne Crystals<f>!"
   - id: shifty
     npc: [NPCShifty]
     head: "6c01b213574f630616dd00b7a3bc61774fd7d467136476bd7b7a99ec25ee2757"
@@ -501,6 +525,30 @@ contacts:
     given:
       - "Sadly, Lucius heard of our little deal and asked me to hold the drinks for him."
       - "Here, take my contact anyway."
+  - id: spider_tamer
+    npc: [NPCSpiderTamer]
+    stages:
+      - label: "GIVE PET"
+        intro:
+          - "Hey dude."
+          - "I'm feeling kind of down at the minute."
+          - "All of my pet spiders left me to go and worship <4>Arachne<f>."
+          - "I don't blame them, it looks pretty exciting down there, but it's got kinda lonely up here as a result, you know?"
+          - "Hey, do you think you could give me a <7>[Lvl 1] <5>Tarantula<f>?"
+          - "I'm sure one of those little guys would keep me company, at least for a while."
+          - "If they wanna go worship <4>Arachne <f>when they're all grown up, that's cool with me but, until then, we could be great friends."
+        missing:
+          - "Uh, dude, you don't have a <7>[Lvl 1] <5>Tarantula<f>."
+          - "I'd know, I'm quite the expert on our eight-legged friends - they don't call me the <c>Spider Tamer <f>for nothing!"
+        accepted:
+          - "Thanks dude!"
+          - "This might just be the cutest <5>Tarantula <f>I've ever seen!"
+          - "Look! She's looking at me with each of her eight eyes, how cute!"
+          - "I think I'll name her Aragog."
+        check: TARANTULA_PET_LEVEL_1
+    given:
+      - "Anyways, here, take my contact."
+      - "If you ever need to use the <c>Spider Essence Shop <f>or just want to hear some spider fun facts, hit me up!"
   - id: taylor
     npc: [NPCTaylor]
     head: "18ca0c89bef8c4e7e521b113821ffdf00e7b5eb552a378f9037cbec655dd27c8"
