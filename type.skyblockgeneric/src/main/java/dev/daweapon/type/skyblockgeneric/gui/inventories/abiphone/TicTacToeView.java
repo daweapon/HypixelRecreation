@@ -34,7 +34,7 @@ public final class TicTacToeView implements View<TicTacToeView.State> {
             char mark = board.cell(i);
             Material material = mark == TicTacToeBoard.PLAYER ? Material.LIME_WOOL : mark == TicTacToeBoard.AI ? Material.RED_WOOL : Material.WHITE_WOOL;
             String label = mark == TicTacToeBoard.PLAYER ? "<a>You" : mark == TicTacToeBoard.AI ? "<c>Abiphone" : "<f>Empty";
-            layout.slot(SLOTS[i], (s, c) -> ItemStacks.name(ItemStack.builder(material), "{}", label), (click, viewCtx) -> play(state, cell, viewCtx));
+            layout.slot(SLOTS[i], (s, c) -> ItemStacks.name(ItemStack.builder(material), label), (click, viewCtx) -> play(state, cell, viewCtx));
         }
         if (board.finished()) {
             layout.slot(40, (s, c) -> ItemStacks.lore(ItemStacks.name(ItemStack.builder(Material.EMERALD), "<a>Play Again"), List.of(

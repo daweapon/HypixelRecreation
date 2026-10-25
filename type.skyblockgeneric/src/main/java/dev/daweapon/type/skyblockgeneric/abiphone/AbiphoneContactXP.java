@@ -3,6 +3,7 @@ package dev.daweapon.type.skyblockgeneric.abiphone;
 import dev.daweapon.type.generic.data.datapoints.DatapointStringList;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.crimson.questline.CrimsonAbiphone;
 import dev.daweapon.type.skyblockgeneric.item.components.AbiphoneComponent;
 import dev.daweapon.type.skyblockgeneric.levels.SkyBlockXPSource;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -29,7 +30,21 @@ public final class AbiphoneContactXP {
         }
         player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.ABIPHONE_CONTACTS_UNLOCKED, DatapointStringList.class)
                 .setValue(ids);
+        fillPhone(player);
         syncSkyBlockXP(player);
+    }
+
+    private static void fillPhone(SkyBlockPlayer player) {
+        int slot = CrimsonAbiphone.abiphoneSlot(player);
+        if (slot < 0) return;
+        SkyBlockItem phone = new SkyBlockItem(player.getInventory().getItemStack(slot));
+        int limit = phone.getComponent(AbiphoneComponent.class).contactLimit(player, phone);
+        List<AbiphoneNPC> missing = AbiphoneRegistry.getRegisteredContactNPCs().stream()
+                .filter(npc -> !phone.getAttributeHandler().hasAbiphoneNPC(npc)).toList();
+        int room = limit - phone.getAttributeHandler().getAbiphoneNPCs().size();
+        if (room <= 0) return;
+        List<AbiphoneNPC> added = missing.subList(0, Math.min(room, missing.size()));
+        player.updateItemInSlot(slot, item -> added.forEach(npc -> item.getAttributeHandler().addAbiphoneNPC(npc)));
     }
 
     public static int total(int unlockedContacts) {
