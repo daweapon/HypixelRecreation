@@ -1,15 +1,12 @@
 package dev.daweapon.type.skyblockgeneric.hunting.floordrop;
 
-import dev.daweapon.commons.ServerType;
 import dev.daweapon.commons.YamlFileUtils;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
-import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.generic.entity.InteractionEntity;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
 import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
-import dev.daweapon.type.skyblockgeneric.entity.TextDisplayEntity;
 import dev.daweapon.type.skyblockgeneric.event.custom.ShardCaughtEvent;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfCurrency;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
@@ -19,17 +16,17 @@ import dev.daweapon.type.skyblockgeneric.hunting.AttributeRegistry;
 import dev.daweapon.type.skyblockgeneric.item.components.AttributeShardComponent;
 import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.sound.Sound;
 import net.minestom.server.MinecraftServer;
+import net.minestom.server.color.Color;
+import net.minestom.server.network.packet.server.play.BlockChangePacket;
+import net.minestom.server.network.packet.server.play.ParticlePacket;
+import net.minestom.server.particle.Particle;
 import net.minestom.server.coordinate.Pos;
-import net.minestom.server.coordinate.Vec;
 import net.minestom.server.entity.Entity;
-import net.minestom.server.entity.EntityType;
-import net.minestom.server.entity.LivingEntity;
-import net.minestom.server.entity.metadata.display.ItemDisplayMeta;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.block.Block;
-import net.minestom.server.item.ItemStack;
-import net.minestom.server.item.Material;
 import net.minestom.server.timer.ExecutionType;
 import net.minestom.server.timer.TaskSchedule;
 
@@ -48,6 +45,8 @@ public final class FloorDrops {
     public static final String PICKUP_TRIGGER = "floordrop.pickup";
     private static final File FILE = new File("./configuration/skyblock/hunting/floor_drops.yml");
     private static final int ATTEMPTS = 10;
+    public static final String GROUND_TRIGGER = "ground.find";
+    private static final Block SHINING_BLOCK = Block.BROWN_MUSHROOM_BLOCK;
     private static final Map<UUID, List<Drop>> ACTIVE = new HashMap<>();
     private static FloorDropTable table;
     private static boolean started;
@@ -55,6 +54,7 @@ public final class FloorDrops {
     private static final class Drop {
         private final List<Entity> entities = new ArrayList<>();
         private final Pos position;
+        private SkyBlockPlayer owner;
         private final long expiresAt;
         private boolean taken;
 
@@ -66,6 +66,8 @@ public final class FloorDrops {
         private void remove() {
             entities.forEach(Entity::remove);
             entities.clear();
+            if (owner != null && owner.getInstance() != null)
+                owner.sendPacket(new BlockChangePacket(position.sub(0, 1, 0), owner.getInstance().getBlock(position.sub(0, 1, 0))));
         }
     }
 
@@ -75,9 +77,14 @@ public final class FloorDrops {
     @SuppressWarnings("unchecked")
     public static synchronized void start() {
         if (started || HypixelConst.getTypeLoader() == null) return;
-        if (HypixelConst.getTypeLoader().getType() != ServerType.SKYBLOCK_TORRHUS_CANYON) return;
+        String zone = switch (HypixelConst.getTypeLoader().getType()) {
+            case SKYBLOCK_TORRHUS_CANYON -> "torrhus_canyon";
+            case SKYBLOCK_GALATEA -> "moonglade_marsh";
+            default -> null;
+        };
+        if (zone == null) return;
         try {
-            table = FloorDropTable.parse((Map<String, Object>) YamlFileUtils.loadYaml(FILE).get("torrhus_canyon"));
+            table = FloorDropTable.parse((Map<String, Object>) YamlFileUtils.loadYaml(FILE).get(zone));
         } catch (IOException exception) {
             throw new UncheckedIOException(exception);
         }
@@ -86,6 +93,23 @@ public final class FloorDrops {
             tick();
             return TaskSchedule.seconds(table.spawnSeconds());
         }, ExecutionType.TICK_START);
+        MinecraftServer.getSchedulerManager().submitTask(() -> {
+            sparkle();
+            return TaskSchedule.tick(8);
+        }, ExecutionType.TICK_END);
+    }
+
+    private static void sparkle() {
+        for (SkyBlockPlayer player : SkyBlockGenericLoader.getLoadedPlayers()) {
+            List<Drop> drops = ACTIVE.get(player.getUuid());
+            if (drops == null) continue;
+            for (Drop drop : drops) {
+                if (drop.taken || drop.position.distance(player.getPosition()) > 48) continue;
+                Pos top = drop.position.add(0, 0.15, 0);
+                player.sendPacket(new ParticlePacket(Particle.DUST.withColor(new Color(255, 255, 255)), true, true, top.x(), top.y(), top.z(), 0.3f, 0.03f, 0.3f, 0f, 3));
+                player.sendPacket(new ParticlePacket(Particle.HAPPY_VILLAGER, true, true, top.x(), top.y() + 0.3, top.z(), 0.3f, 0.1f, 0.3f, 0f, 1));
+            }
+        }
     }
 
     private static void tick() {
@@ -138,23 +162,13 @@ public final class FloorDrops {
 
     private static Drop create(SkyBlockPlayer player, Pos position) {
         Drop drop = new Drop(position, System.currentTimeMillis() + table.lifetimeSeconds() * 1000L);
+        drop.owner = player;
         UUID owner = player.getUuid();
-        LivingEntity marker = new LivingEntity(EntityType.ITEM_DISPLAY);
-        marker.editEntityMeta(ItemDisplayMeta.class, meta -> {
-            meta.setItemStack(ItemStack.of(Material.STRING));
-            meta.setScale(new Vec(0.6, 0.6, 0.6));
-            meta.setHasNoGravity(true);
-        });
-        TextDisplayEntity label = new TextDisplayEntity(Text.of("<e>Floor Drop"), meta -> {
-        });
         InteractionEntity click = new InteractionEntity(1, 1, (clicker, event) -> collect((SkyBlockPlayer) clicker, drop));
-        marker.setInstance(player.getInstance(), position.add(0, 0.2, 0));
-        label.setInstance(player.getInstance(), position.add(0, 0.8, 0));
         click.setInstance(player.getInstance(), position.add(0, 0.5, 0));
-        for (Entity entity : List.of(marker, label, click)) {
-            entity.updateViewableRule(viewer -> viewer.getUuid().equals(owner));
-            drop.entities.add(entity);
-        }
+        click.updateViewableRule(viewer -> viewer.getUuid().equals(owner));
+        drop.entities.add(click);
+        player.sendPacket(new BlockChangePacket(position.sub(0, 1, 0), SHINING_BLOCK));
         return drop;
     }
 
@@ -165,7 +179,9 @@ public final class FloorDrops {
         FloorDropTable.Reward reward = LootRoll.pick(player.getUuid(), table.rewards(), FloorDrops::itemOf, FloorDropTable.Reward::weight,
                 ThreadLocalRandom.current());
         award(player, reward);
+        player.playSound(Sound.sound(Key.key("entity.item.pickup"), Sound.Source.PLAYER, 1f, 1.49f));
         ChapterTriggers.fire(player, PICKUP_TRIGGER);
+        ChapterTriggers.fire(player, GROUND_TRIGGER);
     }
 
     private static ItemType itemOf(FloorDropTable.Reward reward) {
@@ -180,14 +196,14 @@ public final class FloorDrops {
         switch (reward.kind()) {
             case WHISPERS -> {
                 HotfService.addWhispers(player, HotfCurrency.DESERT, reward.amount());
-                player.sendMessage("<e>Floor Drop<7>: <6>+{} Desert Whispers", reward.amount());
+                found(player, "Desert Whispers", reward.amount());
             }
             case ITEM -> {
                 ItemType type = ItemType.get(reward.id());
                 if (type == null) return;
                 int amount = fortuneAmount(reward.amount(), player.getStatistics().allStatistics().getOverall(ItemStatistic.FORAGING_FORTUNE));
                 player.addAndUpdateItem(type, amount);
-                player.sendMessage("<e>Floor Drop<7>: <a>+{}x <f>{}", amount, dev.daweapon.commons.StringUtility.toNormalCase(type.getDisplayName()));
+                found(player, dev.daweapon.commons.StringUtility.toNormalCase(type.getDisplayName()), amount);
             }
             case SHARD -> AttributeRegistry.findByShard(reward.id()).ifPresent(definition -> awardShard(player, definition));
         }
@@ -198,7 +214,11 @@ public final class FloorDrops {
         player.getHuntingData().addShards(definition.id(), amount);
         dev.daweapon.type.generic.event.HypixelEventHandler.callCustomEvent(
                 new ShardCaughtEvent(player, definition, amount, ShardCaughtEvent.Source.TREE_GIFT, false));
-        player.sendMessage("<e>Floor Drop<7>: <a>+{}x <f>{} Shard", amount, definition.shardName());
+        found(player, definition.shardName() + " Shard", amount);
+    }
+
+    private static void found(SkyBlockPlayer player, String name, int amount) {
+        player.sendMessage("<6><l>FLOOR DROP! <7>You found <f>" + name + " <8>x" + amount + "<7> on the ground!");
     }
 
     public static int fortuneAmount(int base, double fortune) {

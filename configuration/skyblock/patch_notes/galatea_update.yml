@@ -18,3 +18,7 @@ sections:
     lines:
       - "Martin, Pounce, Talia and Tilus now stand around Moonglade Marsh."
       - "Torrhus Canyon gains Dory, Forager Daniel, Forager Rowan, Hunter McNeil, Treehugger Timothy, Honey and Hunter Jean, whose guide lists the Torrhus sea creatures."
+  - heading: "Floor Drops"
+    colour: "<a>"
+    lines:
+      - "Shining patches now appear on the grass around Moonglade Marsh. Click one for Fig Log, Mangrove Log, a Mudworm Shard or, rarely, an Invisibug Shard."

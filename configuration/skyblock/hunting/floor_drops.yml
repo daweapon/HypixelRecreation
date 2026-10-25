@@ -10,3 +10,17 @@ torrhus_canyon:
     - {type: WHISPERS, amount: 500, weight: 50}
     - {type: ITEM, item: "HELIX_LOG", amount: 32, weight: 100}
     - {type: ITEM, item: "HELIX_LOG", amount: 64, weight: 50}
+
+moonglade_marsh:
+  maxActive: 5
+  spawnSeconds: 12
+  minDistance: 10
+  maxDistance: 35
+  lifetimeSeconds: 900
+  rewards:
+    - {type: SHARD, shard: "Mudworm", weight: 35}
+    - {type: ITEM, item: "FIG_LOG", amount: 50, weight: 25}
+    - {type: ITEM, item: "FIG_LOG", amount: 100, weight: 10}
+    - {type: ITEM, item: "MANGROVE_LOG", amount: 40, weight: 25}
+    - {type: ITEM, item: "MANGROVE_LOG", amount: 80, weight: 10}
+    - {type: SHARD, shard: "Invisibug", weight: 1}

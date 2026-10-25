@@ -98,8 +98,6 @@ chapters:
         description: "If something shines on the ground, click on it!"
         rewards: { foraging: 1000 }
         trigger: ground.find
-        available: false
-        unavailable: "Shining ground spots are not built"
     completion:
       hotf: 1000
       foraging: 10000
