@@ -642,6 +642,15 @@ public class SkyBlockDataHandler extends DataHandler {
         GREAT_SPOOK_EXPERIMENTS("great_spook_experiments", false, false, false,
                 DatapointMapStringLong.class, new DatapointMapStringLong("great_spook_experiments")),
 
+        GREAT_SPOOK_VARGUL("great_spook_vargul", false, false, false,
+                DatapointMapStringLong.class, new DatapointMapStringLong("great_spook_vargul")),
+
+        PRIMAL_FEAR_LAST_SPAWN("primal_fear_last_spawn", false, false, false,
+                DatapointLong.class, new DatapointLong("primal_fear_last_spawn", 0L)),
+
+        PRIMAL_FEAR_KILLS("primal_fear_kills", false, false, false,
+                DatapointInteger.class, new DatapointInteger("primal_fear_kills", 0)),
+
         SPOOKY_FESTIVAL_CLAIMED_TIER("spooky_festival_claimed_tier", false, false, false,
                 DatapointInteger.class, new DatapointInteger("spooky_festival_claimed_tier", 0)),
 

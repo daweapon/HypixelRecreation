@@ -167,6 +167,7 @@ public class TypeHubLoader implements SkyBlockTypeLoader {
         WarpPortal.create(HypixelConst.getInstanceContainer(), new BlockVec(0, 49, 47), Component.text("Community Center"), COMMUNITY_CENTER_ARRIVAL);
 		SewerRats.start();
 		dev.daweapon.type.hub.shrine.ShrineDisplay.start(HypixelConst.getInstanceContainer());
+		VargulTombstone.start(HypixelConst.getInstanceContainer());
 		WarpPortal.createFor(HypixelConst.getInstanceContainer(), new BlockVec(90, 75, 9), Component.text("Canvas Room"), CANVAS_ROOM_ARRIVAL,
 				player -> player.getMissionData().hasCompleted(MissionGiveRoseRedDyeToMarco.class)
 						? null : "<c>Help Marco with his dye before visiting his Canvas Room!");

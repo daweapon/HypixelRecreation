@@ -160,7 +160,7 @@ public enum SkyBlockEmblems {
             new SkyBlockEmblem("Century Celebrant", Material.CAKE, "<7>⛂", null),
             new SkyBlockEmblem("Century Partygoer", Material.CAKE, "<6>⛂", null),
             new SkyBlockEmblem("Sparkling Critter Catcher", Material.GLOW_BERRIES, "<7>✨", null),
-            new SkyBlockEmblem("Great Spook", Material.SOUL_LANTERN, "<7>࿇", null),
+            new SkyBlockEmblem("Great Spook", Material.SOUL_LANTERN, "<5>࿇", SkyBlockLevelCause.getVargulMilestoneCause(6)),
             new SkyBlockEmblem("Gift of Giving", Material.CHEST, "<7>✉", null),
             new SkyBlockEmblem("Jacob's Contest Completionist", Material.GOLDEN_HOE, "<7>ꕪ", null),
             new SkyBlockEmblem("Golden Jacob's Contest Completionist", Material.GOLDEN_HOE, "<6>ꕪ", null),

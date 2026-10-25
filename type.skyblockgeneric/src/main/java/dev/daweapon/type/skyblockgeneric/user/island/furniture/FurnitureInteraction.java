@@ -12,5 +12,6 @@ public enum FurnitureInteraction {
     CARPENTRY,
     HOLOGRAM,
     STORAGE,
-    FURNACE
+    FURNACE,
+    TREE
 }

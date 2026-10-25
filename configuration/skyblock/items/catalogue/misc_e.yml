@@ -2654,7 +2654,6 @@ items:
     material: player_head
     name: "Sleepy Hollow"
     rarity: EPIC
-    unavailable: "Needs the Great Spook event and Purple Candy"
     source: "Vargul the Unearthed for 150 Dark Candy during the Great Spook"
     lore:
       - "§8Minion Upgrade"
@@ -2664,6 +2663,8 @@ items:
       - "§7will occasionally generate §5Purple"
       - "§5Candies§7!"
     components:
+      - id: MINION_UPGRADE
+        speed_increase: 0.0
       - id: SKULL_HEAD
         texture: fa57f55032b592e0bfcc252572bd2535828dc9d5401f869515febac3a6af2668
   - id: SLICE_OF_BLUEBERRY_CAKE
@@ -3326,14 +3327,15 @@ items:
     material: player_head
     name: "Great Spook Tree"
     rarity: EPIC
-    unavailable: "Needs the Great Spook event and the furniture placement system"
-    source: "Vargul the Unearthed milestones during the Great Spook"
+    source: "Vargul the Unearthed for 170 Dark Candy during the Great Spook"
     lore:
       - "§7Place this item on your island!"
       - ""
       - "§7Place ONE of this tree on your island,"
       - "§7and collect its §5fruits§7... rarely."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 703dea6be4b786900c1028274d4b612f174234718f0bf5bfe3b82715772b982b
   - id: SPOOK_THE_FISH

@@ -123,24 +123,23 @@ items:
           COMMON: { speed: { per_level: 0.1 }, intelligence: { per_level: 0.5 } }
         abilities:
           - name: "Fearnesy"
-            unavailable: "Needs Primal Fears"
-            kind: INACTIVE
+            kind: HANDLER
+            handler: FEARNESY
             text:
               - "<5>Fear <7>from <5>Great Spook Armor <7>in"
               - "<7>your <b>wardrobe <7>applies to you, even"
               - "<7>if you aren't wearing it."
           - name: "Fearama"
-            unavailable: "Needs Primal Fears"
             rarity: RARE
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Increases <c>damage <7>dealt to Primal"
               - "<7>Fears and Spooky Mobs by <a>1% <7>for"
               - "<7>every <5>Fear <7>you have."
           - name: "Fearcreasing"
-            unavailable: "Needs Primal Fears"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: HANDLER
+            handler: FEARCREASING
             text:
               - "<7>Gives <a>+{0} <5>Fear <7>for every <a>10 <c>Primal"
               - "<c>Fears <7>killed, up to <a>150 <c>Primal Fears<7>."

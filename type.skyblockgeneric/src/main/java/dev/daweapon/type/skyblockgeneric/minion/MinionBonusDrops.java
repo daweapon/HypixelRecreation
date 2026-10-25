@@ -11,6 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public final class MinionBonusDrops {
     public static final double SOULFLOW_OUTPUT_FACTOR = 0.5;
     public static final double POTATO_SPREADING_CHANCE_PERCENT = 5;
+    public static final double SLEEPY_HOLLOW_CHANCE_PERCENT = 0.015;
     private static final int MAX_SHEARED_WOOL = 3;
 
     private MinionBonusDrops() {
@@ -53,6 +54,13 @@ public final class MinionBonusDrops {
                 if (LootRoll.roll(null, ItemType.POTATO, POTATO_SPREADING_CHANCE_PERCENT)) potatoes++;
             }
             if (potatoes > 0) bonus.add(new SkyBlockItem(ItemType.POTATO, potatoes));
+        }
+        if (upgrades.hasMinionUpgrade(ItemType.SLEEPY_HOLLOW)) {
+            int candy = 0;
+            for (int i = 0; i < baseDrops; i++) {
+                if (LootRoll.roll(null, ItemType.PURPLE_CANDY, SLEEPY_HOLLOW_CHANCE_PERCENT)) candy++;
+            }
+            if (candy > 0) bonus.add(new SkyBlockItem(ItemType.PURPLE_CANDY, candy));
         }
         return bonus;
     }

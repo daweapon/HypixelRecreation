@@ -56,6 +56,9 @@ public final class CombatPetHooks {
             percent += PetAbilities.value(player, ItemType.ZOMBIE_PET, "Rotten Blade", 0);
         }
         if (PetAbilities.has(player, ItemType.PIGMAN_PET, "Giant Slayer")) percent += giantSlayer(mob.getLevel());
+        if (mob.getMobTypes().contains(MobType.SPOOKY) && PetAbilities.has(player, ItemType.EERIE_PET, "Fearama")) {
+            percent += dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookFear.fear(player);
+        }
         if (mob.getMobTypes().contains(MobType.WITHER)) {
             percent += PetAbilities.value(player, ItemType.WITHER_SKELETON_PET, "Wither Blood", 0);
         }

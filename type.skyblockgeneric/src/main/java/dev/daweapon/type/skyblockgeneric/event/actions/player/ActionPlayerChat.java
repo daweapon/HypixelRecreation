@@ -34,6 +34,7 @@ public class ActionPlayerChat implements HypixelEventClass {
 
         Rank rank = player.getRank();
         dev.daweapon.type.skyblockgeneric.abiphone.ChatAnswers.observe(player, event.getRawMessage());
+        dev.daweapon.type.skyblockgeneric.greatspook.PrimalFearChat.observe(player, event.getRawMessage());
         String finalMessage = ChatChannelRouter.route(player, event.getRawMessage()).orElse(null);
         if (finalMessage == null) return;
 

@@ -16,6 +16,9 @@ import dev.daweapon.type.skyblockgeneric.calendar.CalendarEvent;
 import dev.daweapon.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
 import dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookEvent;
+import dev.daweapon.type.skyblockgeneric.greatspook.Manifestation;
+import dev.daweapon.type.skyblockgeneric.greatspook.PrimalFearService;
+import dev.daweapon.type.skyblockgeneric.greatspook.mob.PrimalManifestations;
 import dev.daweapon.type.skyblockgeneric.hoppity.HuntEggManager;
 import dev.daweapon.type.skyblockgeneric.hoppity.HuntEggSchedule;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointUUIDList;
@@ -32,7 +35,7 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @CommandParameters(labels = "adminbypass jumptonextevent skiptoevent",
         description = "Skips the timer to the next occurrence of a SkyBlock event",
-        usage = "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable|skiptospecialmayor|forcemayor <mayor>|resetyear|skipforgetime [slot]|hunt <egg 0-278>|greatspook <on|off|auto>",
+        usage = "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable|skiptospecialmayor|forcemayor <mayor>|resetyear|skipforgetime [slot]|hunt <egg 0-278>|greatspook <on|off|auto>|primalfear [manifestation]",
         permission = Rank.STAFF,
         allowsConsole = true)
 public class AdminBypassCommand extends HypixelCommand {
@@ -104,6 +107,12 @@ public class AdminBypassCommand extends HypixelCommand {
         command.addSyntax((sender, context) -> setGreatSpook(sender, context.get("greatspook_state")),
                 ArgumentType.Literal("greatspook"), ArgumentType.Word("greatspook_state").from("on", "off", "auto"));
 
+        command.addSyntax((sender, context) -> spawnPrimalFear(sender, null),
+                ArgumentType.Literal("primalfear"));
+        command.addSyntax((sender, context) -> spawnPrimalFear(sender, context.get("primal_manifestation")),
+                ArgumentType.Literal("primalfear"), ArgumentType.Word("primal_manifestation")
+                        .from(java.util.Arrays.stream(Manifestation.values()).map(kind -> kind.name().toLowerCase()).toArray(String[]::new)));
+
         ArgumentString mayorArgument = new ArgumentString("mayor");
         mayorArgument.setSuggestionCallback((sender, context, suggestion) -> {
             for (SkyBlockMayor mayor : SkyBlockMayor.values()) {
@@ -126,6 +135,20 @@ public class AdminBypassCommand extends HypixelCommand {
         }
         sender.sendMessage(Text.of("<a>The Great Spook is now <f>{} <a>on every server.",
                 state.equals("auto") ? "following its schedule" : state));
+    }
+
+    private static void spawnPrimalFear(net.minestom.server.command.CommandSender sender, String manifestation) {
+        if (!(sender instanceof SkyBlockPlayer player) || player.getInstance() == null) {
+            sender.sendMessage("<c>This admin bypass requires an in-game player.");
+            return;
+        }
+        if (manifestation == null) {
+            PrimalFearService.spawn(player, player.getInstance(), player.getPosition().add(player.getPosition().direction().mul(3)));
+            return;
+        }
+        Manifestation kind = Manifestation.valueOf(manifestation.toUpperCase());
+        PrimalManifestations.spawn(kind, player.getInstance(), player.getPosition().add(player.getPosition().direction().mul(3)), player);
+        sender.sendMessage(Text.of("<a>Spawned a {}.", kind.displayName()));
     }
 
     private static void skipToHuntEgg(net.minestom.server.command.CommandSender sender, int egg) {

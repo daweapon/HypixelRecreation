@@ -1,7 +1,7 @@
 title: "The Great Spook Update"
-date: "24th October 2026"
+date: "25th October 2026"
 intro:
-  - "The Great Spook has begun to creep into the Hub. This is the first part of the event: the Tyashoi Alchemist and what Fear does. Primal Fears, Vargul and the Great Spook Tree are still to come."
+  - "The Great Spook has begun to creep into the Hub. Tyashoi, Fear, Primal Fears, Vargul and the Great Spook Tree are all here. Bednom, Guber and the End Race, Dirt Guy and many ingredient sources are still to come."
 sections:
   - heading: "The Event"
     colour: "<5>"
@@ -17,14 +17,31 @@ sections:
   - heading: "Eerie Pet"
     colour: "<a>"
     lines:
-      - "Trade Ephemeral Gratitude for the Eerie Pet. An Eerie Treat turns it Rare, and an Eerie Toy turns it Legendary. The pet's perks are not active yet."
+      - "Trade Ephemeral Gratitude for the Eerie Pet. An Eerie Treat turns it Rare, and an Eerie Toy turns it Legendary. Its three perks are active: Fearnesy, Fearama and Fearcreasing."
   - heading: "Fear"
     colour: "<5>"
     lines:
       - "The Great Spook Sword gains +1 Damage and +1 Strength for every Fear you have."
       - "Wearing the full Great Spook Armor activates Fearsome, so monsters at or below your total Fear level run away from you. It only works while the event runs."
       - "The Great Spook Staff spooks other players you punch while wearing the full armor, and makes you look like a Dead Bush when you right-click."
+  - heading: "Primal Fears"
+    colour: "<c>"
+    lines:
+      - "While the event runs, killing a mob can summon a Primal Fear, at most once every 6 minutes. Each point of Fear makes it a bit more likely and shortens the wait by 3 seconds (never below 15 seconds). The tablist shows when the next one can appear."
+      - "A Primal Fear has 5 health and loses one point per hit. When it dies it turns into one of six manifestations, and each needs its own trick to kill: Deadline (stand still), Darkness Shade (blinds you), Commitment Phobia (sign the paper), Math Teacher (answer in chat), Public Speaking Demon (speak out loud) and Vegan Crawler (eat the right food)."
+      - "Both the Primal Fear and its manifestation drop Dark Candy, Green Candy and sometimes Purple Candy. Fear also reduces the damage Primal Fears deal by 1% per point."
+  - heading: "Vargul the Unearthed"
+    colour: "<c>"
+    lines:
+      - "Vargul sleeps under a tombstone at the back of the Hub. Click it to unearth him, or type /openvargulmenu from anywhere. Trade Dark Candy for Scare Fragments, Expired Pumpkins, Black Woolen Yarn, Sleepy Hollow, the Great Spook Tree and Drain V."
+      - "Dark Candy drops from Primal Fears. Spend 600 Dark Candies in his shop to earn the Great Spook Emblem."
+      - "Eight Scare Fragments around an Intimidation Artifact make an Intimidation Relic. Bring 3,000 Expired Pumpkins to Carrolyn in Scarleton for +5 Health and +12 Pumpkin Fortune. Black Woolen Yarn and 1,000,000 coins let Kat upgrade your Black Cat to Mythic."
+      - "Sleepy Hollow is a minion upgrade, one per profile, that gives a Purple Candy now and then. It does not change the minion's speed."
+  - heading: "Great Spook Tree"
+    colour: "<5>"
+    lines:
+      - "Place one Great Spook Tree on your island. Every 10 hours it has a 10% chance to grow Green or Purple Candy, and after 14 hours it always does. It holds up to 5 candies. Right-click to take them, left-click to pick it up."
   - heading: "Staff"
     colour: "<8>"
     lines:
-      - "/adminbypass greatspook on, off or auto turns the event on or off on every server."
+      - "/adminbypass greatspook on, off or auto turns the event on or off on every server. /adminbypass primalfear [manifestation] summons a Primal Fear for testing."

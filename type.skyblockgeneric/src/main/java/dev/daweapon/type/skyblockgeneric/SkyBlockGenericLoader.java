@@ -187,6 +187,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         Carnival.initialize();
         FireSaleService.initialize();
         dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookEvent.initialize();
+        dev.daweapon.type.skyblockgeneric.user.island.furniture.TreeService.initialize();
         dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookAnnouncer.initialize();
         dev.daweapon.type.skyblockgeneric.technoblade.TechnobladeShrine.initialize();
         PlayerItemUpdater.updateLoop(MinecraftServer.getSchedulerManager());

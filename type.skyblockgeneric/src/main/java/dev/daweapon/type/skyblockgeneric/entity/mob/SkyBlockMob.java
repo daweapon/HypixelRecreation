@@ -333,6 +333,14 @@ public abstract class SkyBlockMob extends EntityCreature {
     public void onMeleeHit(SkyBlockPlayer target) {
     }
 
+    public float adjustHitDamage(SkyBlockPlayer attacker, float damage) {
+        return damage;
+    }
+
+    public double outgoingDamageMultiplier(SkyBlockPlayer target) {
+        return 1;
+    }
+
     public boolean isImmuneToArrows() {
         arrowProbeNanos = System.nanoTime();
         return false;

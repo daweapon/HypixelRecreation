@@ -37,6 +37,7 @@ final class FurnitureActions {
             case HOLOGRAM -> openHologram(owner, player, placed, member);
             case STORAGE -> openStorage(owner, player, placed, definition, member);
             case FURNACE -> openFurnace(owner, player, placed, member);
+            case TREE -> openTree(owner, player, placed, member);
             case NONE -> {
                 if (member) player.sendMessage("<7>Sneak and right-click to pick up or rotate this furniture.");
             }
@@ -116,6 +117,21 @@ final class FurnitureActions {
         player.openView(new FurnitureStorageView(owner, placed, definition.storagePages(), 0));
     }
 
+    private static void openTree(IslandFurniture owner, SkyBlockPlayer player, PlacedFurniture placed, boolean member) {
+        if (!member) {
+            player.sendMessage("<c>HEY! I don't belong to you >:(");
+            return;
+        }
+        TreeService.collect(owner, placed, player);
+    }
+
+    static void leftClick(IslandFurniture owner, SkyBlockPlayer player, PlacedFurniture placed) {
+        if (!TreeService.isTree(placed)) return;
+        SkyBlockIsland island = SkyBlockIsland.forInstance(player.getInstance());
+        if (island == null || island != player.getSkyBlockIsland()) return;
+        pickUp(owner, player, placed);
+    }
+
     private static void openFurnace(IslandFurniture owner, SkyBlockPlayer player, PlacedFurniture placed, boolean member) {
         if (!member) {
             player.sendMessage("<c>Only the island's members can use this furnace!");
@@ -125,6 +141,9 @@ final class FurnitureActions {
     }
 
     static void pickUp(IslandFurniture owner, SkyBlockPlayer player, PlacedFurniture placed) {
+        if (TreeService.isTree(placed)) {
+            TreeService.give(player, TreeService.sync(owner, placed, player.getUuid()));
+        }
         if (!owner.storageIsEmpty(placed)) {
             player.sendMessage("<c>Empty this out before picking it up, or its contents would be lost!");
             return;

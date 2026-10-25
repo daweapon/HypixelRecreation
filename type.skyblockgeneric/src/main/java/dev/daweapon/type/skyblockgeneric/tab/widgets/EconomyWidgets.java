@@ -11,6 +11,7 @@ public final class EconomyWidgets {
     public static List<TabWidget> all() {
         return List.of(
                 new FireSalesWidget(),
+                new PrimalFearWidget(),
                 new DailyQuestsWidget(),
                 new ForgeWidget(),
                 new PowderWidget(),

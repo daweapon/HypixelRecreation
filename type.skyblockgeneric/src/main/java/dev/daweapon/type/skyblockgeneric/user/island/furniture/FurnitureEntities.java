@@ -45,6 +45,9 @@ final class FurnitureEntities {
 
         InteractionEntity hitbox = new InteractionEntity(definition.width(), definition.height(),
                 (player, _) -> owner.interact((SkyBlockPlayer) player, placed, player.isSneaking()));
+        if (definition.interaction() == FurnitureInteraction.TREE) {
+            hitbox.onAttack(player -> FurnitureActions.leftClick(owner, (SkyBlockPlayer) player, placed));
+        }
         hitbox.setInstance(instance, pos);
 
         SpawnedFurniture spawned = new SpawnedFurniture(display, hitbox);

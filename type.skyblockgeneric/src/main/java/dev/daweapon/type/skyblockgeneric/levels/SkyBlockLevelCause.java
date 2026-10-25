@@ -96,6 +96,7 @@ public class SkyBlockLevelCause {
             CAUSES.put("museum-milestone-" + milestone, new MuseumMilestoneCause(milestone));
         }
         CAUSES.put("starlyn-agatha-5", new StarlynMilestoneCause("agatha", 5));
+        CAUSES.put("vargul-milestone-6", new VargulMilestoneCause(6));
     }
 
     public static Map<String, SkyBlockLevelCauseAbstr> getCauses() {
@@ -138,6 +139,10 @@ public class SkyBlockLevelCause {
 
     public static @Nullable StarlynMilestoneCause getStarlynMilestoneCause(String sister, int milestone) {
         return CAUSES.get("starlyn-" + sister + "-" + milestone) instanceof StarlynMilestoneCause cause ? cause : null;
+    }
+
+    public static @Nullable VargulMilestoneCause getVargulMilestoneCause(int milestone) {
+        return CAUSES.get("vargul-milestone-" + milestone) instanceof VargulMilestoneCause cause ? cause : null;
     }
 
     public static @Nullable MuseumMilestoneCause getMuseumMilestoneCause(int milestone) {

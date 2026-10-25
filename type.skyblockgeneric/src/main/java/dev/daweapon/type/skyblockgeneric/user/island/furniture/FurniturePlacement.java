@@ -36,6 +36,10 @@ public final class FurniturePlacement {
                 player.sendMessage("<c>You can't place any more furniture! The limit is {}.", furniture.limitFor(definition));
                 return;
             }
+            if (definition.interaction() == FurnitureInteraction.TREE && TreeService.hasTree(furniture)) {
+                player.sendMessage("<c>You can only place one Great Spook Tree on your island!");
+                return;
+            }
             Point target = event.getBlockPosition();
             if (furniture.at(target.blockX(), target.blockY(), target.blockZ()) != null) {
                 player.sendMessage("<c>There is already furniture here!");
@@ -45,6 +49,9 @@ public final class FurniturePlacement {
             PlacedFurniture placed = new PlacedFurniture(definition.itemId(), target.blockX(), target.blockY(), target.blockZ(),
                     PlacedFurniture.snapYaw(player.getPosition().yaw() + 180), null);
             furniture.add(event.getInstance(), placed);
+            if (definition.interaction() == FurnitureInteraction.TREE) {
+                furniture.setStorage(placed, TreeState.fresh(TreeService.today()).serialize());
+            }
             player.takeItem(type, 1);
             player.sendMessage("<a>You placed {}<a>! ({}/{})", StringUtility.toNormalCase(definition.itemId()),
                     furniture.count(definition.isCenturyCake()), furniture.limitFor(definition));

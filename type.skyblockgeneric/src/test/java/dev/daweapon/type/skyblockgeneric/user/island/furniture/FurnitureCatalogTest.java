@@ -47,7 +47,7 @@ class FurnitureCatalogTest {
 
     @Test
     void everyBundleFurnitureIsDefined() {
-        assertEquals(176, FurnitureCatalog.all().size());
+        assertEquals(177, FurnitureCatalog.all().size());
         assertEquals(41, FurnitureCatalog.values().stream().filter(FurnitureDefinition::isCraftable).count());
     }
 

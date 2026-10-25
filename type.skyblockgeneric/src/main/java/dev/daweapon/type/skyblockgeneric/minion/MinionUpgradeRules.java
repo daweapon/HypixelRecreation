@@ -14,7 +14,7 @@ public final class MinionUpgradeRules {
     }
 
     private static final Set<ItemType> SOULFLOW_ENGINES = Set.of(ItemType.LESSER_SOULFLOW_ENGINE, ItemType.SOULFLOW_ENGINE);
-    private static final Set<ItemType> ONE_PER_PROFILE = Set.of(ItemType.POTATO_SPREADING, ItemType.SUPER_JACOB_SYSTEM);
+    private static final Set<ItemType> ONE_PER_PROFILE = Set.of(ItemType.POTATO_SPREADING, ItemType.SUPER_JACOB_SYSTEM, ItemType.SLEEPY_HOLLOW);
 
     private MinionUpgradeRules() {
     }

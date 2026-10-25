@@ -426,7 +426,6 @@ items:
       - "\xA77Imbued with the pure essence of"
       - "\xA77terror, this shard pulsates with an"
       - "\xA77unsettling energy."
-    unavailable: "Sold by Vargul the Unearthed for 10 Dark Candy, who is not built"
     default_statistics: { }
     components:
       - id: SELLABLE

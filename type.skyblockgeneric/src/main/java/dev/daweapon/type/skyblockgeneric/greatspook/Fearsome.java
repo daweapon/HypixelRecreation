@@ -20,7 +20,7 @@ public final class Fearsome {
 
     public static void tick(SkyBlockMob mob) {
         if (mob.getAliveTicks() % CHECK_INTERVAL_TICKS != 0 || !GreatSpookEvent.isActive()) return;
-        if (mob.getInstance() == null || mob.getLevel() == null) return;
+        if (mob.getInstance() == null || mob.getLevel() == null || mob instanceof dev.daweapon.type.skyblockgeneric.greatspook.mob.PrimalMob) return;
         Pos position = mob.getPosition();
         for (Entity nearby : mob.getInstance().getNearbyEntities(position, FLEE_RANGE)) {
             if (!(nearby instanceof SkyBlockPlayer player) || !frightens(mob.getLevel(), player)) continue;

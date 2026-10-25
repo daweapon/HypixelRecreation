@@ -202,6 +202,8 @@ public final class MaxStickService {
             new Step("Autopet rule slots", dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService::maxOut),
             new Step("Farming Islands quests", dev.daweapon.type.skyblockgeneric.trapper.FarmingIslandsMaxing::maxOut),
             new Step("Abiphone contacts", dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneContactXP::maxOut),
+            new Step("Vargul milestone", player -> dev.daweapon.type.skyblockgeneric.greatspook.VargulProgress.setSpent(player,
+                    Math.max(dev.daweapon.type.skyblockgeneric.greatspook.VargulProgress.spent(player), dev.daweapon.type.skyblockgeneric.greatspook.VargulProgress.EMBLEM_CANDY))),
             new Step("Accessory Bag", MaxAccessories::maxOut),
             new Step("Accessory powers", MaxPowers::maxOut),
             new Step("Sack of Sacks", MaxBags::maxSacks),

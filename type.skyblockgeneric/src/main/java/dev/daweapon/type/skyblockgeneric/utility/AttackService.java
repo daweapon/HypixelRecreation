@@ -25,7 +25,9 @@ public final class AttackService {
 
     public static boolean applyHit(SkyBlockPlayer attacker, SkyBlockMob target, float damage, boolean critical) {
         if (target.isRemoved() || target.isDead()) return false;
+        if (dev.daweapon.type.skyblockgeneric.greatspook.VeganCurse.isTransformed(attacker)) return false;
         damage *= (float) dev.daweapon.type.skyblockgeneric.item.handlers.ability.abilities.BigPull.damageMultiplier(target);
+        damage = target.adjustHitDamage(attacker, damage);
 
         Instance instance = target.getInstance();
         Pos position = target.getPosition();

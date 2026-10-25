@@ -39,7 +39,6 @@ items:
     material: player_head
     name: "Dark Candy"
     rarity: RARE
-    unavailable: "The Great Spook's Vargul the Unearthed and Primal Fears aren't built"
     source: "Drops from Primal Fears and the mobs they become; traded to Vargul the Unearthed"
     lore:
       - "§7Can be brought to §cVargul the"
@@ -2435,7 +2434,6 @@ items:
     material: player_head
     name: "Expired Pumpkin"
     rarity: UNCOMMON
-    unavailable: "The Great Spook's Vargul the Unearthed and Primal Fears aren't built"
     source: "Great Spook: Vargul the Unearthed sells 30 per Dark Candy"
     lore:
       - "§7Bring §63,000 §7of these to §5Carrolyn §7in"

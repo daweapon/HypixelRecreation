@@ -2,6 +2,12 @@
 # carpentry: Carpentry level needed to place and craft. interaction: NONE SIT BED TOGGLE MINION_CHAIR CRAFTING ENCHANTING ANVIL CARPENTRY HOLOGRAM STORAGE FURNACE. storage_pages: pages of 45 slots for STORAGE.
 # scale: head display scale (1.0 = one block). width/height: click hitbox. seats: riders for SIT. recipe: Carpentry Table ingredients.
 furniture:
+  SPOOKY_TREE:
+    carpentry: 0
+    interaction: TREE
+    scale: 1.6
+    width: 1.2
+    height: 2.2
   CARPENTRY_BENCH:
     carpentry: 0
     interaction: CARPENTRY

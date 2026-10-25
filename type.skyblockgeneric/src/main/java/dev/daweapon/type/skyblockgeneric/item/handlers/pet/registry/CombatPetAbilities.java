@@ -43,6 +43,8 @@ final class CombatPetAbilities implements PetAbilityRegistry.Provider {
     @Override
     public void register(PetAbilityRegistry.Registrar registrar) {
         registrar.register("TRAMPLE", new TrampleHandler());
+        registrar.register("FEARNESY", new dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.FearnesyHandler());
+        registrar.register("FEARCREASING", new dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.FearcreasingHandler());
         registrar.register("TYRANNOSAURUS_FEROCIOUS_ROAR", new FerociousRoarHandler());
         registrar.register("TIGER_HEMORRHAGE", new HemorrhageHandler());
         registrar.register("PRECURSOR_DRONE_CONTRABAND", new ContrabandHandler());
