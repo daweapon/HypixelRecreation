@@ -26,6 +26,7 @@ public class NPCPablo extends CrimsonNPC implements NPCAbiphoneTrait {
 
     @Override
     protected void interact(SkyBlockPlayer player) {
+        if (dev.daweapon.type.skyblockgeneric.greatspook.PabloSoup.trade(player)) return;
         if (!CrimsonReputationService.isMember(player, CrimsonFaction.MAGE)) {
             sayRandom(player, "I need quiet, please.", "Sorry, but I need to concentrate.");
             return;

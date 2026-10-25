@@ -63,6 +63,7 @@ public class NPCJake extends HypixelNPC {
             }
             return;
         }
+        dev.daweapon.type.skyblockgeneric.greatspook.HeadOfBetrayal.award(player, delivery, POSITION);
         boolean alreadyOpen = JakeShop.isOpen(delivery.animal().unlocks());
         delivery.consume();
         JakeShop.open(delivery.animal().unlocks());
