@@ -1,96 +1,106 @@
 package dev.daweapon.type.skyblockgeneric.hunting;
 
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointHunting;
+import dev.daweapon.type.skyblockgeneric.item.components.AttributeShardComponent;
+import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
+import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.ThreadLocalRandom;
 
 // Determines the shard cost and possible outcomes for fusing two hunting attribute shards
 // together, and performs the fusion against a player's hunting data.
 public final class AttributeFusionService {
+    private static final int MAX_RESULTS = 3;
+    private static final int SPECIAL_AMOUNT = 2;
+    private static final double PURE_REPTILE_PERCENT_PER_LEVEL = 2;
+
     private AttributeFusionService() {
     }
 
     public static int required(AttributeDefinition definition) {
         if (definition.fusionCost() > 0) return definition.fusionCost();
         String family = definition.family().name().toLowerCase(Locale.ROOT);
-        if (definition.shard().equalsIgnoreCase("Chameleon")) return 1;
+        if (isChameleon(definition)) return 1;
         if (family.contains("reptile") || family.contains("amphibian") || family.contains("elemental")) return 2;
         return 5;
     }
 
-    public static List<FusionResult> results(AttributeDefinition first, AttributeDefinition second) {
-        if (first == null || second == null || first.id().equals(second.id())) return List.of();
-        boolean chameleon = first.shard().equalsIgnoreCase("Chameleon") || second.shard().equalsIgnoreCase("Chameleon");
-        if (chameleon) {
-            AttributeDefinition origin = first.shard().equalsIgnoreCase("Chameleon") ? second : first;
-            return nextById(origin, true, first, second).stream()
-                    .map(value -> new FusionResult(value, 1, FusionType.CHAMELEON)).toList();
-        }
-        List<FusionResult> special = AttributeRegistry.values().stream()
-                .filter(output -> !output.id().equals(first.id()) && !output.id().equals(second.id()))
-                .filter(output -> specialMatch(output, first, second))
-                .map(output -> new FusionResult(output, 2, FusionType.SPECIAL)).toList();
-        List<FusionResult> result = new ArrayList<>(special);
-        for (AttributeDefinition output : nextById(first, false, first, second)) {
-            if (result.stream().noneMatch(existing -> existing.definition().id().equals(output.id())))
-                result.add(new FusionResult(output, 1, FusionType.ID));
-            if (result.size() >= 3) break;
-        }
-        return result.stream().limit(3).toList();
+    public static int requiredOf(AttributeDefinition shard, AttributeDefinition first, AttributeDefinition second) {
+        return first.id().equals(second.id()) ? required(shard) * 2 : required(shard);
     }
 
-    public static boolean fuse(DatapointHunting.HuntingData data, AttributeDefinition first,
-                               AttributeDefinition second, FusionResult result) {
-        int firstCost = required(first);
-        int secondCost = required(second);
-        if (data.shardCount(first.id()) < firstCost || data.shardCount(second.id()) < secondCost) return false;
-        data.removeShards(first.id(), firstCost);
-        data.removeShards(second.id(), secondCost);
+    public static List<FusionResult> results(AttributeDefinition first, AttributeDefinition second) {
+        if (first == null || second == null) return List.of();
+        if (isChameleon(first) || isChameleon(second)) {
+            if (isChameleon(first) && isChameleon(second)) return List.of();
+            AttributeDefinition origin = isChameleon(first) ? second : first;
+            return FusionData.chameleon(origin.id()).stream()
+                    .filter(id -> !isInput(id, first, second))
+                    .map(AttributeRegistry::get)
+                    .map(value -> new FusionResult(value, 1, FusionType.CHAMELEON)).toList();
+        }
+        List<FusionResult> result = new ArrayList<>();
+        for (SpecialFusionRecipe recipe : FusionData.recipes()) {
+            if (isInput(recipe.output(), first, second) || !recipe.matches(first, second)) continue;
+            result.add(new FusionResult(AttributeRegistry.get(recipe.output()), SPECIAL_AMOUNT, FusionType.SPECIAL));
+        }
+        for (AttributeId id : idResults(first, second)) {
+            if (isInput(id, first, second) || result.stream().anyMatch(existing -> existing.definition().id().equals(id))) continue;
+            result.add(new FusionResult(AttributeRegistry.get(id), 1, FusionType.ID));
+        }
+        return result.stream().limit(MAX_RESULTS).toList();
+    }
+
+    public static boolean fuse(SkyBlockPlayer player, AttributeDefinition first, AttributeDefinition second,
+                               FusionResult result) {
+        DatapointHunting.HuntingData data = player.getHuntingData();
+        boolean same = first.id().equals(second.id());
+        if (same ? data.shardCount(first.id()) < requiredOf(first, first, second)
+                : data.shardCount(first.id()) < required(first) || data.shardCount(second.id()) < required(second))
+            return false;
+        data.removeShards(first.id(), requiredOf(first, first, second));
+        if (!same) data.removeShards(second.id(), requiredOf(second, first, second));
         int amount = result.amount();
         int pureReptile = data.level("R45");
         if (pureReptile > 0 && (isReptile(first) || isReptile(second))
-                && ThreadLocalRandom.current().nextDouble() < pureReptile * 0.02) amount *= 2;
+                && LootRoll.roll(player.getUuid(), AttributeShardComponent.itemType(result.definition()),
+                pureReptile * PURE_REPTILE_PERCENT_PER_LEVEL)) amount *= 2;
         data.addShards(result.definition().id(), amount);
+        player.getSkills().increase(player, SkillCategories.HUNTING, HuntingXp.fusion(result.definition()));
         return true;
+    }
+
+
+    private static boolean isInput(AttributeId id, AttributeDefinition first, AttributeDefinition second) {
+        return id.equals(first.id()) || id.equals(second.id());
+    }
+
+    private static boolean isChameleon(AttributeDefinition definition) {
+        return definition.shard().equalsIgnoreCase("Chameleon");
     }
 
     private static boolean isReptile(AttributeDefinition definition) {
         String family = definition.family().name().toLowerCase(Locale.ROOT);
-        return family.contains("reptile") || family.contains("lizard") || family.contains("serpent");
+        return isChameleon(definition) || "Reptile".equals(FusionData.family(definition.id()))
+                || family.contains("reptile") || family.contains("lizard") || family.contains("serpent");
     }
 
-    private static List<AttributeDefinition> nextById(AttributeDefinition origin, boolean chameleon,
-                                                      AttributeDefinition first, AttributeDefinition second) {
-        List<AttributeDefinition> sorted = AttributeRegistry.values().stream()
-                .sorted(Comparator.comparingInt((AttributeDefinition value) -> value.rarity().ordinal())
-                        .thenComparingInt(AttributeDefinition::numericId)).toList();
-        int index = sorted.indexOf(origin);
-        List<AttributeDefinition> result = new ArrayList<>();
-        for (int i = index + 1; i < sorted.size() && result.size() < 3; i++) {
-            AttributeDefinition candidate = sorted.get(i);
-            if (candidate.id().equals(first.id()) || candidate.id().equals(second.id())) continue;
-            if (chameleon || candidate.rarity() == origin.rarity() && candidate.category() == origin.category())
-                result.add(candidate);
-            if (!chameleon && candidate.rarity() != origin.rarity()) break;
+    private static List<AttributeId> idResults(AttributeDefinition first, AttributeDefinition second) {
+        AttributeId firstResult = FusionData.idResult(first.id());
+        AttributeId secondResult = FusionData.idResult(second.id());
+        List<AttributeId> results = new ArrayList<>();
+        if (first.category() != second.category()) {
+            results.add(firstResult);
+            results.add(secondResult);
+        } else if (first.rarity() != second.rarity()) {
+            results.add(first.rarity().ordinal() > second.rarity().ordinal() ? firstResult : secondResult);
+        } else {
+            results.add(first.id().equals(secondResult) ? firstResult : secondResult);
         }
-        if (!chameleon && result.size() < 3) {
-            for (AttributeDefinition candidate : sorted) {
-                if (result.size() >= 3 || candidate.rarity() != origin.rarity()) break;
-                if (candidate.category() != origin.category() || candidate.id().equals(first.id())
-                        || candidate.id().equals(second.id()) || result.contains(candidate)) continue;
-                result.add(candidate);
-            }
-        }
-        return result;
-    }
-
-    private static boolean specialMatch(AttributeDefinition output, AttributeDefinition first,
-                                        AttributeDefinition second) {
-        return false;
+        return results.stream().filter(java.util.Objects::nonNull).distinct().toList();
     }
 
     public record FusionResult(AttributeDefinition definition, int amount, FusionType type) {

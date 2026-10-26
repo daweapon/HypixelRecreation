@@ -9,7 +9,7 @@ module.exports = {
             await bot.joinSkyblock();
             await bot.command('/mission clearset GETTING_STARTED', { settleMs: 1500 });
             for (let attempt = 1; attempt <= 4; attempt++) {
-                bot.say('/sendto galatea');
+                bot.say('/sendto SKYBLOCK_GALATEA');
                 try {
                     await bot.waitFor(() => /Galatea|Tangleburg|Moonglade/i.test(sidebarText(bot)), { timeoutMs: 60000, what: 'the Galatea sidebar' });
                     break;

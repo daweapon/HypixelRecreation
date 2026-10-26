@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "hunting-fusion"
+    name: "The Hunting Fusion Update"
+    date: "26th October 2026"
+    material: blast_furnace
+    title: "The Hunting Fusion Update"
+    book: "hunting_fusion_update.yml"
   - version: "galatea"
     name: "The Galatea Update"
     date: "25th October 2026"

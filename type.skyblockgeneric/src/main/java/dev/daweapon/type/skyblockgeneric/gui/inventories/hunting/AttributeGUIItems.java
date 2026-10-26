@@ -26,6 +26,20 @@ final class AttributeGUIItems {
         return AttributeShardComponent.create(definition, Math.max(1, amount)).getItemStackBuilder();
     }
 
+    static ItemStack.Builder fusionShard(AttributeDefinition definition, int amount, String... caption) {
+        TextColor rarityColour = definition.rarity().itemRarity().getColor();
+        List<Text> lore = new ArrayList<>();
+        lore.add(Text.of("<8>{}", definition.name()));
+        lore.add(Text.empty());
+        for (String line : caption) lore.add(Text.of(line));
+        if (caption.length > 0) lore.add(Text.empty());
+        lore.add(Text.of("<color:{}><l>{} {} SHARD </l><8>(ID {})", rarityColour,
+                definition.rarity(), definition.category(), definition.id()));
+        ItemStack.Builder builder = new NonPlayerItemUpdater(AttributeShardComponent.create(definition, Math.max(1, amount))).getUpdatedItem();
+        ItemStacks.name(builder, "<color:{}>{}", rarityColour, definition.shardName());
+        return ItemStacks.lore(builder, lore);
+    }
+
     static ItemStack.Builder huntingShard(AttributeDefinition definition, DatapointHunting.HuntingData data) {
         int level = data.level(definition.id());
         int owned = data.shardCount(definition.id());

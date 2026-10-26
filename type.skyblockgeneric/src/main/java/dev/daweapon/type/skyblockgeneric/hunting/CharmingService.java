@@ -33,7 +33,7 @@ public final class CharmingService {
         player.getHuntingData().addShards(definition.id(), amount);
         HypixelEventHandler.callCustomEvent(new ShardCaughtEvent(player, definition, amount, ShardCaughtEvent.Source.CHARM,
                 Salt.charmChanceBonus(player, mob) > 0));
-        player.getSkills().increase(player, SkillCategories.HUNTING, huntingExperience(definition));
+        player.getSkills().increase(player, SkillCategories.HUNTING, HuntingXp.charm(definition) * amount);
         player.sendMessage("<d><l>CHARM! </l><a>Captured <e>{}x <a>{} <7>from <c>{}<7>!",
                 amount, definition.shardName(), mob.getDisplayName());
         return true;
@@ -46,15 +46,5 @@ public final class CharmingService {
                 .filter(definition -> definition.sources().stream()
                         .anyMatch(source -> source.mobIds().stream().anyMatch(mobId::equalsIgnoreCase)))
                 .findFirst().orElse(null);
-    }
-
-    private static double huntingExperience(AttributeDefinition definition) {
-        return switch (definition.rarity()) {
-            case COMMON -> 75;
-            case UNCOMMON -> 150;
-            case RARE -> 300;
-            case EPIC -> 500;
-            case LEGENDARY -> 1000;
-        };
     }
 }

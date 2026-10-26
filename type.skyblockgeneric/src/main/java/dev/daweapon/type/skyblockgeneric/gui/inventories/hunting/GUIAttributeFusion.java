@@ -9,7 +9,6 @@ import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointHunting;
 import dev.daweapon.type.skyblockgeneric.hunting.AttributeDefinition;
 import dev.daweapon.type.skyblockgeneric.hunting.AttributeFusionService;
 import dev.daweapon.type.skyblockgeneric.hunting.AttributeRegistry;
-import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
@@ -32,21 +31,23 @@ public class GUIAttributeFusion implements StatefulView<GUIAttributeFusion.State
     @Override
     public void layout(ViewLayout<State> layout, State state, ViewContext ctx) {
         layout.filler(Layouts.border(0, 53));
+        layout.filler(Layouts.rectangle(10, 43));
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
         DatapointHunting.HuntingData data = player.getHuntingData();
         AttributeDefinition first = AttributeRegistry.get(state.first());
         AttributeDefinition second = AttributeRegistry.get(state.second());
         if (first == null || second == null) {
             List<AttributeDefinition> available = AttributeRegistry.values().stream()
-                    .filter(value -> !value.id().toString().equals(state.first()))
-                    .filter(value -> data.shardCount(value.id()) >= AttributeFusionService.required(value)).toList();
+                    .filter(value -> data.shardCount(value.id()) >= (value.id().toString().equals(state.first())
+                            ? AttributeFusionService.required(value) * 2 : AttributeFusionService.required(value))).toList();
             int start = (state.page() - 1) * AttributeGUIItems.CONTENT_SLOTS.length;
             for (int i = 0; i < AttributeGUIItems.CONTENT_SLOTS.length; i++) {
                 int index = start + i;
                 if (index >= available.size()) continue;
                 AttributeDefinition definition = available.get(index);
                 layout.slot(AttributeGUIItems.CONTENT_SLOTS[i],
-                        (s, c) -> AttributeGUIItems.shard(definition, AttributeFusionService.required(definition)),
+                        (s, c) -> AttributeGUIItems.fusionShard(definition, AttributeFusionService.required(definition),
+                                "<7>Fusion cost: <a>" + AttributeFusionService.required(definition), "<7>Owned: <b>" + data.shardCount(definition.id()), "<e>Click to select!"),
                         (click, c) -> c.session(State.class).setState(first == null
                                 ? new State(1, definition.id().toString(), null) : new State(1, first.id().toString(), definition.id().toString())));
             }
@@ -62,22 +63,20 @@ public class GUIAttributeFusion implements StatefulView<GUIAttributeFusion.State
             int[] slots = {29, 31, 33};
             for (int i = 0; i < results.size(); i++) {
                 AttributeFusionService.FusionResult result = results.get(i);
-                layout.slot(slots[i], (s, c) -> AttributeGUIItems.shard(result.definition(), result.amount()),
+                layout.slot(slots[i], (s, c) -> AttributeGUIItems.fusionShard(result.definition(), result.amount(),
+                                "<7>Result: <a>" + result.amount() + "x " + switch (result.type()) {
+                                    case ID -> "ID Fusion";
+                                    case SPECIAL -> "Special Fusion";
+                                    case CHAMELEON -> "Chameleon Fusion";
+                                }, "<e>Click to fuse!"),
                         (click, c) -> {
                             boolean newShard = data.shardCount(result.definition().id()) == 0;
-                            if (AttributeFusionService.fuse(data, first, second, result)) {
+                            if (AttributeFusionService.fuse(player, first, second, result)) {
                                 player.getAchievementHandler().addProgressByTrigger("skyblock.evolution_trigger", 1);
                                 dev.daweapon.type.generic.event.HypixelEventHandler.callCustomEvent(new dev.daweapon.type.skyblockgeneric.event.custom.ShardCaughtEvent(
                                         player, result.definition(), result.amount(), dev.daweapon.type.skyblockgeneric.event.custom.ShardCaughtEvent.Source.FUSION, false));
                                 if (result.type() == AttributeFusionService.FusionType.CHAMELEON) dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers.fire(player, "fusion.chameleon");
                                 if (newShard) player.getAchievementHandler().completeAchievement("skyblock.amalgamation");
-                                player.getSkills().increase(player, SkillCategories.HUNTING, switch (result.definition().rarity()) {
-                                    case COMMON -> 75D;
-                                    case UNCOMMON -> 150D;
-                                    case RARE -> 300D;
-                                    case EPIC -> 500D;
-                                    case LEGENDARY -> 1000D;
-                                });
                                 c.player().sendMessage("<a>Fusion complete! You received <e>{}x <a>{}!",
                                         result.amount(), result.definition().shardName());
                                 c.session(State.class).setState(new State(1, null, null));
@@ -93,9 +92,9 @@ public class GUIAttributeFusion implements StatefulView<GUIAttributeFusion.State
 
                 <7>Shards: <2>{}""", data.getShards().values().stream().mapToInt(Integer::intValue).sum()));
         if (first != null)
-            layout.slot(47, (s, c) -> AttributeGUIItems.shard(first, AttributeFusionService.required(first)));
+            layout.slot(47, (s, c) -> AttributeGUIItems.fusionShard(first, AttributeFusionService.required(first), "<7>Fusion cost: <a>" + AttributeFusionService.required(first)));
         if (second != null)
-            layout.slot(51, (s, c) -> AttributeGUIItems.shard(second, AttributeFusionService.required(second)));
+            layout.slot(51, (s, c) -> AttributeGUIItems.fusionShard(second, AttributeFusionService.required(second), "<7>Fusion cost: <a>" + AttributeFusionService.required(second)));
         if (first != null) layout.slot(48, (s, c) -> ItemStacks.item(Material.RED_DYE, "<c>Reset"),
                 (click, c) -> c.session(State.class).setState(new State(1, null, null)));
         Components.close(layout, 49);

@@ -1,0 +1,19 @@
+title: "Hunting Fusion Update"
+date: "26th October 2026"
+intro:
+  - "Attribute Fusion now follows the same recipes as the real game, and Hunting XP matches the wiki."
+sections:
+  - heading: "Attribute Fusion"
+    colour: "<a>"
+    lines:
+      - "Every Shard now has its own ID result, so fusing two Shards offers the same Shards as the real Fusion Machine, and never one of the two you put in."
+      - "All 99 Special Fusion recipes work, for example a Common Forest Shard with an Uncommon or better Shard gives 2 Grove Shards, and a Queen Ant with a King Cobra gives 2 Anteater Shards."
+      - "A Shard can be fused with a second copy of itself. The cost is paid twice."
+      - "A Chameleon Shard offers three results following Georik's table, crossing into the next rarity, and nothing at the very end of the Legendary line."
+      - "Pure Reptile now counts as a proper drop chance, 2% to 20%."
+  - heading: "Hunting XP"
+    colour: "<b>"
+    lines:
+      - "Charming a Shard now gives ten times the old Hunting XP, 750 for a Common Shard up to 10,000 for a Legendary one, for every Shard that drops."
+      - "Fusion gives a quarter of the hunting amount, 18.75 for a Common result up to 250 for a Legendary one."
+      - "Glacite Walker and Ghost Shards give half the Hunting XP."

@@ -1,0 +1,4339 @@
+{
+ "shards": {
+  "C1": {
+   "id_result": "C4",
+   "chameleon": [
+    "C2",
+    "C3",
+    "C4"
+   ],
+   "family": "Elemental"
+  },
+  "C2": {
+   "id_result": "C5",
+   "chameleon": [
+    "C3",
+    "C4",
+    "C5"
+   ],
+   "family": "Elemental"
+  },
+  "C3": {
+   "id_result": "C6",
+   "chameleon": [
+    "C4",
+    "C5",
+    "C6"
+   ],
+   "family": "Elemental"
+  },
+  "C4": {
+   "id_result": "C7",
+   "chameleon": [
+    "C5",
+    "C6",
+    "C7"
+   ],
+   "family": "Phantom"
+  },
+  "C5": {
+   "id_result": "C8",
+   "chameleon": [
+    "C6",
+    "C7",
+    "C8"
+   ],
+   "family": "Tropical Fish"
+  },
+  "C6": {
+   "id_result": "C9",
+   "chameleon": [
+    "C7",
+    "C8",
+    "C9"
+   ],
+   "family": "Cave Dweller"
+  },
+  "C7": {
+   "id_result": "C10",
+   "chameleon": [
+    "C8",
+    "C9",
+    "C10"
+   ],
+   "family": "Phantom"
+  },
+  "C8": {
+   "id_result": "C11",
+   "chameleon": [
+    "C9",
+    "C10",
+    "C11"
+   ],
+   "family": "Trash Lover"
+  },
+  "C9": {
+   "id_result": "C12",
+   "chameleon": [
+    "C10",
+    "C11",
+    "C12"
+   ],
+   "family": "Lapis"
+  },
+  "C10": {
+   "id_result": "C13",
+   "chameleon": [
+    "C11",
+    "C12",
+    "C13"
+   ],
+   "family": "Shulker"
+  },
+  "C11": {
+   "id_result": "C14",
+   "chameleon": [
+    "C12",
+    "C13",
+    "C14"
+   ],
+   "family": "Tropical Fish"
+  },
+  "C12": {
+   "id_result": "C15",
+   "chameleon": [
+    "C13",
+    "C14",
+    "C15"
+   ]
+  },
+  "C13": {
+   "id_result": "C25",
+   "chameleon": [
+    "C14",
+    "C15",
+    "C16"
+   ],
+   "family": "Bug"
+  },
+  "C14": {
+   "id_result": "C17",
+   "chameleon": [
+    "C15",
+    "C16",
+    "C17"
+   ]
+  },
+  "C15": {
+   "id_result": "C18",
+   "chameleon": [
+    "C16",
+    "C17",
+    "C18"
+   ],
+   "family": "Spider"
+  },
+  "C16": {
+   "id_result": "C25",
+   "chameleon": [
+    "C17",
+    "C18",
+    "C19"
+   ],
+   "family": "Shulker"
+  },
+  "C17": {
+   "id_result": "C20",
+   "chameleon": [
+    "C18",
+    "C19",
+    "C20"
+   ]
+  },
+  "C18": {
+   "id_result": "C21",
+   "chameleon": [
+    "C19",
+    "C20",
+    "C21"
+   ]
+  },
+  "C19": {
+   "id_result": "C25",
+   "chameleon": [
+    "C20",
+    "C21",
+    "C22"
+   ],
+   "family": "Bird"
+  },
+  "C20": {
+   "id_result": "C23",
+   "chameleon": [
+    "C21",
+    "C22",
+    "C23"
+   ],
+   "family": "Amphibian"
+  },
+  "C21": {
+   "id_result": "C27",
+   "chameleon": [
+    "C22",
+    "C23",
+    "C24"
+   ]
+  },
+  "C22": {
+   "id_result": "C25",
+   "chameleon": [
+    "C23",
+    "C24",
+    "C25"
+   ],
+   "family": "Crime"
+  },
+  "C23": {
+   "id_result": "C26",
+   "chameleon": [
+    "C24",
+    "C25",
+    "C26"
+   ],
+   "family": "Axolotl"
+  },
+  "C24": {
+   "id_result": "C27",
+   "chameleon": [
+    "C25",
+    "C26",
+    "C27"
+   ],
+   "family": "Bird"
+  },
+  "C25": {
+   "id_result": "C28",
+   "chameleon": [
+    "C26",
+    "C27",
+    "C28"
+   ]
+  },
+  "C26": {
+   "id_result": "C29",
+   "chameleon": [
+    "C27",
+    "C28",
+    "C29"
+   ],
+   "family": "Tropical Fish"
+  },
+  "C27": {
+   "id_result": "C30",
+   "chameleon": [
+    "C28",
+    "C29",
+    "C30"
+   ]
+  },
+  "C28": {
+   "id_result": "C31",
+   "chameleon": [
+    "C29",
+    "C30",
+    "C31"
+   ],
+   "family": "Bug"
+  },
+  "C29": {
+   "id_result": "C32",
+   "chameleon": [
+    "C30",
+    "C31",
+    "C32"
+   ],
+   "family": "Tropical Fish"
+  },
+  "C30": {
+   "id_result": "C33",
+   "chameleon": [
+    "C31",
+    "C32",
+    "C33"
+   ]
+  },
+  "C31": {
+   "id_result": "C40",
+   "chameleon": [
+    "C32",
+    "C33",
+    "C34"
+   ],
+   "family": "Bug"
+  },
+  "C32": {
+   "id_result": "C44",
+   "chameleon": [
+    "C33",
+    "C34",
+    "C35"
+   ],
+   "family": "Squid"
+  },
+  "C33": {
+   "id_result": "C36",
+   "chameleon": [
+    "C34",
+    "C35",
+    "C36"
+   ]
+  },
+  "C34": {
+   "id_result": "C40",
+   "chameleon": [
+    "C35",
+    "C36",
+    "C37"
+   ],
+   "family": "Bird"
+  },
+  "C35": {
+   "id_result": "C44",
+   "chameleon": [
+    "C36",
+    "C37",
+    "C38"
+   ],
+   "family": "Lizard"
+  },
+  "C36": {
+   "id_result": "C39",
+   "chameleon": [
+    "C37",
+    "C38",
+    "C39"
+   ],
+   "family": "Cave Dweller"
+  },
+  "C37": {
+   "id_result": "C40",
+   "chameleon": [
+    "C38",
+    "C39",
+    "C40"
+   ],
+   "family": "Cave Dweller"
+  },
+  "C38": {
+   "id_result": "C44",
+   "chameleon": [
+    "C39",
+    "C40",
+    "C41"
+   ],
+   "family": "Tropical Fish"
+  },
+  "C39": {
+   "id_result": "C45",
+   "chameleon": [
+    "C40",
+    "C41",
+    "C42"
+   ]
+  },
+  "C40": {
+   "id_result": "C43",
+   "chameleon": [
+    "C41",
+    "C42",
+    "C43"
+   ],
+   "family": "Bug"
+  },
+  "C41": {
+   "id_result": "C44",
+   "chameleon": [
+    "C42",
+    "C43",
+    "C44"
+   ],
+   "family": "Tropical Fish"
+  },
+  "C42": {
+   "id_result": "C45",
+   "chameleon": [
+    "C43",
+    "C44",
+    "C45"
+   ],
+   "family": "Arctic"
+  },
+  "C43": {
+   "id_result": "C52",
+   "chameleon": [
+    "C44",
+    "C45",
+    "C46"
+   ],
+   "family": "Shulker"
+  },
+  "C44": {
+   "id_result": "C47",
+   "chameleon": [
+    "C45",
+    "C46",
+    "C47"
+   ]
+  },
+  "C45": {
+   "chameleon": [
+    "C46",
+    "C47",
+    "C48"
+   ]
+  },
+  "C46": {
+   "id_result": "C52",
+   "chameleon": [
+    "C47",
+    "C48",
+    "C49"
+   ],
+   "family": "Cave Dweller"
+  },
+  "C47": {
+   "id_result": "C56",
+   "chameleon": [
+    "C48",
+    "C49",
+    "U2"
+   ]
+  },
+  "C48": {
+   "id_result": "C52",
+   "chameleon": [
+    "C49",
+    "U1",
+    "U2"
+   ],
+   "family": "Crime"
+  },
+  "C49": {
+   "id_result": "C52",
+   "chameleon": [
+    "U1",
+    "U2",
+    "C52"
+   ]
+  },
+  "C52": {
+   "id_result": "C55",
+   "chameleon": [
+    "U1",
+    "U2",
+    "C55"
+   ]
+  },
+  "C55": {
+   "id_result": "C58",
+   "chameleon": [
+    "C56",
+    "U1",
+    "C58"
+   ]
+  },
+  "C56": {
+   "chameleon": [
+    "U1",
+    "C58",
+    "U2"
+   ],
+   "family": "Tropical Fish"
+  },
+  "C58": {
+   "id_result": "C61",
+   "chameleon": [
+    "U1",
+    "U2",
+    "C61"
+   ],
+   "family": "Bird"
+  },
+  "C61": {
+   "id_result": "C64",
+   "chameleon": [
+    "U1",
+    "U2",
+    "C64"
+   ]
+  },
+  "C64": {
+   "id_result": "C67",
+   "chameleon": [
+    "U1",
+    "U2",
+    "C67"
+   ],
+   "family": "Bug"
+  },
+  "C67": {
+   "chameleon": [
+    "U1",
+    "U2",
+    "U3"
+   ],
+   "family": "Bug"
+  },
+  "U1": {
+   "id_result": "U10",
+   "chameleon": [
+    "U2",
+    "U3",
+    "U4"
+   ],
+   "family": "Elemental"
+  },
+  "U2": {
+   "id_result": "U11",
+   "chameleon": [
+    "U3",
+    "U4",
+    "U5"
+   ],
+   "family": "Elemental"
+  },
+  "U3": {
+   "id_result": "U12",
+   "chameleon": [
+    "U4",
+    "U5",
+    "U6"
+   ],
+   "family": "Elemental"
+  },
+  "U4": {
+   "id_result": "U10",
+   "chameleon": [
+    "U5",
+    "U6",
+    "U7"
+   ],
+   "family": "Bird"
+  },
+  "U5": {
+   "id_result": "U11",
+   "chameleon": [
+    "U6",
+    "U7",
+    "U8"
+   ]
+  },
+  "U6": {
+   "id_result": "U12",
+   "chameleon": [
+    "U7",
+    "U8",
+    "U9"
+   ],
+   "family": "Cave Dweller"
+  },
+  "U7": {
+   "id_result": "U10",
+   "chameleon": [
+    "U8",
+    "U9",
+    "U10"
+   ],
+   "family": "Shulker"
+  },
+  "U8": {
+   "id_result": "U11",
+   "chameleon": [
+    "U9",
+    "U10",
+    "U11"
+   ],
+   "family": "Lizard"
+  },
+  "U9": {
+   "id_result": "U12",
+   "chameleon": [
+    "U10",
+    "U11",
+    "U12"
+   ],
+   "family": "Reptile"
+  },
+  "U10": {
+   "id_result": "U19",
+   "chameleon": [
+    "U11",
+    "U12",
+    "R1"
+   ],
+   "family": "Trash Lover"
+  },
+  "U11": {
+   "id_result": "U14",
+   "chameleon": [
+    "U12",
+    "R1",
+    "U14"
+   ],
+   "family": "Amphibian"
+  },
+  "U12": {
+   "id_result": "U15",
+   "chameleon": [
+    "R1",
+    "U14",
+    "U15"
+   ]
+  },
+  "U14": {
+   "id_result": "U17",
+   "chameleon": [
+    "U15",
+    "U16",
+    "U17"
+   ],
+   "family": "Drowned"
+  },
+  "U15": {
+   "id_result": "U18",
+   "chameleon": [
+    "U16",
+    "U17",
+    "U18"
+   ]
+  },
+  "U16": {
+   "id_result": "U19",
+   "chameleon": [
+    "U17",
+    "U18",
+    "U19"
+   ],
+   "family": "Bird"
+  },
+  "U17": {
+   "id_result": "U20",
+   "chameleon": [
+    "U18",
+    "U19",
+    "U20"
+   ]
+  },
+  "U18": {
+   "id_result": "U24",
+   "chameleon": [
+    "U19",
+    "U20",
+    "U21"
+   ]
+  },
+  "U19": {
+   "id_result": "U22",
+   "chameleon": [
+    "U20",
+    "U21",
+    "U22"
+   ],
+   "family": "Bug"
+  },
+  "U20": {
+   "id_result": "U23",
+   "chameleon": [
+    "U21",
+    "U22",
+    "U23"
+   ]
+  },
+  "U21": {
+   "id_result": "U24",
+   "chameleon": [
+    "U22",
+    "U23",
+    "U24"
+   ],
+   "family": "Reptile"
+  },
+  "U22": {
+   "id_result": "U25",
+   "chameleon": [
+    "U23",
+    "U24",
+    "U25"
+   ],
+   "family": "Bug"
+  },
+  "U23": {
+   "id_result": "U26",
+   "chameleon": [
+    "U24",
+    "U25",
+    "U26"
+   ],
+   "family": "Amphibian"
+  },
+  "U24": {
+   "id_result": "U27",
+   "chameleon": [
+    "U25",
+    "U26",
+    "U27"
+   ]
+  },
+  "U25": {
+   "id_result": "U31",
+   "chameleon": [
+    "U26",
+    "U27",
+    "U28"
+   ],
+   "family": "Panda"
+  },
+  "U26": {
+   "id_result": "U29",
+   "chameleon": [
+    "U27",
+    "U28",
+    "U29"
+   ],
+   "family": "Cave Dweller"
+  },
+  "U27": {
+   "id_result": "U30",
+   "chameleon": [
+    "U28",
+    "U29",
+    "U30"
+   ]
+  },
+  "U28": {
+   "id_result": "U31",
+   "chameleon": [
+    "U29",
+    "U30",
+    "U31"
+   ],
+   "family": "Bird"
+  },
+  "U29": {
+   "id_result": "U32",
+   "chameleon": [
+    "U30",
+    "U31",
+    "U32"
+   ]
+  },
+  "U30": {
+   "id_result": "U33",
+   "chameleon": [
+    "U31",
+    "U32",
+    "U33"
+   ]
+  },
+  "U31": {
+   "id_result": "U67",
+   "chameleon": [
+    "U32",
+    "U33",
+    "U34"
+   ],
+   "family": "Panda"
+  },
+  "U32": {
+   "id_result": "U38",
+   "chameleon": [
+    "U33",
+    "U34",
+    "R1"
+   ]
+  },
+  "U33": {
+   "id_result": "U36",
+   "chameleon": [
+    "U34",
+    "R1",
+    "U36"
+   ],
+   "family": "Spider"
+  },
+  "U34": {
+   "id_result": "U67",
+   "chameleon": [
+    "R1",
+    "U36",
+    "R2"
+   ],
+   "family": "Bird"
+  },
+  "U36": {
+   "id_result": "U60",
+   "chameleon": [
+    "R1",
+    "U38",
+    "U39"
+   ]
+  },
+  "U38": {
+   "id_result": "U41",
+   "chameleon": [
+    "U39",
+    "U40",
+    "U41"
+   ],
+   "family": "Drowned"
+  },
+  "U39": {
+   "id_result": "U60",
+   "chameleon": [
+    "U40",
+    "U41",
+    "U42"
+   ],
+   "family": "Amphibian"
+  },
+  "U40": {
+   "id_result": "U67",
+   "chameleon": [
+    "U41",
+    "U42",
+    "U43"
+   ],
+   "family": "Trash Lover"
+  },
+  "U41": {
+   "id_result": "U44",
+   "chameleon": [
+    "U42",
+    "U43",
+    "U44"
+   ]
+  },
+  "U42": {
+   "id_result": "U60",
+   "chameleon": [
+    "U43",
+    "U44",
+    "U45"
+   ],
+   "family": "Arctic"
+  },
+  "U43": {
+   "id_result": "U67",
+   "chameleon": [
+    "U44",
+    "U45",
+    "U46"
+   ],
+   "family": "Frog"
+  },
+  "U44": {
+   "id_result": "U50",
+   "chameleon": [
+    "U45",
+    "U46",
+    "U47"
+   ],
+   "family": "Trash Lover"
+  },
+  "U45": {
+   "id_result": "U60",
+   "chameleon": [
+    "U46",
+    "U47",
+    "U48"
+   ],
+   "family": "Spider"
+  },
+  "U46": {
+   "id_result": "U67",
+   "chameleon": [
+    "U47",
+    "U48",
+    "U49"
+   ],
+   "family": "Bird"
+  },
+  "U47": {
+   "id_result": "U50",
+   "chameleon": [
+    "U48",
+    "U49",
+    "U50"
+   ]
+  },
+  "U48": {
+   "id_result": "U60",
+   "chameleon": [
+    "U49",
+    "U50",
+    "U51"
+   ],
+   "family": "Poltergeist"
+  },
+  "U49": {
+   "id_result": "U67",
+   "chameleon": [
+    "U50",
+    "U51",
+    "U52"
+   ],
+   "family": "Bug"
+  },
+  "U50": {
+   "id_result": "U56",
+   "chameleon": [
+    "U51",
+    "U52",
+    "U53"
+   ],
+   "family": "Reptile"
+  },
+  "U51": {
+   "id_result": "U60",
+   "chameleon": [
+    "U52",
+    "U53",
+    "R1"
+   ],
+   "family": "Demon"
+  },
+  "U52": {
+   "id_result": "U67",
+   "chameleon": [
+    "U53",
+    "R1",
+    "U55"
+   ],
+   "family": "Bug"
+  },
+  "U53": {
+   "id_result": "U56",
+   "chameleon": [
+    "R1",
+    "U55",
+    "U56"
+   ],
+   "family": "Squid"
+  },
+  "U55": {
+   "id_result": "U67",
+   "chameleon": [
+    "U56",
+    "U57",
+    "U58"
+   ],
+   "family": "Phantom"
+  },
+  "U56": {
+   "id_result": "U59",
+   "chameleon": [
+    "U57",
+    "U58",
+    "U59"
+   ],
+   "family": "Axolotl"
+  },
+  "U57": {
+   "id_result": "U60",
+   "chameleon": [
+    "U58",
+    "U59",
+    "U60"
+   ]
+  },
+  "U58": {
+   "id_result": "U67",
+   "chameleon": [
+    "U59",
+    "U60",
+    "U61"
+   ],
+   "family": "Cave Dweller"
+  },
+  "U59": {
+   "id_result": "U62",
+   "chameleon": [
+    "U60",
+    "U61",
+    "U62"
+   ],
+   "family": "Reptile"
+  },
+  "U60": {
+   "id_result": "U63",
+   "chameleon": [
+    "U61",
+    "U62",
+    "U63"
+   ]
+  },
+  "U61": {
+   "id_result": "U67",
+   "chameleon": [
+    "U62",
+    "U63",
+    "U64"
+   ]
+  },
+  "U62": {
+   "id_result": "U65",
+   "chameleon": [
+    "U63",
+    "U64",
+    "U65"
+   ],
+   "family": "Tropical Fish"
+  },
+  "U63": {
+   "id_result": "U69",
+   "chameleon": [
+    "U64",
+    "U65",
+    "R1"
+   ]
+  },
+  "U64": {
+   "id_result": "U67",
+   "chameleon": [
+    "U65",
+    "R1",
+    "U67"
+   ]
+  },
+  "U65": {
+   "id_result": "U68",
+   "chameleon": [
+    "R1",
+    "U67",
+    "U68"
+   ],
+   "family": "Frog"
+  },
+  "U67": {
+   "id_result": "U73",
+   "chameleon": [
+    "U68",
+    "U69",
+    "U70"
+   ],
+   "family": "Crustacean"
+  },
+  "U68": {
+   "id_result": "U71",
+   "chameleon": [
+    "U69",
+    "U70",
+    "U71"
+   ],
+   "family": "Tropical Fish"
+  },
+  "U69": {
+   "id_result": "U72",
+   "chameleon": [
+    "U70",
+    "U71",
+    "U72"
+   ],
+   "family": "Creation"
+  },
+  "U70": {
+   "id_result": "U73",
+   "chameleon": [
+    "U71",
+    "U72",
+    "U73"
+   ],
+   "family": "Panda"
+  },
+  "U71": {
+   "chameleon": [
+    "U72",
+    "U73",
+    "R1"
+   ]
+  },
+  "U72": {
+   "id_result": "U75",
+   "chameleon": [
+    "U73",
+    "R1",
+    "U75"
+   ],
+   "family": "Creation"
+  },
+  "U73": {
+   "id_result": "U91",
+   "chameleon": [
+    "R1",
+    "U75",
+    "U76"
+   ],
+   "family": "Cave Dweller"
+  },
+  "U75": {
+   "id_result": "U78",
+   "chameleon": [
+    "U76",
+    "R1",
+    "U78"
+   ],
+   "family": "Creation"
+  },
+  "U76": {
+   "id_result": "U91",
+   "chameleon": [
+    "R1",
+    "U78",
+    "U79"
+   ],
+   "family": "Bird"
+  },
+  "U78": {
+   "chameleon": [
+    "U79",
+    "R1",
+    "R1"
+   ]
+  },
+  "U79": {
+   "id_result": "U91",
+   "chameleon": [
+    "R1",
+    "R2",
+    "U82"
+   ],
+   "family": "Bug"
+  },
+  "U82": {
+   "id_result": "U91",
+   "chameleon": [
+    "R1",
+    "R2",
+    "U85"
+   ],
+   "family": "Bird"
+  },
+  "U85": {
+   "id_result": "U91",
+   "chameleon": [
+    "R1",
+    "R2",
+    "U88"
+   ],
+   "family": "Bug"
+  },
+  "U88": {
+   "id_result": "U91",
+   "chameleon": [
+    "R1",
+    "R2",
+    "U91"
+   ],
+   "family": "Bug"
+  },
+  "U91": {
+   "id_result": "U94",
+   "chameleon": [
+    "R1",
+    "R2",
+    "U94"
+   ],
+   "family": "Trash Lover"
+  },
+  "U94": {
+   "id_result": "U97",
+   "chameleon": [
+    "R1",
+    "R2",
+    "U97"
+   ],
+   "family": "Trash Lover"
+  },
+  "U97": {
+   "id_result": "U100",
+   "chameleon": [
+    "R1",
+    "R2",
+    "U100"
+   ],
+   "family": "Trash Lover"
+  },
+  "U100": {
+   "id_result": "U103",
+   "chameleon": [
+    "R1",
+    "R2",
+    "U103"
+   ],
+   "family": "Bug"
+  },
+  "U103": {
+   "chameleon": [
+    "R1",
+    "R2",
+    "U106"
+   ],
+   "family": "Bug"
+  },
+  "U106": {
+   "chameleon": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "family": "Crime"
+  },
+  "R1": {
+   "id_result": "R7",
+   "chameleon": [
+    "R2",
+    "R3",
+    "R4"
+   ],
+   "family": "Elemental"
+  },
+  "R2": {
+   "id_result": "R11",
+   "chameleon": [
+    "R3",
+    "R4",
+    "R5"
+   ],
+   "family": "Elemental"
+  },
+  "R3": {
+   "id_result": "R6",
+   "chameleon": [
+    "R4",
+    "R5",
+    "R6"
+   ],
+   "family": "Elemental"
+  },
+  "R4": {
+   "id_result": "R7",
+   "chameleon": [
+    "R5",
+    "R6",
+    "R7"
+   ],
+   "family": "Panda"
+  },
+  "R5": {
+   "id_result": "R11",
+   "chameleon": [
+    "R6",
+    "R7",
+    "R8"
+   ],
+   "family": "Amphibian"
+  },
+  "R6": {
+   "id_result": "R18",
+   "chameleon": [
+    "R7",
+    "R8",
+    "R9"
+   ]
+  },
+  "R7": {
+   "id_result": "R10",
+   "chameleon": [
+    "R8",
+    "R9",
+    "R10"
+   ],
+   "family": "Bug"
+  },
+  "R8": {
+   "id_result": "R11",
+   "chameleon": [
+    "R9",
+    "R10",
+    "R11"
+   ],
+   "family": "Lizard"
+  },
+  "R9": {
+   "id_result": "R18",
+   "chameleon": [
+    "R10",
+    "R11",
+    "E1"
+   ],
+   "family": "Reptile"
+  },
+  "R10": {
+   "id_result": "R16",
+   "chameleon": [
+    "R11",
+    "E1",
+    "R13"
+   ],
+   "family": "Bug"
+  },
+  "R11": {
+   "id_result": "R23",
+   "chameleon": [
+    "E1",
+    "R13",
+    "E2"
+   ],
+   "family": "Treasure Fish"
+  },
+  "R13": {
+   "id_result": "R16",
+   "chameleon": [
+    "E1",
+    "R15",
+    "R16"
+   ],
+   "family": "Shulker"
+  },
+  "R15": {
+   "id_result": "R18",
+   "chameleon": [
+    "R16",
+    "E1",
+    "R18"
+   ],
+   "family": "Lapis"
+  },
+  "R16": {
+   "id_result": "R31",
+   "chameleon": [
+    "E1",
+    "R18",
+    "R19"
+   ],
+   "family": "Bug"
+  },
+  "R18": {
+   "id_result": "R21",
+   "chameleon": [
+    "R19",
+    "E1",
+    "R21"
+   ],
+   "family": "Drowned"
+  },
+  "R19": {
+   "id_result": "R31",
+   "chameleon": [
+    "E1",
+    "R21",
+    "R22"
+   ],
+   "family": "Bird"
+  },
+  "R21": {
+   "id_result": "R24",
+   "chameleon": [
+    "R22",
+    "R23",
+    "R24"
+   ]
+  },
+  "R22": {
+   "id_result": "R31",
+   "chameleon": [
+    "R23",
+    "R24"
+   ],
+   "family": "Shulker"
+  },
+  "R23": {
+   "id_result": "R26",
+   "chameleon": [
+    "R24",
+    "R26"
+   ],
+   "family": "Treasure Fish"
+  },
+  "R24": {
+   "id_result": "R27",
+   "chameleon": [
+    "R26",
+    "R27"
+   ],
+   "family": "Spider"
+  },
+  "R25": {
+   "id_result": "R31",
+   "chameleon": [
+    "R26",
+    "R27",
+    "R28"
+   ],
+   "family": "Bug"
+  },
+  "R26": {
+   "id_result": "R29",
+   "chameleon": [
+    "R27",
+    "R28",
+    "R29"
+   ]
+  },
+  "R27": {
+   "id_result": "R28",
+   "chameleon": [
+    "R28",
+    "R29",
+    "R30"
+   ]
+  },
+  "R28": {
+   "id_result": "R30",
+   "chameleon": [
+    "R29",
+    "R30",
+    "R31"
+   ]
+  },
+  "R29": {
+   "id_result": "R32",
+   "chameleon": [
+    "R30",
+    "R31",
+    "R32"
+   ],
+   "family": "Treasure Fish"
+  },
+  "R30": {
+   "id_result": "R36",
+   "chameleon": [
+    "R31",
+    "R32",
+    "R33"
+   ]
+  },
+  "R31": {
+   "id_result": "R49",
+   "chameleon": [
+    "R32",
+    "R33",
+    "R34"
+   ],
+   "family": "Cave Dweller"
+  },
+  "R32": {
+   "id_result": "R35",
+   "chameleon": [
+    "R33",
+    "R34",
+    "R35"
+   ],
+   "family": "Squid"
+  },
+  "R33": {
+   "id_result": "R36",
+   "chameleon": [
+    "R34",
+    "R35",
+    "R36"
+   ],
+   "family": "Cave Dweller"
+  },
+  "R34": {
+   "id_result": "R49",
+   "chameleon": [
+    "R35",
+    "R36",
+    "R37"
+   ],
+   "family": "Shulker"
+  },
+  "R35": {
+   "id_result": "R38",
+   "chameleon": [
+    "R36",
+    "R37",
+    "R38"
+   ],
+   "family": "Treasure Fish"
+  },
+  "R36": {
+   "id_result": "R39",
+   "chameleon": [
+    "R37",
+    "R38",
+    "R39"
+   ]
+  },
+  "R37": {
+   "id_result": "R49",
+   "chameleon": [
+    "R38",
+    "R39",
+    "R40"
+   ],
+   "family": "Bird"
+  },
+  "R38": {
+   "id_result": "R44",
+   "chameleon": [
+    "R39",
+    "R40",
+    "E1"
+   ]
+  },
+  "R39": {
+   "id_result": "R42",
+   "chameleon": [
+    "R40",
+    "E1",
+    "R42"
+   ]
+  },
+  "R40": {
+   "id_result": "R49",
+   "chameleon": [
+    "E1",
+    "R42",
+    "R43"
+   ]
+  },
+  "R42": {
+   "id_result": "R45",
+   "chameleon": [
+    "R43",
+    "R44",
+    "R45"
+   ]
+  },
+  "R43": {
+   "id_result": "R49",
+   "chameleon": [
+    "R44",
+    "R45",
+    "R46"
+   ],
+   "family": "Bug"
+  },
+  "R44": {
+   "id_result": "R50",
+   "chameleon": [
+    "R45",
+    "R46",
+    "R47"
+   ],
+   "family": "Squid"
+  },
+  "R45": {
+   "id_result": "R57",
+   "chameleon": [
+    "R46",
+    "R47",
+    "E1"
+   ],
+   "family": "Croco"
+  },
+  "R46": {
+   "id_result": "R49",
+   "chameleon": [
+    "R47",
+    "E1",
+    "R49"
+   ]
+  },
+  "R47": {
+   "id_result": "R50",
+   "chameleon": [
+    "E1",
+    "R49",
+    "R50"
+   ],
+   "family": "Amphibian"
+  },
+  "R49": {
+   "id_result": "R52",
+   "chameleon": [
+    "R50",
+    "R51",
+    "R52"
+   ],
+   "family": "Phantom"
+  },
+  "R50": {
+   "id_result": "R53",
+   "chameleon": [
+    "R51",
+    "R52",
+    "R53"
+   ]
+  },
+  "R51": {
+   "id_result": "R57",
+   "chameleon": [
+    "R52",
+    "R53",
+    "R54"
+   ],
+   "family": "Cave Dweller"
+  },
+  "R52": {
+   "id_result": "R55",
+   "chameleon": [
+    "R53",
+    "R54",
+    "R55"
+   ],
+   "family": "Cave Dweller"
+  },
+  "R53": {
+   "id_result": "R56",
+   "chameleon": [
+    "R54",
+    "R55",
+    "R56"
+   ],
+   "family": "Amphibian"
+  },
+  "R54": {
+   "id_result": "R57",
+   "chameleon": [
+    "R55",
+    "R56",
+    "R57"
+   ],
+   "family": "Reptile"
+  },
+  "R55": {
+   "id_result": "R64",
+   "chameleon": [
+    "R56",
+    "R57",
+    "R58"
+   ]
+  },
+  "R56": {
+   "id_result": "R59",
+   "chameleon": [
+    "R57",
+    "R58",
+    "R59"
+   ]
+  },
+  "R57": {
+   "id_result": "R60",
+   "chameleon": [
+    "R58",
+    "R59",
+    "R60"
+   ],
+   "family": "Dragon"
+  },
+  "R58": {
+   "id_result": "R64",
+   "chameleon": [
+    "R59",
+    "R60",
+    "R61"
+   ],
+   "family": "Bird"
+  },
+  "R59": {
+   "id_result": "R68",
+   "chameleon": [
+    "R60",
+    "R61",
+    "R62"
+   ],
+   "family": "Treasure Fish"
+  },
+  "R60": {
+   "id_result": "R63",
+   "chameleon": [
+    "R61",
+    "R62",
+    "R63"
+   ]
+  },
+  "R61": {
+   "id_result": "R64",
+   "chameleon": [
+    "R62",
+    "R63",
+    "R64"
+   ],
+   "family": "Reptile"
+  },
+  "R62": {
+   "id_result": "R68",
+   "chameleon": [
+    "R63",
+    "R64",
+    "R65"
+   ],
+   "family": "Creation"
+  },
+  "R63": {
+   "id_result": "R81",
+   "chameleon": [
+    "R64",
+    "R65",
+    "R66"
+   ]
+  },
+  "R64": {
+   "id_result": "R85",
+   "chameleon": [
+    "R65",
+    "R66",
+    "R67"
+   ]
+  },
+  "R65": {
+   "id_result": "R68",
+   "chameleon": [
+    "R66",
+    "R67",
+    "R68"
+   ],
+   "family": "Bug"
+  },
+  "R66": {
+   "id_result": "R81",
+   "chameleon": [
+    "R67",
+    "R68",
+    "R69"
+   ]
+  },
+  "R67": {
+   "id_result": "R85",
+   "chameleon": [
+    "R68",
+    "R69",
+    "R70"
+   ],
+   "family": "Bird"
+  },
+  "R68": {
+   "id_result": "R83",
+   "chameleon": [
+    "R69",
+    "R70",
+    "E1"
+   ]
+  },
+  "R69": {
+   "id_result": "R81",
+   "chameleon": [
+    "R70",
+    "E1",
+    "R72"
+   ],
+   "family": "Bug"
+  },
+  "R70": {
+   "id_result": "R85",
+   "chameleon": [
+    "E1",
+    "R72",
+    "R73"
+   ]
+  },
+  "R72": {
+   "id_result": "R81",
+   "chameleon": [
+    "R73",
+    "R74",
+    "R75"
+   ],
+   "family": "Cave Dweller"
+  },
+  "R73": {
+   "id_result": "R85",
+   "chameleon": [
+    "R74",
+    "R75",
+    "R76"
+   ],
+   "family": "Poltergeist"
+  },
+  "R74": {
+   "id_result": "R83",
+   "chameleon": [
+    "R75",
+    "R76",
+    "R77"
+   ],
+   "family": "Crustacean"
+  },
+  "R75": {
+   "id_result": "R81",
+   "chameleon": [
+    "R76",
+    "R77",
+    "R78"
+   ],
+   "family": "Reptile"
+  },
+  "R76": {
+   "id_result": "R85",
+   "chameleon": [
+    "R77",
+    "R78",
+    "R79"
+   ],
+   "family": "Shulker"
+  },
+  "R77": {
+   "id_result": "R83",
+   "chameleon": [
+    "R78",
+    "R79",
+    "R80"
+   ],
+   "family": "Treasure Fish"
+  },
+  "R78": {
+   "id_result": "R81",
+   "chameleon": [
+    "R79",
+    "R80",
+    "R81"
+   ],
+   "family": "Arctic"
+  },
+  "R79": {
+   "id_result": "R85",
+   "chameleon": [
+    "R80",
+    "R81",
+    "R82"
+   ],
+   "family": "Shulker"
+  },
+  "R80": {
+   "id_result": "R83",
+   "chameleon": [
+    "R81",
+    "R82",
+    "R83"
+   ]
+  },
+  "R81": {
+   "id_result": "R84",
+   "chameleon": [
+    "R82",
+    "R83",
+    "R84"
+   ],
+   "family": "Cave Dweller"
+  },
+  "R82": {
+   "id_result": "R85",
+   "chameleon": [
+    "R83",
+    "R84",
+    "R85"
+   ],
+   "family": "Panda"
+  },
+  "R83": {
+   "id_result": "R89",
+   "chameleon": [
+    "R84",
+    "R85",
+    "R86"
+   ],
+   "family": "Treasure Fish"
+  },
+  "R84": {
+   "chameleon": [
+    "R85",
+    "R86",
+    "R87"
+   ]
+  },
+  "R85": {
+   "id_result": "R88",
+   "chameleon": [
+    "R86",
+    "R87",
+    "R88"
+   ],
+   "family": "Poltergeist"
+  },
+  "R86": {
+   "id_result": "R89",
+   "chameleon": [
+    "R87",
+    "R88",
+    "R89"
+   ],
+   "family": "Dinosaur"
+  },
+  "R87": {
+   "chameleon": [
+    "R88",
+    "R89",
+    "E1"
+   ],
+   "family": "Spider"
+  },
+  "R88": {
+   "id_result": "R91",
+   "chameleon": [
+    "R89",
+    "E1",
+    "R91"
+   ]
+  },
+  "R89": {
+   "id_result": "R92",
+   "chameleon": [
+    "E1",
+    "R91",
+    "R92"
+   ],
+   "family": "Bug"
+  },
+  "R91": {
+   "id_result": "R97",
+   "chameleon": [
+    "R92",
+    "E1",
+    "R94"
+   ]
+  },
+  "R92": {
+   "id_result": "R95",
+   "chameleon": [
+    "E1",
+    "R94",
+    "R95"
+   ],
+   "family": "Axolotl"
+  },
+  "R94": {
+   "id_result": "R97",
+   "chameleon": [
+    "R95",
+    "E1",
+    "R97"
+   ],
+   "family": "Crime"
+  },
+  "R95": {
+   "chameleon": [
+    "E1",
+    "R97",
+    "E2"
+   ],
+   "family": "Poltergeist"
+  },
+  "R97": {
+   "chameleon": [
+    "E1",
+    "E2",
+    "E3"
+   ]
+  },
+  "E1": {
+   "id_result": "E34",
+   "chameleon": [
+    "E2",
+    "E3",
+    "E4"
+   ],
+   "family": "Elemental"
+  },
+  "E2": {
+   "id_result": "E8",
+   "chameleon": [
+    "E3",
+    "E4",
+    "E5"
+   ],
+   "family": "Elemental"
+  },
+  "E3": {
+   "id_result": "E12",
+   "chameleon": [
+    "E4",
+    "E5",
+    "E6"
+   ],
+   "family": "Elemental"
+  },
+  "E4": {
+   "id_result": "E34",
+   "chameleon": [
+    "E5",
+    "E6",
+    "E7"
+   ],
+   "family": "Panda"
+  },
+  "E5": {
+   "id_result": "E8",
+   "chameleon": [
+    "E6",
+    "E7",
+    "E8"
+   ],
+   "family": "Lizard"
+  },
+  "E6": {
+   "id_result": "E12",
+   "chameleon": [
+    "E7",
+    "E8",
+    "E9"
+   ],
+   "family": "Croco"
+  },
+  "E7": {
+   "id_result": "E34",
+   "chameleon": [
+    "E8",
+    "E9",
+    "E10"
+   ],
+   "family": "Amphibian"
+  },
+  "E8": {
+   "id_result": "E17",
+   "chameleon": [
+    "E9",
+    "E10",
+    "E11"
+   ],
+   "family": "Cave Dweller"
+  },
+  "E9": {
+   "id_result": "E12",
+   "chameleon": [
+    "E10",
+    "E11",
+    "E12"
+   ],
+   "family": "Reptile"
+  },
+  "E10": {
+   "id_result": "E34",
+   "chameleon": [
+    "E11",
+    "E12",
+    "E13"
+   ],
+   "family": "Reptile"
+  },
+  "E11": {
+   "id_result": "E17",
+   "chameleon": [
+    "E12",
+    "E13",
+    "E14"
+   ],
+   "family": "Amphibian"
+  },
+  "E12": {
+   "id_result": "E15",
+   "chameleon": [
+    "E13",
+    "E14",
+    "E15"
+   ]
+  },
+  "E13": {
+   "id_result": "E34",
+   "chameleon": [
+    "E14",
+    "E15",
+    "E16"
+   ],
+   "family": "Bug"
+  },
+  "E14": {
+   "id_result": "E17",
+   "chameleon": [
+    "E15",
+    "E16",
+    "E17"
+   ],
+   "family": "Amphibian"
+  },
+  "E15": {
+   "id_result": "E18",
+   "chameleon": [
+    "E16",
+    "E17",
+    "E18"
+   ],
+   "family": "Cave Dweller"
+  },
+  "E16": {
+   "id_result": "E34",
+   "chameleon": [
+    "E17",
+    "E18",
+    "E19"
+   ],
+   "family": "Shulker"
+  },
+  "E17": {
+   "id_result": "E20",
+   "chameleon": [
+    "E18",
+    "E19",
+    "E20"
+   ]
+  },
+  "E18": {
+   "id_result": "E21",
+   "chameleon": [
+    "E19",
+    "E20",
+    "E21"
+   ]
+  },
+  "E19": {
+   "id_result": "E34",
+   "chameleon": [
+    "E20",
+    "E21",
+    "E22"
+   ],
+   "family": "Phantom"
+  },
+  "E20": {
+   "id_result": "E26",
+   "chameleon": [
+    "E21",
+    "E22",
+    "E23"
+   ]
+  },
+  "E21": {
+   "id_result": "E24",
+   "chameleon": [
+    "E22",
+    "E23",
+    "E24"
+   ]
+  },
+  "E22": {
+   "id_result": "E34",
+   "chameleon": [
+    "E23",
+    "E24",
+    "E25"
+   ],
+   "family": "Reptile"
+  },
+  "E23": {
+   "id_result": "E26",
+   "chameleon": [
+    "E24",
+    "E25",
+    "E26"
+   ],
+   "family": "Crustacean"
+  },
+  "E24": {
+   "id_result": "E27",
+   "chameleon": [
+    "E25",
+    "E26",
+    "E27"
+   ]
+  },
+  "E25": {
+   "id_result": "E34",
+   "chameleon": [
+    "E26",
+    "E27",
+    "E28"
+   ]
+  },
+  "E26": {
+   "id_result": "E44",
+   "chameleon": [
+    "E27",
+    "E28",
+    "L1"
+   ],
+   "family": "Reptile"
+  },
+  "E27": {
+   "id_result": "E33",
+   "chameleon": [
+    "E28",
+    "L1",
+    "E30"
+   ]
+  },
+  "E28": {
+   "id_result": "E34",
+   "chameleon": [
+    "L1",
+    "E30",
+    "E31"
+   ],
+   "family": "Bird"
+  },
+  "E30": {
+   "id_result": "E33",
+   "chameleon": [
+    "E31",
+    "E32",
+    "E33"
+   ],
+   "family": "Croco"
+  },
+  "E31": {
+   "id_result": "E34",
+   "chameleon": [
+    "E32",
+    "E33",
+    "E34"
+   ],
+   "family": "Bug"
+  },
+  "E32": {
+   "id_result": "E44",
+   "chameleon": [
+    "E33",
+    "E34",
+    "E35"
+   ],
+   "family": "Amphibian"
+  },
+  "E33": {
+   "id_result": "E39",
+   "chameleon": [
+    "E34",
+    "E35",
+    "E36"
+   ],
+   "family": "Cave Dweller"
+  },
+  "E34": {
+   "id_result": "E43",
+   "chameleon": [
+    "E35",
+    "E36",
+    "E37"
+   ]
+  },
+  "E35": {
+   "id_result": "E44",
+   "chameleon": [
+    "E36",
+    "E37",
+    "L1"
+   ],
+   "family": "Reptile"
+  },
+  "E36": {
+   "id_result": "E39",
+   "chameleon": [
+    "E37",
+    "L1",
+    "E39"
+   ],
+   "family": "Cave Dweller"
+  },
+  "E37": {
+   "id_result": "E43",
+   "chameleon": [
+    "L1",
+    "E39",
+    "L2"
+   ],
+   "family": "Bug"
+  },
+  "E39": {
+   "id_result": "E42",
+   "chameleon": [
+    "L1",
+    "L2",
+    "E42"
+   ]
+  },
+  "E42": {
+   "id_result": "E48",
+   "chameleon": [
+    "E43",
+    "E44",
+    "E45"
+   ]
+  },
+  "E43": {
+   "id_result": "E58",
+   "chameleon": [
+    "E44",
+    "E45",
+    "E46"
+   ]
+  },
+  "E44": {
+   "id_result": "E47",
+   "chameleon": [
+    "E45",
+    "E46",
+    "E47"
+   ]
+  },
+  "E45": {
+   "id_result": "E48",
+   "chameleon": [
+    "E46",
+    "E47",
+    "E48"
+   ],
+   "family": "Cave Dweller"
+  },
+  "E46": {
+   "id_result": "E58",
+   "chameleon": [
+    "E47",
+    "E48",
+    "E49"
+   ],
+   "family": "Crime"
+  },
+  "E47": {
+   "chameleon": [
+    "E48",
+    "E49",
+    "L1"
+   ],
+   "family": "Crustacean"
+  },
+  "E48": {
+   "id_result": "E60",
+   "chameleon": [
+    "E49",
+    "L1",
+    "E51"
+   ],
+   "family": "Demon"
+  },
+  "E49": {
+   "id_result": "E58",
+   "chameleon": [
+    "L1",
+    "E51",
+    "E52"
+   ],
+   "family": "Bug"
+  },
+  "E51": {
+   "id_result": "E60",
+   "chameleon": [
+    "E52",
+    "L1",
+    "E54"
+   ],
+   "family": "Demon"
+  },
+  "E52": {
+   "id_result": "E58",
+   "chameleon": [
+    "L1",
+    "E54",
+    "L2"
+   ],
+   "family": "Bug"
+  },
+  "E54": {
+   "id_result": "E60",
+   "chameleon": [
+    "L1",
+    "L2",
+    "E57"
+   ]
+  },
+  "E57": {
+   "id_result": "E60",
+   "chameleon": [
+    "E58",
+    "L1",
+    "E60"
+   ]
+  },
+  "E58": {
+   "chameleon": [
+    "L1",
+    "E60",
+    "L2"
+   ]
+  },
+  "E60": {
+   "id_result": "E66",
+   "chameleon": [
+    "L1",
+    "L2",
+    "E63"
+   ],
+   "family": "Cave Dweller"
+  },
+  "E63": {
+   "id_result": "E66",
+   "chameleon": [
+    "L1",
+    "L2",
+    "E66"
+   ],
+   "family": "Poltergeist"
+  },
+  "E66": {
+   "chameleon": [
+    "L1",
+    "L2",
+    "L3"
+   ],
+   "family": "Arctic"
+  },
+  "L1": {
+   "id_result": "L28",
+   "chameleon": [
+    "L2",
+    "L3",
+    "L4"
+   ],
+   "family": "Elemental"
+  },
+  "L2": {
+   "id_result": "L5",
+   "chameleon": [
+    "L3",
+    "L4",
+    "L5"
+   ],
+   "family": "Elemental"
+  },
+  "L3": {
+   "id_result": "L9",
+   "chameleon": [
+    "L4",
+    "L5",
+    "L6"
+   ],
+   "family": "Elemental"
+  },
+  "L4": {
+   "chameleon": [
+    "L5",
+    "L6",
+    "L7"
+   ],
+   "family": "Reptile"
+  },
+  "L5": {
+   "id_result": "L14",
+   "chameleon": [
+    "L6",
+    "L7",
+    "L8"
+   ],
+   "family": "Reptile"
+  },
+  "L6": {
+   "id_result": "L9",
+   "chameleon": [
+    "L7",
+    "L8",
+    "L9"
+   ],
+   "family": "Reptile"
+  },
+  "L7": {
+   "id_result": "L28",
+   "chameleon": [
+    "L8",
+    "L9",
+    "L10"
+   ],
+   "family": "Reptile"
+  },
+  "L8": {
+   "id_result": "L14",
+   "chameleon": [
+    "L9",
+    "L10",
+    "L11"
+   ],
+   "family": "Reptile"
+  },
+  "L9": {
+   "id_result": "L15",
+   "chameleon": [
+    "L10",
+    "L11",
+    "L12"
+   ]
+  },
+  "L10": {
+   "id_result": "L28",
+   "chameleon": [
+    "L11",
+    "L12",
+    "L13"
+   ],
+   "family": "Crime"
+  },
+  "L11": {
+   "id_result": "L14",
+   "chameleon": [
+    "L12",
+    "L13",
+    "L14"
+   ],
+   "family": "Amphibian"
+  },
+  "L12": {
+   "id_result": "L15",
+   "chameleon": [
+    "L13",
+    "L14",
+    "L15"
+   ],
+   "family": "Lapis"
+  },
+  "L13": {
+   "id_result": "L28",
+   "chameleon": [
+    "L14",
+    "L15"
+   ],
+   "family": "Bug"
+  },
+  "L14": {
+   "id_result": "L17",
+   "chameleon": [
+    "L15",
+    "L17"
+   ]
+  },
+  "L15": {
+   "id_result": "L27",
+   "chameleon": [
+    "L17",
+    "L18"
+   ],
+   "family": "Demon"
+  },
+  "L17": {
+   "id_result": "L23",
+   "chameleon": [
+    "L18",
+    "L20"
+   ]
+  },
+  "L18": {
+   "id_result": "L27",
+   "chameleon": [
+    "L20",
+    "L21"
+   ],
+   "family": "Demon"
+  },
+  "L20": {
+   "id_result": "L23",
+   "chameleon": [
+    "L21",
+    "L22"
+   ],
+   "family": "Demon"
+  },
+  "L21": {
+   "id_result": "L27",
+   "chameleon": [
+    "L22",
+    "L24"
+   ],
+   "family": "Demon"
+  },
+  "L22": {
+   "id_result": "L28",
+   "chameleon": [
+    "L24",
+    "L25"
+   ],
+   "family": "Bird"
+  },
+  "L23": {
+   "id_result": "L26",
+   "chameleon": [
+    "L24",
+    "L25",
+    "L26"
+   ]
+  },
+  "L24": {
+   "id_result": "L27",
+   "chameleon": [
+    "L25",
+    "L26",
+    "L27"
+   ],
+   "family": "Bird"
+  },
+  "L25": {
+   "id_result": "L28",
+   "chameleon": [
+    "L26",
+    "L27",
+    "L28"
+   ],
+   "family": "Shulker"
+  },
+  "L26": {
+   "id_result": "L47",
+   "chameleon": [
+    "L27",
+    "L28",
+    "L29"
+   ],
+   "family": "Creation"
+  },
+  "L27": {
+   "chameleon": [
+    "L28",
+    "L29",
+    "L30"
+   ],
+   "family": "Demon"
+  },
+  "L28": {
+   "id_result": "L40",
+   "chameleon": [
+    "L29",
+    "L30",
+    "L31"
+   ]
+  },
+  "L29": {
+   "id_result": "L47",
+   "chameleon": [
+    "L30",
+    "L31",
+    "L32"
+   ],
+   "family": "Reptile"
+  },
+  "L30": {
+   "chameleon": [
+    "L31",
+    "L32",
+    "L33"
+   ],
+   "family": "Dragon"
+  },
+  "L31": {
+   "id_result": "L40",
+   "chameleon": [
+    "L32",
+    "L33",
+    "L34"
+   ],
+   "family": "Bird"
+  },
+  "L32": {
+   "id_result": "L47",
+   "chameleon": [
+    "L33",
+    "L34",
+    "L35"
+   ]
+  },
+  "L33": {
+   "chameleon": [
+    "L34",
+    "L35",
+    "L36"
+   ],
+   "family": "Dragon"
+  },
+  "L34": {
+   "id_result": "L40",
+   "chameleon": [
+    "L35",
+    "L36"
+   ],
+   "family": "Bird"
+  },
+  "L35": {
+   "id_result": "L47",
+   "chameleon": [
+    "L36",
+    "L38"
+   ],
+   "family": "Reptile"
+  },
+  "L36": {
+   "chameleon": [
+    "L38",
+    "L39"
+   ],
+   "family": "Demon"
+  },
+  "L38": {
+   "id_result": "L47",
+   "chameleon": [
+    "L39",
+    "L40"
+   ],
+   "family": "Crustacean"
+  },
+  "L39": {
+   "chameleon": [
+    "L40"
+   ],
+   "family": "Demon"
+  },
+  "L40": {},
+  "L41": {
+   "id_result": "L47"
+  },
+  "L42": {
+   "family": "Demon"
+  },
+  "L44": {
+   "id_result": "L47",
+   "chameleon": [
+    "L46",
+    "L47"
+   ],
+   "family": "Elemental"
+  },
+  "L45": {
+   "chameleon": [
+    "L46",
+    "L47"
+   ],
+   "family": "Spider"
+  },
+  "L46": {
+   "chameleon": [
+    "L47"
+   ],
+   "family": "Bug"
+  },
+  "L47": {
+   "family": "Reptile"
+  },
+  "L49": {
+   "family": "Miracle"
+  },
+  "L52": {},
+  "L54": {},
+  "L57": {
+   "family": "Poltergeist"
+  },
+  "L60": {
+   "family": "Arctic"
+  }
+ },
+ "special": [
+  {
+   "output": "C1",
+   "inputs": [
+    [
+     {
+      "rarity": "COMMON",
+      "category": "FOREST"
+     }
+    ],
+    [
+     {
+      "minRarity": "UNCOMMON"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "C2",
+   "inputs": [
+    [
+     {
+      "rarity": "COMMON",
+      "category": "WATER"
+     }
+    ],
+    [
+     {
+      "minRarity": "UNCOMMON"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "C3",
+   "inputs": [
+    [
+     {
+      "rarity": "COMMON",
+      "category": "COMBAT"
+     }
+    ],
+    [
+     {
+      "minRarity": "UNCOMMON"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "C16",
+   "inputs": [
+    [
+     {
+      "family": "Shulker"
+     }
+    ],
+    [
+     {
+      "minRarity": "COMMON"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "C24",
+   "inputs": [
+    [
+     {
+      "family": "Bird"
+     }
+    ],
+    [
+     {
+      "category": "COMBAT"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "C34",
+   "inputs": [
+    [
+     {
+      "family": "Bird"
+     }
+    ],
+    [
+     {
+      "minRarity": "COMMON"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "C35",
+   "inputs": [
+    [
+     {
+      "family": "Axolotl"
+     }
+    ],
+    [
+     {
+      "category": "WATER"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "C48",
+   "inputs": [
+    [
+     {
+      "shard": "C61"
+     }
+    ],
+    [
+     {
+      "shard": "L46"
+     },
+     {
+      "family": "Crime"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "U1",
+   "inputs": [
+    [
+     {
+      "rarity": "UNCOMMON",
+      "category": "FOREST"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "U2",
+   "inputs": [
+    [
+     {
+      "rarity": "UNCOMMON",
+      "category": "WATER"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "U3",
+   "inputs": [
+    [
+     {
+      "rarity": "UNCOMMON",
+      "category": "COMBAT"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "U5",
+   "inputs": [
+    [
+     {
+      "shard": "C27"
+     }
+    ],
+    [
+     {
+      "category": "WATER"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "U6",
+   "inputs": [
+    [
+     {
+      "family": "Cave Dweller"
+     }
+    ],
+    [
+     {
+      "category": "COMBAT"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "U7",
+   "inputs": [
+    [
+     {
+      "family": "Cave Dweller"
+     }
+    ],
+    [
+     {
+      "family": "Shulker"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "U8",
+   "inputs": [
+    [
+     {
+      "shard": "C35"
+     }
+    ],
+    [
+     {
+      "category": "WATER"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "U9",
+   "inputs": [
+    [
+     {
+      "family": "Shulker"
+     }
+    ],
+    [
+     {
+      "family": "Reptile"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "U11",
+   "inputs": [
+    [
+     {
+      "shard": "C20"
+     }
+    ],
+    [
+     {
+      "category": "FOREST"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "U21",
+   "inputs": [
+    [
+     {
+      "shard": "U9"
+     }
+    ],
+    [
+     {
+      "category": "COMBAT"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "U34",
+   "inputs": [
+    [
+     {
+      "family": "Bird"
+     }
+    ],
+    [
+     {
+      "minRarity": "UNCOMMON"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "U39",
+   "inputs": [
+    [
+     {
+      "family": "Frog"
+     }
+    ],
+    [
+     {
+      "category": "COMBAT"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "U40",
+   "inputs": [
+    [
+     {
+      "family": "Bug"
+     }
+    ],
+    [
+     {
+      "skill": "MINING"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "U65",
+   "inputs": [
+    [
+     {
+      "shard": "C20"
+     }
+    ],
+    [
+     {
+      "category": "COMBAT"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "U79",
+   "inputs": [
+    [
+     {
+      "shard": "C40"
+     }
+    ],
+    [
+     {
+      "shard": "E49"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R1",
+   "inputs": [
+    [
+     {
+      "rarity": "RARE",
+      "category": "FOREST"
+     }
+    ],
+    [
+     {
+      "minRarity": "EPIC"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R2",
+   "inputs": [
+    [
+     {
+      "rarity": "RARE",
+      "category": "WATER"
+     }
+    ],
+    [
+     {
+      "minRarity": "EPIC"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R3",
+   "inputs": [
+    [
+     {
+      "rarity": "RARE",
+      "category": "COMBAT"
+     }
+    ],
+    [
+     {
+      "minRarity": "EPIC"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R4",
+   "inputs": [
+    [
+     {
+      "family": "Panda"
+     }
+    ],
+    [
+     {
+      "minRarity": "UNCOMMON"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R5",
+   "inputs": [
+    [
+     {
+      "family": "Frog"
+     }
+    ],
+    [
+     {
+      "minRarity": "UNCOMMON",
+      "category": "FOREST"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R8",
+   "inputs": [
+    [
+     {
+      "family": "Lizard"
+     }
+    ],
+    [
+     {
+      "minRarity": "UNCOMMON",
+      "category": "WATER"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R9",
+   "inputs": [
+    [
+     {
+      "shard": "U21"
+     }
+    ],
+    [
+     {
+      "minRarity": "UNCOMMON",
+      "category": "COMBAT"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R13",
+   "inputs": [
+    [
+     {
+      "family": "Shulker"
+     }
+    ],
+    [
+     {
+      "shard": "R60"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R15",
+   "inputs": [
+    [
+     {
+      "shard": "C9"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R22",
+   "inputs": [
+    [
+     {
+      "family": "Shulker"
+     }
+    ],
+    [
+     {
+      "family": "Demon"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R28",
+   "inputs": [
+    [
+     {
+      "shard": "U30"
+     }
+    ],
+    [
+     {
+      "minRarity": "EPIC"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R30",
+   "inputs": [
+    [
+     {
+      "shard": "R15"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R33",
+   "inputs": [
+    [
+     {
+      "shard": "U6"
+     }
+    ],
+    [
+     {
+      "family": "Cave Dweller"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R34",
+   "inputs": [
+    [
+     {
+      "minRarity": "RARE",
+      "family": "Shulker"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R43",
+   "inputs": [
+    [
+     {
+      "shard": "U40"
+     }
+    ],
+    [
+     {
+      "shard": "R10"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R46",
+   "inputs": [
+    [
+     {
+      "shard": "C55"
+     }
+    ],
+    [
+     {
+      "shard": "C45"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R47",
+   "inputs": [
+    [
+     {
+      "family": "Frog"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE",
+      "category": "FOREST"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R49",
+   "inputs": [
+    [
+     {
+      "minRarity": "RARE"
+     }
+    ],
+    [
+     {
+      "shard": "C4"
+     },
+     {
+      "shard": "C7"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R51",
+   "inputs": [
+    [
+     {
+      "shard": "R33"
+     }
+    ],
+    [
+     {
+      "shard": "R29"
+     },
+     {
+      "family": "Cave Dweller"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R52",
+   "inputs": [
+    [
+     {
+      "family": "Cave Dweller"
+     }
+    ],
+    [
+     {
+      "minRarity": "EPIC",
+      "category": "FOREST"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R54",
+   "inputs": [
+    [
+     {
+      "shard": "R9"
+     }
+    ],
+    [
+     {
+      "minRarity": "UNCOMMON",
+      "category": "COMBAT"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R58",
+   "inputs": [
+    [
+     {
+      "family": "Bird"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R62",
+   "inputs": [
+    [
+     {
+      "minRarity": "EPIC",
+      "family": "Creation"
+     }
+    ],
+    [
+     {
+      "shard": "U75"
+     },
+     {
+      "shard": "U72"
+     },
+     {
+      "shard": "U69"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R65",
+   "inputs": [
+    [
+     {
+      "family": "Trash Lover"
+     }
+    ],
+    [
+     {
+      "minRarity": "UNCOMMON",
+      "family": "Bug"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "R70",
+   "inputs": [
+    [
+     {
+      "shard": "U79"
+     }
+    ],
+    [
+     {
+      "shard": "R54"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E1",
+   "inputs": [
+    [
+     {
+      "rarity": "EPIC",
+      "category": "FOREST"
+     }
+    ],
+    [
+     {
+      "minRarity": "LEGENDARY"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E2",
+   "inputs": [
+    [
+     {
+      "rarity": "EPIC",
+      "category": "WATER"
+     }
+    ],
+    [
+     {
+      "minRarity": "LEGENDARY"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E3",
+   "inputs": [
+    [
+     {
+      "rarity": "EPIC",
+      "category": "COMBAT"
+     }
+    ],
+    [
+     {
+      "minRarity": "LEGENDARY"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E4",
+   "inputs": [
+    [
+     {
+      "family": "Panda"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E5",
+   "inputs": [
+    [
+     {
+      "family": "Lizard"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE",
+      "category": "WATER"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E6",
+   "inputs": [
+    [
+     {
+      "shard": "R45"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE",
+      "category": "COMBAT"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E7",
+   "inputs": [
+    [
+     {
+      "shard": "R47"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE",
+      "category": "FOREST"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E9",
+   "inputs": [
+    [
+     {
+      "shard": "R54"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE",
+      "category": "COMBAT"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E10",
+   "inputs": [
+    [
+     {
+      "shard": "R61"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE",
+      "category": "FOREST"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E11",
+   "inputs": [
+    [
+     {
+      "shard": "R53"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE",
+      "category": "WATER"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E13",
+   "inputs": [
+    [
+     {
+      "shard": "R43"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE",
+      "family": "Bug"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E14",
+   "inputs": [
+    [
+     {
+      "shard": "E11"
+     }
+    ],
+    [
+     {
+      "shard": "C52"
+     },
+     {
+      "shard": "E31"
+     },
+     {
+      "shard": "R53"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E16",
+   "inputs": [
+    [
+     {
+      "minRarity": "RARE",
+      "family": "Shulker"
+     }
+    ],
+    [
+     {
+      "minRarity": "EPIC"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E19",
+   "inputs": [
+    [
+     {
+      "family": "Phantom"
+     }
+    ],
+    [
+     {
+      "minRarity": "EPIC"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E22",
+   "inputs": [
+    [
+     {
+      "shard": "E10"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE",
+      "category": "FOREST"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E23",
+   "inputs": [
+    [
+     {
+      "minRarity": "RARE",
+      "family": "Crustacean"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE",
+      "family": "Treasure Fish"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E28",
+   "inputs": [
+    [
+     {
+      "family": "Bird"
+     }
+    ],
+    [
+     {
+      "minRarity": "EPIC"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E30",
+   "inputs": [
+    [
+     {
+      "shard": "E6"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE",
+      "category": "COMBAT"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E31",
+   "inputs": [
+    [
+     {
+      "shard": "U22"
+     }
+    ],
+    [
+     {
+      "shard": "C30"
+     },
+     {
+      "shard": "L28"
+     },
+     {
+      "shard": "E18"
+     },
+     {
+      "shard": "R56"
+     },
+     {
+      "shard": "E14"
+     },
+     {
+      "shard": "E15"
+     },
+     {
+      "shard": "U33"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E32",
+   "inputs": [
+    [
+     {
+      "shard": "E11"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE",
+      "category": "WATER"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E35",
+   "inputs": [
+    [
+     {
+      "shard": "E26"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE",
+      "category": "WATER"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E36",
+   "inputs": [
+    [
+     {
+      "minRarity": "RARE",
+      "family": "Cave Dweller"
+     }
+    ],
+    [
+     {
+      "minRarity": "EPIC",
+      "family": "Cave Dweller"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E37",
+   "inputs": [
+    [
+     {
+      "shard": "E31"
+     }
+    ],
+    [
+     {
+      "family": "Dragon"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E52",
+   "inputs": [
+    [
+     {
+      "shard": "E49"
+     }
+    ],
+    [
+     {
+      "shard": "E13"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "E63",
+   "inputs": [
+    [
+     {
+      "shard": "R77"
+     }
+    ],
+    [
+     {
+      "minRarity": "LEGENDARY"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L1",
+   "inputs": [
+    [
+     {
+      "rarity": "LEGENDARY",
+      "category": "FOREST"
+     }
+    ],
+    [
+     {
+      "minRarity": "EPIC",
+      "family": "Elemental"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L2",
+   "inputs": [
+    [
+     {
+      "rarity": "LEGENDARY",
+      "category": "WATER"
+     }
+    ],
+    [
+     {
+      "minRarity": "EPIC",
+      "family": "Elemental"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L3",
+   "inputs": [
+    [
+     {
+      "rarity": "LEGENDARY",
+      "category": "COMBAT"
+     }
+    ],
+    [
+     {
+      "minRarity": "EPIC",
+      "family": "Elemental"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L6",
+   "inputs": [
+    [
+     {
+      "shard": "E30"
+     }
+    ],
+    [
+     {
+      "minRarity": "EPIC",
+      "category": "COMBAT"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L7",
+   "inputs": [
+    [
+     {
+      "shard": "E22"
+     }
+    ],
+    [
+     {
+      "minRarity": "EPIC",
+      "category": "FOREST"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L8",
+   "inputs": [
+    [
+     {
+      "shard": "E35"
+     }
+    ],
+    [
+     {
+      "minRarity": "EPIC",
+      "category": "WATER"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L10",
+   "inputs": [
+    [
+     {
+      "shard": "E46"
+     }
+    ],
+    [
+     {
+      "minRarity": "LEGENDARY",
+      "category": "COMBAT"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L11",
+   "inputs": [
+    [
+     {
+      "shard": "E32"
+     }
+    ],
+    [
+     {
+      "minRarity": "EPIC",
+      "category": "WATER"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L12",
+   "inputs": [
+    [
+     {
+      "shard": "R15"
+     }
+    ],
+    [
+     {
+      "minRarity": "LEGENDARY"
+     },
+     {
+      "shard": "E33"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L13",
+   "inputs": [
+    [
+     {
+      "shard": "E37"
+     }
+    ],
+    [
+     {
+      "shard": "E13"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L18",
+   "inputs": [
+    [
+     {
+      "shard": "L15"
+     }
+    ],
+    [
+     {
+      "shard": "L15"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L20",
+   "inputs": [
+    [
+     {
+      "shard": "L15"
+     }
+    ],
+    [
+     {
+      "category": "WATER"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L24",
+   "inputs": [
+    [
+     {
+      "shard": "L15"
+     }
+    ],
+    [
+     {
+      "family": "Bird"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L25",
+   "inputs": [
+    [
+     {
+      "minRarity": "EPIC",
+      "family": "Shulker"
+     }
+    ],
+    [
+     {
+      "minRarity": "LEGENDARY"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L29",
+   "inputs": [
+    [
+     {
+      "shard": "L8"
+     }
+    ],
+    [
+     {
+      "minRarity": "EPIC",
+      "category": "WATER"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L31",
+   "inputs": [
+    [
+     {
+      "family": "Bird"
+     }
+    ],
+    [
+     {
+      "minRarity": "LEGENDARY"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L32",
+   "inputs": [
+    [
+     {
+      "shard": "L23"
+     }
+    ],
+    [
+     {
+      "shard": "C30"
+     },
+     {
+      "shard": "L28"
+     },
+     {
+      "shard": "E18"
+     },
+     {
+      "shard": "R56"
+     },
+     {
+      "shard": "E14"
+     },
+     {
+      "shard": "E15"
+     },
+     {
+      "shard": "U33"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L33",
+   "inputs": [
+    [
+     {
+      "shard": "L30"
+     }
+    ],
+    [
+     {
+      "any": true
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L34",
+   "inputs": [
+    [
+     {
+      "minRarity": "LEGENDARY"
+     }
+    ],
+    [
+     {
+      "shard": "L31"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L35",
+   "inputs": [
+    [
+     {
+      "shard": "E49"
+     }
+    ],
+    [
+     {
+      "shard": "U79"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L36",
+   "inputs": [
+    [
+     {
+      "shard": "L30"
+     }
+    ],
+    [
+     {
+      "shard": "L15"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L38",
+   "inputs": [
+    [
+     {
+      "shard": "E23"
+     }
+    ],
+    [
+     {
+      "minRarity": "RARE",
+      "family": "Poltergeist"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L39",
+   "inputs": [
+    [
+     {
+      "shard": "L33"
+     }
+    ],
+    [
+     {
+      "shard": "L15"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L41",
+   "inputs": [
+    [
+     {
+      "shard": "L32"
+     }
+    ],
+    [
+     {
+      "shard": "L32"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L42",
+   "inputs": [
+    [
+     {
+      "shard": "L39"
+     }
+    ],
+    [
+     {
+      "shard": "L36"
+     }
+    ]
+   ]
+  },
+  {
+   "output": "L44",
+   "inputs": [
+    [
+     {
+      "rarity": "LEGENDARY",
+      "family": "Elemental"
+     }
+    ],
+    [
+     {
+      "shard": "L41"
+     }
+    ]
+   ]
+  }
+ ]
+}
