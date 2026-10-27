@@ -256,8 +256,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "C9",
@@ -727,8 +726,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "C23",
@@ -2602,8 +2600,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U27",
@@ -3099,8 +3096,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U45",
@@ -3465,7 +3461,7 @@
       "skill": "HUNTING",
       "description": "Grants a +0.5% chance to instantly attract a mob when lathering a Tree with Honeycomb",
       "huntInfo": [
-        "CRAFT}}"
+        "This shard can be crafted from Enchanted Helix Logs, Enchanted Honeycombs and Enchanted Eggs."
       ],
       "effects": [
         {
@@ -3481,8 +3477,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Crafting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U58",
@@ -3999,8 +3994,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U75",
@@ -4064,8 +4058,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U78",
@@ -4158,7 +4151,7 @@
       "skill": "FORAGING",
       "description": "Grants +1 Helix Fortune for every digit in your Helix Log collection. (Max 10M collection)",
       "huntInfo": [
-        "CRAFT}}"
+        "This shard can be crafted from Enchanted Helix Logs, Enchanted Feathers and Enchanted Eggs."
       ],
       "effects": [
         {
@@ -4174,8 +4167,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Crafting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U85",
@@ -4187,7 +4179,7 @@
       "skill": "GLOBAL",
       "description": "Upgrading Safari Tickets at the Safari Manager costs +1% less Forest Essence",
       "huntInfo": [
-        "CRAFT}}"
+        "This shard can be crafted from Enchanted Helix Logs, Enchanted Ruby Veilshrooms and Enchanted Eggs."
       ],
       "effects": [
         {
@@ -4203,8 +4195,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Crafting); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "U88",
@@ -4406,8 +4397,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "R1",
@@ -4854,8 +4844,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "R21",
@@ -6591,8 +6580,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Fishing, Huntraps); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "R84",
@@ -6785,8 +6773,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Fishing, Huntraps); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "R91",
@@ -6903,8 +6890,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "R95",
@@ -8161,8 +8147,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "E47",
@@ -8233,7 +8218,7 @@
       "skill": "FORAGING",
       "description": "Honeyhives have a +0.5% chance to refill instantly",
       "huntInfo": [
-        "CRAFT}}",
+        "This shard can be crafted from Enchanted Honeycombs, Enchanted Helix Logs and Enchanted Eggs.",
         "This shard has a 2.08% chance to be obtained from a Honeyhive."
       ],
       "effects": [
@@ -8250,8 +8235,7 @@
           "type": "FUSION"
         }
       ],
-      "fusion_cost": 5,
-      "unavailable": "Normal sources not built (Crafting, Honeyhive); only Fusion works"
+      "fusion_cost": 5
     },
     {
       "id": "E51",
@@ -9592,8 +9576,7 @@
         }
       ],
       "sources": [],
-      "fusion_cost": 5,
-      "unavailable": "Source content not built: Mob Drops"
+      "fusion_cost": 5
     },
     {
       "id": "L46",
@@ -9698,8 +9681,7 @@
         }
       ],
       "sources": [],
-      "fusion_cost": 5,
-      "unavailable": "Source content not built: Greenhouse"
+      "fusion_cost": 5
     },
     {
       "id": "L54",
@@ -9723,8 +9705,7 @@
         }
       ],
       "sources": [],
-      "fusion_cost": 5,
-      "unavailable": "Source content not built: Mob Drops"
+      "fusion_cost": 5
     },
     {
       "id": "L57",

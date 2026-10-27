@@ -29,6 +29,7 @@ public class GardenProfile {
     @Setter
     private boolean accessUnlocked;
     private double copper;
+    private double floraCopper;
     private double sowdust;
     private final TreeSet<Integer> unlockedPlots = new TreeSet<>();
     private final TreeSet<Integer> cleanedPlots = new TreeSet<>();
@@ -153,6 +154,13 @@ public class GardenProfile {
         copper = Math.max(0, copper + amount);
     }
 
+    public int takeFloraShards(double copperGained, double copperPerShard) {
+        floraCopper += copperGained;
+        int shards = (int) Math.floor(floraCopper / copperPerShard + 1e-9);
+        floraCopper = Math.max(0, floraCopper - shards * copperPerShard);
+        return shards;
+    }
+
     public boolean spendCopper(double amount) {
         if (amount < 0 || copper < amount) {
             return false;
@@ -178,6 +186,7 @@ public class GardenProfile {
         json.put("gardenXp", gardenXp);
         json.put("accessUnlocked", accessUnlocked);
         json.put("copper", copper);
+        json.put("floraCopper", floraCopper);
         json.put("sowdust", sowdust);
         json.put("unlockedPlots", new JSONArray(unlockedPlots));
         json.put("cleanedPlots", new JSONArray(cleanedPlots));
@@ -207,6 +216,7 @@ public class GardenProfile {
         profile.gardenXp = json.optDouble("gardenXp", 0);
         profile.accessUnlocked = json.optBoolean("accessUnlocked", false);
         profile.copper = json.optDouble("copper", 0);
+        profile.floraCopper = json.optDouble("floraCopper", 0);
         profile.sowdust = json.optDouble("sowdust", 0);
         JSONArray plots = json.optJSONArray("unlockedPlots");
         if (plots != null) {

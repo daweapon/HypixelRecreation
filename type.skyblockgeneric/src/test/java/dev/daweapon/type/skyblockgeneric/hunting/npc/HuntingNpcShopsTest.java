@@ -65,4 +65,13 @@ class HuntingNpcShopsTest {
         assertTrue(HuntingNpcCatalogueView.needsConfirmation(1_000_000));
         assertTrue(HuntingNpcCatalogueView.needsConfirmation(2_000_000));
     }
+
+    @Test
+    void davidSellsTheHuntingToolkitForOneMillionCoins() throws IOException {
+        List<CatalogueEntry> entries = entries("hunting_david");
+        assertEquals(1, entries.size());
+        assertEquals("HUNTING_TOOLKIT", entries.get(0).itemId());
+        assertEquals(1_000_000, entries.get(0).cost().coins());
+        assertTrue(entries.get(0).available());
+    }
 }

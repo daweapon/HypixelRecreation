@@ -41,7 +41,7 @@ class BlazeSlayerCatalogueTest {
 
     @Test
     void everyAvailableDropIsARealItem() {
-        assertEquals(25, blaze.drops().size());
+        assertEquals(26, blaze.drops().size());
         for (SlayerDrop drop : blaze.drops()) {
             if (drop.unavailableReason() == null) assertNotNull(drop.item(), drop.key());
             assertFalse(drop.tiers().isEmpty(), drop.key());

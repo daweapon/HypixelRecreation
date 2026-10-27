@@ -27,6 +27,7 @@ public class DatapointHunting extends SkyBlockDatapoint<DatapointHunting.Hunting
             value.traps.forEach(trap -> traps.put(trap.toJson()));
             json.put("traps", traps);
             json.put("counters", new JSONObject(value.counters));
+            json.put("toolkit", new JSONObject(value.toolkit));
             return json.toString();
         }
 
@@ -39,6 +40,8 @@ public class DatapointHunting extends SkyBlockDatapoint<DatapointHunting.Hunting
             readIntMap(object.optJSONObject("syphoned"), data.syphoned);
             readLongMap(object.optJSONObject("discoveredAt"), data.discoveredAt);
             readLongMap(object.optJSONObject("counters"), data.counters);
+            JSONObject toolkit = object.optJSONObject("toolkit");
+            if (toolkit != null) toolkit.keySet().forEach(key -> data.toolkit.put(key, toolkit.getString(key)));
             JSONArray disabled = object.optJSONArray("disabled");
             if (disabled != null) for (int i = 0; i < disabled.length(); i++) data.disabled.add(disabled.getString(i));
             JSONArray traps = object.optJSONArray("traps");
@@ -50,7 +53,7 @@ public class DatapointHunting extends SkyBlockDatapoint<DatapointHunting.Hunting
         @Override
         public HuntingData clone(HuntingData value) {
             return new HuntingData(new HashMap<>(value.shards), new HashMap<>(value.syphoned),
-                    new HashSet<>(value.disabled), new HashMap<>(value.discoveredAt), new ArrayList<>(value.traps), new HashMap<>(value.counters));
+                    new HashSet<>(value.disabled), new HashMap<>(value.discoveredAt), new ArrayList<>(value.traps), new HashMap<>(value.counters), new HashMap<>(value.toolkit));
         }
 
         private void readIntMap(JSONObject json, Map<String, Integer> destination) {
@@ -80,6 +83,19 @@ public class DatapointHunting extends SkyBlockDatapoint<DatapointHunting.Hunting
         private Map<String, Long> discoveredAt = new HashMap<>();
         private List<PlacedHuntrap> traps = new ArrayList<>();
         private Map<String, Long> counters = new HashMap<>();
+        private Map<String, String> toolkit = new HashMap<>();
+
+        public String toolkitItem(String slot) {
+            return toolkit.get(slot);
+        }
+
+        public void storeToolkitItem(String slot, String serialized) {
+            toolkit.put(slot, serialized);
+        }
+
+        public String takeToolkitItem(String slot) {
+            return toolkit.remove(slot);
+        }
 
         public long counter(String key) {
             return counters.getOrDefault(key, 0L);
@@ -177,17 +193,21 @@ public class DatapointHunting extends SkyBlockDatapoint<DatapointHunting.Hunting
     }
 
     public record PlacedHuntrap(String world, double x, double y, double z, String tier,
-                                long placedAt, long catchAt, String caughtShard) {
+                                long placedAt, long catchAt, String caughtShard, String targetShard,
+                                boolean fromToolkit) {
         JSONObject toJson() {
             return new JSONObject().put("world", world).put("x", x).put("y", y).put("z", z)
                     .put("tier", tier).put("placedAt", placedAt).put("catchAt", catchAt)
-                    .put("caughtShard", caughtShard == null ? JSONObject.NULL : caughtShard);
+                    .put("caughtShard", caughtShard == null ? JSONObject.NULL : caughtShard)
+                    .put("targetShard", targetShard == null ? JSONObject.NULL : targetShard)
+                    .put("fromToolkit", fromToolkit);
         }
 
         static PlacedHuntrap fromJson(JSONObject json) {
             return new PlacedHuntrap(json.optString("world"), json.optDouble("x"), json.optDouble("y"),
                     json.optDouble("z"), json.optString("tier"), json.optLong("placedAt"),
-                    json.optLong("catchAt"), json.isNull("caughtShard") ? null : json.optString("caughtShard"));
+                    json.optLong("catchAt"), json.isNull("caughtShard") ? null : json.optString("caughtShard"),
+                    json.isNull("targetShard") ? null : json.optString("targetShard"), json.optBoolean("fromToolkit"));
         }
     }
 }

@@ -15,12 +15,14 @@ import java.util.List;
 
 // GUI for fusing two hunting attribute shards together
 public class GUIAttributeFusion implements StatefulView<GUIAttributeFusion.State> {
-    public record State(int page, String first, String second) {
+    private static final int MAX_LEVEL = 10;
+
+    public record State(int page, String first, String second, boolean smart) {
     }
 
     @Override
     public State initialState() {
-        return new State(1, null, null);
+        return new State(1, null, null, false);
     }
 
     @Override
@@ -38,6 +40,7 @@ public class GUIAttributeFusion implements StatefulView<GUIAttributeFusion.State
         AttributeDefinition second = AttributeRegistry.get(state.second());
         if (first == null || second == null) {
             List<AttributeDefinition> available = AttributeRegistry.values().stream()
+                    .filter(value -> !state.smart() || data.level(value.id()) >= MAX_LEVEL)
                     .filter(value -> data.shardCount(value.id()) >= (value.id().toString().equals(state.first())
                             ? AttributeFusionService.required(value) * 2 : AttributeFusionService.required(value))).toList();
             int start = (state.page() - 1) * AttributeGUIItems.CONTENT_SLOTS.length;
@@ -49,15 +52,15 @@ public class GUIAttributeFusion implements StatefulView<GUIAttributeFusion.State
                         (s, c) -> AttributeGUIItems.fusionShard(definition, AttributeFusionService.required(definition),
                                 "<7>Fusion cost: <a>" + AttributeFusionService.required(definition), "<7>Owned: <b>" + data.shardCount(definition.id()), "<e>Click to select!"),
                         (click, c) -> c.session(State.class).setState(first == null
-                                ? new State(1, definition.id().toString(), null) : new State(1, first.id().toString(), definition.id().toString())));
+                                ? new State(1, definition.id().toString(), null, state.smart()) : new State(1, first.id().toString(), definition.id().toString(), state.smart())));
             }
             int pages = AttributeGUIItems.pages(available.size());
             if (state.page() > 1)
                 layout.slot(45, (s, c) -> ItemStacks.item(Material.ARROW, "<a>Previous Page"),
-                        (click, c) -> c.session(State.class).setState(new State(state.page() - 1, state.first(), state.second())));
+                        (click, c) -> c.session(State.class).setState(new State(state.page() - 1, state.first(), state.second(), state.smart())));
             if (state.page() < pages)
                 layout.slot(53, (s, c) -> ItemStacks.item(Material.ARROW, "<a>Next Page"),
-                        (click, c) -> c.session(State.class).setState(new State(state.page() + 1, state.first(), state.second())));
+                        (click, c) -> c.session(State.class).setState(new State(state.page() + 1, state.first(), state.second(), state.smart())));
         } else {
             List<AttributeFusionService.FusionResult> results = AttributeFusionService.results(first, second);
             int[] slots = {29, 31, 33};
@@ -79,7 +82,7 @@ public class GUIAttributeFusion implements StatefulView<GUIAttributeFusion.State
                                 if (newShard) player.getAchievementHandler().completeAchievement("skyblock.amalgamation");
                                 c.player().sendMessage("<a>Fusion complete! You received <e>{}x <a>{}!",
                                         result.amount(), result.definition().shardName());
-                                c.session(State.class).setState(new State(1, null, null));
+                                c.session(State.class).setState(new State(1, null, null, state.smart()));
                             } else c.player().sendMessage("<c>You no longer have enough Shards for that fusion!");
                         });
             }
@@ -96,7 +99,15 @@ public class GUIAttributeFusion implements StatefulView<GUIAttributeFusion.State
         if (second != null)
             layout.slot(51, (s, c) -> AttributeGUIItems.fusionShard(second, AttributeFusionService.required(second), "<7>Fusion cost: <a>" + AttributeFusionService.required(second)));
         if (first != null) layout.slot(48, (s, c) -> ItemStacks.item(Material.RED_DYE, "<c>Reset"),
-                (click, c) -> c.session(State.class).setState(new State(1, null, null)));
+                (click, c) -> c.session(State.class).setState(new State(1, null, null, state.smart())));
+        layout.slot(50, (s, c) -> ItemStacks.item(state.smart() ? Material.LIME_DYE : Material.GRAY_DYE, """
+                %sSmart Fusion
+                <7>Only list Shards whose Attribute
+                <7>you have already maxed out, so
+                <7>nothing you still need is used.
+
+                <e>Click to toggle!""".formatted(state.smart() ? "<a>" : "<c>")),
+                (click, c) -> c.session(State.class).setState(new State(1, null, null, !state.smart())));
         Components.close(layout, 49);
     }
 }

@@ -2943,7 +2943,6 @@ items:
     material: paper
     name: "Hunting Toolkit"
     rarity: RARE
-    unavailable: "Hunting Toolkit swapping isn't built"
     source: "David Hunterborough for 1,000,000 Coins"
     lore:
       - "§8Consumable"
@@ -2954,6 +2953,8 @@ items:
       - ""
       - "§eRight-click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: HUNTING_TOOLKIT
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/foraging_2/hunting_toolkit
   - id: HURRICANE_IN_A_BOTTLE

@@ -1,5 +1,7 @@
 package dev.daweapon.type.galatea.gui;
 
+import dev.daweapon.type.skyblockgeneric.hunting.npc.HuntingNpcCatalogueView;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.Material;
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
@@ -19,13 +21,13 @@ public class GUIDavid extends StatelessView {
         Components.fill(layout);
         Components.close(layout, 49);
 
-        layout.slot(20, ItemStacks.item(Material.GOLDEN_AXE, """
+        layout.slot(20, (_, _) -> ItemStacks.item(Material.GOLDEN_AXE, """
                 <a>Hunting Tools
                 <7>You don't know which Hunting Gear to
                 <7>buy, or how to use them? I’ll
                 <7>explain everything!
 
-                <e>Click to open!"""));
+                <e>Click to open!"""), (_, c) -> ((SkyBlockPlayer) c.player()).openView(new HuntingNpcCatalogueView("hunting_david", null)));
         layout.slot(22, ItemStacks.item(Material.LEAD, """
                 <a>Hunting Lessons
                 <7>You still have questions regarding

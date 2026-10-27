@@ -1,0 +1,298 @@
+# Huntrap pools: which Shards a Huntrap can catch where. Source: Huntraps wiki page (Locations).
+# weight 100 is a guess wherever the wiki gives no weight. medium: LAND, UNDERWATER, UNDER_LAVA or ANY.
+pools:
+  - id: backwater_bayou_underwater
+    world: SKYBLOCK_BACKWATER_BAYOU
+    medium: UNDERWATER
+    shards:
+      - { shard: C8, weight: 2000 }
+      - { shard: U44, weight: 1000 }
+      - { shard: E6, weight: 500 }
+      - { shard: L47, weight: 100 }
+  - id: crimson_under_lava
+    world: SKYBLOCK_CRIMSON_ISLE
+    medium: UNDER_LAVA
+    shards:
+      - { shard: U32, weight: 100 }
+      - { shard: R56, weight: 100 }
+      - { shard: R59, weight: 100 }
+  - id: crimson_mystic_marsh
+    world: SKYBLOCK_CRIMSON_ISLE
+    medium: ANY
+    regions: [MYSTIC_MARSH]
+    shards:
+      - { shard: E34, weight: 100 }
+  - id: crimson_matriarchs_lair
+    world: SKYBLOCK_CRIMSON_ISLE
+    medium: ANY
+    regions: [MATRIARCHS_LAIR]
+    shards:
+      - { shard: L27, weight: 100 }
+  - id: crimson_smoldering_tomb
+    world: SKYBLOCK_CRIMSON_ISLE
+    medium: ANY
+    regions: [SMOLDERING_TOMB]
+    shards:
+      - { shard: L28, weight: 100 }
+  - id: crimson_burning_desert
+    world: SKYBLOCK_CRIMSON_ISLE
+    medium: ANY
+    regions: [BURNING_DESERT]
+    shards:
+      - { shard: U33, weight: 100 }
+  - id: crimson_stronghold
+    world: SKYBLOCK_CRIMSON_ISLE
+    medium: ANY
+    regions: [STRONGHOLD]
+    shards:
+      - { shard: C30, weight: 100 }
+      - { shard: R39, weight: 100 }
+  - id: hollows_anywhere
+    world: SKYBLOCK_CRYSTAL_HOLLOWS
+    medium: ANY
+    shards:
+      - { shard: R31, weight: 100 }
+  - id: hollows_underwater
+    world: SKYBLOCK_CRYSTAL_HOLLOWS
+    medium: UNDERWATER
+    shards:
+      - { shard: R29, weight: 100 }
+  - id: hollows_magma_fields
+    world: SKYBLOCK_CRYSTAL_HOLLOWS
+    medium: ANY
+    regions: [MAGMA_FIELDS]
+    shards:
+      - { shard: C33, weight: 100 }
+  - id: deep_caverns_lapis_quarry
+    world: SKYBLOCK_DEEP_CAVERNS
+    medium: ANY
+    regions: [LAPIS_QUARRY]
+    shards:
+      - { shard: C9, weight: 100 }
+  - id: mines_underwater
+    world: SKYBLOCK_DWARVEN_MINES
+    medium: UNDERWATER
+    shards:
+      - { shard: R23, weight: 100 }
+      - { shard: U26, weight: 100 }
+  - id: mines_the_mist
+    world: SKYBLOCK_DWARVEN_MINES
+    medium: ANY
+    regions: [THE_MIST]
+    shards:
+      - { shard: E33, weight: 100 }
+  - id: mines_great_ice_wall
+    world: SKYBLOCK_DWARVEN_MINES
+    medium: ANY
+    regions: [GREAT_ICE_WALL]
+    shards:
+      - { shard: R6, weight: 100 }
+  - id: moonglade_land
+    world: SKYBLOCK_GALATEA
+    medium: LAND
+    shards:
+      - { shard: C4, weight: 100 }
+      - { shard: C7, weight: 100 }
+      - { shard: C17, weight: 100 }
+      - { shard: C25, weight: 100 }
+      - { shard: U11, weight: 100 }
+      - { shard: R10, weight: 100 }
+      - { shard: R49, weight: 100 }
+  - id: murkwater_depths_underwater
+    world: SKYBLOCK_GALATEA
+    medium: UNDERWATER
+    regions: [MURKWATER_DEPTHS]
+    shards:
+      - { shard: U14, weight: 100 }
+      - { shard: C23, weight: 100 }
+      - { shard: R50, weight: 100 }
+      - { shard: E26, weight: 100 }
+  - id: murkwater_kelpwoven_underwater
+    world: SKYBLOCK_GALATEA
+    medium: UNDERWATER
+    regions: [MURKWATER_DEPTHS, KELPWOVEN_TUNNELS]
+    shards:
+      - { shard: L14, weight: 100 }
+      - { shard: C5, weight: 100 }
+      - { shard: C11, weight: 100 }
+      - { shard: C20, weight: 100 }
+      - { shard: C29, weight: 100 }
+      - { shard: U20, weight: 100 }
+      - { shard: U29, weight: 100 }
+      - { shard: R11, weight: 100 }
+  - id: galatea_stride_ember_fissure
+    world: SKYBLOCK_GALATEA
+    medium: ANY
+    regions: [STRIDE_EMBER_FISSURE]
+    shards:
+      - { shard: U38, weight: 100 }
+  - id: galatea_drowned_reliquary
+    world: SKYBLOCK_GALATEA
+    medium: ANY
+    regions: [DROWNED_RELIQUARY]
+    shards:
+      - { shard: R18, weight: 100 }
+  - id: galatea_squid_cave
+    world: SKYBLOCK_GALATEA
+    medium: ANY
+    regions: [SQUID_CAVE]
+    shards:
+      - { shard: R44, weight: 100 }
+  - id: galatea_wyrmgrove_tomb
+    world: SKYBLOCK_GALATEA
+    medium: ANY
+    regions: [WYRMGROVE_TOMB]
+    shards:
+      - { shard: C12, weight: 100 }
+  - id: tranquility_sanctum
+    world: SKYBLOCK_GALATEA
+    medium: ANY
+    regions: [TRANQUILITY_SANCTUM]
+    shards:
+      - { shard: U31, weight: 100 }
+      - { shard: U25, weight: 100 }
+  - id: hub_crypts
+    world: SKYBLOCK_HUB
+    medium: ANY
+    regions: [CRYPTS]
+    shards:
+      - { shard: C27, weight: 100 }
+  - id: jerrys_workshop_underwater
+    world: SKYBLOCK_JERRYS_WORKSHOP
+    medium: UNDERWATER
+    shards:
+      - { shard: R35, weight: 100 }
+  - id: lotus_atoll_anywhere
+    world: SKYBLOCK_BACKWATER_BAYOU
+    medium: ANY
+    regions: [LOTUS_ATOLL]
+    shards:
+      - { shard: U59, weight: 100 }
+  - id: lotus_atoll_land
+    world: SKYBLOCK_BACKWATER_BAYOU
+    medium: LAND
+    regions: [LOTUS_ATOLL]
+    shards:
+      - { shard: U23, weight: 100 }
+  - id: lotus_atoll_underwater
+    world: SKYBLOCK_BACKWATER_BAYOU
+    medium: UNDERWATER
+    regions: [LOTUS_ATOLL]
+    shards:
+      - { shard: C26, weight: 100 }
+  - id: spider_mound
+    world: SKYBLOCK_SPIDERS_DEN
+    medium: ANY
+    regions: [SPIDER_MOUND]
+    shards:
+      - { shard: C15, weight: 100 }
+  - id: end_dragons_nest
+    world: SKYBLOCK_THE_END
+    medium: ANY
+    regions: [DRAGONS_NEST]
+    shards:
+      - { shard: C21, weight: 100 }
+      - { shard: U18, weight: 100 }
+      - { shard: U15, weight: 100 }
+  - id: end_bruiser_hideout
+    world: SKYBLOCK_THE_END
+    medium: ANY
+    regions: [ZEALOT_BRUISER_HIDEOUT]
+    shards:
+      - { shard: U36, weight: 100 }
+  - id: park_howling_cave
+    world: SKYBLOCK_THE_PARK
+    medium: ANY
+    regions: [HOWLING_CAVE]
+    shards:
+      - { shard: U30, weight: 100 }
+  - id: torrhus_land
+    world: SKYBLOCK_TORRHUS_CANYON
+    medium: LAND
+    shards:
+      - { shard: C61, weight: 100 }
+  - id: torrhus_canyon_spring_path_land
+    world: SKYBLOCK_TORRHUS_CANYON
+    medium: LAND
+    regions: [TORRHUS_CANYON, SPRING_PATH]
+    shards:
+      - { shard: U88, weight: 100 }
+  - id: torrhus_spring_path_springs_land
+    world: SKYBLOCK_TORRHUS_CANYON
+    medium: LAND
+    regions: [SPRING_PATH, TORRHUS_SPRINGS]
+    shards:
+      - { shard: U65, weight: 100 }
+  - id: torrhus_spring_path_underwater
+    world: SKYBLOCK_TORRHUS_CANYON
+    medium: UNDERWATER
+    regions: [SPRING_PATH]
+    shards:
+      - { shard: C56, weight: 100 }
+  - id: torrhus_spring_shallows
+    world: SKYBLOCK_TORRHUS_CANYON
+    medium: UNDERWATER
+    regions: [SPRING_SHALLOWS]
+    shards:
+      - { shard: U62, weight: 75 }
+      - { shard: C44, weight: 100 }
+      - { shard: C47, weight: 50 }
+      - { shard: U71, weight: 25 }
+  - id: torrhus_depths_hotspot
+    world: SKYBLOCK_TORRHUS_CANYON
+    medium: UNDERWATER
+    regions: [SPRING_DEPTHS, HOTSPOT_HAVEN]
+    shards:
+      - { shard: U68, weight: 50 }
+      - { shard: R83, weight: 50 }
+  - id: torrhus_depths
+    world: SKYBLOCK_TORRHUS_CANYON
+    medium: UNDERWATER
+    regions: [SPRING_DEPTHS]
+    shards:
+      - { shard: R95, weight: 100 }
+      - { shard: E44, weight: 25 }
+      - { shard: E47, weight: 10 }
+  - id: torrhus_water_snake
+    world: SKYBLOCK_TORRHUS_CANYON
+    medium: UNDERWATER
+    regions: [SPRING_SHALLOWS, SPRING_DEPTHS]
+    shards:
+      - { shard: U50, weight: 50 }
+  - id: torrhus_goldolot_land
+    world: SKYBLOCK_TORRHUS_CANYON
+    medium: LAND
+    regions: [TORRHUS_SPRINGS]
+    shards:
+      - { shard: R92, weight: 25 }
+  - id: torrhus_goldolot_water
+    world: SKYBLOCK_TORRHUS_CANYON
+    medium: UNDERWATER
+    regions: [SPRING_SHALLOWS, SPRING_DEPTHS]
+    shards:
+      - { shard: R92, weight: 25 }
+  - id: torrhus_giant_water_bug
+    world: SKYBLOCK_TORRHUS_CANYON
+    medium: ANY
+    regions: [HOTSPOT_HAVEN]
+    shards:
+      - { shard: R89, weight: 100 }
+  - id: torrhus_sepialot_land
+    world: SKYBLOCK_TORRHUS_CANYON
+    medium: LAND
+    regions: [TORRHUS_CANYON, TORRHUS_SPRINGS]
+    shards:
+      - { shard: U56, weight: 100 }
+  - id: torrhus_sepialot_water
+    world: SKYBLOCK_TORRHUS_CANYON
+    medium: UNDERWATER
+    regions: [SPRING_SHALLOWS, SPRING_DEPTHS]
+    shards:
+      - { shard: U56, weight: 100 }
+  - id: ants_cave
+    world: SKYBLOCK_TORRHUS_CANYON
+    medium: ANY
+    regions: [ANTS_CAVE]
+    shards:
+      - { shard: C40, weight: 100 }
+      - { shard: U79, weight: 100 }

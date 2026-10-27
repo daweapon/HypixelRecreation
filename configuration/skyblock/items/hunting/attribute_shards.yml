@@ -861,6 +861,17 @@ items:
     components:
       - id: ATTRIBUTE_SHARD
         shard_id: U57
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern: [ ABA, BCB, ABA ]
+            ingredients:
+              A: { type: ENCHANTED_HELIX_LOG, amount: 8 }
+              B: { type: ENCHANTED_HONEYCOMB, amount: 1 }
+              C: { type: ENCHANTED_EGG, amount: 16 }
+            result: { type: SHARD_HONEY_BADGER, amount: 1 }
       - id: SKULL_HEAD
         texture: e517aa9d2daeea4115a0c79702699d0ef7a50e9db002e2697dafb7c289458205
   - id: SHARD_DRIFTLING
@@ -1021,6 +1032,17 @@ items:
     components:
       - id: ATTRIBUTE_SHARD
         shard_id: U82
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern: [ ABA, BCB, ABA ]
+            ingredients:
+              A: { type: ENCHANTED_HELIX_LOG, amount: 8 }
+              B: { type: ENCHANTED_FEATHER, amount: 4 }
+              C: { type: ENCHANTED_EGG, amount: 16 }
+            result: { type: SHARD_HAWK, amount: 1 }
       - id: SKULL_HEAD
         texture: f202164427ad2dadf175e3fd8c81335a30b2c7e1d5e2f93a57b81570d1c461db
   - id: SHARD_JUNE_BUG
@@ -1029,6 +1051,17 @@ items:
     components:
       - id: ATTRIBUTE_SHARD
         shard_id: U85
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern: [ ABA, BCB, ABA ]
+            ingredients:
+              A: { type: ENCHANTED_HELIX_LOG, amount: 8 }
+              B: { type: ENCHANTED_RUBY_VEILSHROOM, amount: 1 }
+              C: { type: ENCHANTED_EGG, amount: 16 }
+            result: { type: SHARD_JUNE_BUG, amount: 1 }
       - id: SKULL_HEAD
         texture: 972104e509e6a5e65d02a5b1d9ff88ad5d65fc6a11920ce2e615293a0f46dff1
   - id: SHARD_DUNG_BEETLE
@@ -2137,6 +2170,17 @@ items:
     components:
       - id: ATTRIBUTE_SHARD
         shard_id: E49
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern: [ ABA, BCB, ABA ]
+            ingredients:
+              A: { type: ENCHANTED_HONEYCOMB, amount: 4 }
+              B: { type: ENCHANTED_HELIX_LOG, amount: 16 }
+              C: { type: ENCHANTED_EGG, amount: 16 }
+            result: { type: SHARD_QUEEN_BEE, amount: 1 }
       - id: SKULL_HEAD
         texture: a5faeb2aff324d9451742fed4de7a96e94bbefc766317963e5d4f430dab77223
   - id: SHARD_BONZO

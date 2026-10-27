@@ -165,6 +165,7 @@ public final class MaxStickService {
             new Step("Bits", MaxStickService::giveMaxBits),
             new Step("Gems", MaxStickService::giveMaxGems),
             new Step("Dark Auction calendar", MaxStickService::unlockDarkAuctionCalendar),
+            new Step("Hunting Toolkit", dev.daweapon.type.skyblockgeneric.hunting.HuntingToolkit::unlock),
             new Step("Farming contests", MaxStickService::maxFarmingContests),
             new Step("Garden", dev.daweapon.type.skyblockgeneric.garden.GardenService::maxOut),
             new Step("Accessory Bag upgrades", MaxStickService::maxAccessoryBagUpgrades),

@@ -1,0 +1,7 @@
+title: David Hunterborough
+slots: [22]
+entries:
+  - item: HUNTING_TOOLKIT
+    name: "<9>Hunting Toolkit"
+    material: paper
+    cost: { coins: 1000000 }

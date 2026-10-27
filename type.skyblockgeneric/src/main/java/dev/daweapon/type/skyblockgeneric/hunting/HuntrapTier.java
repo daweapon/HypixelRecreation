@@ -2,23 +2,22 @@ package dev.daweapon.type.skyblockgeneric.hunting;
 
 import dev.daweapon.commons.skyblock.item.ItemType;
 
-import java.time.Duration;
 
 public enum HuntrapTier {
-    RETIA_BASICA(ItemType.RETIA_BASICA, "Small Huntrap", Duration.ofHours(24)),
-    RETIA_MELIORA(ItemType.RETIA_MELIORA, "Medium Huntrap", Duration.ofHours(22)),
-    RETIA_ROBUSTA(ItemType.RETIA_ROBUSTA, "Large Huntrap", Duration.ofHours(19)),
-    RETIA_FORTA(ItemType.RETIA_FORTA, "Greater Huntrap", Duration.ofHours(16)),
-    RETIA_SUPREMA(ItemType.RETIA_SUPREMA, "Astral Huntrap", Duration.ofHours(12));
+    RETIA_BASICA(ItemType.RETIA_BASICA, "Small Huntrap", 0),
+    RETIA_MELIORA(ItemType.RETIA_MELIORA, "Medium Huntrap", 0.10),
+    RETIA_ROBUSTA(ItemType.RETIA_ROBUSTA, "Large Huntrap", 0.20),
+    RETIA_FORTA(ItemType.RETIA_FORTA, "Greater Huntrap", 0.35),
+    RETIA_SUPREMA(ItemType.RETIA_SUPREMA, "Astral Huntrap", 0.50);
 
     private final ItemType itemType;
     private final String displayName;
-    private final Duration duration;
+    private final double reduction;
 
-    HuntrapTier(ItemType itemType, String displayName, Duration duration) {
+    HuntrapTier(ItemType itemType, String displayName, double reduction) {
         this.itemType = itemType;
         this.displayName = displayName;
-        this.duration = duration;
+        this.reduction = reduction;
     }
 
     public ItemType itemType() {
@@ -29,7 +28,7 @@ public enum HuntrapTier {
         return displayName;
     }
 
-    public long durationMillis() {
-        return duration.toMillis();
+    public double reduction() {
+        return reduction;
     }
 }

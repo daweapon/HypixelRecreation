@@ -63,6 +63,7 @@ public final class AnalyzerService {
         player.addCoins(-mutation.coinsCost());
         int copper = copperFor(player, mutation, first);
         profile.addCopper(copper);
+        FloraShards.award(player, profile, copper);
         Gardens.save(player, profile);
         player.sendMessage(Text.of("<d><m>                              "));
         player.sendMessage(Text.of("{} <6><l>ANALYSIS COMPLETE", "<a>" + mutation.name().toUpperCase()));
@@ -109,6 +110,7 @@ public final class AnalyzerService {
         player.addCoins(-cost);
         GardenProfile profile = Gardens.profile(player);
         profile.addCopper(copper);
+        FloraShards.award(player, profile, copper);
         Gardens.save(player, profile);
         player.sendMessage(Text.of("<a>Mass analysis complete! You received <c>{} Copper<a>.", StringUtility.commaify(copper)));
         return true;

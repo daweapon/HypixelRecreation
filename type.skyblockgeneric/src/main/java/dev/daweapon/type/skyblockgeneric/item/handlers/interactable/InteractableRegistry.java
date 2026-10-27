@@ -58,6 +58,7 @@ public class InteractableRegistry {
         dev.daweapon.type.skyblockgeneric.garden.chip.ChipItems.registerInteractables();
         dev.daweapon.type.skyblockgeneric.garden.tool.FarmingToolItems.registerInteractables();
         dev.daweapon.type.skyblockgeneric.garden.tool.FarmingToolkit.registerInteractables();
+        dev.daweapon.type.skyblockgeneric.hunting.HuntingToolkit.registerInteractables();
         dev.daweapon.type.skyblockgeneric.bank.PersonalBankItem.registerInteractables();
         dev.daweapon.type.skyblockgeneric.accessory.enrichment.Enrichments.registerInteractables();
         register("SKYBLOCK_MENU_INTERACT", InteractableItemConfig.builder().rightClickHandler(
