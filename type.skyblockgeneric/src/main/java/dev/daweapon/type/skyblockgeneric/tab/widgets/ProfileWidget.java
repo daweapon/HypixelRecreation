@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.tab.widgets;
 
+import dev.daweapon.type.skyblockgeneric.levels.SkyBlockLevelRequirement;
 import dev.daweapon.commons.StringUtility;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.data.datapoints.DatapointInteger;
@@ -66,7 +67,8 @@ public final class ProfileWidget implements TabWidget {
             double totalXp = player.getSkyBlockExperience().getTotalXP();
             int level = (int) (totalXp / SkyBlockXPSource.XP_PER_LEVEL);
             int xp = (int) (totalXp % SkyBlockXPSource.XP_PER_LEVEL);
-            lines.add(Text.of(" <7>SB Level: <6>[{}] <b>{}<3>/<b>{} XP", level, xp, SkyBlockXPSource.XP_PER_LEVEL));
+            String color = SkyBlockLevelRequirement.getFromTotalXP(totalXp).getColor();
+            lines.add(Text.of(" <7>SB Level: <7>[" + color + "{}<7>] <b>{}<3>/<b>{} XP", level, xp, SkyBlockXPSource.XP_PER_LEVEL));
         }
 
         DatapointBankData.BankData bank = data.get(SkyBlockDataHandler.Data.BANK_DATA, DatapointBankData.class).getValue();
