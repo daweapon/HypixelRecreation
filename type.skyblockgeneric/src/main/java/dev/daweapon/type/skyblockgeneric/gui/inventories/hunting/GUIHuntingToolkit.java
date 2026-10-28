@@ -22,8 +22,7 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.List;
 
 public class GUIHuntingToolkit extends StatelessView {
-    private static final int[] SLOTS = {10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25,
-            28, 29, 30, 31, 32, 33, 34};
+    private static final int[] SLOTS = {11, 12, 13, 14, 29, 30, 31, 32, 33};
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {

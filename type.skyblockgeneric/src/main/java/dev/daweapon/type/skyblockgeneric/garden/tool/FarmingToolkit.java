@@ -83,6 +83,15 @@ public final class FarmingToolkit {
         return true;
     }
 
+    public static void stockBest(SkyBlockPlayer player) {
+        GardenProfile profile = Gardens.profile(player);
+        for (Slot slot : SLOTS) {
+            profile.toolkit().store(slot.family(), new SkyBlockItem(dev.daweapon.commons.skyblock.item.ItemType.valueOf(slot.family() + "_3"))
+                    .toUnderstandable().serialize());
+        }
+        Gardens.save(player, profile);
+    }
+
     public static boolean retrieve(SkyBlockPlayer player, Slot slot) {
         GardenProfile profile = Gardens.profile(player);
         String serialized = profile.toolkit().take(slot.family());
