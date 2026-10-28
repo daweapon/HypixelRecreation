@@ -43,7 +43,8 @@ public final class AbiphoneDirectoryView extends PaginatedView<AbiphoneContact, 
     @Override
     protected ItemStack.Builder renderItem(AbiphoneContact contact, int index, HypixelPlayer player) {
         AbiphoneNPC npc = AbiphoneRegistry.getFromId(contact.id());
-        ItemStack.Builder icon = npc != null ? npc.getIcon() : ItemStack.builder(Material.PLAYER_HEAD);
+        ItemStack.Builder icon = !contact.head().isBlank() ? ItemStacks.head(contact.head(), Text.empty(), List.of())
+                : npc != null ? npc.getIcon() : ItemStack.builder(Material.PLAYER_HEAD);
         List<Text> lore = new ArrayList<>();
         lore.add(Text.of("<7>{}", contact.description()));
         lore.add(Text.empty());

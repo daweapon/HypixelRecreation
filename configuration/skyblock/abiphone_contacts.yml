@@ -1,6 +1,7 @@
 contacts:
   - id: agatha
     name: "Agatha"
+    head: "f50b136168f3708c0cca6f42d140465c3a1a447a2e425ec45e788c5c7920d365"
     difficulty: EASY
     location: "Galatea"
     description: "Hosts Agatha's Contests."
@@ -9,6 +10,7 @@ contacts:
     aliases: [agatha]
   - id: alchemist
     name: "Alchemist"
+    head: "fce6604157fc4ab5591e4bcf507a749918ee9c41e357d47376e0ee7342074c90"
     difficulty: MEDIUM
     location: "Hub"
     description: "Sells ingredients for your strongest potions."
@@ -41,6 +43,7 @@ contacts:
     aliases: [aranya]
   - id: archie
     name: "Archie"
+    head: "bed3b4353204f6907f9703b02219f3cc32f79c4f164fd4b5b3333a3016b3f69b"
     difficulty: MEDIUM
     location: "Torrhus Canyon"
     description: "Runs the ."
@@ -57,6 +60,7 @@ contacts:
     aliases: [bartender]
   - id: blacksmith
     name: "Blacksmith"
+    head: "822d8e751c8f2fd4c8942c44bdb2f5ca4d8ae8e575ed3eb34c18a86e93b"
     difficulty: HARD
     location: "Hub"
     description: "Reforges items."
@@ -137,6 +141,7 @@ contacts:
     aliases: [dean]
   - id: duncan
     name: "Duncan"
+    head: "9dbadc7f8eb18888efcdae7e0db4cf30ff28bd588534f4bb042d5bc6bdc4dfef"
     difficulty: EASY
     location: "Dungeon"
     description: "Sells one thing in Dungeons."
@@ -145,6 +150,7 @@ contacts:
     aliases: [duncan]
   - id: dusk
     name: "Dusk"
+    head: "7ca85c1563bf569d88bf7bc375cbc820d7d4a73c92aaf7d9479af5ef5255d040"
     difficulty: EASY
     location: "Hub"
     description: "Allows virtual Runecrafting through some magical witchcraft."
@@ -193,6 +199,7 @@ contacts:
     aliases: [fear_mongerer, fear, fearmongerer, spooky]
   - id: feast_baker_scott
     name: "Feast Baker Scott"
+    head: "9554f6c4f81b0a0c89353062995294bb6aa755b32fd166294977b8d6d45a49ba"
     difficulty: MEDIUM
     location: "Hub"
     description: "Gifted with flour, and yeast, the feast's dedicated baker."
@@ -201,6 +208,7 @@ contacts:
     aliases: [feast_baker_scott, scott]
   - id: feast_chef_ted
     name: "Feast Chef Ted"
+    head: "4346bd5b7cb07a24f2716aa90bbed6d88b19a88d6364d09b39c7850619635b04"
     difficulty: MEDIUM
     location: "Hub"
     description: "The Grand Feast's head chef! Always cooking."
@@ -209,6 +217,7 @@ contacts:
     aliases: [feast_chef_ted, ted]
   - id: fred
     name: "Fred"
+    head: "2ddd89a6ae957f766d300011ff4471481c3bb61b676078a8c6c3c4083201b5c2"
     difficulty: MEDIUM
     location: "Dwarven Mines"
     description: "Foreman of the Forge."
@@ -225,6 +234,7 @@ contacts:
     aliases: [alex, frozen, frozen_alex]
   - id: gemma
     name: "Gemma"
+    head: "8e42015d0bfa855f99d09af06f32790d9e39383961766d8e2c8f1604585245b9"
     difficulty: MEDIUM
     location: "Crystal Hollows"
     description: "Runs the ."
@@ -241,6 +251,7 @@ contacts:
     aliases: [gemstone, geo]
   - id: george
     name: "George"
+    head: "99bb13737979f98ba236e37ae48fd5dddedba719ec62068e8ac962abf7e07d83"
     difficulty: HARD
     location: "Hub"
     description: "Collects and purchases pets."
@@ -289,6 +300,7 @@ contacts:
     aliases: [arrow, arrow_forger, jax]
   - id: jotraeline_greatforge
     name: "Jotraeline Greatforge"
+    head: "85362b61f298dec2df765457d6b417e917d2309ebc8f691f0855489682ddec59"
     difficulty: EASY
     location: "Dwarven Mines"
     description: "Pro Drill Maintenance representative."
@@ -369,6 +381,7 @@ contacts:
     aliases: [malik]
   - id: marigold
     name: "Marigold"
+    head: "ccb0597582f5a6c2f445d8da6971b3f3e8bbd9cc2968fd63075d34abb02c1cb3"
     difficulty: MEDIUM
     location: "Dwarven Mines"
     description: "Runs the ."
@@ -385,6 +398,7 @@ contacts:
     aliases: [max, maxwell]
   - id: miria
     name: "Miria"
+    head: "388ab9514c11cbe0e8c39d63387e8cc6c1e94594f1dc2bd622789c73d6795d3d"
     difficulty: MEDIUM
     location: "Torrhus Canyon"
     description: "Host Miria's Contest."
@@ -401,6 +415,7 @@ contacts:
     aliases: [moby]
   - id: mort
     name: "Mort"
+    head: "9b56895b9659896ad647f58599238af532d46db9c1b0389b8bbeb70999dab33d"
     difficulty: MEDIUM
     location: "Dungeon Hub"
     description: "Guards the entrance to the catacombs."
@@ -441,6 +456,7 @@ contacts:
     aliases: [pablo]
   - id: phillip
     name: "Phillip"
+    head: "bd0f689fc47d3f7773dbfc36af46a41e14e43b480d891bf4b9bf1eb804381742"
     difficulty: EASY
     location: "The Garden"
     description: "Sells useful farming items in exchange for from your vacuum."
@@ -449,6 +465,7 @@ contacts:
     aliases: [pesthunter, pesthunter_phillip, philip, phillip]
   - id: plumber_joe
     name: "Plumber Joe"
+    head: "822d8e751c8f2fd4c8942c44bdb2f5ca4d8ae8e575ed3eb34c18a86e93b"
     difficulty: EASY
     location: "Hub"
     description: "It's Plumber Joe!"
@@ -457,6 +474,7 @@ contacts:
     aliases: [plumber_joe, joe, plumber, plumberjoe]
   - id: professor_wynd
     name: "Professor Wynd"
+    head: "a30357e1f2957519258314b458dc9c39e8d7b7d8ba77e9e646a7d5b9945cb7fd"
     difficulty: EASY
     location: "Hub"
     description: "Alerts you of the weather!"
@@ -465,6 +483,7 @@ contacts:
     aliases: [professor_wynd, wind, wynd]
   - id: queen_mismyla
     name: "Queen Mismyla"
+    head: "6f70385f472c03825c0e894d94ac201e1b642d1032202d4bf33372fa3aa29fba"
     difficulty: EASY
     location: "Dwarven Mines"
     description: "Access Commissions remotely."
@@ -505,6 +524,7 @@ contacts:
     aliases: [rosemary]
   - id: rusty
     name: "Rusty"
+    head: "822d8e751c8f2fd4c8942c44bdb2f5ca4d8ae8e575ed3eb34c18a86e93b"
     difficulty: EASY
     location: "Gold Mine"
     description: "SkyBlock's Janitor."
@@ -513,6 +533,7 @@ contacts:
     aliases: [janitor, rusty]
   - id: shaggy
     name: "Shaggy"
+    head: "258f88dcbd2af110c77cffaa00eab7a499c00133e61575599d9e06e61b8a24a6"
     difficulty: EASY
     location: "Spider's Den"
     description: "Will trade you !"
@@ -537,6 +558,7 @@ contacts:
     aliases: [sirih]
   - id: sirius
     name: "Sirius"
+    head: "7ab83858ebc8ee85c3e54ab13aabfcc1ef2ad446d6a900e471c3f33b78906a5b"
     difficulty: HARD
     location: "Hub"
     description: "Gives all of his contacts a 1% discount on the ! What a guy..."
@@ -545,6 +567,7 @@ contacts:
     aliases: [sirius]
   - id: spider_tamer
     name: "Spider Tamer"
+    head: "8ef40a38742d18d33041fae0e43bb3405c21e576f6321bbee0636e7214d6eff2"
     difficulty: MEDIUM
     location: "Spider's Den"
     description: "Runs the Spider Essence Shop."
@@ -553,6 +576,7 @@ contacts:
     aliases: [spider, spider_tamer, tamer]
   - id: st_jerry
     name: "St. Jerry"
+    head: "1692e62b41114c5b1a5e9e36c06798278eb6a5126dc26ddb166d2021fe0fa00e"
     difficulty: EASY
     location: "Jerry's Workshop"
     description: "Celebrates life all year long, but especially one quarter of it."
@@ -585,6 +609,7 @@ contacts:
     aliases: [taylor]
   - id: terry
     name: "Terry"
+    head: "9c3b72242f38b15c1312fac84e7cc73329236d20218e0ab78d08e2ac47806a48"
     difficulty: MEDIUM
     location: "Jerry's Workshop"
     description: "Sells a variety of useful fishing Reforge Stones."
@@ -593,6 +618,7 @@ contacts:
     aliases: [terry]
   - id: tia_the_fairy
     name: "Tia the Fairy"
+    head: "73f072940a942b953a3f9d1391ff342b7d19076f7a1a3e944040d6420c7d4980"
     difficulty: MEDIUM
     location: "Hub"
     description: "Is... a fairy."
@@ -601,6 +627,7 @@ contacts:
     aliases: [tia_the_fairy, fairy, tia, tiathefairy]
   - id: tomioka
     name: "Tomioka"
+    head: "55cb723e995729a5c94322d3aa3f1a56857243a7494b6806c6a6cdc2bdb68178"
     difficulty: MEDIUM
     location: "Dungeon"
     description: "Sells Enchanted Books in Dungeons."
@@ -633,6 +660,7 @@ contacts:
     aliases: [trinity]
   - id: tyzzo
     name: "Tyzzo"
+    head: "63c4edd1c27db3162e92f870810fce3646dcbf8ef5ebb46f2ddad5d88425e2ee"
     difficulty: EASY
     location: "The End"
     description: "Runs the ."
@@ -641,6 +669,7 @@ contacts:
     aliases: [tyzzo]
   - id: vincent
     name: "Vincent"
+    head: "9ba3c4f582fc8749e3d8e35ef1e63280c4752e4ac83aab69f674dac24a375803"
     difficulty: MEDIUM
     location: "Hub"
     description: "Knows all about Dyes and how to use them!"
@@ -673,6 +702,7 @@ contacts:
     aliases: [wool_weaver, weaver, wool, woolweaver]
   - id: zog
     name: "Zog"
+    head: "2bbcf73a4603b5aa5491cefc155f770de1a82466a5850604ba5ea24980cb5479"
     difficulty: MEDIUM
     location: "Hub"
     description: "Sells pet items."

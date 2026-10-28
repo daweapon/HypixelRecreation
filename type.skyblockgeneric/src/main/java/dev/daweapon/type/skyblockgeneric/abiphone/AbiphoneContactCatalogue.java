@@ -45,7 +45,8 @@ public final class AbiphoneContactCatalogue {
                         String.valueOf(entry.get("description")),
                         String.valueOf(entry.getOrDefault("requirement", "")),
                         String.valueOf(entry.getOrDefault("usage", "")),
-                        List.copyOf((List<String>) entry.get("aliases"))));
+                        List.copyOf((List<String>) entry.get("aliases")),
+                        String.valueOf(entry.getOrDefault("head", ""))));
             }
             return List.copyOf(loaded);
         } catch (IOException exception) {

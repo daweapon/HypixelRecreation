@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.event.actions.custom.levels;
 
+import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.event.EventNodes;
@@ -46,8 +47,7 @@ public class ActionChangeHypixelXP implements HypixelEventClass {
             }
             player.sendMessage("<3><m>---------------------------------");
             player.sendMessage("  <b><l>SKYBLOCK LEVEL UP");
-            player.sendMessage("  " + newLevel.getColor() + "Level " + oldLevel.getColor() + "{} <8>-> "
-                    + newLevel.getColor() + "[{}" + newLevel.getColor() + "]", oldLevel.asInt(), newLevel.asInt());
+            player.sendMessage("  " + newLevel.getColor() + "Level <7>{} <8>-> <7>[" + newLevel.getColor() + "{}<7>]", oldLevel.asInt(), newLevel.asInt());
             List<Text> rewards = rewardsBetween(player, oldLevel.asInt(), newLevel.asInt());
             if (!rewards.isEmpty()) {
                 player.sendMessage(" ");
@@ -71,10 +71,12 @@ public class ActionChangeHypixelXP implements HypixelEventClass {
             }
         }
         List<Text> lines = new ArrayList<>();
-        total.getStatisticsAdditive().forEach((key, value) -> {
-            if (value > 0)
-                lines.add(Text.of("<a>+" + value + key.getSuffix() + " <stat:" + key.name().toLowerCase() + ">"));
-        });
+        for (ItemStatistic statistic : ItemStatistic.values()) {
+            double value = total.getBase(statistic);
+            if (value <= 0) continue;
+            String amount = value == Math.rint(value) ? String.valueOf((long) value) : String.valueOf(value);
+            lines.add(Text.of("<a>+" + amount + statistic.getSuffix() + " <stat:" + statistic.name().toLowerCase() + ">"));
+        }
         lines.addAll(custom);
         return lines;
     }

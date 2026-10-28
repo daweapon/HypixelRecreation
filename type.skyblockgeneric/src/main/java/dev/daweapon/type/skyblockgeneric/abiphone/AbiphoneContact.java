@@ -3,7 +3,7 @@ package dev.daweapon.type.skyblockgeneric.abiphone;
 import java.util.List;
 
 public record AbiphoneContact(String id, String name, Difficulty difficulty, String location, String description,
-                              String requirement, String usage, List<String> aliases) {
+                              String requirement, String usage, List<String> aliases, String head) {
 
     public enum Difficulty {
         EASY("<a>Easy"),
