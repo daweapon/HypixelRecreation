@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.event.actions.custom.levels;
 
+import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.event.EventNodes;
 import dev.daweapon.type.generic.event.HypixelEventClass;
@@ -11,8 +12,10 @@ import dev.daweapon.type.skyblockgeneric.levels.SkyBlockLevelCause;
 import dev.daweapon.type.skyblockgeneric.levels.SkyBlockLevelRequirement;
 import dev.daweapon.type.skyblockgeneric.levels.SkyBlockLevelUnlock;
 import dev.daweapon.type.skyblockgeneric.levels.causes.LevelCause;
+import dev.daweapon.type.skyblockgeneric.levels.unlocks.SkyBlockLevelStatisticUnlock;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // Announces SkyBlock level-ups and grants their unlock rewards when a player's XP changes
@@ -41,20 +44,37 @@ public class ActionChangeHypixelXP implements HypixelEventClass {
                 LevelCause levelCause = SkyBlockLevelCause.getLevelCause(newLevel.asInt());
                 if (levelCause != null) player.getSkyBlockExperience().addExperience(levelCause);
             }
-            List<SkyBlockLevelUnlock> unlocks = newLevel.getUnlocks();
-
             player.sendMessage("<3><m>---------------------------------");
-            player.sendMessage("  <b><l>SKYBLOCK LEVEL UP! </l><7>{} <8><l>-> </l><3>{}", oldLevel.asInt(), newLevel.asInt());
-            if (!unlocks.isEmpty()) {
+            player.sendMessage("  <b><l>SKYBLOCK LEVEL UP");
+            player.sendMessage("  <c>Level <7>{} <8>-> <c>[{}<c>]", oldLevel.asInt(), newLevel.asInt());
+            List<Text> rewards = rewardsBetween(player, oldLevel.asInt(), newLevel.asInt());
+            if (!rewards.isEmpty()) {
                 player.sendMessage(" ");
-                player.sendMessage("  <a><l>REWARDS");
-                unlocks.forEach(unlock -> {
-                    unlock.getDisplay(player, newLevel.asInt()).forEach(line -> {
-                        player.sendMessage(Text.of("  <8>").append(line));
-                    });
-                });
+                player.sendMessage("  <6><l>REWARDS");
+                rewards.forEach(line -> player.sendMessage(Text.of("  ").append(line)));
             }
             player.sendMessage("<3><m>---------------------------------");
         }
+    }
+
+    private static List<Text> rewardsBetween(SkyBlockPlayer player, int fromLevel, int toLevel) {
+        ItemStatistics total = ItemStatistics.empty();
+        List<Text> custom = new ArrayList<>();
+        for (int level = fromLevel + 1; level <= toLevel; level++) {
+            SkyBlockLevelRequirement requirement = SkyBlockLevelRequirement.getLevel(level);
+            if (requirement == null) continue;
+            for (SkyBlockLevelUnlock unlock : requirement.getUnlocks()) {
+                if (unlock instanceof SkyBlockLevelStatisticUnlock statistic)
+                    total = ItemStatistics.add(total, statistic.getStatistics());
+                else custom.addAll(unlock.getDisplay(player, level));
+            }
+        }
+        List<Text> lines = new ArrayList<>();
+        total.getStatisticsAdditive().forEach((key, value) -> {
+            if (value > 0)
+                lines.add(Text.of("<a>+" + value + key.getSuffix() + " <stat:" + key.name().toLowerCase() + ">"));
+        });
+        lines.addAll(custom);
+        return lines;
     }
 }
