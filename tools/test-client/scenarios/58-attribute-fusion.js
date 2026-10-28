@@ -18,10 +18,10 @@ async function absorb(bot, itemId, amount, name) {
     await sleep(700);
 }
 
-const find = (bot, pattern) => bot.window()?.slots.find((slot) => pattern.test(`${slot.name} ${slot.lore.join(' ')}`));
+const find = (bot, pattern, minSlot = 0) => bot.window()?.slots.find((slot) => slot.slot >= minSlot && pattern.test(`${slot.name} ${slot.lore.join(' ')}`));
 
-async function pick(t, bot, pattern) {
-    const entry = find(bot, pattern);
+async function pick(t, bot, pattern, minSlot = 0) {
+    const entry = find(bot, pattern, minSlot);
     t.assert(entry, `no menu entry ${pattern}; window: ${JSON.stringify(bot.window()?.slots.filter((slot) => slot.item === 'player_head').slice(0, 3))}`);
     await bot.click(entry.slot, { settleMs: 900 });
 }
@@ -37,10 +37,10 @@ async function openFusionBox(t, bot) {
 async function fuse(t, bot, firstName, secondName, resultName) {
     await openFusionBox(t, bot);
     await pick(t, bot, firstName);
-    await pick(t, bot, secondName);
+    await pick(t, bot, secondName, 28);
     const mark = bot.markChat();
     const resultSlots = [29, 31, 33].map((slot) => (({ name, lore }) => `${name} ${lore.join(' ')}`)(bot.window().slots.find((entry) => entry.slot === slot) ?? { name: '', lore: [] })).filter(Boolean);
-    const entry = find(bot, resultName);
+    const entry = find(bot, resultName, 28);
     t.assert(entry, `result ${resultName} not offered; offered: ${JSON.stringify(resultSlots)}`);
     await bot.click(entry.slot, { settleMs: 2500 });
     const chat = clean(bot.chatSince(mark)) || `no chat after clicking slot ${entry.slot} (${entry.name}); window now: ${JSON.stringify(bot.window()?.slots.map((slot) => slot.slot + ':' + slot.name))}`;
@@ -92,7 +92,7 @@ module.exports = {
         await t.step('Grove + Mist offers the ID results Phanpyre and Cod, never Grove or Mist', async () => {
             await openFusionBox(t, bot);
             await pick(t, bot, /Grove/);
-            await pick(t, bot, /Mist/);
+            await pick(t, bot, /Mist/, 28);
             const names = [29, 31, 33].map((slot) => (({ name, lore }) => `${name} ${lore.join(' ')}`)(bot.window().slots.find((entry) => entry.slot === slot) ?? { name: '', lore: [] })).filter(Boolean).join(' | ');
             t.assert(/Phanpyre/.test(names) && /Cod/.test(names) && !/Grove|Mist/.test(names), names);
             await bot.closeWindow();
@@ -111,7 +111,7 @@ module.exports = {
         await t.step('Chameleon + Grove offers the sheet results Mist, Flash and Phanpyre', async () => {
             await openFusionBox(t, bot);
             await pick(t, bot, /Chameleon/);
-            await pick(t, bot, /Grove/);
+            await pick(t, bot, /Grove/, 28);
             const names = [29, 31, 33].map((slot) => (({ name, lore }) => `${name} ${lore.join(' ')}`)(bot.window().slots.find((entry) => entry.slot === slot) ?? { name: '', lore: [] })).filter(Boolean).join(' | ');
             t.assert(/Mist/.test(names) && /Flash/.test(names) && /Phanpyre/.test(names), names);
             await bot.closeWindow();

@@ -114,18 +114,7 @@ public class GUIHuntingBox extends StatefulPaginatedView<AttributeDefinition, GU
             Sort next = Sort.values()[Math.floorMod(state.sort().ordinal() + direction, Sort.values().length)];
             refresh(c, next, state.query());
         });
-        layout.slot(51, massSyphonItem(data), (_, c) -> {
-            List<AttributeDefinition> usable = syphonable(data);
-            SkyBlockPlayer clicker = (SkyBlockPlayer) c.player();
-            if (usable.isEmpty()) {
-                clicker.sendMessage("<c>You have no Shards to Syphon!");
-                return;
-            }
-            clicker.openView(new GUIMassSyphonConfirm(usable.stream().mapToInt(d -> data.shardCount(d.id())).sum(), usable.size(), p -> {
-                massSyphon(p);
-                p.openView(new GUIHuntingBox());
-            }));
-        });
+        layout.slot(51, massSyphonItem(data), (_, c) -> confirmMassSyphon((SkyBlockPlayer) c.player(), p -> p.openView(new GUIHuntingBox())));
         layout.slot(52, ItemStacks.item(Material.IRON_HOE, """
                 <a>Hunting Toolkit
                 <7>Store all of your Hunting Tools in
@@ -143,15 +132,19 @@ public class GUIHuntingBox extends StatefulPaginatedView<AttributeDefinition, GU
         List<AttributeDefinition> result = new ArrayList<>(AttributeRegistry.values().stream()
                 .filter(d -> data.shardCount(d.id()) > 0)
                 .filter(d -> query.isBlank() || AttributeRegistry.search(query).contains(d)).toList());
-        Comparator<AttributeDefinition> id = Comparator.comparingInt((AttributeDefinition d) -> d.rarity().ordinal()).thenComparingInt(AttributeDefinition::numericId);
-        if (sort == Sort.ID_DESCENDING) result.sort(id.reversed());
-        else if (sort == Sort.NEW_SHARDS)
-            result.sort(Comparator.comparingLong((AttributeDefinition d) -> data.getDiscoveredAt().getOrDefault(d.id().toString(), 0L)).reversed());
-        else result.sort(id);
+        sortShards(result, sort, data);
         ctx.session(State.class).setState(new State(result, 0, sort, query));
     }
 
-    private ItemStack.Builder sortItem(Sort selected) {
+    static void sortShards(List<AttributeDefinition> shards, Sort sort, DatapointHunting.HuntingData data) {
+        Comparator<AttributeDefinition> id = Comparator.comparingInt((AttributeDefinition d) -> d.rarity().ordinal()).thenComparingInt(AttributeDefinition::numericId);
+        if (sort == Sort.ID_DESCENDING) shards.sort(id.reversed());
+        else if (sort == Sort.NEW_SHARDS)
+            shards.sort(Comparator.comparingLong((AttributeDefinition d) -> data.getDiscoveredAt().getOrDefault(d.id().toString(), 0L)).reversed());
+        else shards.sort(id);
+    }
+
+    static ItemStack.Builder sortItem(Sort selected) {
         List<Text> lore = new ArrayList<>(List.of(Text.empty()));
         for (Sort sort : Sort.values())
             lore.add(Text.of(sort == selected ? "<b>▶ {}" : "<7>   {}", switch (sort) {
@@ -165,7 +158,20 @@ public class GUIHuntingBox extends StatefulPaginatedView<AttributeDefinition, GU
         return ItemStacks.item(Material.HOPPER, 1, Text.of("<a>Sort"), lore);
     }
 
-    private static List<AttributeDefinition> syphonable(DatapointHunting.HuntingData data) {
+    static void confirmMassSyphon(SkyBlockPlayer clicker, java.util.function.Consumer<SkyBlockPlayer> afterwards) {
+        DatapointHunting.HuntingData data = clicker.getHuntingData();
+        List<AttributeDefinition> usable = syphonable(data);
+        if (usable.isEmpty()) {
+            clicker.sendMessage("<c>You have no Shards to Syphon!");
+            return;
+        }
+        clicker.openView(new GUIMassSyphonConfirm(usable.stream().mapToInt(d -> data.shardCount(d.id())).sum(), usable.size(), p -> {
+            massSyphon(p);
+            afterwards.accept(p);
+        }));
+    }
+
+    static List<AttributeDefinition> syphonable(DatapointHunting.HuntingData data) {
         return AttributeRegistry.values().stream().filter(d -> data.shardCount(d.id()) > 0 && data.level(d.id()) < 10).toList();
     }
 
@@ -203,7 +209,7 @@ public class GUIHuntingBox extends StatefulPaginatedView<AttributeDefinition, GU
         refresh(ctx, ctx.session(State.class).state().sort(), ctx.session(State.class).state().query());
     }
 
-    private void massSyphon(SkyBlockPlayer player) {
+    static void massSyphon(SkyBlockPlayer player) {
         for (AttributeDefinition d : AttributeRegistry.values())
             if (player.getSkills().getCurrentLevel(SkillCategories.HUNTING) >= d.rarity().huntingRequirement())
                 player.getHuntingData().syphon(d.id(), player.getHuntingData().shardCount(d.id()));

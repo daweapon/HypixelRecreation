@@ -26,6 +26,21 @@ final class AttributeGUIItems {
         return AttributeShardComponent.create(definition, Math.max(1, amount)).getItemStackBuilder();
     }
 
+    static ItemStack.Builder fusionBoxHead(int shards) {
+        return ItemStacks.item(Material.BARREL, """
+                <a>Fusion Box
+                <7>To begin a fusion you need to select
+                <9>Shard <7>from your box.
+
+                <7>You'll then need to select other
+                <9>Shard <7>to fuse them with.
+
+                <7>Once done, you'll be given from 1
+                <7>to 3 result shards to choose from!
+
+                <7>Shards: <2>{}""", shards);
+    }
+
     static ItemStack.Builder fusionShard(AttributeDefinition definition, int amount, String... caption) {
         TextColor rarityColour = definition.rarity().itemRarity().getColor();
         List<Text> lore = new ArrayList<>();
