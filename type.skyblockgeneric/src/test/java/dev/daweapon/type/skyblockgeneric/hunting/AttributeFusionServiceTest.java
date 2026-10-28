@@ -121,6 +121,8 @@ class AttributeFusionServiceTest {
         assertEquals(18.75, HuntingXp.fusion(common), 1e-9);
         assertEquals(10_000, HuntingXp.charm(legendary), 1e-9);
         assertEquals(250, HuntingXp.fusion(legendary), 1e-9);
+        assertEquals(37.5, HuntingXp.trap(common), 1e-9);
+        assertEquals(500, HuntingXp.trap(legendary), 1e-9);
     }
 
     @Test

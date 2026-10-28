@@ -3,6 +3,7 @@ package dev.daweapon.type.skyblockgeneric.hunting;
 public final class HuntingXp {
     private static final double CHARM_MULTIPLIER = 10;
     private static final double FUSION_MULTIPLIER = 0.25;
+    private static final double TRAP_MULTIPLIER = 0.5;
     private static final double REDUCED_SHARD_MULTIPLIER = 0.5;
 
     private HuntingXp() {
@@ -18,6 +19,10 @@ public final class HuntingXp {
 
     public static double fusion(AttributeDefinition definition) {
         return base(definition.rarity()) * FUSION_MULTIPLIER;
+    }
+
+    public static double trap(AttributeDefinition definition) {
+        return base(definition.rarity()) * TRAP_MULTIPLIER;
     }
 
     private static double shardMultiplier(AttributeDefinition definition) {

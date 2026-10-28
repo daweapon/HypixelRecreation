@@ -2,6 +2,7 @@ package dev.daweapon.type.skyblockgeneric.hunting;
 
 import dev.daweapon.type.skyblockgeneric.item.components.AttributeShardComponent;
 import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
+import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.instance.block.Block;
@@ -212,6 +213,7 @@ public final class HuntrapService {
         player.getHuntingData().addShards(caught.id(), amount);
         dev.daweapon.type.generic.event.HypixelEventHandler.callCustomEvent(new dev.daweapon.type.skyblockgeneric.event.custom.ShardCaughtEvent(
                 player, caught, amount, dev.daweapon.type.skyblockgeneric.event.custom.ShardCaughtEvent.Source.HUNTRAP, false));
+        player.getSkills().increase(player, SkillCategories.HUNTING, HuntingXp.trap(caught));
         player.sendMessage("<a>Your Huntrap caught <e>{}x <a>{}<a>!", amount, caught.shardName());
         retrieveTrap(player, current);
     }

@@ -1,5 +1,5 @@
 # Huntrap pools: which Shards a Huntrap can catch where. Source: Huntraps wiki page (Locations).
-# weight 100 is a guess wherever the wiki gives no weight. medium: LAND, UNDERWATER, UNDER_LAVA or ANY.
+# weight 100 is a placeholder wherever the wiki gives no weight (checked again 2026-10-28). medium: LAND, UNDERWATER, UNDER_LAVA or ANY.
 pools:
   - id: backwater_bayou_underwater
     world: SKYBLOCK_BACKWATER_BAYOU

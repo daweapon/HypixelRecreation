@@ -21,6 +21,7 @@ sections:
     colour: "<6>"
     lines:
       - "Huntraps now roll their Shard when placed, take 8 to 24 hours depending on its rarity, and are capped at 5 placed at once. Click the HUNT message or use /collecthuntraps to collect."
+      - "Collecting a Huntrap catch now gives Hunting XP, half of what hunting the same Shard gives, so rarer Shards give more."
       - "Traps now work in the Backwater Bayou, Hotspot Haven, Spring Depths and the Dwarven Mines waters, catching Dumpster Diver, Bayou Sludge, Treasure Hoarder, Stingray and Giant Water Bug."
       - "David sells the Hunting Toolkit for 1,000,000 coins. It stores your Huntaxes, Pocket Black Holes, Lassos, Fishing Nets and Huntraps, and gives 2 SkyBlock XP."
       - "Primordial and Paragon Shards can drop from high tier Slayer bosses, and the Crop Analyzer yields Flora Shards."
