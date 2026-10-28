@@ -46,7 +46,8 @@ public class ActionChangeHypixelXP implements HypixelEventClass {
             }
             player.sendMessage("<3><m>---------------------------------");
             player.sendMessage("  <b><l>SKYBLOCK LEVEL UP");
-            player.sendMessage("  <c>Level <7>{} <8>-> <c>[{}<c>]", oldLevel.asInt(), newLevel.asInt());
+            player.sendMessage("  " + newLevel.getColor() + "Level " + oldLevel.getColor() + "{} <8>-> "
+                    + newLevel.getColor() + "[{}" + newLevel.getColor() + "]", oldLevel.asInt(), newLevel.asInt());
             List<Text> rewards = rewardsBetween(player, oldLevel.asInt(), newLevel.asInt());
             if (!rewards.isEmpty()) {
                 player.sendMessage(" ");
