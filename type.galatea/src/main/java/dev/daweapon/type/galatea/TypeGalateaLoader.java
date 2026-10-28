@@ -38,6 +38,7 @@ public class TypeGalateaLoader implements SkyBlockTypeLoader {
     public void afterInitialize(MinecraftServer server) {
         dev.daweapon.type.skyblockgeneric.hunting.creature.CreatureSpawner.start();
         ForestTemple.register(MinecraftServer.getSchedulerManager());
+        dev.daweapon.type.skyblockgeneric.hunting.FusionMachine.register(MinecraftServer.getSchedulerManager());
     }
 
     @Override

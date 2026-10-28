@@ -87,26 +87,39 @@ public class GUIAttributeFusion implements StatefulView<GUIAttributeFusion.State
                         });
             }
         }
-        layout.slot(4, (s, c) -> ItemStacks.item(Material.BLAST_FURNACE, """
+        layout.slot(4, (s, c) -> ItemStacks.item(Material.BARREL, """
                 <a>Fusion Box
-                <7>Select two different Shards.
-                <7>One of up to three result Shards
-                <7>can then be chosen.
+                <7>To begin a fusion you need to select
+                <7>a <9>Shard <7>from your box.
+
+                <7>You'll then need to select other
+                <9>Shards <7>to fuse them with.
+
+                <7>Once done, you'll be given from 1
+                <7>to 3 result shards to choose from!
 
                 <7>Shards: <2>{}""", data.getShards().values().stream().mapToInt(Integer::intValue).sum()));
         if (first != null)
-            layout.slot(47, (s, c) -> AttributeGUIItems.fusionShard(first, AttributeFusionService.required(first), "<7>Fusion cost: <a>" + AttributeFusionService.required(first)));
+            layout.slot(2, (s, c) -> AttributeGUIItems.fusionShard(first, AttributeFusionService.required(first), "<7>Fusion cost: <a>" + AttributeFusionService.required(first)));
         if (second != null)
-            layout.slot(51, (s, c) -> AttributeGUIItems.fusionShard(second, AttributeFusionService.required(second), "<7>Fusion cost: <a>" + AttributeFusionService.required(second)));
-        if (first != null) layout.slot(48, (s, c) -> ItemStacks.item(Material.RED_DYE, "<c>Reset"),
+            layout.slot(6, (s, c) -> AttributeGUIItems.fusionShard(second, AttributeFusionService.required(second), "<7>Fusion cost: <a>" + AttributeFusionService.required(second)));
+        if (first != null) layout.slot(46, (s, c) -> ItemStacks.item(Material.RED_DYE, "<c>Reset"),
                 (click, c) -> c.session(State.class).setState(new State(1, null, null, state.smart())));
-        layout.slot(50, (s, c) -> ItemStacks.item(state.smart() ? Material.LIME_DYE : Material.GRAY_DYE, """
-                %sSmart Fusion
-                <7>Only list Shards whose Attribute
-                <7>you have already maxed out, so
-                <7>nothing you still need is used.
+        int smartShards = AttributeRegistry.values().stream()
+                .filter(value -> data.level(value.id()) >= MAX_LEVEL && data.shardCount(value.id()) >= AttributeFusionService.required(value))
+                .mapToInt(value -> data.shardCount(value.id())).sum();
+        layout.slot(51, (s, c) -> ItemStacks.item(state.smart() ? Material.REINFORCED_DEEPSLATE : Material.DEEPSLATE, """
+                <6>Smart Fusions
+                <7>Smart fusions pick the shards you
+                <c>don't need <7>to syphon anymore, and
+                <7>automatically looks for <d><l>NEW <7>and
+                <7>useful shards you might want to
+                <7>syphon.
 
-                <e>Click to toggle!""".formatted(state.smart() ? "<a>" : "<c>")),
+                <7>You have <9>%d <7>Shards available for
+                <7>Smart Fusion!
+
+                %s""".formatted(smartShards, smartShards == 0 ? "<c>Not enough Shards!" : state.smart() ? "<a>Enabled! <e>Click to disable!" : "<e>Click to enable!")),
                 (click, c) -> c.session(State.class).setState(new State(1, null, null, !state.smart())));
         Components.close(layout, 49);
     }
