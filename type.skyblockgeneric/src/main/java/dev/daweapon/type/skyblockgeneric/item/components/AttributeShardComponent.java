@@ -7,6 +7,7 @@ import dev.daweapon.type.skyblockgeneric.hunting.AttributeText;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItemComponent;
 import dev.daweapon.type.skyblockgeneric.item.handlers.lore.LoreConfig;
+import net.minestom.server.item.ItemStack;
 import org.tinylog.Logger;
 
 import java.util.ArrayList;
@@ -35,9 +36,11 @@ public class AttributeShardComponent extends SkyBlockItemComponent {
         addInheritedComponent(new InteractableComponent((player, item) -> {
             AttributeDefinition definition = definition(item);
             if (definition == null) return;
-            player.getHuntingData().addShards(definition.id(), item.getAmount());
-            player.sendMessage("<a>Added <e>{}x <a>{} to your Hunting Box!", item.getAmount(), definition.shardName());
-            item.setAmount(0);
+            int moved = player.isSneaking() ? item.getAmount() : 1;
+            player.getHuntingData().addShards(definition.id(), moved);
+            player.sendMessage("<a>Added <e>{}x <a>{} to your Hunting Box!", moved, definition.shardName());
+            int remaining = item.getAmount() - moved;
+            player.setItemInMainHand(remaining <= 0 ? ItemStack.AIR : item.getItemStack().withAmount(remaining));
         }, null, null));
     }
 
