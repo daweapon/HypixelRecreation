@@ -120,8 +120,7 @@ public class GUIAttributeFusion implements StatefulView<GUIAttributeFusion.State
 
         if (first == null) {
             layout.slot(4, (s, c) -> AttributeGUIItems.fusionBoxHead(data.getShards().values().stream().mapToInt(Integer::intValue).sum()));
-            layout.slot(51, (s, c) -> smartItem(state, data), (click, c) -> c.session(State.class).setState(
-                    new State(1, null, null, !state.smart(), state.sort(), state.query())));
+            layout.slot(51, (s, c) -> smartItem(), (click, c) -> c.player().sendMessage("<c>Smart Fusion is not added yet!"));
             layout.slot(52, (s, c) -> massSyphonItem(data), (click, c) -> GUIHuntingBox.confirmMassSyphon((SkyBlockPlayer) c.player(), p -> p.openView(new GUIAttributeFusion())));
         } else {
             layout.slot(12, (s, c) -> AttributeGUIItems.fusionShard(first, AttributeFusionService.required(first), "<7>Fusion cost: <a>" + AttributeFusionService.required(first)));
@@ -174,11 +173,8 @@ public class GUIAttributeFusion implements StatefulView<GUIAttributeFusion.State
                 <7>Shards.""");
     }
 
-    private static ItemStack.Builder smartItem(State state, DatapointHunting.HuntingData data) {
-        int smartShards = AttributeRegistry.values().stream()
-                .filter(value -> data.level(value.id()) >= MAX_LEVEL && data.shardCount(value.id()) >= AttributeFusionService.required(value))
-                .mapToInt(value -> data.shardCount(value.id())).sum();
-        return ItemStacks.item(state.smart() ? Material.REINFORCED_DEEPSLATE : Material.DEEPSLATE, """
+    private static ItemStack.Builder smartItem() {
+        return ItemStacks.item(Material.DEEPSLATE, """
                 <6>Smart Fusions
                 <7>Smart fusions pick the shards you
                 <c>don't need <7>to syphon anymore, and
@@ -186,10 +182,7 @@ public class GUIAttributeFusion implements StatefulView<GUIAttributeFusion.State
                 <7>useful shards you might want to
                 <7>syphon.
 
-                <7>You have <9>%d <7>Shards available for
-                <7>Smart Fusion!
-
-                %s""".formatted(smartShards, smartShards == 0 ? "<c>Not enough Shards!" : state.smart() ? "<a>Enabled! <e>Click to disable!" : "<e>Click to enable!"));
+                <c>Not added yet!""");
     }
 
     private static ItemStack.Builder massSyphonItem(DatapointHunting.HuntingData data) {
