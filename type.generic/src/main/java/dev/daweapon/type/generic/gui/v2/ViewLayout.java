@@ -151,9 +151,17 @@ public final class ViewLayout<S> {
     }
 
     public void filler(ItemStack.Builder builder) {
-        IntStream.range(0, inventoryType.getSize()).forEach(s ->
+        int size = inventoryType.getSize();
+        IntStream.range(0, size).filter(s -> isBorderSlot(s, size)).forEach(s ->
                 components.put(s, ViewComponent.staticItem(s, builder))
         );
+    }
+
+    private static boolean isBorderSlot(int slot, int size) {
+        if (size < 18 || size % 9 != 0) return true;
+        int row = slot / 9;
+        int col = slot % 9;
+        return row == 0 || row == size / 9 - 1 || col == 0 || col == 8;
     }
 
     public SlotBehavior getBehavior(int slot) {

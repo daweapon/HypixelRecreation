@@ -90,9 +90,10 @@ public final class HuntrapService {
     }
 
     public static void deployFromToolkit(SkyBlockPlayer player, HuntingToolkit.Slot slot) {
-        if (slot.trap() == null || HuntingToolkit.stored(player, slot) == null) return;
+        HuntrapTier tier = slot.isTrap() ? HuntingToolkit.storedTier(player, slot) : null;
+        if (tier == null) return;
         Pos position = new Pos(player.getPosition().blockX(), player.getPosition().blockY(), player.getPosition().blockZ());
-        if (place(player, slot.trap(), position, true)) player.getHuntingData().takeToolkitItem(slot.key());
+        if (place(player, tier, position, true)) player.getHuntingData().takeToolkitItem(slot.key());
     }
 
     static double discount(SkyBlockPlayer player, AttributeDefinition target) {

@@ -11,9 +11,10 @@ import net.minestom.server.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-// Hunting Toolkit: one slot each for Huntaxe, Pocket Black Hole, Lasso and Fishing Net, plus the five Huntrap tiers, unlocked by consuming the item.
+// Hunting Toolkit: one slot each for Huntaxe, Pocket Black Hole, Lasso and Fishing Net, plus one Huntrap of any tier, unlocked by consuming the item.
 public final class HuntingToolkit {
     public static final String HANDLER = "HUNTING_TOOLKIT";
     public static final String UNLOCKED_COUNTER = "hunting_toolkit";
@@ -21,9 +22,13 @@ public final class HuntingToolkit {
 
     public enum Group {HUNTAXE, BLACK_HOLE, LASSO, FISHING_NET, HUNTRAP}
 
-    public record Slot(Group group, List<ItemType> types, String name, @Nullable HuntrapTier trap) {
+    public record Slot(Group group, List<ItemType> types, String name) {
         public String key() {
-            return trap != null ? types.getFirst().name() : group.name();
+            return group.name();
+        }
+
+        public boolean isTrap() {
+            return group == Group.HUNTRAP;
         }
 
         public ItemType type() {
@@ -43,15 +48,14 @@ public final class HuntingToolkit {
     private static List<Slot> slots() {
         List<Slot> slots = new ArrayList<>();
         slots.add(new Slot(Group.HUNTAXE, List.of(ItemType.VENATOR_GENESIS, ItemType.SILVA_DOMINUS, ItemType.CURSUS_FERAE,
-                ItemType.APEX_PRAEDATOR, ItemType.NEX_TITANUM), "Huntaxe", null));
+                ItemType.APEX_PRAEDATOR, ItemType.NEX_TITANUM), "Huntaxe"));
         slots.add(new Slot(Group.BLACK_HOLE, List.of(ItemType.SMALL_POCKET_BLACK_HOLE, ItemType.MEDIUM_POCKET_BLACK_HOLE,
-                ItemType.LARGE_POCKET_BLACK_HOLE), "Pocket Black Hole", null));
+                ItemType.LARGE_POCKET_BLACK_HOLE), "Pocket Black Hole"));
         slots.add(new Slot(Group.LASSO, List.of(ItemType.ABYSMAL_LASSO, ItemType.VINERIP_LASSO, ItemType.ENTANGLER_LASSO,
-                ItemType.EVERSTRETCH_LASSO), "Lasso", null));
+                ItemType.EVERSTRETCH_LASSO), "Lasso"));
         slots.add(new Slot(Group.FISHING_NET, List.of(ItemType.BASIC_FISHING_NET, ItemType.MEDIUM_FISHING_NET,
-                ItemType.TURBO_FISHING_NET, ItemType.GIGANTIC_FISHING_NET), "Fishing Net", null));
-        for (HuntrapTier tier : HuntrapTier.values())
-            slots.add(new Slot(Group.HUNTRAP, List.of(tier.itemType()), tier.displayName(), tier));
+                ItemType.TURBO_FISHING_NET, ItemType.GIGANTIC_FISHING_NET), "Fishing Net"));
+        slots.add(new Slot(Group.HUNTRAP, Arrays.stream(HuntrapTier.values()).map(HuntrapTier::itemType).toList(), "Huntrap"));
         return List.copyOf(slots);
     }
 
@@ -86,10 +90,6 @@ public final class HuntingToolkit {
         return SLOTS.stream().filter(slot -> slot.types().stream().anyMatch(type -> type.name().equals(itemId))).findFirst().orElse(null);
     }
 
-    public static @Nullable Slot slotOf(HuntrapTier tier) {
-        return SLOTS.stream().filter(slot -> slot.trap() == tier).findFirst().orElse(null);
-    }
-
     public static boolean store(SkyBlockPlayer player, int inventorySlot) {
         ItemStack stack = player.getInventory().getItemStack(inventorySlot);
         if (stack.isAir()) return false;
@@ -100,15 +100,11 @@ public final class HuntingToolkit {
             return false;
         }
         if (stored(player, slot) != null) {
-            if (slot.trap() != null) {
-                player.sendMessage("<c>The toolkit already holds a " + slot.name() + "<c>!");
-                return false;
-            }
             retrieve(player, slot);
         }
-        if (slot.trap() != null && stack.amount() > 1) {
+        if (slot.isTrap() && stack.amount() > 1) {
             player.getInventory().setItemStack(inventorySlot, stack.withAmount(stack.amount() - 1));
-            player.getHuntingData().storeToolkitItem(slot.key(), new SkyBlockItem(slot.type()).toUnderstandable().serialize());
+            player.getHuntingData().storeToolkitItem(slot.key(), new SkyBlockItem(item.getAttributeHandler().getPotentialType()).toUnderstandable().serialize());
             return true;
         }
         player.getHuntingData().storeToolkitItem(slot.key(), item.toUnderstandable().serialize());
@@ -130,15 +126,22 @@ public final class HuntingToolkit {
 
     public static void stockBest(SkyBlockPlayer player) {
         for (Slot slot : SLOTS) {
-            if (slot.trap() != null) continue;
+            if (slot.isTrap()) continue;
             player.getHuntingData().storeToolkitItem(slot.key(), new SkyBlockItem(slot.best()).toUnderstandable().serialize());
         }
     }
 
     public static boolean returnTrap(SkyBlockPlayer player, HuntrapTier tier) {
-        Slot slot = slotOf(tier);
-        if (slot == null || !isUnlocked(player) || stored(player, slot) != null) return false;
+        Slot slot = SLOTS.getLast();
+        if (!isUnlocked(player) || stored(player, slot) != null) return false;
         player.getHuntingData().storeToolkitItem(slot.key(), new SkyBlockItem(tier.itemType()).toUnderstandable().serialize());
         return true;
+    }
+
+    public static @Nullable HuntrapTier storedTier(SkyBlockPlayer player, Slot slot) {
+        SkyBlockItem item = stored(player, slot);
+        if (item == null) return null;
+        String type = item.getAttributeHandler().getTypeAsString();
+        return Arrays.stream(HuntrapTier.values()).filter(tier -> tier.itemType().name().equals(type)).findFirst().orElse(null);
     }
 }

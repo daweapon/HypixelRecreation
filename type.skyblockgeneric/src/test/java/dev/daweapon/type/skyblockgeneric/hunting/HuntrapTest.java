@@ -79,12 +79,11 @@ class HuntrapTest {
     }
 
     @Test
-    void toolkitHoldsOneOfEachToolAndAllFiveTraps() {
-        assertEquals(9, HuntingToolkit.SLOTS.size());
-        List<HuntingToolkit.Slot> traps = HuntingToolkit.SLOTS.stream().filter(slot -> slot.trap() != null).toList();
-        assertEquals(5, traps.size());
-        assertEquals(HuntrapTier.values().length, traps.size());
-        assertEquals(9, HuntingToolkit.SLOTS.stream().map(HuntingToolkit.Slot::key).distinct().count());
+    void toolkitHoldsOneOfEachToolAndOneTrap() {
+        assertEquals(5, HuntingToolkit.SLOTS.size());
+        assertEquals(1, HuntingToolkit.SLOTS.stream().filter(HuntingToolkit.Slot::isTrap).count());
+        assertEquals(HuntrapTier.values().length, HuntingToolkit.slotOf("RETIA_SUPREMA").types().size());
+        assertEquals(5, HuntingToolkit.SLOTS.stream().map(HuntingToolkit.Slot::key).distinct().count());
         assertEquals(HuntingToolkit.Group.LASSO, HuntingToolkit.slotOf("VINERIP_LASSO").group());
     }
 }

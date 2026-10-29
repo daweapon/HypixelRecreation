@@ -186,16 +186,16 @@ public abstract class HypixelInventoryGUI {
     }
 
     /**
-     * Fills the whole inventory with the item stack of your choice
+     * Fills only the border of the inventory with the item stack of your choice
      *
      * @param stack the {@link ItemStack} of your choice
      */
     public void fill(ItemStack.Builder stack) {
-        fill(stack, 0, size.getSize() - 1);
+        border(stack);
     }
 
     /**
-     * Fills the whole inventory with the Material of your choice
+     * Fills only the border of the inventory with the Material of your choice
      *
      * @param material the {@link Material} of your choice
      */

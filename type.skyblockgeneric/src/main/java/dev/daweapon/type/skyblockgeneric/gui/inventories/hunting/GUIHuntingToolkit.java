@@ -22,7 +22,7 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.List;
 
 public class GUIHuntingToolkit extends StatelessView {
-    private static final int[] SLOTS = {11, 12, 13, 14, 29, 30, 31, 32, 33};
+    private static final int[] SLOTS = {20, 21, 22, 23, 24};
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
@@ -38,7 +38,7 @@ public class GUIHuntingToolkit extends StatelessView {
             layout.slot(SLOTS[i], (_, c) -> render((SkyBlockPlayer) c.player(), slot), (click, c) -> {
                 SkyBlockPlayer player = (SkyBlockPlayer) c.player();
                 boolean right = click.click() instanceof Click.Right || click.click() instanceof Click.RightShift;
-                if (right && slot.trap() != null && HuntingToolkit.stored(player, slot) != null) {
+                if (right && slot.isTrap() && HuntingToolkit.stored(player, slot) != null) {
                     player.closeInventory();
                     HuntrapService.deployFromToolkit(player, slot);
                 } else if (HuntingToolkit.retrieve(player, slot)) c.session(Object.class).refresh();
