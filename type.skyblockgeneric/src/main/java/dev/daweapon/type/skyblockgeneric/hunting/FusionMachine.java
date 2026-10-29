@@ -98,7 +98,7 @@ public final class FusionMachine {
     private static Entity tubeShard(SkyBlockPlayer player, Instance instance, AttributeDefinition definition, Pos position) {
         Entity display = new Entity(EntityType.ITEM_DISPLAY);
         display.editEntityMeta(ItemDisplayMeta.class, meta -> {
-            meta.setItemStack(AttributeShardComponent.create(definition, 1).getItemStack());
+            meta.setItemStack(AttributeShardComponent.create(definition, 1).getDisplayItem().build());
             meta.setDisplayContext(ItemDisplayMeta.DisplayContext.HEAD);
             meta.setScale(new Vec(0.9, 0.9, 0.9));
             meta.setHasNoGravity(true);

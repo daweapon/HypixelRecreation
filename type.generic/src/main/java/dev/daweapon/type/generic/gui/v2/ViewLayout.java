@@ -152,6 +152,13 @@ public final class ViewLayout<S> {
 
     public void filler(ItemStack.Builder builder) {
         int size = inventoryType.getSize();
+        IntStream.range(0, size).forEach(s ->
+                components.put(s, ViewComponent.staticItem(s, builder))
+        );
+    }
+
+    public void borderFiller(ItemStack.Builder builder) {
+        int size = inventoryType.getSize();
         IntStream.range(0, size).filter(s -> isBorderSlot(s, size)).forEach(s ->
                 components.put(s, ViewComponent.staticItem(s, builder))
         );

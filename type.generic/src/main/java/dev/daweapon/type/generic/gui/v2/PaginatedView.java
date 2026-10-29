@@ -75,7 +75,7 @@ public abstract class PaginatedView<T, S extends PaginatedView.PaginatedState<T>
     }
 
     protected void layoutBackground(ViewLayout<S> layout, S state, ViewContext ctx) {
-        layout.filler(FILLER);
+        layout.borderFiller(FILLER);
     }
 
     protected void layoutNavigation(ViewLayout<S> layout, S state, ViewContext ctx, int currentPage, int totalPages) {
