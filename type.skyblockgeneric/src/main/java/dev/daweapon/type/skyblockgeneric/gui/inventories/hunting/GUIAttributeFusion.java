@@ -55,6 +55,7 @@ public class GUIAttributeFusion implements StatefulView<GUIAttributeFusion.State
     @Override
     public void layout(ViewLayout<State> layout, State state, ViewContext ctx) {
         layout.filler(Layouts.border(0, 53));
+        layout.filler(Layouts.rectangle(10, 43), ItemStack.AIR.builder());
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
         DatapointHunting.HuntingData data = player.getHuntingData();
         AttributeDefinition first = AttributeRegistry.get(state.first());
