@@ -7,6 +7,8 @@ import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointInventory;
+import dev.daweapon.commons.ServerType;
+import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.skyblockgeneric.entity.mob.MobType;
 import dev.daweapon.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
@@ -23,8 +25,8 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Lava fishing gear bonuses (wiki: Lava_Sea_Creature_Armor, Thunder_Armor, Magma_Lord_Armor, Bronze_Hunter_Armor…):
  * per-piece Magmatic damage reduction and multiplier, Hunter armor's Odger's Blessing Trophy Chance, Magma Lord's
- * Lord's Blessing, and Thunder's Static Charge. Fireproof (lava immunity) and Star Fisher (needs star upgrades) are
- * not modelled. Reductions and multipliers stack multiplicatively per piece (estimate).
+ * Lord's Blessing, and Thunder's Static Charge. Fireproof (lava immunity, 2+ Magma Lord armor pieces) is modelled; Star Fisher (needs star upgrades) is
+ * not. Reductions and multipliers stack multiplicatively per piece (estimate).
  */
 public final class CrimsonFishingGear {
     private static final Map<String, double[]> MAGMATIC = Map.ofEntries(
@@ -41,6 +43,8 @@ public final class CrimsonFishingGear {
             "GOLD", new double[]{0, 10, 15, 20}, "DIAMOND", new double[]{0, 20, 25, 30});
     private static final Set<String> THUNDER = Set.of("THUNDER_HELMET", "THUNDER_CHESTPLATE", "THUNDER_LEGGINGS", "THUNDER_BOOTS", "THUNDERBOLT_NECKLACE");
     private static final Set<String> MAGMA_LORD = Set.of("MAGMA_LORD_HELMET", "MAGMA_LORD_CHESTPLATE", "MAGMA_LORD_LEGGINGS", "MAGMA_LORD_BOOTS", "MAGMA_LORD_NECKLACE");
+    private static final Set<String> MAGMA_LORD_ARMOR = Set.of("MAGMA_LORD_HELMET", "MAGMA_LORD_CHESTPLATE", "MAGMA_LORD_LEGGINGS", "MAGMA_LORD_BOOTS");
+    private static final int FIREPROOF_PIECES = 2;
     private static final int BOUNCE_MIN_FALL = 10;
     private static final double BOUNCE_VELOCITY = 24;
     private static final int[] CHARGE_SECONDS = {0, 0, 30, 25, 20, 10};
@@ -135,6 +139,11 @@ public final class CrimsonFishingGear {
         int charges = Math.min(max, gained);
         charge.since = now;
         return 1 + charges * CHARGE_DAMAGE[thunderPieces];
+    }
+
+    public static boolean fireproof(SkyBlockPlayer player) {
+        if (HypixelConst.getTypeLoader() == null || HypixelConst.getTypeLoader().getType() != ServerType.SKYBLOCK_CRIMSON_ISLE) return false;
+        return count(worn(player), MAGMA_LORD_ARMOR) >= FIREPROOF_PIECES;
     }
 
     private static int count(List<String> worn, Set<String> set) {

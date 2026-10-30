@@ -66,9 +66,14 @@ public final class MobAttackService {
         return finalDamage;
     }
 
+    public static double trueDefenseMultiplier(double trueDefense) {
+        return 100D / (100D + Math.max(0, trueDefense));
+    }
+
     public static void trueStrike(SkyBlockMob mob, SkyBlockPlayer player, double damage) {
         if (damage <= 0 || player.isRemoved() || CreeperVeil.absorb(player)) return;
         damage *= gearMultiplier(mob, player);
+        damage *= trueDefenseMultiplier(player.getStatistics().allStatistics().getOverall(ItemStatistic.TRUE_DEFENSE));
         damage = dev.daweapon.type.skyblockgeneric.slayer.inferno.BlazeSlayerGear.burststop(player, (float) damage);
         CombatPetHooks.mobAttacked(player, mob);
         player.damage(new EntityDamage(mob, (float) damage));

@@ -6,6 +6,7 @@ import dev.daweapon.type.generic.event.EventNodes;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.event.phase.EventPhase;
 import dev.daweapon.type.generic.event.phase.PhasedEvent;
+import dev.daweapon.type.skyblockgeneric.fishing.lava.CrimsonFishingGear;
 import dev.daweapon.type.skyblockgeneric.item.equipment.passive.FireDamageTaken;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -18,6 +19,10 @@ public class ActionEquipmentFireDamage implements HypixelEventClass {
         if (player.getSkyblockDataHandler() == null) return;
         Damage damage = event.getDamage();
         if (!FireDamageTaken.isFire(damage)) return;
+        if (CrimsonFishingGear.fireproof(player)) {
+            event.setCancelled(true);
+            return;
+        }
         float amount = (float) (damage.getAmount() * FireDamageTaken.multiplier(player));
         damage.setAmount(amount);
         FireDamageTaken.record(player, amount);
