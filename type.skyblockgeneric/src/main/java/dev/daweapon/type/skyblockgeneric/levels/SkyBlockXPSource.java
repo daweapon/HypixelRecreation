@@ -157,7 +157,7 @@ public enum SkyBlockXPSource {
     REFINED_JYRRE(Group.CONSUMABLES, null, 10, Availability.LIVE, Material.POTION),
     REFINED_DARK_CACAO_TRUFFLE(Group.CONSUMABLES, null, 10, Availability.NOT_IN_GAME, Material.COCOA_BEANS),
     SPOTLITE(Group.CONSUMABLES, null, 10, Availability.NOT_IN_GAME, Material.GLOWSTONE_DUST),
-    DWARVEN_OS_ORE_OATS(Group.CONSUMABLES, null, 10, Availability.NOT_IN_GAME, Material.RAW_IRON),
+    DWARVEN_OS_ORE_OATS(Group.CONSUMABLES, null, 10, Availability.LIVE, Material.RAW_IRON),
     DWARVEN_OS_BLOCK_BRAN(Group.CONSUMABLES, null, 10, Availability.NOT_IN_GAME, Material.STONE),
     DWARVEN_OS_GEMSTONE_GRAHAMS(Group.CONSUMABLES, null, 10, Availability.NOT_IN_GAME, Material.AMETHYST_SHARD),
     DWARVEN_OS_METALLIC_MINIS(Group.CONSUMABLES, null, 10, Availability.NOT_IN_GAME, Material.IRON_NUGGET),

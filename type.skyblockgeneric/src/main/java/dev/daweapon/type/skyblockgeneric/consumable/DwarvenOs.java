@@ -4,6 +4,7 @@ import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointCrimsonIsle;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.levels.SkyBlockXPSource;
 import dev.daweapon.type.skyblockgeneric.item.handlers.interactable.InteractableItemConfig;
 import dev.daweapon.type.skyblockgeneric.item.handlers.interactable.InteractableRegistry;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -16,6 +17,7 @@ public enum DwarvenOs {
 
     public static final int LIMIT = 5;
     public static final double FORTUNE_EACH = 2;
+    public static final double XP_EACH = 2;
 
     private final String itemId;
     private final ItemStatistic statistic;
@@ -59,6 +61,12 @@ public enum DwarvenOs {
 
     public void setEaten(SkyBlockPlayer player, int eaten) {
         DatapointCrimsonIsle.edit(player, data -> data.getNumbers().put(key(), (long) eaten));
+        syncXp(player, eaten);
+    }
+
+    private void syncXp(SkyBlockPlayer player, int eaten) {
+        if (this != ORE_OATS) return;
+        player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.DWARVEN_OS_ORE_OATS, Math.min(Math.max(eaten, 0), LIMIT) * XP_EACH);
     }
 
     public static void maxAll(SkyBlockPlayer player) {
