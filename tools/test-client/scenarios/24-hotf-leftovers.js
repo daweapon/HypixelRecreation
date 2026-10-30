@@ -30,11 +30,15 @@ module.exports = {
 
         await t.step('send the bot to Galatea', async () => {
             await sleep(3000);
-            bot.say('/sendto SKYBLOCK_GALATEA');
-            await bot.waitFor(() => /Galatea|Tangleburg|Marsh/i.test(sidebarText(bot)), { timeoutMs: 60000, what: 'the Galatea sidebar' }).catch(async () => {
+            for (let attempt = 1; attempt <= 3; attempt++) {
                 bot.say('/sendto SKYBLOCK_GALATEA');
-                await bot.waitFor(() => /Galatea|Tangleburg|Marsh/i.test(sidebarText(bot)), { timeoutMs: 90000, what: 'the Galatea sidebar' });
-            });
+                try {
+                    await bot.waitFor(() => /Galatea|Tangleburg|Marsh/i.test(sidebarText(bot)), { timeoutMs: 70000, what: 'the Galatea sidebar' });
+                    break;
+                } catch (error) {
+                    if (attempt === 3) throw error;
+                }
+            }
             return sidebarText(bot);
         });
 

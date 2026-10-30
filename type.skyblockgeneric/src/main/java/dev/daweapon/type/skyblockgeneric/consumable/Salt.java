@@ -4,6 +4,7 @@ import dev.daweapon.commons.ServerType;
 import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.skyblockgeneric.accessory.DungeonAccessoryHook;
 import dev.daweapon.type.skyblockgeneric.entity.mob.SkyBlockMob;
+import dev.daweapon.type.skyblockgeneric.essence.ForestEssencePerks;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.seacreature.SeaCreatureMob;
 import dev.daweapon.type.skyblockgeneric.item.handlers.interactable.InteractableItemConfig;
 import dev.daweapon.type.skyblockgeneric.item.handlers.interactable.InteractableRegistry;
@@ -12,6 +13,7 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.Map;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
+import java.util.function.ToDoubleFunction;
 
 public enum Salt {
     CANDYCOMB("Candycomb", 1.25, 12, (player, mob) -> DungeonAccessoryHook.isInDungeon(player)),
@@ -40,15 +42,28 @@ public enum Salt {
     }
 
     public static double charmChanceBonus(Map<String, Long> expirations, long now, Predicate<Salt> applying) {
+        return charmChanceBonus(expirations, now, applying, salt -> 1);
+    }
+
+    private static double charmChanceBonus(Map<String, Long> expirations, long now, Predicate<Salt> applying,
+                                           ToDoubleFunction<Salt> strength) {
         double total = 0;
         for (Salt salt : values()) {
-            if (TimedConsumables.isActive(expirations, salt.name(), now) && applying.test(salt)) total += salt.charmChance;
+            if (TimedConsumables.isActive(expirations, salt.name(), now) && applying.test(salt)) {
+                total += salt.charmChance * strength.applyAsDouble(salt);
+            }
         }
         return total;
     }
 
+    public boolean isBerryItem() {
+        return this == LUSHLILAC_BONBON || this == PRIME_LUSHLILAC_BONBON || this == EXALTED_LUSHLILAC_BONBON;
+    }
+
     public static double charmChanceBonus(SkyBlockPlayer player, SkyBlockMob mob) {
-        return charmChanceBonus(TimedConsumables.expirations(player), System.currentTimeMillis(), salt -> salt.applies.test(player, mob));
+        double berryMultiplier = ForestEssencePerks.berryMultiplier(player);
+        return charmChanceBonus(TimedConsumables.expirations(player), System.currentTimeMillis(),
+                salt -> salt.applies.test(player, mob), salt -> salt.isBerryItem() ? berryMultiplier : 1);
     }
 
     public static void registerInteractables() {

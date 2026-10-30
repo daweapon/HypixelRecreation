@@ -978,7 +978,7 @@
           400,
           500
         ],
-        "unavailable": "Hunting isn't in this server yet."
+        "unavailable": null
       },
       {
         "id": "axed",
@@ -991,7 +991,7 @@
         "costs": [
           10000
         ],
-        "unavailable": "Axe stat scaling isn't in this server yet."
+        "unavailable": null
       },
       {
         "id": "extreme_pressure",
@@ -1078,7 +1078,7 @@
           1000,
           1500
         ],
-        "unavailable": "Berry items aren't in this server yet."
+        "unavailable": null
       },
       {
         "id": "forest_training",

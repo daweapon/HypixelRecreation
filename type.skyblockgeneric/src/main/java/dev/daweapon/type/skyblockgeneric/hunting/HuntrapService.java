@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.hunting;
 
+import dev.daweapon.type.skyblockgeneric.essence.ForestEssencePerks;
 import dev.daweapon.type.skyblockgeneric.item.components.AttributeShardComponent;
 import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
@@ -97,7 +98,7 @@ public final class HuntrapService {
     }
 
     static double discount(SkyBlockPlayer player, AttributeDefinition target) {
-        double discount = StarbornBenefactors.speedBonus(player);
+        double discount = StarbornBenefactors.speedBonus(player) + ForestEssencePerks.trapSpeedDiscount(player);
         AttributeId attribute = switch (target.category()) {
             case FOREST -> FOREST_TRAP;
             case COMBAT -> COMBAT_TRAP;
