@@ -2,6 +2,7 @@ package dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.event;
 
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.damage.Damage;
+import net.minestom.server.entity.damage.DamageType;
 import net.minestom.server.entity.ai.GoalSelector;
 import net.minestom.server.entity.ai.TargetSelector;
 import net.minestom.server.entity.ai.target.LastEntityDamagerTarget;
@@ -104,7 +105,7 @@ public abstract class RaidGoblin extends BestiaryMob implements MobPlayerSkin {
 	protected Damage filterIncomingDamage(Damage damage) {
 		if (!MobSuperprotectron.isProtected(this)) return damage;
 		warnAttacker(damage);
-		if (isRangedHit()) return null;
+		if (isRangedHit() || damage.getType() == DamageType.MAGIC) return null;
 		return new Damage(damage.getType(), damage.getSource(), damage.getAttacker(), damage.getSourcePosition(),
 				damage.getAmount() * PROTECTED_MELEE_FACTOR);
 	}

@@ -31,6 +31,10 @@ public final class MiningPetBonuses {
         return PetPerkMath.scaledAmount(amount, bonus, ThreadLocalRandom.current());
     }
 
+    public static double titaniumMinecartFortune(SkyBlockPlayer player) {
+        return dev.daweapon.type.skyblockgeneric.user.pets.PetItems.heldType(player.getPetData().getEnabledPet()) == ItemType.PET_ITEM_TITANIUM_MINECART ? 33.3 : 0;
+    }
+
     public static double miningSkillExperience(SkyBlockPlayer player, double experience) {
         return PetPerkMath.boosted(experience, PetAbilities.value(player, ItemType.SILVERFISH_PET, "Magnetic", 0));
     }

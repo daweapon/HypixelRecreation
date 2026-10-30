@@ -424,7 +424,6 @@ items:
         description:
           - "<7>Grants <6>+33.3<glyph:stat_mining_fortune> Mining Fortune <7>while"
           - "<7>mining <f>Titanium Ore<7>."
-        inactive: true
       - id: SKULL_HEAD
         texture: cae0d1550fda69833c6ab884746d039bd752a4f2e44472cc0a3b05c694f8059b
   - id: PET_ITEM_QUICK_CLAW

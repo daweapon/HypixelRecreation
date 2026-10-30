@@ -26,6 +26,9 @@ import dev.daweapon.type.skyblockgeneric.region.mining.MineableBlock;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Iterator;
+import java.util.concurrent.ThreadLocalRandom;
+
+import dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.PetPerkMath;
 
 import dev.daweapon.type.skyblockgeneric.carnival.CarnivalPerk;
 import dev.daweapon.type.skyblockgeneric.carnival.Carnivals;
@@ -44,6 +47,7 @@ public class ActionHotmMining implements HypixelEventClass {
         if (block == null) return;
 
         HotmAbilities.onBlockMined(player);
+        dev.daweapon.type.skyblockgeneric.enchantment.impl.EnchantmentFlowstate.onBlockMined(player);
         if (ore != null) {
             mineGlacite(player, ore, event);
             return;
@@ -60,6 +64,10 @@ public class ActionHotmMining implements HypixelEventClass {
             long reforgePowder = ReforgeLoadout.titaniumMithrilPowder(player);
             if (reforgePowder > 0) HotmService.gainPowder(player, HotmPowder.MITHRIL, reforgePowder);
             RandomMiningEvents.applyFallenStar(player, event.getPoint(), event.getDrops(), false, 0);
+            double minecart = MiningPetBonuses.titaniumMinecartFortune(player);
+            if (minecart > 0) {
+                event.getDrops().forEach(drop -> drop.setAmount(PetPerkMath.scaledAmount(drop.getAmount(), minecart, ThreadLocalRandom.current())));
+            }
             if (HotmService.skyMallBuff(player) == HotmSkyMallBuff.TITANIUM) {
                 event.getDrops().forEach(drop -> drop.setAmount(drop.getAmount() * 5));
             }

@@ -156,7 +156,7 @@ public enum EnchantmentType {
     COMBO(EnchantmentCombo.class),
     CROP_FEVER(CatalogueEnchantment.of("CROP_FEVER")),
     FIRST_IMPRESSION(CatalogueEnchantment.of("FIRST_IMPRESSION")),
-    FLOWSTATE(CatalogueEnchantment.of("FLOWSTATE")),
+    FLOWSTATE(EnchantmentFlowstate.class),
     JERRY(CatalogueEnchantment.of("JERRY")),
     LAST_STAND(CatalogueEnchantment.of("LAST_STAND")),
     LEGION(CatalogueEnchantment.of("LEGION")),
