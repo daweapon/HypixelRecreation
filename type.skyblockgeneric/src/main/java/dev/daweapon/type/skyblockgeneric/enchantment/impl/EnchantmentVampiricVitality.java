@@ -12,11 +12,10 @@ import java.util.Map;
 // Vampiric Vitality (Kuudra; reworked from a Mana enchant in 2026, internal id kept).
 public class EnchantmentVampiricVitality implements Ench {
     private static final String[] VAMPIRIC = {"0.6", "0.64", "0.69", "0.73", "0.78", "0.82", "0.87", "0.91", "0.96", "1"};
-    private static final String NOT_ACTIVE = "\n<8>(Not active yet)";
 
     @Override
     public String getDescription(int level) {
-        return "Heal for <a>" + VAMPIRIC[level - 1] + "<c>❤ <7>per <4>♨ Vitality <7>used." + NOT_ACTIVE;
+        return "Heal for <a>" + VAMPIRIC[level - 1] + "<c>❤ <7>per <4>♨ Vitality <7>used.";
     }
 
     @Override
@@ -29,8 +28,4 @@ public class EnchantmentVampiricVitality implements Ench {
         return List.of(EnchantItemGroups.ARMOR);
     }
 
-    @Override
-    public boolean isEffectActive() {
-        return false;
-    }
 }

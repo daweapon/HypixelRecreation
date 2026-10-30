@@ -11,11 +11,10 @@ import java.util.Map;
 
 // Strong Vitality (Kuudra; reworked from a Mana enchant in 2026, internal id kept).
 public class EnchantmentStrongVitality implements Ench {
-    private static final String NOT_ACTIVE = "\n<8>(Not active yet)";
 
     @Override
     public String getDescription(int level) {
-        return "Convert <a>" + (level * 2) + "% <7>of <4>♨ Vitality <7>used as <c>❁ Strength <7>for <a>10s<7>. <8>(Max 15 Strength)" + NOT_ACTIVE;
+        return "Convert <a>" + (level * 2) + "% <7>of <4>♨ Vitality <7>used as <c>❁ Strength <7>for <a>10s<7>. <8>(Max 15 Strength)";
     }
 
     @Override
@@ -28,8 +27,4 @@ public class EnchantmentStrongVitality implements Ench {
         return List.of(EnchantItemGroups.ARMOR);
     }
 
-    @Override
-    public boolean isEffectActive() {
-        return false;
-    }
 }

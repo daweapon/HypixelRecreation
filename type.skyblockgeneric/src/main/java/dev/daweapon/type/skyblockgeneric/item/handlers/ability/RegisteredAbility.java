@@ -3,6 +3,7 @@ package dev.daweapon.type.skyblockgeneric.item.handlers.ability;
 import dev.daweapon.type.skyblockgeneric.item.handlers.ability.abilities.HealthAbilityDamage;
 import dev.daweapon.type.skyblockgeneric.item.set.sets.WiseDragonArmorSet;
 import dev.daweapon.type.skyblockgeneric.enchantment.impl.EnchantmentRefrigerate;
+import dev.daweapon.type.skyblockgeneric.enchantment.impl.VitalityEnchants;
 import dev.daweapon.type.skyblockgeneric.reforge.ReforgeLoadout;
 import dev.daweapon.type.skyblockgeneric.enchantment.impl.EnchantmentWise;
 import lombok.Getter;
@@ -159,6 +160,7 @@ public class RegisteredAbility {
             if (CombatPetHooks.savesMana(player)) return;
             player.setMana(player.getMana() - spent);
             EnchantmentRefrigerate.onManaUsed(player, spent);
+            VitalityEnchants.onManaUsed(player, spent);
         }
 
         private int effectiveCost(SkyBlockPlayer player) {
@@ -218,6 +220,7 @@ public class RegisteredAbility {
             if (!CombatPetHooks.savesMana(player)) {
                 player.setMana(player.getMana() - spent);
                 EnchantmentRefrigerate.onManaUsed(player, spent);
+            VitalityEnchants.onManaUsed(player, spent);
             }
             player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SOULFLOW, DatapointInteger.class).setValue(
                     player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SOULFLOW, DatapointInteger.class).getValue() - soulflow
