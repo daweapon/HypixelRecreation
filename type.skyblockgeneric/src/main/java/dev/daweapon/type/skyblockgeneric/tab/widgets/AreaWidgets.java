@@ -19,6 +19,7 @@ public final class AreaWidgets {
                 new FactionQuestsWidget(),
                 new TrophyFishWidget(),
                 new VolcanoWidget(),
-                new CrystalsWidget());
+                new CrystalsWidget(),
+                new FrozenCorpsesWidget());
     }
 }

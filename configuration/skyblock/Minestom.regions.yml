@@ -314,6 +314,15 @@ regions:
     y2: 136
     z2: 426
     serverType: DWARVEN_MINES
+  - id: glacite_mineshaft
+    type: GLACITE_MINESHAFT
+    x1: -199
+    y1: 0
+    z1: -199
+    x2: -105
+    y2: 34
+    z2: -153
+    serverType: DWARVEN_MINES
   - id: grandpawolf
     type: GRANDPA_WOLFS_CAVE
     x1: -76

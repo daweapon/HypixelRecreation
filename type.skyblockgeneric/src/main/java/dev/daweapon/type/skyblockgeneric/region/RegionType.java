@@ -301,7 +301,10 @@ public enum RegionType {
     DUNGEON_HUB("Dungeon Hub"),
     CATACOMBS("Catacombs"),
     KUUDRA_HOLLOW("Kuudra's Hollow", NamedTextColor.RED),
-    KUUDRA_END("Kuudra's End", NamedTextColor.RED);
+    KUUDRA_END("Kuudra's End", NamedTextColor.RED),
+
+    // Glacite Mineshafts
+    GLACITE_MINESHAFT("Glacite Mineshaft", NamedTextColor.AQUA, MineshaftConfiguration.class);
 
     private final String name;
     private final TextColor color;

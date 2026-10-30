@@ -27,6 +27,11 @@ import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.crystalhollows.boss.Mob
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.DiamondGoblin;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.GoldenGoblin;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.MobGlaciteWalker;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.glacite.MobGlaciteBowman;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.glacite.MobGlaciteCaver;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.glacite.MobGlaciteMage;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.glacite.MobGlaciteMutt;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.glacite.MobLittlefoot;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.MobTreasureHoarder;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.event.MobCreeperlobber;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.event.MobMurderlover;
@@ -208,13 +213,13 @@ public enum BestiaryCategory {
         GOLDEN_GOBLIN("<a>Golden Goblin", "Take the things you love in life, and run with them.", List.of(new GoldenGoblin())),
         TREASURE_HOARDER("<a>Treasure Hoarder", "The real treasure was the gold we found along the way.", List.of(new MobTreasureHoarder())),
         GHOST("<a>Ghost", "It is hard to find that which you cannot see.", CataloguedBestiaryAreas.placeholder("GHOST", "Ghost", 2, 20, MobType.ELUSIVE, "981977918a1180e0dec879e6bcd1aa39494977bb913be2ab01aff1db1fa4")),
-        GLACITE_BOWMAN("<a>Glacite Bowman", "Unable to see, it hunts by sound.", CataloguedBestiaryAreas.placeholder("GLACITE_BOWMAN", "Glacite Bowman", 4, 15, MobType.GLACIAL, "d2a0057edd8e8480f0ea2a78c1ad88e401c4844f4458aeb4e33ac93a58b8c11a")),
-        GLACITE_CAVER("<a>Glacite Caver", "Dug too deep and never looked back.", CataloguedBestiaryAreas.placeholder("GLACITE_CAVER", "Glacite Caver", 4, 15, MobType.GLACIAL, "d2a0057edd8e8480f0ea2a78c1ad88e401c4844f4458aeb4e33ac93a58b8c11a")),
-        GLACITE_MAGE("<a>Glacite Mage", "Unknowing and unpredictable in its destruction.", CataloguedBestiaryAreas.placeholder("GLACITE_MAGE", "Glacite Mage", 4, 15, MobType.GLACIAL, "d2a0057edd8e8480f0ea2a78c1ad88e401c4844f4458aeb4e33ac93a58b8c11a")),
-        GLACITE_MUTT("<a>Glacite Mutt", "Remarkably loyal, even in death.", CataloguedBestiaryAreas.placeholder("GLACITE_MUTT", "Glacite Mutt", 4, 15, MobType.GLACIAL, "69d1d3113ec43ac2961dd59f28175fb4718873c6c448dfca8722317d67")),
+        GLACITE_BOWMAN("<a>Glacite Bowman", "Unable to see, it hunts by sound.", List.of(new MobGlaciteBowman())),
+        GLACITE_CAVER("<a>Glacite Caver", "Dug too deep and never looked back.", List.of(new MobGlaciteCaver())),
+        GLACITE_MAGE("<a>Glacite Mage", "Unknowing and unpredictable in its destruction.", List.of(new MobGlaciteMage())),
+        GLACITE_MUTT("<a>Glacite Mutt", "Remarkably loyal, even in death.", List.of(new MobGlaciteMutt())),
         GOBLIN_RAIDERS("<a>Goblin Raiders", "If it moves, it gets smashed.",
                 List.of(new MobRaidWeakling(), new MobRaidFireslinger(), new MobCreeperlobber(), new MobPitfighter(), new MobMurderlover(), new MobSuperprotectron())),
-        LITTLEFOOT("<a>Littlefoot", "You've probably heard of his older brother.", CataloguedBestiaryAreas.placeholder("LITTLEFOOT", "Littlefoot", 2, 5, MobType.SUBTERRANEAN, "6cce41cd32db68f699c281f83f20766c83c97fd49664eb8c7584b9f343d960d1")),
+        LITTLEFOOT("<a>Littlefoot", "You've probably heard of his older brother.", List.of(new MobLittlefoot())),
         POWDER_GHAST("<a>Powder Ghast", "Powder and coal replaces ash and soot!", List.of(new MobPowderGhast())),
         STAR_SENTRY("<a>Star Sentry", "Defenders of the Fallen Star.", List.of(new MobStarSentry())),
         ;

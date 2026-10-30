@@ -33,6 +33,7 @@ public final class MobAttackService {
     }
 
     public static float strike(SkyBlockMob mob, SkyBlockPlayer player, ItemStatistics mobStatistics) {
+        if (dev.daweapon.type.skyblockgeneric.hunting.GhastlyDistraction.isPacified(player, mob)) return 0;
         if (CreeperVeil.absorb(player)) return 0;
         ItemStatistics playerStatistics = AttributeEffectService.withLifelineDefense(player, player.getStatistics().allStatistics());
 

@@ -123,14 +123,11 @@ public class AbilityRegistry {
         register(new RegisteredAbility(
             "WITHER_SHIELD",
             "Wither Shield",
-            (_, _) -> "<7>Reduces damage taken by <a>10% <7>for <e>5 <7>seconds. Also grants an absorption shield.",
+            (_, _) -> "<7>Reduces damage taken by <a>10% <7>for <e>5 <7>seconds. Also grants an absorption shield that scales with your Catacombs level. Costs <4>50 Vitality<7>, refunded by how much of the shield is unused.",
             RegisteredAbility.AbilityActivation.RIGHT_CLICK,
             200,
             new RegisteredAbility.AbilityManaCost(150),
-            (player, _, _, _) -> {
-                WitherShieldEffect.apply(player);
-                return true;
-            }
+            (player, _, _, _) -> WitherShieldEffect.apply(player)
         ));
 
         register(new RegisteredAbility(

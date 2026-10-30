@@ -10,11 +10,9 @@ public enum FossilEssencePerk implements EssencePerk {
     CHILLED_TO_THE_BONE("Chilled To The Bone", valueSteps(2, 2, 10), costSteps(200, 200, 10),
             "Skeleton Fish can't be fished up on this server yet."),
     DWARVEN_EXPERTISE("Dwarven Expertise", valueSteps(2, 2, 10), costSteps(100, 100, 10), null),
-    CUT_LOOSE("Cut Loose", new double[]{0.5, 1, 1.5, 2, 2.5}, costSteps(500, 500, 5),
-            "Glacite Mineshafts aren't in this server yet."),
+    CUT_LOOSE("Cut Loose", new double[]{0.5, 1, 1.5, 2, 2.5}, costSteps(500, 500, 5), null),
     PREHISTORIAN("Prehistorian", valueSteps(1, 1, 10), costSteps(50, 50, 10), "Dyes aren't in this server yet."),
-    RESOURCEFUL("Resourceful", valueSteps(1, 1, 5), new long[]{2_500, 5_000, 7_500, 10_000, 12_500},
-            "Glacite Mineshafts aren't in this server yet.");
+    RESOURCEFUL("Resourceful", valueSteps(1, 1, 5), new long[]{2_500, 5_000, 7_500, 10_000, 12_500}, null);
 
     private final String displayName;
     private final double[] values;

@@ -236,8 +236,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Glacite Mineshafts and Frozen Corpses aren't in the game yet."
+          - type: TEXT
             text:
               - "Sends out a <a>Ding <7>when within <a>20"
               - "blocks of an unlooted <b>Frozen Corpse<7>!"
@@ -258,8 +257,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Glacite Mineshafts and Frozen Corpses aren't in the game yet."
+          - type: TEXT
             text:
               - "Sends out a <a>Ding <7>when within <a>20"
               - "blocks of an unlooted <b>Frozen Corpse<7>!"
@@ -280,8 +278,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Glacite Mineshafts and Frozen Corpses aren't in the game yet."
+          - type: TEXT
             text:
               - "Sends out a <a>Ding <7>when within <a>20"
               - "blocks of an unlooted <b>Frozen Corpse<7>!"

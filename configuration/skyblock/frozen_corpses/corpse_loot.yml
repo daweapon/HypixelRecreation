@@ -1,0 +1,165 @@
+# Frozen Corpse loot: types, roll counts, base rewards and the three weighted pools (wiki Frozen Corpses/Lapis, /Umber and Tungsten, /Vanguard).
+# Powder and HOTM XP per corpse are marked unverified on the wiki. Dead Man's Chestplate weight 100 is inferred from its 1.506% item-page rate.
+types:
+  LAPIS: {rolls: [3, 6], powder: 500, hotm_xp: 100, dye_chance: 0.0004, meter_xp: 500, key: null, pool: LAPIS, spawn_share: 50}
+  UMBER: {rolls: [4, 7], powder: 5000, hotm_xp: 1000, dye_chance: 0.001, meter_xp: 2500, key: UMBER_KEY, pool: UMBER_TUNGSTEN, spawn_share: 25}
+  TUNGSTEN: {rolls: [4, 7], powder: 5000, hotm_xp: 1000, dye_chance: 0.001, meter_xp: 2500, key: TUNGSTEN_KEY, pool: UMBER_TUNGSTEN, spawn_share: 25}
+  VANGUARD: {rolls: [5, 8], powder: 25000, hotm_xp: 5000, dye_chance: 0.01, meter_xp: 25000, key: SKELETON_KEY, pool: VANGUARD, spawn_share: 0}
+
+meter:
+  - {id: flawless_onyx, name: "Flawless Onyx Gemstone", item: FLAWLESS_ONYX_GEM, required_xp: 60000}
+  - {id: flawless_peridot, name: "Flawless Peridot Gemstone", item: FLAWLESS_PERIDOT_GEM, required_xp: 60000}
+  - {id: flawless_citrine, name: "Flawless Citrine Gemstone", item: FLAWLESS_CITRINE_GEM, required_xp: 60000}
+  - {id: flawless_aquamarine, name: "Flawless Aquamarine Gemstone", item: FLAWLESS_AQUAMARINE_GEM, required_xp: 60000}
+  - {id: refined_umber, name: "Refined Umber", item: REFINED_UMBER, required_xp: 60000}
+  - {id: refined_tungsten, name: "Refined Tungsten", item: REFINED_TUNGSTEN, required_xp: 60000}
+  - {id: glacite_amalgamation, name: "Glacite Amalgamation", item: GLACITE_AMALGAMATION, required_xp: 60000}
+  - {id: ice_cold_book, name: "Enchanted Book (Ice Cold I)", item: ENCHANTED_BOOK, book: ICE_COLD, level: 1, required_xp: 60000}
+  - {id: blue_goblin_egg, name: "Blue Goblin Egg", item: BLUE_GOBLIN_EGG, required_xp: 60000}
+  - {id: opal_crystal, name: "Opal Crystal", item: OPAL_CRYSTAL, required_xp: 75000}
+  - {id: onyx_crystal, name: "Onyx Crystal", item: ONYX_CRYSTAL, required_xp: 75000}
+  - {id: peridot_crystal, name: "Peridot Crystal", item: PERIDOT_CRYSTAL, required_xp: 75000}
+  - {id: aquamarine_crystal, name: "Aquamarine Crystal", item: AQUAMARINE_CRYSTAL, required_xp: 75000}
+  - {id: citrine_crystal, name: "Citrine Crystal", item: CITRINE_CRYSTAL, required_xp: 75000}
+  - {id: metallic_minis, name: "Dwarven O's Metallic Minis", item: DWARVEN_OS_METALLIC_MINIS, required_xp: 75000}
+  - {id: umber_key, name: "Umber Key", item: UMBER_KEY, required_xp: 100000}
+  - {id: tungsten_key, name: "Tungsten Key", item: TUNGSTEN_KEY, required_xp: 100000}
+  - {id: mithril_plate, name: "Mithril Plate", item: MITHRIL_PLATE, required_xp: 150000}
+  - {id: umber_plate, name: "Umber Plate", item: UMBER_PLATE, required_xp: 300000}
+  - {id: tungsten_plate, name: "Tungsten Plate", item: TUNGSTEN_PLATE, required_xp: 300000}
+  - {id: frozen_scute, name: "Frozen Scute", item: FROZEN_SCUTE, required_xp: 750000}
+  - {id: caged_wisp, name: "Caged Wisp", item: CAGED_WISP, required_xp: 1250000}
+  - {id: skeleton_key, name: "Skeleton Key", item: SKELETON_KEY, required_xp: 1250000}
+  - {id: shattered_locket, name: "Shattered Locket", item: SHATTERED_PENDANT, required_xp: 2500000}
+  - {id: dead_mans_chestplate, name: "Dead Man's Chestplate", item: DEAD_MANS_CHESTPLATE, required_xp: 12000}
+  - {id: frostbitten_dye, name: "Frostbitten Dye", item: DYE_FROSTBITTEN, required_xp: 5000000}
+
+pools:
+  LAPIS:
+      - {item: FLAWED_ONYX_GEM, amount: 20, weight: 1000}
+      - {item: FLAWED_ONYX_GEM, amount: 40, weight: 500}
+      - {item: FINE_ONYX_GEM, amount: 1, weight: 250}
+      - {item: FINE_ONYX_GEM, amount: 2, weight: 125}
+      - {item: FLAWED_PERIDOT_GEM, amount: 20, weight: 1000}
+      - {item: FLAWED_PERIDOT_GEM, amount: 40, weight: 500}
+      - {item: FINE_PERIDOT_GEM, amount: 1, weight: 250}
+      - {item: FINE_PERIDOT_GEM, amount: 2, weight: 125}
+      - {item: FLAWED_CITRINE_GEM, amount: 20, weight: 1000}
+      - {item: FLAWED_CITRINE_GEM, amount: 40, weight: 500}
+      - {item: FINE_CITRINE_GEM, amount: 1, weight: 250}
+      - {item: FINE_CITRINE_GEM, amount: 2, weight: 125}
+      - {item: FLAWED_AQUAMARINE_GEM, amount: 20, weight: 1000}
+      - {item: FLAWED_AQUAMARINE_GEM, amount: 40, weight: 500}
+      - {item: FINE_AQUAMARINE_GEM, amount: 1, weight: 250}
+      - {item: FINE_AQUAMARINE_GEM, amount: 2, weight: 125}
+      - {item: SUSPICIOUS_SCRAP, amount: 1, weight: 500}
+      - {item: GOBLIN_EGG, amount: 1, weight: 800}
+      - {item: GOBLIN_EGG, amount: 2, weight: 400}
+      - {item: GOBLIN_EGG, amount: 4, weight: 200}
+      - {item: GREEN_GOBLIN_EGG, amount: 1, weight: 700}
+      - {item: GREEN_GOBLIN_EGG, amount: 2, weight: 350}
+      - {item: GREEN_GOBLIN_EGG, amount: 4, weight: 175}
+      - {item: YELLOW_GOBLIN_EGG, amount: 1, weight: 700}
+      - {item: YELLOW_GOBLIN_EGG, amount: 2, weight: 350}
+      - {item: YELLOW_GOBLIN_EGG, amount: 4, weight: 175}
+      - {item: RED_GOBLIN_EGG, amount: 1, weight: 700}
+      - {item: RED_GOBLIN_EGG, amount: 2, weight: 350}
+      - {item: RED_GOBLIN_EGG, amount: 4, weight: 175}
+      - {item: ENCHANTED_UMBER, amount: 1, weight: 500}
+      - {item: ENCHANTED_UMBER, amount: 2, weight: 250}
+      - {item: ENCHANTED_UMBER, amount: 4, weight: 125}
+      - {item: ENCHANTED_TUNGSTEN, amount: 1, weight: 500}
+      - {item: ENCHANTED_TUNGSTEN, amount: 2, weight: 250}
+      - {item: ENCHANTED_TUNGSTEN, amount: 4, weight: 125}
+      - {item: ENCHANTED_GLACITE, amount: 1, weight: 500}
+      - {item: ENCHANTED_GLACITE, amount: 2, weight: 250}
+      - {item: ENCHANTED_GLACITE, amount: 4, weight: 125}
+      - {item: REFINED_UMBER, amount: 1, weight: 25, meter: refined_umber}
+      - {item: REFINED_TUNGSTEN, amount: 1, weight: 25, meter: refined_tungsten}
+      - {item: GLACITE_AMALGAMATION, amount: 1, weight: 25, meter: glacite_amalgamation}
+      - {item: UMBER_KEY, amount: 1, weight: 25, meter: umber_key}
+      - {item: TUNGSTEN_KEY, amount: 1, weight: 25, meter: tungsten_key}
+      - {item: GLACITE_JEWEL, amount: 1, weight: 500}
+      - {item: GLACITE_JEWEL, amount: 2, weight: 250}
+      - {item: BEJEWELED_HANDLE, amount: 1, weight: 100}
+      - {item: BEJEWELED_HANDLE, amount: 2, weight: 50}
+      - {item: BEJEWELED_HANDLE, amount: 4, weight: 25}
+  UMBER_TUNGSTEN:
+      - {item: FINE_ONYX_GEM, amount: 4, weight: 700}
+      - {item: FINE_ONYX_GEM, amount: 8, weight: 350}
+      - {item: FINE_ONYX_GEM, amount: 16, weight: 175}
+      - {item: FLAWLESS_ONYX_GEM, amount: 1, weight: 25, meter: flawless_onyx}
+      - {item: FINE_PERIDOT_GEM, amount: 4, weight: 700}
+      - {item: FINE_PERIDOT_GEM, amount: 8, weight: 350}
+      - {item: FINE_PERIDOT_GEM, amount: 16, weight: 175}
+      - {item: FLAWLESS_PERIDOT_GEM, amount: 1, weight: 25, meter: flawless_peridot}
+      - {item: FINE_CITRINE_GEM, amount: 4, weight: 700}
+      - {item: FINE_CITRINE_GEM, amount: 8, weight: 350}
+      - {item: FINE_CITRINE_GEM, amount: 16, weight: 175}
+      - {item: FLAWLESS_CITRINE_GEM, amount: 1, weight: 25, meter: flawless_citrine}
+      - {item: FINE_AQUAMARINE_GEM, amount: 4, weight: 700}
+      - {item: FINE_AQUAMARINE_GEM, amount: 8, weight: 350}
+      - {item: FINE_AQUAMARINE_GEM, amount: 16, weight: 175}
+      - {item: FLAWLESS_AQUAMARINE_GEM, amount: 1, weight: 25, meter: flawless_aquamarine}
+      - {item: SUSPICIOUS_SCRAP, amount: 2, weight: 700}
+      - {item: SUSPICIOUS_SCRAP, amount: 4, weight: 350}
+      - {item: ENCHANTED_BOOK, book: ICE_COLD, level: 1, amount: 1, weight: 80, meter: ice_cold_book}
+      - {item: BLUE_GOBLIN_EGG, amount: 1, weight: 80, meter: blue_goblin_egg}
+      - {item: REFINED_UMBER, amount: 1, weight: 20, meter: refined_umber}
+      - {item: REFINED_TUNGSTEN, amount: 1, weight: 20, meter: refined_tungsten}
+      - {item: GLACITE_AMALGAMATION, amount: 1, weight: 20, meter: glacite_amalgamation}
+      - {item: UMBER_PLATE, amount: 1, weight: 5, meter: umber_plate}
+      - {item: TUNGSTEN_PLATE, amount: 1, weight: 5, meter: tungsten_plate}
+      - {item: UMBER_KEY, amount: 1, weight: 10, meter: umber_key}
+      - {item: TUNGSTEN_KEY, amount: 1, weight: 10, meter: tungsten_key}
+      - {item: MITHRIL_PLATE, amount: 1, weight: 10, meter: mithril_plate}
+      - {item: FROZEN_SCUTE, amount: 1, weight: 4, meter: frozen_scute}
+      - {item: DWARVEN_OS_METALLIC_MINIS, amount: 1, weight: 20, meter: metallic_minis}
+      - {item: SKELETON_KEY, amount: 1, weight: 4, meter: skeleton_key}
+      - {item: CAGED_WISP, amount: 1, weight: 2, meter: caged_wisp}
+      - {item: OPAL_CRYSTAL, amount: 1, weight: 40, meter: opal_crystal}
+      - {item: ONYX_CRYSTAL, amount: 1, weight: 40, meter: onyx_crystal}
+      - {item: PERIDOT_CRYSTAL, amount: 1, weight: 40, meter: peridot_crystal}
+      - {item: CITRINE_CRYSTAL, amount: 1, weight: 40, meter: citrine_crystal}
+      - {item: AQUAMARINE_CRYSTAL, amount: 1, weight: 40, meter: aquamarine_crystal}
+      - {item: DEAD_MANS_CHESTPLATE, amount: 1, weight: 100, meter: dead_mans_chestplate}
+  VANGUARD:
+      - {item: FLAWLESS_ONYX_GEM, amount: 1, weight: 160, meter: flawless_onyx}
+      - {item: FLAWLESS_ONYX_GEM, amount: 2, weight: 80, meter: flawless_onyx}
+      - {item: FLAWLESS_PERIDOT_GEM, amount: 1, weight: 160, meter: flawless_peridot}
+      - {item: FLAWLESS_PERIDOT_GEM, amount: 2, weight: 80, meter: flawless_peridot}
+      - {item: FLAWLESS_CITRINE_GEM, amount: 1, weight: 160, meter: flawless_citrine}
+      - {item: FLAWLESS_CITRINE_GEM, amount: 2, weight: 80, meter: flawless_citrine}
+      - {item: FLAWLESS_AQUAMARINE_GEM, amount: 1, weight: 160, meter: flawless_aquamarine}
+      - {item: FLAWLESS_AQUAMARINE_GEM, amount: 2, weight: 80, meter: flawless_aquamarine}
+      - {item: DWARVEN_OS_METALLIC_MINIS, amount: 1, weight: 120, meter: metallic_minis}
+      - {item: SUSPICIOUS_SCRAP, amount: 8, weight: 160}
+      - {item: SUSPICIOUS_SCRAP, amount: 16, weight: 80}
+      - {item: ENCHANTED_BOOK, book: ICE_COLD, level: 1, amount: 1, weight: 160, meter: ice_cold_book}
+      - {item: BLUE_GOBLIN_EGG, amount: 1, weight: 160, meter: blue_goblin_egg}
+      - {item: BLUE_GOBLIN_EGG, amount: 2, weight: 80, meter: blue_goblin_egg}
+      - {item: REFINED_UMBER, amount: 1, weight: 160, meter: refined_umber}
+      - {item: REFINED_UMBER, amount: 2, weight: 80, meter: refined_umber}
+      - {item: REFINED_TUNGSTEN, amount: 1, weight: 160, meter: refined_tungsten}
+      - {item: REFINED_TUNGSTEN, amount: 2, weight: 80, meter: refined_tungsten}
+      - {item: GLACITE_AMALGAMATION, amount: 1, weight: 160, meter: glacite_amalgamation}
+      - {item: GLACITE_AMALGAMATION, amount: 2, weight: 80, meter: glacite_amalgamation}
+      - {item: GLACITE_AMALGAMATION, amount: 4, weight: 40, meter: glacite_amalgamation}
+      - {item: MITHRIL_PLATE, amount: 1, weight: 60, meter: mithril_plate}
+      - {item: UMBER_PLATE, amount: 1, weight: 30, meter: umber_plate}
+      - {item: TUNGSTEN_PLATE, amount: 1, weight: 30, meter: tungsten_plate}
+      - {item: UMBER_KEY, amount: 1, weight: 80, meter: umber_key}
+      - {item: UMBER_KEY, amount: 2, weight: 40, meter: umber_key}
+      - {item: UMBER_KEY, amount: 4, weight: 20, meter: umber_key}
+      - {item: TUNGSTEN_KEY, amount: 1, weight: 80, meter: tungsten_key}
+      - {item: TUNGSTEN_KEY, amount: 2, weight: 40, meter: tungsten_key}
+      - {item: TUNGSTEN_KEY, amount: 4, weight: 20, meter: tungsten_key}
+      - {item: SKELETON_KEY, amount: 1, weight: 10, meter: skeleton_key}
+      - {item: FROZEN_SCUTE, amount: 1, weight: 10, meter: frozen_scute}
+      - {item: CAGED_WISP, amount: 1, weight: 10, meter: caged_wisp}
+      - {item: SHATTERED_PENDANT, amount: 1, weight: 5, meter: shattered_locket}
+      - {item: OPAL_CRYSTAL, amount: 1, weight: 120, meter: opal_crystal}
+      - {item: ONYX_CRYSTAL, amount: 1, weight: 120, meter: onyx_crystal}
+      - {item: PERIDOT_CRYSTAL, amount: 1, weight: 120, meter: peridot_crystal}
+      - {item: CITRINE_CRYSTAL, amount: 1, weight: 120, meter: citrine_crystal}
+      - {item: AQUAMARINE_CRYSTAL, amount: 1, weight: 120, meter: aquamarine_crystal}

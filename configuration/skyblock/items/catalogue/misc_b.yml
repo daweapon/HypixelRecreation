@@ -137,8 +137,7 @@ items:
     material: chainmail_chestplate
     name: "Dead Man's Chestplate"
     rarity: RARE
-    unavailable: "Needs Glacite Mineshafts (Frozen Corpses), which aren't built"
-    source: "Drops from Frozen Corpses (about 1.5% from Umber and Tungsten Corpses)"
+    source: "Drops from Frozen Corpses in Glacite Mineshafts (about 1.5% per roll from Umber and Tungsten Corpses)"
     lore:
       - "§7\"That horribly rigid, overfrozen"
       - "§7water in nearby lake almost kills"
@@ -1167,8 +1166,7 @@ items:
     material: player_head
     name: "Dwarven O's Metallic Minis"
     rarity: LEGENDARY
-    unavailable: "Dropped by Frozen Corpses in Glacite Mineshafts, which are not built"
-    source: "Frozen Corpse drop in Glacite Mineshafts"
+    source: "Frozen Corpse drop in Glacite Mineshafts (Umber, Tungsten and Vanguard Corpses)"
     lore:
       - "§8Consumable"
       - ""

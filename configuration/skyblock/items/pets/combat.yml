@@ -1305,7 +1305,7 @@ items:
             triggers: DAMAGED_BY_MOB
             text:
               - "<7>When under <c>40% <7>maximum HP, you take"
-              - "<a>{0}% <7>less damage. Gain <4>+{1}<glyph:stat_vitality> <4>Vitality"
+              - "<a>{0}% <7>less damage. Regen <4>+{1}<glyph:stat_vitality> <4>Vitality"
               - "<7>after taking 10 hits."
             values:
               - { per_level: 0.25 }

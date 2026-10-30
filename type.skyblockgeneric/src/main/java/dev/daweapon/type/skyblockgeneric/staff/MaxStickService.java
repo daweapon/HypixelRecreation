@@ -187,6 +187,7 @@ public final class MaxStickService {
             new Step("Experimentation Table", dev.daweapon.type.skyblockgeneric.experiments.ExperimentTable::unlockAll),
             new Step("Teleporter Pill", dev.daweapon.type.skyblockgeneric.island.pad.TeleporterPill::unlock),
             new Step("Dwarven O's", dev.daweapon.type.skyblockgeneric.consumable.DwarvenOs::maxAll),
+            new Step("Frozen Corpse Milestones", dev.daweapon.type.skyblockgeneric.glacite.corpse.CorpseMilestones::maxOut),
             new Step("Ice Essence shop", IceEssenceShop::maxAvailable),
             new Step("Fossil Essence shop", dev.daweapon.type.skyblockgeneric.essence.FossilEssenceShop::maxAvailable),
             new Step("Fossil Research Center", dev.daweapon.type.skyblockgeneric.fossil.FossilService::donateAll),

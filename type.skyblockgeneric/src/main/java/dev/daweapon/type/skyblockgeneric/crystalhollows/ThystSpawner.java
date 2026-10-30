@@ -14,7 +14,7 @@ public final class ThystSpawner {
     }
 
     public static void onBreak(CrystalHollowsOre ore, Instance instance, Point blockPosition) {
-        if (ore != CrystalHollowsOre.AMETHYST || instance == null) return;
+        if (ore != CrystalHollowsOre.AMETHYST || instance == null || dev.daweapon.type.skyblockgeneric.glacite.mineshaft.MineshaftService.of(instance) != null) return;
         if (ThreadLocalRandom.current().nextDouble() >= SPAWN_CHANCE) return;
         new MobThyst().setInstance(instance, new Pos(blockPosition.x() + 0.5, blockPosition.y(), blockPosition.z() + 0.5));
     }

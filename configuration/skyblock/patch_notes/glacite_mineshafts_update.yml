@@ -1,0 +1,28 @@
+title: "The Glacite Mineshafts Update"
+date: "29th October 2026"
+intro:
+  - "Mining in the Glacite Tunnels can now open a portal to a Glacite Mineshaft, a frozen cavern of your own where ore is rich and the cold bites harder."
+sections:
+  - heading: "Finding a Mineshaft"
+    colour: "<b>"
+    lines:
+      - "Every ore you break in the Glacite Tunnels chips away at a hidden pity counter that starts at 2,000. The chance of a portal is 1 in the counter, and it is guaranteed once the counter reaches 0. The Tab list counts your pity up from 0."
+      - "Ore is worth Block Quality: Mithril 2, Umber, Tungsten and Glacite 4, Titanium and most gemstones 8, and Aquamarine, Peridot, Citrine and Onyx 10. Blocks broken by Mining Spread or Pickobulus count for half."
+      - "The Surveyor perk and Core of the Mountain level 9 raise the portal chance. Re-entering the same Dwarven Mines lobby within a minute of leaving a shaft stops your pity from going down."
+      - "A portal stays beside you for 30 seconds. Click it to enter. You cannot enter another Mineshaft within 30 seconds of entering one."
+  - heading: "Mineshaft types"
+    colour: "<a>"
+    lines:
+      - "There are 17 types: Titanium, Tungsten, Umber, Jade, Amber, Topaz, Sapphire, Amethyst, Jasper, Ruby, Opal, Onyx, Peridot, Citrine, Aquamarine, Fairy and Littlefoot's Den."
+      - "The type depends on the last block you broke: a matching block makes that type a third of all rolls. Gemstone shafts can roll a Crystal layout (25 percent, raised by Crystalline), and Vanguard Seeker makes the Fairy shaft more likely."
+  - heading: "Inside"
+    colour: "<9>"
+    lines:
+      - "Every shaft is your own instance and closes when everybody has left. The Cold gets harsher every 2 minutes and 30 seconds. Reach -100 Cold, or die, and you are sent back to Dwarven Base Camp and cannot return to that shaft."
+      - "Leave through the exit at the entrance or with an Ascension Rope for Glacite Powder: 1,000 plus 500 for every Suspicious Scrap, 250 for every corpse and 10 for every Cold."
+      - "Ore and gemstones here can drop Suspicious Scrap. The chance starts at 1 in 200 and halves for every scrap you find in that shaft. No Stone Unturned and Mineshaft Mayhem raise it."
+      - "Mineshaft Mayhem gives one random buff when you enter. Eager Adventurer, Gemstone Spread and Mineshaft Fortune boost you only inside a shaft."
+  - heading: "Not here yet"
+    colour: "<c>"
+    lines:
+      - "Shafts are a plain stone cavern for now; the real layouts for each type arrive once they have been captured. Glacite mobs, Littlefoot and the mineshaft events are still to come."

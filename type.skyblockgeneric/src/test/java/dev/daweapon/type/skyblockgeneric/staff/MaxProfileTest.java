@@ -269,7 +269,9 @@ class MaxProfileTest {
         SkyBlockPlayer player = player();
         dev.daweapon.type.skyblockgeneric.essence.FossilEssenceShop.maxAvailable(player);
         assertEquals(10, dev.daweapon.type.skyblockgeneric.essence.EssencePerks.tier(player, dev.daweapon.type.skyblockgeneric.essence.FossilEssencePerk.DWARVEN_EXPERTISE));
-        assertEquals(0, dev.daweapon.type.skyblockgeneric.essence.EssencePerks.tier(player, dev.daweapon.type.skyblockgeneric.essence.FossilEssencePerk.RESOURCEFUL));
+        assertEquals(5, dev.daweapon.type.skyblockgeneric.essence.EssencePerks.tier(player, dev.daweapon.type.skyblockgeneric.essence.FossilEssencePerk.RESOURCEFUL));
+        assertEquals(5, dev.daweapon.type.skyblockgeneric.essence.EssencePerks.tier(player, dev.daweapon.type.skyblockgeneric.essence.FossilEssencePerk.CUT_LOOSE));
+        assertEquals(0, dev.daweapon.type.skyblockgeneric.essence.EssencePerks.tier(player, dev.daweapon.type.skyblockgeneric.essence.FossilEssencePerk.PREHISTORIAN));
     }
 
     @Test

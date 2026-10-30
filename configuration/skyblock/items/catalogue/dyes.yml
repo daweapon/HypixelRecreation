@@ -344,7 +344,6 @@ items:
       - ""
       - "§7Changes the color of an armor piece"
       - "§7to §3#09D8EB§7!"
-    unavailable: "Needs Glacite Mineshafts (Frozen Corpses not built)"
     source: "Looting Frozen Corpses: 1/250k Lapis, 1/100k Umber/Tungsten, 1/10k Vanguard"
     components:
       - id: SKULL_HEAD

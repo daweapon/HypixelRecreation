@@ -1,5 +1,6 @@
 # Dwarven Mines Mining Events (wiki Dwarven Mines/Events). Active and passive events run on a 20 minute cadence;
-# only passive events run in the Crystal Hollows. Weights and the first-event delay are not published by Hypixel.
+# only passive events run in the Crystal Hollows. Weights, the first-event delay and the Fallen Star chance/cooldowns are unpublished guesses.
+# Verified: 20 minute cadence (wiki Dwarven Mines, video n5IhNGwEh4A 10:35), Golden Goblin 0.1% per ore, Powder Ghast 0.02% per Mithril Ore with a 10 minute cooldown.
 cadence_minutes: 20
 first_event_minutes: 3
 warning_seconds: 20
@@ -110,7 +111,7 @@ random:
       - { name: "Cliffside Veins", x: 49.5, y: 134, z: 40.5, radius: 30 }
       - { name: "Forge Basin", x: 0.5, y: 145, z: 23.5, radius: 25 }
   golden_goblin:
-    chance_percent_per_ore: 0.01
+    chance_percent_per_ore: 0.1
     lifetime_seconds: 30
 
 # Cult of the Fallen Star is a SkyBlock-calendar meeting (wiki), not a scheduled mining event.

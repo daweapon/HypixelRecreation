@@ -543,8 +543,7 @@ items:
     material: light_gray_dye
     name: "Littlefoot Fluff"
     rarity: LEGENDARY
-    unavailable: "Needs the Raffle of the Century event; Littlefoot is not built"
-    source: "Rare drop from Littlefoot, or a MEDIUM reward from the Raffle of the Century"
+    source: "Rare drop from Littlefoot in Glacite Mineshafts (0.2%); the Raffle of the Century is not built"
     lore:
       - "§7A poignant reminder of the day you"
       - "§7almost caught Bigfoot’s younger,"
@@ -2487,8 +2486,7 @@ items:
     material: paper
     name: "Onyx Crystal"
     rarity: SPECIAL
-    unavailable: "Needs Glacite Mineshafts, which are not built"
-    source: "Gemstone Crystal found deep in the Glacite Mineshafts"
+    source: "Frozen Corpse drop in Glacite Mineshafts (Umber, Tungsten and Vanguard Corpses; guaranteed by the Frozen Corpse RNG Meter)"
     lore:
       - "§7Extraordinary crystal found deep in"
       - "§7the §bGlacite Mineshafts§7."
@@ -2512,8 +2510,7 @@ items:
     material: paper
     name: "Opal Crystal"
     rarity: SPECIAL
-    unavailable: "Needs Glacite Mineshafts, which are not built"
-    source: "Gemstone Crystal found deep in the Glacite Mineshafts"
+    source: "Frozen Corpse drop in Glacite Mineshafts (Umber, Tungsten and Vanguard Corpses; guaranteed by the Frozen Corpse RNG Meter)"
     lore:
       - "§7Extraordinary crystal found deep in"
       - "§7the §bGlacite Mineshafts§7."
@@ -2774,8 +2771,7 @@ items:
     material: paper
     name: "Peridot Crystal"
     rarity: SPECIAL
-    unavailable: "Needs Glacite Mineshafts, which are not built"
-    source: "Gemstone Crystal found deep in the Glacite Mineshafts"
+    source: "Frozen Corpse drop in Glacite Mineshafts (Umber, Tungsten and Vanguard Corpses; guaranteed by the Frozen Corpse RNG Meter)"
     lore:
       - "§7Extraordinary crystal found deep in"
       - "§7the §bGlacite Mineshafts§7."

@@ -7,6 +7,7 @@ import net.minestom.server.timer.TaskSchedule;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
+import dev.daweapon.type.skyblockgeneric.glacite.mineshaft.MineshaftService;
 import dev.daweapon.type.skyblockgeneric.region.RegionType;
 import dev.daweapon.type.skyblockgeneric.region.SkyBlockRegion;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockActionBar;
@@ -83,7 +84,8 @@ public final class ColdService {
         }
         double before = cold(player);
         if (GlaciteZones.isColdZone(type)) {
-            double vulnerability = GlaciteZones.isWater(type) && inWater(player) ? ColdMath.WATER_VULNERABILITY : 0;
+            double vulnerability = (GlaciteZones.isWater(type) && inWater(player) ? ColdMath.WATER_VULNERABILITY : 0)
+                    + MineshaftService.coldVulnerability(player);
             double step = 1 / ColdMath.secondsPerPoint(resistance(player), vulnerability);
             double progress = PROGRESS.merge(player.getUuid(), step, Double::sum);
             int whole = (int) Math.floor(progress);
@@ -119,6 +121,10 @@ public final class ColdService {
     }
 
     private static void freeze(SkyBlockPlayer player) {
+        if (MineshaftService.isInside(player)) {
+            MineshaftService.freeze(player);
+            return;
+        }
         reset(player);
         player.sendMessage("<c>☠ <7>You froze to death.");
         player.teleport(BASE_CAMP_SPAWN);

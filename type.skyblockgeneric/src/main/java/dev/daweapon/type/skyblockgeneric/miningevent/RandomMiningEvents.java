@@ -56,7 +56,7 @@ public final class RandomMiningEvents {
                 && random.nextDouble() * PERCENT < config.number(0.02, "random", "powder_ghast", "chance_percent_per_mithril") * luck) {
             spawnPowderGhast(player.getPosition());
         }
-        double goblin = config.number(0.01, "random", "golden_goblin", "chance_percent_per_ore") * luck
+        double goblin = config.number(0.1, "random", "golden_goblin", "chance_percent_per_ore") * luck
                 * (HotmService.skyMallBuff(player) == HotmSkyMallBuff.GOBLINS ? GOBLIN_SKY_MALL_MULTIPLIER : 1);
         if (random.nextDouble() * PERCENT < goblin) spawnGoldenGoblin(player);
     }

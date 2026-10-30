@@ -34,7 +34,7 @@ public enum CrystalHollowsOre {
     }
 
     public static CrystalHollowsOre of(Material material, RegionType region) {
-        if (material == null || !CrystalHollowsZones.isCrystalHollows(region)) return null;
+        if (material == null || !(CrystalHollowsZones.isCrystalHollows(region) || region == RegionType.GLACITE_MINESHAFT)) return null;
         for (CrystalHollowsOre ore : values()) {
             if (ore.materials.contains(material)) return ore;
         }

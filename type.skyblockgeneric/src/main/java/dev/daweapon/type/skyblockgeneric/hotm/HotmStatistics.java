@@ -43,6 +43,7 @@ public final class HotmStatistics {
         if (buff == HotmSkyMallBuff.MINING_SPEED) total = total.addBase(ItemStatistic.MINING_SPEED, 100D);
         if (buff == HotmSkyMallBuff.MINING_FORTUNE) total = total.addBase(ItemStatistic.MINING_FORTUNE, 50D);
         if (onMiningIsland) total = ItemStatistics.add(total, dev.daweapon.type.skyblockgeneric.miningevent.MiningEvents.statistics(player));
+        total = ItemStatistics.add(total, dev.daweapon.type.skyblockgeneric.glacite.mineshaft.MineshaftStatistics.statistics(player));
         return ItemStatistics.add(total, HotmAbilities.statistics(player));
     }
 
@@ -52,7 +53,7 @@ public final class HotmStatistics {
             HotmPerk perk = HotmRegistry.get().perk(entry.getKey());
             if (perk == null || !perk.available() || HotmService.data(player).getDisabledPerks().contains(entry.getKey())) continue;
             for (HotmPerk.Effect effect : perk.effects()) {
-                if (effect.statistic() != statistic || effect.scope().isGlobal() || !effect.scope().matches(block)) continue;
+                if (effect.statistic() != statistic || effect.scope().isGlobal() || !effect.scope().matches(block, player)) continue;
                 total += effect.value(entry.getValue());
             }
         }

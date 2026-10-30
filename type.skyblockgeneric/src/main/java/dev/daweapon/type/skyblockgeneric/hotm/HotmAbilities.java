@@ -65,6 +65,10 @@ public final class HotmAbilities {
     public static double cooldownSeconds(SkyBlockPlayer player, HotmAbility ability) {
         double seconds = ability.cooldown(HotmService.abilityLevel(player));
         if (HotmService.skyMallBuff(player) == HotmSkyMallBuff.COOLDOWN) seconds *= 0.8;
+        dev.daweapon.type.skyblockgeneric.glacite.mineshaft.MineshaftInstance shaft = dev.daweapon.type.skyblockgeneric.glacite.mineshaft.MineshaftService.current(player);
+        if (shaft != null && shaft.buff(player.getUuid()) == dev.daweapon.type.skyblockgeneric.glacite.mineshaft.MayhemBuff.ABILITY_COOLDOWN) {
+            seconds *= dev.daweapon.type.skyblockgeneric.glacite.mineshaft.MayhemBuff.COOLDOWN_MULTIPLIER;
+        }
         return seconds * (1 - dev.daweapon.type.skyblockgeneric.drill.DrillFuel.heldCooldownReductionPercent(player) / 100);
     }
 
@@ -109,8 +113,9 @@ public final class HotmAbilities {
                     if (mineable == null || !isOre(mineable)) continue;
                     if (!mineable.getMiningHandler().canToolBreak(held)
                             || mineable.getMiningHandler().getMiningPowerRequirement() > power) continue;
-                    EventDispatcher.call(new PlayerBlockBreakEvent(player, instance, block, Block.AIR,
-                            new net.minestom.server.coordinate.BlockVec(position), BlockFace.TOP));
+                    dev.daweapon.type.skyblockgeneric.region.mining.MiningSpread.whileSecondary(() ->
+                            EventDispatcher.call(new PlayerBlockBreakEvent(player, instance, block, Block.AIR,
+                                    new net.minestom.server.coordinate.BlockVec(position), BlockFace.TOP)));
                 }
             }
         }

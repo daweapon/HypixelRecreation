@@ -158,7 +158,7 @@ public enum EnchantmentType {
     FIRST_IMPRESSION(CatalogueEnchantment.of("FIRST_IMPRESSION")),
     FLOWSTATE(EnchantmentFlowstate.class),
     JERRY(CatalogueEnchantment.of("JERRY")),
-    LAST_STAND(CatalogueEnchantment.of("LAST_STAND")),
+    LAST_STAND(EnchantmentLastStand.class),
     LEGION(CatalogueEnchantment.of("LEGION")),
     MISSILE(CatalogueEnchantment.of("MISSILE")),
     NO_PAIN_NO_GAIN(CatalogueEnchantment.of("NO_PAIN_NO_GAIN")),

@@ -50,6 +50,8 @@ public class PlayerActionDamageMob implements HypixelEventClass {
         else return;
         LivingEntity targetLivingEntity = (LivingEntity) targetEntity;
 
+        dev.daweapon.type.skyblockgeneric.hunting.GhastlyDistraction.onAttack(player);
+
         if (heldItem.getAttributeHandler().getPotentialType() == ItemType.ONE_HIT_SWORD) {
             AttackService.obliterate(player, mob);
             return;

@@ -4,6 +4,8 @@ import dev.daweapon.type.skyblockgeneric.region.mining.MineableBlock;
 import dev.daweapon.type.skyblockgeneric.region.mining.MiningBlockClassification;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import net.minestom.server.item.Material;
+import dev.daweapon.type.skyblockgeneric.glacite.mineshaft.MineshaftService;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public enum HotmScope {
     ALWAYS,
@@ -15,6 +17,11 @@ public enum HotmScope {
 
     public boolean isGlobal() {
         return this == ALWAYS || this == MINING_ISLAND;
+    }
+
+    public boolean matches(MineableBlock block, SkyBlockPlayer player) {
+        if (this == MINESHAFT) return block != null && player != null && MineshaftService.isInside(player);
+        return matches(block);
     }
 
     public boolean matches(MineableBlock block) {

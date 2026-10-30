@@ -110,6 +110,8 @@ final class StatisticModifierCollector {
         addProgressionModifiers(modifiers);
         addModifier(modifiers, "Heart of the Mountain", HotmStatistics.statistics(player),
                 StatisticSourceType.HEART_OF_THE_MOUNTAIN, StatisticModifierType.PROGRESSION, null, Material.EMERALD, null);
+        addModifier(modifiers, "Cut Loose", dev.daweapon.type.skyblockgeneric.glacite.corpse.CutLoose.statistics(player),
+                StatisticSourceType.OTHER, StatisticModifierType.BUFF, null, Material.PACKED_ICE, null);
         addModifier(modifiers, "Heart of the Forest", dev.daweapon.type.skyblockgeneric.hotf.HotfStatistics.statistics(player),
                 StatisticSourceType.HEART_OF_THE_FOREST, StatisticModifierType.PROGRESSION, null, Material.JUNGLE_SAPLING, null);
         addModifier(modifiers, "Starlyn Contests", dev.daweapon.type.skyblockgeneric.starlyn.StarlynStatistics.statistics(player),

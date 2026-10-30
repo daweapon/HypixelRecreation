@@ -92,7 +92,17 @@ final class ToyBoxButtons {
                     data.setRngXp(10_000_000L);
                     CrystalHollowsAccess.save(p, data);
                 }),
-                of(Material.GLASS_BOTTLE, "<a>Clear RNG Meter Progress", "<8>Back to zero.", "<7>Clear the <d>Crystal Nucleus<7> RNG Meter.", NucleusRngMeter::reset));
+                of(Material.GLASS_BOTTLE, "<a>Clear RNG Meter Progress", "<8>Back to zero.", "<7>Clear the <d>Crystal Nucleus<7> RNG Meter.", NucleusRngMeter::reset),
+                of(Material.DEAD_BUSH, "<6>Corpse Keys", "<8>Open sesame.", "<7>Claim <a>16 <6>Umber Keys<7>, <a>16 <7>Tungsten Keys and <a>4 <6>Skeleton Keys<7>.", p -> {
+                    ToyBoxActions.give(p, ItemType.UMBER_KEY, 16);
+                    ToyBoxActions.give(p, ItemType.TUNGSTEN_KEY, 16);
+                    ToyBoxActions.give(p, ItemType.SKELETON_KEY, 4);
+                }),
+                of(Material.PACKED_ICE, "<b>Next Corpse Milestone", "<8>Grandpa Wolf is proud.", "<7>Complete the next <b>Frozen Corpse Milestone<7> and claim its rewards.", p -> {
+                    if (!dev.daweapon.type.skyblockgeneric.glacite.corpse.CorpseMilestones.completeNext(p)) p.sendMessage("<c>Every Frozen Corpse Milestone is already complete.");
+                }),
+                of(Material.EXPERIENCE_BOTTLE, "<a>Give Frozen Corpse RNG XP", "<8>Corpses, on demand.", "<7>Fill the <b>Frozen Corpse<7> RNG Meter for your selected drop.", dev.daweapon.type.skyblockgeneric.glacite.corpse.CorpseRngMeter::fill),
+                of(Material.GLASS_BOTTLE, "<a>Clear Frozen Corpse RNG XP", "<8>Back to zero.", "<7>Clear the <b>Frozen Corpse<7> RNG Meter.", dev.daweapon.type.skyblockgeneric.glacite.corpse.CorpseRngMeter::reset));
     }
 
     static List<ToyBoxButton> garden() {

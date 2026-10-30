@@ -47,6 +47,7 @@ public class TypeDwarvenMinesLoader implements SkyBlockTypeLoader {
     @Override
     public void afterInitialize(MinecraftServer server) {
         ColdService.start();
+        dev.daweapon.type.skyblockgeneric.glacite.mineshaft.MineshaftService.start();
         MiningEventScheduler.start(MiningEventZone.DWARVEN_MINES);
         Point gemstoneGrinderPos = new Pos(85.5, 199, -116.5);
 

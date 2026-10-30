@@ -66,8 +66,10 @@ class FossilCatalogueTest {
     void onlyPerksWithAWorkingEffectCanBeBought() {
         assertNull(FossilEssencePerk.SLEIGHT_OF_HAND.getUnavailableReason());
         assertNull(FossilEssencePerk.DWARVEN_EXPERTISE.getUnavailableReason());
-        assertNotNull(FossilEssencePerk.CUT_LOOSE.getUnavailableReason());
-        assertNotNull(FossilEssencePerk.RESOURCEFUL.getUnavailableReason());
+        assertNull(FossilEssencePerk.CUT_LOOSE.getUnavailableReason());
+        assertNull(FossilEssencePerk.RESOURCEFUL.getUnavailableReason());
+        assertNotNull(FossilEssencePerk.CHILLED_TO_THE_BONE.getUnavailableReason());
+        assertNotNull(FossilEssencePerk.PREHISTORIAN.getUnavailableReason());
     }
 
     @Test

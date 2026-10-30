@@ -1,0 +1,11 @@
+# Frozen Corpse Milestones (wiki Grandpa Wolf/UI). Counts are corpses looted per type; rewards are paid automatically on reaching a tier.
+# reward_item: the accessory handed over at that tier (tiers 4 and 7 are the "upgrade" steps; the exact hand-over is a guess).
+# bonus_corpse / bonus_roll: +10% chance for one extra corpse on a shaft you summoned / one extra item roll per corpse.
+milestones:
+  - {tier: 1, lapis: 10, umber: 0, tungsten: 0, vanguard: 0, powder: 10000, rng_xp: 1000, skyblock_xp: 5, reward_item: ORGAN_DONOR_TALISMAN}
+  - {tier: 2, lapis: 25, umber: 1, tungsten: 1, vanguard: 0, powder: 25000, rng_xp: 2500, skyblock_xp: 10, bonus_corpse: 10}
+  - {tier: 3, lapis: 50, umber: 5, tungsten: 5, vanguard: 0, powder: 50000, rng_xp: 5000, skyblock_xp: 15, bonus_roll: 10}
+  - {tier: 4, lapis: 100, umber: 10, tungsten: 10, vanguard: 1, powder: 75000, rng_xp: 10000, skyblock_xp: 20, reward_item: ORGAN_DONOR_RING}
+  - {tier: 5, lapis: 250, umber: 25, tungsten: 25, vanguard: 5, powder: 100000, rng_xp: 25000, skyblock_xp: 25, bonus_corpse: 10}
+  - {tier: 6, lapis: 500, umber: 50, tungsten: 50, vanguard: 10, powder: 150000, rng_xp: 50000, skyblock_xp: 30, bonus_roll: 10}
+  - {tier: 7, lapis: 1000, umber: 100, tungsten: 100, vanguard: 20, powder: 200000, rng_xp: 100000, skyblock_xp: 35, reward_item: ORGAN_DONOR_ARTIFACT}

@@ -365,6 +365,9 @@ public class SkyBlockDataHandler extends DataHandler {
         FAIRY_SOULS("player_fairy_souls", false, false, false,
                 DatapointFairySouls.class, new DatapointFairySouls("player_fairy_souls")),
 
+        FROZEN_CORPSES("frozen_corpses", false, false, false,
+                DatapointFrozenCorpses.class, new DatapointFrozenCorpses("frozen_corpses")),
+
         CREATED("created", false, true, false,
                 DatapointLong.class, new DatapointLong("created", 0L),
                 (player, datapoint) -> {
@@ -739,6 +742,9 @@ public class SkyBlockDataHandler extends DataHandler {
 
         CRYSTAL_HOLLOWS("crystal_hollows", false, false, false,
                 DatapointCrystalHollows.class, new DatapointCrystalHollows("crystal_hollows")),
+
+        MINESHAFT_PITY("mineshaft_pity", false, false, false,
+                DatapointMineshaftPity.class, new DatapointMineshaftPity("mineshaft_pity")),
 
         EXPERIMENTS("experiments", false, false, false,
                 DatapointExperiments.class, new DatapointExperiments("experiments")),

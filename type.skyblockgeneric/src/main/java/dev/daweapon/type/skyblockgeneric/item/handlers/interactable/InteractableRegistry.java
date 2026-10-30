@@ -50,6 +50,7 @@ public class InteractableRegistry {
         dev.daweapon.type.skyblockgeneric.crystalhollows.MetalDetector.registerInteractables();
         dev.daweapon.type.skyblockgeneric.hunting.creature.trigger.HoneycombPots.registerInteractables();
         ReaperPepper.registerInteractables();
+        dev.daweapon.type.skyblockgeneric.glacite.mineshaft.AscensionRope.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.VialOfVenom.registerInteractables();
         dev.daweapon.type.skyblockgeneric.item.utility.BiomeSticks.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.MushroomSoupFlight.registerInteractables();

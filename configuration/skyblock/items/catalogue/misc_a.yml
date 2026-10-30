@@ -431,6 +431,21 @@ items:
       - ""
       - "§8Edition #1"
       - "§8September 2020"
+  - id: AQUAMARINE_CRYSTAL
+    material: paper
+    name: "Aquamarine Crystal"
+    rarity: SPECIAL
+    source: "Frozen Corpse drop in Glacite Mineshafts (Umber, Tungsten and Vanguard Corpses; guaranteed by the Frozen Corpse RNG Meter)"
+    lore:
+      - "§7Extraordinary crystal found deep in"
+      - "§7the §bGlacite Mineshafts§7."
+      - ""
+      - "§7Some say that it can be infused with"
+      - "§dgemstones§7, and holds the secrets to"
+      - "§7a §7§otime long past§7."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/crystal/aquamarine_crystal
   - id: ARACHNE_CRYSTAL
     material: player_head
     name: "Arachne Crystal"
@@ -2153,8 +2168,7 @@ items:
     material: player_head
     name: "Caged Wisp"
     rarity: LEGENDARY
-    unavailable: "Needs Glacite Mineshafts and the Raffle of the Century"
-    source: "Frozen Corpses (Glacite Mineshafts): 0.03%-0.28%; Raffle of the Century"
+    source: "Frozen Corpses in Glacite Mineshafts: 0.03%-0.28% per roll (the Raffle of the Century is not built)"
     lore:
       - "§7Loyal companions to the dwarves"
       - "§7since the beginning, wisps were once"
@@ -2639,6 +2653,21 @@ items:
     lore:
       - "§7The term 'century' was actually"
       - "§7named after him, or so he says."
+  - id: CITRINE_CRYSTAL
+    material: paper
+    name: "Citrine Crystal"
+    rarity: SPECIAL
+    source: "Frozen Corpse drop in Glacite Mineshafts (Umber, Tungsten and Vanguard Corpses; guaranteed by the Frozen Corpse RNG Meter)"
+    lore:
+      - "§7Extraordinary crystal found deep in"
+      - "§7the §bGlacite Mineshafts§7."
+      - ""
+      - "§7Some say that it can be infused with"
+      - "§dgemstones§7, and holds the secrets to"
+      - "§7a §7§otime long past§7."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/crystal/citrine_crystal
   - id: CHEST_SHELVES
     material: player_head
     name: "Chest Storage"

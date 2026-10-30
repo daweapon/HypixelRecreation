@@ -3,6 +3,7 @@ package dev.daweapon.type.skyblockgeneric.gui.inventories.rusty;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.skyblockgeneric.chickenrace.ChickenRaceProgress;
 import dev.daweapon.type.skyblockgeneric.chickenrace.Cluckpoint;
+import dev.daweapon.type.skyblockgeneric.glacite.corpse.CorpseMilestones;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -29,6 +30,9 @@ public class GUIRustyAccessories extends GUIRustySubMenu<GUIRustyAccessories.Rus
         EXQUISITE_RING_OF_LOVE(ring(7), 1_000_000, (player) -> ringTier(player) == 7),
         INVALUABLE_RING_OF_LOVE(ring(8), 1_000_000, (player) -> ringTier(player) == 8),
         LEGENDARY_RING_OF_LOVE(ring(9), 1_000_000, (player) -> ringTier(player) == 9),
+        ORGAN_DONOR_TALISMAN(new SkyBlockItem(ItemType.ORGAN_DONOR_TALISMAN), 1_000_000, (player) -> CorpseMilestones.claimed(player) >= 1),
+        ORGAN_DONOR_RING(new SkyBlockItem(ItemType.ORGAN_DONOR_RING), 2_500_000, (player) -> CorpseMilestones.claimed(player) >= 4),
+        ORGAN_DONOR_ARTIFACT(new SkyBlockItem(ItemType.ORGAN_DONOR_ARTIFACT), 5_000_000, (player) -> CorpseMilestones.claimed(player) >= 7),
         ;
 
         private static SkyBlockItem ring(int tier) {

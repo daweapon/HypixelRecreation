@@ -1562,8 +1562,7 @@ items:
     material: player_head
     name: "Shattered Locket"
     rarity: LEGENDARY
-    unavailable: "Needs Glacite Mineshafts which are not built"
-    source: "Vanguard Corpse in Glacite Mineshafts: 0.921%, or Raffle of the Century major reward"
+    source: "Vanguard Corpse in Glacite Mineshafts: 0.921% per corpse (the Raffle of the Century is not built)"
     lore:
       - "§7A dainty piece of jewelry covered in"
       - "§7a thick coat of glacite. The frosty"

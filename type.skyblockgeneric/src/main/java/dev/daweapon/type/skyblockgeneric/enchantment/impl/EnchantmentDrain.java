@@ -1,7 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.enchantment.impl;
 
 import net.minestom.server.entity.LivingEntity;
-import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
+import dev.daweapon.type.skyblockgeneric.healing.VitalityRegen;
 import dev.daweapon.type.skyblockgeneric.enchantment.abstr.ConflictingEnch;
 import dev.daweapon.type.skyblockgeneric.enchantment.abstr.DamageEventEnchant;
 import dev.daweapon.type.skyblockgeneric.enchantment.abstr.Ench;
@@ -16,18 +16,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-// Drain enchantment: heals the wielder based on critical damage dealt per hit; conflicts with
+// Drain enchantment: regenerates Vitality on each hit against a mob (1s cooldown); conflicts with
 // Life Steal and Mana Steal.
 public class EnchantmentDrain implements Ench, EnchFromTable, DamageEventEnchant, ConflictingEnch {
 
-    public static final double[] HEAL_PERCENTAGES = new double[]{0.002, 0.003, 0.004, 0.005, 0.006};
-
-    private static final double MAX_CRIT_DAMAGE = 1000.0;
-
     @Override
     public String getDescription(int level) {
-        double healPercent = HEAL_PERCENTAGES[level - 1] * 100;
-        return "Heals for <a>" + healPercent + "%<7> of your max health per 100 ☠Crit Damage you deal per hit, up to 1,000 ☠Crit Damage.";
+        return "<7>Regen <4>+" + VitalityRegen.drainAmount(level) + " Vitality <7>every time you hit a mob. <8>(1s Cooldown)";
     }
 
     @Override
@@ -67,26 +62,7 @@ public class EnchantmentDrain implements Ench, EnchFromTable, DamageEventEnchant
     @Override
     public void onDamageDealt(SkyBlockPlayer player, LivingEntity target, double damageDealt, int level) {
         if (!(target instanceof SkyBlockMob)) return;
-
-        double critDamageDealt = calculateCritDamageDealt(player, damageDealt);
-        if (critDamageDealt <= 0) return;
-
-        critDamageDealt = Math.min(critDamageDealt, MAX_CRIT_DAMAGE);
-
-        double healPercent = HEAL_PERCENTAGES[level - 1];
-        double healMultiplier = critDamageDealt / 100.0;
-        float healAmount = (float) (healMultiplier * healPercent * player.getMaxHealth());
-
-        float newHealth = Math.min(player.getHealth() + healAmount, player.getMaxHealth());
-        player.setHealth(newHealth);
-    }
-
-    private double calculateCritDamageDealt(SkyBlockPlayer player, double totalDamageDealt) {
-        double critDamageStat = player.getStatistics().allStatistics().getOverall(ItemStatistic.CRITICAL_DAMAGE);
-
-        double baseDamage = totalDamageDealt / (1 + (critDamageStat / 100));
-
-        return totalDamageDealt - baseDamage;
+        VitalityRegen.onDrainHit(player, level);
     }
 
     @Override

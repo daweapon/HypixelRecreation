@@ -154,6 +154,8 @@ items:
     material: PLAYER_HEAD
     name: "Ascension Rope"
     components:
+      - id: INTERACTABLE
+        handler_id: ASCENSION_ROPE
       - id: SELLABLE
         value: 1.0
       - id: ITEM_MODEL

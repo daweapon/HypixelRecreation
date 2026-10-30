@@ -43,9 +43,11 @@ public class ActionHotmMining implements HypixelEventClass {
         SkyBlockRegion region = SkyBlockRegion.getRegionOfPosition(event.getPoint());
         RegionType regionType = region == null ? null : region.getType();
         GlaciteOre ore = GlaciteOre.of(event.getMaterial(), regionType);
+        dev.daweapon.type.skyblockgeneric.hunting.GhastlyDistraction.onMined(player, event.getMaterial(), regionType);
         MineableBlock block = ore != null ? ore.getMineable() : event.getMaterial().block() == null ? null : MineableBlock.get(event.getMaterial().block(), regionType);
         if (block == null) return;
 
+        dev.daweapon.type.skyblockgeneric.glacite.mineshaft.MineshaftService.onBlockMined(player, block, regionType);
         HotmAbilities.onBlockMined(player);
         dev.daweapon.type.skyblockgeneric.enchantment.impl.EnchantmentFlowstate.onBlockMined(player);
         if (ore != null) {

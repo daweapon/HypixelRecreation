@@ -18,9 +18,24 @@ import java.util.random.RandomGenerator;
 
 public final class MiningSpread {
     private static final ThreadLocal<Boolean> SPREADING = ThreadLocal.withInitial(() -> false);
+    private static final ThreadLocal<Boolean> SECONDARY = ThreadLocal.withInitial(() -> false);
     private static final List<Vec> NEIGHBOURS = neighbourOffsets();
 
     private MiningSpread() {
+    }
+
+    public static boolean isSpreading() {
+        return SPREADING.get() || SECONDARY.get();
+    }
+
+    public static void whileSecondary(Runnable action) {
+        boolean before = SECONDARY.get();
+        SECONDARY.set(true);
+        try {
+            action.run();
+        } finally {
+            SECONDARY.set(before);
+        }
     }
 
     public static ItemStatistic statisticFor(MineableBlock mineable) {

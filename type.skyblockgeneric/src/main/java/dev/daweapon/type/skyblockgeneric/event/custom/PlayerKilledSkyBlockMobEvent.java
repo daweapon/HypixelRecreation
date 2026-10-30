@@ -39,6 +39,8 @@ public class PlayerKilledSkyBlockMobEvent implements PlayerInstanceEvent {
             }
         }
 
+        dev.daweapon.type.skyblockgeneric.healing.VitalityRegen.onMobKilled(player);
+
         double reaperXp = dev.daweapon.type.skyblockgeneric.slayer.zombie.ZombieSlayerGear.bonusCombatXp(player, killedMob,
                 killedMob.getOtherLoot() == null ? 0 : killedMob.getOtherLoot().getSkillXPAmount());
         reaperXp += dev.daweapon.type.skyblockgeneric.slayer.inferno.BlazeSlayerGear.bonusCombatXp(player, killedMob,

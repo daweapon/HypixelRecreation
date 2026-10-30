@@ -60,4 +60,13 @@ class MiningEventConfigTest {
         assertEquals(4, CONFIG.sites("random", "powder_ghast", "sites").size());
         assertEquals("The Forge", CONFIG.singleSite("goblin_raid", "site").name());
     }
+
+    @Test
+    void randomSpawnChancesMatchTheWiki() {
+        assertEquals(0.1, CONFIG.number(0, "random", "golden_goblin", "chance_percent_per_ore"));
+        assertEquals(0.02, CONFIG.number(0, "random", "powder_ghast", "chance_percent_per_mithril"));
+        assertEquals(10, CONFIG.number(0, "random", "powder_ghast", "cooldown_minutes"));
+        assertEquals(340, CONFIG.number(0, "random", "fallen_star", "duration_seconds"));
+        assertEquals(20, CONFIG.number(0, "cadence_minutes"));
+    }
 }

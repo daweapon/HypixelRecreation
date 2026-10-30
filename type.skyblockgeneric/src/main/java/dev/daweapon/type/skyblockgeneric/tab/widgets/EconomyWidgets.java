@@ -15,6 +15,7 @@ public final class EconomyWidgets {
                 new DailyQuestsWidget(),
                 new ForgeWidget(),
                 new PowderWidget(),
+                new MineshaftPityWidget(),
                 new CommissionsWidget(),
                 new PickaxeAbilityWidget(),
                 new EventsWidget(),

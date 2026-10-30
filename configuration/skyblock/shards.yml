@@ -8062,7 +8062,7 @@
         }
       ],
       "fusion_cost": 5,
-      "unavailable": "Obtainable by Lassoing or Charming a Dive Ghast, or by Fusion, but the Opal Gemstone pacify effect has no mining hook"
+      "unavailable": "Obtainable by Lassoing or Charming a Dive Ghast, or by Fusion; the pacify effect is coded (GhastlyDistraction) but the Smoldering Tomb world has no Opal Gemstone blocks to mine"
     },
     {
       "id": "E44",
