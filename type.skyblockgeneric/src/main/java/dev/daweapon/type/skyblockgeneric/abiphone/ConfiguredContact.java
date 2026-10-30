@@ -83,7 +83,9 @@ public final class ConfiguredContact extends AbiphoneNPC {
     private void attempt(SkyBlockPlayer player, int slot, int stage, Stage current) {
         if (ChapterTriggers.done(player, stageFlag(stage)) || dialogue().isInDialogue(player)) return;
         if (!satisfied(player, current)) {
-            dialogue().setDialogue(player, "missing" + stage);
+            List<String> failure = current.check() == null ? List.of() : current.check().failureLines(player);
+            if (failure.isEmpty()) dialogue().setDialogue(player, "missing" + stage);
+            else failure.forEach(line -> sendNPCMessage(player, line));
             return;
         }
         consume(player, current);

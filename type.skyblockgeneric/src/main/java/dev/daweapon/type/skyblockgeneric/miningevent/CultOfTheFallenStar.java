@@ -24,6 +24,9 @@ public final class CultOfTheFallenStar {
     private static final String LAST_MEETING = "last_meeting";
     private static final String HELMET_ID = "FALLEN_STAR_HAT";
     private static final int LINE_DELAY_TICKS = 40;
+    private static final int DAYS_IN_MONTH = 31;
+    private static final int SECONDS_PER_SKYBLOCK_HOUR = 50;
+    public static final int MEETINGS_FOR_CONTACT = 3;
     private static final Set<UUID> BUSY = ConcurrentHashMap.newKeySet();
 
     private CultOfTheFallenStar() {
@@ -37,6 +40,36 @@ public final class CultOfTheFallenStar {
 
     public static int attended(SkyBlockPlayer player) {
         return (int) state(player).getOrDefault(ATTENDED, 0L).longValue();
+    }
+
+    public static boolean joined(SkyBlockPlayer player) {
+        return state(player).getOrDefault(JOINED, 0L) != 0L;
+    }
+
+    public static void call(SkyBlockPlayer player) {
+        int attended = attended(player);
+        String total = "<b>✆ <f>You've attended <6>" + attended + "<f> meeting" + (attended == 1 ? "" : "s") + " of the <5>Cult of the Fallen Star<f> so far.";
+        if (meetingActive()) {
+            player.sendMessage(CultMeetingScripts.format("D:<b>✆ <f>We're meeting right now! Come on over, the star is the brightest at midnight."));
+        } else {
+            int hours = hoursUntilNextMeeting();
+            player.sendMessage(CultMeetingScripts.format("D:<b>✆ <f>Our next meeting is in <6>" + hours / 24 + " SkyBlock days " + hours % 24
+                    + " hours<f>, about <6>" + hours * SECONDS_PER_SKYBLOCK_HOUR / 60 + " minutes<f> from now."));
+        }
+        player.sendMessage(CultMeetingScripts.format("D:" + total));
+    }
+
+    private static int hoursUntilNextMeeting() {
+        List<String> days = MiningEventConfig.get().strings("cult_of_the_fallen_star", "meeting_days");
+        int today = SkyBlockCalendar.getDay();
+        int best = Integer.MAX_VALUE;
+        for (String day : days) {
+            int target = Integer.parseInt(day);
+            int delta = target - today;
+            if (delta < 0 || delta == 0 && SkyBlockCalendar.getHour() > 0) delta += DAYS_IN_MONTH;
+            best = Math.min(best, delta * 24 - SkyBlockCalendar.getHour());
+        }
+        return Math.max(best, 0);
     }
 
     public static boolean wearingHelmet(SkyBlockPlayer player) {
@@ -53,6 +86,11 @@ public final class CultOfTheFallenStar {
             play(player, List.of(
                     "D:Eager to join our cult I see?",
                     "D:Come back to our next meeting in <6>seven days<f> while wearing the <d>Fallen Star Helmet<f> we gave you."));
+        } else if (state.getOrDefault(LAST_MEETING, 0L) == meeting && !wearingHelmet(player)) {
+            play(player, List.of(
+                    "D:Hi again, <7>" + player.getUsername() + "<f>.",
+                    "D:Come back to our next meeting in <6>seven days<f> while wearing the <d>Fallen Star Helmet<f> we gave you.",
+                    "D:We'll share some of our cool stars with you."));
         } else if (!wearingHelmet(player)) {
             play(player, List.of(
                     "D:Hey, <7>" + player.getUsername() + "<f>! Glad you came to our cult meeting!",

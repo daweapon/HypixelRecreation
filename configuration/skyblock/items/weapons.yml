@@ -3607,8 +3607,33 @@ items:
         standard_item_type: SWORD
       - id: ITEM_REQUIREMENTS
         requirements:
-          - type: PENDING
-            description: slayer_boss_type=zombie level=7
+          - type: SLAYER
+            slayer: REVENANT_HORROR
+            level: 7
+      - id: ABILITY
+        abilities:
+          - HUGE_HEAL
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: REVENANT_HORROR
+            pattern:
+              - "  C"
+              - " B "
+              - "A  "
+            ingredients:
+              C:
+                type: REVENANT_VISCERA
+                amount: 64
+              B:
+                type: WAND_OF_RESTORATION
+                amount: 1
+              A:
+                type: ENCHANTED_DARK_OAK_LOG
+                amount: 64
+            result:
+              type: WAND_OF_ATONEMENT
+              amount: 1
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/zombie/wands/wand_of_atonement
   - id: WAND_OF_HEALING
@@ -3619,8 +3644,33 @@ items:
         standard_item_type: SWORD
       - id: ITEM_REQUIREMENTS
         requirements:
-          - type: PENDING
-            description: slayer_boss_type=zombie level=1
+          - type: SLAYER
+            slayer: REVENANT_HORROR
+            level: 1
+      - id: ABILITY
+        abilities:
+          - SMALL_HEAL
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: REVENANT_HORROR
+            pattern:
+              - "  C"
+              - " B "
+              - "A  "
+            ingredients:
+              C:
+                type: REVENANT_FLESH
+                amount: 8
+              B:
+                type: STICK
+                amount: 1
+              A:
+                type: REVENANT_FLESH
+                amount: 8
+            result:
+              type: WAND_OF_HEALING
+              amount: 1
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/zombie/wands/wand_of_healing
   - id: WAND_OF_MENDING
@@ -3631,8 +3681,33 @@ items:
         standard_item_type: SWORD
       - id: ITEM_REQUIREMENTS
         requirements:
-          - type: PENDING
-            description: slayer_boss_type=zombie level=3
+          - type: SLAYER
+            slayer: REVENANT_HORROR
+            level: 3
+      - id: ABILITY
+        abilities:
+          - MEDIUM_HEAL
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: REVENANT_HORROR
+            pattern:
+              - "  C"
+              - " B "
+              - "A  "
+            ingredients:
+              C:
+                type: REVENANT_VISCERA
+                amount: 1
+              B:
+                type: WAND_OF_HEALING
+                amount: 1
+              A:
+                type: ENCHANTED_DARK_OAK_LOG
+                amount: 12
+            result:
+              type: WAND_OF_MENDING
+              amount: 1
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/zombie/wands/wand_of_mending
   - id: WAND_OF_RECALL
@@ -3651,8 +3726,33 @@ items:
         standard_item_type: SWORD
       - id: ITEM_REQUIREMENTS
         requirements:
-          - type: PENDING
-            description: slayer_boss_type=zombie level=6
+          - type: SLAYER
+            slayer: REVENANT_HORROR
+            level: 6
+      - id: ABILITY
+        abilities:
+          - BIG_HEAL
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: REVENANT_HORROR
+            pattern:
+              - "  C"
+              - " B "
+              - "A  "
+            ingredients:
+              C:
+                type: REVENANT_VISCERA
+                amount: 16
+              B:
+                type: WAND_OF_MENDING
+                amount: 1
+              A:
+                type: ENCHANTED_DARK_OAK_LOG
+                amount: 64
+            result:
+              type: WAND_OF_RESTORATION
+              amount: 1
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/zombie/wands/wand_of_restoration
   - id: WAND_OF_STRENGTH

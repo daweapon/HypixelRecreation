@@ -33,7 +33,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * taken out by their capture tool; the spec is handed over through a thread local because SkyBlockMob's constructor
  * reads stats before subclass fields exist.
  */
-public class HuntingCreatureMob extends BestiaryMob {
+public class HuntingCreatureMob extends BestiaryMob implements Lassoable {
     private static final ThreadLocal<CreatureSpec> IN_CONSTRUCTION = new ThreadLocal<>();
     private static final long HINT_COOLDOWN_MS = 2500;
 
@@ -82,6 +82,22 @@ public class HuntingCreatureMob extends BestiaryMob {
         special().ifPresent(special -> special.onTick(this, getAliveTicks()));
     }
 
+    @Override
+    public String lassoName() {
+        return live().name();
+    }
+
+    @Override
+    public int lassoBars() {
+        return LassoService.barsFor(live());
+    }
+
+    @Override
+    public boolean lassoAllowed() {
+        return live().captures(CreatureSpec.Capture.LASSO) || special().map(CreatureSpecial::lassoable).orElse(false);
+    }
+
+    @Override
     public void setHeader(String text) {
         this.header = text;
         refreshName();
@@ -138,6 +154,7 @@ public class HuntingCreatureMob extends BestiaryMob {
         }
     }
 
+    @Override
     public void capture(SkyBlockPlayer player) {
         if (captured || isDead() || isRemoved()) return;
         captured = true;

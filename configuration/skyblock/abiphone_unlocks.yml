@@ -111,6 +111,25 @@ contacts:
       - "Cheers friend, once I got that on my <5>Drill <f>I'll be mining like <6>Divan<f>!"
       - "Oh, and before I forget - here's that contact you were asking for."
       - "Give me a call in case you ever need some Tier XII <6>Mining Minions<f>."
+  - id: dalir
+    npc: [NPCDalir]
+    stages:
+      - label: "SHOW HELMET"
+        missing:
+          - "Where's your <9>Fallen Star Helmet<f>? Put it on!"
+        check: CULT_MEMBER
+      - label: "GIVE ITEM"
+        intro:
+          - "Before I give you my <3>Abiphone Contact<f>, do you think you could grab us a <a>Powder Pie<f> to split?"
+          - "Someone in the <2>Dwarven Mines<f> sells them, though I can't remember who."
+          - "Consider it your punishment for being late."
+        missing:
+          - "Where's that <a>Powder Pie<f>?"
+        items: [{item: MINING_PUMPKIN, amount: 1}]
+    given:
+      - "Thank you so very much."
+      - "Now we can wind down from our very serious meeting with some very serious food!"
+      - "Here is my <3>Abiphone Contact<f>. Give me a call if you ever want to know when our next meeting is."
   - id: einary
     npc: [NPCEinary]
     head: "4a02f4fd2d68a78b8da3a46b3d004ad9472453c80828b7354a2590a17948c198"

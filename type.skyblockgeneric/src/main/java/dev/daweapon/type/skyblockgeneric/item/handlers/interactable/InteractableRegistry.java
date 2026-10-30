@@ -53,6 +53,7 @@ public class InteractableRegistry {
         dev.daweapon.type.skyblockgeneric.consumable.VialOfVenom.registerInteractables();
         dev.daweapon.type.skyblockgeneric.item.utility.BiomeSticks.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.MushroomSoupFlight.registerInteractables();
+        dev.daweapon.type.skyblockgeneric.consumable.MarshSporeSoup.registerInteractables();
         PetItems.registerInteractables();
         dev.daweapon.type.skyblockgeneric.spidersden.SpiderDenRelics.registerInteractables();
         dev.daweapon.type.skyblockgeneric.garden.pest.PestItems.registerInteractables();

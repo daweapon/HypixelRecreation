@@ -27,6 +27,8 @@ import dev.daweapon.type.skyblockgeneric.item.set.sets.terror.HydraStrike;
 import dev.daweapon.type.skyblockgeneric.mission.MissionData;
 import dev.daweapon.type.skyblockgeneric.mission.SkyBlockProgressMission;
 import dev.daweapon.type.skyblockgeneric.region.RegionType;
+import dev.daweapon.type.skyblockgeneric.healing.HealingMath;
+import dev.daweapon.type.skyblockgeneric.healing.HealingWands;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockActionBar;
 
 final class PlayerStatisticLoops {
@@ -36,6 +38,7 @@ final class PlayerStatisticLoops {
         barLoop();
         healthLoop();
         manaLoop();
+        vitalityLoop();
         missionLoop();
         statisticsLoop();
         experiencedStatisticsLoop();
@@ -96,8 +99,9 @@ final class PlayerStatisticLoops {
                 actionBar.setDefaultDisplay(SkyBlockActionBar.BarSection.DEFENSE,
                         player.getDefense() == 0 ? Text.empty()
                                 : Text.of("<a>{}❈ Defense", Math.round(player.getDefense())));
-                actionBar.setDefaultDisplay(SkyBlockActionBar.BarSection.MANA,
-                        Text.of("<b>{}/{}✎ Mana", Math.round(player.getMana()), Math.round(player.getMaxMana())));
+                actionBar.setDefaultDisplay(SkyBlockActionBar.BarSection.MANA, HealingWands.holdsVitalityItem(player)
+                        ? Text.of("<4>{}/{} Vitality", Math.round(player.getVitality()), Math.round(player.getMaxVitality()))
+                        : Text.of("<b>{}/{}✎ Mana", Math.round(player.getMana()), Math.round(player.getMaxMana())));
                 actionBar.setDefaultDisplay(SkyBlockActionBar.BarSection.SET_BONUS, HydraStrike.display(player));
                 actionBar.setDefaultDisplay(SkyBlockActionBar.BarSection.ABILITY_CHARGE, Salvation.display(player));
 
@@ -223,6 +227,18 @@ final class PlayerStatisticLoops {
                             + DeployableBuffs.manaRegenFraction(player)
                             + BlazeFlares.manaRegenFraction(player))))));
                 }
+            });
+            return TaskSchedule.seconds(1);
+        }, ExecutionType.TICK_END);
+    }
+
+    public static void vitalityLoop() {
+        Scheduler scheduler = MinecraftServer.getSchedulerManager();
+        scheduler.submitTask(() -> {
+            SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
+                float max = player.getMaxVitality();
+                player.setVitality((float) HealingMath.regenerated(player.getVitality(), max));
+                HealingWands.trackArmor(player);
             });
             return TaskSchedule.seconds(1);
         }, ExecutionType.TICK_END);

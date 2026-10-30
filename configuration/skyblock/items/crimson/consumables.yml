@@ -67,7 +67,14 @@ items:
       - "§7A bubbling soup filled with poisonous"
       - "§7mushrooms."
       - ""
+      - "§7Surrounds you with nausea particles and"
+      - "§7makes §fBrown Mushrooms §7explode around"
+      - "§7you for §a80 seconds§7."
+      - ""
       - "§eRight-click to consume!"
+    components:
+      - id: INTERACTABLE
+        handler_id: MARSH_SPORE_SOUP
   - id: SCARLETON_PREMIUM
     material: player_head
     name: "Scarleton Premium"

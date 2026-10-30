@@ -39,6 +39,7 @@ import dev.daweapon.type.skyblockgeneric.event.value.SkyBlockValueEvent;
 import dev.daweapon.type.skyblockgeneric.event.value.events.MaxHealthValueUpdateEvent;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItemComponent;
+import dev.daweapon.type.skyblockgeneric.healing.HealingMath;
 import dev.daweapon.type.skyblockgeneric.item.set.ArmorSetRegistry;
 import dev.daweapon.type.skyblockgeneric.item.updater.PlayerItemOrigin;
 import dev.daweapon.type.skyblockgeneric.levels.CustomLevelAward;
@@ -72,6 +73,8 @@ public class SkyBlockPlayer extends HypixelPlayer {
     public boolean isBankDelayed = false;
     @Setter
     private float mana = 100;
+    @Setter
+    private float vitality = 100;
     @Setter
     private boolean inLaunchpad = false;
     @Setter
@@ -293,6 +296,10 @@ public class SkyBlockPlayer extends HypixelPlayer {
 
     public float getMaxMana() {
         return (float) (100 + getStatistics().allStatistics().getOverall(ItemStatistic.INTELLIGENCE));
+    }
+
+    public float getMaxVitality() {
+        return (float) HealingMath.maxVitality(getStatistics().allStatistics().getOverall(ItemStatistic.VITALITY));
     }
 
     public boolean hasCustomCollectionAward(CustomCollectionAward award) {

@@ -3555,13 +3555,11 @@ items:
     material: diamond
     name: "Fallen Star Lozenge"
     rarity: EPIC
-    unavailable: "The Cult of the Fallen Star claim and the Rezonate ability aren't built"
     source: "Talk to Silnar while wearing a Fallen Star Helmet"
-    lore:
-      - "§6Ability: Rezonate  §e§lRIGHT CLICK"
-      - "§7Leads you to the nearest §5Fallen Star §7while in"
-      - "§7the §2Dwarven Mines§7."
-      - "§8Mana Cost: §b18"
+    components:
+      - id: ABILITY
+        abilities:
+          - REZONATE
   - id: FAMILY_DOUBLOON
     material: gold_nugget
     name: "Doubloon of the Family"

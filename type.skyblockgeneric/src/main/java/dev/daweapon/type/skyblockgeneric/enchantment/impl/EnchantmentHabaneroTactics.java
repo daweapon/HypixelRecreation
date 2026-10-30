@@ -31,6 +31,22 @@ public class EnchantmentHabaneroTactics implements Ench, PlayerContextEnchant {
         return level >= 5 ? 25 : level >= 4 ? 20 : 0;
     }
 
+    public static double healBonusPercent(int level) {
+        return level >= 5 ? 7.5 : level >= 4 ? 6 : 0;
+    }
+
+    public static double wandHealBonusPercent(Map<Integer, Integer> piecesByLevel) {
+        double total = 0;
+        for (Map.Entry<Integer, Integer> entry : piecesByLevel.entrySet()) {
+            total += healBonusPercent(entry.getKey()) * entry.getValue();
+        }
+        return total;
+    }
+
+    public static double wandHealBonusPercent(SkyBlockPlayer player) {
+        return wandHealBonusPercent(player.getStatistics().getAllOfEnchants(EnchantmentType.HABANERO_TACTICS, false));
+    }
+
     public static double magicFind(int level) {
         return level >= 5 ? 15 : level >= 4 ? 10 : 0;
     }
@@ -61,7 +77,7 @@ public class EnchantmentHabaneroTactics implements Ench, PlayerContextEnchant {
     @Override
     public String getDescription(int level) {
         boolean five = level >= 5;
-        return "<a>ℏ <7>Heal <a>+" + (five ? "7.5" : "6") + "% <7>more from wands. <8>(Not active yet: no healing wands)\n"
+        return "<a>ℏ <7>Heal <a>+" + (five ? "7.5" : "6") + "% <7>more from wands.\n"
                 + "<a>ℏ <7>Deal <c>+" + (five ? 25 : 20) + "% <7>damage against Slayer Bosses with Slayer weapons.\n"
                 + "<a>ℏ <7>Gain <3>+" + (five ? "5" : "2.5") + "☯ Combat Wisdom <7>with Slayer weapons.\n"
                 + "<a>ℏ <7>With Smoldering Polarization, gain <b>+" + (five ? 15 : 10) + " Magic Find <7>on your slayer weapon.";

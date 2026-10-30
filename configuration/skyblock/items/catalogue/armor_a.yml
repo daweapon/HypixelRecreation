@@ -2344,8 +2344,6 @@ items:
       - "§2This item is Undead !"
       - ""
       - "§4☠ §cRequires §5Zombie Slayer 7§c."
-      - ""
-      - "§8Not active yet: Healing Wands bonus needs functional healing wands (the wands have no heal ability yet)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -2413,8 +2411,6 @@ items:
       - "§2This item is Undead !"
       - ""
       - "§4☠ §cRequires §5Zombie Slayer 7§c."
-      - ""
-      - "§8Not active yet: Healing Wands bonus needs functional healing wands (the wands have no heal ability yet)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -2482,8 +2478,6 @@ items:
       - "§2This item is Undead !"
       - ""
       - "§4☠ §cRequires §5Zombie Slayer 7§c."
-      - ""
-      - "§8Not active yet: Healing Wands bonus needs functional healing wands (the wands have no heal ability yet)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS

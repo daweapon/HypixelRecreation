@@ -5,6 +5,8 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.type.skyblockgeneric.miningevent.CultOfTheFallenStar;
+import dev.daweapon.type.skyblockgeneric.miningevent.FallenStarLozenge;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.stream.Stream;
@@ -44,7 +46,15 @@ public class NPCSilnar extends HypixelNPC {
 	public void onClick(NPCInteractEvent event) {
 		SkyBlockPlayer player = (SkyBlockPlayer) event.player();
 		if (isInDialogue(player)) return;
-		setDialogue(player, "idle");
+		if (FallenStarLozenge.claimed(player)) {
+			setDialogue(player, "after-claiming-fallen-star-lozenge");
+		} else if (CultOfTheFallenStar.wearingHelmet(player)) {
+			setDialogue(player, "wearing-fallen-star-helmet").thenRun(() -> {
+				if (!FallenStarLozenge.claimed(player)) FallenStarLozenge.claim(player);
+			});
+		} else {
+			setDialogue(player, "idle");
+		}
 	}
 
 	@Override

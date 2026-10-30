@@ -3,13 +3,13 @@ slayers:
     enabled: true
     targetMobTypes: [UNDEAD]
     levels:
-      - { level: 1, requiredXp: 5, title: Noob }
+      - { level: 1, requiredXp: 5, title: Noob, unlocks: [WAND_OF_HEALING] }
       - { level: 2, requiredXp: 15, title: Novice }
-      - { level: 3, requiredXp: 200, title: Skilled }
+      - { level: 3, requiredXp: 200, title: Skilled, unlocks: [WAND_OF_MENDING] }
       - { level: 4, requiredXp: 1000, title: Destroyer }
       - { level: 5, requiredXp: 5000, title: Bulldozer, unlocks: [DEVOUR_RING, REVENANT_MINION, VOODOO_DOLL] }
-      - { level: 6, requiredXp: 20000, title: Savage }
-      - { level: 7, requiredXp: 100000, title: Deathripper }
+      - { level: 6, requiredXp: 20000, title: Savage, unlocks: [WAND_OF_RESTORATION] }
+      - { level: 7, requiredXp: 100000, title: Deathripper, unlocks: [WAND_OF_ATONEMENT] }
       - { level: 8, requiredXp: 400000, title: Necromancer, unlocks: [REAPER_ORB] }
       - { level: 9, requiredXp: 1000000, title: Grim Reaper, unlocks: [GENERATOR_UPGRADE_STONE_REVENANT_12] }
     tiers:

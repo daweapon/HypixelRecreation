@@ -273,8 +273,10 @@ public class AbilityRegistry {
         register(new BuildersWandStorageAbility());
         register(new BlockZapperAbility());
         CrimsonAbilities.register();
+        dev.daweapon.type.skyblockgeneric.healing.HealingWands.register();
         dev.daweapon.type.skyblockgeneric.dante.DanteAbilities.register();
         dev.daweapon.type.skyblockgeneric.trapper.TalbotsTheodolite.register();
+        dev.daweapon.type.skyblockgeneric.miningevent.FallenStarLozenge.register();
 
         register(new RegisteredAbility(
                 Salvation.ABILITY_ID,

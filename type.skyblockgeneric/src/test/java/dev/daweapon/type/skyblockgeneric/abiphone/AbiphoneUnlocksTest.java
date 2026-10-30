@@ -54,7 +54,7 @@ class AbiphoneUnlocksTest {
     }
 
     @Test
-    void holdsTheThirtyThreeHubAndAreaContacts() {
-        assertEquals(33, UNLOCKS.size());
+    void holdsTheThirtyFourHubAndAreaContacts() {
+        assertEquals(34, UNLOCKS.size());
     }
 }

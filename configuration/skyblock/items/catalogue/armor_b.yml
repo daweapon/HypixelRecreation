@@ -2248,7 +2248,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Zombie Slayer 4§c."
       - ""
-      - "§8Not active yet: Healing Wands bonus and Zombie Bulwark need functional healing wands and per-item Zombie kill counters"
+      - "§8Not active yet: Zombie Bulwark needs per-item Zombie kill counters"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -2295,7 +2295,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Zombie Slayer 4§c."
       - ""
-      - "§8Not active yet: Healing Wands bonus and Zombie Bulwark need functional healing wands and per-item Zombie kill counters"
+      - "§8Not active yet: Zombie Bulwark needs per-item Zombie kill counters"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -2343,7 +2343,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Zombie Slayer 4§c."
       - ""
-      - "§8Not active yet: Healing Wands bonus and Zombie Bulwark need functional healing wands and per-item Zombie kill counters"
+      - "§8Not active yet: Zombie Bulwark needs per-item Zombie kill counters"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS

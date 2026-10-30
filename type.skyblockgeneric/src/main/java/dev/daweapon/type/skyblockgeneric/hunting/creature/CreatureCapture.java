@@ -9,6 +9,7 @@ import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Optional;
+import java.util.function.IntUnaryOperator;
 
 public final class CreatureCapture {
     private CreatureCapture() {
@@ -28,16 +29,20 @@ public final class CreatureCapture {
             player.sendMessage("<a><l>CAPTURED!</l> <7>You caught <e>{}<7>!", spec.name());
             return;
         }
-        AttributeDefinition definition = shard.get();
-        if (!LootRoll.roll(player.getUuid(), dev.daweapon.type.skyblockgeneric.item.components.AttributeShardComponent.itemType(definition), spec.shardChance())) {
-            player.sendMessage("<a><l>CAPTURED!</l> <7>You caught <e>{}<7> but it slipped away without a shard.", spec.name());
+        awardShard(player, shard.get(), spec.name(), spec.shardChance(),
+                base -> mob.special().map(special -> special.shardAmount(mob, base)).orElse(base), sourceOf(spec));
+    }
+
+    public static void awardShard(SkyBlockPlayer player, AttributeDefinition definition, String name, double chance,
+                                  IntUnaryOperator amountOf, ShardCaughtEvent.Source source) {
+        if (!LootRoll.roll(player.getUuid(), dev.daweapon.type.skyblockgeneric.item.components.AttributeShardComponent.itemType(definition), chance)) {
+            player.sendMessage("<a><l>CAPTURED!</l> <7>You caught <e>{}<7> but it slipped away without a shard.", name);
             return;
         }
-        int base = AttributeEffectService.fortunateAmount(player, definition);
-        int amount = mob.special().map(special -> special.shardAmount(mob, base)).orElse(base);
+        int amount = amountOf.applyAsInt(AttributeEffectService.fortunateAmount(player, definition));
         player.getHuntingData().addShards(definition.id(), amount);
-        HypixelEventHandler.callCustomEvent(new ShardCaughtEvent(player, definition, amount, sourceOf(spec), false));
-        player.sendMessage("<a><l>CAPTURED!</l> <7>You caught <e>{}<7> and got <e>{}x <a>{} Shard<7>!", spec.name(), amount, definition.shardName());
+        HypixelEventHandler.callCustomEvent(new ShardCaughtEvent(player, definition, amount, source, false));
+        player.sendMessage("<a><l>CAPTURED!</l> <7>You caught <e>{}<7> and got <e>{}x <a>{} Shard<7>!", name, amount, definition.shardName());
     }
 
     private static ShardCaughtEvent.Source sourceOf(CreatureSpec spec) {

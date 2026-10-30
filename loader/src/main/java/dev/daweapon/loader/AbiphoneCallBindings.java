@@ -43,6 +43,7 @@ final class AbiphoneCallBindings {
         AbiphoneCallActions.register("blacksmith", player -> new GUIReforge().open(player));
         AbiphoneCallActions.register("brynmor", player -> player.openView(new GUIShopBrynmor()));
         AbiphoneCallActions.register("bulvar", player -> player.openView(new GUIShopBulvar()));
+        AbiphoneCallActions.register("dalir", player -> dev.daweapon.type.skyblockgeneric.miningevent.CultOfTheFallenStar.call((dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer) player));
         AbiphoneCallActions.register("einary", player -> player.openView(new GUIEinaryEmporium()));
         AbiphoneCallActions.register("fann", player -> player.openView(new GUIFannPetTraining()));
         AbiphoneCallActions.register("fear_mongerer", player -> player.openView(new GUIFearMongererShop()));

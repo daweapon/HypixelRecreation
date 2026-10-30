@@ -1,8 +1,10 @@
 package dev.daweapon.type.skyblockgeneric.gui.inventories.rusty;
 
+import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.skyblockgeneric.crimson.dojo.DojoBelt;
 import dev.daweapon.type.skyblockgeneric.crimson.dojo.DojoProgress;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.miningevent.CultOfTheFallenStar;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
@@ -22,7 +24,8 @@ public class GUIRustyWeaponsAndGear extends GUIRustySubMenu<GUIRustyWeaponsAndGe
         GREEN_BELT(DojoBelt.GREEN),
         BLUE_BELT(DojoBelt.BLUE),
         BROWN_BELT(DojoBelt.BROWN),
-        BLACK_BELT(DojoBelt.BLACK);
+        BLACK_BELT(DojoBelt.BLACK),
+        FALLEN_STAR_HELMET(new SkyBlockItem(ItemType.valueOf("FALLEN_STAR_HAT")), 500_000, CultOfTheFallenStar::joined);
 
         /** Rusty re-sells the player's highest Dojo belt (wiki Rusty, Jul 2022). The price is not documented. */
         private static final int BELT_PRICE = 10_000;

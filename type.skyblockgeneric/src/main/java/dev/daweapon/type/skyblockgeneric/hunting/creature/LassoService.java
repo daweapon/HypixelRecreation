@@ -7,6 +7,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.title.Title;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Vec;
+import net.minestom.server.entity.LivingEntity;
 import net.minestom.server.timer.TaskSchedule;
 import org.jetbrains.annotations.Nullable;
 
@@ -62,17 +63,17 @@ public final class LassoService {
     }
 
     private static final class Session {
-        private final HuntingCreatureMob mob;
+        private final Lassoable mob;
         private final Tier tier;
         private int barsLeft;
         private double stamina = 100;
         private long reelDeadline;
         private long lookAway;
 
-        private Session(HuntingCreatureMob mob, Tier tier) {
+        private Session(Lassoable mob, Tier tier) {
             this.mob = mob;
             this.tier = tier;
-            this.barsLeft = barsFor(mob.spec());
+            this.barsLeft = mob.lassoBars();
         }
     }
 
@@ -95,7 +96,7 @@ public final class LassoService {
         return SESSIONS.containsKey(player.getUuid());
     }
 
-    public static Optional<HuntingCreatureMob> attachedTo(SkyBlockPlayer player) {
+    public static Optional<Lassoable> attachedTo(SkyBlockPlayer player) {
         Session session = SESSIONS.get(player.getUuid());
         return session == null ? Optional.empty() : Optional.of(session.mob);
     }
@@ -105,15 +106,15 @@ public final class LassoService {
         if (session != null) detach(player, session, true);
     }
 
-    public static java.util.OptionalDouble stamina(HuntingCreatureMob mob) {
+    public static java.util.OptionalDouble stamina(Lassoable mob) {
         return SESSIONS.values().stream().filter(session -> session.mob == mob).mapToDouble(session -> session.stamina).findFirst();
     }
 
-    public static int barsLeft(HuntingCreatureMob mob) {
+    public static int barsLeft(Lassoable mob) {
         return SESSIONS.values().stream().filter(session -> session.mob == mob).mapToInt(session -> session.barsLeft).findFirst().orElse(0);
     }
 
-    public static boolean isLassoed(HuntingCreatureMob mob) {
+    public static boolean isLassoed(Lassoable mob) {
         return SESSIONS.values().stream().anyMatch(session -> session.mob == mob);
     }
 
@@ -123,36 +124,40 @@ public final class LassoService {
             reel(player, session);
             return;
         }
-        Optional<HuntingCreatureMob> target = target(player, tier.range());
+        Optional<Lassoable> target = target(player, tier.range());
         if (target.isEmpty()) {
             player.sendMessage("<c>Aim at a forest creature to throw the Lasso!");
             return;
         }
-        HuntingCreatureMob mob = target.get();
-        if (!mob.spec().captures(CreatureSpec.Capture.LASSO) && !mob.special().map(CreatureSpecial::lassoable).orElse(false)) {
-            player.sendMessage("<c>You can't catch a <f>{}<c> with a Lasso!", mob.spec().name());
+        Lassoable mob = target.get();
+        if (!mob.lassoAllowed()) {
+            player.sendMessage("<c>You can't catch a <f>{}<c> with a Lasso!", mob.lassoName());
             return;
         }
-        if (mob.special().map(special -> !special.allowLasso(player, mob)).orElse(false)) return;
+        if (specialOf(mob).map(special -> !special.allowLasso(player, (HuntingCreatureMob) mob)).orElse(false)) return;
         SESSIONS.put(player.getUuid(), new Session(mob, tier));
         if (SESSIONS.values().stream().filter(other -> other.mob == mob).count() > 1) {
             SESSIONS.values().stream().filter(other -> other.mob == mob).forEach(other -> other.stamina = 0);
         }
-        player.sendMessage("<a>You threw your Lasso at the <f>{}<a>! <7>Reel it in when its stamina runs low.", mob.spec().name());
+        player.sendMessage("<a>You threw your Lasso at the <f>{}<a>! <7>Reel it in when its stamina runs low.", mob.lassoName());
         startTicking();
     }
 
-    private static Optional<HuntingCreatureMob> target(SkyBlockPlayer player, double range) {
+    private static Optional<CreatureSpecial> specialOf(Lassoable mob) {
+        return mob instanceof HuntingCreatureMob hunting ? hunting.special() : Optional.empty();
+    }
+
+    private static Optional<Lassoable> target(SkyBlockPlayer player, double range) {
         if (player.getInstance() == null) return Optional.empty();
         Vec look = player.getPosition().direction();
         return player.getInstance().getNearbyEntities(player.getPosition(), range).stream()
-                .filter(entity -> entity instanceof HuntingCreatureMob mob && !mob.isDead())
-                .map(entity -> (HuntingCreatureMob) entity)
+                .filter(entity -> entity instanceof Lassoable && !((LivingEntity) entity).isDead())
+                .map(entity -> (Lassoable) entity)
                 .filter(mob -> {
-                    Vec toMob = Vec.fromPoint(mob.getPosition().add(0, 0.5, 0).sub(player.getPosition().add(0, player.getEyeHeight(), 0)));
+                    Vec toMob = Vec.fromPoint(mob.entity().getPosition().add(0, 0.5, 0).sub(player.getPosition().add(0, player.getEyeHeight(), 0)));
                     return toMob.lengthSquared() > 0 && toMob.normalize().dot(look) >= AIM_COSINE;
                 })
-                .min(Comparator.comparingDouble(mob -> mob.getPosition().distanceSquared(player.getPosition())));
+                .min(Comparator.comparingDouble(mob -> mob.entity().getPosition().distanceSquared(player.getPosition())));
     }
 
     private static void reel(SkyBlockPlayer player, Session session) {
@@ -164,9 +169,9 @@ public final class LassoService {
         session.barsLeft--;
         if (session.barsLeft <= 0) {
             SESSIONS.remove(player.getUuid());
-            session.mob.special().ifPresent(special -> special.onLassoDetach(player, session.mob));
+            specialOf(session.mob).ifPresent(special -> special.onLassoDetach(player, (HuntingCreatureMob) session.mob));
             session.mob.setHeader("");
-            if (session.mob.special().map(special -> special.onLassoReeled(player, session.mob)).orElse(false)) return;
+            if (specialOf(session.mob).map(special -> special.onLassoReeled(player, (HuntingCreatureMob) session.mob)).orElse(false)) return;
             session.mob.capture(player);
             return;
         }
@@ -177,8 +182,8 @@ public final class LassoService {
 
     private static void detach(SkyBlockPlayer player, Session session, boolean refund) {
         SESSIONS.remove(player.getUuid());
-        session.mob.special().ifPresent(special -> special.onLassoDetach(player, session.mob));
-        if (!session.mob.isDead()) session.mob.setHeader("");
+        specialOf(session.mob).ifPresent(special -> special.onLassoDetach(player, (HuntingCreatureMob) session.mob));
+        if (!session.mob.entity().isDead()) session.mob.setHeader("");
     }
 
     private static void startTicking() {
@@ -189,9 +194,9 @@ public final class LassoService {
             while (iterator.hasNext()) {
                 Session session = iterator.next();
                 SkyBlockPlayer owner = ownerOf(session);
-                if (owner == null || session.mob.isDead() || session.mob.isRemoved()) {
+                if (owner == null || session.mob.entity().isDead() || session.mob.entity().isRemoved()) {
                     iterator.remove();
-                    if (!session.mob.isDead() && !session.mob.isRemoved()) session.mob.setHeader("");
+                    if (!session.mob.entity().isDead() && !session.mob.entity().isRemoved()) session.mob.setHeader("");
                     continue;
                 }
                 tick(owner, session);
@@ -211,7 +216,7 @@ public final class LassoService {
     }
 
     private static void tick(SkyBlockPlayer player, Session session) {
-        HuntingCreatureMob mob = session.mob;
+        LivingEntity mob = session.mob.entity();
         if (player.getInstance() != mob.getInstance()
                 || player.getPosition().distance(mob.getPosition()) > session.tier.range() * 1.6) {
             player.sendMessage("<c>The Lasso snapped!");
@@ -227,7 +232,7 @@ public final class LassoService {
             return;
         }
         long ticks = mob.getAliveTicks();
-        mob.special().ifPresent(special -> special.onLassoTick(player, mob, ticks));
+        specialOf(session.mob).ifPresent(special -> special.onLassoTick(player, (HuntingCreatureMob) session.mob, ticks));
         if (SESSIONS.get(player.getUuid()) != session) return;
         double drain = DRAIN_PER_SECOND * session.tier.drain() * (TICK_STEP * 50 / 1000D)
                 * (1 + dev.daweapon.type.skyblockgeneric.hunting.AttributeEffectService.value(player.getHuntingData(),
@@ -244,7 +249,7 @@ public final class LassoService {
             detach(player, session, true);
             return;
         }
-        mob.setHeader(bar(session));
+        session.mob.setHeader(bar(session));
     }
 
     private static String bar(Session session) {

@@ -10,6 +10,7 @@ import dev.daweapon.type.skyblockgeneric.farmingcontest.ContestBracket;
 import dev.daweapon.type.skyblockgeneric.farmingcontest.FarmingContests;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.components.AbiphoneComponent;
+import dev.daweapon.type.skyblockgeneric.miningevent.CultOfTheFallenStar;
 import dev.daweapon.type.skyblockgeneric.slayer.SlayerRequirement;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.minestom.server.inventory.PlayerInventory;
@@ -91,6 +92,27 @@ public enum AbiphoneCheck {
                     .findFirst().orElse(null);
         }
     },
+    CULT_MEMBER {
+        @Override
+        public boolean test(SkyBlockPlayer player) {
+            return CultOfTheFallenStar.wearingHelmet(player) && CultOfTheFallenStar.attended(player) >= CultOfTheFallenStar.MEETINGS_FOR_CONTACT;
+        }
+
+        @Override
+        public List<String> failureLines(SkyBlockPlayer player) {
+            if (!CultOfTheFallenStar.wearingHelmet(player)) {
+                return List.of(
+                        "I'm not just gonna give my contact out to anybody...",
+                        "Huh? Are you a member of, y'know, our <o>thing<f>?",
+                        "Where's your <9>Fallen Star Helmet<f>? Put it on!");
+            }
+            return List.of(
+                    "You want my <3>Abiphone Contact<f>? Respectfully, we don't see you at our meetings very often.",
+                    "Here's the deal.",
+                    "Attend <6>3<f> meetings of the <5>Cult of the Fallen Star<f>, and you can have my contact.",
+                    "Confirm your attendance at a meeting by speaking to me with your <1>Fallen Star Helmet<f> equipped.");
+        }
+    },
     DONATE_ABIPHONE {
         private static final List<String> ACCEPTED = List.of("ABIPHONE_BASIC", "ABIPHONE_X_RED", "ABIPHONE_X_BLUE", "ABIPHONE_XI_YELLOW");
 
@@ -120,5 +142,9 @@ public enum AbiphoneCheck {
     public abstract boolean test(SkyBlockPlayer player);
 
     public void consume(SkyBlockPlayer player) {
+    }
+
+    public List<String> failureLines(SkyBlockPlayer player) {
+        return List.of();
     }
 }

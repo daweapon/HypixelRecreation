@@ -183,6 +183,45 @@ public class RegisteredAbility {
         }
     }
 
+    public static class AbilityVitalityCost extends AbilityCost {
+        private final int cost;
+
+        public AbilityVitalityCost(int cost) {
+            this.cost = cost;
+        }
+
+        @Override
+        public boolean canUse(@NotNull SkyBlockPlayer player) {
+            return player.getVitality() >= cost;
+        }
+
+        @Override
+        public void onUse(@NonNull SkyBlockPlayer player, @NonNull RegisteredAbility ability) {
+            player.setVitality(player.getVitality() - cost);
+            SkyBlockActionBar.getFor(player).addReplacement(
+                    SkyBlockActionBar.BarSection.MANA,
+                    Text.of("<4>-{} Vitality (<6>{}</6>)", cost, ability.getName()),
+                    20,
+                    2
+            );
+        }
+
+        @Override
+        public void onFail(@NonNull SkyBlockPlayer player) {
+            SkyBlockActionBar.getFor(player).addReplacement(
+                    SkyBlockActionBar.BarSection.MANA,
+                    Text.of("<c><l>NOT ENOUGH VITALITY"),
+                    20 * 2,
+                    2
+            );
+        }
+
+        @Override
+        public String getLoreDisplay() {
+            return "<8>Vitality Cost: <4>" + cost;
+        }
+    }
+
     public static class AbilityManaSoulflowCost extends AbilityCost {
         private final int cost;
         private final int soulflow;

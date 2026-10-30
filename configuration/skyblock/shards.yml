@@ -8062,7 +8062,7 @@
         }
       ],
       "fusion_cost": 5,
-      "unavailable": "Obtainable by Charming a Dive Ghast or Fusion, but the Opal Gemstone pacify effect has no mining hook and Dive Ghasts cannot be lassoed yet"
+      "unavailable": "Obtainable by Lassoing or Charming a Dive Ghast, or by Fusion, but the Opal Gemstone pacify effect has no mining hook"
     },
     {
       "id": "E44",

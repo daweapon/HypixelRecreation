@@ -1,14 +1,13 @@
 package dev.daweapon.type.skyblockgeneric.entity.mob.mobs.crimsonisle;
 
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.skyblockgeneric.consumable.SporeBurst;
 import dev.daweapon.type.skyblockgeneric.crimson.mob.CrimsonIsleMob;
 import dev.daweapon.type.skyblockgeneric.crimson.mob.CrimsonMobs;
 import dev.daweapon.type.skyblockgeneric.entity.DroppedItemEntityImpl;
 import dev.daweapon.type.skyblockgeneric.mythological.ability.MythologicalCombat;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.particle.Particle;
-
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Mushroom Bull (wiki: Mushroom_Bull): a fast charging bull in the Mystic Marsh. It grazes Mushroom Spores it
@@ -61,13 +60,7 @@ public class MobMushroomBull extends CrimsonIsleMob {
         if (instance != null && explosions > 0) MythologicalCombat.sound(this, "entity.generic.explode", 1.5f, 1.2f);
         super.kill();
         if (instance == null || explosions == 0) return;
-        ThreadLocalRandom random = ThreadLocalRandom.current();
-        for (int i = 0; i < explosions; i++) {
-            Pos blast = at.add((random.nextDouble() * 2 - 1) * EXPLOSION_SPREAD, 0.5,
-                    (random.nextDouble() * 2 - 1) * EXPLOSION_SPREAD);
-            MythologicalCombat.particles(instance, Particle.EXPLOSION, blast, 0.3f, 2);
-            MythologicalCombat.particles(instance, Particle.CLOUD, blast, 0.8f, 12);
-        }
+        SporeBurst.explode(instance, at, EXPLOSION_SPREAD, explosions);
         sporesEaten = 0;
     }
 }

@@ -127,7 +127,7 @@ contacts:
     name: "Dalir"
     difficulty: EASY
     location: "Dwarven Mines"
-    description: "Self-proclaimed leader of the ."
+    description: "Self-proclaimed leader of the Cult of the Fallen Star."
     requirement: "Wear Fallen Star Helmet and attend 3 meetings during which you talk to Dalir using your Abiphone"
     usage: "Gives some info about when the next Cult of the Fallen Star meeting is and how many total meetings the player has attended."
     aliases: [dalir]
