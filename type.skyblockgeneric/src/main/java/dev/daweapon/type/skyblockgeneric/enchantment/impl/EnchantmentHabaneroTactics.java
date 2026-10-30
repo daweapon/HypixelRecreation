@@ -3,6 +3,7 @@ package dev.daweapon.type.skyblockgeneric.enchantment.impl;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
+import dev.daweapon.type.skyblockgeneric.consumable.SmolderingPolarization;
 import dev.daweapon.type.skyblockgeneric.enchantment.EnchantmentType;
 import dev.daweapon.type.skyblockgeneric.enchantment.abstr.Ench;
 import dev.daweapon.type.skyblockgeneric.enchantment.abstr.PlayerContextEnchant;
@@ -28,6 +29,10 @@ public class EnchantmentHabaneroTactics implements Ench, PlayerContextEnchant {
 
     public static double damageBonusPercent(int level) {
         return level >= 5 ? 25 : level >= 4 ? 20 : 0;
+    }
+
+    public static double magicFind(int level) {
+        return level >= 5 ? 15 : level >= 4 ? 10 : 0;
     }
 
     public static double combatWisdom(int level) {
@@ -59,7 +64,7 @@ public class EnchantmentHabaneroTactics implements Ench, PlayerContextEnchant {
         return "<a>ℏ <7>Heal <a>+" + (five ? "7.5" : "6") + "% <7>more from wands. <8>(Not active yet: no healing wands)\n"
                 + "<a>ℏ <7>Deal <c>+" + (five ? 25 : 20) + "% <7>damage against Slayer Bosses with Slayer weapons.\n"
                 + "<a>ℏ <7>Gain <3>+" + (five ? "5" : "2.5") + "☯ Combat Wisdom <7>with Slayer weapons.\n"
-                + "<a>ℏ <7>With Smoldering Polarization, gain <b>+" + (five ? 15 : 10) + " Magic Find <7>on your slayer weapon. <8>(Not active yet: needs the Re-heated Gummy Polar Bear)";
+                + "<a>ℏ <7>With Smoldering Polarization, gain <b>+" + (five ? 15 : 10) + " Magic Find <7>on your slayer weapon.";
     }
 
     @Override
@@ -81,6 +86,8 @@ public class EnchantmentHabaneroTactics implements Ench, PlayerContextEnchant {
     public ItemStatistics getStatistics(SkyBlockPlayer player, int level) {
         double wisdom = combatWisdom(level);
         if (wisdom <= 0 || !isSlayerWeapon(new SkyBlockItem(player.getItemInMainHand()))) return ItemStatistics.empty();
-        return ItemStatistics.builder().withBase(ItemStatistic.COMBAT_WISDOM, wisdom).build();
+        double magicFind = SmolderingPolarization.isActive(player) ? magicFind(level) : 0;
+        return ItemStatistics.builder().withBase(ItemStatistic.COMBAT_WISDOM, wisdom)
+                .withBase(ItemStatistic.MAGIC_FIND, magicFind).build();
     }
 }

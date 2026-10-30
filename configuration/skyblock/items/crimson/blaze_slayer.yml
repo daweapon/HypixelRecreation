@@ -309,7 +309,7 @@ items:
       - "§7teleport pads on your private island"
       - "§7from anywhere."
       - ""
-      - "§cTeleport Pads aren't available yet."
+      - "§eRight-click to consume!"
     components:
       - id: SKULL_HEAD
         texture: 722058c7cc8521ee1599e89e3e2a13ac6e0fac2ce0b3667f9b7955170f1cae3e
@@ -318,6 +318,32 @@ items:
           - type: SLAYER
             slayer: INFERNO_DEMONLORD
             level: 4
+      - id: INTERACTABLE
+        handler_id: TELEPORTER_PILL
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "ABA"
+              - "CDC"
+              - "ABA"
+            ingredients:
+              A:
+                type: MOLTEN_POWDER
+                amount: 1
+              B:
+                type: ENCHANTED_SUGAR
+                amount: 64
+              C:
+                type: INFERNO_VERTEX
+                amount: 1
+              D:
+                type: TELEPORT_PAD
+                amount: 64
+            result:
+              type: TELEPORTER_PILL
+              amount: 1
   - id: DESTRUCTION_CLOAK
     material: paper
     name: "Destruction Cloak"

@@ -63,6 +63,8 @@ class FireEnchantmentMathTest {
         assertEquals(25, EnchantmentHabaneroTactics.damageBonusPercent(5));
         assertEquals(2.5, EnchantmentHabaneroTactics.combatWisdom(4));
         assertEquals(5, EnchantmentHabaneroTactics.combatWisdom(5));
+        assertEquals(10, EnchantmentHabaneroTactics.magicFind(4));
+        assertEquals(15, EnchantmentHabaneroTactics.magicFind(5));
     }
 
     @Test

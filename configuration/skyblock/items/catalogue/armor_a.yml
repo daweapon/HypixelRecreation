@@ -2766,11 +2766,11 @@ items:
     material: player_head
     name: "Fallen Star Helmet"
     rarity: RARE
+    source: "Join the Cult of the Fallen Star: talk to Dalir in Cliffside Veins during a meeting"
     default_statistics:
       health: 50
       defense: 30
       intelligence: 2
-    unavailable: "Needs the Cult of the Fallen Star event (Enchanted Emerald trade)"
     lore:
       - "§eWear this hat to a §5Cult of the Fallen"
       - "§5Star§e meeting."

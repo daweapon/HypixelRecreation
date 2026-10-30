@@ -8052,11 +8052,17 @@
       ],
       "sources": [
         {
+          "type": "MOB",
+          "mobs": [
+            "DIVE_GHAST"
+          ]
+        },
+        {
           "type": "FUSION"
         }
       ],
       "fusion_cost": 5,
-      "unavailable": "No Dive Ghast mob exists to hunt, charm or lasso, and its Opal Gemstone pacify effect has no mining hook; only Fusion works"
+      "unavailable": "Obtainable by Charming a Dive Ghast or Fusion, but the Opal Gemstone pacify effect has no mining hook and Dive Ghasts cannot be lassoed yet"
     },
     {
       "id": "E44",

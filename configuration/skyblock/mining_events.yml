@@ -112,3 +112,11 @@ random:
   golden_goblin:
     chance_percent_per_ore: 0.01
     lifetime_seconds: 30
+
+# Cult of the Fallen Star is a SkyBlock-calendar meeting (wiki), not a scheduled mining event.
+# Meetings run on days 7/14/21/28 from midnight to end_hour. The wiki gives 200 Starfall per meeting;
+# members, positions and the helmet claim follow the wiki's Dalir, Thondin and Brarnas.
+cult_of_the_fallen_star:
+  meeting_days: ["7", "14", "21", "28"]
+  end_hour: 6
+  starfall_per_meeting: 200

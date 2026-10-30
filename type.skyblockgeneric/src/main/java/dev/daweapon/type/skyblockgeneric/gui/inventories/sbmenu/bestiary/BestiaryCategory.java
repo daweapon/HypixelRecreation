@@ -28,6 +28,14 @@ import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.DiamondGob
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.GoldenGoblin;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.MobGlaciteWalker;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.MobTreasureHoarder;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.event.MobCreeperlobber;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.event.MobMurderlover;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.event.MobPitfighter;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.event.MobPowderGhast;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.event.MobRaidFireslinger;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.event.MobRaidWeakling;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.event.MobStarSentry;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.event.MobSuperprotectron;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.goblin.MobFireslinger;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.goblin.MobGoblin;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.goblin.MobGoblinFlamethrower;
@@ -204,10 +212,11 @@ public enum BestiaryCategory {
         GLACITE_CAVER("<a>Glacite Caver", "Dug too deep and never looked back.", CataloguedBestiaryAreas.placeholder("GLACITE_CAVER", "Glacite Caver", 4, 15, MobType.GLACIAL, "d2a0057edd8e8480f0ea2a78c1ad88e401c4844f4458aeb4e33ac93a58b8c11a")),
         GLACITE_MAGE("<a>Glacite Mage", "Unknowing and unpredictable in its destruction.", CataloguedBestiaryAreas.placeholder("GLACITE_MAGE", "Glacite Mage", 4, 15, MobType.GLACIAL, "d2a0057edd8e8480f0ea2a78c1ad88e401c4844f4458aeb4e33ac93a58b8c11a")),
         GLACITE_MUTT("<a>Glacite Mutt", "Remarkably loyal, even in death.", CataloguedBestiaryAreas.placeholder("GLACITE_MUTT", "Glacite Mutt", 4, 15, MobType.GLACIAL, "69d1d3113ec43ac2961dd59f28175fb4718873c6c448dfca8722317d67")),
-        GOBLIN_RAIDERS("<a>Goblin Raiders", "If it moves, it gets smashed.", CataloguedBestiaryAreas.placeholder("GOBLIN_RAIDERS", "Goblin Raiders", 4, 15, MobType.SUBTERRANEAN, "172850906b7f0d952c0e508073cc439fd3374ccf5b889c06f7e8d90cc0cc255c")),
+        GOBLIN_RAIDERS("<a>Goblin Raiders", "If it moves, it gets smashed.",
+                List.of(new MobRaidWeakling(), new MobRaidFireslinger(), new MobCreeperlobber(), new MobPitfighter(), new MobMurderlover(), new MobSuperprotectron())),
         LITTLEFOOT("<a>Littlefoot", "You've probably heard of his older brother.", CataloguedBestiaryAreas.placeholder("LITTLEFOOT", "Littlefoot", 2, 5, MobType.SUBTERRANEAN, "6cce41cd32db68f699c281f83f20766c83c97fd49664eb8c7584b9f343d960d1")),
-        POWDER_GHAST("<a>Powder Ghast", "Powder and coal replaces ash and soot!", CataloguedBestiaryAreas.placeholder("POWDER_GHAST", "Powder Ghast", 8, 15, MobType.AIRBORNE, "de8a38e9afbd3da10d19b577c55c7bfd6b4f2e407e44d4017b23be9167abff02")),
-        STAR_SENTRY("<a>Star Sentry", "Defenders of the Fallen Star.", CataloguedBestiaryAreas.placeholder("STAR_SENTRY", "Star Sentry", 6, 15, MobType.CONSTRUCT, "d87b8f3cf1c1014883276f230501d5af1397699071bfab1ee294c861722cc2f")),
+        POWDER_GHAST("<a>Powder Ghast", "Powder and coal replaces ash and soot!", List.of(new MobPowderGhast())),
+        STAR_SENTRY("<a>Star Sentry", "Defenders of the Fallen Star.", List.of(new MobStarSentry())),
         ;
 
         private final String name, description;

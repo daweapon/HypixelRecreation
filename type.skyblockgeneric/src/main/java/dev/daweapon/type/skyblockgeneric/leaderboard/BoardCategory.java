@@ -10,7 +10,9 @@ public enum BoardCategory {
     SLAYERS("Slayers", Material.ROTTEN_FLESH, "<c>"),
     COLLECTIONS("Collections", Material.PAINTING, "<e>"),
     PROGRESSION("Progression", Material.ANVIL, "<b>"),
-    ACTIVITIES("Activities", Material.COMPASS, "<d>");
+    ACTIVITIES("Activities", Material.COMPASS, "<d>"),
+    WEEKLY("Weekly", Material.CLOCK, "<9>"),
+    MONTHLY("Monthly", Material.RECOVERY_COMPASS, "<5>");
 
     private final String displayName;
     private final Material icon;

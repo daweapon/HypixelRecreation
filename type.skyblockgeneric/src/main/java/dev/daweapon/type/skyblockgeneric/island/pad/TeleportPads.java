@@ -35,9 +35,13 @@ public final class TeleportPads {
             player.sendMessage("<c>This Teleport Pad has no destination set!");
             return;
         }
+        arrive(player, target, from.direction());
+    }
+
+    public static void arrive(SkyBlockPlayer player, TeleportPad target, TeleportPadDirection direction) {
         Pos current = player.getPosition();
         Pos arrival = new Pos(target.x() + 0.5, target.y() + STAND_HEIGHT, target.z() + 0.5,
-                from.direction().yawOr(current.yaw()), current.pitch());
+                direction.yawOr(current.yaw()), current.pitch());
         player.teleport(arrival);
         player.playTeleportSound();
     }

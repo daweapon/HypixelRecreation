@@ -185,6 +185,7 @@ public final class MaxStickService {
             new Step("Reaper Peppers", player -> ReaperPepper.setEaten(player, ReaperPepper.LIMIT)),
             new Step("Vials of Venom", player -> dev.daweapon.type.skyblockgeneric.consumable.VialOfVenom.setConsumed(player, dev.daweapon.type.skyblockgeneric.consumable.VialOfVenom.LIMIT)),
             new Step("Experimentation Table", dev.daweapon.type.skyblockgeneric.experiments.ExperimentTable::unlockAll),
+            new Step("Teleporter Pill", dev.daweapon.type.skyblockgeneric.island.pad.TeleporterPill::unlock),
             new Step("Dwarven O's", dev.daweapon.type.skyblockgeneric.consumable.DwarvenOs::maxAll),
             new Step("Ice Essence shop", IceEssenceShop::maxAvailable),
             new Step("Fossil Essence shop", dev.daweapon.type.skyblockgeneric.essence.FossilEssenceShop::maxAvailable),

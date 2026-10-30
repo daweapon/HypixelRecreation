@@ -3,6 +3,8 @@ package dev.daweapon.type.skyblockgeneric.leaderboard;
 import dev.daweapon.commons.StringUtility;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.skyblockgeneric.collection.CollectionCategories;
+import dev.daweapon.type.skyblockgeneric.crimson.kuudra.KuudraProgress;
+import dev.daweapon.type.skyblockgeneric.crimson.kuudra.KuudraTier;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointSlayer;
 import dev.daweapon.type.skyblockgeneric.garden.GardenService;
 import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
@@ -23,6 +25,8 @@ public final class SkyBlockBoards {
     public static final String LEVEL = "level";
     public static final String COLLECTION_PREFIX = "collection:";
     private static final List<SkyBlockBoard> FIXED = build();
+    private static final List<String> WINDOWED_SOURCES = List.of(LEVEL, "skill_total", "slayer_total");
+    private static final List<SkyBlockBoard> WINDOWED = buildWindowed();
 
     private SkyBlockBoards() {
     }
@@ -60,7 +64,32 @@ public final class SkyBlockBoards {
                 player -> player.getBestiaryData().getMobs().values().stream().mapToLong(Integer::longValue).sum()));
         boards.add(new SkyBlockBoard("trophy_fish", "Trophy Fish Caught", BoardCategory.ACTIVITIES, Material.COD, "caught",
                 player -> player.getTrophyFishData().getFish().values().stream().mapToLong(fish -> fish.getTotalCatches()).sum()));
+        boards.add(new SkyBlockBoard("kuudra_total", "Kuudra Completions", BoardCategory.ACTIVITIES, Material.MAGMA_BLOCK, "clears",
+                player -> totalKuudraClears(player)));
+        for (KuudraTier tier : KuudraTier.values()) {
+            boards.add(new SkyBlockBoard("kuudra:" + tier.name(), tier.getDisplayName() + " Kuudra Completions", BoardCategory.ACTIVITIES,
+                    Material.MAGMA_CREAM, "clears", player -> KuudraProgress.clears(player, tier)));
+        }
         return List.copyOf(boards);
+    }
+
+    private static List<SkyBlockBoard> buildWindowed() {
+        List<SkyBlockBoard> boards = new ArrayList<>();
+        for (Timeframe timeframe : Timeframe.values()) {
+            BoardCategory category = timeframe == Timeframe.WEEK ? BoardCategory.WEEKLY : BoardCategory.MONTHLY;
+            for (String sourceId : WINDOWED_SOURCES) {
+                SkyBlockBoard source = fixed(sourceId).orElseThrow();
+                boards.add(new SkyBlockBoard(timeframe.getPrefix() + ":" + sourceId, source.name() + " Gained", category,
+                        source.icon(), source.unit(), source.score(), timeframe));
+            }
+        }
+        return List.copyOf(boards);
+    }
+
+    private static double totalKuudraClears(SkyBlockPlayer player) {
+        double total = 0;
+        for (KuudraTier tier : KuudraTier.values()) total += KuudraProgress.clears(player, tier);
+        return total;
     }
 
     private static Material skillIcon(SkillCategories skill) {
@@ -100,6 +129,33 @@ public final class SkyBlockBoards {
         return FIXED;
     }
 
+    public static List<SkyBlockBoard> windowed() {
+        return WINDOWED;
+    }
+
+    public static List<SkyBlockBoard> inCategory(BoardCategory category) {
+        List<SkyBlockBoard> boards = new ArrayList<>(FIXED.stream().filter(board -> board.category() == category).toList());
+        boards.addAll(WINDOWED.stream().filter(board -> board.category() == category).toList());
+        return boards;
+    }
+
+    public static Map<String, Double> windowedScoresOf(SkyBlockPlayer player, Map<String, Double> baselines) {
+        Map<String, Double> scores = new LinkedHashMap<>();
+        for (SkyBlockBoard board : WINDOWED) {
+            double gained = Timeframe.gained(board.score().applyAsDouble(player), baselines.getOrDefault(board.id(), 0D));
+            if (gained > 0) scores.put(board.key(), gained);
+        }
+        return scores;
+    }
+
+    public static Map<String, Double> windowedCurrentScores(SkyBlockPlayer player, Timeframe timeframe) {
+        Map<String, Double> current = new LinkedHashMap<>();
+        for (SkyBlockBoard board : WINDOWED) {
+            if (board.timeframe() == timeframe) current.put(board.id(), board.score().applyAsDouble(player));
+        }
+        return current;
+    }
+
     public static Optional<SkyBlockBoard> fixed(String id) {
         return FIXED.stream().filter(board -> board.id().equals(id)).findFirst();
     }
@@ -117,7 +173,7 @@ public final class SkyBlockBoards {
                 return Optional.empty();
             }
         }
-        return fixed(id);
+        return fixed(id).or(() -> WINDOWED.stream().filter(board -> board.id().equals(id)).findFirst());
     }
 
     public static Map<String, Double> scoresOf(SkyBlockPlayer player) {

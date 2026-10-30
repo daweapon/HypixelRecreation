@@ -17,7 +17,6 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GUILeaderboardBoards extends StatefulPaginatedView<SkyBlockBoard, GUILeaderboardBoards.State> {
@@ -31,7 +30,7 @@ public class GUILeaderboardBoards extends StatefulPaginatedView<SkyBlockBoard, G
 
     public static void open(SkyBlockPlayer player, BoardCategory category) {
         Thread.startVirtualThread(() -> {
-            List<SkyBlockBoard> boards = new ArrayList<>(SkyBlockBoards.fixed().stream().filter(board -> board.category() == category).toList());
+            List<SkyBlockBoard> boards = SkyBlockBoards.inCategory(category);
             if (category == BoardCategory.COLLECTIONS) {
                 for (String id : SkyBlockLeaderboards.collectionBoardIds()) SkyBlockBoards.byId(id).ifPresent(boards::add);
             }

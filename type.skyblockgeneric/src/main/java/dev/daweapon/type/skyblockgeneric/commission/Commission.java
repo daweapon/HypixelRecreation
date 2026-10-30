@@ -8,6 +8,7 @@ import dev.daweapon.type.skyblockgeneric.region.RegionType;
 // A single commission task, pairing an objective with a display description.
 public class Commission {
     public final String name;
+    public final String key;
     public final CommissionCategory category;
     public final Objective objective;
     public final boolean oneTimeOnly;
@@ -31,6 +32,10 @@ public class Commission {
         this(name, category, objective, oneTimeOnly, CommissionZone.DWARVEN_MINES, false);
     }
 
+    public static Commission starter(String name, String key, Objective objective) {
+        return new Commission(name, key, CommissionCategory.TUTORIAL, objective, true, CommissionZone.DWARVEN_MINES, false);
+    }
+
     public Commission(
             String name,
             CommissionCategory category,
@@ -39,6 +44,19 @@ public class Commission {
             CommissionZone zone,
             boolean crystalGroup
     ) {
+        this(name, name, category, objective, oneTimeOnly, zone, crystalGroup);
+    }
+
+    private Commission(
+            String name,
+            String key,
+            CommissionCategory category,
+            Objective objective,
+            boolean oneTimeOnly,
+            CommissionZone zone,
+            boolean crystalGroup
+    ) {
+        this.key = key;
         this.zone = zone;
         this.crystalGroup = crystalGroup;
         this.name = name;

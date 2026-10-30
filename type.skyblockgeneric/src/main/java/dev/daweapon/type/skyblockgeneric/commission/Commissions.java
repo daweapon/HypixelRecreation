@@ -190,28 +190,32 @@ public class Commissions {
 			)
 	);
 
-	public static List<Commission> TUTORIAL = List.of(
+	public static final Commission FIRST_EVENT = Commission.starter("First Event", "starter:first_event",
+			new Objective(ObjectiveType.PARTICIPATE, Objective.BlockTarget.NONE, 1, LocationSelector.any(), EventType.NONE));
+	public static final Commission STARTER_MITHRIL = Commission.starter("Mithril Miner", "starter:mithril_50",
+			new Objective(ObjectiveType.MINE, Objective.BlockTarget.MITHRIL, 50, LocationSelector.any(), EventType.NONE));
+	public static final Commission STARTER_TITANIUM = Commission.starter("Titanium Miner", "starter:titanium_2",
+			new Objective(ObjectiveType.MINE, Objective.BlockTarget.TITANIUM, 2, LocationSelector.any(), EventType.NONE));
+	public static final Commission STARTER_MITHRIL_II = Commission.starter("Mithril Miner", "starter:mithril_150",
+			new Objective(ObjectiveType.MINE, Objective.BlockTarget.MITHRIL, 150, LocationSelector.any(), EventType.NONE));
 
-			new Commission("Mithril Miner", CommissionCategory.TUTORIAL,
-					new Objective(ObjectiveType.MINE, Objective.BlockTarget.MITHRIL, 50, LocationSelector.any(), EventType.NONE),
-					true
-			),
+	public static List<Commission> TUTORIAL = List.of(FIRST_EVENT, STARTER_MITHRIL, STARTER_TITANIUM, STARTER_MITHRIL_II);
 
-			new Commission("First Event", CommissionCategory.TUTORIAL,
-					new Objective(ObjectiveType.PARTICIPATE,  Objective.BlockTarget.NONE, 1, LocationSelector.any(), EventType.NONE),
-					true
-			),
+	private static final int STARTER_SECOND_BATCH_LIMIT = 3;
 
-			new Commission("Titanium Miner", CommissionCategory.TUTORIAL,
-					new Objective(ObjectiveType.MINE, Objective.BlockTarget.TITANIUM, 2, LocationSelector.any(), EventType.NONE),
-					true
-			),
-
-			new Commission("Mithril Miner II", CommissionCategory.TUTORIAL,
-					new Objective(ObjectiveType.MINE, Objective.BlockTarget.MITHRIL, 150, LocationSelector.any(), EventType.NONE),
-					true
-			)
-	);
+	private static Commission starterFor(SkyBlockPlayer player, int slotIndex) {
+		int completed = getCommissionData(player).getTotalCompleted();
+		if (completed == 0) {
+			return switch (slotIndex) {
+				case 0 -> FIRST_EVENT;
+				case 1 -> STARTER_MITHRIL;
+				case 2 -> STARTER_TITANIUM;
+				default -> null;
+			};
+		}
+		if (completed <= STARTER_SECOND_BATCH_LIMIT && slotIndex == 0) return STARTER_MITHRIL_II;
+		return null;
+	}
 
 	public static int getCommissionSlots(SkyBlockPlayer player) {
 		DatapointCommissions.PlayerCommissionData data = getCommissionData(player);
@@ -246,8 +250,8 @@ public class Commissions {
 			commission = pick(player, zone, i, usedNames);
 
 			if (commission != null) {
-				usedNames.add(commission.name);
-				active.add(new DatapointCommissions.ActiveCommission(commission.name));
+				usedNames.add(commission.key);
+				active.add(new DatapointCommissions.ActiveCommission(commission.key));
 			}
 		}
 
@@ -260,6 +264,8 @@ public class Commissions {
 			Commission picked = selectRandomCommission(pool, usedNames);
 			return picked != null ? picked : selectRandomCommission(HOLLOWS, usedNames);
 		}
+		Commission starter = starterFor(player, slotIndex);
+		if (starter != null && !usedNames.contains(starter.key)) return starter;
 		if (slotIndex == 0) return selectRandomCommission(nonEventPool(player), usedNames);
 		if (slotIndex == 1) return pickOr(eventPool(), nonEventPool(player), usedNames);
 		long events = usedNames.stream().map(Commissions::getCommissionByName).filter(c -> c != null && isEventDependent(c)).count();
@@ -306,7 +312,7 @@ public class Commissions {
 	private static Commission selectRandomCommission(List<Commission> pool, List<String> usedNames) {
 		List<Commission> available = new ArrayList<>();
 		for (Commission commission : pool) {
-			if (!usedNames.contains(commission.name)) {
+			if (!usedNames.contains(commission.key)) {
 				available.add(commission);
 			}
 		}
@@ -320,19 +326,19 @@ public class Commissions {
 
 	public static Commission getCommissionByName(String name) {
 		for (Commission c : CONSISTENT) {
-			if (c.name.equals(name)) return c;
+			if (c.key.equals(name)) return c;
 		}
 		for (Commission c : SITUATIONAL) {
-			if (c.name.equals(name)) return c;
+			if (c.key.equals(name)) return c;
 		}
 		for (Commission c : GLACITE_TUNNELS) {
-			if (c.name.equals(name)) return c;
+			if (c.key.equals(name)) return c;
 		}
 		for (Commission c : TUTORIAL) {
-			if (c.name.equals(name)) return c;
+			if (c.key.equals(name)) return c;
 		}
 		for (Commission c : HOLLOWS) {
-			if (c.name.equals(name)) return c;
+			if (c.key.equals(name)) return c;
 		}
 		return null;
 	}
@@ -392,7 +398,7 @@ public class Commissions {
 		if (newComm == null) {
 			active.remove(slotIndex);
 		} else {
-			active.set(slotIndex, new DatapointCommissions.ActiveCommission(newComm.name));
+			active.set(slotIndex, new DatapointCommissions.ActiveCommission(newComm.key));
 		}
 
 		saveCommissionData(player, data);

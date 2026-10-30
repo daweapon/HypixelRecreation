@@ -69,6 +69,44 @@ public class LeaderboardService {
         }
     }
 
+    public static void updateExpiringScores(UUID playerUuid, Map<String, Double> scoresByKey, long ttlSeconds) {
+        if (!isInitialized() || scoresByKey.isEmpty()) return;
+
+        try (Jedis jedis = jedisPool.getResource()) {
+            var pipeline = jedis.pipelined();
+            String member = playerUuid.toString();
+            scoresByKey.forEach((key, score) -> {
+                pipeline.zadd(PREFIX + key, score, member);
+                pipeline.expire(PREFIX + key, ttlSeconds);
+            });
+            pipeline.sync();
+        } catch (Exception e) {
+            Logger.warn(e, "Failed to batch update expiring leaderboard scores for {}", playerUuid);
+        }
+    }
+
+    /**
+     * Stores each value the first time its field is seen and returns the stored baselines.
+     * @return the stored value per field, or empty if Redis is unavailable
+     */
+    public static Map<String, Double> ensureBaselines(String baselineKey, Map<String, Double> current, long ttlSeconds) {
+        if (!isInitialized() || current.isEmpty()) return Map.of();
+
+        try (Jedis jedis = jedisPool.getResource()) {
+            String key = PREFIX + "baseline:" + baselineKey;
+            var pipeline = jedis.pipelined();
+            current.forEach((field, value) -> pipeline.hsetnx(key, field, String.valueOf(value)));
+            pipeline.expire(key, ttlSeconds);
+            pipeline.sync();
+            Map<String, Double> baselines = new java.util.HashMap<>();
+            jedis.hgetAll(key).forEach((field, value) -> baselines.put(field, Double.parseDouble(value)));
+            return baselines;
+        } catch (Exception e) {
+            Logger.warn(e, "Failed to read baselines {}", baselineKey);
+            return Map.of();
+        }
+    }
+
     public static void updateScores(UUID playerUuid, Map<String, Double> scoresByKey) {
         if (!isInitialized() || scoresByKey.isEmpty()) return;
 

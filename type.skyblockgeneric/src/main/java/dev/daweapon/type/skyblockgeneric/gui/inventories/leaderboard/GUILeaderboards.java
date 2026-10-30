@@ -15,7 +15,7 @@ import net.minestom.server.inventory.InventoryType;
 import java.util.List;
 
 public class GUILeaderboards extends StatelessView {
-    private static final int[] SLOTS = {10, 11, 12, 14, 15, 16};
+    private static final int[] SLOTS = {10, 11, 12, 14, 15, 16, 20, 24};
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
@@ -38,6 +38,7 @@ public class GUILeaderboards extends StatelessView {
         layout.slot(22, (_, _) -> ItemStacks.item(net.minestom.server.item.Material.BOOK, Text.of("<a>About"), List.of(
                 Text.of("<7>Rankings are per profile and update"),
                 Text.of("<7>whenever your profile saves."),
+                Text.of("<7>Weekly and monthly boards reset in UTC."),
                 Text.empty(),
                 Text.of("<8>Staff are not ranked."))));
     }

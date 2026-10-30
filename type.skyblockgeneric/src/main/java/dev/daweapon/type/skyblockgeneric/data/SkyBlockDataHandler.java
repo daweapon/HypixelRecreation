@@ -505,6 +505,9 @@ public class SkyBlockDataHandler extends DataHandler {
         RACE_BEST_TIME("race_best_time", false, false, false, DatapointMapStringLong.class,
                 new DatapointMapStringLong("race_best_time")),
 
+        CULT_OF_THE_FALLEN_STAR("cult_of_the_fallen_star", false, false, false, DatapointMapStringLong.class,
+                new DatapointMapStringLong("cult_of_the_fallen_star")),
+
         ACCESSORY_BAG("accessory_bag", false, false, false,
                 DatapointAccessoryBag.class, new DatapointAccessoryBag("accessory_bag")),
 

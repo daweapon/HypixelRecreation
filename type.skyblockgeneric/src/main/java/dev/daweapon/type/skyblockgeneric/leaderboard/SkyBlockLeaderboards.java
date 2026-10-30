@@ -45,6 +45,19 @@ public final class SkyBlockLeaderboards {
         LeaderboardService.putMemberMeta(profileId, Map.of("profileName", String.valueOf(profileName)),
                 Map.of("owner", player.getUsername()));
         LeaderboardService.updateScores(profileId, SkyBlockBoards.scoresOf(player));
+        syncWindows(player, profileId);
+    }
+
+    private static void syncWindows(SkyBlockPlayer player, UUID profileId) {
+        for (Timeframe timeframe : Timeframe.values()) {
+            Map<String, Double> baselines = LeaderboardService.ensureBaselines(
+                    timeframe.getPrefix() + ":" + timeframe.currentWindowId() + ":" + profileId,
+                    SkyBlockBoards.windowedCurrentScores(player, timeframe), timeframe.getTtlSeconds());
+            if (baselines.isEmpty()) continue;
+            Map<String, Double> gained = SkyBlockBoards.windowedScoresOf(player, baselines);
+            gained.keySet().removeIf(key -> !key.startsWith(SkyBlockBoard.KEY_PREFIX + timeframe.getPrefix() + ":"));
+            LeaderboardService.updateExpiringScores(profileId, gained, timeframe.getTtlSeconds());
+        }
     }
 
     public static void forget(UUID profileId) {

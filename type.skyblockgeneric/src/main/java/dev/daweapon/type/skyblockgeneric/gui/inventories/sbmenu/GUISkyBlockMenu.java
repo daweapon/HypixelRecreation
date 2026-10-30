@@ -143,6 +143,19 @@ public class GUISkyBlockMenu extends StatelessView {
                 Text.key("gui_sbmenu.main.calendar"), getCalendarLore(ctx)),
             (click, c) -> c.push(new GUICalendar()), Duration.ofSeconds(1));
 
+        if (dev.daweapon.type.generic.HypixelConst.isIslandServer()
+                && dev.daweapon.type.skyblockgeneric.island.pad.TeleporterPill.isUnlocked((SkyBlockPlayer) ctx.player())) {
+            layout.slot(34, (s, c) -> ItemStacks.item(Material.ENDER_PEARL, """
+                    <a>Teleport Pad Menu
+                    <7>Teleport to any Teleport Pad on
+                    <7>your Private Island!
+
+                    <8>Also accessible via /teleports
+
+                    <e>Click to open!"""),
+                (_, c) -> dev.daweapon.type.skyblockgeneric.island.pad.TeleporterPill.openMenu((SkyBlockPlayer) c.player()));
+        }
+
         if (onMiningIsland()) {
             layout.slot(10, (s, c) -> {
                 SkyBlockPlayer player = (SkyBlockPlayer) c.player();

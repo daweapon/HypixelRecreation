@@ -36,6 +36,7 @@ public class InteractableRegistry {
         dev.daweapon.type.skyblockgeneric.consumable.ItemBundle.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.DwarvenOs.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.GreatSpookPotion.registerInteractables();
+        dev.daweapon.type.skyblockgeneric.consumable.SmolderingPolarization.registerInteractables();
         dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookStaff.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.JerryCandy.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.FinnsFocaccia.registerInteractables();
@@ -43,6 +44,7 @@ public class InteractableRegistry {
         dev.daweapon.type.skyblockgeneric.experiments.ExperienceBottle.registerInteractables();
         dev.daweapon.type.skyblockgeneric.experiments.MetaphysicalSerum.registerInteractables();
         SnowCannon.registerInteractables();
+        dev.daweapon.type.skyblockgeneric.island.pad.TeleporterPill.registerInteractables();
         CrimsonItemHandlers.registerInteractables();
         dev.daweapon.type.skyblockgeneric.crystalhollows.GoblinEggs.registerInteractables();
         dev.daweapon.type.skyblockgeneric.crystalhollows.MetalDetector.registerInteractables();
