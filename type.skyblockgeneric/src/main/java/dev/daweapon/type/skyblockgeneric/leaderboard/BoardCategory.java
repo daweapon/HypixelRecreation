@@ -8,7 +8,9 @@ public enum BoardCategory {
     GENERAL("General", Material.NETHER_STAR, "<6>"),
     SKILLS("Skills", Material.DIAMOND_PICKAXE, "<a>"),
     SLAYERS("Slayers", Material.ROTTEN_FLESH, "<c>"),
-    COLLECTIONS("Collections", Material.PAINTING, "<e>");
+    COLLECTIONS("Collections", Material.PAINTING, "<e>"),
+    PROGRESSION("Progression", Material.ANVIL, "<b>"),
+    ACTIVITIES("Activities", Material.COMPASS, "<d>");
 
     private final String displayName;
     private final Material icon;

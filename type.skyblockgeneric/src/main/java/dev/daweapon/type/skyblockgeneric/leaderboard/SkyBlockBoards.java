@@ -4,6 +4,10 @@ import dev.daweapon.commons.StringUtility;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.skyblockgeneric.collection.CollectionCategories;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointSlayer;
+import dev.daweapon.type.skyblockgeneric.garden.GardenService;
+import dev.daweapon.type.skyblockgeneric.hotf.HotfService;
+import dev.daweapon.type.skyblockgeneric.hotm.HotmService;
+import dev.daweapon.type.skyblockgeneric.user.pets.PetScore;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.type.skyblockgeneric.slayer.SlayerType;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -42,6 +46,20 @@ public final class SkyBlockBoards {
         }
         boards.add(new SkyBlockBoard("slayer_total", "Total Slayer XP", BoardCategory.SLAYERS, Material.EXPERIENCE_BOTTLE, "XP",
                 player -> java.util.Arrays.stream(SlayerType.values()).mapToDouble(type -> slayerXp(player, type)).sum()));
+        boards.add(new SkyBlockBoard("hotm_xp", "Heart of the Mountain XP", BoardCategory.PROGRESSION, Material.DIAMOND_PICKAXE, "XP",
+                player -> HotmService.data(player).getExperience()));
+        boards.add(new SkyBlockBoard("hotf_xp", "Heart of the Forest XP", BoardCategory.PROGRESSION, Material.JUNGLE_LOG, "XP",
+                player -> HotfService.experience(player)));
+        boards.add(new SkyBlockBoard("garden_xp", "Garden XP", BoardCategory.PROGRESSION, Material.WHEAT, "XP",
+                player -> GardenService.profile(player).getGardenXp()));
+        boards.add(new SkyBlockBoard("pet_score", "Pet Score", BoardCategory.PROGRESSION, Material.BONE, "score",
+                player -> PetScore.of(player)));
+        boards.add(new SkyBlockBoard("museum_donations", "Museum Donations", BoardCategory.ACTIVITIES, Material.ITEM_FRAME, "donated",
+                player -> player.getMuseumData().getDonatedEntries().size()));
+        boards.add(new SkyBlockBoard("bestiary_kills", "Bestiary Kills", BoardCategory.ACTIVITIES, Material.WRITTEN_BOOK, "kills",
+                player -> player.getBestiaryData().getMobs().values().stream().mapToLong(Integer::longValue).sum()));
+        boards.add(new SkyBlockBoard("trophy_fish", "Trophy Fish Caught", BoardCategory.ACTIVITIES, Material.COD, "caught",
+                player -> player.getTrophyFishData().getFish().values().stream().mapToLong(fish -> fish.getTotalCatches()).sum()));
         return List.copyOf(boards);
     }
 

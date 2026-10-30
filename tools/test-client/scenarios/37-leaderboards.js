@@ -21,7 +21,7 @@ module.exports = {
             await bot.command('/leaderboard', { settleMs: 2000 });
             await bot.waitFor(() => bot.window(), { timeoutMs: 8000, what: 'the leaderboards menu' });
             const text = names(bot);
-            t.assert(/General/.test(text) && /Skills/.test(text) && /Slayers/.test(text) && /Collections/.test(text), text);
+            t.assert(/General/.test(text) && /Skills/.test(text) && /Slayers/.test(text) && /Collections/.test(text) && /Progression/.test(text) && /Activities/.test(text), text);
         });
 
         await t.step('the skills category lists boards', async () => {

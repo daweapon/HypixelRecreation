@@ -15,7 +15,7 @@ import net.minestom.server.inventory.InventoryType;
 import java.util.List;
 
 public class GUILeaderboards extends StatelessView {
-    private static final int[] SLOTS = {10, 12, 14, 16};
+    private static final int[] SLOTS = {10, 11, 12, 14, 15, 16};
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
