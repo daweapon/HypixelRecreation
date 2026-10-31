@@ -51,6 +51,19 @@ public class GUIAccessoryBag implements StatefulView<GUIAccessoryBag.AccessoryBa
         Components.fill(layout);
         Components.close(layout, 49);
         Components.back(layout, 48, ctx);
+        layout.slot(50, ItemStacks.item(Material.REDSTONE_TORCH, """
+                <a>Need more room?
+                <7>You can expand your Accessory Bag
+                <7>by doing any of the following:
+
+                <7>Increasing your <a>Redstone Collection<7>.
+
+                <7>Purchasing slots for <6>Coins <7>from
+                <6>Jacobus <7>in the <c>Combat Settlement <7>in
+                <7>the <b>Hub<7>.
+
+                <7>Unlocking slots from <d>Elizabeth <7>in the
+                <b>Community Center <7>in the <b>Hub<7>."""));
 
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
         int page = state.page();

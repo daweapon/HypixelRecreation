@@ -2,9 +2,6 @@ package dev.daweapon.type.skyblockgeneric.gui.inventories.banker;
 
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
-import net.minestom.server.item.Material;
-import dev.daweapon.type.generic.gui.inventory.ItemStacks;
-import dev.daweapon.type.generic.gui.v2.Components;
 import dev.daweapon.type.generic.gui.v2.DefaultState;
 import dev.daweapon.type.generic.gui.v2.StatelessView;
 import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
@@ -22,7 +19,7 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 public class GUIPersonalVault extends StatelessView {
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>("Personal Vault", InventoryType.CHEST_4_ROW);
+        return new ViewConfiguration<>("Personal Vault", InventoryType.CHEST_3_ROW);
     }
 
     @Override
@@ -35,10 +32,6 @@ public class GUIPersonalVault extends StatelessView {
                 : PlayerItemUpdater.playerUpdate((SkyBlockPlayer) c.player(), item.getItemStack()), (_, _, _, _) -> {
             });
         }
-        for (int i = 27; i < 36; i++)
-            layout.slot(i, ItemStacks.named(Material.BLACK_STAINED_GLASS_PANE, ""));
-        Components.back(layout, 30, ctx);
-        Components.close(layout, 31);
         layout.allowHotkey(true);
     }
 

@@ -41,6 +41,11 @@ public class GUIQuiver implements StatefulView<GUIQuiver.QuiverState> {
         Components.fill(layout);
         Components.close(layout, 40);
         Components.back(layout, 39, ctx);
+        layout.slot(41, ItemStacks.item(Material.LAVA_BUCKET, """
+                <c>Clear Quiver
+                <7>Deletes all arrows from your quiver."""), (_, c) -> {
+            for (int i = 0; i < getUnlockedSlots((SkyBlockPlayer) c.player()); i++) c.inventory().setItemStack(i, ItemStack.AIR);
+        });
 
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
         int amountOfSlots = getUnlockedSlots(player);
