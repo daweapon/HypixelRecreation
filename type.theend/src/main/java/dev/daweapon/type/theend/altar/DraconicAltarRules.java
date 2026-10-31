@@ -30,6 +30,17 @@ public final class DraconicAltarRules {
     private DraconicAltarRules() {
     }
 
+    public static List<String> itemIds() {
+        List<String> ids = new ArrayList<>();
+        for (String variant : VARIANTS)
+            for (String piece : List.of("HELMET", "CHESTPLATE", "LEGGINGS", "BOOTS")) ids.add(variant + "_DRAGON_" + piece);
+        ids.add("ASPECT_OF_THE_DRAGON");
+        ids.addAll(ENDER_GEAR);
+        ids.add("END_STONE_BOW");
+        ids.add("OBSIDIAN_CHESTPLATE");
+        return ids;
+    }
+
     public static Optional<Sacrifice> of(String itemId) {
         for (String variant : VARIANTS) {
             for (String piece : DRAGON_PIECES.keySet()) {
