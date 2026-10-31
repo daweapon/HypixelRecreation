@@ -15,7 +15,8 @@ import java.util.function.Consumer;
 
 public class GUIMineshaftPortal extends StatelessView {
     public static final int ENTER_SLOT = 13;
-    public static final int INFO_SLOT = 31;
+    public static final int INFO_SLOT = 22;
+    public static final int CLOSE_SLOT = 31;
 
     private final Consumer<SkyBlockPlayer> enter;
 
@@ -40,6 +41,7 @@ public class GUIMineshaftPortal extends StatelessView {
             c.player().closeInventory();
             enter.accept((SkyBlockPlayer) c.player());
         });
+        layout.slot(CLOSE_SLOT, ItemStacks.item(Material.BARRIER, "<c>Close"), (_, c) -> c.player().closeInventory());
         layout.slot(INFO_SLOT, ItemStacks.item(Material.REDSTONE_TORCH, """
                 <a>Mineshaft Info!
                 <b>Glacite Mineshafts <7>are rare areas
