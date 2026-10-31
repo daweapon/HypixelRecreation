@@ -1,6 +1,8 @@
 package dev.daweapon.type.skyblockgeneric.glacite.mineshaft;
 
 import dev.daweapon.type.skyblockgeneric.region.mining.MineableBlock;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.SplittableRandom;
@@ -65,6 +67,12 @@ class MineshaftPityTest {
         assertEquals(4, MineshaftBlocks.quality(MineableBlock.TUNGSTEN_ORE));
         assertEquals(8, MineshaftBlocks.quality(MineableBlock.RUBY_ORE));
         assertEquals(10, MineshaftBlocks.quality(MineableBlock.ONYX_ORE));
+        for (MineableBlock gemstone : java.util.List.of(MineableBlock.SAPPHIRE_ORE, MineableBlock.JADE_ORE, MineableBlock.AMBER_ORE,
+                MineableBlock.AMETHYST_ORE, MineableBlock.TOPAZ_ORE, MineableBlock.JASPER_ORE))
+            assertEquals(10, MineshaftBlocks.quality(gemstone), gemstone.name());
+        for (MineableBlock gemstone : List.of(MineableBlock.SAPPHIRE_ORE, MineableBlock.JADE_ORE, MineableBlock.AMBER_ORE,
+                MineableBlock.AMETHYST_ORE, MineableBlock.TOPAZ_ORE, MineableBlock.JASPER_ORE))
+            assertEquals(10, MineshaftBlocks.quality(gemstone), gemstone.name());
         assertEquals(0, MineshaftBlocks.quality(MineableBlock.STONE));
         assertEquals(0, MineshaftBlocks.quality(null));
     }
