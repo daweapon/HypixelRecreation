@@ -24,6 +24,10 @@ public final class FishFamilyDrops {
         return treasureCatches >= PITY_TREASURES;
     }
 
+    public static long treasureCatches(SkyBlockPlayer player, ItemType fish) {
+        return player.getHuntingData().counter(counterKey(fish));
+    }
+
     static ItemType fishFor(String tableId) {
         return BY_TABLE.get(tableId);
     }

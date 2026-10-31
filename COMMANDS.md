@@ -82,8 +82,8 @@ This catalog covers **134 top-level game-server command definitions** (after mer
 | `/openvargulmenu` | — | Opens Vargul the Unearthed's shop from anywhere while the Great Spook is on: trade Dark Candy for Scare Fragments, Expired Pumpkins, Black Woolen Yarn, Sleepy Hollow, the Great Spook Tree and Drain V, and track the Great Spook Emblem (600 Dark Candies spent). Does nothing while the event is off (staff toggle: `/adminbypass greatspook`). | DEFAULT | No | `type.skyblockgeneric` |
 | `/pets` | `/petsmenu`, `/petmenu`, `/viewpetsmenu` | Opens your Pets menu. | DEFAULT | No | `type.skyblockgeneric` |
 | `/pickupstash [item\|material]` | — | Pickup items from your stash. | DEFAULT | No | `type.skyblockgeneric` |
+| `/pity` | — | Opens the Pity menu: live pity counters for Crimson Isle (trophy fish, Vanquisher), The End (Special Zealots), The Garden (Overclocker 3000 greenhouse progress), Glacite Mineshafts, Hoppity's Hunt (Mythic and Divine rabbits), Moonglade Marsh (Swamp the Fish, Mob the Fish) and Torrhus Canyon (Fish the Fish). Counters whose content is not built yet show "Not available yet". | DEFAULT | No | `type.skyblockgeneric` |
 | `/primalfearsign <paper>` | — | Internal command behind the clickable [HERE] in a Commitment Phobia's chat message: signs the paper it handed you. Only the mob's owner can use it, and an outdated paper is rejected. | DEFAULT | No | `type.skyblockgeneric` |
-| `/pity` | — | Shows your Chocolate Rabbit pity progress: a Mythic rabbit is guaranteed every 250th rabbit and a Divine rabbit every 1,250th. Needs Chocolate Factory V or VI for those rarities to count. | DEFAULT | No | `type.skyblockgeneric` |
 | `/rankcolor` | `/rankcolour` | Change your MVP+ rank color. | DEFAULT | No | `type.generic` |
 | `/replay <uuid> [hex]` | — | Watch a specific replay by ID. | DEFAULT | No | `type.generic` |
 | `/replays` | — | View your game replays. | DEFAULT | No | `type.generic` |

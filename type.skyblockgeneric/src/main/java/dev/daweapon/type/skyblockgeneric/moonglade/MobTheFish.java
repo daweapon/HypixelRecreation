@@ -15,6 +15,10 @@ public final class MobTheFish {
     private MobTheFish() {
     }
 
+    public static long kills(SkyBlockPlayer player) {
+        return player.getHuntingData().counter(KILLS_KEY);
+    }
+
     public static boolean pityDue(long kills) {
         return kills >= PITY_KILLS;
     }

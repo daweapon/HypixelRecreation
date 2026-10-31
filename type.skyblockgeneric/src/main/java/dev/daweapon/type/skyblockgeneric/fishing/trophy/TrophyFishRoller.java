@@ -32,8 +32,8 @@ import java.util.UUID;
 public final class TrophyFishRoller {
     public static final double TROPHY_CHANCE_CAP = 150D;
     public static final double FISHING_XP_PER_TROPHY = 300D;
-    static final int GOLD_PITY = 100;
-    static final int DIAMOND_PITY = 600;
+    public static final int GOLD_PITY = 100;
+    public static final int DIAMOND_PITY = 600;
     private static final double DIAMOND_CHANCE = 0.2D;
     private static final double GOLD_CHANCE = 2D;
     private static final double SILVER_CHANCE = 25D;

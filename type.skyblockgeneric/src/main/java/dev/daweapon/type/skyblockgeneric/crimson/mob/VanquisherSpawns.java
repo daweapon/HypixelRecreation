@@ -24,6 +24,10 @@ public final class VanquisherSpawns {
     private VanquisherSpawns() {
     }
 
+    public static long killsSinceLast(SkyBlockPlayer player) {
+        return DatapointCrimsonIsle.of(player).getNumber(PITY_KEY);
+    }
+
     public static int pityMultiplier(long killsSinceLast) {
         if (killsSinceLast >= 1280) return 4;
         if (killsSinceLast >= 960) return 3;

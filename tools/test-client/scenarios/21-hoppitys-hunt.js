@@ -87,10 +87,17 @@ module.exports = {
             return found.name;
         });
 
-        await t.step('/pity shows the progress', async () => {
-            const lines = await bot.command('/pity', { settleMs: 1200 });
-            t.assertChat(lines, /Every 250th rabbit/i, 'expected the Mythic line');
-            t.assertChat(lines, /Every 1250th|Every 1,250th/i, 'expected the Divine line');
+        await t.step('/pity opens the Pity menu with the Hoppity pity counters', async () => {
+            bot.say('/pity');
+            await bot.waitWindow({ title: 'Pity', timeoutMs: 15000 });
+            await bot.click(24, { settleMs: 1200 });
+            await bot.waitWindow({ title: "Hoppity's Hunt Pity", timeoutMs: 10000 });
+            const view = bot.window();
+            const mythic = view.slots.find((s) => s.slot === 21);
+            const divine = view.slots.find((s) => s.slot === 23);
+            t.assert(mythic && /Progress: \d+\/250/.test(mythic.lore.join(' ')), `mythic lore: ${JSON.stringify(mythic)}`);
+            t.assert(divine && /Progress: \d+\/1,250/.test(divine.lore.join(' ')), `divine lore: ${JSON.stringify(divine)}`);
+            await bot.closeWindow();
         });
 
         await t.step('Hoppity is in the Hub during the Hunt and sells seven rabbits', async () => {
