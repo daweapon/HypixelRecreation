@@ -1,0 +1,7256 @@
+{
+ "tiers": {
+  "STARTER": [
+   {
+    "name": "Skills",
+    "task": "Skill Level Up",
+    "icon": "Diamond Sword",
+    "kind": "SKILL",
+    "description": "Level up your Skills.",
+    "xp": 200,
+    "entries": [
+     {
+      "label": "Farming Skill IV",
+      "ref": "FARMING:4"
+     },
+     {
+      "label": "Mining Skill IV",
+      "ref": "MINING:4"
+     },
+     {
+      "label": "Combat Skill IV",
+      "ref": "COMBAT:4"
+     },
+     {
+      "label": "Foraging Skill IV",
+      "ref": "FORAGING:4"
+     },
+     {
+      "label": "Fishing Skill IV",
+      "ref": "FISHING:4"
+     },
+     {
+      "label": "Enchanting Skill IV",
+      "ref": "ENCHANTING:4"
+     },
+     {
+      "label": "Alchemy Skill IV",
+      "ref": "ALCHEMY:4"
+     },
+     {
+      "label": "Carpentry Skill IV",
+      "ref": "CARPENTRY:4"
+     },
+     {
+      "label": "Taming Skill IV",
+      "ref": "TAMING:4"
+     },
+     {
+      "label": "Hunting Skill IV",
+      "ref": "HUNTING:4"
+     }
+    ]
+   },
+   {
+    "name": "Zombie LVL 1",
+    "task": "Slayer Level Up",
+    "icon": "Rotten Flesh",
+    "kind": "SLAYER",
+    "description": "Defeat Revenant Horror to gain Slayer XP and reach Zombie Slayer LVL 1.",
+    "xp": 15,
+    "entries": [
+     {
+      "label": "Zombie LVL 1",
+      "ref": "REVENANT_HORROR:1"
+     }
+    ]
+   },
+   {
+    "name": "Accessories",
+    "task": "Accessory Bag",
+    "icon": "Accessory Bag",
+    "kind": "ACCESSORY",
+    "description": "Obtain unique Accessories in your Accessory Bag.",
+    "xp": 13,
+    "entries": [
+     {
+      "label": "Farming Talisman",
+      "ref": "FARMING_TALISMAN"
+     },
+     {
+      "label": "Zombie Talisman",
+      "ref": "ZOMBIE_TALISMAN"
+     },
+     {
+      "label": "Skeleton Talisman",
+      "ref": "SKELETON_TALISMAN"
+     },
+     {
+      "label": "Village Affinity Talisman",
+      "ref": "VILLAGE_AFFINITY_TALISMAN"
+     },
+     {
+      "label": "Mine Affinity Talisman",
+      "ref": "MINE_AFFINITY_TALISMAN"
+     },
+     {
+      "label": "Potion Affinity Talisman",
+      "ref": "POTION_AFFINITY_TALISMAN"
+     },
+     {
+      "label": "Vaccine Talisman",
+      "ref": "VACCINE_TALISMAN"
+     },
+     {
+      "label": "Campfire Initiate Badge",
+      "ref": null
+     },
+     {
+      "label": "Shiny Yellow Rock",
+      "ref": null
+     },
+     {
+      "label": "Yellow Rock of Love",
+      "ref": null
+     },
+     {
+      "label": "Wolf Paw",
+      "ref": "WOLF_PAW"
+     },
+     {
+      "label": "Intimidation Talisman",
+      "ref": "INTIMIDATION_TALISMAN"
+     },
+     {
+      "label": "Scavenger Talisman",
+      "ref": "SCAVENGER_TALISMAN"
+     }
+    ]
+   },
+   {
+    "name": "Pets",
+    "task": "Pet Score",
+    "icon": "Bone",
+    "kind": "PET",
+    "description": "Obtain unique Pets. Each unique Pet in in your Pets Menu grants you Pet Score, which awards Magic Find!",
+    "xp": 6,
+    "entries": [
+     {
+      "label": "Bee Pet",
+      "ref": "BEE_PET"
+     },
+     {
+      "label": "Grandma Wolf Pet",
+      "ref": "GRANDMA_WOLF_PET"
+     }
+    ]
+   },
+   {
+    "name": "Collections",
+    "task": "Collections",
+    "icon": "Painting",
+    "kind": "COLLECTION",
+    "description": "Reach certain Tiers in your Collections.",
+    "xp": 176,
+    "entries": [
+     {
+      "label": "Carrot III",
+      "ref": "CARROT:3"
+     },
+     {
+      "label": "Feather II",
+      "ref": "FEATHER:2"
+     },
+     {
+      "label": "Leather II",
+      "ref": "LEATHER:2"
+     },
+     {
+      "label": "Melon Slice I",
+      "ref": "MELON_SLICE:1"
+     },
+     {
+      "label": "Nether Wart III",
+      "ref": "NETHER_WART:3"
+     },
+     {
+      "label": "Potato III",
+      "ref": "POTATO:3"
+     },
+     {
+      "label": "Pumpkin I",
+      "ref": "PUMPKIN:1"
+     },
+     {
+      "label": "Raw Chicken II",
+      "ref": "CHICKEN:2"
+     },
+     {
+      "label": "Raw Mutton II",
+      "ref": "MUTTON:2"
+     },
+     {
+      "label": "Seeds IV",
+      "ref": "SEEDS:4"
+     },
+     {
+      "label": "Wheat IV",
+      "ref": "WHEAT:4"
+     },
+     {
+      "label": "Coal II",
+      "ref": "COAL:2"
+     },
+     {
+      "label": "Cobblestone IV",
+      "ref": "COBBLESTONE:4"
+     },
+     {
+      "label": "Gold Ingot II",
+      "ref": "GOLD_INGOT:2"
+     },
+     {
+      "label": "Gravel II",
+      "ref": "GRAVEL:2"
+     },
+     {
+      "label": "Iron Ingot II",
+      "ref": "IRON_INGOT:2"
+     },
+     {
+      "label": "Rotten Flesh II",
+      "ref": "ROTTEN_FLESH:2"
+     },
+     {
+      "label": "Oak Log III",
+      "ref": "OAK_LOG:3"
+     }
+    ]
+   },
+   {
+    "name": "Minions",
+    "task": "Minions",
+    "icon": "Cobblestone Minion I",
+    "kind": "MINION",
+    "description": "Craft unique Minions.",
+    "xp": 17,
+    "entries": [
+     {
+      "label": "Cobblestone Minion II",
+      "ref": "COBBLESTONE:2"
+     },
+     {
+      "label": "Gravel Minion I",
+      "ref": "GRAVEL:1"
+     },
+     {
+      "label": "Coal Minion I",
+      "ref": "COAL:1"
+     },
+     {
+      "label": "Iron Minion I",
+      "ref": "IRON:1"
+     },
+     {
+      "label": "Gold Minion I",
+      "ref": "GOLD:1"
+     },
+     {
+      "label": "Wheat Minion I",
+      "ref": "WHEAT:1"
+     },
+     {
+      "label": "Melon Minion I",
+      "ref": "MELON:1"
+     },
+     {
+      "label": "Pumpkin Minion I",
+      "ref": "PUMPKIN:1"
+     },
+     {
+      "label": "Carrot Minion I",
+      "ref": "CARROT:1"
+     },
+     {
+      "label": "Potato Minion I",
+      "ref": "POTATO:1"
+     },
+     {
+      "label": "Nether Wart Minion I",
+      "ref": "NETHER_WART:1"
+     },
+     {
+      "label": "Zombie Minion I",
+      "ref": "ZOMBIE:1"
+     },
+     {
+      "label": "Cow Minion I",
+      "ref": "COW:1"
+     },
+     {
+      "label": "Pig Minion I",
+      "ref": "PIG:1"
+     },
+     {
+      "label": "Chicken Minion I",
+      "ref": "CHICKEN:1"
+     },
+     {
+      "label": "Oak Minion I",
+      "ref": "OAK:1"
+     }
+    ]
+   },
+   {
+    "name": "Mob Types",
+    "task": "Collect unique Mob Types",
+    "icon": "Spawner",
+    "kind": "MOB_TYPE",
+    "description": "Collect rewards for unique Mob Types.",
+    "xp": 5,
+    "entries": [
+     {
+      "label": "Arthropod",
+      "ref": "ARTHROPOD"
+     },
+     {
+      "label": "Undead",
+      "ref": "UNDEAD"
+     },
+     {
+      "label": "Animal",
+      "ref": "ANIMAL"
+     },
+     {
+      "label": "Cubic",
+      "ref": "CUBIC"
+     },
+     {
+      "label": "Skeletal",
+      "ref": "SKELETAL"
+     }
+    ]
+   },
+   {
+    "name": "Museum Donations",
+    "task": "Museum Donations",
+    "icon": "Block of Gold",
+    "kind": "MUSEUM",
+    "description": "Donate items and armors sets to the Museum.",
+    "xp": 82,
+    "entries": [
+     {
+      "label": "Rogue Sword",
+      "ref": "ROGUE_SWORD"
+     },
+     {
+      "label": "Fancy Sword",
+      "ref": "FANCY_SWORD"
+     },
+     {
+      "label": "Undead Sword",
+      "ref": "UNDEAD_SWORD"
+     },
+     {
+      "label": "Spider Sword",
+      "ref": "SPIDER_SWORD"
+     },
+     {
+      "label": "Aspect of the Jerry",
+      "ref": "ASPECT_OF_THE_JERRY"
+     },
+     {
+      "label": "End Sword",
+      "ref": "END_SWORD"
+     },
+     {
+      "label": "Celeste Armor",
+      "ref": "CELESTE"
+     },
+     {
+      "label": "Rosetta's Armor",
+      "ref": "ROSETTA"
+     },
+     {
+      "label": "Squire Armor",
+      "ref": "SQUIRE"
+     },
+     {
+      "label": "Squire Sword",
+      "ref": "SQUIRE_SWORD"
+     },
+     {
+      "label": "Artisanal Shortbow",
+      "ref": "ARTISANAL_SHORTBOW"
+     },
+     {
+      "label": "Wither Bow",
+      "ref": "WITHER_BOW"
+     },
+     {
+      "label": "Rabbit Armor",
+      "ref": "RABBIT"
+     },
+     {
+      "label": "Basic Sheep Axe",
+      "ref": "BASIC_SHEEP_AXE"
+     },
+     {
+      "label": "Basic Cow Axe",
+      "ref": "BASIC_COW_AXE"
+     },
+     {
+      "label": "Basic Pig Axe",
+      "ref": "BASIC_PIG_AXE"
+     },
+     {
+      "label": "Basic Mooshroom Axe",
+      "ref": "BASIC_MUSHROOM_COW_AXE"
+     },
+     {
+      "label": "Basic Chicken Axe",
+      "ref": "BASIC_CHICKEN_AXE"
+     },
+     {
+      "label": "Basic Rabbit Axe",
+      "ref": "BASIC_RABBIT_AXE"
+     },
+     {
+      "label": "Farmhand Armor",
+      "ref": null
+     },
+     {
+      "label": "Mushroom Armor",
+      "ref": "MUSHROOM"
+     },
+     {
+      "label": "Cactus Armor",
+      "ref": "CACTUS"
+     },
+     {
+      "label": "Flint Shovel",
+      "ref": "FLINT_SHOVEL"
+     },
+     {
+      "label": "Promising Shovel",
+      "ref": "PROMISING_SPADE"
+     },
+     {
+      "label": "Promising Axe",
+      "ref": "PROMISING_AXE"
+     },
+     {
+      "label": "Promising Pickaxe",
+      "ref": "PROMISING_PICKAXE"
+     },
+     {
+      "label": "Zombie Pickaxe",
+      "ref": "ZOMBIE_PICKAXE"
+     },
+     {
+      "label": "Rookie Pickaxe",
+      "ref": "ROOKIE_PICKAXE"
+     },
+     {
+      "label": "Rookie Axe",
+      "ref": null
+     },
+     {
+      "label": "Rookie Hoe",
+      "ref": "ROOKIE_HOE"
+     },
+     {
+      "label": "Rookie Foraging Axe",
+      "ref": "ROOKIE_AXE"
+     },
+     {
+      "label": "Rookie Farming Axe",
+      "ref": "ROOKIE_FARMING_AXE"
+     },
+     {
+      "label": "Prospector's Armor",
+      "ref": null
+     },
+     {
+      "label": "Creeper Hat",
+      "ref": "CREEPER_HAT"
+     },
+     {
+      "label": "Skeleton Hat",
+      "ref": "SKELETON_HAT"
+     },
+     {
+      "label": "Cow Hat",
+      "ref": "COW_HEAD"
+     },
+     {
+      "label": "Spider Hat",
+      "ref": "SPIDER_HAT"
+     },
+     {
+      "label": "Tropical Fish Hat",
+      "ref": "CLOWNFISH_HAT"
+     },
+     {
+      "label": "Chicken Hat",
+      "ref": "CHICKEN_HEAD"
+     },
+     {
+      "label": "Fish Hat",
+      "ref": "FISH_HAT"
+     },
+     {
+      "label": "Squid Hat",
+      "ref": "SQUID_HAT"
+     },
+     {
+      "label": "Salmon Hat",
+      "ref": "SALMON_HAT"
+     },
+     {
+      "label": "Squid Boots",
+      "ref": "SQUID_BOOTS"
+     },
+     {
+      "label": "Junk Sinker",
+      "ref": "JUNK_SINKER"
+     },
+     {
+      "label": "Common Hook",
+      "ref": "COMMON_HOOK"
+     },
+     {
+      "label": "Festive Sinker",
+      "ref": "FESTIVE_SINKER"
+     },
+     {
+      "label": "Sponge Sinker",
+      "ref": "SPONGE_SINKER"
+     },
+     {
+      "label": "Prismarine Sinker",
+      "ref": "PRISMARINE_SINKER"
+     },
+     {
+      "label": "Park Armor",
+      "ref": "PARK"
+     },
+     {
+      "label": "Tiny Scaffolding",
+      "ref": "TINY_SCAFFOLDING"
+     },
+     {
+      "label": "Seriously Damaged Axe",
+      "ref": "SERIOUSLY_DAMAGED_AXE"
+     },
+     {
+      "label": "Efficient Axe",
+      "ref": "EFFICIENT_AXE"
+     },
+     {
+      "label": "Leaflet Armor",
+      "ref": "LEAFLET"
+     },
+     {
+      "label": "Sculptor's Axe",
+      "ref": "SCULPTORS_AXE"
+     },
+     {
+      "label": "Sweet Axe",
+      "ref": "SWEET_AXE"
+     },
+     {
+      "label": "Decent Axe",
+      "ref": "DECENT_AXE"
+     },
+     {
+      "label": "Cleaver",
+      "ref": "CLEAVER"
+     },
+     {
+      "label": "Small Huntrap",
+      "ref": "RETIA_BASICA"
+     },
+     {
+      "label": "Abysmal Lasso",
+      "ref": "ABYSMAL_LASSO"
+     },
+     {
+      "label": "Worn Huntaxe - Genesis",
+      "ref": "VENATOR_GENESIS"
+     },
+     {
+      "label": "Basic Fishing Net",
+      "ref": "BASIC_FISHING_NET"
+     },
+     {
+      "label": "David's Cloak",
+      "ref": "DAVIDS_CLOAK"
+     },
+     {
+      "label": "Small Pocket Black Hole",
+      "ref": "SMALL_POCKET_BLACK_HOLE"
+     }
+    ]
+   }
+  ],
+  "AMATEUR": [
+   {
+    "name": "Skills",
+    "task": "Skill Level Up",
+    "icon": "Diamond Sword",
+    "kind": "SKILL",
+    "description": "Level up your Skills.",
+    "xp": 500,
+    "entries": [
+     {
+      "label": "Farming Skill XII",
+      "ref": "FARMING:12"
+     },
+     {
+      "label": "Mining Skill XII",
+      "ref": "MINING:12"
+     },
+     {
+      "label": "Combat Skill XII",
+      "ref": "COMBAT:12"
+     },
+     {
+      "label": "Foraging Skill XII",
+      "ref": "FORAGING:12"
+     },
+     {
+      "label": "Fishing Skill XII",
+      "ref": "FISHING:12"
+     },
+     {
+      "label": "Enchanting Skill XII",
+      "ref": "ENCHANTING:12"
+     },
+     {
+      "label": "Alchemy Skill XII",
+      "ref": "ALCHEMY:12"
+     },
+     {
+      "label": "Carpentry Skill XII",
+      "ref": "CARPENTRY:12"
+     },
+     {
+      "label": "Taming Skill XII",
+      "ref": "TAMING:12"
+     },
+     {
+      "label": "Hunting Skill XII",
+      "ref": "HUNTING:12"
+     }
+    ]
+   },
+   {
+    "name": "Slayer",
+    "task": "Slayer Level Up",
+    "icon": "Bottle o' Enchanting",
+    "kind": "SLAYER",
+    "description": "Complete Slayer Quests to gain Slayer XP and increase your Slayer levels.",
+    "xp": 175,
+    "entries": [
+     {
+      "label": "Zombie Slayer LVL 3",
+      "ref": "REVENANT_HORROR:3"
+     },
+     {
+      "label": "Spider Slayer LVL 3",
+      "ref": "TARANTULA_BROODFATHER:3"
+     },
+     {
+      "label": "Wolf Slayer LVL 2",
+      "ref": "SVEN_PACKMASTER:2"
+     }
+    ]
+   },
+   {
+    "name": "Bestiary Milestone I",
+    "task": "Bestiary Progress",
+    "icon": "Bestiary Icon",
+    "kind": "OTHER",
+    "description": "Reach Bestiary Milestone I by killing unique Families of enemies.",
+    "xp": 10,
+    "entries": [
+     {
+      "label": "Bestiary Milestone I",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Accessories",
+    "task": "Accessory Bag",
+    "icon": "Accessory Bag",
+    "kind": "ACCESSORY",
+    "description": "Obtain unique Accessories in your Accessory Bag.",
+    "xp": 25,
+    "entries": [
+     {
+      "label": "Talisman of Coins",
+      "ref": "COIN_TALISMAN"
+     },
+     {
+      "label": "Magnetic Talisman",
+      "ref": "MAGNETIC_TALISMAN"
+     },
+     {
+      "label": "Mediocre Ring of Love",
+      "ref": null
+     },
+     {
+      "label": "Speed Talisman",
+      "ref": "SPEED_TALISMAN"
+     },
+     {
+      "label": "Campfire Adept Badge",
+      "ref": null
+     },
+     {
+      "label": "Archaeologist's Compass",
+      "ref": "ARCHAEOLOGIST_COMPASS"
+     },
+     {
+      "label": "Gravity Talisman",
+      "ref": "GRAVITY_TALISMAN"
+     },
+     {
+      "label": "Zombie Ring",
+      "ref": "ZOMBIE_RING"
+     },
+     {
+      "label": "Feather Talisman",
+      "ref": "FEATHER_TALISMAN"
+     },
+     {
+      "label": "King Talisman",
+      "ref": "KING_TALISMAN"
+     },
+     {
+      "label": "Red Claw Talisman",
+      "ref": "RED_CLAW_TALISMAN"
+     },
+     {
+      "label": "Spider Talisman",
+      "ref": "SPIDER_TALISMAN"
+     },
+     {
+      "label": "Spider Ring",
+      "ref": "SPIDER_RING"
+     },
+     {
+      "label": "Frozen Chicken",
+      "ref": "FROZEN_CHICKEN"
+     },
+     {
+      "label": "Candy Talisman",
+      "ref": "CANDY_TALISMAN"
+     },
+     {
+      "label": "Raggedy Shark Tooth Necklace",
+      "ref": "RAGGEDY_SHARK_TOOTH_NECKLACE"
+     },
+     {
+      "label": "Dull Shark Tooth Necklace",
+      "ref": "DULL_SHARK_TOOTH_NECKLACE"
+     },
+     {
+      "label": "Intimidation Ring",
+      "ref": "INTIMIDATION_RING"
+     },
+     {
+      "label": "Bat Talisman",
+      "ref": "BAT_TALISMAN"
+     },
+     {
+      "label": "Bat Ring",
+      "ref": "BAT_RING"
+     },
+     {
+      "label": "Cat Talisman",
+      "ref": "CAT_TALISMAN"
+     },
+     {
+      "label": "Lynx Talisman",
+      "ref": "LYNX_TALISMAN"
+     },
+     {
+      "label": "Cheetah Talisman",
+      "ref": "CHEETAH_TALISMAN"
+     },
+     {
+      "label": "Healing Talisman",
+      "ref": "HEALING_TALISMAN"
+     },
+     {
+      "label": "Anita's Talisman",
+      "ref": "ANITA_TALISMAN"
+     }
+    ]
+   },
+   {
+    "name": "Pets",
+    "task": "Pet Score",
+    "icon": "Bone",
+    "kind": "PET",
+    "description": "Obtain unique Pets. Each unique Pet in in your Pets Menu grants you Pet Score, which awards Magic Find!",
+    "xp": 27,
+    "entries": [
+     {
+      "label": "Chicken Pet",
+      "ref": "CHICKEN_PET"
+     },
+     {
+      "label": "Elephant Pet",
+      "ref": "ELEPHANT_PET"
+     },
+     {
+      "label": "Enderman Pet",
+      "ref": "ENDERMAN_PET"
+     },
+     {
+      "label": "Jerry Pet",
+      "ref": "JERRY_PET"
+     },
+     {
+      "label": "Pig Pet",
+      "ref": "PIG_PET"
+     },
+     {
+      "label": "Rabbit Pet",
+      "ref": "RABBIT_PET"
+     },
+     {
+      "label": "Rock Pet",
+      "ref": "ROCK_PET"
+     },
+     {
+      "label": "Silverfish Pet",
+      "ref": "SILVERFISH_PET"
+     },
+     {
+      "label": "Tiger Pet",
+      "ref": "TIGER_PET"
+     }
+    ]
+   },
+   {
+    "name": "Collections",
+    "task": "Collections",
+    "icon": "Painting",
+    "kind": "COLLECTION",
+    "description": "Reach certain Tiers in your Collections.",
+    "xp": 536,
+    "entries": [
+     {
+      "label": "Cactus II",
+      "ref": "CACTUS:2"
+     },
+     {
+      "label": "Carrot V",
+      "ref": "CARROT:5"
+     },
+     {
+      "label": "Cocoa Beans II",
+      "ref": "COCOA_BEANS:2"
+     },
+     {
+      "label": "Feather IV",
+      "ref": "FEATHER:4"
+     },
+     {
+      "label": "Leather III",
+      "ref": "LEATHER:3"
+     },
+     {
+      "label": "Melon Slice IV",
+      "ref": "MELON_SLICE:4"
+     },
+     {
+      "label": "Mushroom III",
+      "ref": "RED_MUSHROOM:3"
+     },
+     {
+      "label": "Nether Wart V",
+      "ref": "NETHER_WART:5"
+     },
+     {
+      "label": "Potato V",
+      "ref": "POTATO:5"
+     },
+     {
+      "label": "Pumpkin IV",
+      "ref": "PUMPKIN:4"
+     },
+     {
+      "label": "Raw Chicken VI",
+      "ref": "CHICKEN:6"
+     },
+     {
+      "label": "Raw Rabbit II",
+      "ref": "RABBIT:2"
+     },
+     {
+      "label": "Seeds VI",
+      "ref": "SEEDS:6"
+     },
+     {
+      "label": "Wheat VII",
+      "ref": "WHEAT:7"
+     },
+     {
+      "label": "Coal IV",
+      "ref": "COAL:4"
+     },
+     {
+      "label": "Cobblestone VII",
+      "ref": "COBBLESTONE:7"
+     },
+     {
+      "label": "Diamond III",
+      "ref": "DIAMOND:3"
+     },
+     {
+      "label": "Emerald III",
+      "ref": "EMERALD:3"
+     },
+     {
+      "label": "Gold Ingot IV",
+      "ref": "GOLD_INGOT:4"
+     },
+     {
+      "label": "Gravel V",
+      "ref": "GRAVEL:5"
+     },
+     {
+      "label": "Ice II",
+      "ref": "ICE:2"
+     },
+     {
+      "label": "Iron Ingot V",
+      "ref": "IRON_INGOT:5"
+     },
+     {
+      "label": "Lapis Lazuli III",
+      "ref": "LAPIS_LAZULI:3"
+     },
+     {
+      "label": "Obsidian III",
+      "ref": "OBSIDIAN:3"
+     },
+     {
+      "label": "Redstone Dust IV",
+      "ref": "REDSTONE:4"
+     },
+     {
+      "label": "Sand IV",
+      "ref": "SAND:4"
+     },
+     {
+      "label": "Bone IV",
+      "ref": "BONE:4"
+     },
+     {
+      "label": "Gunpowder IV",
+      "ref": "GUNPOWDER:4"
+     },
+     {
+      "label": "Rotten Flesh V",
+      "ref": "ROTTEN_FLESH:5"
+     },
+     {
+      "label": "Slimeball II",
+      "ref": "SLIME_BALL:2"
+     },
+     {
+      "label": "Spider Eye II",
+      "ref": "SPIDER_EYE:2"
+     },
+     {
+      "label": "String III",
+      "ref": "STRING:3"
+     },
+     {
+      "label": "Acacia Wood VI",
+      "ref": "ACACIA_LOG:6"
+     },
+     {
+      "label": "Birch Wood VI",
+      "ref": "BIRCH_LOG:6"
+     },
+     {
+      "label": "Dark Oak Wood V",
+      "ref": "DARK_OAK_LOG:5"
+     },
+     {
+      "label": "Jungle Wood VII",
+      "ref": "JUNGLE_LOG:7"
+     },
+     {
+      "label": "Oak Wood VII",
+      "ref": "OAK_LOG:7"
+     },
+     {
+      "label": "Tropical Fish I",
+      "ref": "TROPICAL_FISH:1"
+     },
+     {
+      "label": "Ink Sac III",
+      "ref": "INK_SAC:3"
+     },
+     {
+      "label": "Lily Pad IV",
+      "ref": "LILY_PAD:4"
+     },
+     {
+      "label": "Prismarine Crystals III",
+      "ref": "PRISMARINE_CRYSTALS:3"
+     },
+     {
+      "label": "Prismarine Shard II",
+      "ref": "PRISMARINE_SHARD:2"
+     },
+     {
+      "label": "Pufferfish II",
+      "ref": "PUFFERFISH:2"
+     },
+     {
+      "label": "Raw Cod III",
+      "ref": "RAW_FISH:3"
+     },
+     {
+      "label": "Raw Salmon II",
+      "ref": "RAW_SALMON:2"
+     }
+    ]
+   },
+   {
+    "name": "Minions",
+    "task": "Craft Minions",
+    "icon": "Cobblestone Minion I",
+    "kind": "MINION",
+    "description": "Craft unique Minions.",
+    "xp": 58,
+    "entries": [
+     {
+      "label": "Cobblestone Minion IV",
+      "ref": "COBBLESTONE:4"
+     },
+     {
+      "label": "Obsidian Minion I",
+      "ref": "OBSIDIAN:1"
+     },
+     {
+      "label": "Gravel Minion III",
+      "ref": "GRAVEL:3"
+     },
+     {
+      "label": "Sand Minion I",
+      "ref": "SAND:1"
+     },
+     {
+      "label": "Coal Minion III",
+      "ref": "COAL:3"
+     },
+     {
+      "label": "Iron Minion III",
+      "ref": "IRON:3"
+     },
+     {
+      "label": "Gold Minion III",
+      "ref": "GOLD:3"
+     },
+     {
+      "label": "Diamond Minion I",
+      "ref": "DIAMOND:1"
+     },
+     {
+      "label": "Lapis Minion I",
+      "ref": "LAPIS:1"
+     },
+     {
+      "label": "Redstone Minion I",
+      "ref": "REDSTONE:1"
+     },
+     {
+      "label": "Emerald Minion I",
+      "ref": "EMERALD:1"
+     },
+     {
+      "label": "Wheat Minion IV",
+      "ref": "WHEAT:4"
+     },
+     {
+      "label": "Melon Minion III",
+      "ref": "MELON:3"
+     },
+     {
+      "label": "Pumpkin Minion III",
+      "ref": "PUMPKIN:3"
+     },
+     {
+      "label": "Carrot Minion III",
+      "ref": "CARROT:3"
+     },
+     {
+      "label": "Potato Minion III",
+      "ref": "POTATO:3"
+     },
+     {
+      "label": "Mushroom Minion I",
+      "ref": "MUSHROOM:1"
+     },
+     {
+      "label": "Cactus Minion I",
+      "ref": "CACTUS:1"
+     },
+     {
+      "label": "Cocoa Beans Minion I",
+      "ref": "COCOA_BEANS:1"
+     },
+     {
+      "label": "Sugar Cane Minion I",
+      "ref": "SUGAR_CANE:1"
+     },
+     {
+      "label": "Nether Wart Minion III",
+      "ref": "NETHER_WART:3"
+     },
+     {
+      "label": "Fishing Minion I",
+      "ref": "FISHING:1"
+     },
+     {
+      "label": "Zombie Minion III",
+      "ref": "ZOMBIE:3"
+     },
+     {
+      "label": "Skeleton Minion I",
+      "ref": "SKELETON:1"
+     },
+     {
+      "label": "Creeper Minion I",
+      "ref": "CREEPER:1"
+     },
+     {
+      "label": "Spider Minion I",
+      "ref": "SPIDER:1"
+     },
+     {
+      "label": "Cave Spider Minion I",
+      "ref": "CAVE_SPIDER:1"
+     },
+     {
+      "label": "Slime Minion I",
+      "ref": "SLIME:1"
+     },
+     {
+      "label": "Cow Minion III",
+      "ref": "COW:3"
+     },
+     {
+      "label": "Pig Minion V",
+      "ref": "PIG:5"
+     },
+     {
+      "label": "Chicken Minion III",
+      "ref": "CHICKEN:3"
+     },
+     {
+      "label": "Sheep Minion I",
+      "ref": "SHEEP:1"
+     },
+     {
+      "label": "Rabbit Minion I",
+      "ref": "RABBIT:1"
+     },
+     {
+      "label": "Oak Minion III",
+      "ref": "OAK:3"
+     },
+     {
+      "label": "Spruce Minion I",
+      "ref": "SPRUCE:1"
+     },
+     {
+      "label": "Birch Minion I",
+      "ref": "BIRCH:1"
+     },
+     {
+      "label": "Dark Oak Minion I",
+      "ref": "DARK_OAK:1"
+     },
+     {
+      "label": "Acacia Minion I",
+      "ref": "ACACIA:1"
+     },
+     {
+      "label": "Jungle Minion I",
+      "ref": "JUNGLE:1"
+     }
+    ]
+   },
+   {
+    "name": "Revenant Horror II",
+    "task": "Defeat Slayers",
+    "icon": "Rotten Flesh",
+    "kind": "OTHER",
+    "description": "Defeat Revenant Horror Tier II.",
+    "xp": 50,
+    "entries": [
+     {
+      "label": "Revenant Horror II",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Arachne",
+    "task": "Defeat Arachne",
+    "icon": "Spider Head",
+    "kind": "OTHER",
+    "description": "Kill 300 Arachne in the Spider's Den.",
+    "xp": 20,
+    "entries": [
+     {
+      "label": "Arachne",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Harp Songs",
+    "task": "Harp Songs",
+    "icon": "Written Book",
+    "kind": "OTHER",
+    "description": "Complete Harp Songs with 100% accuracy by talking to Melody near the Savanna Woodland.",
+    "xp": 140,
+    "entries": [
+     {
+      "label": "Harp Songs",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Community Shop",
+    "task": "Community Shop",
+    "icon": "Elizabeth Head",
+    "kind": "OTHER",
+    "description": "Unlock Profile Upgrades from the Community Shop.",
+    "xp": 100,
+    "entries": [
+     {
+      "label": "Community Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Rock Pet Milestone",
+    "task": "Rock Pet Milestones",
+    "icon": "Rock Pet",
+    "kind": "OTHER",
+    "description": "Obtain a Rock Pet.",
+    "xp": 20,
+    "entries": [
+     {
+      "label": "Rock Pet Milestone",
+      "ref": null
+     }
+    ]
+   }
+  ],
+  "INTERMEDIATE": [
+   {
+    "name": "Skills",
+    "task": "Skill Level Up",
+    "icon": "Diamond Sword",
+    "kind": "SKILL",
+    "description": "Level up your Skills.",
+    "xp": 1080,
+    "entries": [
+     {
+      "label": "Farming Skill XXIV",
+      "ref": "FARMING:24"
+     },
+     {
+      "label": "Mining Skill XXIV",
+      "ref": "MINING:24"
+     },
+     {
+      "label": "Combat Skill XXIV",
+      "ref": "COMBAT:24"
+     },
+     {
+      "label": "Foraging Skill XXIV",
+      "ref": "FORAGING:24"
+     },
+     {
+      "label": "Fishing Skill XXIV",
+      "ref": "FISHING:24"
+     },
+     {
+      "label": "Enchanting Skill XXIV",
+      "ref": "ENCHANTING:24"
+     },
+     {
+      "label": "Alchemy Skill XXIV",
+      "ref": "ALCHEMY:24"
+     },
+     {
+      "label": "Carpentry Skill XXIV",
+      "ref": "CARPENTRY:24"
+     },
+     {
+      "label": "Taming Skill XXIV",
+      "ref": "TAMING:24"
+     }
+    ]
+   },
+   {
+    "name": "Slayer",
+    "task": "Slayer Level Up",
+    "icon": "Bottle o' Enchanting",
+    "kind": "SLAYER",
+    "description": "Complete Slayer Quests to gain Slayer XP and increase your Slayer levels.",
+    "xp": 610,
+    "entries": [
+     {
+      "label": "Zombie Slayer LVL 6",
+      "ref": "REVENANT_HORROR:6"
+     },
+     {
+      "label": "Spider Slayer LVL 6",
+      "ref": "TARANTULA_BROODFATHER:6"
+     },
+     {
+      "label": "Wolf Slayer LVL 5",
+      "ref": "SVEN_PACKMASTER:5"
+     }
+    ]
+   },
+   {
+    "name": "Catacombs Level XII",
+    "task": "Catacombs Level Up",
+    "icon": "Wither Artifact",
+    "kind": "OTHER",
+    "description": "Reach Catacombs Level XII by completing Dungeon runs in The Catacombs.",
+    "xp": 240,
+    "entries": [
+     {
+      "label": "Catacombs Level XII",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Dungeon Classes",
+    "task": "Class Level Up",
+    "icon": "Wither Artifact",
+    "kind": "OTHER",
+    "description": "Reach Level IX in all of your Dungeon Classes.",
+    "xp": 180,
+    "entries": [
+     {
+      "label": "Dungeon Classes",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Bestiary Milestone X",
+    "task": "Bestiary Progress",
+    "icon": "Bestiary Icon",
+    "kind": "OTHER",
+    "description": "Reach Bestiary Milestone X by killing unique Families of enemies.",
+    "xp": 90,
+    "entries": [
+     {
+      "label": "Bestiary Milestone X",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Heart of the Mountain III",
+    "task": "Heart of the Mountain",
+    "icon": "Heart of the Mountain",
+    "kind": "OTHER",
+    "description": "Reach Heart of the Mountain III in the {{Dark Green|Dwarven Mines}}.",
+    "xp": 140,
+    "entries": [
+     {
+      "label": "Heart of the Mountain III",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Accessories",
+    "task": "Accessory Bag",
+    "icon": "Accessory Bag",
+    "kind": "ACCESSORY",
+    "description": "Obtain unique Accessories in your Accessory Bag.",
+    "xp": 29,
+    "entries": [
+     {
+      "label": "Wood Affinity Talisman",
+      "ref": null
+     },
+     {
+      "label": "Chumming Talisman",
+      "ref": "CHUMMING_TALISMAN"
+     },
+     {
+      "label": "Vaccine Ring",
+      "ref": "VACCINE_RING"
+     },
+     {
+      "label": "Campfire Cultist Badge",
+      "ref": null
+     },
+     {
+      "label": "Pig's Foot",
+      "ref": "PIGS_FOOT"
+     },
+     {
+      "label": "Speed Ring",
+      "ref": "SPEED_RING"
+     },
+     {
+      "label": "Candy Ring",
+      "ref": "CANDY_RING"
+     },
+     {
+      "label": "Emerald Ring",
+      "ref": "EMERALD_RING"
+     },
+     {
+      "label": "Candy Artifact",
+      "ref": "CANDY_ARTIFACT"
+     },
+     {
+      "label": "Bat Artifact",
+      "ref": "BAT_ARTIFACT"
+     },
+     {
+      "label": "Intimidation Artifact",
+      "ref": "INTIMIDATION_ARTIFACT"
+     },
+     {
+      "label": "Honed Shark Tooth Necklace",
+      "ref": "HONED_SHARK_TOOTH_NECKLACE"
+     },
+     {
+      "label": "Bat Person Talisman",
+      "ref": "BAT_PERSON_TALISMAN"
+     },
+     {
+      "label": "Potion Affinity Ring",
+      "ref": null
+     },
+     {
+      "label": "Lucky Hoof",
+      "ref": "LUCKY_HOOF"
+     },
+     {
+      "label": "Wolf Talisman",
+      "ref": "WOLF_TALISMAN"
+     },
+     {
+      "label": "Feather Ring",
+      "ref": "FEATHER_RING"
+     },
+     {
+      "label": "New Year Cake Bag",
+      "ref": "NEW_YEAR_CAKE_BAG"
+     },
+     {
+      "label": "Glacial Talisman",
+      "ref": "GLACIAL_TALISMAN"
+     },
+     {
+      "label": "Haste Ring",
+      "ref": "HASTE_RING"
+     },
+     {
+      "label": "Piggy Bank",
+      "ref": "PIGGY_BANK"
+     },
+     {
+      "label": " Beastmaster Crest",
+      "ref": null
+     },
+     {
+      "label": " Beastmaster Crest",
+      "ref": null
+     },
+     {
+      "label": " Beastmaster Crest",
+      "ref": null
+     },
+     {
+      "label": "Vaccine Artifact",
+      "ref": "VACCINE_ARTIFACT"
+     },
+     {
+      "label": "Jake's Plushie",
+      "ref": "JAKE_PLUSHIE"
+     },
+     {
+      "label": "Cropie Talisman",
+      "ref": "CROPIE_TALISMAN"
+     },
+     {
+      "label": "Anita's Ring",
+      "ref": "ANITA_RING"
+     },
+     {
+      "label": "General's Medallion",
+      "ref": "GENERAL_MEDALLION"
+     }
+    ]
+   },
+   {
+    "name": "Pets",
+    "task": "Pet Score",
+    "icon": "Bone",
+    "kind": "PET",
+    "description": "Obtain unique Pets. Each unique Pet in in your Pets Menu grants you Pet Score, which awards Magic Find!",
+    "xp": 36,
+    "entries": [
+     {
+      "label": "Armadillo Pet",
+      "ref": "ARMADILLO_PET"
+     },
+     {
+      "label": "Blue Whale Pet",
+      "ref": "BLUE_WHALE_PET"
+     },
+     {
+      "label": "Dolphin Pet",
+      "ref": "DOLPHIN_PET"
+     },
+     {
+      "label": "Giraffe Pet",
+      "ref": "GIRAFFE_PET"
+     },
+     {
+      "label": "Griffin Pet",
+      "ref": "GRIFFIN_PET"
+     },
+     {
+      "label": "Hound Pet",
+      "ref": "HOUND_PET"
+     },
+     {
+      "label": "Lion Pet",
+      "ref": "LION_PET"
+     },
+     {
+      "label": "Monkey Pet",
+      "ref": "MONKEY_PET"
+     },
+     {
+      "label": "Ocelot Pet",
+      "ref": "OCELOT_PET"
+     },
+     {
+      "label": "Reindeer Pet",
+      "ref": "REINDEER_PET"
+     },
+     {
+      "label": "Rift Ferret Pet",
+      "ref": "RIFT_FERRET_PET"
+     },
+     {
+      "label": "Wolf Pet",
+      "ref": "WOLF_PET"
+     }
+    ]
+   },
+   {
+    "name": "Museum Donations",
+    "task": "Museum Progression",
+    "icon": "Block of Gold",
+    "kind": "MUSEUM",
+    "description": "Donate items and armor sets to the Museum.",
+    "xp": 246,
+    "entries": [
+     {
+      "label": "Farm Suit",
+      "ref": "FARM_SUIT"
+     },
+     {
+      "label": "Mushroom Armor",
+      "ref": "MUSHROOM"
+     },
+     {
+      "label": "Angler Armor",
+      "ref": "ANGLER"
+     },
+     {
+      "label": "Pumpkin Armor",
+      "ref": "PUMPKIN"
+     },
+     {
+      "label": "Cactus Armor",
+      "ref": "CACTUS"
+     },
+     {
+      "label": "Leaflet Armor",
+      "ref": "LEAFLET"
+     },
+     {
+      "label": "Lapis Armor",
+      "ref": "LAPIS_ARMOR"
+     },
+     {
+      "label": "Prospecting Armor",
+      "ref": null
+     },
+     {
+      "label": "Golem Armor",
+      "ref": "GOLEM_ARMOR"
+     },
+     {
+      "label": "Fisherman Set",
+      "ref": "FISHERMAN"
+     },
+     {
+      "label": "Miner Armor",
+      "ref": "TANK_MINER"
+     },
+     {
+      "label": "Hardened Diamond Armor",
+      "ref": "HARDENED_DIAMOND"
+     },
+     {
+      "label": "Fairy Armor",
+      "ref": null
+     },
+     {
+      "label": "Farm Armor",
+      "ref": "FARM_ARMOR"
+     },
+     {
+      "label": "Mercenary Armor",
+      "ref": "MERCENARY"
+     },
+     {
+      "label": "Starlight Armor",
+      "ref": "STARLIGHT"
+     },
+     {
+      "label": "Salmon Armor",
+      "ref": "SALMON_NEW"
+     },
+     {
+      "label": "Goblin Armor",
+      "ref": "GOBLIN"
+     },
+     {
+      "label": "Ender Armor",
+      "ref": "END"
+     },
+     {
+      "label": "Melon Armor",
+      "ref": "MELON"
+     },
+     {
+      "label": "Rabbit Armor",
+      "ref": "RABBIT"
+     },
+     {
+      "label": "Peony Set",
+      "ref": "LOTUS"
+     },
+     {
+      "label": "Glacite Armor",
+      "ref": "GLACITE"
+     },
+     {
+      "label": "Rogue Sword",
+      "ref": "ROGUE_SWORD"
+     },
+     {
+      "label": "Fancy Sword",
+      "ref": "FANCY_SWORD"
+     },
+     {
+      "label": "Spider Sword",
+      "ref": "SPIDER_SWORD"
+     },
+     {
+      "label": "Undead Sword",
+      "ref": "UNDEAD_SWORD"
+     },
+     {
+      "label": "Artisanal Shortbow",
+      "ref": "ARTISANAL_SHORTBOW"
+     },
+     {
+      "label": "End Sword",
+      "ref": "END_SWORD"
+     },
+     {
+      "label": "Cleaver",
+      "ref": "CLEAVER"
+     },
+     {
+      "label": "Flaming Sword",
+      "ref": "FLAMING_SWORD"
+     },
+     {
+      "label": "Wither Bow",
+      "ref": "WITHER_BOW"
+     },
+     {
+      "label": "Decent Bow",
+      "ref": "DECENT_BOW"
+     },
+     {
+      "label": "Hunter Knife",
+      "ref": "HUNTER_KNIFE"
+     },
+     {
+      "label": "Savanna Bow",
+      "ref": "SAVANA_BOW"
+     },
+     {
+      "label": "Prismarine Bow",
+      "ref": "PRISMARINE_BOW"
+     },
+     {
+      "label": "Prismarine Blade",
+      "ref": "PRISMARINE_BLADE"
+     },
+     {
+      "label": "Ender Bow",
+      "ref": "ENDER_BOW"
+     },
+     {
+      "label": "Mercenary Axe",
+      "ref": null
+     },
+     {
+      "label": "Starlight Wand",
+      "ref": "STARLIGHT_WAND"
+     },
+     {
+      "label": "Arack",
+      "ref": "ARACK"
+     },
+     {
+      "label": "Tactician's Sword",
+      "ref": "TACTICIAN_SWORD"
+     },
+     {
+      "label": "Raider Sword",
+      "ref": "RAIDER_AXE"
+     },
+     {
+      "label": "Void Sword",
+      "ref": "VOID_SWORD"
+     },
+     {
+      "label": "Dragon Shortbow",
+      "ref": "DRAGON_SHORTBOW"
+     },
+     {
+      "label": "Aspect of the End",
+      "ref": "ASPECT_OF_THE_END"
+     },
+     {
+      "label": "End Stone Bow",
+      "ref": "END_STONE_BOW"
+     },
+     {
+      "label": "Aspect of the Dragons",
+      "ref": "ASPECT_OF_THE_DRAGON"
+     },
+     {
+      "label": "Lantern Helmet",
+      "ref": "ENCHANTED_JACK_O_LANTERN"
+     },
+     {
+      "label": "Obsidian Chestplate",
+      "ref": "OBSIDIAN_CHESTPLATE"
+     },
+     {
+      "label": "Squid Boots",
+      "ref": "SQUID_BOOTS"
+     },
+     {
+      "label": "Water Hydra Head",
+      "ref": "WATER_HYDRA_HEAD"
+     },
+     {
+      "label": "Witch Mask",
+      "ref": "WITCH_MASK"
+     },
+     {
+      "label": "Jerry-chine Gun",
+      "ref": "JERRY_STAFF"
+     },
+     {
+      "label": "Pelt Belt",
+      "ref": "PELT_BELT"
+     },
+     {
+      "label": "Farmer Boots",
+      "ref": "FARMER_BOOTS"
+     },
+     {
+      "label": "Rancher's Boots",
+      "ref": "RANCHERS_BOOTS"
+     },
+     {
+      "label": "Stonk",
+      "ref": "STONK_PICKAXE"
+     },
+     {
+      "label": "Spruce Axe",
+      "ref": "JUNGLE_AXE"
+     },
+     {
+      "label": "Mithril Coat",
+      "ref": "MITHRIL_COAT"
+     },
+     {
+      "label": "Radiant Power Orb",
+      "ref": "RADIANT_POWER_ORB"
+     },
+     {
+      "label": "Mana Flux Power Orb",
+      "ref": "MANA_FLUX_POWER_ORB"
+     },
+     {
+      "label": "Zombie's Heart",
+      "ref": "ZOMBIE_HEART"
+     },
+     {
+      "label": "Crystallized Heart",
+      "ref": "CRYSTALLIZED_HEART"
+     },
+     {
+      "label": "Rift Necklace",
+      "ref": null
+     },
+     {
+      "label": "Super Compactor 3000",
+      "ref": null
+     },
+     {
+      "label": "Wand of Healing",
+      "ref": "WAND_OF_HEALING"
+     },
+     {
+      "label": "Wand of Mending",
+      "ref": "WAND_OF_MENDING"
+     },
+     {
+      "label": "Wand of Restoration",
+      "ref": "WAND_OF_RESTORATION"
+     },
+     {
+      "label": "Mithril Drill SX-R226",
+      "ref": "MITHRIL_DRILL_1"
+     },
+     {
+      "label": "Euclid's Wheat Sickle",
+      "ref": null
+     },
+     {
+      "label": "Gauss Carrot Shovel",
+      "ref": null
+     },
+     {
+      "label": "Pythagorean Potato Shovel",
+      "ref": null
+     },
+     {
+      "label": "Newton Nether Warts Hoe",
+      "ref": null
+     },
+     {
+      "label": "Turing Sugar Cane Cutter",
+      "ref": null
+     },
+     {
+      "label": "Cactus Knife",
+      "ref": null
+     },
+     {
+      "label": "Fungi Cutter",
+      "ref": null
+     },
+     {
+      "label": "Cocoa Chopper",
+      "ref": null
+     },
+     {
+      "label": "Melon Dicer",
+      "ref": null
+     },
+     {
+      "label": "Pumpkin Dicer",
+      "ref": null
+     },
+     {
+      "label": "SkyMart Vacuum",
+      "ref": "SKYMART_VACUUM"
+     },
+     {
+      "label": "SkyMart Turbo Vacuum",
+      "ref": "SKYMART_TURBO_VACUUM"
+     }
+    ]
+   },
+   {
+    "name": "Collections",
+    "task": "Collections",
+    "icon": "Painting",
+    "kind": "COLLECTION",
+    "description": "Reach certain Tiers in your Collections.",
+    "xp": 536,
+    "entries": [
+     {
+      "label": "Cactus V",
+      "ref": "CACTUS:5"
+     },
+     {
+      "label": "Carrot VII",
+      "ref": "CARROT:7"
+     },
+     {
+      "label": "Cocoa Beans V",
+      "ref": "COCOA_BEANS:5"
+     },
+     {
+      "label": "Feather VII",
+      "ref": "FEATHER:7"
+     },
+     {
+      "label": "Leather VI",
+      "ref": "LEATHER:6"
+     },
+     {
+      "label": "Melon Slice VI",
+      "ref": "MELON_SLICE:6"
+     },
+     {
+      "label": "Mushroom V",
+      "ref": "RED_MUSHROOM:5"
+     },
+     {
+      "label": "Nether Wart VII",
+      "ref": "NETHER_WART:7"
+     },
+     {
+      "label": "Potato VIII",
+      "ref": "POTATO:8"
+     },
+     {
+      "label": "Pumpkin VI",
+      "ref": "PUMPKIN:6"
+     },
+     {
+      "label": "Raw Chicken IX",
+      "ref": "CHICKEN:9"
+     },
+     {
+      "label": "Raw Rabbit V",
+      "ref": "RABBIT:5"
+     },
+     {
+      "label": "Seeds VII",
+      "ref": "SEEDS:7"
+     },
+     {
+      "label": "Wheat IX",
+      "ref": "WHEAT:9"
+     },
+     {
+      "label": "Coal V",
+      "ref": "COAL:5"
+     },
+     {
+      "label": "Cobblestone X",
+      "ref": "COBBLESTONE:10"
+     },
+     {
+      "label": "Diamond VI",
+      "ref": "DIAMOND:6"
+     },
+     {
+      "label": "Emerald V",
+      "ref": "EMERALD:5"
+     },
+     {
+      "label": "End Stone IV",
+      "ref": "END_STONE:4"
+     },
+     {
+      "label": "Gold Ingot VI",
+      "ref": "GOLD_INGOT:6"
+     },
+     {
+      "label": "Gravel IX",
+      "ref": "GRAVEL:9"
+     },
+     {
+      "label": "Ice VI",
+      "ref": "ICE:6"
+     },
+     {
+      "label": "Iron Ingot VII",
+      "ref": "IRON_INGOT:7"
+     },
+     {
+      "label": "Lapis Lazuli VI",
+      "ref": "LAPIS_LAZULI:6"
+     },
+     {
+      "label": "Mithril III",
+      "ref": "MITHRIL:3"
+     },
+     {
+      "label": "Obsidian VI",
+      "ref": "OBSIDIAN:6"
+     },
+     {
+      "label": "Redstone Dust IX",
+      "ref": "REDSTONE:9"
+     },
+     {
+      "label": "Sand VII",
+      "ref": "SAND:7"
+     },
+     {
+      "label": "Bone V",
+      "ref": "BONE:5"
+     },
+     {
+      "label": "Ender Pearl III",
+      "ref": "ENDER_PEARL:3"
+     },
+     {
+      "label": "Gunpowder VII",
+      "ref": "GUNPOWDER:7"
+     },
+     {
+      "label": "Rotten Flesh VII",
+      "ref": "ROTTEN_FLESH:7"
+     },
+     {
+      "label": "Slimeball V",
+      "ref": "SLIME_BALL:5"
+     },
+     {
+      "label": "Spider Eye V",
+      "ref": "SPIDER_EYE:5"
+     },
+     {
+      "label": "String VII",
+      "ref": "STRING:7"
+     },
+     {
+      "label": "Acacia Wood IX",
+      "ref": "ACACIA_LOG:9"
+     },
+     {
+      "label": "Birch Wood X",
+      "ref": null
+     },
+     {
+      "label": "Dark Oak Wood IX",
+      "ref": "DARK_OAK_LOG:9"
+     },
+     {
+      "label": "Jungle Wood IX",
+      "ref": "JUNGLE_LOG:9"
+     },
+     {
+      "label": "Oak Wood IX",
+      "ref": "OAK_LOG:9"
+     },
+     {
+      "label": "Clay Ball II",
+      "ref": "CLAY_BALL:2"
+     },
+     {
+      "label": "Tropical Fish V",
+      "ref": "TROPICAL_FISH:5"
+     },
+     {
+      "label": "Ink Sac V",
+      "ref": "INK_SAC:5"
+     },
+     {
+      "label": "Lily Pad V",
+      "ref": "LILY_PAD:5"
+     },
+     {
+      "label": "Prismarine Crystals V",
+      "ref": "PRISMARINE_CRYSTALS:5"
+     },
+     {
+      "label": "Prismarine Shard IV",
+      "ref": "PRISMARINE_SHARD:4"
+     },
+     {
+      "label": "Pufferfish V",
+      "ref": "PUFFERFISH:5"
+     },
+     {
+      "label": "Raw Cod VI",
+      "ref": "RAW_FISH:6"
+     },
+     {
+      "label": "Raw Salmon V",
+      "ref": "RAW_SALMON:5"
+     },
+     {
+      "label": "Sponge II",
+      "ref": "SPONGE:2"
+     }
+    ]
+   },
+   {
+    "name": "Minions",
+    "task": "Craft Minions",
+    "icon": "Cobblestone Minion I",
+    "kind": "MINION",
+    "description": "Craft unique Minions.",
+    "xp": 185,
+    "entries": [
+     {
+      "label": "Cobblestone Minion IX",
+      "ref": "COBBLESTONE:9"
+     },
+     {
+      "label": "Obsidian Minion V",
+      "ref": "OBSIDIAN:5"
+     },
+     {
+      "label": "Gravel Minion VII",
+      "ref": "GRAVEL:7"
+     },
+     {
+      "label": "Sand Minion V",
+      "ref": "SAND:5"
+     },
+     {
+      "label": "Clay Minion V",
+      "ref": "CLAY:5"
+     },
+     {
+      "label": "Snow Minion I",
+      "ref": "SNOW:1"
+     },
+     {
+      "label": "Coal Minion VII",
+      "ref": "COAL:7"
+     },
+     {
+      "label": "Iron Minion V",
+      "ref": "IRON:5"
+     },
+     {
+      "label": "Gold Minion V",
+      "ref": "GOLD:5"
+     },
+     {
+      "label": "Diamond Minion V",
+      "ref": "DIAMOND:5"
+     },
+     {
+      "label": "Lapis Minion V",
+      "ref": "LAPIS:5"
+     },
+     {
+      "label": "Redstone Minion V",
+      "ref": "REDSTONE:5"
+     },
+     {
+      "label": "Emerald Minion V",
+      "ref": "EMERALD:5"
+     },
+     {
+      "label": "End Stone Minion V",
+      "ref": "ENDSTONE:5"
+     },
+     {
+      "label": "Mithril Minion III",
+      "ref": "MITHRIL:3"
+     },
+     {
+      "label": "Wheat Minion IX",
+      "ref": "WHEAT:9"
+     },
+     {
+      "label": "Melon Minion V",
+      "ref": "MELON:5"
+     },
+     {
+      "label": "Pumpkin Minion V",
+      "ref": "PUMPKIN:5"
+     },
+     {
+      "label": "Carrot Minion VII",
+      "ref": "CARROT:7"
+     },
+     {
+      "label": "Potato Minion VII",
+      "ref": "POTATO:7"
+     },
+     {
+      "label": "Mushroom Minion V",
+      "ref": "MUSHROOM:5"
+     },
+     {
+      "label": "Cactus Minion V",
+      "ref": "CACTUS:5"
+     },
+     {
+      "label": "Cocoa Beans Minion V",
+      "ref": "COCOA_BEANS:5"
+     },
+     {
+      "label": "Sugar Cane Minion VII",
+      "ref": "SUGAR_CANE:7"
+     },
+     {
+      "label": "Nether Wart Minion V",
+      "ref": "NETHER_WART:5"
+     },
+     {
+      "label": "Fishing Minion V",
+      "ref": "FISHING:5"
+     },
+     {
+      "label": "Zombie Minion VII",
+      "ref": "ZOMBIE:7"
+     },
+     {
+      "label": "Revenant Minion I",
+      "ref": "REVENANT:1"
+     },
+     {
+      "label": "Skeleton Minion V",
+      "ref": "SKELETON:5"
+     },
+     {
+      "label": "Creeper Minion V",
+      "ref": "CREEPER:5"
+     },
+     {
+      "label": "Spider Minion V",
+      "ref": "SPIDER:5"
+     },
+     {
+      "label": "Tarantula Minion I",
+      "ref": "TARANTULA:1"
+     },
+     {
+      "label": "Cave Spider Minion V",
+      "ref": "CAVE_SPIDER:5"
+     },
+     {
+      "label": "Enderman Minion V",
+      "ref": "ENDERMAN:5"
+     },
+     {
+      "label": "Slime Minion V",
+      "ref": "SLIME:5"
+     },
+     {
+      "label": "Cow Minion V",
+      "ref": "COW:5"
+     },
+     {
+      "label": "Pig Minion VII",
+      "ref": "PIG:7"
+     },
+     {
+      "label": "Chicken Minion VII",
+      "ref": "CHICKEN:7"
+     },
+     {
+      "label": "Sheep Minion V",
+      "ref": "SHEEP:5"
+     },
+     {
+      "label": "Rabbit Minion V",
+      "ref": "RABBIT:5"
+     },
+     {
+      "label": "Oak Minion V",
+      "ref": "OAK:5"
+     },
+     {
+      "label": "Spruce Minion V",
+      "ref": "SPRUCE:5"
+     },
+     {
+      "label": "Birch Minion V",
+      "ref": "BIRCH:5"
+     },
+     {
+      "label": "Dark Oak Minion V",
+      "ref": "DARK_OAK:5"
+     },
+     {
+      "label": "Acacia Minion V",
+      "ref": "ACACIA:5"
+     },
+     {
+      "label": "Jungle Minion V",
+      "ref": "JUNGLE:5"
+     }
+    ]
+   },
+   {
+    "name": "Accessory Bag Upgrades",
+    "task": "Accessory Bag Upgrades",
+    "icon": "Jacobus Register",
+    "kind": "OTHER",
+    "description": "Increase the size of your Accessory Bag by 2 slots by talking to Jacobus in the Thaumaturgist building.",
+    "xp": 2,
+    "entries": [
+     {
+      "label": "Accessory Bag Upgrades",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Extra Farming Drops",
+    "task": "Anita's Shop Upgrades",
+    "icon": "Wheat",
+    "kind": "OTHER",
+    "description": "Purchase Extra Farming Drops II from Anita in the Village.",
+    "xp": 20,
+    "entries": [
+     {
+      "label": "Extra Farming Drops",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Dragons",
+    "task": "Slay Dragons",
+    "icon": "Dragon Egg",
+    "kind": "OTHER",
+    "description": "Slay Dragons on {{Light Purple|The End}} .",
+    "xp": 200,
+    "entries": [
+     {
+      "label": "Dragons",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Slayer Bosses",
+    "task": "Defeat Slayers",
+    "icon": "Maddox Batphone",
+    "kind": "OTHER",
+    "description": "Defeat Slayer bosses.",
+    "xp": 400,
+    "entries": [
+     {
+      "label": "Slayer Bosses",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Arachne",
+    "task": "Defeat Arachne",
+    "icon": "Spider Head",
+    "kind": "OTHER",
+    "description": "Kill 500 Arachne in the Spider's Den.",
+    "xp": 40,
+    "entries": [
+     {
+      "label": "Arachne",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Community Shop",
+    "task": "Community Shop",
+    "icon": "Elizabeth Head",
+    "kind": "OTHER",
+    "description": "Unlock Profile Upgrades from the Community Shop.",
+    "xp": 120,
+    "entries": [
+     {
+      "label": "Community Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Personal Bank II",
+    "task": "Personal Bank Upgrades",
+    "icon": "Personal Bank Item",
+    "kind": "OTHER",
+    "description": "Upgrade your Personal Bank to Tier II by talking to Guy in the Village.",
+    "xp": 25,
+    "entries": [
+     {
+      "label": "Personal Bank II",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Rock Pet Milestone",
+    "task": "Rock Pet Milestones",
+    "icon": "Rock Pet",
+    "kind": "OTHER",
+    "description": "Upgrade a Rock Pet to {{Rare}}.",
+    "xp": 40,
+    "entries": [
+     {
+      "label": "Rock Pet Milestone",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Dolphin Pet Milestone",
+    "task": "Dolphin Pet Milestones",
+    "icon": "Dolphin Pet",
+    "kind": "OTHER",
+    "description": "Obtain a Dolphin Pet.",
+    "xp": 20,
+    "entries": [
+     {
+      "label": "Dolphin Pet Milestone",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Dragon Essence Shop",
+    "task": "Dragon Essence Shop",
+    "icon": "Dragon Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Dragon Essence Shop.",
+    "xp": 10,
+    "entries": [
+     {
+      "label": "Dragon Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Ice Essence Shop",
+    "task": "Ice Essence Shop",
+    "icon": "Ice Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Ice Essence Shop.",
+    "xp": 6,
+    "entries": [
+     {
+      "label": "Ice Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Spider Essence Shop",
+    "task": "Spider Essence Shop",
+    "icon": "Spider Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Spider Essence Shop.",
+    "xp": 8,
+    "entries": [
+     {
+      "label": "Spider Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Boss Luck I",
+    "task": "Undead Essence Shop",
+    "icon": "Chest",
+    "kind": "OTHER",
+    "description": "Purchase Boss Luck I from the Undead Essence Shop.",
+    "xp": 2,
+    "entries": [
+     {
+      "label": "Boss Luck I",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Wither Essence Shop",
+    "task": "Wither Essence Shop",
+    "icon": "Wither Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Wither Essence Shop.",
+    "xp": 12,
+    "entries": [
+     {
+      "label": "Wither Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Gold Essence Shop",
+    "task": "Gold Essence Shop",
+    "icon": "Gold Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Gold Essence Shop.",
+    "xp": 6,
+    "entries": [
+     {
+      "label": "Gold Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Diamond Essence Shop",
+    "task": "Diamond Essence Shop",
+    "icon": "Diamond Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Diamond Essence Shop.",
+    "xp": 4,
+    "entries": [
+     {
+      "label": "Diamond Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Obtain all the Rift Timecharms",
+    "task": "Timecharms",
+    "icon": "Lilac",
+    "kind": "OTHER",
+    "description": "Find all of the {{Pink|Timecharms}} by venturing into the Rift.",
+    "xp": 700,
+    "entries": [
+     {
+      "label": "Obtain all the Rift Timecharms",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Finish the Rift Guide",
+    "task": "Rift Guide",
+    "icon": "Book and Quill",
+    "kind": "OTHER",
+    "description": "Complete all off the various tasks in the Rift by talking to the {{Pink|Wizard}}.",
+    "xp": 291,
+    "entries": [
+     {
+      "label": "Finish the Rift Guide",
+      "ref": null
+     }
+    ]
+   }
+  ],
+  "SKILLED": [
+   {
+    "name": "Skills",
+    "task": "Skill Level Up",
+    "icon": "Diamond Sword",
+    "kind": "SKILL",
+    "description": "Level up your Skills.",
+    "xp": 1350,
+    "entries": [
+     {
+      "label": "Farming Skill XXXII",
+      "ref": "FARMING:32"
+     },
+     {
+      "label": "Mining Skill XXXII",
+      "ref": "MINING:32"
+     },
+     {
+      "label": "Combat Skill XXXII",
+      "ref": "COMBAT:32"
+     },
+     {
+      "label": "Foraging Skill XXXII",
+      "ref": "FORAGING:32"
+     },
+     {
+      "label": "Fishing Skill XXXII",
+      "ref": "FISHING:32"
+     },
+     {
+      "label": "Enchanting Skill XXXII",
+      "ref": "ENCHANTING:32"
+     },
+     {
+      "label": "Alchemy Skill XXXII",
+      "ref": "ALCHEMY:32"
+     },
+     {
+      "label": "Carpentry Skill XXXII",
+      "ref": "CARPENTRY:32"
+     },
+     {
+      "label": "Taming Skill XXXII",
+      "ref": "TAMING:32"
+     }
+    ]
+   },
+   {
+    "name": "Museum Donations",
+    "task": "Museum Progression",
+    "icon": "Block of Gold",
+    "kind": "MUSEUM",
+    "description": "Donate items and armor sets to the Museum.",
+    "xp": 465,
+    "entries": [
+     {
+      "label": "Rotten Armor",
+      "ref": "ROTTEN"
+     },
+     {
+      "label": "Mineral Armor",
+      "ref": "MINERAL"
+     },
+     {
+      "label": "Arachne's Armor",
+      "ref": "ARACHNE"
+     },
+     {
+      "label": "Bouncy Armor",
+      "ref": "BOUNCY"
+     },
+     {
+      "label": "Heavy Armor",
+      "ref": "HEAVY"
+     },
+     {
+      "label": "Skeleton Grunt Armor",
+      "ref": "SKELETON_GRUNT"
+     },
+     {
+      "label": "Armor of Growth",
+      "ref": "GROWTH"
+     },
+     {
+      "label": "Monster Hunter Armor",
+      "ref": "MONSTER_HUNTER"
+     },
+     {
+      "label": "Monster Raider Armor",
+      "ref": "MONSTER_RAIDER"
+     },
+     {
+      "label": "Skeleton Soldier Armor",
+      "ref": "SKELETON_SOLDIER"
+     },
+     {
+      "label": "Zombie Soldier Armor",
+      "ref": "ZOMBIE_SOLDIER"
+     },
+     {
+      "label": "Heat Armor",
+      "ref": "HEAT"
+     },
+     {
+      "label": "Flamebreaker Armor",
+      "ref": "FLAME_BREAKER"
+     },
+     {
+      "label": "Armor of Yog",
+      "ref": null
+     },
+     {
+      "label": "Armor of the Pack",
+      "ref": "ARMOR_OF_THE_PACK"
+     },
+     {
+      "label": "Emerald Armor",
+      "ref": "EMERALD_ARMOR"
+     },
+     {
+      "label": "Crystal Armor",
+      "ref": "CRYSTAL"
+     },
+     {
+      "label": "Skeleton Master Armor",
+      "ref": "SKELETON_MASTER"
+     },
+     {
+      "label": "Zombie Armor",
+      "ref": "ZOMBIE"
+     },
+     {
+      "label": "Revenant Armor",
+      "ref": "REVENANT"
+     },
+     {
+      "label": "Reaper Armor",
+      "ref": "REAPER"
+     },
+     {
+      "label": "Cheap Tuxedo",
+      "ref": "CHEAP_TUXEDO"
+     },
+     {
+      "label": "Speedster Armor",
+      "ref": "SPEEDSTER"
+     },
+     {
+      "label": "Sponge Armor",
+      "ref": "SPONGE"
+     },
+     {
+      "label": "Cropie Armor",
+      "ref": "CROPIE"
+     },
+     {
+      "label": "Squash Armor",
+      "ref": "SQUASH"
+     },
+     {
+      "label": "Seymour's Special Armor",
+      "ref": "SEYMOUR"
+     },
+     {
+      "label": "Mastiff Armor",
+      "ref": "MASTIFF"
+     },
+     {
+      "label": "Tarantula Armor",
+      "ref": "TARANTULA"
+     },
+     {
+      "label": "Spooky Armor",
+      "ref": "SPOOKY"
+     },
+     {
+      "label": "Snow Suit Armor",
+      "ref": "SNOW_SUIT"
+     },
+     {
+      "label": "Nutcracker Armor",
+      "ref": "NUTCRACKER"
+     },
+     {
+      "label": "Zombie Knight Armor",
+      "ref": "ZOMBIE_KNIGHT"
+     },
+     {
+      "label": "Zombie Commander Armor",
+      "ref": "ZOMBIE_COMMANDER"
+     },
+     {
+      "label": "Shark Scale Armor",
+      "ref": "SHARK_SCALE"
+     },
+     {
+      "label": "Bat Person Armor",
+      "ref": "BAT_PERSON"
+     },
+     {
+      "label": "Diver Armor",
+      "ref": null
+     },
+     {
+      "label": "Werewolf Armor",
+      "ref": "WEREWOLF"
+     },
+     {
+      "label": "Adaptive Armor",
+      "ref": "ADAPTIVE"
+     },
+     {
+      "label": "Young Dragon Armor",
+      "ref": "YOUNG_DRAGON"
+     },
+     {
+      "label": "Old Dragon Armor",
+      "ref": "OLD_DRAGON"
+     },
+     {
+      "label": "Wise Dragon Armor",
+      "ref": "WISE_DRAGON"
+     },
+     {
+      "label": "Protector Dragon Armor",
+      "ref": "PROTECTOR_DRAGON"
+     },
+     {
+      "label": "Strong Dragon Armor",
+      "ref": "STRONG_DRAGON"
+     },
+     {
+      "label": "Unstable Dragon Armor",
+      "ref": "UNSTABLE_DRAGON"
+     },
+     {
+      "label": "Holy Dragon Armor",
+      "ref": "HOLY_DRAGON"
+     },
+     {
+      "label": "Super Heavy Armor",
+      "ref": "SUPER_HEAVY"
+     },
+     {
+      "label": "Skeletor Armor",
+      "ref": "SKELETOR"
+     },
+     {
+      "label": "Skeleton Lord Armor",
+      "ref": "SKELETON_LORD"
+     },
+     {
+      "label": "Zombie Lord Armor",
+      "ref": "ZOMBIE_LORD"
+     },
+     {
+      "label": "Perfect Armor",
+      "ref": null
+     },
+     {
+      "label": "Superior Dragon Armor",
+      "ref": "SUPERIOR_DRAGON"
+     },
+     {
+      "label": "Shadow Assassin Armor",
+      "ref": "SHADOW_ASSASSIN"
+     },
+     {
+      "label": "Necromancer Lord Armor",
+      "ref": "NECROMANCER_LORD"
+     },
+     {
+      "label": "Dreadlord Sword",
+      "ref": "CRYPT_DREADLORD_SWORD"
+     },
+     {
+      "label": "Zombie Soldier Cutlass",
+      "ref": "ZOMBIE_SOLDIER_CUTLASS"
+     },
+     {
+      "label": "Machine Gun Shortbow",
+      "ref": "MACHINE_GUN_BOW"
+     },
+     {
+      "label": "Sniper Bow",
+      "ref": "SNIPER_BOW"
+     },
+     {
+      "label": "Soulstealer Bow",
+      "ref": "CRYPT_BOW"
+     },
+     {
+      "label": "Frozen Scythe",
+      "ref": "FROZEN_SCYTHE"
+     },
+     {
+      "label": "Golem Sword",
+      "ref": "GOLEM_SWORD"
+     },
+     {
+      "label": "Explosive Bow",
+      "ref": "EXPLOSIVE_BOW"
+     },
+     {
+      "label": "Slime Bow",
+      "ref": "SLIME_BOW"
+     },
+     {
+      "label": "Earthen Blade",
+      "ref": "EARTH_SHARD"
+     },
+     {
+      "label": "Voidwalker Katana",
+      "ref": "VOIDWALKER_KATANA"
+     },
+     {
+      "label": "Voidedge Katana",
+      "ref": "VOIDEDGE_KATANA"
+     },
+     {
+      "label": "Spider Shortbow",
+      "ref": "SCORPION_BOW"
+     },
+     {
+      "label": "Hurricane Bow",
+      "ref": "HURRICANE_BOW"
+     },
+     {
+      "label": "Revenant Falchion",
+      "ref": "REVENANT_SWORD"
+     },
+     {
+      "label": "Reaper Falchion",
+      "ref": "REAPER_SWORD"
+     },
+     {
+      "label": "Recluse Fang",
+      "ref": "RECLUSE_FANG"
+     },
+     {
+      "label": "Conjuring",
+      "ref": "CONJURING_SWORD"
+     },
+     {
+      "label": "Zombie Commander Whip",
+      "ref": "ZOMBIE_COMMANDER_WHIP"
+     },
+     {
+      "label": "Edible Mace",
+      "ref": "EDIBLE_MACE"
+     },
+     {
+      "label": "Zombie Sword",
+      "ref": "ZOMBIE_SWORD"
+     },
+     {
+      "label": "Ornate Zombie Sword",
+      "ref": "ORNATE_ZOMBIE_SWORD"
+     },
+     {
+      "label": "Florid Zombie Sword",
+      "ref": "FLORID_ZOMBIE_SWORD"
+     },
+     {
+      "label": "Scorpion Foil",
+      "ref": "SCORPION_FOIL"
+     },
+     {
+      "label": "End Stone Sword",
+      "ref": "END_STONE_SWORD"
+     },
+     {
+      "label": "Spider Queen's Stinger",
+      "ref": "SPIDER_QUEENS_STINGER"
+     },
+     {
+      "label": "Venom's Touch",
+      "ref": "VENOMS_TOUCH"
+     },
+     {
+      "label": "Shaman Sword",
+      "ref": "SHAMAN_SWORD"
+     },
+     {
+      "label": "Pooch Sword",
+      "ref": "POOCH_SWORD"
+     },
+     {
+      "label": "Emerald Blade",
+      "ref": "EMERALD_BLADE"
+     },
+     {
+      "label": "Ink Wand",
+      "ref": "INK_WAND"
+     },
+     {
+      "label": "Zombie Knight Sword",
+      "ref": "ZOMBIE_KNIGHT_SWORD"
+     },
+     {
+      "label": "Fel Sword",
+      "ref": "FEL_SWORD"
+     },
+     {
+      "label": "Souls Rebound",
+      "ref": "SOULS_REBOUND"
+     },
+     {
+      "label": "Juju Shortbow",
+      "ref": "JUJU_SHORTBOW"
+     },
+     {
+      "label": "Leaping Sword",
+      "ref": "LEAPING_SWORD"
+     },
+     {
+      "label": "Silk-Edge Sword",
+      "ref": "SILK_EDGE_SWORD"
+     },
+     {
+      "label": "Bonzo's Staff",
+      "ref": "BONZO_STAFF"
+     },
+     {
+      "label": "Silent Death",
+      "ref": "SILENT_DEATH"
+     },
+     {
+      "label": "Adaptive Blade",
+      "ref": "STONE_BLADE"
+     },
+     {
+      "label": "Runaan's Bow",
+      "ref": "RUNAANS_BOW"
+     },
+     {
+      "label": "Spirit Sword",
+      "ref": "SPIRIT_SWORD"
+     },
+     {
+      "label": "Bone Reaver",
+      "ref": "BONE_REAVER"
+     },
+     {
+      "label": "Felthorn Reaper",
+      "ref": "FELTHORN_REAPER"
+     },
+     {
+      "label": "Spirit Sceptre",
+      "ref": "BAT_WAND"
+     },
+     {
+      "label": "Spirit Shortbow",
+      "ref": "ITEM_SPIRIT_BOW"
+     },
+     {
+      "label": "Bonemerang",
+      "ref": "BONE_BOOMERANG"
+     },
+     {
+      "label": "Sword of Revelations",
+      "ref": "SWORD_OF_REVELATIONS"
+     },
+     {
+      "label": "Soul Whip",
+      "ref": "SOUL_WHIP"
+     },
+     {
+      "label": "Last Breath",
+      "ref": "LAST_BREATH"
+     },
+     {
+      "label": "Livid Dagger",
+      "ref": "LIVID_DAGGER"
+     },
+     {
+      "label": "Shadow Fury",
+      "ref": "SHADOW_FURY"
+     },
+     {
+      "label": "Gemstone Gauntlet",
+      "ref": "GEMSTONE_GAUNTLET"
+     },
+     {
+      "label": "Phantom Rod",
+      "ref": null
+     },
+     {
+      "label": "Voodoo Doll",
+      "ref": "VOODOO_DOLL"
+     },
+     {
+      "label": "Jinxed Voodoo Doll",
+      "ref": "VOODOO_DOLL_WILTED"
+     },
+     {
+      "label": "Flower of Truth",
+      "ref": "FLOWER_OF_TRUTH"
+     },
+     {
+      "label": "Bonzo's Mask",
+      "ref": "BONZO_MASK"
+     },
+     {
+      "label": "Balloon Snake",
+      "ref": "BALLOON_SNAKE"
+     },
+     {
+      "label": "Bone Necklace",
+      "ref": "BONE_NECKLACE"
+     },
+     {
+      "label": "Soulweaver Gloves",
+      "ref": "SOULWEAVER_GLOVES"
+     },
+     {
+      "label": "Spirit Mask",
+      "ref": "SPIRIT_MASK"
+     },
+     {
+      "label": "Treecapitator",
+      "ref": "TREECAPITATOR_AXE"
+     },
+     {
+      "label": "Spirit Boots",
+      "ref": "THORNS_BOOTS"
+     },
+     {
+      "label": "Weird Tuba",
+      "ref": "WEIRD_TUBA"
+     },
+     {
+      "label": "Weirder Tuba",
+      "ref": "WEIRDER_TUBA"
+     },
+     {
+      "label": "Revived Heart",
+      "ref": "REVIVED_HEART"
+     },
+     {
+      "label": "Krampus Helmet",
+      "ref": "KRAMPUS_HELMET"
+     },
+     {
+      "label": "Rod of the Sea",
+      "ref": "ROD_OF_THE_SEA"
+     },
+     {
+      "label": "Precursor Eye",
+      "ref": "PRECURSOR_EYE"
+     },
+     {
+      "label": "Summoning Ring",
+      "ref": "SUMMONING_RING"
+     },
+     {
+      "label": "Reaper Mask",
+      "ref": "REAPER_MASK"
+     },
+     {
+      "label": "Shredder",
+      "ref": null
+     },
+     {
+      "label": "Yeti Rod",
+      "ref": null
+     },
+     {
+      "label": "Auger Rod",
+      "ref": null
+     },
+     {
+      "label": "Crown of Greed",
+      "ref": "CROWN_OF_GREED"
+     },
+     {
+      "label": "Wand of Atonement",
+      "ref": "WAND_OF_ATONEMENT"
+     },
+     {
+      "label": "Mithril Drill SX-R326",
+      "ref": "MITHRIL_DRILL_2"
+     },
+     {
+      "label": "Ruby Drill TX-15",
+      "ref": "GEMSTONE_DRILL_1"
+     },
+     {
+      "label": "Gemstone Drill LT-522",
+      "ref": "GEMSTONE_DRILL_2"
+     },
+     {
+      "label": "Topaz Drill KGR-12",
+      "ref": "GEMSTONE_DRILL_3"
+     },
+     {
+      "label": "Jasper Drill X",
+      "ref": "GEMSTONE_DRILL_4"
+     },
+     {
+      "label": "Titanium Drill DR-X355",
+      "ref": "TITANIUM_DRILL_1"
+     },
+     {
+      "label": "Titanium Drill DR-X455",
+      "ref": "TITANIUM_DRILL_2"
+     },
+     {
+      "label": "Titanium Drill DR-X555",
+      "ref": "TITANIUM_DRILL_3"
+     },
+     {
+      "label": "Titanium Drill DR-X655",
+      "ref": "TITANIUM_DRILL_4"
+     },
+     {
+      "label": "Steel Chestplate",
+      "ref": "STEEL_CHESTPLATE"
+     },
+     {
+      "label": "Mender Crown",
+      "ref": "MENDER_CROWN"
+     },
+     {
+      "label": "Wither Goggles",
+      "ref": "WITHER_GOGGLES"
+     },
+     {
+      "label": "Euclid's Wheat Sickle",
+      "ref": null
+     },
+     {
+      "label": "Gauss Carrot Shovel",
+      "ref": null
+     },
+     {
+      "label": "Pythagorean Potato Shovel",
+      "ref": null
+     },
+     {
+      "label": "Newton Nether Warts Hoe",
+      "ref": null
+     },
+     {
+      "label": "Turing Sugar Cane Cutter",
+      "ref": null
+     },
+     {
+      "label": "Melon Dicer 2.0",
+      "ref": null
+     },
+     {
+      "label": "Melon Dicer 3.0",
+      "ref": null
+     },
+     {
+      "label": "Pumpkin Dicer 2.0",
+      "ref": null
+     },
+     {
+      "label": "Pumpkin Dicer 3.0",
+      "ref": null
+     },
+     {
+      "label": "SkyMart Hyper Vacuum",
+      "ref": "SKYMART_HYPER_VACUUM"
+     },
+     {
+      "label": "InfiniVacuum™",
+      "ref": "INFINI_VACUUM"
+     },
+     {
+      "label": "Zorro's Cape",
+      "ref": "ZORROS_CAPE"
+     }
+    ]
+   },
+   {
+    "name": "Accessories",
+    "task": "Accessory Bag",
+    "icon": "Accessory Bag",
+    "kind": "ACCESSORY",
+    "description": "Obtain unique Accessories in your Accessory Bag.",
+    "xp": 32,
+    "entries": [
+     {
+      "label": "Feather Artifact",
+      "ref": "FEATHER_ARTIFACT"
+     },
+     {
+      "label": "Night Vision Charm",
+      "ref": "NIGHT_VISION_CHARM"
+     },
+     {
+      "label": "Sea Creature Talisman",
+      "ref": "SEA_CREATURE_TALISMAN"
+     },
+     {
+      "label": "Ring of Power",
+      "ref": null
+     },
+     {
+      "label": "Talisman of Power",
+      "ref": null
+     },
+     {
+      "label": "Speed Artifact",
+      "ref": "SPEED_ARTIFACT"
+     },
+     {
+      "label": "Trapper Crest",
+      "ref": "TRAPPER_CREST"
+     },
+     {
+      "label": "Personal Compactor 4000",
+      "ref": "PERSONAL_COMPACTOR_4000"
+     },
+     {
+      "label": "Jungle Amulet",
+      "ref": "JUNGLE_AMULET"
+     },
+     {
+      "label": "Experience Artifact",
+      "ref": "EXPERIENCE_ARTIFACT"
+     },
+     {
+      "label": "Personal Deletor 4000",
+      "ref": "PERSONAL_DELETOR_4000"
+     },
+     {
+      "label": "Scarf's Studies",
+      "ref": "SCARFS_STUDIES"
+     },
+     {
+      "label": "Potion Affinity Artifact",
+      "ref": null
+     },
+     {
+      "label": "Scarf's Thesis",
+      "ref": "SCARFS_THESIS"
+     },
+     {
+      "label": "Candy Relic",
+      "ref": "CANDY_RELIC"
+     },
+     {
+      "label": "Wolf Ring",
+      "ref": "WOLF_RING"
+     },
+     {
+      "label": "Bat Person Ring",
+      "ref": "BAT_PERSON_RING"
+     },
+     {
+      "label": "Campfire Scion Badge",
+      "ref": null
+     },
+     {
+      "label": "Glacial Ring",
+      "ref": "GLACIAL_RING"
+     },
+     {
+      "label": "Glacial Artifact",
+      "ref": "GLACIAL_ARTIFACT"
+     },
+     {
+      "label": "Red Claw Ring",
+      "ref": "RED_CLAW_RING"
+     },
+     {
+      "label": "Titanium Talisman",
+      "ref": "TITANIUM_TALISMAN"
+     },
+     {
+      "label": "Treasure Talisman",
+      "ref": "TREASURE_TALISMAN"
+     },
+     {
+      "label": "Mineral Talisman",
+      "ref": "MINERAL_TALISMAN"
+     },
+     {
+      "label": "Fish Affinity Talisman",
+      "ref": "FISH_AFFINITY_TALISMAN"
+     },
+     {
+      "label": "Squash Ring",
+      "ref": "SQUASH_RING"
+     },
+     {
+      "label": "Anita's Artifact",
+      "ref": "ANITA_ARTIFACT"
+     },
+     {
+      "label": "Nibble Chocolate Stick",
+      "ref": "NIBBLE_CHOCOLATE_STICK"
+     },
+     {
+      "label": "Smooth Chocolate Bar",
+      "ref": "SMOOTH_CHOCOLATE_BAR"
+     },
+     {
+      "label": "Rich Chocolate Chunk",
+      "ref": "RICH_CHOCOLATE_CHUNK"
+     },
+     {
+      "label": "Ganache Chocolate Slab",
+      "ref": "GANACHE_CHOCOLATE_SLAB"
+     },
+     {
+      "label": "Prestige Chocolate Realm",
+      "ref": "PRESTIGE_CHOCOLATE_REALM"
+     }
+    ]
+   },
+   {
+    "name": "Pets",
+    "task": "Pet Score",
+    "icon": "Bone",
+    "kind": "PET",
+    "description": "Obtain unique Pets. Each unique Pet in in your Pets Menu grants you Pet Score, which awards Magic Find!",
+    "xp": 51,
+    "entries": [
+     {
+      "label": "Ammonite Pet",
+      "ref": "AMMONITE_PET"
+     },
+     {
+      "label": "Bal Pet",
+      "ref": "BAL_PET"
+     },
+     {
+      "label": "Endermite Pet",
+      "ref": "ENDERMITE_PET"
+     },
+     {
+      "label": "Flying Fish Pet",
+      "ref": "FLYING_FISH_PET"
+     },
+     {
+      "label": "Glacite Golem Pet",
+      "ref": "GLACITE_GOLEM_PET"
+     },
+     {
+      "label": "Golem Pet",
+      "ref": "GOLEM_PET"
+     },
+     {
+      "label": "Guardian Pet",
+      "ref": "GUARDIAN_PET"
+     },
+     {
+      "label": "Horse Pet",
+      "ref": "HORSE_PET"
+     },
+     {
+      "label": "Mithril Golem Pet",
+      "ref": "MITHRIL_GOLEM_PET"
+     },
+     {
+      "label": "Mole Pet",
+      "ref": "MOLE_PET"
+     },
+     {
+      "label": "Sheep Pet",
+      "ref": "SHEEP_PET"
+     },
+     {
+      "label": "Skeleton Pet",
+      "ref": "SKELETON_PET"
+     },
+     {
+      "label": "Spider Pet",
+      "ref": "SPIDER_PET"
+     },
+     {
+      "label": "Spirit Pet",
+      "ref": "SPIRIT_PET"
+     },
+     {
+      "label": "Squid Pet",
+      "ref": "SQUID_PET"
+     },
+     {
+      "label": "Wither Skeleton Pet",
+      "ref": "WITHER_SKELETON_PET"
+     },
+     {
+      "label": "Zombie Pet",
+      "ref": "ZOMBIE_PET"
+     }
+    ]
+   },
+   {
+    "name": "Collections",
+    "task": "Collections",
+    "icon": "Painting",
+    "kind": "COLLECTION",
+    "description": "Reach certain Tiers in your Collections.",
+    "xp": 504,
+    "entries": [
+     {
+      "label": "Cactus VII",
+      "ref": "CACTUS:7"
+     },
+     {
+      "label": "Carrot IX",
+      "ref": "CARROT:9"
+     },
+     {
+      "label": "Cocoa Beans VIII",
+      "ref": "COCOA_BEANS:8"
+     },
+     {
+      "label": "Feather IX",
+      "ref": "FEATHER:9"
+     },
+     {
+      "label": "Leather IX",
+      "ref": "LEATHER:9"
+     },
+     {
+      "label": "Melon Slice IX",
+      "ref": "MELON_SLICE:9"
+     },
+     {
+      "label": "Mushroom VII",
+      "ref": "RED_MUSHROOM:7"
+     },
+     {
+      "label": "Nether Wart IX",
+      "ref": "NETHER_WART:9"
+     },
+     {
+      "label": "Potato IX",
+      "ref": "POTATO:9"
+     },
+     {
+      "label": "Pumpkin IX",
+      "ref": "PUMPKIN:9"
+     },
+     {
+      "label": "Raw Rabbit VI",
+      "ref": "RABBIT:6"
+     },
+     {
+      "label": "Wheat XI",
+      "ref": "WHEAT:11"
+     },
+     {
+      "label": "Coal IX",
+      "ref": "COAL:9"
+     },
+     {
+      "label": "Diamond VIII",
+      "ref": "DIAMOND:8"
+     },
+     {
+      "label": "Emerald VII",
+      "ref": "EMERALD:7"
+     },
+     {
+      "label": "End Stone X",
+      "ref": "END_STONE:10"
+     },
+     {
+      "label": "Gemstone VI",
+      "ref": "FINE_JASPER_GEM:6"
+     },
+     {
+      "label": "Gold Ingot VIII",
+      "ref": "GOLD_INGOT:8"
+     },
+     {
+      "label": "Ice VIII",
+      "ref": "ICE:8"
+     },
+     {
+      "label": "Iron Ingot IX",
+      "ref": "IRON_INGOT:9"
+     },
+     {
+      "label": "Lapis Lazuli X",
+      "ref": "LAPIS_LAZULI:10"
+     },
+     {
+      "label": "Mithril VII",
+      "ref": "MITHRIL:7"
+     },
+     {
+      "label": "Nether Quartz V",
+      "ref": "QUARTZ:5"
+     },
+     {
+      "label": "Netherrack V",
+      "ref": "NETHERRACK:5"
+     },
+     {
+      "label": "Obsidian VIII",
+      "ref": "OBSIDIAN:8"
+     },
+     {
+      "label": "Red Sand V",
+      "ref": "RED_SAND:5"
+     },
+     {
+      "label": "Redstone Dust XII",
+      "ref": null
+     },
+     {
+      "label": "Blaze Rod I",
+      "ref": "BLAZE_ROD:1"
+     },
+     {
+      "label": "Bone VII",
+      "ref": "BONE:7"
+     },
+     {
+      "label": "Ender Pearl V",
+      "ref": "ENDER_PEARL:5"
+     },
+     {
+      "label": "Gunpowder IX",
+      "ref": "GUNPOWDER:9"
+     },
+     {
+      "label": "Magma Cream I",
+      "ref": "MAGMA_CREAM:1"
+     },
+     {
+      "label": "Rotten Flesh IX",
+      "ref": "ROTTEN_FLESH:9"
+     },
+     {
+      "label": "Slimeball IX",
+      "ref": "SLIME_BALL:9"
+     },
+     {
+      "label": "Spider Eye IX",
+      "ref": "SPIDER_EYE:9"
+     },
+     {
+      "label": "String IX",
+      "ref": "STRING:9"
+     },
+     {
+      "label": "Clay Ball V",
+      "ref": "CLAY_BALL:5"
+     },
+     {
+      "label": "Tropical Fish VII",
+      "ref": "TROPICAL_FISH:7"
+     },
+     {
+      "label": "Ink Sac VIII",
+      "ref": "INK_SAC:8"
+     },
+     {
+      "label": "Lily Pad VII",
+      "ref": "LILY_PAD:7"
+     },
+     {
+      "label": "Magmafish IV",
+      "ref": "MAGMAFISH:4"
+     },
+     {
+      "label": "Prismarine Crystals VII",
+      "ref": "PRISMARINE_CRYSTALS:7"
+     },
+     {
+      "label": "Prismarine Shard VI",
+      "ref": "PRISMARINE_SHARD:6"
+     },
+     {
+      "label": "Pufferfish VII",
+      "ref": "PUFFERFISH:7"
+     },
+     {
+      "label": "Raw Cod IX",
+      "ref": "RAW_FISH:9"
+     },
+     {
+      "label": "Raw Salmon VII",
+      "ref": "RAW_SALMON:7"
+     },
+     {
+      "label": "Sponge IV",
+      "ref": "SPONGE:4"
+     }
+    ]
+   },
+   {
+    "name": "Minions",
+    "task": "Craft Minions",
+    "icon": "Cobblestone Minion I",
+    "kind": "MINION",
+    "description": "Craft unique Minions.",
+    "xp": 268,
+    "entries": [
+     {
+      "label": "Cobblestone Minion X",
+      "ref": "COBBLESTONE:10"
+     },
+     {
+      "label": "Obsidian Minion VII",
+      "ref": "OBSIDIAN:7"
+     },
+     {
+      "label": "Glowstone Minion V",
+      "ref": "GLOWSTONE:5"
+     },
+     {
+      "label": "Gravel Minion IX",
+      "ref": "GRAVEL:9"
+     },
+     {
+      "label": "Sand Minion VII",
+      "ref": "SAND:7"
+     },
+     {
+      "label": "Mycelium Minion III",
+      "ref": "MYCELIUM:3"
+     },
+     {
+      "label": "Red Sand Minion III",
+      "ref": "RED_SAND:3"
+     },
+     {
+      "label": "Clay Minion VII",
+      "ref": "CLAY:7"
+     },
+     {
+      "label": "Snow Minion XI",
+      "ref": "SNOW:11"
+     },
+     {
+      "label": "Coal Minion IX",
+      "ref": "COAL:9"
+     },
+     {
+      "label": "Iron Minion VII",
+      "ref": "IRON:7"
+     },
+     {
+      "label": "Gold Minion VII",
+      "ref": "GOLD:7"
+     },
+     {
+      "label": "Diamond Minion VII",
+      "ref": "DIAMOND:7"
+     },
+     {
+      "label": "Lapis Minion VII",
+      "ref": "LAPIS:7"
+     },
+     {
+      "label": "Redstone Minion XI",
+      "ref": "REDSTONE:11"
+     },
+     {
+      "label": "Emerald Minion VII",
+      "ref": "EMERALD:7"
+     },
+     {
+      "label": "Quartz Minion V",
+      "ref": "QUARTZ:5"
+     },
+     {
+      "label": "End Stone Minion VII",
+      "ref": "ENDSTONE:7"
+     },
+     {
+      "label": "Mithril Minion V",
+      "ref": "MITHRIL:5"
+     },
+     {
+      "label": "Hard Stone Minion III",
+      "ref": "HARD_STONE:3"
+     },
+     {
+      "label": "Wheat Minion II",
+      "ref": "WHEAT:2"
+     },
+     {
+      "label": "Melon Minion VII",
+      "ref": "MELON:7"
+     },
+     {
+      "label": "Pumpkin Minion VII",
+      "ref": "PUMPKIN:7"
+     },
+     {
+      "label": "Carrot Minion IX",
+      "ref": "CARROT:9"
+     },
+     {
+      "label": "Potato Minion IX",
+      "ref": "POTATO:9"
+     },
+     {
+      "label": "Mushroom Minion VII",
+      "ref": "MUSHROOM:7"
+     },
+     {
+      "label": "Cactus Minion VII",
+      "ref": "CACTUS:7"
+     },
+     {
+      "label": "Cocoa Beans Minion VII",
+      "ref": "COCOA_BEANS:7"
+     },
+     {
+      "label": "Sugar Cane Minion IX",
+      "ref": "SUGAR_CANE:9"
+     },
+     {
+      "label": "Nether Wart Minion IX",
+      "ref": "NETHER_WART:9"
+     },
+     {
+      "label": "Fishing Minion VII",
+      "ref": "FISHING:7"
+     },
+     {
+      "label": "Zombie Minion IX",
+      "ref": "ZOMBIE:9"
+     },
+     {
+      "label": "Revenant Minion III",
+      "ref": "REVENANT:3"
+     },
+     {
+      "label": "Skeleton Minion VII",
+      "ref": "SKELETON:7"
+     },
+     {
+      "label": "Creeper Minion VII",
+      "ref": "CREEPER:7"
+     },
+     {
+      "label": "Spider Minion VII",
+      "ref": "SPIDER:7"
+     },
+     {
+      "label": "Tarantula Minion III",
+      "ref": "TARANTULA:3"
+     },
+     {
+      "label": "Cave Spider Minion VII",
+      "ref": "CAVE_SPIDER:7"
+     },
+     {
+      "label": "Blaze Minion I",
+      "ref": "BLAZE:1"
+     },
+     {
+      "label": "Magma Cube Minion I",
+      "ref": "MAGMA_CUBE:1"
+     },
+     {
+      "label": "Enderman Minion VII",
+      "ref": "ENDERMAN:7"
+     },
+     {
+      "label": "Ghast Minion I",
+      "ref": "GHAST:1"
+     },
+     {
+      "label": "Slime Minion VII",
+      "ref": "SLIME:7"
+     },
+     {
+      "label": "Cow Minion VII",
+      "ref": "COW:7"
+     },
+     {
+      "label": "Pig Minion IX",
+      "ref": "PIG:9"
+     },
+     {
+      "label": "Chicken Minion IX",
+      "ref": "CHICKEN:9"
+     },
+     {
+      "label": "Sheep Minion VII",
+      "ref": "SHEEP:7"
+     },
+     {
+      "label": "Rabbit Minion VII",
+      "ref": "RABBIT:7"
+     },
+     {
+      "label": "Oak Minion VII",
+      "ref": "OAK:7"
+     },
+     {
+      "label": "Spruce Minion VII",
+      "ref": "SPRUCE:7"
+     },
+     {
+      "label": "Birch Minion VII",
+      "ref": "BIRCH:7"
+     },
+     {
+      "label": "Dark Oak Minion VII",
+      "ref": "DARK_OAK:7"
+     },
+     {
+      "label": "Acacia Minion VII",
+      "ref": "ACACIA:7"
+     },
+     {
+      "label": "Jungle Minion VII",
+      "ref": "JUNGLE:7"
+     }
+    ]
+   },
+   {
+    "name": "Gold Bank Account",
+    "task": "Bank Upgrades",
+    "icon": "Gold Nugget",
+    "kind": "OTHER",
+    "description": "Upgrade your Bank Account to the Gold tier.",
+    "xp": 20,
+    "entries": [
+     {
+      "label": "Gold Bank Account",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Catacombs Level XIX",
+    "task": "Catacombs Level Up",
+    "icon": "Wither Artifact",
+    "kind": "OTHER",
+    "description": "Reach Catacombs Level XIX by completing Dungeon runs in The Catacombs.",
+    "xp": 140,
+    "entries": [
+     {
+      "label": "Catacombs Level XIX",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Dungeon Classes",
+    "task": "Class Level Up",
+    "icon": "Wither Artifact",
+    "kind": "OTHER",
+    "description": "Reach Level XV in all of your Dungeon Classes.",
+    "xp": 120,
+    "entries": [
+     {
+      "label": "Dungeon Classes",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Catacombs Floor V",
+    "task": "Complete Dungeons",
+    "icon": "Wither Artifact",
+    "kind": "OTHER",
+    "description": "Complete The Catacombs Floor V Dungeon.",
+    "xp": 110,
+    "entries": [
+     {
+      "label": "Catacombs Floor V",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Dragon Essence Shop",
+    "task": "Dragon Essence Shop",
+    "icon": "Dragon Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Dragon Essence Shop.",
+    "xp": 38,
+    "entries": [
+     {
+      "label": "Dragon Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Ice Essence Shop",
+    "task": "Ice Essence Shop",
+    "icon": "Ice Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Ice Essence Shop.",
+    "xp": 36,
+    "entries": [
+     {
+      "label": "Ice Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Spider Essence Shop",
+    "task": "Spider Essence Shop",
+    "icon": "Spider Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Spider Essence Shop.",
+    "xp": 16,
+    "entries": [
+     {
+      "label": "Spider Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Undead Essence Shop",
+    "task": "Undead Essence Shop",
+    "icon": "Undead Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Undead Essence Shop.",
+    "xp": 14,
+    "entries": [
+     {
+      "label": "Undead Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Wither Essence Shop",
+    "task": "Wither Essence Shop",
+    "icon": "Wither Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Wither Essence Shop.",
+    "xp": 12,
+    "entries": [
+     {
+      "label": "Wither Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Gold Essence Shop",
+    "task": "Gold Essence Shop",
+    "icon": "Gold Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Gold Essence Shop.",
+    "xp": 21,
+    "entries": [
+     {
+      "label": "Gold Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Diamond Essence Shop",
+    "task": "Diamond Essence Shop",
+    "icon": "Diamond Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the DiamondEssence Shop.",
+    "xp": 31,
+    "entries": [
+     {
+      "label": "Diamond Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Slayer",
+    "task": "Slayer Level Up",
+    "icon": "Bottle o' Enchanting",
+    "kind": "SLAYER",
+    "description": "Complete Slayer Quests to gain Slayer XP and increase your Slayer levels.",
+    "xp": 625,
+    "entries": [
+     {
+      "label": "Zombie Slayer LVL 7",
+      "ref": "REVENANT_HORROR:7"
+     },
+     {
+      "label": "Spider Slayer LVL 7",
+      "ref": "TARANTULA_BROODFATHER:7"
+     },
+     {
+      "label": "Wolf Slayer LVL 7",
+      "ref": "SVEN_PACKMASTER:7"
+     },
+     {
+      "label": "Enderman Slayer LVL 3",
+      "ref": "VOIDGLOOM_SERAPH:3"
+     },
+     {
+      "label": "Vampire Slayer LVL 3",
+      "ref": "RIFTSTALKER_BLOODFIEND:3"
+     }
+    ]
+   },
+   {
+    "name": "Dungeon Boss Collections",
+    "task": "Boss Collections",
+    "icon": "Boss Collections Icon",
+    "kind": "OTHER",
+    "description": "Increase your Boss Collections by killing Dungeon bosses.",
+    "xp": 60,
+    "entries": [
+     {
+      "label": "Dungeon Boss Collections",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Bestiary Milestone C",
+    "task": "Bestiary Progress",
+    "icon": "Bestiary Icon",
+    "kind": "OTHER",
+    "description": "Reach Bestiary Milestone C by killing unique Families of enemies.",
+    "xp": 900,
+    "entries": [
+     {
+      "label": "Bestiary Milestone C",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Slayer Bosses",
+    "task": "Defeat Slayers",
+    "icon": "Maddox Batphone",
+    "kind": "OTHER",
+    "description": "Kill various Slayer bosses.",
+    "xp": 275,
+    "entries": [
+     {
+      "label": "Slayer Bosses",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Heart of the Mountain V",
+    "task": "Heart of the Mountain",
+    "icon": "Heart of the Mountain",
+    "kind": "OTHER",
+    "description": "Reach Heart of the Mountain V in the {{Dark Green|Dwarven Mines}}.",
+    "xp": 165,
+    "entries": [
+     {
+      "label": "Heart of the Mountain V",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Commission Milestone III",
+    "task": "Commission Milestones",
+    "icon": "Royal Pigeon",
+    "kind": "OTHER",
+    "description": "Reach {{Blue|Commission Milestone III}} by completing Commissions in the {{Dark Green|Dwarven Mines}}.",
+    "xp": 30,
+    "entries": [
+     {
+      "label": "Commission Milestone III",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Rock Pet Milestone",
+    "task": "Rock Pet Milestones",
+    "icon": "Rock Pet",
+    "kind": "OTHER",
+    "description": "Upgrade a Rock Pet to {{Epic}}.",
+    "xp": 20,
+    "entries": [
+     {
+      "label": "Rock Pet Milestone",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Extra Farming Drops",
+    "task": "Anita's Shop Upgrades",
+    "icon": "Wheat",
+    "kind": "OTHER",
+    "description": "Purchase Extra Farming Drops IV from Anita in the Village.",
+    "xp": 20,
+    "entries": [
+     {
+      "label": "Extra Farming Drops",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Trophy Fish",
+    "task": "Trophy Fish",
+    "icon": "Slugfish",
+    "kind": "OTHER",
+    "description": "Catch Trophy Fish by lava fishing in the Crimson Isle.",
+    "xp": 72,
+    "entries": [
+     {
+      "label": "Trophy Fish",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Dolphin Pet Milestone",
+    "task": "Dolphin Pet Milestones",
+    "icon": "Dolphin Pet",
+    "kind": "OTHER",
+    "description": "Upgrade a Dolphin Pet to {{Uncommon}}.",
+    "xp": 20,
+    "entries": [
+     {
+      "label": "Dolphin Pet Milestone",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Accessory Bag Upgrades",
+    "task": "Accessory Bag Upgrades",
+    "icon": "Jacobus Register",
+    "kind": "OTHER",
+    "description": "Increase the size of your Accessory Bag by 8 slots by talking to Jacobus in the Thaumaturgist building.",
+    "xp": 6,
+    "entries": [
+     {
+      "label": "Accessory Bag Upgrades",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "The Dojo",
+    "task": "The Dojo",
+    "icon": "Black Belt",
+    "kind": "OTHER",
+    "description": "Obtain Belts at the Dojo.",
+    "xp": 100,
+    "entries": [
+     {
+      "label": "The Dojo",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Community Shop",
+    "task": "Community Shop",
+    "icon": "Elizabeth Head",
+    "kind": "OTHER",
+    "description": "Unlock Profile Upgrades from the Community Shop.",
+    "xp": 100,
+    "entries": [
+     {
+      "label": "Community Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Personal Bank III",
+    "task": "Personal Bank Upgrades",
+    "icon": "Personal Bank Item",
+    "kind": "OTHER",
+    "description": "Upgrade your Personal Bank to Tier III by talking to Guy in the Village.",
+    "xp": 35,
+    "entries": [
+     {
+      "label": "Personal Bank III",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Chocolate Factory Prestige",
+    "task": "Chocolate Factory Prestige",
+    "icon": "Chocolate Factory",
+    "kind": "OTHER",
+    "description": "Prestige your Chocolate Factory to Chocolate Factory 5.",
+    "xp": 100,
+    "entries": [
+     {
+      "label": "Chocolate Factory Prestige",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Mythic Chocolate Rabbits",
+    "task": "Mythic Chocolate Rabbits",
+    "icon": "Zorro",
+    "kind": "OTHER",
+    "description": "Find all 6 {{Mythic}} Chocolate Rabbits.",
+    "xp": 60,
+    "entries": [
+     {
+      "label": "Mythic Chocolate Rabbits",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Drink Refined Bottles of Jyrre",
+    "task": "Refines Jyrre",
+    "icon": "Water Bottle",
+    "kind": "OTHER",
+    "description": "Age a Bottle of Jyrre into a Refined Bottle of Jyrre - then drink it! 5 times!",
+    "xp": 10,
+    "entries": [
+     {
+      "label": "Drink Refined Bottles of Jyrre",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Consume Refined Dark Cacao Truffles",
+    "task": "Refined Dark Cacao",
+    "icon": "Refined Dark Cacao Truffle",
+    "kind": "OTHER",
+    "description": "Age a {{Blue|Dark Cacao Truffle}} into a Refined Dark Cacao Truffle - then consume it! 5 times!",
+    "xp": 10,
+    "entries": [
+     {
+      "label": "Consume Refined Dark Cacao Truffles",
+      "ref": null
+     }
+    ]
+   }
+  ],
+  "EXPERT": [
+   {
+    "name": "Skills",
+    "task": "Skill Level Up",
+    "icon": "Diamond Sword",
+    "kind": "SKILL",
+    "description": "Level up your Skills.",
+    "xp": 1440,
+    "entries": [
+     {
+      "label": "Farming Skill XL",
+      "ref": "FARMING:40"
+     },
+     {
+      "label": "Mining Skill XL",
+      "ref": "MINING:40"
+     },
+     {
+      "label": "Combat Skill XL",
+      "ref": "COMBAT:40"
+     },
+     {
+      "label": "Foraging Skill XL",
+      "ref": "FORAGING:40"
+     },
+     {
+      "label": "Fishing Skill XL",
+      "ref": "FISHING:40"
+     },
+     {
+      "label": "Enchanting Skill XL",
+      "ref": "ENCHANTING:40"
+     },
+     {
+      "label": "Alchemy Skill XL",
+      "ref": "ALCHEMY:40"
+     },
+     {
+      "label": "Carpentry Skill XL",
+      "ref": "CARPENTRY:40"
+     },
+     {
+      "label": "Taming Skill XL",
+      "ref": "TAMING:40"
+     }
+    ]
+   },
+   {
+    "name": "Museum Donations",
+    "task": "Museum Progression",
+    "icon": "Block of Gold",
+    "kind": "MUSEUM",
+    "description": "Donate items and armor sets to the Museum.",
+    "xp": 177,
+    "entries": [
+     {
+      "label": "Blaze Armor",
+      "ref": "BLAZE"
+     },
+     {
+      "label": "Frozen Blaze Armor",
+      "ref": "FROZEN_BLAZE"
+     },
+     {
+      "label": "Fermento Armor",
+      "ref": "FERMENTO"
+     },
+     {
+      "label": "Perfect Armor",
+      "ref": null
+     },
+     {
+      "label": "Sorrow Armor",
+      "ref": "SORROW"
+     },
+     {
+      "label": "Rampart Armor",
+      "ref": "RAMPART"
+     },
+     {
+      "label": "Rekindled Ember Armor",
+      "ref": "REKINDLED_EMBER"
+     },
+     {
+      "label": "Shimmering Light Armor",
+      "ref": "SHIMMERING_LIGHT"
+     },
+     {
+      "label": "Berserker Armor",
+      "ref": "BERSERKER"
+     },
+     {
+      "label": "Lava Sea Creature Armor",
+      "ref": "LAVA_SEA_CREATURE"
+     },
+     {
+      "label": "Bronze Hunter Armor",
+      "ref": "BRONZE_HUNTER"
+     },
+     {
+      "label": "Silver Hunter Armor",
+      "ref": "SILVER_HUNTER"
+     },
+     {
+      "label": "Crimson Hunter Set",
+      "ref": "CRIMSON_HUNTER"
+     },
+     {
+      "label": "Vanquisher Set",
+      "ref": "VANQUISHED"
+     },
+     {
+      "label": "Molten Set",
+      "ref": "MOLTEN"
+     },
+     {
+      "label": "Aurora Armor",
+      "ref": "AURORA"
+     },
+     {
+      "label": "Crimson Armor",
+      "ref": "CRIMSON"
+     },
+     {
+      "label": "Fervor Armor",
+      "ref": "FERVOR"
+     },
+     {
+      "label": "Terror Armor",
+      "ref": "TERROR"
+     },
+     {
+      "label": "Hollow Armor",
+      "ref": "HOLLOW"
+     },
+     {
+      "label": "Silver Fang",
+      "ref": null
+     },
+     {
+      "label": "Reaper Scythe",
+      "ref": "REAPER_SCYTHE"
+     },
+     {
+      "label": "Bouquet of Lies",
+      "ref": "BOUQUET_OF_LIES"
+     },
+     {
+      "label": "Wither Cloak Sword",
+      "ref": "WITHER_CLOAK"
+     },
+     {
+      "label": "Necromancer Sword",
+      "ref": "NECROMANCER_SWORD"
+     },
+     {
+      "label": "Giant's Sword",
+      "ref": "GIANTS_SWORD"
+     },
+     {
+      "label": "Blade of the Volcano",
+      "ref": "BLADE_OF_THE_VOLCANO"
+     },
+     {
+      "label": "Fire Veil Wand",
+      "ref": "FIRE_VEIL_WAND"
+     },
+     {
+      "label": "Staff of the Volcano",
+      "ref": "STAFF_OF_THE_VOLCANO"
+     },
+     {
+      "label": "Fire Fury Staff",
+      "ref": "FIRE_FURY_STAFF"
+     },
+     {
+      "label": "Fire Freeze Staff",
+      "ref": "FIRE_FREEZE_STAFF"
+     },
+     {
+      "label": "Sulphur Bow",
+      "ref": "SULPHUR_BOW"
+     },
+     {
+      "label": "Wand of Strength",
+      "ref": "WAND_OF_STRENGTH"
+     },
+     {
+      "label": "Ragnarock",
+      "ref": "RAGNAROCK_AXE"
+     },
+     {
+      "label": "The Alchemist's Staff",
+      "ref": "ALCHEMISTS_STAFF"
+     },
+     {
+      "label": "Sword of Bad Health",
+      "ref": "SWORD_OF_BAD_HEALTH"
+     },
+     {
+      "label": "Hollow Wand",
+      "ref": "HOLLOW_WAND"
+     },
+     {
+      "label": "Flaming Fist",
+      "ref": "FLAMING_FIST"
+     },
+     {
+      "label": "Implosion Belt",
+      "ref": "IMPLOSION_BELT"
+     },
+     {
+      "label": "Gauntlet of Contagion",
+      "ref": "GAUNTLET_OF_CONTAGION"
+     },
+     {
+      "label": "Scoville Belt",
+      "ref": "SCOVILLE_BELT"
+     },
+     {
+      "label": "Scourge Cloak",
+      "ref": "SCOURGE_CLOAK"
+     },
+     {
+      "label": "Delirium Necklace",
+      "ref": "DELIRIUM_NECKLACE"
+     },
+     {
+      "label": "Lava Shell Necklace",
+      "ref": "LAVA_SHELL_NECKLACE"
+     },
+     {
+      "label": "Starter Lava Rod",
+      "ref": "STARTER_LAVA_ROD"
+     },
+     {
+      "label": "Magma Rod",
+      "ref": "MAGMA_ROD"
+     },
+     {
+      "label": "Inferno Rod",
+      "ref": "INFERNO_ROD"
+     },
+     {
+      "label": "Hellfire Rod",
+      "ref": "HELLFIRE_ROD"
+     },
+     {
+      "label": "Black Belt",
+      "ref": "DOJO_BLACK_BELT"
+     },
+     {
+      "label": "Ancient Cloak",
+      "ref": "ANCIENT_CLOAK"
+     },
+     {
+      "label": "Synthesizer v3",
+      "ref": "SYNTHESIZER_V3"
+     },
+     {
+      "label": "Euclid's Wheat Sickle",
+      "ref": null
+     },
+     {
+      "label": "Gauss Carrot Shovel",
+      "ref": null
+     },
+     {
+      "label": "Pythagorean Potato Shovel",
+      "ref": null
+     },
+     {
+      "label": "Newton Nether Warts Hoe",
+      "ref": null
+     },
+     {
+      "label": "Turing Sugar Cane Cutter",
+      "ref": null
+     },
+     {
+      "label": "Tactical Insertion",
+      "ref": "TACTICAL_INSERTION"
+     },
+     {
+      "label": "Blazetekk™ Ham Radio",
+      "ref": "BLAZETEKK_HAM_RADIO"
+     }
+    ]
+   },
+   {
+    "name": "Accessories",
+    "task": "Accessory Bag",
+    "icon": "Accessory Bag",
+    "kind": "ACCESSORY",
+    "description": "Obtain unique Accessories in your Accessory Bag.",
+    "xp": 39,
+    "entries": [
+     {
+      "label": "Rubbish Ring of Love",
+      "ref": null
+     },
+     {
+      "label": "Modest Ring of Love",
+      "ref": null
+     },
+     {
+      "label": "Refined Ring of Love",
+      "ref": null
+     },
+     {
+      "label": "Classy Ring of Love",
+      "ref": null
+     },
+     {
+      "label": "Exquisite Ring of Love",
+      "ref": null
+     },
+     {
+      "label": "Invaluable Ring of Love",
+      "ref": null
+     },
+     {
+      "label": "Legendary Ring of Love",
+      "ref": null
+     },
+     {
+      "label": "Healing Ring",
+      "ref": "HEALING_RING"
+     },
+     {
+      "label": "Sea Creature Ring",
+      "ref": "SEA_CREATURE_RING"
+     },
+     {
+      "label": "Odger's Bronze Tooth",
+      "ref": "ODGERS_BRONZE_TOOTH"
+     },
+     {
+      "label": "Sharp Shark Tooth Necklace",
+      "ref": "SHARP_SHARK_TOOTH_NECKLACE"
+     },
+     {
+      "label": "Farmer Orb",
+      "ref": "FARMER_ORB"
+     },
+     {
+      "label": "Fire Talisman",
+      "ref": "FIRE_TALISMAN"
+     },
+     {
+      "label": "Lava Talisman",
+      "ref": "LAVA_TALISMAN"
+     },
+     {
+      "label": "Night Crystal",
+      "ref": "NIGHT_CRYSTAL"
+     },
+     {
+      "label": "Day Crystal",
+      "ref": "DAY_CRYSTAL"
+     },
+     {
+      "label": "Odger's Silver Tooth",
+      "ref": "ODGERS_SILVER_TOOTH"
+     },
+     {
+      "label": "Titanium Ring",
+      "ref": "TITANIUM_RING"
+     },
+     {
+      "label": "Scarf's Grimoire",
+      "ref": "SCARFS_GRIMOIRE"
+     },
+     {
+      "label": "Razor-sharp Shark Tooth Necklace",
+      "ref": "RAZOR_SHARP_SHARK_TOOTH_NECKLACE"
+     },
+     {
+      "label": "Bat Person Artifact",
+      "ref": "BAT_PERSON_ARTIFACT"
+     },
+     {
+      "label": " Beastmaster Crest",
+      "ref": null
+     },
+     {
+      "label": "Personal Deletor 5000",
+      "ref": "PERSONAL_DELETOR_5000"
+     },
+     {
+      "label": "Treasure Ring",
+      "ref": "TREASURE_RING"
+     },
+     {
+      "label": "Tarantula Talisman",
+      "ref": "TARANTULA_TALISMAN"
+     },
+     {
+      "label": "Devour Ring",
+      "ref": "DEVOUR_RING"
+     },
+     {
+      "label": "Survivor Cube",
+      "ref": "SURVIVOR_CUBE"
+     },
+     {
+      "label": "Zombie Artifact",
+      "ref": "ZOMBIE_ARTIFACT"
+     },
+     {
+      "label": "Hunter Talisman",
+      "ref": "HUNTER_TALISMAN"
+     },
+     {
+      "label": "Eternal Hoof",
+      "ref": "ETERNAL_HOOF"
+     },
+     {
+      "label": "Sea Creature Artifact",
+      "ref": "SEA_CREATURE_ARTIFACT"
+     },
+     {
+      "label": "Campfire God Badge",
+      "ref": null
+     },
+     {
+      "label": "Personal Compactor 5000",
+      "ref": "PERSONAL_COMPACTOR_5000"
+     },
+     {
+      "label": "Personal Compactor 6000",
+      "ref": "PERSONAL_COMPACTOR_6000"
+     },
+     {
+      "label": "Personal Compactor 7000",
+      "ref": "PERSONAL_COMPACTOR_7000"
+     },
+     {
+      "label": "Personal Deletor 6000",
+      "ref": "PERSONAL_DELETOR_6000"
+     },
+     {
+      "label": "Personal Deletor 7000",
+      "ref": "PERSONAL_DELETOR_7000"
+     },
+     {
+      "label": "Spider Artifact",
+      "ref": "SPIDER_ARTIFACT"
+     },
+     {
+      "label": "Fermento Artifact",
+      "ref": "FERMENTO_ARTIFACT"
+     }
+    ]
+   },
+   {
+    "name": "Pets",
+    "task": "Pet Score",
+    "icon": "Bone",
+    "kind": "PET",
+    "description": "Obtain unique Pets. Each unique Pet in in your Pets Menu grants you Pet Score, which awards Magic Find!",
+    "xp": 39,
+    "entries": [
+     {
+      "label": "Baby Yeti Pet",
+      "ref": "BABY_YETI_PET"
+     },
+     {
+      "label": "Bat Pet",
+      "ref": "BAT_PET"
+     },
+     {
+      "label": "Black Cat Pet",
+      "ref": "BLACK_CAT_PET"
+     },
+     {
+      "label": "Ghoul Pet",
+      "ref": "GHOUL_PET"
+     },
+     {
+      "label": "Magma Cube Pet",
+      "ref": "MAGMA_CUBE_PET"
+     },
+     {
+      "label": "Mooshroom Cow Pet",
+      "ref": "MOOSHROOM_COW_PET"
+     },
+     {
+      "label": "Megalodon Pet",
+      "ref": "MEGALODON_PET"
+     },
+     {
+      "label": "Owl Pet",
+      "ref": "OWL_PET"
+     },
+     {
+      "label": "Pigman Pet",
+      "ref": "PIGMAN_PET"
+     },
+     {
+      "label": "Rat Pet",
+      "ref": "RAT_PET"
+     },
+     {
+      "label": "Slug Pet",
+      "ref": "SLUG_PET"
+     },
+     {
+      "label": "Snail Pet",
+      "ref": "SNAIL_PET"
+     },
+     {
+      "label": "Tarantula Pet",
+      "ref": "TARANTULA_PET"
+     }
+    ]
+   },
+   {
+    "name": "Collections",
+    "task": "Collections",
+    "icon": "Painting",
+    "kind": "COLLECTION",
+    "description": "Reach certain Tiers in your Collections.",
+    "xp": 340,
+    "entries": [
+     {
+      "label": "Cactus IX",
+      "ref": "CACTUS:9"
+     },
+     {
+      "label": "Cocoa Beans IX",
+      "ref": "COCOA_BEANS:9"
+     },
+     {
+      "label": "Leather X",
+      "ref": "LEATHER:10"
+     },
+     {
+      "label": "Mushroom IX",
+      "ref": "RED_MUSHROOM:9"
+     },
+     {
+      "label": "Nether Wart XII",
+      "ref": "NETHER_WART:12"
+     },
+     {
+      "label": "Pumpkin XI",
+      "ref": "PUMPKIN:11"
+     },
+     {
+      "label": "Raw Rabbit IX",
+      "ref": "RABBIT:9"
+     },
+     {
+      "label": "Coal X",
+      "ref": "COAL:10"
+     },
+     {
+      "label": "Diamond IX",
+      "ref": "DIAMOND:9"
+     },
+     {
+      "label": "Emerald IX",
+      "ref": "EMERALD:9"
+     },
+     {
+      "label": "Gemstone IX",
+      "ref": "FINE_JASPER_GEM:9"
+     },
+     {
+      "label": "Gold Ingot IX",
+      "ref": "GOLD_INGOT:9"
+     },
+     {
+      "label": "Hard Stone III",
+      "ref": "HARD_STONE:3"
+     },
+     {
+      "label": "Ice IX",
+      "ref": "ICE:9"
+     },
+     {
+      "label": "Iron Ingot XII",
+      "ref": "IRON_INGOT:12"
+     },
+     {
+      "label": "Lapis Lazuli X",
+      "ref": "LAPIS_LAZULI:10"
+     },
+     {
+      "label": "Mithril IX",
+      "ref": "MITHRIL:9"
+     },
+     {
+      "label": "Nether Quartz IX",
+      "ref": "QUARTZ:9"
+     },
+     {
+      "label": "Obsidian X",
+      "ref": "OBSIDIAN:10"
+     },
+     {
+      "label": "Red Sand VIII",
+      "ref": "RED_SAND:8"
+     },
+     {
+      "label": "Redstone Dust XVI",
+      "ref": null
+     },
+     {
+      "label": "Sulphur IV",
+      "ref": "SULPHUR:4"
+     },
+     {
+      "label": "Blaze Rod IV",
+      "ref": "BLAZE_ROD:4"
+     },
+     {
+      "label": "Bone X",
+      "ref": "BONE:10"
+     },
+     {
+      "label": "Ender Pearl IX",
+      "ref": "ENDER_PEARL:9"
+     },
+     {
+      "label": "Magma Cream VIII",
+      "ref": "MAGMA_CREAM:8"
+     },
+     {
+      "label": "Rotten Flesh X",
+      "ref": "ROTTEN_FLESH:10"
+     },
+     {
+      "label": "Ink Sac IX",
+      "ref": "INK_SAC:9"
+     },
+     {
+      "label": "Lily Pad IX",
+      "ref": "LILY_PAD:9"
+     },
+     {
+      "label": "Magmafish VIII",
+      "ref": "MAGMAFISH:8"
+     },
+     {
+      "label": "Pufferfish X",
+      "ref": "PUFFERFISH:10"
+     },
+     {
+      "label": "Raw Cod XI",
+      "ref": "RAW_FISH:11"
+     },
+     {
+      "label": "Raw Salmon IX",
+      "ref": "RAW_SALMON:9"
+     },
+     {
+      "label": "Sponge VIII",
+      "ref": "SPONGE:8"
+     }
+    ]
+   },
+   {
+    "name": "Minions",
+    "task": "Craft Minions",
+    "icon": "Cobblestone Minion I",
+    "kind": "MINION",
+    "description": "Craft unique Minions.",
+    "xp": 1100,
+    "entries": [
+     {
+      "label": "Cobblestone Minion XI",
+      "ref": "COBBLESTONE:11"
+     },
+     {
+      "label": "Obsidian Minion XI",
+      "ref": "OBSIDIAN:11"
+     },
+     {
+      "label": "Glowstone Minion XI",
+      "ref": "GLOWSTONE:11"
+     },
+     {
+      "label": "Gravel Minion XI",
+      "ref": "GRAVEL:11"
+     },
+     {
+      "label": "Sand Minion XI",
+      "ref": "SAND:11"
+     },
+     {
+      "label": "Mycelium Minion V",
+      "ref": "MYCELIUM:5"
+     },
+     {
+      "label": "Red Sand Minion V",
+      "ref": "RED_SAND:5"
+     },
+     {
+      "label": "Clay Minion XI",
+      "ref": "CLAY:11"
+     },
+     {
+      "label": "Snow Minion XII",
+      "ref": "SNOW:12"
+     },
+     {
+      "label": "Coal Minion XI",
+      "ref": "COAL:11"
+     },
+     {
+      "label": "Iron Minion XI",
+      "ref": "IRON:11"
+     },
+     {
+      "label": "Gold Minion XI",
+      "ref": "GOLD:11"
+     },
+     {
+      "label": "Diamond Minion XI",
+      "ref": "DIAMOND:11"
+     },
+     {
+      "label": "Lapis Minion XI",
+      "ref": "LAPIS:11"
+     },
+     {
+      "label": "Redstone Minion XII",
+      "ref": "REDSTONE:12"
+     },
+     {
+      "label": "Emerald Minion XI",
+      "ref": "EMERALD:11"
+     },
+     {
+      "label": "Quartz Minion XI",
+      "ref": "QUARTZ:11"
+     },
+     {
+      "label": "End Stone Minion XI",
+      "ref": "ENDSTONE:11"
+     },
+     {
+      "label": "Mithril Minion IX",
+      "ref": "MITHRIL:9"
+     },
+     {
+      "label": "Hard Stone Minion IX",
+      "ref": "HARD_STONE:9"
+     },
+     {
+      "label": "Wheat Minion XII",
+      "ref": "WHEAT:12"
+     },
+     {
+      "label": "Melon Minion XI",
+      "ref": "MELON:11"
+     },
+     {
+      "label": "Pumpkin Minion XI",
+      "ref": "PUMPKIN:11"
+     },
+     {
+      "label": "Carrot Minion XI",
+      "ref": "CARROT:11"
+     },
+     {
+      "label": "Potato Minion XI",
+      "ref": "POTATO:11"
+     },
+     {
+      "label": "Mushroom Minion XI",
+      "ref": "MUSHROOM:11"
+     },
+     {
+      "label": "Cactus Minion XI",
+      "ref": "CACTUS:11"
+     },
+     {
+      "label": "Cocoa Beans Minion XI",
+      "ref": "COCOA_BEANS:11"
+     },
+     {
+      "label": "Sugar Cane Minion XI",
+      "ref": "SUGAR_CANE:11"
+     },
+     {
+      "label": "Nether Wart Minion XI",
+      "ref": "NETHER_WART:11"
+     },
+     {
+      "label": "Fishing Minion IX",
+      "ref": "FISHING:9"
+     },
+     {
+      "label": "Zombie Minion XI",
+      "ref": "ZOMBIE:11"
+     },
+     {
+      "label": "Revenant Minion VII",
+      "ref": "REVENANT:7"
+     },
+     {
+      "label": "Voidling Minion III",
+      "ref": "VOIDLING:3"
+     },
+     {
+      "label": "Skeleton Minion XI",
+      "ref": "SKELETON:11"
+     },
+     {
+      "label": "Creeper Minion XI",
+      "ref": "CREEPER:11"
+     },
+     {
+      "label": "Spider Minion XI",
+      "ref": "SPIDER:11"
+     },
+     {
+      "label": "Tarantula Minion VII",
+      "ref": "TARANTULA:7"
+     },
+     {
+      "label": "Cave Spider Minion XI",
+      "ref": "CAVE_SPIDER:11"
+     },
+     {
+      "label": "Blaze Minion VII",
+      "ref": "BLAZE:7"
+     },
+     {
+      "label": "Magma Cube Minion VII",
+      "ref": "MAGMA_CUBE:7"
+     },
+     {
+      "label": "Enderman Minion XI",
+      "ref": "ENDERMAN:11"
+     },
+     {
+      "label": "Ghast Minion VII",
+      "ref": "GHAST:7"
+     },
+     {
+      "label": "Slime Minion XI",
+      "ref": "SLIME:11"
+     },
+     {
+      "label": "Cow Minion XI",
+      "ref": "COW:11"
+     },
+     {
+      "label": "Pig Minion XII",
+      "ref": "PIG:12"
+     },
+     {
+      "label": "Chicken Minion XI",
+      "ref": "CHICKEN:11"
+     },
+     {
+      "label": "Sheep Minion XI",
+      "ref": "SHEEP:11"
+     },
+     {
+      "label": "Rabbit Minion IX",
+      "ref": "RABBIT:9"
+     },
+     {
+      "label": "Oak Minion XI",
+      "ref": "OAK:11"
+     },
+     {
+      "label": "Spruce Minion XI",
+      "ref": "SPRUCE:11"
+     },
+     {
+      "label": "Birch Minion XI",
+      "ref": "BIRCH:11"
+     },
+     {
+      "label": "Dark Oak Minion XI",
+      "ref": "DARK_OAK:11"
+     },
+     {
+      "label": "Acacia Minion XI",
+      "ref": "ACACIA:11"
+     },
+     {
+      "label": "Jungle Minion XI",
+      "ref": "JUNGLE:11"
+     }
+    ]
+   },
+   {
+    "name": "Deluxe Bank Account",
+    "task": "Bank Upgrades",
+    "icon": "Gold Ingot",
+    "kind": "OTHER",
+    "description": "Upgrade your Bank Account to the {{Pink|Deluxe}} tier.",
+    "xp": 25,
+    "entries": [
+     {
+      "label": "Deluxe Bank Account",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Catacombs Level XXX",
+    "task": "Catacombs Level Up",
+    "icon": "Wither Artifact",
+    "kind": "OTHER",
+    "description": "Reach Catacombs Level XXX by completing Dungeon runs in The Catacombs.",
+    "xp": 220,
+    "entries": [
+     {
+      "label": "Catacombs Level XXX",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Dungeon Classes",
+    "task": "Class Level Up",
+    "icon": "Wither Artifact",
+    "kind": "OTHER",
+    "description": "Reach Level XXV in all of your Dungeon Classes.",
+    "xp": 200,
+    "entries": [
+     {
+      "label": "Dungeon Classes",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Dragon Essence Shop",
+    "task": "Dragon Essence Shop",
+    "icon": "Dragon Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Dragon Essence Shop.",
+    "xp": 40,
+    "entries": [
+     {
+      "label": "Dragon Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Ice Essence Shop",
+    "task": "Ice Essence Shop",
+    "icon": "Ice Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Ice Essence Shop.",
+    "xp": 39,
+    "entries": [
+     {
+      "label": "Ice Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Spider Essence Shop",
+    "task": "Spider Essence Shop",
+    "icon": "Spider Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Spider Essence Shop.",
+    "xp": 44,
+    "entries": [
+     {
+      "label": "Spider Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Undead Essence Shop",
+    "task": "Undead Essence Shop",
+    "icon": "Undead Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Undead Essence Shop.",
+    "xp": 15,
+    "entries": [
+     {
+      "label": "Undead Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Wither Essence Shop",
+    "task": "Wither Essence Shop",
+    "icon": "Wither Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Wither Essence Shop.",
+    "xp": 47,
+    "entries": [
+     {
+      "label": "Wither Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Gold Essence Shop",
+    "task": "Gold Essence Shop",
+    "icon": "Gold Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Gold Essence Shop.",
+    "xp": 67,
+    "entries": [
+     {
+      "label": "Gold Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Diamond Essence Shop",
+    "task": "Diamond Essence Shop",
+    "icon": "Diamond Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the DiamondEssence Shop.",
+    "xp": 53,
+    "entries": [
+     {
+      "label": "Diamond Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Slayer",
+    "task": "Slayer Level Up",
+    "icon": "Bottle o' Enchanting",
+    "kind": "SLAYER",
+    "description": "Complete Slayer Quests to gain Slayer XP and increase your Slayer levels.",
+    "xp": 840,
+    "entries": [
+     {
+      "label": "Zombie Slayer LVL 8",
+      "ref": "REVENANT_HORROR:8"
+     },
+     {
+      "label": "Spider Slayer LVL 8",
+      "ref": "TARANTULA_BROODFATHER:8"
+     },
+     {
+      "label": "Wolf Slayer LVL 8",
+      "ref": "SVEN_PACKMASTER:8"
+     },
+     {
+      "label": "Enderman Slayer LVL 6",
+      "ref": "VOIDGLOOM_SERAPH:6"
+     },
+     {
+      "label": "Blaze Slayer LVL 2",
+      "ref": "INFERNO_DEMONLORD:2"
+     },
+     {
+      "label": "Vampire Slayer LVL 5",
+      "ref": "RIFTSTALKER_BLOODFIEND:5"
+     }
+    ]
+   },
+   {
+    "name": "Dungeon Boss Collections",
+    "task": "Boss Collections",
+    "icon": "Boss Collections Icon",
+    "kind": "OTHER",
+    "description": "Increase your Boss Collections by killing Dungeon bosses.",
+    "xp": 430,
+    "entries": [
+     {
+      "label": "Dungeon Boss Collections",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Bestiary Milestone CL",
+    "task": "Bestiary Progress",
+    "icon": "Bestiary Icon",
+    "kind": "OTHER",
+    "description": "Reach Bestiary Milestone CL by killing unique Families of enemies.",
+    "xp": 500,
+    "entries": [
+     {
+      "label": "Bestiary Milestone CL",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Slayer Bosses",
+    "task": "Defeat Slayers",
+    "icon": "Maddox Batphone",
+    "kind": "OTHER",
+    "description": "Defeat Slayer bosses.",
+    "xp": 250,
+    "entries": [
+     {
+      "label": "Slayer Bosses",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Kuudra",
+    "task": "Defeat Kuudra",
+    "icon": "Kuudra Key",
+    "kind": "OTHER",
+    "description": "Defeat Kuudra on the Crimson Isle.",
+    "xp": 60,
+    "entries": [
+     {
+      "label": "Kuudra",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Heart of the Mountain VI",
+    "task": "Heart of the Mountain",
+    "icon": "Heart of the Mountain",
+    "kind": "OTHER",
+    "description": "Reach Heart of the Mountain VI in the {{Dark Green|Dwarven Mines}}.",
+    "xp": 110,
+    "entries": [
+     {
+      "label": "Heart of the Mountain VI",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Commission Milestone IV",
+    "task": "Commission Milestones",
+    "icon": "Royal Pigeon",
+    "kind": "OTHER",
+    "description": "Reach {{Blue|Commission Milestone IV}} by completing Commissions in the {{Dark Green|Dwarven Mines}}.",
+    "xp": 50,
+    "entries": [
+     {
+      "label": "Commission Milestone IV",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Peak of the Mountain 3",
+    "task": "Peak of the Mountain",
+    "icon": "Block of Redstone",
+    "kind": "OTHER",
+    "description": "Reach Peak of the Mountain 3 by spending Tokens in your Heart of the Mountain in the {{Dark Green|Dwarven Mines}}.",
+    "xp": 110,
+    "entries": [
+     {
+      "label": "Peak of the Mountain 3",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Rock Pet Milestone",
+    "task": "Rock Pet Milestones",
+    "icon": "Rock Pet",
+    "kind": "OTHER",
+    "description": "Upgrade a Rock Pet to {{Legendary}}.",
+    "xp": 20,
+    "entries": [
+     {
+      "label": "Rock Pet Milestone",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Extra Farming Drops",
+    "task": "Anita's Shop Upgrades",
+    "icon": "Wheat",
+    "kind": "OTHER",
+    "description": "Purchase Extra Farming Drops VII from Anita in the Village.",
+    "xp": 30,
+    "entries": [
+     {
+      "label": "Extra Farming Drops",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Trophy Fish",
+    "task": "Trophy Fish",
+    "icon": "Slugfish",
+    "kind": "OTHER",
+    "description": "Catch Trophy Fish by lava fishing in the Crimson Isle.",
+    "xp": 432,
+    "entries": [
+     {
+      "label": "Trophy Fish",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Dolphin Pet Milestone",
+    "task": "Dolphin Pet Milestones",
+    "icon": "Dolphin Pet",
+    "kind": "OTHER",
+    "description": "Upgrade a Dolphin Pet to {{Rare}}.",
+    "xp": 20,
+    "entries": [
+     {
+      "label": "Dolphin Pet Milestone",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Accessory Bag Upgrades",
+    "task": "Accessory Bag Upgrades",
+    "icon": "Jacobus Register",
+    "kind": "OTHER",
+    "description": "Increase the size of your Accessory Bag by 20 slots by talking to Jacobus in the Thaumaturgist building.",
+    "xp": 12,
+    "entries": [
+     {
+      "label": "Accessory Bag Upgrades",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "The Dojo",
+    "task": "The Dojo",
+    "icon": "Black Belt",
+    "kind": "OTHER",
+    "description": "Obtain Belts at the Dojo.",
+    "xp": 325,
+    "entries": [
+     {
+      "label": "The Dojo",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Harp Songs",
+    "task": "Harp Songs",
+    "icon": "Written Book",
+    "kind": "OTHER",
+    "description": "Complete Harp Songs with 100% accuracy by talking to Melody near the Savanna Woodland.",
+    "xp": 96,
+    "entries": [
+     {
+      "label": "Harp Songs",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Abiphone Contacts",
+    "task": "Abiphone Contacts",
+    "icon": "Abiphone XIV Purple",
+    "kind": "OTHER",
+    "description": "Add NPCs to your Abiphone Contacts.",
+    "xp": 190,
+    "entries": [
+     {
+      "label": "Abiphone Contacts",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Community Shop",
+    "task": "Community Shop",
+    "icon": "Elizabeth Head",
+    "kind": "OTHER",
+    "description": "Unlock Profile Upgrades from the Community Shop.",
+    "xp": 100,
+    "entries": [
+     {
+      "label": "Community Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Consume Wriggling Larvae",
+    "task": "Wriggling Larva",
+    "icon": "Wriggling Larva",
+    "kind": "OTHER",
+    "description": "Consume a Wriggling Larva by vacuuming Moth Pests - then eat it! 5 times!",
+    "xp": 25,
+    "entries": [
+     {
+      "label": "Consume Wriggling Larvae",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Consume 3x Metaphysical Serum",
+    "task": "Metaphysical Serum",
+    "icon": "Metaphysical Serum",
+    "kind": "OTHER",
+    "description": "Obtain Metaphysical Serum by doing daily Experiments at the Experimentation Table - then drink them!",
+    "xp": 15,
+    "entries": [
+     {
+      "label": "Consume 3x Metaphysical Serum",
+      "ref": null
+     }
+    ]
+   }
+  ],
+  "PROFESSIONAL": [
+   {
+    "name": "Skills",
+    "task": "Skill Level Up",
+    "icon": "Diamond Sword",
+    "kind": "SKILL",
+    "description": "Level up your Skills.",
+    "xp": 1800,
+    "entries": [
+     {
+      "label": "Farming Skill L",
+      "ref": "FARMING:50"
+     },
+     {
+      "label": "Mining Skill L",
+      "ref": "MINING:50"
+     },
+     {
+      "label": "Combat Skill L",
+      "ref": "COMBAT:50"
+     },
+     {
+      "label": "Foraging Skill L",
+      "ref": "FORAGING:50"
+     },
+     {
+      "label": "Fishing Skill L",
+      "ref": "FISHING:50"
+     },
+     {
+      "label": "Enchanting Skill L",
+      "ref": "ENCHANTING:50"
+     },
+     {
+      "label": "Alchemy Skill L",
+      "ref": "ALCHEMY:50"
+     },
+     {
+      "label": "Carpentry Skill L",
+      "ref": "CARPENTRY:50"
+     },
+     {
+      "label": "Taming Skill L",
+      "ref": "TAMING:50"
+     }
+    ]
+   },
+   {
+    "name": "Museum Donations",
+    "task": "Museum Progression",
+    "icon": "Block of Gold",
+    "kind": "MUSEUM",
+    "description": "Donate items and armor sets to the Museum.",
+    "xp": 81,
+    "entries": [
+     {
+      "label": "Final Destination Armor",
+      "ref": "FINAL_DESTINATION"
+     },
+     {
+      "label": "Divan's Armor",
+      "ref": "DIVAN"
+     },
+     {
+      "label": "Wither Armor",
+      "ref": "WITHER"
+     },
+     {
+      "label": "Goldor's Armor",
+      "ref": "TANK_WITHER"
+     },
+     {
+      "label": "Storm's Armor",
+      "ref": "WISE_WITHER"
+     },
+     {
+      "label": "Maxor's Armor",
+      "ref": "SPEED_WITHER"
+     },
+     {
+      "label": "Necron's Armor",
+      "ref": "POWER_WITHER"
+     },
+     {
+      "label": "Thunder Armor",
+      "ref": "THUNDER"
+     },
+     {
+      "label": "Gold Hunter Armor",
+      "ref": "GOLD_HUNTER"
+     },
+     {
+      "label": "Diamond Hunter Armor",
+      "ref": "DIAMOND_HUNTER"
+     },
+     {
+      "label": "Glacial Scythe",
+      "ref": "GLACIAL_SCYTHE"
+     },
+     {
+      "label": "Halberd of the Shredded",
+      "ref": "AXE_OF_THE_SHREDDED"
+     },
+     {
+      "label": "Death Bow",
+      "ref": "DEATH_BOW"
+     },
+     {
+      "label": "Giant Cleaver",
+      "ref": "GIANT_CLEAVER"
+     },
+     {
+      "label": "Mosquito Shortbow",
+      "ref": "MOSQUITO_BOW"
+     },
+     {
+      "label": "Pigman Sword",
+      "ref": "PIGMAN_SWORD"
+     },
+     {
+      "label": "Midas' Sword",
+      "ref": "MIDAS_SWORD"
+     },
+     {
+      "label": "Midas Staff",
+      "ref": "MIDAS_STAFF"
+     },
+     {
+      "label": "Yeti Sword",
+      "ref": "YETI_SWORD"
+     },
+     {
+      "label": "Ice Spray Wand",
+      "ref": "ICE_SPRAY_WAND"
+     },
+     {
+      "label": "Daedalus Blade",
+      "ref": "DAEDALUS_AXE"
+     },
+     {
+      "label": "Overflux Power Orb",
+      "ref": "OVERFLUX_POWER_ORB"
+     },
+     {
+      "label": "Plasmaflux Power Orb",
+      "ref": "PLASMAFLUX_POWER_ORB"
+     },
+     {
+      "label": "Warden Helmet",
+      "ref": "WARDEN_HELMET"
+     },
+     {
+      "label": "Gyrokinetic Wand",
+      "ref": "GYROKINETIC_WAND"
+     },
+     {
+      "label": "Annihilation Cloak",
+      "ref": "ANNIHILATION_CLOAK"
+     },
+     {
+      "label": "Demonslayer Gauntlet",
+      "ref": "DEMONLORD_GAUNTLET"
+     }
+    ]
+   },
+   {
+    "name": "Accessories",
+    "task": "Accessory Bag",
+    "icon": "Accessory Bag",
+    "kind": "ACCESSORY",
+    "description": "Obtain unique Accessories in your Accessory Bag.",
+    "xp": 25,
+    "entries": [
+     {
+      "label": "Titanium Artifact",
+      "ref": "TITANIUM_ARTIFACT"
+     },
+     {
+      "label": "Red Claw Artifact",
+      "ref": "RED_CLAW_ARTIFACT"
+     },
+     {
+      "label": "Draconic Talisman",
+      "ref": "DRACONIC_TALISMAN"
+     },
+     {
+      "label": "Bits Talisman",
+      "ref": "BITS_TALISMAN"
+     },
+     {
+      "label": "Abicase",
+      "ref": null
+     },
+     {
+      "label": "Titanium Relic",
+      "ref": "TITANIUM_RELIC"
+     },
+     {
+      "label": "Artifact of Power",
+      "ref": null
+     },
+     {
+      "label": "Bait Ring",
+      "ref": "BAIT_RING"
+     },
+     {
+      "label": "Spiked Atrocity",
+      "ref": "SPIKED_ATROCITY"
+     },
+     {
+      "label": "Soulflow Pile",
+      "ref": "SOULFLOW_PILE"
+     },
+     {
+      "label": "Draconic Ring",
+      "ref": "DRACONIC_RING"
+     },
+     {
+      "label": "Netherrack-Looking Sunshade",
+      "ref": "NETHERRACK_LOOKING_SUNSHADE"
+     },
+     {
+      "label": "Soulflow Battery",
+      "ref": "SOULFLOW_BATTERY"
+     },
+     {
+      "label": "Pulse Ring",
+      "ref": "PULSE_RING"
+     },
+     {
+      "label": "Auto Recombobulator",
+      "ref": "AUTO_RECOMBOBULATOR"
+     },
+     {
+      "label": "Catacombs Expert Ring",
+      "ref": "CATACOMBS_EXPERT_RING"
+     },
+     {
+      "label": "Jacobus Register",
+      "ref": "JACOBUS_REGISTER"
+     },
+     {
+      "label": "Treasure Artifact",
+      "ref": "TREASURE_ARTIFACT"
+     },
+     {
+      "label": "Hunter Ring",
+      "ref": "HUNTER_RING"
+     },
+     {
+      "label": " Beastmaster Crest",
+      "ref": null
+     },
+     {
+      "label": "Shady Ring",
+      "ref": "SHADY_RING"
+     },
+     {
+      "label": "Bingo Talisman",
+      "ref": "BINGO_TALISMAN"
+     },
+     {
+      "label": "Odger's Gold Tooth",
+      "ref": "ODGERS_GOLD_TOOTH"
+     },
+     {
+      "label": "Odger's Diamond Tooth",
+      "ref": "ODGERS_DIAMOND_TOOTH"
+     },
+     {
+      "label": "Dwarven Metal Talisman",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Pets",
+    "task": "Pet Score",
+    "icon": "Bone",
+    "kind": "PET",
+    "description": "Obtain unique Pets. Each unique Pet in in your Pets Menu grants you Pet Score, which awards Magic Find!",
+    "xp": 51,
+    "entries": [
+     {
+      "label": "Ankylosaurus Pet",
+      "ref": "ANKYLOSAURUS_PET"
+     },
+     {
+      "label": "Blaze Pet",
+      "ref": "BLAZE_PET"
+     },
+     {
+      "label": "Eerie Pet",
+      "ref": "EERIE_PET"
+     },
+     {
+      "label": "Goblin Pet",
+      "ref": "GOBLIN_PET"
+     },
+     {
+      "label": "Jellyfish Pet",
+      "ref": "JELLYFISH_PET"
+     },
+     {
+      "label": "Kuudra Pet",
+      "ref": "KUUDRA_PET"
+     },
+     {
+      "label": "Mammoth Pet",
+      "ref": "MAMMOTH_PET"
+     },
+     {
+      "label": "Mole Pet",
+      "ref": "MOLE_PET"
+     },
+     {
+      "label": "Parrot Pet",
+      "ref": "PARROT_PET"
+     },
+     {
+      "label": "Skeleton Horse Pet",
+      "ref": "SKELETON_HORSE_PET"
+     },
+     {
+      "label": "Snowman Pet",
+      "ref": "SNOWMAN_PET"
+     },
+     {
+      "label": "Spinosaurus Pet",
+      "ref": "SPINOSAURUS_PET"
+     },
+     {
+      "label": "T-Rex Pet",
+      "ref": null
+     },
+     {
+      "label": "Turtle Pet",
+      "ref": "TURTLE_PET"
+     },
+     {
+      "label": "Droplet Wisp Pet",
+      "ref": "DROPLET_WISP_PET"
+     },
+     {
+      "label": "Frost Wisp Pet",
+      "ref": "FROST_WISP_PET"
+     },
+     {
+      "label": "Glacial Wisp Pet",
+      "ref": "GLACIAL_WISP_PET"
+     }
+    ]
+   },
+   {
+    "name": "Collections",
+    "task": "Collections",
+    "icon": "Painting",
+    "kind": "COLLECTION",
+    "description": "Reach certain Tiers in your Collections.",
+    "xp": 140,
+    "entries": [
+     {
+      "label": "Raw Chicken X",
+      "ref": "CHICKEN:10"
+     },
+     {
+      "label": "Gemstone XI",
+      "ref": "FINE_JASPER_GEM:11"
+     },
+     {
+      "label": "Glacite III",
+      "ref": "GLACITE:3"
+     },
+     {
+      "label": "Hard Stone VII",
+      "ref": "HARD_STONE:7"
+     },
+     {
+      "label": "Ice XI",
+      "ref": "ICE:11"
+     },
+     {
+      "label": "Sulphur IX",
+      "ref": "SULPHUR:9"
+     },
+     {
+      "label": "Tungsten III",
+      "ref": "TUNGSTEN:3"
+     },
+     {
+      "label": "Umber III",
+      "ref": "UMBER:3"
+     },
+     {
+      "label": "Blaze Rod VIII",
+      "ref": "BLAZE_ROD:8"
+     },
+     {
+      "label": "Chili Pepper III",
+      "ref": "CHILI_PEPPER:3"
+     },
+     {
+      "label": "Magmafish XII",
+      "ref": "MAGMAFISH:12"
+     },
+     {
+      "label": "Sponge IX",
+      "ref": "SPONGE:9"
+     }
+    ]
+   },
+   {
+    "name": "Minions",
+    "task": "Craft Minions",
+    "icon": "Cobblestone Minion I",
+    "kind": "MINION",
+    "description": "Craft unique Minions.",
+    "xp": 1017,
+    "entries": [
+     {
+      "label": "Cobblestone Minion XII",
+      "ref": "COBBLESTONE:12"
+     },
+     {
+      "label": "Obsidian Minion XII",
+      "ref": "OBSIDIAN:12"
+     },
+     {
+      "label": "Glowstone Minion XII",
+      "ref": "GLOWSTONE:12"
+     },
+     {
+      "label": "Mycelium Minion XII",
+      "ref": "MYCELIUM:12"
+     },
+     {
+      "label": "Red Sand Minion XII",
+      "ref": "RED_SAND:12"
+     },
+     {
+      "label": "Coal Minion XII",
+      "ref": "COAL:12"
+     },
+     {
+      "label": "Iron Minion XII",
+      "ref": "IRON:12"
+     },
+     {
+      "label": "Gold Minion XII",
+      "ref": "GOLD:12"
+     },
+     {
+      "label": "Diamond Minion XII",
+      "ref": "DIAMOND:12"
+     },
+     {
+      "label": "Lapis Minion XII",
+      "ref": "LAPIS:12"
+     },
+     {
+      "label": "Emerald Minion XII",
+      "ref": "EMERALD:12"
+     },
+     {
+      "label": "Quartz Minion XII",
+      "ref": "QUARTZ:12"
+     },
+     {
+      "label": "Mithril Minion XII",
+      "ref": "MITHRIL:12"
+     },
+     {
+      "label": "Hard Stone Minion XII",
+      "ref": "HARD_STONE:12"
+     },
+     {
+      "label": "Melon Minion XII",
+      "ref": "MELON:12"
+     },
+     {
+      "label": "Pumpkin Minion XII",
+      "ref": "PUMPKIN:12"
+     },
+     {
+      "label": "Carrot Minion XII",
+      "ref": "CARROT:12"
+     },
+     {
+      "label": "Potato Minion XII",
+      "ref": "POTATO:12"
+     },
+     {
+      "label": "Mushroom Minion XII",
+      "ref": "MUSHROOM:12"
+     },
+     {
+      "label": "Cactus Minion XII",
+      "ref": "CACTUS:12"
+     },
+     {
+      "label": "Cocoa Beans Minion XII",
+      "ref": "COCOA_BEANS:12"
+     },
+     {
+      "label": "Sugar Cane Minion XII",
+      "ref": "SUGAR_CANE:12"
+     },
+     {
+      "label": "Nether Wart Minion XII",
+      "ref": "NETHER_WART:12"
+     },
+     {
+      "label": "Fishing Minion XI",
+      "ref": "FISHING:11"
+     },
+     {
+      "label": "Revenant Minion XII",
+      "ref": "REVENANT:12"
+     },
+     {
+      "label": "Voidling Minion IX",
+      "ref": "VOIDLING:9"
+     },
+     {
+      "label": "Tarantula Minion XI",
+      "ref": "TARANTULA:11"
+     },
+     {
+      "label": "Inferno Minion VII",
+      "ref": "INFERNO:7"
+     },
+     {
+      "label": "Blaze Minion XII",
+      "ref": "BLAZE:12"
+     },
+     {
+      "label": "Magma Cube Minion XII",
+      "ref": "MAGMA_CUBE:12"
+     },
+     {
+      "label": "Ghast Minion XII",
+      "ref": "GHAST:12"
+     },
+     {
+      "label": "Cow Minion XII",
+      "ref": "COW:12"
+     },
+     {
+      "label": "Chicken Minion XII",
+      "ref": "CHICKEN:12"
+     },
+     {
+      "label": "Sheep Minion XII",
+      "ref": "SHEEP:12"
+     },
+     {
+      "label": "Rabbit Minion XII",
+      "ref": "RABBIT:12"
+     }
+    ]
+   },
+   {
+    "name": "Bank Upgrades",
+    "task": "Bank Upgrades",
+    "icon": "Palatial Museum Rank",
+    "kind": "OTHER",
+    "description": "Upgrade your Bank Account.",
+    "xp": 65,
+    "entries": [
+     {
+      "label": "Bank Upgrades",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Catacombs Level XL",
+    "task": "Catacombs Level Up",
+    "icon": "Wither Artifact",
+    "kind": "OTHER",
+    "description": "Reach Catacombs Level XL by completing Dungeon runs in The Catacombs.",
+    "xp": 220,
+    "entries": [
+     {
+      "label": "Catacombs Level XL",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Dungeon Classes",
+    "task": "Class Level Up",
+    "icon": "Wither Artifact",
+    "kind": "OTHER",
+    "description": "Reach Level XXXV in all of your Dungeon Classes.",
+    "xp": 200,
+    "entries": [
+     {
+      "label": "Dungeon Classes",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Dungeon Floors",
+    "task": "Complete Dungeons",
+    "icon": "Wither Artifact",
+    "kind": "OTHER",
+    "description": "Complete Dungeon floors.",
+    "xp": 210,
+    "entries": [
+     {
+      "label": "Dungeon Floors",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Dragon Essence Shop",
+    "task": "Dragon Essence Shop",
+    "icon": "Dragon Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Dragon Essence Shop.",
+    "xp": 63,
+    "entries": [
+     {
+      "label": "Dragon Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Ice Essence Shop",
+    "task": "Ice Essence Shop",
+    "icon": "Ice Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Ice Essence Shop.",
+    "xp": 21,
+    "entries": [
+     {
+      "label": "Ice Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Spider Essence Shop",
+    "task": "Spider Essence Shop",
+    "icon": "Spider Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Spider Essence Shop.",
+    "xp": 44,
+    "entries": [
+     {
+      "label": "Spider Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Undead Essence Shop",
+    "task": "Undead Essence Shop",
+    "icon": "Undead Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Undead Essence Shop.",
+    "xp": 71,
+    "entries": [
+     {
+      "label": "Undead Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Wither Essence Shop",
+    "task": "Wither Essence Shop",
+    "icon": "Wither Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Wither Essence Shop.",
+    "xp": 71,
+    "entries": [
+     {
+      "label": "Wither Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Gold Essence Shop",
+    "task": "Gold Essence Shop",
+    "icon": "Gold Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Gold Essence Shop.",
+    "xp": 55,
+    "entries": [
+     {
+      "label": "Gold Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Diamond Essence Shop",
+    "task": "Diamond Essence Shop",
+    "icon": "Diamond Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the DiamondEssence Shop.",
+    "xp": 39,
+    "entries": [
+     {
+      "label": "Diamond Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Slayer",
+    "task": "Slayer Level Up",
+    "icon": "Bottle o' Enchanting",
+    "kind": "SLAYER",
+    "description": "Complete Slayer Quests to gain Slayer XP and increase your Slayer levels.",
+    "xp": 685,
+    "entries": [
+     {
+      "label": "Enderman Slayer LVL 9",
+      "ref": "VOIDGLOOM_SERAPH:9"
+     },
+     {
+      "label": "Blaze Slayer LVL 6",
+      "ref": "INFERNO_DEMONLORD:6"
+     }
+    ]
+   },
+   {
+    "name": "Dungeon Boss Collections",
+    "task": "Boss Collections",
+    "icon": "Boss Collections Icon",
+    "kind": "OTHER",
+    "description": "Increase your Boss Collections by killing Dungeon bosses.",
+    "xp": 350,
+    "entries": [
+     {
+      "label": "Dungeon Boss Collections",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Bestiary Milestone CC",
+    "task": "Bestiary Progression",
+    "icon": "Bestiary Icon",
+    "kind": "OTHER",
+    "description": "Reach Bestiary Milestone CC by killing unique Families of enemies.",
+    "xp": 500,
+    "entries": [
+     {
+      "label": "Bestiary Milestone CC",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Inferno Demonlord IV",
+    "task": "Defeat Slayers",
+    "icon": "Blaze Powder",
+    "kind": "OTHER",
+    "description": "Kill the {{Dark Red|Inferno Demonlord IV}}.",
+    "xp": 100,
+    "entries": [
+     {
+      "label": "Inferno Demonlord IV",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Kuudra",
+    "task": "Defeat Kuudra",
+    "icon": "Kuudra Key",
+    "kind": "OTHER",
+    "description": "Defeat Kuudra on the Crimson Isle.",
+    "xp": 140,
+    "entries": [
+     {
+      "label": "Kuudra",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Heart of the Mountain VII",
+    "task": "Heart of the Mountain",
+    "icon": "Heart of the Mountain",
+    "kind": "OTHER",
+    "description": "Reach Heart of the Mountain VII in the {{Dark Green|Dwarven Mines}}.",
+    "xp": 130,
+    "entries": [
+     {
+      "label": "Heart of the Mountain VII",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Commission Milestone VI",
+    "task": "Commission Milestones",
+    "icon": "Royal Pigeon",
+    "kind": "OTHER",
+    "description": "Reach {{Blue|Commission Milestone VI}} by completing Commissions in the {{Dark Green|Dwarven Mines}}.",
+    "xp": 75,
+    "entries": [
+     {
+      "label": "Commission Milestone VI",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Peak of the Mountain 7",
+    "task": "Peak of the Mountain",
+    "icon": "Block of Redstone",
+    "kind": "OTHER",
+    "description": "Reach Peak of the Mountain 7 by spending Tokens in your Heart of the Mountain in the {{Dark Green|Dwarven Mines}}.",
+    "xp": 365,
+    "entries": [
+     {
+      "label": "Peak of the Mountain 7",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Anita's Shop",
+    "task": "Anita's Shop Upgrades",
+    "icon": "Anita Head",
+    "kind": "OTHER",
+    "description": "Purchase Farming Upgrades from Anita in the Village.",
+    "xp": 150,
+    "entries": [
+     {
+      "label": "Anita's Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Trophy Fish",
+    "task": "Trophy Fish",
+    "icon": "Slugfish",
+    "kind": "OTHER",
+    "description": "Catch Trophy Fish by lava fishing in the Crimson Isle.",
+    "xp": 576,
+    "entries": [
+     {
+      "label": "Trophy Fish",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Dolphin Pet Milestone",
+    "task": "Dolphin Pet Milestones",
+    "icon": "Dolphin Pet",
+    "kind": "OTHER",
+    "description": "Upgrade a Dolphin Pet to {{Legendary}}.",
+    "xp": 40,
+    "entries": [
+     {
+      "label": "Dolphin Pet Milestone",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Accessory Bag Upgrades",
+    "task": "Accessory Bag Upgrades",
+    "icon": "Jacobus Register",
+    "kind": "OTHER",
+    "description": "Increase the size of your Accessory Bag by 40 slots by talking to Jacobus in the Thaumaturgist building.",
+    "xp": 20,
+    "entries": [
+     {
+      "label": "Accessory Bag Upgrades",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Abiphone Contacts",
+    "task": "Abiphone Contacts",
+    "icon": "Abiphone XIV Purple",
+    "kind": "OTHER",
+    "description": "Add NPCs to your Abiphone Contacts.",
+    "xp": 180,
+    "entries": [
+     {
+      "label": "Abiphone Contacts",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Taming Cap Increase",
+    "task": "Taming Cap Increases",
+    "icon": "George Head",
+    "kind": "OTHER",
+    "description": "Increase the skill cap from George at Pet Care.",
+    "xp": 100,
+    "entries": [
+     {
+      "label": "Taming Cap Increase",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Consume McGrubber's Burgers",
+    "task": "McGrubber's Burger",
+    "icon": "McGrubber's Burger",
+    "kind": "OTHER",
+    "description": "Obtain McGrubber's Burgers by fighting Riftstalker Bloodfiends - then eat them!",
+    "xp": 25,
+    "entries": [
+     {
+      "label": "Consume McGrubber's Burgers",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Donate Fossils",
+    "task": "Fossil Research",
+    "icon": "Suspicious Scrap",
+    "kind": "OTHER",
+    "description": "Obtain a Fossil from excavating {{Blue|Suspicious Scrap}} and donate it to the Research Center.",
+    "xp": 80,
+    "entries": [
+     {
+      "label": "Donate Fossils",
+      "ref": null
+     }
+    ]
+   }
+  ],
+  "MASTER": [
+   {
+    "name": "Skills",
+    "task": "Skill Level Up",
+    "icon": "Diamond Sword",
+    "kind": "SKILL",
+    "description": "Level up your Skills.",
+    "xp": 1500,
+    "entries": [
+     {
+      "label": "Taming Skill LX",
+      "ref": "TAMING:60"
+     },
+     {
+      "label": "Farming Skill LX",
+      "ref": "FARMING:60"
+     },
+     {
+      "label": "Mining Skill LX",
+      "ref": "MINING:60"
+     },
+     {
+      "label": "Combat Skill LX",
+      "ref": "COMBAT:60"
+     },
+     {
+      "label": "Enchanting Skill LX",
+      "ref": "ENCHANTING:60"
+     }
+    ]
+   },
+   {
+    "name": "Museum Donations",
+    "task": "Museum Progression",
+    "icon": "Block of Gold",
+    "kind": "MUSEUM",
+    "description": "Donate items and armor sets to the Museum.",
+    "xp": 93,
+    "entries": [
+     {
+      "label": "Armor of Magma",
+      "ref": null
+     },
+     {
+      "label": "Ember Armor",
+      "ref": null
+     },
+     {
+      "label": "Fancy Tuxedo",
+      "ref": "FANCY_TUXEDO"
+     },
+     {
+      "label": "Elegant Tuxedo",
+      "ref": "ELEGANT_TUXEDO"
+     },
+     {
+      "label": "Magma Lord Armor",
+      "ref": "MAGMA_LORD"
+     },
+     {
+      "label": "Magma Bow",
+      "ref": null
+     },
+     {
+      "label": "Vorpal Katana",
+      "ref": "VORPAL_KATANA"
+     },
+     {
+      "label": "Atomsplit Katana",
+      "ref": "ATOMSPLIT_KATANA"
+     },
+     {
+      "label": "Sinseeker Scythe",
+      "ref": "SINSEEKER_SCYTHE"
+     },
+     {
+      "label": "Aspect of the Void",
+      "ref": "ASPECT_OF_THE_VOID"
+     },
+     {
+      "label": "Terminator",
+      "ref": "TERMINATOR"
+     },
+     {
+      "label": "Hyperion",
+      "ref": "HYPERION"
+     },
+     {
+      "label": "Astraea",
+      "ref": "ASTRAEA"
+     },
+     {
+      "label": "Scylla",
+      "ref": "SCYLLA"
+     },
+     {
+      "label": "Valkyrie",
+      "ref": "VALKYRIE"
+     },
+     {
+      "label": "Enrager",
+      "ref": null
+     },
+     {
+      "label": "Firedust Dagger",
+      "ref": "FIREDUST_DAGGER"
+     },
+     {
+      "label": "Kindlebane Dagger",
+      "ref": "BURSTFIRE_DAGGER"
+     },
+     {
+      "label": "Pyrochaos Dagger",
+      "ref": "HEARTFIRE_DAGGER"
+     },
+     {
+      "label": "Twilight Dagger",
+      "ref": "MAWDUST_DAGGER"
+     },
+     {
+      "label": "Mawdredge Dagger",
+      "ref": "BURSTMAW_DAGGER"
+     },
+     {
+      "label": "Pyrochaos Dagger",
+      "ref": "HEARTFIRE_DAGGER"
+     },
+     {
+      "label": "Deathripper Dagger",
+      "ref": "HEARTMAW_DAGGER"
+     },
+     {
+      "label": "Dark Claymore",
+      "ref": "DARK_CLAYMORE"
+     },
+     {
+      "label": "Vampire Mask",
+      "ref": "VAMPIRE_MASK"
+     },
+     {
+      "label": "Vampire Witch Mask",
+      "ref": "VAMPIRE_WITCH_MASK"
+     },
+     {
+      "label": "Pendant of Divan",
+      "ref": "DIVAN_EQUIPMENT"
+     },
+     {
+      "label": "Dwarven Handwarmers",
+      "ref": "DWARVEN_HANDWARMERS"
+     },
+     {
+      "label": "Reinforced Chisel",
+      "ref": "REINFORCED_CHISEL"
+     },
+     {
+      "label": "Glacite-Plated Chisel",
+      "ref": "GLACITE_CHISEL"
+     },
+     {
+      "label": "Perfect Chisel",
+      "ref": "PERFECT_CHISEL"
+     },
+     {
+      "label": "SOS Flare",
+      "ref": "SOS_FLARE"
+     }
+    ]
+   },
+   {
+    "name": "Accessories",
+    "task": "Accessory Bag",
+    "icon": "Accessory Bag",
+    "kind": "ACCESSORY",
+    "description": "Obtain unique Accessories in your Accessory Bag.",
+    "xp": 33,
+    "entries": [
+     {
+      "label": "Master Skull - Tier 1",
+      "ref": "MASTER_SKULL_TIER_1"
+     },
+     {
+      "label": "Master Skull - Tier 2",
+      "ref": "MASTER_SKULL_TIER_2"
+     },
+     {
+      "label": "Master Skull - Tier 3",
+      "ref": "MASTER_SKULL_TIER_3"
+     },
+     {
+      "label": "Master Skull - Tier 4",
+      "ref": "MASTER_SKULL_TIER_4"
+     },
+     {
+      "label": "Pocket Espresso Machine",
+      "ref": "POCKET_ESPRESSO_MACHINE"
+     },
+     {
+      "label": "Blaze Talisman",
+      "ref": "BLAZE_TALISMAN"
+     },
+     {
+      "label": "Reaper Orb",
+      "ref": "REAPER_ORB"
+     },
+     {
+      "label": "Draconic Artifact",
+      "ref": "DRACONIC_ARTIFACT"
+     },
+     {
+      "label": "Ender Artifact",
+      "ref": "ENDER_ARTIFACT"
+     },
+     {
+      "label": "Ender Relic",
+      "ref": "ENDER_RELIC"
+     },
+     {
+      "label": "Crooked Artifact",
+      "ref": "CROOKED_ARTIFACT"
+     },
+     {
+      "label": "Wither Artifact",
+      "ref": "WITHER_ARTIFACT"
+     },
+     {
+      "label": "Wither Relic",
+      "ref": "WITHER_RELIC"
+     },
+     {
+      "label": "Nether Artifact",
+      "ref": "NETHER_ARTIFACT"
+     },
+     {
+      "label": "Hegemony Artifact",
+      "ref": "HEGEMONY_ARTIFACT"
+     },
+     {
+      "label": "Seal of the Family",
+      "ref": "SEAL_OF_THE_FAMILY"
+     },
+     {
+      "label": "Handy Blood Chalice",
+      "ref": "HANDY_BLOOD_CHALICE"
+     },
+     {
+      "label": "Soulflow Supercell",
+      "ref": "SOULFLOW_SUPERCELL"
+     },
+     {
+      "label": "Master Skull - Tier 5",
+      "ref": "MASTER_SKULL_TIER_5"
+     },
+     {
+      "label": "Master Skull - Tier 6",
+      "ref": "MASTER_SKULL_TIER_6"
+     },
+     {
+      "label": "Master Skull - Tier 7",
+      "ref": "MASTER_SKULL_TIER_7"
+     },
+     {
+      "label": "Burststopper Talisman",
+      "ref": "BURSTSTOPPER_TALISMAN"
+     },
+     {
+      "label": "Burststopper Artifact",
+      "ref": "BURSTSTOPPER_ARTIFACT"
+     },
+     {
+      "label": "Bingo Ring",
+      "ref": "BINGO_RING"
+     },
+     {
+      "label": "Bingo Artifact",
+      "ref": "BINGO_ARTIFACT"
+     },
+     {
+      "label": "Bingo Relic",
+      "ref": "BINGO_RELIC"
+     },
+     {
+      "label": "Shen's Regalia",
+      "ref": "SHENS_REGALIA"
+     },
+     {
+      "label": "Pandora's Box",
+      "ref": "PANDORAS_BOX"
+     },
+     {
+      "label": "Artifact of Control",
+      "ref": "ARTIFACT_OF_CONTROL"
+     },
+     {
+      "label": "Burning Kuudra Core",
+      "ref": "BURNING_KUUDRA_CORE"
+     },
+     {
+      "label": "Fiery Kuudra Core",
+      "ref": "FIERY_KUUDRA_CORE"
+     },
+     {
+      "label": "Infernal Kuudra Core",
+      "ref": "INFERNAL_KUUDRA_CORE"
+     },
+     {
+      "label": "Relic of Power",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Pets",
+    "task": "Pet Score",
+    "icon": "Bone",
+    "kind": "PET",
+    "description": "Obtain unique Pets. Each unique Pet in in your Pets Menu grants you Pet Score, which awards Magic Find!",
+    "xp": 15,
+    "entries": [
+     {
+      "label": "Ender Dragon Pet",
+      "ref": "ENDER_DRAGON_PET"
+     },
+     {
+      "label": "Golden Dragon Pet",
+      "ref": "GOLDEN_DRAGON_PET"
+     },
+     {
+      "label": "Phoenix Pet",
+      "ref": "PHOENIX_PET"
+     },
+     {
+      "label": "Scatha Pet",
+      "ref": "SCATHA_PET"
+     },
+     {
+      "label": "Subzero Wisp Pet",
+      "ref": "SUBZERO_WISP_PET"
+     }
+    ]
+   },
+   {
+    "name": "Minions",
+    "task": "Craft Minions",
+    "icon": "Cobblestone Minion I",
+    "kind": "MINION",
+    "description": "Craft unique Minions.",
+    "xp": 43,
+    "entries": [
+     {
+      "label": "Voidling Minion XI",
+      "ref": "VOIDLING:11"
+     },
+     {
+      "label": "Inferno Minion XI",
+      "ref": "INFERNO:11"
+     }
+    ]
+   },
+   {
+    "name": "Palatial Bank Account",
+    "task": "Bank Upgrades",
+    "icon": "Palatial Museum Rank",
+    "kind": "OTHER",
+    "description": "Upgrade your Bank Account to the {{Dark Red|Palatial}} tier.",
+    "xp": 50,
+    "entries": [
+     {
+      "label": "Palatial Bank Account",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Catacombs Level L",
+    "task": "Catacombs Level Up",
+    "icon": "Wither Artifact",
+    "kind": "OTHER",
+    "description": "Reach Catacombs Level L by completing Dungeon runs in The Catacombs.",
+    "xp": 400,
+    "entries": [
+     {
+      "label": "Catacombs Level L",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Dungeon Classes",
+    "task": "Class Level Up",
+    "icon": "Wither Artifact",
+    "kind": "OTHER",
+    "description": "Reach Level L in all of your Dungeon Classes.",
+    "xp": 300,
+    "entries": [
+     {
+      "label": "Dungeon Classes",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Master Catacobs Floor VII",
+    "task": "Complete Dungeons",
+    "icon": "Wither Artifact",
+    "kind": "OTHER",
+    "description": "Complete The Master Catacombs Floor VII Dungeon.",
+    "xp": 200,
+    "entries": [
+     {
+      "label": "Master Catacobs Floor VII",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Infused Dragon V",
+    "task": "Dragon Essence Shop",
+    "icon": "Ender Dragon Pet",
+    "kind": "OTHER",
+    "description": "Purchase Infused Dragon V from the Dragon Essence Shop.",
+    "xp": 19,
+    "entries": [
+     {
+      "label": "Infused Dragon V",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Season of Joy X",
+    "task": "Ice Essence Shop",
+    "icon": "White Gift",
+    "kind": "OTHER",
+    "description": "Purchase Season of Joy X from the Ice Essence Shop.",
+    "xp": 19,
+    "entries": [
+     {
+      "label": "Season of Joy X",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Spider Essence Shop",
+    "task": "Spider Essence Shop",
+    "icon": "Spider Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Spider Essence Shop.",
+    "xp": 14,
+    "entries": [
+     {
+      "label": "Spider Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Undead Essence Shop",
+    "task": "Undead Essence Shop",
+    "icon": "Undead Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Undead Essence Shop.",
+    "xp": 21,
+    "entries": [
+     {
+      "label": "Undead Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Gold Essence Shop",
+    "task": "Gold Essence Shop",
+    "icon": "Gold Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the Gold Essence Shop.",
+    "xp": 39,
+    "entries": [
+     {
+      "label": "Gold Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Diamond Essence Shop",
+    "task": "Diamond Essence Shop",
+    "icon": "Diamond Essence",
+    "kind": "OTHER",
+    "description": "Purchase perks from the DiamondEssence Shop.",
+    "xp": 39,
+    "entries": [
+     {
+      "label": "Diamond Essence Shop",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Dungeon Boss Collections",
+    "task": "Boss Collections",
+    "icon": "Boss Collections Icon",
+    "kind": "OTHER",
+    "description": "Increase your Boss Collections by killing Dungeon bosses.",
+    "xp": 75,
+    "entries": [
+     {
+      "label": "Dungeon Boss Collections",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Bestiary Milestone CCC",
+    "task": "Bestiary Progression",
+    "icon": "Bestiary Icon",
+    "kind": "OTHER",
+    "description": "Reach Bestiary Milestone CCC by killing unique Families of enemies.",
+    "xp": 1000,
+    "entries": [
+     {
+      "label": "Bestiary Milestone CCC",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Blaze LVL 9",
+    "task": "Slayer Level Up",
+    "icon": "Blaze Powder",
+    "kind": "SLAYER",
+    "description": "Defeat Inferno Demonlord to gain Slayer XP and reach Blaze Slayer LVL 9.",
+    "xp": 425,
+    "entries": [
+     {
+      "label": "Blaze LVL 9",
+      "ref": "INFERNO_DEMONLORD:9"
+     }
+    ]
+   },
+   {
+    "name": "Kuudra Infernal Tier",
+    "task": "Defeat Kuudra",
+    "icon": "Infernal Kuudra Key",
+    "kind": "OTHER",
+    "description": "Defeat Kuudra Infernal Tier on the Crimson Isle.",
+    "xp": 100,
+    "entries": [
+     {
+      "label": "Kuudra Infernal Tier",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Peak of the Mountain 7",
+    "task": "Peak of the Mountain",
+    "icon": "Block of Redstone",
+    "kind": "OTHER",
+    "description": "Reach Peak of the Mountain 7 by spending Tokens in your Heart of the Mountain in the {{Dark Green|Dwarven Mines}}.",
+    "xp": 225,
+    "entries": [
+     {
+      "label": "Peak of the Mountain 7",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Extra Farming Drops",
+    "task": "Anita's Shop Upgrades",
+    "icon": "Wheat",
+    "kind": "OTHER",
+    "description": "Purchase Extra Farming Drops XV from Anita in the Village.",
+    "xp": 30,
+    "entries": [
+     {
+      "label": "Extra Farming Drops",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Accessory Bag Upgrades",
+    "task": "Accessory Bag Upgrades",
+    "icon": "Jacobus Register",
+    "kind": "OTHER",
+    "description": "Increase the size of your Accessory Bag by 198 slots by talking to Jacobus in the Thaumaturgist building.",
+    "xp": 158,
+    "entries": [
+     {
+      "label": "Accessory Bag Upgrades",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Collections",
+    "task": "Collections",
+    "icon": "Painting",
+    "kind": "COLLECTION",
+    "description": "Reach certain Tiers in your Collections.",
+    "xp": 96,
+    "entries": [
+     {
+      "label": "Glacite IX",
+      "ref": "GLACITE:9"
+     },
+     {
+      "label": "Tungsten IX",
+      "ref": "TUNGSTEN:9"
+     },
+     {
+      "label": "Umber IX",
+      "ref": "UMBER:9"
+     },
+     {
+      "label": "Chili Pepper IX",
+      "ref": "CHILI_PEPPER:9"
+     }
+    ]
+   },
+   {
+    "name": "Abiphone Contacts",
+    "task": "Abiphone Contacts",
+    "icon": "Abiphone XIV Purple",
+    "kind": "OTHER",
+    "description": "Add NPCs to your Abiphone Contacts.",
+    "xp": 120,
+    "entries": [
+     {
+      "label": "Abiphone Contacts",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Heart of the Mountain X",
+    "task": "Heart of the Mountain",
+    "icon": "Heart of the Mountain",
+    "kind": "OTHER",
+    "description": "Reach Heart of the Mountain X in the {{Dark Green|Dwarven Mines}}.",
+    "xp": 630,
+    "entries": [
+     {
+      "label": "Heart of the Mountain X",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Peak of the Mountain 10",
+    "task": "Peak of the Mountain",
+    "icon": "Block of Redstone",
+    "kind": "OTHER",
+    "description": "Reach Peak of the Mountain 10 by spending Tokens in your Heart of the Mountain in the {{Dark Green|Dwarven Mines}}.",
+    "xp": 525,
+    "entries": [
+     {
+      "label": "Peak of the Mountain 10",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Consume 5x Reaper Pepper",
+    "task": "Reaper Peppers",
+    "icon": "Reaper Pepper",
+    "kind": "OTHER",
+    "description": "Obtain aReaper Pepper by putting Hypergolic-Grade fuels into the Inferno Minion - then eat them!",
+    "xp": 50,
+    "entries": [
+     {
+      "label": "Consume 5x Reaper Pepper",
+      "ref": null
+     }
+    ]
+   }
+  ]
+ }
+}

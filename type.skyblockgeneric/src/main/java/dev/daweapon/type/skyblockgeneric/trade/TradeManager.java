@@ -46,6 +46,10 @@ public final class TradeManager {
             sender.sendMessage("<c>You can't trade with yourself!");
             return;
         }
+        if (!target.getToggles().get(dev.daweapon.type.generic.data.datapoints.DatapointToggles.Toggles.ToggleType.PLAYER_TRADING)) {
+            sender.sendMessage("<c>" + target.getUsername() + " <c>has trade requests disabled!");
+            return;
+        }
         Optional<String> refusal = TradeRules.refuseProfile(sender)
                 .or(() -> TradeRules.refuseProfile(target)
                         .map(_ -> "<c>" + target.getUsername() + " <c>is on a profile that can't trade!"))

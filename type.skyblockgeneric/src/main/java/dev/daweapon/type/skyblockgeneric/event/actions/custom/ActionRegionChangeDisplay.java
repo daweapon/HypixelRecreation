@@ -1,6 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.event.actions.custom;
 
 import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.generic.data.datapoints.DatapointToggles;
 import dev.daweapon.type.generic.event.EventNodes;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.event.phase.EventPhase;
@@ -16,6 +17,7 @@ public class ActionRegionChangeDisplay implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)
     public void run(PlayerRegionChangeEvent event) {
         SkyBlockPlayer player = event.getPlayer();
+        if (!player.getToggles().get(DatapointToggles.Toggles.ToggleType.ZONES_IN_ACTION_BAR)) return;
 
         if (event.getTo() != null && event.getFrom() != null
                 && !event.getTo().equals(event.getFrom())) {

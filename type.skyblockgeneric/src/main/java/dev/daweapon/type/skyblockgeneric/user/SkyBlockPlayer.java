@@ -439,6 +439,7 @@ public class SkyBlockPlayer extends HypixelPlayer {
         SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
             if (player.getUuid().equals(getUuid())) return;
             if (player.getInstance() != getInstance()) return;
+            if (!player.getToggles().get(dev.daweapon.type.generic.data.datapoints.DatapointToggles.Toggles.ToggleType.DEATH_MESSAGES)) return;
 
             player.sendMessage("<c>☠ <7>{} <7>{}", getFullDisplayName(), creator.createOther());
         });

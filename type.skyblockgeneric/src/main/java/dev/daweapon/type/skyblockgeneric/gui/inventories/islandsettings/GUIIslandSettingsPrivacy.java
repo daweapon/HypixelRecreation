@@ -3,6 +3,7 @@ package dev.daweapon.type.skyblockgeneric.gui.inventories.islandsettings;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.Material;
 import dev.daweapon.type.generic.data.datapoints.DatapointString;
+import dev.daweapon.type.generic.data.datapoints.DatapointToggles.Toggles.ToggleType;
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import dev.daweapon.type.generic.gui.v2.Components;
 import dev.daweapon.type.generic.gui.v2.DefaultState;
@@ -58,6 +59,17 @@ public class GUIIslandSettingsPrivacy extends StatelessView {
                 player.openView(new GUIIslandSettingsPrivacy());
             });
         }
+
+        layout.slot(31, (s, c) -> ItemStacks.item(Material.GOLD_INGOT,
+                "<6>Banking API\n<7>Allow your profiles banking data\nin the API."));
+        layout.slot(40, (s, c) -> {
+            boolean enabled = ((SkyBlockPlayer) c.player()).getToggles().get(ToggleType.API_BANKING);
+            return ItemStacks.item(enabled ? Material.LIME_DYE : Material.GRAY_DYE,
+                    "<6>Banking API\n<7>Click to " + (enabled ? "disable" : "enable") + "!");
+        }, (click, c) -> {
+            ((SkyBlockPlayer) c.player()).getToggles().inverse(ToggleType.API_BANKING);
+            c.replace(new GUIIslandSettingsPrivacy());
+        });
 
         Components.backOrClose(layout, 48, ctx);
         Components.close(layout, 49);

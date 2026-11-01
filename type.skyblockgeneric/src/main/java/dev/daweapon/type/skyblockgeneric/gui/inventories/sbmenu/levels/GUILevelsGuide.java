@@ -12,16 +12,19 @@ import dev.daweapon.type.generic.gui.v2.StatelessView;
 import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
 import dev.daweapon.type.generic.gui.v2.ViewLayout;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
+import dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.levels.guide.GUIGuideTask;
 import dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.levels.rewards.GUILevelRewards;
 import dev.daweapon.type.skyblockgeneric.levels.LevelsGuide;
-import dev.daweapon.type.skyblockgeneric.levels.abstr.SkyBlockLevelCauseAbstr;
+import dev.daweapon.type.skyblockgeneric.levels.guide.GuideEntry;
+import dev.daweapon.type.skyblockgeneric.levels.guide.GuideTask;
+import dev.daweapon.type.skyblockgeneric.levels.guide.SkyBlockGuide;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GUILevelsGuide extends StatelessView {
-    private static final double UNLOCK_THRESHOLD = 0.5;
+    private static final int LISTED_ENTRIES = 12;
     private static final String[] TIER_COLORS = {"<a>", "<b>", "<dark_aqua>", "<9>", "<5>", "<6>", "<d>"};
     private static final int[] TIER_SLOTS = {1, 2, 3, 4, 5, 6, 7};
 
@@ -38,13 +41,7 @@ public class GUILevelsGuide extends StatelessView {
     }
 
     public static LevelsGuide currentTier(SkyBlockPlayer player) {
-        LevelsGuide current = LevelsGuide.STARTER;
-        for (LevelsGuide candidate : LevelsGuide.values()) {
-            if (candidate.getTasksSets().isEmpty() || !isUnlocked(player, candidate)) break;
-            current = candidate;
-            if (progress(player, candidate) < 1) break;
-        }
-        return current;
+        return SkyBlockGuide.currentTier(player);
     }
 
     @Override
@@ -67,18 +64,17 @@ public class GUILevelsGuide extends StatelessView {
         for (int i = 0; i < tiers.length && i < TIER_SLOTS.length; i++) {
             LevelsGuide tier = tiers[i];
             layout.slot(TIER_SLOTS[i], (s, c) -> tierTab((SkyBlockPlayer) c.player(), tier), (click, c) -> {
-                if (tier != guide && !tier.getTasksSets().isEmpty() && isUnlocked((SkyBlockPlayer) c.player(), tier)) {
+                if (tier != guide && SkyBlockGuide.unlocked((SkyBlockPlayer) c.player(), tier)) {
                     c.replace(new GUILevelsGuide(tier));
                 }
             });
         }
 
-        LevelsGuide.TasksSet[] tasks = guide.getTasksSets().toArray(new LevelsGuide.TasksSet[0]);
-        for (int i = 0; i < TASK_SLOTS.length && i < tasks.length; i++) {
-            LevelsGuide.TasksSet task = tasks[i];
-
+        List<GuideTask> tasks = guide.tasks();
+        for (int i = 0; i < TASK_SLOTS.length && i < tasks.size(); i++) {
+            GuideTask task = tasks.get(i);
             layout.slot(TASK_SLOTS[i], (s, c) -> taskTile((SkyBlockPlayer) c.player(), task),
-                    (click, c) -> c.push(task.getGuiToOpen()));
+                    (click, c) -> c.push(new GUIGuideTask(), new GUIGuideTask.State(guide, task, task.entries(), 0)));
         }
     }
 
@@ -88,12 +84,12 @@ public class GUILevelsGuide extends StatelessView {
         List<Text> lore = new ArrayList<>();
         lore.add(tier.getTitle());
         lore.add(Text.empty());
-        if (isUnlocked(player, tier) && !tier.getTasksSets().isEmpty()) {
+        if (SkyBlockGuide.unlocked(player, tier)) {
             lore.add(tier.getDescription());
             lore.add(Text.empty());
-            double progress = progress(player, tier);
+            double progress = SkyBlockGuide.progress(player, tier);
             lore.add(Text.of("<7>Total Progress: <a>{}%", percent(progress)));
-            lore.add(GUILevelRewards.progressBar(progress, 1, causesDone(player, tier), causes(tier).size()));
+            lore.add(GUILevelRewards.progressBar(progress, 1, SkyBlockGuide.completed(player, tier), SkyBlockGuide.entries(tier).size()));
             lore.add(Text.empty());
             lore.add(tier == guide ? Text.of("<a>SELECTED") : Text.of("<e>Click to view!"));
             Material material = tier == guide ? Material.MAP : tier.getGlassMaterial();
@@ -102,7 +98,7 @@ public class GUILevelsGuide extends StatelessView {
         String previousName = tier.ordinal() == 0 ? name
                 : StringUtility.toNormalCase(LevelsGuide.values()[tier.ordinal() - 1].name());
         String previousColor = TIER_COLORS[Math.max(0, tier.ordinal() - 1)];
-        lore.add(Text.of("<7>Reach <a>{}% <7>completion of", Math.round(UNLOCK_THRESHOLD * 100)));
+        lore.add(Text.of("<7>Reach <a>{}% <7>completion of", Math.round(SkyBlockGuide.UNLOCK_THRESHOLD * 100)));
         lore.add(Text.of(previousColor + "{} <7>to unlock this", previousName));
         lore.add(Text.of("<7>stage!"));
         lore.add(Text.empty());
@@ -110,55 +106,42 @@ public class GUILevelsGuide extends StatelessView {
         return ItemStacks.item(Material.GRAY_DYE, 1, Text.of(color + "{}", name), lore);
     }
 
-    private static ItemStack.Builder taskTile(SkyBlockPlayer player, LevelsGuide.TasksSet task) {
-        List<SkyBlockLevelCauseAbstr> causes = new ArrayList<>(task.getCauses().keySet());
-        long done = causes.stream().filter(cause -> player.getSkyBlockExperience().hasExperienceFor(cause)).count();
-        double worth = causes.stream().mapToDouble(SkyBlockLevelCauseAbstr::xpReward).sum();
-        double progress = causes.isEmpty() ? 0 : done / (double) causes.size();
+    private static ItemStack.Builder taskTile(SkyBlockPlayer player, GuideTask task) {
+        long done = task.completed(player);
+        double progress = task.progress(player);
         List<Text> lore = new ArrayList<>();
 
-        if (causes.size() > 1) {
-            lore.add(Text.key("gui_sbmenu.levels.guide.tasks", causes.size()));
+        if (task.entries().size() > 1) {
+            lore.add(Text.key("gui_sbmenu.levels.guide.tasks", task.entries().size()));
             lore.add(Text.empty());
         }
-        task.getDisplay().apply(player).forEach(line -> lore.add(Text.parse(line)));
+        lore.add(Text.of("<7>{}", task.description()));
+        if (task.entries().size() > 1) {
+            lore.add(Text.empty());
+            List<GuideEntry> entries = task.entries();
+            for (int i = 0; i < Math.min(LISTED_ENTRIES, entries.size()); i++) {
+                lore.add(entryLine(player, entries.get(i)));
+            }
+            if (entries.size() > LISTED_ENTRIES) lore.add(Text.of("<8>...and {} more", entries.size() - LISTED_ENTRIES));
+        }
         lore.add(Text.empty());
-        lore.add(Text.of("<7>Total Worth: <b>+{} XP", StringUtility.commaify(Math.round(worth))));
+        lore.add(Text.of("<7>Total Worth: <b>+{} XP", StringUtility.commaify(task.xp())));
         lore.add(Text.empty());
         lore.add(Text.of("<7>Total Progress: <a>{}%", percent(progress)));
-        lore.add(GUILevelRewards.progressBar(progress, 1, done, causes.size()));
+        lore.add(GUILevelRewards.progressBar(progress, 1, done, task.entries().size()));
         lore.add(Text.empty());
         lore.add(Text.of("<e>Click to view more!"));
 
         String status = progress >= 1 ? "<a>✔ " : "<c>✖ ";
-        Text name = Text.of(status + "<a>{}", ItemStacks.nameText(task.getMaterial()));
-        return ItemStacks.text(ItemStacks.copy(task.getMaterial().build()), name, lore);
+        return ItemStacks.text(task.icon(), Text.of(status + "<a>{}", task.name()), lore);
     }
 
-    private static long causesDone(SkyBlockPlayer player, LevelsGuide tier) {
-        return causes(tier).stream().filter(cause -> player.getSkyBlockExperience().hasExperienceFor(cause)).count();
+    private static Text entryLine(SkyBlockPlayer player, GuideEntry entry) {
+        if (entry.complete(player)) return Text.of("<a>✔ <8>{}", entry.label());
+        return Text.of(entry.available() ? "<c>✖ <f>{}" : "<c>✖ <8>{}", entry.label());
     }
 
     private static String percent(double progress) {
         return String.valueOf(Math.round(progress * 100));
-    }
-
-    private static double progress(SkyBlockPlayer player, LevelsGuide tier) {
-        List<SkyBlockLevelCauseAbstr> causes = causes(tier);
-        if (causes.isEmpty()) return 0;
-        long done = causes.stream().filter(cause -> player.getSkyBlockExperience().hasExperienceFor(cause)).count();
-        return done / (double) causes.size();
-    }
-
-    private static List<SkyBlockLevelCauseAbstr> causes(LevelsGuide tier) {
-        List<SkyBlockLevelCauseAbstr> causes = new ArrayList<>();
-        tier.getTasksSets().forEach(set -> causes.addAll(set.getCauses().keySet()));
-        return causes;
-    }
-
-    private static boolean isUnlocked(SkyBlockPlayer player, LevelsGuide tier) {
-        if (tier.ordinal() == 0) return true;
-        LevelsGuide previous = LevelsGuide.values()[tier.ordinal() - 1];
-        return !previous.getTasksSets().isEmpty() && progress(player, previous) >= UNLOCK_THRESHOLD;
     }
 }

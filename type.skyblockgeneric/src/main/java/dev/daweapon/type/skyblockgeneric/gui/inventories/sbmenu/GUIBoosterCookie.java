@@ -2,7 +2,9 @@ package dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu;
 
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.Material;
+import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.generic.data.datapoints.DatapointInteger;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import dev.daweapon.type.generic.gui.v2.Components;
 import dev.daweapon.type.generic.gui.v2.DefaultState;
@@ -26,6 +28,7 @@ import java.util.function.Consumer;
 
 // GUI showing Booster Cookie status and buff info from the SkyBlock menu
 public class GUIBoosterCookie extends StatelessView {
+    private static final int COOKIE_GEM_COST = 325;
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
@@ -100,7 +103,8 @@ public class GUIBoosterCookie extends StatelessView {
                 <7>Cost
                 <a>325 SkyBlock Gems
 
-                <7>You have: <a>""" + gems + " Gems\n\n<c>You cannot afford this!\n<e>Click to get store info!"));
+                <7>You have: <a>""" + gems + " Gems\n\n" + (gems >= COOKIE_GEM_COST ? "<e>Click to purchase!" : "<c>You cannot afford this!\n<e>Click to get store info!")),
+                (_, c) -> buyCookie((SkyBlockPlayer) c.player()));
         dev.daweapon.type.skyblockgeneric.elections.FameRank fameRank =
                 dev.daweapon.type.skyblockgeneric.elections.FameRank.forFame(player.getFame());
         dev.daweapon.type.skyblockgeneric.elections.FameRank nextFameRank = fameRank.next();
@@ -131,12 +135,7 @@ public class GUIBoosterCookie extends StatelessView {
 
                 """ + nextRankLine + """
 
-                <6><l><m>           <f><l><m>         <r> """ + fameProgress + """
-                <8>You earn 1 fame per bit spent
-                <8>with Elizabeth. Gem-spending and
-                <8>city project fame are not yet
-                <8>implemented (no real Gem-spend or
-                <8>contribution system exists)."""));
+                <6><l><m>           <f><l><m>         <r> """ + fameProgress));
         layout.slot(28, ItemStacks.head("3b11fb90db7f57beb435954013b1c7ef776c6bd96cbf3308aa8ebac29591ebbd", """
                 <d>The Hex
                 <8>/hex
@@ -199,6 +198,21 @@ public class GUIBoosterCookie extends StatelessView {
                 <8>webstore at <b>store.hypixel.net<8>!
 
                 <e>Click to get link!""", gems));
+    }
+
+    private static void buyCookie(SkyBlockPlayer player) {
+        if (player.getGems() < COOKIE_GEM_COST) {
+            player.sendMessage("<c>You cannot afford this!");
+            return;
+        }
+        if (player.maxItemFit(ItemType.BOOSTER_COOKIE) <= 0) {
+            player.sendMessage("<c>Your inventory is full!");
+            return;
+        }
+        player.removeGems(COOKIE_GEM_COST);
+        player.addAndUpdateItem(new SkyBlockItem(ItemType.BOOSTER_COOKIE));
+        player.sendMessage("<a>You purchased a <6>Booster Cookie<a> for <a>{} SkyBlock Gems<a>!", COOKIE_GEM_COST);
+        player.openView(new GUIBoosterCookie());
     }
 
     private static void unavailable(SkyBlockPlayer player, String feature) {

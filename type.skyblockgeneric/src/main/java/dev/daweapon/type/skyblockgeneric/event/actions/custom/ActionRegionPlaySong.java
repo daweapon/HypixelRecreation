@@ -25,6 +25,10 @@ public class ActionRegionPlaySong implements HypixelEventClass {
     public void run(PlayerRegionChangeEvent event) {
         SkyBlockPlayer player = event.getPlayer();
         SkyBlockSongsHandler songHandler = player.getSongHandler();
+        if (!player.getToggles().get(dev.daweapon.type.generic.data.datapoints.DatapointToggles.Toggles.ToggleType.PLAY_MUSIC)) {
+            if (songHandler.getPlayerSong() != null) songHandler.stopPlayerSong();
+            return;
+        }
         if (!SkyBlockSongsHandler.isEnabled) return;
 
         RegionType to = event.getTo();

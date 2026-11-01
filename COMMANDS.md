@@ -99,7 +99,7 @@ This catalog covers **134 top-level game-server command definitions** (after mer
 | `/viewcollection <collection>` | `/vc` | Opens up a collections GUI. | DEFAULT | No | `type.skyblockgeneric` |
 | `/viewfrozencorpsemilestones` | `/corpsemilestones` | Opens the Frozen Corpse Milestones menu (progress per corpse type, rewards, and the Frozen Corpse RNG Meter via the Iron Helmet icon). Works anywhere, including without Glacite Tunnels access; milestone rewards only pay out after you have spoken to Grandpa Wolf. | DEFAULT | No | `type.skyblockgeneric` |
 | `/viewrecipe <recipe>` | `/vr` | Opens up a recipe GUI. | DEFAULT | No | `type.skyblockgeneric` |
-| `/viewsettings` | `/opengamesettings` | Opens the SkyBlock settings menu: Tablist Widgets, the Player List Info toggle and Island Settings. The SkyBlock Menu Settings button opens it too. | DEFAULT | No | `type.skyblockgeneric` |
+| `/viewsettings` | `/opengamesettings` | Opens the SkyBlock settings menu: Personal, Comms, User Interface, Fishing, Sounds, Chat Feedback and API categories, Island Settings, Island Management and Tablist Widgets. The SkyBlock Menu Settings button opens it too. | DEFAULT | No | `type.skyblockgeneric` |
 | `/viewskill <skill>` | `/vs` | Opens up a skills GUI. | DEFAULT | No | `type.skyblockgeneric` |
 | `/viewstash [item\|material]` | — | View your stash. | DEFAULT | No | `type.skyblockgeneric` |
 | `/wardrobe` | `/wd` | Open your Wardrobe. | DEFAULT | No | `type.skyblockgeneric` |

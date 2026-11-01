@@ -218,6 +218,7 @@ public final class MaxStickService {
             new Step("Accessory powers", MaxPowers::maxOut),
             new Step("Sack of Sacks", MaxBags::maxSacks),
             new Step("Quiver", MaxBags::maxQuiver),
+            new Step("SkyBlock Guide", dev.daweapon.type.skyblockgeneric.levels.guide.SkyBlockGuide::maxOut),
             new Step("SkyBlock Level", MaxStickService::maxSkyBlockLevel));
 
     public static void maxProfile(SkyBlockPlayer player) {
