@@ -29,8 +29,8 @@ public class GUIFairySoulsGuide extends StatelessView {
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        Components.close(layout, 53);
-        Components.back(layout, 52, ctx);
+        Components.close(layout, 49);
+        Components.back(layout, 48, ctx);
 
         // Miscellaneous fairy souls
         layout.slot(10, (s, c) -> {

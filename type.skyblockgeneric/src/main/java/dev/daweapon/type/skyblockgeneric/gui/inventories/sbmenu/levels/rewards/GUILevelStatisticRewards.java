@@ -87,7 +87,7 @@ public class GUILevelStatisticRewards extends PaginatedView<SkyBlockLevelRequire
 
             List<Text> lore = new ArrayList<>();
             lore.add(Text.of("<7>Permanent stats granted by"));
-            lore.add(Text.of("<7>levelling up your SkyBlock Level."));
+            lore.add(Text.of("<7>leveling up your SkyBlock Level."));
             lore.add(Text.empty());
             lore.add(Text.of("<7>Earned so far:"));
 

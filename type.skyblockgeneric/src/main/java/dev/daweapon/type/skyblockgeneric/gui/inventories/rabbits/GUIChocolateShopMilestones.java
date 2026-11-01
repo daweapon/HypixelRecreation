@@ -69,10 +69,11 @@ public class GUIChocolateShopMilestones implements StatefulView<GUIChocolateShop
         List<Text> lore = new ArrayList<>();
         String formattedReq = formatRequirement(milestone.getRequiredSpent());
 
-        lore.add(Text.of("<7>Spend <6>{} Chocolate <7>in the shop", formattedReq));
-        lore.add(Text.of("<7>to unlock this special <a>Chocolate Rabbit<7>!"));
+        lore.add(Text.of("<7>Spend <6>{} Chocolate <7>in the", formattedReq));
+        lore.add(Text.of("<6>Chocolate Shop <7>to unlock this special"));
+        lore.add(Text.of("<a>Chocolate Rabbit<7>!"));
         lore.add(Text.empty());
-        lore.add(Text.of("<7>Milestone {} Reward", milestone.getRomanNumeral()));
+        lore.add(Text.of("<7>Reward"));
         lore.add(Text.of("<color:{}>{}", milestone.getColorCode(), milestone.getRabbitName()));
         lore.add(Text.empty());
         addRewardLore(lore, milestone);
@@ -88,19 +89,20 @@ public class GUIChocolateShopMilestones implements StatefulView<GUIChocolateShop
         String formattedCurrent = formatRequirement(totalSpent);
         double progress = milestone.getProgress(totalSpent);
 
-        lore.add(Text.of("<7>Spend <6>{} Chocolate <7>in the shop", formattedReq));
-        lore.add(Text.of("<7>to unlock this special <a>Chocolate Rabbit<7>!"));
+        lore.add(Text.of("<7>Spend <6>{} Chocolate <7>in the", formattedReq));
+        lore.add(Text.of("<6>Chocolate Shop <7>to unlock this special"));
+        lore.add(Text.of("<a>Chocolate Rabbit<7>!"));
         lore.add(Text.empty());
         lore.add(Text.of("<7>Progress to Milestone {}: <b>{}%", milestone.getRomanNumeral(),
                 String.format("%.0f", progress)));
         lore.add(createProgressBar(progress, formattedCurrent, formattedReq));
         lore.add(Text.empty());
-        lore.add(Text.of("<7>Milestone {} Reward", milestone.getRomanNumeral()));
+        lore.add(Text.of("<7>Reward"));
         lore.add(Text.of("<color:{}>{}", milestone.getColorCode(), milestone.getRabbitName()));
         lore.add(Text.empty());
         addRewardLore(lore, milestone);
         lore.add(Text.empty());
-        lore.add(Text.of("<c>Requires spending {} Chocolate!", formattedReq));
+        lore.add(Text.of("<c>Requires {} Chocolate spent!", formattedReq));
 
         return ItemStacks.item(milestone.getGlassPaneMaterial(), 1, getMilestoneName(milestone), lore);
     }
@@ -120,7 +122,7 @@ public class GUIChocolateShopMilestones implements StatefulView<GUIChocolateShop
     }
 
     private Text getMilestoneName(ChocolateShopMilestone milestone) {
-        return Text.of("<color:{}>{} Shop Milestone", milestone.getColorCode(),
+        return Text.of("<color:{}>{} Chocolate Milestone", milestone.getColorCode(),
                 StringUtility.commaifyAndTh(milestone.getNumber()));
     }
 

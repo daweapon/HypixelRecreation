@@ -51,17 +51,23 @@ public class GUIGardenLevels extends StatelessView {
     private ItemStack.Builder summary(GardenProfile profile) {
         GardenConfig config = GardenConfig.get();
         int level = GardenProgress.level(profile);
-        List<Text> lore = new ArrayList<>();
-        lore.add(Text.key(KEY + "summary.xp", GardenMenus.number((long) profile.getGardenXp())));
+        List<Text> lore = new ArrayList<>(GardenMenus.lines(KEY + "summary.intro.", 3));
+        lore.add(GardenMenus.blank());
         if (level >= config.maxLevel()) {
             lore.add(Text.key(KEY + "summary.max"));
         } else {
             double base = config.level(level).cumulativeXp();
             double next = config.level(level + 1).cumulativeXp();
             long into = (long) Math.max(0, profile.getGardenXp() - base);
-            lore.add(Text.key(KEY + "summary.next", StringUtility.getAsRomanNumeral(level + 1), GardenMenus.percent(into, (long) (next - base))));
+            long need = (long) (next - base);
+            lore.add(Text.key(KEY + "summary.next", StringUtility.getAsRomanNumeral(level + 1), GardenMenus.percent(into, need)));
+            int filled = GardenMenus.filled(into, need, GardenMenus.BAR_WIDTH);
+            lore.add(Text.key(KEY + "summary.bar", GardenMenus.spaces(filled), GardenMenus.spaces(GardenMenus.BAR_WIDTH - filled),
+                    GardenMenus.number(into), GardenMenus.number(need)));
         }
-        return GardenMenus.item(Material.SUNFLOWER, Text.key(KEY + "summary.name", StringUtility.getAsRomanNumeral(level)), lore);
+        lore.add(GardenMenus.blank());
+        lore.addAll(GardenMenus.lines(KEY + "summary.footer.", 3));
+        return GardenMenus.item(Material.SUNFLOWER, Text.key(KEY + "summary.name"), lore);
     }
 
     private ItemStack.Builder levelItem(int level, GardenProfile profile) {
@@ -71,6 +77,19 @@ public class GUIGardenLevels extends StatelessView {
 
         List<Text> lore = new ArrayList<>();
         lore.add(Text.key(KEY + "rewards"));
+        lore.addAll(rewardLines(entry));
+        lore.add(GardenMenus.blank());
+        lore.add(unlocked
+                ? Text.key(KEY + "unlocked")
+                : Text.key(KEY + "progress", GardenMenus.number((long) profile.getGardenXp()), GardenMenus.number((long) entry.cumulativeXp())));
+
+        boolean next = GardenProgress.level(profile) + 1 == level;
+        Text name = Text.key(KEY + (unlocked ? "level_name" : next ? "level_name_next" : "level_name_locked"), roman);
+        return stack(level, unlocked, name, lore);
+    }
+
+    static List<Text> rewardLines(GardenConfig.Level entry) {
+        List<Text> lore = new ArrayList<>();
         lore.add(Text.key(KEY + "reward.visitors", entry.newVisitors()));
         for (GardenCrop crop : entry.crops()) {
             lore.add(Text.key(KEY + "reward.crop", crop == GardenCrop.MELON ? "Melon Slice" : crop.getDisplayName()));
@@ -93,13 +112,7 @@ public class GUIGardenLevels extends StatelessView {
         if (entry.cropGrowth() > 0) {
             lore.add(Text.key(KEY + "reward.crop_growth", entry.cropGrowth()));
         }
-        lore.add(GardenMenus.blank());
-        lore.add(unlocked
-                ? Text.key(KEY + "unlocked")
-                : Text.key(KEY + "progress", GardenMenus.number((long) profile.getGardenXp()), GardenMenus.number((long) entry.cumulativeXp())));
-
-        Text name = Text.key(KEY + (unlocked ? "level_name" : "level_name_locked"), roman);
-        return stack(level, unlocked, name, lore);
+        return lore;
     }
 
     private ItemStack.Builder stack(int level, boolean unlocked, Text name, List<Text> lore) {
@@ -112,7 +125,7 @@ public class GUIGardenLevels extends StatelessView {
         return ItemStacks.item(material, level, name, lore);
     }
 
-    private String skinColor(String skin) {
+    private static String skinColor(String skin) {
         if (skin.startsWith("Mansion")) {
             return "purple";
         }

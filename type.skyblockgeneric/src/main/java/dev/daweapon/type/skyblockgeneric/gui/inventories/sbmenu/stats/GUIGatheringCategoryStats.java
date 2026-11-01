@@ -36,7 +36,7 @@ public class GUIGatheringCategoryStats extends StatelessView {
     private final StatisticModifierType modifierFilter;
 
     public GUIGatheringCategoryStats(Category category) {
-        this(category, null, Mode.CATEGORY, true, false, false, null, null);
+        this(category, null, Mode.CATEGORY, false, false, false, null, null);
     }
 
     private GUIGatheringCategoryStats(Category category, ItemStatistic statistic, Mode mode,
@@ -99,7 +99,7 @@ public class GUIGatheringCategoryStats extends StatelessView {
 
     private void openStatistic(SkyBlockPlayer player, ItemStatistic stat) {
         ItemStatistics values = player.getStatistics().allStatistics();
-        Mode target = values.getAdditive(stat) == 1D && values.getMultiplicative(stat) == 1D
+        Mode target = values.getAdditive(stat) == 1D && values.getMultiplicative(stat) == 1D && stat.getCap() == null
             ? Mode.FLAT : Mode.DETAIL;
         player.openView(new GUIGatheringCategoryStats(category, stat, target, showAll, false, false, null, null));
     }
@@ -111,7 +111,7 @@ public class GUIGatheringCategoryStats extends StatelessView {
             ItemStatistics values = player.getStatistics().allStatistics();
             boolean additive = values.getAdditive(statistic) != 1D;
             boolean capped = statistic.getCap() != null;
-            int flatSlot = capped ? 20 : 21;
+            int flatSlot = capped && additive ? 20 : 21;
             int additiveSlot = capped ? 22 : 23;
 
             layout.slot(flatSlot, (s, c) -> summaryItem((SkyBlockPlayer) c.player(), Mode.FLAT),
@@ -123,8 +123,9 @@ public class GUIGatheringCategoryStats extends StatelessView {
                     (_, c) -> c.player().openView(copy(Mode.ADDITIVE)));
             }
             if (capped) {
-                layout.slot(23, StatisticArrow.create(statistic));
-                layout.slot(24, capItem());
+                int capSlot = additive ? 24 : 23;
+                layout.slot(capSlot - 1, StatisticArrow.create(statistic));
+                layout.slot(capSlot, capItem());
             }
         }
     }
@@ -390,7 +391,7 @@ public class GUIGatheringCategoryStats extends StatelessView {
                 <7>Show all stats: {}
 
                 <e>Click to toggle!""",
-            showAll ? Text.of("<a>Yes") : Text.of("<c>No"));
+            showAll ? Text.of("<a>Yes") : Text.of("<c>Nope"));
     }
 
     private static ItemStack.Builder optionItem(String name, Material material, boolean enabled) {
@@ -461,11 +462,18 @@ public class GUIGatheringCategoryStats extends StatelessView {
 
     @Getter
     public enum Category {
-        COMBAT("<c>Combat Stats", Material.STONE_SWORD, List.of("<7>Stats that influence damage dealt", "<7>and damage taken in combat."), List.of(
+        COMBAT("<c>Combat Stats", Material.DIAMOND_SWORD, List.of("<7>Stats that influence damage dealt", "<7>and damage taken in combat."), List.of(
             ItemStatistic.HEALTH, ItemStatistic.DEFENSE, ItemStatistic.TRUE_DEFENSE, ItemStatistic.STRENGTH,
             ItemStatistic.CRITICAL_CHANCE, ItemStatistic.CRITICAL_DAMAGE, ItemStatistic.BONUS_ATTACK_SPEED,
             ItemStatistic.FEROCITY, ItemStatistic.SWING_RANGE, ItemStatistic.INTELLIGENCE,
             ItemStatistic.ABILITY_DAMAGE, ItemStatistic.HEALTH_REGENERATION, ItemStatistic.VITALITY, ItemStatistic.MENDING)),
+        GATHERING("<e>Gathering Stats", Material.IRON_PICKAXE, List.of("<7>Lets you collect and harvest better", "<7>items, or more of them."), List.of(
+            ItemStatistic.BREAKING_POWER, ItemStatistic.MINING_SPEED, ItemStatistic.MINING_SPREAD,
+            ItemStatistic.GEMSTONE_SPREAD, ItemStatistic.PRISTINE, ItemStatistic.MINING_FORTUNE,
+            ItemStatistic.ORE_FORTUNE, ItemStatistic.BLOCK_FORTUNE, ItemStatistic.DWARVEN_METAL_FORTUNE,
+            ItemStatistic.GEMSTONE_FORTUNE, ItemStatistic.FARMING_FORTUNE, ItemStatistic.BONUS_PEST_CHANCE,
+            ItemStatistic.OVERBLOOM, ItemStatistic.FORAGING_FORTUNE, ItemStatistic.SWEEP, ItemStatistic.TIMBER,
+            ItemStatistic.HUNTER_FORTUNE, ItemStatistic.PULL)),
         MINING("<6>Mining Stats", Material.STONE_PICKAXE, List.of("<7>Stats that influence mining speed,", "<7>power, spread, and drops."), List.of(
             ItemStatistic.BREAKING_POWER, ItemStatistic.MINING_SPEED, ItemStatistic.MINING_SPREAD,
             ItemStatistic.GEMSTONE_SPREAD, ItemStatistic.PRISTINE, ItemStatistic.MINING_FORTUNE,

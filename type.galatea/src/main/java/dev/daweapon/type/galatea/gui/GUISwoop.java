@@ -7,6 +7,8 @@ import dev.daweapon.type.generic.gui.v2.StatelessView;
 import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
 import dev.daweapon.type.generic.gui.v2.ViewLayout;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
+import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
+import dev.daweapon.type.skyblockgeneric.foraging.ForagingTreeManager;
 import dev.daweapon.type.skyblockgeneric.foraging.SweepDetails;
 import dev.daweapon.type.skyblockgeneric.foraging.TreeGiftMilestones;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -127,12 +129,17 @@ public class GUISwoop extends StatelessView {
             int gifts = TreeGiftMilestones.count(player, type);
             int reached = TreeGiftMilestones.milestones(gifts);
             String progress = reached >= TreeGiftMilestones.TIER_GIFTS.length ? "<a>Maxed out!"
-                    : "<7>Progress to Milestone " + dev.daweapon.commons.StringUtility.getAsRomanNumeral(reached + 1) + ": <e>" + gifts + "<6>/<e>" + TreeGiftMilestones.TIER_GIFTS[reached];
+                    : GUITreeMilestones.progress(dev.daweapon.commons.StringUtility.getAsRomanNumeral(reached + 1), gifts, TreeGiftMilestones.TIER_GIFTS[reached]);
+            double sweep = player.getStatistics().allStatistics().getOverall(ItemStatistic.SWEEP);
+            int logs = ForagingTreeManager.calculateLogs(sweep, toughness, false);
             return ItemStacks.item(icon, String.join("\n",
                     "<a>" + display + " Trees",
                     "<7>Location: " + location,
                     "<7>Toughness: <c>" + toughness + " ⧉",
                     "<7>Style: " + style,
+                    "",
+                    "<7>With your <2>" + dev.daweapon.commons.StringUtility.decimalify(sweep, 1) + " Sweep<7>, you would",
+                    "<7>cut <6>" + logs + " " + display + " Logs <7>in a row.",
                     "",
                     progress,
                     "",

@@ -28,6 +28,7 @@ public class GUIFarmingToolkit extends StatelessView {
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
+        Components.back(layout, 39, ctx);
         Components.close(layout, 40);
         for (FarmingToolkit.Slot slot : FarmingToolkit.SLOTS) {
             layout.slot(slot.guiSlot(), (_, c) -> render((SkyBlockPlayer) c.player(), slot), (_, c) -> {
@@ -47,8 +48,8 @@ public class GUIFarmingToolkit extends StatelessView {
     private ItemStack.Builder render(SkyBlockPlayer player, FarmingToolkit.Slot slot) {
         SkyBlockItem stored = FarmingToolkit.stored(Gardens.profile(player), slot);
         if (stored == null) {
-            return GardenMenus.item(Material.GRAY_DYE, Text.of("<c>" + slot.name()),
-                    List.of(Text.of("<7>Click on a valid tool in your"), Text.of("<7>inventory to add it to your toolkit!")));
+            return GardenMenus.item(Material.GRAY_DYE, Text.of("<a>" + slot.name()),
+                    List.of(Text.of("<7>Click on a valid tool in your inventory to add it to your toolkit!")));
         }
         return PlayerItemUpdater.playerUpdate(player, stored.getItemStack(), true);
     }

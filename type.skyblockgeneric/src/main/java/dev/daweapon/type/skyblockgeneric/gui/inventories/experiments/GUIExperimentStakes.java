@@ -93,7 +93,7 @@ public class GUIExperimentStakes implements StatefulView<GUIExperimentStakes.Sta
             }
             case ULTRASEQUENCER -> {
                 UltrasequencerStake stake = UltrasequencerStake.values()[index];
-                icon = DYES[index + 2];
+                icon = DYES[index + 3];
                 required = stake.requiredEnchanting();
                 lines.add(stake.color() + stake.displayName() + " Experiment");
                 lines.add("<8>Ultrasequencer");

@@ -63,7 +63,7 @@ public class GUITyashoiExperiments implements View<GUITyashoiExperiments.State> 
             });
         }
         Components.close(layout, 49);
-        layout.slot(50, (_, c) -> fearIcon((SkyBlockPlayer) c.player()));
+        layout.slot(48, (_, c) -> fearIcon((SkyBlockPlayer) c.player()));
     }
 
     private static ItemStack.Builder fearIcon(SkyBlockPlayer player) {

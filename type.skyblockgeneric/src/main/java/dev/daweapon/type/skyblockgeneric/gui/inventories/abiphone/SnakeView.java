@@ -74,7 +74,7 @@ public final class SnakeView implements View<SnakeView.State> {
         arrow(layout, 26, "Right", SnakeGame.Direction.RIGHT, state);
         arrow(layout, 34, "Down", SnakeGame.Direction.DOWN, state);
 
-        layout.slot(52, (s, c) -> ItemStacks.lore(ItemStacks.name(ItemStack.builder(Material.APPLE).amount(Math.max(1, game.score())), "<a>Apples: {}", game.score()),
+        layout.slot(52, (s, c) -> ItemStacks.lore(ItemStacks.name(ItemStack.builder(Material.APPLE).amount(Math.max(1, game.score())), "<c>Apples <a>{}", game.score()),
                 List.of(Text.of("<7>Top score: <a>{}", Math.max(game.score(), AbiphoneItemSettings.gameStats(state.abiphone()).snakeBest())))));
         if (game.isOver()) {
             layout.slot(43, (s, c) -> ItemStacks.lore(ItemStacks.name(ItemStack.builder(Material.EMERALD), "<a>Play Again"),

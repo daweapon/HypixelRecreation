@@ -32,7 +32,7 @@ public class GUIBestiaryIsland extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>(Text.of("{} ➡ {}", category.getParentTitle(), Text.of(category.getDisplayName()).plain()), InventoryType.CHEST_6_ROW);
+        return new ViewConfiguration<>(Text.of("{} ➜ {}", category.getParentTitle(), Text.of(category.getDisplayName()).plain()), InventoryType.CHEST_6_ROW);
     }
 
     @Override

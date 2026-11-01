@@ -18,7 +18,7 @@ import net.minestom.server.item.Material;
 public class GUIQuestsAndChapters extends StatelessView {
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>("Quests & Chapters", InventoryType.CHEST_5_ROW);
+        return new ViewConfiguration<>("Quests & Chapters", InventoryType.CHEST_6_ROW);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class GUIQuestsAndChapters extends StatelessView {
             }
             c.push(new GUIChapters());
         });
-        layout.slot(22, ItemStacks.item(Material.BOOK, """
+        layout.slot(23, ItemStacks.item(Material.BOOK, """
                 <6>Torrhus Canyon Chapters
                 <8>/chapters
 
@@ -74,6 +74,7 @@ public class GUIQuestsAndChapters extends StatelessView {
                 <7>and rewards.
 
                 <e>Click to view!"""), (_, c) -> c.push(new GUIMissionLog()));
-        Components.backOrClose(layout, 40, ctx);
+        Components.back(layout, 48, ctx);
+        Components.close(layout, 49);
     }
 }

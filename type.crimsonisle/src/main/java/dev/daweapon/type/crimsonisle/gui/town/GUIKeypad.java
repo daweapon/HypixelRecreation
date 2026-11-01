@@ -19,7 +19,7 @@ import java.util.function.BiConsumer;
  */
 public class GUIKeypad extends StatelessView {
     public static final int LENGTH = 4;
-    private static final int[] DIGIT_SLOTS = {40, 12, 13, 14, 21, 22, 23, 30, 31, 32};
+    private static final int[] DIGIT_SLOTS = {31, 3, 4, 5, 12, 13, 14, 21, 22, 23};
 
     private final String entered;
     private final BiConsumer<SkyBlockPlayer, String> onSubmit;
@@ -42,22 +42,21 @@ public class GUIKeypad extends StatelessView {
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
         Components.close(layout, 49);
-        String shown = (entered + "____").substring(0, LENGTH);
-        layout.slot(4, ItemStacks.item(Material.PAPER, "<a>Code: <e>{}\n<7>Enter the 4-digit code.", shown));
         for (int digit = 0; digit <= 9; digit++) {
             String value = String.valueOf(digit);
             layout.slot(DIGIT_SLOTS[digit], (_, _) -> ItemStacks.item(Material.STONE_BUTTON, Math.max(1, Integer.parseInt(value)),
-                    "<e>" + value), (_, c) -> {
+                    "<a>" + value), (_, c) -> {
                 if (entered.length() >= LENGTH) return;
-                c.player().openView(new GUIKeypad(entered + value, onSubmit));
+                String next = entered + value;
+                if (next.length() < LENGTH) {
+                    c.player().openView(new GUIKeypad(next, onSubmit));
+                    return;
+                }
+                c.player().closeInventory();
+                onSubmit.accept((SkyBlockPlayer) c.player(), next);
             });
         }
         layout.slot(39, ItemStacks.item(Material.RED_TERRACOTTA, "<c>Clear"),
                 (_, c) -> c.player().openView(new GUIKeypad(onSubmit)));
-        layout.slot(41, ItemStacks.item(Material.LIME_TERRACOTTA, "<a>Enter"), (_, c) -> {
-            if (entered.length() < LENGTH) return;
-            c.player().closeInventory();
-            onSubmit.accept((SkyBlockPlayer) c.player(), entered);
-        });
     }
 }

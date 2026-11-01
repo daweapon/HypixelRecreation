@@ -53,16 +53,18 @@ public class GUITrophyFishingRewards extends StatelessView {
         DatapointTrophyFish.TrophyFishData data = player.getTrophyFishData();
         StringBuilder text = new StringBuilder(rank.coloredName()).append('\n');
         text.append(rank == TrophyFisherRank.NOVICE
-                ? "<7>Catch <a>15 <7>Trophy Fish of <8>Bronze\n<7>tier or better.\n"
-                : "<7>Catch every Trophy Fish at " + rank.tier().label() + "\n<7>tier" + (rank == TrophyFisherRank.MASTER ? "s.\n" : " or better.\n"));
+                ? "<7>Catch 15 Bronze tier or above\n<7>Trophy Fish.\n"
+                : rank == TrophyFisherRank.MASTER ? "<7>Catch all tiers of all Trophy\n<7>Fish.\n"
+                : "<7>Catch " + rank.tier().label() + " tier or above of\n<7>all Trophy Fish.\n");
         text.append("\n<e>Rewards:\n");
         for (OdgerRewards.Reward reward : OdgerRewards.RANK_REWARDS.get(rank)) {
             ItemType type = ItemType.get(reward.itemId());
             String name = type == null ? StringUtility.toNormalCase(reward.itemId()) : new SkyBlockItem(type).getDisplayName();
-            text.append("<7>- <f>").append(name).append(reward.amount() > 1 ? " <8>x" + reward.amount() : "").append('\n');
+            String color = type == null ? "<f>" : "<color:" + type.rarity.getColor() + ">";
+            text.append("<7> ").append(color).append(name).append(reward.amount() > 1 ? " <7>x" + reward.amount() : "").append('\n');
         }
-        if (rank == TrophyFisherRank.NOVICE) text.append("<7>- <a>Unlocks <c>Thunder\n");
-        if (rank == TrophyFisherRank.ADEPT) text.append("<7>- <a>Unlocks <c>Lord Jawbus\n");
+        if (rank == TrophyFisherRank.NOVICE) text.append("<7> <6>Thunder Sea Creature\n");
+        if (rank == TrophyFisherRank.ADEPT) text.append("<7> <d>Lord Jawbus Sea Creature\n");
         text.append('\n');
         if (OdgerRewards.claimed(data, rank)) {
             text.append("<a>Rewards claimed!");

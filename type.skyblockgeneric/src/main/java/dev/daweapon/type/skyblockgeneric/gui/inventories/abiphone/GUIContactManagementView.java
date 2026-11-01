@@ -24,7 +24,7 @@ public final class GUIContactManagementView implements View<GUIContactManagement
 
     @Override
     public ViewConfiguration<State> configuration() {
-        return ViewConfiguration.translatable("gui_abiphone.management.title", InventoryType.CHEST_6_ROW);
+        return ViewConfiguration.translatable("gui_abiphone.management.title", InventoryType.CHEST_5_ROW);
     }
 
     @Override
@@ -36,7 +36,7 @@ public final class GUIContactManagementView implements View<GUIContactManagement
         ));
 
         if (AbiphoneItemSettings.supportsDoNotDisturb(state.abiphone())) {
-            layout.slot(29, (s, c) -> doNotDisturbButton(AbiphoneItemSettings.isDoNotDisturb(s.abiphone(), s.npc())),
+            layout.slot(22, (s, c) -> doNotDisturbButton(AbiphoneItemSettings.isDoNotDisturb(s.abiphone(), s.npc())),
                     (click, viewCtx) -> {
                         AbiphoneItemSettings.toggleDoNotDisturb((SkyBlockPlayer) viewCtx.player(), state.abiphone(), state.npc());
                         viewCtx.session(Object.class).updateUnchecked(o -> o);
@@ -44,14 +44,14 @@ public final class GUIContactManagementView implements View<GUIContactManagement
         }
 
         if (AbiphoneItemSettings.supports(state.abiphone(), AbiphoneComponent.AbiphoneFeature.SPEED_DIAL)) {
-            layout.slot(33, (s, c) -> speedDialButton(s), (click, viewCtx) -> {
+            layout.slot(20, (s, c) -> speedDialButton(s), (click, viewCtx) -> {
                 boolean current = isSpeedDial(state);
                 AbiphoneItemSettings.setSpeedDial((SkyBlockPlayer) viewCtx.player(), state.abiphone(), current ? "" : state.npc().getId());
                 viewCtx.session(Object.class).updateUnchecked(o -> o);
             });
         }
 
-        layout.slot(31, (s, c) -> ItemStacks.item(
+        layout.slot(24, (s, c) -> ItemStacks.item(
                 Material.FEATHER,
                 1,
                 Text.key("gui_abiphone.management.remove_contact"),
@@ -65,13 +65,13 @@ public final class GUIContactManagementView implements View<GUIContactManagement
             }
         });
 
-        if (!Components.back(layout, 48, ctx)) {
-            layout.slot(48, (s, c) -> Components.BACK_BUTTON, (click, viewCtx) -> {
+        if (!Components.back(layout, 39, ctx)) {
+            layout.slot(39, (s, c) -> Components.BACK_BUTTON, (click, viewCtx) -> {
                 viewCtx.push(new AbiphoneView(), new AbiphoneView.State(state.abiphone()));
             });
         }
 
-        Components.close(layout, 49);
+        Components.close(layout, 40);
     }
 
     private static boolean isSpeedDial(State state) {
@@ -82,11 +82,17 @@ public final class GUIContactManagementView implements View<GUIContactManagement
         AbiphoneNPC current = AbiphoneRegistry.getFromId(AbiphoneItemSettings.speedDial(state.abiphone()));
         return ItemStacks.lore(ItemStacks.name(ItemStack.builder(Material.CLOCK), "<a>Speed Dial"), List.of(
                 Text.of("<7>Set this contact as your Speed Dial."),
-                Text.of("<7>Left-click your Abiphone to call them."),
+                Text.of("<7>Doing so will allow you to instantly"),
+                Text.of("<7>call them by left-clicking with your"),
+                Text.of("<7>Abiphone in hand!"),
                 Text.empty(),
-                Text.of("<7>Current Speed Dial: <a>{}", current == null ? "None" : current.getName()),
+                Text.of("<7>Current Speed Dial: <5>{}", current == null ? "None" : current.getName()),
                 Text.empty(),
-                Text.of(isSpeedDial(state) ? "<e>Click to clear!" : "<e>Click to set!")));
+                Text.of("<7>Setting this contact as your Speed"),
+                Text.of("<7>Dial will replace your current Speed"),
+                Text.of("<7>Dial contact!"),
+                Text.empty(),
+                Text.of(isSpeedDial(state) ? "<e>Click to clear Speed Dial!" : "<e>Click to set to Speed Dial!")));
     }
 
     private static ItemStack.Builder doNotDisturbButton(boolean enabled) {

@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class GUICalendar extends StatelessView {
 
-    private static final int[] EVENT_SLOTS = {10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 26};
+    private static final int[] EVENT_SLOTS = {10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25};
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
@@ -83,10 +83,8 @@ public class GUICalendar extends StatelessView {
         }
 
         layout.slot(FULL_CALENDAR_SLOT, (_, _) -> ItemStacks.item(Material.CLOCK, """
-                <6>SkyBlock Calendar
-                <7>View the full year, day by day,
-                <7>including every upcoming
-                <7>Dark Auction.
+                <a>Calendar
+                <7>Opens the full SkyBlock Calendar.
 
                 <e>Click to view!"""),
                 (click, c) -> c.player().openView(new GUIFullCalendar()));

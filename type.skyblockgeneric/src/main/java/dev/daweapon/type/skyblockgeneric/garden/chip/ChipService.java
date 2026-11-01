@@ -47,6 +47,19 @@ public final class ChipService {
         }
     }
 
+    public static long reset(SkyBlockPlayer player) {
+        GardenProfile profile = Gardens.profile(player);
+        ChipData data = profile.chips();
+        long refund = 0;
+        for (GardenChip chip : GardenChip.values()) {
+            for (int level = 1; level <= data.level(chip); level++) refund += costToReach(level);
+            data.setLevel(chip, 0);
+        }
+        profile.addSowdust(refund);
+        Gardens.save(player, profile);
+        return refund;
+    }
+
     public static UpgradeResult upgrade(SkyBlockPlayer player, GardenChip chip) {
         GardenProfile profile = Gardens.profile(player);
         ChipData data = profile.chips();

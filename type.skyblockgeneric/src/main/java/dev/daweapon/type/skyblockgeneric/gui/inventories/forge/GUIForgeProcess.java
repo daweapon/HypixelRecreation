@@ -40,15 +40,15 @@ public class GUIForgeProcess extends StatelessView {
 
     private static String description(ForgeCategory category) {
         return switch (category) {
-            case REFINING -> "Refine your ores into their pure forms.";
+            case REFINING -> "Refine your ores into more valuable ores.";
             case FORGING -> "Refine your ores into parts used in lots of gear.";
-            case TOOLS -> "Forge drills and other tools for mining.";
-            case GEAR -> "Forge armor and accessories for mining.";
-            case REFORGE_STONES -> "Forge stones that apply new reforges.";
+            case TOOLS -> "Forge your ore into various tools.";
+            case GEAR -> "Forge helpful accessories, armor pieces, and equipment pieces.";
+            case REFORGE_STONES -> "Forge new reforges for your mining tools.";
             case DRILL_PARTS -> "Forge your ore into improvements for your Drill.";
-            case PERFECT_GEMSTONES -> "Forge flawless gemstones into perfect gemstones.";
-            case PETS -> "Forge fossils into pets.";
-            case OTHER -> "Forge keys, scrolls, beacons and more.";
+            case PERFECT_GEMSTONES -> "Refine your Gemstones into their purest form.";
+            case PETS -> "Forge... Pets? and Pet Items.";
+            case OTHER -> "Forge other miscellaneous items.";
         };
     }
 
@@ -59,7 +59,7 @@ public class GUIForgeProcess extends StatelessView {
         for (int index = 0; index < categories.length; index++) {
             ForgeCategory category = categories[index];
             layout.slot(CATEGORY_SLOTS[index], ItemStacks.item(icon(category),
-                    "<a>" + category.displayName() + "\n<7>" + description(category) + "\n\n<e>Click to view!"),
+                    "<a>" + category.displayName() + "\n<7>" + description(category) + "\n\n<e>Click to browse!"),
                     (_, c) -> c.push(new GUIForgeRecipes(category, 0, forgeSlot)));
         }
         Components.back(layout, 48, ctx);

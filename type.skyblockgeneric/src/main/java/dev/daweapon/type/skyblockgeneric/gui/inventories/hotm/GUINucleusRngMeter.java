@@ -33,7 +33,17 @@ public class GUINucleusRngMeter extends StatelessView {
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        Components.backOrClose(layout, 49, ctx);
+        Components.back(layout, 48, ctx);
+        Components.close(layout, 49);
+        layout.slot(51, ItemStacks.item(Material.REDSTONE_BLOCK, Text.of("<d>Reset RNG Drop"), List.of(
+                Text.of("<7>Resets the selected drop for this"),
+                Text.of("<d>RNG Meter<7>. You still earn progress"),
+                Text.of("<7>without a drop selected."),
+                Text.empty(),
+                Text.of("<e>Click to reset!"))), (_, c) -> {
+            NucleusRngMeter.select((SkyBlockPlayer) c.player(), null);
+            c.session(DefaultState.class).refresh();
+        });
         List<BundleReward> rewards = BundleTable.meterRewards().stream()
                 .sorted((a, b) -> Long.compare(a.meterXp(), b.meterXp())).toList();
         for (int i = 0; i < rewards.size() && i < SLOTS.length; i++) {
@@ -85,15 +95,28 @@ public class GUINucleusRngMeter extends StatelessView {
 
     private ItemStack.Builder summary(SkyBlockPlayer player) {
         List<Text> lore = new ArrayList<>();
-        lore.add(Text.of("<7>Each Crystal Nucleus completion adds"));
-        lore.add(Text.of("<9>{} Nucleus XP <7>to the meter. The selected", String.format("%,d", NucleusRngMeter.XP_PER_RUN)));
-        lore.add(Text.of("<7>drop grows up to <a>3x <7>as likely per roll"));
-        lore.add(Text.of("<7>and is guaranteed once the meter is full."));
-        lore.add(Text.empty());
-        lore.add(Text.of("<7>Stored XP: <9>{}", String.format("%,d", NucleusRngMeter.stored(player))));
         BundleReward selected = NucleusRngMeter.selected(player);
-        lore.add(selected == null ? Text.of("<7>Selected Drop: <c>None") : Text.of("<7>Selected Drop: <f>{}", selected.name()));
-        return ItemStacks.item(Material.HEART_OF_THE_SEA, Text.of("<d>Crystal Nucleus RNG Meter"), lore);
+        lore.add(Text.of("<8>Crystal Nucleus"));
+        lore.add(Text.empty());
+        lore.add(Text.of("<7>Your <d>Crystal Nucleus RNG Meter <7>fills"));
+        lore.add(Text.of("<7>with <9>{} Nucleus XP <7>every time you", String.format("%,d", NucleusRngMeter.XP_PER_RUN)));
+        lore.add(Text.of("<7>complete the <d>Crystal Nucleus<7>!"));
+        lore.add(Text.empty());
+        lore.add(Text.of("<7>Your selected <d>RNG Drop <7>will be"));
+        lore.add(Text.of("<7>guaranteed to appear in a Crystal"));
+        lore.add(Text.of("<7>Nucleus Bundle once your RNG Meter"));
+        lore.add(Text.of("<7>is full!"));
+        lore.add(Text.empty());
+        if (selected == null) {
+            lore.add(Text.of("<c>You don't have an RNG drop"));
+            lore.add(Text.of("<c>selected. Choose one to start"));
+            lore.add(Text.of("<c>progressing towards it!"));
+        } else {
+            lore.add(Text.of("<7>Selected Drop: <f>{}", selected.name()));
+        }
+        lore.add(Text.empty());
+        lore.add(Text.of("<7>Stored Nucleus XP: <d>{}", String.format("%,d", NucleusRngMeter.stored(player))));
+        return ItemStacks.item(Material.HEART_OF_THE_SEA, Text.of("<d>RNG Meter"), lore);
     }
 
     private static String format(double percent) {

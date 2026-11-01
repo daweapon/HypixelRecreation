@@ -55,13 +55,17 @@ public class GUISkyBlockProfile extends StatelessView {
             PlayerAchievementHandler handler = c.player().getAchievementHandler();
             AchievementCategory category = AchievementCategory.SKYBLOCK;
             return ItemStacks.item(Material.DIAMOND, 1, Text.of("<a>SkyBlock Achievements"), List.of(
-                Text.of("<7>View your SkyBlock Achievements"),
-                Text.of("<7>and the points you have earned."),
+                Text.of("<7>View the available Hypixel"),
+                Text.of("<7>achievements for SkyBlock."),
                 Text.empty(),
-                Text.of("<7>Unlocked: <b>{}<7>/<b>{}", handler.getUnlockedCount(category), AchievementRegistry.getCompletionCount(category)),
+                Text.of("<7>These achievements reward"),
+                Text.of("<6>Achievement Points<7>, which let you"),
+                Text.of("<7>unlock rewards on the Hypixel Network."),
+                Text.empty(),
+                Text.of("<7>Unlocked: <a>{}<7>/<a>{}", handler.getUnlockedCount(category), AchievementRegistry.getCompletionCount(category)),
                 Text.of("<7>Points: <e>{}<7>/<e>{}", handler.getTotalPoints(category), AchievementRegistry.getCompletionPoints(category)),
                 Text.empty(),
-                Text.of("<e>Click to view!")));
+                Text.of("<e>Click to view achievements!")));
         }, (_, c) -> SkyBlockAchievements.open(c.player()));
 
         layout.slot(2, (s, c) -> new NonPlayerItemUpdater(new SkyBlockItem(ItemType.SKYBLOCK_MENU))
@@ -186,7 +190,7 @@ public class GUISkyBlockProfile extends StatelessView {
         });
 
         // Combat Stats
-        layout.slot(14, (s, c) -> {
+        layout.slot(15, (s, c) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
             PlayerStatistics statistics = player.getStatistics();
             List<Text> lore = new ArrayList<>();
@@ -207,20 +211,21 @@ public class GUISkyBlockProfile extends StatelessView {
             lore.add(Text.literal(" "));
             lore.add(Text.key("gui_common.details"));
 
-            return ItemStacks.item(Material.STONE_SWORD, 1,
+            return ItemStacks.item(Material.DIAMOND_SWORD, 1,
                 Text.key("gui_sbmenu.profile.combat_stats"), lore);
         }, (click, c) -> {
             c.player().openView(new GUIGatheringCategoryStats(GUIGatheringCategoryStats.Category.COMBAT));
         });
 
-        gatheringCategorySlot(layout, 15, GUIGatheringCategoryStats.Category.MINING);
-        gatheringCategorySlot(layout, 16, GUIGatheringCategoryStats.Category.FARMING);
-        gatheringCategorySlot(layout, 23, GUIGatheringCategoryStats.Category.FORAGING);
-        gatheringCategorySlot(layout, 24, GUIGatheringCategoryStats.Category.FISHING);
-        gatheringCategorySlot(layout, 32, GUIGatheringCategoryStats.Category.HUNTING);
+        gatheringCategorySlot(layout, 16, GUIGatheringCategoryStats.Category.GATHERING);
+        gatheringCategorySlot(layout, 33, GUIGatheringCategoryStats.Category.FISHING);
+        gatheringCategorySlot(layout, 14, GUIGatheringCategoryStats.Category.MINING);
+        gatheringCategorySlot(layout, 23, GUIGatheringCategoryStats.Category.FARMING);
+        gatheringCategorySlot(layout, 32, GUIGatheringCategoryStats.Category.FORAGING);
+        gatheringCategorySlot(layout, 41, GUIGatheringCategoryStats.Category.HUNTING);
 
         // Wisdom Stats
-        layout.slot(34, (s, c) -> {
+        layout.slot(24, (s, c) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
             PlayerStatistics statistics = player.getStatistics();
             List<Text> lore = new ArrayList<>();

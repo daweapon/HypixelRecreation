@@ -1,6 +1,7 @@
 package dev.daweapon.type.dwarvenmines.gui;
 
 import net.minestom.server.inventory.InventoryType;
+import net.minestom.server.item.Material;
 import dev.daweapon.type.dwarvenmines.rail.RailStop;
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import dev.daweapon.type.generic.gui.v2.Components;
@@ -17,7 +18,29 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GUIMinecart extends StatelessView {
-    private static final int[] SLOTS = {10, 11, 12, 13, 14, 15, 16, 21, 23};
+    private static final Map<RailStop, Integer> SLOTS = Map.of(
+            RailStop.DWARVEN_VILLAGE, 20,
+            RailStop.HANGING_COURT, 21,
+            RailStop.GREAT_ICE_WALL, 22,
+            RailStop.FAR_RESERVE, 23,
+            RailStop.UPPER_MINES, 24,
+            RailStop.FORGE_BASIN, 29,
+            RailStop.ROYAL_MINES, 30,
+            RailStop.ABANDONED_QUARRY, 32,
+            RailStop.GLACITE_TUNNELS, 33);
+    private static final Map<RailStop, String> LABELS = Map.of(
+            RailStop.ROYAL_MINES, "Lower Royal Mines",
+            RailStop.GLACITE_TUNNELS, "Glacite Tunnels - Dwarven Base Camp");
+    private static final Map<RailStop, String> DESCRIPTIONS = Map.of(
+            RailStop.DWARVEN_VILLAGE, "The hustling and bustling community\nhub of the Dwarven Mines!",
+            RailStop.HANGING_COURT, "The most majestic and well maintained\ngarden in the whole of the Dwarven\nMines neighbouring the Royal Palace.",
+            RailStop.GREAT_ICE_WALL, "The great barrier between the\nDwarven Mines and that which is\nFrozen.",
+            RailStop.FAR_RESERVE, "Deep rich reserves of Mithril and\nGold bordering enemy territory.",
+            RailStop.UPPER_MINES, "Rich deposits of ore precariously\npositioned near the top of the\nDwarven Mines.",
+            RailStop.FORGE_BASIN, "The fiery depths of the Dwarven\nMines playing host to the magnificent\nforge!",
+            RailStop.ROYAL_MINES, "To the depths of the mighty Dwarven\nMines!",
+            RailStop.ABANDONED_QUARRY, "A quarry once bustling with riches\nand promise. Now left to the depths.",
+            RailStop.GLACITE_TUNNELS, "Find what lies beyond the Great Ice\nWall.");
 
     private static final String[] BOARDING = {
             "Hop on in and I'll get you going!",
@@ -43,28 +66,32 @@ public class GUIMinecart extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>("Minecart Rail Map", InventoryType.CHEST_4_ROW);
+        return new ViewConfiguration<>("Dwarven Mines Rail System", InventoryType.CHEST_6_ROW);
     }
 
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
-        RailStop[] stops = RailStop.values();
-        for (int i = 0; i < stops.length; i++) {
-            RailStop stop = stops[i];
-            layout.slot(SLOTS[i], (_, _) -> ItemStacks.item(stop.getIcon(), "<a>" + stop.getDisplayName() + "\n" + describe(player, stop)),
-                    (_, c) -> travel(player, stop));
+        layout.slot(4, ItemStacks.item(Material.MINECART, "<6>Dwarven Mines Rail System\n<7>Your one stop shop for cheap, easy and fast\n<7>travel in the deepest reaches of the Dwarven\n<7>Mines.\n\n<3>Stations:\n"
+                + "<7> > <3>Dwarven Village\n<7> > <3>Hanging Court\n<7> > <3>Great Ice Wall\n<7> > <3>Far Reserve\n<7> > <3>Upper Mines\n<7> > <3>Forge Basin\n"
+                + "<7> > <3>Lower Royal Mines\n<7> > <2>Abandoned Quarry\n<7> > <3>Glacite Tunnels - Dwarven Base Camp"));
+        for (RailStop stop : RailStop.values()) {
+            String color = stop == RailStop.ABANDONED_QUARRY ? "<2>" : "<3>";
+            String label = LABELS.getOrDefault(stop, stop.getDisplayName());
+            long distance = Math.round(origin.getPosition().distance(stop.getPosition()));
+            layout.slot(SLOTS.get(stop), (_, _) -> ItemStacks.item(stop.getIcon(), color + label + " <8>(<6>" + distance + "m<8>)\n<7>"
+                    + DESCRIPTIONS.get(stop) + "\n\n" + describe(player, stop)), (_, c) -> travel(player, stop));
         }
-        Components.close(layout, 31);
+        layout.slot(49, ItemStacks.item(Material.BARRIER, "<c>Actually, I'll walk..."), (_, c) -> c.player().closeInventory());
     }
 
     private String describe(SkyBlockPlayer player, RailStop stop) {
-        if (stop == origin) return "<7>You are here.";
+        if (stop == origin) return "<a>You are here!";
         if (stop.isRequiresPass() && !RailroadPass.isUnlocked(player)) {
             return "<7>Requires a <c>Secret Railroad Pass<7>.\n\n<e>Click to show your pass!";
         }
-        return "<7>Fare: <6>" + String.format(Locale.US, "%,d", stop.fareFrom(origin)) + " coins\n\n<e>Click to ride!";
+        return "<7>Cost: <6>" + String.format(Locale.US, "%,d", stop.fareFrom(origin)) + " Coins\n\n<e>Click to travel!";
     }
 
     private void travel(SkyBlockPlayer player, RailStop stop) {

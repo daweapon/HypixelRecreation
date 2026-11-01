@@ -2,6 +2,7 @@ package dev.daweapon.type.skyblockgeneric.gui.inventories.essence;
 
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.Material;
+import dev.daweapon.commons.StringUtility;
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import dev.daweapon.type.generic.gui.v2.Components;
 import dev.daweapon.type.generic.gui.v2.DefaultState;
@@ -10,10 +11,11 @@ import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
 import dev.daweapon.type.generic.gui.v2.ViewLayout;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
 import dev.daweapon.type.skyblockgeneric.crimson.kuudra.KuudraAvailability;
+import dev.daweapon.type.skyblockgeneric.essence.EssenceType;
+import dev.daweapon.type.skyblockgeneric.essence.Essences;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 // Igor and Alwin's blacksmith menu: essence upgrades, salvaging and the Kuudra Armor Type Transfer.
-// The wiki has no slot layout for this menu, so the three options follow the centred-row rule.
 public class GUICrimsonBlacksmith extends StatelessView {
     private final String title;
 
@@ -23,33 +25,36 @@ public class GUICrimsonBlacksmith extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>(title, InventoryType.CHEST_4_ROW);
+        return new ViewConfiguration<>(title, InventoryType.CHEST_6_ROW);
     }
 
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        Components.close(layout, 31);
-        layout.slot(11, ItemStacks.item(Material.ANVIL, """
+        Components.close(layout, 49);
+        layout.slot(19, ItemStacks.item(Material.DIAMOND_SWORD, """
                 <a>Upgrade Items
-                <7>Use <d>Essence <7>to add stars to your
-                <7>gear. Each star grants <a>+2% <7>of the
-                <7>item's stats.
+                <7>Upgrade items using materials and
+                <d>Essence <7>to improve their stats!
 
-                <e>Click to open!"""), (_, c) -> new GUIEssenceUpgrade().open((SkyBlockPlayer) c.player()));
-        layout.slot(13, ItemStacks.item(Material.GRINDSTONE, """
+                <e>Click to view!"""), (_, c) -> new GUIEssenceUpgrade().open((SkyBlockPlayer) c.player()));
+        layout.slot(22, ItemStacks.item(Material.BEACON, """
                 <a>Salvage Items
-                <7>Break down eligible gear into
-                <d>Essence<7>. Upgraded items refund half
-                <7>of their star costs.
+                <7>Salvage weapons and armor for
+                <7>materials.
 
-                <e>Click to open!"""), (_, c) -> new GUIEssenceSalvage().open((SkyBlockPlayer) c.player()));
-        layout.slot(15, ItemStacks.item(Material.SMITHING_TABLE, """
+                <e>Click to view!"""), (_, c) -> new GUIEssenceSalvage().open((SkyBlockPlayer) c.player()));
+        layout.slot(25, ItemStacks.item(Material.BEACON, """
                 <8>Kuudra Armor Type Transfer
-                <7>Sacrifice a Kuudra Armor into the
-                <7>target item.
-
+                <7>Combine two <b>Kuudra Armors <7>to
+                <7>increase their tier.
                 """ + KuudraAvailability.UNAVAILABLE_LORE),
                 (_, c) -> ((SkyBlockPlayer) c.player()).sendMessage(KuudraAvailability.UNAVAILABLE_CHAT));
+        layout.slot(50, (_, c) -> ItemStacks.head(EssenceGuideEntry.of(EssenceType.CRIMSON).texture(), """
+                <a>Essence Info
+                <d>Crimson Essence <7>can be used to
+                <7>upgrade items at the Blacksmith.
+
+                <7>Your Crimson Essence: <d>{}""", StringUtility.commaify(Essences.get((SkyBlockPlayer) c.player(), EssenceType.CRIMSON))));
     }
 }

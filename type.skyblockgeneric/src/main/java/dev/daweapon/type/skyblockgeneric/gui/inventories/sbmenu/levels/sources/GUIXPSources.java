@@ -1,6 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.levels.sources;
 
 import net.minestom.server.inventory.InventoryType;
+import net.minestom.server.inventory.click.Click;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import dev.daweapon.commons.text.Text;
@@ -22,7 +23,7 @@ import java.util.Locale;
 // tasks and their progress inline, with a toggle for the per-task bars.
 public class GUIXPSources implements StatefulView<GUIXPSources.State> {
     private static final int RECENTLY_VIEWED_SLOT = 37;
-    private static final int[] RECENT_SLOTS = {38, 39, 40, 41, 42, 43};
+    private static final int[] RECENT_SLOTS = {38, 39, 40, 41, 42};
     private static final int TOGGLE_SLOT = 50;
     private static final int BAR_LENGTH = 20;
     private static final String BAR = "─".repeat(BAR_LENGTH);
@@ -52,7 +53,13 @@ public class GUIXPSources implements StatefulView<GUIXPSources.State> {
             SkyBlockXPSource.Group group = groups[i];
             layout.slot(slots[i],
                     (s, c) -> categoryItem(group, (SkyBlockPlayer) c.player(), s.showProgressBars()),
-                    (click, c) -> GUIXPSourceGroup.open(c, group));
+                    (click, c) -> {
+                        if (click.click() instanceof Click.Right) {
+                            c.session(State.class).update(current -> new State(!current.showProgressBars()));
+                        } else {
+                            GUIXPSourceGroup.open(c, group);
+                        }
+                    });
         }
 
         layout.slot(RECENTLY_VIEWED_SLOT, (s, c) -> recentlyViewedItem((SkyBlockPlayer) c.player()));
@@ -67,7 +74,12 @@ public class GUIXPSources implements StatefulView<GUIXPSources.State> {
         List<SkyBlockXPSource> recent = RecentlyViewedXPTasks.get(ctx.player().getUuid());
 
         for (int i = 0; i < RECENT_SLOTS.length; i++) {
-            if (i >= recent.size()) break;
+            if (i >= recent.size()) {
+                int number = i + 1;
+                layout.slot(RECENT_SLOTS[i], (s, c) -> ItemStacks.item(Material.LIME_STAINED_GLASS_PANE, 1,
+                        Text.of("<a>Recently Viewed #{}", number), List.of()));
+                continue;
+            }
             SkyBlockXPSource task = recent.get(i);
             layout.slot(RECENT_SLOTS[i],
                     (s, c) -> taskShortcut(task, (SkyBlockPlayer) c.player()),
@@ -82,7 +94,7 @@ public class GUIXPSources implements StatefulView<GUIXPSources.State> {
         int total = SkyBlockXPSource.getTotalXPFor(group);
 
         List<Text> lore = new ArrayList<>();
-        lore.add(Text.of("<7>{} Tasks", tasks.size()));
+        lore.add(Text.of("<8>{} {}", tasks.size(), tasks.size() == 1 ? "Task" : "Tasks"));
         lore.add(Text.empty());
         group.getDescription().forEach(line -> lore.add(Text.of("<7>{}", line)));
         lore.add(Text.empty());
@@ -95,12 +107,13 @@ public class GUIXPSources implements StatefulView<GUIXPSources.State> {
             lore.add(Text.empty());
         }
 
-        lore.add(Text.of("<f>Progress to Complete Category: <e>{}", percentage(earned, total)));
+        lore.add(Text.of("<7>Progress to Complete Category: <6>{}", percentage(earned, total)));
         lore.add(categoryBar(earned, total));
         lore.add(Text.empty());
-        lore.add(Text.of("<e>Click to view tasks!"));
+        lore.add(Text.of("<e>Left Click to view tasks!"));
+        lore.add(Text.of("<e>Right Click to {} progress bars!", showBars ? "hide" : "show"));
 
-        return ItemStacks.item(group.getIcon(), 1, Text.of("<b>{}", group.getDisplayName()), lore);
+        return ItemStacks.item(group.getIcon(), 1, Text.of("<3>{}", group.getDisplayName()), lore);
     }
 
     private ItemStack.Builder recentlyViewedItem(SkyBlockPlayer player) {
@@ -108,7 +121,7 @@ public class GUIXPSources implements StatefulView<GUIXPSources.State> {
         lore.add(Text.of("<7>When you view XP Tasks, they will"));
         lore.add(Text.of("<7>show up here for your convenience!"));
 
-        return ItemStacks.item(Material.OAK_SIGN, 1, Text.of("<d>Recently Viewed <d>➡"), lore);
+        return ItemStacks.item(Material.OAK_SIGN, 1, Text.of("<a>Recently Viewed ➜"), lore);
     }
 
     private ItemStack.Builder taskShortcut(SkyBlockXPSource task, SkyBlockPlayer player) {

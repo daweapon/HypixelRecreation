@@ -23,8 +23,7 @@ public class GUIExperimentationTable extends StatelessView {
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         layout.filler(ItemStacks.filler(Material.PURPLE_STAINED_GLASS_PANE));
         for (int slot : new int[]{20, 21, 23, 24}) {
-            layout.slot(slot, ExperimentGuis.item(Material.PINK_STAINED_GLASS_PANE, "<d>Pending experiment...",
-                    "<7>A new experiment is being", "<7>prepared by the table."));
+            layout.slot(slot, ExperimentGuis.item(Material.BLACK_STAINED_GLASS_PANE, "<7>Pending experiment..."));
         }
         layout.slot(22, (s, c) -> superpairs((SkyBlockPlayer) c.player()),
                 (click, c) -> openSuperpairs((SkyBlockPlayer) c.player(), c));
@@ -33,8 +32,8 @@ public class GUIExperimentationTable extends StatelessView {
         layout.slot(33, (s, c) -> ultrasequencer((SkyBlockPlayer) c.player()),
                 (click, c) -> c.push(new GUIExperimentStakes(), new GUIExperimentStakes.State(GUIExperimentStakes.Experiment.ULTRASEQUENCER)));
         layout.slot(48, (s, c) -> meter((SkyBlockPlayer) c.player()), (click, c) -> c.push(new GUIExperimentRngMeter()));
-        layout.slot(50, ExperimentGuis.item(Material.EXPERIENCE_BOTTLE, "<a>Experience Bottles",
-                "<7>Consume your Experience Bottles", "<7>to gain Enchanting levels.", "", "<e>Click to view!"),
+        layout.slot(50, ExperimentGuis.item(Material.EXPERIENCE_BOTTLE, "<3>Experience Bottles",
+                "<7>Missing experience?", "<7>Simple! Just consume the <3>Experience", "<3>Bottles <7>from your inventories", "<7>directly or purchase some at the", "<7>current <6>Bazaar <7>price!", "", "<e>Click to view!"),
                 (click, c) -> c.push(new GUIExperimentBottles()));
         layout.slot(49, ExperimentGuis.item(Material.BARRIER, "<c>Close"), (click, c) -> c.player().closeInventory());
     }
@@ -58,10 +57,11 @@ public class GUIExperimentationTable extends StatelessView {
         boolean unlocked = ExperimentTable.superpairsUnlocked(player);
         String status = charges <= 0 ? "<c>No charges left! Click to buy another game."
                 : unlocked ? "<e>Click to play!" : "<c>Play the add-on experiments first!";
-        return ExperimentGuis.glowing(ExperimentGuis.item(Material.CYAN_STAINED_GLASS_PANE, "<a>Superpairs",
+        return ExperimentGuis.glowing(ExperimentGuis.item(Material.CYAN_STAINED_GLASS_PANE, "<d>Superpairs",
                 "<8>Main Experiment", "",
-                "<7>Find pairs of items on the grid to", "<7>unlock them. Earn <b>Enchanting Exp", "<7>and powerful enchanted books every day!",
-                "", "<7>Play add-ons first!", "",
+                "<7>Find <b>pairs <7>of items on the", "<7>grid to unlock them.", "",
+                "<7>Earn <3>Enchanting Exp <7>and", "<c>powerful <7>enchanted books", "<7>every day!",
+                "", "<d>Play add-ons first!", "",
                 "<7>Charges: <a>" + charges + "<7>/<a>" + ExperimentTable.CHARGES,
                 charges < ExperimentTable.CHARGES ? "<7>Next charge in: <e>" + duration(ExperimentTable.millisUntilCharge(data, now)) : "",
                 "", status));
@@ -69,10 +69,10 @@ public class GUIExperimentationTable extends StatelessView {
 
     private net.minestom.server.item.ItemStack.Builder chronomatron(SkyBlockPlayer player) {
         boolean done = ExperimentTable.chronomatronDone(ExperimentTable.data(player));
-        return ExperimentGuis.item(Material.CYAN_STAINED_GLASS, "<a>Chronomatron",
+        return ExperimentGuis.item(Material.CYAN_STAINED_GLASS, "<d>Chronomatron",
                 "<8>Add-on Experiment", "",
-                "<7>Repeat the musical pattern to form the", "<7>longest chain of notes. Earn extra", "<b>Enchanting Exp <7>and extra clicks on your",
-                "<7>next <a>Superpairs<7>!", "",
+                "<a>Repeat <7>the musical <d>pattern", "<7>to form the longest chain of", "<7>notes.", "",
+                "<7>Earn extra <3>Enchanting Exp", "<7>and extra clicks on your", "<7>next <d>Superpairs<7>!", "",
                 ExperimentTable.enchantingLevel(player) < ExperimentTable.CHRONOMATRON_REQUIRED_LEVEL
                         ? "<c>Requires Enchanting " + ExperimentTable.CHRONOMATRON_REQUIRED_LEVEL
                         : done ? "<a>Completed!" : "<e>Click to play!");
@@ -80,10 +80,10 @@ public class GUIExperimentationTable extends StatelessView {
 
     private net.minestom.server.item.ItemStack.Builder ultrasequencer(SkyBlockPlayer player) {
         boolean done = ExperimentTable.ultrasequencerDone(ExperimentTable.data(player));
-        return ExperimentGuis.item(Material.LIME_DYE, "<a>Ultrasequencer",
+        return ExperimentGuis.item(Material.LIME_DYE, "<d>Ultrasequencer",
                 "<8>Add-on Experiment", "",
-                "<7>1. Number(s) appear for 2 seconds.", "<7>2. They all disappear!", "<7>3. Click them in order from memory.",
-                "<7>Earn extra <b>Enchanting Exp <7>and clicks!", "",
+                "<a>1. <7>Number(s) appear for 2 seconds.", "<e>2. <7>They all disappear!", "<c>3. <7>Click them in order from memory.", "",
+                "<7>Earn extra <3>Enchanting Exp", "<7>and extra clicks on your", "<7>next <d>Superpairs<7>!", "",
                 ExperimentTable.enchantingLevel(player) < ExperimentTable.ULTRASEQUENCER_REQUIRED_LEVEL
                         ? "<c>Requires Enchanting " + ExperimentTable.ULTRASEQUENCER_REQUIRED_LEVEL
                         : done ? "<a>Completed!" : "<e>Click to play!");

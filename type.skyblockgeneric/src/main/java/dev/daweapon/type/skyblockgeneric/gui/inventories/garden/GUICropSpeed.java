@@ -35,6 +35,7 @@ public class GUICropSpeed extends StatelessView {
 
         for (int i = 0; i < GardenGrids.CROP_ORDER.size(); i++) {
             GardenCrop crop = GardenGrids.CROP_ORDER.get(i);
+            if (crop == GardenCrop.SUNFLOWER) continue;
             layout.slot(GardenGrids.CROP_SLOTS.get(i),
                     (_, c) -> cropItem(crop, GardenService.profile((SkyBlockPlayer) c.player())),
                     (click, c) -> click(crop, click, c));
@@ -42,8 +43,8 @@ public class GUICropSpeed extends StatelessView {
     }
 
     private ItemStack.Builder cropItem(GardenCrop crop, GardenProfile profile) {
-        String name = crop.getDisplayName();
-        return GardenMenus.item(GardenMenus.icon(crop), Text.key("gui_garden_upgrades.speed.name", name), List.of(
+        String name = crop == GardenCrop.MOONFLOWER ? "Sunflower & Moonflower" : crop.getDisplayName();
+        return GardenMenus.item(crop == GardenCrop.MOONFLOWER ? GardenMenus.icon(GardenCrop.SUNFLOWER) : GardenMenus.icon(crop), Text.key("gui_garden_upgrades.speed.name", name), List.of(
                 Text.key("gui_garden_upgrades.speed.lore.1"),
                 Text.key("gui_garden_upgrades.speed.lore.2", name),
                 GardenMenus.blank(),
@@ -59,8 +60,9 @@ public class GUICropSpeed extends StatelessView {
         if (click.click() instanceof Click.Right) {
             GardenProfile profile = GardenService.profile(player);
             profile.resetSpeedCap(crop);
+            if (crop == GardenCrop.MOONFLOWER) profile.resetSpeedCap(GardenCrop.SUNFLOWER);
             Gardens.save(player, profile);
-            player.sendMessage(Text.key("gui_garden_upgrades.speed.reset_done", crop.getDisplayName(),
+            player.sendMessage(Text.key("gui_garden_upgrades.speed.reset_done", crop == GardenCrop.MOONFLOWER ? "Sunflower & Moonflower" : crop.getDisplayName(),
                     GardenMenus.number(GardenProfile.DEFAULT_SPEED_CAP)));
             ctx.session(DefaultState.class).refresh();
             return;
@@ -82,6 +84,7 @@ public class GUICropSpeed extends StatelessView {
         if (cap.isPresent()) {
             GardenProfile profile = GardenService.profile(player);
             profile.setSpeedCap(crop, cap.getAsInt());
+            if (crop == GardenCrop.MOONFLOWER) profile.setSpeedCap(GardenCrop.SUNFLOWER, cap.getAsInt());
             Gardens.save(player, profile);
             player.sendMessage(Text.key("gui_garden_upgrades.speed.updated", crop.getDisplayName(), GardenMenus.number(cap.getAsInt())));
         } else {

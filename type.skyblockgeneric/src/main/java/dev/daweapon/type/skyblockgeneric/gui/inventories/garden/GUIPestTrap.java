@@ -22,10 +22,11 @@ import java.util.List;
 
 public class GUIPestTrap extends StatelessView {
     private static final int[] CAUGHT_SLOTS = {12, 13, 14, 15};
-    private static final int BAIT_SLOT = 10;
+    private static final int BAIT_SLOT = 11;
     private static final int COLLECT_SLOT = 16;
-    private static final int PICK_UP_SLOT = 30;
+    private static final int BACK_SLOT = 30;
     private static final int CLOSE_SLOT = 31;
+    private static final int PICK_UP_SLOT = 35;
 
     private final String trapId;
 
@@ -42,6 +43,7 @@ public class GUIPestTrap extends StatelessView {
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
         Components.close(layout, CLOSE_SLOT);
+        Components.back(layout, BACK_SLOT, ctx);
 
         layout.slot(BAIT_SLOT, (_, c) -> bait((SkyBlockPlayer) c.player()), (click, c) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
@@ -53,9 +55,12 @@ public class GUIPestTrap extends StatelessView {
             c.session(DefaultState.class).refresh();
         });
 
-        for (int i = 0; i < CAUGHT_SLOTS.length; i++) {
+        PestData.Trap placed = PestTraps.find((SkyBlockPlayer) ctx.player(), trapId);
+        PestTraps.Kind placedKind = placed == null ? null : PestTraps.KINDS.get(placed.getKind());
+        int shown = Math.min(CAUGHT_SLOTS.length, placedKind == null ? 2 : placedKind.capacity());
+        for (int i = 0; i < shown; i++) {
             int index = i;
-            layout.slot(CAUGHT_SLOTS[i], (_, c) -> caught((SkyBlockPlayer) c.player(), index));
+            layout.slot(CAUGHT_SLOTS[CAUGHT_SLOTS.length - shown + i], (_, c) -> caught((SkyBlockPlayer) c.player(), index));
         }
 
         layout.slot(COLLECT_SLOT, (_, c) -> collect((SkyBlockPlayer) c.player()), (_, c) -> {
@@ -63,11 +68,8 @@ public class GUIPestTrap extends StatelessView {
             c.session(DefaultState.class).refresh();
         });
 
-        layout.slot(PICK_UP_SLOT, (_, _) -> ItemStacks.item(Material.BARRIER, Text.of("<c>Pick Up Trap"), List.of(
-                        Text.of("<7>Releases any caught Pests onto the plot, returns"),
-                        Text.of("<7>the bait and gives the Trap back."),
-                        Text.empty(),
-                        Text.of("<e>Click to pick up!"))),
+        layout.slot(PICK_UP_SLOT, (_, _) -> ItemStacks.item(Material.BEDROCK, Text.of("<a>Pickup Trap"), List.of(
+                        Text.of("<e>Click to pickup!"))),
                 (_, c) -> {
                     PestTraps.pickUpTrap((SkyBlockPlayer) c.player(), trapId);
                     c.player().closeInventory();
@@ -79,9 +81,10 @@ public class GUIPestTrap extends StatelessView {
         if (trap == null) return ItemStacks.item(Material.BARRIER, Text.of("<c>Trap missing"), List.of());
         boolean hasBait = trap.getBait() > 0 && !trap.getMaterial().isEmpty();
         List<Text> lore = new ArrayList<>();
-        lore.add(Text.of("<7>Pests are attracted to the bait and"));
-        lore.add(Text.of("<7>wander into the Trap. Every Pest that"));
-        lore.add(Text.of("<7>is caught uses up <a>1 bait<7>."));
+        lore.add(Text.of("<7>Lure <2>ൠ Pests <7>into this trap by"));
+        lore.add(Text.of("<7>leaving bait items into this slot. <8>1 bait"));
+        lore.add(Text.of("<8>will be consumed when a pest is"));
+        lore.add(Text.of("<8>caught."));
         lore.add(Text.empty());
         lore.add(Text.of("<7>Bait: " + (hasBait ? "<a>" + trap.getBait() + "x " + PestItems.materialName(trap.getMaterial()) : "<c>None")
                 + " <8>(max " + PestTraps.BAIT_LIMIT + ")"));
@@ -94,7 +97,7 @@ public class GUIPestTrap extends StatelessView {
         lore.add(addable != null ? Text.of("<e>Click to add " + PestItems.materialName(addable) + " <e>from your inventory!")
                 : Text.of("<c>You have no bait to add!"));
         if (hasBait) lore.add(Text.of("<e>Right-click to remove the bait!"));
-        return ItemStacks.item(hasBait ? Material.HONEYCOMB : Material.GLASS_BOTTLE, Text.of("<a>Pest Bait"), lore);
+        return ItemStacks.item(hasBait ? Material.HONEYCOMB : Material.ORANGE_STAINED_GLASS_PANE, Text.of("<6>Trap Bait"), lore);
     }
 
     private net.minestom.server.item.ItemStack.Builder caught(SkyBlockPlayer player, int index) {
@@ -105,8 +108,10 @@ public class GUIPestTrap extends StatelessView {
             return ItemStacks.item(Material.IRON_BARS, Text.of("<8>No Slot"), List.of());
         }
         if (index >= trap.getCaught().size()) {
-            return ItemStacks.item(Material.RED_STAINED_GLASS_PANE, Text.of("<c>Empty Slot"),
-                    List.of(Text.of("<7>Waiting to catch a <2>Pest<7>.")));
+            return ItemStacks.item(Material.IRON_BARS, Text.of("<a>Pest Slot"), List.of(
+                    Text.of("<7>When a curious <2>ൠ Pest <7>wanders into"),
+                    Text.of("<7>this trap they'll appear here, waiting"),
+                    Text.of("<7>to be set free.")));
         }
         PestCatalogue.Pest pest = PestCatalogue.get().pest(trap.getCaught().get(index));
         if (pest == null) return ItemStacks.item(Material.BARRIER, Text.of("<c>Unknown Pest"), List.of());
@@ -121,9 +126,12 @@ public class GUIPestTrap extends StatelessView {
         PestTraps.Kind kind = trap == null ? null : PestTraps.KINDS.get(trap.getKind());
         int count = trap == null ? 0 : trap.getCaught().size();
         List<Text> lore = new ArrayList<>();
-        lore.add(Text.of("<7>Caught: <a>{}<7>/<a>{}", count, kind == null ? 0 : kind.capacity()));
+        lore.add(Text.of("<7>Click this handy button to release all"));
+        lore.add(Text.of("<7>caught pests from this trap!"));
         lore.add(Text.empty());
-        lore.add(count > 0 ? Text.of("<e>Click to release {} Pests!", count) : Text.of("<c>There is nothing to release!"));
-        return ItemStacks.item(count > 0 ? Material.LIME_DYE : Material.GRAY_DYE, Text.of("<a>Release Pests"), lore);
+        lore.add(Text.of("<7>Current Capacity: <a>{}<7>/{}", count, kind == null ? 0 : kind.capacity()));
+        lore.add(Text.empty());
+        lore.add(count > 0 ? Text.of("<e>Click to release all pests!") : Text.of("<c>There are no <2>ൠ Pests <c>to release!"));
+        return ItemStacks.item(Material.RED_TERRACOTTA, Text.of("<a>Release All Pests"), lore);
     }
 }

@@ -30,29 +30,44 @@ public class GUICatacombsPartyFinderSearch extends StatelessView {
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
         UUID uuid = ctx.player().getUuid();
+        layout.slot(11, ItemStacks.item(Material.SKELETON_SKULL, """
+                <a>Select Dungeon Type
+                <7>Only show groups for this dungeon type.
+
+                <a>Currently Selected: <b>The Catacombs
+
+                <e>Click to change!"""));
+        layout.slot(12, ItemStacks.item(Material.NETHER_STAR, """
+                <a>Select Class Level
+                <7>Only show groups whose class level
+                <7>requirement is in this range.
+
+                <a>Currently Selected: <f>Any
+
+                <e>Click to change!"""));
         layout.slot(10, (_, _) -> {
             CatacombsFloor floor = GUICatacombsPartyFinder.search(uuid).key();
             return ItemStacks.item(CatacombsFloorInfo.material(floor), """
-                    <a>Floor
+                    <a>Select Floor
                     <7>Only show groups for this floor.
 
-                    <7>Currently: <b>%s
+                    <a>Currently Selected: <b>%s
 
-                    <e>Left-Click to cycle!
-                    <e>Right-Click to cycle back!""".formatted(floor == null ? "Any" : floor.displayName()));
+                    <e>Left-Click to change!
+                    <e>Right-Click to change back!""".formatted(floor == null ? "Any" : floor.displayName()));
         }, (click, c) -> {
             PartyFinderSearch<CatacombsFloor> search = GUICatacombsPartyFinder.search(uuid);
             GUICatacombsPartyFinder.setSearch(uuid, search.withKey(cycle(search.key(), click.click() instanceof Click.Right)));
             c.session(DefaultState.class).refresh();
         });
-        layout.slot(12, (_, _) -> {
+        layout.slot(15, (_, _) -> {
             String text = GUICatacombsPartyFinder.search(uuid).text();
             return ItemStacks.item(Material.OAK_SIGN, """
-                    <a>Search Text
+                    <a>Enter Search
                     <7>Only show groups whose note or
                     <7>leader contains this text.
 
-                    <7>Currently: <f>%s
+                    <a>Search text: <f>%s
 
                     <e>Click to edit!""".formatted(text.isEmpty() ? "None!" : "\"" + text + "\""));
         }, (_, c) -> ask(c.player(), "Search text", input ->
@@ -60,8 +75,8 @@ public class GUICatacombsPartyFinderSearch extends StatelessView {
         layout.slot(14, (_, _) -> {
             PartyFinderSearch<CatacombsFloor> search = GUICatacombsPartyFinder.search(uuid);
             return ItemStacks.item(Material.IRON_SWORD, """
-                    <a>Catacombs Level
-                    <7>Only show groups whose Catacombs Level
+                    <a>Select Dungeon Level
+                    <7>Only show groups whose dungeon level
                     <7>requirement is in this range.
 
                     <7>Currently: <f>%d-%d
@@ -71,8 +86,8 @@ public class GUICatacombsPartyFinderSearch extends StatelessView {
             int[] range = parseRange(input);
             if (range != null) GUICatacombsPartyFinder.setSearch(uuid, GUICatacombsPartyFinder.search(uuid).withLevels(range[0], range[1]));
         }));
-        layout.slot(16, (_, _) -> ItemStacks.item(Material.HOPPER, """
-                <a>Sort
+        layout.slot(16, (_, _) -> ItemStacks.item(Material.PAPER, """
+                <a>Sort Groups
                 <7>Change the order groups are listed in.
 
                 <7>Currently: <b>%s
@@ -82,7 +97,8 @@ public class GUICatacombsPartyFinderSearch extends StatelessView {
             GUICatacombsPartyFinder.setSearch(uuid, search.withSort(search.sort().next()));
             c.session(DefaultState.class).refresh();
         });
-        Components.back(layout, 31, ctx);
+        Components.back(layout, 30, ctx);
+        Components.close(layout, 31);
     }
 
     static CatacombsFloor cycle(CatacombsFloor current, boolean backwards) {

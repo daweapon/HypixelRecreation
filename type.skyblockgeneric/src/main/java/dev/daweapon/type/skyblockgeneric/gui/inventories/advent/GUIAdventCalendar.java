@@ -18,21 +18,21 @@ import java.util.Set;
 
 public class GUIAdventCalendar extends StatelessView {
     private static final int[] SLOTS = {
-            2, 3, 4, 5, 6,
-            11, 12, 13, 14, 15,
-            20, 21, 22, 23, 24,
-            29, 30, 31, 32, 33,
-            38, 39, 40, 41, 42};
+            10, 11, 12, 13, 14, 15, 16,
+            19, 20, 21, 22, 23, 24, 25,
+            28, 29, 30, 31, 32, 33, 34,
+            37, 38, 39, 40};
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>("Advent Calendar", InventoryType.CHEST_6_ROW);
+        return new ViewConfiguration<>("SkyBlock Advent Calendar 2022", InventoryType.CHEST_6_ROW);
     }
 
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
         Components.fill(layout);
+        Components.back(layout, 48, ctx);
         Components.close(layout, 49);
         int open = AdventService.openDay(player);
         for (int number = 1; number <= AdventCalendar.DAYS; number++) {
@@ -44,27 +44,40 @@ public class GUIAdventCalendar extends StatelessView {
         }
     }
 
+    private static String ordinal(int number) {
+        if (number % 100 >= 11 && number % 100 <= 13) return number + "th";
+        return number + switch (number % 10) {
+            case 1 -> "st";
+            case 2 -> "nd";
+            case 3 -> "rd";
+            default -> "th";
+        };
+    }
+
     private static net.minestom.server.item.ItemStack.Builder render(SkyBlockPlayer player, int number, int open) {
         Set<Integer> claimed = AdventService.claimed(player);
         AdventCalendar.Day day = AdventCalendar.day(number);
-        StringBuilder lore = new StringBuilder();
-        day.gifts().forEach((gift, amount) -> lore.append("<7>").append(amount).append("x <f>").append(StringUtility.toNormalCase(gift)).append("\n"));
-        lore.append("<7>").append(StringUtility.commaify(day.coins())).append(" <6>coins\n");
+        boolean done = claimed.contains(number);
+        String mark = done ? "<a>✔ " : "<c>✘ ";
+        StringBuilder lore = new StringBuilder("<8>Advent Reward\n\n<7>Rewards:\n");
+        day.gifts().forEach((gift, amount) -> lore.append(mark).append("<8>+<f>").append(amount).append("x ").append(StringUtility.toNormalCase(gift)).append("\n"));
+        lore.append(mark).append("<8>+<6>").append(StringUtility.commaify(day.coins())).append(" <7>Coins\n");
         for (AdventCalendar.RankedItem item : day.items()) {
-            lore.append(player.getRank().isEqualOrHigherThan(item.rank()) ? "<a>" : "<c>").append("1x ").append(StringUtility.toNormalCase(item.item()))
+            lore.append(player.getRank().isEqualOrHigherThan(item.rank()) ? mark : "<c>✘ ").append("<8>+<f>1x ").append(StringUtility.toNormalCase(item.item()))
                     .append(" <8>(").append(item.rank().getTitle()).append(")\n");
         }
         for (AdventCalendar.RankedSpray spray : day.sprays()) {
-            lore.append(player.getRank().isEqualOrHigherThan(spray.rank()) ? "<a>" : "<c>").append(StringUtility.toNormalCase(spray.spray()))
-                    .append(" Spray <8>(").append(spray.rank().getTitle()).append(")\n");
+            lore.append(player.getRank().isEqualOrHigherThan(spray.rank()) ? mark : "<c>✘ ").append("<8>+<d>").append(StringUtility.toNormalCase(spray.spray()))
+                    .append(" <7>Spray <8>(").append(spray.rank().getTitle()).append(")\n");
         }
         day.unbuilt().forEach(name -> lore.append("<8>").append(name).append(" (not given yet)\n"));
-        if (claimed.contains(number)) {
-            return ItemStacks.item(Material.LIME_STAINED_GLASS_PANE, "<a>Day " + number + "\n" + lore + "\n<a>Already claimed!");
+        String name = "December " + ordinal(number);
+        if (done) {
+            return ItemStacks.item(Material.LIME_STAINED_GLASS_PANE, "<a><bold>" + name + "\n" + lore + "\n<a>Reward claimed!");
         }
         if (number > open) {
-            return ItemStacks.item(Material.RED_STAINED_GLASS_PANE, "<c>Day " + number + "\n" + lore + "\n<c>Not available yet!");
+            return ItemStacks.item(Material.RED_STAINED_GLASS_PANE, "<c><bold>" + name + "\n" + lore + "\n<c>Not available yet!");
         }
-        return ItemStacks.item(Material.CHEST, "<e>Day " + number + "\n" + lore + "\n<e>Click to claim!");
+        return ItemStacks.item(Material.CHEST, "<e><bold>" + name + "\n" + lore + "\n<e>Click to claim reward!");
     }
 }

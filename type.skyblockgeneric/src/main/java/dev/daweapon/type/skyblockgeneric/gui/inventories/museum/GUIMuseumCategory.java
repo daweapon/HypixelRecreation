@@ -205,6 +205,7 @@ public class GUIMuseumCategory implements StatefulView<GUIMuseumCategory.State> 
                         Text.of("<8>- <7>Item Value"),
                         Text.of("<8>- <7>Clean Item Value"),
                         Text.of("<8>- <7>Museum Display Slot"),
+                        Text.of("<8>- <7>Item created edition"),
                         Text.empty(),
                         Text.of(enabled ? "<7>Toggled: <a><l>ON" : "<7>Toggled: <c><l>OFF"),
                         Text.empty(),

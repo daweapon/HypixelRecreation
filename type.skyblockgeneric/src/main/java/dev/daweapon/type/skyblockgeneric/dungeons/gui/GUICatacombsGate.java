@@ -76,7 +76,7 @@ public class GUICatacombsGate extends StatelessView {
                 <7>Use the Party Finder to join a
                 <7>party queued for the dungeon.
 
-                <e>Click to open!"""), (click, c) -> GUICatacombsPartyFinder.open((SkyBlockPlayer) c.player()));
+                <e>Click to browse!"""), (click, c) -> GUICatacombsPartyFinder.open((SkyBlockPlayer) c.player()));
         DungeonsUnreleased.slot(layout, 50, Material.RED_STAINED_GLASS, """
                 <a>Toggle Auto Ready Up
                 <7>Auto ready up when joining <a>The

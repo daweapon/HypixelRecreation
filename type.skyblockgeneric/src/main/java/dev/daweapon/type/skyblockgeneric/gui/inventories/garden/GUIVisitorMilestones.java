@@ -7,12 +7,11 @@ import dev.daweapon.commons.StringUtility;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import dev.daweapon.type.generic.gui.v2.Components;
-import dev.daweapon.type.generic.gui.v2.StatefulPaginatedView;
+import dev.daweapon.type.generic.gui.v2.DefaultState;
+import dev.daweapon.type.generic.gui.v2.StatelessView;
 import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
 import dev.daweapon.type.generic.gui.v2.ViewLayout;
-import dev.daweapon.type.generic.gui.v2.context.ClickContext;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
-import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.type.skyblockgeneric.garden.Gardens;
 import dev.daweapon.type.skyblockgeneric.garden.visitor.VisitorCatalogue;
 import dev.daweapon.type.skyblockgeneric.garden.visitor.VisitorData;
@@ -21,88 +20,62 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GUIVisitorMilestones extends StatefulPaginatedView<VisitorCatalogue.MilestoneTier, GUIVisitorMilestones.State> {
-    private final boolean unique;
-
-    public GUIVisitorMilestones(boolean unique) {
-        this.unique = unique;
+public class GUIVisitorMilestones extends StatelessView {
+    @Override
+    public ViewConfiguration<DefaultState> configuration() {
+        return new ViewConfiguration<>(Text.of("Visitor Milestones"), InventoryType.CHEST_6_ROW);
     }
 
     @Override
-    public State initialState() {
-        VisitorCatalogue catalogue = VisitorCatalogue.get();
-        return new State(unique ? catalogue.uniqueMilestones() : catalogue.acceptedMilestones(), 0);
-    }
-
-    @Override
-    public ViewConfiguration<State> configuration() {
-        return ViewConfiguration.withString((state, _) -> unique ? "Unique Visitors Served" : "Offers Accepted", InventoryType.CHEST_6_ROW);
-    }
-
-    @Override
-    protected int[] getPaginatedSlots() {
-        return DEFAULT_SLOTS;
-    }
-
-    @Override
-    protected int getNextPageSlot() {
-        return 53;
-    }
-
-    @Override
-    protected int getPreviousPageSlot() {
-        return 45;
-    }
-
-    @Override
-    protected void layoutCustom(ViewLayout<State> layout, State state, ViewContext ctx) {
+    public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
+        Components.fill(layout);
+        if (!Components.back(layout, 48, ctx)) {
+            Components.close(layout, 48);
+        }
         Components.close(layout, 49);
-        layout.slot(48, (_, _) -> ItemStacks.item(Material.HOPPER, Text.of(unique ? "<a>Offers Accepted" : "<a>Unique Visitors Served"),
-                        List.of(Text.of("<e>Click to switch track!"))),
-                (_, c) -> c.push(new GUIVisitorMilestones(!unique)));
-        layout.slot(4, (_, c) -> {
-            VisitorData data = Gardens.profile((SkyBlockPlayer) c.player()).visitors();
-            return ItemStacks.item(Material.EMERALD, Text.of(unique ? "<a>Unique Visitors Served" : "<a>Offers Accepted"), List.of(
-                    Text.of("<7>Progress: <a>{}", unique ? data.uniqueServed() : data.totalAccepted())));
-        });
+        layout.slot(21, (_, c) -> track((SkyBlockPlayer) c.player(), true));
+        layout.slot(23, (_, c) -> track((SkyBlockPlayer) c.player(), false));
+        layout.slot(50, (_, _) -> ItemStacks.item(Material.BOOK, Text.of("<a>Visitor's Logbook"), List.of(
+                        Text.of("<7>Browse and filter through all of the"),
+                        Text.of("<7>visitors on the Garden."),
+                        Text.empty(),
+                        Text.of("<e>Click to browse!"))),
+                (_, c) -> c.push(new GUIVisitorLogbook()));
     }
 
-    @Override
-    protected ItemStack.Builder renderItem(VisitorCatalogue.MilestoneTier tier, int index, HypixelPlayer p) {
-        VisitorData data = Gardens.profile((SkyBlockPlayer) p).visitors();
+    private ItemStack.Builder track(SkyBlockPlayer player, boolean unique) {
+        VisitorCatalogue catalogue = VisitorCatalogue.get();
+        List<VisitorCatalogue.MilestoneTier> tiers = unique ? catalogue.uniqueMilestones() : catalogue.acceptedMilestones();
+        VisitorData data = Gardens.profile(player).visitors();
         int progress = unique ? data.uniqueServed() : data.totalAccepted();
-        boolean done = progress >= tier.cumulative();
+        VisitorCatalogue.MilestoneTier next = tiers.stream().filter(tier -> progress < tier.cumulative()).findFirst().orElse(null);
         List<Text> lore = new ArrayList<>();
-        lore.add(Text.of("<7>Requires <a>{} <7>{}", tier.cumulative(), unique ? "unique visitors served" : "offers accepted"));
-        lore.add(Text.empty());
-        lore.add(Text.of("<7>Rewards:"));
-        lore.add(Text.of(" <8>+<a>{} Garden Experience", tier.gardenXp()));
-        lore.add(Text.of(" <8>+<3>{} Farming Experience", StringUtility.commaify(tier.farmingXp())));
-        lore.add(Text.of(" <8>+<b>{} SkyBlock XP", tier.skyblockXp()));
-        lore.add(Text.empty());
-        lore.add(Text.of(done ? "<a>✔ Reached!" : "<7>Progress: <a>" + Math.min(progress, tier.cumulative()) + "<7>/<a>" + tier.cumulative()));
-        return ItemStacks.item(done ? Material.LIME_STAINED_GLASS_PANE : Material.RED_STAINED_GLASS_PANE,
-                Text.of((done ? "<a>" : "<c>") + "Tier " + StringUtility.getAsRomanNumeral(tier.tier())), lore);
-    }
-
-    @Override
-    protected void onItemClick(ClickContext<State> click, ViewContext ctx, VisitorCatalogue.MilestoneTier tier, int index) {
-    }
-
-    @Override
-    protected boolean shouldFilterFromSearch(State state, VisitorCatalogue.MilestoneTier tier) {
-        return false;
-    }
-
-    public record State(List<VisitorCatalogue.MilestoneTier> items, int page) implements PaginatedState<VisitorCatalogue.MilestoneTier> {
-        @Override
-        public PaginatedState<VisitorCatalogue.MilestoneTier> withPage(int page) {
-            return new State(items, page);
+        if (unique) {
+            lore.add(Text.of("<7>Unlock unique visitors and"));
+            lore.add(Text.of("<7>complete their offer on your"));
+            lore.add(Text.of("<7>island to increase this"));
+            lore.add(Text.of("<7>milestone."));
+        } else {
+            lore.add(Text.of("<7>Accept offers from visitors to"));
+            lore.add(Text.of("<7>increase this milestone."));
         }
-
-        @Override
-        public PaginatedState<VisitorCatalogue.MilestoneTier> withItems(List<VisitorCatalogue.MilestoneTier> items) {
-            return new State(items, page);
+        lore.add(Text.empty());
+        if (next == null) {
+            lore.add(Text.of("<a>Max tier reached!"));
+        } else {
+            long base = tiers.indexOf(next) == 0 ? 0 : tiers.get(tiers.indexOf(next) - 1).cumulative();
+            long into = Math.max(0, progress - base);
+            long need = next.cumulative() - base;
+            lore.add(Text.of("<7>Progress to Tier {}: <e>{}%", StringUtility.getAsRomanNumeral(next.tier()), GardenMenus.percent(into, need)));
+            int filled = GardenMenus.filled(into, need, GardenMenus.BAR_WIDTH);
+            lore.add(Text.of("<dark_green><m>" + GardenMenus.spaces(filled) + "<white><m>" + GardenMenus.spaces(GardenMenus.BAR_WIDTH - filled)
+                    + "<reset> <gold>" + GardenMenus.number(into) + "<yellow>/<yellow>" + GardenMenus.number(need)));
+            lore.add(Text.empty());
+            lore.add(Text.of("<7>Rewards:"));
+            lore.add(Text.of("　<8>+<2>{}<7> Garden Experience", next.gardenXp()));
+            lore.add(Text.of("　<8>+<3>{}<7> Farming Experience", StringUtility.commaify(next.farmingXp())));
+            lore.add(Text.of("　<8>+<b>{} SkyBlock XP", next.skyblockXp()));
         }
+        return ItemStacks.item(Material.PLAYER_HEAD, Text.of(unique ? "<a>Unique Visitors Served" : "<a>Offers Accepted"), lore);
     }
 }

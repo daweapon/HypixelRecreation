@@ -78,7 +78,7 @@ public class GUISackOfSacks implements StatefulView<GUISackOfSacks.SackOfSacksSt
         }
 
         // Insert inventory button
-        layout.slot(38, (s, c) -> ItemStacks.item(Material.CHEST, 1,
+        layout.slot(41, (s, c) -> ItemStacks.item(Material.CHEST, 1,
                         Text.key("gui_sbmenu.bags.sack_of_sacks.insert_inventory"),
                         Text.keyLines("gui_sbmenu.bags.sack_of_sacks.insert_inventory.lore")),
                 (click, c) -> {

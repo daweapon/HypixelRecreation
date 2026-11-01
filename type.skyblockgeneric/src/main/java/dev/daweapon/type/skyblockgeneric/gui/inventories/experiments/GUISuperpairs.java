@@ -52,12 +52,12 @@ public class GUISuperpairs implements StatefulView<GUISuperpairs.Screen> {
         layout.filler(ItemStacks.filler(Material.BLACK_STAINED_GLASS_PANE));
         layout.slot(4, (s, c) -> switch (s.phase) {
             case PLAYING -> ExperimentGuis.item(Material.BOOKSHELF, Math.max(1, Math.min(64, s.game.clicksRemaining())),
-                    "<a>Remaining Clicks: <f>" + s.game.clicksRemaining());
+                    "<7>Remaining Clicks: <e>" + s.game.clicksRemaining());
             case REVIEW -> blank();
             case REWARDS -> blank();
         });
         layout.slot(49, (s, c) -> s.phase == Phase.PLAYING
-                ? ExperimentGuis.item(Material.CLOCK, Math.max(1, Math.min(64, secondsLeft(s))), "<a>Timer: <f>" + secondsLeft(s) + "s")
+                ? ExperimentGuis.item(Material.CLOCK, Math.max(1, Math.min(64, secondsLeft(s))), "<7>Timer: <a>" + secondsLeft(s) + "s")
                 : s.phase == Phase.REVIEW ? ExperimentGuis.item(Material.CLOCK, Math.max(1, Math.min(64, secondsLeft(s))), "<a>Experiment over") : blank());
         for (int tile = 0; tile < screen.game.tileCount(); tile++) {
             int index = tile;
@@ -88,7 +88,7 @@ public class GUISuperpairs implements StatefulView<GUISuperpairs.Screen> {
             ItemStack.Builder builder = icon(player, game.prizeAt(tile));
             return game.isMatched(tile) ? ExperimentGuis.glowing(builder) : builder;
         }
-        return ExperimentGuis.item(Material.LIGHT_BLUE_STAINED_GLASS, game.instantFindActive() ? "<b>Instant Find!"
+        return ExperimentGuis.item(Material.CYAN_STAINED_GLASS, game.instantFindActive() ? "<b>Instant Find!"
                 : game.hasFirstPick() ? "<e>Click a second button!" : "<e>Click any button!");
     }
 
@@ -132,8 +132,8 @@ public class GUISuperpairs implements StatefulView<GUISuperpairs.Screen> {
         lines.add("<7>Pairs found: <e>" + result.pairsFound());
         lines.add("");
         lines.add("<7>Rewards:");
-        lines.add("<b> +" + ExperimentGuis.commas(result.stakeXp()) + " Enchanting Exp <b>(Stakes)");
-        lines.add("<b> +" + ExperimentGuis.commas(result.pairXp()) + " Enchanting Exp <b>(Pairs)");
+        lines.add("<8> +<3>" + ExperimentGuis.commas(result.stakeXp()) + " Enchanting Exp (Stakes)");
+        lines.add("<8> +<3>" + ExperimentGuis.commas(result.pairXp()) + " Enchanting Exp (Pairs)");
         for (PairPrize prize : result.prizes()) lines.add("<7> + " + prize.name());
         lines.add("");
         lines.add("<e>Click to claim rewards!");

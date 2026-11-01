@@ -114,7 +114,7 @@ public class GUIKuudraPartyFinder implements StatefulView<GUIKuudraPartyFinder.S
 
         if (state.own() == null) {
             layout.slot(45, ItemStacks.item(Material.REDSTONE_BLOCK, """
-                    <a>Start a New Queue
+                    <a>Start a new queue
                     <7>Queue up with other players to
                     <7>defeat the Kuudra.
 
@@ -199,7 +199,7 @@ public class GUIKuudraPartyFinder implements StatefulView<GUIKuudraPartyFinder.S
         lore.add(Text.of("<7>groups suited to you!"));
         lore.add(Text.empty());
         lore.add(Text.of("<a>Tier: <b>{}", search.key() == null ? "Any" : search.key().getDisplayName()));
-        lore.add(search.text().isEmpty() ? Text.of("<a>Search Text: <f>None!") : Text.of("<a>Search Text: <f>{}", search.text()));
+        lore.add(search.text().isEmpty() ? Text.of("<a>Search text: <f>None!") : Text.of("<a>Search text: <f>{}", search.text()));
         lore.add(Text.of("<a>Combat Level: <f>{}-{}", search.minimumLevel(), search.maximumLevel()));
         lore.add(Text.of("<a>Sort: <b>{}", search.sort().displayName()));
         lore.add(Text.empty());

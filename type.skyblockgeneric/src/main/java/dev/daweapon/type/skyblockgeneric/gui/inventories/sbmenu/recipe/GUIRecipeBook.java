@@ -24,10 +24,17 @@ import java.util.List;
 public class GUIRecipeBook extends StatelessView {
     private static final String LOADING_BAR = "─────────────────";
 
-    private static final int[] CATEGORY_SLOTS = {
-            20, 21, 22, 23, 24,
-            29, 30, 31, 33
-    };
+    private static final java.util.Map<SkyBlockRecipe.RecipeType, Integer> CATEGORY_SLOTS = java.util.Map.of(
+            SkyBlockRecipe.RecipeType.FARMING, 13,
+            SkyBlockRecipe.RecipeType.MINING, 20,
+            SkyBlockRecipe.RecipeType.COMBAT, 21,
+            SkyBlockRecipe.RecipeType.FISHING, 22,
+            SkyBlockRecipe.RecipeType.FORAGING, 23,
+            SkyBlockRecipe.RecipeType.ENCHANTING, 24,
+            SkyBlockRecipe.RecipeType.ALCHEMY, 29,
+            SkyBlockRecipe.RecipeType.CARPENTRY, 30,
+            SkyBlockRecipe.RecipeType.SPECIAL, 33
+    );
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
@@ -67,9 +74,9 @@ public class GUIRecipeBook extends StatelessView {
                     Text.keyLines("gui_sbmenu.recipe.book.info.lore", missionDisplay));
         });
 
-        for (int i = 0; i < CATEGORY_SLOTS.length && i < SkyBlockRecipe.RecipeType.values().length; i++) {
-            SkyBlockRecipe.RecipeType type = SkyBlockRecipe.RecipeType.values()[i];
-            int slot = CATEGORY_SLOTS[i];
+        for (java.util.Map.Entry<SkyBlockRecipe.RecipeType, Integer> categoryEntry : CATEGORY_SLOTS.entrySet()) {
+            SkyBlockRecipe.RecipeType type = categoryEntry.getKey();
+            int slot = categoryEntry.getValue();
 
             ArrayList<SkyBlockRecipe> typeRecipes = new ArrayList<>();
             allRecipes.forEach(recipe -> {

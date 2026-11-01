@@ -55,6 +55,8 @@ public class GUICropTierUpgrades extends StatelessView {
     private ItemStack.Builder cropItem(GardenProfile profile) {
         String name = crop.getDisplayName();
         return GardenMenus.item(GardenMenus.icon(crop), Text.key("gui_garden_upgrades.tiers.crop.name", name), List.of(
+                Text.key("gui_garden_upgrades.tiers.crop.intro", name),
+                GardenMenus.blank(),
                 Text.key("gui_garden_upgrades.tiers.crop.lore.1", name, profile.cropUpgradeTier(crop), GardenConfig.get().maxUpgradeTier()),
                 Text.key("gui_garden_upgrades.tiers.crop.lore.2", name, profile.cropUpgradeTier(crop), GardenConfig.get().maxUpgradeTier(),
                         GardenProgress.cropFortune(profile, crop))));
@@ -79,7 +81,7 @@ public class GUICropTierUpgrades extends StatelessView {
         lore.add(Text.key("gui_garden_upgrades.tiers.requirement_header"));
         lore.add(Text.key(level >= tier.gardenLevel()
                 ? "gui_garden_upgrades.tiers.requirement_met"
-                : "gui_garden_upgrades.tiers.requirement_unmet", tier.gardenLevel()));
+                : "gui_garden_upgrades.tiers.requirement_unmet", StringUtility.getAsRomanNumeral(tier.gardenLevel())));
         lore.add(Text.key("gui_garden_upgrades.tiers.cost_header"));
         lore.add(Text.key("gui_garden_upgrades.tiers.cost", GardenMenus.number(tier.copper())));
         lore.add(GardenMenus.blank());

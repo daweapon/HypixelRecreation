@@ -149,19 +149,23 @@ public class GUILevelRewards extends StatelessView {
     }
 
     public static List<Text> getAsDisplay(int unlocked, int total) {
+        return getAsDisplay(unlocked, total, "gui_sbmenu.levels.rewards.unlocked");
+    }
+
+    public static List<Text> getAsDisplay(int unlocked, int total, String labelKey) {
         List<Text> toReturn = new ArrayList<>();
-
         String unlockedPercentage = String.format("%.2f", (unlocked / (double) total) * 100);
-        toReturn.add(Text.key("gui_sbmenu.levels.rewards.unlocked", unlockedPercentage));
+        toReturn.add(Text.key(labelKey, unlockedPercentage));
+        toReturn.add(progressBar(unlocked, total, unlocked, total));
+        return toReturn;
+    }
 
+    public static Text progressBar(double done, double total, Object doneLabel, Object totalLabel) {
         String baseLoadingBar = "─────────────────";
         int maxBarLength = baseLoadingBar.length();
-        int completedLength = Math.min((int) ((unlocked / (double) total) * maxBarLength), maxBarLength);
-
-        String completedDashes = baseLoadingBar.substring(0, completedLength);
-        String uncompletedDashes = baseLoadingBar.substring(completedLength);
-
-        toReturn.add(Text.of("<b><m>{}<7>{}<r> <e>{}<6>/<e>{}", completedDashes, uncompletedDashes, unlocked, total));
-        return toReturn;
+        double ratio = total <= 0 ? 0 : done / total;
+        int completedLength = Math.max(0, Math.min((int) (ratio * maxBarLength), maxBarLength));
+        return Text.of("<b><m>{}<7>{}<r> <e>{}<6>/<e>{}", baseLoadingBar.substring(0, completedLength),
+                baseLoadingBar.substring(completedLength), doneLabel, totalLabel);
     }
 }

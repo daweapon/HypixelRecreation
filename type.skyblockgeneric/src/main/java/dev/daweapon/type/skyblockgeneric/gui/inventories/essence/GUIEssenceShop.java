@@ -35,9 +35,11 @@ import java.util.List;
 public class GUIEssenceShop extends StatelessView {
     private static final int[] SLOTS = {10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34};
 
-    private static final int[] DIAMOND_SLOTS = {19, 20, 21, 22, 23, 24};
-    private static final int PERFECTLY_CUT_DIAMOND_SLOT = 25;
-    private static final int MINING_OFF_CAMERA_SLOT = 28;
+    private static final int[] DIAMOND_SLOTS = {20, 21, 22, 23, 24, 30};
+    private static final int[] GOLD_SLOTS = {19, 20, 21, 23, 24, 25};
+    private static final int[] WITHER_SLOTS = {20, 21, 22, 23, 24, 25, 30};
+    private static final int PERFECTLY_CUT_DIAMOND_SLOT = 31;
+    private static final int MINING_OFF_CAMERA_SLOT = 32;
     private static final ShopPrice PERFECTLY_CUT_DIAMOND_PRICE = new CombinedShopPrice(List.of(
             new EssenceShopPrice(EssenceType.DIAMOND, 1_000), new ItemShopPrice(ItemType.REFINED_DIAMOND, 2)));
     private static final ShopPrice MINING_OFF_CAMERA_PRICE = new EssenceShopPrice(EssenceType.DIAMOND, 2_500);
@@ -66,25 +68,38 @@ public class GUIEssenceShop extends StatelessView {
                 <7>Your {} Essence: <d>{}""", essence.getDisplayName(), entry.colour(), essence.getDisplayName(),
                 essence == EssenceType.DIAMOND ? "perks useful in the <5>Crystal Hollows <7>and beyond!" : "perks!",
                 essence.getDisplayName(), StringUtility.commaify(Essences.get((SkyBlockPlayer) c.player(), essence))));
+        layout.slot(50, ItemStacks.item(Material.REDSTONE_TORCH, """
+                <a>Essence Guide
+                <7>You can use <d>Essence <7>to upgrade
+                <7>items or convert them into <b>Dungeon
+                <b>items<7>.
+
+                <7>Each item level upgrade <6>✪ <7>grants a
+                <a>+2% <7>stat bonus and a <a>+10% <7>bonus
+                <7>while in Dungeons.
+
+                <7>Dungeon items grant stat boosts
+                <7>while you are in Dungeons based on
+                <7>your <a>Dungeoneering Skill <7>level.
+
+                <7>This guide shows the different
+                <7>Essences you can obtain and which
+                <7>items can be upgraded using each
+                <7>one.
+
+                <e>Click to view!"""), (_, c) -> c.push(new GUIEssenceGuide()));
         if (essence == EssenceType.DIAMOND) {
-            layout.slot(50, ItemStacks.item(Material.REDSTONE_TORCH, """
-                    <a>Essence Guide
-                    <7>You can use <d>Essence <7>to upgrade
-                    <7>items or convert them into <b>Dungeon
-                    <b>items<7>.
-
-                    <7>This guide shows the different
-                    <7>Essences you can obtain and which
-                    <7>items can be upgraded using each
-                    <7>one.
-
-                    <e>Click to view!"""), (_, c) -> c.push(new GUIEssenceGuide()));
             purchasable(layout, PERFECTLY_CUT_DIAMOND_SLOT, ItemType.PERFECTLY_CUT_DIAMOND, PERFECTLY_CUT_DIAMOND_PRICE);
             purchasable(layout, MINING_OFF_CAMERA_SLOT, ItemType.MINING_OFF_CAMERA, MINING_OFF_CAMERA_PRICE);
         }
         EssenceShop<CataloguePerk> shop = EssenceShops.shop(essence).orElseThrow();
         List<CataloguePerk> perks = shop.perks();
-        int[] slots = essence == EssenceType.DIAMOND ? DIAMOND_SLOTS : SLOTS;
+        int[] slots = switch (essence) {
+            case DIAMOND -> DIAMOND_SLOTS;
+            case GOLD -> GOLD_SLOTS;
+            case WITHER -> WITHER_SLOTS;
+            default -> SLOTS;
+        };
         for (int i = 0; i < perks.size() && i < slots.length; i++) {
             CataloguePerk perk = perks.get(i);
             layout.slot(slots[i], (_, c) -> perkItem((SkyBlockPlayer) c.player(), perk), (_, c) -> {

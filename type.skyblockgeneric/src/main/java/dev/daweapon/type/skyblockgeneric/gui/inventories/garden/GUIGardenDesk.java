@@ -9,6 +9,7 @@ import dev.daweapon.type.generic.gui.v2.StatelessView;
 import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
 import dev.daweapon.type.generic.gui.v2.ViewLayout;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
+import dev.daweapon.type.skyblockgeneric.garden.GardenConfig;
 import dev.daweapon.type.skyblockgeneric.garden.GardenProgress;
 import dev.daweapon.type.skyblockgeneric.garden.GardenService;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -36,12 +37,19 @@ public class GUIGardenDesk extends StatelessView {
         view(layout, 21, Material.MELON_SLICE, "upgrades", 2, () -> new GUIGardenUpgrades());
         view(layout, 23, Material.EMERALD, "skymart", 6, () -> new GUISkyMart());
         view(layout, 25, Material.GOLD_BLOCK, "milestones", 2, () -> new GUIGardenMilestones());
-        view(layout, 31, Material.CLOCK, "speed", 2, () -> new GUICropSpeed());
-        view(layout, 33, Material.PLAYER_HEAD, "chips", 2, () -> new GUIManageChips());
-        view(layout, 48, Material.CHEST, "logbook", 2, () -> new GUIVisitorLogbook());
+        view(layout, 48, Material.CLOCK, "speed", 2, () -> new GUICropSpeed());
         pending(layout, 50, Material.DAYLIGHT_DETECTOR, "time", 1, "Garden Time");
-        layout.slot(51, (_, _) -> GardenMenus.item(Material.DIAMOND_HOE, Text.key(KEY + "toolkit.name"), tooltip("toolkit", 3, false)),
+        layout.slot(51, (_, _) -> GardenMenus.item(Material.DIAMOND_HOE, Text.key(KEY + "toolkit.name"), toolkitLore()),
                 (_, c) -> openToolkit(c));
+    }
+
+    private List<Text> toolkitLore() {
+        List<Text> lore = new ArrayList<>(GardenMenus.lines(KEY + "toolkit.lore.", 3));
+        lore.add(GardenMenus.blank());
+        lore.add(Text.key(KEY + "toolkit.lore.4"));
+        lore.add(GardenMenus.blank());
+        lore.add(Text.key(KEY + "click_to_open"));
+        return lore;
     }
 
     private void openToolkit(ViewContext c) {
@@ -55,7 +63,7 @@ public class GUIGardenDesk extends StatelessView {
 
     private net.minestom.server.item.ItemStack.Builder sunflower(SkyBlockPlayer player) {
         var profile = GardenService.profile(player);
-        var config = dev.daweapon.type.skyblockgeneric.garden.GardenConfig.get();
+        GardenConfig config = GardenConfig.get();
         int level = GardenProgress.level(profile);
         List<Text> lore = new java.util.ArrayList<>();
         lore.add(Text.of("<7>Earn Garden experience by accepting"));
@@ -74,8 +82,9 @@ public class GUIGardenDesk extends StatelessView {
             lore.add(Text.of("<dark_green><m>" + GardenMenus.spaces(filled) + "<white><m>" + GardenMenus.spaces(GardenMenus.BAR_WIDTH - filled)
                     + "<reset> <gold>" + GardenMenus.number(into) + "<yellow>/<yellow>" + GardenMenus.number((long) need)));
             lore.add(GardenMenus.blank());
-            lore.add(Text.of("<7>Level {} Reward:", roman));
-            lore.add(Text.of("<8>+<b>10 SkyBlock XP"));
+            GardenConfig.Level next = config.level(level + 1);
+            lore.add(Text.of("<7>Level {} Rewards:", roman));
+            lore.addAll(GUIGardenLevels.rewardLines(next));
         }
         lore.add(GardenMenus.blank());
         lore.add(Text.key(KEY + "click_to_view"));

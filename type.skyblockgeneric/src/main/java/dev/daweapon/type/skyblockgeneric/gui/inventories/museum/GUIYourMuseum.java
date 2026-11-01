@@ -132,7 +132,7 @@ public class GUIYourMuseum extends StatelessView {
             lore.add(Text.of("<7>category, and can be displayed in"));
             lore.add(Text.of("<7>the Museum."));
             lore.add(Text.empty());
-            lore.add(Text.of("<7>Items Donated: <b>{}<9>/<b>{}", donated, MuseumCategory.SPECIAL_ITEM_LIMIT));
+            lore.add(Text.of("<7>Items Donated: <b>{}", donated));
         } else {
             long total = MuseumService.catalogue().entries(category).size();
             lore.add(Text.of("<7>View all of the items related to the"));

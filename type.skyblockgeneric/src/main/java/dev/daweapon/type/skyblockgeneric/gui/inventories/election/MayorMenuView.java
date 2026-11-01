@@ -50,7 +50,7 @@ public class MayorMenuView extends StatelessView {
 
         layout.slot(11, (s, c) -> {
             List<Text> lore = new ArrayList<>();
-            lore.add(Text.key("gui_election.mayor.perks_label"));
+            lore.add(mayor.isOneTime() ? Text.of("<dark_gray>Changes List") : Text.key("gui_election.mayor.perks_label"));
             lore.add(Text.empty());
             lore.add(Text.of("<8><m>--------------------------"));
 
@@ -104,7 +104,7 @@ public class MayorMenuView extends StatelessView {
             dev.daweapon.type.skyblockgeneric.technoblade.TechnoshopButton.layout(layout);
         }
 
-        int resultsSlot = DianaOffice.isDiana(mayor) ? DianaOffice.MAYOR_RESULTS_SLOT : 15;
+        int resultsSlot = DianaOffice.MAYOR_RESULTS_SLOT;
         layout.slot(resultsSlot, (s, c) -> {
             ElectionData.ElectionResult lastResult = data.getLastElectionResult();
             if (lastResult == null) {

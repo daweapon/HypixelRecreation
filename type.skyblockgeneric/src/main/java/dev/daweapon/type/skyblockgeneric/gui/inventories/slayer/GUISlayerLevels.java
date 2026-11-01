@@ -74,17 +74,17 @@ public class GUISlayerLevels extends StatelessView {
             return ItemStacks.item(Material.COAL_BLOCK, name, lore);
         }
 
-        lore.add(Text.of("<7>Progress:"));
-        lore.add(Text.of("<d>{:,}<5>/<d>{:,}", Math.min(xp, reward.requiredXp()), reward.requiredXp()));
-        lore.add(Text.of("<7>Kill the boss to gain XP."));
-        lore.add(Text.of("<7>Higher tiers reward more XP."));
-        lore.add(Text.empty());
         List<Text> rewards = rewardLines(reward);
         if (!rewards.isEmpty()) {
             lore.add(Text.of("<7>Rewards:"));
             lore.addAll(rewards);
             lore.add(Text.empty());
         }
+        lore.add(Text.of("<7>Progress:"));
+        lore.add(Text.of("<d>{:,}<5>/<d>{:,}", Math.min(xp, reward.requiredXp()), reward.requiredXp()));
+        lore.add(Text.of("<7>Kill the boss to gain XP."));
+        lore.add(Text.of("<7>Higher tiers reward more XP."));
+        lore.add(Text.empty());
         boolean reached = reward.level() <= level;
         lore.add(reached ? Text.of("<a>Level reached!") : Text.of("<c>Level not reached!"));
         return ItemStacks.item(reached ? Material.LIME_STAINED_GLASS_PANE : style.material(), name, lore);

@@ -103,7 +103,18 @@ public class GUIFrozenCorpseMilestones extends StatelessView {
         lore.add(Text.of("<6>Umber<f>/<7>Tungsten <b>Corpse<f>: <9>2,500 XP"));
         lore.add(Text.of("<f>Vanguard <b>Corpse<f>: <9>25,000 XP"));
         lore.add(Text.empty());
-        lore.add(selected == null ? Text.of("<c>You don't have an RNG drop selected. Choose one!") : Text.of("<7>Selected: <f>{}", selected.name()));
+        lore.add(Text.of("<7>Your selected <d>RNG Drop <7>will be"));
+        lore.add(Text.of("<7>guaranteed to appear in a viable"));
+        lore.add(Text.of("<b>Frozen Corpse <7>once your RNG Meter"));
+        lore.add(Text.of("<7>is full!"));
+        lore.add(Text.empty());
+        if (selected == null) {
+            lore.add(Text.of("<c>You don't have an RNG drop"));
+            lore.add(Text.of("<c>selected. Choose one to start"));
+            lore.add(Text.of("<c>progressing towards it!"));
+        } else {
+            lore.add(Text.of("<7>Selected: <f>{}", selected.name()));
+        }
         lore.add(Text.of("<7>Stored Frozen Corpse XP: <9>{}", String.format("%,d", CorpseRngMeter.stored(player))));
         lore.add(Text.empty());
         lore.add(Text.of("<e>Click to view!"));

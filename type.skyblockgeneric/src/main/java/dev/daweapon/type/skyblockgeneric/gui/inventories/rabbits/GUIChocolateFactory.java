@@ -199,7 +199,7 @@ public class GUIChocolateFactory implements StatefulView<GUIChocolateFactory.Sta
         });
 
         // Slot 38: Hand-Baked Chocolate
-        layout.slot(38, (s, c) -> createHandBakedChocolateItem((SkyBlockPlayer) c.player()), (click, c) -> {
+        layout.slot(37, (s, c) -> createHandBakedChocolateItem((SkyBlockPlayer) c.player()), (click, c) -> {
             SkyBlockPlayer p = (SkyBlockPlayer) c.player();
             DatapointChocolateFactory.ChocolateFactoryData d = ChocolateFactoryHelper.getData(p);
 
@@ -220,7 +220,7 @@ public class GUIChocolateFactory implements StatefulView<GUIChocolateFactory.Sta
         });
 
         // Slot 39: Time Tower
-        layout.slot(39, (s, c) -> createTimeTowerItem((SkyBlockPlayer) c.player()), (click, c) -> {
+        layout.slot(38, (s, c) -> createTimeTowerItem((SkyBlockPlayer) c.player()), (click, c) -> {
             SkyBlockPlayer p = (SkyBlockPlayer) c.player();
             DatapointChocolateFactory.ChocolateFactoryData d = ChocolateFactoryHelper.getData(p);
 
@@ -254,7 +254,7 @@ public class GUIChocolateFactory implements StatefulView<GUIChocolateFactory.Sta
         });
 
         // Slot 41: Rabbit Shrine
-        layout.slot(41, (s, c) -> createRabbitShrineItem((SkyBlockPlayer) c.player()), (click, c) -> {
+        layout.slot(39, (s, c) -> createRabbitShrineItem((SkyBlockPlayer) c.player()), (click, c) -> {
             SkyBlockPlayer p = (SkyBlockPlayer) c.player();
             DatapointChocolateFactory.ChocolateFactoryData d = ChocolateFactoryHelper.getData(p);
 
@@ -280,7 +280,7 @@ public class GUIChocolateFactory implements StatefulView<GUIChocolateFactory.Sta
         });
 
         // Slot 42: Coach Jackrabbit
-        layout.slot(42, (s, c) -> createCoachJackrabbitItem((SkyBlockPlayer) c.player()), (click, c) -> {
+        layout.slot(41, (s, c) -> createCoachJackrabbitItem((SkyBlockPlayer) c.player()), (click, c) -> {
             SkyBlockPlayer p = (SkyBlockPlayer) c.player();
             DatapointChocolateFactory.ChocolateFactoryData d = ChocolateFactoryHelper.getData(p);
 
@@ -321,7 +321,14 @@ public class GUIChocolateFactory implements StatefulView<GUIChocolateFactory.Sta
                     (click, c) -> ((SkyBlockPlayer) c.player()).openView(new GUIChocolateFactoryAdmin()));
         }
 
-        // Slot 49: Close
+        layout.slot(47, (s, c) -> ItemStacks.item(Material.EMERALD, Text.of("<6>Chocolate Shop"), List.of(
+                        Text.of("<7>Spend your <6>Chocolate <7>on the world's"),
+                        Text.of("<7>most delectable treats in the"),
+                        Text.of("<6>Chocolate Shop<7>."),
+                        Text.empty(),
+                        Text.of("<e>Click to view!"))),
+                (click, c) -> ((SkyBlockPlayer) c.player()).openView(new GUIChocolateShop()));
+        Components.back(layout, 48, ctx);
         Components.close(layout, 49);
 
         // Slot 50: Hoppity's Collection

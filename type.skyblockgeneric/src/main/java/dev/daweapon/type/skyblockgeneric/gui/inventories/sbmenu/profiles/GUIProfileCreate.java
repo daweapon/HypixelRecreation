@@ -46,7 +46,7 @@ public class GUIProfileCreate extends StatelessView {
         String profileName = SkyBlockPlayerProfiles.getRandomName();
 
         layout.slot(11, (s, c) -> ItemStacks.item(Material.GREEN_TERRACOTTA, 1, """
-                        <a>Create New Profile
+                        <a>Create new profile
                         <7>You are creating a new SkyBlock
                         <7>profile.
 

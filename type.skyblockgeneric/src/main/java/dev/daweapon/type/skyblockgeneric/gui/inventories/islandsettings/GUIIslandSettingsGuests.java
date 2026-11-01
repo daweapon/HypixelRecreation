@@ -27,12 +27,11 @@ public class GUIIslandSettingsGuests extends StatelessView {
 
     private static final int[] GRID_SLOTS = {
             10, 11, 12, 13, 14, 15, 16,
-            19, 20, 21, 22, 23, 24, 25,
     };
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return ViewConfiguration.withString((state, context) -> "Guest Management", InventoryType.CHEST_5_ROW);
+        return ViewConfiguration.withString((state, context) -> "Guests Management", InventoryType.CHEST_3_ROW);
     }
 
     @Override
@@ -48,18 +47,11 @@ public class GUIIslandSettingsGuests extends StatelessView {
                 .filter(loaded -> visitorIds.contains(loaded.getUuid()))
                 .toList();
 
-        layout.slot(4, (s, c) -> ItemStacks.item(Material.SHORT_GRASS,
-                "<a>Guests limit\n<7>You can host up to <e>{}<7> guest(s)\n<7>on your island at once.\n\n<7>Currently visiting: <e>{}",
-                limit, visitors.size()));
-
-        if (visitors.isEmpty()) {
-            layout.slot(22, (s, c) -> ItemStacks.item(Material.BARRIER, "<c>Nobody is visiting\n<7>Nobody is currently visiting your island."));
-        }
 
         for (int i = 0; i < visitors.size() && i < GRID_SLOTS.length; i++) {
             SkyBlockPlayer visitor = visitors.get(i);
             layout.slot(GRID_SLOTS[i], (s, c) -> ItemStacks.head(visitor.getPlayerSkin(),
-                    "<c>{}\n<7>Currently visiting your island.\n\n<c>Click to kick!", visitor.getUsername()),
+                    "<7>{}\n<7>Currently visiting your island.\n\n<c>Click to kick!", visitor.getUsername()),
                     (click, c) -> {
                         SkyBlockPlayer clicker = (SkyBlockPlayer) c.player();
                         clicker.closeInventory();
@@ -67,14 +59,14 @@ public class GUIIslandSettingsGuests extends StatelessView {
                     });
         }
 
-        layout.slot(40, (s, c) -> ItemStacks.item(Material.REPEATER,
-                "<a>Kick All Guests\n<7>Click to kick every current guest\n<7>off your island at once."),
+        layout.slot(23, (s, c) -> ItemStacks.item(Material.REPEATER,
+                "<a>Kick All Guests\n<7>Get rid of those pesky guests all at\n<7>the same time.\n\n<7>Command: <b>/sbkickall\n\n<e>Click to kick all guests!"),
                 (click, c) -> {
                     SkyBlockPlayer clicker = (SkyBlockPlayer) c.player();
                     clicker.closeInventory();
                     MinecraftServer.getCommandManager().execute(clicker, "sbkickall");
                 });
 
-        Components.backOrClose(layout, 44, ctx);
+        Components.backOrClose(layout, 22, ctx);
     }
 }

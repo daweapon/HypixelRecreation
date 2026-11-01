@@ -45,13 +45,13 @@ public class GUICollections extends StatelessView {
             lore.add(Text.of("<7>View all of the items available in"));
             lore.add(Text.of("<7>SkyBlock. Collect more of an item to"));
             lore.add(Text.of("<7>unlock rewards on your way to"));
-            lore.add(Text.of("<7>becoming a master of SkyBlock!"));
+            lore.add(Text.of("<7>becoming the master of SkyBlock!"));
             lore.add(Text.empty());
             lore.addAll(rendered.stream().map(Text::parse).toList());
             lore.add(Text.empty());
             lore.add(Text.of("<e>Click to view!"));
 
-            return ItemStacks.item(Material.PAINTING, 1, Text.of("<a>Collections"), lore);
+            return ItemStacks.item(Material.PAINTING, 1, Text.of("<a>Collection"), lore);
         });
 
         layout.slot(50, (s, c) -> ItemStacks.head(
@@ -76,12 +76,18 @@ public class GUICollections extends StatelessView {
                 player.getCollection().getDisplay(display, category);
 
                 List<Text> lore = new ArrayList<>();
-                lore.add(Text.of("<7>View your {} Collections!", category.getName()));
+                boolean boss = category == CollectionCategories.BOSS.getCategory();
+                if (boss) {
+                    lore.add(Text.of("<7>View your progress and claim rewards you"));
+                    lore.add(Text.of("<7>have obtained from defeating SkyBlock bosses!"));
+                } else {
+                    lore.add(Text.of("<7>View your {} Collections!", category.getName()));
+                }
                 lore.add(Text.empty());
                 lore.addAll(display.stream().map(Text::parse).toList());
 
                 return ItemStacks.item(category.getDisplayIcon(), 1,
-                        Text.of("<a>{} Collections", category.getName()), lore);
+                        Text.of(boss ? "<5>{} Collections" : "<a>{} Collections", category.getName()), lore);
             }, (_, c) -> {
                 if (category == CollectionCategories.BOSS.getCategory()) {
                     c.push(new GUIKuudraCollection());

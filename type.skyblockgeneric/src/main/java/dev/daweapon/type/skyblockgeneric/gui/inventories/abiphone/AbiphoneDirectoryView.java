@@ -32,7 +32,11 @@ public final class AbiphoneDirectoryView extends PaginatedView<AbiphoneContact, 
 
     @Override
     public ViewConfiguration<State> configuration() {
-        return ViewConfiguration.withText((state, ctx) -> Text.literal("Contacts Directory"), InventoryType.CHEST_6_ROW);
+        return ViewConfiguration.withText((state, ctx) -> Text.literal("(" + (Math.min(state.page(), pageCount(state) - 1) + 1) + "/" + pageCount(state) + ") Contacts Directory"), InventoryType.CHEST_6_ROW);
+    }
+
+    private int pageCount(State state) {
+        return Math.max(1, (int) Math.ceil((double) getFilteredItems(state).size() / getPaginatedSlots().length));
     }
 
     @Override
@@ -114,9 +118,7 @@ public final class AbiphoneDirectoryView extends PaginatedView<AbiphoneContact, 
                 }));
 
         layout.slot(52, (s, c) -> ItemStacks.lore(ItemStacks.name(ItemStack.builder(Material.OAK_SIGN), "<a>Search"), List.of(
-                Text.of("<7>Find a contact by name."),
-                Text.empty(),
-                Text.of("<7>Current: <b>{}", s.query().isEmpty() ? "None" : s.query()),
+                Text.of("<7>Find contacts by name!"),
                 Text.empty(),
                 Text.of("<e>Click to search!"),
                 Text.of("<b>Right-click to clear!"))),
@@ -132,16 +134,18 @@ public final class AbiphoneDirectoryView extends PaginatedView<AbiphoneContact, 
                             () -> player.openView(new AbiphoneDirectoryView(), current.withQuery(query).withPage(0))));
                 });
 
-        layout.slot(47, (s, c) -> ItemStacks.lore(ItemStacks.name(ItemStack.builder(Material.BOOK), "<a>Your Contacts"), List.of(
-                Text.of("<7>Contacts unlocked: <a>{}<b>/{}", AbiphoneContactDirectory.discovered(player), AbiphoneContactDirectory.TOTAL),
-                Text.of("<7>Available now: <a>{}<b>/{}",
-                        AbiphoneContactCatalogue.all().stream().filter(AbiphoneContact::available).count(), AbiphoneContactDirectory.TOTAL))));
+        layout.slot(4, (s, c) -> ItemStacks.lore(ItemStacks.name(ItemStack.builder(Material.BOOK), "<a>Contacts Directory"), List.of(
+                Text.of("<7>Browse through all NPCs in SkyBlock"),
+                Text.of("<7>which both own an Abiphone AND are"),
+                Text.of("<7>willing to add you as a contact."),
+                Text.empty(),
+                Text.of("<7>Your contacts: <a>{}<7>/{}", AbiphoneContactDirectory.discovered(player), AbiphoneContactDirectory.TOTAL))));
     }
 
     private static <E extends Enum<E>> ItemStack.Builder cycleButton(Material material, String name, String current, E[] values, E selected) {
         List<Text> lore = new ArrayList<>();
         lore.add(Text.empty());
-        for (E value : values) lore.add(Text.of(value == selected ? "<b>▶ {}" : "<7>  {}", label(value)));
+        for (E value : values) lore.add(Text.of(value == selected ? "<a>▶ {}" : "<7>  {}", label(value)));
         lore.add(Text.empty());
         lore.add(Text.of("<b>Right-click to go backwards!"));
         lore.add(Text.of("<e>Click to switch!"));

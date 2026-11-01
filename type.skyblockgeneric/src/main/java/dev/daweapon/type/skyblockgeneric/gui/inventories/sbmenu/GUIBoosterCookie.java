@@ -44,7 +44,7 @@ public class GUIBoosterCookie extends StatelessView {
         String cookieStatus = player.isBoosterCookieActive()
                 ? "<7>Status: <a>Active <7>(<a>" + CookieBuffService.formatRemaining(player) + "<7>)"
                 : "<c>You do not currently have a\n<c>Booster Cookie active!";
-        String menuAccessStatus = player.isBoosterCookieActive() ? "<e>Click to view!" : "<c>Requires Cookie Buff!";
+        String menuAccessStatus = player.isBoosterCookieActive() ? "<e>Click to check it out!" : "<c>Requires Cookie Buff!";
 
         layout.slot(11, ItemStacks.item(Material.DIAMOND, 1, """
                 <b>Bits
@@ -71,8 +71,8 @@ public class GUIBoosterCookie extends StatelessView {
                 StringUtility.commaify(BitsService.perCookie(player))));
         layout.slot(13, ItemStacks.item(Material.COOKIE, """
                 <6>Booster Cookie
-                <7>Acquire Booster Cookies from the
-                <b>Community Center <7>in the <a>Hub<7>.
+                <7>Acquire booster cookies from the
+                <b>community shop <7>in the <a>hub<7>.
 
                 <d>Cookie Buff:
                 <8>‣ <7>Ability to gain <b>Bits<7>!
@@ -84,7 +84,7 @@ public class GUIBoosterCookie extends StatelessView {
                 <7>respective commands:
                   <6>/ah<7>, <6>/bazaar<7>, <a>/bank<7>, <6>/accessorybag<7>,
                   <b>/fishingbag<7>, <d>/timepocket<7>, <f>/anvil<7>, <d>/hex<7>,
-                  <b>/etable<7>, <d>/potionbag<7>, <d>/rngmeter<7>, <d>/pity<7>,
+                  <b>/etable<7>, <d>/potionbag<7>, <d>/rngmeter<7>, <d>/attributemenu<7>,
                   <7>and <e>/quiver
                 <8>‣ <7>Sell items directly to the trades and cookie menu
                 <8>‣ <7>AFK <a>immunity <7>on your island and garden
@@ -139,30 +139,30 @@ public class GUIBoosterCookie extends StatelessView {
                 <8>contribution system exists)."""));
         layout.slot(28, ItemStacks.head("3b11fb90db7f57beb435954013b1c7ef776c6bd96cbf3308aa8ebac29591ebbd", """
                 <d>The Hex
+                <8>/hex
+
                 <7>Access <d>The Hex <7>from anywhere in
                 <7>SkyBlock!
-
-                <8>Also accessible via /hex
 
                 """ + menuAccessStatus), (_, c) -> unavailable((SkyBlockPlayer) c.player(), "The Hex"));
         layout.slot(29, ItemStacks.item(Material.ENCHANTING_TABLE, """
                 <6>Enchantment Table
+                <8>/et
+
                 <7>Access an Enchantment Table from
                 <7>anywhere in SkyBlock!
 
                 <7>This portable table remembers the
                 <7>highest <d>bookshelf power <7>you've seen!
 
-                <8>Also accessible via /enchantingtable
-
                 """ + menuAccessStatus), (_, c) -> openIfActive((SkyBlockPlayer) c.player(),
                         p -> new GUIEnchantmentTable().open(p)));
         layout.slot(30, ItemStacks.item(Material.ANVIL, """
                 <6>Anvil
+                <8>/av
+
                 <7>Access an Anvil from anywhere in
                 <7>SkyBlock!
-
-                <8>Also accessible via /anvil
 
                 """ + menuAccessStatus), (_, c) -> openIfActive((SkyBlockPlayer) c.player(), p -> new GUIAnvil().open(p)));
         layout.slot(32, ItemStacks.item(Material.POTION, """
@@ -173,29 +173,26 @@ public class GUIBoosterCookie extends StatelessView {
                 """ + menuAccessStatus), (_, c) -> unavailable((SkyBlockPlayer) c.player(), "Toggle Potion Effects"));
         layout.slot(33, ItemStacks.item(Material.GOLDEN_HORSE_ARMOR, """
                 <6>Auction House
+                <8>/ah
+
                 <7>Access the Auction House menu from
                 <7>anywhere in SkyBlock!
-
-                <8>Also accessible via /auctions
 
                 """ + menuAccessStatus), (_, c) -> openIfActive((SkyBlockPlayer) c.player(), p -> new GUIAuctionHouse().open(p)));
         layout.slot(34, ItemStacks.head("c232e3820897429157619b0ee099fec0628f602fff12b695de54aef11d923ad7", """
                 <6>Bazaar
+                <8>/bz
+
                 <7>Access the Bazaar from anywhere in
                 <7>SkyBlock!
-
-                <8>Also accessible via /bazaar
 
                 """ + menuAccessStatus), (_, c) -> openIfActive((SkyBlockPlayer) c.player(), p -> new GUIBazaar(BazaarCategories.FARMING).open(p)));
 
         layout.slot(50, ItemStacks.item(Material.EMERALD, """
                 <a>SkyBlock Gems
-                <7>Use SkyBlock Gems to purchase:
-                <7> - <6>Booster Cookies
-                <7> - <c>Fire Sales
-                <7> - <b>Taylor's Cosmetics
-                <7> - <a>SkyMart Barn & Greenhouse Skins
-                <7> - <d>Account & Profile Upgrades
+                <7>Booster Cookies (as well as other
+                <7>items) may be purchased through the
+                <b>Community Shop <7>with <a>SkyBlock Gems<7>.
 
                 <7>You have: <a>{} Gems
                 <8>Gems can be purchased from our

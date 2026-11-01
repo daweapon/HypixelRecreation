@@ -26,7 +26,10 @@ public class GUIHookGuide extends StatelessView {
         layout.slot(4, ItemStacks.head(
             "9809753cbab0380c7a1c18925faf9b51e44caadd1e5748542b0f23835f4ef64e", """
                 <9>ථ Hooks
-                <9>Hooks <7>change what your rod is better at catching."""));
+                <9>Hooks <7>make you more likely to catch
+                <7>certain things.
+
+                <e>Click to view!"""));
 
         int index = 0;
         for (var part : FishingItemSupport.getRodParts()) {

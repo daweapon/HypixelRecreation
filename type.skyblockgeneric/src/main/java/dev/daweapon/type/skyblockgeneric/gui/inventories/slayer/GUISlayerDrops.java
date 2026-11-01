@@ -20,6 +20,7 @@ import java.util.List;
 public class GUISlayerDrops extends StatelessView {
     private static final int[] SLOTS = {10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25,
         28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43};
+    private static final int COMPACT_CAPACITY = 14;
 
     private final SlayerMenuStyle style;
 
@@ -29,13 +30,20 @@ public class GUISlayerDrops extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>("{} Drops", InventoryType.CHEST_6_ROW, style.type().displayName());
+        return new ViewConfiguration<>("{} Drops", compact() ? InventoryType.CHEST_4_ROW : InventoryType.CHEST_6_ROW, style.type().displayName());
+    }
+
+    private boolean compact() {
+        SlayerDefinition definition = SlayerRegistry.get(style.type());
+        return definition == null || definition.drops().size() <= COMPACT_CAPACITY;
     }
 
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        Components.backOrClose(layout, 49, ctx);
+        int bottom = compact() ? 27 : 45;
+        Components.back(layout, bottom + 3, ctx);
+        Components.close(layout, bottom + 4);
 
         SlayerDefinition definition = SlayerRegistry.get(style.type());
         if (definition == null) return;

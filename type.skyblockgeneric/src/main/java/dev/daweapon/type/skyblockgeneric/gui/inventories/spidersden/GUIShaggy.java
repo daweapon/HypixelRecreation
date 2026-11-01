@@ -28,7 +28,7 @@ public class GUIShaggy extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>("Shaggy", InventoryType.CHEST_3_ROW);
+        return new ViewConfiguration<>("Shaggy", InventoryType.CHEST_6_ROW);
     }
 
     @Override
@@ -36,10 +36,10 @@ public class GUIShaggy extends StatelessView {
         Components.fill(layout);
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
         boolean affordable = ArachneCrystalTrade.canAfford(player);
-        StringBuilder cost = new StringBuilder("\n<7>Cost\n");
+        StringBuilder cost = new StringBuilder("\n<7>Place this at the <5>Altar <7>in <4>Arachne's\n<4>Sanctuary <7>to call forth the true\n<7>strength of <4>Arachne<7>.\n\n<7><italic>\"What have we done?\" <7>- Unknown Spider\n\n<5><bold>EPIC\n\n<7>Cost\n");
         ArachneCrystalTrade.COST.forEach((item, amount) -> cost.append("<a>")
                 .append(new SkyBlockItem(item).getDisplayName()).append(" <8>x").append(amount).append('\n'));
-        layout.slot(13, ItemStacks.head(CRYSTAL_TEXTURE, "<5>Arachne Crystal" + cost
+        layout.slot(22, ItemStacks.head(CRYSTAL_TEXTURE, "<5>Arachne Crystal" + cost
                 + "\n" + (affordable ? "<e>Click to trade!" : "<c>You don't have the items!")), (_, c) -> {
             if (!ArachneCrystalTrade.trade(player)) {
                 player.sendMessage("<c>You don't have the items Shaggy needs!");
@@ -48,5 +48,6 @@ public class GUIShaggy extends StatelessView {
             c.pop();
             onCrafted.run();
         });
+        Components.close(layout, 49);
     }
 }

@@ -13,7 +13,7 @@ import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public class GUIExperimentBottles extends StatelessView {
-    private static final int[] SLOTS = {10, 12, 14, 16};
+    private static final int[] SLOTS = {11, 12, 14, 15};
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
@@ -29,14 +29,23 @@ public class GUIExperimentBottles extends StatelessView {
             layout.slot(SLOTS[i], (s, c) -> display((SkyBlockPlayer) c.player(), bottle),
                     (click, c) -> consume((SkyBlockPlayer) c.player(), bottle));
         }
-        layout.slot(30, ExperimentGuis.item(Material.ARROW, "<a>Go Back"), (click, c) -> c.backOrClose());
+        layout.slot(30, ExperimentGuis.item(Material.ARROW, "<a>Go Back", "<7>To Experimentation Table"), (click, c) -> c.backOrClose());
         layout.slot(31, ExperimentGuis.item(Material.BARRIER, "<c>Close"), (click, c) -> c.player().closeInventory());
     }
 
     private net.minestom.server.item.ItemStack.Builder display(SkyBlockPlayer player, ExperienceBottle bottle) {
-        return ExperimentGuis.item(Material.EXPERIENCE_BOTTLE, "<a>" + bottle.name().replace('_', ' ') + " Bottle",
-                "<7>Grants <b>" + ExperimentGuis.commas(bottle.orbsFor(player)) + " <7>experience.",
+        return ExperimentGuis.item(Material.EXPERIENCE_BOTTLE, title(bottle),
+                "<7>Grants <3>" + ExperimentGuis.commas(bottle.orbsFor(player)) + " <7>experience orbs.",
                 "<7>In your inventory: <e>" + count(player, bottle), "", "<e>Click to consume one!");
+    }
+
+    private static String title(ExperienceBottle bottle) {
+        return switch (bottle) {
+            case EXPERIENCE_BOTTLE -> "<f>Experience Bottle";
+            case GRAND -> "<a>Grand Experience Bottle";
+            case TITANIC -> "<9>Titanic Experience Bottle";
+            case COLOSSAL -> "<5>Colossal Experience Bottle";
+        };
     }
 
     private int count(SkyBlockPlayer player, ExperienceBottle bottle) {

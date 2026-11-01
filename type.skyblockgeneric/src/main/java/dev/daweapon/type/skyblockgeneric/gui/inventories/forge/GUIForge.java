@@ -58,7 +58,8 @@ public class GUIForge extends StatelessView {
             }, Duration.ofSeconds(1));
         }
 
-        layout.slot(48, ItemStacks.item(Material.CHEST, "<a>Collect Finished Items\n<7>Collect every finished forge process.\n\n<e>Click to collect!"),
+        layout.slot(48, (_, c) -> ItemStacks.item(Material.CHEST, "<a>Claim All\n<7>Claims all of your items that have\n<7>finished forging.\n\n"
+                        + (hasFinished(player) ? "<e>Click to claim!" : "<c>Nothing to claim!")),
                 (_, c) -> {
                     int collected = 0;
                     for (int slot = 1; slot <= ForgeService.slots(player); slot++) {
@@ -71,6 +72,14 @@ public class GUIForge extends StatelessView {
         Components.close(layout, 49);
         layout.slot(50, ItemStacks.item(Material.BOOK, "<a>The Forge\n<7>Forge your ores into powerful items.\n\n<7>Forge slots: <a>" + ForgeService.slots(player) + "<7>/" + ForgeService.MAX_SLOTS
                 + "\n<7>Time reduction: <a>" + (int) ForgeService.reductionPercent(player) + "%\n\n<8>Forging can't be cancelled."));
+    }
+
+    private static boolean hasFinished(SkyBlockPlayer player) {
+        for (int slot = 1; slot <= ForgeService.slots(player); slot++) {
+            ForgeProcess process = ForgeService.processIn(player, slot);
+            if (process != null && ForgeService.isFinished(process)) return true;
+        }
+        return false;
     }
 
     private static Material lanePane(SkyBlockPlayer player, int forgeSlot, int lane) {

@@ -59,7 +59,7 @@ public class GUITreeGifts extends StatelessView {
             "<f>Guaranteed Loot",
             "<8>■ <2>Forest Essence<8> x3",
             "<8>■ <3>Foraging Experience <8>x500",
-            "<8>■ <a>HOTF Experience <8>x20",
+            "<8>■ <a>HOTF Experience <8>x15",
             "<8>■ <a>Vinesap <8>x0-1",
             "<8>■ <3>Forest Whispers <8>x20",
             "<8>■ <3>Forest Whispers <8>x40",
@@ -87,7 +87,7 @@ public class GUITreeGifts extends StatelessView {
             "<f>Guaranteed Loot",
             "<8>■ <2>Forest Essence<8> x4",
             "<8>■ <3>Foraging Experience <8>x1,500",
-            "<8>■ <a>HOTF Experience <8>x30",
+            "<8>■ <a>HOTF Experience <8>x20",
             "<8>■ <6>Desert Whispers <8>x75",
             "<8>■ <6>Desert Whispers <8>x150",
             "",
@@ -114,7 +114,8 @@ public class GUITreeGifts extends StatelessView {
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        Components.backOrClose(layout, 49, ctx);
+        Components.back(layout, 48, ctx);
+        Components.close(layout, 49);
         layout.slot(4, ItemStacks.item(Material.CHEST, HEADER));
         layout.slot(20, ItemStacks.item(Material.JUNGLE_LOG, tree("<a>Fig Trees", FIG)));
         layout.slot(22, ItemStacks.item(Material.MANGROVE_LOG, tree("<a>Mangrove Trees", MANGROVE)));

@@ -23,7 +23,7 @@ public class GUILevelFeatureRewards extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>("Feature Rewards", InventoryType.CHEST_6_ROW);
+        return new ViewConfiguration<>("Rewards", InventoryType.CHEST_6_ROW);
     }
 
     @Override

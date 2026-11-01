@@ -27,13 +27,13 @@ public class ElectionView extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return ViewConfiguration.translatable("gui_election.view.title", InventoryType.CHEST_3_ROW);
+        return ViewConfiguration.translatable("gui_election.view.title", InventoryType.CHEST_4_ROW);
     }
 
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        Components.backOrClose(layout, 22, ctx);
+        Components.close(layout, 31);
 
         ElectionData data = ElectionManager.getElectionData();
 
@@ -109,14 +109,13 @@ public class ElectionView extends StatelessView {
         List<Text> lore = new ArrayList<>();
         lore.add(Text.key("gui_election.view.candidate.year", electionYear));
         lore.add(Text.empty());
-        lore.add(Text.key("gui_election.view.candidate.votes", color, voteStr, pctStr));
         if (yearsSince >= 0) {
             lore.add(Text.key("gui_election.view.candidate.last_elected", color, yearsSince));
         } else {
             lore.add(Text.key("gui_election.view.candidate.last_elected_never", color));
         }
         lore.add(Text.empty());
-        lore.add(Text.of("<8><m>--------------------------"));
+        lore.add(Text.of("<8><m>-------------------------"));
 
         List<SkyBlockMayor.Perk> activePerks = candidate.getActivePerkEnums();
         for (int j = 0; j < activePerks.size(); j++) {
@@ -130,7 +129,7 @@ public class ElectionView extends StatelessView {
             if (j < activePerks.size() - 1) lore.add(Text.empty());
         }
 
-        lore.add(Text.of("<8><m>--------------------------"));
+        lore.add(Text.of("<8><m>-------------------------"));
 
         if (mayor.canBeMinister()) {
             lore.add(Text.empty());

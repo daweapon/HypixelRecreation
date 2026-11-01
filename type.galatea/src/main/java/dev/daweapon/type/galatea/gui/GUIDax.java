@@ -20,16 +20,16 @@ public class GUIDax extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>("Small Huntrap", InventoryType.CHEST_3_ROW);
+        return new ViewConfiguration<>("Small Huntrap", InventoryType.CHEST_6_ROW);
     }
 
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        Components.close(layout, 22);
+        Components.close(layout, 49);
         ItemType huntrap = ItemType.get(SMALL_HUNTRAP);
         if (huntrap == null) return;
-        layout.slot(13, (_, c) -> ItemStacks.appendLore(
+        layout.slot(22, (_, c) -> ItemStacks.appendLore(
                 PlayerItemUpdater.playerUpdate((SkyBlockPlayer) c.player(), new SkyBlockItem(huntrap).getItemStack()),
                 "\n<e>Click to claim!"), (_, c) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();

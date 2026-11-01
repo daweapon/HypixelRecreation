@@ -156,7 +156,7 @@ public class ElectionViewStatsView extends StatelessView {
             lore.add(Text.key("gui_election.view.candidate.last_elected_never", color));
         }
         lore.add(Text.empty());
-        lore.add(Text.of("<8><m>--------------------------"));
+        lore.add(Text.of("<8><m>-------------------------"));
 
         List<SkyBlockMayor.Perk> activePerks = candidate.getActivePerkEnums();
         for (int j = 0; j < activePerks.size(); j++) {
@@ -170,7 +170,7 @@ public class ElectionViewStatsView extends StatelessView {
             if (j < activePerks.size() - 1) lore.add(Text.empty());
         }
 
-        lore.add(Text.of("<8><m>--------------------------"));
+        lore.add(Text.of("<8><m>-------------------------"));
 
         if (mayor.canBeMinister()) {
             lore.add(Text.empty());

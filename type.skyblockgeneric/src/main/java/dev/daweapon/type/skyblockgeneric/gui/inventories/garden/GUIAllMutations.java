@@ -32,7 +32,7 @@ public class GUIAllMutations extends StatefulPaginatedView<MutationCatalogue.Mut
 
     @Override
     public ViewConfiguration<State> configuration() {
-        return ViewConfiguration.withString((state, _) -> "All Mutations", InventoryType.CHEST_6_ROW);
+        return ViewConfiguration.withString((state, _) -> "(" + (state.page() + 1) + "/" + Math.max(1, (state.items().size() + 27) / 28) + ") All Mutations", InventoryType.CHEST_6_ROW);
     }
 
     @Override

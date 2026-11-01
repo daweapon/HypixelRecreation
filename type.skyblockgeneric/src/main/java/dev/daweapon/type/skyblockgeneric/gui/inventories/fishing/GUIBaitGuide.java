@@ -26,8 +26,28 @@ public class GUIBaitGuide extends StatelessView {
 
         layout.slot(4, ItemStacks.item(Material.BOOK, """
                 <6>Bait Guide
-                <7>View <6>Baits</6> and the effects they add
-                <7>to your fishing catches."""));
+                <7>View <6>Baits<7>, their uses, and how to
+                <7>obtain them! Can also be accessed
+                <7>with <a>/bait<7>!"""));
+        layout.slot(50, ItemStacks.item(Material.REDSTONE_TORCH, """
+                <6>Bait Guide
+                <6>Bait <7>can be stored in your inventory
+                <7>or <9>Fishing Bag<7>, which is unlocked at
+                <a>Raw Cod Collection III<7>.
+
+                <7>When you cast your rod, Bait is
+                <7>automatically consumed and its buff
+                <7>is applied.
+
+                <7>Some Baits, like <f>Fish Bait<7>, increase
+                <7>your <b>☂ Fishing Speed<7>, which makes it
+                <7>quicker to catch fish.
+
+                <7>Other Baits, like <f>Spiked Bait<7>, make you
+                <7>more likely to catch <3>Sea Creatures<7>.
+
+                <7>Fishing with <6>Bait <7>makes fishing easier,
+                <7>so keep plenty on hand!"""));
 
         int index = 0;
         for (var bait : FishingItemSupport.getBaits()) {

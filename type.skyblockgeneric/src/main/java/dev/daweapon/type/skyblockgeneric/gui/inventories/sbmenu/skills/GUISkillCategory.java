@@ -105,7 +105,7 @@ public class GUISkillCategory extends StatelessView {
             }
 
             lore.add(Text.literal(" "));
-            lore.addAll(Text.keyLines("gui_sbmenu.skills.category.increase_level", category.toString()));
+            lore.addAll(Text.keyLines("gui_sbmenu.skills.category.increase_level", category.toString().toLowerCase()));
 
             return ItemStacks.item(category.asCategory().getDisplayIcon(), 1,
                     Text.of("<a>{} Skill", category.toString()), lore);
@@ -113,20 +113,15 @@ public class GUISkillCategory extends StatelessView {
 
         List<SkillCategory.SkillReward> rewards = List.of(category.asCategory().getRewards());
 
-        // Next page button
-        if (rewards.size() > (page + 1) * DISPLAY_SLOTS.length) {
+        int pageSize = DISPLAY_SLOTS.length;
+        int pageCount = (rewards.size() + pageSize - 1) / pageSize;
+        if (pageCount > 1) {
+            int targetPage = (page + 1) % pageCount;
+            int firstLevel = targetPage * pageSize + 1;
+            int lastLevel = Math.min(rewards.size(), (targetPage + 1) * pageSize);
             layout.slot(50, (s, c) -> ItemStacks.item(Material.ARROW, 1,
-                            Text.key("gui_sbmenu.skills.category.next_page"),
-                            Text.keyLines("gui_sbmenu.skills.category.next_page.lore")),
-                    (click, c) -> c.replace(new GUISkillCategory(category, page + 1)));
-        }
-
-        // Previous page button
-        if (page > 0) {
-            layout.slot(48, (s, c) -> ItemStacks.item(Material.ARROW, 1,
-                            Text.key("gui_sbmenu.skills.category.previous_page"),
-                            Text.keyLines("gui_sbmenu.skills.category.previous_page.lore")),
-                    (click, c) -> c.replace(new GUISkillCategory(category, page - 1)));
+                            Text.of("<a>Levels {} - {}", firstLevel, lastLevel), List.of()),
+                    (click, c) -> c.replace(new GUISkillCategory(category, targetPage)));
         }
 
         // Rewards

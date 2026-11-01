@@ -34,7 +34,10 @@ public class GUIProfileSelectSpecialMode extends StatelessView {
                         <b>This mode can be played in co-op!
                         <8>Co-op members may still trade together.
 
-                        <e>Click to start new profile!"""),
+                        <7>You will wear the <7>♲ <7>icon while on
+                        <7>the profile.
+
+                        <e>Click to play this mode!"""),
                 (click, c) -> c.player().openView(new GUIProfileCreate(ProfileMode.IRONMAN)));
         layout.slot(31, ItemStacks.item(Material.ARROW, 1, """
                         <a>Go Back

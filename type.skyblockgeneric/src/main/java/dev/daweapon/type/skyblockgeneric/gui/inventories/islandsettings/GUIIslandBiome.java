@@ -32,10 +32,11 @@ public class GUIIslandBiome extends StatelessView {
         for (int i = 0; i < choices.size() && i < GRID_SLOTS.length; i++) {
             IslandBiomes.Choice choice = choices.get(i);
             layout.slot(GRID_SLOTS[i], (s, c) -> ItemStacks.item(iconFor(choice.name()),
-                    "<a>{}\n<7>Change the biome of your entire\n<7>Private Island to <b>{}<7>.\n\n<e>Click to change!", choice.name(), choice.name()),
+                    "<a>{}\n<7>Set the biome of your entire island\n<7>to <a>{}<7>!\n\n<e>Click to select!", displayName(choice.name()), choice.name()),
                     (click, c) -> change((SkyBlockPlayer) c.player(), choice));
         }
-        Components.backOrClose(layout, 40, ctx);
+        Components.back(layout, 39, ctx);
+        Components.close(layout, 40);
     }
 
     private static void change(SkyBlockPlayer player, IslandBiomes.Choice choice) {
@@ -47,6 +48,10 @@ public class GUIIslandBiome extends StatelessView {
         }
         IslandBiomes.apply(island.getIslandInstance(), choice.key());
         player.sendMessage("<7>Changed the biome of your island to <b>{}<7>!", choice.name());
+    }
+
+    private static String displayName(String name) {
+        return name.equals("Mushroom") ? "Mushroom Island" : name;
     }
 
     private static Material iconFor(String name) {

@@ -51,7 +51,7 @@ public class GUIUltrasequencer implements StatefulView<GUIUltrasequencer.Screen>
     @Override
     public void layout(ViewLayout<Screen> layout, Screen screen, ViewContext ctx) {
         layout.filler(ItemStacks.filler(Material.BLACK_STAINED_GLASS_PANE));
-        layout.slot(4, (s, c) -> ExperimentGuis.item(Material.BOOKSHELF, "<a>Round: <f>" + s.game.round()));
+        layout.slot(4, (s, c) -> ExperimentGuis.item(Material.BOOKSHELF, "<7>Round: <e>" + s.game.round()));
         layout.slot(49, (s, c) -> switch (s.phase) {
             case SHOWING -> ExperimentGuis.item(Material.GLOWSTONE, "<a>Remember the pattern!");
             case INPUT -> ExperimentGuis.item(Material.CLOCK, "<a>Click the numbers in order!");
@@ -89,10 +89,11 @@ public class GUIUltrasequencer implements StatefulView<GUIUltrasequencer.Screen>
     private ItemStack.Builder claimButton(Screen screen) {
         UltrasequencerStake stake = screen.game.stake();
         int length = screen.game.longestSequence();
-        return ExperimentGuis.item(Material.LIME_DYE, "<a>Claim Rewards",
-                "<7>Longest Sequence: <e>" + length,
-                "<7>Rewards:", "<8> +<b>" + ExperimentGuis.commas(stake.xpFor(length)) + " Enchanting Exp",
-                "<8> +<e>" + stake.clickBonus().clicksFor(length, 0) + " <8>Superpairs clicks", "", "<e>Click to claim!");
+        return ExperimentGuis.item(Material.LIME_DYE, "<d>Ultrasequencer", "<8>Claim", "",
+                "<7>Stakes: <d>" + stake.displayName(), "",
+                "<7>Highest series: <a>" + length + " numbers", "",
+                "<7>Rewards:", "<8> +<3>" + ExperimentGuis.commas(stake.xpFor(length)) + " Enchanting Exp",
+                "<8> +<d>" + stake.clickBonus().clicksFor(length, 0) + " Superpairs clicks", "", "<e>Click to claim rewards!");
     }
 
     @Override

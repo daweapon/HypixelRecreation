@@ -57,7 +57,7 @@ public class GUIStorageBackpackPage extends StatelessView {
 
         layout.slot(1, (s, c) -> ItemStacks.item(Material.ARROW, 1,
                         Text.key("gui_sbmenu.storage.backpack_page.go_back"),
-                        Text.keyLines("gui_sbmenu.storage.backpack_page.go_back.lore")),
+                        java.util.List.<Text>of()),
                 (click, c) -> {
                     saveItems((SkyBlockPlayer) c.player(), c);
                     c.player().openView(new GUIStorage());

@@ -50,33 +50,37 @@ public class GUIKuudraGroupBuilder implements StatefulView<GUIKuudraGroupBuilder
             c.session(State.class).update(s -> new State(tiers[Math.floorMod(s.tier().ordinal() + step, tiers.length)],
                     s.note(), s.minimumCombat()));
         });
-        layout.slot(13, (s, _) -> ItemStacks.item(Material.WRITABLE_BOOK, """
-                <a>Group Note
-                <7>Tell other players what your group
-                <7>is looking for.
+        layout.slot(13, (s, _) -> ItemStacks.item(Material.PAPER, """
+                <a>Set Group Note
+                <7>Set a note to let everyone know
+                <7>what your group plans to do!
 
-                <7>Currently: <f>%s
+                <a>Current Note:
+                <f>%s
 
-                <e>Click to edit!""".formatted(s.note().isEmpty() ? "None!" : s.note())), (click, c) -> {
+                <e>Click to change!""".formatted(s.note().isEmpty() ? "None!" : s.note())), (click, c) -> {
             State current = click.state();
             ask(c.player(), "Group note", input -> new State(current.tier(), KuudraPartyFinder.cleanNote(input), current.minimumCombat()));
         });
         layout.slot(15, (s, _) -> ItemStacks.item(Material.IRON_SWORD, """
-                <a>Combat Level Required
-                <7>The lowest Combat level a player
-                <7>needs to join your group.
+                <a>Set Combat Level Required
+                <7>Add a Combat level requirement to
+                <7>the group so only players that
+                <7>have the desired level will be able
+                <7>to join.
 
-                <7>Currently: <3>%d
+                <a>Current Level Required:
+                <f>%s
 
-                <e>Click to edit!""".formatted(s.minimumCombat())), (click, c) -> {
+                <e>Click to change!""".formatted(s.minimumCombat() <= 0 ? "None!" : String.valueOf(s.minimumCombat()))), (click, c) -> {
             State current = click.state();
             ask(c.player(), "Combat level", input -> new State(current.tier(), current.note(), parseLevel(input, current.minimumCombat())));
         });
-        Components.back(layout, 30, ctx);
-        layout.slot(31, ItemStacks.item(Material.EMERALD_BLOCK, """
+        Components.back(layout, 31, ctx);
+        layout.slot(32, ItemStacks.item(Material.EMERALD_BLOCK, """
                 <a>Confirm Group
-                <7>List your party in the Party Finder
-                <7>so other players can join it.
+                <7>Open up your group so other
+                <7>players can start joining!
 
                 <e>Click to confirm!"""), (click, c) -> {
             State current = click.state();

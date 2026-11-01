@@ -34,6 +34,8 @@ public class GUIFossilExcavator extends StatelessView {
     private static final int CHISEL_SLOT = 12;
     private static final int SCRAP_SLOT = 14;
     private static final int START_SLOT = 31;
+    private static final int CLOSE_SLOT = 49;
+    private static final int GUIDE_SLOT = 50;
 
     private static final Map<UUID, ExcavatorGame> GAMES = new ConcurrentHashMap<>();
     private static final Map<UUID, Integer> SELECTED = new ConcurrentHashMap<>();
@@ -50,6 +52,11 @@ public class GUIFossilExcavator extends StatelessView {
         for (int slot = 0; slot < ExcavatorGame.SIZE; slot++) {
             int index = slot;
             layout.slot(slot, (_, c) -> render((SkyBlockPlayer) c.player(), index), (_, c) -> {
+                if (!GAMES.containsKey(c.player().getUuid()) && (index == CLOSE_SLOT || index == GUIDE_SLOT)) {
+                    if (index == CLOSE_SLOT) c.player().closeInventory();
+                    else c.player().openView(new GUIChiselGemstoneGuide());
+                    return;
+                }
                 click((SkyBlockPlayer) c.player(), index);
                 c.session(DefaultState.class).refresh();
             });
@@ -76,18 +83,34 @@ public class GUIFossilExcavator extends StatelessView {
             case SCRAP_SLOT -> ItemStacks.appendLore(PlayerItemUpdater.playerUpdate(player,
                     new SkyBlockItem(ItemType.SUSPICIOUS_SCRAP).getItemStack()),
                     "\n<7>You have <a>{} <7>in your inventory.", player.countItem(ItemType.SUSPICIOUS_SCRAP));
-            case START_SLOT -> ItemStacks.item(Material.LIME_DYE, """
-                    <a>Start Excavator
-                    <7>Place your <9>Chisel <7>and a <9>Suspicious
-                    <9>Scrap <7>in the relevant slots to start
-                    <7>excavating!
+            case START_SLOT -> startButton(!chisels.isEmpty() && player.countItem(ItemType.SUSPICIOUS_SCRAP) > 0);
+            case CLOSE_SLOT -> Components.CLOSE_BUTTON;
+            case GUIDE_SLOT -> ItemStacks.item(Material.REDSTONE_TORCH, """
+                    <a>Chisel Gemstone Guide
+                    <7>As you upgrade your Chisel, you will
+                    <7>unlock gemstone slots.
+                    <7>Only certain gemstones may be put in
+                    <7>your Chisel, and each type has a
+                    <7>unique effect!
 
-                    <7>Your <9>Suspicious Scrap <7>will be
-                    <7>consumed!
-
-                    <e>Click to start excavating!""");
+                    <e>Click to view the guide!""");
             default -> ItemStacks.item(Material.GRAY_STAINED_GLASS_PANE, " ");
         };
+    }
+
+    private static ItemStack.Builder startButton(boolean ready) {
+        String intro = """
+                <7>Place your <6>Chisel <7>and a <9>Suspicious
+                <9>Scrap <7>in the relevant slots to start
+                <7>excavating!
+
+                <7>Your <9>Suspicious Scrap <7>will be
+                <7>consumed!
+
+                """;
+        return ready
+                ? ItemStacks.item(Material.LIME_TERRACOTTA, "<a>Start Excavator\n" + intro + "<e>Click to start excavating!")
+                : ItemStacks.item(Material.RED_TERRACOTTA, "<c>Start Excavator\n" + intro + "<c>Slots not filled!");
     }
 
     private static ItemStack selectedChisel(SkyBlockPlayer player, List<ItemStack> chisels) {

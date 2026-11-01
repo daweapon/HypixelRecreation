@@ -22,13 +22,13 @@ public class GUIIslandProperties extends StatelessView {
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        layout.slot(11, (s, c) -> {
+        layout.slot(14, (s, c) -> {
             SkyBlockIsland island = ((SkyBlockPlayer) c.player()).getSkyBlockIsland();
             if (IslandWeatherSettings.unlocked(island)) {
-                return ItemStacks.item(Material.SUNFLOWER, "<a>Island Weather\n<7>Change the weather on your island.\n\n<7>Currently: <e>{}\n\n<e>Click to change!",
+                return ItemStacks.item(Material.SUNFLOWER, "<a>Weather Node\n<7>Change the <a>weather <7>on your island!\n\n<7>Currently: <e>{}\n\n<e>Click to change!",
                         IslandWeatherSettings.current(island).label());
             }
-            return ItemStacks.item(Material.LAPIS_BLOCK, "<c>Island Weather\n<7>Control the weather on your island.\n\n<8>Locked: needs a <b>Weather Node<8>.\n\n<e>Click with a Weather Node\n<e>in your inventory to unlock!");
+            return ItemStacks.item(Material.LAPIS_BLOCK, "<a>Weather Node\n<7>Change the <a>weather <7>on your island!\n\n<c>Click on a Weather Node in your\n<c>inventory to unlock!");
         }, (click, c) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
             SkyBlockIsland island = player.getSkyBlockIsland();
@@ -36,8 +36,9 @@ public class GUIIslandProperties extends StatelessView {
             c.push(new GUIIslandWeather());
         });
 
-        layout.slot(15, (s, c) -> ItemStacks.item(Material.GRASS_BLOCK, "<a>Change Island Biome\n<7>Change the biome of your whole\n<7>Private Island.\n\n<e>Click to choose!"),
+        layout.slot(16, (s, c) -> ItemStacks.item(Material.GRASS_BLOCK, "<a>Change Island Biome\n<7>Change the biome of your entire\n<7>island!\n\n<e>Click to modify!"),
                 (click, c) -> c.push(new GUIIslandBiome()));
-        Components.backOrClose(layout, 31, ctx);
+        Components.back(layout, 30, ctx);
+        Components.close(layout, 31);
     }
 }

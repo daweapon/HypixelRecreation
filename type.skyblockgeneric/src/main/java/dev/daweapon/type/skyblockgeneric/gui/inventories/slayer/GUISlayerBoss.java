@@ -72,10 +72,11 @@ public class GUISlayerBoss extends StatelessView {
                     <7>its main token which is used
                     <7>for slayer crafts.
 
-                    <7>Rarer drops unlock as your
-                    <7>slayer level grows.
+                    <7>If you're lucky, you may get
+                    <7>one out of <d>%d <7>possible
+                    <7>drops from this boss!
 
-                    <e>Click to view drops!""", style.type().displayName()),
+                    <e>Click to view drops!""".formatted(definition.drops().size()), style.type().displayName()),
                     (click, c) -> c.push(new GUISlayerDrops(style)));
         } else {
             layout.slot(31, ItemStacks.item(Material.GOLD_NUGGET, """

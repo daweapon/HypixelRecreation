@@ -114,9 +114,9 @@ public class GUICatacombsPartyFinder implements StatefulView<GUICatacombsPartyFi
 
         if (state.own() == null) {
             layout.slot(45, ItemStacks.item(Material.REDSTONE_BLOCK, """
-                    <a>Start a New Queue
+                    <a>Start a new queue
                     <7>Queue up with other players to
-                    <7>enter The Catacombs.
+                    <7>defeat a Dungeon.
 
                     <e>Click to queue!"""), (_, c) -> c.push(new GUICatacombsGroupBuilder(), GUICatacombsGroupBuilder.State.initial()));
         } else {
@@ -135,8 +135,8 @@ public class GUICatacombsPartyFinder implements StatefulView<GUICatacombsPartyFi
         }
         layout.slot(46, ItemStacks.item(Material.EMERALD_BLOCK, """
                 <a>Refresh
-                <7>Refresh the list of active groups
-                <7>matching your search.
+                <7>Refresh the list of active
+                <7>groups matching your search.
 
                 <e>Click to refresh!"""), (_, c) -> refresh((SkyBlockPlayer) c.player(), ctx));
         Components.back(layout, 48, ctx);
@@ -167,6 +167,7 @@ public class GUICatacombsPartyFinder implements StatefulView<GUICatacombsPartyFi
 
     static ItemStack.Builder groupItem(SkyBlockPlayer viewer, PartyFinderGroup<CatacombsFloor, Void> group) {
         List<Text> lore = new ArrayList<>();
+        lore.add(Text.of("<7>Dungeon: <b>The Catacombs"));
         lore.add(Text.of("<7>Floor: <b>{}", group.key().displayName()));
         if (!group.note().isEmpty()) lore.add(Text.of("<7>Note: <f>{}", group.note()));
         if (group.minimumLevel() > 0) lore.add(Text.of("<7>Catacombs Level Required: <3>{}", group.minimumLevel()));
@@ -187,7 +188,7 @@ public class GUICatacombsPartyFinder implements StatefulView<GUICatacombsPartyFi
             lore.add(Text.of("<e>Click to join!"));
         }
         Player leader = MinecraftServer.getConnectionManager().getOnlinePlayerByUuid(group.leaderId());
-        Text name = Text.of("<a>{}'s Party", group.leader().name());
+        Text name = Text.of("<b>{}'s Party", group.leader().name());
         return leader != null && leader.getSkin() != null
                 ? ItemStacks.head(leader.getSkin(), name, lore)
                 : ItemStacks.item(CatacombsFloorInfo.material(group.key()), name, lore);
@@ -198,9 +199,11 @@ public class GUICatacombsPartyFinder implements StatefulView<GUICatacombsPartyFi
         lore.add(Text.of("<7>Change your search settings to find"));
         lore.add(Text.of("<7>groups suited to you!"));
         lore.add(Text.empty());
+        lore.add(Text.of("<a>Dungeon: <b>The Catacombs"));
         lore.add(Text.of("<a>Floor: <b>{}", search.key() == null ? "Any" : search.key().displayName()));
-        lore.add(search.text().isEmpty() ? Text.of("<a>Search Text: <f>None!") : Text.of("<a>Search Text: <f>{}", search.text()));
-        lore.add(Text.of("<a>Catacombs Level: <f>{}-{}", search.minimumLevel(), search.maximumLevel()));
+        lore.add(search.text().isEmpty() ? Text.of("<a>Search text: <f>None!") : Text.of("<a>Search text: <f>{}", search.text()));
+        lore.add(Text.of("<a>Class Level: <f>0-50"));
+        lore.add(Text.of("<a>Dungeon Level: <f>{}-{}", search.minimumLevel(), search.maximumLevel()));
         lore.add(Text.of("<a>Sort: <b>{}", search.sort().displayName()));
         lore.add(Text.empty());
         lore.add(Text.of("<e>Left-Click to open!"));

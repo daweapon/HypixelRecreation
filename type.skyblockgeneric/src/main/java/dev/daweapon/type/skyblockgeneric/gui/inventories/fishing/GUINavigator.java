@@ -36,6 +36,15 @@ public class GUINavigator extends StatelessView {
                     <b>Fishing Outpost
                     <7>Your base of operations.
 
+                    <7>Activities:
+                    <8> ■ <7>Purchase <f>Angler Armor <7>from the
+                        <b>Fishing Merchant<7>.
+                    <8> ■ <7>Learn about <b>Fishing Stats <7>from
+                        <b>Gwynnie<7>.
+                    <8> ■ <7>Learn about the <a>Sea Creature Guide
+                        <7>from <b>Gavin<7>.
+                    <8> ■ <7>Learn about <6>Bait <7>from <d>Angler Angus<7>.
+
                     <e>Click to travel!"""),
                 (_, viewCtx) -> ((SkyBlockPlayer) viewCtx.player()).sendTo(ServerType.SKYBLOCK_HUB));
             layout.slot(40, ItemStacks.head(
@@ -74,6 +83,15 @@ public class GUINavigator extends StatelessView {
             "d7cc6687423d0570d556ac53e0676cb563bbdd9717cd8269bdebed6f6d4e7bf8", """
                 <b>Fishing Outpost
                 <7>Your base of operations.
+
+                <7>Activities:
+                <8> ■ <7>Purchase <f>Angler Armor <7>from the
+                    <b>Fishing Merchant<7>.
+                <8> ■ <7>Learn about <b>Fishing Stats <7>from
+                    <b>Gwynnie<7>.
+                <8> ■ <7>Learn about the <a>Sea Creature Guide
+                    <7>from <b>Gavin<7>.
+                <8> ■ <7>Learn about <6>Bait <7>from <d>Angler Angus<7>.
 
                 <a><l>YOU ARE HERE!"""));
     }

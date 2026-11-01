@@ -29,7 +29,7 @@ public class GUIIslandSettingsPrivacy extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return ViewConfiguration.withString((state, context) -> "Island Privacy", InventoryType.CHEST_3_ROW);
+        return ViewConfiguration.withString((state, context) -> "Settings - Island Settings", InventoryType.CHEST_6_ROW);
     }
 
     @Override
@@ -43,6 +43,12 @@ public class GUIIslandSettingsPrivacy extends StatelessView {
                 String status = selected ? "\n\n<a>SELECTED" : "\n\n<7>Click to select!";
                 return ItemStacks.item(option.material(), "<a>" + GUIIslandSettings.label(option.tier())
                         + "\n" + option.description() + status);
+            });
+            layout.slot(option.slot() + 9, (s, c) -> {
+                SkyBlockPlayer player = (SkyBlockPlayer) c.player();
+                boolean selected = currentTier(player) == option.tier();
+                return ItemStacks.item(selected ? Material.LIME_DYE : Material.GRAY_DYE, "<a>Visits: <b>" + GUIIslandSettings.label(option.tier())
+                        + (selected ? "\n\n<a>ENABLED" : "\n\n<e>Click to enable!"));
             }, (click, c) -> {
                 SkyBlockPlayer player = (SkyBlockPlayer) c.player();
                 SkyBlockDataHandler handler = player.getSkyblockDataHandler();
@@ -53,7 +59,8 @@ public class GUIIslandSettingsPrivacy extends StatelessView {
             });
         }
 
-        Components.backOrClose(layout, 22, ctx);
+        Components.backOrClose(layout, 48, ctx);
+        Components.close(layout, 49);
     }
 
     private static IslandPrivacy currentTier(SkyBlockPlayer player) {

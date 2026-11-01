@@ -93,6 +93,23 @@ public class GUISack implements StatefulView<GUISack.SackState> {
             Components.close(layout, backSlot);
         }
 
+        layout.slot(backSlot - 1, (s, c) -> ItemStacks.item(Material.CHEST, 1,
+                        Text.key("gui_sbmenu.bags.sack.insert_inventory"),
+                        Text.keyLines("gui_sbmenu.bags.sack.insert_inventory.lore",
+                                StringUtility.commaify(insertableAmount((SkyBlockPlayer) c.player())))),
+                (click, c) -> {
+                    insertInventory((SkyBlockPlayer) c.player());
+                    c.session(SackState.class).refresh();
+                });
+        layout.slot(backSlot + 1, (s, c) -> ItemStacks.item(Material.CAULDRON, 1,
+                        Text.key("gui_sbmenu.bags.sack.pickup_all"),
+                        Text.keyLines("gui_sbmenu.bags.sack.pickup_all.lore",
+                                StringUtility.commaify(storedAmount((SkyBlockPlayer) c.player())))),
+                (click, c) -> {
+                    pickupAll((SkyBlockPlayer) c.player());
+                    c.session(SackState.class).refresh();
+                });
+
         List<SkyBlockItem> sackItems = new ArrayList<>();
         SkyBlockItem item = new SkyBlockItem(itemTypeLinker);
 
@@ -118,6 +135,7 @@ public class GUISack implements StatefulView<GUISack.SackState> {
                     ItemStack.Builder builder = PlayerItemUpdater.playerUpdate(p, skyBlockItem.getItemStack());
                     List<Text> lore = new ArrayList<>();
                     Integer amount = p.getSackItems().getAmount(linker);
+                    lore.add(Text.of("<8>{}", StringUtility.toNormalCase(itemTypeLinker.name())));
                     lore.add(Text.empty());
                     lore.add(Text.key("gui_sbmenu.bags.sack.stored",
                             Text.empty(),
@@ -134,6 +152,63 @@ public class GUISack implements StatefulView<GUISack.SackState> {
                 }, (click, c) -> handleSackItemClick(click, c, linker));
             }
             index++;
+        }
+    }
+
+    private List<ItemType> validItems() {
+        SkyBlockItem sack = new SkyBlockItem(itemTypeLinker);
+        if (!sack.hasComponent(SackComponent.class)) return List.of();
+        return new ArrayList<>(sack.getComponent(SackComponent.class).getValidItems());
+    }
+
+    private int storedAmount(SkyBlockPlayer player) {
+        int total = 0;
+        for (ItemType linker : validItems()) total += player.getSackItems().getAmount(linker);
+        return total;
+    }
+
+    private int insertableAmount(SkyBlockPlayer player) {
+        List<ItemType> valid = validItems();
+        int total = 0;
+        for (ItemStack itemStack : player.getInventory().getItemStacks()) {
+            SkyBlockItem sItem = new SkyBlockItem(itemStack);
+            ItemType type = sItem.getAttributeHandler().getPotentialType();
+            if (valid.contains(type) && player.canInsertItemIntoSacks(type)) total += sItem.getAmount();
+        }
+        return total;
+    }
+
+    private void insertInventory(SkyBlockPlayer player) {
+        List<ItemType> valid = validItems();
+        int slot = 0;
+        for (ItemStack itemStack : player.getInventory().getItemStacks()) {
+            SkyBlockItem sItem = new SkyBlockItem(itemStack);
+            ItemType type = sItem.getAttributeHandler().getPotentialType();
+            if (valid.contains(type) && player.canInsertItemIntoSacks(type)) {
+                player.getSackItems().increase(type, sItem.getAmount());
+                player.getInventory().setItemStack(slot, ItemStack.AIR);
+            }
+            slot++;
+        }
+    }
+
+    private void pickupAll(SkyBlockPlayer player) {
+        for (ItemType linker : validItems()) {
+            int amount = player.getSackItems().getAmount(linker);
+            if (amount <= 0) continue;
+            int stackSize = new SkyBlockItem(linker).getItemStack().maxStackSize();
+            int airSlots = 0;
+            for (ItemStack itemStack : player.getInventory().getItemStacks()) {
+                if (itemStack.isAir()) airSlots++;
+            }
+            int taken = Math.min(amount, stackSize * airSlots);
+            if (taken <= 0) continue;
+            player.getSackItems().decrease(linker, taken);
+            for (int left = taken; left > 0; left -= stackSize) {
+                SkyBlockItem stack = new SkyBlockItem(linker);
+                stack.setAmount(Math.min(left, stackSize));
+                player.addAndUpdateItem(stack);
+            }
         }
     }
 

@@ -64,7 +64,16 @@ public class GUICrafting implements StatefulView<GUICrafting.CraftingState> {
 
         Components.fill(layout);
         layout.slots(Layouts.row(5), (_, _) -> ItemStacks.named(borderMaterial, ""));
-        Components.close(layout, 49);
+        Components.backOrClose(layout, 49, ctx);
+        for (int quickSlot : new int[]{16, 25, 34}) {
+            layout.slot(quickSlot, (_, _) -> ItemStacks.item(Material.RED_STAINED_GLASS_PANE, """
+                    <c>Quick Crafting Slot
+                    <7>Quick crafting allows you to craft
+                    <7>items without assembling the
+                    <7>recipe.
+
+                    <c>Requires VIP or above."""));
+        }
 
         for (int slot : CRAFT_SLOTS) {
             layout.editable(slot);

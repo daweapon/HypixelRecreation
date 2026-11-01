@@ -25,7 +25,7 @@ import java.util.List;
 
 public class GUIFastTravelSubMenu extends StatelessView {
     private static final int[] FEW_SLOTS = new int[]{20, 21, 22, 23, 24};
-    private static final int[] MANY_SLOTS = new int[]{19, 20, 21, 22, 23, 24, 25, 29, 30, 31, 32, 33};
+    private static final int[] HUB_OVERFLOW_SLOTS = new int[]{20, 22, 24};
     private final TravelScrollIslands island;
 
     public GUIFastTravelSubMenu(TravelScrollIslands island) {
@@ -34,20 +34,45 @@ public class GUIFastTravelSubMenu extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>(island.getWarpMenuTitle(), InventoryType.CHEST_5_ROW);
+        return new ViewConfiguration<>(island.getWarpMenuTitle(), rows() == 5 ? InventoryType.CHEST_5_ROW : InventoryType.CHEST_4_ROW);
+    }
+
+    private boolean crimsonLayout() {
+        return island == TravelScrollIslands.CRIMSON_ISLE;
+    }
+
+    private int rows() {
+        return crimsonLayout() || island == TravelScrollIslands.SKYBLOCK_HUB ? 5 : 4;
+    }
+
+    private int[] warpSlots(int count) {
+        if (count == 1) return new int[]{13};
+        if (count == 2) return new int[]{12, 14};
+        if (count == 3) return new int[]{11, 13, 15};
+        int[] slots = new int[count];
+        if (count <= 7) {
+            int start = 10 + (7 - count) / 2;
+            for (int i = 0; i < count; i++) slots[i] = start + i;
+            return slots;
+        }
+        for (int i = 0; i < count; i++) slots[i] = i < 7 ? 10 + i : HUB_OVERFLOW_SLOTS[Math.min(i - 7, HUB_OVERFLOW_SLOTS.length - 1)];
+        return slots;
     }
 
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        Components.close(layout, 40);
-        Components.back(layout, 39, ctx);
+        Components.close(layout, rows() == 5 ? 40 : 31);
+        Components.back(layout, rows() == 5 ? 39 : 30, ctx);
 
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
         boolean shouldBePaper = player.getToggles().get(DatapointToggles.Toggles.ToggleType.PAPER_ICONS);
 
-        // Main island warp
-        layout.slot(13, (s, c) -> {
+        List<TravelScrollType> scrolls = island.getAssociatedScrolls();
+        int[] allSlots = crimsonLayout() ? new int[0] : warpSlots(scrolls.size() + 1);
+        int mainSlot = crimsonLayout() ? 13 : allSlots[0];
+
+        layout.slot(mainSlot, (s, c) -> {
             SkyBlockPlayer p = (SkyBlockPlayer) c.player();
             boolean isPaper = p.getToggles().get(DatapointToggles.Toggles.ToggleType.PAPER_ICONS);
             boolean unlocked = island.isAvailable() && island.isUnlocked(p);
@@ -60,7 +85,7 @@ public class GUIFastTravelSubMenu extends StatelessView {
             lore.add(Text.literal(" "));
 
             if (island.getAssociatedSkill() != null) {
-                lore.add(Text.of("<7>Main skill: <b>{}", island.getAssociatedSkill()));
+                lore.add(Text.of("<7>Main Skill: <b>{}", island.getAssociatedSkill()));
                 lore.add(Text.of("<7>Island tier: <e>{}", StringUtility.getAsRomanNumeral(island.getIslandTier())));
                 lore.add(Text.literal(" "));
             }
@@ -99,8 +124,7 @@ public class GUIFastTravelSubMenu extends StatelessView {
             });
         });
 
-        List<TravelScrollType> scrolls = island.getAssociatedScrolls();
-        int[] slots = scrolls.size() <= FEW_SLOTS.length ? FEW_SLOTS : MANY_SLOTS;
+        int[] slots = crimsonLayout() ? FEW_SLOTS : java.util.Arrays.copyOfRange(allSlots, 1, allSlots.length);
         for (int i = 0; i < scrolls.size() && i < slots.length; i++) {
             TravelScrollType scroll = scrolls.get(i);
             int slot = slots[i];

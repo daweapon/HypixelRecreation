@@ -27,13 +27,13 @@ import java.util.Map;
 // Researcher Beryl's Fossil Essence Shop: six tiered perks and Suspicious Scrap.
 public class GUIFossilEssenceShop extends StatelessView {
     private static final Map<FossilEssencePerk, Integer> SLOTS = Map.of(
-            FossilEssencePerk.SLEIGHT_OF_HAND, 20,
-            FossilEssencePerk.CHILLED_TO_THE_BONE, 21,
-            FossilEssencePerk.DWARVEN_EXPERTISE, 22,
+            FossilEssencePerk.SLEIGHT_OF_HAND, 19,
+            FossilEssencePerk.CHILLED_TO_THE_BONE, 20,
+            FossilEssencePerk.DWARVEN_EXPERTISE, 21,
             FossilEssencePerk.CUT_LOOSE, 23,
             FossilEssencePerk.PREHISTORIAN, 24,
-            FossilEssencePerk.RESOURCEFUL, 31);
-    private static final int SCRAP_SLOT = 33;
+            FossilEssencePerk.RESOURCEFUL, 25);
+    private static final int SCRAP_SLOT = 32;
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
@@ -48,9 +48,16 @@ public class GUIFossilEssenceShop extends StatelessView {
         layout.slot(4, (_, c) -> ItemStacks.item(Material.BONE_BLOCK, """
                 <a>Fossil Essence Shop
                 <7>Exchange <d>Fossil Essence <7>for perks
-                <7>and items!
+                <7>useful in the <b>Glacite Mineshafts <7>and
+                <7>beyond!
 
                 <7>Your Fossil Essence: <d>{}""".replace("{}", StringUtility.commaify(Essences.get((SkyBlockPlayer) c.player(), EssenceType.FOSSIL)))));
+        layout.slot(50, ItemStacks.item(Material.BEACON, """
+                <a>Salvage Items
+                <7>Salvage weapons and armor for
+                <7>materials.
+
+                <e>Click to view!"""), (_, c) -> new GUIEssenceSalvage().open((SkyBlockPlayer) c.player()));
         SLOTS.forEach((perk, slot) -> layout.slot(slot, (_, c) -> perkItem((SkyBlockPlayer) c.player(), perk), (_, c) -> {
             buy((SkyBlockPlayer) c.player(), perk);
             c.session(DefaultState.class).refresh();

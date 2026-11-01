@@ -69,6 +69,6 @@ public class GUIXPSubAreas implements StatefulView<GUIXPSubAreas.State> {
         lore.add(Text.of("<e>Click to view tasks!"));
 
         return ItemStacks.item(subArea.getIcon(), 1,
-                Text.of("<b>{} Tasks", subArea.getDisplayName()), lore);
+                Text.of("<3>{} Tasks", subArea.getDisplayName()), lore);
     }
 }

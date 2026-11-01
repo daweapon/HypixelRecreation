@@ -179,11 +179,17 @@ public class GUIHuntingBox extends StatefulPaginatedView<AttributeDefinition, GU
         List<AttributeDefinition> usable = syphonable(data);
         int count = usable.stream().mapToInt(d -> data.shardCount(d.id())).sum();
         List<Text> lore = new ArrayList<>(List.of(
-                Text.of("<7>You have <c>{} Shards <7>from <a>{} <7>Attributes", count, usable.size()),
-                Text.of("<7>that are not maxed out yet."),
-                Text.of("<7>Do you want to Syphon them all?"),
-                Text.empty(),
-                Text.of("<7>Shards to Syphon:")));
+                Text.of("<7>You have <c>{} Shards <7>across <a>{}", count, usable.size()),
+                Text.of("<7>different Attributes that are not"),
+                Text.of("<7>maxed out yet."),
+                Text.empty()));
+        if (usable.isEmpty()) {
+            lore.add(Text.of("<c>Nothing to Syphon!"));
+            return ItemStacks.item(Material.GOLDEN_APPLE, 1, Text.of("<6>Mass Syphon"), lore);
+        }
+        lore.add(Text.of("<7>Do you want to Syphon them all?"));
+        lore.add(Text.empty());
+        lore.add(Text.of("<7>Shards to Syphon:"));
         usable.stream().limit(8).forEach(d -> lore.add(Text.of("<8>- {}x <color:{}>{}", data.shardCount(d.id()),
                 d.rarity().itemRarity().getColor(), d.shardName())));
         lore.add(Text.empty());

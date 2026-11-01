@@ -27,7 +27,10 @@ public class GUILineGuide extends StatelessView {
         layout.slot(4, ItemStacks.head(
             "9a850a4f721bc150bb72b067e5074c8251058a6b9111691da315b393467c1aa9", """
                 <9>ꨃ Lines
-                <9>Lines <7>grant stat bonuses to your rod everywhere."""));
+                <9>Lines <7>grant you stat bonuses
+                <7>everywhere!
+
+                <e>Click to view!"""));
 
         int index = 0;
         for (var part : FishingItemSupport.getRodParts()) {

@@ -11,6 +11,8 @@ import dev.daweapon.type.generic.gui.v2.StatelessView;
 import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
 import dev.daweapon.type.generic.gui.v2.ViewLayout;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
+import dev.daweapon.type.skyblockgeneric.accessory.power.AccessoryPowerType;
+import dev.daweapon.type.skyblockgeneric.accessory.power.AccessoryPowers;
 import dev.daweapon.type.skyblockgeneric.collection.CustomCollectionAward;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -32,37 +34,37 @@ public class GUIYourBags extends StatelessView {
 
         // Sack of Sacks
         if (player.hasCustomCollectionAward(CustomCollectionAward.SACK_OF_SACKS)) {
-            layout.slot(20, (s, c) -> ItemStacks.head(
+            layout.slot(19, (s, c) -> ItemStacks.head(
                             "80a077e248d142772ea800864f8c578b9d36885b29daf836b64a706882b6ec10",
                             Text.key("gui_sbmenu.bags.sack_of_sacks.unlocked"),
                             Text.keyLines("gui_sbmenu.bags.sack_of_sacks.unlocked.lore")),
                     (click, c) -> c.player().openView(new GUISackOfSacks()));
         } else {
-            layout.slot(20, (s, c) -> ItemStacks.item(Material.GRAY_DYE, 1,
+            layout.slot(19, (s, c) -> ItemStacks.item(Material.GRAY_DYE, 1,
                     Text.key("gui_sbmenu.bags.sack_of_sacks.locked"),
                     Text.keyLines("gui_sbmenu.bags.sack_of_sacks.locked.lore")));
         }
 
         // Fishing Bag
         if (player.hasCustomCollectionAward(CustomCollectionAward.FISHING_BAG)) {
-            layout.slot(21, (s, c) -> ItemStacks.head(
+            layout.slot(20, (s, c) -> ItemStacks.head(
                     "eb8e297df6b8dffcf135dba84ec792d420ad8ecb458d144288572a84603b1631",
                     Text.key("gui_sbmenu.bags.fishing_bag.unlocked"),
                     Text.keyLines("gui_sbmenu.bags.fishing_bag.unlocked.lore")));
         } else {
-            layout.slot(21, (s, c) -> ItemStacks.item(Material.GRAY_DYE, 1,
+            layout.slot(20, (s, c) -> ItemStacks.item(Material.GRAY_DYE, 1,
                     Text.key("gui_sbmenu.bags.fishing_bag.locked"),
                     Text.keyLines("gui_sbmenu.bags.fishing_bag.locked.lore")));
         }
 
         // Potion Bag
         if (player.hasCustomCollectionAward(CustomCollectionAward.POTION_BAG)) {
-            layout.slot(22, (s, c) -> ItemStacks.head(
+            layout.slot(21, (s, c) -> ItemStacks.head(
                     "9f8b82427b260d0a61e6483fc3b2c35a585851e08a9a9df372548b4168cc817c",
                     Text.key("gui_sbmenu.bags.potion_bag.unlocked"),
                     Text.keyLines("gui_sbmenu.bags.potion_bag.unlocked.lore")));
         } else {
-            layout.slot(22, (s, c) -> ItemStacks.item(Material.GRAY_DYE, 1,
+            layout.slot(21, (s, c) -> ItemStacks.item(Material.GRAY_DYE, 1,
                     Text.key("gui_sbmenu.bags.potion_bag.locked"),
                     Text.keyLines("gui_sbmenu.bags.potion_bag.locked.lore")));
         }
@@ -84,7 +86,13 @@ public class GUIYourBags extends StatelessView {
                         "396ce13ff6155fdf3235d8d22174c5de4bf5512f1adeda1afa3fc28180f3f7",
                         Text.key("gui_sbmenu.bags.accessory_bag.unlocked"),
                         Text.keyLines("gui_sbmenu.bags.accessory_bag.unlocked.lore",
-                                StringUtility.commaify(((SkyBlockPlayer) c.player()).getAccessoryPower()))),
+                                StringUtility.commaify(((SkyBlockPlayer) c.player()).getAccessoryPower()),
+                                selectedPower((SkyBlockPlayer) c.player()))),
                 (click, c) -> c.player().openView(new GUIAccessoryBag()));
+    }
+
+    private static String selectedPower(SkyBlockPlayer player) {
+        AccessoryPowerType selected = AccessoryPowers.data(player).getSelected();
+        return selected == null ? "None" : selected.getDisplayName();
     }
 }

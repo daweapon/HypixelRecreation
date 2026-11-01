@@ -16,7 +16,7 @@ import java.util.List;
 
 @Getter
 public enum SkyBlockEmblems {
-    SKILLS(new GUIMaterial(Material.DIAMOND_SWORD), List.of("<7>These symbols are related to", "<7>levelling up your Skills!"), List.of(
+    SKILLS(new GUIMaterial(Material.DIAMOND_SWORD), List.of("<7>These symbols are related to", "<7>leveling up your Skills!"), List.of(
             new SkyBlockEmblem("Mining Pickaxe", Material.STONE_PICKAXE, "<7>⸕",
                     SkyBlockLevelCause.getSkillCause(SkillCategories.MINING, 50)),
             new SkyBlockEmblem("Mining Master", Material.GOLDEN_PICKAXE, "<6>⸕",

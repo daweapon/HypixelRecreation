@@ -7,8 +7,6 @@ import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import dev.daweapon.type.generic.gui.v2.*;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
-import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
-import dev.daweapon.type.skyblockgeneric.item.updater.NonPlayerItemUpdater;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.text.DecimalFormat;
@@ -18,7 +16,7 @@ import java.time.Duration;
 public class GUISpecialBazaar extends StatelessView {
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>("Special Bazaar", InventoryType.CHEST_3_ROW);
+        return new ViewConfiguration<>("Special Bazaar", InventoryType.CHEST_5_ROW);
     }
 
     private static final DecimalFormat FORMATTER = new DecimalFormat("#,###.##");
@@ -31,12 +29,20 @@ public class GUISpecialBazaar extends StatelessView {
                 System.currentTimeMillis() % 2 == 0 ? Material.IRON_CHESTPLATE : Material.OAK_WOOD, 1, """
                         <e>Special Bazaar Rules
                         <7>Your profile's mode prevents you
-                        <7>from using the bazaar
+                        <7>from using the Bazaar.
 
                         <7>Mode: Ironman
 
                         <a>EXCEPT: You may BUY booster cookies!"""), Duration.ofSeconds(1));
-        layout.slot(22, new NonPlayerItemUpdater(new SkyBlockItem(ItemType.BOOSTER_COOKIE)).getUpdatedItem(), (_, context) -> {
+        layout.slot(22, ItemStacks.item(Material.COOKIE, """
+                <a>Buy <e>one <a>cookie!
+                <8>Booster Cookie
+
+                <7>Amount: <a>1<7>x
+
+                <7>Price: <6>0 coins
+
+                <e>Click to buy now!"""), (_, context) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) context.player();
             cookie(player);
         });
@@ -46,8 +52,8 @@ public class GUISpecialBazaar extends StatelessView {
 
                 <7>Amount: <a>6<7>x
 
-                <7>Per unit: <e>0
-                <7>Price: <e>0
+                <7>Per unit: <6>0 coins
+                <7>Price: <6>0 coins
 
                 <e>Click to buy now!"""), (defaultStateClickContext, viewContext) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) viewContext.player();

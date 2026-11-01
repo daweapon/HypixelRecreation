@@ -41,6 +41,8 @@ public class GUIDimensionalInfusion extends StatelessView {
                 <7>Automatically purchase the
                 <d>Dimensional Infusion <7>when
                 <7>transferring to the rift, either for
-                <7>free or using <b>bits<7>.""");
+                <7>free or using <b>bits<7>.
+
+                <e>Click to enable!""");
     }
 }

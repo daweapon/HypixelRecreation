@@ -72,10 +72,12 @@ public class GUIRecipeSlayers extends StatelessView {
             String unlockedPercentage = String.format("%.2f", (allowedRecipes.size() / (double) typeRecipes.size()) * 100);
             String categoryName = StringUtility.toNormalCase(type.name());
 
+            ArrayList<Text> headerLore = new ArrayList<>(Text.keyLines("gui_sbmenu.recipe.book.category.lore", categoryName, unlockedPercentage,
+                    GUIRecipeBook.progressBar(allowedRecipes.size(), typeRecipes.size())));
+            headerLore.set(3, Text.key("gui_sbmenu.recipe.book.slayer_recipes_unlocked", unlockedPercentage));
             return ItemStacks.item(type.getMaterial(), 1,
                     Text.key("gui_sbmenu.recipe.book.category", categoryName),
-                    Text.keyLines("gui_sbmenu.recipe.book.category.lore", categoryName, unlockedPercentage,
-                            GUIRecipeBook.progressBar(allowedRecipes.size(), typeRecipes.size())));
+                    headerLore);
         });
 
         // Category items

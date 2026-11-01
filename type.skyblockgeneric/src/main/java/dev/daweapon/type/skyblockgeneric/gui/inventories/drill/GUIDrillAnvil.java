@@ -28,16 +28,19 @@ import java.util.List;
 
 public class GUIDrillAnvil extends StatelessView {
     public static final int REMOVAL_FEE = 9_999;
-    public static final int DRILL_SLOT = 20;
-    public static final int INPUT_SLOT = 24;
+    public static final int DRILL_SLOT = 29;
+    public static final int INPUT_SLOT = 33;
     public static final int APPLY_SLOT = 22;
     public static final int INFO_SLOT = 13;
     private static final List<DrillSlot> SLOT_ORDER = List.of(DrillSlot.TANK, DrillSlot.ENGINE, DrillSlot.MODULE);
-    private static final int[] INSTALLED_SLOTS = {29, 30, 31};
+    private static final int[] INSTALLED_SLOTS = {9, 18, 27};
+    private static final int[] DRILL_PLACEHOLDERS = {11, 12, 20};
+    private static final int[] INPUT_PLACEHOLDERS = {14, 15, 24};
+    private static final int FUEL_INFO_SLOT = 50;
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>("Drill Anvil", InventoryType.CHEST_5_ROW);
+        return new ViewConfiguration<>("Drill Anvil", InventoryType.CHEST_6_ROW);
     }
 
     @Override
@@ -92,7 +95,35 @@ public class GUIDrillAnvil extends StatelessView {
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        Components.close(layout, 40);
+        Components.close(layout, 49);
+        for (int slot : DRILL_PLACEHOLDERS) {
+            layout.slot(slot, ItemStacks.item(Material.RED_STAINED_GLASS_PANE, """
+                    <2>Drill
+                    <7>Place the Drill you want to
+                    <7>refuel or modify in the slot
+                    <7>below."""));
+        }
+        for (int slot : INPUT_PLACEHOLDERS) {
+            layout.slot(slot, ItemStacks.item(Material.RED_STAINED_GLASS_PANE, """
+                    <2>Drill Fuel/Part
+                    <7>Place the Drill Fuel or Drill
+                    <7>Part in the slot below."""));
+        }
+        layout.slot(FUEL_INFO_SLOT, ItemStacks.item(Material.GREEN_DYE, """
+                <2>Drill Fuel
+                <7>There are various types of
+                <2>Drill Fuel <7>that you can use
+                <7>to refuel your Drills. Each
+                <7>offers varying amounts of fuel
+                <7>depending on the biological
+                <7>composition of the material.
+
+                <8>■ <f>Poppy <8>- <2>2
+                <8>■ <f>Dandelion <8>- <2>2
+                <8>■ <9>Goblin Egg <8>- <2>2,000
+                <8>■ <9>Biofuel <8>- <2>3,000
+                <8>■ <9>Volta <8>- <2>10,000
+                <8>■ <a>Oil Barrel <8>- <2>10,000"""));
 
         layout.editable(DRILL_SLOT, (slot, oldItem, newItem, s) -> reject(ctx, slot, newItem, !isDrill(newItem),
                 "<c>Only Drills can be placed here!"));
@@ -135,13 +166,11 @@ public class GUIDrillAnvil extends StatelessView {
     private static ItemStack.Builder info(ViewContext ctx) {
         SkyBlockItem drill = drillIn(ctx);
         if (drill == null) {
-            return ItemStacks.item(Material.BOOK, """
-                    <a>Drill Anvil
-                    <7>Place a <a>Drill <7>on the left and a
-                    <7>Drill Part or <2>Machine Fuel <7>on the right,
-                    <7>then click the hopper to apply it.
-
-                    <7>Removing an installed part costs <6>%s coins<7>.""".formatted(DrillFuel.format(REMOVAL_FEE)));
+            return ItemStacks.item(Material.BARRIER, """
+                    <c>Drill Anvil
+                    <7>Place a Drill in the left slot
+                    <7>and <2>Drill Fuel <7>or a <6>Drill
+                    <6>Part <7>in the right slot!""");
         }
         DrillData data = drill.getAttributeHandler().getDrillData();
         return ItemStacks.item(Material.BOOK, """
@@ -159,7 +188,7 @@ public class GUIDrillAnvil extends StatelessView {
             return ItemStacks.item(Material.BARRIER, "<c>No Drill\n<7>Place a <a>Drill <7>on the left.");
         }
         if (input.isAir()) {
-            return ItemStacks.item(Material.HOPPER, "<7>Nothing to apply\n<7>Place a <a>Drill Part <7>or <2>Machine Fuel <7>on the right.");
+            return ItemStacks.item(Material.HOPPER, "<a>Drill Anvil\n<7>Combine the items in the slots\n<7>to the left and right below.");
         }
         String id = idOf(input);
         DrillData data = drill.getAttributeHandler().getDrillData();
@@ -216,11 +245,11 @@ public class GUIDrillAnvil extends StatelessView {
     private static ItemStack.Builder installedIcon(ViewContext ctx, DrillSlot slot) {
         SkyBlockItem drill = drillIn(ctx);
         if (drill == null) {
-            return ItemStacks.item(Material.GRAY_STAINED_GLASS_PANE, "<7>%s\n<8>Place a Drill to view its parts.".formatted(slot.getDisplayName()));
+            return ItemStacks.item(Material.GRAY_STAINED_GLASS_PANE, "<c>Remove %s\n<7>Place a Drill in the slot to the\n<7>right to view and remove its\n<6>%s<7>.".formatted(slot.getDisplayName(), slot.getDisplayName()));
         }
         DrillPart part = DrillParts.get(DrillParts.installed(drill.getAttributeHandler().getDrillData(), slot));
         if (part == null) {
-            return ItemStacks.item(Material.GRAY_STAINED_GLASS_PANE, "<7>%s\n<c>Not Installed".formatted(slot.getDisplayName()));
+            return ItemStacks.item(Material.GRAY_STAINED_GLASS_PANE, "<c>Remove %s\n<c>Not Installed".formatted(slot.getDisplayName()));
         }
         StringBuilder text = new StringBuilder("<9>" + new SkyBlockItem(part.itemId()).getDisplayName() + "\n");
         DrillParts.effectLines(part).forEach(line -> text.append(line).append('\n'));

@@ -18,10 +18,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GUISkills extends StatelessView {
-    private static final int[] DISPLAY_SLOTS = {
-            19, 20, 21, 22, 23, 24, 25,
-            28, 29, 30, 32, 33, 34
-    };
+    private static final java.util.Map<SkillCategories, Integer> DISPLAY_SLOTS = java.util.Map.ofEntries(
+            java.util.Map.entry(SkillCategories.COMBAT, 19),
+            java.util.Map.entry(SkillCategories.FARMING, 20),
+            java.util.Map.entry(SkillCategories.FISHING, 21),
+            java.util.Map.entry(SkillCategories.MINING, 22),
+            java.util.Map.entry(SkillCategories.FORAGING, 23),
+            java.util.Map.entry(SkillCategories.ENCHANTING, 24),
+            java.util.Map.entry(SkillCategories.ALCHEMY, 25),
+            java.util.Map.entry(SkillCategories.CARPENTRY, 28),
+            java.util.Map.entry(SkillCategories.RUNECRAFTING, 29),
+            java.util.Map.entry(SkillCategories.TAMING, 30),
+            java.util.Map.entry(SkillCategories.SOCIAL, 32),
+            java.util.Map.entry(SkillCategories.HUNTING, 33)
+    );
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
@@ -39,10 +49,11 @@ public class GUISkills extends StatelessView {
                 Text.keyLines("gui_sbmenu.skills.main.info.lore")));
 
         SkillCategories[] allCategories = SkillCategories.values();
-        for (int i = 0; i < DISPLAY_SLOTS.length && i < allCategories.length; i++) {
-            SkillCategories category = allCategories[i];
+        for (SkillCategories category : allCategories) {
+            Integer displaySlot = DISPLAY_SLOTS.get(category);
+            if (displaySlot == null) continue;
             SkillCategory skillCategory = category.asCategory();
-            int slot = DISPLAY_SLOTS[i];
+            int slot = displaySlot;
 
             layout.slot(slot, (s, c) -> {
                 SkyBlockPlayer player = (SkyBlockPlayer) c.player();

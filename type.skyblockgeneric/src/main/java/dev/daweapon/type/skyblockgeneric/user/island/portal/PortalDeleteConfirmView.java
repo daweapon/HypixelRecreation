@@ -24,23 +24,23 @@ public class PortalDeleteConfirmView extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>("Delete Portal?", InventoryType.CHEST_3_ROW);
+        return new ViewConfiguration<>("Destroy the Portal?", InventoryType.CHEST_4_ROW);
     }
 
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
         layout.slot(11, (_, _) -> ItemStacks.item(Material.LIME_TERRACOTTA, """
-                        <a>Delete Portal
-                        <7>Remove the portal to %s<7>.
-                        <c>You will not get the portal back!
-
-                        <e>Click to delete!""".formatted(destination.label())),
+                        <a>Confirm
+                        <7>This will remove all of the portal's
+                        <7>portal blocks. This <c>WILL NOT <7>break
+                        <7>the portal's frame!"""),
                 (_, c) -> {
                     c.player().closeInventory();
                     onConfirm.accept((SkyBlockPlayer) c.player());
                 });
         layout.slot(15, (_, _) -> ItemStacks.item(Material.RED_TERRACOTTA, "<c>Cancel"),
                 (_, c) -> c.player().closeInventory());
+        Components.close(layout, 31);
     }
 }

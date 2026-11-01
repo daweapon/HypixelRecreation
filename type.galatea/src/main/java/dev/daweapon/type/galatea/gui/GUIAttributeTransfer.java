@@ -13,8 +13,8 @@ import net.minestom.server.item.Material;
 public class GUIAttributeTransfer extends StatelessView {
     private static final String INFO = """
             <c>Attribute Transfer
-            <7>Do you still have old items
-            <7>with greyed out Attributes on them?
+            <7>Do you still have old items, with
+            <7>greyed out Attributes on them?
 
             <7>You can use this Anvil to transfer
             <7>those attributes to the new system!""";

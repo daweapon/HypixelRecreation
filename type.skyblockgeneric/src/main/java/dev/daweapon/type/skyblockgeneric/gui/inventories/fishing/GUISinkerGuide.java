@@ -27,7 +27,10 @@ public class GUISinkerGuide extends StatelessView {
         layout.slot(4, ItemStacks.head(
             "d24892a3142d2e130e5feb88b805b83de905489d2ccd1d031b9d7a2922b96500", """
                 <9>࿉ Sinkers
-                <9>Sinkers <7>add special fishing effects to your rod."""));
+                <9>Sinkers <7>give your rods special
+                <7>abilities!
+
+                <e>Click to view!"""));
 
         int index = 0;
         for (var part : FishingItemSupport.getRodParts()) {

@@ -79,12 +79,12 @@ public class GUIComposter extends StatelessView {
         double cap = fuel ? ComposterEngine.fuelCap(state, config) : ComposterEngine.organicMatterCap(state, config);
         double filled = Math.max(0, Math.min(1, amount / cap * 5 - pane));
         Material material = filled >= 1 ? Material.LIME_STAINED_GLASS_PANE : filled > 0 ? Material.YELLOW_STAINED_GLASS_PANE : Material.RED_STAINED_GLASS_PANE;
-        return ItemStacks.item(material, Text.of(fuel ? "<a>Fuel" : "<e>Organic Matter"), List.of(bar(amount, cap)));
+        return ItemStacks.item(material, Text.of(fuel ? "<2>Fuel" : "<e>Organic Matter"), List.of(bar(amount, cap)));
     }
 
     private Text bar(double amount, double cap) {
         int filled = (int) Math.round(Math.min(1, amount / cap) * 20);
-        return Text.of("<a>" + "-".repeat(filled) + "<f>" + "-".repeat(20 - filled) + " <e>{}<6>/<e>{}", format(amount), abbreviate(cap));
+        return Text.of("<dark_green><m>" + GardenMenus.spaces(filled) + "<white><m>" + GardenMenus.spaces(20 - filled) + "<reset> <e>{}<6>/<e>{}", format(amount), abbreviate(cap));
     }
 
     private ItemStack.Builder collect(SkyBlockPlayer player) {
@@ -111,15 +111,15 @@ public class GUIComposter extends StatelessView {
         lore.add(bar(amount, cap));
         lore.add(Text.empty());
         if (fuel) {
-            lore.add(Text.of("<7>Fill your composter with machine fuel,"));
+            lore.add(Text.of("<7>Fill your composter with <2>machine fuel<7>,"));
             lore.add(Text.of("<7>like <9>Biofuel<7> to power the composter"));
-            lore.add(Text.of("<7>to turn <e>Organic Matter<7> into <6>Compost<7>."));
+            lore.add(Text.of("<7>to turn Organic Matter into <6>Compost<7>."));
             lore.add(Text.empty());
-            lore.add(Text.of("<7>The composter must have <b>{} Fuel", StringUtility.commaify((long) ComposterEngine.fuelPerCycle(state, config))));
-            lore.add(Text.of("<7>stored to start making compost."));
+            lore.add(Text.of("<7>The composter must have <2>{}", StringUtility.commaify((long) ComposterEngine.fuelPerCycle(state, config))));
+            lore.add(Text.of("<2>Fuel <7>stored to start making compost."));
         } else {
-            lore.add(Text.of("<7>Fill your composter with crops, like"));
-            lore.add(Text.of("<a>Wheat<7> or <a>Enchanted Potato<7>, to turn"));
+            lore.add(Text.of("<7>Fill your composter with <a>crops<7>, like"));
+            lore.add(Text.of("<f>Wheat <7>or <a>Enchanted Potato<7>, to turn"));
             lore.add(Text.of("<7>them into <e>Organic Matter<7>. Organic"));
             lore.add(Text.of("<7>Matter is used to make <6>Compost<7>."));
             lore.add(Text.empty());
@@ -127,7 +127,7 @@ public class GUIComposter extends StatelessView {
             lore.add(Text.of("<7>organic matter stored to start"));
             lore.add(Text.of("<7>making compost."));
         }
-        return ItemStacks.item(fuel ? Material.BARREL : Material.POTATO, Text.of(fuel ? "<a>Fuel Meter" : "<e>Crop Meter"), lore);
+        return ItemStacks.item(fuel ? Material.BARREL : Material.POTATO, Text.of(fuel ? "<2>Fuel Meter" : "<e>Crop Meter"), lore);
     }
 
     private ItemStack.Builder insert(SkyBlockPlayer player, ComposterService.Source source, boolean fuel) {

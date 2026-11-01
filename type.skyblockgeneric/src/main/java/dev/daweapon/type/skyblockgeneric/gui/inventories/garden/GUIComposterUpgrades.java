@@ -67,12 +67,12 @@ public class GUIComposterUpgrades extends StatelessView {
                 ItemType type = ItemType.get(cost.item());
                 int have = type == null ? 0 : player.getAmountAnywhere(type);
                 affordable &= have >= cost.amount();
-                lore.add(Text.of(" <a>{} <8>x<a>{}", type == null ? cost.item() : new SkyBlockItem(type).getDisplayName(), StringUtility.commaify(cost.amount())));
+                lore.add(Text.of(" <8>{}x <a>{}", StringUtility.commaify(cost.amount()), type == null ? cost.item() : new SkyBlockItem(type).getDisplayName()));
             }
             affordable &= Gardens.profile(player).getCopper() >= next.copper();
             lore.add(Text.of(" <c>{} Copper", StringUtility.commaify(next.copper())));
             lore.add(Text.empty());
-            lore.add(Text.of("<b>+{} SkyBlock XP", next.skyblockXp()));
+            lore.add(Text.of("<8>+<b>{} SkyBlock XP", next.skyblockXp()));
             lore.add(Text.empty());
             int required = config.levelRequired(upgrade);
             if (GardenProgress.level(Gardens.profile(player)) < required) {
@@ -81,7 +81,7 @@ public class GUIComposterUpgrades extends StatelessView {
                 lore.add(Text.of(affordable ? "<e>Click to upgrade!" : "<c>Missing required items!"));
             }
         }
-        String title = upgrade.getDisplayName() + " " + (maxed ? StringUtility.getAsRomanNumeral(tier) : tier);
+        String title = tier == 0 ? upgrade.getDisplayName() : upgrade.getDisplayName() + " " + (maxed ? StringUtility.getAsRomanNumeral(tier) : tier);
         return ItemStacks.item(icon(upgrade), Math.max(1, tier), Text.of("<a>" + title), lore);
     }
 
@@ -98,11 +98,11 @@ public class GUIComposterUpgrades extends StatelessView {
     private static String description(ComposterUpgrade upgrade, ComposterState state, int tier) {
         ComposterConfig config = ComposterConfig.get();
         return switch (upgrade) {
-            case SPEED -> "Increases composter production\nspeed by " + (20 * tier) + "%.";
-            case MULTI_DROP -> "When compost is produced, grants a\n" + (3 * tier) + "% chance to produce an extra one.";
-            case FUEL_CAP -> "Increase the maximum machine fuel\nthe composter can hold to " + StringUtility.commaify((long) ComposterEngine.fuelCap(state, config)) + ".";
-            case ORGANIC_MATTER_CAP -> "Increase the maximum amount of\norganic matter that can be stored to\n" + StringUtility.commaify((long) ComposterEngine.organicMatterCap(state, config)) + ".";
-            case COST_REDUCTION -> "Reduces the amount of organic\nmatter and fuel required to produce\ncompost by " + tier + "%.";
+            case SPEED -> "Increases composter production\nspeed by <a>" + (20 * tier) + "%<7>.";
+            case MULTI_DROP -> "When compost is produced, grants a\n<a>" + (3 * tier) + "% <7>chance to produce an extra one.";
+            case FUEL_CAP -> "Increase the maximum machine\nfuel the composter can hold to\n<a>" + StringUtility.commaify((long) ComposterEngine.fuelCap(state, config)) + "<7>.";
+            case ORGANIC_MATTER_CAP -> "Increase the maximum amount of\norganic matter that can be stored to\n<a>" + StringUtility.commaify((long) ComposterEngine.organicMatterCap(state, config)) + "<7>.";
+            case COST_REDUCTION -> "Reduces the amount of organic\nmatter and fuel required to produce\ncompost by <a>" + tier + "%<7>.";
         };
     }
 

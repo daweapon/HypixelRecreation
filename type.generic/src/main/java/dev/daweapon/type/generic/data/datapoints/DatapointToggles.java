@@ -142,6 +142,7 @@ public class DatapointToggles extends Datapoint<DatapointToggles.Toggles> {
 			LOBBY_SHOW_PLAYERS(true),
 			AUTO_ACCEPT_QUESTS(false),
             RUSTY_PURCHASE_CONFIRMATION(false),
+            LOST_REWARDS_CONFIRMATION(true),
             RUSTY_SORT_BY_RARITY(false),
             HAS_SPOKEN_TO_FISHERWOMAN_ENID(false),
             HAS_SPOKEN_TO_CAPTAIN_BAHA(false),

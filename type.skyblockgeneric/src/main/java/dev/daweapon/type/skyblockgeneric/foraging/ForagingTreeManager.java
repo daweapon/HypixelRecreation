@@ -273,7 +273,7 @@ public final class ForagingTreeManager {
         }, TaskSchedule.tick(REGEN_DELAY_TICKS), TaskSchedule.stop());
     }
 
-    static int calculateLogs(double sweep, double toughness, boolean wrongOrder) {
+    public static int calculateLogs(double sweep, double toughness, boolean wrongOrder) {
         double effectiveSweep = Math.max(0, sweep) * (wrongOrder ? 0.5 : 1.0);
         int extra;
         if (toughness <= 0) {

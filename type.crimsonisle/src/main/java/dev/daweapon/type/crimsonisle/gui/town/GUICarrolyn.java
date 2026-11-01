@@ -29,7 +29,7 @@ import java.util.function.BiConsumer;
  * carries. Crops not yet on this server are shown with their real requirement but cannot be given.
  */
 public class GUICarrolyn extends StatelessView {
-    private static final int[] SLOTS = {20, 21, 22, 23, 24, 29, 30, 32};
+    private static final int[] SLOTS = {20, 21, 22, 23, 24, 30, 31, 32};
     private static final int BAR_SEGMENTS = 25;
 
     private final BiConsumer<SkyBlockPlayer, CarrolynExport> onGive;
@@ -46,7 +46,7 @@ public class GUICarrolyn extends StatelessView {
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        Components.close(layout, 31);
+        Components.close(layout, 49);
         CarrolynExport[] exports = CarrolynExport.values();
         for (int i = 0; i < exports.length && i < SLOTS.length; i++) {
             CarrolynExport export = exports[i];

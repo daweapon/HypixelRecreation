@@ -34,7 +34,8 @@ public class GUIFrozenCorpseRngMeter extends StatelessView {
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        Components.backOrClose(layout, 49, ctx);
+        Components.back(layout, 48, ctx);
+        Components.close(layout, 49);
         layout.slot(4, (_, c) -> summary((SkyBlockPlayer) c.player()));
         List<CorpseLootTable.MeterDrop> drops = CorpseLootTable.get().meterDrops();
         for (int i = 0; i < drops.size(); i++) {

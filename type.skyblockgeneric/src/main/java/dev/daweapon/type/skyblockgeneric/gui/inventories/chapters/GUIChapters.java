@@ -26,11 +26,11 @@ public class GUIChapters extends StatelessView {
     }
 
     private static final int FIRST_CHAPTER_SLOT = 19;
-    private static final int CLOSE_SLOT = 31;
+    private static final int CLOSE_SLOT = 49;
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>(island == ChapterIsland.TORRHUS_CANYON ? "Torrhus Canyon" : island.guide() + "'s Chapters", InventoryType.CHEST_4_ROW);
+        return new ViewConfiguration<>(island == ChapterIsland.TORRHUS_CANYON ? "Torrhus Canyon" : island.guide() + "'s Chapters", InventoryType.CHEST_6_ROW);
     }
 
     @Override
@@ -47,6 +47,7 @@ public class GUIChapters extends StatelessView {
                 }
             });
         }
+        Components.back(layout, 48, ctx);
         Components.close(layout, CLOSE_SLOT);
     }
 }

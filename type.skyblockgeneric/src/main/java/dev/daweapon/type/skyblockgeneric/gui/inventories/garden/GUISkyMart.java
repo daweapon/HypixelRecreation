@@ -37,7 +37,8 @@ public class GUISkyMart extends StatelessView {
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        Components.back(layout, 31, ctx);
+        Components.back(layout, 30, ctx);
+        Components.close(layout, 31);
 
         for (Category category : CATEGORIES) {
             layout.slot(category.slot(), (_, c) -> {

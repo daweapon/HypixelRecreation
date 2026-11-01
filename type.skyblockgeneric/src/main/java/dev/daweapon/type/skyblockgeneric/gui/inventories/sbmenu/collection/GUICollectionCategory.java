@@ -58,7 +58,7 @@ public class GUICollectionCategory extends StatelessView {
             lore.add(Text.empty());
             lore.addAll(display.stream().map(Text::parse).toList());
 
-            return ItemStacks.item(Material.STONE_PICKAXE, 1,
+            return ItemStacks.item(type.getDisplayIcon(), 1,
                     Text.of("<a>{} Collections", type.getName()), lore);
         });
 

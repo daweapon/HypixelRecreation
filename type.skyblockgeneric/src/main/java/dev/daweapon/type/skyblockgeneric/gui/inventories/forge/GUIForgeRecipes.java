@@ -61,7 +61,7 @@ public class GUIForgeRecipes extends StatelessView {
             if (at >= recipes.size()) break;
             ForgeRecipe recipe = recipes.get(at);
             layout.slot(RECIPE_SLOTS[index], (_, _) -> ForgeTooltips.recipe(player, recipe,
-                            ForgeService.reasonUnavailable(player, recipe) == null ? "<e>Click to select!" : null),
+                            ForgeService.reasonUnavailable(player, recipe) == null ? "<e>Click to view!" : null),
                     (_, c) -> {
                         String blocked = ForgeService.reasonUnavailable(player, recipe);
                         if (blocked != null) {

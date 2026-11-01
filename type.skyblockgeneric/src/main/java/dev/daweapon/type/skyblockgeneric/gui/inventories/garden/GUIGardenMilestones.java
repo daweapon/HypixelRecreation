@@ -18,25 +18,25 @@ public class GUIGardenMilestones extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>(Text.key(KEY + "title"), InventoryType.CHEST_4_ROW);
+        return new ViewConfiguration<>(Text.key(KEY + "title"), InventoryType.CHEST_6_ROW);
     }
 
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        if (!Components.back(layout, 30, ctx)) {
-            Components.close(layout, 30);
+        if (!Components.back(layout, 48, ctx)) {
+            Components.close(layout, 48);
         }
-        Components.close(layout, 31);
+        Components.close(layout, 49);
 
-        layout.slot(11, (_, _) -> GardenMenus.item(Material.WHEAT, Text.key(KEY + "crops.name"), lore("crops")),
+        layout.slot(21, (_, _) -> GardenMenus.item(Material.WHEAT, Text.key(KEY + "crops.name"), lore("crops")),
                 (_, c) -> GardenMenus.open(c, new GUICropMilestones()));
-        layout.slot(15, (_, _) -> GardenMenus.item(Material.EMERALD, Text.key(KEY + "visitors.name"), lore("visitors")),
-                (_, c) -> GardenMenus.open(c, new GUIVisitorMilestones(true)));
+        layout.slot(23, (_, _) -> GardenMenus.item(Material.PLAYER_HEAD, Text.key(KEY + "visitors.name"), lore("visitors")),
+                (_, c) -> GardenMenus.open(c, new GUIVisitorMilestones()));
     }
 
     private List<Text> lore(String id) {
-        List<Text> lore = new ArrayList<>(GardenMenus.lines(KEY + id + ".lore.", 2));
+        List<Text> lore = new ArrayList<>(GardenMenus.lines(KEY + id + ".lore.", id.equals("visitors") ? 3 : 2));
         lore.add(GardenMenus.blank());
         lore.add(Text.key("gui_garden_desk.click_to_view"));
         return lore;

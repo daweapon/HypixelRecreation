@@ -67,7 +67,6 @@ public class GUIKuudraPerkShop extends StatelessView {
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        Components.close(layout, 49);
         SkyBlockPlayer viewer = (SkyBlockPlayer) ctx.player();
         KuudraPerks.Loadout mine = fight.perks().of(viewer.getUuid());
         KuudraPerkShop.Route route = mine.route() == null ? null : fight.shop().route(mine.route());
@@ -75,6 +74,7 @@ public class GUIKuudraPerkShop extends StatelessView {
                 .filter(purchase -> purchase.currency() == KuudraPerkShop.Currency.TOKENS).toList();
 
         if (route == null) {
+            Components.close(layout, 49);
             List<KuudraPerkShop.Route> routes = fight.shop().routes();
             for (int i = 0; i < routes.size() && i < ROUTE_SLOTS.length; i++) {
                 KuudraPerkShop.Route each = routes.get(i);
@@ -83,6 +83,9 @@ public class GUIKuudraPerkShop extends StatelessView {
             }
             placeBasics(layout, viewer, basic, BASIC_SLOTS_BEFORE);
         } else {
+            if (!Components.back(layout, 49, ctx, ItemStacks.item(Material.ARROW, "<a>Go Back\n<7>To Perk Menu"))) {
+                Components.close(layout, 49);
+            }
             placeMembers(layout, viewer);
             List<Object> entries = new ArrayList<>(route.perks());
             entries.addAll(route.specials());

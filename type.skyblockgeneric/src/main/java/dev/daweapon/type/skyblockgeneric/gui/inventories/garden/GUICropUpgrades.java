@@ -44,9 +44,9 @@ public class GUICropUpgrades extends StatelessView {
         return GardenMenus.item(GardenMenus.icon(crop), Text.key("gui_garden_upgrades.crops.name", name), List.of(
                 Text.key("gui_garden_upgrades.crops.lore.1", name),
                 Text.key("gui_garden_upgrades.crops.lore.2", name),
+                Text.key("gui_garden_upgrades.crops.lore.3"),
                 GardenMenus.blank(),
                 Text.key("gui_garden_upgrades.crops.tier", profile.cropUpgradeTier(crop), config.maxUpgradeTier()),
-                Text.key("gui_garden_upgrades.crops.fortune", name, GardenProgress.cropFortune(profile, crop)),
                 GardenMenus.blank(),
                 Text.key("gui_garden_upgrades.crops.click_to_view")));
     }

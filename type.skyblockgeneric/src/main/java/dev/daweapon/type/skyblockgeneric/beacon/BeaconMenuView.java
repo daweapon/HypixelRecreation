@@ -21,11 +21,11 @@ public class BeaconMenuView extends StatelessView {
     private static final int POWER_SLOT = 22;
     private static final int STAT_SLOT = 23;
     private static final int SUMMONING_SLOT = 24;
-    private static final int CLOSE_SLOT = 31;
+    private static final int CLOSE_SLOT = 49;
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>("Beacon", InventoryType.CHEST_4_ROW);
+        return new ViewConfiguration<>("Beacon", InventoryType.CHEST_6_ROW);
     }
 
     @Override
@@ -79,7 +79,7 @@ public class BeaconMenuView extends StatelessView {
         if (data == null) return missing();
         String next = data.tier() >= BeaconStat.MAX_TIER ? "<a>Maxed out" : "<6>+" + number(BeaconData.MINION_PERCENT_PER_TIER * (data.tier() + 1)) + "%";
         return ItemStacks.item(Material.GOLDEN_PICKAXE, "<6>Minion Buff\n"
-                + "<7>Additional percentage speed\n<7>buff to minions on your island.\n\n"
+                + "<7>Additional percentage speed\n<7>buff to minions within range.\n\n"
                 + "<7>Current Buff: <6>+" + number(BeaconData.MINION_PERCENT_PER_TIER * data.tier()) + "%\n"
                 + "<7>Next Tier: " + next + "\n\n"
                 + "<e>Click to view upgrades!");

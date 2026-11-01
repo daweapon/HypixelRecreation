@@ -34,19 +34,20 @@ public final class TicTacToeView implements View<TicTacToeView.State> {
             char mark = board.cell(i);
             Material material = mark == TicTacToeBoard.PLAYER ? Material.LIME_WOOL : mark == TicTacToeBoard.AI ? Material.RED_WOOL : Material.WHITE_WOOL;
             String label = mark == TicTacToeBoard.PLAYER ? "<a>You" : mark == TicTacToeBoard.AI ? "<c>Abiphone" : "<f>Empty";
-            layout.slot(SLOTS[i], (s, c) -> ItemStacks.name(ItemStack.builder(material), label), (click, viewCtx) -> play(state, cell, viewCtx));
+            List<Text> cellLore = mark == TicTacToeBoard.PLAYER || mark == TicTacToeBoard.AI ? List.of() : List.of(Text.of("<e>Click to select!"));
+            layout.slot(SLOTS[i], (s, c) -> ItemStacks.lore(ItemStacks.name(ItemStack.builder(material), label), cellLore), (click, viewCtx) -> play(state, cell, viewCtx));
         }
         if (board.finished()) {
             layout.slot(40, (s, c) -> ItemStacks.lore(ItemStacks.name(ItemStack.builder(Material.EMERALD), "<a>Play Again"), List.of(
                     Text.of(result(board)), Text.empty(), Text.of("<e>Click to play again!"))),
                     (click, viewCtx) -> viewCtx.replace(new TicTacToeView(), new State(state.abiphone())));
         }
-        layout.slot(49 - 1, (s, c) -> {
+        layout.slot(52, (s, c) -> {
             var stats = AbiphoneItemSettings.gameStats(state.abiphone());
             return ItemStacks.lore(ItemStacks.name(ItemStack.builder(Material.BOOK), "<a>Results"),
                     List.of(Text.of("<7>Wins: <a>{}", stats.wins()), Text.of("<7>Losses: <c>{}", stats.losses()), Text.of("<7>Draws: <e>{}", stats.draws())));
         });
-        if (!Components.back(layout, 45, ctx)) Components.close(layout, 45);
+        if (!Components.back(layout, 48, ctx)) Components.close(layout, 48);
         Components.close(layout, 49);
     }
 

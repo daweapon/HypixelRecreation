@@ -33,6 +33,7 @@ public class GUIAnglerAngusReward extends StatelessView {
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
+        Components.close(layout, 49);
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
 
         layout.slot(22,

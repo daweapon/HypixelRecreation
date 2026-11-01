@@ -23,11 +23,27 @@ import java.util.List;
 
 // GUI for fast-traveling between unlocked islands via travel scrolls
 public class GUIFastTravel extends StatelessView {
-    private static final int[] SLOTS = new int[]{
-            10, 11, 12, 13, 14, 15, 16,
-            19, 20, 21, 22, 23, 24, 25,
-            28, 29, 30, 31, 32, 33, 34
-    };
+    private static final java.util.Map<TravelScrollIslands, Integer> SLOTS = java.util.Map.ofEntries(
+            java.util.Map.entry(TravelScrollIslands.PRIVATE_ISLAND, 10),
+            java.util.Map.entry(TravelScrollIslands.SKYBLOCK_HUB, 11),
+            java.util.Map.entry(TravelScrollIslands.DUNGEON_HUB, 12),
+            java.util.Map.entry(TravelScrollIslands.THE_BARN, 13),
+            java.util.Map.entry(TravelScrollIslands.THE_PARK, 14),
+            java.util.Map.entry(TravelScrollIslands.MOONGLADE_MARSH, 15),
+            java.util.Map.entry(TravelScrollIslands.TORRHUS_CANYON, 16),
+            java.util.Map.entry(TravelScrollIslands.GOLD_MINE, 19),
+            java.util.Map.entry(TravelScrollIslands.DEEP_CAVERNS, 20),
+            java.util.Map.entry(TravelScrollIslands.DWARVEN_MINES, 21),
+            java.util.Map.entry(TravelScrollIslands.CRYSTAL_HOLLOWS, 22),
+            java.util.Map.entry(TravelScrollIslands.SPIDERS_DEN, 23),
+            java.util.Map.entry(TravelScrollIslands.THE_END, 24),
+            java.util.Map.entry(TravelScrollIslands.CRIMSON_ISLE, 25),
+            java.util.Map.entry(TravelScrollIslands.THE_GARDEN, 29),
+            java.util.Map.entry(TravelScrollIslands.THE_RIFT, 30),
+            java.util.Map.entry(TravelScrollIslands.BACKWATER_BAYOU, 31),
+            java.util.Map.entry(TravelScrollIslands.LOTUS_ATOLL, 32),
+            java.util.Map.entry(TravelScrollIslands.JERRYS_WORKSHOP, 33)
+    );
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
@@ -59,10 +75,10 @@ public class GUIFastTravel extends StatelessView {
             c.replace(new GUIFastTravel());
         });
 
-        TravelScrollIslands[] values = TravelScrollIslands.values();
-        for (int i = 0; i < values.length && i < SLOTS.length; i++) {
-            TravelScrollIslands island = values[i];
-            int slot = SLOTS[i];
+        for (TravelScrollIslands island : TravelScrollIslands.values()) {
+            Integer islandSlot = SLOTS.get(island);
+            if (islandSlot == null) continue;
+            int slot = islandSlot;
             boolean hasSubMenu = !island.getAssociatedScrolls().isEmpty();
 
             layout.slot(slot, (s, c) -> {
@@ -78,7 +94,7 @@ public class GUIFastTravel extends StatelessView {
                 lore.add(Text.literal(" "));
 
                 if (island.getAssociatedSkill() != null) {
-                    lore.add(Text.of("<7>Main skill: <b>{}", island.getAssociatedSkill()));
+                    lore.add(Text.of("<7>Main Skill: <b>{}", island.getAssociatedSkill()));
                     lore.add(Text.of("<7>Island tier: <e>{}", StringUtility.getAsRomanNumeral(island.getIslandTier())));
                     lore.add(Text.literal(" "));
                 }

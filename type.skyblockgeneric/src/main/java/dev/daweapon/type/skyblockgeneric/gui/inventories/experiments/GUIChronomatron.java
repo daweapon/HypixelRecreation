@@ -62,7 +62,7 @@ public class GUIChronomatron implements StatefulView<GUIChronomatron.Screen> {
         layout.filler(ItemStacks.filler(Material.BLACK_STAINED_GLASS_PANE));
         ChronomatronStake stake = screen.game.stake();
         layout.slot(4, (s, c) -> s.phase == Phase.OVER ? blank()
-                : ExperimentGuis.item(Material.BOOKSHELF, Math.max(1, Math.min(64, s.game.round())), "<a>Round: <f>" + s.game.round()));
+                : ExperimentGuis.item(Material.BOOKSHELF, Math.max(1, Math.min(64, s.game.round())), "<7>Round: <e>" + s.game.round()));
         layout.slot(49, (s, c) -> status(s));
         List<int[]> tiles = stake.tileSlots();
         for (int position = 0; position < tiles.size(); position++) {
@@ -124,8 +124,8 @@ public class GUIChronomatron implements StatefulView<GUIChronomatron.Screen> {
                 screen.reason.isEmpty() ? "" : "<c>" + screen.reason, screen.reason.isEmpty() ? "" : "",
                 "<7>Stakes: <d>" + stake.displayName(), "",
                 "<7>Longest Chain: <a>" + chain + " notes", "",
-                "<7>Rewards:", "<b> +" + ExperimentGuis.commas(stake.xpFor(chain)) + " Enchanting Exp",
-                "<d> +" + stake.clickBonus().clicksFor(chain, 0) + " Superpairs clicks", "", "<e>Click to claim rewards!");
+                "<7>Rewards:", "<8> +<3>" + ExperimentGuis.commas(stake.xpFor(chain)) + " Enchanting Exp",
+                "<8> +<d>" + stake.clickBonus().clicksFor(chain, 0) + " Superpairs clicks", "", "<e>Click to claim rewards!");
     }
 
     @Override

@@ -18,18 +18,24 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 // Dr. Stone's fossil donations: each unique fossil pays out once and unlocks its pet's Forge recipe.
 public class GUIDrStone extends StatelessView {
-    private static final int[] SLOTS = {10, 11, 12, 13, 14, 15, 16, 22};
+    private static final int[] SLOTS = {20, 21, 22, 23, 24, 30, 31, 32};
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>("Dr. Stone", InventoryType.CHEST_4_ROW);
+        return new ViewConfiguration<>("Research Center", InventoryType.CHEST_6_ROW);
     }
 
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        Components.close(layout, 31);
-        layout.slot(4, (_, c) -> header((SkyBlockPlayer) c.player()));
+        Components.close(layout, 49);
+        layout.slot(50, ItemStacks.item(Material.BOOK, """
+                <6>Fossil Guide
+                <7>Not quite sure how to find fossils?
+                <7>This handy guide is just what you
+                <7>need!
+
+                <e>Click to view!"""), (_, c) -> c.player().openView(new GUIFossilGuide()));
         FossilType[] fossils = FossilType.values();
         for (int i = 0; i < fossils.length; i++) {
             FossilType fossil = fossils[i];
@@ -40,15 +46,17 @@ public class GUIDrStone extends StatelessView {
         }
     }
 
-    private static ItemStack.Builder header(SkyBlockPlayer player) {
-        return ItemStacks.item(Material.BONE, "<a>Fossil Donations\n<7>Donate each kind of fossil once for\n<7>rewards and a new <6>Forge <7>pet recipe.\n\n<7>Donated: <a>" + FossilService.donated(player).size() + "<7>/<a>" + FossilType.values().length
-                + "\n\n<7>Donating all of them pays an extra\n<b>" + String.format("%,d", FossilService.COMPLETION_POWDER) + " Glacite Powder <7>and <5>"
-                + String.format("%,d", FossilService.COMPLETION_HOTM_XP) + " Heart of the Mountain XP<7>.");
-    }
-
     private static ItemStack.Builder fossilItem(SkyBlockPlayer player, FossilType fossil) {
         boolean donated = FossilService.hasDonated(player, fossil);
-        boolean owned = player.countItem(fossil.getItem()) > 0;
+        if (!donated) {
+            return ItemStacks.item(Material.GRAY_DYE, """
+                    <c>Unknown Fossil
+                    <7>Donating a Fossil will unlock its
+                    <7>information.
+
+                    <e>Click a Fossil in your inventory to
+                    <e>donate it!""");
+        }
         StringBuilder lore = new StringBuilder("\n<7>Rewards:\n<8> - <3>+" + String.format("%,d", FossilService.DONATION_MINING_XP) + " Mining XP"
                 + "\n<8> - <b>+" + String.format("%,d", FossilService.DONATION_POWDER) + " Glacite Powder"
                 + "\n<8> - <d>+" + FossilService.DONATION_ESSENCE + " Fossil Essence"
@@ -57,7 +65,7 @@ public class GUIDrStone extends StatelessView {
         if (fossil.unlocksPetRecipe()) lore.append("\n<8> - <6>Unlocks the ").append(fossil.getPetRecipe().split(";")[0].charAt(0))
                 .append(fossil.getPetRecipe().split(";")[0].substring(1).toLowerCase()).append(" Forge recipe");
         lore.append("\n\n");
-        lore.append(donated ? "<a>Donated!" : owned ? "<e>Click to donate!" : "<c>You don't have this fossil.");
+        lore.append("<a>Donated!");
         return ItemStacks.appendLore(PlayerItemUpdater.playerUpdate(player, new SkyBlockItem(fossil.getItem()).getItemStack()), lore.toString());
     }
 

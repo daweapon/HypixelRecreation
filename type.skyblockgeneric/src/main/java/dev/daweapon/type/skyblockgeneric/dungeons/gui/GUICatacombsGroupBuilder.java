@@ -39,46 +39,70 @@ public class GUICatacombsGroupBuilder implements StatefulView<GUICatacombsGroupB
     @Override
     public void layout(ViewLayout<State> layout, State state, ViewContext ctx) {
         Components.fill(layout);
-        layout.slot(11, (s, _) -> ItemStacks.item(CatacombsFloorInfo.material(s.floor()), """
+        layout.slot(11, ItemStacks.item(Material.SKELETON_SKULL, """
+                <a>Select Dungeon Type
+                <7>Allows you to change your
+                <7>selected dungeon type.
+
+                <a>Currently Selected: <b>The Catacombs
+
+                <e>Click to change!"""));
+        layout.slot(12, (s, _) -> ItemStacks.item(CatacombsFloorInfo.material(s.floor()), """
                 <a>Select Floor
-                <7>The Catacombs floor your group will run.
+                <7>Allows you to change your
+                <7>selected floor number.
 
-                <7>Currently: <e>%s
+                <a>Currently Selected: <b>%s
 
-                <e>Left-Click to cycle!
-                <e>Right-Click to cycle back!""".formatted(s.floor().displayName())), (click, c) -> {
+                <e>Left-Click to change!
+                <e>Right-Click to change back!""".formatted(s.floor().displayName())), (click, c) -> {
             int step = click.click() instanceof Click.Right ? -1 : 1;
             List<CatacombsFloor> floors = CatacombsAvailability.PLAYABLE_FLOORS.stream().sorted().toList();
             c.session(State.class).update(s -> new State(floors.get(Math.floorMod(floors.indexOf(s.floor()) + step, floors.size())),
                     s.note(), s.minimumLevel()));
         });
-        layout.slot(13, (s, _) -> ItemStacks.item(Material.WRITABLE_BOOK, """
-                <a>Group Note
-                <7>Tell other players what your group
-                <7>is looking for.
+        layout.slot(13, (s, _) -> ItemStacks.item(Material.PAPER, """
+                <a>Set Group Note
+                <7>Set a note to let everyone know
+                <7>what your group plans to do!
 
-                <7>Currently: <f>%s
+                <a>Current Note:
+                <f>%s
 
-                <e>Click to edit!""".formatted(s.note().isEmpty() ? "None!" : s.note())), (click, c) -> {
+                <e>Click to change!""".formatted(s.note().isEmpty() ? "None!" : s.note())), (click, c) -> {
             State current = click.state();
             ask(c.player(), "Group note", input -> new State(current.floor(), CatacombsPartyFinder.cleanNote(input), current.minimumLevel()));
         });
+        layout.slot(14, ItemStacks.item(Material.NETHER_STAR, """
+                <a>Set Class Level Required
+                <7>Add a class level requirement to
+                <7>the group so only players that
+                <7>have a class above the desired
+                <7>level will be able to join.
+
+                <a>Current Level Required:
+                <f>None!
+
+                <e>Click to change!"""));
         layout.slot(15, (s, _) -> ItemStacks.item(Material.IRON_SWORD, """
-                <a>Catacombs Level Required
-                <7>The lowest Catacombs level a player
-                <7>needs to join your group.
+                <a>Set Dungeon Level Required
+                <7>Add a dungeon level requirement
+                <7>to the group so only players
+                <7>that have the desired dungeon
+                <7>level will be able to join.
 
-                <7>Currently: <3>%d
+                <a>Current Level Required:
+                <f>%s
 
-                <e>Click to edit!""".formatted(s.minimumLevel())), (click, c) -> {
+                <e>Click to change!""".formatted(s.minimumLevel() == 0 ? "None!" : String.valueOf(s.minimumLevel()))), (click, c) -> {
             State current = click.state();
             ask(c.player(), "Catacombs level", input -> new State(current.floor(), current.note(), parseLevel(input, current.minimumLevel())));
         });
-        Components.back(layout, 30, ctx);
-        layout.slot(31, ItemStacks.item(Material.EMERALD_BLOCK, """
+        Components.back(layout, 31, ctx);
+        layout.slot(32, ItemStacks.item(Material.EMERALD_BLOCK, """
                 <a>Confirm Group
-                <7>List your party in the Party Finder
-                <7>so other players can join it.
+                <7>Open up your group so other
+                <7>players can start joining!
 
                 <e>Click to confirm!"""), (click, c) -> {
             State current = click.state();

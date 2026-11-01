@@ -43,7 +43,7 @@ public class GUIEquipmentSets implements StatefulView<GUIEquipmentSets.Equipment
 
     @Override
     public ViewConfiguration<EquipmentState> configuration() {
-        return ViewConfiguration.withText((state, _) -> Text.of("({}/2) Equipment Sets", state.page + 1), InventoryType.CHEST_6_ROW);
+        return ViewConfiguration.withText((state, _) -> Text.of("Equipment Sets ({}/2)", state.page + 1), InventoryType.CHEST_6_ROW);
     }
 
     @Override

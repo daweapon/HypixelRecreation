@@ -30,7 +30,7 @@ public class GUIEnchantmentGuide extends StatefulPaginatedView<EnchantmentType, 
 
     @Override
     public ViewConfiguration<State> configuration() {
-        return new ViewConfiguration<>("Enchantments Guide", InventoryType.CHEST_6_ROW);
+        return new ViewConfiguration<>("Enchantment Guide", InventoryType.CHEST_6_ROW);
     }
 
     @Override
@@ -90,6 +90,7 @@ public class GUIEnchantmentGuide extends StatefulPaginatedView<EnchantmentType, 
     protected void layoutCustom(ViewLayout<State> layout, State state, ViewContext ctx) {
         Components.back(layout, 48, ctx);
         Components.close(layout, 49);
+        layout.slot(4, ItemStacks.item(Material.KNOWLEDGE_BOOK, "<a>⚑ Enchantment Guide\n<7>View a complete list of all\n<7>enchantments and their requirements.\n\n<8>Also accessible via /enchantments"));
         layout.slot(50, (s, c) -> ItemStacks.item(s.filter().icon, 1, "<a>Filter: <e>{}\n<7>Showing <a>{}<7> enchantments.\n\n<e>Left-click for the next category!\n<e>Right-click for the previous!",
                 s.filter().displayName, s.items().stream().filter(s.filter()::matches).count()), (click, c) -> {
             int step = click.click() instanceof Click.Right ? -1 : 1;

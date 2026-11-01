@@ -11,9 +11,18 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class GUIEmblems extends StatelessView {
-    private static final int[] SLOTS = new int[]{10, 11, 12, 13, 14, 15, 16};
+    private static final Map<SkyBlockEmblems, Integer> SLOTS = Map.of(
+            SkyBlockEmblems.SKILLS, 11,
+            SkyBlockEmblems.DUNGEONS, 12,
+            SkyBlockEmblems.LEVELING, 13,
+            SkyBlockEmblems.SLAYER, 14,
+            SkyBlockEmblems.MISCELLANEOUS, 15,
+            SkyBlockEmblems.SUBSCRIPTION, 21,
+            SkyBlockEmblems.SPECIAL, 23
+    );
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
@@ -27,12 +36,15 @@ public class GUIEmblems extends StatelessView {
         Components.back(layout, 30, ctx);
 
         for (SkyBlockEmblems emblem : SkyBlockEmblems.values()) {
-            if (emblem.ordinal() >= SLOTS.length) break;
-            int slot = SLOTS[emblem.ordinal()];
+            int slot = SLOTS.get(emblem);
 
             layout.slot(slot, (s, c) -> {
                 SkyBlockPlayer player = (SkyBlockPlayer) c.player();
-                String displayName = emblem.toString();
+                String displayName = switch (emblem) {
+                    case DUNGEONS -> "Catacombs";
+                    case MISCELLANEOUS -> "Achievement";
+                    default -> emblem.toString();
+                };
                 GUIMaterial guiMaterial = emblem.getGuiMaterial();
 
                 List<Text> lore = new ArrayList<>();

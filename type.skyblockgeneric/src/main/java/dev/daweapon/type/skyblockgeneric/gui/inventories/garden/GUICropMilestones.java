@@ -44,7 +44,7 @@ public class GUICropMilestones extends StatelessView {
     private ItemStack.Builder cropItem(GardenCrop crop, GardenProfile profile) {
         GardenConfig config = GardenConfig.get();
         Material icon = GardenMenus.icon(crop);
-        String name = crop.getDisplayName();
+        String name = crop == GardenCrop.MELON ? "Melon" : crop.getDisplayName();
         if (!GardenProgress.cropUnlocked(profile, crop)) {
             return GardenMenus.item(icon, Text.key(KEY + "name_locked", name), List.of(
                     Text.key(KEY + "locked", GardenMenus.unlockLevel(crop))));

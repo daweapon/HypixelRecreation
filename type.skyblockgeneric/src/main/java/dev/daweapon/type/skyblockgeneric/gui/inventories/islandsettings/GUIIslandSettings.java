@@ -26,14 +26,14 @@ public class GUIIslandSettings extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return ViewConfiguration.withString((state, context) -> "Island Settings", InventoryType.CHEST_4_ROW);
+        return ViewConfiguration.withString((state, context) -> "Island Management", InventoryType.CHEST_6_ROW);
     }
 
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
 
-        layout.slot(10, (s, c) -> {
+        layout.slot(11, (s, c) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
             IslandPrivacy tier = IslandPrivacy.fromStored(player.getSkyblockDataHandler()
                     .get(SkyBlockDataHandler.Data.ISLAND_PRIVACY, DatapointString.class).getValue());
@@ -41,7 +41,7 @@ public class GUIIslandSettings extends StatelessView {
                     label(tier));
         }, (click, c) -> c.push(new GUIIslandSettingsPrivacy()));
 
-        layout.slot(12, (s, c) -> {
+        layout.slot(13, (s, c) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
             int ignored = player.getSkyblockDataHandler()
                     .get(SkyBlockDataHandler.Data.IGNORED_VISITORS, DatapointStringList.class).getValue().size();
@@ -50,16 +50,16 @@ public class GUIIslandSettings extends StatelessView {
                     ignored);
         }, (click, c) -> c.push(new GUIIslandSettingsIgnored()));
 
-        layout.slot(14, (s, c) -> {
+        layout.slot(33, (s, c) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
             int visitors = VisitManager.visitorIds(player.getSkyBlockIsland().getIslandID()).size();
             int limit = VisitManager.maxGuestLimit(player.getProfiles().getCurrentlySelected(), player.getUuid());
             return ItemStacks.item(Material.SHORT_GRASS,
-                    "<a>Guest Management\n<7>View and kick players currently\n<7>visiting your island.\n\n<7>Guests: <e>{}<7>/<e>{}",
+                    "<a>Guests Management\n<7>Manage players guesting on your\n<7>island.\n\n<a>✌ <7>Guests: <a>{}<7>/{}\n\n<e>Click to view!",
                     visitors, limit);
         }, (click, c) -> c.push(new GUIIslandSettingsGuests()));
 
-        layout.slot(16, (s, c) -> {
+        layout.slot(15, (s, c) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
             CoopDatabase.Coop coop = CoopDatabase.getFromMember(player.getUuid());
             String summary = coop == null
@@ -69,11 +69,15 @@ public class GUIIslandSettings extends StatelessView {
                     + summary);
         }, (click, c) -> c.push(new GUIIslandSettingsCoop()));
 
-        layout.slot(22, (s, c) -> ItemStacks.item(Material.COMPARATOR,
-                "<a>Island Properties\n<7>Weather and biome of your island.\n\n<e>Click to open!"),
+        layout.slot(29, (s, c) -> ItemStacks.item(Material.NETHER_STAR,
+                "<a>Island Properties\n<7>Modify island time, mob spawns,\n<7>biomes, and more.\n\n<e>Click to view!"),
                 (click, c) -> c.push(new GUIIslandProperties()));
 
-        Components.backOrClose(layout, 31, ctx);
+        layout.slot(31, (s, c) -> ItemStacks.head(((SkyBlockPlayer) c.player()).getPlayerSkin(),
+                "<7>{}'s Island\n<7>Tags: <8>None", ((SkyBlockPlayer) c.player()).getUsername()));
+
+        Components.backOrClose(layout, 48, ctx);
+        Components.close(layout, 49);
     }
 
     static String label(IslandPrivacy tier) {

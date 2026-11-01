@@ -18,12 +18,12 @@ public class GUIBestiary extends StatelessView {
 
     private static final int[] DISPLAY_SLOTS = {
             10, 11, 12, 13, 14, 15, 16,
-            19, 20, 21, 22, 23, 24, 25,
-            29, 30, 32, 33, 34
+            19, 20, 21, 22, 23, 24,
+            28, 29, 30, 31, 32, 33
     };
 
     private enum BestiaryRegions {
-        YOUR_ISLAND("<a>Your Island", new GUIMaterial("c9c8881e42915a9d29bb61a16fb26d059913204d265df5b439b3d792acd56"), BestiaryCategories.YOUR_ISLAND, "<7>View all of the mobs that you've", "<7>found and killed on <a>Your Island<7>."),
+        YOUR_ISLAND("<a>Private Island", new GUIMaterial("c9c8881e42915a9d29bb61a16fb26d059913204d265df5b439b3d792acd56"), BestiaryCategories.YOUR_ISLAND, "<7>View all of the mobs that you've", "<7>found and killed on <a>Your Island<7>."),
         HUB("<a>Hub", new GUIMaterial("d7cc6687423d0570d556ac53e0676cb563bbdd9717cd8269bdebed6f6d4e7bf8"), BestiaryCategories.HUB, "<7>View all of the mobs that you've", "<7>found and killed in the <a>Hub<7>."),
         THE_FARMING_ISLANDS("<a>The Farming Islands", new GUIMaterial("4d3a6bd98ac1833c664c4909ff8d2dc62ce887bdcf3cc5b3848651ae5af6b"), BestiaryCategories.FARMING_ISLANDS, "<7>View all of the mobs that you've", "<7>found and killed in <a>The Farming", "<a>Islands<7>."),
         GARDEN("<b>Garden", new GUIMaterial("f4880d2c1e7b86e87522e20882656f45bafd42f94932b2c5e0d6ecaa490cb4c"), BestiaryCategories.GARDEN, "<7>View all of the <6>Pests <7>that you've", "<7>killed on the <b>Garden<7>."),
@@ -72,7 +72,7 @@ public class GUIBestiary extends StatelessView {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
             List<String> lore = new ArrayList<>();
             player.getBestiaryData().getTotalDisplay(lore);
-            return ItemStacks.item(Material.WRITTEN_BOOK, 1, Text.of("<3>Bestiary"),
+            return ItemStacks.item(Material.WRITABLE_BOOK, 1, Text.of("<3>Bestiary"),
                     lore.stream().map(Text::parse).toList());
         });
 

@@ -23,7 +23,7 @@ public class GUILevelPrefixRewards extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>("Prefix Rewards", InventoryType.CHEST_6_ROW);
+        return new ViewConfiguration<>("Rewards", InventoryType.CHEST_6_ROW);
     }
 
     @Override

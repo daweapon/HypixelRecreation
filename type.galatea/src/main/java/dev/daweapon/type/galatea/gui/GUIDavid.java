@@ -24,10 +24,10 @@ public class GUIDavid extends StatelessView {
         layout.slot(20, (_, _) -> ItemStacks.item(Material.GOLDEN_AXE, """
                 <a>Hunting Tools
                 <7>You don't know which Hunting Gear to
-                <7>buy, or how to use them? I’ll
+                <7>buy, or how to use them? I'll
                 <7>explain everything!
 
-                <e>Click to open!"""), (_, c) -> ((SkyBlockPlayer) c.player()).openView(new HuntingNpcCatalogueView("hunting_david", null)));
+                <e>Click to view!"""), (_, c) -> ((SkyBlockPlayer) c.player()).openView(new HuntingNpcCatalogueView("hunting_david", null)));
         layout.slot(22, ItemStacks.item(Material.LEAD, """
                 <a>Hunting Lessons
                 <7>You still have questions regarding

@@ -156,8 +156,8 @@ public abstract class ShopView extends StatefulPaginatedView<ShopView.ShopItem, 
                     if (!player.getShoppingData().hasAnythingToBuyback()) {
                         return ItemStacks.item(Material.HOPPER, 1, """
                                 <a>Sell Item
-                                <7>Click items in your inventory to
-                                <7>sell them to this Shop!""");
+                                <7>Click items in your inventory to sell
+                                <7>them to this Shop!""");
                     }
 
                     SkyBlockItem last = new SkyBlockItem(player.getShoppingData().lastBuyback().getKey());

@@ -14,6 +14,7 @@ import dev.daweapon.type.generic.gui.v2.context.ClickContext;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
 import dev.daweapon.type.skyblockgeneric.garden.GardenConfig;
 import dev.daweapon.type.skyblockgeneric.garden.GardenProfile;
+import dev.daweapon.type.skyblockgeneric.garden.farm.GardenFarm;
 import dev.daweapon.type.skyblockgeneric.garden.GardenProgress;
 import dev.daweapon.type.skyblockgeneric.garden.GardenService;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -33,10 +34,7 @@ public class GUIConfigurePlots extends StatelessView {
         Components.back(layout, 48, ctx);
         Components.close(layout, 49);
 
-        layout.slot(GardenGrids.BARN_SLOT, GardenMenus.item(Material.BARREL, Text.key("gui_garden_upgrades.plots.barn.name"), List.of(
-                Text.key("gui_garden_upgrades.plots.barn.lore"),
-                GardenMenus.blank(),
-                Text.key("gui_garden_upgrades.plots.unlocked.teleport"))),
+        layout.slot(GardenGrids.BARN_SLOT, GardenMenus.item(Material.BARREL, Text.key("gui_garden_upgrades.plots.barn.name"), List.of()),
                 (_, c) -> dev.daweapon.type.skyblockgeneric.garden.GardenTeleport.toPlot((SkyBlockPlayer) c.player(), dev.daweapon.type.skyblockgeneric.garden.GardenLayout.BARN));
 
         for (int plot = 1; plot <= GardenProfile.PLOT_COUNT; plot++) {
@@ -67,13 +65,17 @@ public class GUIConfigurePlots extends StatelessView {
         int level = GardenProgress.level(profile);
         lore.add(Text.key("gui_garden_upgrades.plots.locked.requirement"));
         lore.add(Text.key(level >= quote.requiredLevel()
-                ? "gui_garden_upgrades.tiers.requirement_met"
-                : "gui_garden_upgrades.tiers.requirement_unmet", quote.requiredLevel()));
+                ? "gui_garden_upgrades.plots.locked.requirement_met"
+                : "gui_garden_upgrades.plots.locked.requirement_unmet", quote.requiredLevel()));
         lore.add(Text.key("gui_garden_upgrades.plots.locked.cost"));
         int bundles = GardenGrids.bundleCount(quote.compostCost(), GardenConfig.get().compostPerBundle());
         lore.add(bundles > 0
                 ? Text.key("gui_garden_upgrades.plots.locked.compost_bundle", bundles)
                 : Text.key("gui_garden_upgrades.plots.locked.compost", quote.compostCost()));
+        lore.add(GardenMenus.blank());
+        lore.add(Text.key("gui_garden_upgrades.plots.locked.rewards"));
+        lore.add(Text.key("gui_garden_upgrades.plots.locked.reward.fortune", (int) GardenFarm.FORTUNE_PER_PLOT));
+        lore.add(Text.key("gui_garden_upgrades.plots.locked.reward.xp", GardenConfig.get().skyblockXpPerPlot()));
         lore.add(GardenMenus.blank());
         if (quote.status() == GardenProgress.PlotStatus.NOT_ADJACENT) {
             lore.add(Text.key("gui_garden_upgrades.plots.locked.need_adjacent"));

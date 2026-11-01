@@ -54,8 +54,8 @@ public class GUIDraconicAltarGuide extends StatelessView {
             ItemType type = items.get(index);
             layout.slot(SLOTS[i], entry(type));
         }
-        if (page + 1 < pages()) layout.slot(53, ItemStacks.item(Material.ARROW, "<a>Next Page"), (_, c) -> c.replace(new GUIDraconicAltarGuide(page + 1)));
-        if (page > 0) layout.slot(45, ItemStacks.item(Material.ARROW, "<a>Previous Page"), (_, c) -> c.replace(new GUIDraconicAltarGuide(page - 1)));
+        if (page + 1 < pages()) layout.slot(53, ItemStacks.item(Material.ARROW, "<a>Next Page\n<e>Page " + (page + 2)), (_, c) -> c.replace(new GUIDraconicAltarGuide(page + 1)));
+        if (page > 0) layout.slot(45, ItemStacks.item(Material.ARROW, "<a>Previous Page\n<e>Page " + page), (_, c) -> c.replace(new GUIDraconicAltarGuide(page - 1)));
     }
 
     private static ItemStack.Builder entry(ItemType type) {

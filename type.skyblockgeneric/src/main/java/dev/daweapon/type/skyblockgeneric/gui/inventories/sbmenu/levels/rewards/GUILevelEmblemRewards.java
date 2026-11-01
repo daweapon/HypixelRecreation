@@ -24,7 +24,7 @@ public class GUILevelEmblemRewards extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>("Emblem Rewards", InventoryType.CHEST_6_ROW);
+        return new ViewConfiguration<>("Rewards", InventoryType.CHEST_6_ROW);
     }
 
     @Override

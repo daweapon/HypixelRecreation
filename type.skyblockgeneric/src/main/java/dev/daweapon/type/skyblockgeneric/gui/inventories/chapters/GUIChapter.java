@@ -35,14 +35,9 @@ public class GUIChapter extends StatelessView {
         return taskRows() == 1 ? 3 : 2;
     }
 
-    private int totalRows() {
-        return firstRow() + taskRows() + 1;
-    }
-
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        InventoryType type = totalRows() <= 5 ? InventoryType.CHEST_5_ROW : InventoryType.CHEST_6_ROW;
-        return new ViewConfiguration<>(island.guide() + " - Chapter " + chapter.number(), type);
+        return new ViewConfiguration<>(island.guide() + " - Chapter " + chapter.number(), InventoryType.CHEST_6_ROW);
     }
 
     @Override
@@ -61,9 +56,8 @@ public class GUIChapter extends StatelessView {
         }
         int chestRow = firstRow() + taskRows();
         layout.slot((chestRow - 1) * 9 + 4, (_, _) -> ChapterItems.completion(player, chapter));
-        int bottom = (totalRows() - 1) * 9;
-        Components.close(layout, bottom + 4);
-        Components.back(layout, bottom + 3, ctx);
+        Components.close(layout, 49);
+        Components.back(layout, 48, ctx);
     }
 
     private int column(int count, int index) {

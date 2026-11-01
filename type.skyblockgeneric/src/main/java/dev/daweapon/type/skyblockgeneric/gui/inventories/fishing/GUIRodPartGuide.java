@@ -21,10 +21,12 @@ public class GUIRodPartGuide extends StatelessView {
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.close(layout, 49);
 
-        layout.slot(4, ItemStacks.item(Material.BOOK, """
-                <9>Rod Part Guide
-                <7>View all <9>Rod Parts <7>that can be applied
-                <7>to your upgraded fishing rods."""));
+        layout.slot(4, ItemStacks.item(Material.KNOWLEDGE_BOOK, """
+                <a>⚑ Rod Part Guide
+                <7>View all of the <9>Rod Parts <7>that can be
+                <7>applied to <a>Fishing Rods<7>!
+
+                <8>Also accessible via /rodparts"""));
         layout.slot(20, ItemStacks.head(
             "9809753cbab0380c7a1c18925faf9b51e44caadd1e5748542b0f23835f4ef64e", """
                 <9>ථ Hooks
@@ -36,18 +38,18 @@ public class GUIRodPartGuide extends StatelessView {
             "9a850a4f721bc150bb72b067e5074c8251058a6b9111691da315b393467c1aa9", """
                 <9>ꨃ Lines
                 <9>Lines <7>grant you stat bonuses
-                <7>everywhere.
+                <7>everywhere!
 
                 <e>Click to view!"""), (_, viewCtx) -> viewCtx.push(new GUILineGuide()));
         layout.slot(24, ItemStacks.head(
             "d24892a3142d2e130e5feb88b805b83de905489d2ccd1d031b9d7a2922b96500", """
                 <9>࿉ Sinkers
-                <9>Sinkers <7>add special fishing effects
-                <7>to your rod.
+                <9>Sinkers <7>give your rods special
+                <7>abilities!
 
                 <e>Click to view!"""), (_, viewCtx) -> viewCtx.push(new GUISinkerGuide()));
         layout.slot(48, ItemStacks.item(Material.ARROW, """
                 <a>Go Back
-                <7>To Fishing Rod Parts"""), (_, viewCtx) -> viewCtx.pop());
+                <7>To Fishing Skill"""), (_, viewCtx) -> viewCtx.pop());
     }
 }

@@ -57,7 +57,7 @@ public class GUIStoragePage extends StatelessView {
 
         layout.slot(1, (s, c) -> ItemStacks.item(Material.ARROW, 1,
                         Text.key("gui_sbmenu.storage.page.go_back"),
-                        Text.keyLines("gui_sbmenu.storage.page.go_back.lore")),
+                        java.util.List.<Text>of()),
                 (_, c) -> c.player().openView(new GUIStorage()));
 
         if (page != highestPage) {

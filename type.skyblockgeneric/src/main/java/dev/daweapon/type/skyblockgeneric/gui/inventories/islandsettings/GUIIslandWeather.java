@@ -14,11 +14,11 @@ import dev.daweapon.type.skyblockgeneric.user.island.weather.IslandWeatherSettin
 import net.minestom.server.inventory.InventoryType;
 
 public class GUIIslandWeather extends StatelessView {
-    private static final int[] SLOTS = {11, 13, 15};
+    private static final int[] SLOTS = {15, 13, 11};
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return ViewConfiguration.withString((state, context) -> "Island Weather", InventoryType.CHEST_4_ROW);
+        return ViewConfiguration.withString((state, context) -> "Change Weather", InventoryType.CHEST_4_ROW);
     }
 
     @Override
@@ -30,8 +30,8 @@ public class GUIIslandWeather extends StatelessView {
             layout.slot(SLOTS[i], (s, c) -> {
                 SkyBlockIsland island = ((SkyBlockPlayer) c.player()).getSkyBlockIsland();
                 boolean selected = IslandWeatherSettings.current(island) == option;
-                var stack = ItemStacks.item(option.icon(), "<a>" + option.label() + "\n<7>Set the island weather to <b>" + option.label() + "<7>.\n\n"
-                        + (selected ? "<a>Currently selected" : "<e>Click to select!"));
+                var stack = ItemStacks.item(option.icon(), "<a>" + option.label() + "\n<7>Set the weather to <a>" + option.label() + "<7>.\n\n"
+                        + "<e>Click to select!");
                 return selected ? ItemStacks.enchanted(stack) : stack;
             }, (click, c) -> {
                 SkyBlockPlayer player = (SkyBlockPlayer) c.player();
@@ -44,6 +44,6 @@ public class GUIIslandWeather extends StatelessView {
                 c.session(DefaultState.class).refresh();
             });
         }
-        Components.backOrClose(layout, 31, ctx);
+        Components.close(layout, 31);
     }
 }

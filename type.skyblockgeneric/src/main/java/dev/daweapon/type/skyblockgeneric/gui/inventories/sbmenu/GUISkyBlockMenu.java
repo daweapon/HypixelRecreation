@@ -43,9 +43,9 @@ import java.util.*;
 
 // Main SkyBlock menu hub, linking out to bags, calendar, bank, skills, storage, and other sub-menus
 public class GUISkyBlockMenu extends StatelessView {
-    private static final List<ItemStatistic> PROFILE_LORE_STATS = List.of(ItemStatistic.SPEED, ItemStatistic.STRENGTH,
-        ItemStatistic.DEFENSE, ItemStatistic.CRITICAL_DAMAGE, ItemStatistic.CRITICAL_CHANCE, ItemStatistic.HEALTH,
-        ItemStatistic.INTELLIGENCE);
+    private static final List<ItemStatistic> PROFILE_LORE_STATS = List.of(ItemStatistic.HEALTH, ItemStatistic.DEFENSE,
+        ItemStatistic.SPEED, ItemStatistic.STRENGTH, ItemStatistic.INTELLIGENCE, ItemStatistic.CRITICAL_CHANCE,
+        ItemStatistic.CRITICAL_DAMAGE);
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
@@ -61,7 +61,7 @@ public class GUISkyBlockMenu extends StatelessView {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
 
             List<Text> lore = new ArrayList<>();
-            lore.add(Text.key("gui_sbmenu.main.your_profile.view_equipment"));
+            lore.addAll(Text.keyLines("gui_sbmenu.main.your_profile.view_equipment"));
             lore.add(Text.literal(" "));
 
             PlayerStatistics statistics = player.getStatistics();
@@ -71,7 +71,6 @@ public class GUISkyBlockMenu extends StatelessView {
                     StringUtility.decimalify(overall.getOrDefault(statistic, statistic.getBaseAdditiveValue()), 2),
                     statistic.getSuffix()));
             }
-            lore.add(Text.key("gui_sbmenu.main.your_profile.and_more"));
 
             lore.add(Text.literal(" "));
             lore.add(Text.key("gui_sbmenu.main.your_profile.stats_command"));
@@ -177,8 +176,9 @@ public class GUISkyBlockMenu extends StatelessView {
                 SkyBlockPlayer player = (SkyBlockPlayer) c.player();
                 var profile = dev.daweapon.type.skyblockgeneric.garden.Gardens.profile(player);
                 int level = dev.daweapon.type.skyblockgeneric.garden.GardenProgress.level(profile);
-                return ItemStacks.item(Material.SUNFLOWER, "<a>Garden Level " + StringUtility.getAsRomanNumeral(level)
-                        + "\n<7>Earn Garden experience by accepting\n<7>visitors' offers and unlocking new\n<7>milestones!\n\n<e>Click to open the Desk!");
+                return ItemStacks.item(Material.SUNFLOWER, "<a>Garden Desk"
+                        + "\n<7>Access the Garden's Desk to customize\n<7>your plot, purchase items and unlock\n<7>unique farming progression.\n\n<7>Garden Level: <a>" + StringUtility.getAsRomanNumeral(level)
+                        + "\n\n<e>Click to view!");
             }, (click, c) -> c.push(new dev.daweapon.type.skyblockgeneric.gui.inventories.garden.GUIGardenDesk()));
             layout.slot(11, (s, c) -> ItemStacks.text(
                     dev.daweapon.type.skyblockgeneric.gui.inventories.garden.GUIManageChips.icon(dev.daweapon.type.skyblockgeneric.garden.chip.GardenChip.CROPSHOT),
@@ -240,14 +240,9 @@ public class GUISkyBlockMenu extends StatelessView {
                 Text.key("gui_sbmenu.main.personal_bank"),
                 List.of(
                     Text.of("<7>Contact your Banker from anywhere."),
+                    Text.empty(),
                     Text.of("<7>Cooldown: <e>5 minutes"),
-                    Text.empty(),
-                    Text.of("<7>Banker Status:"),
-                    status,
-                    Text.empty(),
-                    Text.of("<7>Interest in: <b>26 Hours"),
-                    Text.of("<7>Solo Projection: <6>44,859.6 coins <b>(1.805%)"),
-                    Text.of("<7>Last Solo Interest: <6>44,415 coins"),
+                    Text.of("<7>Banker Status: {}", status),
                     Text.empty(),
                     Text.of("<8>Also accessible via /bank"),
                     Text.empty(),
@@ -299,8 +294,8 @@ public class GUISkyBlockMenu extends StatelessView {
         layout.slot(51, (s, c) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
             Text status = player.isBoosterCookieActive()
-                    ? Text.of("<a>Active <7>({})", CookieBuffService.formatRemaining(player))
-                    : Text.of("<c>Not active!");
+                    ? Text.of("<a>{}", CookieBuffService.formatRemaining(player))
+                    : Text.of("<c>None");
             return ItemStacks.item(Material.COOKIE, 1,
                 Text.key("gui_sbmenu.main.booster_cookie"),
                 Text.keyLines("gui_sbmenu.main.booster_cookie.lore", status));

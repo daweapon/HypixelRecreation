@@ -82,8 +82,8 @@ public class GUIMaxwell implements StatefulView<GUIMaxwell.Page> {
 
         layout.slot(47, ItemStacks.head(MaxwellItems.ACCESSORY_BAG_TEXTURE, """
                         <a>Accessory Bag Shortcut
-                        <7>Quickly access your accessory bag
-                        <7>from right here!
+                        <7>Quickly access your accessory
+                        <7>bag from right here!
 
                         <e>Click to open!"""),
                 (click, c) -> c.push(new GUIAccessoryBag()));

@@ -28,16 +28,16 @@ public class GUIXPSourceGroup implements StatefulView<GUIXPSourceGroup.State> {
             ctx.push(new GUIXPSubAreas(), new GUIXPSubAreas.State());
             return;
         }
-        ctx.push(new GUIXPSourceGroup(), new State(group, null, Sort.AVAILABLE_XP));
+        ctx.push(new GUIXPSourceGroup(), new State(group, null, Sort.UNLOCKED));
     }
 
     public static void open(ViewContext ctx, SkyBlockXPSource.SubArea subArea) {
-        ctx.push(new GUIXPSourceGroup(), new State(null, subArea, Sort.AVAILABLE_XP));
+        ctx.push(new GUIXPSourceGroup(), new State(null, subArea, Sort.UNLOCKED));
     }
 
     @Override
     public State initialState() {
-        return new State(SkyBlockXPSource.Group.CORE, null, Sort.AVAILABLE_XP);
+        return new State(SkyBlockXPSource.Group.CORE, null, Sort.UNLOCKED);
     }
 
     @Override
@@ -80,7 +80,7 @@ public class GUIXPSourceGroup implements StatefulView<GUIXPSourceGroup.State> {
         lore.add(Text.empty());
         lore.addAll(GUIXPSources.progressBar(earned, total));
 
-        return ItemStacks.item(state.icon(), 1, Text.of("<b>{}", state.displayName()), lore);
+        return ItemStacks.item(state.icon(), 1, Text.of("<3>{}", state.displayName()), lore);
     }
 
     private ItemStack.Builder sortItem(Sort sort) {
@@ -89,7 +89,7 @@ public class GUIXPSourceGroup implements StatefulView<GUIXPSourceGroup.State> {
         lore.add(Text.empty());
         for (Sort option : Sort.values()) {
             lore.add(option == sort
-                    ? Text.of("<a>▶ {}", option.getDisplayName())
+                    ? Text.of("<b>▶ {}", option.getDisplayName())
                     : Text.of("<7>{}", option.getDisplayName()));
         }
         lore.add(Text.empty());

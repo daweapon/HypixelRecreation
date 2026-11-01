@@ -35,14 +35,41 @@ public class GUIManageChips extends StatelessView {
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        Components.backOrClose(layout, 48, ctx);
         Components.close(layout, 49);
-        layout.slot(4, (_, c) -> ItemStacks.item(Material.PLAYER_HEAD, Text.of("<a>Garden Chips"), List.of(
-                Text.of("<7>Redeem chips to unlock them and"),
-                Text.of("<7>increase their rarity, then level them"),
-                Text.of("<7>up with <2>Sowdust<7>."),
+        layout.slot(4, (_, c) -> ItemStacks.item(Material.PLAYER_HEAD, Text.of("<a>Manage Chips"), List.of(
+                Text.of("<7>Upgrade your <9>Chips <7>to gain powerful"),
+                Text.of("<7>buffs!"),
+                Text.empty(),
+                Text.of("<2>✿ Sowdust"),
+                Text.of("<7>Sowdust is dropped from harvesting"),
+                Text.of("<7>crops in <a>The Garden <7>and is used to"),
+                Text.of("<7>upgrade the Chips you've unlocked!"),
                 Text.empty(),
                 Text.of("<7>Sowdust: <2>{}", StringUtility.commaify(Math.floor(Gardens.profile((SkyBlockPlayer) c.player()).getSowdust()))))));
+        layout.slot(50, (_, _) -> ItemStacks.item(Material.REDSTONE_TORCH, Text.of("<a>Chip Information"), List.of(
+                Text.of("<7>Chips can be upgraded using <2>Sowdust<7>."),
+                Text.of("<7>To increase a Chip's <9>maximum level<7>,"),
+                Text.of("<7>you'll need to upgrade its rarity by"),
+                Text.of("<a>using Chip items<7>."),
+                Text.empty(),
+                Text.of("<7>▪ <9><bold>RARE <7>Chips max at <a>Level 10"),
+                Text.of("<7>▪ <5><bold>EPIC <7>Chips max at <a>Level 15"),
+                Text.of("<7>▪ <6><bold>LEGENDARY <7>Chips max at <a>Level 20"),
+                Text.empty(),
+                Text.of("<7>Increasing a Chip's rarity also"),
+                Text.of("<7>increases the scaling of its perks!"))));
+        layout.slot(53, (_, _) -> ItemStacks.item(Material.BARRIER, Text.of("<c>Reset Farming Chips"), List.of(
+                        Text.of("<7>Reset the levels of all of your"),
+                        Text.of("<7>Chips and reimburse the <2>Sowdust"),
+                        Text.of("<7>you spent on them."),
+                        Text.empty(),
+                        Text.of("<e>Click to reset!"))),
+                (_, c) -> {
+                    SkyBlockPlayer player = (SkyBlockPlayer) c.player();
+                    long refund = ChipService.reset(player);
+                    player.sendMessage(Text.of("<a>Your Chips were reset and you were reimbursed <2>{} Sowdust<a>!", StringUtility.commaify(refund)));
+                    c.session(DefaultState.class).refresh();
+                });
         GardenChip[] chips = GardenChip.values();
         for (int i = 0; i < chips.length; i++) {
             GardenChip chip = chips[i];
@@ -86,8 +113,10 @@ public class GUIManageChips extends StatelessView {
             lore.add(Text.of("<6>Ability: {}", chip.getDisplayName()));
             lore.addAll(Text.of("<7><wrap:30>" + chip.getDescription().replace("<green>", "<a>").replace("<gray>", "<7>") + "</wrap>").lines());
             lore.add(Text.empty());
-            lore.add(Text.of("<c>LOCKED"));
-            return ItemStacks.text(icon(chip), Text.of("<7>" + chip.getDisplayName() + " Chip"), lore);
+            lore.add(Text.of("<7>" + source(chip)));
+            lore.add(Text.empty());
+            lore.add(Text.of("<c><bold>LOCKED"));
+            return ItemStacks.text(icon(chip), Text.of("<c>" + chip.getDisplayName() + " Chip"), lore);
         }
         int rarity = data.rarity(chip);
         int level = data.level(chip);
@@ -106,8 +135,21 @@ public class GUIManageChips extends StatelessView {
             int needed = GardenChip.CONSUMED_FOR_RARITY[rarity + 1] - data.consumed(chip);
             lore.add(Text.of("<7>Redeem <a>{} <7>more chips to upgrade to {}<7>!", needed, GardenChip.RARITY_COLOURS[rarity + 1] + GardenChip.RARITY_NAMES[rarity + 1]));
         } else {
-            lore.add(Text.of("<a>Max level reached!"));
+            lore.add(Text.of("<a><bold>MAXED!"));
+            lore.add(Text.empty());
+            lore.add(Text.of(GardenChip.RARITY_COLOURS[rarity] + "<bold>" + GardenChip.RARITY_NAMES[rarity] + " GARDEN CHIP"));
         }
         return ItemStacks.text(icon(chip), Text.of(GardenChip.RARITY_COLOURS[rarity] + chip.getDisplayName() + " Chip"), lore);
+    }
+
+    private static String source(GardenChip chip) {
+        return switch (chip) {
+            case VERMIN_VAPORIZER -> "Rarely dropped by the <2>Dragonfly Pest<7>.";
+            case SYNTHESIS, EVERGREEN -> "Rarely drops from the <a>Greenhouse<7>.";
+            case SOWLEDGE, CROPSHOT -> "Unlocked from <a>SkyMart<7>.";
+            case MECHAMIND, OVERDRIVE -> "Purchased from <b>Anita's shop<7>.";
+            case HYPERCHARGE, QUICKDRAW -> "Rarely gets rewarded from completing <b>Visitor Offers<7>.";
+            case RAREFINDER -> "Rarely drops from farming <e>Crops<7>.";
+        };
     }
 }

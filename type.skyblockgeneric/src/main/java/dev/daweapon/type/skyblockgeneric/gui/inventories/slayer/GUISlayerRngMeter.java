@@ -41,7 +41,8 @@ public class GUISlayerRngMeter extends StatelessView {
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        Components.backOrClose(layout, 49, ctx);
+        Components.back(layout, 48, ctx);
+        Components.close(layout, 49);
 
         SlayerDefinition definition = SlayerRegistry.get(style.type());
         if (definition == null) return;
@@ -53,6 +54,18 @@ public class GUISlayerRngMeter extends StatelessView {
                 (click, c) -> select((SkyBlockPlayer) c.player(), definition, drop, c));
         }
         layout.slot(4, (s, c) -> summary((SkyBlockPlayer) c.player(), definition));
+        layout.slot(51, ItemStacks.item(Material.BARRIER, """
+                <c>Reset RNG Drop
+                <7>Deselect your current RNG Meter
+                <7>drop.
+
+                <e>Click to reset!"""), (click, c) -> {
+            SkyBlockPlayer player = (SkyBlockPlayer) c.player();
+            if (SlayerRngMeter.unlocked(player.getSlayerData().progress(style.type()))) {
+                SlayerRngMeter.select(player, style.type(), null);
+                c.session(DefaultState.class).refresh();
+            }
+        });
     }
 
     private void select(SkyBlockPlayer player, SlayerDefinition definition, SlayerDrop drop, ViewContext ctx) {
@@ -127,7 +140,7 @@ public class GUISlayerRngMeter extends StatelessView {
                 lore.add(bar(SlayerRngMeter.percent(progress, selected)));
             }
         }
-        return ItemStacks.item(Material.PAINTING, Text.of("<d>{} RNG Meter", style.type().displayName()), lore);
+        return ItemStacks.item(Material.PAINTING, Text.of("<d>RNG Meter"), lore);
     }
 
     static Text bar(double percent) {

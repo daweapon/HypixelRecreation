@@ -17,7 +17,7 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 public class GUIOldManGarry extends StatelessView {
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>("Old Man Garry", InventoryType.CHEST_3_ROW);
+        return new ViewConfiguration<>("Mining Events Guide", InventoryType.CHEST_4_ROW);
     }
 
     private static String duration(long millis) {
@@ -30,13 +30,20 @@ public class GUIOldManGarry extends StatelessView {
         Components.fill(layout);
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
 
-        layout.slot(11, (_, _) -> {
-            MiningEvent current = MiningEvents.current().orElse(null);
-            String running = current == null ? "<7>No event is running." : "<7>Running: " + current.type().coloredName()
-                    + "\n<7>Ends in <e>" + duration(current.millisLeft());
-            return ItemStacks.item(Material.CLOCK, "<a>Event Schedule\n<7>Events happen around the Dwarven Mines\n<7>every <e>20 minutes<7>.\n\n"
-                    + running + "\n\n<7>Next event in <e>" + duration(MiningEventScheduler.millisUntilNextCycle()));
-        });
+        layout.slot(11, ItemStacks.item(Material.BOOK, """
+                <a>General Information
+
+                <b>Mining Events <7>occur in the
+                <2>Dwarven Mines <7>every <e>20 <7>minutes.
+                <8>(Around same time on all servers)
+
+                <e>Active events <7>require all players
+                <7>to group together, while <a>passive
+                <a>events <7>offer optional bonuses.
+
+                <7>You may also find <5>random events
+                <7>happening around the island at
+                <7>any time!"""));
 
         layout.slot(13, (_, _) -> {
             MiningEvent current = MiningEvents.current().orElse(null);
@@ -54,12 +61,15 @@ public class GUIOldManGarry extends StatelessView {
             player.teleport(current.warpLocation());
         });
 
-        layout.slot(15, ItemStacks.item(Material.BOOK, """
-                <a>Mining Events
-                <7>Passive: <b>2x Powder<7>, <d>Better Together
-                <7>Active: <c>Goblin Raid<7>, <6>Raffle<7>,
-                <b>Mithril Gourmand
-                <7>Random: <5>Fallen Stars<7>, <6>Powder Ghasts"""));
-        Components.close(layout, 22);
+        layout.slot(15, (_, _) -> {
+            MiningEvent current = MiningEvents.current().orElse(null);
+            if (current == null) {
+                return ItemStacks.item(Material.GRAY_DYE, "<a>No Current Event\n\n<7>The next event will be announced in\n<7>about <a>"
+                        + duration(MiningEventScheduler.millisUntilNextCycle()) + "<7>!");
+            }
+            return ItemStacks.item(Material.LIME_DYE, "<a>Current Event\n\n<7>Running: " + current.type().coloredName()
+                    + "\n<7>Ends in <e>" + duration(current.millisLeft()));
+        });
+        Components.close(layout, 31);
     }
 }

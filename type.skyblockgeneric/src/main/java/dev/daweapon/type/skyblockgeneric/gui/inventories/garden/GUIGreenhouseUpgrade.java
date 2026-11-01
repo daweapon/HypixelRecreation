@@ -13,7 +13,7 @@ import dev.daweapon.type.skyblockgeneric.garden.greenhouse.GreenhouseService;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public class GUIGreenhouseUpgrade extends StatelessView {
-    private static final int[] SLOTS = {10, 11, 12, 13, 14, 15, 16, 19, 20};
+    private static final int[] SLOTS = {18, 19, 20, 21, 22, 23, 24, 25, 26};
     private final GreenhouseConfig.Upgrade upgrade;
 
     public GUIGreenhouseUpgrade(GreenhouseConfig.Upgrade upgrade) {
@@ -22,13 +22,15 @@ public class GUIGreenhouseUpgrade extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>(Text.of(upgrade.displayName() + " Upgrades"), InventoryType.CHEST_4_ROW);
+        return new ViewConfiguration<>(Text.of(upgrade.displayName() + " Upgrades"), InventoryType.CHEST_6_ROW);
     }
 
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
-        Components.back(layout, 31, ctx);
+        Components.back(layout, 48, ctx);
+        Components.close(layout, 49);
+        layout.slot(4, (_, c) -> GUIGreenhouseUpgrades.header((SkyBlockPlayer) c.player(), upgrade, false));
         int tiers = GreenhouseConfig.get().maxTier(upgrade);
         for (int i = 0; i < tiers; i++) {
             int index = i;
