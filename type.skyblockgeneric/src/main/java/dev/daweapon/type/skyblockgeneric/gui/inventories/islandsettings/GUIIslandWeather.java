@@ -12,6 +12,7 @@ import dev.daweapon.type.skyblockgeneric.user.island.SkyBlockIsland;
 import dev.daweapon.type.skyblockgeneric.user.island.weather.IslandWeather;
 import dev.daweapon.type.skyblockgeneric.user.island.weather.IslandWeatherSettings;
 import net.minestom.server.inventory.InventoryType;
+import net.minestom.server.item.Material;
 
 public class GUIIslandWeather extends StatelessView {
     private static final int[] SLOTS = {15, 13, 11};
@@ -44,6 +45,11 @@ public class GUIIslandWeather extends StatelessView {
                 c.session(DefaultState.class).refresh();
             });
         }
+        layout.slot(35, ItemStacks.item(Material.BEDROCK, "<a>Pickup <a>Weather Node\n<e>Click to pickup!"), (click, c) -> {
+            SkyBlockPlayer player = (SkyBlockPlayer) c.player();
+            IslandWeatherSettings.pickupNode(player, player.getSkyBlockIsland());
+            player.closeInventory();
+        });
         Components.close(layout, 31);
     }
 }

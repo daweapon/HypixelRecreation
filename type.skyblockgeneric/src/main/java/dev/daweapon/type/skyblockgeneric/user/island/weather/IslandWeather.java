@@ -6,7 +6,7 @@ import net.minestom.server.item.Material;
 public enum IslandWeather {
     SUNNY("Sunny", Material.SUNFLOWER, Weather.CLEAR),
     RAINING("Raining", Material.WATER_BUCKET, Weather.RAIN),
-    THUNDERING("Thundering", Material.LIGHTNING_ROD, Weather.THUNDER);
+    THUNDERING("Thundering", Material.BLAZE_ROD, Weather.THUNDER);
 
     private final String label;
     private final Material icon;

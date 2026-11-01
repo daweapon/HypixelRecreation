@@ -41,6 +41,15 @@ public final class IslandWeatherSettings {
         return true;
     }
 
+    public static void pickupNode(SkyBlockPlayer player, SkyBlockIsland island) {
+        if (!unlocked(island)) return;
+        island.getDatabase().insertOrUpdate(UNLOCKED_KEY, false);
+        island.getDatabase().insertOrUpdate(WEATHER_KEY, IslandWeather.SUNNY.name());
+        if (island.getIslandInstance() != null) island.getIslandInstance().setWeather(IslandWeather.SUNNY.weather());
+        player.addAndUpdateItem(ItemType.WEATHER_NODE, 1);
+        player.sendMessage("<a>You picked up your <b>Weather Node<a>.");
+    }
+
     public static void set(SkyBlockPlayer player, SkyBlockIsland island, IslandWeather weather) {
         island.getDatabase().insertOrUpdate(WEATHER_KEY, weather.name());
         apply(island);

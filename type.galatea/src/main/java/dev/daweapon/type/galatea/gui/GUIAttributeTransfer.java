@@ -17,7 +17,7 @@ public class GUIAttributeTransfer extends StatelessView {
             <7>greyed out Attributes on them?
 
             <7>You can use this Anvil to transfer
-            <7>those attributes to the new system!""";
+            <7>those Attributes to the new system!""";
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
@@ -33,6 +33,7 @@ public class GUIAttributeTransfer extends StatelessView {
         }
         layout.slot(22, ItemStacks.item(Material.ANVIL, INFO));
         layout.slot(31, ItemStacks.item(Material.BARRIER, INFO));
+        Components.back(layout, 48, ctx, ItemStacks.item(Material.ARROW, "<a>Go Back\n<7>To Attribute Menu"));
         Components.close(layout, 49);
     }
 }

@@ -22,7 +22,7 @@ final class EnchantmentGuideLore {
 
     static String title(EnchantmentType type, int level) {
         String name = type.getName() + " " + StringUtility.getAsRomanNumeral(level);
-        return type.getEnch().isUltimate() ? "<d><l>" + name : "<9>" + name;
+        return "<a>" + name;
     }
 
     static int maximumLevel(EnchantmentType type, SkyBlockPlayer player) {
@@ -35,13 +35,13 @@ final class EnchantmentGuideLore {
 
     static List<Text> sources(EnchantmentType type, SkyBlockPlayer player) {
         List<Text> lines = new ArrayList<>();
-        lines.add(Text.of("<6>Source:"));
         CatalogueEntry entry = EnchantmentCatalogue.find(type.name());
         Set<String> seen = new LinkedHashSet<>();
         type.getEnch().getSources(player).forEach(source -> seen.add(source.toString().trim()));
         if (entry != null) entry.sources().forEach(source -> seen.add(source.trim()));
         if (seen.isEmpty()) seen.add("<7>Unknown");
-        seen.forEach(line -> lines.add(Text.parseLenient(line)));
+        lines.add(Text.of(seen.size() == 1 ? "<6>Source:" : "<6>Sources:"));
+        seen.forEach(line -> lines.add(Text.parseLenient(" " + line)));
         return lines;
     }
 
@@ -51,7 +51,7 @@ final class EnchantmentGuideLore {
         CatalogueEntry entry = EnchantmentCatalogue.find(type.name());
         List<String> labels = entry != null && !entry.appliedTo().isEmpty() ? entry.appliedTo() : type.getEnch().getGroups().stream()
                 .map(EnchantItemGroups::getDisplayName).distinct().collect(Collectors.toList());
-        labels.forEach(label -> lines.add(Text.parseLenient("<7>- <f>" + label)));
+        labels.forEach(label -> lines.add(Text.parseLenient("<7> - <f>" + label)));
         return lines;
     }
 
@@ -60,7 +60,7 @@ final class EnchantmentGuideLore {
         var conflicts = EnchantmentConflicts.of(type).stream().sorted(Comparator.comparing(EnchantmentType::getName)).toList();
         if (conflicts.isEmpty()) return lines;
         lines.add(Text.of("<6>Conflicts:"));
-        conflicts.forEach(other -> lines.add(Text.parseLenient("<7>- <c>" + other.getName())));
+        conflicts.forEach(other -> lines.add(Text.parseLenient("<7> - <c>" + other.getName())));
         return lines;
     }
 

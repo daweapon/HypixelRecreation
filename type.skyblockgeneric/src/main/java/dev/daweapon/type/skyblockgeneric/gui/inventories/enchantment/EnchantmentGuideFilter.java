@@ -8,8 +8,9 @@ import java.util.List;
 
 // The categories the Enchantments Guide can be narrowed to.
 enum EnchantmentGuideFilter {
-    ALL("All Enchantments", Material.ENCHANTED_BOOK, List.of()),
-    ULTIMATE("Ultimate", Material.NETHER_STAR, List.of()),
+    ALL("None", Material.ENCHANTED_BOOK, List.of()),
+    NORMAL("Normal Only", Material.BOOK, List.of()),
+    ULTIMATE("Ultimate Only", Material.NETHER_STAR, List.of()),
     MELEE("Melee Weapons", Material.DIAMOND_SWORD, List.of(EnchantItemGroups.SWORD, EnchantItemGroups.LONG_SWORD,
             EnchantItemGroups.FISHING_WEAPON, EnchantItemGroups.GAUNTLET)),
     BOW("Bows", Material.BOW, List.of(EnchantItemGroups.BOW)),
@@ -35,9 +36,18 @@ enum EnchantmentGuideFilter {
     boolean matches(EnchantmentType type) {
         return switch (this) {
             case ALL -> true;
+            case NORMAL -> !type.getEnch().isUltimate();
             case ULTIMATE -> type.getEnch().isUltimate();
             default -> type.getEnch().getGroups().stream().anyMatch(groups::contains);
         };
+    }
+
+    String options() {
+        StringBuilder text = new StringBuilder();
+        for (EnchantmentGuideFilter option : values()) {
+            text.append(option == this ? "\n<8>▶ " : "\n<7>  ").append(option.displayName);
+        }
+        return text.toString();
     }
 
     EnchantmentGuideFilter next(int step) {

@@ -25,7 +25,7 @@ class TechnoshopTest {
 
     @Test
     void sellsExactlyTheThreeNonShinyItems() throws Exception {
-        assertEquals(List.of("PIG_MASK", "THE_ART_OF_WAR", "BLOOD_GOD_CREST"), List.copyOf(entries().keySet()));
+        assertEquals(List.of("THE_ART_OF_WAR", "PIG_MASK", "BLOOD_GOD_CREST"), List.copyOf(entries().keySet()));
     }
 
     @Test

@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Locale;
 
 public final class HotfTooltips {
-    private static final String TOKEN = "<2>Token of the Forest";
+    private static final String TOKEN = "<a>Token of the Forest";
     private static final String AXE_NOTE = "<7>Axe Abilities apply to all of your Axes. You can select an Axe Ability from your Heart of the Forest.\n\n<7>Upgrade your Axe Abilities by unlocking <c>Center of the Forest<7> in this menu!";
 
     private HotfTooltips() {
@@ -57,7 +57,7 @@ public final class HotfTooltips {
             if (perk.usesWhispers()) text.append("\n\n<7>Cost\n").append(cost(perk, perk.costToReach(level + 1)));
         }
         if (level == 0) {
-            text.append("\n\n<7>Cost\n<f>").append(perk.tokenCost()).append(" Token of the Forest");
+            text.append("\n\n<7>Cost\n<a>").append(perk.tokenCost()).append(" Token of the Forest");
             String status = unlockStatus(player, perk);
             if (status != null) text.append("\n\n").append(status);
             else text.append("\n\n<e>Click to unlock!");
@@ -89,7 +89,7 @@ public final class HotfTooltips {
         text.append("\n<8>Cooldown: <a>").append(ability.cooldown(level)).append("s");
         text.append("\n\n").append(AXE_NOTE);
         if (!unlocked) {
-            text.append("\n\n<7>Cost\n<f>").append(perk.tokenCost()).append(" Token of the Forest");
+            text.append("\n\n<7>Cost\n<a>").append(perk.tokenCost()).append(" Token of the Forest");
             String status = unlockStatus(player, perk);
             text.append("\n\n").append(status == null ? "<e>Click to unlock!" : status);
         } else if (HotfAbilities.selected(player) == ability) {
@@ -102,12 +102,12 @@ public final class HotfTooltips {
 
     private static String unlockStatus(SkyBlockPlayer player, HotfPerk perk) {
         DatapointHOTF.PlayerHOTFData data = HotfService.data(player);
-        if (perk.tier() > HotfService.tier(player)) return "<c>Requires Heart of the Forest Tier " + perk.tier();
+        if (perk.tier() > HotfService.tier(player)) return "<c>Requires Tier " + perk.tier();
         if (perk.exclusive() != null && data.perkLevel(perk.exclusive()) > 0) {
             HotfPerk other = HotfRegistry.get().perk(perk.exclusive());
             return "<c>Conflicts with " + (other == null ? perk.exclusive() : other.name());
         }
-        if (HotfService.availableTokens(player) < perk.tokenCost()) return "<c>You don't have enough " + TOKEN.replace("<2>", "") + "!";
+        if (HotfService.availableTokens(player) < perk.tokenCost()) return "<c>You don't have enough " + TOKEN.replace("<a>", "") + "!";
         return null;
     }
 
@@ -142,10 +142,10 @@ public final class HotfTooltips {
         StringBuilder text = new StringBuilder((reached ? "<a>" : "<c>") + "Tier " + tier + "\n");
         text.append(reached
                 ? "<7>You have unlocked this tier. All perks and abilities on this tier are available for unlocking with " + TOKEN + "<7>."
-                : "<7>Reach this tier to make its perks and abilities available for unlocking with " + TOKEN + "<7>.");
-        text.append("\n\n<7>Rewards\n<2>+").append(reward.tokens()).append(" Token of the Forest");
+                : "<7>Progress through your Heart of the Forest by gaining <a>HOTF Exp <7>from <2>Tree Gifts <7>and during <d>Starlyn Contests<7>!");
+        text.append("\n\n<7>Rewards\n<8>+<a>").append(reward.tokens()).append(" Token of the Forest");
         for (String line : reward.rewards()) text.append("\n").append(line);
-        text.append("\n<b>+").append(reward.skyBlockXp()).append(" SkyBlock XP\n\n");
+        text.append("\n<8>+<b>").append(reward.skyBlockXp()).append(" SkyBlock XP\n\n");
         if (reached) {
             text.append("<a><l>UNLOCKED");
         } else if (HotfService.tier(player) + 1 == tier) {
@@ -195,7 +195,7 @@ public final class HotfTooltips {
     }
 
     private static String buildHeart(SkyBlockPlayer player) {
-        StringBuilder text = new StringBuilder("<a>Heart of the Forest\n<7>" + TOKEN + "s: <2>" + HotfService.availableTokens(player));
+        StringBuilder text = new StringBuilder("<a>Heart of the Forest\n<7>Tokens of the Forest: <a>" + HotfService.availableTokens(player));
         text.append("\n\n<7>Gain " + TOKEN + "s<7> by leveling up your Heart of the Forest tiers.");
         text.append("\n\n<a>Whispers\n<7>Whispers are dropped from cutting Logs on Galatea, and are used to upgrade the perks you've unlocked!");
         text.append("\n\n<7>Forest Whispers: <3>").append(String.format("%,d", HotfService.whispers(player, HotfCurrency.FOREST)));

@@ -30,7 +30,12 @@ public class GUIEnchantmentGuide extends StatefulPaginatedView<EnchantmentType, 
 
     @Override
     public ViewConfiguration<State> configuration() {
-        return new ViewConfiguration<>("Enchantment Guide", InventoryType.CHEST_6_ROW);
+        return ViewConfiguration.withString((state, context) -> {
+            int perPage = DEFAULT_SLOTS.length;
+            long count = state.items().stream().filter(state.filter()::matches).count();
+            int pages = Math.max(1, (int) Math.ceil(count / (double) perPage));
+            return "(" + Math.min(state.page() + 1, pages) + "/" + pages + ") Enchantment Guide";
+        }, InventoryType.CHEST_6_ROW);
     }
 
     @Override
@@ -62,8 +67,6 @@ public class GUIEnchantmentGuide extends StatefulPaginatedView<EnchantmentType, 
     protected ItemStack.Builder renderItem(EnchantmentType type, int index, HypixelPlayer viewer) {
         SkyBlockPlayer player = (SkyBlockPlayer) viewer;
         List<Text> lore = new ArrayList<>();
-        lore.add(Text.parseLenient("<8>" + (type.getEnch().isUltimate() ? "Ultimate Enchantment" : "Enchantment")));
-        lore.add(Text.empty());
         int max = EnchantmentGuideLore.maximumLevel(type, player);
         lore.addAll(EnchantmentGuideLore.description(type, max, player));
         lore.add(Text.empty());
@@ -91,8 +94,8 @@ public class GUIEnchantmentGuide extends StatefulPaginatedView<EnchantmentType, 
         Components.back(layout, 48, ctx);
         Components.close(layout, 49);
         layout.slot(4, ItemStacks.item(Material.KNOWLEDGE_BOOK, "<a>⚑ Enchantment Guide\n<7>View a complete list of all\n<7>enchantments and their requirements.\n\n<8>Also accessible via /enchantments"));
-        layout.slot(50, (s, c) -> ItemStacks.item(s.filter().icon, 1, "<a>Filter: <e>{}\n<7>Showing <a>{}<7> enchantments.\n\n<e>Left-click for the next category!\n<e>Right-click for the previous!",
-                s.filter().displayName, s.items().stream().filter(s.filter()::matches).count()), (click, c) -> {
+        layout.slot(51, (s, c) -> ItemStacks.item(Material.ENDER_EYE, 1, "<a>Filter\n" + s.filter().options()
+                + "\n\n<e>Click to switch!\n<b>Right-click to go backwards!"), (click, c) -> {
             int step = click.click() instanceof Click.Right ? -1 : 1;
             c.session(State.class).update(current -> current.withFilter(current.filter().next(step)));
         });

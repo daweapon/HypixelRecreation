@@ -1,14 +1,14 @@
 title: Technoshop
-slots: DEFAULT
+slots: [14, 30, 32]
 entries:
-  - item: PIG_MASK
-    name: "<6>Pig Mask"
-    material: player_head
-    cost: { coins: 10000, items: { ENCHANTED_PORK: 2 } }
   - item: THE_ART_OF_WAR
     name: "<6>The Art of War"
     material: book
     cost: { coins: 5000000, items: { ENCHANTED_GRILLED_PORK: 2 } }
+  - item: PIG_MASK
+    name: "<6>Pig Mask"
+    material: player_head
+    cost: { coins: 10000, items: { ENCHANTED_PORK: 2 } }
   - item: BLOOD_GOD_CREST
     name: "<f>Blood God Crest"
     material: player_head

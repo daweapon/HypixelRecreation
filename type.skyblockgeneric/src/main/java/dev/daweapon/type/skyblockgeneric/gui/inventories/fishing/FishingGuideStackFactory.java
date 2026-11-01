@@ -34,7 +34,7 @@ public final class FishingGuideStackFactory {
         ItemStatistic.MAGIC_FIND
     );
 
-    public static net.minestom.server.item.ItemStack.Builder buildBaitStack(SkyBlockItem baitItem) {
+    public static net.minestom.server.item.ItemStack.Builder buildBaitStack(SkyBlockItem baitItem, List<String> sources) {
         FishingBaitComponent bait = baitItem.getComponent(FishingBaitComponent.class);
         List<Text> lore = new ArrayList<>();
         lore.add(Text.of("<8>Fishing Bait"));
@@ -61,6 +61,11 @@ public final class FishingGuideStackFactory {
                 : Text.of("<c>Lava")));
         }
         finishFooter(lore, bait.getItemId(), "BAIT");
+        if (!sources.isEmpty()) {
+            lore.add(Text.empty());
+            lore.add(Text.of(sources.size() == 1 ? "<7>Source:" : "<7>Sources:"));
+            sources.forEach(source -> lore.add(Text.of(source)));
+        }
 
         return ItemStacks.head(bait.getTexture(), colouredName(bait.getItemId(), bait.getDisplayName()), lore);
     }
