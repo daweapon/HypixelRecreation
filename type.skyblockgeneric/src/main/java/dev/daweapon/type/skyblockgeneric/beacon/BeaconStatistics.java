@@ -14,7 +14,7 @@ public final class BeaconStatistics {
     }
 
     public static ItemStatistics profileStat(SkyBlockPlayer player) {
-        BeaconData own = BeaconService.get(player.getSkyBlockIsland());
+        BeaconData own = BeaconService.peek(player.getSkyBlockIsland());
         if (own == null || own.stat() == null) return ItemStatistics.empty();
         double value = own.profileStatValue(System.currentTimeMillis());
         if (value == 0) return ItemStatistics.empty();
@@ -23,7 +23,7 @@ public final class BeaconStatistics {
 
     public static ItemStatistics islandEffects(SkyBlockPlayer player) {
         if (!HypixelConst.isIslandServer() || player.getInstance() == null) return ItemStatistics.empty();
-        BeaconData local = BeaconService.get(SkyBlockIsland.forInstance(player.getInstance()));
+        BeaconData local = BeaconService.peek(SkyBlockIsland.forInstance(player.getInstance()));
         if (local == null) return ItemStatistics.empty();
         ItemStatistics total = ItemStatistics.empty();
         for (BeaconEffect effect : local.activeEffects(System.currentTimeMillis())) {

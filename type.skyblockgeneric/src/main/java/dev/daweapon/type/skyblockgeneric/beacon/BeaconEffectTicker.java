@@ -33,7 +33,7 @@ public final class BeaconEffectTicker {
     }
 
     private static void apply(SkyBlockIsland island, Instance instance) {
-        BeaconData data = BeaconService.get(island);
+        BeaconData data = BeaconService.peek(island);
         if (data == null) return;
         for (BeaconEffect effect : data.activeEffects(System.currentTimeMillis())) {
             if (effect.potion() == null) continue;

@@ -9,6 +9,7 @@ import dev.daweapon.commons.skyblock.item.UnderstandableSkyBlockItem;
 import dev.daweapon.commons.protocol.Serializer;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDatapoint;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.museum.MuseumCatalogue;
 import dev.daweapon.type.skyblockgeneric.museum.MuseumDisplays;
 import dev.daweapon.type.skyblockgeneric.museum.MuseumEntry;
 import org.json.JSONArray;
@@ -79,6 +80,25 @@ public class DatapointMuseum extends SkyBlockDatapoint<DatapointMuseum.MuseumDat
                     .filter(item -> item.getAttributeHandler().getPotentialType() != null)
                     .filter(item -> belongsTo(entry, item))
                     .collect(Collectors.toList());
+        }
+
+        public Set<String> heldEntryIds(MuseumCatalogue catalogue) {
+            Set<String> held = new HashSet<>(donatedEntries);
+            for (List<SkyBlockItem> items : List.of(currentlyInMuseum, previouslyInMuseum)) {
+                for (SkyBlockItem item : items) {
+                    ItemType type = item.getAttributeHandler().getPotentialType();
+                    if (type == null) continue;
+                    String owner = ownerId(item);
+                    if (owner != null) {
+                        held.add(owner);
+                        continue;
+                    }
+                    for (MuseumEntry entry : catalogue.entriesFor(type)) {
+                        if (entry.accepts(type)) held.add(entry.id());
+                    }
+                }
+            }
+            return held;
         }
 
         public boolean belongsTo(MuseumEntry entry, SkyBlockItem item) {

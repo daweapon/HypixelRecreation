@@ -12,15 +12,26 @@ import org.yaml.snakeyaml.Yaml;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.EnumMap;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class SkyBlockGuide {
     public static final double UNLOCK_THRESHOLD = 0.5;
     private static final String RESOURCE = "/skyblock_guide.json";
 
+    private static final long SNAPSHOT_MILLIS = 1_000;
+    private static final Map<UUID, Snapshot> SNAPSHOTS = new ConcurrentHashMap<>();
+
     private static volatile Map<LevelsGuide, List<GuideTask>> tasks;
+
+    private record Snapshot(Set<GuideEntry> complete, long takenAt) {
+    }
 
     private SkyBlockGuide() {
     }
@@ -31,6 +42,28 @@ public final class SkyBlockGuide {
 
     public static List<GuideEntry> entries(LevelsGuide tier) {
         return tasks(tier).stream().flatMap(task -> task.entries().stream()).toList();
+    }
+
+    public static boolean complete(SkyBlockPlayer player, GuideEntry entry) {
+        return entry.available() && snapshot(player).contains(entry);
+    }
+
+    private static Set<GuideEntry> snapshot(SkyBlockPlayer player) {
+        long now = System.currentTimeMillis();
+        Snapshot current = SNAPSHOTS.get(player.getUuid());
+        if (current != null && now - current.takenAt() < SNAPSHOT_MILLIS) return current.complete();
+        GuideScan scan = new GuideScan(player);
+        Set<GuideEntry> complete = Collections.newSetFromMap(new IdentityHashMap<>());
+        for (List<GuideTask> tierTasks : catalogue().values()) {
+            for (GuideTask task : tierTasks) {
+                for (GuideEntry entry : task.entries()) {
+                    if (entry.rule().complete(scan)) complete.add(entry);
+                }
+            }
+        }
+        SNAPSHOTS.values().removeIf(snapshot -> now - snapshot.takenAt() >= SNAPSHOT_MILLIS);
+        SNAPSHOTS.put(player.getUuid(), new Snapshot(complete, now));
+        return complete;
     }
 
     public static long completed(SkyBlockPlayer player, LevelsGuide tier) {
@@ -67,6 +100,7 @@ public final class SkyBlockGuide {
             }
         }
         AccessoryBag.save(player, bag);
+        SNAPSHOTS.remove(player.getUuid());
     }
 
     private static void discover(SkyBlockPlayer player, DatapointAccessoryBag.PlayerAccessoryBag bag, GuideEntry entry) {

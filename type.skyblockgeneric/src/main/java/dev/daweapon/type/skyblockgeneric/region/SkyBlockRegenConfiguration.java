@@ -91,9 +91,8 @@ public abstract class SkyBlockRegenConfiguration {
     public static void startRepeater(Scheduler scheduler) {
         scheduler.submitTask(() -> {
             Arrays.stream(RegionType.values())
-                    .parallel() // parallelism for time-consuming operations
-                    .map(RegionType::getMiningHandler) // map to mining handlers
-                    .filter(Objects::nonNull) // filter out null mining handlers
+                    .map(RegionType::getMiningHandler)
+                    .filter(Objects::nonNull)
                     .forEach((mining) -> {
                         List<Pos> toRemove = new ArrayList<>();
                         List<MiningTask> toAdd = new ArrayList<>();

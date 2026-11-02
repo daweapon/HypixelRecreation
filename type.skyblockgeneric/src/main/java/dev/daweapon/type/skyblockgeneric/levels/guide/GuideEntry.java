@@ -8,6 +8,6 @@ public record GuideEntry(String label, String ref, GuideKind kind, GuideRule rul
     }
 
     public boolean complete(SkyBlockPlayer player) {
-        return rule.complete(player);
+        return SkyBlockGuide.complete(player, this);
     }
 }

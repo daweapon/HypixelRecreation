@@ -7,14 +7,11 @@ import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointMinionData;
 import dev.daweapon.type.skyblockgeneric.entity.mob.MobType;
 import dev.daweapon.type.skyblockgeneric.item.ConfigurableSkyBlockItem;
-import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.components.AccessoryComponent;
 import dev.daweapon.type.skyblockgeneric.item.components.PetComponent;
 import dev.daweapon.type.skyblockgeneric.minion.MinionRegistry;
 import dev.daweapon.type.skyblockgeneric.museum.MuseumCatalogue;
 import dev.daweapon.type.skyblockgeneric.museum.MuseumEntry;
-import dev.daweapon.type.skyblockgeneric.museum.MuseumService;
-import dev.daweapon.type.skyblockgeneric.museum.MuseumState;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.type.skyblockgeneric.slayer.SlayerDefinition;
 import dev.daweapon.type.skyblockgeneric.slayer.SlayerRegistry;
@@ -53,7 +50,7 @@ public final class GuideRules {
         SkillCategories category = SkillCategories.valueOf(parts[0]);
         int level = Integer.parseInt(parts[1]);
         boolean available = !category.isCosmetic() && level <= category.asCategory().getHighestLevel();
-        return new GuideRule(available, player -> player.getSkills().getCurrentLevel(category) >= level);
+        return new GuideRule(available, scan -> scan.player().getSkills().getCurrentLevel(category) >= level);
     }
 
     private static GuideRule slayer(String ref) {
@@ -62,7 +59,7 @@ public final class GuideRules {
         int level = Integer.parseInt(parts[1]);
         SlayerDefinition definition = SlayerRegistry.get(type);
         boolean available = definition != null && definition.enabled() && level <= definition.levels().size();
-        return new GuideRule(available, player -> SlayerRequirement.level(player, type) >= level);
+        return new GuideRule(available, scan -> SlayerRequirement.level(scan.player(), type) >= level);
     }
 
     private static GuideRule collection(String ref) {
@@ -73,7 +70,7 @@ public final class GuideRules {
         CollectionCategory.ItemCollection collection = category == null ? null : category.getCollection(type);
         if (collection == null || collection.rewards().length < tier) return GuideRule.UNAVAILABLE;
         int required = collection.rewards()[tier - 1].requirement();
-        return new GuideRule(true, player -> player.getCollection().get(type) >= required);
+        return new GuideRule(true, scan -> scan.player().getCollection().get(type) >= required);
     }
 
     private static GuideRule minion(String ref) {
@@ -81,7 +78,7 @@ public final class GuideRules {
         MinionRegistry registry = MinionRegistry.valueOf(parts[0]);
         int tier = Integer.parseInt(parts[1]);
         boolean exists = registry.asSkyBlockMinion().getTiers().stream().anyMatch(candidate -> candidate.tier() == tier);
-        return new GuideRule(exists, player -> craftedMinion(player, registry.name(), tier));
+        return new GuideRule(exists, scan -> craftedMinion(scan.player(), registry.name(), tier));
     }
 
     private static boolean craftedMinion(SkyBlockPlayer player, String name, int tier) {
@@ -95,16 +92,13 @@ public final class GuideRules {
 
     private static GuideRule mobType(String ref) {
         MobType type = MobType.valueOf(ref);
-        return new GuideRule(true, player -> player.getCollectedMobTypesData().hasClaimed(type.name()));
+        return new GuideRule(true, scan -> scan.player().getCollectedMobTypesData().hasClaimed(type.name()));
     }
 
     private static GuideRule museum(String ref) {
         MuseumEntry entry = MuseumCatalogue.get().entry(ref).orElse(null);
         if (entry == null || !entry.isAvailable()) return GuideRule.UNAVAILABLE;
-        return new GuideRule(true, player -> {
-            MuseumState state = MuseumService.stateOf(player.getMuseumData(), entry);
-            return state == MuseumState.IN_MUSEUM || state == MuseumState.RETRIEVED || state == MuseumState.CREDITED;
-        });
+        return new GuideRule(true, scan -> scan.museumEntries().contains(entry.id()));
     }
 
     private static GuideRule accessory(String ref) {
@@ -113,8 +107,8 @@ public final class GuideRules {
         if (type == null || config == null || !config.hasComponent(AccessoryComponent.class) || config.getUnavailable() != null) {
             return GuideRule.UNAVAILABLE;
         }
-        return new GuideRule(true, player -> player.getAccessoryBag().hasDiscoveredAccessory(type)
-                || player.getAccessoryBag().getAllAccessories().stream().anyMatch(item -> item.getAttributeHandler().getPotentialType() == type));
+        return new GuideRule(true, scan -> scan.player().getAccessoryBag().hasDiscoveredAccessory(type)
+                || scan.accessories().contains(type));
     }
 
     private static GuideRule pet(String ref) {
@@ -123,11 +117,6 @@ public final class GuideRules {
         if (type == null || config == null || !config.hasComponent(PetComponent.class) || config.getUnavailable() != null) {
             return GuideRule.UNAVAILABLE;
         }
-        return new GuideRule(true, player -> {
-            for (SkyBlockItem pet : player.getPetData().getPetsMap().keySet()) {
-                if (pet.getAttributeHandler().getPotentialType() == type) return true;
-            }
-            return false;
-        });
+        return new GuideRule(true, scan -> scan.pets().contains(type));
     }
 }

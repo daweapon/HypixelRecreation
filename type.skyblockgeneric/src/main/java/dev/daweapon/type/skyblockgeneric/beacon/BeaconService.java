@@ -7,6 +7,7 @@ import net.minestom.server.instance.Instance;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -14,6 +15,7 @@ public final class BeaconService {
     public static final long CACHE_MILLIS = 5_000;
 
     private static final Map<UUID, Cached> CACHE = new ConcurrentHashMap<>();
+    private static final Set<UUID> LOADING = ConcurrentHashMap.newKeySet();
 
     private BeaconService() {
     }
@@ -52,6 +54,24 @@ public final class BeaconService {
         return island == null ? null : get(island.getIslandID());
     }
 
+    public static @Nullable BeaconData peek(@Nullable SkyBlockIsland island) {
+        if (island == null) return null;
+        UUID islandId = island.getIslandID();
+        Cached cached = CACHE.get(islandId);
+        long now = System.currentTimeMillis();
+        if ((cached == null || now - cached.loadedAt() >= CACHE_MILLIS) && LOADING.add(islandId)) {
+            Thread.startVirtualThread(() -> {
+                try {
+                    BeaconData loaded = BeaconData.deserialize(String.valueOf(new IslandDatabase(islandId.toString()).get(BeaconData.DATABASE_KEY, "")));
+                    CACHE.compute(islandId, (id, current) -> current != null && current.loadedAt() > now ? current : new Cached(loaded, now));
+                } finally {
+                    LOADING.remove(islandId);
+                }
+            });
+        }
+        return cached == null ? null : cached.data();
+    }
+
     public static void save(UUID islandId, @Nullable BeaconData data) {
         new IslandDatabase(islandId.toString()).insertOrUpdate(BeaconData.DATABASE_KEY, data == null ? "" : data.serialize());
         CACHE.put(islandId, new Cached(data, System.currentTimeMillis()));
@@ -64,7 +84,7 @@ public final class BeaconService {
     }
 
     public static double minionSpeedPercent(@Nullable Instance instance) {
-        BeaconData data = get(SkyBlockIsland.forInstance(instance));
+        BeaconData data = peek(SkyBlockIsland.forInstance(instance));
         return data == null ? 0 : data.minionSpeedPercent(System.currentTimeMillis());
     }
 

@@ -1,13 +1,11 @@
 package dev.daweapon.type.skyblockgeneric.levels.guide;
 
-import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
-
 import java.util.function.Predicate;
 
-public record GuideRule(boolean available, Predicate<SkyBlockPlayer> check) {
-    public static final GuideRule UNAVAILABLE = new GuideRule(false, player -> false);
+public record GuideRule(boolean available, Predicate<GuideScan> check) {
+    public static final GuideRule UNAVAILABLE = new GuideRule(false, scan -> false);
 
-    public boolean complete(SkyBlockPlayer player) {
-        return available && check.test(player);
+    public boolean complete(GuideScan scan) {
+        return available && check.test(scan);
     }
 }
