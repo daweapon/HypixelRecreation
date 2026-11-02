@@ -204,7 +204,7 @@ public final class MaxStickService {
             new Step("Kuudra clears", KuudraProgress::maxOut),
             new Step("Arachne kills", dev.daweapon.type.skyblockgeneric.spidersden.ArachneFight::maxOut),
             new Step("Spider's Den relics", dev.daweapon.type.skyblockgeneric.spidersden.SpiderDenRelics::maxOut),
-            new Step("Dragons slain", player -> player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.SLAY_DRAGONS, SkyBlockXPSource.SLAY_DRAGONS.getMaxXP())),
+            new Step("Dragons slain", dev.daweapon.type.skyblockgeneric.levels.XPSubTaskProgress::slayAllDragons),
             new Step("Catacombs level", dev.daweapon.type.skyblockgeneric.dungeons.CatacombsProgress::maxOut),
             new Step("Crimson town", CrimsonTownProgress::maxOut),
             new Step("Pets", MaxPets::maxOut),

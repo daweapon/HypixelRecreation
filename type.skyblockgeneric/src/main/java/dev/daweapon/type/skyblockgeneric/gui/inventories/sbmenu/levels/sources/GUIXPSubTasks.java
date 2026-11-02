@@ -1,7 +1,5 @@
 package dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.levels.sources;
 
-import dev.daweapon.type.skyblockgeneric.spidersden.ArachneFight;
-import dev.daweapon.type.skyblockgeneric.spidersden.ArachneTier;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
@@ -12,9 +10,8 @@ import dev.daweapon.type.generic.gui.v2.StatefulView;
 import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
 import dev.daweapon.type.generic.gui.v2.ViewLayout;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
-import dev.daweapon.type.skyblockgeneric.crimson.kuudra.KuudraProgress;
-import dev.daweapon.type.skyblockgeneric.crimson.kuudra.KuudraTier;
 import dev.daweapon.type.skyblockgeneric.levels.SkyBlockXPSource;
+import dev.daweapon.type.skyblockgeneric.levels.XPSubTaskProgress;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -74,8 +71,7 @@ public class GUIXPSubTasks implements StatefulView<GUIXPSubTasks.State> {
     }
 
     private static boolean completed(SkyBlockXPSource source, int index, SkyBlockPlayer player) {
-        if (source == SkyBlockXPSource.DEFEAT_ARACHNE) return ArachneFight.hasDefeated(player, ArachneTier.values()[index]);
-        return source == SkyBlockXPSource.DEFEAT_KUUDRA && KuudraProgress.hasCleared(player, KuudraTier.values()[index]);
+        return XPSubTaskProgress.completed(source, index, player);
     }
 
     private ItemStack.Builder subTaskItem(String subTask, SkyBlockXPSource source, boolean completed) {

@@ -2,6 +2,7 @@ package dev.daweapon.type.theend.dragon;
 
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointCrimsonIsle;
 import dev.daweapon.type.skyblockgeneric.levels.SkyBlockXPSource;
+import dev.daweapon.type.skyblockgeneric.levels.XPSubTaskProgress;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Arrays;
@@ -11,7 +12,7 @@ public final class DragonProgress {
     }
 
     private static String key(DragonVariant variant) {
-        return "the_end:dragon_slain:" + variant.name();
+        return XPSubTaskProgress.dragonSlainKey(variant.name());
     }
 
     public static boolean slain(SkyBlockPlayer player, DragonVariant variant) {

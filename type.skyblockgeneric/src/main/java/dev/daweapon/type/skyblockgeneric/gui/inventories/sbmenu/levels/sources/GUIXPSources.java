@@ -90,7 +90,7 @@ public class GUIXPSources implements StatefulView<GUIXPSources.State> {
     private ItemStack.Builder categoryItem(SkyBlockXPSource.Group group, SkyBlockPlayer player, boolean showBars) {
         DatapointSkyBlockExperience.PlayerSkyBlockExperience experience = player.getSkyBlockExperience();
         List<SkyBlockXPSource> tasks = SkyBlockXPSource.getByGroup(group);
-        double earned = tasks.stream().mapToDouble(experience::getSourceXP).sum();
+        double earned = cappedEarned(tasks, player);
         int total = SkyBlockXPSource.getTotalXPFor(group);
 
         List<Text> lore = new ArrayList<>();
@@ -102,7 +102,7 @@ public class GUIXPSources implements StatefulView<GUIXPSources.State> {
         if (showBars) {
             for (SkyBlockXPSource task : tasks) {
                 lore.add(Text.of("<e>▶ <e>{}", task.getDisplayName()));
-                lore.add(taskBar(experience.getSourceXP(task), task.getMaxXP()));
+                lore.add(taskLine(task, experience.getSourceXP(task)));
             }
             lore.add(Text.empty());
         }
@@ -128,7 +128,7 @@ public class GUIXPSources implements StatefulView<GUIXPSources.State> {
         List<Text> lore = new ArrayList<>();
         lore.add(Text.of("<8>{}", task.getGroup().getDisplayName()));
         lore.add(Text.empty());
-        lore.add(taskBar(player.getSkyBlockExperience().getSourceXP(task), task.getMaxXP()));
+        lore.add(taskLine(task, player.getSkyBlockExperience().getSourceXP(task)));
         lore.add(Text.empty());
         lore.add(Text.of("<e>Click to view tasks!"));
 
@@ -154,6 +154,14 @@ public class GUIXPSources implements StatefulView<GUIXPSources.State> {
         return texture != null
                 ? ItemStacks.head(texture, 1, name, lore)
                 : ItemStacks.item(source.getIcon(), 1, name, lore);
+    }
+
+    public static Text taskLine(SkyBlockXPSource task, double earned) {
+        return task.isUncapped() ? Text.of("<a>{} XP", number(earned)) : taskBar(earned, task.getMaxXP());
+    }
+
+    public static double cappedEarned(List<SkyBlockXPSource> tasks, SkyBlockPlayer player) {
+        return tasks.stream().filter(task -> !task.isUncapped()).mapToDouble(player.getSkyBlockExperience()::getSourceXP).sum();
     }
 
     /** One task's inline bar, e.g. {@code ──────── 185/185 XP}. */

@@ -12,6 +12,7 @@ import dev.daweapon.type.generic.gui.v2.ViewLayout;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointSkyBlockExperience;
 import dev.daweapon.type.skyblockgeneric.levels.SkyBlockXPSource;
+import dev.daweapon.type.skyblockgeneric.levels.XPSubTaskProgress;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -70,7 +71,7 @@ public class GUIXPSourceGroup implements StatefulView<GUIXPSourceGroup.State> {
 
     private ItemStack.Builder headerItem(State state, SkyBlockPlayer player) {
         List<SkyBlockXPSource> tasks = state.tasks();
-        double earned = tasks.stream().mapToDouble(player.getSkyBlockExperience()::getSourceXP).sum();
+        double earned = GUIXPSources.cappedEarned(tasks, player);
         int total = tasks.stream().mapToInt(SkyBlockXPSource::getMaxXP).sum();
 
         List<Text> lore = new ArrayList<>();
@@ -112,7 +113,9 @@ public class GUIXPSourceGroup implements StatefulView<GUIXPSourceGroup.State> {
         if (subTasks.isEmpty()) {
             source.getTaskDescription().forEach(line -> lore.add(Text.of("<7>" + line)));
         } else {
-            subTasks.forEach(subTask -> lore.add(Text.of("<c>✖ {}", subTask)));
+            for (int i = 0; i < subTasks.size(); i++) {
+                lore.add(Text.of(XPSubTaskProgress.completed(source, i, player) ? "<a>✔ {}" : "<c>✖ {}", subTasks.get(i)));
+            }
         }
         lore.add(Text.empty());
 

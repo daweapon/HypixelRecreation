@@ -49,7 +49,7 @@ public class GUIXPSubAreas implements StatefulView<GUIXPSubAreas.State> {
 
     private ItemStack.Builder subAreaItem(SkyBlockXPSource.SubArea subArea, SkyBlockPlayer player) {
         List<SkyBlockXPSource> tasks = SkyBlockXPSource.getBySubArea(subArea);
-        double earned = tasks.stream().mapToDouble(player.getSkyBlockExperience()::getSourceXP).sum();
+        double earned = GUIXPSources.cappedEarned(tasks, player);
         int total = SkyBlockXPSource.getTotalXPFor(subArea);
 
         List<Text> lore = new ArrayList<>();
@@ -60,7 +60,7 @@ public class GUIXPSubAreas implements StatefulView<GUIXPSubAreas.State> {
 
         for (SkyBlockXPSource task : tasks) {
             lore.add(Text.of("<e>▶ <e>{}", task.getDisplayName()));
-            lore.add(GUIXPSources.taskBar(player.getSkyBlockExperience().getSourceXP(task), task.getMaxXP()));
+            lore.add(GUIXPSources.taskLine(task, player.getSkyBlockExperience().getSourceXP(task)));
         }
 
         lore.add(Text.empty());
