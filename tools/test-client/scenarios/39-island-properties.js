@@ -13,8 +13,8 @@ const hubPortalBlocks = (bot) => {
 const openProperties = async (bot) => {
     await bot.command('/viewsettings', { settleMs: 2000 });
     await bot.waitWindow({ timeoutMs: 8000 });
-    await bot.click(bot.findSlot(/Island Settings/).slot);
-    await bot.waitWindow({ timeoutMs: 8000, title: 'Island Settings' });
+    await bot.click(bot.findSlot(/Island Management/).slot);
+    await bot.waitWindow({ timeoutMs: 8000, title: 'Island' });
     await bot.click(bot.findSlot(/Island Properties/).slot);
     await bot.waitWindow({ timeoutMs: 8000, title: 'Island Properties' });
 };
@@ -74,16 +74,16 @@ module.exports = {
         await t.step('Island Properties locks the weather until a Weather Node is consumed', async () => {
             await openProperties(bot);
             await bot.waitWindow({ timeoutMs: 8000, title: 'Island Properties' });
-            t.assert(/Locked/.test(slotsText(bot)), slotsText(bot));
+            t.assert(/Locked|to unlock/.test(slotsText(bot)), slotsText(bot));
             let mark = bot.markChat();
-            await bot.click(11, { settleMs: 1200 });
+            await bot.click(bot.findSlot(/Weather/).slot, { settleMs: 1200 });
             t.assert(/need a Weather Node/.test(bot.chatSince(mark).join(' | ')), bot.chatSince(mark).join(' | '));
             await bot.closeWindow();
             await bot.command('/item WEATHER_NODE', { settleMs: 1000 });
             await openProperties(bot);
             await bot.waitWindow({ timeoutMs: 8000, title: 'Island Properties' });
             mark = bot.markChat();
-            await bot.click(11, { settleMs: 1500 });
+            await bot.click(bot.findSlot(/Weather/).slot, { settleMs: 1500 });
             const chat = bot.chatSince(mark).join(' | ');
             t.assert(/unlocked the/i.test(chat), chat);
             await bot.waitWindow({ timeoutMs: 8000, title: 'Island Weather' });

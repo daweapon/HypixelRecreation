@@ -86,10 +86,12 @@ module.exports = {
         await t.step('/viewsettings Player List Info off gives the plain list', async () => {
             bot.say('/viewsettings');
             await bot.waitWindow({ title: 'Settings', timeoutMs: 15000 });
-            await bot.click(slotOf(/Player List Info/));
+            await bot.click(slotOf(/User Interface/), { settleMs: 1200 });
+            await bot.waitWindow({ title: 'User Interface', timeoutMs: 8000 });
+            await bot.click(slotOf(/Player List Info/) + 9);
             await bot.waitFor(() => !hasLine(/^Info$/), { timeoutMs: 8000, what: 'plain player list' });
-            await bot.waitWindow({ title: 'Settings', timeoutMs: 5000 });
-            await bot.click(slotOf(/Player List Info/));
+            await bot.waitWindow({ title: 'User Interface', timeoutMs: 5000 });
+            await bot.click(slotOf(/Player List Info/) + 9);
             await waitTab(/^Info$/, 8000);
             await bot.closeWindow();
         });

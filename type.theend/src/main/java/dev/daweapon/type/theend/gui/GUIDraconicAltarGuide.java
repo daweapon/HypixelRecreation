@@ -61,7 +61,7 @@ public class GUIDraconicAltarGuide extends StatelessView {
     private static ItemStack.Builder entry(ItemType type) {
         var rules = DraconicAltarRules.of(type.name()).orElseThrow();
         List<Text> lore = new ArrayList<>();
-        lore.add(Text.of("<8><st>-----------------"));
+        lore.add(Text.of("<8><m>-----------------"));
         lore.add(Text.of("<7>Dragon Essence: <d>{}", rules.essence()));
         lore.add(Text.of("<7>Possible Bonus Items: "));
         for (DraconicAltarRules.Bonus bonus : rules.bonuses()) {

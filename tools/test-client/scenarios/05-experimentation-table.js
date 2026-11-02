@@ -121,7 +121,7 @@ module.exports = {
             const stake = bot.window().slots.find((slot) => /Beginner Experiment/.test(slot.name));
             await bot.click(stake.slot, { settleMs: 500 });
             await bot.waitWindow({ timeoutMs: 8000, title: 'Superpairs (Beginner)' });
-            const tiles = bot.window().slots.filter((slot) => slot.item === 'light_blue_stained_glass').map((slot) => slot.slot);
+            const tiles = bot.window().slots.filter((slot) => /^(light_blue|cyan)_stained_glass$/.test(slot.item)).map((slot) => slot.slot);
             t.assert(tiles.length === 14, `expected 14 tiles, found ${tiles.length}`);
             const seen = new Map();
             const matched = new Set();

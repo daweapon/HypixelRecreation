@@ -22,7 +22,7 @@ module.exports = {
             const mark = bot.markChat();
             await bot.command('/sbadvent', { settleMs: 2000 });
             await bot.waitWindow({ timeoutMs: 8000, title: 'Advent Calendar' });
-            await bot.click(bot.findSlot(/Day 1\b/).slot, { settleMs: 1200 });
+            await bot.click(bot.findSlot(/December 1(st|nd|rd|th)\b|Day 1\b/).slot, { settleMs: 1200 });
             const chat = bot.chatSince(mark).join(' | ');
             t.assert(/only open in December/.test(chat), chat);
             await bot.closeWindow();
@@ -33,27 +33,27 @@ module.exports = {
             await bot.command('/sbadvent', { settleMs: 2000 });
             await bot.waitWindow({ timeoutMs: 8000, title: 'Advent Calendar' });
             const slots = bot.window().slots;
-            const day3 = slots.find((slot) => /Day 3\b/.test(slot.name));
-            const day4 = slots.find((slot) => /Day 4\b/.test(slot.name));
+            const day3 = slots.find((slot) => /December 3(st|nd|rd|th)\b|Day 3\b/.test(slot.name));
+            const day4 = slots.find((slot) => /December 4(st|nd|rd|th)\b|Day 4\b/.test(slot.name));
             t.assert(/Click to claim/.test(day3.lore.join(' ')), day3.lore.join(' '));
             t.assert(/Not available yet/.test(day4.lore.join(' ')), day4.lore.join(' '));
         });
 
         await t.step('claiming day 1 gives gifts, coins and the Advent Calendar Display', async () => {
             const mark = bot.markChat();
-            await bot.click(bot.findSlot(/Day 1\b/).slot, { settleMs: 1500 });
+            await bot.click(bot.findSlot(/December 1(st|nd|rd|th)\b|Day 1\b/).slot, { settleMs: 1500 });
             const chat = bot.chatSince(mark).join(' | ');
             t.assert(/claimed the day 1 Advent Calendar reward/.test(chat) && /Advent Calendar Display/.test(chat), chat);
-            t.assert(/Already claimed/.test(bot.findSlot(/Day 1\b/).lore.join(' ')), bot.findSlot(/Day 1\b/).lore.join(' '));
+            t.assert(/Already claimed|Reward claimed/.test(bot.findSlot(/December 1(st|nd|rd|th)\b|Day 1\b/).lore.join(' ')), bot.findSlot(/December 1(st|nd|rd|th)\b|Day 1\b/).lore.join(' '));
             return chat;
         });
 
         await t.step('a day cannot be claimed twice, and a future day is refused', async () => {
             let mark = bot.markChat();
-            await bot.click(bot.findSlot(/Day 1\b/).slot, { settleMs: 1200 });
+            await bot.click(bot.findSlot(/December 1(st|nd|rd|th)\b|Day 1\b/).slot, { settleMs: 1200 });
             t.assert(/already claimed/.test(bot.chatSince(mark).join(' | ')), bot.chatSince(mark).join(' | '));
             mark = bot.markChat();
-            await bot.click(bot.findSlot(/Day 4\b/).slot, { settleMs: 1200 });
+            await bot.click(bot.findSlot(/December 4(st|nd|rd|th)\b|Day 4\b/).slot, { settleMs: 1200 });
             t.assert(/can't claim this reward yet/.test(bot.chatSince(mark).join(' | ')), bot.chatSince(mark).join(' | '));
             await bot.closeWindow();
         });

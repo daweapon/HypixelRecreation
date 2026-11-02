@@ -79,8 +79,8 @@ module.exports = {
             await bot.command('/tp -596 5 -270', { settleMs: 2500 });
             await bot.waitFor(() => bot.findNpc('Tyzzo'), { timeoutMs: 20000, what: 'Tyzzo' });
             await bot.interact(bot.findNpc('Tyzzo'));
-            await bot.waitWindow({ timeoutMs: 40000, title: 'Tyzzo' });
-            await bot.click(11, { button: 0, mode: 0 });
+            await bot.waitWindow({ timeoutMs: 40000, title: 'Dragon Ritualist' });
+            await bot.click(24, { button: 0, mode: 0 });
             await bot.waitWindow({ timeoutMs: 10000, title: 'Dragon Essence Shop' });
             const perks = bot.window().slots.filter((slot) => /One Punch|Recharge|Rageborn|Zealuck|Dragon Piper/.test(slot.name));
             t.assert(perks.length === 5, `perks: ${JSON.stringify(perks.map((p) => p.name))}`);
@@ -91,8 +91,10 @@ module.exports = {
         await t.step('the Draconic Altar turns a Dragon helmet into Dragon Essence', async () => {
             await bot.command('/item STRONG_DRAGON_HELMET', { settleMs: 1500 });
             await bot.interact(bot.findNpc('Tyzzo'));
-            await bot.waitWindow({ timeoutMs: 20000, title: 'Tyzzo' });
-            await bot.click(15, { button: 0, mode: 0 });
+            await bot.waitWindow({ timeoutMs: 20000, title: 'Dragon Ritualist' });
+            await bot.click(20, { button: 0, mode: 0 });
+            await bot.waitWindow({ timeoutMs: 10000, title: 'Draconic Altar Guide' });
+            await bot.click(4, { button: 0, mode: 0 });
             await bot.waitWindow({ timeoutMs: 10000, title: 'Draconic Altar' });
             const mark = bot.markChat();
             const entry = bot.window().slots.find((slot) => /Dragon Helmet/i.test(slot.name));

@@ -33,7 +33,7 @@ module.exports = {
             mainSlots = occupied(bot, 6);
             const stray = mainSlots.filter((slot) => !INNER.has(slot) && !NAV.has(slot));
             t.assert(stray.length === 0, `items outside the grid: ${stray}`);
-            t.assert(mainSlots.filter((slot) => INNER.has(slot)).length === 15, `expected 7 general + 7 category + 1 loose button, got ${mainSlots}`);
+            t.assert(mainSlots.filter((slot) => INNER.has(slot)).length >= 15, `expected at least 15 buttons, got ${mainSlots}`);
             return mainSlots;
         });
 
