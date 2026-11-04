@@ -4989,8 +4989,8 @@
           "Tough love, but maybe you're right. They're only nightmares, right? Not real. Heh."
         ]
       },
-      "available": false,
-      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Bednom",
+      "available": true,
+      "unavailableReason": null,
       "requirementChecks": [],
       "verified": true,
       "notes": null

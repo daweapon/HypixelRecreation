@@ -2318,8 +2318,7 @@ items:
     material: clay_ball
     name: "Nightmare Nullifier"
     rarity: UNCOMMON
-    unavailable: "Needs the Great Spook event (Bednom's quest)"
-    source: "Bednom's quest reward: give Black Coffee"
+    source: "Bednom (Dwarven Village): after his quest, give him Black Coffee and come back one SkyBlock Day later, during the Great Spook"
     lore:
       - "§7Why have nightmares when you can"
       - "§7drink coffee instead?"

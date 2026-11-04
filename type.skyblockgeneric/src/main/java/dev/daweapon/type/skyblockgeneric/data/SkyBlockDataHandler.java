@@ -660,6 +660,9 @@ public class SkyBlockDataHandler extends DataHandler {
         PROFILE_PLAYTIME("profile_playtime", false, false, false,
                 DatapointLong.class, new DatapointLong("profile_playtime", -1L)),
 
+        BEDNOM("bednom", false, false, false,
+                DatapointMapStringLong.class, new DatapointMapStringLong("bednom")),
+
         SPOOKY_FESTIVAL_CLAIMED_TIER("spooky_festival_claimed_tier", false, false, false,
                 DatapointInteger.class, new DatapointInteger("spooky_festival_claimed_tier", 0)),
 
