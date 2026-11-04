@@ -807,7 +807,6 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 14§c."
-    unavailable: "Ender Nodes not built"
     source: "Mining End Stone Ender Nodes in The End, ~1.43%"
     components:
       - id: REFORGE_STONE

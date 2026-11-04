@@ -1674,8 +1674,7 @@ items:
     material: cod
     name: "Shrimp the Fish"
     rarity: SPECIAL
-    unavailable: "Source unconfirmed; the Fish collectible"
-    source: "Source unconfirmed"
+    source: "Ender Nodes in The End: 0.1% (End Stone), 0.18% (Obsidian)"
     lore:
       - "§7I achieved nothing."
   - id: SHRIVELED_WASP

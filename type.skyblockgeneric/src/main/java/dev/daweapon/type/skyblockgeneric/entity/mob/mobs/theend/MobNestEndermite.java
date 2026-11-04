@@ -5,8 +5,23 @@ import dev.daweapon.type.skyblockgeneric.crystalhollows.mob.CrystalHollowsMobSpe
 import dev.daweapon.type.skyblockgeneric.region.RegionType;
 
 public class MobNestEndermite extends EndMob {
+    private static final ThreadLocal<RegionType> CONSTRUCTING = new ThreadLocal<>();
+
+    private final RegionType home;
+
     public MobNestEndermite() {
-        super(EntityType.ENDERMITE);
+        this(RegionType.DRAGONS_NEST);
+    }
+
+    public MobNestEndermite(RegionType home) {
+        super(begin(home));
+        this.home = home;
+        CONSTRUCTING.remove();
+    }
+
+    private static EntityType begin(RegionType home) {
+        CONSTRUCTING.set(home);
+        return EntityType.ENDERMITE;
     }
 
     @Override
@@ -16,6 +31,6 @@ public class MobNestEndermite extends EndMob {
 
     @Override
     protected RegionType homeRegion() {
-        return RegionType.DRAGONS_NEST;
+        return home != null ? home : CONSTRUCTING.get();
     }
 }
