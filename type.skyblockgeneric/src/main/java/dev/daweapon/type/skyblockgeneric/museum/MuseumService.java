@@ -16,6 +16,8 @@ import dev.daweapon.type.skyblockgeneric.utility.ItemPriceCalculator;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.Set;
 import java.util.List;
 import java.util.Optional;
@@ -223,13 +225,23 @@ public final class MuseumService {
 
     public static int grantCopies(MuseumCatalogue catalogue, DatapointMuseum.MuseumData data) {
         adopt(catalogue, data);
+        Map<String, Set<ItemType>> heldByEntry = new HashMap<>();
+        for (SkyBlockItem item : data.getAllItems()) {
+            ItemType type = item.getAttributeHandler().getPotentialType();
+            if (type == null) continue;
+            String owner = data.ownerId(item);
+            if (owner != null) {
+                heldByEntry.computeIfAbsent(owner, _ -> new HashSet<>()).add(type);
+                continue;
+            }
+            for (MuseumEntry candidate : catalogue.entriesFor(type)) {
+                if (candidate.accepts(type)) heldByEntry.computeIfAbsent(candidate.id(), _ -> new HashSet<>()).add(type);
+            }
+        }
         int granted = 0;
         for (MuseumEntry entry : catalogue.all()) {
             if (!entry.isAvailable()) continue;
-            Set<ItemType> held = new HashSet<>();
-            for (boolean current : new boolean[]{true, false}) {
-                data.itemsFor(entry, current).forEach(item -> held.add(item.getAttributeHandler().getPotentialType()));
-            }
+            Set<ItemType> held = heldByEntry.computeIfAbsent(entry.id(), _ -> new HashSet<>());
             for (ItemType type : entry.grantableItemTypes()) {
                 if (!held.add(type)) continue;
                 data.grant(entry, staffCopy(type));

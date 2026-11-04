@@ -16,6 +16,7 @@ import tools.jackson.core.JacksonException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -65,6 +66,8 @@ public class SkyBlockServerAttributes {
         return type.cast(serverAttributes.get(attribute));
     }
 
+    private static final AtomicBoolean RECONCILING = new AtomicBoolean();
+
     // Every game server type runs its own JVM with no single "main" instance, so a value like the
     // calendar's elapsed time otherwise drifts per-server the moment two servers boot at different
     // times (each only ever loaded the shared document once, at its own boot). This loop instead
@@ -73,8 +76,18 @@ public class SkyBlockServerAttributes {
     // value wins, is adopted locally if this server was behind, and is saved back if it was ahead -
     // so every server converges on the same value within a couple of cycles regardless of boot order.
     public static void saveAttributeLoop() {
-        MinecraftServer.getSchedulerManager().scheduleTask(SkyBlockServerAttributes::reconcileAndSave,
-                TaskSchedule.seconds(3), TaskSchedule.seconds(3), ExecutionType.TICK_END);
+        MinecraftServer.getSchedulerManager().scheduleTask(() -> {
+            if (!RECONCILING.compareAndSet(false, true)) return;
+            Thread.startVirtualThread(() -> {
+                try {
+                    reconcileAndSave();
+                } catch (Exception e) {
+                    Logger.warn("Server attribute reconcile failed: {}", e.getMessage());
+                } finally {
+                    RECONCILING.set(false);
+                }
+            });
+        }, TaskSchedule.seconds(3), TaskSchedule.seconds(3), ExecutionType.TICK_END);
     }
 
     // Bypasses the "highest value wins" reconciliation to push this server's current attribute
@@ -100,7 +113,7 @@ public class SkyBlockServerAttributes {
                 Object reconciled = data.reconcile.apply(localValue, remoteAttribute.getValue());
                 if (!reconciled.equals(localValue)) {
                     remoteAttribute.setValue(reconciled);
-                    data.onLoad.accept(remoteAttribute);
+                    MinecraftServer.getSchedulerManager().scheduleNextTick(() -> data.onLoad.accept(remoteAttribute));
                 }
             } catch (Exception e) {
                 Logger.error(e, "Failed to reconcile server attribute {}", data.getKey());

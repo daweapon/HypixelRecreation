@@ -24,12 +24,18 @@ import dev.daweapon.type.skyblockgeneric.item.crafting.SkyBlockRecipe;
 import dev.daweapon.type.skyblockgeneric.user.ProfileMode;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import org.tinylog.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 // GUI for viewing, switching, creating, and deleting a player's SkyBlock profiles
 public class GUIProfileManagement extends StatelessView {
+    private final Map<UUID, SkyBlockDataHandler> otherProfiles = new ConcurrentHashMap<>();
+    private volatile boolean loading;
     // Real Hypixel has 6 profile slots total: 5 normal + 1 reserved for Bingo. Bingo events aren't
     // implemented here, so slot 16 is an inert placeholder rather than a real, creatable slot.
     public static final int MAX_PROFILES = 5;
@@ -65,17 +71,12 @@ public class GUIProfileManagement extends StatelessView {
 
             UUID profileId = profileIds.get(profileCount);
             boolean selected = profileId.equals(profiles.getCurrentlySelected());
-            SkyBlockDataHandler dataHandler;
+            SkyBlockDataHandler dataHandler = selected ? SkyBlockDataHandler.getUser(player.getUuid()) : otherProfiles.get(profileId);
 
-            if (selected) {
-                dataHandler = SkyBlockDataHandler.getUser(player.getUuid());
-            } else {
-                try {
-                    ProfilesDatabase profileDb = new ProfilesDatabase(profileId.toString());
-                    dataHandler = SkyBlockDataHandler.createFromProfileOnly(profileDb.getDocument());
-                } catch (NullPointerException profileNotYetSaved) {
-                    dataHandler = SkyBlockDataHandler.initUserWithDefaultData(player.getUuid(), profileId);
-                }
+            if (dataHandler == null) {
+                layout.slot(slot, (s, c) -> ItemStacks.item(Material.GRAY_STAINED_GLASS_PANE, Text.of("<7>Loading profile..."), List.of()));
+                loadOtherProfiles(player, profileIds, profiles.getCurrentlySelected(), ctx);
+                continue;
             }
 
             SkyBlockDataHandler finalDataHandler = dataHandler;
@@ -117,6 +118,27 @@ public class GUIProfileManagement extends StatelessView {
 
                         <c>Not currently available!"""),
                 (click, c) -> c.player().sendMessage("<c>Bingo profiles aren't available yet!"));
+    }
+
+    private void loadOtherProfiles(SkyBlockPlayer player, List<UUID> profileIds, UUID selected, ViewContext ctx) {
+        if (loading) return;
+        loading = true;
+        Thread.startVirtualThread(() -> {
+            for (UUID profileId : profileIds) {
+                if (profileId.equals(selected) || otherProfiles.containsKey(profileId)) continue;
+                SkyBlockDataHandler handler;
+                try {
+                    handler = SkyBlockDataHandler.createFromProfileOnly(new ProfilesDatabase(profileId.toString()).getDocument());
+                } catch (NullPointerException profileNotYetSaved) {
+                    handler = SkyBlockDataHandler.initUserWithDefaultData(player.getUuid(), profileId);
+                } catch (Exception e) {
+                    Logger.warn(e, "Could not load profile {} for the profile menu", profileId);
+                    continue;
+                }
+                otherProfiles.put(profileId, handler);
+            }
+            player.scheduler().scheduleNextTick(() -> ctx.session().refresh());
+        });
     }
 
     public static List<Text> updateLore(UUID profileUuid, SkyBlockDataHandler handler, List<Text> lore) {

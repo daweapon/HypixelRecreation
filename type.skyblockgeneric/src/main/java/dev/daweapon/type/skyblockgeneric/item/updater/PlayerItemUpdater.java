@@ -36,6 +36,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PlayerItemUpdater {
     public static ItemStack.Builder playerUpdate(SkyBlockPlayer player, ItemStack stack) {
@@ -177,8 +178,11 @@ public class PlayerItemUpdater {
                         .set(DataComponents.LORE, stack.get(DataComponents.LORE)));
     }
 
+    private static final AtomicBoolean UPDATING = new AtomicBoolean();
+
     public static void updateLoop(Scheduler scheduler) {
         scheduler.submitTask(() -> {
+            if (!UPDATING.compareAndSet(false, true)) return TaskSchedule.tick(10);
             List<CompletableFuture<Void>> futures = new ArrayList<>();
 
             SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
@@ -204,8 +208,7 @@ public class PlayerItemUpdater {
                 }));
             });
 
-            // Wait for all futures to complete, do it async so they're at the same time
-            CompletableFuture.allOf(futures.toArray(new CompletableFuture[0])).join();
+            CompletableFuture.allOf(futures.toArray(new CompletableFuture[0])).whenComplete((done, error) -> UPDATING.set(false));
 
             return TaskSchedule.tick(10);
         });
