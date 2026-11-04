@@ -157,7 +157,7 @@ public class GUIFIRESales extends HypixelInventoryGUI {
             case 1 -> new int[]{22};
             case 2 -> new int[]{21, 23};
             case 3 -> new int[]{20, 22, 24};
-            default -> java.util.stream.IntStream.range(19, 19 + Math.min(count, 7)).toArray();
+            default -> java.util.Arrays.copyOf(new int[]{19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34}, Math.min(count, 14));
         };
     }
 
