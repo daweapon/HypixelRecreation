@@ -20,7 +20,7 @@ public final class InstancedActivities {
     private static final Duration KUUDRA_MAX_WAIT = Duration.ofSeconds(45);
     private static final Duration CATACOMBS_MAX_WAIT = Duration.ofSeconds(45);
     private static final Duration RAVENGARD_MAX_WAIT = Duration.ofSeconds(10);
-    private static final ActivityQueue QUEUE = new ActivityQueue();
+    private static final ActivityQueue QUEUE = new ActivityQueue(QueuePositionNotifier::moved);
     private static final InstanceAllocator ALLOCATOR = new InstanceAllocator(
             (server, request) -> RedisClient.requestServerFromService(
                     server.uuid(), new InstantiateGamePushProtocol(), request).get(START_TIMEOUT_SECONDS, TimeUnit.SECONDS),
@@ -32,7 +32,8 @@ public final class InstancedActivities {
         return QUEUE;
     }
 
-    public static GetServerForMapProtocol.GetServerForMapResponse kuudra(GetServerForMapProtocol.GetServerForMapMessage body) {
+    public static GetServerForMapProtocol.GetServerForMapResponse kuudra(GetServerForMapProtocol.GetServerForMapMessage body,
+                                                                         ActivityQueue.Waiter waiter) {
         String tier = body.mode();
         if (tier == null || tier.isBlank()) {
             return new GetServerForMapProtocol.GetServerForMapResponse(null, null, true, "No Kuudra tier given");
@@ -40,7 +41,7 @@ public final class InstancedActivities {
         int neededSlots = Math.max(1, body.neededSlots());
         InstantiateGamePushProtocol.Request request = new InstantiateGamePushProtocol.Request(tier, body.map());
 
-        Allocation allocation = QUEUE.await(ServerType.SKYBLOCK_KUUDRA, KUUDRA_MAX_WAIT, () -> {
+        Allocation allocation = QUEUE.await(ServerType.SKYBLOCK_KUUDRA, KUUDRA_MAX_WAIT, waiter, () -> {
             List<OrchestratorCache.GameServerState> candidates = KuudraServerSelector.rank(
                     OrchestratorCache.getAllServers(), neededSlots, OrchestratorCache::getReservedPlayerSlots);
             return ALLOCATOR.allocate(candidates, anyOnline(ServerType.SKYBLOCK_KUUDRA), request, neededSlots);
@@ -49,7 +50,8 @@ public final class InstancedActivities {
         return toResponse(allocation, Messages.KUUDRA);
     }
 
-    public static GetServerForMapProtocol.GetServerForMapResponse catacombs(GetServerForMapProtocol.GetServerForMapMessage body) {
+    public static GetServerForMapProtocol.GetServerForMapResponse catacombs(GetServerForMapProtocol.GetServerForMapMessage body,
+                                                                            ActivityQueue.Waiter waiter) {
         String floor = body.mode();
         if (floor == null || floor.isBlank()) {
             return new GetServerForMapProtocol.GetServerForMapResponse(null, null, true, "No Catacombs floor given");
@@ -57,7 +59,7 @@ public final class InstancedActivities {
         int neededSlots = Math.max(1, body.neededSlots());
         InstantiateGamePushProtocol.Request request = new InstantiateGamePushProtocol.Request(floor, body.map());
 
-        Allocation allocation = QUEUE.await(ServerType.SKYBLOCK_CATACOMBS, CATACOMBS_MAX_WAIT, () -> {
+        Allocation allocation = QUEUE.await(ServerType.SKYBLOCK_CATACOMBS, CATACOMBS_MAX_WAIT, waiter, () -> {
             List<OrchestratorCache.GameServerState> candidates = InstancedServerSelector.rank(ServerType.SKYBLOCK_CATACOMBS,
                     OrchestratorCache.getAllServers(), neededSlots, OrchestratorCache::getReservedPlayerSlots);
             return ALLOCATOR.allocate(candidates, anyOnline(ServerType.SKYBLOCK_CATACOMBS), request, neededSlots);
@@ -66,9 +68,9 @@ public final class InstancedActivities {
         return toResponse(allocation, Messages.CATACOMBS);
     }
 
-    public static GetServerForMapProtocol.GetServerForMapResponse ravengardNew(String mode, String map) {
+    public static GetServerForMapProtocol.GetServerForMapResponse ravengardNew(String mode, String map, ActivityQueue.Waiter waiter) {
         InstantiateGamePushProtocol.Request request = new InstantiateGamePushProtocol.Request(mode, map);
-        Allocation allocation = QUEUE.await(ServerType.RAVENGARD_DUNGEON, RAVENGARD_MAX_WAIT, () -> {
+        Allocation allocation = QUEUE.await(ServerType.RAVENGARD_DUNGEON, RAVENGARD_MAX_WAIT, waiter, () -> {
             OrchestratorCache.GameServerState server = OrchestratorCache.pickServerForNewGame(ServerType.RAVENGARD_DUNGEON);
             List<OrchestratorCache.GameServerState> candidates = server == null ? List.of() : List.of(server);
             return ALLOCATOR.allocate(candidates, anyOnline(ServerType.RAVENGARD_DUNGEON), request, 0);

@@ -7,6 +7,9 @@ import dev.daweapon.commons.protocol.RedisProtocol;
 import dev.daweapon.commons.protocol.Serializer;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+import java.util.UUID;
+
 public class GetServerForMapProtocol extends RedisProtocol
         <GetServerForMapProtocol.GetServerForMapMessage,
                 GetServerForMapProtocol.GetServerForMapResponse> {
@@ -31,7 +34,11 @@ public class GetServerForMapProtocol extends RedisProtocol
 
     }
 
-    public record GetServerForMapMessage(ServerType type, @Nullable String map, String mode, int neededSlots) {
+    public record GetServerForMapMessage(ServerType type, @Nullable String map, String mode, int neededSlots,
+                                         @Nullable List<UUID> players) {
+        public GetServerForMapMessage(ServerType type, @Nullable String map, String mode, int neededSlots) {
+            this(type, map, mode, neededSlots, null);
+        }
     }
 
     public record GetServerForMapResponse(UnderstandableProxyServer server, String gameId, boolean success,

@@ -18,6 +18,7 @@ public final class TpsMeter {
     private static int next;
     private static int size;
     private static volatile double lastTickMillis;
+    private static volatile double averageTickMillis;
     private static boolean started;
 
     private TpsMeter() {
@@ -28,6 +29,7 @@ public final class TpsMeter {
         started = true;
         MinecraftServer.getGlobalEventHandler().addListener(ServerTickMonitorEvent.class, event -> {
             lastTickMillis = event.getTickMonitor().getTickTime();
+            averageTickMillis = smooth(averageTickMillis, lastTickMillis);
             record(System.nanoTime());
         });
     }
@@ -61,9 +63,18 @@ public final class TpsMeter {
         return lastTickMillis;
     }
 
+    public static double averageTickMillis() {
+        return averageTickMillis;
+    }
+
+    static double smooth(double average, double sample) {
+        return average <= 0 ? sample : average * 0.95 + sample * 0.05;
+    }
+
     static synchronized void reset() {
         next = 0;
         size = 0;
         lastTickMillis = 0;
+        averageTickMillis = 0;
     }
 }

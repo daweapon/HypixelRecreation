@@ -10,7 +10,9 @@ import dev.daweapon.commons.murdermystery.MurderMysteryGameType;
 import dev.daweapon.commons.skywars.SkywarsGameType;
 import dev.daweapon.commons.redis.RedisClient;
 import dev.daweapon.commons.redis.RedisMessageHandler;
+import dev.daweapon.service.orchestrator.instance.ActivityQueue;
 import dev.daweapon.service.orchestrator.instance.InstancedActivities;
+import dev.daweapon.service.orchestrator.instance.QueuePositionNotifier;
 import dev.daweapon.service.orchestrator.OrchestratorCache;
 import org.tinylog.Logger;
 
@@ -35,9 +37,9 @@ public class GetServerForMapEndpoint implements RedisMessageHandler
 			case BEDWARS_GAME -> handleBedwars(body);
 			case MURDER_MYSTERY_GAME -> handleMurderMystery(body);
 			case SKYWARS_GAME -> handleSkywars(body);
-			case RAVENGARD_DUNGEON -> handleRavengardDungeon(body);
-			case SKYBLOCK_KUUDRA -> handleKuudra(body);
-			case SKYBLOCK_CATACOMBS -> InstancedActivities.catacombs(body);
+			case RAVENGARD_DUNGEON -> handleRavengardDungeon(body, QueuePositionNotifier.waiterFor(body, context));
+			case SKYBLOCK_KUUDRA -> InstancedActivities.kuudra(body, QueuePositionNotifier.waiterFor(body, context));
+			case SKYBLOCK_CATACOMBS -> InstancedActivities.catacombs(body, QueuePositionNotifier.waiterFor(body, context));
 			default -> new GetServerForMapProtocol.GetServerForMapResponse(null, null, true, null);
 		};
 	}
@@ -116,7 +118,7 @@ public class GetServerForMapEndpoint implements RedisMessageHandler
 	}
 
 	private GetServerForMapProtocol.GetServerForMapResponse handleRavengardDungeon(
-			GetServerForMapProtocol.GetServerForMapMessage body) {
+			GetServerForMapProtocol.GetServerForMapMessage body, ActivityQueue.Waiter waiter) {
 		try {
 			String mode = body.mode() == null || body.mode().isEmpty() ? "STANDARD" : body.mode();
 			int neededSlots = body.neededSlots() > 0 ? body.neededSlots() : 1;
@@ -134,16 +136,11 @@ public class GetServerForMapEndpoint implements RedisMessageHandler
 				}
 			}
 
-			return InstancedActivities.ravengardNew(mode, body.map());
+			return InstancedActivities.ravengardNew(mode, body.map(), waiter);
 		} catch (Exception e) {
 			Logger.error(e, "Failed to allocate Ravengard dungeon");
 			return new GetServerForMapProtocol.GetServerForMapResponse(null, null, true, e.getMessage());
 		}
-	}
-
-	private GetServerForMapProtocol.GetServerForMapResponse handleKuudra(
-			GetServerForMapProtocol.GetServerForMapMessage body) {
-		return InstancedActivities.kuudra(body);
 	}
 
 	private static UnderstandableProxyServer toProxyServer(OrchestratorCache.GameServerState server) {

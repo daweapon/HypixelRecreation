@@ -253,6 +253,16 @@ class ServiceContractTest {
     }
 
     @Test
+    void pushesThatAnyGameServerCanReceiveAreAnsweredInThePackageEveryServerScans() throws IOException {
+        String everyServer = "dev.daweapon.type.generic.redis.service";
+        for (String protocol : List.of("QueuePositionPushProtocol", "DrainServerPushProtocol")) {
+            assertTrue(handlers().stream().anyMatch(handler -> handler.protocol().equals(protocol)
+                            && handler.packageName().equals(everyServer)),
+                    protocol + " must be answered in " + everyServer + " so whichever server a player is on can handle it");
+        }
+    }
+
+    @Test
     void clientsCallTheServiceThatAnswersTheProtocol() throws IOException {
         Map<String, ServiceType> owners = protocolOwners();
         owners.remove("PingProtocol");

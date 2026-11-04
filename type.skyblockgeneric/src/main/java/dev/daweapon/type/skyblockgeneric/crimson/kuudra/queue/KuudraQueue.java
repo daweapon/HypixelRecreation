@@ -11,6 +11,7 @@ import dev.daweapon.commons.protocol.objects.orchestrator.GetServerForMapProtoco
 import dev.daweapon.proxyapi.ProxyService;
 import dev.daweapon.type.generic.data.HypixelDataHandler;
 import dev.daweapon.type.generic.party.PartyManager;
+import dev.daweapon.type.generic.queue.QueuePositions;
 import dev.daweapon.type.skyblockgeneric.crimson.kuudra.KuudraAvailability;
 import dev.daweapon.type.skyblockgeneric.crimson.kuudra.KuudraProgress;
 import dev.daweapon.type.skyblockgeneric.crimson.kuudra.KuudraTier;
@@ -188,6 +189,7 @@ public final class KuudraQueue {
                 response = requestRun(roster, tier);
             } finally {
                 answered.set(true);
+                roster.forEach(QueuePositions::clear);
             }
             UnderstandableProxyServer server = response == null ? null : response.server();
             if (server == null || response.gameId() == null) {
@@ -221,7 +223,7 @@ public final class KuudraQueue {
     private static @Nullable GetServerForMapProtocol.GetServerForMapResponse requestRun(List<UUID> roster, KuudraTier tier) {
         if (!ORCHESTRATOR.isOnline().join()) return null;
         GetServerForMapProtocol.GetServerForMapMessage message = new GetServerForMapProtocol.GetServerForMapMessage(
-                ServerType.SKYBLOCK_KUUDRA, KuudraRoster.encode(roster), tier.name(), roster.size());
+                ServerType.SKYBLOCK_KUUDRA, KuudraRoster.encode(roster), tier.name(), roster.size(), roster);
         CompletableFuture<GetServerForMapProtocol.GetServerForMapResponse> future = ORCHESTRATOR.handleRequest(message);
         return future.orTimeout(REQUEST_TIMEOUT_SECONDS, TimeUnit.SECONDS).exceptionally(_ -> null).join();
     }
@@ -266,9 +268,12 @@ public final class KuudraQueue {
         Entry entry = QUEUED.get(player.getUuid());
         if (entry == null) return null;
         long seconds = (System.currentTimeMillis() - entry.since()) / 1000;
-        return List.of(
+        QueuePositions.Position position = QueuePositions.of(player.getUuid());
+        List<String> lines = new ArrayList<>(List.of(
                 "<f>Queued: <a>Kuudra",
                 "<f>Tier: <e>" + entry.tier().getDisplayName(),
                 "<f>Since: <a>" + String.format("%02d:%02d", seconds / 60, seconds % 60));
+        if (position != null) lines.add(QueuePositions.sidebarLine(position.position()));
+        return lines;
     }
 }

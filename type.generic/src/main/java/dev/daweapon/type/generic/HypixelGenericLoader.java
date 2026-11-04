@@ -28,6 +28,7 @@ import dev.daweapon.commons.text.TextArgRenderers;
 import dev.daweapon.proxyapi.PlayerTransferDataCache;
 import dev.daweapon.proxyapi.ProxyPlayer;
 import dev.daweapon.type.generic.user.StalePlayerReaper;
+import dev.daweapon.type.generic.utility.ServerMetricsPublisher;
 import dev.daweapon.type.generic.utility.SlowTickProfiler;
 import dev.daweapon.type.generic.utility.TpsMeter;
 import dev.daweapon.type.generic.achievement.AchievementRegistry;
@@ -98,6 +99,7 @@ public record HypixelGenericLoader(HypixelTypeLoader loader) {
         HypixelConst.setEventHandler(MinecraftServer.getGlobalEventHandler());
         SlowTickProfiler.start();
         TpsMeter.start();
+        ServerMetricsPublisher.start();
         StalePlayerReaper.start();
 
         // Register commands

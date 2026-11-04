@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../api/control_api.dart';
+import '../api/live_api.dart';
 import '../models/fleet.dart';
 import '../state/app_state.dart';
+import '../state/live_metrics.dart';
 import '../theme/reactor_theme.dart';
 import '../widgets/chamfer.dart';
 import '../widgets/diagnosis_panel.dart';
+import '../widgets/drain_restart_dialog.dart';
 import '../widgets/fleet_table.dart';
 import '../widgets/job_banner.dart';
 import '../widgets/reactor_ring.dart';
@@ -36,10 +39,14 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   static const double _desktopBreakpoint = 900;
 
+  late final LiveMetricsController _metrics = LiveMetricsController(LiveApi(widget.api));
+
   @override
   void initState() {
     super.initState();
     widget.state.addListener(_onChange);
+    _metrics.addListener(_onChange);
+    _metrics.start();
     widget.state.loadVersion();
     widget.state.startPolling();
   }
@@ -48,6 +55,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
   void dispose() {
     widget.state.removeListener(_onChange);
     widget.state.stopPolling();
+    _metrics.removeListener(_onChange);
+    _metrics.dispose();
     super.dispose();
   }
 
@@ -62,6 +71,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Future<void> _confirmAndRun(String action, {List<String>? names, String? what}) async {
+    if (action == 'drain-restart' && names != null && names.length == 1) {
+      await showDrainRestartDialog(context, _metrics.live, names.single);
+      return;
+    }
     final target = what ?? names?.join(', ') ?? 'the fleet';
     final confirmed = await showDialog<bool>(
       context: context,
@@ -255,11 +268,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
           Expanded(
             child: Column(
               children: [
-                TelemetryStrip(fleet: fleet),
+                TelemetryStrip(fleet: fleet, metrics: _metrics.report?.summary),
                 const SizedBox(height: 10),
                 Expanded(
                   child: FleetTable(
                     fleet: fleet,
+                    metrics: _metrics.report,
                     canOperate: widget.state.canOperate,
                     onSelect: (c) => _openLogs(c.name),
                     onAction: (action, names) =>
@@ -289,7 +303,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         const SizedBox(height: 12),
         DiagnosisPanel(diagnosis: fleet.diagnosis, compact: true),
         const SizedBox(height: 10),
-        TelemetryStrip(fleet: fleet),
+        TelemetryStrip(fleet: fleet, metrics: _metrics.report?.summary),
         if (widget.state.activeJob != null) ...[
           const SizedBox(height: 10),
           JobBanner(job: widget.state.activeJob!, onDismiss: widget.state.dismissJob),
@@ -299,6 +313,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         const SizedBox(height: 10),
         FleetTable(
           fleet: fleet,
+          metrics: _metrics.report,
           scrollable: false,
           canOperate: widget.state.canOperate,
           onSelect: (c) => _openLogs(c.name),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../api/live_api.dart';
 import '../models/fleet.dart';
 import '../theme/reactor_theme.dart';
 import 'chamfer.dart';
@@ -7,8 +8,9 @@ import 'chamfer.dart';
 /// Compact row of headline figures.
 class TelemetryStrip extends StatelessWidget {
   final FleetSnapshot fleet;
+  final MetricsSummary? metrics;
 
-  const TelemetryStrip({super.key, required this.fleet});
+  const TelemetryStrip({super.key, required this.fleet, this.metrics});
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +41,21 @@ class TelemetryStrip extends StatelessWidget {
             value: '$looping',
             colour: looping > 0 ? ReactorTheme.critical : ReactorTheme.textFaint,
           ),
+          if (metrics != null && metrics!.lowestTps != null) ...[
+            _Metric(
+              label: 'LOWEST TPS',
+              value: metrics!.lowestTps!.toStringAsFixed(1),
+              colour: _healthColour(metrics!.worstHealth),
+            ),
+            _Metric(
+              label: 'HEAP',
+              value: '${(metrics!.heapUsedMb / 1024).toStringAsFixed(1)}/'
+                  '${(metrics!.heapMaxMb / 1024).toStringAsFixed(0)}G',
+              colour: metrics!.heapMaxMb > 0 && metrics!.heapUsedMb / metrics!.heapMaxMb >= 0.85
+                  ? ReactorTheme.amber
+                  : ReactorTheme.cyan,
+            ),
+          ],
           _Metric(
             label: 'SNAPSHOT',
             value: _clock(fleet.takenAt),
@@ -48,6 +65,12 @@ class TelemetryStrip extends StatelessWidget {
       ),
     );
   }
+
+  static Color _healthColour(String health) => switch (health) {
+        'FAILING' => ReactorTheme.critical,
+        'LOADED' => ReactorTheme.amber,
+        _ => ReactorTheme.cyan,
+      };
 
   static String _clock(DateTime t) {
     final local = t.toLocal();

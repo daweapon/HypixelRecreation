@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../api/live_api.dart';
 import '../models/fleet.dart';
 import '../theme/reactor_theme.dart';
 import 'chamfer.dart';
@@ -11,6 +12,7 @@ class FleetTable extends StatefulWidget {
   final void Function(ContainerInfo container) onSelect;
   final bool canOperate;
   final void Function(String action, List<String> names)? onAction;
+  final MetricsReport? metrics;
 
   /// False when the table sits inside a scrolling page.
   ///
@@ -26,6 +28,7 @@ class FleetTable extends StatefulWidget {
     required this.canOperate,
     this.onAction,
     this.scrollable = true,
+    this.metrics,
   });
 
   @override
@@ -116,6 +119,7 @@ class _FleetTableState extends State<FleetTable> {
         onTap: () => widget.onSelect(container),
         canOperate: widget.canOperate,
         onAction: widget.onAction,
+        metric: widget.metrics?.forContainer(container.id, container.name),
       ),
     ];
   }
@@ -126,12 +130,14 @@ class _FleetRow extends StatefulWidget {
   final VoidCallback onTap;
   final bool canOperate;
   final void Function(String action, List<String> names)? onAction;
+  final ServerMetric? metric;
 
   const _FleetRow({
     required this.container,
     required this.onTap,
     required this.canOperate,
     this.onAction,
+    this.metric,
   });
 
   @override
@@ -173,6 +179,12 @@ class _FleetRowState extends State<_FleetRow> {
                     style: ReactorTheme.data(size: 10.5, color: ReactorTheme.textFaint)),
               ),
               SizedBox(
+                width: 46,
+                child: Text(widget.metric == null ? '' : widget.metric!.tps.toStringAsFixed(1),
+                    textAlign: TextAlign.right,
+                    style: ReactorTheme.data(size: 10.5, color: _metricColour(widget.metric))),
+              ),
+              SizedBox(
                 width: 62,
                 child: Text(c.uptimeLabel,
                     textAlign: TextAlign.right,
@@ -188,6 +200,22 @@ class _FleetRowState extends State<_FleetRow> {
                             ? ReactorTheme.amber
                             : ReactorTheme.textFaint)),
               ),
+              if (widget.canOperate && widget.onAction != null)
+                SizedBox(
+                  width: 30,
+                  child: _hovered && widget.metric != null
+                      ? IconButton(
+                          padding: EdgeInsets.zero,
+                          constraints: const BoxConstraints(),
+                          iconSize: 14,
+                          icon: const Icon(Icons.logout, color: ReactorTheme.amber),
+                          tooltip: 'Drain players, then restart ${c.name}',
+                          onPressed: () => widget.onAction!('drain-restart', [c.name]),
+                        )
+                      : const SizedBox.shrink(),
+                )
+              else
+                const SizedBox(width: 30),
               if (widget.canOperate && widget.onAction != null)
                 SizedBox(
                   width: 30,
@@ -209,5 +237,12 @@ class _FleetRowState extends State<_FleetRow> {
         ),
       ),
     );
+  }
+
+  static Color _metricColour(ServerMetric? metric) {
+    if (metric == null) return ReactorTheme.textFaint;
+    if (metric.isFailing) return ReactorTheme.critical;
+    if (metric.isLoaded) return ReactorTheme.amber;
+    return ReactorTheme.cyan;
   }
 }

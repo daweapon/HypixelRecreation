@@ -15,6 +15,7 @@ import dev.daweapon.type.generic.command.HypixelCommand;
 import dev.daweapon.type.generic.user.categories.Rank;
 import dev.daweapon.type.ravengardgeneric.user.RavengardPlayer;
 
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 @CommandParameters(labels = "dungeon",
@@ -142,7 +143,7 @@ public class DungeonCommand extends HypixelCommand {
         player.sendMessage("<7>Finding a dungeon server...");
         GetServerForMapProtocol.GetServerForMapMessage request =
                 new GetServerForMapProtocol.GetServerForMapMessage(
-                        ServerType.RAVENGARD_DUNGEON, null, mode, 1);
+                        ServerType.RAVENGARD_DUNGEON, null, mode, 1, List.of(player.getUuid()));
 
         ORCHESTRATOR.handleRequest(request).thenAccept(response -> {
             if (!(response instanceof GetServerForMapProtocol.GetServerForMapResponse(
