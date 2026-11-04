@@ -1,6 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.gui.inventories;
 
 import net.minestom.server.inventory.InventoryType;
+import net.minestom.server.inventory.PlayerInventory;
 import net.minestom.server.item.ItemStack;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.data.datapoints.DatapointInteger;
@@ -15,7 +16,7 @@ import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.components.SoulflowComponent;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// GUI confirming consumption of a Soulflow item to add to the player's Soulflow balance
+// GUI confirming consumption of every Soulflow item in the inventory into the player's Soulflow balance
 public class GUIConsumeSoulflow implements View<GUIConsumeSoulflow.State> {
 
 	public record State(SkyBlockItem item) {
@@ -37,31 +38,44 @@ public class GUIConsumeSoulflow implements View<GUIConsumeSoulflow.State> {
 
 		layout.slot(13, (s, viewCtx) -> {
 					SkyBlockPlayer player = (SkyBlockPlayer) viewCtx.player();
-					SkyBlockDataHandler data = player.getSkyblockDataHandler();
-					int soulflow = data.get(SkyBlockDataHandler.Data.SOULFLOW, DatapointInteger.class).getValue();
-					int itemSoulflow = s.item().getComponent(SoulflowComponent.class).getAmount();
-					int addition = s.item().getAmount() * itemSoulflow;
-
-                return ItemStacks.head("94f0c693b85658b0bae792c9f9b717eb024ab8c4b349455648ea08358b50ddc4", 1,
-                    Text.key("gui_misc.consume_soulflow.confirm_button"),
-                    Text.keyLines("gui_misc.consume_soulflow.confirm_button.lore", soulflow, addition));
+					int soulflow = player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SOULFLOW, DatapointInteger.class).getValue();
+					return ItemStacks.head("94f0c693b85658b0bae792c9f9b717eb024ab8c4b349455648ea08358b50ddc4", 1,
+							Text.key("gui_misc.consume_soulflow.confirm_button"),
+							Text.keyLines("gui_misc.consume_soulflow.confirm_button.lore", soulflow, inventorySoulflow(player)));
 				},
 				(click, viewCtx) -> {
 					SkyBlockPlayer player = (SkyBlockPlayer) viewCtx.player();
-					SkyBlockDataHandler data = player.getSkyblockDataHandler();
-					int soulflow = data.get(SkyBlockDataHandler.Data.SOULFLOW, DatapointInteger.class).getValue();
-
-					int itemSoulflow = click.state().item().getComponent(SoulflowComponent.class).getAmount();
-					int addition = click.state().item().getAmount() * itemSoulflow;
-
-					data.get(SkyBlockDataHandler.Data.SOULFLOW, DatapointInteger.class).setValue(soulflow + addition);
-                    player.sendMessage(Text.key("gui_misc.consume_soulflow.consumed_message", addition, soulflow + addition));
-
-					player.getInventory().setItemStack(player.getHeldSlot(), ItemStack.AIR);
+					DatapointInteger datapoint = player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SOULFLOW, DatapointInteger.class);
+					int addition = 0;
+					for (int slot = 0; slot < PlayerInventory.INNER_INVENTORY_SIZE; slot++) {
+						int amount = soulflowIn(player.getInventory().getItemStack(slot));
+						if (amount == 0) continue;
+						addition += amount;
+						player.getInventory().setItemStack(slot, ItemStack.AIR);
+					}
+					if (addition > 0) {
+						datapoint.setValue(datapoint.getValue() + addition);
+						player.sendMessage(Text.key("gui_misc.consume_soulflow.consumed_message", addition, datapoint.getValue()));
+					}
 					player.closeInventory();
 				}
 		);
 		Components.close(layout, 31);
+	}
+
+	private static int inventorySoulflow(SkyBlockPlayer player) {
+		int total = 0;
+		for (int slot = 0; slot < PlayerInventory.INNER_INVENTORY_SIZE; slot++) {
+			total += soulflowIn(player.getInventory().getItemStack(slot));
+		}
+		return total;
+	}
+
+	private static int soulflowIn(ItemStack stack) {
+		if (stack.isAir() || !SkyBlockItem.isSkyBlockItem(stack)) return 0;
+		SkyBlockItem item = new SkyBlockItem(stack);
+		if (!item.hasComponent(SoulflowComponent.class)) return 0;
+		return item.getAmount() * item.getComponent(SoulflowComponent.class).getAmount();
 	}
 
 	public static void open(SkyBlockPlayer player, SkyBlockItem item) {
