@@ -8,6 +8,7 @@ import net.minestom.server.instance.Instance;
 public final class LabLever {
     private static InteractionEntity click;
     private static HologramEntity label;
+    private static InteractionEntity insideClick;
 
     private LabLever() {
     }
@@ -18,5 +19,7 @@ public final class LabLever {
         click.setInstance(instance, LabScenes.LEVER);
         label = new HologramEntity("<e>Stuck Lever");
         label.setInstance(instance, LabScenes.LEVER.add(0, 1.1, 0));
+        insideClick = new InteractionEntity(0.8f, 1f, (player, _) -> LabHiddenSection.pullInsideLever((SkyBlockPlayer) player));
+        insideClick.setInstance(instance, LabHiddenSection.INSIDE_LEVER);
     }
 }
