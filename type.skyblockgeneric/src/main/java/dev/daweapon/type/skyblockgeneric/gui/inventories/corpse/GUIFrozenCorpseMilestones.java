@@ -123,6 +123,6 @@ public class GUIFrozenCorpseMilestones extends StatelessView {
 
     private static Text bar(int value, int total) {
         int filled = value * BAR_LENGTH / total;
-        return Text.of("<a><m>{}<f><m>{} <e>{}<6>/<e>{}", " ".repeat(filled), " ".repeat(BAR_LENGTH - filled), value, total);
+        return Text.of("<a><m>{}<f><m>{}<r> <e>{}<6>/<e>{}", " ".repeat(filled), " ".repeat(BAR_LENGTH - filled), value, total);
     }
 }

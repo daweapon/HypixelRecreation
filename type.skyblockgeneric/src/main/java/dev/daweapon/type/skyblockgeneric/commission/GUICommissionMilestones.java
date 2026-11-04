@@ -240,7 +240,7 @@ public class GUICommissionMilestones extends HypixelInventoryGUI {
 	private Text buildProgressBar(double percentage) {
 		int filled = (int) (percentage / 5); // 20 segments total
 		int empty = 20 - filled;
-		return Text.of("<l><m><2>{}<f>{} ",
+		return Text.of("<l><m><2>{}<f>{}<r> ",
 				" ".repeat(Math.max(0, filled)),
 				" ".repeat(Math.max(0, empty)));
 	}

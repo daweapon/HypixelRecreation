@@ -179,6 +179,8 @@ items:
     components:
       - id: SKULL_HEAD
         texture: 4306587ec38c2446d389a581e0691556fa58fce0a02d0846d23fd68e3656a249
+      - id: INTERACTABLE
+        handler_id: REHEATED_GUMMY_POLAR_BEAR
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
