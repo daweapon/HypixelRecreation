@@ -1,5 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.user;
 
+import net.kyori.adventure.text.format.NamedTextColor;
+
 import dev.daweapon.type.skyblockgeneric.accessory.AccessoryOwnership;
 import dev.daweapon.type.skyblockgeneric.accessory.AccessoryPower;
 import lombok.AccessLevel;
@@ -147,6 +149,10 @@ public class SkyBlockPlayer extends HypixelPlayer {
     public Text getFullDisplayName() { return displayNames.getFullDisplayName(); }
 
     public Text getFullDisplayName(String levelColor) { return displayNames.getFullDisplayName(levelColor); }
+
+    public Text getRankedName() {
+        return Text.of("<7>{}", getRank().displayName(getRankColor(), isMvpPlusPlusAqua() ? NamedTextColor.AQUA : NamedTextColor.GOLD, getUsername()));
+    }
 
     public Text getFullDisplayName(SkyBlockEmblems.SkyBlockEmblem displayEmblem) { return displayNames.getFullDisplayName(displayEmblem); }
 

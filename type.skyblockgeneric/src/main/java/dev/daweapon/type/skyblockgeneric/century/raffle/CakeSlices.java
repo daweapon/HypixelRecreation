@@ -1,5 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.century.raffle;
 
+import dev.daweapon.commons.text.Text;
+
 import dev.daweapon.commons.StringUtility;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.skyblockgeneric.century.CenturyCakes;
@@ -59,10 +61,10 @@ public final class CakeSlices {
                 FeedingReward reward = LootRoll.pick(feeder.getUuid(), CenturyRaffleConfig.get().feeding(),
                         FeedingReward::itemType, FeedingReward::weight, ThreadLocalRandom.current());
                 String rewardName = describe(reward);
-                feeder.sendMessage("<d><l>YUM! <r><e>You fed <7>" + target.getUsername() + " <e>a slice of " + slice.flavour()
-                        + " <e>cake! You both got " + rewardName + "<e>!");
-                target.sendMessage("<d><l>YUM! <r><7>" + feeder.getUsername() + " <e>fed you a slice of " + slice.flavour()
-                        + " <e>cake! You both got " + rewardName + "<e>!");
+                feeder.sendMessage(Text.of("<d><l>YUM! <r><e>You fed ").append(target.getRankedName())
+                        .append(Text.of(" <e>a slice of " + slice.flavour() + " <e>cake! You both got " + rewardName + "<e>!")));
+                target.sendMessage(Text.of("<d><l>YUM! <r>").append(feeder.getRankedName())
+                        .append(Text.of(" <e>fed you a slice of " + slice.flavour() + " <e>cake! You both got " + rewardName + "<e>!")));
                 apply(feeder, reward);
                 apply(target, reward);
                 CenturyRaffle.grantTickets(feeder, 1, "<d><l>CAKE! <r><e>You gained <b>+1 Raffle Ticket <e>for sharing cake!");

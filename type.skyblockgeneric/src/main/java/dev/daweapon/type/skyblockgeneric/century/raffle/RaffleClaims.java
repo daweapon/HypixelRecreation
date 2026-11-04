@@ -1,6 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.century.raffle;
 
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
 import dev.daweapon.type.skyblockgeneric.century.CenturyCakes;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
@@ -34,8 +35,8 @@ public final class RaffleClaims {
                     SkyBlockItem prize = forced != null ? new SkyBlockItem(forced) : prize(player.getUuid(), row.tier());
                     player.addAndUpdateItem(prize);
                     player.sendMessage("<e>You claimed your prize from <8>" + row.label() + "<e>!");
-                    String broadcast = "<6><l>RAFFLE! <r><7>" + player.getUsername() + " <e>won <a>" + prize.getDisplayName()
-                            + " <e>in <8>" + row.label() + "<e>!";
+                    Text broadcast = Text.of("<6><l>RAFFLE! <r>").append(player.getRankedName())
+                            .append(Text.of(" <e>won <a>" + prize.getDisplayName() + " <e>in <8>" + row.label() + "<e>!"));
                     SkyBlockGenericLoader.getLoadedPlayers().forEach(online -> online.sendMessage(broadcast));
                 } else {
                     int slices = type.consolationSlices(row.entered());
