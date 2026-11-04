@@ -67,6 +67,7 @@ import dev.daweapon.type.skyblockgeneric.text.SkyBlockTextScopes;
 import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneRegistry;
 import dev.daweapon.type.skyblockgeneric.block.attribute.BlockAttribute;
 import dev.daweapon.type.skyblockgeneric.block.placement.BlockPlacementManager;
+import dev.daweapon.type.skyblockgeneric.calendar.SharedCalendarSync;
 import dev.daweapon.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import dev.daweapon.type.skyblockgeneric.collection.CollectionCategories;
 import dev.daweapon.type.skyblockgeneric.collection.CollectionCategory;
@@ -328,6 +329,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         SkyBlockCalendar.tick(MinecraftServer.getSchedulerManager());
         SkyBlockServerAttributes.loadAttributes(AttributeDatabase.getDocument("attributes"));
         SkyBlockServerAttributes.saveAttributeLoop();
+        SharedCalendarSync.start();
         /**
          * Register Placement Rules
          */

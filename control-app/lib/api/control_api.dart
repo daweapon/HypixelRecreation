@@ -6,6 +6,8 @@ import 'package:http/http.dart' as http;
 
 import '../models/fleet.dart';
 
+part 'admin_api.dart';
+
 class ApiException implements Exception {
   final String message;
   final int? status;
