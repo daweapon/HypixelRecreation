@@ -193,6 +193,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookAnnouncer.initialize();
         dev.daweapon.type.skyblockgeneric.technoblade.TechnobladeShrine.initialize();
         dev.daweapon.type.skyblockgeneric.technoblade.ThunderSpawner.initialize();
+        dev.daweapon.type.skyblockgeneric.dante.DanteHubBiome.initialize();
         dev.daweapon.type.skyblockgeneric.user.playtime.ProfilePlaytime.initialize();
         PlayerItemUpdater.updateLoop(MinecraftServer.getSchedulerManager());
         File configDir = new File("./configuration/skyblock");
