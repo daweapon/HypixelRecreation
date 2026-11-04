@@ -128,7 +128,7 @@ contacts:
     difficulty: EASY
     location: "Dwarven Mines"
     description: "Self-proclaimed leader of the Cult of the Fallen Star."
-    requirement: "Wear Fallen Star Helmet and attend 3 meetings during which you talk to Dalir using your Abiphone"
+    requirement: "Attend 3 Cult of the Fallen Star meetings by talking to Dalir with your Fallen Star Helmet on, then talk to Dalir with your Abiphone and give him a Powder Pie"
     usage: "Gives some info about when the next Cult of the Fallen Star meeting is and how many total meetings the player has attended."
     aliases: [dalir]
   - id: dean
