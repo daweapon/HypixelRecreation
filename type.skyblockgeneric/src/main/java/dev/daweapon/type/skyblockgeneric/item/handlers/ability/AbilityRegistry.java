@@ -269,6 +269,7 @@ public class AbilityRegistry {
         register(new BuildersWandAbility());
         register(new BuildersWandStorageAbility());
         register(new BlockZapperAbility());
+        dev.daweapon.type.skyblockgeneric.user.island.building.InfiniDirtWand.register();
         CrimsonAbilities.register();
         dev.daweapon.type.skyblockgeneric.healing.HealingWands.register();
         dev.daweapon.type.skyblockgeneric.dante.DanteAbilities.register();

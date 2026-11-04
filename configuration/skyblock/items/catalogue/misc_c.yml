@@ -3213,16 +3213,14 @@ items:
     material: stick
     name: "InfiniDirt™ Wand"
     rarity: UNCOMMON
-    unavailable: "Needs the Builder's Wand and the dirt placing ability"
     source: "Anita for 1 Jacob's Ticket"
-    lore:
-      - "§6Ability: Place Dirt  §e§lRIGHT CLICK"
-      - "§7Place a dirt block."
-      - "§7Costs §61 coin§7."
-      - ""
-      - "§7Can be used within the Builder's Wand!"
     components:
+      - id: ABILITY
+        abilities:
+          - PLACE_DIRT
       - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/infinidirt_wand
+  - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/infinidirt_wand
   - id: INFINITE_SPIRIT_LEAP
     material: player_head
