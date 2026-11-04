@@ -332,6 +332,15 @@ regions:
     y2: 142
     z2: 346
     serverType: DWARVEN_MINES
+  - id: abandoned_quarry
+    type: ABANDONED_QUARRY
+    x1: -215
+    y1: 120
+    z1: -75
+    x2: -120
+    y2: 170
+    z2: 15
+    serverType: DWARVEN_MINES
   - id: barn_1
     type: THE_BARN
     x1: 82

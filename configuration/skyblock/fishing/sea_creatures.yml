@@ -334,3 +334,20 @@ seaCreatures:
     requiredFishingLevel: 26
     skillXp: 7800
     tags: [WATER, MYTHIC]
+  # ---------- Abandoned Quarry, after talking to Guard Gornum (weights live in tables.yml) ----------
+  - id: MITHRIL_GRUBBER
+    requiredFishingLevel: 6
+    skillXp: 290
+    tags: [WATER, UNCOMMON]
+  - id: MEDIUM_MITHRIL_GRUBBER
+    requiredFishingLevel: 6
+    skillXp: 330
+    tags: [WATER, UNCOMMON]
+  - id: LARGE_MITHRIL_GRUBBER
+    requiredFishingLevel: 6
+    skillXp: 410
+    tags: [WATER, UNCOMMON]
+  - id: BLOATED_MITHRIL_GRUBBER
+    requiredFishingLevel: 6
+    skillXp: 490
+    tags: [WATER, UNCOMMON]

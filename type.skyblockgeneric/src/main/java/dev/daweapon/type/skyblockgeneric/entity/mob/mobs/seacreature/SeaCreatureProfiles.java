@@ -310,7 +310,8 @@ public final class SeaCreatureProfiles {
             dev.daweapon.type.skyblockgeneric.fishing.oasis.OasisSeaCreatures.PROFILES,
             dev.daweapon.type.skyblockgeneric.fishing.bayou.BayouSeaCreatures.PROFILES,
             dev.daweapon.type.skyblockgeneric.fishing.hotspot.HotspotSeaCreatures.PROFILES,
-            dev.daweapon.type.skyblockgeneric.fishing.spooky.SpookySeaCreatures.PROFILES
+            dev.daweapon.type.skyblockgeneric.fishing.spooky.SpookySeaCreatures.PROFILES,
+            dev.daweapon.type.skyblockgeneric.fishing.grubber.MithrilGrubbers.PROFILES
     ).flatMap(List::stream).toList();
 
     private static SkyBlockLootTable drops(SkyBlockLootTable.LootRecord... records) {

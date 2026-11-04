@@ -23,6 +23,7 @@ import dev.daweapon.type.skyblockgeneric.fishing.FishingMedium;
 import dev.daweapon.type.skyblockgeneric.fishing.catches.CatchPayload;
 import dev.daweapon.type.skyblockgeneric.fishing.festival.FishingFestival;
 import dev.daweapon.type.skyblockgeneric.fishing.spooky.SpookyFishing;
+import dev.daweapon.type.skyblockgeneric.fishing.grubber.MithrilGrubbers;
 import dev.daweapon.type.skyblockgeneric.fishing.item.FishingItemSupport;
 import dev.daweapon.type.skyblockgeneric.fishing.registry.FishingRegistry;
 import dev.daweapon.type.skyblockgeneric.fishing.registry.FishingTableDefinition;
@@ -169,7 +170,8 @@ public final class FishingLootResolver {
         List<SeaCreatureWeights.Candidate> eligible = new ArrayList<>();
         for (FishingTableDefinition.SeaCreatureRoll roll : rolls) {
             SeaCreatureDefinition definition = FishingRegistry.getSeaCreature(roll.seaCreatureId());
-            if (definition == null || fishingLevel < definition.requiredFishingLevel() || !definition.isAvailable(context)) {
+            if (definition == null || fishingLevel < definition.requiredFishingLevel() || !definition.isAvailable(context)
+                || !MithrilGrubbers.allows(context.player(), roll.seaCreatureId())) {
                 continue;
             }
             eligible.add(new SeaCreatureWeights.Candidate(roll.seaCreatureId(), roll.weight(), rarityOf(definition)));
