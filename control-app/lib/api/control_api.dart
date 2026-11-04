@@ -192,6 +192,12 @@ class ControlApi {
     return _decodeData(_ensureOk(response));
   }
 
+  /// Authenticated calls for feature API files, with the same token refresh and error
+  /// handling as every call in this class.
+  Future<dynamic> getJson(String path, [Map<String, String>? query]) => _authedGet(path, query);
+
+  Future<dynamic> postJson(String path, Map<String, dynamic> body) => _authedPost(path, body);
+
   Future<FleetSnapshot> fetchFleet({bool refresh = false}) async {
     final data = await _authedGet('/control/fleet', refresh ? {'refresh': 'true'} : null);
     return FleetSnapshot.fromJson(data as Map<String, dynamic>);

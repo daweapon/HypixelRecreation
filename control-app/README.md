@@ -268,14 +268,45 @@ a correct recreate, so restore the file first.
 Game servers, the proxy and `service_api` keep running throughout; only the app's fleet
 actions are unavailable until the agent is back.
 
+## Fleet integrity
+
+The Integrity screen (`IntegrityScreen`) and the dashboard's row tags answer "is everything
+running what it should, where it should":
+
+| Check | What it compares | Action (role) |
+|---|---|---|
+| Version skew | sha256 of the jar inside each container (hashed in place) against `DockerFiles/jars` (`/app/jar-store`); without a stored copy, against the other containers running that jar | **Reconcile** pushes the stored jar into the skewed containers through the deploy pipeline (OWNER) |
+| Proxy registration | the proxy's server list (asked over Redis by `service.api`) against running game servers, matched by registered hostname | **Re-register** restarts a DELISTED server, the only way it registers again (OPERATOR) |
+| Config drift | each game server's `/app/configuration` (the pack server's `resourcepacks/` only) against the host `configuration/` | **Sync** copies the differing files in and restarts, pack server first (OWNER) |
+| Resource pack | the hash each game server advertises against what `hypixel_pack_server` answers for; LIVE / DEAD / STALE | **Verify download** checks the served zip's SHA-1 |
+| Memory budget | `mem_limit` of running containers plus a start's candidates against host RAM from Docker `/info`, less `CAPACITY_HOST_RESERVE_MB` (default 4096) | the start confirmation turns red when over budget |
+
+DELISTED servers also raise a watchdog alert (`delisted:<container>`), with the usual
+3-poll debounce and a recovery notice. Every finished deploy, reconcile, config sync and agent
+self-restart is written to the audit log as `deploy-verify` with OK or FAILED, by whichever
+`service.api` is running once it finishes - which is how a `ServiceAPI.jar` deploy, which restarts
+the API, still gets a verdict. The agent going unreachable for 3 minutes is audited as
+`control-agent-unreachable`.
+
+Production needs, beyond the new jars:
+
+- The **config-drift** check reads the host tree through a read-only mount. Add to
+  `service_control`'s `volumes:` in `docker-compose.override.yml`, then recreate it:
+  ```yaml
+      - ./configuration:/app/host-configuration:ro
+  ```
+  Without it the screen says so and names this line; nothing else is affected.
+- **Proxy registration** needs the rebuilt `SkyBlockProxy.jar` (it now answers server-list
+  queries from services and reports each server's host). Until then every row reads UNKNOWN.
+  The proxy jar is baked into its image, so this is a DSM rebuild, not an app deploy.
+- Optional `.env`/environment: `CAPACITY_HOST_RESERVE_MB`, `CAPACITY_UNLIMITED_ESTIMATE_MB`
+  (default 1024, for containers with no `mem_limit` and no `-Xmx`), `PACK_PUBLIC_URL`,
+  `PACK_FALLBACK_URL`, `CONFIG_DRIFT_IGNORE` (default `config.yml,config.example.yml`).
+
 ## Known gaps
 
 - **FCM push** is not implemented; the webhook transport covers the need for now.
 - **TPS-threshold alerting** (capability 14) needs the vendored `spark` metrics surfaced first.
-- **Proxy-registration state** (capability 3) is not yet separated from container state — the
-  dashboard currently shows whether the proxy *container* is up, not whether each game server is
-  *registered* with it.
-- Phases 2 and 3 (jar deploy with verification, config-drift detector, cross-server player and
-  event admin, backups, spark metrics) are untouched.
+- Cross-server player and event admin, backups and spark metrics are not built.
 - **Owner recovery is rate-limited only by the idle window**, not by attempt count; a STAFF
   account is trusted absolutely once no live owner remains.

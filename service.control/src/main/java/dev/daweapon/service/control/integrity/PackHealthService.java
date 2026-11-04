@@ -29,7 +29,7 @@ public final class PackHealthService {
     private static final Duration CACHE_TTL = Duration.ofSeconds(30);
     private static final Duration BOOT_WINDOW = Duration.ofMinutes(15);
     private static final Duration PROBE_TIMEOUT = Duration.ofSeconds(5);
-    private static final Duration DOWNLOAD_TIMEOUT = Duration.ofSeconds(60);
+    private static final Duration DOWNLOAD_TIMEOUT = Duration.ofSeconds(15);
 
     public record Report(Instant takenAt, PackVerdict.State state, String headline, List<String> problems,
                          String container, boolean running, String internalUrl, Set<String> served,

@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Hashes the jar inside every JVM container and compares it with the jar store (capability 15).
@@ -40,28 +39,26 @@ public final class JarFingerprints {
     private final FleetService fleetService;
     private final Path jarStore;
     private final HashCache storeHashes = new HashCache();
-    private final AtomicReference<Report> cached = new AtomicReference<>();
+    private final BackgroundReport<Report> reports;
 
     public JarFingerprints(DockerApi docker, DockerExec exec, FleetService fleetService, Path jarStore) {
         this.docker = docker;
         this.exec = exec;
         this.fleetService = fleetService;
         this.jarStore = jarStore;
+        this.reports = new BackgroundReport<>("version skew", CACHE_TTL, this::build);
     }
 
-    public Report report(boolean refresh) {
-        Report current = cached.get();
-        if (!refresh && current != null
-                && Duration.between(current.takenAt(), Instant.now()).compareTo(CACHE_TTL) < 0) {
-            return current;
-        }
-        Report fresh = build();
-        cached.set(fresh);
-        return fresh;
+    public BackgroundReport.View<Report> view(boolean refresh) {
+        return reports.view(refresh);
+    }
+
+    public Report latest() {
+        return reports.latestOrBuild();
     }
 
     public void invalidate() {
-        cached.set(null);
+        reports.invalidate();
     }
 
     private Report build() {

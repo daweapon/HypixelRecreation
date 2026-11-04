@@ -28,7 +28,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -74,7 +73,7 @@ public final class ConfigDriftService {
     private final Set<String> ignored;
     private final String packServer;
     private final HashCache hostHashes = new HashCache();
-    private final AtomicReference<Report> cached = new AtomicReference<>();
+    private final BackgroundReport<Report> reports = new BackgroundReport<>("config drift", CACHE_TTL, this::build);
 
     public ConfigDriftService(DockerApi docker, DockerExec exec, DockerSocketClient socketClient,
                               FleetService fleetService, LifecycleController lifecycle) {
@@ -98,15 +97,8 @@ public final class ConfigDriftService {
         return Files.isDirectory(hostDirectory);
     }
 
-    public Report report(boolean refresh) {
-        Report current = cached.get();
-        if (!refresh && current != null
-                && Duration.between(current.takenAt(), Instant.now()).compareTo(CACHE_TTL) < 0) {
-            return current;
-        }
-        Report fresh = build();
-        cached.set(fresh);
-        return fresh;
+    public BackgroundReport.View<Report> view(boolean refresh) {
+        return reports.view(refresh);
     }
 
     private Report build() {
@@ -203,7 +195,7 @@ public final class ConfigDriftService {
                     + "Add '" + COMPOSE_LINE + "' to service_control's volumes and recreate it.");
         }
         return lifecycle.submitExternal("config-sync", actor, job -> {
-            Report report = report(true);
+            Report report = reports.buildNow();
             List<ContainerDrift> chosen = report.containers().stream()
                     .filter(drift -> drift.status() == Status.DRIFTED)
                     .filter(drift -> names == null || names.isEmpty() || names.contains(drift.container()))
@@ -243,7 +235,7 @@ public final class ConfigDriftService {
                     verifyRunning(job, container);
                 }
             }
-            cached.set(null);
+            reports.invalidate();
         });
     }
 

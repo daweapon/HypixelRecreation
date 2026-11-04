@@ -68,10 +68,10 @@ public final class IntegrityRoutes {
             }
         });
 
-        Spark.get("/control/integrity/skew", (req, res) -> Json.write(fingerprints.report(refresh(req))));
+        Spark.get("/control/integrity/skew", (req, res) -> Json.write(fingerprints.view(refresh(req))));
         Spark.post("/control/integrity/reconcile", this::reconcile);
 
-        Spark.get("/control/integrity/config-drift", (req, res) -> Json.write(configDrift.report(refresh(req))));
+        Spark.get("/control/integrity/config-drift", (req, res) -> Json.write(configDrift.view(refresh(req))));
         Spark.post("/control/integrity/config-sync", this::configSync);
 
         Spark.get("/control/integrity/capacity", (req, res) -> {
@@ -103,7 +103,7 @@ public final class IntegrityRoutes {
         }
         List<String> names = readArray(body, "names");
         if (names.isEmpty()) {
-            names = JarSkew.skewedContainers(fingerprints.report(false).entries(), jar);
+            names = JarSkew.skewedContainers(fingerprints.latest().entries(), jar);
         }
         try {
             OperationJob job = deployService.reconcile(jar, names, optInt(body, "stagger"), actor(req));
