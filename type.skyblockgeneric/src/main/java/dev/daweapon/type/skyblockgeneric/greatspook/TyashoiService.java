@@ -119,6 +119,7 @@ public final class TyashoiService {
         TyashoiProgress.claim(player, experiment.id());
         grant(player, experiment);
         player.sendMessage("<a>You bought <5>" + experiment.name() + "<a>!");
+        ObtainCounter.announce(player, experiment.id());
         say(player, experiment.success(), 1);
     }
 

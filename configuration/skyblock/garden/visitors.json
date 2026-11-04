@@ -3619,9 +3619,15 @@
       },
       "rewards": [],
       "dialogue": {
-        "offer": [],
-        "accept": [],
-        "decline": []
+        "offer": [
+          "There is no time to explain. I need Pumpkins, fast."
+        ],
+        "accept": [
+          "With this, there is a chance."
+        ],
+        "decline": [
+          "A fate worse than death itself will befall us now."
+        ]
       },
       "available": true,
       "unavailableReason": null,
