@@ -213,6 +213,24 @@ class ServiceContractTest {
     }
 
     @Test
+    void adminProtocolsAreAnsweredOnlyByGameServers() throws IOException {
+        Set<String> admin = protocolDomains().entrySet().stream()
+                .filter(entry -> entry.getValue().equals("admin"))
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toCollection(TreeSet::new));
+        assertTrue(admin.size() >= 3, "expected the control API's admin protocols but found " + admin);
+
+        Set<String> answered = new TreeSet<>();
+        for (Handler handler : handlers()) {
+            if (!admin.contains(handler.protocol())) continue;
+            assertTrue(handler.module().startsWith("type."), handler.protocol() + " is answered by " + handler.module()
+                    + " but the control API broadcasts it to game servers");
+            answered.add(handler.protocol());
+        }
+        assertEquals(admin, answered, "admin protocols no game server answers");
+    }
+
+    @Test
     void everyServiceScansTheEndpointPackageHoldingItsHandlers() throws IOException {
         Map<String, Set<String>> packagesByModule = new HashMap<>();
         for (Handler handler : handlers()) {

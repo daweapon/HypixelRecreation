@@ -111,11 +111,10 @@ public class SkyBlockServerAttributes {
     }
 
     public enum Attributes {
-        // Calendar time only ever advances, so the reconcile strategy is "highest value wins" -
-        // this is what makes it converge across servers instead of just persisting/restoring
-        // per-server state.
+        // Fallback only: once SharedCalendarSync holds the Redis epoch the calendar ignores this
+        // value, and the persisted copy just seeds the epoch if Redis ever loses it.
         CALENDER_ELAPSED_TIME("elapsed", AttributeLong.class, new AttributeLong("elapsed", 0L), (attribute) -> {
-            SkyBlockCalendar.setElapsed((Long) attribute.getValue());
+            SkyBlockCalendar.adoptPersisted((Long) attribute.getValue());
         }, (server) -> new AttributeLong("elapsed", SkyBlockCalendar.getElapsed()),
                 (local, remote) -> Math.max((Long) local, (Long) remote));
         @Getter

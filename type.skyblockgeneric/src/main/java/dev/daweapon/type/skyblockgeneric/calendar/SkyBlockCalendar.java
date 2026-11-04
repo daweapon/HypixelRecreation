@@ -1,9 +1,8 @@
 package dev.daweapon.type.skyblockgeneric.calendar;
 
-import lombok.Getter;
-import lombok.Setter;
 import net.minestom.server.timer.Scheduler;
 import net.minestom.server.timer.TaskSchedule;
+import dev.daweapon.commons.skyblock.SharedCalendarClock;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.skyblockgeneric.command.groups.world.MinionGenerationCommand;
 
@@ -38,21 +37,45 @@ public final class SkyBlockCalendar {
 
     private static final Set<String> firedEvents = new HashSet<>();
 
-    @Getter
-    @Setter
-    private static long elapsed = 0L;
+    private static volatile long elapsed = 0L;
+    private static volatile Long sharedEpochMillis = null;
 
-    // Testing/staff utility only - resets this server's local calendar back to Year 1, Early
-    // Spring, Day 1. `elapsed` is a per-JVM field, not synced across game servers, so this only
-    // affects the server it's run on.
+    // Every server derives the date from the shared epoch once SharedCalendarSync has one; the
+    // per-JVM tick counter is only the fallback for when Redis is unreachable.
+    public static long getElapsed() {
+        Long epoch = sharedEpochMillis;
+        return epoch == null ? elapsed : SharedCalendarClock.elapsedAt(epoch, System.currentTimeMillis());
+    }
+
+    public static void setElapsed(long value) {
+        elapsed = value;
+        if (sharedEpochMillis == null) return;
+        long epoch = SharedCalendarClock.epochFor(value, System.currentTimeMillis());
+        sharedEpochMillis = epoch;
+        Thread.startVirtualThread(() -> SharedCalendarSync.publish(epoch));
+    }
+
+    public static void adoptPersisted(long value) {
+        if (sharedEpochMillis == null) elapsed = value;
+    }
+
+    public static void useSharedEpoch(Long epochMillis) {
+        sharedEpochMillis = epochMillis;
+        if (epochMillis != null) elapsed = SharedCalendarClock.elapsedAt(epochMillis, System.currentTimeMillis());
+    }
+
+    public static boolean isShared() {
+        return sharedEpochMillis != null;
+    }
+
     public static void resetToYearOne() {
-        elapsed = 0L;
         firedEvents.clear();
+        setElapsed(0L);
     }
 
     public static void tick(Scheduler scheduler) {
         scheduler.submitTask(() -> {
-            elapsed += 10L;
+            elapsed = sharedEpochMillis == null ? elapsed + 10L : getElapsed();
             checkForEvents(getElapsed() % YEAR);
             return TaskSchedule.tick(10);
         });
@@ -84,7 +107,11 @@ public final class SkyBlockCalendar {
     }
 
     public static int getHour() {
-        int currentTime = (int) ((getElapsed() % DAY) - 6000);
+        return getHour(getElapsed());
+    }
+
+    public static int getHour(long elapsed) {
+        int currentTime = (int) ((elapsed % DAY) - 6000);
         if (currentTime < 0) currentTime += DAY; // Adjust if before 6:00AM
         int hours = 6 + (currentTime / 1000); // 1 hour = 1000 units in elapsed time
         if (hours >= 24) hours -= 24; // Adjust if the time is past midnight
