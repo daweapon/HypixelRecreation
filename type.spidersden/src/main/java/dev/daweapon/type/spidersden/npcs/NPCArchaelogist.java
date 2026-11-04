@@ -10,6 +10,8 @@ import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.spidersden.SpiderDenRelics;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.type.skyblockgeneric.user.FairySoulHandler;
+import dev.daweapon.type.skyblockgeneric.user.fairysouls.FairySoulZone;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -61,11 +63,16 @@ public class NPCArchaelogist extends HypixelNPC {
             if (SpiderDenRelics.claimCompletionReward(player)) {
                 setDialogue(player, "complete").thenRun(() -> player.sendMessage("<6>+" + SpiderDenRelics.COMPLETION_COINS + " coins"));
             } else {
-                setDialogue(player, "complete-again");
+                setDialogue(player, foundAllSouls(player) ? "specimen" : "found-all");
             }
             return;
         }
         setDialogue(player, "hint-" + (1 + ThreadLocalRandom.current().nextInt(HINTS)));
+    }
+
+    private static boolean foundAllSouls(SkyBlockPlayer player) {
+        FairySoulHandler souls = player.getFairySoulHandler();
+        return souls.getFound(FairySoulZone.SPIDERS_DEN) >= souls.getMax(FairySoulZone.SPIDERS_DEN);
     }
 
     @Override
@@ -79,7 +86,8 @@ public class NPCArchaelogist extends HypixelNPC {
                 DialogueSet.builder().key("complete").lines(
                         "Wow! You found all the Relics.",
                         "Take this as a reward, you've earned it.").build(),
-                DialogueSet.builder().key("complete-again").line("Thank you again for finding all the Relics.").build(),
+                DialogueSet.builder().key("found-all").line("Wow! You found all the Relics.").build(),
+                DialogueSet.builder().key("specimen").line("I found an interesting specimen in the spider caves, perhaps there's other stuff to find in there.").build(),
                 DialogueSet.builder().key("hint-1").line("Some spider eggs look a bit different, check behind those.").build(),
                 DialogueSet.builder().key("hint-2").line("Are you sure you looked through every cobweb?").build(),
                 DialogueSet.builder().key("hint-3").line("Down there, multiple rooms are blocked by cobwebs.").build(),

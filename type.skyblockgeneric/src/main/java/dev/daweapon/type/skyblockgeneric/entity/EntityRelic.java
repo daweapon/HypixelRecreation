@@ -12,7 +12,7 @@ import net.minestom.server.item.Material;
 import net.minestom.server.network.player.ResolvableProfile;
 
 public class EntityRelic extends EntityCreature {
-    private static final String SKULL_TEXTURES = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWExMWJhMjg4YmQ2YWE3ZDQ5MzYwYjAzYmRjNjE4MTg5MTU0YzQ0ZTU4ODUxNmVhYzI5ZmYyMjk0NmNlZTAwIn19fQ==";
+    private static final String SKULL_TEXTURES = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmYwY2YxM2NiYjM2OGFmOWNlZTEyMzI5NzlhMTRiODRlNmViZjIyYzEzYjE0MjdmOTMxNmQ5NzRiY2UifX19";
 
     private final int relic;
 

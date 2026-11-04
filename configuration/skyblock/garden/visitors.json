@@ -5800,7 +5800,7 @@
       "gardenLevel": 10,
       "requirement": {
         "text": "Relic Hunting Quest",
-        "kind": "QUEST",
+        "kind": "RELIC_HUNT",
         "count": null
       },
       "event": null,
@@ -5830,9 +5830,12 @@
           "Oh, that's alright. I understand you're busy with your own adventures."
         ]
       },
-      "available": false,
-      "unavailableReason": "depends on an unbuilt quest: Relic Hunting Quest",
-      "requirementChecks": [],
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "RELIC_HUNT"
+      ],
       "verified": true,
       "notes": null
     },

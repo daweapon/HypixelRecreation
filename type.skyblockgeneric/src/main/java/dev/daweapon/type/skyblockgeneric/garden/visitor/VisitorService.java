@@ -110,6 +110,7 @@ public final class VisitorService {
             case "TALK_TO_NPC" -> data.getTalkedTo().contains(talkTarget(requirement.text()));
             case "QUEST" -> player != null && dev.daweapon.type.skyblockgeneric.romero.RomeroJulietteQuest.isCompleted(player);
             case "HIKER_QUEST" -> player != null && dev.daweapon.type.skyblockgeneric.hiker.HikerQuest.isCompleted(player);
+            case "RELIC_HUNT" -> player != null && dev.daweapon.type.skyblockgeneric.spidersden.SpiderDenRelics.foundAll(player);
             case "SERVE_UNIQUE" -> requirement.count() == null || data.uniqueServed() >= requirement.count();
             default -> true;
         };

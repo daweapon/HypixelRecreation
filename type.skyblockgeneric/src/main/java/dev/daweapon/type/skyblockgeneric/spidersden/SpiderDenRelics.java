@@ -1,12 +1,16 @@
 package dev.daweapon.type.skyblockgeneric.spidersden;
 
+import net.minestom.server.component.DataComponents;
+import net.minestom.server.coordinate.BlockVec;
 import net.minestom.server.coordinate.Pos;
+import net.minestom.server.item.ItemStack;
+import net.minestom.server.item.Material;
+import net.minestom.server.item.component.LodestoneTracker;
 import net.minestom.server.instance.Instance;
 import dev.daweapon.commons.ServerType;
 import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
 import dev.daweapon.type.skyblockgeneric.entity.EntityRelic;
-import dev.daweapon.type.skyblockgeneric.hoppity.Egglocator;
 import dev.daweapon.type.skyblockgeneric.item.handlers.interactable.InteractableItemConfig;
 import dev.daweapon.type.skyblockgeneric.item.handlers.interactable.InteractableRegistry;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
@@ -17,8 +21,7 @@ import java.util.stream.IntStream;
 
 /**
  * The 28 Relics of the Spider's Den (wiki: Relics, exact coordinates). Each pays 10,000 coins once per profile and
- * the Archaeologist adds 30,000 when all are found. The Archaeologist's Compass points at the nearest one. The
- * relic head texture is a stand-in.
+ * the Archaeologist adds 30,000 when all are found. The Archaeologist's Compass needle points at the nearest one.
  */
 public final class SpiderDenRelics {
     public static final int COINS_PER_RELIC = 10_000;
@@ -134,6 +137,14 @@ public final class SpiderDenRelics {
             player.sendMessage("<a>You have found every Relic!");
             return;
         }
-        Egglocator.trail(player, position(relic));
+        pointAt(player, position(relic));
+    }
+
+    private static void pointAt(SkyBlockPlayer player, Pos relic) {
+        ItemStack held = player.getItemInMainHand();
+        if (held.material() != Material.COMPASS || player.getInstance() == null) return;
+        LodestoneTracker tracker = new LodestoneTracker(player.getInstance().getDimensionName(), new BlockVec(relic), false);
+        player.setItemInMainHand(held.with(DataComponents.LODESTONE_TRACKER, tracker));
+        player.sendMessage("<a>Your compass now points towards the nearest <b>Relic<a>!");
     }
 }
