@@ -8,6 +8,7 @@ import com.mongodb.client.MongoClients;
 import dev.daweapon.commons.ServiceType;
 import dev.daweapon.commons.config.ConfigProvider;
 import dev.daweapon.service.api.control.AuditDatabase;
+import dev.daweapon.service.api.control.ControlIntegrityMonitor;
 import dev.daweapon.service.api.control.DeviceDatabase;
 import dev.daweapon.service.api.http.APIResponse;
 import dev.daweapon.service.api.http.SkyBlockEndpoint;
@@ -150,6 +151,7 @@ public class APIService implements SkyBlockService {
             }
         });
 
+        ControlIntegrityMonitor.start();
         System.out.println("API Service started on port " + port);
     }
 

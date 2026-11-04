@@ -91,9 +91,18 @@ public final class DockerSocketClient {
         return send("POST", path, null, null, budget);
     }
 
+    /** POSTs a JSON body with an explicit budget; an exec's output arrives only once it ends. */
+    public DockerResponse post(String path, String jsonBody, Duration budget) {
+        return send("POST", path, jsonBody.getBytes(StandardCharsets.UTF_8), "application/json", budget);
+    }
+
     /** PUTs a raw body (used for the tar stream that implements `docker cp`). */
     public DockerResponse putBinary(String path, byte[] body, String contentType) {
         return send("PUT", path, body, contentType);
+    }
+
+    public DockerResponse putBinary(String path, byte[] body, String contentType, Duration budget) {
+        return send("PUT", path, body, contentType, budget);
     }
 
     public DockerResponse request(String method, String path, String jsonBody) {

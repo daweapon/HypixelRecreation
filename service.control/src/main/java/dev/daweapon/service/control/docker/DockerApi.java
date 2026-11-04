@@ -139,6 +139,38 @@ public final class DockerApi {
         act("start", name, "/containers/" + encode(name) + "/start");
     }
 
+    /** Full inspect document, for fields the fleet snapshot does not carry. Null when absent. */
+    public JsonObject inspectRaw(String name) {
+        DockerResponse response = client.get("/containers/" + encode(name) + "/json");
+        if (response.status() == 404) {
+            return null;
+        }
+        if (!response.isSuccess()) {
+            throw new DockerException("Inspecting " + name + " failed with HTTP " + response.status());
+        }
+        return JsonParser.parseString(response.body()).getAsJsonObject();
+    }
+
+    /** Daemon-wide facts such as MemTotal and NCPU. */
+    public JsonObject info() {
+        DockerResponse response = client.get("/info");
+        if (!response.isSuccess()) {
+            throw new DockerException("Reading Docker info failed with HTTP " + response.status());
+        }
+        return JsonParser.parseString(response.body()).getAsJsonObject();
+    }
+
+    /** What a container printed between two instants, de-framed; used to read boot-time lines. */
+    public String logsBetween(String name, Instant since, Instant until) {
+        DockerResponse response = client.get("/containers/" + encode(name)
+                + "/logs?stdout=true&stderr=true&since=" + since.getEpochSecond()
+                + "&until=" + until.getEpochSecond());
+        if (!response.isSuccess()) {
+            throw new DockerException("Fetching logs for " + name + " failed with HTTP " + response.status());
+        }
+        return LogFrameDecoder.decode(response.bodyBytes());
+    }
+
     public void stop(String name, int timeoutSeconds) {
         act("stop", name, "/containers/" + encode(name) + "/stop?t=" + timeoutSeconds,
                 graceBudget(timeoutSeconds));
