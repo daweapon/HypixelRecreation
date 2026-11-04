@@ -11,6 +11,9 @@ import dev.daweapon.type.skyblockgeneric.hotf.throwing.AxeThrowing;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.region.SkyBlockRegion;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.type.skyblockgeneric.user.island.SkyBlockIsland;
+import dev.daweapon.type.skyblockgeneric.user.island.weather.IslandWeather;
+import dev.daweapon.type.skyblockgeneric.user.island.weather.IslandWeatherSettings;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Set;
@@ -84,6 +87,9 @@ public final class ToolInteractions {
             return;
         }
         player.getAbilityHandler().startAbilityCooldown(item);
-        player.getInstance().setWeather(nextWeather(player.getInstance().getWeather()));
+        Weather next = nextWeather(player.getInstance().getWeather());
+        player.getInstance().setWeather(next);
+        SkyBlockIsland island = player.getSkyBlockIsland();
+        if (island != null && island.getIslandInstance() == player.getInstance()) IslandWeatherSettings.remember(island, IslandWeather.of(next));
     }
 }

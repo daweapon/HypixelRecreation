@@ -30,6 +30,12 @@ public enum IslandWeather {
         return weather;
     }
 
+    public static IslandWeather of(Weather weather) {
+        if (weather.thunderLevel() > 0) return THUNDERING;
+        if (weather.rainLevel() > 0) return RAINING;
+        return SUNNY;
+    }
+
     public static IslandWeather parse(String raw) {
         for (IslandWeather value : values()) {
             if (value.name().equalsIgnoreCase(raw)) return value;

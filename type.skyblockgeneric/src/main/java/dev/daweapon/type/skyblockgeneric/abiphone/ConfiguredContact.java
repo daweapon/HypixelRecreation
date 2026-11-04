@@ -26,11 +26,13 @@ public final class ConfiguredContact extends AbiphoneNPC {
     }
 
     private final Definition definition;
+    private final String head;
     private final String givenFlag;
 
     public ConfiguredContact(Definition definition, AbiphoneContact entry) {
         super(definition.id(), entry.name(), entry.description());
         this.definition = definition;
+        this.head = definition.head() == null || definition.head().isBlank() ? entry.head() : definition.head();
         this.givenFlag = "abiphone." + definition.id() + ".given";
     }
 
@@ -156,7 +158,7 @@ public final class ConfiguredContact extends AbiphoneNPC {
 
     @Override
     public ItemStack.Builder getIcon() {
-        if (definition.head() == null || definition.head().isBlank()) return ItemStack.builder(Material.PLAYER_HEAD);
-        return ItemStacks.head(definition.head(), Text.empty(), List.of());
+        if (head == null || head.isBlank()) return ItemStack.builder(Material.PLAYER_HEAD);
+        return ItemStacks.head(head, Text.empty(), List.of());
     }
 }
