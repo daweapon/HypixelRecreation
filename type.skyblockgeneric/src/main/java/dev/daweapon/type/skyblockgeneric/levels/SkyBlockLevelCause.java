@@ -97,6 +97,14 @@ public class SkyBlockLevelCause {
         }
         CAUSES.put("starlyn-agatha-5", new StarlynMilestoneCause("agatha", 5));
         CAUSES.put("vargul-milestone-6", new VargulMilestoneCause(6));
+        CAUSES.put("century-" + CenturyEmblemCause.CELEBRANT, new CenturyEmblemCause(CenturyEmblemCause.CELEBRANT,
+                "Reach Raffle Milestone II during the Raffle of the Century."));
+        CAUSES.put("century-" + CenturyEmblemCause.PARTYGOER, new CenturyEmblemCause(CenturyEmblemCause.PARTYGOER,
+                "Reach Raffle Milestone V during the Raffle of the Century."));
+        for (String team : List.of("Blue", "Yellow", "Green", "Red", "Pink")) {
+            CAUSES.put("century-" + CenturyEmblemCause.teamKey(team), new CenturyEmblemCause(CenturyEmblemCause.teamKey(team),
+                    "Join the " + team + " team during the Raffle of the Century."));
+        }
     }
 
     public static Map<String, SkyBlockLevelCauseAbstr> getCauses() {
@@ -143,6 +151,10 @@ public class SkyBlockLevelCause {
 
     public static @Nullable VargulMilestoneCause getVargulMilestoneCause(int milestone) {
         return CAUSES.get("vargul-milestone-" + milestone) instanceof VargulMilestoneCause cause ? cause : null;
+    }
+
+    public static @Nullable CenturyEmblemCause getCenturyEmblemCause(String key) {
+        return CAUSES.get("century-" + key) instanceof CenturyEmblemCause cause ? cause : null;
     }
 
     public static @Nullable MuseumMilestoneCause getMuseumMilestoneCause(int milestone) {

@@ -723,6 +723,11 @@ public class SkyBlockDataHandler extends DataHandler {
                     dev.daweapon.type.skyblockgeneric.consumable.FinnsFocaccia.restore(player);
                 }),
 
+        CENTURY_CAKES("century_cakes", false, false, false,
+                DatapointMapStringLong.class, new DatapointMapStringLong("century_cakes"),
+                null,
+                (player, datapoint) -> dev.daweapon.type.skyblockgeneric.century.CenturyCakeBuffs.restore(player)),
+
         JYRRE_BUFF_EXPIRATION("jyrre_buff_expiration", false, false, false,
                 DatapointLong.class, new DatapointLong("jyrre_buff_expiration", 0L),
                 null,

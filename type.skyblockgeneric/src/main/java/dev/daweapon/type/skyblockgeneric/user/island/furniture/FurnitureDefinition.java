@@ -21,7 +21,7 @@ public record FurnitureDefinition(
         this(itemId, carpentryLevel, interaction, scale, width, height, seats, recipe, 0);
     }
 
-    public static final String CENTURY_CAKE_PREFIX = "CENTURY_CAKE";
+    public static final String CENTURY_CAKE_PREFIX = "EPOCH_CAKE_";
 
     public boolean isCenturyCake() {
         return itemId.startsWith(CENTURY_CAKE_PREFIX);

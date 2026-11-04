@@ -3,7 +3,10 @@ package dev.daweapon.type.dwarvenmines.npcs;
 import net.minestom.server.coordinate.Pos;
 
 public class NPCBrarnas extends AbstractCultMember {
+	private static final String TEXTURE = "ewogICJ0aW1lc3RhbXAiIDogMTYyMjI4NjE3OTQ5NiwKICAicHJvZmlsZUlkIiA6ICI1ZjE4ZmY4NTEyZGQ0NmQ1OGY1MjJlYjg2MDg2ZjU5MiIsCiAgInByb2ZpbGVOYW1lIiA6ICJUYWtlb3MiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWJmOGRkNWNiOTIzYWQzY2FkNTQ4MzQwNjZlOGZhNDY1OWQzYTE4OWIxNDEwNTE1ZTQwMDVhNGVkZTA1NDFlYiIKICAgIH0KICB9Cn0=";
+	private static final String SIGNATURE = "rsS1bp37iL2VWbFBWreQbVUlE+1UPNqEGwhwjTVCSq7cgn+k33reGjmvjJ6vVwqjfpSQbIY/Mf8bXaYWu3LyVCztbGnbBnxuoH5B+1UK7lTDri5bjPrPC6oVMzDrvDP+gmUyKJJFVEVrSfrHRPtFbL8RHn6MR0thz6Qwa79ZlcwI0iLqXMt4zWq8abAeXwVOSTAQ8qtQWn3uc6Rf2dRTHWOGXeG1wFLK+lz58RgvVpCMk0J143vmwbW82AwpK5EUbt5hjW/LJrqTU7f+Nv5FQ6VsIF2LV4bW168OmrWSSj6yqa2ht98M6LGbg1zPJN8uq/O1R0AaRujLeHEQ+TmVU4JOMryDG29WbrNDEc9f3r5AcYOrzlkHrsHF/Q/xR5E1Z3vznFSZU3O+0iIqs7H6j9d9X3Tk+1G6e7uMhqwTXibJnJLMyYW+RSkv0zPr631bBVVlFj+QXwhCWUXoA044Mi/yfMDYOPgrEJkPGqVmMUiVygjygMSdXTZf5QrvbuvFx7rCiubkg9QyS+zT47f+BEz2PUX+GNrwco7mIVUJaiuRpyZYPFPKSmSXMCJQ7UAjBfGgdkuKzJUWZapoankFOh6DgaECVAqUgS1Q/ZXyEm5CJtX3BZ1YtE+/t1dGHWrw0oQljCfEFF4m44LcsY7meglVL1lgfucg1eUR0a1D4gw=";
+
 	public NPCBrarnas() {
-		super("Brarnas", new Pos(-47.5, 192, 44.5, 0, 0));
+		super("Brarnas", new Pos(-47.5, 192, 44.5, 0, 0), TEXTURE, SIGNATURE, false);
 	}
 }

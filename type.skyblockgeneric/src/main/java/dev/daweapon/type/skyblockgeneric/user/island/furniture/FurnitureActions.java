@@ -7,7 +7,11 @@ import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.components.MinionComponent;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import dev.daweapon.type.skyblockgeneric.user.island.SkyBlockIsland;
+import dev.daweapon.type.skyblockgeneric.century.CenturyCake;
+import dev.daweapon.type.skyblockgeneric.century.CenturyCakeBuffs;
 import net.minestom.server.coordinate.Pos;
+import net.minestom.server.entity.Player;
+import org.jetbrains.annotations.Nullable;
 import net.minestom.server.item.ItemStack;
 
 final class FurnitureActions {
@@ -38,6 +42,12 @@ final class FurnitureActions {
             case STORAGE -> openStorage(owner, player, placed, definition, member);
             case FURNACE -> openFurnace(owner, player, placed, member);
             case TREE -> openTree(owner, player, placed, member);
+            case CENTURY_CAKE -> eatCake(owner, island, player, placed);
+            case CAKE_COUNTER -> {
+                long[] totals = owner.cakeTotals();
+                player.sendMessage("<d>Century Cakes eaten on this island: <a>" + totals[0]
+                        + " <8>| <5>Cake Souls found: <a>" + totals[1]);
+            }
             case NONE -> {
                 if (member) player.sendMessage("<7>Sneak and right-click to pick up or rotate this furniture.");
             }
@@ -123,6 +133,21 @@ final class FurnitureActions {
             return;
         }
         TreeService.collect(owner, placed, player);
+    }
+
+    private static void eatCake(IslandFurniture owner, SkyBlockIsland island, SkyBlockPlayer player, PlacedFurniture placed) {
+        CenturyCake cake = CenturyCake.fromItemId(placed.itemId());
+        if (cake == null) return;
+        CenturyCakeBuffs.Outcome outcome = CenturyCakeBuffs.eat(player, cake, islandOwnerName(island, player));
+        owner.recordCakeEaten(player.getInstance(), outcome.soul() != null);
+    }
+
+    private static @Nullable String islandOwnerName(SkyBlockIsland island, SkyBlockPlayer eater) {
+        if (island == eater.getSkyBlockIsland()) return null;
+        return eater.getInstance().getPlayers().stream()
+                .filter(other -> other instanceof SkyBlockPlayer member && member.getSkyBlockIsland() == island)
+                .map(Player::getUsername)
+                .findFirst().orElse(null);
     }
 
     static void leftClick(IslandFurniture owner, SkyBlockPlayer player, PlacedFurniture placed) {

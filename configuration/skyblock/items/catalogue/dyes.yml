@@ -748,8 +748,7 @@ items:
       - ""
       - "§7Changes the color of an armor piece"
       - "§7to §1#0013FF§7!"
-    unavailable: "Needs Raffle of the Century event"
-    source: "Raffle of the Century reward"
+    source: "Medium Raffle of the Century reward"
     components:
       - id: SKULL_HEAD
         texture: 800970cdecfa0bc53659ea28f994870155f0d4e2526a513392455939e50cc8ab
@@ -766,8 +765,7 @@ items:
       - ""
       - "§7Changes the color of an armor piece"
       - "§7to §e#FFF700§7!"
-    unavailable: "Needs Raffle of the Century event"
-    source: "Raffle of the Century reward"
+    source: "Medium Raffle of the Century reward"
     components:
       - id: SKULL_HEAD
         texture: c218de2edf15bd24e75997ea33e3b946bdbe621cbd04ffd68e1cabcf7ebecea

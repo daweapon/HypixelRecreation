@@ -9,23 +9,23 @@ import dev.daweapon.type.skyblockgeneric.miningevent.CultOfTheFallenStar;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public abstract class AbstractCultMember extends HypixelNPC {
-	private static final String PLACEHOLDER_TEXTURE = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHBzOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzkyMTg2N2Y0ZWM3YWZmZjA4OTI2NzFlYWMzOTlhY2RjYzYzMTA1ZDBhZTQ0NjJhNDhhNDNhZjVlY2JhMWU0ZDUifX19";
+	private final boolean leader;
 
-	protected AbstractCultMember(String name, Pos position) {
+	protected AbstractCultMember(String name, Pos position, String texture, String signature, boolean leader) {
 		super(new HumanConfiguration() {
 			@Override
 			public String[] holograms(HypixelPlayer player) {
-				return new String[]{"<5>" + name, "<e><l>CLICK"};
+				return leader ? new String[]{"<5>" + name, "<e><l>CLICK"} : new String[]{"<5>" + name};
 			}
 
 			@Override
 			public String signature(HypixelPlayer player) {
-				return null;
+				return signature;
 			}
 
 			@Override
 			public String texture(HypixelPlayer player) {
-				return PLACEHOLDER_TEXTURE;
+				return texture;
 			}
 
 			@Override
@@ -43,10 +43,11 @@ public abstract class AbstractCultMember extends HypixelNPC {
 				return CultOfTheFallenStar.meetingActive();
 			}
 		});
+		this.leader = leader;
 	}
 
 	@Override
 	public void onClick(NPCInteractEvent event) {
-		CultOfTheFallenStar.interact((SkyBlockPlayer) event.player());
+		if (leader) CultOfTheFallenStar.interact((SkyBlockPlayer) event.player());
 	}
 }

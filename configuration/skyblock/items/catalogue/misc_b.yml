@@ -50,8 +50,7 @@ items:
       strength: 100
       critical_damage: 100
       swing_range: 2
-    unavailable: "Needs Dungeons"
-    source: "Dungeon Reward Chests of The Catacombs Master Mode Floor VII (150,000,000 Coins), or Raffle of the Century"
+    source: "Dungeon Reward Chests of The Catacombs Master Mode Floor VII (not built), or a medium Raffle of the Century reward"
     lore:
       - "§7Gear Score: §d680"
       - "§7Gemstones: §8[⚔] [⚔]"
@@ -866,8 +865,7 @@ items:
     material: player_head
     name: "Dragon Egg in a Box"
     rarity: LEGENDARY
-    unavailable: "Needs the Golden, Jade and Rose Dragon Egg items, which aren't in the game"
-    source: "Event reward (exact source unverified)"
+    source: "Major Raffle of the Century reward"
     lore:
       - "§8Consumable"
       - ""
@@ -1478,8 +1476,7 @@ items:
     material: player_head
     name: "Enchanted Book Bundle"
     rarity: LEGENDARY
-    unavailable: "The Raffle of the Century isn't built"
-    source: "Raffle of the Century"
+    source: "Major Raffle of the Century reward"
     lore:
       - "§8Consumable"
       - ""
@@ -1501,8 +1498,7 @@ items:
     material: player_head
     name: "Enchanted Book Bundle"
     rarity: LEGENDARY
-    unavailable: "The Raffle of the Century isn't built"
-    source: "Raffle of the Century"
+    source: "Major Raffle of the Century reward"
     lore:
       - "§8Consumable"
       - ""
@@ -1525,8 +1521,7 @@ items:
     material: player_head
     name: "Enchanted Book Bundle"
     rarity: EPIC
-    unavailable: "The Raffle of the Century isn't built"
-    source: "Raffle of the Century"
+    source: "Medium Raffle of the Century reward"
     lore:
       - "§8Consumable"
       - ""
@@ -1590,8 +1585,7 @@ items:
     material: player_head
     name: "Enchanted Book Bundle"
     rarity: UNCOMMON
-    unavailable: "The Raffle of the Century isn't built"
-    source: "Raffle of the Century"
+    source: "Minor Raffle of the Century reward or Gift Bag of the Century"
     lore:
       - "§8Consumable"
       - ""
@@ -1635,8 +1629,7 @@ items:
     material: player_head
     name: "Enchanted Book Bundle"
     rarity: UNCOMMON
-    unavailable: "The Raffle of the Century isn't built"
-    source: "Raffle of the Century"
+    source: "Minor Raffle of the Century reward or Gift Bag of the Century"
     lore:
       - "§8Consumable"
       - ""
@@ -1970,8 +1963,7 @@ items:
     material: player_head
     name: "Barry Century Cake"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -1985,14 +1977,15 @@ items:
       - ""
       - "§7Obtained in §fYear 500§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 5eff0904d5ec691dd8e38d1f63d38bef0492013ece93d32af90dc0320116c597
   - id: EPOCH_CAKE_BLACK
     material: player_head
     name: "Century Cake of the Next Dungeon Floor"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2006,14 +1999,15 @@ items:
       - ""
       - "§7Obtained in §fYear 500§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 64592746cc35672ee29bb3a153d74f7a5d0e5fe8612729a34fad252fe7904283
   - id: EPOCH_CAKE_BLUE
     material: player_head
     name: "Sea Emperor Century Cake"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2027,14 +2021,15 @@ items:
       - ""
       - "§7Obtained in §fYear 500§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: e12a28e69da5e43ce8fdecc6a823c92fff84719e0147caac71c5c8d99da5781c
   - id: EPOCH_CAKE_BROWN
     material: player_head
     name: "Chocolate Century Cake"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2048,14 +2043,15 @@ items:
       - ""
       - "§7Obtained in §fYear 500§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: b237cdfd7d3f20e0f5b697a20c85324fbb7bcd409e653337ccd5a9ce8ccafc1d
   - id: EPOCH_CAKE_CYAN
     material: player_head
     name: "Century Cake of Hype"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2069,14 +2065,15 @@ items:
       - ""
       - "§7Obtained in §fYear 500§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: fb7cfbb6af700e49bfdb60236920c522084bb808ab612474fb1f83ea410d5484
   - id: EPOCH_CAKE_DARK_GREEN
     material: player_head
     name: "Undead Century Cake"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2090,14 +2087,15 @@ items:
       - ""
       - "§7Obtained in §fYear 500§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: c3830d235c9de703946864c281f42f9d45647691ee353fbbb0722717706b8bda
   - id: EPOCH_CAKE_EXPIRED
     material: player_head
     name: "Long-Expired Century Cake"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2111,14 +2109,15 @@ items:
       - ""
       - "§7Obtained in §fYear 500§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 4545c6bfd773024511e235e12f6a2a2ede060cb8dbba95e1fc245c16010676ab
   - id: EPOCH_CAKE_GRAY
     material: player_head
     name: "Not-a-lie Century Cake"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2132,14 +2131,15 @@ items:
       - ""
       - "§7Obtained in §fYear 500§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: d40f9299508387618cfad6db35c9f6d807c49337d333d6ec3b13d9e87d0d488f
   - id: EPOCH_CAKE_GREEN
     material: player_head
     name: "Pet Rock Century Cake"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2153,14 +2153,15 @@ items:
       - ""
       - "§7Obtained in §fYear 500§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: ba7bfa80a85e707eedf945b88905942f5f7795ea5264d692a22e707fc577a88b
   - id: EPOCH_CAKE_HEPHAESTUS
     material: player_head
     name: "Hephaestus' Century Cake"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2174,14 +2175,15 @@ items:
       - ""
       - "§7Obtained in §fYear 500§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 3b8a3e22d97c031a3f2f87c85f831b4abfa47358d3249cac043abe999f549ab6
   - id: EPOCH_CAKE_MAGENTA
     material: player_head
     name: "ekaC yrutneC tfiR"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2195,14 +2197,15 @@ items:
       - ""
       - "§7Obtained in §fYear 500§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: d37b1fb4d0981901a292c42c653946ca0e2dea18be9cafa2f2f9933fdabaa984
   - id: EPOCH_CAKE_ORANGE
     material: player_head
     name: "Latest Update Century Cake"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2216,14 +2219,15 @@ items:
       - ""
       - "§7Obtained in §fYear 500§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: f58cd2750884471c0836343343ec6e188229da054ef3671013ae8d43d6b02548
   - id: EPOCH_CAKE_PINK
     material: player_head
     name: "Crab-Colored Century Cake"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2237,14 +2241,15 @@ items:
       - ""
       - "§7Obtained in §fYear 500§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 21185676416653bf70603c723ff7a48e080db649a8ce5d65b461bf654874935a
   - id: EPOCH_CAKE_PURPLE
     material: player_head
     name: "Streamer's Century Cake"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2258,14 +2263,15 @@ items:
       - ""
       - "§7Obtained in §fYear 500§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 25d9243c61e2c3e1e0f9931843cadbd0dff4a646225ef54c557979cf39bb2057
   - id: EPOCH_CAKE_RED
     material: player_head
     name: "Fruit Century Cake"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2279,14 +2285,15 @@ items:
       - ""
       - "§7Obtained in §fYear 100§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 50f144fd4d7c89e03f35d7efe41d39783968235916a009e4d0f882ec2c8e6eb7
   - id: EPOCH_CAKE_SEVEN_SEAS
     material: player_head
     name: "Century Cake of the Seven Seas"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2300,14 +2307,15 @@ items:
       - ""
       - "§7Obtained in §fYear 500§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 63d220f235f284fcc5fdc45ddd9f97d66604da2a6ad41ab894a63fde8b7e4995
   - id: EPOCH_CAKE_SILVER
     material: player_head
     name: "Corpse-Flavored Century Cake"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2321,14 +2329,15 @@ items:
       - ""
       - "§7Obtained in §fYear 500§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 498c88dafe133e797f2994acc053b3926e9291d0b7093598b39d272c7c94a366
   - id: EPOCH_CAKE_STARBORN
     material: player_head
     name: "Starborn Century Cake"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2342,14 +2351,15 @@ items:
       - ""
       - "§7Obtained in §fYear 500§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: f0939cc98cee20d84889ca0dcbc83e35df70c3c98245bf2e6e6f6a3ad284cc7e
   - id: EPOCH_CAKE_WHITE
     material: player_head
     name: "Cloudy Century Cake"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2363,14 +2373,15 @@ items:
       - ""
       - "§7Obtained in §fYear 100§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: ba0a5b510a8d824ff4910ca5b2698aa3d030f837810e8d7f0bbca8cf06ce2023
   - id: EPOCH_CAKE_YELLOW
     material: player_head
     name: "Potato-Style Century Cake"
     rarity: UNCOMMON
-    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
-    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    source: "Raffle of the Century (minor reward, Big One consolation, Cake Slice feeding), Simon during the Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
@@ -2384,6 +2395,8 @@ items:
       - ""
       - "§7Obtained in §fYear 500§7."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: e25588999b674b399a1980a25d9ca323639d033e3f85040c1de7ffb428bca095
   - id: ETHEREAL_VINE

@@ -1,5 +1,5 @@
 # Placeable furniture. Keyed by catalogue item id.
-# carpentry: Carpentry level needed to place and craft. interaction: NONE SIT BED TOGGLE MINION_CHAIR CRAFTING ENCHANTING ANVIL CARPENTRY HOLOGRAM STORAGE FURNACE. storage_pages: pages of 45 slots for STORAGE.
+# carpentry: Carpentry level needed to place and craft. interaction: NONE SIT BED TOGGLE MINION_CHAIR CRAFTING ENCHANTING ANVIL CARPENTRY HOLOGRAM STORAGE FURNACE TREE CENTURY_CAKE CAKE_COUNTER. storage_pages: pages of 45 slots for STORAGE.
 # scale: head display scale (1.0 = one block). width/height: click hitbox. seats: riders for SIT. recipe: Carpentry Table ingredients.
 furniture:
   SPOOKY_TREE:
@@ -1290,3 +1290,129 @@ furniture:
     scale: 1.0
     width: 1.0
     height: 1.0
+  EPOCH_CAKE_PINK:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_GREEN:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_RED:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_YELLOW:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_AQUA:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_BLUE:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_BLACK:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_ORANGE:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_PURPLE:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_BROWN:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_WHITE:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_CYAN:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_DARK_GREEN:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_GRAY:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_MAGENTA:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_SILVER:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_SEVEN_SEAS:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_STARBORN:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_EXPIRED:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  EPOCH_CAKE_HEPHAESTUS:
+    carpentry: 0
+    interaction: CENTURY_CAKE
+    scale: 0.8
+    width: 0.8
+    height: 0.6
+  CAKE_COUNTER:
+    carpentry: 0
+    interaction: CAKE_COUNTER
+    scale: 0.8
+    width: 0.8
+    height: 0.6

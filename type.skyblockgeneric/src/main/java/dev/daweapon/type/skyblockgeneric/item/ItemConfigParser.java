@@ -473,6 +473,7 @@ public class ItemConfigParser {
 				case "NOT_FINISHED_YET" -> new NotFinishedYetComponent();
 				case "BAZAAR_PLACEHOLDER" -> new BazaarPlaceholderComponent();
 				case "NEW_YEAR_CAKE" -> new NewYearCakeComponent();
+				case "CAKE_SOUL" -> new CakeSoulComponent();
 				case "LORE_UPDATE" -> {
 					boolean isAbsolute = safeConfig.getBoolean("is_absolute", false);
 					String handlerId = safeConfig.getString("handler_id", "");

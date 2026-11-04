@@ -2596,8 +2596,7 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 26§c."
-    unavailable: "Shriveled Wasp not built"
-    source: "Crafted (Spider Slayer 8): 4 Shriveled Wasp + 64 Enchanted Eye of Ender; or Raffle of the Century"
+    source: "Crafted (Spider Slayer 8): 4 Shriveled Wasp + 64 Enchanted Eye of Ender (not built); or a medium Raffle of the Century reward"
     components:
       - id: REFORGE_STONE
         reforge: bloodshot

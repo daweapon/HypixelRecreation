@@ -3,7 +3,10 @@ package dev.daweapon.type.dwarvenmines.npcs;
 import net.minestom.server.coordinate.Pos;
 
 public class NPCThondin extends AbstractCultMember {
+	private static final String TEXTURE = "ewogICJ0aW1lc3RhbXAiIDogMTcxMzUyNzMyOTM4MSwKICAicHJvZmlsZUlkIiA6ICJkNWQ5NzUxOTNjMTM0MzAyYTU5MjRmODQ0NWQ4YzAwNCIsCiAgInByb2ZpbGVOYW1lIiA6ICJzYWludGVkbGl0dGxlIiwKICAic2lnbmF0dXJlUmVxdWlyZWQiIDogdHJ1ZSwKICAidGV4dHVyZXMiIDogewogICAgIlNLSU4iIDogewogICAgICAidXJsIiA6ICJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzIxM2NmMGNhNzlhMzYxMWI4ZTA1ZmU5ZTI2NGZiMmJmOGQyN2U0NjRkYzEyZGM2ZTk1ZGQwYWUwYzMzNWE1NjEiCiAgICB9CiAgfQp9";
+	private static final String SIGNATURE = "luv7hSiy/NuXPrmnUet9OfLYDdueH8VYWjo6oGodBK4sGgHALRVrcRlFDsMjF2ZZ5I1txMZzuTWkkCsCD0+BdfPhP4M5q5hjpzqaJbdneOnHons/mFg2/i5wHXgUS5HBEsQWsMG9xgad+uo0Zt+C4Kn0kZdk4MHQP/x1ZJlTnFli24Fm/TxHYJ1V1Jr7U99lMjY1Wd9uKMZRakiAXwaKUVwFjulI2Qv5wd1YAI/LTGJ6R0mJfooQL0k2iYpi9ojPFbLsFS/V7jBSEdKlGUqgkrsVKM3KIcEZVDcUs4JrRPVbX4hjd291A+D2iklkmEWGLws8IyTKW3x+Gir2EVXtQsVf+Q50sJ59tBGiS91R3izaL3CM08hOsu7+tkGanQkHryiLfdaMjHUIZIGnC0ngsCMGb4yH5r0fIcEfzfqxWp1Rd132X7KndII0vmPA3IIjIKZ5MOUW0pnSesI3m3i9J3900CW6FlEtqkiXHaysSCtTtq3weDMv0kXST/LpwL7a1PN8q6sI1uf/ri8FF+qH02RevRW5/YVgRG1EorRlgzB7nVZ+ee6F6kSYhlEFlUpT0v67+oU0dXTWZgBey1TxLWTWd0BqdfyGoSb3MsvCpXNDRVJVgba6oZIFOvfAKq14htgP1CyDKLU95I714+lh7tLrnuY321jpe5MPMNISQNk=";
+
 	public NPCThondin() {
-		super("Thondin", new Pos(-47.0, 192, 47.0, 0, 0));
+		super("Thondin", new Pos(-47.0, 192, 47.0, 0, 0), TEXTURE, SIGNATURE, false);
 	}
 }

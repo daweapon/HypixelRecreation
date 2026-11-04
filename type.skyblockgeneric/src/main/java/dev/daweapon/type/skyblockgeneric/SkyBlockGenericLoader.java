@@ -191,6 +191,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookIngredients.initialize();
         dev.daweapon.type.skyblockgeneric.user.island.furniture.TreeService.initialize();
         dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookAnnouncer.initialize();
+        dev.daweapon.type.skyblockgeneric.century.raffle.CenturyRaffle.initialize();
         dev.daweapon.type.skyblockgeneric.technoblade.TechnobladeShrine.initialize();
         dev.daweapon.type.skyblockgeneric.technoblade.ThunderSpawner.initialize();
         dev.daweapon.type.skyblockgeneric.dante.DanteHubBiome.initialize();

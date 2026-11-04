@@ -3,7 +3,10 @@ package dev.daweapon.type.dwarvenmines.npcs;
 import net.minestom.server.coordinate.Pos;
 
 public class NPCDalir extends AbstractCultMember {
+	private static final String TEXTURE = "ewogICJ0aW1lc3RhbXAiIDogMTYxMzQzMzMwODQzNSwKICAicHJvZmlsZUlkIiA6ICI3MzgyZGRmYmU0ODU0NTVjODI1ZjkwMGY4OGZkMzJmOCIsCiAgInByb2ZpbGVOYW1lIiA6ICJJb3lhbCIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS81N2IzNTUyYzVhZjJhYjJkYzRlMWY4NGQ3OGNhNGM0ZDY3NmRlYzA2ODE1NzIyNWEzYzI2NzRlNTU3NGQyMzQ4IgogICAgfQogIH0KfQ==";
+	private static final String SIGNATURE = "D2yP0lVrOt25j2pJB+zRS6ejf8nkl9Oz0qxMqE14l+lbO5soqgwTAfdeNIEG9qZBFlpEpuUTPqG2cxNmm0WL5uEXXpiG8VaKZhAihjJA3ABO+iKs/74lzsOlFAMMp+XlWK32udQwvpOpztmFfSSEb61x1cGbyrsxpYHLBrBB5E/prBqIb4bn3jC+zGJadKoOinpIT69zYA1zh9EKZq9+aXHDVQOGersfTE9RaS1b19Qe/TKcZTgn6KYoerJ0BDCWI3+s/tkVS1hnzPBbhQr816aciMz2VV6vjWoN6pTijzJJ/XIMot635plxffMpAkYp2WSTCitbVe1Dz+CJJOFC7LO9qOJZU/H9lilu2pJPcj695PTxJOE3S+Ws1SuUaGzzpy2O9pnjrAX1/U/2fgPnI9BX1o0sbmzAsfk1t/Lp4E9Ps0JcFrTBZlOpOtp3TYa7d27F1sMQiP5llvPAuNxRSxAKhMGqXw48ZPm/ayXUNFNA7eNHF/ajR9TPWnuJ72W4bcqDe435+hVP8NLi0lQ0oLVQ+Dl7XU+qsNT83kEX/ADpwZlG7ukNQl71ZZQhFtRxibuwkUEuOaxdHQUmDUFztTMs8Xc8Lj+9cx3/6DtBpyyJuCpwmhDNS55GKkT0KX641v5CxCshUKHMlAbY7DCYLWAvE67SP0pUVVYzuW1S7wM=";
+
 	public NPCDalir() {
-		super("Dalir", new Pos(-44.5, 192, 47.5, 0, 0));
+		super("Dalir", new Pos(-44.5, 192, 47.5, 0, 0), TEXTURE, SIGNATURE, true);
 	}
 }

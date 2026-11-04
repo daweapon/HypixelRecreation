@@ -128,6 +128,9 @@ public class GUICommisions extends HypixelInventoryGUI {
 						commissionData.completeCommission();
 						Commissions.saveCommissionData(player, commissionData);
 						SkyBlockAchievementSync.syncCommissions(player);
+						dev.daweapon.type.skyblockgeneric.century.raffle.CenturyRaffle.progress(player,
+								dev.daweapon.type.skyblockgeneric.century.raffle.RaffleAction.of(
+										dev.daweapon.type.skyblockgeneric.century.raffle.RaffleAction.Trigger.COMMISSION, zone.name()));
 						Commissions.replaceCommissionAt(player, index, zone);
 						new GUICommisions(zone).open(player);
 					}

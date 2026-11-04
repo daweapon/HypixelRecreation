@@ -181,8 +181,7 @@ items:
     material: paper
     name: "Dungeon Chest Key"
     rarity: RARE
-    unavailable: "Needs Dungeons (The Catacombs)"
-    source: "0.6% from Dungeon secrets on Catacombs Floor IV and above; also a minor Raffle of the Century reward"
+    source: "0.6% from Dungeon secrets on Catacombs Floor IV and above (not built); also a minor Raffle of the Century reward"
     lore:
       - "§7Allows you to open an additional"
       - "§7treasure chest at the end of a"

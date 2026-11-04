@@ -711,8 +711,7 @@ items:
     material: player_head
     name: "Cake Slice of the Century"
     rarity: SPECIAL
-    unavailable: "Past event (Raffle of the Century) not built"
-    source: "Reward at the end of the Raffle of the Century for players who joined the Blue team via Rezzus."
+    source: "Claimed from the Raffle Box after a Raffle of the Century that the Blue team won (most tickets in The Big One)"
     components:
       - id: SKULL_HEAD
         texture: d56580a1c103f00e73dc50a68b36beeba5b75d7e518fa78932c2d02ee5d921d7
@@ -728,8 +727,7 @@ items:
     material: player_head
     name: "Cake Slice of the Century"
     rarity: SPECIAL
-    unavailable: "Limited-time event, not obtainable"
-    source: "Reward for Raffle of the Century team (Rezzus); century celebration only"
+    source: "Claimed from the Raffle Box after a Raffle of the Century that the Green team won (most tickets in The Big One)"
     components:
       - id: SKULL_HEAD
         texture: e95728a05ace54ea27bd467fb7130f02ff397a2936828468aef806cdeeffd4a5
@@ -745,8 +743,7 @@ items:
     material: player_head
     name: "Cake Slice of the Century"
     rarity: SPECIAL
-    unavailable: "Century Celebration event not built"
-    source: "Reward for joining a team via Rezzus and finishing the Raffle of the Century; only during century celebrations"
+    source: "Claimed from the Raffle Box after a Raffle of the Century that the Pink team won (most tickets in The Big One)"
     components:
       - id: SKULL_HEAD
         texture: a6a3488d50d465cc3e0f9b0bdd2ee7f50e1002fec140e0a1ab5f4f18e19979cb
@@ -762,8 +759,7 @@ items:
     material: player_head
     name: "Cake Slice of the Century"
     rarity: SPECIAL
-    unavailable: "Needs Century Celebration event"
-    source: "Received at the end of the Raffle of the Century (century celebrations only, after joining a team via Rezzus)."
+    source: "Claimed from the Raffle Box after a Raffle of the Century that the Red team won (most tickets in The Big One)"
     components:
       - id: SKULL_HEAD
         texture: ac5d1ee2f8b53a079436d94d17d0d08ef5563bcbefdba8e2a456199367c10fb0
@@ -779,8 +775,7 @@ items:
     material: player_head
     name: "Cake Slice of the Century"
     rarity: SPECIAL
-    unavailable: "Past event (Raffle of the Century) not built"
-    source: "Reward at the end of the Raffle of the Century for players who joined the Yellow team via Rezzus."
+    source: "Claimed from the Raffle Box after a Raffle of the Century that the Yellow team won (most tickets in The Big One)"
     components:
       - id: SKULL_HEAD
         texture: b58c047878f5c6c93544095f748f96e7ade44fad57438148a0a1bb55eece69

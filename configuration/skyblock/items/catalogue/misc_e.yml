@@ -451,7 +451,6 @@ items:
     material: player_head
     name: "RNG Juice"
     rarity: UNCOMMON
-    unavailable: "Only obtainable during century celebrations (Raffle of the Century), which are not built"
     source: "Raffle of the Century minor reward or Gift Bag of the Century"
     lore:
       - "§8Consumable"
@@ -1564,7 +1563,7 @@ items:
     material: player_head
     name: "Shattered Locket"
     rarity: LEGENDARY
-    source: "Vanguard Corpse in Glacite Mineshafts: 0.921% per corpse (the Raffle of the Century is not built)"
+    source: "Vanguard Corpse in Glacite Mineshafts: 0.921% per corpse, or a major Raffle of the Century reward"
     lore:
       - "§7A dainty piece of jewelry covered in"
       - "§7a thick coat of glacite. The frosty"
@@ -2008,7 +2007,6 @@ items:
     material: player_head
     name: "Skeleton Keychain"
     rarity: LEGENDARY
-    unavailable: "Only obtainable during century celebrations (Raffle of the Century), which are not built"
     source: "Raffle of the Century major reward"
     lore:
       - "§8Consumable"
@@ -2682,8 +2680,7 @@ items:
     material: player_head
     name: "Slice of Blueberry Cake"
     rarity: SPECIAL
-    unavailable: "Only obtainable during century celebrations (Raffle of the Century), which are not built"
-    source: "Daily Quests, Raffle Milestones and compensation during the Raffle of the Century"
+    source: "Raffle Tasks, Raffle Milestones and Speed/Daily Raffle consolation prizes during the Raffle of the Century"
     lore:
       - "§7Right-Click on a player on the §9§lBLUE"
       - "§7team while holding this item to feed it"
@@ -2702,8 +2699,7 @@ items:
     material: player_head
     name: "Slice of Lemon Cheesecake"
     rarity: SPECIAL
-    unavailable: "Only obtainable during century celebrations (Raffle of the Century), which are not built"
-    source: "Daily Quests, Raffle Milestones and compensation during the Raffle of the Century"
+    source: "Raffle Tasks, Raffle Milestones and Speed/Daily Raffle consolation prizes during the Raffle of the Century"
     lore:
       - "§7Right-Click on a player on the"
       - "§e§lYELLOW§7 team while holding this item"
@@ -2722,8 +2718,7 @@ items:
     material: player_head
     name: "Slice of Matcha Cake"
     rarity: SPECIAL
-    unavailable: "Only obtainable during century celebrations (Raffle of the Century), which are not built"
-    source: "Daily Quests, Raffle Milestones and compensation during the Raffle of the Century"
+    source: "Raffle Tasks, Raffle Milestones and Speed/Daily Raffle consolation prizes during the Raffle of the Century"
     lore:
       - "§7Right-Click on a player on the"
       - "§a§lGREEN§7 team while holding this item to"
@@ -2742,8 +2737,7 @@ items:
     material: player_head
     name: "Slice of Red Velvet Cake"
     rarity: SPECIAL
-    unavailable: "Only obtainable during century celebrations (Raffle of the Century), which are not built"
-    source: "Daily Quests, Raffle Milestones and compensation during the Raffle of the Century"
+    source: "Raffle Tasks, Raffle Milestones and Speed/Daily Raffle consolation prizes during the Raffle of the Century"
     lore:
       - "§7Right-Click on a player on the §c§lRED"
       - "§7team while holding this item to feed it"
@@ -2762,8 +2756,7 @@ items:
     material: player_head
     name: "Slice of Strawberry Shortcake"
     rarity: SPECIAL
-    unavailable: "Only obtainable during century celebrations (Raffle of the Century), which are not built"
-    source: "Daily Quests, Raffle Milestones and compensation during the Raffle of the Century"
+    source: "Raffle Tasks, Raffle Milestones and Speed/Daily Raffle consolation prizes during the Raffle of the Century"
     lore:
       - "§7Right-Click on a player on the §d§lPINK"
       - "§7team while holding this item to feed it"

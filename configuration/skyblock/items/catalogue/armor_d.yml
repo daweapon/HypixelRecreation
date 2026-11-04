@@ -3520,7 +3520,7 @@ items:
       health: 300
       defense: 100
       sea_creature_chance: 2
-    source: "Dropped by Wiki Tiki (0.1%) or won in the Raffle of the Century"
+    source: "Dropped by Wiki Tiki (0.1%) or a medium Raffle of the Century reward"
     lore:
       - "§7Grants buffs when fishing in a"
       - "§dFishing Hotspot§7."
