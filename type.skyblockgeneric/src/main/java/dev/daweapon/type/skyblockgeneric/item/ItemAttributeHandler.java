@@ -491,6 +491,14 @@ public class ItemAttributeHandler {
         ((ItemAttributeJyrreAge) item.getAttribute("jyrre_age_minutes")).setValue(minutes);
     }
 
+    public long getTrapperCrestPelts() {
+        return ((ItemAttributeTrapperCrestPelts) item.getAttribute("trapper_crest_pelts")).getValue();
+    }
+
+    public void setTrapperCrestPelts(long pelts) {
+        ((ItemAttributeTrapperCrestPelts) item.getAttribute("trapper_crest_pelts")).setValue(pelts);
+    }
+
     public int getThunderCharge() {
         return ((ItemAttributeThunderCharge) item.getAttribute("thunder_charge")).getValue();
     }
