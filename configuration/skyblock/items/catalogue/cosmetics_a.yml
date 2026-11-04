@@ -553,7 +553,6 @@ items:
     material: player_head
     name: "Ender Knight Skin"
     rarity: MYTHIC
-    unavailable: "Animated skin; animated head textures are not supported yet (sold in Taylor / Fire Sale store content)"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -972,7 +971,6 @@ items:
     material: player_head
     name: "Holy Drake Skin"
     rarity: MYTHIC
-    unavailable: "Animated skin; animated head textures are not supported yet (sold in Taylor / Fire Sale store content)"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1194,7 +1192,6 @@ items:
     material: player_head
     name: "Old Drake Skin"
     rarity: MYTHIC
-    unavailable: "Animated skin; animated head textures are not supported yet (sold in Taylor / Fire Sale store content)"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1373,7 +1370,6 @@ items:
     material: player_head
     name: "Protector Drake Skin"
     rarity: MYTHIC
-    unavailable: "Animated skin; animated head textures are not supported yet (sold in Taylor / Fire Sale store content)"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1665,7 +1661,6 @@ items:
     material: player_head
     name: "Strong Drake Skin"
     rarity: MYTHIC
-    unavailable: "Animated skin; animated head textures are not supported yet (sold in Taylor / Fire Sale store content)"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1690,7 +1685,6 @@ items:
     material: player_head
     name: "Superior Drake Skin"
     rarity: MYTHIC
-    unavailable: "Animated skin; animated head textures are not supported yet (sold in Taylor / Fire Sale store content)"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1836,7 +1830,6 @@ items:
     material: player_head
     name: "Unstable Drake Skin"
     rarity: MYTHIC
-    unavailable: "Animated skin; animated head textures are not supported yet (sold in Taylor / Fire Sale store content)"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1923,7 +1916,6 @@ items:
     material: player_head
     name: "Wise Drake Skin"
     rarity: MYTHIC
-    unavailable: "Animated skin; animated head textures are not supported yet (sold in Taylor / Fire Sale store content)"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1999,7 +1991,6 @@ items:
     material: player_head
     name: "Young Drake Skin"
     rarity: MYTHIC
-    unavailable: "Animated skin; animated head textures are not supported yet (sold in Taylor / Fire Sale store content)"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"

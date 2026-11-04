@@ -216,7 +216,6 @@ items:
     material: player_head
     name: "Jester Bonzo's Mask Skin"
     rarity: MYTHIC
-    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -866,7 +865,6 @@ items:
     material: player_head
     name: "Celestial Goldor's Helmet Skin"
     rarity: MYTHIC
-    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1084,7 +1082,6 @@ items:
     material: player_head
     name: "Celestial Maxor's Helmet Skin"
     rarity: MYTHIC
-    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1143,7 +1140,6 @@ items:
     material: player_head
     name: "Celestial Necron's Helmet Skin"
     rarity: MYTHIC
-    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1602,7 +1598,6 @@ items:
     material: player_head
     name: "Celestial Storm's Helmet Skin"
     rarity: MYTHIC
-    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1648,7 +1643,6 @@ items:
     material: player_head
     name: "Shimmer Skin"
     rarity: MYTHIC
-    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1856,7 +1850,6 @@ items:
     material: player_head
     name: "Celestial Wither Goggles Skin"
     rarity: MYTHIC
-    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1899,7 +1892,6 @@ items:
     material: player_head
     name: "Shimmer Skin"
     rarity: MYTHIC
-    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
       - "§7Item skins give your gear a fresh"

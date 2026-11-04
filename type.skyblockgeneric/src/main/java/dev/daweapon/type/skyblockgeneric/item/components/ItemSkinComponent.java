@@ -7,6 +7,7 @@ import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItemComponent;
 import dev.daweapon.type.skyblockgeneric.item.handlers.anvilcombine.AnvilCombineHandler;
 import dev.daweapon.type.skyblockgeneric.item.handlers.anvilcombine.AnvilCombineRegistry;
+import dev.daweapon.type.skyblockgeneric.user.pets.AnimatedSkins;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -39,7 +40,7 @@ public class ItemSkinComponent extends SkyBlockItemComponent {
 
     public boolean canApplyTo(SkyBlockItem target) {
         ItemType type = target.getAttributeHandler().getPotentialType();
-        if (animated || type == null || !targets.contains(type.name())) return false;
+        if (animated && !AnimatedSkins.isSupported(skinId) || type == null || !targets.contains(type.name())) return false;
         ItemType current = target.getAttributeHandler().getItemSkin();
         return current == null || !current.name().equals(skinId);
     }

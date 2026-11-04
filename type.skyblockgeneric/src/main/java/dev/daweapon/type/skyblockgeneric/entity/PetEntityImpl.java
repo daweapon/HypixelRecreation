@@ -20,6 +20,7 @@ import dev.daweapon.type.generic.utility.MathUtility;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.components.PetComponent;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.type.skyblockgeneric.user.pets.AnimatedSkins;
 import dev.daweapon.type.skyblockgeneric.user.pets.PetLevels;
 import org.jetbrains.annotations.NotNull;
 
@@ -29,8 +30,11 @@ public class PetEntityImpl extends LivingEntity {
     private final String url;
     private final SkyBlockPlayer player;
     private final Particle particle;
+    private final AnimatedSkins.Animation animation;
     private Task upAndDownTask;
     private Task moveTowardsPlayer;
+    private Task animationTask;
+    private int frame;
     @Getter
     private float yLevel = 0f;
     @Getter
@@ -45,6 +49,8 @@ public class PetEntityImpl extends LivingEntity {
         this.player = player;
         this.url = url;
         this.particle = pet.getComponent(PetComponent.class).getParticleId();
+        var skin = pet.getAttributeHandler().getPetSkin();
+        this.animation = skin == null ? null : AnimatedSkins.get(skin.name());
 
         var attributeHandler = pet.getAttributeHandler();
         var rarity = attributeHandler.getRarity();
@@ -106,6 +112,7 @@ public class PetEntityImpl extends LivingEntity {
         getEntityMeta().setCustomNameVisible(true);
 
         setHelmet(ItemStacks.head(url, "").build());
+        if (animation != null) startAnimation();
 
         upAndDownTask = MinecraftServer.getSchedulerManager().scheduleTask(() -> {
             if (isDead() || !player.isOnline()) {
@@ -157,5 +164,16 @@ public class PetEntityImpl extends LivingEntity {
                 teleport(location.add(player.getPosition().add(0, 1.5, 0).sub(getPosition()).asVec().normalize().mul(0.7)));
             }
         }, TaskSchedule.tick(5), TaskSchedule.tick(3));
+    }
+
+    private void startAnimation() {
+        animationTask = MinecraftServer.getSchedulerManager().scheduleTask(() -> {
+            if (isDead() || !player.isOnline()) {
+                animationTask.cancel();
+                return;
+            }
+            frame = (frame + 1) % animation.heads().size();
+            setHelmet(animation.heads().get(frame));
+        }, TaskSchedule.tick(animation.ticks()), TaskSchedule.tick(animation.ticks()));
     }
 }
