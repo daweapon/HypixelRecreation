@@ -20,7 +20,8 @@ import java.util.List;
 
 public final class BloodGodCrest {
     public static final String HANDLER = "BLOOD_GOD_CREST";
-    public static final int MAX_STRENGTH = 7;
+    public static final int MAX_DIGITS = 7;
+    public static final int SIGIL_STRENGTH_PER_DIGIT = 2;
     private static final String ATTRIBUTE = "crest_kills";
     private static final int MAX_BAG_SLOTS = 400;
 
@@ -33,7 +34,11 @@ public final class BloodGodCrest {
 
     public static int strengthFor(long kills) {
         if (kills <= 0) return 0;
-        return Math.min(MAX_STRENGTH, Long.toString(kills).length());
+        return Math.min(MAX_DIGITS, Long.toString(kills).length());
+    }
+
+    public static int strengthFor(ItemType type, long kills) {
+        return strengthFor(kills) * (type == ItemType.BLOOD_GOD_SIGIL ? SIGIL_STRENGTH_PER_DIGIT : 1);
     }
 
     public static long kills(SkyBlockItem item) {
@@ -46,12 +51,16 @@ public final class BloodGodCrest {
     }
 
     private static boolean isCrest(SkyBlockItem item) {
-        return !item.isAir() && !item.isNA() && item.getAttributeHandler().getPotentialType() == ItemType.BLOOD_GOD_CREST;
+        return !item.isAir() && !item.isNA() && isCrestType(item.getAttributeHandler().getPotentialType());
+    }
+
+    private static boolean isCrestType(ItemType type) {
+        return type == ItemType.BLOOD_GOD_CREST || type == ItemType.BLOOD_GOD_SIGIL;
     }
 
     public static ItemStatistics statistics(SkyBlockItem item) {
         if (!isCrest(item)) return ItemStatistics.empty();
-        int strength = strengthFor(kills(item));
+        int strength = strengthFor(item.getAttributeHandler().getPotentialType(), kills(item));
         if (strength == 0) return ItemStatistics.empty();
         return ItemStatistics.builder().withBase(ItemStatistic.STRENGTH, (double) strength).build();
     }
@@ -63,7 +72,7 @@ public final class BloodGodCrest {
 
     public static void onKill(SkyBlockPlayer player) {
         for (OwnedAccessory owned : AccessoryOwnership.active(player)) {
-            if (owned.type() != ItemType.BLOOD_GOD_CREST) continue;
+            if (!isCrestType(owned.type())) continue;
             if (owned.inBag() ? countInBag(player) : countInInventory(player)) AccessoryOwnership.invalidate(player);
             return;
         }

@@ -8,6 +8,7 @@ import dev.daweapon.type.skyblockgeneric.elections.SkyBlockMayor;
 import dev.daweapon.type.skyblockgeneric.elections.perks.ElectionPerks;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.type.skyblockgeneric.user.playtime.ProfilePlaytime;
 
 import java.util.Collection;
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class DanteAccess {
     public static final long HAPPY_MASK_PRICE = 100;
     public static final long TALISMAN_PRICE = 1_000_000;
+    public static final int NEWCOMER_PLAYTIME_HOURS = 8;
 
     private static final long CACHE_MILLIS = 1500;
     private static final Set<ItemType> PASS_ACCESSORIES = Set.of(ItemType.DANTE_TALISMAN, ItemType.DANTE_RING);
@@ -46,13 +48,18 @@ public final class DanteAccess {
         long now = System.currentTimeMillis();
         Cached cached = CACHE.get(player.getUuid());
         if (cached != null && now - cached.at() < CACHE_MILLIS) return cached.allowed();
-        boolean allowed = grants(wearsMask(player), accessoryTypes(player), coopMemberHasTalisman(player));
+        boolean allowed = isNewcomer(player)
+                || grants(wearsMask(player), accessoryTypes(player), coopMemberHasTalisman(player));
         CACHE.put(player.getUuid(), new Cached(allowed, now));
         return allowed;
     }
 
     public static void forget(SkyBlockPlayer player) {
         CACHE.remove(player.getUuid());
+    }
+
+    public static boolean isNewcomer(SkyBlockPlayer player) {
+        return !ProfilePlaytime.atLeastHours(player, NEWCOMER_PLAYTIME_HOURS);
     }
 
     private static boolean wearsMask(SkyBlockPlayer player) {

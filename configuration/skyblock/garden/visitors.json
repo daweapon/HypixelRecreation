@@ -3610,22 +3610,30 @@
         "z": -55
       },
       "desire": {
-        "mode": "UNKNOWN",
-        "families": [],
+        "mode": "ONE_FAMILY",
+        "families": [
+          "PUMPKIN"
+        ],
         "count": null,
         "items": []
       },
       "rewards": [],
       "dialogue": {
-        "offer": [],
-        "accept": [],
-        "decline": []
+        "offer": [
+          "There is no time to explain. I need Pumpkins, fast."
+        ],
+        "accept": [
+          "With this, there is a chance."
+        ],
+        "decline": [
+          "A fate worse than death itself will befall us now."
+        ]
       },
-      "available": false,
-      "unavailableReason": "Great Spook event is not built",
+      "available": true,
+      "unavailableReason": null,
       "requirementChecks": [],
       "verified": false,
-      "notes": "wanted items not on wiki list (InfoNeeded/blank on Georik); desire unknown"
+      "notes": "wiki Visitors table: wants Pumpkin, only visits during The Great Spook"
     },
     {
       "id": "CLERK_SERAPHINE",
@@ -4399,8 +4407,10 @@
         "z": 150
       },
       "desire": {
-        "mode": "UNKNOWN",
-        "families": [],
+        "mode": "ONE_FAMILY",
+        "families": [
+          "PUMPKIN"
+        ],
         "count": null,
         "items": []
       },
@@ -4423,11 +4433,11 @@
         ],
         "decline": []
       },
-      "available": false,
-      "unavailableReason": "Great Spook event is not built",
+      "available": true,
+      "unavailableReason": null,
       "requirementChecks": [],
       "verified": false,
-      "notes": "wanted items not on wiki list (InfoNeeded/blank on Georik); desire unknown"
+      "notes": "wiki Visitors table: wants Pumpkin, only visits during The Great Spook"
     },
     {
       "id": "BANKER_BROADJAW",
@@ -4985,8 +4995,8 @@
           "Tough love, but maybe you're right. They're only nightmares, right? Not real. Heh."
         ]
       },
-      "available": false,
-      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Bednom",
+      "available": true,
+      "unavailableReason": null,
       "requirementChecks": [],
       "verified": true,
       "notes": null

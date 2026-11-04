@@ -47,7 +47,7 @@ public final class AnitaShop {
     public static final int UPGRADE_TIER_XP = 10;
 
     public static final List<Offer> OFFERS = List.of(
-            Offer.unavailable("InfiniDirt™ Wand", "<a>", Material.STICK, 1, new MedalCost(0, 0, 0, 1), FARMING_TOOLS),
+            Offer.item(ItemType.INFINIDIRT_WAND, new MedalCost(0, 0, 0, 1), null),
             Offer.unavailable("Prismapump", "<9>", Material.PRISMARINE, 4, MedalCost.bronze(1, 2), FARMING_TOOLS),
             Offer.unavailable("Hoe of Great Tilling", "<a>", Material.STONE_HOE, 1, MedalCost.bronze(1, 5), FARMING_TOOLS),
             Offer.unavailable("Hoe of Greater Tilling", "<9>", Material.IRON_HOE, 1, MedalCost.silver(1, 10), FARMING_TOOLS),

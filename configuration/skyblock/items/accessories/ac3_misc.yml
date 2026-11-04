@@ -141,16 +141,17 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Kill counter"
+          - type: HANDLER
+            handler: BLOOD_GOD_CREST
             text:
               - "Tracks a counter for each mob"
               - "killed while worn."
               - ""
               - "Gain <c>+2 Strength <7>for each digit"
               - "on the counter. <8>(Max 7)"
-              - ""
-              - "Counter: <c>None yet!"
+      - id: LORE_UPDATE
+        handler_id: BLOOD_GOD_CREST
+        is_absolute: false
       - id: SKULL_HEAD
         texture: fb3f340828cdcaf4502e79d0f4fc6da438be966ac2fd6bc7b972bb71be5b93b1
       - id: DEFAULT_CRAFTABLE

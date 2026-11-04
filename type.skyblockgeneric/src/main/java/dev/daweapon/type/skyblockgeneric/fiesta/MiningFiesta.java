@@ -3,6 +3,8 @@ package dev.daweapon.type.skyblockgeneric.fiesta;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.type.generic.HypixelConst;
+import dev.daweapon.type.skyblockgeneric.calendar.CalendarEvent;
+import dev.daweapon.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import dev.daweapon.type.skyblockgeneric.carnival.CarnivalPerk;
 import dev.daweapon.type.skyblockgeneric.carnival.Carnivals;
 import dev.daweapon.type.skyblockgeneric.elections.SkyBlockMayor;
@@ -24,7 +26,8 @@ public final class MiningFiesta {
     }
 
     public static boolean isActive() {
-        return ElectionPerks.isActive(SkyBlockMayor.Perk.MINING_FIESTA);
+        return ElectionPerks.isActive(SkyBlockMayor.Perk.MINING_FIESTA)
+                || SkyBlockCalendar.getCurrentEvents().contains(CalendarEvent.MINING_FIESTA);
     }
 
     public static boolean appliesTo(SkyBlockPlayer player) {

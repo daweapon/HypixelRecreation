@@ -117,6 +117,7 @@ public final class VisitorService {
     }
 
     private static boolean eventVisitorReady(@Nullable SkyBlockPlayer player, VisitorCatalogue.Visitor visitor) {
+        if ("GREAT_SPOOK".equals(visitor.event())) return dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookEvent.isActive();
         if (!"HOPPITYS_HUNT".equals(visitor.event()) || player == null) return false;
         return HuntEggSchedule.isHuntActive(SkyBlockCalendar.getElapsed())
                 && ChocolateFactoryHelper.getData(player).getFactoryLevel() >= HOPPITY_VISITOR_FACTORY_LEVEL

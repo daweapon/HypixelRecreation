@@ -6,6 +6,7 @@ import dev.daweapon.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.type.skyblockgeneric.user.playtime.ProfilePlaytime;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.timer.TaskSchedule;
 
@@ -14,6 +15,7 @@ import java.util.function.Consumer;
 
 public final class TyashoiService {
     public static final int COMBAT_REQUIREMENT = 10;
+    public static final int PLAYTIME_HOURS_REQUIREMENT = 10;
     public static final String SPEAKER = "<e>[NPC] <5>Tyashoi Alchemist<f>: ";
     private static final int LINE_DELAY_TICKS = 24;
 
@@ -41,7 +43,8 @@ public final class TyashoiService {
     }
 
     public static boolean meetsRequirements(SkyBlockPlayer player) {
-        return player.getSkills().getCurrentLevel(SkillCategories.COMBAT) >= COMBAT_REQUIREMENT;
+        return player.getSkills().getCurrentLevel(SkillCategories.COMBAT) >= COMBAT_REQUIREMENT
+                && ProfilePlaytime.atLeastHours(player, PLAYTIME_HOURS_REQUIREMENT);
     }
 
     public static void greet(SkyBlockPlayer player, Consumer<SkyBlockPlayer> menu) {
@@ -116,6 +119,7 @@ public final class TyashoiService {
         TyashoiProgress.claim(player, experiment.id());
         grant(player, experiment);
         player.sendMessage("<a>You bought <5>" + experiment.name() + "<a>!");
+        ObtainCounter.announce(player, experiment.id());
         say(player, experiment.success(), 1);
     }
 

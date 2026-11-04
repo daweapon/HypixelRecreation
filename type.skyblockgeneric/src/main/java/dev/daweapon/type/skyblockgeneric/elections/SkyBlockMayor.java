@@ -117,6 +117,11 @@ public enum SkyBlockMayor {
         return Arrays.stream(values()).filter(m -> m.kind == Kind.SPECIAL).toList();
     }
 
+    public static SkyBlockMayor specialCandidateFor(int year) {
+        List<SkyBlockMayor> rotation = List.of(SCORPIUS, DERPY, JERRY);
+        return rotation.get(Math.floorMod(Math.floorDiv(year, 8), rotation.size()));
+    }
+
     public static List<SkyBlockMayor> getOneTimeMayors() {
         return Arrays.stream(values()).filter(m -> m.kind == Kind.ONE_TIME).toList();
     }
@@ -169,7 +174,7 @@ public enum SkyBlockMayor {
         SWEET_BENEVOLENCE("Sweet Benevolence", "<7>Earn <a>+30% <7>more <5>Candy<7>, <c>Gifts <7>and <6>Chocolate <7>from duplicate Rabbits during their respective events."),
         A_TIME_FOR_GIVING("A Time for Giving", "<7>Spawn <d>Party Chests <7>by killing mobs during the <6>Spooky Festival <7>and collect <b>Party Gifts <7>from <c>Jerry's Workshop<7>."),
         CHIVALROUS_CARNIVAL("Chivalrous Carnival", "<7>Schedules a <e>Carnival <7>in the hub, active throughout the <b>entire year<7>."),
-        EXTRA_EVENT("Extra Event", "<7>Schedules an extra <6>Spooky Festival <7>event during the year."),
+        EXTRA_EVENT("Extra Event", "<7>Schedules an extra event during the year, out of: <6>Spooky Festival<7>, <6>Mining Fiesta<7>, and <b>Fishing Festival<7>."),
 
         FISHING_XP_BUFF("Fishing XP Buff", "<7>Gain <3>+50☯ Fishing Wisdom <7>on public islands."),
         LUCK_OF_THE_SEA("Luck of the Sea 2.0", "<7>Gain <3>15α Sea Creature Chance<7>."),

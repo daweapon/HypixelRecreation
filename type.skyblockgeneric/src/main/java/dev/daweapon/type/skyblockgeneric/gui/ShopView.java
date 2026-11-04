@@ -270,12 +270,16 @@ public abstract class ShopView extends StatefulPaginatedView<ShopView.ShopItem, 
             return;
         }
 
-        if (item.isConfirmPurchase()) {
+        if (item.needsConfirmation(player)) {
             ctx.navigator().push(new ShopConfirmView(), new ShopConfirmView.State(item));
             return;
         }
 
         if (purchase(player, item)) ctx.session(Object.class).refresh();
+    }
+
+    public static boolean shopConfirmationsEnabled(SkyBlockPlayer player) {
+        return player.getToggles().get(dev.daweapon.type.generic.data.datapoints.DatapointToggles.Toggles.ToggleType.RUSTY_PURCHASE_CONFIRMATION);
     }
 
     public static boolean purchase(SkyBlockPlayer player, ShopItem item) {
@@ -373,6 +377,7 @@ public abstract class ShopView extends StatefulPaginatedView<ShopView.ShopItem, 
         private boolean hasStock;
         private Function<SkyBlockPlayer, String> lock = null;
         private boolean confirmPurchase = false;
+        private java.util.function.Predicate<SkyBlockPlayer> confirmWhen = null;
         private Consumer<SkyBlockPlayer> onPurchase = null;
 
         public ShopItem(SkyBlockItem item, int amount, ShopPrice price, boolean stackable) {
@@ -408,6 +413,15 @@ public abstract class ShopView extends StatefulPaginatedView<ShopView.ShopItem, 
         public ShopItem withConfirmation() {
             this.confirmPurchase = true;
             return this;
+        }
+
+        public ShopItem withConfirmationWhen(java.util.function.Predicate<SkyBlockPlayer> condition) {
+            this.confirmWhen = condition;
+            return this;
+        }
+
+        public boolean needsConfirmation(SkyBlockPlayer player) {
+            return confirmPurchase || (confirmWhen != null && confirmWhen.test(player));
         }
 
         public String lockReason(SkyBlockPlayer player) {

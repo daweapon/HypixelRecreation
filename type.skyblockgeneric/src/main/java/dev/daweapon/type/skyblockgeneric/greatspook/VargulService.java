@@ -54,6 +54,7 @@ public final class VargulService {
     }
 
     public static void unearth(SkyBlockPlayer player, Consumer<SkyBlockPlayer> menu) {
+        dev.daweapon.type.skyblockgeneric.garden.visitor.VisitorService.talkedTo(player, "Vargul");
         List<String> lines = script(VargulProgress.recordVisit(player));
         for (int i = 0; i < lines.size(); i++) {
             String line = lines.get(i);

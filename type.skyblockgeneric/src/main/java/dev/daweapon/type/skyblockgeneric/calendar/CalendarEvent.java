@@ -18,6 +18,7 @@ import dev.daweapon.type.skyblockgeneric.elections.perks.ElectionPerks;
 import dev.daweapon.type.skyblockgeneric.farmingcontest.FarmingContest;
 import dev.daweapon.type.skyblockgeneric.farmingcontest.FarmingContests;
 import dev.daweapon.type.skyblockgeneric.fishing.festival.FishingFestival;
+import dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookEvent;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.tinylog.Logger;
 
@@ -51,12 +52,7 @@ public record CalendarEvent(
     private static final Map<Long, List<CalendarEvent>> eventCache = new HashMap<>();
     private static final List<CalendarEvent> allEvents = new ArrayList<>();
 
-    // Foxy's Extra Event schedules a second Spooky Festival on Late Summer 22nd (wiki: Spooky
-    // Festival, "Foxy's Festival Schedule").
-    private static final Map<String, PerkOccurrence> PERK_OCCURRENCES = Map.of(
-        "spooky_festival", new PerkOccurrence(SkyBlockMayor.Perk.EXTRA_EVENT, List.of(5 * MONTH + 21 * DAY)),
-        "fishing_festival", new PerkOccurrence(SkyBlockMayor.Perk.FISHING_FESTIVAL, FishingFestival.startTimesInYear())
-    );
+    private static final long GREAT_SPOOK_FESTIVAL_DAY = 27 * DAY;
 
     public static CalendarEvent NEW_YEAR = new CalendarEvent(
         "new_year",
@@ -324,6 +320,27 @@ public record CalendarEvent(
         (_, _) -> FishingFestival.announceStart()
     );
 
+    public static CalendarEvent MINING_FIESTA = new CalendarEvent(
+        "mining_fiesta",
+        ItemStack.of(Material.IRON_PICKAXE),
+        year -> Text.of("<6>Mining Fiesta"),
+        List.of(
+            Text.of("<7>Mayor Foxy scheduled a"),
+            Text.of("<6>Mining Fiesta<7>! Mine on public"),
+            Text.of("<7>islands for festive rewards.")
+        ),
+        List.of(),
+        Duration.ofMillis(FoxyExtraEvent.MINING_FIESTA_TICKS * 50L),
+        false,
+        (_, _) -> {
+            Text announcement = Text.parseLenient(
+                    "<6><l>MINING FIESTA! <7>Mayor <a>Foxy <7>has scheduled a <6>Mining Fiesta<7>! Mine on public islands for <9>Refined Mineral <7>and <5>Glossy Gemstone<7>!");
+            for (SkyBlockPlayer player : SkyBlockGenericLoader.getLoadedPlayers()) {
+                player.sendMessage(announcement.asComponent());
+            }
+        }
+    );
+
     static {
         registerEvent(NEW_YEAR);
         registerEvent(DARK_AUCTION);
@@ -336,6 +353,7 @@ public record CalendarEvent(
         registerEvent(SEASON_OF_JERRY);
         registerEvent(FARMING_CONTEST);
         registerEvent(FISHING_FESTIVAL);
+        registerEvent(MINING_FIESTA);
     }
 
     @Override
@@ -345,17 +363,39 @@ public record CalendarEvent(
     }
 
     private List<Long> scheduledTimes() {
-        PerkOccurrence extra = PERK_OCCURRENCES.get(id);
-        return extra == null ? times : extra.addTo(times);
+        List<Long> extras = extraTimes();
+        if (extras.isEmpty()) return times;
+        List<Long> combined = new ArrayList<>(times);
+        for (Long time : extras) {
+            if (!combined.contains(time)) combined.add(time);
+        }
+        return combined;
     }
 
-    private record PerkOccurrence(SkyBlockMayor.Perk perk, List<Long> extraTimes) {
-        List<Long> addTo(List<Long> regularTimes) {
-            if (!ElectionPerks.isActive(perk)) return regularTimes;
-            List<Long> combined = new ArrayList<>(regularTimes);
-            combined.addAll(extraTimes);
-            return combined;
-        }
+    private List<Long> extraTimes() {
+        return switch (id) {
+            case "spooky_festival" -> join(FoxyExtraEvent.timesFor(FoxyExtraEvent.Kind.SPOOKY_FESTIVAL), greatSpookFestivalTimes());
+            case "fishing_festival" -> join(marinaFestivalTimes(), FoxyExtraEvent.timesFor(FoxyExtraEvent.Kind.FISHING_FESTIVAL));
+            case "mining_fiesta" -> FoxyExtraEvent.timesFor(FoxyExtraEvent.Kind.MINING_FIESTA);
+            default -> List.of();
+        };
+    }
+
+    private static List<Long> join(List<Long> first, List<Long> second) {
+        List<Long> joined = new ArrayList<>(first);
+        joined.addAll(second);
+        return joined;
+    }
+
+    private static List<Long> marinaFestivalTimes() {
+        return ElectionPerks.isActive(SkyBlockMayor.Perk.FISHING_FESTIVAL) ? FishingFestival.startTimesInYear() : List.of();
+    }
+
+    private static List<Long> greatSpookFestivalTimes() {
+        if (!GreatSpookEvent.isActive()) return List.of();
+        List<Long> times = new ArrayList<>();
+        for (long month = 0; month < 12; month++) times.add(month * MONTH + GREAT_SPOOK_FESTIVAL_DAY);
+        return times;
     }
 
     public Text getDisplayName(int year) {
