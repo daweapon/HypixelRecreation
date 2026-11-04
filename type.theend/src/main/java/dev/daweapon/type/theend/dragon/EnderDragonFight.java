@@ -57,7 +57,6 @@ public final class EnderDragonFight {
     private static Task barTask;
     private static final Set<UUID> barViewers = new HashSet<>();
     private static final int BAR_TICKS = 10;
-    private static int gateStage;
 
     private EnderDragonFight() {
     }
@@ -110,8 +109,9 @@ public final class EnderDragonFight {
         convertSleepingEyes(instance);
         knockPlayersBack(instance);
         spawnCrystals(instance);
-        gateStage = 0;
         startBar(instance, mob);
+        DragonGate.close(instance);
+        DragonMusic.start(instance);
         broadcast(instance, Text.of("<d>The {} has spawned!", variant.displayName()));
     }
 
@@ -174,6 +174,10 @@ public final class EnderDragonFight {
         active = false;
         phase = Phase.EGG_RESPAWN;
         stopBar();
+        if (instance != null) {
+            DragonGate.open(instance);
+            DragonMusic.stop(instance);
+        }
         DragonVariant variant = finished.variant();
         List<Map.Entry<UUID, Double>> ranking = finished.getDamageDealt().entrySet().stream()
                 .sorted(Map.Entry.<UUID, Double>comparingByValue(Comparator.reverseOrder())).toList();
@@ -220,6 +224,7 @@ public final class EnderDragonFight {
             DragonLootSite.drop(mob.getInstance(), player, item);
         }
         Essences.add(player, EssenceType.DRAGON, variant.essenceReward());
+        player.getSkills().increase(player, SkillCategories.RUNECRAFTING, (double) LootQuality.runecraftingXp(rank, damage));
         DragonProgress.recordKill(player, variant);
     }
 
@@ -244,7 +249,8 @@ public final class EnderDragonFight {
                 position = i + 1;
                 own = ranking.get(i).getValue();
             }
-            DragonDownMessage.lines(variant.displayName(), finalBlow, top, position, own, variant.essenceReward())
+            int runecrafting = position > 0 ? LootQuality.runecraftingXp(position, own) : 0;
+            DragonDownMessage.lines(variant.displayName(), finalBlow, top, position, own, variant.essenceReward(), runecrafting)
                     .forEach(line -> viewer.sendMessage(Text.parse(line)));
         }
     }
@@ -280,6 +286,8 @@ public final class EnderDragonFight {
         if (current != null) {
             DragonLootSite.restore(current);
             DragonGlass.restore(current);
+            DragonGate.open(current);
+            DragonMusic.stop(current);
         }
         if (dragon != null) dragon.abandon();
         crystals.forEach(crystal -> {
@@ -306,7 +314,6 @@ public final class EnderDragonFight {
             stopBar();
             return;
         }
-        announceGate(instance, mob);
         float max = mob.getMaxHealth();
         bar.progress(Math.max(0f, Math.min(1f, mob.getHealth() / max)));
         bar.name(Text.of("<c>{}", mob.variant().displayName()).asComponent());
@@ -321,13 +328,6 @@ public final class EnderDragonFight {
             Player gone = MinecraftServer.getConnectionManager().getOnlinePlayerByUuid(uuid);
             if (gone != null) gone.hideBossBar(bar);
         }
-    }
-
-    private static void announceGate(Instance instance, EnderDragonMob mob) {
-        double total = mob.getDamageDealt().values().stream().mapToDouble(Double::doubleValue).sum();
-        String[] messages = DragonGate.messagesFor(gateStage, total);
-        for (String message : messages) broadcast(instance, Text.of("<d><l>{}", message));
-        gateStage += messages.length;
     }
 
     private static void stopBar() {
