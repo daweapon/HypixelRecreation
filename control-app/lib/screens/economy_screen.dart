@@ -4,9 +4,10 @@ import '../api/control_api.dart';
 import '../theme/reactor_theme.dart';
 import '../widgets/admin_kit.dart';
 import '../widgets/chamfer.dart';
+import '../widgets/inflation_view.dart';
 
 /// Read-only economy health: pending Bazaar deliveries, order and auction counts, the purse total
-/// across every profile, and the Dark Auction.
+/// across every profile, the Dark Auction, and the inflation view (coin sources against sinks).
 ///
 /// Constructor: `EconomyScreen(api: controlApi)`.
 class EconomyScreen extends StatefulWidget {
@@ -19,8 +20,10 @@ class EconomyScreen extends StatefulWidget {
 }
 
 class _EconomyScreenState extends State<EconomyScreen> {
+  final GlobalKey<InflationViewState> _inflation = GlobalKey<InflationViewState>();
   EconomySnapshot? _snapshot;
   String? _error;
+  bool _showInflation = false;
 
   @override
   void initState() {
@@ -44,7 +47,34 @@ class _EconomyScreenState extends State<EconomyScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return AdminScaffold(title: 'ECONOMY', onRefresh: () => _load(refresh: true), body: _body());
+    return AdminScaffold(
+      title: 'ECONOMY',
+      onRefresh: () => _showInflation ? _inflation.currentState?.load(refresh: true) : _load(refresh: true),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            children: [
+              _tab('OVERVIEW', !_showInflation, () => setState(() => _showInflation = false)),
+              _tab('INFLATION', _showInflation, () => setState(() => _showInflation = true)),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Expanded(child: _showInflation ? InflationView(key: _inflation, api: widget.api) : _body()),
+        ],
+      ),
+    );
+  }
+
+  Widget _tab(String label, bool selected, VoidCallback onTap) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 8),
+      child: TextButton(
+        onPressed: selected ? null : onTap,
+        child: Text(label,
+            style: ReactorTheme.label(size: 10, spacing: 1.2, color: selected ? ReactorTheme.cyan : ReactorTheme.textSecondary)),
+      ),
+    );
   }
 
   Widget _body() {

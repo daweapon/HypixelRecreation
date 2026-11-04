@@ -35,7 +35,7 @@ import java.util.UUID;
 // scan walks the hsb:* keyspace with SCAN rather than querying Mongo.
 public final class OrphanScan {
     public record Result(Instant scannedAt, int profiles, int accounts, int islands, int coops, double totalCoins,
-                         List<Orphan> orphans) {}
+                         double totalBank, List<Orphan> orphans) {}
 
     static final String ACCOUNT_PREFIX = "hsb:acct:players:";
     static final String PROFILE_PREFIX = "hsb:prof:players:";
@@ -56,7 +56,7 @@ public final class OrphanScan {
         Inputs inputs = collect();
         Result result = new Result(Instant.now(), inputs.profiles().size(), inputs.accounts().size(),
                 inputs.islands().size(), inputs.coops().size(), OrphanClassifier.totalCoins(inputs),
-                OrphanClassifier.classify(inputs));
+                OrphanClassifier.totalBank(inputs), OrphanClassifier.classify(inputs));
         cached = result;
         return result;
     }
@@ -128,10 +128,22 @@ public final class OrphanScan {
         try {
             Document document = Document.parse(String.valueOf(documentJson));
             return new ProfileFacts(profileId, document.getString("_owner"),
-                    unquote(document.get(SkyBlockProfileFields.ISLAND_UUID_KEY)), number(document.get("coins")));
+                    unquote(document.get(SkyBlockProfileFields.ISLAND_UUID_KEY)), number(document.get("coins")),
+                    bankBalance(document.get("bank_data")));
         } catch (Exception e) {
             Logger.warn(e, "Unreadable profile document {}", profileId);
             return new ProfileFacts(profileId, null, null, 0);
+        }
+    }
+
+    static double bankBalance(Object stored) {
+        if (stored == null) return 0;
+        try {
+            Document bank = stored instanceof Document document ? document : Document.parse(String.valueOf(stored));
+            Object amount = bank.get("amount");
+            return amount instanceof Number number ? number.doubleValue() : 0;
+        } catch (Exception e) {
+            return 0;
         }
     }
 

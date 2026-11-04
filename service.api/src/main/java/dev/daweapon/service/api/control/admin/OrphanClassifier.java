@@ -16,7 +16,11 @@ public final class OrphanClassifier {
     public static final String ISLAND = "ISLAND";
     public static final String COOP = "COOP";
 
-    public record ProfileFacts(String profileId, @Nullable String ownerField, @Nullable String islandRef, double coins) {}
+    public record ProfileFacts(String profileId, @Nullable String ownerField, @Nullable String islandRef, double coins, double bank) {
+        public ProfileFacts(String profileId, @Nullable String ownerField, @Nullable String islandRef, double coins) {
+            this(profileId, ownerField, islandRef, coins, 0);
+        }
+    }
 
     public record CoopFacts(String coopId, List<String> memberProfiles) {}
 
@@ -66,5 +70,9 @@ public final class OrphanClassifier {
 
     public static double totalCoins(Inputs inputs) {
         return inputs.profiles().values().stream().mapToDouble(ProfileFacts::coins).sum();
+    }
+
+    public static double totalBank(Inputs inputs) {
+        return inputs.profiles().values().stream().mapToDouble(ProfileFacts::bank).sum();
     }
 }

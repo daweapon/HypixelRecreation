@@ -41,6 +41,13 @@ extension AdminApi on ControlApi {
     return _detail(data);
   }
 
+  Future<InflationReport> fetchInflation({int days = 30, bool refresh = false}) async {
+    final query = {'days': '$days'};
+    if (refresh) query['refresh'] = 'true';
+    final data = await _authedGet('/control/admin/economy/inflation', query);
+    return InflationReport.fromJson(data as Map<String, dynamic>);
+  }
+
   Future<EconomySnapshot> fetchEconomy({bool refresh = false}) async {
     final data = await _authedGet('/control/admin/economy', refresh ? {'refresh': 'true'} : null);
     return EconomySnapshot.fromJson(data as Map<String, dynamic>);
@@ -470,6 +477,124 @@ class EconomySnapshot {
         profilesScanned: _int(json['profilesScanned']),
         coinsScannedAt: DateTime.tryParse(json['coinsScannedAt'] as String? ?? ''),
         darkAuction: DarkAuctionState.fromNullable(json['darkAuction']),
+      );
+}
+
+class InflationDay {
+  final String date;
+  final double minted;
+  final double burned;
+  final double net;
+  final double staff;
+  final double? supply;
+
+  InflationDay({
+    required this.date,
+    required this.minted,
+    required this.burned,
+    required this.net,
+    required this.staff,
+    required this.supply,
+  });
+
+  factory InflationDay.fromJson(Map<String, dynamic> json) => InflationDay(
+        date: json['date'] as String? ?? '',
+        minted: _double(json['minted']),
+        burned: _double(json['burned']),
+        net: _double(json['net']),
+        staff: _double(json['staff']),
+        supply: (json['supply'] as num?)?.toDouble(),
+      );
+}
+
+class FlowLine {
+  final String category;
+  final double amount;
+  final int count;
+  final double share;
+
+  FlowLine({required this.category, required this.amount, required this.count, required this.share});
+
+  factory FlowLine.fromJson(Map<String, dynamic> json) => FlowLine(
+        category: json['category'] as String? ?? '?',
+        amount: _double(json['amount']),
+        count: _int(json['count']),
+        share: _double(json['share']),
+      );
+}
+
+class TransferChannel {
+  final String channel;
+  final double received;
+  final double paid;
+  final double net;
+  final int count;
+
+  TransferChannel({required this.channel, required this.received, required this.paid, required this.net, required this.count});
+
+  factory TransferChannel.fromJson(Map<String, dynamic> json) => TransferChannel(
+        channel: json['channel'] as String? ?? '?',
+        received: _double(json['received']),
+        paid: _double(json['paid']),
+        net: _double(json['net']),
+        count: _int(json['count']),
+      );
+}
+
+class InflationReport {
+  final int days;
+  final double minted;
+  final double burned;
+  final double net;
+  final double staffNet;
+  final double averageDailyNet;
+  final double? supplyNow;
+  final double? supplyAtStart;
+  final double? supplyChangePercent;
+  final double? netAsPercentOfSupply;
+  final double sinkToSourceRatio;
+  final List<InflationDay> daily;
+  final List<FlowLine> sources;
+  final List<FlowLine> sinks;
+  final List<TransferChannel> transfers;
+  final List<FlowLine> staff;
+
+  InflationReport({
+    required this.days,
+    required this.minted,
+    required this.burned,
+    required this.net,
+    required this.staffNet,
+    required this.averageDailyNet,
+    required this.supplyNow,
+    required this.supplyAtStart,
+    required this.supplyChangePercent,
+    required this.netAsPercentOfSupply,
+    required this.sinkToSourceRatio,
+    required this.daily,
+    required this.sources,
+    required this.sinks,
+    required this.transfers,
+    required this.staff,
+  });
+
+  factory InflationReport.fromJson(Map<String, dynamic> json) => InflationReport(
+        days: _int(json['days']),
+        minted: _double(json['minted']),
+        burned: _double(json['burned']),
+        net: _double(json['net']),
+        staffNet: _double(json['staffNet']),
+        averageDailyNet: _double(json['averageDailyNet']),
+        supplyNow: (json['supplyNow'] as num?)?.toDouble(),
+        supplyAtStart: (json['supplyAtStart'] as num?)?.toDouble(),
+        supplyChangePercent: (json['supplyChangePercent'] as num?)?.toDouble(),
+        netAsPercentOfSupply: (json['netAsPercentOfSupply'] as num?)?.toDouble(),
+        sinkToSourceRatio: _double(json['sinkToSourceRatio']),
+        daily: _maps(json['daily']).map(InflationDay.fromJson).toList(),
+        sources: _maps(json['sources']).map(FlowLine.fromJson).toList(),
+        sinks: _maps(json['sinks']).map(FlowLine.fromJson).toList(),
+        transfers: _maps(json['transfers']).map(TransferChannel.fromJson).toList(),
+        staff: _maps(json['staff']).map(FlowLine.fromJson).toList(),
       );
 }
 

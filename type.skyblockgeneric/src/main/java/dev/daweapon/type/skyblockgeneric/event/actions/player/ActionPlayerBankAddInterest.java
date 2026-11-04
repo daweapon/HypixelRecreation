@@ -1,5 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.event.actions.player;
 
+import dev.daweapon.commons.economy.CoinFlowStore;
+import dev.daweapon.type.skyblockgeneric.economy.CoinFlow;
 import net.minestom.server.event.player.PlayerSpawnEvent;
 import dev.daweapon.type.generic.event.EventNodes;
 import dev.daweapon.type.generic.event.HypixelEventClass;
@@ -83,6 +85,7 @@ public class ActionPlayerBankAddInterest implements HypixelEventClass {
         bankData.setAmount(balance);
 
         if (totalToGive > 0) {
+            CoinFlow.record(CoinFlowStore.Kind.SOURCE, "Bank interest", totalToGive);
             bankData.addTransaction(new DatapointBankData.Transaction(
                     System.currentTimeMillis(),
                     totalToGive,

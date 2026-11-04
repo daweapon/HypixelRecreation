@@ -109,4 +109,33 @@ void main() {
     });
     expect(roadmap.rows.single.isDone, isTrue);
   });
+
+  test('inflation report reads the service.api payload, including a missing money supply', () {
+    final report = InflationReport.fromJson({
+      'days': 7,
+      'minted': 1500.0,
+      'burned': 450.0,
+      'net': 1050.0,
+      'staffNet': 0,
+      'averageDailyNet': 150.0,
+      'supplyNow': null,
+      'sinkToSourceRatio': 0.3,
+      'daily': [
+        {'date': '2026-11-04', 'minted': 1500.0, 'burned': 450.0, 'net': 1050.0, 'staff': 0, 'supply': null},
+      ],
+      'sources': [
+        {'category': 'Mob kill coins', 'amount': 1500.0, 'count': 70, 'share': 100.0},
+      ],
+      'sinks': [],
+      'transfers': [
+        {'channel': 'Bazaar', 'received': 990.0, 'paid': 1000.0, 'net': -10.0, 'count': 8},
+      ],
+      'staff': [],
+    });
+    expect(report.net, 1050.0);
+    expect(report.supplyNow, isNull);
+    expect(report.daily.single.supply, isNull);
+    expect(report.sources.single.category, 'Mob kill coins');
+    expect(report.transfers.single.net, -10.0);
+  });
 }

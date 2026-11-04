@@ -330,6 +330,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         SkyBlockServerAttributes.loadAttributes(AttributeDatabase.getDocument("attributes"));
         SkyBlockServerAttributes.saveAttributeLoop();
         SharedCalendarSync.start();
+        dev.daweapon.type.skyblockgeneric.economy.CoinFlow.start();
         /**
          * Register Placement Rules
          */
