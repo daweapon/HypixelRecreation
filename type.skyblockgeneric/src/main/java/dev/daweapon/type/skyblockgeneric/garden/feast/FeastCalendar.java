@@ -4,6 +4,7 @@ import dev.daweapon.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import dev.daweapon.type.skyblockgeneric.elections.SkyBlockMayor;
 import dev.daweapon.type.skyblockgeneric.elections.perks.ElectionPerks;
 import dev.daweapon.type.skyblockgeneric.garden.GardenCrop;
+import dev.daweapon.type.skyblockgeneric.utility.SharedOverride;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public final class FeastCalendar {
     public static final int LAST_MONTH = 9;
     public static final int IN_SEASON = 4;
     public static final double MONTH_HOURS = 10 + 20 / 60.0;
+    private static final SharedOverride GRAND_OVERRIDE = new SharedOverride("hsb:grandfeast:override");
 
     private static final Map<GardenCrop, String> RARE_CROPS = Map.ofEntries(
             Map.entry(GardenCrop.WHEAT, "CORNUCOPIA"), Map.entry(GardenCrop.CARROT, "CARROT_ZEST"),
@@ -35,7 +37,16 @@ public final class FeastCalendar {
     }
 
     public static boolean grand() {
-        return ElectionPerks.isActive(SkyBlockMayor.Perk.GRAND_FEAST);
+        Boolean override = GRAND_OVERRIDE.value();
+        return override != null ? override : ElectionPerks.isActive(SkyBlockMayor.Perk.GRAND_FEAST);
+    }
+
+    public static boolean setGrandOverride(boolean active) {
+        return GRAND_OVERRIDE.set(active);
+    }
+
+    public static boolean clearGrandOverride() {
+        return GRAND_OVERRIDE.clear();
     }
 
     public static boolean active() {
