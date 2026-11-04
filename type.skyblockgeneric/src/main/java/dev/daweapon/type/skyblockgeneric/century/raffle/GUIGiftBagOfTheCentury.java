@@ -12,11 +12,9 @@ import dev.daweapon.type.skyblockgeneric.consumable.TimedConsumables;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.handlers.interactable.InteractableItemConfig;
 import dev.daweapon.type.skyblockgeneric.item.handlers.interactable.InteractableRegistry;
-import dev.daweapon.type.skyblockgeneric.item.updater.NonPlayerItemUpdater;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
-import net.minestom.server.item.Material;
 
 import java.util.List;
 
@@ -70,23 +68,6 @@ public class GUIGiftBagOfTheCentury implements View<GUIGiftBagOfTheCentury.State
     }
 
     private static ItemStack.Builder display(String prize) {
-        return switch (prize) {
-            case CenturyRaffleConfig.RANDOM_CENTURY_CAKE -> ItemStacks.item(Material.CAKE, """
-                    <a>Random Century Cake
-                    <7>One of the <a>20 <7>Century Cakes.
-
-                    <e>Click to pick!""");
-            case CenturyRaffleConfig.RANDOM_CAKE_SOUL -> ItemStacks.item(Material.PINK_DYE, """
-                    <d>Random Cake Soul
-                    <7>A Cake Soul of a random colour.
-
-                    <e>Click to pick!""");
-            default -> {
-                ItemType type = ItemType.get(prize);
-                ItemStack.Builder builder = type == null ? ItemStacks.item(Material.BARRIER, "<c>" + prize)
-                        : new NonPlayerItemUpdater(new SkyBlockItem(type)).getUpdatedItem();
-                yield ItemStacks.appendLore(builder, List.of(Text.empty(), Text.of("<e>Click to pick!")));
-            }
-        };
+        return ItemStacks.appendLore(GUIRaffleRewards.icon(prize), List.of(Text.empty(), Text.of("<e>Click to pick!")));
     }
 }

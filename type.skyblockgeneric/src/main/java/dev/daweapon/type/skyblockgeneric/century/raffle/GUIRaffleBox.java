@@ -31,11 +31,14 @@ public class GUIRaffleBox implements View<RaffleSnapshot> {
     public void layout(ViewLayout<RaffleSnapshot> layout, RaffleSnapshot state, ViewContext ctx) {
         Components.fill(layout);
         layout.slot(SPEED_SLOT, (s, _) -> raffle(s, RaffleType.SPEED, Material.GOLD_BLOCK,
-                "All raffle tickets collected\n<7>during the two hours before the\n<7>draw are automatically entered!"));
+                "All raffle tickets collected\n<7>during the two hours before the\n<7>draw are automatically entered!"),
+                (c, _) -> rewards(c.player(), c.state(), RaffleType.SPEED));
         layout.slot(DAILY_SLOT, (s, _) -> raffle(s, RaffleType.DAILY, Material.DIAMOND_BLOCK,
-                "All raffle tickets collected in\n<7>the last day before the draw are\n<7>automatically entered!"));
+                "All raffle tickets collected in\n<7>the last day before the draw are\n<7>automatically entered!"),
+                (c, _) -> rewards(c.player(), c.state(), RaffleType.DAILY));
         layout.slot(BIG_ONE_SLOT, (s, _) -> raffle(s, RaffleType.BIG_ONE, Material.FIREWORK_ROCKET,
-                "All raffle tickets ever earned\n<7>are entered! <o>Crazy rewards!"));
+                "All raffle tickets ever earned\n<7>are entered! <o>Crazy rewards!"),
+                (c, _) -> rewards(c.player(), c.state(), RaffleType.BIG_ONE));
         layout.slot(TASKS_SLOT, (s, _) -> ItemStacks.item(Material.WRITABLE_BOOK, """
                         <a>Raffle Tasks
                         <7>Every <a>2 hours <7>you get <a>21 <7>new tasks.
@@ -69,6 +72,11 @@ public class GUIRaffleBox implements View<RaffleSnapshot> {
         RaffleMenus.open((SkyBlockPlayer) player, view);
     }
 
+    private static void rewards(net.minestom.server.entity.Player player, RaffleSnapshot state, RaffleType type) {
+        RaffleSnapshot.Current current = state.current().get(type);
+        GUIRaffleRewards.open((SkyBlockPlayer) player, type, current == null ? type.displayName() : current.label());
+    }
+
     private static ItemStack.Builder raffle(RaffleSnapshot state, RaffleType type, Material material, String description) {
         CenturyRaffleConfig config = CenturyRaffleConfig.get();
         RaffleSnapshot.Current current = state.current().get(type);
@@ -85,13 +93,14 @@ public class GUIRaffleBox implements View<RaffleSnapshot> {
         }
         lore.append('\n');
         if (current == null) {
-            lore.append("<c>This raffle is over!");
+            lore.append("<c>This raffle is over!\n");
         } else {
             lore.append(type.colour()).append("You entered: <b>").append(StringUtility.commaify(current.entered())).append(" tickets!\n");
             lore.append(type.colour()).append("Total tickets (All Players): <b>").append(StringUtility.commaify(current.total())).append('\n');
             lore.append('\n').append("<7>Until draw: ").append(type.colour())
-                    .append(RaffleMenus.countdown(current.drawAt() - System.currentTimeMillis()));
+                    .append(RaffleMenus.countdown(current.drawAt() - System.currentTimeMillis())).append('\n');
         }
+        lore.append("\n<e>Click to view rewards!");
         return ItemStacks.item(material, lore.toString());
     }
 
