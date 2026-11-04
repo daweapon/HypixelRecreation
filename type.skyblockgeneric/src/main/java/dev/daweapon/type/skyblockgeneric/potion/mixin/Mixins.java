@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.potion.mixin;
 
+import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
 import dev.daweapon.type.generic.data.datapoints.DatapointMapStringLong;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
@@ -22,7 +23,8 @@ public final class Mixins {
     }
 
     public static void consume(SkyBlockPlayer player, SkyBlockItem item) {
-        MixinType type = MixinType.byItemId(item.getAttributeHandler().getPotentialType().name());
+        ItemType itemType = item.getAttributeHandler().getPotentialType();
+        MixinType type = itemType == null ? null : MixinType.byItemId(itemType.name());
         if (type == null) return;
         if (!type.isAvailable()) {
             player.sendMessage("<c>This Mixin can't be consumed yet: " + type.getUnavailableReason() + ".");
