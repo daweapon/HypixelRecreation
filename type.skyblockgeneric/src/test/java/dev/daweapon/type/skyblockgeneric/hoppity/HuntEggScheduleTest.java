@@ -27,8 +27,8 @@ class HuntEggScheduleTest {
             total += CATALOGUE.locations(island).size();
             if (island != IslandType.HUB) assertEquals(15, CATALOGUE.locations(island).size(), island.name());
         }
-        assertEquals(197, total);
-        assertEquals(13, CATALOGUE.islands().size());
+        assertEquals(212, total);
+        assertEquals(14, CATALOGUE.islands().size());
     }
 
     @Test
