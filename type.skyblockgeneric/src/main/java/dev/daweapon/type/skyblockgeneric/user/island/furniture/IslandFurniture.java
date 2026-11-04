@@ -18,6 +18,7 @@ public class IslandFurniture {
     public static final int CENTURY_CAKE_LIMIT = 20;
 
     public static final String STORAGE_KEY = "furniture_storage";
+    private static final String CAKE_TOTALS_KEY = "century_cakes";
 
     private final Map<PlacedFurniture, SpawnedFurniture> placed = new LinkedHashMap<>();
     private final Map<String, String> storage = new java.util.concurrent.ConcurrentHashMap<>();
@@ -75,6 +76,21 @@ public class IslandFurniture {
 
     public void dropStorage(PlacedFurniture furniture) {
         storage.remove(storageKey(furniture));
+    }
+
+    public long[] cakeTotals() {
+        String raw = storage.get(CAKE_TOTALS_KEY);
+        if (raw == null) return new long[]{0, 0};
+        String[] parts = raw.split(":");
+        return new long[]{Long.parseLong(parts[0]), parts.length > 1 ? Long.parseLong(parts[1]) : 0};
+    }
+
+    public void recordCakeEaten(Instance instance, boolean soul) {
+        long[] totals = cakeTotals();
+        storage.put(CAKE_TOTALS_KEY, (totals[0] + 1) + ":" + (totals[1] + (soul ? 1 : 0)));
+        all().stream()
+                .filter(furniture -> FurnitureCatalog.get(furniture.itemId()).interaction() == FurnitureInteraction.CAKE_COUNTER)
+                .forEach(counter -> replace(instance, counter, counter));
     }
 
     private static String storageKey(PlacedFurniture furniture) {

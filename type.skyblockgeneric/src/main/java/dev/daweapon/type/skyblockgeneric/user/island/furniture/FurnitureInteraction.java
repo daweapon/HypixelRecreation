@@ -13,5 +13,7 @@ public enum FurnitureInteraction {
     HOLOGRAM,
     STORAGE,
     FURNACE,
-    TREE
+    TREE,
+    CENTURY_CAKE,
+    CAKE_COUNTER
 }

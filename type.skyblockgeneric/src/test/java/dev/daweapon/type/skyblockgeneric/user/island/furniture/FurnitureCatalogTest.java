@@ -47,7 +47,7 @@ class FurnitureCatalogTest {
 
     @Test
     void everyBundleFurnitureIsDefined() {
-        assertEquals(177, FurnitureCatalog.all().size());
+        assertEquals(198, FurnitureCatalog.all().size());
         assertEquals(41, FurnitureCatalog.values().stream().filter(FurnitureDefinition::isCraftable).count());
     }
 
@@ -164,6 +164,24 @@ class FurnitureCatalogTest {
     }
 
     @Test
+    void everyCenturyCakeIsCakeFurnitureAndTheCounterIsStandardFurniture() {
+        assertEquals(20, FurnitureCatalog.values().stream().filter(FurnitureDefinition::isCenturyCake).count());
+        FurnitureCatalog.values().stream().filter(FurnitureDefinition::isCenturyCake)
+                .forEach(cake -> assertEquals(FurnitureInteraction.CENTURY_CAKE, cake.interaction()));
+        assertFalse(FurnitureCatalog.get("CAKE_COUNTER").isCenturyCake());
+        assertEquals(FurnitureInteraction.CAKE_COUNTER, FurnitureCatalog.get("CAKE_COUNTER").interaction());
+    }
+
+    @Test
+    void cakeTotalsCountEveryCakeAndSoul() {
+        IslandFurniture island = new IslandFurniture();
+        assertEquals(0, island.cakeTotals()[0]);
+        island.loadStorage("{\"century_cakes\":\"4:1\"}");
+        assertEquals(4, island.cakeTotals()[0]);
+        assertEquals(1, island.cakeTotals()[1]);
+    }
+
+    @Test
     void rotationSnapsToFortyFiveDegrees() {
         assertEquals(0, PlacedFurniture.snapYaw(10));
         assertEquals(45, PlacedFurniture.snapYaw(30));
@@ -174,6 +192,6 @@ class FurnitureCatalogTest {
 
     private static final class FatDefinitions {
         static final FurnitureDefinition STANDARD = FurnitureCatalog.get("STOOL");
-        static final FurnitureDefinition CAKE = new FurnitureDefinition("CENTURY_CAKE_RED", 0, FurnitureInteraction.NONE, 1, 1, 1, 0, null);
+        static final FurnitureDefinition CAKE = FurnitureCatalog.get("EPOCH_CAKE_RED");
     }
 }

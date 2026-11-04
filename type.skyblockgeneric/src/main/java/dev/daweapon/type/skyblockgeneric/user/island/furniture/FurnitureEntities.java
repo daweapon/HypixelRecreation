@@ -62,6 +62,7 @@ final class FurnitureEntities {
             startFlames(instance, pos, definition, spawned);
         }
         if (hologram != null) startHologram(instance, pos, definition, hologram, spawned);
+        if (definition.interaction() == FurnitureInteraction.CAKE_COUNTER) showCakeTotals(instance, pos, definition, owner, spawned);
         return spawned;
     }
 
@@ -79,6 +80,14 @@ final class FurnitureEntities {
             ParticlePacket dust = new ParticlePacket(Particle.DUST.withColor(colour), pos.x(), y, pos.z(), 0.2f, 0.2f, 0.2f, 0f, 3);
             instance.getPlayers().forEach(viewer -> viewer.sendPacket(dust));
         }).repeat(TaskSchedule.tick(8)).schedule();
+    }
+
+    private static void showCakeTotals(Instance instance, Pos pos, FurnitureDefinition definition, IslandFurniture owner, SpawnedFurniture spawned) {
+        long[] totals = owner.cakeTotals();
+        TextDisplayEntity text = new TextDisplayEntity(Text.legacy("\u00a7dCentury Cakes Eaten: \u00a7a" + totals[0]
+                + "\n\u00a75Cake Souls Found: \u00a7a" + totals[1]), meta -> meta.setScale(new Vec(1, 1, 1)));
+        text.setInstance(instance, pos.add(0, definition.height() + 0.7, 0));
+        spawned.text = text;
     }
 
     static Pos positionOf(PlacedFurniture placed) {

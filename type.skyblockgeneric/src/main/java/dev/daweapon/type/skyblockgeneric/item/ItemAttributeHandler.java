@@ -515,6 +515,14 @@ public class ItemAttributeHandler {
         ((ItemAttributeMiningEventId) item.getAttribute("mining_event_id")).setValue(id);
     }
 
+    public String getCakeSoul() {
+        return ((ItemAttributeCakeSoul) item.getAttribute("cake_soul")).getValue();
+    }
+
+    public void setCakeSoul(String data) {
+        ((ItemAttributeCakeSoul) item.getAttribute("cake_soul")).setValue(data);
+    }
+
     public int getRadioChannel() {
         return ((ItemAttributeRadioChannel) item.getAttribute("radio_channel")).getValue();
     }
