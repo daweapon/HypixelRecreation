@@ -221,6 +221,7 @@ public class PlayerStatistics {
         if (player.getPetData().isSuspended()) return ItemStatistics.empty();
         SkyBlockItem pet = player.getPetData().getEnabledPet();
         ItemStatistics stats = pet == null ? ItemStatistics.empty() : PetItems.statistics(pet);
+        stats = ItemStatistics.add(stats, dev.daweapon.type.skyblockgeneric.essence.DragonEssencePerks.enderDragonPetBoost(player, pet, stats));
 
         for (DatapointPetData.ActiveAbility active : player.getPetData().getActiveAbilities()) {
             stats = ItemStatistics.add(stats, active.ability().getStatistics(player, active.pet()));

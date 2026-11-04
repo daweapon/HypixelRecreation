@@ -41,6 +41,7 @@ final class ItemStatisticsCalculator {
         statistics = ItemStatistics.add(statistics, dev.daweapon.type.skyblockgeneric.item.armor.ArmorAbilityEffects.pieceStatistics(item, player));
         statistics = ItemStatistics.add(statistics, dev.daweapon.type.skyblockgeneric.slayer.zombie.ZombieSlayerGear.pieceStatistics(item));
         statistics = ItemStatistics.add(statistics, dev.daweapon.type.skyblockgeneric.essence.ForestEssencePerks.axeBoost(item, player, statistics));
+        statistics = ItemStatistics.add(statistics, dev.daweapon.type.skyblockgeneric.essence.DragonEssencePerks.dragonReforgeBoost(item, player));
 
         return statistics;
     }
