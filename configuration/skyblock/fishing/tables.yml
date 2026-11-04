@@ -65,6 +65,8 @@ tables:
         chance: 4
       - seaCreatureId: NIGHT_SQUID
         chance: 2
+      - seaCreatureId: DEEP_SEA_PROTECTOR
+        chance: 1
   # Oasis (wiki: Oasis, Oasis_Sheep, Oasis_Rabbit). Weights 700 and 300 are the wiki's base weights; the wiki gives no weights
   # for the shared water creatures in this pool, so they are estimates (total about 4,300).
   - id: OASIS_WATER
@@ -145,6 +147,8 @@ tables:
         weight: 700
       - seaCreatureId: OASIS_RABBIT
         weight: 300
+      - seaCreatureId: DEEP_SEA_PROTECTOR
+        weight: 88
   - id: DEFAULT_LAVA
     regions: [ ]
     mediums:
@@ -161,11 +165,13 @@ tables:
         skillXp: 15
     junk: [ ]
     seaCreatures: [ ]
+  # Backwater Bayou (wiki: Sea_Creatures/List): the six Bayou creatures replace the basic water pool, picked by weight.
   - id: BAYOU_WATERS
     regions:
       - BACKWATER_BAYOU
     mediums:
       - WATER
+    weightedSeaCreatures: true
     items:
       - itemId: RAW_FISH
         chance: 30
@@ -238,18 +244,18 @@ tables:
         amount: 1
         skillXp: 2
     seaCreatures:
-      - seaCreatureId: ALLIGATOR
-        chance: 5
-      - seaCreatureId: BANSHEE
-        chance: 3
-      - seaCreatureId: BAYOU_SLUDGE
-        chance: 3
-      - seaCreatureId: DUMPSTER_DIVER
-        chance: 2
-      - seaCreatureId: TITANOBOA
-        chance: 1
       - seaCreatureId: TRASH_GOBBLER
-        chance: 1
+        weight: 5000
+      - seaCreatureId: DUMPSTER_DIVER
+        weight: 2875
+      - seaCreatureId: BANSHEE
+        weight: 1500
+      - seaCreatureId: BAYOU_SLUDGE
+        weight: 500
+      - seaCreatureId: ALLIGATOR
+        weight: 100
+      - seaCreatureId: TITANOBOA
+        weight: 25
   # The Crimson Isle lava pool (wiki: Sea_Creatures/List/Crimson_Isle): Sea Creature Chance is rolled once, then
   # one of the 9 island-wide creatures is picked by weight. Thunder needs Novice and Lord Jawbus Adept Trophy Fisher.
   - id: CRIMSON_ISLE_LAVA

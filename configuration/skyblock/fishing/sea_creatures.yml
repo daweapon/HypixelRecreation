@@ -258,3 +258,79 @@ seaCreatures:
     requiredFishingLevel: 10
     skillXp: 40
     tags: [WATER, UNCOMMON]
+  # ---------- Deep Sea Protector (any water) ----------
+  - id: DEEP_SEA_PROTECTOR
+    requiredFishingLevel: 18
+    skillXp: 1350
+    tags: [WATER, EPIC]
+  # ---------- Backwater Bayou (weights live in tables.yml) ----------
+  - id: TRASH_GOBBLER
+    requiredFishingLevel: 5
+    skillXp: 127
+    tags: [WATER, COMMON]
+  - id: DUMPSTER_DIVER
+    requiredFishingLevel: 5
+    skillXp: 210
+    tags: [WATER, UNCOMMON]
+  - id: BANSHEE
+    requiredFishingLevel: 10
+    skillXp: 700
+    tags: [WATER, RARE]
+  - id: BAYOU_SLUDGE
+    requiredFishingLevel: 15
+    skillXp: 960
+    tags: [WATER, EPIC]
+  - id: ALLIGATOR
+    requiredFishingLevel: 20
+    skillXp: 2640
+    tags: [WATER, LEGENDARY]
+  - id: TITANOBOA
+    requiredFishingLevel: 30
+    skillXp: 12925
+    tags: [WATER, MYTHIC]
+  # ---------- water Hotspot pool (weights live in hotspots.yml) ----------
+  - id: FROG_MAN
+    requiredFishingLevel: 5
+    skillXp: 180
+    tags: [WATER, COMMON]
+  - id: SNAPPING_TURTLE
+    requiredFishingLevel: 10
+    skillXp: 750
+    tags: [WATER, RARE]
+  - id: MANTA_RAY
+    requiredFishingLevel: 19
+    skillXp: 1860
+    tags: [WATER, EPIC]
+  - id: BLUE_RINGED_OCTOPUS
+    requiredFishingLevel: 35
+    skillXp: 4740
+    tags: [WATER, LEGENDARY]
+  - id: WIKI_TIKI
+    requiredFishingLevel: 40
+    skillXp: 14800
+    tags: [WATER, MYTHIC]
+  # ---------- Spooky Festival pool (SpookyFishing.POOL holds the weights) ----------
+  - id: JUMPIN_JACK
+    requiredFishingLevel: 6
+    skillXp: 210
+    tags: [WATER, COMMON]
+  - id: SCARECROW
+    requiredFishingLevel: 9
+    skillXp: 320
+    tags: [WATER, UNCOMMON]
+  - id: NIGHTMARE
+    requiredFishingLevel: 14
+    skillXp: 962
+    tags: [WATER, RARE]
+  - id: WEREWOLF
+    requiredFishingLevel: 17
+    skillXp: 1035
+    tags: [WATER, EPIC]
+  - id: PHANTOM_FISHER
+    requiredFishingLevel: 21
+    skillXp: 3140
+    tags: [WATER, LEGENDARY]
+  - id: GRIM_REAPER
+    requiredFishingLevel: 26
+    skillXp: 7800
+    tags: [WATER, MYTHIC]

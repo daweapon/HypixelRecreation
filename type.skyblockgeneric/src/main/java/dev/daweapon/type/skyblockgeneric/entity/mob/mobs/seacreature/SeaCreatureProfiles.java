@@ -145,6 +145,26 @@ public final class SeaCreatureProfiles {
             .fishingXpReward(900).xpOrbs(26)
             .build();
 
+    public static final SeaCreatureProfile DEEP_SEA_PROTECTOR = SeaCreatureProfile.builder("DEEP_SEA_PROTECTOR")
+            .displayName("Deep Sea Protector")
+            .level(90)
+            .entityType(EntityType.IRON_GOLEM)
+            .health(150_000D).damage(300D).speed(70D)
+            .behaviour(SeaCreatureBehaviour.aggressive(1.4, 25, 18))
+            .mobTypes(MobType.AQUATIC, MobType.CONSTRUCT)
+            .damageCooldownMs(450)
+            .fishingXpReward(1350).xpOrbs(135)
+            .catchMessage("You have awoken the Deep Sea Protector, prepare for a battle!")
+            .lootTable(drops(
+                    new SkyBlockLootTable.LootRecord(ItemType.LILY_PAD, 12, 100),
+                    new SkyBlockLootTable.LootRecord(ItemType.ENCHANTED_IRON_INGOT, 2, 100),
+                    new SkyBlockLootTable.LootRecord(ItemType.TROPICAL_FISH, 2, 100),
+                    new SkyBlockLootTable.LootRecord(ItemType.SPONGE, 1, 100),
+                    new SkyBlockLootTable.LootRecord(ItemType.ENCHANTED_BOOK, 1, 2),
+                    new SkyBlockLootTable.LootRecord(ItemType.DYE_AQUAMARINE, 1, 0.00004)))
+            .droppedBook(EnchantmentType.ANGLER, 6)
+            .build();
+
     public static final SeaCreatureProfile WATER_HYDRA = SeaCreatureProfile.builder("WATER_HYDRA")
             .displayName("Water Hydra")
             .level(60)
@@ -276,19 +296,22 @@ public final class SeaCreatureProfiles {
             .droppedBook(EnchantmentType.PISCARY, 6)
             .build();
 
-    public static final List<SeaCreatureProfile> CANONICAL = java.util.stream.Stream.concat(java.util.stream.Stream.of(
-            // Water
-            SQUID, SEA_WALKER, NIGHT_SQUID, SEA_GUARDIAN,
-            SEA_WITCH, SEA_ARCHER, MONSTER_OF_THE_DEEP, CATFISH, CARROT_KING,
-            SEA_LEECH, GUARDIAN_DEFENDER, WATER_HYDRA, THE_SEA_EMPEROR,
-            WATER_WORM, POISONED_WATER_WORM, ABYSSAL_MINER,
-            // Lava
-            LAVA_BLAZE, LAVA_PIGMAN, FLAMING_WORM
-    ), java.util.stream.Stream.concat(
-            dev.daweapon.type.skyblockgeneric.fishing.torrhus.TorrhusSeaCreatures.PROFILES.stream(),
-            java.util.stream.Stream.concat(
-                    dev.daweapon.type.skyblockgeneric.fishing.galatea.GalateaSeaCreatures.PROFILES.stream(),
-                    dev.daweapon.type.skyblockgeneric.fishing.oasis.OasisSeaCreatures.PROFILES.stream()))).toList();
+    public static final List<SeaCreatureProfile> CANONICAL = java.util.stream.Stream.of(
+            List.of(
+                    // Water
+                    SQUID, SEA_WALKER, NIGHT_SQUID, SEA_GUARDIAN,
+                    SEA_WITCH, SEA_ARCHER, MONSTER_OF_THE_DEEP, CATFISH, CARROT_KING,
+                    SEA_LEECH, GUARDIAN_DEFENDER, DEEP_SEA_PROTECTOR, WATER_HYDRA, THE_SEA_EMPEROR,
+                    WATER_WORM, POISONED_WATER_WORM, ABYSSAL_MINER,
+                    // Lava
+                    LAVA_BLAZE, LAVA_PIGMAN, FLAMING_WORM),
+            dev.daweapon.type.skyblockgeneric.fishing.torrhus.TorrhusSeaCreatures.PROFILES,
+            dev.daweapon.type.skyblockgeneric.fishing.galatea.GalateaSeaCreatures.PROFILES,
+            dev.daweapon.type.skyblockgeneric.fishing.oasis.OasisSeaCreatures.PROFILES,
+            dev.daweapon.type.skyblockgeneric.fishing.bayou.BayouSeaCreatures.PROFILES,
+            dev.daweapon.type.skyblockgeneric.fishing.hotspot.HotspotSeaCreatures.PROFILES,
+            dev.daweapon.type.skyblockgeneric.fishing.spooky.SpookySeaCreatures.PROFILES
+    ).flatMap(List::stream).toList();
 
     private static SkyBlockLootTable drops(SkyBlockLootTable.LootRecord... records) {
         return new SkyBlockLootTable() {

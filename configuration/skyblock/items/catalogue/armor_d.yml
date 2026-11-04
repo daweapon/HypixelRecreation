@@ -3520,7 +3520,6 @@ items:
       health: 300
       defense: 100
       sea_creature_chance: 2
-    unavailable: "Needs the Wiki Tiki sea creature"
     source: "Dropped by Wiki Tiki (0.1%) or won in the Raffle of the Century"
     lore:
       - "§7Grants buffs when fishing in a"

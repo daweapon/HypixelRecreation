@@ -370,7 +370,6 @@ items:
       - "§8§oA cold and hardened heart that was"
       - "§8§oonce brimming with eager love."
     source: "Banshee fishing sea creature (Backwater Bayou), 0.1% (was 1%; wiki page possibly outdated)"
-    unavailable: "Banshee has no sea creature profile or spawn yet, so it cannot be caught"
     components:
       - id: REFORGE_STONE
         reforge: calcified
@@ -479,7 +478,6 @@ items:
       - " §3 Sea Creature Chance"
       - ""
       - "§eRight-click to view rarity scaling!"
-    unavailable: "Needs Spooky Festival sea creatures (not in fishing tables)"
     source: "Grim Reaper 1%, Phantom Fisher 1% (Spooky Festival fishing), Werewolf 0.1%"
     components:
       - id: REFORGE_STONE
@@ -1874,7 +1872,6 @@ items:
       - ""
       - "§eRight-click to view rarity scaling!"
     source: "Dumpster Diver sea creature drop (wiki says 0.5%, changelog says 1%: inconsistent)"
-    unavailable: "Dumpster Diver has no sea creature profile or spawn yet, so it cannot be caught"
     components:
       - id: REFORGE_STONE
         reforge: trashy

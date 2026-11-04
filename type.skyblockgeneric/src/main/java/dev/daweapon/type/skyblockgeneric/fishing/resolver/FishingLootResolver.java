@@ -22,6 +22,7 @@ import dev.daweapon.type.skyblockgeneric.fishing.FishingContext;
 import dev.daweapon.type.skyblockgeneric.fishing.FishingMedium;
 import dev.daweapon.type.skyblockgeneric.fishing.catches.CatchPayload;
 import dev.daweapon.type.skyblockgeneric.fishing.festival.FishingFestival;
+import dev.daweapon.type.skyblockgeneric.fishing.spooky.SpookyFishing;
 import dev.daweapon.type.skyblockgeneric.fishing.item.FishingItemSupport;
 import dev.daweapon.type.skyblockgeneric.fishing.registry.FishingRegistry;
 import dev.daweapon.type.skyblockgeneric.fishing.registry.FishingTableDefinition;
@@ -121,9 +122,11 @@ public final class FishingLootResolver {
             }
             double tagBonus = definition == null ? 0.0D : getTagBonus(context, definition.tags());
             if (Math.random() * 100 <= roll.chance() + seaCreatureChance + tagBonus) {
-                double skillXp = definition == null ? 0.0D : definition.skillXp();
+                String id = overridePool(context).orElse(roll.seaCreatureId());
+                SeaCreatureDefinition caught = FishingRegistry.getSeaCreature(id);
+                double skillXp = caught == null ? 0.0D : caught.skillXp();
                 CatchPayload.SeaCreature payload = FishingFestival.replaceWithShark(context,
-                    new CatchPayload.SeaCreature(roll.seaCreatureId(), skillXp));
+                    new CatchPayload.SeaCreature(id, skillXp));
                 if (rollDoubleHook(context)) {
                     payload = payload.withDoubleHook();
                 }
@@ -142,11 +145,7 @@ public final class FishingLootResolver {
         if (eligible.isEmpty()) return Optional.empty();
 
         String picked = SeaCreatureWeights.pick(eligible, weightModifiers(context), ThreadLocalRandom.current()).id();
-        picked = LavaCatchOverrides.override(context).map(pool -> {
-            List<SeaCreatureWeights.Candidate> overridePool = eligibleCandidates(context, pool);
-            return overridePool.isEmpty() ? null
-                : SeaCreatureWeights.pick(overridePool, weightModifiers(context), ThreadLocalRandom.current()).id();
-        }).orElse(picked);
+        picked = overridePool(context).orElse(picked);
 
         SeaCreatureDefinition definition = FishingRegistry.getSeaCreature(picked);
         CatchPayload.SeaCreature payload = new CatchPayload.SeaCreature(picked, definition == null ? 0 : definition.skillXp());
@@ -154,6 +153,14 @@ public final class FishingLootResolver {
             payload = payload.withDoubleHook();
         }
         return Optional.of(payload);
+    }
+
+    private static Optional<String> overridePool(FishingContext context) {
+        return LavaCatchOverrides.override(context).or(() -> SpookyFishing.override(context)).map(pool -> {
+            List<SeaCreatureWeights.Candidate> overridePool = eligibleCandidates(context, pool);
+            return overridePool.isEmpty() ? null
+                : SeaCreatureWeights.pick(overridePool, weightModifiers(context), ThreadLocalRandom.current()).id();
+        });
     }
 
     private static List<SeaCreatureWeights.Candidate> eligibleCandidates(FishingContext context,
