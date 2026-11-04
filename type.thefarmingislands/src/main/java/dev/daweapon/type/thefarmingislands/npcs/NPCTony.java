@@ -23,12 +23,12 @@ public class NPCTony extends HypixelNPC implements NPCAbiphoneTrait {
 
             @Override
             public String signature(HypixelPlayer player) {
-                return "q+WCbao7pfdeqzeoM228bAO5L1zhmYrlwxTz/7pY+Y+YsOPhKrKYX3pDO2XLsWqg2Zzh55wXsa2fHRWCd8p0GnYfUkVWWHBQWHy600iVH48RnSZLECnCure/bbn7auNbs7fjdtkXk0lmyn5z2lxnQFpFHy4gOODPgkpXNsLSJAnaNnOnebS1UBu4p/HVlS0jK/DLngtCK9NV/4bo4BpDXVDvZQOShSJoWSvnzVPriTla1zpVq86WKGHioFdUeCM/tTSSw5jtM32/HiQaC388Rvt1yuvKFoI5VoDAbjY5R0Kh8q8PsYKrKwUsN8SFREsCqXE1kjyG3zTkyrz8tXO5vBh9J5fPavQBdvGr9H6Vs1JgAngS5vuNl3sqfqYgTd5p2JE1JSxOJX/v4v7iTj6TKtrGA+jZ7xCDX1pexi110iEnZMm0bvJRgkwlSxXYKpzO5dZjyHqRNvl0sbQ5O7Pa0H0fSPrM1Fo/2WxY76GtYHeRucIKHgX8H264TlLtQ3QrALP9gS68Xcm4/mfYrT/YZAossLbUP2PhWvWL4xnGjRWPsu9LVHyY4oI6Z0aRBQPFBTc/v7IaucUcGmSAh4MKV4V62hMQ74sxK94vOJYYCWsI52GLyz6EWAQj3TQR8IIgGfIhKnn7UeIDbOntyisFkdsJU0iOHF1uXGYkmpayzSc=";
+                return null;
             }
 
             @Override
             public String texture(HypixelPlayer player) {
-                return "ewogICJ0aW1lc3RhbXAiIDogMTYwOTYwOTQwMjU0MywKICAicHJvZmlsZUlkIiA6ICJmMTA0NzMxZjljYTU0NmI0OTkzNjM4NTlkZWY5N2NjNiIsCiAgInByb2ZpbGVOYW1lIiA6ICJ6aWFkODciLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjVmMzFjMWMyMTVhNTdlOTM3ZmQ3NWFiMzU3ODJmODVlYzI0MmExYjFmOTUwYTI2YTQyYmI1ZTBhYTVjYmVkYSIKICAgIH0KICB9Cn0=";
+                return "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWQzNGZjZjc3MjYzMWI4MThkMmM2YWZiODc4ZTM5MzM3NjcwN2EyYjU3MDE5YjVmZjg3MGQ2OTUyZmRkZDExYSIsIm1ldGFkYXRhIjp7fX19LCJwcm9maWxlSWQiOiIwM2Q0MTY3YzVmYWQyZTI3OGI2NTUzZDFkYmZmMGIyZSIsInByb2ZpbGVOYW1lIjoibmVhODkiLCJpc1B1YmxpYyI6dHJ1ZSwidGltZXN0YW1wIjoxNzgyMDcxNzk4NjI4fQ==";
             }
 
             @Override

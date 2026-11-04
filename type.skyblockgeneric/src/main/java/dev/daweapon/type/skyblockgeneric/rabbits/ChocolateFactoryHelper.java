@@ -45,7 +45,8 @@ public class ChocolateFactoryHelper {
                 double multiplier = data.getProductionMultiplier();
                 data.setPartialChocolate(data.getPartialChocolate() + accessoryPerSecond * multiplier * seconds);
             }
-            data.setPetMultiplier(MiscPetHooks.chocolateMultiplierBonus(player));
+            data.setPetMultiplier(MiscPetHooks.chocolateMultiplierBonus(player)
+                    + dev.daweapon.type.skyblockgeneric.potion.mixin.Mixins.chocolateMultiplier(player));
             data.setShardFlatProduction(RabbitShardBonuses.rabbitCrew(player));
             data.setShardMultiplier(RabbitShardBonuses.chocolateSpeed(player));
             data.setCookieMultiplier(player.isBoosterCookieActive() ? BOOSTER_COOKIE_MULTIPLIER : 0);

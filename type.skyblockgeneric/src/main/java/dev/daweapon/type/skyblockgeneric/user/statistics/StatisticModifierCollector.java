@@ -118,6 +118,8 @@ final class StatisticModifierCollector {
                 StatisticSourceType.OTHER, StatisticModifierType.PROGRESSION, null, Material.EMERALD, null);
         addModifier(modifiers, "Forest Starborn's Will", dev.daweapon.type.skyblockgeneric.torrhus.StarbornStatistics.statistics(player),
                 StatisticSourceType.OTHER, StatisticModifierType.PROGRESSION, null, Material.NETHER_STAR, null);
+        addModifier(modifiers, "Mixins", dev.daweapon.type.skyblockgeneric.potion.mixin.Mixins.statistics(player),
+                StatisticSourceType.TEMPORARY_BUFF, StatisticModifierType.BUFF, null, Material.BREWING_STAND, null);
         addModifier(modifiers, "Attributes", AttributeEffectService.statistics(player),
                 StatisticSourceType.ATTRIBUTE, StatisticModifierType.ATTRIBUTE, null, Material.PRISMARINE_SHARD, null);
         addTemporaryModifiers(modifiers);

@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.fishing.festival;
 
+import dev.daweapon.type.skyblockgeneric.item.set.sets.SharkScaleSet;
 import dev.daweapon.type.skyblockgeneric.user.pets.PetAbilities;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import lombok.Getter;
@@ -21,9 +22,8 @@ public enum SharkChanceSource {
             context -> Carnivals.perkValue(context.player(), CarnivalPerk.SHARK_SONAR)),
     SHARK_BAIT("Shark Bait", 20, null,
             context -> context.bait() == null ? 0 : context.bait().getTagBonuses().getOrDefault("SHARK", 0D)),
-    SHARK_SCALE_ARMOR("Shark Scale Armor (Festival Fisher)", 20,
-            "Shark Scale Armor and the Sponge Armor it is crafted from aren't in this server yet.",
-            context -> 0),
+    SHARK_SCALE_ARMOR("Shark Scale Armor (Festival Fisher)", 20, null,
+            context -> SharkScaleSet.festivalFisherBonus(context.player())),
     MEGALODON_PET("Megalodon Pet (Feeding Frenzy)", 20, null,
             context -> PetAbilities.value(context.player(), ItemType.MEGALODON_PET, "Feeding Frenzy", 0)),
     ;

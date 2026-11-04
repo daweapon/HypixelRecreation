@@ -7,6 +7,7 @@ import dev.daweapon.type.generic.event.phase.PhasedEvent;
 import dev.daweapon.type.skyblockgeneric.farming.lab.LabQuest;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import dev.daweapon.type.thefarmingislands.lab.LabFixtures;
+import dev.daweapon.type.thefarmingislands.lab.LabHiddenSection;
 import dev.daweapon.type.thefarmingislands.lab.LabLever;
 import dev.daweapon.type.thefarmingislands.lab.LabScenes;
 import net.minestom.server.coordinate.Pos;
@@ -17,8 +18,12 @@ public class ActionUndergroundLab implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void run(PlayerMoveEvent event) {
         Pos position = event.getNewPosition();
-        if (!LabScenes.insideLab(position)) return;
         SkyBlockPlayer player = (SkyBlockPlayer) event.getPlayer();
+        if (!LabScenes.insideLab(position)) {
+            LabHiddenSection.leftLab(player);
+            return;
+        }
+        LabHiddenSection.sync(player);
         LabQuest.Stage stage = LabQuest.stage(player);
         if (player.getInstance() != null) LabFixtures.ensure(player.getInstance());
         if (stage.compareTo(LabQuest.Stage.LAB2_PENDING) >= 0 && player.getInstance() != null) {

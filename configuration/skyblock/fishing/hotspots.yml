@@ -12,6 +12,20 @@ hotspots:
       DOUBLE_HOOK_CHANCE: 2
       TROPHY_FISH_CHANCE: 5
       TREASURE_CHANCE: 1
+    # Water Hotspot pool (wiki: Fishing_Hotspots); Inkling is this server's Night Squid.
+    seaCreatures:
+      - seaCreatureId: FROG_MAN
+        weight: 5000
+      - seaCreatureId: NIGHT_SQUID
+        weight: 2875
+      - seaCreatureId: SNAPPING_TURTLE
+        weight: 1500
+      - seaCreatureId: MANTA_RAY
+        weight: 500
+      - seaCreatureId: BLUE_RINGED_OCTOPUS
+        weight: 100
+      - seaCreatureId: WIKI_TIKI
+        weight: 25
     spawnPoints:
       - serverType: BACKWATER_BAYOU
         x: 100
@@ -68,6 +82,20 @@ hotspots:
       DOUBLE_HOOK_CHANCE: 2
       TROPHY_FISH_CHANCE: 5
       TREASURE_CHANCE: 1
+    # Water Hotspot pool (wiki: Fishing_Hotspots); Inkling is this server's Night Squid.
+    seaCreatures:
+      - seaCreatureId: FROG_MAN
+        weight: 5000
+      - seaCreatureId: NIGHT_SQUID
+        weight: 2875
+      - seaCreatureId: SNAPPING_TURTLE
+        weight: 1500
+      - seaCreatureId: MANTA_RAY
+        weight: 500
+      - seaCreatureId: BLUE_RINGED_OCTOPUS
+        weight: 100
+      - seaCreatureId: WIKI_TIKI
+        weight: 25
     treasureOverrides:
       GREAT: { itemId: SHARD_GIANT_WATER_BUG, min: 1, max: 1 }
       OUTSTANDING: { itemId: SHARD_GIANT_WATER_BUG, min: 4, max: 8 }

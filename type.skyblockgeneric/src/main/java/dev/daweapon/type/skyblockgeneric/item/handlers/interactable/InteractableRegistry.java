@@ -129,6 +129,9 @@ public class InteractableRegistry {
         register("GOD_POTION_INTERACT", InteractableItemConfig.builder().rightClickHandler(
                 (player, item) -> GodPotionService.consume(player, item)
         ).build());
+        register("MIXIN_CONSUME", InteractableItemConfig.builder().rightClickHandler(
+                (player, item) -> dev.daweapon.type.skyblockgeneric.potion.mixin.Mixins.consume(player, item)
+        ).build());
         register("JERRY_BOX_OPEN", InteractableItemConfig.builder().rightClickHandler((player, item) -> {
             HiddenJerryType type = HiddenJerryType.ofBox(item.getAttributeHandler().getPotentialType());
             if (type == null) return;

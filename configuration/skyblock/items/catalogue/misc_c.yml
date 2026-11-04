@@ -2846,7 +2846,7 @@ items:
     material: player_head
     name: "Hotspot Tonic Mixin"
     rarity: RARE
-    unavailable: "Fishing Hotspots and Mixins on God Potions aren't built"
+    unavailable: "Needs Ink Splat, which has no source yet"
     source: "Crafted from 8 Ink Splat and 64 Half-Eaten Mushroom"
     lore:
       - "§8Brewing Ingredient"
@@ -2866,6 +2866,8 @@ items:
       - "§eRight-click to consume!"
       - "§8(Requires active Booster Cookie)"
     components:
+      - id: INTERACTABLE
+        handler_id: MIXIN_CONSUME
       - id: SKULL_HEAD
         texture: b09651d5c25f86db3db11a6dc879497b4e113a48d3cdcdf96ef13419671d96ff
   - id: HOT_CHOCOLATE_AND_COOKIES
@@ -2888,7 +2890,6 @@ items:
     material: player_head
     name: "Hot Chocolate Mixin"
     rarity: RARE
-    unavailable: "Needs Mixins on God Potions"
     source: "Chocolate Shop for 1.5B Chocolate (max 4, Chocolate Factory VI)"
     lore:
       - "§8Brewing Ingredient"
@@ -2909,6 +2910,8 @@ items:
       - ""
       - "§4❣ §cRequires Chocolate Factory VI."
     components:
+      - id: INTERACTABLE
+        handler_id: MIXIN_CONSUME
       - id: SKULL_HEAD
         texture: 4fde9c68bc5a89f01a5e5203eecc5367d494d55a47c81e6b1d689a0c4488b6e
   - id: HOT_DOG
@@ -3403,7 +3406,6 @@ items:
     material: player_head
     name: "Jar of Sand"
     rarity: LEGENDARY
-    unavailable: "Needs the Carnival Fruit Digging leaderboard reward"
     source: "Chivalrous Carnival Fruit Digging top 500"
     lore:
       - "§8Decoration item"

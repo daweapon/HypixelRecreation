@@ -584,7 +584,6 @@ items:
     material: paper
     name: "Titanoboa Shed"
     rarity: LEGENDARY
-    unavailable: "Needs the Backwater Bayou Titanoboa (not built)"
     source: "Dropped by the Titanoboa; medium Raffle of the Century reward"
     lore:
       - "§7A massive set of discarded snake"

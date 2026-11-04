@@ -1635,11 +1635,9 @@ items:
       sea_creature_chance: 2.5
     source: "Crafted from 2 Enchanted Shark Fin, 1 Sponge Boots"
     lore:
-      - "§8Tiered Bonus: Festival Fisher (0/4)"
-      - "§7Grants a §a+0% §7chance to catch"
+      - "§6Tiered Bonus: Festival Fisher §8(2+ pieces)"
+      - "§7Grants a §a+10%§8➜§a+20% §7chance to catch"
       - "§bSharks §7during the §bFishing Festival§7."
-      - ""
-      - "§8Not active yet: Festival Fisher needs the Fishing Festival"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -1678,11 +1676,9 @@ items:
       sea_creature_chance: 2.5
     source: "Crafted from 2 Enchanted Shark Fin, 1 Sponge Chestplate"
     lore:
-      - "§8Tiered Bonus: Festival Fisher (0/4)"
-      - "§7Grants a §a+0% §7chance to catch"
+      - "§6Tiered Bonus: Festival Fisher §8(2+ pieces)"
+      - "§7Grants a §a+10%§8➜§a+20% §7chance to catch"
       - "§bSharks §7during the §bFishing Festival§7."
-      - ""
-      - "§8Not active yet: Festival Fisher needs the Fishing Festival"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -1721,11 +1717,9 @@ items:
       sea_creature_chance: 2.5
     source: "Crafted from 2 Enchanted Shark Fin, 1 Sponge Helmet"
     lore:
-      - "§8Tiered Bonus: Festival Fisher (0/4)"
-      - "§7Grants a §a+0% §7chance to catch"
+      - "§6Tiered Bonus: Festival Fisher §8(2+ pieces)"
+      - "§7Grants a §a+10%§8➜§a+20% §7chance to catch"
       - "§bSharks §7during the §bFishing Festival§7."
-      - ""
-      - "§8Not active yet: Festival Fisher needs the Fishing Festival"
     components:
       - id: SKULL_HEAD
         texture: d38e3f1152b4855fea5865357e03ecb4d80c52889d641cc5f023e6d16996d8f1
@@ -1762,11 +1756,9 @@ items:
       sea_creature_chance: 2.5
     source: "Crafted from 2 Enchanted Shark Fin, 1 Sponge Leggings"
     lore:
-      - "§8Tiered Bonus: Festival Fisher (0/4)"
-      - "§7Grants a §a+0% §7chance to catch"
+      - "§6Tiered Bonus: Festival Fisher §8(2+ pieces)"
+      - "§7Grants a §a+10%§8➜§a+20% §7chance to catch"
       - "§bSharks §7during the §bFishing Festival§7."
-      - ""
-      - "§8Not active yet: Festival Fisher needs the Fishing Festival"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS

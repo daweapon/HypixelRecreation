@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Pools that replace a regular lava Sea Creature catch (wiki: Plhlegblast, Fishing_Hotspots). In the Plhlegblast
- * Pool a catch becomes a Plhlegblast 0.1% of the time (Fishing 36+). In a lava hotspot it comes from the hotspot's
- * pool 15% of the time, +20% with Hotspot Bait, capped at 85%.
+ * Pools that replace a regular Sea Creature catch (wiki: Plhlegblast, Fishing_Hotspots). In the Plhlegblast Pool a
+ * lava catch becomes a Plhlegblast 0.1% of the time (Fishing 36+). In a lava or water hotspot it comes from the
+ * hotspot's pool 15% of the time, +20% with Hotspot Bait, capped at 85%.
  */
 public final class LavaCatchOverrides {
     public static final Pos PLHLEGBLAST_POOL = new Pos(-382, 81, -703);
@@ -32,8 +32,7 @@ public final class LavaCatchOverrides {
     }
 
     public static Optional<List<SeaCreatureRoll>> override(FishingContext context) {
-        if (context.medium() != FishingMedium.LAVA) return Optional.empty();
-        if (inPlhlegblastPool(context)
+        if (context.medium() == FishingMedium.LAVA && inPlhlegblastPool(context)
                 && context.player().getSkills().getCurrentLevel(SkillCategories.FISHING) >= PLHLEGBLAST_FISHING_LEVEL
                 && LootRoll.roll(context.player().getUuid(), null, PLHLEGBLAST_CHANCE)) {
             return Optional.of(List.of(new SeaCreatureRoll(LavaSeaCreature.PLHLEGBLAST.name(), 0, 1)));
@@ -45,7 +44,7 @@ public final class LavaCatchOverrides {
     }
 
     static double hotspotChance(FishingContext context) {
-        double chance = HOTSPOT_BASE_CHANCE;
+        double chance = HOTSPOT_BASE_CHANCE + dev.daweapon.type.skyblockgeneric.potion.mixin.Mixins.hotspotChance(context.player());
         if (context.bait() != null && "HOTSPOT_BAIT".equals(context.bait().getItemId())) chance += HOTSPOT_BAIT_BONUS;
         double petBonus = PetAbilities.value(context.player(), ItemType.HERMIT_CRAB_PET, "Hotspot Hazard", 0);
         return PetPerkMath.hotspotChance(chance, petBonus, HOTSPOT_CAP);

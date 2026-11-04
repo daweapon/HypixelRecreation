@@ -65,6 +65,8 @@ tables:
         chance: 4
       - seaCreatureId: NIGHT_SQUID
         chance: 2
+      - seaCreatureId: DEEP_SEA_PROTECTOR
+        chance: 1
   # Oasis (wiki: Oasis, Oasis_Sheep, Oasis_Rabbit). Weights 700 and 300 are the wiki's base weights; the wiki gives no weights
   # for the shared water creatures in this pool, so they are estimates (total about 4,300).
   - id: OASIS_WATER
@@ -145,6 +147,8 @@ tables:
         weight: 700
       - seaCreatureId: OASIS_RABBIT
         weight: 300
+      - seaCreatureId: DEEP_SEA_PROTECTOR
+        weight: 88
   - id: DEFAULT_LAVA
     regions: [ ]
     mediums:
@@ -161,11 +165,97 @@ tables:
         skillXp: 15
     junk: [ ]
     seaCreatures: [ ]
+  # Abandoned Quarry (wiki: Mithril Grubber): the four Grubbers share 700 of a ~5,000 weight water pool; the shared
+  # water creatures use the Oasis estimates. Items and treasure are the default water pool's.
+  - id: ABANDONED_QUARRY_WATER
+    regions:
+      - ABANDONED_QUARRY
+    mediums:
+      - WATER
+    weightedSeaCreatures: true
+    items:
+      - itemId: RAW_FISH
+        chance: 36
+        amount: 1
+        skillXp: 5
+      - itemId: RAW_SALMON
+        chance: 22
+        amount: 1
+        skillXp: 6
+      - itemId: PUFFERFISH
+        chance: 10
+        amount: 1
+        skillXp: 7
+      - itemId: INK_SAC
+        chance: 8
+        amount: 1
+        skillXp: 5
+      - itemId: LILY_PAD
+        chance: 8
+        amount: 1
+        skillXp: 5
+      - itemId: CLAY_BALL
+        chance: 6
+        amount: 1
+        skillXp: 5
+      - itemId: PRISMARINE_CRYSTALS
+        chance: 4
+        amount: 1
+        skillXp: 6
+      - itemId: PRISMARINE_SHARD
+        chance: 3
+        amount: 1
+        skillXp: 6
+      - itemId: TROPICAL_FISH
+        chance: 2
+        amount: 1
+        skillXp: 8
+      - itemId: SPONGE
+        chance: 1
+        amount: 1
+        skillXp: 10
+    treasures:
+      - itemId: PRISMARINE_CRYSTALS
+        chance: 50
+        amount: 2
+        skillXp: 10
+      - itemId: PRISMARINE_SHARD
+        chance: 35
+        amount: 2
+        skillXp: 10
+      - itemId: SPONGE
+        chance: 15
+        amount: 1
+        skillXp: 12
+    junk: [ ]
+    seaCreatures:
+      - seaCreatureId: SQUID
+        weight: 1800
+      - seaCreatureId: SEA_WALKER
+        weight: 1100
+      - seaCreatureId: NIGHT_SQUID
+        weight: 600
+      - seaCreatureId: SEA_GUARDIAN
+        weight: 400
+      - seaCreatureId: SEA_WITCH
+        weight: 250
+      - seaCreatureId: SEA_ARCHER
+        weight: 150
+      - seaCreatureId: MITHRIL_GRUBBER
+        weight: 385
+      - seaCreatureId: MEDIUM_MITHRIL_GRUBBER
+        weight: 210
+      - seaCreatureId: LARGE_MITHRIL_GRUBBER
+        weight: 70
+      - seaCreatureId: BLOATED_MITHRIL_GRUBBER
+        weight: 35
+  # Backwater Bayou (wiki: Sea_Creatures/List): the six Bayou creatures replace the basic water pool, picked by weight.
   - id: BAYOU_WATERS
     regions:
       - BACKWATER_BAYOU
     mediums:
       - WATER
+    weightedSeaCreatures: true
     items:
       - itemId: RAW_FISH
         chance: 30
@@ -238,18 +328,18 @@ tables:
         amount: 1
         skillXp: 2
     seaCreatures:
-      - seaCreatureId: ALLIGATOR
-        chance: 5
-      - seaCreatureId: BANSHEE
-        chance: 3
-      - seaCreatureId: BAYOU_SLUDGE
-        chance: 3
-      - seaCreatureId: DUMPSTER_DIVER
-        chance: 2
-      - seaCreatureId: TITANOBOA
-        chance: 1
       - seaCreatureId: TRASH_GOBBLER
-        chance: 1
+        weight: 5000
+      - seaCreatureId: DUMPSTER_DIVER
+        weight: 2875
+      - seaCreatureId: BANSHEE
+        weight: 1500
+      - seaCreatureId: BAYOU_SLUDGE
+        weight: 500
+      - seaCreatureId: ALLIGATOR
+        weight: 100
+      - seaCreatureId: TITANOBOA
+        weight: 25
   # The Crimson Isle lava pool (wiki: Sea_Creatures/List/Crimson_Isle): Sea Creature Chance is rolled once, then
   # one of the 9 island-wide creatures is picked by weight. Thunder needs Novice and Lord Jawbus Adept Trophy Fisher.
   - id: CRIMSON_ISLE_LAVA

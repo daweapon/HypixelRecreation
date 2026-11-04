@@ -624,6 +624,9 @@ public class SkyBlockDataHandler extends DataHandler {
         GOD_POTION_LAST_UPDATED("god_potion_last_updated", false, false, false,
                 DatapointLong.class, new DatapointLong("god_potion_last_updated", 0L)),
 
+        GOD_POTION_MIXINS("god_potion_mixins", false, false, false,
+                DatapointMapStringLong.class, new DatapointMapStringLong("god_potion_mixins")),
+
         TRIAL_OF_FIRE_LEVEL("trial_of_fire_level", false, false, false,
                 DatapointInteger.class, new DatapointInteger("trial_of_fire_level", 0)),
 

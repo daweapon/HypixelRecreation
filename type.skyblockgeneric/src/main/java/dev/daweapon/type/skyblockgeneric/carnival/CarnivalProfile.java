@@ -19,6 +19,7 @@ public class CarnivalProfile {
     private int tokens;
     private long lastTicketDay = -1;
     private int year = -1;
+    private int claimedYear = -1;
     private final Map<CarnivalPerk, Integer> perkTiers = new EnumMap<>(CarnivalPerk.class);
     private final Set<String> metNpcs = new HashSet<>();
     private final Set<CarnivalGoal> completedGoals = EnumSet.noneOf(CarnivalGoal.class);
@@ -38,6 +39,10 @@ public class CarnivalProfile {
 
     public GameStats stats(CarnivalGame game) {
         return stats.computeIfAbsent(game, _ -> new GameStats());
+    }
+
+    public boolean playedThisYear() {
+        return stats.values().stream().anyMatch(gameStats -> gameStats.getYearAttempts() > 0);
     }
 
     /** Yearly scores and goals belong to one Carnival; a new Foxy term starts them over. */
@@ -95,6 +100,7 @@ public class CarnivalProfile {
         json.put("tokens", tokens);
         json.put("lastTicketDay", lastTicketDay);
         json.put("year", year);
+        json.put("claimedYear", claimedYear);
         JSONObject perks = new JSONObject();
         perkTiers.forEach((perk, tier) -> perks.put(perk.name(), tier));
         json.put("perks", perks);
@@ -113,6 +119,7 @@ public class CarnivalProfile {
         profile.tokens = json.optInt("tokens", 0);
         profile.lastTicketDay = json.optLong("lastTicketDay", -1);
         profile.year = json.optInt("year", -1);
+        profile.claimedYear = json.optInt("claimedYear", -1);
         JSONObject perks = json.optJSONObject("perks");
         if (perks != null) {
             for (String perk : perks.keySet()) {
@@ -140,6 +147,7 @@ public class CarnivalProfile {
         copy.tokens = tokens;
         copy.lastTicketDay = lastTicketDay;
         copy.year = year;
+        copy.claimedYear = claimedYear;
         copy.perkTiers.putAll(perkTiers);
         copy.metNpcs.addAll(metNpcs);
         copy.completedGoals.addAll(completedGoals);

@@ -3,6 +3,8 @@ package dev.daweapon.type.skyblockgeneric.leaderboard;
 import dev.daweapon.commons.StringUtility;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.skyblockgeneric.collection.CollectionCategories;
+import dev.daweapon.type.skyblockgeneric.crimson.dojo.DojoProgress;
+import dev.daweapon.type.skyblockgeneric.crimson.dojo.DojoTest;
 import dev.daweapon.type.skyblockgeneric.crimson.kuudra.KuudraProgress;
 import dev.daweapon.type.skyblockgeneric.crimson.kuudra.KuudraTier;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointSlayer;
@@ -70,7 +72,15 @@ public final class SkyBlockBoards {
             boards.add(new SkyBlockBoard("kuudra:" + tier.name(), tier.getDisplayName() + " Kuudra Completions", BoardCategory.ACTIVITIES,
                     Material.MAGMA_CREAM, "clears", player -> KuudraProgress.clears(player, tier)));
         }
+        for (DojoTest test : DojoTest.values()) {
+            boards.add(new SkyBlockBoard(dojoId(test), test.fullName() + " Best Score", BoardCategory.ACTIVITIES,
+                    test.getIcon(), "points", player -> DojoProgress.best(player, test)));
+        }
         return List.copyOf(boards);
+    }
+
+    public static String dojoId(DojoTest test) {
+        return "dojo:" + test.name();
     }
 
     private static List<SkyBlockBoard> buildWindowed() {

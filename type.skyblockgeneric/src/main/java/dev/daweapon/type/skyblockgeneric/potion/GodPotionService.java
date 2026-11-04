@@ -4,6 +4,7 @@ import dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPe
 import dev.daweapon.type.generic.data.datapoints.DatapointLong;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.potion.mixin.Mixins;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import dev.daweapon.type.skyblockgeneric.user.statistics.TemporaryStatistic;
@@ -72,22 +73,31 @@ public final class GodPotionService {
         setLastUpdated(player, System.currentTimeMillis());
     }
 
-    private static long durationFor(SkyBlockPlayer player) {
+    public static long durationFor(SkyBlockPlayer player) {
         int alchemyLevel = player.getSkills().getCurrentLevel(SkillCategories.ALCHEMY);
         long duration = BASE_DURATION_MS + Math.round(alchemyLevel * 0.24 * 60 * 60 * 1000);
         return Math.round(duration * MiscPetHooks.godPotionDurationMultiplier(player));
     }
 
     private static long remaining(SkyBlockPlayer player) {
-        long remaining = getRemaining(player);
-        long lastUpdated = getLastUpdated(player);
-        long now = System.currentTimeMillis();
-        if (lastUpdated > 0 && !player.isOnIsland()) {
-            remaining = Math.max(0, remaining - (now - lastUpdated));
+        long before = getRemaining(player);
+        long remaining = Math.max(0, before - peekElapsed(player));
+        if (remaining != before) {
             setRemaining(player, remaining);
+            Mixins.elapse(player, before - remaining);
         }
-        setLastUpdated(player, now);
+        setLastUpdated(player, System.currentTimeMillis());
         return remaining;
+    }
+
+    public static long peekRemaining(SkyBlockPlayer player) {
+        return Math.max(0, getRemaining(player) - peekElapsed(player));
+    }
+
+    public static long peekElapsed(SkyBlockPlayer player) {
+        long lastUpdated = getLastUpdated(player);
+        if (lastUpdated <= 0 || player.isOnIsland()) return 0;
+        return Math.min(getRemaining(player), Math.max(0, System.currentTimeMillis() - lastUpdated));
     }
 
     private static void applyEffects(SkyBlockPlayer player, long duration) {

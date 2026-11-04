@@ -220,7 +220,7 @@ items:
     material: player_head
     name: "Deepterror Mixin"
     rarity: RARE
-    unavailable: "Mixins (God Potion buffs) aren't built"
+    unavailable: "Needs Mite Gel, and Endermites aren't built"
     source: "Crafted from 1 Ritual Residue and 64 Mite Gel"
     lore:
       - "§8Brewing Ingredient"
@@ -240,6 +240,8 @@ items:
       - "§eRight-click to consume!"
       - "§8(Requires active Booster Cookie)"
     components:
+      - id: INTERACTABLE
+        handler_id: MIXIN_CONSUME
       - id: SKULL_HEAD
         texture: 5b8ec9e72a2962d9c12b7853aac8721770840f5145cdfe1e47a580fd8bd7f136
   - id: DEEP_OCEAN_BIOME_STICK

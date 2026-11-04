@@ -151,9 +151,8 @@ items:
             values:
               - { per_level: 0.5 }
           - name: "Sonar"
-            unavailable: "Needs Spooky sea creatures"
             rarity: MYTHIC
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Grants a <a>+{0}% <7>chance to catch"
               - "<6>Spooky Sea Creatures <7>during the"

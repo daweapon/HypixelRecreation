@@ -19,23 +19,20 @@ public class GUIRustyWeaponsAndGear extends GUIRustySubMenu<GUIRustyWeaponsAndGe
     }
 
     public enum RustyItem implements ShopEntry {
-        WHITE_BELT(DojoBelt.WHITE),
-        YELLOW_BELT(DojoBelt.YELLOW),
-        GREEN_BELT(DojoBelt.GREEN),
-        BLUE_BELT(DojoBelt.BLUE),
-        BROWN_BELT(DojoBelt.BROWN),
-        BLACK_BELT(DojoBelt.BLACK),
+        WHITE_BELT(DojoBelt.WHITE, 1_000_000),
+        YELLOW_BELT(DojoBelt.YELLOW, 2_000_000),
+        GREEN_BELT(DojoBelt.GREEN, 3_000_000),
+        BLUE_BELT(DojoBelt.BLUE, 4_000_000),
+        BROWN_BELT(DojoBelt.BROWN, 5_000_000),
+        BLACK_BELT(DojoBelt.BLACK, 6_000_000),
         FALLEN_STAR_HELMET(new SkyBlockItem(ItemType.valueOf("FALLEN_STAR_HAT")), 500_000, CultOfTheFallenStar::joined);
-
-        /** Rusty re-sells the player's highest Dojo belt (wiki Rusty, Jul 2022). The price is not documented. */
-        private static final int BELT_PRICE = 10_000;
 
         private final SkyBlockItem item;
         private final int price;
         private final Function<SkyBlockPlayer, Boolean> unlocked;
 
-        RustyItem(DojoBelt belt) {
-            this(new SkyBlockItem(belt.getItemType()), BELT_PRICE, player -> DojoProgress.highestBelt(player) == belt);
+        RustyItem(DojoBelt belt, int price) {
+            this(new SkyBlockItem(belt.getItemType()), price, player -> DojoProgress.highestBelt(player) == belt);
         }
 
         RustyItem(

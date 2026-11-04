@@ -145,7 +145,6 @@ items:
     material: redstone_lamp
     name: "Lantern of the Dead"
     rarity: SPECIAL
-    unavailable: "Carnival event-end leaderboard rewards are not built"
     source: "Carnival reward: 1,000+ points in a single Zombie Shootout game (1st Carnival)"
     lore:
       - "§7Obtained during the §e§k1§est Carnival §7for"
@@ -1229,7 +1228,7 @@ items:
     material: player_head
     name: "Melon Juice Mixin"
     rarity: RARE
-    unavailable: "Needs the Harvest Feast event; Mixins are not wired to God Potions"
+    unavailable: "Needs the Harvest Feast event"
     source: "Crafted from 16 Melon Juice, 2 Soggybud, 1 Glass Bottle"
     lore:
       - "§8Brewing Ingredient"
@@ -1523,7 +1522,6 @@ items:
     material: player_head
     name: "Aquarium Diorama"
     rarity: LEGENDARY
-    unavailable: "Carnival event-end leaderboard rewards are not built"
     source: "Carnival reward: top 500 in Catch a Fish"
     lore:
       - "§8Decoration item"
@@ -1929,7 +1927,6 @@ items:
     material: player_head
     name: "Glowing Mush Mixin"
     rarity: RARE
-    unavailable: "Mixins are not wired to God Potions yet"
     source: "Moby: 64 Full Chum Bucket and 80 Glowing Mushroom"
     lore:
       - "§8Brewing Ingredient"
@@ -1949,6 +1946,8 @@ items:
       - "§eRight-click to consume!"
       - "§8(Requires active Booster Cookie)"
     components:
+      - id: INTERACTABLE
+        handler_id: MIXIN_CONSUME
       - id: SKULL_HEAD
         texture: 22df4e921bf588e3a0bed6a5fbc76da5d02d239fb15efcac42774592ad679dae
   - id: MUSHROOM_SOUP
@@ -2938,7 +2937,7 @@ items:
     material: player_head
     name: "Pig Brain Mixin"
     rarity: RARE
-    unavailable: "Needs the Year of the Witch event; Mixins are not wired to God Potions"
+    unavailable: "Needs the Year of the Witch event"
     source: "Agnes: Frog Legs (up to 3) during the Year of the Witch"
     lore:
       - "§8Brewing Ingredient"
@@ -3036,7 +3035,6 @@ items:
     material: iron_shovel
     name: "Plastic Shovel"
     rarity: SPECIAL
-    unavailable: "Carnival event-end leaderboard rewards are not built"
     source: "Carnival reward: 1,000+ points in a single Fruit Digging game (1st Carnival)"
     lore:
       - "§7Obtained during the §e§k1§est Carnival §7for"

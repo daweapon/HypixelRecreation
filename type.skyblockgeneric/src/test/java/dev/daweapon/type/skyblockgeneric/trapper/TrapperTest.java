@@ -73,7 +73,7 @@ class TrapperTest {
     @Test
     void talbotPricesMatchTheWikiShop() throws IOException {
         List<CatalogueEntry> entries = entries("talbot");
-        assertEquals(List.of(100, 80, 250, 340, 200, 250), entries.stream().map(entry -> entry.cost().pelts()).toList());
+        assertEquals(List.of(100, 80, 250, 340, 200, 40, 250), entries.stream().map(entry -> entry.cost().pelts()).toList());
         entries.forEach(entry -> assertTrue(entry.available(), entry.itemId()));
     }
 }

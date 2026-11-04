@@ -1172,7 +1172,7 @@ items:
     material: paper
     name: "Scatha-in-a-Bottle"
     rarity: RARE
-    unavailable: "Needs Scatha and Mixins"
+    unavailable: "Needs Scatha"
     source: "Source unconfirmed"
     lore:
       - "§8Brewing Ingredient"
@@ -1836,8 +1836,7 @@ items:
     material: cod
     name: "Singing Fish"
     rarity: SPECIAL
-    unavailable: "One-time past event reward (1st Carnival)"
-    source: "1st Carnival: high score in Catch a Fish"
+    source: "Carnival: 1,000+ points in a single Catch a Fish game"
     lore:
       - "§7Obtained during the §e§k1§est Carnival §7for"
       - "§7achieving a §dhigh score §7in §3Catch a"

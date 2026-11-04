@@ -98,7 +98,12 @@ public final class LabScenes {
         LabQuest.Stage stage = LabQuest.stage(player);
         if (stage == LabQuest.Stage.LAB2_STARTED) {
             ChapterTriggers.fire(player, LabQuest.LAB2_LEVER);
+            LabHiddenSection.openWithStuckLever(player);
             player.sendMessage("<7>You pull down the lever. A hidden part of the lab opens up!");
+            return;
+        }
+        if (LabHiddenSection.unlocked(player)) {
+            LabHiddenSection.openWithStuckLever(player);
             return;
         }
         player.sendMessage("<7>The lever is stuck.");

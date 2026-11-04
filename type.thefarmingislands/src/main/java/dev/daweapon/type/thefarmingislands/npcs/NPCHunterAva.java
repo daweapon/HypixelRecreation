@@ -36,7 +36,7 @@ public class NPCHunterAva extends HypixelNPC {
 
             @Override
             public Pos position(HypixelPlayer player) {
-                return new Pos(319.5, 102, -470, 0, 60);
+                return new Pos(319.5, 102, -470.5, 0, 60);
             }
 
             @Override

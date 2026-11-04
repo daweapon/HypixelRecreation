@@ -1,5 +1,6 @@
 package dev.daweapon.type.crimsonisle;
 
+import dev.daweapon.type.crimsonisle.dojo.DojoLeaderboardHologram;
 import dev.daweapon.type.crimsonisle.dojo.DojoService;
 import dev.daweapon.type.crimsonisle.faction.FactionQuestTicker;
 import dev.daweapon.type.crimsonisle.quest.TownBoard;
@@ -25,6 +26,7 @@ public final class CrimsonIsleServices {
         MatriarchService.start();
         GoldenFishService.start();
         DojoService.start();
+        DojoLeaderboardHologram.start();
         FactionQuestTicker.start();
         TownBoard.spawnAll();
         RescueService.start();

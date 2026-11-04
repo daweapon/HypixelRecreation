@@ -563,7 +563,6 @@ items:
     material: paper
     name: "Poison Sample"
     rarity: UNCOMMON
-    unavailable: "Needs Backwater Bayou slimes (the Bayou has no mobs yet)"
     source: "Dropped by toxic Slimes in the Backwater Bayou"
     lore:
       - "§7Dropped from §aSlimes§7, but only the"

@@ -57,15 +57,44 @@ public final class TrapperRewards {
 
     public static void creditCrest(SkyBlockPlayer player, int pelts) {
         if (crest(player).isEmpty()) return;
-        var datapoint = player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.HUNTING, DatapointHunting.class);
-        DatapointHunting.HuntingData data = datapoint.getValue();
-        data.setCounter(CREST_PELTS, data.counter(CREST_PELTS) + pelts);
-        datapoint.setValue(data);
-        syncCrest(player, data.counter(CREST_PELTS));
+        var bag = player.getAccessoryBag();
+        for (SkyBlockItem item : bag.getAllAccessories()) {
+            if (item.getAttributeHandler().getPotentialType() != ItemType.TRAPPER_CREST) continue;
+            credit(player, item, pelts);
+            AccessoryBag.save(player, bag);
+            AccessoryOwnership.invalidate(player);
+            return;
+        }
+        for (int slot = 0; slot < PlayerInventory.INNER_INVENTORY_SIZE; slot++) {
+            ItemStack stack = player.getInventory().getItemStack(slot);
+            if (stack.isAir() || !SkyBlockItem.isSkyBlockItem(stack)) continue;
+            SkyBlockItem item = new SkyBlockItem(stack);
+            if (item.getAttributeHandler().getPotentialType() != ItemType.TRAPPER_CREST) continue;
+            credit(player, item, pelts);
+            player.getInventory().setItemStack(slot, item.getItemStack());
+            AccessoryOwnership.invalidate(player);
+            return;
+        }
     }
 
-    public static long crestPelts(SkyBlockPlayer player) {
-        return player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.HUNTING, DatapointHunting.class).getValue().counter(CREST_PELTS);
+    private static void credit(SkyBlockPlayer player, SkyBlockItem crest, int pelts) {
+        long collected = crest.getAttributeHandler().getTrapperCrestPelts() + takeLegacyCount(player) + pelts;
+        crest.getAttributeHandler().setTrapperCrestPelts(collected);
+        crest.getAttributeHandler().setRarity(crestTierFor(collected));
+    }
+
+    private static long takeLegacyCount(SkyBlockPlayer player) {
+        var datapoint = player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.HUNTING, DatapointHunting.class);
+        DatapointHunting.HuntingData data = datapoint.getValue();
+        long legacy = data.counter(CREST_PELTS);
+        if (legacy <= 0) return 0;
+        data.setCounter(CREST_PELTS, 0);
+        datapoint.setValue(data);
+        return legacy;
+    }
+
+    public static long crestPelts(SkyBlockItem crest) {
+        return crest.getAttributeHandler().getTrapperCrestPelts();
     }
 
     public static Rarity crestTierFor(long collected) {
@@ -74,26 +103,4 @@ public final class TrapperRewards {
         return Rarity.COMMON;
     }
 
-    public static void syncCrest(SkyBlockPlayer player, long collected) {
-        Rarity target = crestTierFor(collected);
-        var bag = player.getAccessoryBag();
-        boolean bagChanged = false;
-        for (SkyBlockItem item : bag.getAllAccessories()) {
-            if (item.getAttributeHandler().getPotentialType() != ItemType.TRAPPER_CREST) continue;
-            if (item.getAttributeHandler().getRarity() == target) continue;
-            item.getAttributeHandler().setRarity(target);
-            bagChanged = true;
-        }
-        if (bagChanged) AccessoryBag.save(player, bag);
-        for (int slot = 0; slot < PlayerInventory.INNER_INVENTORY_SIZE; slot++) {
-            ItemStack stack = player.getInventory().getItemStack(slot);
-            if (stack.isAir() || !SkyBlockItem.isSkyBlockItem(stack)) continue;
-            SkyBlockItem item = new SkyBlockItem(stack);
-            if (item.getAttributeHandler().getPotentialType() != ItemType.TRAPPER_CREST) continue;
-            if (item.getAttributeHandler().getRarity() == target) continue;
-            item.getAttributeHandler().setRarity(target);
-            player.getInventory().setItemStack(slot, item.getItemStack());
-        }
-        AccessoryOwnership.invalidate(player);
-    }
 }

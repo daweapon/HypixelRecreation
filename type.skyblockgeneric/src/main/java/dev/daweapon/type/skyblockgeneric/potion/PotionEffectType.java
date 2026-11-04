@@ -291,6 +291,12 @@ public enum PotionEffectType {
                     .build(),
             null),
 
+    DOUCE_PLUIE_DE_STINKY_CHEESE("Douce Pluie de Stinky Cheese", PotionEffectCategory.BUFF, 1, 3600,
+            level -> ItemStatistics.builder()
+                    .withBase(ItemStatistic.BONUS_PEST_CHANCE, 20.0)
+                    .build(),
+            null),
+
     AWKWARD("Awkward", PotionEffectCategory.BASE, 1, 0,
             level -> ItemStatistics.builder().build(),
             null),
@@ -385,6 +391,7 @@ public enum PotionEffectType {
             case DODGE, AGILITY -> Text.of("Grants <a>{}% <7>chance to dodge attacks.", (int) getDodgeChance(level)).serialize();
             case STUN -> Text.of("Grants <e>{}% <7>chance to stun enemies.", (int) getStunChance(level)).serialize();
             case MUSHED_GLOWY_TONIC -> Text.of("Grants <b>+{} Fishing Speed<7>.", stats.getOverall(ItemStatistic.FISHING_SPEED).intValue()).serialize();
+            case DOUCE_PLUIE_DE_STINKY_CHEESE -> Text.of("Grants <2>+{} Bonus Pest Chance<7>.", stats.getOverall(ItemStatistic.BONUS_PEST_CHANCE).intValue()).serialize();
             case AWKWARD, THICK, MUNDANE, WATER -> "No effect.";
             default -> "";
         };
@@ -622,6 +629,7 @@ public enum PotionEffectType {
             case COLD_RESISTANCE -> new Color(173, 216, 230); // Light blue
             case HARVEST_HARBINGER -> new Color(34, 139, 34); // Forest green
             case MUSHED_GLOWY_TONIC -> new Color(64, 224, 208); // Turquoise
+            case DOUCE_PLUIE_DE_STINKY_CHEESE -> new Color(222, 196, 92);
 
             // Base potions
             case AWKWARD -> new Color(40, 40, 255); // Blue-ish

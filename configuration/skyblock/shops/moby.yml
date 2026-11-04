@@ -31,7 +31,6 @@ entries:
     name: "<9>Glowing Mush Mixin"
     material: player_head
     cost: { items: { GLOWING_MUSHROOM: 80, FULL_CHUM_BUCKET: 64 } }
-    unavailable: "<c>Mixins are not wired to God Potions yet!"
   - item: CHUMMING_TALISMAN
     name: "<a>Chumming Talisman"
     material: player_head
