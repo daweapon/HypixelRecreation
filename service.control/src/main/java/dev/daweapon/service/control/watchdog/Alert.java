@@ -13,7 +13,9 @@ public record Alert(
     public enum Severity {
         CRITICAL,
         WARNING,
-        RECOVERY
+        RECOVERY,
+        /** Informational, such as a test alert sent from the app. */
+        INFO
     }
 
     public static Alert critical(String key, String title, String body) {
@@ -26,5 +28,9 @@ public record Alert(
 
     public static Alert recovery(String key, String title, String body) {
         return new Alert(Instant.now(), Severity.RECOVERY, key, title, body);
+    }
+
+    public static Alert info(String key, String title, String body) {
+        return new Alert(Instant.now(), Severity.INFO, key, title, body);
     }
 }

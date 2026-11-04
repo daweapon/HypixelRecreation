@@ -1,37 +1,89 @@
 package dev.daweapon.service.control.docker;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 
 /**
- * Builds a minimal single-file USTAR archive.
+ * Builds minimal USTAR archives.
  *
- * The Docker Engine API's equivalent of `docker cp` takes a tar stream, and a jar deploy only
- * ever needs one file in it, so a tiny writer is preferable to pulling in an archiving library
- * for one call site.
+ * The Docker Engine API's equivalent of `docker cp` takes a tar stream. A jar deploy needs one
+ * file held in memory; a database restore needs a few files streamed from disk, since a dump
+ * can be far larger than is sensible to buffer. A tiny writer is preferable to pulling in an
+ * archiving library for these call sites.
  */
 public final class TarWriter {
-    private static final int BLOCK = 512;
+    static final int BLOCK = 512;
+
+    /** One file in an archive: either in memory or streamed from disk. */
+    public record Entry(String name, Path source, byte[] content) {
+        public static Entry file(String name, Path source) {
+            return new Entry(name, source, null);
+        }
+
+        public static Entry bytes(String name, byte[] content) {
+            return new Entry(name, null, content);
+        }
+
+        long size() throws IOException {
+            return content != null ? content.length : Files.size(source);
+        }
+    }
 
     private TarWriter() {
     }
 
     public static byte[] singleFile(String name, byte[] content) {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        out.writeBytes(header(name, content.length));
-        out.writeBytes(content);
-
-        // Pad the file data to a block boundary, then append the two empty blocks that
-        // terminate a tar archive.
-        int remainder = content.length % BLOCK;
-        if (remainder != 0) {
-            out.writeBytes(new byte[BLOCK - remainder]);
+        try {
+            write(out, List.of(Entry.bytes(name, content)));
+        } catch (IOException e) {
+            throw new IllegalStateException("In-memory tar write failed", e);
         }
-        out.writeBytes(new byte[BLOCK * 2]);
         return out.toByteArray();
     }
 
-    private static byte[] header(String name, int size) {
+    /** Exact byte length of the archive {@link #write} produces, needed for Content-Length. */
+    public static long length(List<Entry> entries) throws IOException {
+        long total = BLOCK * 2L;
+        for (Entry entry : entries) {
+            total += BLOCK + entry.size() + padding(entry.size());
+        }
+        return total;
+    }
+
+    public static void write(OutputStream out, List<Entry> entries) throws IOException {
+        for (Entry entry : entries) {
+            long size = entry.size();
+            out.write(header(entry.name(), size));
+            if (entry.content() != null) {
+                out.write(entry.content());
+            } else {
+                try (InputStream in = Files.newInputStream(entry.source())) {
+                    long copied = in.transferTo(out);
+                    if (copied != size) {
+                        throw new IOException(entry.source() + " changed size while being archived");
+                    }
+                }
+            }
+            // Pad the file data to a block boundary.
+            out.write(new byte[(int) padding(size)]);
+        }
+        // Two empty blocks terminate a tar archive.
+        out.write(new byte[BLOCK * 2]);
+    }
+
+    static long padding(long size) {
+        long remainder = size % BLOCK;
+        return remainder == 0 ? 0 : BLOCK - remainder;
+    }
+
+    private static byte[] header(String name, long size) {
         byte[] header = new byte[BLOCK];
 
         writeString(header, 0, 100, name);
