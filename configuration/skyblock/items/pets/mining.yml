@@ -234,9 +234,8 @@ items:
             values:
               - { per_level: { RARE: 0.3, EPIC: 0.4 } }
           - name: "Mite Bait"
-            unavailable: "Needs Nest Endermites"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Gain a <a>{0}% <7>chance to dig up"
               - "<7>a bonus <c>Nest Endermite <7>per"

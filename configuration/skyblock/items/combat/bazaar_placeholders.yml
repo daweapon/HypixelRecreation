@@ -484,8 +484,7 @@ items:
     material: ink_sac
     name: "Mite Gel"
     rarity: EPIC
-    unavailable: "Needs the Endermite mob (not built)"
-    source: "Dropped by Endermites"
+    source: "Dropped by Nest Endermites"
     lore:
       - "§8§oSticky goo scraped off an Endermite."
     components:

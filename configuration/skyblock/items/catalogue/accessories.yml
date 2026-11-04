@@ -1127,8 +1127,7 @@ items:
     default_statistics:
       health: 15
       defense: 10
-    unavailable: "Ender Nodes (End mining) not built"
-    source: "Drops from Ender Nodes: 3.32% (End Stone), 3.05% (Obsidian)."
+    source: "Drops from Ender Nodes: 3.33% (End Stone), 3.06% (Obsidian)."
     lore:
       - "§7All stats on this piece of equipment"
       - "§7are multiplied by §52x §7while on the End"

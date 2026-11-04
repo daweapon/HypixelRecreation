@@ -83,7 +83,8 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
         }
 
         if (dev.daweapon.type.skyblockgeneric.farming.chum.GlowingMushrooms.handle(player, event.getBlockPosition(), event.getBlock())
-                || dev.daweapon.type.skyblockgeneric.farming.lab.LabEntrance.handle(player, event.getBlockPosition(), event.getBlock())) {
+                || dev.daweapon.type.skyblockgeneric.farming.lab.LabEntrance.handle(player, event.getBlockPosition(), event.getBlock())
+                || dev.daweapon.type.skyblockgeneric.theend.EnderNodes.handle(player, event.getBlockPosition(), event.getBlock())) {
             event.setCancelled(true);
             return;
         }

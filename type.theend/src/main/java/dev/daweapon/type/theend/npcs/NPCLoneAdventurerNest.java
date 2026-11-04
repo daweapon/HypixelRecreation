@@ -97,8 +97,8 @@ public class NPCLoneAdventurerNest extends AbstractLoneAdventurer {
                         "The <5>Seers <f>guarding the Nest carry a <5>Dragon Shortbow<f>. Kill Seers until one drops and bring it to me."
                 ).build(),
                 DialogueSet.builder().key("seers").lines(
-                        "Kill <5>Seers <f>in the <5>Dragon's Nest <f>until a <5>Dragon Shortbow <f>drops.",
-                        "<c>The Dragon Shortbow drop isn't in this server yet."
+                        "I'm 90% sure one of those <c>Seers <f>in the <5>Dragon's Nest <f>has it.",
+                        "I'm sure one of them will have my <5>Dragon Shortbow<f>."
                 ).build(),
                 DialogueSet.builder().key("shortbow_handed_in").lines(
                         "A <5>Dragon Shortbow<f>! Marvelous.",

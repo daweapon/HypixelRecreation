@@ -19,7 +19,7 @@ public enum MineableBlock {
     NETHERRACK(Material.NETHERRACK, MiningHandlers.pickaxe(4, 1), MiningBlockClassification.blockBlock()),
     COBBLESTONE(Material.COBBLESTONE, MiningHandlers.pickaxe(20, 1), MiningBlockClassification.blockBlock()),
     END_STONE(Material.END_STONE, MiningHandlers.pickaxe(30, 1), MiningBlockClassification.blockBlock()),
-    OBSIDIAN(Material.END_STONE, MiningHandlers.pickaxe(500, 4), MiningBlockClassification.blockBlock()),
+    OBSIDIAN(Material.OBSIDIAN, MiningHandlers.pickaxe(500, 4), MiningBlockClassification.blockBlock()),
 
     // Mineable blocks (any item or hand, vanilla timings)
     ICE(Material.ICE, MiningHandlers.hand(15, 8), MiningBlockClassification.blockBlock()),
@@ -112,6 +112,9 @@ public enum MineableBlock {
     ORE_NETHER_QUARTZ(Material.NETHER_QUARTZ_ORE, MiningHandlers.pickaxe(30, 1), MiningBlockClassification.oreBlock()),
     SULPHUR_ORE(Material.SPONGE, MiningHandlers.pickaxe(500, 8), MiningBlockClassification.oreBlock()),
     DEAD_BUSH(Material.DEAD_BUSH, MiningHandlers.instant(), MiningBlockClassification.farmingBlock()),
+
+    // The End
+    ENDER_NODE(Material.PURPLE_TERRACOTTA, MiningHandlers.pickaxe(30, 1), MiningBlockClassification.blockBlock()),
     ;
 
     private final Material material;

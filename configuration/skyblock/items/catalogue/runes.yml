@@ -522,7 +522,7 @@ items:
     material: player_head
     name: "Magical Rune"
     rarity: RARE
-    unavailable: "Ender Node mining drops aren't built"
+    source: "Ender Nodes in The End: 2.63% (Obsidian); Garden visitors"
     lore:
       - "§7Your arrows have a magical shine!"
     components:

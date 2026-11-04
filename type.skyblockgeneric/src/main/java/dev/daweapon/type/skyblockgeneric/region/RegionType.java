@@ -123,10 +123,10 @@ public enum RegionType {
     SPIDER_MOUND("Spider Mound", NamedTextColor.RED),
 
     // The End
-    THE_END("The End", NamedTextColor.LIGHT_PURPLE),
+    THE_END("The End", NamedTextColor.LIGHT_PURPLE, EndMiningConfiguration.class),
     THE_END_NEST("The End", NamedTextColor.LIGHT_PURPLE),
     VOID_SEPULTURE("Void Sepulture", NamedTextColor.LIGHT_PURPLE),
-    DRAGONS_NEST("Dragon's Nest", NamedTextColor.DARK_PURPLE),
+    DRAGONS_NEST("Dragon's Nest", NamedTextColor.DARK_PURPLE, EndMiningConfiguration.class),
     VOID_SLATE("Void Slate"),
     ZEALOT_BRUISER_HIDEOUT("Zealot Bruiser Hideout"),
 

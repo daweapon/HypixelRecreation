@@ -68,6 +68,9 @@ public class TypeTheEndLoader implements SkyBlockTypeLoader, RaceInstance {
         SepulturePads.install();
         ZealotWaves.start();
         EndMobSpawner.start();
+        EnderNodeSpawner.start();
+        EndStoneProtectorSpawner.start();
+        DragonZealotSummons.start();
     }
 
     private static boolean cancelRaceOnDeath(dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer player) {

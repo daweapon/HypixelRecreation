@@ -32,6 +32,7 @@ public final class ZealotKills {
 
     public static void onKill(SkyBlockPlayer player, Instance instance, Pos position, boolean bruiser) {
         TOTAL.incrementAndGet();
+        ProtectorProgress.recordZealot(player.getUuid());
         if (player.getSkyblockDataHandler() == null || instance == null) return;
         int meter = ZealotPity.increment(player);
         double chance = SpecialZealotOdds.chancePercent(bruiser, petBonusPercent(player), zealuckPercent(player));
