@@ -6,6 +6,7 @@ import dev.daweapon.commons.StringUtility;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.gui.inventory.item.GUIMaterial;
 import dev.daweapon.type.skyblockgeneric.levels.abstr.SkyBlockLevelCauseAbstr;
+import dev.daweapon.type.skyblockgeneric.levels.causes.CenturyEmblemCause;
 import dev.daweapon.type.skyblockgeneric.levels.causes.LevelCause;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -157,8 +158,8 @@ public enum SkyBlockEmblems {
             new SkyBlockEmblem("Trophy Frog King", Material.LILY_PAD, "<7>🐸", null),
             new SkyBlockEmblem("Golden Trophy Frog King", Material.LILY_PAD, "<6>🐸", null),
             new SkyBlockEmblem("Diamond Trophy Frog King", Material.LILY_PAD, "<b>🐸", null),
-            new SkyBlockEmblem("Century Celebrant", Material.CAKE, "<7>⛂", null),
-            new SkyBlockEmblem("Century Partygoer", Material.CAKE, "<6>⛂", null),
+            new SkyBlockEmblem("Century Celebrant", Material.CAKE, "<7>⛂", SkyBlockLevelCause.getCenturyEmblemCause(CenturyEmblemCause.CELEBRANT)),
+            new SkyBlockEmblem("Century Partygoer", Material.CAKE, "<6>⛂", SkyBlockLevelCause.getCenturyEmblemCause(CenturyEmblemCause.PARTYGOER)),
             new SkyBlockEmblem("Sparkling Critter Catcher", Material.GLOW_BERRIES, "<7>✨", null),
             new SkyBlockEmblem("Great Spook", Material.SOUL_LANTERN, "<5>࿇", SkyBlockLevelCause.getVargulMilestoneCause(6)),
             new SkyBlockEmblem("Gift of Giving", Material.CHEST, "<7>✉", null),
@@ -184,11 +185,11 @@ public enum SkyBlockEmblems {
     )),
     SPECIAL(new GUIMaterial(Material.DRAGON_EGG), List.of("<7>Rare symbols from events and", "<7>limited-time occasions."), List.of(
             new SkyBlockEmblem("Hypixel", Material.DRAGON_EGG, "<c>ዞ", null),
-            new SkyBlockEmblem("Century Raffle Green", Material.GREEN_DYE, "<a>⛃", null),
-            new SkyBlockEmblem("Century Raffle Yellow", Material.YELLOW_DYE, "<e>⛃", null),
-            new SkyBlockEmblem("Century Raffle Red", Material.RED_DYE, "<c>⛃", null),
-            new SkyBlockEmblem("Century Raffle Pink", Material.PINK_DYE, "<d>⛃", null),
-            new SkyBlockEmblem("Century Raffle Blue", Material.BLUE_DYE, "<9>⛃", null),
+            new SkyBlockEmblem("Century Raffle Green", Material.GREEN_DYE, "<a>⛃", SkyBlockLevelCause.getCenturyEmblemCause(CenturyEmblemCause.teamKey("Green"))),
+            new SkyBlockEmblem("Century Raffle Yellow", Material.YELLOW_DYE, "<e>⛃", SkyBlockLevelCause.getCenturyEmblemCause(CenturyEmblemCause.teamKey("Yellow"))),
+            new SkyBlockEmblem("Century Raffle Red", Material.RED_DYE, "<c>⛃", SkyBlockLevelCause.getCenturyEmblemCause(CenturyEmblemCause.teamKey("Red"))),
+            new SkyBlockEmblem("Century Raffle Pink", Material.PINK_DYE, "<d>⛃", SkyBlockLevelCause.getCenturyEmblemCause(CenturyEmblemCause.teamKey("Pink"))),
+            new SkyBlockEmblem("Century Raffle Blue", Material.BLUE_DYE, "<9>⛃", SkyBlockLevelCause.getCenturyEmblemCause(CenturyEmblemCause.teamKey("Blue"))),
             new SkyBlockEmblem("Discord", Material.PAPER, "<9>⌬", null)
     ));
 

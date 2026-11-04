@@ -1,0 +1,149 @@
+# Raffle of the Century (wiki Raffle of the Century, Year 500 rules). Runs for the whole of every SkyBlock year
+# divisible by 100, or while staff force it with /force century.
+# Verified: 1 ticket per 15 minutes online, 3 tickets for joining a team, 21 tasks (7/7/7) every 2 hours, 1 ticket +
+# 1 cake slice per task, 25 fed slices per 2 hours, the feeding table weights, the prize counts per raffle, the
+# consolation rules and the milestone thresholds.
+# GUESS: reference_participants. Hypixel draws a fixed number of prizes from a huge player base; we scale each
+# raffle's prize counts by participants / reference_participants so a single player keeps roughly Hypixel's odds.
+# GUESS: every prize inside a tier is equally likely (Hypixel refused to publish the odds).
+online_ticket_minutes: 15
+join_tickets: 3
+fed_slices_per_period: 25
+
+raffles:
+  SPEED:
+    reference_participants: 100000
+    prizes: { MAJOR: 5, MEDIUM: 100, MINOR: 15000 }
+  DAILY:
+    reference_participants: 400000
+    prizes: { MAJOR: 50, MEDIUM: 500, MINOR: 75000 }
+  BIG_ONE:
+    reference_participants: 1000000
+    prizes: { MAJOR: 500, MEDIUM: 5000, MINOR: 500000 }
+
+# RANDOM_CENTURY_CAKE and RANDOM_CAKE_SOUL are rolled when the prize is claimed. Necron's Handle (major) is left out:
+# it has no catalogue item yet.
+prizes:
+  MINOR:
+    - ASPECT_OF_THE_JERRY_SIGNATURE
+    - BOX_OF_JUNK
+    - CAKE_COUNTER
+    - RANDOM_CAKE_SOUL
+    - RANDOM_CENTURY_CAKE
+    - CENTURY_PARTY_INVITATION
+    - CHYME
+    - DUNGEON_CHEST_KEY
+    - ENCHANTED_BOOK_BUNDLE_RAINBOW
+    - ENCHANTED_BOOK_BUNDLE_SMALL_BRAIN
+    - FRUIT_BOWL
+    - GIFT_OF_LEARNING
+    - JERRY_BOX_GOLDEN
+    - LOUDMOUTH_BASS
+    - MYSTERIOUS_PACKAGE
+    - PAINT_CARTRIDGE
+    - PUFFERFISH_HAT
+    - RNG_JUICE
+    - RUNEBOOK
+    - SALMON_HAT
+    - SUMMONING_EYE
+    - TITANIC_EXP_BOTTLE
+    - TREASURE_TALISMAN
+    - TUNGSTEN_KEY
+    - UMBER_KEY
+    - UNCOMMON_PARTY_HAT
+    - WHITE_GIFT_TALISMAN
+    - WITCH_TALISMAN
+  MEDIUM:
+    - CAGED_WISP
+    - COPPER_ARTIFACT
+    - DARK_CLAYMORE
+    - DIANAS_BOOKSHELF
+    - DIVAN_POWDER_COATING
+    - ECCENTRIC_PAINTING_BUNDLE
+    - ENCHANTED_BOOK_BUNDLE_POWER
+    - ENDER_ARTIFACT
+    - GIANTS_SWORD
+    - GLEAMING_CRYSTAL
+    - GOLDEN_BOUNTY
+    - HELLFIRE_ROD
+    - HEPHAESTUS_ANVIL
+    - HEPHAESTUS_LUCKY_DIP
+    - HOCUS_POCUS_CIPHER
+    - INFINITE_SPIRIT_LEAP
+    - JUDGEMENT_CORE
+    - KUUDRAS_LUNG
+    - LITTLEFOOT_FLUFF
+    - MAGIC_8_BALL
+    - MAGMA_URCHIN_BUNDLE
+    - MANTI_CORE
+    - NECRONS_LADDER
+    - OVERFLUX_CAPACITOR
+    - PET_SIZED_CUPCAKE
+    - PLASMA_NUCLEUS
+    - PRIMORDIAL_EYE
+    - DYE_PURE_BLUE
+    - DYE_PURE_YELLOW
+    - RADIOACTIVE_VIAL
+    - RANDOM_CENTURY_CAKE_PACK
+    - SHIMMERING_WOOL
+    - SHRIVELED_CORNEA
+    - PET_ITEM_TIER_BOOST_DROP
+    - TIKI_MASK
+    - TITANOBOA_SHED
+    - WARDEN_HEART
+    - WITHER_ARTIFACT
+  MAJOR:
+    - ARTIFACT_OF_CONTROL
+    - BINGO_RELIC
+    - FULL_CENTURY_CAKE_PACK
+    - CROWN_OF_AVARICE
+    - DIVAN_ALLOY
+    - DRAGON_EGG_IN_A_BOX
+    - ENCHANTED_BOOK_BUNDLE_CHIMERA
+    - ENCHANTED_BOOK_BUNDLE_ICE_COLD
+    - HEGEMONY_ARTIFACT
+    - INFERNAL_KUUDRA_CORE
+    - MASTER_SKULL_TIER_7
+    - PANDORAS_BOX
+    - RAY_OF_HELIOS
+    - RIFT_PRISM
+    - SHATTERED_PENDANT
+    - SKELETON_KEYCHAIN
+    - DCTR_SPACE_HELM
+    - DEAD_CAT_FOOD
+    - WITHER_SCROLL_IN_A_BOTTLE
+
+# Feeding a matching Cake Slice: both players get 1 ticket and this one roll (wiki weights, total 15,990).
+feeding:
+  - { reward: CENTURY_CAKE, weight: 20 }
+  - { reward: CAKE_SOUL, weight: 20 }
+  - { reward: TICKETS, amount: 20, weight: 75 }
+  - { reward: SKILL_XP, skill: MINING, amount: 25000, weight: 100 }
+  - { reward: SKILL_XP, skill: COMBAT, amount: 25000, weight: 100 }
+  - { reward: SKILL_XP, skill: FORAGING, amount: 25000, weight: 100 }
+  - { reward: SKILL_XP, skill: FISHING, amount: 25000, weight: 100 }
+  - { reward: COINS, amount: 500000, weight: 100 }
+  - { reward: TICKETS, amount: 10, weight: 125 }
+  - { reward: SKILL_XP, skill: MINING, amount: 10000, weight: 250 }
+  - { reward: SKILL_XP, skill: COMBAT, amount: 10000, weight: 250 }
+  - { reward: SKILL_XP, skill: FORAGING, amount: 10000, weight: 250 }
+  - { reward: SKILL_XP, skill: FISHING, amount: 10000, weight: 250 }
+  - { reward: TICKETS, amount: 5, weight: 250 }
+  - { reward: SKILL_XP, skill: MINING, amount: 7500, weight: 500 }
+  - { reward: SKILL_XP, skill: COMBAT, amount: 7500, weight: 500 }
+  - { reward: SKILL_XP, skill: FORAGING, amount: 7500, weight: 500 }
+  - { reward: SKILL_XP, skill: FISHING, amount: 7500, weight: 500 }
+  - { reward: COINS, amount: 100000, weight: 500 }
+  - { reward: SKILL_XP, skill: MINING, amount: 5000, weight: 750 }
+  - { reward: SKILL_XP, skill: COMBAT, amount: 5000, weight: 750 }
+  - { reward: SKILL_XP, skill: FORAGING, amount: 5000, weight: 750 }
+  - { reward: SKILL_XP, skill: FISHING, amount: 5000, weight: 750 }
+  - { reward: COINS, amount: 50000, weight: 750 }
+  - { reward: TICKETS, amount: 2, weight: 750 }
+  - { reward: SKILL_XP, skill: MINING, amount: 1000, weight: 1000 }
+  - { reward: SKILL_XP, skill: COMBAT, amount: 1000, weight: 1000 }
+  - { reward: SKILL_XP, skill: FORAGING, amount: 1000, weight: 1000 }
+  - { reward: SKILL_XP, skill: FISHING, amount: 1000, weight: 1000 }
+  - { reward: ITEM, item: TOKEN_OF_THE_CENTURY, weight: 1000 }
+  - { reward: COINS, amount: 10000, weight: 1000 }
+  - { reward: TICKETS, amount: 1, weight: 1000 }

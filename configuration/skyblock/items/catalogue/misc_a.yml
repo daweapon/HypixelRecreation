@@ -1699,7 +1699,6 @@ items:
     material: player_head
     name: "Box of Junk"
     rarity: RARE
-    unavailable: "Needs the Raffle of the Century event"
     source: "Raffle of the Century (minor reward / Gift Bag of the Century)"
     lore:
       - "§8Consumable"
@@ -2168,7 +2167,7 @@ items:
     material: player_head
     name: "Caged Wisp"
     rarity: LEGENDARY
-    source: "Frozen Corpses in Glacite Mineshafts: 0.03%-0.28% per roll (the Raffle of the Century is not built)"
+    source: "Frozen Corpses in Glacite Mineshafts: 0.03%-0.28% per roll, or a medium Raffle of the Century reward"
     lore:
       - "§7Loyal companions to the dwarves"
       - "§7since the beginning, wisps were once"
@@ -2217,28 +2216,30 @@ items:
     material: player_head
     name: "Cake Counter"
     rarity: EPIC
-    unavailable: "Needs the placeable furniture system (Private Island furniture), which isn't built; needs the Raffle of the Century"
-    source: "Raffle of the Century (minor reward / Gift Bag of the Century)"
+    source: "Minor Raffle of the Century reward or Gift Bag of the Century"
     lore:
       - "§8Furniture"
       - ""
       - "§7Counts and displays the number of"
       - "§7century cakes eaten on your island."
     components:
+      - id: PLACE_EVENT
+        handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
         texture: 21185676416653bf70603c723ff7a48e080db649a8ce5d65b461bf654874935a
   - id: CAKE_SOUL
     material: orange_dye
     name: "Cake Soul (Random Color)"
     rarity: MYTHIC
-    unavailable: "Needs Century Cakes and the Raffle of the Century"
-    source: "0.1% chance when eating a Century Cake (8+ hours played)"
+    source: "0.1% chance when eating a Century Cake on a profile older than 8 hours; minor Raffle of the Century reward; Gift Bag of the Century; Cake Slice feeding"
     lore:
       - "§7Quickly click on a player several"
       - "§7times while holding this item to"
       - "§7capture their §dSoul§7 in it!"
       - ""
       - "§8Capturing a soul will soulbind this item."
+    components:
+      - id: CAKE_SOUL
   - id: CAMPFIRE
     material: player_head
     name: "Fire Pit"
@@ -2614,7 +2615,6 @@ items:
     material: paper
     name: "Century Party Invitation"
     rarity: RARE
-    unavailable: "Needs the Raffle of the Century"
     source: "Raffle of the Century (minor reward / Gift Bag of the Century)"
     lore:
       - "§8Consumable"
@@ -2648,7 +2648,6 @@ items:
     material: tropical_fish
     name: "Century the Fish"
     rarity: SPECIAL
-    unavailable: "Needs the Raffle of the Century"
     source: "Raffle of the Century: Milestone VII (400 tickets)"
     lore:
       - "§7The term 'century' was actually"

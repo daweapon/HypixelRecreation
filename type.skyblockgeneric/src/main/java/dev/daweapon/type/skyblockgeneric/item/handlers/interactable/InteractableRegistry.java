@@ -40,6 +40,8 @@ public class InteractableRegistry {
         dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookStaff.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.JerryCandy.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.FinnsFocaccia.registerInteractables();
+        dev.daweapon.type.skyblockgeneric.century.CenturyCakes.registerInteractables();
+        dev.daweapon.type.skyblockgeneric.century.raffle.GUIGiftBagOfTheCentury.registerInteractables();
         dev.daweapon.type.skyblockgeneric.spookyfestival.BlastOLantern.registerInteractables();
         dev.daweapon.type.skyblockgeneric.experiments.ExperienceBottle.registerInteractables();
         dev.daweapon.type.skyblockgeneric.experiments.MetaphysicalSerum.registerInteractables();

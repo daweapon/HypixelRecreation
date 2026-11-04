@@ -37,6 +37,8 @@ public class ActionPlayerRightClickOnPlayer implements HypixelEventClass {
             return;
         }
 
+        if (dev.daweapon.type.skyblockgeneric.century.raffle.CakeSlices.feed(player, target)) return;
+
         if ((gift != null || partyGift) && target.isIronman() && !player.isIronman()) {
             player.sendMessage(Text.of("{} <c>is on an Ironman profile and can only receive gifts from other Ironman players!",
                     target.getColouredName()));

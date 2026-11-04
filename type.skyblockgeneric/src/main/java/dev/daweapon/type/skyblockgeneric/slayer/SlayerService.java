@@ -202,6 +202,10 @@ public final class SlayerService {
             player.sendMessage("<5><l>LVL UP!</l> <7>{} Slayer LVL <e>{}<7>!", quest.type().categoryName(), reached);
         }
         SlayerProgression.sync(player);
+        dev.daweapon.type.skyblockgeneric.century.raffle.CenturyRaffle.progress(player,
+                dev.daweapon.type.skyblockgeneric.century.raffle.RaffleAction.of(
+                        dev.daweapon.type.skyblockgeneric.century.raffle.RaffleAction.Trigger.SLAYER_BOSS,
+                        quest.type().name(), quest.tier().number()));
     }
 
     public static int questCost(SkyBlockPlayer player, SlayerTierDefinition tierDefinition) {

@@ -543,7 +543,7 @@ items:
     material: light_gray_dye
     name: "Littlefoot Fluff"
     rarity: LEGENDARY
-    source: "Rare drop from Littlefoot in Glacite Mineshafts (0.2%); the Raffle of the Century is not built"
+    source: "Rare drop from Littlefoot in Glacite Mineshafts (0.2%), or a medium Raffle of the Century reward"
     lore:
       - "§7A poignant reminder of the day you"
       - "§7almost caught Bigfoot’s younger,"
@@ -885,8 +885,7 @@ items:
     material: player_head
     name: "Loudmouth Bass"
     rarity: COMMON
-    unavailable: "Needs the Year of the Seal event and the Raffle of the Century"
-    source: "Seal's Treat Bag (1 in 9 chance), a minor Raffle of the Century reward or the Gift Bag of the Century"
+    source: "Seal's Treat Bag (1 in 9 chance, not built), a minor Raffle of the Century reward or the Gift Bag of the Century"
     lore:
       - "§7Right-click a player holding a"
       - "§fLoudmouth Bass§7 to engage in a duel!"
@@ -1039,7 +1038,6 @@ items:
     material: player_head
     name: "Magma Urchin Bundle"
     rarity: LEGENDARY
-    unavailable: "Needs the Raffle of the Century event"
     source: "MEDIUM reward from the Year 500 Raffle of the Century"
     lore:
       - "§8Consumable"
@@ -2011,7 +2009,6 @@ items:
     material: player_head
     name: "Mysterious Package"
     rarity: RARE
-    unavailable: "Needs the Raffle of the Century event"
     source: "Minor Raffle of the Century reward or Gift Bag of the Century"
     lore:
       - "§7Correctly dispose of this item to"
@@ -2245,8 +2242,7 @@ items:
     material: ladder
     name: "Necron's Ladder"
     rarity: RARE
-    unavailable: "Needs Dungeons"
-    source: "Regalia Room: 75,000,000 Coins (rotating); MEDIUM Raffle of the Century reward"
+    source: "Regalia Room: 75,000,000 Coins (rotating, not built); medium Raffle of the Century reward"
     lore:
       - "§8Consumable"
       - ""
@@ -2619,7 +2615,6 @@ items:
     material: player_head
     name: "Paint Drying Simulator"
     rarity: RARE
-    unavailable: "Needs the Raffle of the Century event"
     source: "Minor Raffle of the Century reward or Gift Bag of the Century"
     lore:
       - "§7Observe the thrilling process of"
@@ -2901,7 +2896,6 @@ items:
     material: player_head
     name: "Pet-Sized Cupcake"
     rarity: LEGENDARY
-    unavailable: "Needs the Raffle of the Century event"
     source: "MEDIUM reward from the Year 500 Raffle of the Century"
     lore:
       - "§8Consumable"
@@ -3029,8 +3023,7 @@ items:
     material: purple_dye
     name: "Plasma Nucleus"
     rarity: LEGENDARY
-    unavailable: "Needs Scorpius's Dark Auction perk and the Raffle of the Century"
-    source: "Dark Auction (20,000,000 start) while Scorpius is elected, or a MEDIUM Raffle of the Century reward"
+    source: "Dark Auction (20,000,000 start) while Scorpius is elected, or a medium Raffle of the Century reward"
     lore:
       - "§7Combine with an §5Overflux Power Orb"
       - "§7to increase its strength and create"
@@ -4210,8 +4203,7 @@ items:
     material: player_head
     name: "Random Century Cake Bundle"
     rarity: LEGENDARY
-    unavailable: "Needs the Raffle of the Century event"
-    source: "Raffle of the Century"
+    source: "Medium Raffle of the Century reward"
     lore:
       - "§8Consumable"
       - ""
@@ -4220,14 +4212,15 @@ items:
       - ""
       - "§eRight-click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: RANDOM_CENTURY_CAKE_PACK
       - id: SKULL_HEAD
         texture: 4f62496cb945d9d69895f1aa528c87e523119ea07882f512e28411c7ba746a45
   - id: RAY_OF_HELIOS
     material: horn_coral
     name: "Ray of Helios"
     rarity: LEGENDARY
-    unavailable: "Needs the Harvest Feast event (Garden)"
-    source: "Rare drop from in-season crops during the Harvest Feast, or a MAJOR Raffle of the Century reward"
+    source: "Rare drop from in-season crops during the Harvest Feast, or a major Raffle of the Century reward"
     lore:
       - "§7A waning shard of sunlight, as"
       - "§7though torn from a forgotten age."

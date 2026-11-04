@@ -1328,8 +1328,7 @@ items:
     material: player_head
     name: "Token of the Century"
     rarity: UNCOMMON
-    unavailable: "Needs the Raffle of the Century and Cake Slices"
-    source: "6.25% chance in a Cake Slice during the Raffle of the Century"
+    source: "6.25% when feeding a matching Cake Slice during the Raffle of the Century (both players get one)"
     components:
       - id: SKULL_HEAD
         texture: 2088f2eb8628c4c9a91350636766dea22cd6fde8240c64b43a2ccffbbb36928d
@@ -3005,7 +3004,6 @@ items:
     material: player_head
     name: "Wither Scroll in a Bottle"
     rarity: LEGENDARY
-    unavailable: "Needs the Raffle of the Century (Year 500)"
     source: "Major reward of the Year 500 Raffle of the Century"
     lore:
       - "§8Consumable"

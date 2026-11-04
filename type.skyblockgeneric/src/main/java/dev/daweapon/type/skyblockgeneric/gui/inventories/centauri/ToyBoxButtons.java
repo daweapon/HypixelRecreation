@@ -154,6 +154,14 @@ final class ToyBoxButtons {
                     for (EssenceType type : EssenceType.values()) Essences.add(p, type, 100_000);
                 }),
                 of(Material.ENDER_EYE, "<5>Summoning Eyes", "<8>Wake the dragon.", "<7>Get <5>8 Summoning Eyes <7>for the Dragon's Nest altar.", p -> ToyBoxActions.give(p, ItemType.SUMMONING_EYE, 8)),
+                of(Material.FIREWORK_ROCKET, "<d>Toggle Raffle of the Century", "<8>Happy Century Celebration!", "<7>Start the <6>Raffle of the Century <7>for one SkyBlock year, or end it, on every server.", p -> {
+                    boolean start = !dev.daweapon.type.skyblockgeneric.century.raffle.CenturyEvent.isActive();
+                    if (start) dev.daweapon.type.skyblockgeneric.century.raffle.CenturyEvent.forceStart(java.util.concurrent.TimeUnit.HOURS.toMillis(124));
+                    else dev.daweapon.type.skyblockgeneric.century.raffle.CenturyEvent.forceEnd();
+                    p.sendMessage(start ? "<a>The Raffle of the Century has started." : "<c>The Raffle of the Century has ended.");
+                }),
+                of(Material.PAPER, "<b>Raffle Tickets", "<8>Every ticket is a winner. Almost.", "<7>Gain <b>25 Raffle Tickets <7>(join a team with <a>Rezzus <7>first).",
+                        p -> dev.daweapon.type.skyblockgeneric.century.raffle.CenturyRaffle.grantTickets(p, 25, "<6><l>CENTAURI! <e>You gained <b>+25 Raffle Tickets<e>!")),
                 of(Material.HOPPER, "<d>Max Community Upgrades", "<8>Elizabeth is thrilled.", "<7>Finish every <d>Account <7>and <d>Profile Upgrade <7>at its top tier.", dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgrades::maxAll),
                 unavailable(Material.PRISMARINE_SHARD, "<a>Shards!", "<7>Get 10 of each available Shard."));
     }

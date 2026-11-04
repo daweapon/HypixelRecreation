@@ -934,8 +934,7 @@ items:
     material: player_head
     name: "Fruit Bowl"
     rarity: RARE
-    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built) and the Century events"
-    source: "Garden visitor offer (0.2%), Raffle of the Century or Gift Bag of the Century"
+    source: "Garden visitor offer (0.2%), a minor Raffle of the Century reward or the Gift Bag of the Century"
     lore:
       - "§8Consumable"
       - ""
@@ -989,8 +988,7 @@ items:
     material: player_head
     name: "Complete Century Cake Bundle"
     rarity: MYTHIC
-    unavailable: "Needs the Century events (Raffle of the Century)"
-    source: "Raffle of the Century"
+    source: "Major Raffle of the Century reward"
     lore:
       - "§8Consumable"
       - ""
@@ -999,6 +997,8 @@ items:
       - ""
       - "§eRight-click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: FULL_CENTURY_CAKE_PACK
       - id: SKULL_HEAD
         texture: 560fabb18cdeb276bbf368dd971918a5da8b97bb88668370ac5c31ffd0e64c1c
   - id: FUNGAL_TIP_JAR
@@ -1388,8 +1388,7 @@ items:
     default_statistics:
       damage: 500
       swing_range: 1
-    unavailable: "Needs Dungeons"
-    source: "Floor VI reward chests (Bedrock chest 25,000,000 Coins) and Raffle of the Century"
+    source: "Floor VI reward chests (not built), or a medium Raffle of the Century reward"
     lore:
       - "§7Gear Score: §d600"
       - "§7Gemstones: §8[] []"
@@ -1514,7 +1513,6 @@ items:
     material: player_head
     name: "Gift Bag of the Century"
     rarity: EPIC
-    unavailable: "Needs the Century events (Raffle of the Century)"
     source: "Raffle of the Century (Milestone VI)"
     lore:
       - "§7Been out of luck? Open this gift bag"
@@ -1530,12 +1528,15 @@ items:
     components:
       - id: SKULL_HEAD
         texture: d1c3e87f30290045d019506c805834ba971f5aeec0d7d0505261f314a5465638
+      - id: INTERACTABLE
+        handler_id: GIFTBAG_OF_THE_CENTURY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
   - id: GIFT_OF_LEARNING
     material: player_head
     name: "Gift of Learning"
     rarity: RARE
-    unavailable: "Needs Generow Gift milestones and the Century events"
-    source: "Generow Gift Milestone XXV or Raffle/Gift Bag of the Century minor reward"
+    source: "Generow Gift Milestone XXV, a minor Raffle of the Century reward or the Gift Bag of the Century"
     lore:
       - "§8Consumable"
       - ""
@@ -2625,7 +2626,6 @@ items:
     material: player_head
     name: "Hephaestus' Lucky Dip"
     rarity: LEGENDARY
-    unavailable: "Needs the Century events (Raffle of the Century)"
     source: "Year 500 Raffle of the Century (medium reward)"
     lore:
       - "§8Consumable"
@@ -3228,8 +3228,7 @@ items:
     material: player_head
     name: "Infinileap"
     rarity: EPIC
-    unavailable: "Needs Dungeons"
-    source: "Malik's Wither Essence shop for 25,000 Wither Essence"
+    source: "Malik's Wither Essence shop for 25,000 Wither Essence (Dungeons not built), or a medium Raffle of the Century reward"
     lore:
       - "§6Ability: Spirit Leap  §e§lRIGHT CLICK"
       - "§7Allows you to teleport to any teammate! Grants"
