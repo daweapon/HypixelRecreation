@@ -8,7 +8,6 @@ import net.minestom.server.instance.Instance;
 import net.minestom.server.registry.RegistryKey;
 import net.minestom.server.timer.TaskSchedule;
 import net.minestom.server.world.biome.Biome;
-import net.minestom.server.world.biome.Biomes;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,7 +50,7 @@ public final class DanteHubBiome {
                 for (int z = 0; z < 16; z += CELL) {
                     for (int y = MIN_Y; y < MAX_Y; y += CELL) {
                         saved[index++] = chunk.getBiome(baseX + x, y, baseZ + z);
-                        chunk.setBiome(baseX + x, y, baseZ + z, Biomes.DESERT);
+                        chunk.setBiome(baseX + x, y, baseZ + z, Biome.DESERT);
                     }
                 }
             }
