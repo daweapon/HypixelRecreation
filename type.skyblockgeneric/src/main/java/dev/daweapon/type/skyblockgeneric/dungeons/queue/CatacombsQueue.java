@@ -227,7 +227,7 @@ public final class CatacombsQueue {
         List<String> lines = new ArrayList<>(List.of(
                 "<f>Queued: <a>The Catacombs",
                 "<f>Floor: <e>" + entry.floor().displayName(),
-                "<f>Since: <a>" + String.format("%02d:%02d", seconds / 60, seconds % 60));
+                "<f>Since: <a>" + String.format("%02d:%02d", seconds / 60, seconds % 60)));
         if (position != null) lines.add(QueuePositions.sidebarLine(position.position()));
         return lines;
     }

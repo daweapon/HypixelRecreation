@@ -272,7 +272,7 @@ public final class KuudraQueue {
         List<String> lines = new ArrayList<>(List.of(
                 "<f>Queued: <a>Kuudra",
                 "<f>Tier: <e>" + entry.tier().getDisplayName(),
-                "<f>Since: <a>" + String.format("%02d:%02d", seconds / 60, seconds % 60));
+                "<f>Since: <a>" + String.format("%02d:%02d", seconds / 60, seconds % 60)));
         if (position != null) lines.add(QueuePositions.sidebarLine(position.position()));
         return lines;
     }
