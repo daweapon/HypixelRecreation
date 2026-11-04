@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "loose-ends"
+    name: "The Loose Ends Update"
+    date: "4th November 2026"
+    material: chest
+    title: "The Loose Ends Update"
+    book: "loose_ends_update.yml"
   - version: "glacite-mineshafts"
     name: "The Glacite Mineshafts Update"
     date: "29th October 2026"
