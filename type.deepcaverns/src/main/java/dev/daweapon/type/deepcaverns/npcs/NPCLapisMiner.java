@@ -78,12 +78,12 @@ public class NPCLapisMiner extends HypixelNPC {
 	protected DialogueSet[] dialogues(HypixelPlayer player) {
 		return new DialogueSet[]{
 				DialogueSet.builder().key("first").lines(
-						"Hey you! I broke my Lapis Pickaxe - do you think you could bring me another?",
+						"Hey you! I broke my <a>Lapis Pickaxe <f>- do you think you could bring me another?",
 						"First you'll need to reach <a>Lapis Lazuli Collection III<f>, and then you can craft it for me."
 				).build(),
 				DialogueSet.builder().key("collection").lines(
 						"Some items in SkyBlock can only be crafted when you reach a certain collection requirement.",
-						"To craft me a Lapis Pickaxe, you will need to reach <a>Lapis Lazuli Collection III<f>."
+						"To craft me a <a>Lapis Pickaxe<f>, you will need to reach <a>Lapis Lazuli Collection III<f>."
 				).build(),
 				DialogueSet.builder().key("craft").lines(
 						"Oh! You reached <a>Lapis Lazuli Collection III<f>!",
@@ -96,8 +96,8 @@ public class NPCLapisMiner extends HypixelNPC {
 						"I use it in my Lapis Minion, those things fill terribly fast!"
 				).build(),
 				DialogueSet.builder().key("idle").lines(
-						"My Lapis Pickaxe might not mine the fastest, but it gives me a lot of experience!",
-						"I use that experience to enchant my Lapis Pickaxe with efficiency, which makes it mine faster!",
+						"My <a>Lapis Pickaxe <f>might not mine the fastest, but it gives me a lot of experience!",
+						"I use that experience to enchant my <a>Lapis Pickaxe <f>with efficiency, which makes it mine faster!",
 						"How cool is that?"
 				).build()
 		};

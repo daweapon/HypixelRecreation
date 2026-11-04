@@ -21,7 +21,7 @@ public class MobEmeraldSlime_10 extends MobEmeraldSlime_05 {
 
     @Override
     public OtherLoot getOtherLoot() {
-        return new OtherLoot(15, 8, 30);
+        return new OtherLoot(10, 2, 7);
     }
 
     @Override

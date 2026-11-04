@@ -118,7 +118,7 @@ public class MobLapisZombie extends BestiaryMob implements RegionPopulator {
 
 	@Override
 	public OtherLoot getOtherLoot() {
-		return new OtherLoot(12, 5, 10);
+		return new OtherLoot(9, 2, 6);
 	}
 
 	@Override
@@ -128,7 +128,7 @@ public class MobLapisZombie extends BestiaryMob implements RegionPopulator {
 
 	@Override
 	public int getMaxBestiaryTier() {
-		return 10;
+		return 5;
 	}
 
 	@Override

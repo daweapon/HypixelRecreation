@@ -21,7 +21,7 @@ public class MobMinerZombie_20 extends MobMinerZombie_15 {
 
     @Override
     public OtherLoot getOtherLoot() {
-        return new OtherLoot(24, 15, 40);
+        return new OtherLoot(22, 5, 16);
     }
 
     @Override

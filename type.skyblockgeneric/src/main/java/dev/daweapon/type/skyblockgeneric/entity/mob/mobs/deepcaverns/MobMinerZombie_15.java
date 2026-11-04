@@ -95,8 +95,6 @@ public class MobMinerZombie_15 extends BestiaryMob implements RegionPopulator {
 						new LootRecord(ItemType.MINER_ARMOR_LEGGINGS, 1, 1),
 						new LootRecord(ItemType.MINER_ARMOR_CHESTPLATE, 1, 1),
 						new LootRecord(ItemType.MINER_ARMOR_HELMET, 1, 1)
-						//new LootRecord(ItemType.FLAMING_SWORD, 1, 0.01),
-						//new LootRecord(ItemType.EXP_SHARE_CORE, 1, 0.01)
 				);
 			}
 
@@ -119,7 +117,7 @@ public class MobMinerZombie_15 extends BestiaryMob implements RegionPopulator {
 
 	@Override
 	public OtherLoot getOtherLoot() {
-		return new OtherLoot(20, 12, 30);
+		return new OtherLoot(19, 4, 14);
 	}
 
 	@Override
@@ -129,7 +127,7 @@ public class MobMinerZombie_15 extends BestiaryMob implements RegionPopulator {
 
 	@Override
 	public int getMaxBestiaryTier() {
-		return 10;
+		return 5;
 	}
 
 	@Override

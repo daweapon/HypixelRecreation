@@ -83,14 +83,12 @@ public class MobMinerSkeleton_15 extends BestiaryMob implements RegionPopulator 
 			public @NonNull List<LootRecord> getLootTable() {
 				return List.of(
 						new LootRecord(ItemType.PET_ITEM_EXP_SHARE_DROP, 1, 0.01),
-						new LootRecord(ItemType.BONE, 1, 300), // hypixel, why is it 300% and what does that mean?
+						new LootRecord(ItemType.BONE, 3, 100),
 						new LootRecord(ItemType.MINER_ARMOR_BOOTS, 1, 1),
 						new LootRecord(ItemType.MINER_ARMOR_LEGGINGS, 1, 1),
 						new LootRecord(ItemType.MINER_ARMOR_CHESTPLATE, 1, 1),
-						new LootRecord(ItemType.MINER_ARMOR_HELMET, 1, 1)
-
-						//new LootRecord(ItemType.EXP_SHARE_CORE, 1, 0.01)
-						// bone dye
+						new LootRecord(ItemType.MINER_ARMOR_HELMET, 1, 1),
+						new LootRecord(ItemType.DYE_BONE, 1, 100D / 3_000_000)
 				);
 			}
 
@@ -113,7 +111,7 @@ public class MobMinerSkeleton_15 extends BestiaryMob implements RegionPopulator 
 
 	@Override
 	public OtherLoot getOtherLoot() {
-		return new OtherLoot(20, 12, 30);
+		return new OtherLoot(16, 3, 12);
 	}
 
 	@Override
@@ -123,7 +121,7 @@ public class MobMinerSkeleton_15 extends BestiaryMob implements RegionPopulator 
 
 	@Override
 	public int getMaxBestiaryTier() {
-		return 10;
+		return 5;
 	}
 
 	@Override

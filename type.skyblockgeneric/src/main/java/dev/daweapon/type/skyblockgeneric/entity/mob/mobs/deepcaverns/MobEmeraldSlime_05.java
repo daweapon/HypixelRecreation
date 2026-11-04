@@ -82,7 +82,6 @@ public class MobEmeraldSlime_05 extends BestiaryMob implements RegionPopulator {
 				return List.of(
 						new LootRecord(ItemType.PET_ITEM_EXP_SHARE_DROP, 1, 0.01),
 						new LootRecord(ItemType.SLIME_BALL, 1, 100)
-						//new LootRecord(ItemType.EXP_SHARE_CORE, 1, 0.01)
 				);
 			}
 
@@ -105,7 +104,7 @@ public class MobEmeraldSlime_05 extends BestiaryMob implements RegionPopulator {
 
 	@Override
 	public OtherLoot getOtherLoot() {
-		return new OtherLoot(12, 5, 20);
+		return new OtherLoot(6, 1, 4);
 	}
 
 	@Override
@@ -115,7 +114,7 @@ public class MobEmeraldSlime_05 extends BestiaryMob implements RegionPopulator {
 
 	@Override
 	public int getMaxBestiaryTier() {
-		return 10;
+		return 5;
 	}
 
 	@Override

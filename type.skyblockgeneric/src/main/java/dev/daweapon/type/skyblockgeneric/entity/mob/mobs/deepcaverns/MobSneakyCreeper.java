@@ -81,8 +81,8 @@ public class MobSneakyCreeper extends BestiaryMob implements RegionPopulator {
 			public @NonNull List<LootRecord> getLootTable() {
 				return List.of(
 						new LootRecord(ItemType.PET_ITEM_EXP_SHARE_DROP, 1, 0.01),
-						new LootRecord(ItemType.GUNPOWDER, 1, 100)
-						//new LootRecord(ItemType.EXP_SHARE_CORE, 1, 0.01)
+						new LootRecord(ItemType.GUNPOWDER, 1, 100),
+						new LootRecord(ItemType.ENCHANTED_GUNPOWDER, 1, 0.5)
 				);
 			}
 
@@ -105,7 +105,7 @@ public class MobSneakyCreeper extends BestiaryMob implements RegionPopulator {
 
 	@Override
 	public OtherLoot getOtherLoot() {
-		return new OtherLoot(0, 3, 2);
+		return new OtherLoot(7, 1, 5);
 	}
 
 	@Override
@@ -115,12 +115,12 @@ public class MobSneakyCreeper extends BestiaryMob implements RegionPopulator {
 
 	@Override
 	public int getMaxBestiaryTier() {
-		return 10;
+		return 5;
 	}
 
 	@Override
 	public int getBestiaryBracket() {
-		return 1;
+		return 2;
 	}
 
 	@Override
