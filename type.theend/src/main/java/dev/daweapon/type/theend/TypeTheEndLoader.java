@@ -51,6 +51,9 @@ public class TypeTheEndLoader implements SkyBlockTypeLoader {
         SepulturePads.install();
         ZealotWaves.start();
         EndMobSpawner.start();
+        EnderNodeSpawner.start();
+        EndStoneProtectorSpawner.start();
+        DragonZealotSummons.start();
     }
 
     @Override
