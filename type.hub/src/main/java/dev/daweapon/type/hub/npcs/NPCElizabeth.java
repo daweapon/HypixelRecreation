@@ -68,7 +68,7 @@ public class NPCElizabeth extends HypixelNPC implements NPCAbiphoneTrait {
                         .key("hello").lines(
                                 "<f>Hello! Welcome to <b>SkyBlock<f>!",
                                 "<f>I have powerful items to offer, but only to experienced adventurers!",
-                                "<f>Until then, I suggest leveling up to SkyBlock Level 3!"
+                                "<f>Until then, I suggest leveling up!"
                         ).build()
         ).toArray(DialogueSet[]::new);
     }

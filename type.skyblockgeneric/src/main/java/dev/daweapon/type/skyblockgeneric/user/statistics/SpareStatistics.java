@@ -47,6 +47,8 @@ final class SpareStatistics {
         spare = ItemStatistics.add(spare, dev.daweapon.type.skyblockgeneric.essence.EssenceShops.statistics(player));
         spare = ItemStatistics.add(spare, SlayerProgression.statistics(player));
         spare = ItemStatistics.add(spare, CarrolynExports.statistics(player));
+        spare = ItemStatistics.add(spare, dev.daweapon.type.skyblockgeneric.rabbits.ChocolateFortune.statistics(player));
+        spare = ItemStatistics.add(spare, dev.daweapon.type.skyblockgeneric.rabbits.DarkCacaoTruffle.statistics(player));
         spare = ItemStatistics.add(spare, PetScore.statistics(player));
         spare = ItemStatistics.add(spare, MythologicalItemHandlers.permanentStatistics(player));
         spare = ItemStatistics.add(spare, BottleOfJyrre.permanentStatistics(player));

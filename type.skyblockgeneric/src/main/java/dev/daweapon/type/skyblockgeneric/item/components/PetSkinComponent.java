@@ -9,6 +9,7 @@ import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItemComponent;
 import dev.daweapon.type.skyblockgeneric.item.handlers.lore.LoreConfig;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.type.skyblockgeneric.user.pets.AnimatedSkins;
 import dev.daweapon.type.skyblockgeneric.user.pets.PetSkins;
 import org.jetbrains.annotations.Nullable;
 
@@ -95,10 +96,13 @@ public class PetSkinComponent extends SkyBlockItemComponent {
         lore.add("<7>This skin can only be applied to");
         lore.add("<a>" + petName + "<7> pets.");
         lore.add(" ");
+        ItemType skinType = item.getAttributeHandler().getPotentialType();
         if (animated) {
             lore.add("<a>This skin is animated!");
             lore.add(" ");
-            lore.add("<8>Animated skins can't be applied yet.");
+        }
+        if (animated && !AnimatedSkins.isSupported(skinType == null ? null : skinType.name())) {
+            lore.add("<8>This animated skin can't be applied yet.");
             lore.add("<8>(Not active yet)");
         } else {
             lore.add("<e>Right-click on your summoned pet to");

@@ -23,7 +23,7 @@ class ChocolateShopStockTest {
         assertEquals(1, ChocolateShopStock.annualStock("PET_ITEM_CHOCOLATE_SYRINGE"));
         assertEquals(1, ChocolateShopStock.annualStock("STEAMED_CHOCOLATE_FISH"));
         assertEquals(4, ChocolateShopStock.annualStock("HOT_CHOCOLATE_MIXIN"));
-        assertEquals(25, ChocolateShopStock.annualStock("CHOCOLATE_FORTUNE"));
+        assertFalse(ChocolateShopStock.isLimited("CHOCOLATE_FORTUNE"));
     }
 
     @Test

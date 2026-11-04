@@ -28,6 +28,7 @@ public class LoreRegistry {
     static {
         MythologicalItemHandlers.registerLore();
         BottleOfJyrre.registerLore();
+        dev.daweapon.type.skyblockgeneric.rabbits.DarkCacaoTruffle.registerLore();
         SnowCannon.registerLore();
         SnowSuit.registerLore();
         PartyEquipment.registerLore();

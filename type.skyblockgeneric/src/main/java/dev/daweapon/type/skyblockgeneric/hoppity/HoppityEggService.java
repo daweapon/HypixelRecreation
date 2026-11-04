@@ -7,6 +7,8 @@ import dev.daweapon.type.skyblockgeneric.elections.perks.ElectionPerks;
 import dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
 import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateFactoryHelper;
 import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateRabbit;
+import dev.daweapon.type.skyblockgeneric.rabbits.Chocobits;
+import dev.daweapon.type.skyblockgeneric.rabbits.RabbitFactions;
 import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateRabbit.RabbitRarity;
 import dev.daweapon.type.skyblockgeneric.rabbits.HoppityEggType;
 import dev.daweapon.type.skyblockgeneric.rabbits.RabbitShardBonuses;
@@ -49,19 +51,34 @@ public final class HoppityEggService {
     public static void open(SkyBlockPlayer player, EggLocation location, IslandType rollIsland, RandomGenerator random) {
         ChocolateFactoryHelper.updateProduction(player);
         RabbitRoller.Result[] rolled = {null};
+        EggBonusRoller.Outcome[] bonus = {EggBonusRoller.Outcome.RABBIT};
         double[] outcome = {0};
         ChocolateFactoryHelper.mutateData(player, data -> {
             if (location != null && data.getUniqueEggLocations().add(location.key())) {
                 awardResidentRabbit(player, data, location.island());
             }
-            RabbitRoller.Result result = RabbitRoller.roll(context(player, data, rollIsland), random);
+            RabbitRoller.Context context = context(player, data, rollIsland);
+            bonus[0] = EggBonusRoller.roll(player.getUuid(), data, context, random);
+            if (bonus[0].kind() != EggBonusRoller.Kind.RABBIT) {
+                data.setMythicPity(data.getMythicPity() + 1);
+                boolean chocobitPity = bonus[0].kind() == EggBonusRoller.Kind.CHOCOBIT && EggBonusRoller.allDivinesFound(data);
+                data.setDivinePity(chocobitPity ? 0 : data.getDivinePity() + 1);
+                return;
+            }
+            RabbitRoller.Result result = RabbitRoller.roll(context, random);
             if (result == null) return;
             rolled[0] = result;
             data.setMythicPity(result.mythicPity());
             data.setDivinePity(result.divinePity());
             outcome[0] = applyRabbit(player, data, result.rabbit());
         });
-        if (rolled[0] != null) announce(player, rolled[0].rabbit(), outcome[0]);
+        switch (bonus[0].kind()) {
+            case FACTION -> RabbitFactions.give(player, bonus[0].factionRabbit());
+            case CHOCOBIT -> Chocobits.award(player);
+            case RABBIT -> {
+                if (rolled[0] != null) announce(player, rolled[0].rabbit(), outcome[0]);
+            }
+        }
     }
 
     public static void award(SkyBlockPlayer player, ChocolateRabbit rabbit) {

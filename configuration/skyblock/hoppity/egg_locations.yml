@@ -1,4 +1,4 @@
-# Hoppity's Hunt egg locations (wiki: Chocolate Eggs, checked 2026-10-18). Lotus Atoll and Torrhus are omitted: the islands do not exist.
+# Hoppity's Hunt egg locations (wiki: Chocolate Eggs, checked 2026-10-18; Torrhus Canyon added 2026-11-04). Lotus Atoll is omitted: the island does not exist.
 HUB:
   - { zone: "Bazaar Alley", x: -40, y: 73, z: -22, message: "in the Bazaar Alley" }
   - { zone: "Mining District", x: 20, y: 63, z: -122, message: "behind the Blacksmith building" }
@@ -25,7 +25,7 @@ THE_FARMING_ISLANDS:
   - { zone: "Trapper's Den", x: 284, y: 102, z: -573, message: "outside the Trapper's Den" }
   - { zone: "Desert Settlement", x: 175, y: 77, z: -373, message: "beside the well" }
   - { zone: "Mushroom Desert", x: 143, y: 77, z: -404, message: "beside an animal skull" }
-  - { zone: "Oasis", x: 142, y: 71, z: -453, message: "beneath an oasis bridge" }
+  - { zone: "Oasis", x: 142, y: 70, z: -453, message: "beneath an oasis bridge" }
   - { zone: "Windmill", x: 95, y: 83, z: -284, message: "within the windmill" }
   - { zone: "The Barn", x: 168, y: 92, z: -319, message: "behind the tallest hill" }
   - { zone: "The Barn", x: 142, y: 90, z: -300, message: "among the path through carrots" }
@@ -209,3 +209,19 @@ GALATEA:
   - { zone: "Murkwater Outpost", x: -704, y: 171, z: 1, message: "atop the Murkwater Outpost" }
   - { zone: "North Reaches", x: -692, y: 113, z: -23, message: "along a spruce bridge" }
   - { zone: "South Reaches", x: -698, y: 126, z: 80, message: "on Sawyer's bed" }
+TORRHUS_CANYON:
+  - { zone: "Torrhus Canyon", x: -718, y: 96, z: 139, message: "near the island" }
+  - { zone: "Torrhus Heights", x: -702, y: 137, z: 149, message: "high up on a bridge" }
+  - { zone: "Torrhus Canyon", x: -564, y: 102, z: 200, message: "in some honey" }
+  - { zone: "Torrhus Canyon", x: -534, y: 100, z: 213, message: "among the amethyst" }
+  - { zone: "Torrhus Canyon", x: -559, y: 98, z: 236, message: "within a mushroom cave" }
+  - { zone: "Spring Path", x: -621, y: 105, z: 200, message: "near a waterfall" }
+  - { zone: "Torrhus Springs", x: -652, y: 161, z: 190, message: "near the Torrhus Springs" }
+  - { zone: "Spring Path", x: -597, y: 125, z: 203, message: "by the beacon" }
+  - { zone: "Torrhus Canyon", x: -533, y: 110, z: 275, message: "beneath the Great Helix Tree" }
+  - { zone: "Critter Safari Entrance", x: -740, y: 98, z: 180, message: "on the blimp dock" }
+  - { zone: "Torrhus Canyon", x: -758, y: 98, z: 251, message: "amongst the prismarine" }
+  - { zone: "Torrhus Canyon", x: -681, y: 82, z: 287, message: "at the campsite" }
+  - { zone: "Torrhus Heights", x: -601, y: 173, z: 235, message: "in a big nest" }
+  - { zone: "Torrhus Canyon", x: -691, y: 102, z: 184, message: "atop a totem pole" }
+  - { zone: "Torrhus Canyon", x: -629, y: 100, z: 229, message: "in Honey's honey stash" }

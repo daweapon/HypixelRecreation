@@ -62,8 +62,7 @@ items:
     material: player_head
     name: "Refined Dark Cacao Truffle"
     rarity: LEGENDARY
-    unavailable: "Needs the Rift"
-    source: "Rift consumable (exact source unconfirmed)"
+    source: "Evolves from a Dark Cacao Truffle after 300 hours in your inventory"
     lore:
       - "§7Consume to gain §6+30 Cocoa Beans"
       - "§6Fortune §7for §a60m§7!"
@@ -75,6 +74,8 @@ items:
       - "§7You may consume §a5 §7of these before"
       - "§7they lose their magical energy."
     components:
+      - id: INTERACTABLE
+        handler_id: REFINED_DARK_CACAO_TRUFFLE
       - id: SKULL_HEAD
         texture: 4f991215e258d65f77eedeb69356f5521bb24cb9dd47765e38f52a892d7989ad
   - id: REFORGE_ANVIL

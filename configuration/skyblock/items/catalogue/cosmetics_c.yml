@@ -74,9 +74,10 @@ items:
       - ""
       - "§7Click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
     source: "SkyMart: 7,500 Copper"
   - id: BAT_PERSON_HERO
     material: player_head
@@ -340,11 +341,12 @@ items:
       - ""
       - "§7Click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: af90da40c557af4ac01d39b6733e204c74ae9fee8c2bc40be1fd4f28f837d52
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
     source: "Chocolate Shop: 7,000,000,000 Chocolate (Chocolate Factory V)"
   - id: CLOWNFISH_PERSONALITY
     material: player_head
@@ -371,9 +373,10 @@ items:
       - ""
       - "§7Click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
     source: "SkyMart: 250 SkyBlock Gems"
   - id: CROWN_OF_AVARICE_ROYAL
     material: player_head
@@ -415,11 +418,12 @@ items:
       - ""
       - "§7Click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: 3e703a38d93cdb990501e52e4d730ca5881ce0d7bcecc3ed144354ee99d1d970
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
     source: "Fire Sale: 950 SkyBlock Gems"
   - id: DIVER_FROZEN
     material: player_head
@@ -520,9 +524,10 @@ items:
       - ""
       - "§7Click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
     source: "Taylor's Spring 2024 Seasonal Bundle: 650 SkyBlock Gems"
   - id: ESTATE_GREENHOUSE_SKIN
     material: quartz_block
@@ -535,9 +540,10 @@ items:
       - ""
       - "§7Click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
     source: "Reward for DNA Analysis Milestone V"
   - id: FERMENTO_BLOOM
     material: player_head
@@ -563,7 +569,6 @@ items:
         animated: true
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on August 20, 2023: 1,350 SkyBlock Gems, limited stock 12,500"
   - id: FESTIVE_JERRY_PERSONALITY
     material: player_head
@@ -626,11 +631,12 @@ items:
       - ""
       - "§7Click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: 5f69db915963010a67330439845a98d2f08a15a0e1de461719767775d15ef844
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
     source: "Taylor's Spring 2025 Seasonal Bundle: 650 SkyBlock Gems"
   - id: FROZEN_BLAZE_FROST_KNIGHT
     material: player_head
@@ -937,11 +943,12 @@ items:
       - ""
       - "§7Click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: a9652faaf4439a1800a96f6ef513860c2ce83cc488bf94dd18b9278bfe4f4a67
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
     source: "Taylor's Fall 2026 Seasonal Bundle: 950 SkyBlock Gems"
   - id: HELIANTHUS_FLORAL
     material: player_head
@@ -980,9 +987,10 @@ items:
       - ""
       - "§7Click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
     source: "SkyMart: 10,000 Copper"
   - id: HOLIDAY_CHEST_RED_BACKPACK
     material: player_head
@@ -1121,11 +1129,12 @@ items:
       - ""
       - "§7Click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: cfe2449d227fa991f2a7102709d9982de1f78f41182628bdae39462254c681a3
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
     source: "Taylor's Winter 2024 Seasonal Bundle: 650 SkyBlock Gems"
   - id: MELON_BARN_SKIN
     material: melon
@@ -1137,9 +1146,10 @@ items:
       - ""
       - "§7Click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
     source: "SkyMart: 950 SkyBlock Gems"
   - id: MOON_BLOSSOM_FLUX
     material: player_head
@@ -1181,9 +1191,10 @@ items:
       - ""
       - "§7Click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
     source: "Fire Sale: 2,000 SkyBlock Gems"
   - id: NECRON_DIAMOND_KNIGHT
     material: player_head
@@ -1244,9 +1255,10 @@ items:
       - ""
       - "§7Click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
     source: "SkyMart: 3,000 Copper"
   - id: PANDA_SPIRIT
     material: player_head
@@ -1297,9 +1309,10 @@ items:
       - ""
       - "§7Click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
     source: "Pesthunter Phillip: 1,500 Pests"
   - id: PINK_DONUT_PERSONALITY
     material: player_head
@@ -1623,9 +1636,10 @@ items:
       - ""
       - "§7Click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
     source: "2025 Spring Event Shop"
   - id: STRONG_BABY
     material: player_head
@@ -1779,9 +1793,10 @@ items:
       - ""
       - "§7Click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
     source: "SkyMart: 1,000 Copper"
   - id: TRUE_WARDEN
     material: player_head
@@ -1806,7 +1821,6 @@ items:
         animated: true
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on May 27, 2022: 1,350 SkyBlock Gems, limited stock 7,500"
   - id: UNSTABLE_BABY
     material: player_head
@@ -1893,9 +1907,10 @@ items:
       - ""
       - "§7Click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
     source: "SkyMart: 250 SkyBlock Gems"
   - id: WISE_BABY
     material: player_head
@@ -1968,7 +1983,6 @@ items:
         animated: true
       - id: EXTRA_RARITY
         display: COSMETIC
-    unavailable: "Gem store item that is not stocked in any Fire Sale or Taylor bundle in the game yet"
     source: "Fire Sale hosted on January 13, 2023: 1,350 SkyBlock Gems, limited stock 10,000"
   - id: YOUNG_BABY
     material: player_head

@@ -22,8 +22,7 @@ public final class ChocolateShopStock {
             Map.entry("CHOCO_RABBIT_PERSONALITY", 2),
             Map.entry("SHARD_RABBIT_GODMOTHER", 6),
             Map.entry("STEAMED_CHOCOLATE_FISH", 1),
-            Map.entry("HOT_CHOCOLATE_MIXIN", 4),
-            Map.entry("CHOCOLATE_FORTUNE", 25));
+            Map.entry("HOT_CHOCOLATE_MIXIN", 4));
 
     private ChocolateShopStock() {
     }

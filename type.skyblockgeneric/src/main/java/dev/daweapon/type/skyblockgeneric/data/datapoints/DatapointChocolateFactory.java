@@ -9,6 +9,8 @@ import dev.daweapon.type.skyblockgeneric.data.SkyBlockDatapoint;
 import dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.PetPerkMath;
 import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateRabbit;
 import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateShopStock;
+import dev.daweapon.type.skyblockgeneric.rabbits.FactionRabbit;
+import dev.daweapon.type.skyblockgeneric.rabbits.RabbitFaction;
 import dev.daweapon.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import dev.daweapon.type.skyblockgeneric.rabbits.HoppityEggType;
 import org.json.JSONArray;
@@ -69,6 +71,14 @@ public class DatapointChocolateFactory extends SkyBlockDatapoint<DatapointChocol
             json.put("hoppityPurchases", new JSONArray(value.getHoppityPurchases()));
             json.put("shopStockYear", value.getShopStockYear());
             json.put("shopPurchases", serializeShopPurchases(value.getShopPurchases()));
+            json.put("rabbitFaction", value.getRabbitFaction());
+            json.put("factionLevel", value.getFactionLevel());
+            json.put("factionRabbits", new JSONArray(value.getFactionRabbits()));
+            json.put("chocobits", serializeChocobits(value.getChocobits()));
+            json.put("chocolateFortune", value.getChocolateFortune());
+            json.put("truffleBuffExpires", value.getTruffleBuffExpires());
+            json.put("truffleBuffFortune", value.getTruffleBuffFortune());
+            json.put("refinedTrufflesConsumed", value.getRefinedTrufflesConsumed());
             return json.toString();
         }
 
@@ -126,6 +136,14 @@ public class DatapointChocolateFactory extends SkyBlockDatapoint<DatapointChocol
             data.setHoppityPurchases(deserializeStrings(jsonObject.optJSONArray("hoppityPurchases"), HashSet::new));
             data.setShopStockYear(jsonObject.optInt("shopStockYear", 0));
             data.setShopPurchases(deserializeShopPurchases(jsonObject.optJSONObject("shopPurchases")));
+            data.setRabbitFaction(jsonObject.optString("rabbitFaction", ""));
+            data.setFactionLevel(jsonObject.optInt("factionLevel", 0));
+            data.setFactionRabbits(deserializeStrings(jsonObject.optJSONArray("factionRabbits"), HashSet::new));
+            data.setChocobits(deserializeChocobits(jsonObject.optJSONObject("chocobits")));
+            data.setChocolateFortune(jsonObject.optInt("chocolateFortune", 0));
+            data.setTruffleBuffExpires(jsonObject.optLong("truffleBuffExpires", 0L));
+            data.setTruffleBuffFortune(jsonObject.optInt("truffleBuffFortune", 0));
+            data.setRefinedTrufflesConsumed(jsonObject.optInt("refinedTrufflesConsumed", 0));
             return data;
         }
 
@@ -155,6 +173,24 @@ public class DatapointChocolateFactory extends SkyBlockDatapoint<DatapointChocol
             if (json == null) return purchases;
             for (String key : json.keySet()) purchases.put(key, json.optInt(key, 0));
             return purchases;
+        }
+
+        private JSONObject serializeChocobits(Map<Integer, Integer> chocobits) {
+            JSONObject json = new JSONObject();
+            chocobits.forEach((number, paidThrough) -> json.put(String.valueOf(number), paidThrough));
+            return json;
+        }
+
+        private Map<Integer, Integer> deserializeChocobits(JSONObject json) {
+            Map<Integer, Integer> chocobits = new HashMap<>();
+            if (json == null) return chocobits;
+            for (String key : json.keySet()) {
+                try {
+                    chocobits.put(Integer.parseInt(key), json.optInt(key, 0));
+                } catch (NumberFormatException ignored) {
+                }
+            }
+            return chocobits;
         }
 
         private JSONObject serializeCounts(Map<ChocolateRabbit, Integer> counts) {
@@ -273,6 +309,7 @@ public class DatapointChocolateFactory extends SkyBlockDatapoint<DatapointChocol
         private static final int EMPLOYEE_CAP_PER_PRESTIGE = 20;
         private static final long TIME_TOWER_DURATION_MS = 60L * 60L * 1000L;
         private static final double MILLIS_PER_SECOND = 1000.0;
+        public static final double CHOCOBIT_MULTIPLIER = 0.2;
         private final java.util.concurrent.atomic.AtomicReference<Double> petMultiplier = new java.util.concurrent.atomic.AtomicReference<>(0D);
         private int rabbitYouthLevels;
         private double shardFlatProduction;
@@ -319,6 +356,14 @@ public class DatapointChocolateFactory extends SkyBlockDatapoint<DatapointChocol
         private Set<String> hoppityPurchases = new HashSet<>();
         private int shopStockYear;
         private Map<String, Integer> shopPurchases = new HashMap<>();
+        private String rabbitFaction = "";
+        private int factionLevel;
+        private Set<String> factionRabbits = new HashSet<>();
+        private Map<Integer, Integer> chocobits = new HashMap<>();
+        private int chocolateFortune;
+        private long truffleBuffExpires;
+        private int truffleBuffFortune;
+        private int refinedTrufflesConsumed;
 
         public void addChocolate(long amount) {
             if (amount <= 0) {
@@ -463,6 +508,10 @@ public class DatapointChocolateFactory extends SkyBlockDatapoint<DatapointChocol
             if (foundRabbits.contains(ChocolateRabbit.ZEST_ZEPHYR)) flat += 30;
             if (foundRabbits.contains(ChocolateRabbit.SIGMA)) flat += 5 * countFound(ChocolateRabbit.RabbitRarity.MYTHIC);
             if (goldenClickYear == SkyBlockCalendar.getYear()) flat += GOLDEN_CLICK_CPS * goldenClickBonuses;
+            for (String id : factionRabbits) {
+                FactionRabbit rabbit = FactionRabbit.byId(id);
+                if (rabbit != null) flat += rabbit.getChocolateBonus();
+            }
             return flat;
         }
 
@@ -471,6 +520,11 @@ public class DatapointChocolateFactory extends SkyBlockDatapoint<DatapointChocol
             for (ChocolateRabbit rabbit : foundRabbits) bonus += rabbit.getMultiplierBonus();
             if (foundRabbits.contains(ChocolateRabbit.GALAXY)) bonus += 0.05;
             if (foundRabbits.contains(ChocolateRabbit.ZEST_ZEPHYR)) bonus += 0.03;
+            for (String id : factionRabbits) {
+                FactionRabbit rabbit = FactionRabbit.byId(id);
+                if (rabbit != null) bonus += rabbit.getMultiplierBonus();
+            }
+            bonus += CHOCOBIT_MULTIPLIER * chocobits.size();
             return bonus;
         }
 
@@ -486,12 +540,24 @@ public class DatapointChocolateFactory extends SkyBlockDatapoint<DatapointChocol
             this.petMultiplier.set(petMultiplier);
         }
 
-        public double getChocolatePerSecond() {
+        public double getBaseChocolatePerSecond() {
             double baseProduction = getCollectionFlatProduction();
             for (EmployeeData employee : employees.values()) {
                 baseProduction += employee.getProductionPerSecond();
             }
-            return baseProduction * PetPerkMath.chocolateMultiplier(getProductionMultiplier(), petMultiplier.get());
+            return baseProduction;
+        }
+
+        public double getChocolatePerSecond() {
+            return getBaseChocolatePerSecond() * PetPerkMath.chocolateMultiplier(getProductionMultiplier(), petMultiplier.get());
+        }
+
+        public RabbitFaction getFaction() {
+            return RabbitFaction.byName(rabbitFaction);
+        }
+
+        public boolean hasFactionRabbit(FactionRabbit rabbit) {
+            return factionRabbits.contains(rabbit.name());
         }
 
         public void updateChocolateFromProduction() {

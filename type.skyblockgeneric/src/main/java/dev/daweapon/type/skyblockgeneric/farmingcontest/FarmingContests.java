@@ -13,7 +13,9 @@ import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointFarmingContest
 import dev.daweapon.type.skyblockgeneric.elections.SkyBlockMayor;
 import dev.daweapon.type.skyblockgeneric.elections.perks.ElectionPerks;
 import dev.daweapon.type.skyblockgeneric.farmingcontest.FarmingContestProfile.Entry;
+import dev.daweapon.type.skyblockgeneric.item.equipment.passive.EquipmentPassives;
 import dev.daweapon.type.skyblockgeneric.levels.SkyBlockXPSource;
+import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -35,6 +37,8 @@ public final class FarmingContests {
     public static final int REQUIRED_FARMING_LEVEL = 10;
     public static final String JACOB = "<e>[NPC] Jacob<f>: ";
     private static final int GOLD_CROP_XP = 10;
+    private static final String ZORROS_CAPE = "ZORROS_CAPE";
+    private static final double ZORRO_EXTRA_MEDAL_PERCENT = 20;
     private static final long LEADERBOARD_TTL_SECONDS = Duration.ofDays(90).toSeconds();
     private static final Map<UUID, ContestBracket> liveBrackets = new ConcurrentHashMap<>();
     private static final Set<UUID> resolving = ConcurrentHashMap.newKeySet();
@@ -259,6 +263,7 @@ public final class FarmingContests {
         profile.addMedals(ContestBracket.BRONZE, bracket.getBronzeMedals());
         profile.addMedals(ContestBracket.SILVER, bracket.getSilverMedals());
         profile.addMedals(ContestBracket.GOLD, bracket.getGoldMedals());
+        grantZorroMedal(player, profile, bracket);
 
         if (bracket.earnsMedal()) {
             ContestBracket previous = profile.uniqueBracket(entry.getCrop());
@@ -272,5 +277,14 @@ public final class FarmingContests {
         entry.setClaimed(true);
         player.sendMessage("<a>You claimed the " + bracket.formatted() + " <r><a>rewards from the <e>"
                 + entry.getCrop().getDisplayName() + " Contest <a>on <e>" + entry.contest().dateLabel() + "<a>!");
+    }
+
+    private static void grantZorroMedal(SkyBlockPlayer player, FarmingContestProfile profile, ContestBracket bracket) {
+        if (!bracket.earnsMedal() || !EquipmentPassives.wearing(player, ZORROS_CAPE)) return;
+        if (!LootRoll.roll(player.getUuid(), null, ZORRO_EXTRA_MEDAL_PERCENT)) return;
+        ContestBracket medal = bracket.getGoldMedals() > 0 ? ContestBracket.GOLD
+                : bracket.getSilverMedals() > 0 ? ContestBracket.SILVER : ContestBracket.BRONZE;
+        profile.addMedals(medal, 1);
+        player.sendMessage("<6>Zorro's Cape <a>granted you an extra " + medal.formatted() + " <r><a>medal!");
     }
 }

@@ -7,6 +7,7 @@ import dev.daweapon.type.skyblockgeneric.garden.chip.ChipData;
 import dev.daweapon.type.skyblockgeneric.garden.feast.FeastData;
 import dev.daweapon.type.skyblockgeneric.garden.greenhouse.GreenhouseData;
 import dev.daweapon.type.skyblockgeneric.garden.pest.PestData;
+import dev.daweapon.type.skyblockgeneric.garden.skin.GardenSkinData;
 import dev.daweapon.type.skyblockgeneric.garden.tool.OverclockerPity;
 import dev.daweapon.type.skyblockgeneric.garden.tool.ToolkitData;
 import dev.daweapon.type.skyblockgeneric.garden.visitor.VisitorData;
@@ -43,6 +44,7 @@ public class GardenProfile {
     private FeastData feast = new FeastData();
     private OverclockerPity overclockerPity = new OverclockerPity();
     private ToolkitData toolkit = new ToolkitData();
+    private GardenSkinData skins = new GardenSkinData();
     private final Map<GardenCrop, Long> cropCounters = new EnumMap<>(GardenCrop.class);
     private final Map<GardenCrop, Integer> milestoneTiers = new EnumMap<>(GardenCrop.class);
     private final Map<GardenCrop, Integer> cropUpgradeTiers = new EnumMap<>(GardenCrop.class);
@@ -200,6 +202,7 @@ public class GardenProfile {
         json.put("feast", feast.toJson());
         json.put("overclockerPity", overclockerPity.toJson());
         json.put("toolkit", toolkit.toJson());
+        json.put("skins", skins.toJson());
         json.put("cropCounters", cropJson(cropCounters));
         json.put("milestoneTiers", cropJson(milestoneTiers));
         json.put("cropUpgradeTiers", cropJson(cropUpgradeTiers));
@@ -244,6 +247,7 @@ public class GardenProfile {
         profile.feast = FeastData.fromJson(json.optJSONObject("feast"));
         profile.overclockerPity = OverclockerPity.fromJson(json.optJSONObject("overclockerPity"));
         profile.toolkit = ToolkitData.fromJson(json.optJSONObject("toolkit"));
+        profile.skins = GardenSkinData.fromJson(json.optJSONObject("skins"));
         JSONObject presets = json.optJSONObject("plotPresets");
         if (presets != null) {
             for (String key : presets.keySet()) {

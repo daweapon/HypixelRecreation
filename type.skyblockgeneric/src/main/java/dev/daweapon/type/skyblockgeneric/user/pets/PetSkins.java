@@ -70,7 +70,10 @@ public final class PetSkins {
     public static Result apply(SkyBlockItem pet, SkyBlockItem skinItem) {
         if (!skinItem.hasComponent(PetSkinComponent.class)) return new Result(Outcome.NOT_A_SKIN, null);
         PetSkinComponent skin = skinItem.getComponent(PetSkinComponent.class);
-        if (skin.isAnimated()) return new Result(Outcome.ANIMATED, null);
+        ItemType animatedType = skinItem.getAttributeHandler().getPotentialType();
+        if (skin.isAnimated() && !AnimatedSkins.isSupported(animatedType == null ? null : animatedType.name())) {
+            return new Result(Outcome.ANIMATED, null);
+        }
         if (skin.knownPets().isEmpty()) return new Result(Outcome.UNKNOWN_PET, null);
         ItemType petType = pet.getAttributeHandler().getPotentialType();
         if (!skin.appliesTo(petType, pet.getAttributeHandler().getRarity())) return new Result(Outcome.WRONG_PET, null);

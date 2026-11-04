@@ -182,6 +182,8 @@ public final class MaxStickService {
             new Step("Carnival", MaxStickService::maxCarnival),
             new Step("Brain Food", player -> MythologicalItemHandlers.setBrainFoodEaten(player, MythologicalItemHandlers.BRAIN_FOOD_LIMIT)),
             new Step("Refined Bottle of Jyrre", player -> BottleOfJyrre.setRefinedConsumed(player, BottleOfJyrre.REFINED_LIMIT)),
+            new Step("Refined Dark Cacao Truffle", player -> dev.daweapon.type.skyblockgeneric.rabbits.DarkCacaoTruffle.setRefinedConsumed(player,
+                    dev.daweapon.type.skyblockgeneric.rabbits.DarkCacaoTruffle.REFINED_LIMIT)),
             new Step("Reaper Peppers", player -> ReaperPepper.setEaten(player, ReaperPepper.LIMIT)),
             new Step("Vials of Venom", player -> dev.daweapon.type.skyblockgeneric.consumable.VialOfVenom.setConsumed(player, dev.daweapon.type.skyblockgeneric.consumable.VialOfVenom.LIMIT)),
             new Step("Experimentation Table", dev.daweapon.type.skyblockgeneric.experiments.ExperimentTable::unlockAll),
@@ -549,6 +551,12 @@ public final class MaxStickService {
 
             for (ChocolateRabbit rabbit : ChocolateRabbit.values()) {
                 data.addFoundRabbit(rabbit);
+            }
+            if (data.getFaction() == null) data.setRabbitFaction(dev.daweapon.type.skyblockgeneric.rabbits.RabbitFaction.CITY.name());
+            data.setFactionLevel(dev.daweapon.type.skyblockgeneric.rabbits.RabbitFactions.MAX_LEVEL);
+            data.setChocolateFortune(dev.daweapon.type.skyblockgeneric.rabbits.ChocolateFortune.MAX_TIERS);
+            for (dev.daweapon.type.skyblockgeneric.rabbits.FactionRabbit rabbit : dev.daweapon.type.skyblockgeneric.rabbits.FactionRabbit.values()) {
+                data.getFactionRabbits().add(rabbit.name());
             }
 
             for (DatapointChocolateFactory.EmployeeType employeeType : DatapointChocolateFactory.EmployeeType.values()) {

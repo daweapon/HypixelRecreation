@@ -21,7 +21,8 @@ public enum IslandType {
     DWARVEN_MINES("Dwarven Mines", NamedTextColor.DARK_GREEN, "<2>"),
     THE_FARMING_ISLANDS("The Farming Islands", NamedTextColor.YELLOW, "<e>"),
     SPIDERS_DEN("Spider's Den", NamedTextColor.RED, "<c>"),
-    GALATEA("Galatea", NamedTextColor.DARK_GREEN, "<2>");
+    GALATEA("Galatea", NamedTextColor.DARK_GREEN, "<2>"),
+    TORRHUS_CANYON("Torrhus Canyon", NamedTextColor.GOLD, "<6>");
 
     private final String name;
     private final TextColor color;
