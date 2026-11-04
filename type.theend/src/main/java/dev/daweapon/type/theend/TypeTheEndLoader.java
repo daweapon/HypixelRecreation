@@ -15,12 +15,15 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.tab.TablistManager;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
+import dev.daweapon.type.skyblockgeneric.race.RaceInstance;
+import dev.daweapon.type.skyblockgeneric.race.RaceManager;
 import dev.daweapon.type.skyblockgeneric.user.PlayerDeathOverrides;
 import dev.daweapon.type.skyblockgeneric.user.ChallengeSidebar;
 import dev.daweapon.type.theend.dragon.DragonEgg;
 import dev.daweapon.type.theend.dragon.DragonGlass;
 import dev.daweapon.type.theend.dragon.DragonSidebar;
 import dev.daweapon.type.theend.dragon.DragonMeleeRedirect;
+import dev.daweapon.type.theend.race.EndRace;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
@@ -30,7 +33,19 @@ import dev.daweapon.type.skyblockgeneric.tab.TabLocation;
 import dev.daweapon.type.skyblockgeneric.tab.SkyBlockTablistManager;
 
 // SkyBlockTypeLoader for The End: spawn point, tablist, dimension, events, NPCs and the Remnant of the Eye death save.
-public class TypeTheEndLoader implements SkyBlockTypeLoader {
+public class TypeTheEndLoader implements SkyBlockTypeLoader, RaceInstance {
+    private static final EndRace END_RACE = new EndRace();
+    private static final RaceManager RACE_MANAGER = new RaceManager(END_RACE);
+
+    public static RaceManager endRace() {
+        return RACE_MANAGER;
+    }
+
+    @Override
+    public RaceManager getRace() {
+        return RACE_MANAGER;
+    }
+
     @Override
     public ServerType getType() {
         return ServerType.SKYBLOCK_THE_END;
@@ -44,6 +59,8 @@ public class TypeTheEndLoader implements SkyBlockTypeLoader {
     @Override
     public void afterInitialize(MinecraftServer server) {
         PlayerDeathOverrides.register(RemnantOfTheEye::saves);
+        PlayerDeathOverrides.register(TypeTheEndLoader::cancelRaceOnDeath);
+        END_RACE.start();
         DragonEgg.captureSoon();
         DragonGlass.captureSoon();
         ChallengeSidebar.register(DragonSidebar::lines);
@@ -51,6 +68,14 @@ public class TypeTheEndLoader implements SkyBlockTypeLoader {
         SepulturePads.install();
         ZealotWaves.start();
         EndMobSpawner.start();
+    }
+
+    private static boolean cancelRaceOnDeath(dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer player) {
+        END_RACE.forget(player);
+        if (!RACE_MANAGER.getPerPlayerStartTime().containsKey(player.getUuid())) return false;
+        RACE_MANAGER.cancelRace(player);
+        player.sendMessage(EndRace.TITLE + " <c>You died! Your race has been cancelled.");
+        return false;
     }
 
     @Override
