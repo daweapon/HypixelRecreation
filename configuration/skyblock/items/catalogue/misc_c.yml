@@ -3220,8 +3220,6 @@ items:
           - PLACE_DIRT
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/infinidirt_wand
-  - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/jacob/infinidirt_wand
   - id: INFINITE_SPIRIT_LEAP
     material: player_head
     name: "Infinileap"
