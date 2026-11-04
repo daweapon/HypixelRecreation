@@ -20,6 +20,7 @@ public final class AreaWidgets {
                 new TrophyFishWidget(),
                 new VolcanoWidget(),
                 new CrystalsWidget(),
-                new FrozenCorpsesWidget());
+                new FrozenCorpsesWidget(),
+                new EndStoneProtectorWidget());
     }
 }

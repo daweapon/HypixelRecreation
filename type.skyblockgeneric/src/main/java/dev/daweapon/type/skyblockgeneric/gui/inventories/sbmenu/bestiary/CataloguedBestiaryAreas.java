@@ -9,6 +9,7 @@ import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.thepark.HowlingCaveMobS
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.thepark.MobHowlingSpirit;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.thepark.MobPackSpirit;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.thepark.MobSoulOfTheAlpha;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobEndStoneProtector;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobEndermanHigh;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobEndermanLow;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobEndermanMid;
@@ -112,7 +113,8 @@ public final class CataloguedBestiaryAreas {
 
     public static final BestiaryEntry[] THE_END = {
             family("DRAGONS", "Dragons", "Inside the Dragon's Den, there is no escape from the fury of the beasts.", 6, 15, MobType.ENDER, Material.DRAGON_HEAD),
-            family("END_STONE_PROTECTOR", "End Stone Protector", "Risen from the debris of Endstone.", 8, 20, MobType.CONSTRUCT, "22bcaceeb4162f400d44743315932ac820d3119ac8986a0161a726161ccc93fc"),
+            liveFamily("End Stone Protector", "Risen from the debris of Endstone.", "22bcaceeb4162f400d44743315932ac820d3119ac8986a0161a726161ccc93fc",
+                    new MobEndStoneProtector()),
             liveFamily("Enderman", "Not your mother's endermen.", "96c0b36d53fff69a49c7d6f3932f2b0fe948e032226d5e8045ec58408a36e951",
                     new MobEndermanLow(), new MobEndermanMid(), new MobEndermanHigh()),
             liveFamily("Endermite", "Hidden in the stone of The End.", "5a1a0831aa03afb4212adcbb24e5dfaa7f476a1173fce259ef75a85855",
