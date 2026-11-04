@@ -34,6 +34,7 @@ public class InteractableRegistry {
         BottleOfJyrre.registerInteractables();
         dev.daweapon.type.skyblockgeneric.rabbits.RabbitFactions.registerInteractables();
         dev.daweapon.type.skyblockgeneric.rabbits.DarkCacaoTruffle.registerInteractables();
+        dev.daweapon.type.skyblockgeneric.garden.skin.GardenSkins.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.Salt.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.ItemBundle.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.DwarvenOs.registerInteractables();

@@ -59,8 +59,7 @@ public class GUIChocolateShop implements StatefulView<GUIChocolateShop.State> {
             .withIngredient("GANACHE_CHOCOLATE_SLAB", "<5>Ganache Chocolate Slab");
     private static final Offer DARK_CACAO_TRUFFLE = Offer.item("DARK_CACAO_TRUFFLE", "<9>Dark Cacao Truffle", 2_500_000_000L, 3);
     private static final Offer CHOCOLATE_DYE = Offer.item("DYE_CHOCOLATE", "<6>Chocolate Dye", 40_000_000_000L, 5);
-    private static final Offer BARN_SKIN = Offer.item("CHOCOLATE_FACTORY_BARN_SKIN", "<6>Chocolate Factory Barn Skin", 7_000_000_000L, 4)
-            .unavailable("Garden Barn skins are not built");
+    private static final Offer BARN_SKIN = Offer.item("CHOCOLATE_FACTORY_BARN_SKIN", "<6>Chocolate Factory Barn Skin", 7_000_000_000L, 4);
     private static final Offer CHOCOLATE_SYRINGE = Offer.item("PET_ITEM_CHOCOLATE_SYRINGE", "<d>Chocolate Syringe", 10_000_000_000L, 4);
     private static final Offer CHOCO_RABBIT_MINION_SKIN = Offer.item("CHOCO_RABBIT_PERSONALITY", "<5>Choco Rabbit Minion Skin", 2_500_000_000L, 4);
     private static final Offer ZORROS_CAPE = Offer.item("ZORROS_CAPE", "<6>Zorro's Cape", 20_000_000_000L, 4)

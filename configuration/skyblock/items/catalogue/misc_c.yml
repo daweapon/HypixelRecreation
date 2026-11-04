@@ -3490,7 +3490,6 @@ items:
     material: player_head
     name: "Jerry Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Needs Fire Sales (past sale) and the Garden barn skin system"
     source: "Fire Sale on 31 Mar 2023 for 2,000 Gems"
     lore:
       - "§7Consume this item to unlock the"
@@ -3498,6 +3497,8 @@ items:
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: 45f729736996a38e186fe9fe7f5a04b387ed03f3871ecc82fa78d8a2bdd31109
   - id: JUICY_HEALING_MELON

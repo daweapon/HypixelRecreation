@@ -252,6 +252,7 @@ public final class VisitorService {
         List<String> lines = new ArrayList<>();
         if (visitor != null) {
             for (VisitorCatalogue.Reward reward : visitor.rewards()) {
+                if (!reward.belongsTo(offer.offerSet())) continue;
                 switch (reward.type()) {
                     case "FARMING_XP" -> farmingXp += (long) reward.amount();
                     case "COPPER" -> copper += (int) reward.amount();
@@ -261,7 +262,8 @@ public final class VisitorService {
                         }
                     }
                     case "ESSENCE" -> giveEssence(player, reward, lines);
-                    case "SKIN", "FLAG" -> lines.add("<d>" + reward.name());
+                    case "SKIN" -> giveItem(player, reward, lines);
+                    case "FLAG" -> lines.add("<d>" + reward.name());
                     default -> {
                     }
                 }

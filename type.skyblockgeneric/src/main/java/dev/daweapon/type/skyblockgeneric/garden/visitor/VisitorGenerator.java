@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.garden.visitor;
 
+import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -66,9 +67,11 @@ public final class VisitorGenerator {
         double copperMultiplier = catalogue.copperMultiplier(visitor.rarity());
         VisitorCatalogue.Desire desire = visitor.desire();
 
+        String offerSet = chooseOfferSet(desire, random);
         if (desire.mode().equals("FIXED_ITEMS") && !desire.items().isEmpty()) {
             for (VisitorCatalogue.DesireItem item : desire.items()) {
                 if (item.item() == null) continue;
+                if (item.set() != null && !item.set().equals(offerSet)) continue;
                 int amount = item.amount() == null ? DEFAULT_FIXED_AMOUNT : item.amount();
                 required.add(new VisitorOffer.Required(item.item(), item.name(), amount, amount));
                 baseItems += amount;
@@ -98,7 +101,14 @@ public final class VisitorGenerator {
 
         long farmingXp = Math.round(baseItems * FARMING_XP_PER_ITEM * catalogue.farmingXpMultiplier(visitor.rarity()));
         int copper = (int) Math.max(MINIMUM_COPPER, Math.round(baseQuantityTotal / 2000 * copperMultiplier * COPPER_FACTOR));
-        return new VisitorOffer(required, farmingXp, catalogue.gardenXp(gardenLevel, visitor.rarity()), copper, catalogue.bits());
+        return new VisitorOffer(required, farmingXp, catalogue.gardenXp(gardenLevel, visitor.rarity()), copper, catalogue.bits(), offerSet);
+    }
+
+    private static @Nullable String chooseOfferSet(VisitorCatalogue.Desire desire, RandomGenerator random) {
+        List<String> sets = desire.items().stream().map(VisitorCatalogue.DesireItem::set)
+                .filter(java.util.Objects::nonNull).distinct().toList();
+        if (sets.isEmpty()) return null;
+        return LootRoll.pick(null, sets, ignored -> null, ignored -> 1.0, random);
     }
 
     static VisitorOffer.Required compact(VisitorCatalogue.Family family, double raw) {

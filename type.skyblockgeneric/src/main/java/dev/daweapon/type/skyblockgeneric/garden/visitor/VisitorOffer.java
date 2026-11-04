@@ -1,12 +1,13 @@
 package dev.daweapon.type.skyblockgeneric.garden.visitor;
 
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public record VisitorOffer(List<Required> required, long farmingXp, int gardenXp, int copper, int bits) {
+public record VisitorOffer(List<Required> required, long farmingXp, int gardenXp, int copper, int bits, @Nullable String offerSet) {
     public static final class Required {
         private final String item;
         private final String name;
@@ -56,7 +57,7 @@ public record VisitorOffer(List<Required> required, long farmingXp, int gardenXp
                     .put("remaining", requirement.remaining()));
         }
         return json.put("required", items).put("farmingXp", farmingXp).put("gardenXp", gardenXp)
-                .put("copper", copper).put("bits", bits);
+                .put("copper", copper).put("bits", bits).put("offerSet", offerSet);
     }
 
     public static VisitorOffer fromJson(JSONObject json) {
@@ -65,6 +66,7 @@ public record VisitorOffer(List<Required> required, long farmingXp, int gardenXp
             JSONObject item = (JSONObject) entry;
             required.add(new Required(item.getString("item"), item.getString("name"), item.getInt("amount"), item.getInt("remaining")));
         }
-        return new VisitorOffer(required, json.getLong("farmingXp"), json.getInt("gardenXp"), json.getInt("copper"), json.getInt("bits"));
+        return new VisitorOffer(required, json.getLong("farmingXp"), json.getInt("gardenXp"), json.getInt("copper"), json.getInt("bits"),
+                json.optString("offerSet", null));
     }
 }

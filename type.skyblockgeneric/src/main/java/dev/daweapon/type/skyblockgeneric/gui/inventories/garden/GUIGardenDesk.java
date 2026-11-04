@@ -37,6 +37,12 @@ public class GUIGardenDesk extends StatelessView {
         view(layout, 21, Material.MELON_SLICE, "upgrades", 2, () -> new GUIGardenUpgrades());
         view(layout, 23, Material.EMERALD, "skymart", 6, () -> new GUISkyMart());
         view(layout, 25, Material.GOLD_BLOCK, "milestones", 2, () -> new GUIGardenMilestones());
+        layout.slot(31, (_, _) -> GardenMenus.item(Material.BEACON, Text.of("<a>Garden Skins"), List.of(
+                        Text.of("<7>View and select different skins"),
+                        Text.of("<7>for your Garden."),
+                        GardenMenus.blank(),
+                        Text.of("<e>Click to view!"))),
+                (_, c) -> GardenMenus.open(c, new GUIGardenSkins()));
         view(layout, 48, Material.CLOCK, "speed", 2, () -> new GUICropSpeed());
         pending(layout, 50, Material.DAYLIGHT_DETECTOR, "time", 1, "Garden Time");
         layout.slot(51, (_, _) -> GardenMenus.item(Material.DIAMOND_HOE, Text.key(KEY + "toolkit.name"), toolkitLore()),

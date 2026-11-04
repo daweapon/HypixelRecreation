@@ -21,14 +21,17 @@ public final class VisitorCatalogue {
     public record Requirement(@Nullable String text, String kind, @Nullable Integer count) {
     }
 
-    public record DesireItem(@Nullable String item, String name, @Nullable Integer amount) {
+    public record DesireItem(@Nullable String item, String name, @Nullable Integer amount, @Nullable String set) {
     }
 
     public record Desire(String mode, List<String> families, int count, List<DesireItem> items) {
     }
 
     public record Reward(String type, @Nullable String item, String name, double amount, @Nullable Double chancePercent,
-                         @Nullable String note) {
+                         @Nullable String note, @Nullable String set) {
+        public boolean belongsTo(@Nullable String offerSet) {
+            return set == null || set.equals(offerSet);
+        }
     }
 
     public record Visitor(String id, String name, VisitorRarity rarity, int gardenLevel, Requirement requirement,
@@ -135,7 +138,8 @@ public final class VisitorCatalogue {
         for (Object item : desire.optJSONArray("items") == null ? new JSONArray() : desire.getJSONArray("items")) {
             JSONObject itemJson = (JSONObject) item;
             desireItems.add(new DesireItem(nullable(itemJson, "item"), itemJson.optString("name", ""),
-                    itemJson.has("amount") && !itemJson.isNull("amount") ? itemJson.getInt("amount") : null));
+                    itemJson.has("amount") && !itemJson.isNull("amount") ? itemJson.getInt("amount") : null,
+                    nullable(itemJson, "set")));
         }
         List<String> families = new ArrayList<>();
         if (desire.optJSONArray("families") != null) {
@@ -147,7 +151,7 @@ public final class VisitorCatalogue {
             rewards.add(new Reward(reward.getString("type"), nullable(reward, "item"), reward.optString("name", ""),
                     reward.optDouble("amount", 1),
                     reward.has("chancePercent") && !reward.isNull("chancePercent") ? reward.getDouble("chancePercent") : null,
-                    nullable(reward, "note")));
+                    nullable(reward, "note"), nullable(reward, "set")));
         }
         JSONObject dialogue = json.optJSONObject("dialogue");
         return new Visitor(json.getString("id"), json.getString("name"), VisitorRarity.valueOf(json.getString("rarity")),

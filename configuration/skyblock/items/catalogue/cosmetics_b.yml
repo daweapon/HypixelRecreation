@@ -23,13 +23,15 @@ items:
     material: oak_leaves
     name: "Autumn Hut Barn Skin"
     rarity: UNCOMMON
-    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
     source: "SkyMart, 2,000 Copper"
     lore:
       - "§7Consume this item to unlock the"
       - "§aAutumn Hut Barn Skin §7on §aThe Garden§7!"
       - ""
       - "§eClick to consume!"
+    components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
   - id: BACKPACK_CAT_O_LANTERN
     material: player_head
     name: "Cat-o-Lantern Skin"
@@ -95,7 +97,6 @@ items:
     material: player_head
     name: "Beach Ball Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
     source: "Taylor Summer 2024 seasonal bundle, 650 SkyBlock Gems"
     lore:
       - "§7Consume this item to unlock the"
@@ -103,6 +104,8 @@ items:
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: d2057057b7095cdd8a60a5c4edec2cd7f1fd5d6479ebed0add4ce115a3338c2f
   - id: BERSERKER_SANDSTORM_CAT
@@ -238,7 +241,6 @@ items:
     material: bricks
     name: "Botanical Garden Greenhouse Skin"
     rarity: RARE
-    unavailable: "Greenhouse skins are not built (the Greenhouse is not built)"
     source: "Greenhouse skin cosmetic"
     lore:
       - "§7Consume this item to unlock the"
@@ -246,6 +248,9 @@ items:
       - "§aThe Garden§7!"
       - ""
       - "§eClick to consume!"
+    components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
   - id: CADUCEUS_MENDING_CROWN
     material: player_head
     name: "Caduceus Mender Skin"
@@ -275,13 +280,15 @@ items:
     material: cobblestone
     name: "Castle Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
     source: "SkyMart, 15,000 Copper"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Castle Barn Skin §7on §aThe Garden§7!"
       - ""
       - "§eClick to consume!"
+    components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
   - id: CHERRY_BLOSSOM_FLUX
     material: player_head
     name: "Cherry Blossom Power Orb Skin"
@@ -502,18 +509,19 @@ items:
     material: end_stone
     name: "The End Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
     source: "Fire Sale, 950 SkyBlock Gems"
     lore:
       - "§7Consume this item to unlock the §fThe"
       - "§fEnd Barn Skin §7on §aThe Garden§7!"
       - ""
       - "§eClick to consume!"
+    components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
   - id: FAST_FOOD_BARN_SKIN
     material: player_head
     name: "Fast Food Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
     source: "Garden visitor Taylor: 256 Deepfries, 256 Salted Sunflower Seeds, 3,200 Enchanted Baked Potato"
     lore:
       - "§7Consume this item to unlock the §6Fast"
@@ -521,6 +529,8 @@ items:
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: d55a12afc51c5380fd0a4de22bf3e3a598e2fa6f8f833051719cd1ea0074fdb3
   - id: FERMENTO_ULTIMATE
@@ -614,7 +624,6 @@ items:
     material: player_head
     name: "Frog Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
     source: "Fire Sale, 2,000 SkyBlock Gems"
     lore:
       - "§7Consume this item to unlock the §6Frog"
@@ -622,6 +631,8 @@ items:
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: a55c1ba898398f95fce3c81924dcf5776701cf20de9fe910618d5839ba4b35a7
   - id: FROZEN_BLAZE_ICICLE
@@ -763,7 +774,6 @@ items:
     material: player_head
     name: "Glacite Palace Greenhouse Skin"
     rarity: LEGENDARY
-    unavailable: "Greenhouse skins are not built (the Greenhouse is not built)"
     source: "Greenhouse skin cosmetic"
     lore:
       - "§7Consume this item to unlock the"
@@ -772,6 +782,8 @@ items:
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: 39a1d83c1b380a5bd6ab8fadd7869a163a50ed6ef0730c0bcf105e684bc4bd80
   - id: GLOWING_GRAPE_FLUX
@@ -996,7 +1008,6 @@ items:
     material: player_head
     name: "Jerry Castle Greenhouse Skin"
     rarity: LEGENDARY
-    unavailable: "Greenhouse skins are not built (the Greenhouse is not built)"
     source: "Greenhouse skin cosmetic"
     lore:
       - "§7Consume this item to unlock the"
@@ -1005,6 +1016,8 @@ items:
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: c2a703e8ae87a1e3cf2fd2d65bd9a9b544d2109df1d727d227669185ac90156c
   - id: KITSUNE_TIKI_MASK
@@ -1033,7 +1046,6 @@ items:
     material: player_head
     name: "Lucky Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
     source: "SkyMart, 950 SkyBlock Gems"
     lore:
       - "§7Consume this item to unlock the"
@@ -1041,6 +1053,8 @@ items:
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: 54998a5affa48cd39a82fd1d99242c57f14990bb139a0da1083e0f8b1bbf0852
   - id: MAGMA_LORD_RAGNAROK
@@ -1461,7 +1475,6 @@ items:
     material: player_head
     name: "Sand Castle Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
     source: "Fire Sale, 950 SkyBlock Gems"
     lore:
       - "§7Consume this item to unlock the §6Sand"
@@ -1469,6 +1482,8 @@ items:
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: c8543c961cc531b906ce4fa45c3c4fcea72d70291d517e01f14d4905a686139b
   - id: SENTINEL_WARDEN
@@ -1536,7 +1551,6 @@ items:
     material: player_head
     name: "Shipwreck Greenhouse Skin"
     rarity: LEGENDARY
-    unavailable: "Greenhouse skins are not built (the Greenhouse is not built)"
     source: "Greenhouse skin cosmetic"
     lore:
       - "§7Consume this item to unlock the"
@@ -1545,6 +1559,8 @@ items:
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: a1cbb5a89a49a881507c8c26ebf0df3433733c61c4bbb37cbc0eab19f5b5c2af
   - id: SNOWMAN_PERSONALITY
@@ -1655,13 +1671,15 @@ items:
     material: oak_log
     name: "Tavern Barn Skin"
     rarity: UNCOMMON
-    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
     source: "SkyMart, 250 SkyBlock Gems"
     lore:
       - "§7Consume this item to unlock the"
       - "§aTavern Barn Skin §7on §aThe Garden§7!"
       - ""
       - "§eClick to consume!"
+    components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
   - id: THUNDER_BIKER_AQUA
     material: player_head
     name: "Thunder Aqua Biker Skin"
@@ -1706,13 +1724,15 @@ items:
     material: gold_block
     name: "Town Hall Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
     source: "Taylor Winter 2023 seasonal bundle, 1,350 SkyBlock Gems"
     lore:
       - "§7Consume this item to unlock the §6Town"
       - "§6Hall Barn Skin §7on §aThe Garden§7!"
       - ""
       - "§eClick to consume!"
+    components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
   - id: TROPICAL_BIRD_2_PERSONALITY
     material: player_head
     name: "Blue Gold Tropical Bird Minion Skin"
@@ -1799,7 +1819,6 @@ items:
     material: packed_ice
     name: "Winter Homestead Barn Skin"
     rarity: RARE
-    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
     source: "Taylor Winter 2023 seasonal bundle, 650 SkyBlock Gems"
     lore:
       - "§7§7Consume this item to unlock the"
@@ -1807,6 +1826,9 @@ items:
       - "§aGarden§7!"
       - ""
       - "§eClick to consume!"
+    components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
   - id: WISE_SHIMMER
     material: player_head
     name: "Shimmer Skin"

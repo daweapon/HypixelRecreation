@@ -107,7 +107,6 @@ items:
     material: player_head
     name: "Beachside Resort Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn and greenhouse skins are not built (also SkyMart, Taylor bundles and Fire Sales)"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Beachside Resort Barn Skin §7on §aThe"
@@ -115,6 +114,8 @@ items:
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: bedf9387df35415867d19b7290e610d9da356053261194fca1eef6cfdc9122b
       - id: EXTRA_RARITY
@@ -123,7 +124,6 @@ items:
     material: player_head
     name: "Beautifall Cabin Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn and greenhouse skins are not built (also SkyMart, Taylor bundles and Fire Sales)"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Beautifall Cabin Barn Skin §7on §aThe"
@@ -131,6 +131,8 @@ items:
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: c8807fe3d50b25ff440e2de36be837f559ec9f965a36ee3ac8eeec6851292544
       - id: EXTRA_RARITY
@@ -246,13 +248,14 @@ items:
     material: player_head
     name: "Butterfly Barn Skin"
     rarity: EPIC
-    unavailable: "Garden barn and greenhouse skins are not built (also SkyMart, Taylor bundles and Fire Sales)"
     lore:
       - "§7Consume this item to unlock the"
       - "§5Butterfly Barn Skin §7on §aThe Garden§7!"
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: f38c6f9f4ab90b376e6190440723450ee098cdb681d13220e4bb337418bbf650
       - id: EXTRA_RARITY
@@ -331,26 +334,28 @@ items:
     material: hay_block
     name: "Cozy Cottage Barn Skin"
     rarity: UNCOMMON
-    unavailable: "Garden barn and greenhouse skins are not built (also SkyMart, Taylor bundles and Fire Sales)"
     lore:
       - "§7Consume this item to unlock the §aCozy"
       - "§aCottage Barn Skin §7on §aThe Garden§7!"
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: EXTRA_RARITY
         display: COSMETIC
   - id: CUBE_BARN_SKIN
     material: white_wool
     name: "Cube Barn Skin"
     rarity: UNCOMMON
-    unavailable: "Garden barn and greenhouse skins are not built (also SkyMart, Taylor bundles and Fire Sales)"
     lore:
       - "§7Consume this item to unlock the §aCube"
       - "§aBarn Skin §7on §aThe Garden§7!"
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: EXTRA_RARITY
         display: COSMETIC
   - id: DITTO_SKIN
@@ -711,7 +716,6 @@ items:
     material: player_head
     name: "Gingerbread Village Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn and greenhouse skins are not built (also SkyMart, Taylor bundles and Fire Sales)"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Gingerbread Village Barn Skin §7on §aThe"
@@ -719,6 +723,8 @@ items:
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: 52b452d9d51c2eec0e0101ab4515fce540c40a7685be6d74ab5f8b563170fd48
       - id: EXTRA_RARITY
@@ -877,7 +883,6 @@ items:
     material: player_head
     name: "Harvest Greenhouse Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn and greenhouse skins are not built (also SkyMart, Taylor bundles and Fire Sales)"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Harvest Greenhouse Skin §7on §aThe"
@@ -885,6 +890,8 @@ items:
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: b45818a69b663599d5400f4057a4326fd271080c832b17cf4bfe4ce0bbb07d51
       - id: EXTRA_RARITY
@@ -990,7 +997,6 @@ items:
     material: player_head
     name: "Jelly Garden Greenhouse Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn and greenhouse skins are not built (also SkyMart, Taylor bundles and Fire Sales)"
     lore:
       - "§7Consume this item to unlock the §6Jelly"
       - "§6Garden Greenhouse Skin §7on §aThe"
@@ -998,6 +1004,8 @@ items:
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: b3bdc8a77819d61f0f83188f21639e08b11fb4fdcb11bacb7fab418e0de2a7b2
       - id: EXTRA_RARITY
@@ -1025,7 +1033,6 @@ items:
     material: player_head
     name: "Lovely Picnic Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn and greenhouse skins are not built (also SkyMart, Taylor bundles and Fire Sales)"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Lovely Picnic Barn Skin §7on §aThe"
@@ -1033,6 +1040,8 @@ items:
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: d09dacd9207fa30b1a90e1a04c67bd88cebcbdd43b107fb1fa292932e44851cc
       - id: EXTRA_RARITY
@@ -1115,13 +1124,14 @@ items:
     material: end_stone
     name: "Moon Greenhouse Skin"
     rarity: RARE
-    unavailable: "Garden barn and greenhouse skins are not built (also SkyMart, Taylor bundles and Fire Sales)"
     lore:
       - "§7Consume this item to unlock the §9Moon"
       - "§9Greenhouse Skin §7on §aThe Garden§7!"
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: EXTRA_RARITY
         display: COSMETIC
   - id: MYSTIC_MOON_FLUX
@@ -1283,13 +1293,14 @@ items:
     material: player_head
     name: "Pina Coolada Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn and greenhouse skins are not built (also SkyMart, Taylor bundles and Fire Sales)"
     lore:
       - "§7Consume this item to unlock the §6Pina"
       - "§6Coolada Barn Skin §7on §aThe Garden§7!"
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: 97f4ce37ba5b3fc9a3c2eb32d4341d341691812a7ab2ed02aba89778f8e6be30
       - id: EXTRA_RARITY
@@ -1298,7 +1309,6 @@ items:
     material: oak_planks
     name: "Pinwheel House Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn and greenhouse skins are not built (also SkyMart, Taylor bundles and Fire Sales)"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Pinwheel House Barn Skin §7on §aThe"
@@ -1306,6 +1316,8 @@ items:
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: EXTRA_RARITY
         display: COSMETIC
   - id: POLAR_LIGHTS_FLUX
@@ -1488,13 +1500,14 @@ items:
     material: short_grass
     name: "Safari Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn and greenhouse skins are not built (also SkyMart, Taylor bundles and Fire Sales)"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Safari Barn Skin §7on §aThe Garden§7!"
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: EXTRA_RARITY
         display: COSMETIC
   - id: SEAL_PERSONALITY
@@ -1727,7 +1740,6 @@ items:
     material: player_head
     name: "Three Stone Jerries Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn and greenhouse skins are not built (also SkyMart, Taylor bundles and Fire Sales)"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Three Stone Jerries Barn Skin §7on"
@@ -1735,6 +1747,8 @@ items:
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: 46f03382c7a2f95174e633958534cfb91609972f765dc8726ea5ad9fe3e066ea
       - id: EXTRA_RARITY
@@ -1806,13 +1820,14 @@ items:
     material: player_head
     name: "Turkey Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn and greenhouse skins are not built (also SkyMart, Taylor bundles and Fire Sales)"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Turkey Barn Skin §7on §aThe Garden§7!"
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: c77a7706cedd881af315177f816193550db7a4a4542a5dbc9b0cec6d2e88bd71
       - id: EXTRA_RARITY
@@ -1894,13 +1909,14 @@ items:
     material: snow_block
     name: "Winter Barn Skin"
     rarity: UNCOMMON
-    unavailable: "Garden barn and greenhouse skins are not built (also SkyMart, Taylor bundles and Fire Sales)"
     lore:
       - "§7Consume this item to unlock the"
       - "§aWinter Barn Skin §7on §aThe Garden§7!"
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: EXTRA_RARITY
         display: COSMETIC
   - id: WISE_DRAGON_DRAKE
@@ -1967,13 +1983,14 @@ items:
     material: player_head
     name: "Yacht Barn Skin"
     rarity: LEGENDARY
-    unavailable: "Garden barn and greenhouse skins are not built (also SkyMart, Taylor bundles and Fire Sales)"
     lore:
       - "§7Consume this item to unlock the §6Yacht"
       - "§6Barn Skin §7on §aThe Garden§7!"
       - ""
       - "§eClick to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_SKIN
       - id: SKULL_HEAD
         texture: 97f6a30addd11ce826d5c96cc11b965d6280b6d5565ae1690b36a38ae332ce11
       - id: EXTRA_RARITY

@@ -6,19 +6,15 @@ entries:
     name: "<a>Country Greenhouse Skin"
     material: oak_fence_gate
     cost: { gems: 250 }
-    unavailable: "<c>Barn and Greenhouse skins arrive in a later Garden update."
   - item: MOON_GREENHOUSE_SKIN
     name: "<a>Moon Greenhouse Skin"
     material: end_stone
     cost: { gems: 400 }
-    unavailable: "<c>Barn and Greenhouse skins arrive in a later Garden update."
   - item: ORCHARD_GREENHOUSE_SKIN
     name: "<a>Orchard Greenhouse Skin"
     material: apple
     cost: { copper: 3000 }
-    unavailable: "<c>Barn and Greenhouse skins arrive in a later Garden update."
   - item: BOTANICAL_GREENHOUSE_SKIN
     name: "<a>Botanical Garden Greenhouse Skin"
     material: bricks
     cost: { copper: 5000 }
-    unavailable: "<c>Barn and Greenhouse skins arrive in a later Garden update."

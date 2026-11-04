@@ -6817,7 +6817,7 @@
     {
       "id": "TAYLOR",
       "name": "Taylor",
-      "rarity": "MYTHIC",
+      "rarity": "SPECIAL",
       "gardenLevel": 14,
       "requirement": {
         "text": "Talk to Taylor",
@@ -6832,31 +6832,37 @@
         "count": null,
         "items": [
           {
+            "set": "FAST_FOOD",
             "item": "DEEPFRIES",
             "name": "Deepfries",
             "amount": 256
           },
           {
+            "set": "FAST_FOOD",
             "item": "SALTED_SUNFLOWER_SEEDS",
             "name": "Salted Sunflower Seeds",
             "amount": 256
           },
           {
+            "set": "FAST_FOOD",
             "item": "ENCHANTED_BAKED_POTATO",
             "name": "Enchanted Baked Potato",
             "amount": 3200
           },
           {
+            "set": "JELLY",
             "item": "FLORAL_GELATIN",
             "name": "Floral Gelatin",
             "amount": 256
           },
           {
+            "set": "JELLY",
             "item": "MELON_JUICE",
             "name": "Melon Juice",
             "amount": 256
           },
           {
+            "set": "JELLY",
             "item": "COMPACTED_WILD_ROSE",
             "name": "Compacted Wild Rose",
             "amount": 2560
@@ -6865,6 +6871,7 @@
       },
       "rewards": [
         {
+          "set": "FAST_FOOD",
           "type": "SKIN",
           "item": "FAST_FOOD_BARN_SKIN",
           "name": "Fast Food Barn Skin",
@@ -6873,6 +6880,7 @@
           "note": "Deepfries offer set"
         },
         {
+          "set": "FAST_FOOD",
           "type": "FARMING_XP",
           "item": null,
           "name": "Farming XP",
@@ -6881,6 +6889,7 @@
           "note": "Deepfries offer set; overrides the formula"
         },
         {
+          "set": "JELLY",
           "type": "SKIN",
           "item": "JELLY_GREENHOUSE_SKIN",
           "name": "Jelly Garden Greenhouse Skin",
@@ -6889,6 +6898,7 @@
           "note": "Floral Gelatin offer set"
         },
         {
+          "set": "JELLY",
           "type": "FARMING_XP",
           "item": null,
           "name": "Farming XP",
@@ -6918,7 +6928,7 @@
         "TALKED_TO:TAYLOR"
       ],
       "verified": true,
-      "notes": "two offer sets: Fast Food Barn Skin (Deepfries, Salted Sunflower Seeds, Enchanted Baked Potato) or Jelly Garden Greenhouse Skin (Floral Gelatin, Melon Juice, Compacted Wild Rose)"
+      "notes": "rarity SPECIAL since 2026-10-15 (wiki); one offer set per visit (set field): Fast Food Barn Skin (Deepfries, Salted Sunflower Seeds, Enchanted Baked Potato) or Jelly Garden Greenhouse Skin (Floral Gelatin, Melon Juice, Compacted Wild Rose)"
     },
     {
       "id": "VINCENT",
