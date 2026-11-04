@@ -67,8 +67,7 @@ public class GUIChocolateShop implements StatefulView<GUIChocolateShop.State> {
             .requiring(ChocolateRabbit.ZORRO);
     private static final Offer FISH_CHOCOLAT = Offer.item("STEAMED_CHOCOLATE_FISH", "<5>Fish Chocolat à la Vapeur", 50_000_000_000L, 5)
             .requiring(ChocolateRabbit.FISH_THE_RABBIT);
-    private static final Offer HOT_CHOCOLATE_MIXIN = Offer.item("HOT_CHOCOLATE_MIXIN", "<9>Hot Chocolate Mixin", 1_500_000_000L, 5)
-            .unavailable("Mixins on God Potions are not built");
+    private static final Offer HOT_CHOCOLATE_MIXIN = Offer.item("HOT_CHOCOLATE_MIXIN", "<9>Hot Chocolate Mixin", 1_500_000_000L, 5);
     private static final Offer CHOCOLATE_FORTUNE = new Offer("CHOCOLATE_FORTUNE", "<e>Chocolate Fortune", 2_000_000_000L, 5, null, null, null,
             "Cocoa Beans Fortune upgrades are not built", () -> null);
 

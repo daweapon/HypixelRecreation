@@ -1264,7 +1264,7 @@ items:
     material: player_head
     name: "Blended Fish Mixin"
     rarity: RARE
-    unavailable: "Needs the Year of the Witch event; Mixins need God Potion brewing with the Booster Cookie, which isn't built"
+    unavailable: "Needs the Year of the Witch event"
     source: "Agnes: 128 Waterbourne Lice, up to 3 (Year of the Witch)"
     lore:
       - "§8Brewing Ingredient"
@@ -1290,7 +1290,7 @@ items:
     material: paper
     name: "Blizzard in a Bottle Mixin"
     rarity: RARE
-    unavailable: "Mixins need God Potion brewing with the Booster Cookie, which isn't built"
+    unavailable: "Its Weather boost isn't built yet"
     source: "Crafted from 4 Walnut, 64 Hunk of Ice and a True Ice"
     lore:
       - "§8Brewing Ingredient"
@@ -2583,7 +2583,7 @@ items:
     material: player_head
     name: "Celestial Mason Jar"
     rarity: LEGENDARY
-    unavailable: "Needs the Harvest Feast event; Mixins need God Potion brewing with the Booster Cookie, which isn't built"
+    unavailable: "Needs the Harvest Feast event"
     source: "Crafted from 4 Feast Flask and a Glass Bottle"
     lore:
       - "§8Brewing Ingredient"

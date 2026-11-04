@@ -44,7 +44,7 @@ public final class LavaCatchOverrides {
     }
 
     static double hotspotChance(FishingContext context) {
-        double chance = HOTSPOT_BASE_CHANCE;
+        double chance = HOTSPOT_BASE_CHANCE + dev.daweapon.type.skyblockgeneric.potion.mixin.Mixins.hotspotChance(context.player());
         if (context.bait() != null && "HOTSPOT_BAIT".equals(context.bait().getItemId())) chance += HOTSPOT_BAIT_BONUS;
         double petBonus = PetAbilities.value(context.player(), ItemType.HERMIT_CRAB_PET, "Hotspot Hazard", 0);
         return PetPerkMath.hotspotChance(chance, petBonus, HOTSPOT_CAP);

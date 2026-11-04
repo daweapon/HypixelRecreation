@@ -1172,7 +1172,7 @@ items:
     material: paper
     name: "Scatha-in-a-Bottle"
     rarity: RARE
-    unavailable: "Needs Scatha and Mixins"
+    unavailable: "Needs Scatha"
     source: "Source unconfirmed"
     lore:
       - "§8Brewing Ingredient"
