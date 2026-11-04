@@ -266,6 +266,7 @@ public class SkyBlockVelocity {
         ListenerStorePurchaseFulfillment.startRankExpirationReconciler();
 
         // Setup Redis
+        awaitRedis(ConfigProvider.settings().getRedisUri());
         RedisAPI.generateInstance(ConfigProvider.settings().getRedisUri());
         RedisAPI.getInstance().setFilterId("proxy");
         RedisClient.identify(RedisEndpoint.proxy());
@@ -293,6 +294,24 @@ public class SkyBlockVelocity {
 
         // Setup GameManager
         GameManager.loopServers(server);
+    }
+
+    private void awaitRedis(String redisUri) {
+        for (int attempt = 1; ; attempt++) {
+            try (redis.clients.jedis.Jedis jedis = new redis.clients.jedis.Jedis(java.net.URI.create(redisUri))) {
+                jedis.ping();
+                if (attempt > 1) logger.info("Redis reachable after {} attempts", attempt);
+                return;
+            } catch (Exception e) {
+                logger.warn("Redis not reachable yet (attempt {}): {}", attempt, e.getMessage());
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException interrupted) {
+                    Thread.currentThread().interrupt();
+                    return;
+                }
+            }
+        }
     }
 
     @Subscribe
