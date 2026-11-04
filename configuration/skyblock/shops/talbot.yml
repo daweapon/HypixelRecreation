@@ -1,5 +1,5 @@
 title: Talbot
-slots: [10, 11, 12, 14, 15, 16]
+slots: [10, 11, 12, 13, 14, 15, 16]
 entries:
   - item: TRAPPER_DEN_TRAVEL_SCROLL
     name: "<9>Travel Scroll to the Trapper's Den"
@@ -21,6 +21,11 @@ entries:
     name: "<5>Brown Bandana"
     material: paper
     cost: { pelts: 200 }
+  - item: WATER_BOTTLE
+    name: "<f>Douce Pluie de Stinky Cheese I Potion"
+    material: potion
+    potion: "DOUCE_PLUIE_DE_STINKY_CHEESE:1"
+    cost: { pelts: 40 }
   - item: PEST_VEST
     name: "<5>Pest Vest"
     material: paper
