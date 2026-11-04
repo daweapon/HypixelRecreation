@@ -39,9 +39,8 @@ public class ForceProtectorCommand extends HypixelCommand {
     }
 
     private static void status(SkyBlockPlayer player) {
-        player.sendMessage("<7>End Stone Protector: {} <8>({}/{} Zealots, your share {})",
-                ProtectorProgress.stage().display(), ProtectorProgress.kills(), ProtectorProgress.KILLS_TO_SUMMON,
-                ProtectorProgress.contributed(player.getUuid()));
+        player.sendMessage("<7>End Stone Protector: " + ProtectorProgress.stage().display() + " <8>(" + ProtectorProgress.kills()
+                + "/" + ProtectorProgress.KILLS_TO_SUMMON + " Zealots, your share " + ProtectorProgress.contributed(player.getUuid()) + ")");
     }
 
     private static void kills(SkyBlockPlayer player, String value) {
