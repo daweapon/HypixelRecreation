@@ -13,15 +13,19 @@ public record PlacedPortal(String itemId, int x, int y, int z, int front) {
                 Integer.parseInt(parts[3]), Integer.parseInt(parts[4]));
     }
 
-    public String[] hologramText(PortalDestination destination) {
-        return new String[]{"<b>Travel to:", destination.label()};
+    public static final String REMOVE_HINT = "<e>Click HERE to remove";
+
+    public String[] hologramText(PortalDestination destination, boolean showRemoveHint) {
+        return showRemoveHint
+                ? new String[]{"<b>Travel to:", destination.label(), REMOVE_HINT}
+                : new String[]{"<b>Travel to:", destination.label()};
     }
 
-    public ServerHolograms.ExternalHologram hologram(net.minestom.server.instance.Instance instance, PortalDestination destination) {
+    public ServerHolograms.ExternalHologram hologram(net.minestom.server.instance.Instance instance, PortalDestination destination, boolean showRemoveHint) {
         return ServerHolograms.ExternalHologram.builder()
                 .instance(instance)
                 .pos(PortalShape.hologramPosition(this))
-                .text(hologramText(destination))
+                .text(hologramText(destination, showRemoveHint))
                 .build();
     }
 }

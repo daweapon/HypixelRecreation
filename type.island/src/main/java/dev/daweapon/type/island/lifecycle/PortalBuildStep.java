@@ -22,6 +22,8 @@ public class PortalBuildStep implements IslandLifecycleStep {
         var database = context.island().getDatabase();
         String raw = database.has(IslandPortals.DATABASE_KEY) ? (String) database.get(IslandPortals.DATABASE_KEY, String.class) : null;
         IslandPortals portals = IslandPortals.deserialize(raw);
+        portals.setRemoveHintHidden(database.has(IslandPortals.REMOVE_HINT_HIDDEN_KEY)
+                && Boolean.parseBoolean(String.valueOf(database.get(IslandPortals.REMOVE_HINT_HIDDEN_KEY, String.class))));
         context.island().setPortals(portals);
         portals.spawnAll(context.island().getIslandInstance());
     }

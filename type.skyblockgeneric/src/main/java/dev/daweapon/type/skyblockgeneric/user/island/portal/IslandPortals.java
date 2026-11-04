@@ -12,10 +12,12 @@ import java.util.stream.Collectors;
 
 public class IslandPortals {
     public static final String DATABASE_KEY = "portals";
+    public static final String REMOVE_HINT_HIDDEN_KEY = "portal_remove_hologram_hidden";
     public static final PlacedPortal LEGACY_HUB_PORTAL = new PlacedPortal(PortalCatalog.HUB_ITEM_ID, 6, 100, 43, 0);
 
     private final List<PlacedPortal> portals = new ArrayList<>();
     private final Map<PlacedPortal, ServerHolograms.ExternalHologram> holograms = new HashMap<>();
+    private boolean removeHintHidden;
 
     public static IslandPortals deserialize(@Nullable String raw) {
         IslandPortals loaded = new IslandPortals();
@@ -37,6 +39,19 @@ public class IslandPortals {
 
     public List<PlacedPortal> all() {
         return List.copyOf(portals);
+    }
+
+    public boolean removeHintHidden() {
+        return removeHintHidden;
+    }
+
+    public void setRemoveHintHidden(boolean hidden) {
+        this.removeHintHidden = hidden;
+    }
+
+    public void refreshHolograms(Instance instance) {
+        despawnHolograms();
+        portals.forEach(portal -> spawnHologram(instance, portal));
     }
 
     public void spawnAll(Instance instance) {
@@ -70,8 +85,12 @@ public class IslandPortals {
 
     private void spawn(Instance instance, PlacedPortal portal) {
         PortalShape.build(instance, portal);
+        spawnHologram(instance, portal);
+    }
+
+    private void spawnHologram(Instance instance, PlacedPortal portal) {
         PortalDestination destination = PortalCatalog.get(portal.itemId());
-        ServerHolograms.ExternalHologram hologram = portal.hologram(instance, destination);
+        ServerHolograms.ExternalHologram hologram = portal.hologram(instance, destination, !removeHintHidden);
         ServerHolograms.addExternalHologram(hologram);
         holograms.put(portal, hologram);
     }
