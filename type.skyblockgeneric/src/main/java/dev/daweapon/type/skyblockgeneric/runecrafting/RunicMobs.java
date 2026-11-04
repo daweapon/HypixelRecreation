@@ -2,10 +2,13 @@ package dev.daweapon.type.skyblockgeneric.runecrafting;
 
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.skyblock.item.Rarity;
+import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneCheck;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
 import dev.daweapon.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.minestom.server.entity.EntityType;
 
 import java.util.List;
 import java.util.UUID;
@@ -63,5 +66,6 @@ public final class RunicMobs {
         double xp = Math.max(MINIMUM_KILL_XP, mob.getOtherLoot().getSkillXPAmount() * KILL_XP_FACTOR);
         player.getSkills().increase(player, SkillCategories.RUNECRAFTING, xp);
         mob.awardRune(player, pickRune(player.getUuid(), ThreadLocalRandom.current()));
+        if (mob.getEntityType() == EntityType.ENDERMAN) ChapterTriggers.fire(player, AbiphoneCheck.RUNIC_ENDERMAN_TRIGGER);
     }
 }

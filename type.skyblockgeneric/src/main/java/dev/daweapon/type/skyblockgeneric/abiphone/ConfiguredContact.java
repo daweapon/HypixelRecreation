@@ -26,11 +26,13 @@ public final class ConfiguredContact extends AbiphoneNPC {
     }
 
     private final Definition definition;
+    private final String head;
     private final String givenFlag;
 
     public ConfiguredContact(Definition definition, AbiphoneContact entry) {
         super(definition.id(), entry.name(), entry.description());
         this.definition = definition;
+        this.head = definition.head() == null || definition.head().isBlank() ? entry.head() : definition.head();
         this.givenFlag = "abiphone." + definition.id() + ".given";
     }
 
@@ -76,6 +78,10 @@ public final class ConfiguredContact extends AbiphoneNPC {
             ChatAnswers.expect(player, message -> message.equalsIgnoreCase(current.phrase()), () -> complete(player, slot, stage, current));
             return;
         }
+        if (current.label() == null) {
+            attempt(player, slot, stage, current);
+            return;
+        }
         NPCOption.sendOption(player, "contact_" + getId(), false, List.of(new NPCOption.Option(
                 "give" + stage, NamedTextColor.GREEN, true, current.label(), _ -> attempt(player, slot, stage, current))));
     }
@@ -104,7 +110,16 @@ public final class ConfiguredContact extends AbiphoneNPC {
 
     private void finish(SkyBlockPlayer player, int slot) {
         ChapterTriggers.fire(player, givenFlag);
+        if (definition.given().isEmpty()) {
+            super.onAdd(player, slot);
+            return;
+        }
         dialogue().setDialogue(player, "given").thenRun(() -> super.onAdd(player, slot));
+    }
+
+    public void grantDirectly(SkyBlockPlayer player, int slot) {
+        ChapterTriggers.fire(player, givenFlag);
+        super.onAdd(player, slot);
     }
 
     private static boolean satisfied(SkyBlockPlayer player, Stage stage) {
@@ -142,12 +157,17 @@ public final class ConfiguredContact extends AbiphoneNPC {
         List<DialogueSet> sets = new ArrayList<>();
         for (int i = 0; i < definition.stages().size(); i++) {
             Stage stage = definition.stages().get(i);
-            addSet(sets, "intro" + i, stage.intro());
-            addSet(sets, "missing" + i, stage.missing());
-            addSet(sets, "accepted" + i, stage.accepted());
+            String requested = stage.check() != null && player instanceof SkyBlockPlayer skyBlockPlayer ? stage.check().requested(skyBlockPlayer) : "";
+            addSet(sets, "intro" + i, fill(stage.intro(), player, requested));
+            addSet(sets, "missing" + i, fill(stage.missing(), player, requested));
+            addSet(sets, "accepted" + i, fill(stage.accepted(), player, requested));
         }
-        addSet(sets, "given", definition.given());
+        addSet(sets, "given", fill(definition.given(), player, ""));
         return sets.toArray(DialogueSet[]::new);
+    }
+
+    private static List<String> fill(List<String> lines, HypixelPlayer player, String requested) {
+        return lines.stream().map(line -> line.replace("{player}", player.getUsername()).replace("{requested}", requested)).toList();
     }
 
     private static void addSet(List<DialogueSet> sets, String key, List<String> lines) {
@@ -156,7 +176,7 @@ public final class ConfiguredContact extends AbiphoneNPC {
 
     @Override
     public ItemStack.Builder getIcon() {
-        if (definition.head() == null || definition.head().isBlank()) return ItemStack.builder(Material.PLAYER_HEAD);
-        return ItemStacks.head(definition.head(), Text.empty(), List.of());
+        if (head == null || head.isBlank()) return ItemStack.builder(Material.PLAYER_HEAD);
+        return ItemStacks.head(head, Text.empty(), List.of());
     }
 }

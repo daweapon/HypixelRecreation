@@ -25,6 +25,8 @@ public final class AbiphoneUnlocks {
     public static void registerAll() {
         FannTrainingCalls.register();
         AbiphoneReadyCalls.start();
+        ContactCalls.registerHooks();
+        dev.daweapon.type.skyblockgeneric.abiphone.ninef.NineFNetwork.registerListeners();
         for (ConfiguredContact.Definition definition : load(FILE)) {
             AbiphoneContact entry = AbiphoneContactCatalogue.byId(definition.id()).orElseThrow();
             AbiphoneRegistry.registerContact(new ConfiguredContact(definition, entry));
@@ -45,7 +47,7 @@ public final class AbiphoneUnlocks {
                     }
                     Object check = stage.get("check");
                     stages.add(new ConfiguredContact.Stage(
-                            String.valueOf(stage.get("label")),
+                            stage.get("label") == null ? null : String.valueOf(stage.get("label")),
                             lines(stage.get("intro")), lines(stage.get("missing")), lines(stage.get("accepted")), items,
                             check == null ? null : AbiphoneCheck.valueOf(String.valueOf(check)),
                             stage.get("phrase") == null ? null : String.valueOf(stage.get("phrase"))));

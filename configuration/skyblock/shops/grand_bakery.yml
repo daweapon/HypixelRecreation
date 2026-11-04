@@ -1,6 +1,6 @@
-# Feast Baker Scott's Grand Bakery (wiki: Kernels). Ted's and Scott's Contacts and the Feast I book are not in this shop yet.
+# Feast Baker Scott's Grand Bakery (wiki Feast Baker Scott/UI). The Feast I book and the Bread Bowl are not in this shop yet.
 title: "Grand Bakery"
-slots: [10, 11, 12, 13, 14, 19, 20]
+slots: [10, 11, 12, 13, 14, 15, 19, 20]
 entries:
   - item: FRESHLY_BAKED_TALISMAN
     name: "<f>Freshly Baked Talisman"
@@ -26,3 +26,11 @@ entries:
     name: "<a>Finn's Focaccia"
     material: bread
     cost: { kernels: 50 }
+  - item: TEDS_CONTACT_BAKED_IN_BREAD
+    name: "<5>Ted's Contact Baked In Bread"
+    material: name_tag
+    cost: { kernels: 500 }
+  - item: SCOTTS_CONTACT_BAKED_IN_BREAD
+    name: "<5>Scott's Contact Baked In Bread"
+    material: name_tag
+    cost: { kernels: 500 }

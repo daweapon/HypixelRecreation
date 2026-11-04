@@ -124,6 +124,7 @@ contacts:
     usage: "Opens their interface."
     aliases: [crag, kuudra, kuudra_gatekeeper]
   - id: dalir
+    head: "57b3552c5af2ab2dc4e1f84d78ca4c4d676dec068157225a3c2674e5574d2348"
     name: "Dalir"
     difficulty: EASY
     location: "Dwarven Mines"

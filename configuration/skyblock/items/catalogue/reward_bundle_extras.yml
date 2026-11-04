@@ -2,7 +2,7 @@ items:
   - id: HAY_BALE_FURNITURE
     material: player_head
     name: "Hay Bale"
-    rarity: EPIC
+    rarity: RARE
     source: "Easter reward bundle (Salesman, rank reward)"
     lore:
       - "§8Furniture"
@@ -14,7 +14,7 @@ items:
       - id: PLACE_EVENT
         handler_id: FURNITURE_PLACE
       - id: SKULL_HEAD
-        texture: e47b37e67a89159bf4acc4a44d4328f4efc0181605142288e5eed1ab8aed913c
+        texture: b5bce379dd3149a3a0c7ccd31c90c08fc3a7cb5e50d442e9dc2c32d155b17dac
   - id: HYPIXEL_SANDCASTLE
     material: player_head
     name: "Hypixel Sandcastle"

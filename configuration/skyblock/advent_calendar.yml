@@ -26,4 +26,4 @@ days:
   22: {gifts: {GREEN_GIFT: 2}, coins: 10000}
   23: {gifts: {GREEN_GIFT: 2}, coins: 10000, items: [{item: HOT_CHOCOLATE_AND_COOKIES, rank: VIP_PLUS}]}
   24: {gifts: {GREEN_GIFT: 2}, coins: 10000}
-  25: {gifts: {RED_GIFT: 3}, coins: 50000, items: [{item: SNOWMAN_PERSONALITY, rank: VIP_PLUS}, {item: HOLIDAY_TRAIN, rank: MVP_PLUS}], unbuilt: [North Star Rock Skin]}
+  25: {gifts: {RED_GIFT: 3}, coins: 50000, items: [{item: SNOWMAN_PERSONALITY, rank: VIP_PLUS}, {item: HOLIDAY_TRAIN, rank: MVP_PLUS}, {item: PET_SKIN_ROCK_NORTH_STAR, rank: MVP_PLUS}]}

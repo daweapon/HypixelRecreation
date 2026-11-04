@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 public final class FannTrainingCalls {
-    private static final Set<String> ANNOUNCED = ConcurrentHashMap.newKeySet();
+    private static final String PREFIX = "fann:";
 
     private FannTrainingCalls() {
     }
@@ -27,15 +27,21 @@ public final class FannTrainingCalls {
         long now = System.currentTimeMillis();
         List<Map.Entry<Integer, DatapointPetTraining.Session>> finished = new ArrayList<>();
         PetTrainingService.data(player).getSessions().forEach((slot, session) -> {
-            if (PetTrainingService.isFinished(session, now) && !ANNOUNCED.contains(key(player, slot, session))) {
+            if (PetTrainingService.isFinished(session, now) && !AbiphoneCallMemory.has(player, key(slot, session))) {
                 finished.add(Map.entry(slot, session));
             }
         });
         return finished;
     }
 
-    private static String key(SkyBlockPlayer player, int slot, DatapointPetTraining.Session session) {
-        return player.getUuid() + ":" + slot + ":" + session.endsAt();
+    private static String key(int slot, DatapointPetTraining.Session session) {
+        return PREFIX + slot + ":" + session.endsAt();
+    }
+
+    private static void pruneStale(SkyBlockPlayer player) {
+        Set<String> live = PetTrainingService.data(player).getSessions().entrySet().stream()
+                .map(entry -> key(entry.getKey(), entry.getValue())).collect(Collectors.toSet());
+        AbiphoneCallMemory.removeIf(player, key -> key.startsWith(PREFIX) && !live.contains(key));
     }
 
     private static boolean hasNews(SkyBlockPlayer player) {
@@ -45,12 +51,13 @@ public final class FannTrainingCalls {
     private static void report(SkyBlockPlayer player) {
         AbiphoneNPC fann = AbiphoneRegistry.getFromId("fann");
         if (fann == null) return;
+        pruneStale(player);
         fann.sendNPCMessage(player, Text.of("<f>Hey <b>{}<f>!", player.getUsername()));
         for (Map.Entry<Integer, DatapointPetTraining.Session> entry : unannounced(player)) {
             DatapointPetTraining.Session session = entry.getValue();
             SkyBlockItem trained = session.pet().clone();
             PetLevels.addExperience(trained, PetTrainingService.xpEarned(session, System.currentTimeMillis()));
-            ANNOUNCED.add(key(player, entry.getKey(), session));
+            AbiphoneCallMemory.add(player, key(entry.getKey(), session));
             fann.sendNPCMessage(player, Text.of("<e>[#{}] <f>{} {} has concluded and is now <7>Lvl {}",
                     entry.getKey() + 1, session.type().getDisplayName(), trained.getDisplayName(), PetLevels.level(trained)));
         }

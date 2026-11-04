@@ -22,7 +22,8 @@ public final class IslandWeatherSettings {
     }
 
     public static void apply(SkyBlockIsland island) {
-        if (island.getIslandInstance() == null || !unlocked(island)) return;
+        if (island.getIslandInstance() == null) return;
+        if (!unlocked(island) && !island.getDatabase().has(WEATHER_KEY)) return;
         island.getIslandInstance().setWeather(current(island).weather());
     }
 
@@ -48,6 +49,10 @@ public final class IslandWeatherSettings {
         if (island.getIslandInstance() != null) island.getIslandInstance().setWeather(IslandWeather.SUNNY.weather());
         player.addAndUpdateItem(ItemType.WEATHER_NODE, 1);
         player.sendMessage("<a>You picked up your <b>Weather Node<a>.");
+    }
+
+    public static void remember(SkyBlockIsland island, IslandWeather weather) {
+        Thread.startVirtualThread(() -> island.getDatabase().insertOrUpdate(WEATHER_KEY, weather.name()));
     }
 
     public static void set(SkyBlockPlayer player, SkyBlockIsland island, IslandWeather weather) {

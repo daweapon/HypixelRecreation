@@ -37,7 +37,7 @@ public class ActionPortalInteract implements HypixelEventClass {
         event.setBlockingItemUse(true);
         if (HubPortalRules.isHubPortal(portal) && !HubPortalRules.requireSkill(player)) return;
         PortalDestination destination = PortalCatalog.get(portal.itemId());
-        player.openView(new PortalDeleteConfirmView(destination, confirmer -> {
+        player.openView(new PortalDeleteConfirmView(island, confirmer -> {
             if (island.getPortals() == null) return;
             island.getPortals().remove(event.getInstance(), portal);
             confirmer.sendMessage("<a>You deleted the portal to {}<a>.", destination.labelText());

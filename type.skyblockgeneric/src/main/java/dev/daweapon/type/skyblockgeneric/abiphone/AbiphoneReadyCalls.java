@@ -5,14 +5,10 @@ import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.Player;
 import net.minestom.server.timer.TaskSchedule;
 
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class AbiphoneReadyCalls {
     private static final AtomicBoolean STARTED = new AtomicBoolean();
-    private static final Set<String> CALLED = ConcurrentHashMap.newKeySet();
 
     private AbiphoneReadyCalls() {
     }
@@ -31,17 +27,13 @@ public final class AbiphoneReadyCalls {
     }
 
     private static void check(SkyBlockPlayer player, AbiphoneNPC npc) {
-        String key = player.getUuid() + ":" + npc.getId();
+        String key = "ready:" + npc.getId();
         if (!npc.wantsToCall(player)) {
-            CALLED.remove(key);
+            AbiphoneCallMemory.remove(player, key);
             return;
         }
-        if (CALLED.contains(key)) return;
+        if (AbiphoneCallMemory.has(player, key)) return;
         AbiphoneIncomingCalls.Result result = AbiphoneIncomingCalls.ring(player, npc.getId(), npc::onIncomingPickUp);
-        if (result == AbiphoneIncomingCalls.Result.RINGING || result == AbiphoneIncomingCalls.Result.SILENCED) CALLED.add(key);
-    }
-
-    public static void forget(UUID player) {
-        CALLED.removeIf(key -> key.startsWith(player.toString()));
+        if (result == AbiphoneIncomingCalls.Result.RINGING || result == AbiphoneIncomingCalls.Result.SILENCED) AbiphoneCallMemory.add(player, key);
     }
 }

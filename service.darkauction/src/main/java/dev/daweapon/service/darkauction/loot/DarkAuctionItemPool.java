@@ -18,6 +18,7 @@ public class DarkAuctionItemPool {
         items.add(new WeightedItem(ItemType.MIDAS_SWORD, 16));
 
         items.add(new WeightedItem(ItemType.HOCUS_POCUS_CIPHER, 12));
+        items.add(new WeightedItem(ItemType.SIRIUS_PERSONAL_PHONE_NUMBER, 12));
 
         // Epic Pets (weight 16)
         items.add(new WeightedItem(ItemType.BEE_PET, 16));

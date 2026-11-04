@@ -8,7 +8,9 @@ import dev.daweapon.type.skyblockgeneric.essence.EssenceType;
 import dev.daweapon.type.skyblockgeneric.essence.Essences;
 import dev.daweapon.type.skyblockgeneric.farmingcontest.ContestBracket;
 import dev.daweapon.type.skyblockgeneric.farmingcontest.FarmingContests;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.item.set.ArmorSetRegistry;
 import dev.daweapon.type.skyblockgeneric.item.components.AbiphoneComponent;
 import dev.daweapon.type.skyblockgeneric.miningevent.CultOfTheFallenStar;
 import dev.daweapon.type.skyblockgeneric.slayer.SlayerRequirement;
@@ -113,6 +115,44 @@ public enum AbiphoneCheck {
                     "Confirm your attendance at a meeting by speaking to me with your <1>Fallen Star Helmet<f> equipped.");
         }
     },
+    GEORGE_PETS {
+        @Override
+        public boolean test(SkyBlockPlayer player) {
+            return GeorgePets.findAll(player) != null;
+        }
+
+        @Override
+        public void consume(SkyBlockPlayer player) {
+            List<SkyBlockItem> pets = GeorgePets.findAll(player);
+            if (pets != null) pets.forEach(pet -> player.getPetData().removePet(pet));
+        }
+
+        @Override
+        public String requested(SkyBlockPlayer player) {
+            return GeorgePets.describe(GeorgePets.requested(player));
+        }
+    },
+    ZOG_PET_LOVER {
+        @Override
+        public boolean test(SkyBlockPlayer player) {
+            return player.getPetData().getPetsMap().keySet().stream()
+                    .filter(pet -> pet.getAttributeHandler().getRarity().isAtLeast(Rarity.LEGENDARY))
+                    .filter(PetLevels::isMaxLevel)
+                    .count() >= ZOG_PETS;
+        }
+    },
+    RUNIC_ENDERMAN {
+        @Override
+        public boolean test(SkyBlockPlayer player) {
+            return ChapterTriggers.done(player, RUNIC_ENDERMAN_TRIGGER);
+        }
+    },
+    FAIRY_ARMOR {
+        @Override
+        public boolean test(SkyBlockPlayer player) {
+            return player.getArmorSet() == ArmorSetRegistry.FAIRY_OUTFIT;
+        }
+    },
     DONATE_ABIPHONE {
         private static final List<String> ACCEPTED = List.of("ABIPHONE_BASIC", "ABIPHONE_X_RED", "ABIPHONE_X_BLUE", "ABIPHONE_XI_YELLOW");
 
@@ -139,7 +179,14 @@ public enum AbiphoneCheck {
         }
     };
 
+    public static final String RUNIC_ENDERMAN_TRIGGER = "abiphone.dusk.runic_enderman";
+    private static final int ZOG_PETS = 5;
+
     public abstract boolean test(SkyBlockPlayer player);
+
+    public String requested(SkyBlockPlayer player) {
+        return "";
+    }
 
     public void consume(SkyBlockPlayer player) {
     }

@@ -233,8 +233,8 @@ public final class StarlynContests {
     }
 
     private static void announce(SkyBlockPlayer player, StarlynSister sister, Entry entry, StarlynBracket bracket) {
-        String line = "The contest is over! You reached the " + bracket.formatted()
-                + " <r><f>bracket with <a>" + StringUtility.commaify(entry.score()) + " points<f>! Come see me to claim your <6>rewards<f>.";
+        String line = "Hey, the results for my latest contest are in! You reached the " + bracket.formatted()
+                + " <r><f>bracket with <a>" + StringUtility.commaify(entry.score()) + " points<f>!";
         AbiphoneIncomingCalls.Result result = AbiphoneIncomingCalls.ring(player, sister.key(), caller -> AbiphoneIncomingCalls.speak(caller, sister.key(), line));
         if (result == AbiphoneIncomingCalls.Result.NO_CONTACT) player.sendMessage(StarlynDialogue.speaker(sister) + line);
     }
