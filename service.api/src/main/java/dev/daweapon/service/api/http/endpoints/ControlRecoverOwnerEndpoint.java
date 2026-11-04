@@ -11,6 +11,7 @@ import dev.daweapon.service.api.control.ControlTokens;
 import dev.daweapon.service.api.control.DeviceDatabase;
 import dev.daweapon.service.api.control.DeviceRecord;
 import dev.daweapon.service.api.control.OwnerRecovery;
+import dev.daweapon.service.api.control.SecondFactor;
 import dev.daweapon.service.api.http.APIResponse;
 import dev.daweapon.service.api.http.EndpointType;
 import dev.daweapon.service.api.http.HttpMethod;
@@ -72,6 +73,15 @@ public class ControlRecoverOwnerEndpoint extends SkyBlockEndpoint {
         UUID claimant = session.getAuthenticatorUUID();
         OwnerRecovery.Decision decision = OwnerRecovery.assess(claimant, DeviceDatabase.all(),
                 Instant.now(), OwnerRecovery.configuredIdleWindow());
+
+        if (decision.allowed()) {
+            APIResponse secondFactorRefusal = SecondFactor.require(
+                    ControlEnrolEndpoint.optString(body, "totp", headers.get(SecondFactor.HEADER)), res,
+                    session.getAuthenticatorName(), "unknown", deviceName, "none", "owner-recovery", List.of());
+            if (secondFactorRefusal != null) {
+                return secondFactorRefusal;
+            }
+        }
 
         if (!decision.allowed()) {
             AuditDatabase.record(AuditEntry.of(

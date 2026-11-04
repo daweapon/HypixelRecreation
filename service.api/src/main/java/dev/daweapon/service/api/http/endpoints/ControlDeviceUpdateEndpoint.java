@@ -8,6 +8,7 @@ import dev.daweapon.service.api.control.ControlRole;
 import dev.daweapon.service.api.control.ControlTokens;
 import dev.daweapon.service.api.control.DeviceDatabase;
 import dev.daweapon.service.api.control.DeviceRecord;
+import dev.daweapon.service.api.control.SecondFactor;
 import dev.daweapon.service.api.http.APIResponse;
 import dev.daweapon.service.api.http.EndpointType;
 import dev.daweapon.service.api.http.HttpMethod;
@@ -62,6 +63,12 @@ public class ControlDeviceUpdateEndpoint extends SkyBlockEndpoint {
         if (device == null) {
             res.status(404);
             return APIResponse.error("No such device");
+        }
+
+        APIResponse secondFactorRefusal = SecondFactor.require(req, res, auth.caller(),
+                action.equals("revoke") ? "device-revoke" : "device-role", List.of(deviceId));
+        if (secondFactorRefusal != null) {
+            return secondFactorRefusal;
         }
 
         boolean self = deviceId.equals(auth.caller().accessToken().deviceId());
