@@ -120,6 +120,10 @@ public final class RaffleClaims {
         return CenturyRaffleConfig.isSpecial(prize) ? null : ItemType.get(prize);
     }
 
+    public static boolean isPrize(ItemType item) {
+        return allPrizeItems().contains(item);
+    }
+
     static List<ItemType> allPrizeItems() {
         List<ItemType> items = new ArrayList<>();
         for (PrizeTier tier : PrizeTier.values()) {

@@ -9,6 +9,7 @@ import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.generic.command.CommandParameters;
 import dev.daweapon.type.generic.command.HypixelCommand;
 import dev.daweapon.type.generic.user.categories.Rank;
+import dev.daweapon.type.skyblockgeneric.century.raffle.RaffleClaims;
 import dev.daweapon.type.skyblockgeneric.loottable.ForcedDrops;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
@@ -61,9 +62,14 @@ public class ForceDropCommand extends HypixelCommand {
         }
         ForcedDrops.force(target.getUuid(), item);
         String name = ALIASES.containsKey(input.toUpperCase()) ? "Chimera I book" : item.getDisplayName();
-        target.sendMessage("<a>The next mob you kill that can drop <e>" + name + " <a>will drop it.");
+        if (RaffleClaims.isPrize(item)) {
+            target.sendMessage("<a>Your next <6>Raffle of the Century <a>claim, or the next drop that can give <e>" + name + "<a>, will give it.");
+            staff.sendMessage("<7>The raffle prize comes from claiming any drawn raffle in the <6>Raffle Box <7>(won or not). Draw one now with <e>/force century draw speed<7>.");
+        } else {
+            target.sendMessage("<a>The next mob you kill that can drop <e>" + name + " <a>will drop it.");
+        }
         if (target != staff) {
-            staff.sendMessage("<a>The next mob <e>" + target.getUsername() + " <a>kills that can drop <e>" + name + " <a>will drop it.");
+            staff.sendMessage("<a>Forced <e>" + name + " <a>for <e>" + target.getUsername() + "<a>.");
         }
     }
 
