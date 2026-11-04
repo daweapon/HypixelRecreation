@@ -183,7 +183,12 @@ final class ToyBoxButtons {
                 })),
                 of(Material.CLOCK, "<d>Fill Time Tower Charges", "<8>Time on tap.", "<7>Set your <d>Time Tower <7>to <a>3 charges<7>.", p -> ChocolateFactoryHelper.mutateData(p, data -> data.setTimeTowerCharges(DatapointChocolateFactory.ChocolateFactoryData.TIME_TOWER_MAX_CHARGES))),
                 of(Material.BOW, "<c>Max Rabbit Hitman Slots", "<8>Hire the whole crew.", "<7>Buy every <c>Rabbit Hitman <7>slot your factory allows.", p -> ChocolateFactoryHelper.mutateData(p, data ->
-                        data.setHitmanSlots(ChocolateFactoryLevel.forPrestige(data.getPrestigeLevel()).getMaxHitmanSlots()))));
+                        data.setHitmanSlots(ChocolateFactoryLevel.forPrestige(data.getPrestigeLevel()).getMaxHitmanSlots()))),
+                of(Material.BELL, "<6>Max Rabbit Faction", "<8>Pick a side.", "<7>Join the <a>City Rabbits <7>if you have no Faction and set it to <6>Lvl 5<7>.", p -> ChocolateFactoryHelper.mutateData(p, data -> {
+                    if (data.getFaction() == null) data.setRabbitFaction(dev.daweapon.type.skyblockgeneric.rabbits.RabbitFaction.CITY.name());
+                    data.setFactionLevel(dev.daweapon.type.skyblockgeneric.rabbits.RabbitFactions.MAX_LEVEL);
+                })),
+                of(Material.REDSTONE_TORCH, "<c>Find a Chocobit", "<8>One of 33,333.", "<7>Claim a free <c>Chocobit <7>from the global pool.", dev.daweapon.type.skyblockgeneric.rabbits.Chocobits::award));
     }
 
     static List<ToyBoxButton> dungeons() {
