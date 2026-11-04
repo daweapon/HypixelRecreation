@@ -345,6 +345,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         AccessoryEconomyHooks.start();
         dev.daweapon.type.skyblockgeneric.hoppity.HoppityHitmanService.start();
         BottleOfJyrre.startAging();
+        dev.daweapon.type.skyblockgeneric.rabbits.DarkCacaoTruffle.startAging();
         dev.daweapon.type.skyblockgeneric.garden.greenhouse.RosewaterFlask.startAging();
         SnowmanPet.startBlizzard();
         CoopSync.subscribe();

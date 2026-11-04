@@ -57,8 +57,7 @@ public class GUIChocolateShop implements StatefulView<GUIChocolateShop.State> {
             .withIngredient("RICH_CHOCOLATE_CHUNK", "<9>Rich Chocolate Chunk");
     private static final Offer PRESTIGE_CHOCOLATE_REALM = Offer.item("PRESTIGE_CHOCOLATE_REALM", "<6>Prestige Chocolate Realm", 4_500_000_000L, 3)
             .withIngredient("GANACHE_CHOCOLATE_SLAB", "<5>Ganache Chocolate Slab");
-    private static final Offer DARK_CACAO_TRUFFLE = Offer.item("DARK_CACAO_TRUFFLE", "<9>Dark Cacao Truffle", 2_500_000_000L, 3)
-            .unavailable("Eating it needs the evolving Global Fortune bonus, which is not built");
+    private static final Offer DARK_CACAO_TRUFFLE = Offer.item("DARK_CACAO_TRUFFLE", "<9>Dark Cacao Truffle", 2_500_000_000L, 3);
     private static final Offer CHOCOLATE_DYE = Offer.item("DYE_CHOCOLATE", "<6>Chocolate Dye", 40_000_000_000L, 5);
     private static final Offer BARN_SKIN = Offer.item("CHOCOLATE_FACTORY_BARN_SKIN", "<6>Chocolate Factory Barn Skin", 7_000_000_000L, 4)
             .unavailable("Garden Barn skins are not built");
@@ -264,15 +263,15 @@ public class GUIChocolateShop implements StatefulView<GUIChocolateShop.State> {
 
         offerSlot(layout, 19, DARK_CACAO_TRUFFLE, DARK_CACAO_TRUFFLE_TEXTURE, """
                 <9>Dark Cacao Truffle
-                <7>Consume to boost your <6>☘ Global
-                <6>Fortune <7>for <a>60m<7>.
+                <7>Consume to boost your <6>☘ Cocoa
+                <6>Beans Fortune <7>for <a>60m<7>.
 
                 <7>Keep this item in your inventory to
-                <7>increase the bonus up to <6>+30<6>☘
-                <6>Global Fortune<7>, at which point the
-                <7>item <c><o>evolves<7>!
+                <7>increase the bonus up to <6>+30
+                <6>Cocoa Beans Fortune<7>, at which point
+                <7>the item <c><o>evolves<7>!
 </o>
-                <7>Current Bonus: <6>+0<6>☘ Global Fortune
+                <7>Current Bonus: <6>+0 Cocoa Beans Fortune
 
                 <9><l>RARE
 </l>

@@ -20,19 +20,13 @@ items:
     material: player_head
     name: "Dark Cacao Truffle"
     rarity: RARE
-    unavailable: "Consuming it needs an in-inventory evolving Global Fortune bonus and the Refined Dark Cacao Truffle, neither of which is built"
     source: "Chocolate Shop: 2.5B Chocolate each, up to 3 per SkyBlock year, needs Chocolate Factory IV"
-    lore:
-      - "§7Consume to boost your §6 Cocoa"
-      - "§6Beans Fortune §7for §a60m§7."
-      - ""
-      - "§7Keep this item in your inventory to"
-      - "§7increase the bonus up to §6+30"
-      - "§6Cocoa Beans Fortune§7, at which point"
-      - "§7the item §c§oevolves§7!"
-      - ""
-      - "§7Current Bonus: §6+0 Cocoa Beans Fortune"
     components:
+      - id: LORE_UPDATE
+        handler_id: DARK_CACAO_TRUFFLE
+        is_absolute: false
+      - id: INTERACTABLE
+        handler_id: DARK_CACAO_TRUFFLE
       - id: SKULL_HEAD
         texture: db9db373cadbec1912a9ab386d31ceb3e0cd4d6a64f222426588a3b2eb31ed29
   - id: DARK_CANDY

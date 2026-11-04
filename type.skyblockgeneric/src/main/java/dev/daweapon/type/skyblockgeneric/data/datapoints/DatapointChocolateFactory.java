@@ -76,6 +76,9 @@ public class DatapointChocolateFactory extends SkyBlockDatapoint<DatapointChocol
             json.put("factionRabbits", new JSONArray(value.getFactionRabbits()));
             json.put("chocobits", serializeChocobits(value.getChocobits()));
             json.put("chocolateFortune", value.getChocolateFortune());
+            json.put("truffleBuffExpires", value.getTruffleBuffExpires());
+            json.put("truffleBuffFortune", value.getTruffleBuffFortune());
+            json.put("refinedTrufflesConsumed", value.getRefinedTrufflesConsumed());
             return json.toString();
         }
 
@@ -138,6 +141,9 @@ public class DatapointChocolateFactory extends SkyBlockDatapoint<DatapointChocol
             data.setFactionRabbits(deserializeStrings(jsonObject.optJSONArray("factionRabbits"), HashSet::new));
             data.setChocobits(deserializeChocobits(jsonObject.optJSONObject("chocobits")));
             data.setChocolateFortune(jsonObject.optInt("chocolateFortune", 0));
+            data.setTruffleBuffExpires(jsonObject.optLong("truffleBuffExpires", 0L));
+            data.setTruffleBuffFortune(jsonObject.optInt("truffleBuffFortune", 0));
+            data.setRefinedTrufflesConsumed(jsonObject.optInt("refinedTrufflesConsumed", 0));
             return data;
         }
 
@@ -355,6 +361,9 @@ public class DatapointChocolateFactory extends SkyBlockDatapoint<DatapointChocol
         private Set<String> factionRabbits = new HashSet<>();
         private Map<Integer, Integer> chocobits = new HashMap<>();
         private int chocolateFortune;
+        private long truffleBuffExpires;
+        private int truffleBuffFortune;
+        private int refinedTrufflesConsumed;
 
         public void addChocolate(long amount) {
             if (amount <= 0) {
