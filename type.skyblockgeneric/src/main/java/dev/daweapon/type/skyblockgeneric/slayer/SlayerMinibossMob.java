@@ -32,7 +32,7 @@ public final class SlayerMinibossMob extends SkyBlockMob {
     private final UUID ownerUuid;
 
     private SlayerMinibossMob(SlayerMiniboss miniboss, UUID ownerUuid) {
-        super(EntityType.BLAZE);
+        super(EntityType.fromKey("minecraft:" + miniboss.entity().toLowerCase()));
         this.miniboss = miniboss;
         this.ownerUuid = ownerUuid;
     }
@@ -56,7 +56,7 @@ public final class SlayerMinibossMob extends SkyBlockMob {
 
     @Override public String getDisplayName() { return live().name(); }
     @Override public Integer getLevel() { return live().level(); }
-    @Override public List<MobType> getMobTypes() { return List.of(MobType.INFERNAL); }
+    @Override public List<MobType> getMobTypes() { return List.of(live().mobType()); }
     @Override public @Nullable SkyBlockLootTable getLootTable() { return null; }
     @Override public SkillCategories getSkillCategory() { return SkillCategories.COMBAT; }
     @Override public long damageCooldown() { return 500L; }

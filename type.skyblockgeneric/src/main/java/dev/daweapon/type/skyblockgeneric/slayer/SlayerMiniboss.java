@@ -1,6 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.slayer;
 
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.skyblockgeneric.entity.mob.MobType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Set;
@@ -19,6 +20,8 @@ public record SlayerMiniboss(
     double damage,
     int combatXp,
     @Nullable ItemType token,
-    int tokenAmount
+    int tokenAmount,
+    String entity,
+    MobType mobType
 ) {
 }

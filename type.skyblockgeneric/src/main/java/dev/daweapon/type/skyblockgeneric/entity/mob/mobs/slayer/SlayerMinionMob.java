@@ -46,7 +46,7 @@ public final class SlayerMinionMob extends SkyBlockMob {
     @Override public @Nullable SkyBlockLootTable getLootTable() { return null; }
     @Override public SkillCategories getSkillCategory() { return SkillCategories.COMBAT; }
     @Override public long damageCooldown() { return live().hooks().damageCooldownMillis(); }
-    @Override public OtherLoot getOtherLoot() { return new OtherLoot(0, 0, 0); }
+    @Override public OtherLoot getOtherLoot() { return live().hooks().rewards(); }
 
     @Override
     public List<GoalSelector> getGoalSelectors() {
@@ -152,6 +152,10 @@ public final class SlayerMinionMob extends SkyBlockMob {
         }
 
         default void onDeath(SlayerMinionMob minion) {
+        }
+
+        default OtherLoot rewards() {
+            return new OtherLoot(0, 0, 0);
         }
     }
 }

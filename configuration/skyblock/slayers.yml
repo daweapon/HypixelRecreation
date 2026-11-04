@@ -52,6 +52,12 @@ slayers:
       - { item: BITE_RUNE, pool: EXTRA, level: 0, tiers: { II: [1, 1, 0.69], III: [1, 1, 2.67], IV: [1, 1, 6.45], V: [1, 1, 5.52] } }
       - { item: DARKNESS_WITHIN_RUNE, pool: EXTRA, level: 0, tiers: { IV: [1, 1, 0.39], V: [1, 1, 0.66] } }
       - { item: DYE_BRICK_RED, pool: SEPARATE, level: 0, tiers: { I: [1, 1, 0.00001], II: [1, 1, 0.00004], III: [1, 1, 0.0001], IV: [1, 1, 0.0002] } }
+    minibosses:
+      - { id: SPIDER_FOLLOWER_3, name: Tarantula Vermin, tiers: [III], level: 143, health: 100000, damage: 600, combatXp: 1072, token: TARANTULA_WEB, tokenAmount: 1, entity: SPIDER, mobType: ARTHROPOD }
+      - { id: SPIDER_FOLLOWER_4, name: Tarantula Beast, tiers: [IV], level: 210, health: 500000, damage: 1000, combatXp: 1575, token: TARANTULA_WEB, tokenAmount: 2, entity: SPIDER, mobType: ARTHROPOD }
+      - { id: SPIDER_FOLLOWER_4_BOOSTED, name: Mutant Tarantula, tiers: [IV], stronger: true, level: 251, health: 750000, damage: 2000, combatXp: 1882, token: TARANTULA_WEB, tokenAmount: 5, entity: SPIDER, mobType: ARTHROPOD }
+      - { id: SPIDER_FOLLOWER_5, name: Primordial Jockey, tiers: [V], level: 304, health: 1750000, damage: 3000, combatXp: 1824, token: TARANTULA_WEB, tokenAmount: 4, entity: SPIDER, mobType: ARTHROPOD }
+      - { id: SPIDER_FOLLOWER_5_BOOSTED, name: Primordial Viscount, tiers: [V], stronger: true, level: 342, health: 3000000, damage: 4000, combatXp: 2052, token: TARANTULA_WEB, tokenAmount: 8, entity: SPIDER, mobType: ARTHROPOD }
 
   - id: SVEN_PACKMASTER
     enabled: true

@@ -2,6 +2,7 @@ package dev.daweapon.type.skyblockgeneric.slayer;
 
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.skyblockgeneric.enchantment.EnchantmentType;
+import dev.daweapon.type.skyblockgeneric.entity.mob.MobType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -50,7 +51,9 @@ final class SlayerDropParser {
                 number(entry.get("damage"), 1).doubleValue(),
                 number(entry.get("combatXp"), 0).intValue(),
                 item(entry.get("token")),
-                number(entry.get("tokenAmount"), 0).intValue()
+                number(entry.get("tokenAmount"), 0).intValue(),
+                String.valueOf(entry.getOrDefault("entity", "BLAZE")),
+                MobType.valueOf(String.valueOf(entry.getOrDefault("mobType", "INFERNAL")))
             ));
         }
         return List.copyOf(result);
