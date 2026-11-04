@@ -12,7 +12,11 @@ Roadmap item **#33**. **Phases 1, 2 and 3 are built.**
   restore, the version-skew view with reconcile, proxy-registration state, the config-drift
   detector and post-restart verification of self-deploys.
 - **Phase 3:** exception triage across every container's logs, an optional TOTP second factor
-  on OWNER actions, spark metrics and the remaining operations screens.
+  on OWNER actions, live per-server TPS/MSPT/heap, the capacity and queue view, drain-and-restart,
+  the memory budget, resource-pack health, and the game admin screens (players, events and the
+  shared SkyBlock calendar, economy, orphans, read-only roadmap).
+
+Every screen is reachable from the menu button on the dashboard.
 
 Each capability has its own section below. FCM push is the one deliberate omission; see
 [Alerting](#alerting).
@@ -450,13 +454,10 @@ Production needs, beyond the new jars:
 ## Known gaps
 
 - **FCM push** is not implemented (needs a Firebase project); ntfy covers the need.
-- **TPS-threshold alerting** (capability 14) needs the vendored `spark` metrics surfaced first.
-- **Proxy-registration state** (capability 3) is not yet separated from container state — the
-  dashboard currently shows whether the proxy *container* is up, not whether each game server is
-  *registered* with it.
+- **TPS alerts:** metrics are shown and colour-coded but do not page; only container state does.
+- **Proxy registration** reads UNKNOWN until the proxy runs the updated `SkyBlockProxy.jar`.
 - **Backups cover Mongo and Redis only**, not world data, schematics or `configuration/`.
 - A **live Mongo restore** replaces collections present in the backup; collections created since
   are left in place.
-- Cross-server player and event admin, backups and spark metrics are not built.
 - **Owner recovery is rate-limited only by the idle window**, not by attempt count; a STAFF
   account is trusted absolutely once no live owner remains.

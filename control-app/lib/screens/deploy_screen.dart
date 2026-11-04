@@ -94,7 +94,7 @@ class _DeployScreenState extends State<DeployScreen> {
         ],
       ),
     );
-    if (confirmed != true) return;
+    if (confirmed != true || !mounted) return;
 
     try {
       final job = await withSecondFactor(context, widget.api, () => widget.api.deploy(jar.name),

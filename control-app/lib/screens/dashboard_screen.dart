@@ -14,6 +14,7 @@ import '../widgets/drain_restart_dialog.dart';
 import '../widgets/fleet_table.dart';
 import '../widgets/job_banner.dart';
 import '../widgets/reactor_ring.dart';
+import '../widgets/sections_drawer.dart';
 import '../widgets/telemetry_strip.dart';
 import 'audit_screen.dart';
 import 'devices_screen.dart';
@@ -43,6 +44,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   late final LiveMetricsController _metrics = LiveMetricsController(LiveApi(widget.api));
   late final IntegrityState _integrity = IntegrityState(widget.api);
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -133,6 +135,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
     final isDesktop = MediaQuery.of(context).size.width >= _desktopBreakpoint;
 
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: SectionsDrawer(api: widget.api, role: widget.state.role),
       body: SafeArea(
         child: Column(
           children: [
@@ -211,6 +215,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ? ReactorTheme.cyan
                       : ReactorTheme.textFaint)),
           const SizedBox(width: 6),
+          _action(Icons.menu, 'All sections', () => _scaffoldKey.currentState?.openDrawer()),
           _action(Icons.upload_file, 'Deploy', () => Navigator.of(context).push(
               MaterialPageRoute(builder: (_) => DeployScreen(
                     api: widget.api,
