@@ -17,13 +17,14 @@ import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceGreatSpookCom
 import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceMineshaftCommand;
 import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceProtectorCommand;
 import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceShrineCommand;
+import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceVisitorCommand;
 
 import java.util.List;
 import java.util.Map;
 
 @CommandParameters(labels = "force",
-        description = "Forces a drop, the next Diana mob, a Dark Auction, a Volcano eruption, a Fire Sale, a Mining Event, the Blood God Shrine, a Glacite Mineshaft, the End Stone Protector, the Raffle of the Century, the Great Spook or the Grand Feast",
-        usage = "/force <drop|call|diana|darkauction|eruption|firesale|event|shrine|mineshaft|protector|century|greatspook|grandfeast> ...",
+        description = "Forces a drop, the next Diana mob, a Dark Auction, a Volcano eruption, a Fire Sale, a Mining Event, the Blood God Shrine, a Glacite Mineshaft, the End Stone Protector, the Raffle of the Century, the Great Spook, the Grand Feast or a Garden visitor",
+        usage = "/force <drop|call|diana|darkauction|eruption|firesale|event|shrine|mineshaft|protector|century|greatspook|grandfeast|visitor> ...",
         permission = Rank.STAFF,
         allowsConsole = false)
 public class ForceCommand extends CommandGroup {
@@ -41,7 +42,8 @@ public class ForceCommand extends CommandGroup {
                 new ForceProtectorCommand(),
                 new ForceCenturyCommand(),
                 new ForceGreatSpookCommand(),
-                new ForceGrandFeastCommand());
+                new ForceGrandFeastCommand(),
+                new ForceVisitorCommand());
     }
 
     @Override

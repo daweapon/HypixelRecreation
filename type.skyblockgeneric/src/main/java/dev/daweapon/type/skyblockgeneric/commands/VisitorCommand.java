@@ -26,6 +26,15 @@ import java.util.Locale;
 public class VisitorCommand extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {
+        ArgumentWord visitor = visitorArgument();
+
+        command.addSyntax((sender, context) -> {
+            if (!permissionCheck(sender)) return;
+            spawn((SkyBlockPlayer) sender, context.get(visitor));
+        }, ArgumentType.Literal("spawn"), visitor);
+    }
+
+    public static ArgumentWord visitorArgument() {
         ArgumentWord visitor = ArgumentType.Word("visitor");
         visitor.setSuggestionCallback((_, context, suggestion) -> {
             String typed = normalize(context.getInput().substring(context.getInput().lastIndexOf(' ') + 1));
@@ -35,14 +44,10 @@ public class VisitorCommand extends HypixelCommand {
                 }
             }
         });
-
-        command.addSyntax((sender, context) -> {
-            if (!permissionCheck(sender)) return;
-            spawn((SkyBlockPlayer) sender, context.get(visitor));
-        }, ArgumentType.Literal("spawn"), visitor);
+        return visitor;
     }
 
-    private static void spawn(SkyBlockPlayer player, String input) {
+    public static void spawn(SkyBlockPlayer player, String input) {
         if (!HypixelConst.isGardenServer()) {
             player.sendMessage("<c>You can only summon visitors on your Garden.");
             return;
