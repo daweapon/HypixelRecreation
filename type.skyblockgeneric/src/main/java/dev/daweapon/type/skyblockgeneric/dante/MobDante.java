@@ -38,6 +38,7 @@ public class MobDante extends CrimsonIsleMob {
     private static final int SUMMON_COUNT = 3;
     private static final int MAX_SLIME_GOONS = 8;
     private static final int SPEECH_INTERVAL = 300;
+    private static final int ENERGY_BALL_INTERVAL = 20;
     private static final long WARN_COOLDOWN_MILLIS = 3000;
 
     private final Map<UUID, String> names = new ConcurrentHashMap<>();
@@ -122,6 +123,7 @@ public class MobDante extends CrimsonIsleMob {
         if (ticks % VOLLEY_INTERVAL == 0) slimeVolley(fighters);
         if (ticks % SUMMON_INTERVAL == 0) summonSlimeGoons();
         if (ticks % SPEECH_INTERVAL == 0) DanteUprising.speakAsSlime(getInstance());
+        if (ticks % ENERGY_BALL_INTERVAL == 0) EnergyBall.collect(this, fighters);
     }
 
     private void damageStrike(List<SkyBlockPlayer> fighters) {
