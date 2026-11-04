@@ -337,6 +337,23 @@ public class LeaderboardService {
         return keys;
     }
 
+    public static int deleteKeys(String keyPrefix) {
+        if (!isInitialized()) return 0;
+        int deleted = 0;
+        try (Jedis jedis = jedisPool.getResource()) {
+            ScanParams params = new ScanParams().match(PREFIX + keyPrefix + "*").count(500);
+            String cursor = ScanParams.SCAN_POINTER_START;
+            do {
+                ScanResult<String> scan = jedis.scan(cursor, params);
+                if (!scan.getResult().isEmpty()) deleted += (int) jedis.del(scan.getResult().toArray(String[]::new));
+                cursor = scan.getCursor();
+            } while (!ScanParams.SCAN_POINTER_START.equals(cursor));
+        } catch (Exception e) {
+            Logger.warn(e, "Failed to delete leaderboard keys under {}", keyPrefix);
+        }
+        return deleted;
+    }
+
     public static int removeFromAllLeaderboards(UUID playerUuid) {
         if (!isInitialized()) return 0;
 

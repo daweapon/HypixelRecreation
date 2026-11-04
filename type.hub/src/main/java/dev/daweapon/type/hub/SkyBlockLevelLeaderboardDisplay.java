@@ -3,10 +3,12 @@ package dev.daweapon.type.hub;
 import dev.daweapon.commons.StringUtility;
 import dev.daweapon.type.generic.HypixelGenericLoader;
 import dev.daweapon.type.generic.entity.hologram.PlayerHolograms;
+import dev.daweapon.type.generic.leaderboard.LeaderboardService;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.type.skyblockgeneric.leaderboard.SkyBlockBoards;
 import dev.daweapon.type.skyblockgeneric.leaderboard.SkyBlockLeaderboards;
 import net.minestom.server.coordinate.Pos;
+import org.tinylog.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +24,9 @@ public class SkyBlockLevelLeaderboardDisplay {
     private static final long REFRESH_MILLIS = 5 * 60_000L;
 
     private static final Map<HypixelPlayer, Applied> holos = new ConcurrentHashMap<>();
+    private static final String STALE_COLLECTION_KEYS = "skyblock:collection:";
     private static final AtomicBoolean loading = new AtomicBoolean();
+    private static final AtomicBoolean staleKeysRetired = new AtomicBoolean();
     private static volatile String[] lines = loadingLines();
     private static volatile long loadedAt;
 
@@ -58,6 +62,10 @@ public class SkyBlockLevelLeaderboardDisplay {
         if (!loading.compareAndSet(false, true)) return;
         Thread.startVirtualThread(() -> {
             try {
+                if (staleKeysRetired.compareAndSet(false, true)) {
+                    int deleted = LeaderboardService.deleteKeys(STALE_COLLECTION_KEYS);
+                    if (deleted > 0) Logger.info("Deleted {} stale per-player collection leaderboard keys", deleted);
+                }
                 SkyBlockLeaderboards.Page page = SkyBlockLeaderboards.load(SkyBlockBoards.fixed(SkyBlockBoards.LEVEL).orElseThrow(), null);
                 lines = renderLines(page);
                 loadedAt = System.currentTimeMillis();
