@@ -39,7 +39,7 @@ public class NPCTalbot extends HypixelNPC implements NPCAbiphoneTrait { //only t
 
             @Override
             public Pos position(HypixelPlayer player) {
-                return new Pos(285, 104, -549, 0, 0);
+                return new Pos(285.5, 104, -548.5, 0, 0);
             }
 
             @Override

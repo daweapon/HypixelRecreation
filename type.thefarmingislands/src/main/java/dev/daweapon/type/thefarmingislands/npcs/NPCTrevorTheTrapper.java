@@ -18,7 +18,7 @@ public class NPCTrevorTheTrapper extends HypixelNPC implements NPCAbiphoneTrait 
         super(new HumanConfiguration() {
             @Override
             public String[] holograms(HypixelPlayer player) {
-                return new String[]{"Trevor The Trapper", "<e><l>CLICK"};
+                return new String[]{"Trevor", "<e><l>CLICK"};
             }
 
             @Override
