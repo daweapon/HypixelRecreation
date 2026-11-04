@@ -16,7 +16,7 @@ final class CommunityUpgradeNotifier {
         player.sendMessage("<a>{} {:roman} <7>{} Upgrade has finished! <e>Visit Elizabeth to start the next tier.",
                 id.getDisplayName(), tier, scope);
         AbiphoneIncomingCalls.ring(player, "elizabeth", caller -> AbiphoneIncomingCalls.speak(caller, "elizabeth",
-                "Hey, " + caller.getUsername() + "! I just wanted to let you know that your " + id.getDisplayName() + " " + scope + " Upgrade has finished!",
+                "Hey, <b>" + caller.getUsername() + "<f>! I just wanted to let you know that your <a>" + id.getDisplayName() + " <f>" + scope + " Upgrade has finished!",
                 "That's all, bye!"));
     }
 }
