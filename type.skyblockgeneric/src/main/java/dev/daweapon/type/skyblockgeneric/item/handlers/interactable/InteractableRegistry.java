@@ -35,6 +35,7 @@ public class InteractableRegistry {
         dev.daweapon.type.skyblockgeneric.consumable.Salt.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.ItemBundle.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.DwarvenOs.registerInteractables();
+        dev.daweapon.type.skyblockgeneric.abiphone.ContactConsumables.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.GreatSpookPotion.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.SmolderingPolarization.registerInteractables();
         dev.daweapon.type.skyblockgeneric.greatspook.GreatSpookStaff.registerInteractables();

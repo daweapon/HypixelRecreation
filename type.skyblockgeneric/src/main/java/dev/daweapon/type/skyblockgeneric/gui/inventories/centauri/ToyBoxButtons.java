@@ -69,7 +69,9 @@ final class ToyBoxButtons {
                 of(Material.PLAYER_HEAD, "<5>Sleepy Hollow", "<8>The minion dreams of candy.", "<7>Claim a <5>Sleepy Hollow <7>minion upgrade.", p -> ToyBoxActions.give(p, ItemType.SLEEPY_HOLLOW)),
                 of(Material.BARRIER, "<5>Reset Vargul's Progress", "<8>He has forgotten you.", "<7>Forget the <5>Dark Candies <7>spent on <c>Vargul <7>and his visits on this profile.",
                         dev.daweapon.type.skyblockgeneric.greatspook.VargulProgress::reset),
-                of(Material.REPEATER, "<6>Max Autopet Rules", "<8>The pets pick themselves.", "<7>Unlock all <a>28 <7>Autopet rule slots.", dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService::maxOut));
+                of(Material.REPEATER, "<6>Max Autopet Rules", "<8>The pets pick themselves.", "<7>Unlock all <a>28 <7>Autopet rule slots.", dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService::maxOut),
+                of(Material.LIGHTNING_ROD, "<5>Repair a 9f™ Relay", "<8>Tia owes you one.", "<7>Repair the next <5>9f™ Network Relay<7>.",
+                        dev.daweapon.type.skyblockgeneric.abiphone.ninef.NineFNetwork::repairNext));
     }
 
     static List<ToyBoxButton> mining() {

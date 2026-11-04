@@ -348,6 +348,7 @@ public class DarkAuctionHandler {
 
                     winner.addAndUpdateItem(skyBlockItem);
                     SkyBlockItemAchievements.onObtained(winner, itemType);
+                    refundSiriusContact(winner, bid);
                     DatapointInteger purchases = winner.getSkyblockDataHandler()
                             .get(SkyBlockDataHandler.Data.DARK_AUCTION_PURCHASES, DatapointInteger.class);
                     purchases.setValue(purchases.getValue() + 1);
@@ -373,6 +374,14 @@ public class DarkAuctionHandler {
                 }
             }
         }
+    }
+
+    private static void refundSiriusContact(SkyBlockPlayer winner, long bid) {
+        if (!dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneContactXP.unlocked(winner).contains("sirius")) return;
+        long refund = bid / 100;
+        if (refund <= 0) return;
+        winner.addCoins(refund);
+        winner.sendMessage(NPC_PREFIX + "<b>✆ <f><o>Pstt. <r><f>Don't tell anyone, but I've refunded you <7>{:,} <6>Coins <f>for being such a loyal customer.", refund);
     }
 
     @SuppressWarnings("unused")

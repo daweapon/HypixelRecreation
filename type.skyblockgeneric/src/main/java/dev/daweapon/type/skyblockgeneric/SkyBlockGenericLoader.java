@@ -458,6 +458,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         if (mainInstance != null) {
             ServerHolograms.spawnAll(HypixelConst.getInstanceContainer());
             FairySoul.spawnEntities(HypixelConst.getInstanceContainer(), typeLoader.getType());
+            dev.daweapon.type.skyblockgeneric.abiphone.ninef.NineFRelays.start(HypixelConst.getInstanceContainer(), typeLoader.getType());
             dev.daweapon.type.skyblockgeneric.hoppity.HuntEggManager.start(HypixelConst.getInstanceContainer(), typeLoader.getType());
         }
 

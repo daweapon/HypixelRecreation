@@ -979,7 +979,6 @@ items:
     material: name_tag
     name: "Ted's Contact Baked In Bread"
     rarity: EPIC
-    unavailable: "Needs the Feast event shop (Feast Baker Scott, Kernels)"
     source: "Feast Baker Scott: 500 Kernels"
     lore:
       - "§8Consumable"
@@ -993,6 +992,9 @@ items:
       - "§7more often!"
       - ""
       - "§eRight-click to consume!"
+    components:
+      - id: INTERACTABLE
+        handler_id: TEDS_CONTACT_BAKED_IN_BREAD
   - id: TELEPORT_PAD
     material: end_portal_frame
     name: "Teleport Pad"

@@ -1,0 +1,16 @@
+# Terry's reforge stone trades at Terry's Shack, Jerry's Workshop (wiki Terry/UI).
+title: Terry
+slots: DEFAULT
+entries:
+  - item: SALT_CUBE
+    material: paper
+    cost: { items: { ICE_HUNK: 64 } }
+  - item: RUSTY_ANCHOR
+    material: paper
+    cost: { items: { BLUE_ICE_HUNK: 64 } }
+  - item: TERRY_SNOWGLOBE
+    material: paper
+    cost: { items: { ICE_HUNK: 32, BLUE_ICE_HUNK: 8 } }
+  - item: FROZEN_BAUBLE
+    material: paper
+    cost: { items: { ICE_HUNK: 64, BLUE_ICE_HUNK: 32 } }

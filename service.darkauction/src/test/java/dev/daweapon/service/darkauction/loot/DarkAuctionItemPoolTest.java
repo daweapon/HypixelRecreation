@@ -12,12 +12,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DarkAuctionItemPoolTest {
     @Test
-    void newPoolHasNineDistinctItems() {
+    void newPoolHasTenDistinctItems() {
         DarkAuctionItemPool pool = new DarkAuctionItemPool();
         List<ItemType> available = pool.getAvailableItems();
 
-        assertEquals(9, available.size());
-        assertEquals(9, new HashSet<>(available).size());
+        assertEquals(10, available.size());
+        assertEquals(10, new HashSet<>(available).size());
         assertFalse(pool.isEmpty());
         assertFalse(available.contains(ItemType.DARK_PURPLE_DYE));
     }
@@ -27,7 +27,7 @@ class DarkAuctionItemPoolTest {
         DarkAuctionItemPool pool = new DarkAuctionItemPool();
         Set<ItemType> seen = new HashSet<>();
 
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 10; i++) {
             ItemType picked = pool.selectAndRemove();
             if (picked == ItemType.DARK_PURPLE_DYE) continue;
             assertTrue(seen.add(picked), "duplicate " + picked);

@@ -611,3 +611,240 @@ contacts:
         items: [{item: ENCHANTED_WOOL, amount: 512}]
     given:
       - "Thanks a lot. Call me any time to make your island more <c>v<6>i<e>b<a>r<b>a<9>n<d>t<f>!"
+  - id: dusk
+    npc: [NPCDusk]
+    stages:
+      - missing:
+          - "Shhhh!"
+          - "Don't talk so loud."
+          - "I can give you my contact but you need to do something for me."
+          - "Could you kill a <5>Runic Enderman<f>? It HAS to be an enderman. Please."
+        check: RUNIC_ENDERMAN
+    given:
+      - "Ohhhh, you did it."
+      - "Perfect."
+      - "Here take my contact, but don't give it to anyone else!"
+  - id: feast_baker_scott
+    npc: [NPCFeastBakerScott]
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "My contact? Hmmmmm..."
+          - "My wife says I need to stop giving out my number to strangers."
+          - "But if you have enough Kernels, I'm sure I could make an exception."
+        missing:
+          - "Bake yourself some <5>Scott's Contact Baked In Bread <f>first!"
+        items: [{item: SCOTTS_CONTACT_BAKED_IN_BREAD, amount: 1}]
+    given:
+      - "Mmm, smells like my own recipe. Here's my contact!"
+  - id: fred
+    npc: [NPCFred]
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "Err, are you sure?"
+          - "The signal doesn't work too well around here, but suit yourself."
+          - "Could definitely use some help, if you are willing to trade."
+          - "The Forge doesn't charge users for its fuel, but we're using a mountain of it every day."
+          - "I'm a little ashamed to admit it, but we mostly use <9>Foul Flesh <f>nowadays."
+          - "We tried a bunch of things but that's been working the best so far."
+          - "For a stack of <9>Foul Flesh<f>, I'll give you my personal contact."
+        missing:
+          - "You don't have what I need! Nice try!"
+        items: [{item: FOUL_FLESH, amount: 64}]
+    given:
+      - "Thanks, I appreciate it!"
+  - id: george
+    npc: [NPCGeorge]
+    stages:
+      - label: "GIVE PETS"
+        intro:
+          - "Oh absolutely you can have my contact info."
+          - "It may look like I'm always here at my desk, but really I'm always traveling."
+          - "Lately I've been looking across the universe for 3 specific pets."
+          - "The {requested} pets."
+          - "If you can bring me ALL of those, you can have my contact!"
+          - "Oh, by the way, they should all be <7>Lvl 1<f>."
+        missing:
+          - "I need the {requested} pets, all at <7>Lvl 1<f>, in your Pets menu!"
+        check: GEORGE_PETS
+    given:
+      - "That's fantastic!"
+      - "I love pets!"
+      - "Here take my contact."
+      - "You'll be able to reach me while I am or you are in the wilderness."
+  - id: marigold
+    npc: [NPCMarigold]
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "My <3>Abiphone Contact<f>?"
+          - "Sure!"
+          - "I mean, I'm supposed to ask you for something, right?"
+          - "How about a <9>Midas Jewel<f>?"
+          - "I've always wanted one, but you can't find them around here, and I'm too scared to venture into <c>The Catacombs <f>in search of one."
+        missing:
+          - "Hmm, you don't seem to have a <9>Midas Jewel<f>."
+          - "You can sometimes find one when killing <6>King Midas <f>in <c>The Catacombs<f>."
+          - "...Or so I've heard."
+        items: [{item: MIDAS_JEWEL, amount: 1}]
+    given:
+      - "Wow, it's beautiful!"
+      - "I hope it wasn't too much of a hassle to get, I've heard stories of <c>The Catacombs<f>..."
+      - "Here's my contact, you can call me whenever you need to access the <6>Gold Essence Shop<f>."
+  - id: mort
+    npc: [NPCMort]
+    stages:
+      - label: "GIVE SAVING GRACE"
+        intro:
+          - "You do know I am dead, right?"
+          - "Why do you want me on your Abiphone?"
+          - "Anyway, you can have it... for a price."
+          - "Could you give me a <9>Saving Grace<f>? No particular reason."
+        missing:
+          - "You don't even have a <9>Saving Grace<f>..."
+        items: [{item: SAVING_GRACE, amount: 1}]
+      - label: "GIVE SPIRIT BONE"
+        intro:
+          - "The <9>Saving Grace<f> didn't work."
+          - "I was a little too optimistic."
+          - "Could you maybe give me a <5>Spirit Bone<f>?"
+        missing:
+          - "You don't even have a <5>Spirit Bone<f>..."
+        items: [{item: SPIRIT_BONE, amount: 1}]
+    given:
+      - "Thanks."
+      - "I've accepted that I'm probably going to remain undead for quite a while."
+      - "So, while I'm here, I might as well try to make some friends."
+      - "First stop is using this here <5>Spirit Bone<r><f> to tame myself a canine companion."
+      - "Thought we ourselves are but a blink in the face of eternity, our friendship will be everlasting."
+      - "Alright, thanks for your efforts, take my contact."
+  - id: professor_wynd
+    npc: [NPCProfessorWynd]
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "Ah, the critically acclaimed <9>Abiphone<f>. The wonders of technology!"
+          - "I wouldn't mind notifying you about the <b>weather <f>every now and then, but there's one issue..."
+          - "You see... I used to have this contraption that allowed me to <a>control the weather<f>..."
+          - "It resembled a <d>Wand<f>, but I doubt you'd go through the trouble of acquiring such a marvel of science."
+        missing:
+          - "My apologies, my friend, but you don't seem to have what I'm looking for."
+        items: [{item: WEATHER_STICK, amount: 1}]
+    given:
+      - "You found it... The <a>Weather Wand<f>? This... This is perfect! I can't believe it!"
+      - "I can finally wield the power to control the weather once more!"
+      - "Let's give it a test shall we?"
+      - "<o>That's it? <r><f>They don't make them like they used to."
+      - "Oh well, a deal's a deal."
+  - id: queen_mismyla
+    npc: [NPCQueenMismyla]
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "You want me to give you <6>Commissions <f>instead?"
+          - "Are you implying that the <6>King <f>is incompetent?!"
+          - "I've been saying that for years!"
+          - "If you return my <6>Royal Pigeon<f>, I'll give you my contact."
+        missing:
+          - "You don't have what I need! Nice try!"
+        items: [{item: ROYAL_PIGEON, amount: 1}]
+    given:
+      - "My precious, beautiful Pigeon..."
+  - id: sirius
+    npc: [NPCSirius]
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "Let me guess, you're yet another player who desires my contact..."
+          - "Well, I'm afraid you'll have to get in line with everyone else."
+          - "If you come to enough auctions, you'll find what you're looking for."
+          - "Though you'll still have to outbid everyone else, of course!"
+        missing:
+          - "If you come to enough auctions, you'll find what you're looking for."
+        items: [{item: SIRIUS_PERSONAL_PHONE_NUMBER, amount: 1}]
+    given:
+      - "Pleasure doing business."
+  - id: st_jerry
+    npc: [NPCStJerry]
+    stages:
+      - intro:
+          - "Of course I can add you as a contact!"
+          - "I have <c>so many contacts <f>on my Abiphone."
+          - "It's a really big Abiphone!"
+          - "If you want my contact, all you have to do is repeat this phrase exactly..."
+          - "\"<b>I love the warmth of the Holidays despite the snow<f>\""
+        missing:
+          - "Repeat the phrase exactly!"
+        phrase: "I love the warmth of the Holidays despite the snow"
+    given:
+      - "That's grandiose!"
+      - "I really like you!"
+      - "Call me every year and I'll hand you a White Gift!"
+  - id: terry
+    npc: [NPCTerry]
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "Ahoy, <b>{player}<f>!"
+          - "If you want my <3>Abiphone Contact<f>, you're gonna have to bring me the goods."
+          - "<a>Ice Hunks <f>and <9>Blue Ice Hunks <f>won't cut it anymore, unfortunately."
+          - "If you want me in your phone, bring me a <6>Winter Water Orb<f>!"
+        missing:
+          - "That's not what I asked for!"
+          - "Bring me a <6>Winter Water Orb<f>!"
+        items: [{item: WINTER_WATER_ORB, amount: 1}]
+    given:
+      - "Thanks for the orb!"
+      - "Now that I have this, the possibilities are endless!"
+      - "Here, take my contact."
+      - "I'm just a call away if you ever need me!"
+  - id: tia_the_fairy
+    npc: [NPCTiaTheFairy]
+    stages:
+      - missing:
+          - "You have an Abiphone!"
+          - "That's <d>super cool<f>!"
+          - "Did you know the fairies helped the mages build the Abiphone's <5>9f™ <f>network?"
+          - "But since so many of us are now missing, we're behind on maintenance!"
+          - "Come back wearing <d>Fairy Armor <f>and I can add a <5>9f™ Operator Chip <f>to your Abiphone so you can help us out!"
+        check: FAIRY_ARMOR
+    given:
+      - "Sweet uniform!"
+      - "Okay I added <5>9f™ Operator Chip <f>to your Abiphone plan."
+      - "It will work on any Abiphone as long as I'm in your contacts list."
+      - "We need to upgrade all of the <5>9f™ Network Relays <f>spread across SkyBlock."
+      - "Call me and I can tell you where the first relay is!"
+  - id: vincent
+    npc: [NPCVincent]
+    stages:
+      - label: "GIVE ITEM"
+        intro:
+          - "Of all people in the village, you are the first to ask for my contact."
+          - "Truthfully, I have been a lonely man for as long as I can remember."
+          - "But, when I'm lonely, I make art, and it's great."
+          - "So, sometimes I worry, if I was to stop being lonely, what would happen to the quality of my art?"
+          - "However, I suppose, while people are a bit much, a pet wouldn't hurt."
+          - "How about a <6>Mole Pet<f>? I've always found them to be positively adorable."
+          - "If you can bring me one, I'll give you my contact."
+        missing:
+          - "You don't have a <6>Mole Pet <f>in your inventory. Are you some sort of scammer?"
+        items: [{item: MOLE_PET, amount: 1}]
+    given:
+      - "Ah, thank you! Look at his little nose - what a cute fella!"
+      - "Inspiration has struck! I should paint him!"
+      - "Here is my contact, now please leave me be for a while, for I must paint a <d>masterpiece<f>!"
+  - id: zog
+    npc: [NPCZog]
+    stages:
+      - missing:
+          - "You know <7>{player}<f>, I'm a pet lover."
+          - "So my abiphone contacts list is <l>FILLED<r><f> with <l>TONS<r><f> of other pet lovers."
+          - "I don't want to sound too gamey but..."
+          - "If you had 5 <a>Max Lvl<f> pets of <6>Legendary <f>tier or better in your pet menu..."
+          - "That would show me you're a pet lover too!"
+        check: ZOG_PET_LOVER
+    given:
+      - "Wow, you're a true pet lover!"
+      - "You doubled my <l>HUGE<r><f> contacts list too!"
+      - "Now there's both Kat AND you!"

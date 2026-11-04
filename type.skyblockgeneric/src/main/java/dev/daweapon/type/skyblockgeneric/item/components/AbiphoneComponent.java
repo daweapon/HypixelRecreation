@@ -1,5 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.item.components;
 
+import dev.daweapon.type.skyblockgeneric.abiphone.ninef.NineFNetwork;
+import dev.daweapon.type.skyblockgeneric.abiphone.ninef.NineFRelay;
 import dev.daweapon.commons.StringUtility;
 import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneCalls;
 import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneCases;
@@ -41,7 +43,7 @@ public class AbiphoneComponent extends SkyBlockItemComponent {
 	}
 
 	public int contactLimit(SkyBlockPlayer player, SkyBlockItem abiphone) {
-		return contactLimit(abiphone) + caseSlots(player);
+		return contactLimit(abiphone) + caseSlots(player) + NineFNetwork.bonusContacts(player);
 	}
 
 	public static int caseSlots(SkyBlockPlayer player) {
@@ -66,6 +68,13 @@ public class AbiphoneComponent extends SkyBlockItemComponent {
 
 		for (AbiphoneFeature feature : features) {
 			lore.add(" " + feature.colorCode + "<l>" + StringUtility.toNormalCase(feature.name()));
+		}
+
+		NineFNetwork.State network = NineFNetwork.state(player);
+		if (network.chip()) {
+			lore.add(" ");
+			lore.add("<5>9f™ Operator Chip");
+			lore.add(" <7>Relays repaired: <a>" + network.repaired() + "<7>/" + NineFRelay.values().length);
 		}
 
 		lore.add(" ");

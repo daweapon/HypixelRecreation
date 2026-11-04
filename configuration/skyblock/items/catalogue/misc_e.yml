@@ -1197,7 +1197,6 @@ items:
     material: name_tag
     name: "Scott's Contact Baked In Bread"
     rarity: EPIC
-    unavailable: "Needs the Feast Bakery event"
     source: "Feast Baker Scott for 500 Kernels"
     lore:
       - "§8Consumable"
@@ -1209,6 +1208,9 @@ items:
       - "§7discount at the §cFeast Bakery§7."
       - ""
       - "§eRight-click to consume!"
+    components:
+      - id: INTERACTABLE
+        handler_id: SCOTTS_CONTACT_BAKED_IN_BREAD
   - id: SCRIBE_CRUX
     material: player_head
     name: "Scribe Crux"
@@ -1867,8 +1869,7 @@ items:
     material: name_tag
     name: "Sirius' Personal Phone Number"
     rarity: LEGENDARY
-    unavailable: "Needs Abiphone contacts for Sirius; Source unconfirmed"
-    source: "Source unconfirmed"
+    source: "Dark Auction rounds 1, 3 and 4"
     lore:
       - "§8Consumable"
       - ""
@@ -1880,6 +1881,9 @@ items:
       - "§7items from the §5Dark Auction§7."
       - ""
       - "§eRight-click to consume!"
+    components:
+      - id: INTERACTABLE
+        handler_id: SIRIUS_PERSONAL_PHONE_NUMBER
   - id: SKELETON_CHAIR
     material: player_head
     name: "Skeleton Chair"

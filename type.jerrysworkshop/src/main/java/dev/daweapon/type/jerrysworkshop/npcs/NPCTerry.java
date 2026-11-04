@@ -5,8 +5,10 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.type.skyblockgeneric.chapters.ChapterTriggers;
+import dev.daweapon.type.skyblockgeneric.shop.catalogue.CatalogueShopView;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// Decorative NPC for Terry, found in Jerry's Workshop.
 public class NPCTerry extends HypixelNPC {
 
 	public NPCTerry() {
@@ -41,8 +43,29 @@ public class NPCTerry extends HypixelNPC {
 		});
 	}
 
+	private static final String SPOKEN = "npc.terry.spoken";
+
 	@Override
 	public void onClick(NPCInteractEvent event) {
-		event.player().sendMessage("<f>Terry waves. \"Looking for the defense? Go find <c>St. Jerry<f>!\"");
+		SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+		if (isInDialogue(player)) return;
+		if (ChapterTriggers.done(player, SPOKEN)) {
+			player.openView(new CatalogueShopView("terry"));
+			return;
+		}
+		setDialogue(player, "hello").thenRun(() -> ChapterTriggers.fire(player, SPOKEN));
+	}
+
+	@Override
+	public DialogueSet[] dialogues(HypixelPlayer player) {
+		return new DialogueSet[]{
+				DialogueSet.builder().key("hello").lines(
+						"Ahoy, <b>" + player.getUsername() + "<f>! Welcome to the Jerry Pond!",
+						"You may have noticed that this pond is full of unique creatures and treasures!",
+						"I'm looking for <b>Ice Hunks<f> and <b>Blue Ice Hunks<f>!",
+						"You can find these by <b>ice fishing<f> in the pond - break the ice and cast your rod!",
+						"Bring enough hunks back to me and I will reforge your fishing rod with modifiers exclusive to me -  Terry!"
+				).build()
+		};
 	}
 }

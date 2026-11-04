@@ -40,12 +40,15 @@ public abstract class AbiphoneNPC {
 	}
 
 	public void onAdd(SkyBlockPlayer player, int slot) {
+		boolean[] added = {false};
 		player.updateItemInSlot(slot, (i) -> {
 			if (!i.hasComponent(AbiphoneComponent.class)) return;
 			i.getAttributeHandler().addAbiphoneNPC(this);
 			AbiphoneContactXP.unlock(player, this.getId());
 			player.sendMessage("<b>✆ {} <f>has been added to your Abiphone's contacts!", getName());
+			added[0] = true;
 		});
+		if (added[0]) AbiphoneContactListeners.added(player, getId());
 	}
 
 	protected AbiphoneDialogueController dialogue() {

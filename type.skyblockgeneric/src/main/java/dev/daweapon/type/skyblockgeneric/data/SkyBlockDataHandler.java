@@ -455,6 +455,9 @@ public class SkyBlockDataHandler extends DataHandler {
         ABIPHONE_CALLS_MADE("abiphone_calls_made", false, false, false,
                 DatapointStringList.class, new DatapointStringList("abiphone_calls_made")),
 
+        NINE_F_NETWORK("nine_f_network", false, false, false,
+                DatapointString.class, new DatapointString("nine_f_network", "")),
+
         AUCTION_STATISTICS("auction_statistics", false, false, false,
                 DatapointAuctionStatistics.class, new DatapointAuctionStatistics("auction_statistics")),
 

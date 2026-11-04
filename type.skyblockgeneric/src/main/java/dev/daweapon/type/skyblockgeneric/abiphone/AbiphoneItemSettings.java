@@ -60,6 +60,7 @@ public final class AbiphoneItemSettings {
             item.getAttributeHandler().removeAbiphoneNPC(npc);
             if (npc.getId().equals(item.getAttributeHandler().getAbiphoneSpeedDial())) item.getAttributeHandler().setAbiphoneSpeedDial("");
         });
+        AbiphoneContactListeners.removed(player, npc.getId());
     }
 
     public static String speedDial(SkyBlockItem abiphone) {
