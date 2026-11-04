@@ -4,6 +4,7 @@ import dev.daweapon.type.generic.event.EventNodes;
 import dev.daweapon.type.generic.event.phase.EventPhase;
 import dev.daweapon.type.generic.event.phase.PhasedEvent;
 import dev.daweapon.type.skyblockgeneric.event.custom.SkillUpdateEvent;
+import dev.daweapon.type.skyblockgeneric.levels.SkyBlockLevelCause;
 import dev.daweapon.type.skyblockgeneric.mission.MissionData;
 import dev.daweapon.type.skyblockgeneric.mission.SkyBlockMission;
 import dev.daweapon.type.skyblockgeneric.region.RegionType;
@@ -53,9 +54,15 @@ public class MissionReachFarmingFive extends SkyBlockMission {
 
     @Override
     public void onEnd(SkyBlockPlayer player, Map<String, Object> customData, MissionData.ActiveMission mission) {
-        mission.getObjectiveCompleteText(new ArrayList<>(List.of("<3>300 <7>Farming Experience"))).forEach(player::sendMessage);
+        mission.getObjectiveCompleteText(new ArrayList<>(List.of("<b>5 SkyBlock XP", "<3>300 <7>Farming Experience"))).forEach(player::sendMessage);
+        player.getSkyBlockExperience().addExperience(SkyBlockLevelCause.getMissionCause(getID()));
         MinecraftServer.getSchedulerManager().scheduleNextTick(() ->
                 player.getSkills().increase(player, SkillCategories.FARMING, FARMING_XP));
+    }
+
+    @Override
+    public Double getAttachedSkyBlockXP() {
+        return 5D;
     }
 
     @Override
