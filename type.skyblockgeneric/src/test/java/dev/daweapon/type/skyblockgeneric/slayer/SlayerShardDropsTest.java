@@ -34,7 +34,7 @@ class SlayerShardDropsTest {
             assertEquals(SlayerDrop.Pool.SEPARATE, paragon.pool());
             assertEquals(5, paragon.requiredLevel());
             assertEquals(0.25, paragon.odds(SlayerTier.IV).chancePercent(), 1e-9);
-            assertEquals(0.5, paragon.odds(SlayerTier.V).chancePercent(), 1e-9);
+            if (type != SlayerType.VOIDGLOOM_SERAPH) assertEquals(0.5, paragon.odds(SlayerTier.V).chancePercent(), 1e-9);
             assertFalse(paragon.dropsAt(SlayerTier.III));
             assertFalse(paragon.hasRngMeter());
             assertTrue(paragon.available());

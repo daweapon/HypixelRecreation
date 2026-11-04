@@ -63,7 +63,7 @@ class EssenceShopsTest {
     }
 
     private static final java.util.Set<String> CODE_WIRED = java.util.Set.of("trapped", "axed", "tasty", "treasures_of_the_earth", "return_to_sender", "high_roller",
-            "flat_damage_vs_ender", "mana_after_ender_kill", "fero_vs_dragons", "inc_zealots_odds", "increased_sup_chances");
+            "flat_damage_vs_ender", "mana_after_ender_kill", "fero_vs_dragons", "inc_zealots_odds", "increased_sup_chances", "edrag_cd", "dragon_reforges_buff");
 
     @Test
     void wiredPerksCanBeBoughtAndTheRestSayWhyNot() {

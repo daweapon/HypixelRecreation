@@ -157,12 +157,11 @@ class PetSkinsTest {
     }
 
     @Test
-    void animatedSkinsCantBeApplied() {
+    void animatedSkinsWithFrameDataApply() {
         SkyBlockItem ammonite = pet(ItemType.AMMONITE_PET, Rarity.LEGENDARY);
         SkyBlockItem magma = new SkyBlockItem(ItemType.PET_SKIN_AMMONITE_MAGMA);
         assertTrue(magma.getComponent(PetSkinComponent.class).isAnimated());
-        assertEquals(PetSkins.Outcome.ANIMATED, PetSkins.apply(ammonite, magma).outcome());
-        assertNull(ammonite.getAttributeHandler().getPetSkin());
+        assertEquals(PetSkins.Outcome.APPLIED, PetSkins.apply(ammonite, magma).outcome());
     }
 
     @Test

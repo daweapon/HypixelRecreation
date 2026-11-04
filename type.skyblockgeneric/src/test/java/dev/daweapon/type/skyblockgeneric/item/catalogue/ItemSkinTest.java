@@ -85,9 +85,9 @@ class ItemSkinTest {
     }
 
     @Test
-    void animatedSkinsAreRefused() {
+    void animatedSkinsWithFrameDataApply() {
         assertTrue(item("HOLY_DRAGON_DRAKE").getComponent(ItemSkinComponent.class).isAnimated());
-        assertFalse(canApply("HOLY_DRAGON_DRAKE", item("HOLY_DRAGON_HELMET")));
+        assertTrue(canApply("HOLY_DRAGON_DRAKE", item("HOLY_DRAGON_HELMET")));
     }
 
     @Test

@@ -3655,8 +3655,6 @@ items:
         texture: d9c44c5d7df1e2e1ed7490d11c2e2ff9abd7810a11e3c21b984dfda88af750ef
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: DEFAULT_SOULBOUND
-        coop_allowed: false
   - id: PRECURSOR_EYE
     material: player_head
     name: "Precursor Eye"

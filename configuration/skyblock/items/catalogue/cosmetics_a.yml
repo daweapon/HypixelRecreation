@@ -107,6 +107,7 @@ items:
     material: player_head
     name: "Beachside Resort Barn Skin"
     rarity: LEGENDARY
+    unavailable: "Only sold in past store bundles or events; no source in this server yet"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Beachside Resort Barn Skin §7on §aThe"
@@ -124,6 +125,7 @@ items:
     material: player_head
     name: "Beautifall Cabin Barn Skin"
     rarity: LEGENDARY
+    unavailable: "Only sold in past store bundles or events; no source in this server yet"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Beautifall Cabin Barn Skin §7on §aThe"
@@ -248,6 +250,7 @@ items:
     material: player_head
     name: "Butterfly Barn Skin"
     rarity: EPIC
+    unavailable: "Only sold in past store bundles or events; no source in this server yet"
     lore:
       - "§7Consume this item to unlock the"
       - "§5Butterfly Barn Skin §7on §aThe Garden§7!"
@@ -334,6 +337,7 @@ items:
     material: hay_block
     name: "Cozy Cottage Barn Skin"
     rarity: UNCOMMON
+    source: "SkyMart (Garden Desk)"
     lore:
       - "§7Consume this item to unlock the §aCozy"
       - "§aCottage Barn Skin §7on §aThe Garden§7!"
@@ -348,6 +352,7 @@ items:
     material: white_wool
     name: "Cube Barn Skin"
     rarity: UNCOMMON
+    source: "SkyMart (Garden Desk)"
     lore:
       - "§7Consume this item to unlock the §aCube"
       - "§aBarn Skin §7on §aThe Garden§7!"
@@ -553,6 +558,7 @@ items:
     material: player_head
     name: "Ender Knight Skin"
     rarity: MYTHIC
+    source: "Fire Sale (Elizabeth's Community Shop)"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -715,6 +721,7 @@ items:
     material: player_head
     name: "Gingerbread Village Barn Skin"
     rarity: LEGENDARY
+    unavailable: "Only sold in past store bundles or events; no source in this server yet"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Gingerbread Village Barn Skin §7on §aThe"
@@ -882,6 +889,7 @@ items:
     material: player_head
     name: "Harvest Greenhouse Skin"
     rarity: LEGENDARY
+    source: "Taylor's Fall 2026 bundle"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Harvest Greenhouse Skin §7on §aThe"
@@ -971,6 +979,7 @@ items:
     material: player_head
     name: "Holy Drake Skin"
     rarity: MYTHIC
+    source: "Taylor's Collection"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -995,6 +1004,7 @@ items:
     material: player_head
     name: "Jelly Garden Greenhouse Skin"
     rarity: LEGENDARY
+    source: "Taylor's Garden visit reward"
     lore:
       - "§7Consume this item to unlock the §6Jelly"
       - "§6Garden Greenhouse Skin §7on §aThe"
@@ -1031,6 +1041,7 @@ items:
     material: player_head
     name: "Lovely Picnic Barn Skin"
     rarity: LEGENDARY
+    unavailable: "Only sold in past store bundles or events; no source in this server yet"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Lovely Picnic Barn Skin §7on §aThe"
@@ -1122,6 +1133,7 @@ items:
     material: end_stone
     name: "Moon Greenhouse Skin"
     rarity: RARE
+    source: "SkyMart (Garden Desk)"
     lore:
       - "§7Consume this item to unlock the §9Moon"
       - "§9Greenhouse Skin §7on §aThe Garden§7!"
@@ -1192,6 +1204,7 @@ items:
     material: player_head
     name: "Old Drake Skin"
     rarity: MYTHIC
+    source: "Taylor's Collection"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1290,6 +1303,7 @@ items:
     material: player_head
     name: "Pina Coolada Barn Skin"
     rarity: LEGENDARY
+    source: "Fire Sale (Elizabeth's Community Shop)"
     lore:
       - "§7Consume this item to unlock the §6Pina"
       - "§6Coolada Barn Skin §7on §aThe Garden§7!"
@@ -1306,6 +1320,7 @@ items:
     material: oak_planks
     name: "Pinwheel House Barn Skin"
     rarity: LEGENDARY
+    unavailable: "Only sold in past store bundles or events; no source in this server yet"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Pinwheel House Barn Skin §7on §aThe"
@@ -1370,6 +1385,7 @@ items:
     material: player_head
     name: "Protector Drake Skin"
     rarity: MYTHIC
+    source: "Taylor's Collection"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1496,6 +1512,7 @@ items:
     material: short_grass
     name: "Safari Barn Skin"
     rarity: LEGENDARY
+    unavailable: "Only sold in past store bundles or events; no source in this server yet"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Safari Barn Skin §7on §aThe Garden§7!"
@@ -1661,6 +1678,7 @@ items:
     material: player_head
     name: "Strong Drake Skin"
     rarity: MYTHIC
+    source: "Taylor's Collection"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1685,6 +1703,7 @@ items:
     material: player_head
     name: "Superior Drake Skin"
     rarity: MYTHIC
+    source: "Taylor's Collection"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1734,6 +1753,7 @@ items:
     material: player_head
     name: "Three Stone Jerries Barn Skin"
     rarity: LEGENDARY
+    unavailable: "Only sold in past store bundles or events; no source in this server yet"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Three Stone Jerries Barn Skin §7on"
@@ -1814,6 +1834,7 @@ items:
     material: player_head
     name: "Turkey Barn Skin"
     rarity: LEGENDARY
+    unavailable: "Only sold in past store bundles or events; no source in this server yet"
     lore:
       - "§7Consume this item to unlock the"
       - "§6Turkey Barn Skin §7on §aThe Garden§7!"
@@ -1830,6 +1851,7 @@ items:
     material: player_head
     name: "Unstable Drake Skin"
     rarity: MYTHIC
+    source: "Taylor's Collection"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1902,6 +1924,7 @@ items:
     material: snow_block
     name: "Winter Barn Skin"
     rarity: UNCOMMON
+    unavailable: "Only sold in past store bundles or events; no source in this server yet"
     lore:
       - "§7Consume this item to unlock the"
       - "§aWinter Barn Skin §7on §aThe Garden§7!"
@@ -1916,6 +1939,7 @@ items:
     material: player_head
     name: "Wise Drake Skin"
     rarity: MYTHIC
+    source: "Taylor's Collection"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1975,6 +1999,7 @@ items:
     material: player_head
     name: "Yacht Barn Skin"
     rarity: LEGENDARY
+    source: "Taylor's Summer 2026 bundle"
     lore:
       - "§7Consume this item to unlock the §6Yacht"
       - "§6Barn Skin §7on §aThe Garden§7!"
@@ -1991,6 +2016,7 @@ items:
     material: player_head
     name: "Young Drake Skin"
     rarity: MYTHIC
+    source: "Taylor's Collection"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
