@@ -35,7 +35,7 @@ public class GUIVargulShop extends ShopView {
         attachItem(ShopItem.Single(item("SLEEPY_HOLLOW"), 1, new VargulPrice(150)));
         attachItem(ShopItem.Stackable(item("SPOOKY_TREE"), 1, new VargulPrice(170)));
         attachItem(ShopItem.Single(drainBook(), 1, new CombinedShopPrice(List.of(
-                new VargulPrice(200), new CoinShopPrice(DRAIN_COINS)))).withConfirmation());
+                new VargulPrice(200), new CoinShopPrice(DRAIN_COINS)))).withConfirmationWhen(ShopView::shopConfirmationsEnabled));
     }
 
     @Override
