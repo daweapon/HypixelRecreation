@@ -38,6 +38,11 @@ public final class DragonDownMessage {
 
     public static List<String> lines(String variantName, @Nullable Name finalBlow, List<Damager> top,
                                      int ownPosition, double ownDamage, int essence) {
+        return lines(variantName, finalBlow, top, ownPosition, ownDamage, essence, 0);
+    }
+
+    public static List<String> lines(String variantName, @Nullable Name finalBlow, List<Damager> top,
+                                     int ownPosition, double ownDamage, int essence, int runecraftingXp) {
         List<String> lines = new ArrayList<>();
         lines.add(RULE);
         String title = variantName.toUpperCase(Locale.ROOT) + " DOWN!";
@@ -58,6 +63,10 @@ public final class DragonDownMessage {
             lines.add(centre("<e>Your Damage: <a>" + damage(ownDamage) + " <7>(Position #" + ownPosition + ")", own.length()));
             String reward = "+" + essence + " Dragon Essence";
             lines.add(centre("<d>" + reward, reward.length()));
+            if (runecraftingXp > 0) {
+                String runecrafting = "+" + damage(runecraftingXp) + " Runecrafting Experience";
+                lines.add(centre("<d>" + runecrafting, runecrafting.length()));
+            }
         }
         lines.add(RULE);
         return lines;

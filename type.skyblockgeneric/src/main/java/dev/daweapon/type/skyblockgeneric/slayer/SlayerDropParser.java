@@ -3,6 +3,7 @@ package dev.daweapon.type.skyblockgeneric.slayer;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.skyblockgeneric.enchantment.EnchantmentType;
 import dev.daweapon.type.skyblockgeneric.entity.mob.MobType;
+import net.minestom.server.entity.EntityType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -46,14 +47,14 @@ final class SlayerDropParser {
                 String.valueOf(entry.get("name")),
                 tiers,
                 Boolean.TRUE.equals(entry.get("stronger")),
+                entityType(entry.get("entity")),
+                MobType.valueOf(String.valueOf(entry.getOrDefault("mobType", "INFERNAL"))),
                 number(entry.get("level"), 1).intValue(),
                 number(entry.get("health"), 100).doubleValue(),
                 number(entry.get("damage"), 1).doubleValue(),
                 number(entry.get("combatXp"), 0).intValue(),
                 item(entry.get("token")),
-                number(entry.get("tokenAmount"), 0).intValue(),
-                String.valueOf(entry.getOrDefault("entity", "BLAZE")),
-                MobType.valueOf(String.valueOf(entry.getOrDefault("mobType", "INFERNAL")))
+                number(entry.get("tokenAmount"), 0).intValue()
             ));
         }
         return List.copyOf(result);
@@ -68,6 +69,12 @@ final class SlayerDropParser {
                 numbers.get(0).intValue(), numbers.get(1).intValue(), numbers.get(2).doubleValue()));
         });
         return result;
+    }
+
+    private static EntityType entityType(@Nullable Object value) {
+        if (value == null) return EntityType.BLAZE;
+        EntityType type = EntityType.fromKey("minecraft:" + String.valueOf(value).toLowerCase(java.util.Locale.ROOT));
+        return type == null ? EntityType.BLAZE : type;
     }
 
     private static @Nullable ItemType item(@Nullable Object value) {

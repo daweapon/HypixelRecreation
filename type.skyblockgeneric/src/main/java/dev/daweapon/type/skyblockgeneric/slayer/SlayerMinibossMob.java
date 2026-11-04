@@ -1,6 +1,5 @@
 package dev.daweapon.type.skyblockgeneric.slayer;
 
-import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.ai.GoalSelector;
 import net.minestom.server.entity.ai.TargetSelector;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
@@ -32,7 +31,7 @@ public final class SlayerMinibossMob extends SkyBlockMob {
     private final UUID ownerUuid;
 
     private SlayerMinibossMob(SlayerMiniboss miniboss, UUID ownerUuid) {
-        super(EntityType.fromKey("minecraft:" + miniboss.entity().toLowerCase()));
+        super(miniboss.entityType());
         this.miniboss = miniboss;
         this.ownerUuid = ownerUuid;
     }

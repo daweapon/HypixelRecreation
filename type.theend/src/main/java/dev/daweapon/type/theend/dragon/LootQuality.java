@@ -9,6 +9,7 @@ public final class LootQuality {
     private static final int[] TOP_PEARLS = {30, 25, 22, 20, 18, 15, 15, 15, 15, 15, 15, 15};
     private static final int[] TOP_ENCHANTED = {7, 6, 5, 4, 3, 2, 2, 2, 2, 2, 2, 2};
     private static final int LAST_RANKED_PLACE = 25;
+    private static final int RUNECRAFTING_XP_DIVISOR = 10;
 
     private LootQuality() {
     }
@@ -22,6 +23,10 @@ public final class LootQuality {
     public static int quality(int rank, double damage, double topDamage, int eyesPlaced) {
         double ratio = topDamage <= 0 ? 0 : Math.min(1, damage / topDamage);
         return placementBase(rank, damage) + EYE_BONUS * eyesPlaced + (int) Math.round(100 * ratio);
+    }
+
+    public static int runecraftingXp(int rank, double damage) {
+        return placementBase(rank, damage) / RUNECRAFTING_XP_DIVISOR;
     }
 
     public static int enderPearls(int rank, double damage) {

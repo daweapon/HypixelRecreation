@@ -23,7 +23,8 @@ public record SlayerDefinition(
     public boolean accepts(SkyBlockMob mob) {
         if (mob instanceof SlayerMinibossMob miniboss) {
             return targetMobIds.contains(miniboss.minibossId())
-                || minibosses.stream().anyMatch(own -> own.id().equals(miniboss.minibossId()));
+                || minibosses.stream().anyMatch(own -> own.id().equals(miniboss.minibossId()))
+                || accepts(mob.getMobTypes());
         }
         if (!targetMobIds.isEmpty()) {
             return mob instanceof BestiaryMob bestiaryMob && targetMobIds.contains(bestiaryMob.getMobID());

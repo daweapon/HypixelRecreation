@@ -896,12 +896,12 @@
           3500,
           4500
         ],
-        "unavailable": "The Ender Dragon pet doesn't read shop stat bonuses yet."
+        "unavailable": null
       },
       {
         "id": "dragon_reforges_buff",
         "name": "Two-Headed Strike",
-        "description": "<7>Renowned and Spiked reforges apply\n<7>an extra +{value} Base Ability\n<7>Damage... (wiki stat icon 'bas')",
+        "description": "<7>Renowned and Spiked reforges apply\n<7>an extra <e>⚔ Bonus Attack Speed\n<e>+{value} <7>on your gear.",
         "icon": "DRAGON_BREATH",
         "values": [
           2,
@@ -917,7 +917,7 @@
           4500,
           6500
         ],
-        "unavailable": "Renowned and Spiked reforge ability scaling isn't wired to this perk yet."
+        "unavailable": null
       },
       {
         "id": "increased_sup_chances",

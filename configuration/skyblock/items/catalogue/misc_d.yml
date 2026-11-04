@@ -2346,7 +2346,6 @@ items:
     material: salmon
     name: "Nope the Fish"
     rarity: SPECIAL
-    unavailable: "Needs the End Race rewards and Rusty's repurchase shop"
     source: "Finishing the End Race in under 80 seconds; repurchasable from Rusty for 20,000 Coins"
     lore:
       - "§7Why did we follow Shrimp..."
@@ -2440,8 +2439,7 @@ items:
     material: player_head
     name: "Obscure Ending"
     rarity: RARE
-    unavailable: "Needs the Great Spook event (Guber and the End Race)"
-    source: "Guber after completing the End Race with a Great Spook potion effect active"
+    source: "Guber after completing the End Race with Blindness active the whole way during the Great Spook"
     lore:
       - "§7§7Darkened by shadow."
     components:
