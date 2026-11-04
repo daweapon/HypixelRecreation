@@ -4,6 +4,7 @@ import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.damage.Damage;
 import net.minestom.server.instance.Instance;
+import dev.daweapon.type.skyblockgeneric.runecrafting.RunicMobs;
 import dev.daweapon.type.skyblockgeneric.spidersden.ArachneFight;
 import dev.daweapon.type.skyblockgeneric.spidersden.ArachneTier;
 import dev.daweapon.type.skyblockgeneric.spidersden.ArachneVenom;
@@ -57,6 +58,19 @@ public class MobArachne extends SpiderDenMob {
     }
 
     @Override
+    public void onSpawn() {
+        super.onSpawn();
+        rollRunic();
+    }
+
+    private void rollRunic() {
+        if (isRunic()) return;
+        float fraction = getHealth() / getMaxHealth();
+        RunicMobs.rollSpawn(this);
+        if (isRunic()) setHealth(getMaxHealth() * fraction);
+    }
+
+    @Override
     protected boolean acceptsDamageFrom(SkyBlockPlayer player, Damage damage) {
         return !swarming;
     }
@@ -99,6 +113,7 @@ public class MobArachne extends SpiderDenMob {
         brood.clear();
         swarming = false;
         setInvisible(false);
+        rollRunic();
         lastStrike = System.currentTimeMillis();
         if (swarms >= SWARM_AT.length && !tier.afterSecondSwarm().isEmpty()) ArachneFight.say(this, tier.afterSecondSwarm());
     }

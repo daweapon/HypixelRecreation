@@ -14,6 +14,8 @@ import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.generic.data.datapoints.DatapointToggles;
 import dev.daweapon.type.skyblockgeneric.crimson.mob.CrimsonMobLoot;
 import dev.daweapon.type.skyblockgeneric.crimson.mob.MobDrop;
+import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
+import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointBestiary;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.spidersden.MobArachne;
 import dev.daweapon.type.skyblockgeneric.essence.EssenceType;
 import dev.daweapon.type.skyblockgeneric.essence.Essences;
@@ -189,16 +191,24 @@ public final class ArachneFight {
                 .sorted(Map.Entry.<UUID, Double>comparingByValue(Comparator.reverseOrder()))
                 .forEach(entry -> ranking.add(entry.getKey()));
         UUID placer = crystalPlacer;
+        UUID killer = mob.getLastDamageSource() != null && mob.getLastDamageSource().getAttacker() instanceof SkyBlockPlayer last
+                ? last.getUuid() : null;
         Map<UUID, Integer> placed = new HashMap<>(FIGHT_PLACED);
         for (int rank = 0; rank < ranking.size(); rank++) {
             if (!(MinecraftServer.getConnectionManager().getOnlinePlayerByUuid(ranking.get(rank)) instanceof SkyBlockPlayer player)) continue;
             reward(player, mob, tier, rank, placed.getOrDefault(player.getUuid(), 0), player.getUuid().equals(placer));
+            if (!player.getUuid().equals(killer)) creditBestiary(player, mob);
         }
         if (placer != null && !ranking.contains(placer)
                 && MinecraftServer.getConnectionManager().getOnlinePlayerByUuid(placer) instanceof SkyBlockPlayer player) {
             CrimsonMobLoot.roll(player, mob, List.of(always("DARK_QUEENS_SOUL_DROP", 1)));
         }
         reset(instance);
+    }
+
+    private static void creditBestiary(SkyBlockPlayer player, MobArachne mob) {
+        if (!mob.countsForBestiary()) return;
+        player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.BESTIARY, DatapointBestiary.class).getValue().increase(mob, 1);
     }
 
     static void reward(SkyBlockPlayer player, MobArachne mob, ArachneTier tier, int rank, int placed, boolean placedCrystal) {

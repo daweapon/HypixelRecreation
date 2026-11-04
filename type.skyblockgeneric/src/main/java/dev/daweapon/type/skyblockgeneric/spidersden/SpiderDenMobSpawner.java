@@ -9,6 +9,8 @@ import net.minestom.server.timer.TaskSchedule;
 import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.spidersden.MobArachnesKeeper;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.spidersden.MobBroodmother;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.spidersden.MobDasherSpider;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.spidersden.MobFlintSkeleton;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.spidersden.MobRainSlime;
 import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.spidersden.MobSpiderJockey;
@@ -62,7 +64,7 @@ public final class SpiderDenMobSpawner {
         zone(RegionType.ARACHNES_BURROW, 6, () -> new MobWeaverSpider(pick(SpiderDenMobs.WEAVER_BURROW)));
         zone(RegionType.ARACHNES_BURROW, 4, () -> voracious(true));
         zone(RegionType.ARACHNES_BURROW, 4, () -> new MobSpiderJockey(SpiderDenMobs.JOCKEY_BURROW, SpiderDenMobs.JOCKEY_SKELETON_BURROW));
-        zone(RegionType.GRAVEL_MINES, 8, () -> new SpiderDenMob(SpiderDenMobs.FLINT_SKELETON));
+        zone(RegionType.GRAVEL_MINES, 8, MobFlintSkeleton::new);
         PLANS.add(new Plan(null, 1, MobBroodmother::new, BROODMOTHER_SPOT, BROODMOTHER_RESPAWN_MILLIS, () -> true, null));
         for (Pos spot : KEEPER_SPOTS) PLANS.add(new Plan(null, 1, MobArachnesKeeper::new, spot, KEEPER_RESPAWN_MILLIS, () -> true, null));
         rain(GRANDMA_MOUND_BASE, 5);
@@ -70,7 +72,7 @@ public final class SpiderDenMobSpawner {
     }
 
     private static SpiderDenMob dasher(boolean burrow) {
-        return new SpiderDenMob(burrow ? pick(SpiderDenMobs.DASHER_BURROW) : SpiderDenMobs.DASHER_MOUND);
+        return new MobDasherSpider(burrow ? pick(SpiderDenMobs.DASHER_BURROW) : SpiderDenMobs.DASHER_MOUND);
     }
 
     private static SpiderDenMob voracious(boolean burrow) {

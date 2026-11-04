@@ -7,6 +7,7 @@ import dev.daweapon.type.skyblockgeneric.spidersden.ArachneTier;
 import dev.daweapon.type.skyblockgeneric.spidersden.ArachneVenom;
 import dev.daweapon.type.skyblockgeneric.utility.MobAttackService;
 import dev.daweapon.type.skyblockgeneric.spidersden.SpiderDenMob;
+import dev.daweapon.type.skyblockgeneric.spidersden.SpiderLeap;
 
 public class MobArachneBrood extends SpiderDenMob {
     private static final long VENOM_IDLE_MILLIS = 6_000;
@@ -50,6 +51,7 @@ public class MobArachneBrood extends SpiderDenMob {
 
     @Override
     protected void onAiTick(int ticks) {
+        SpiderLeap.BROOD.tick(this, ticks);
         if (ticks % 20 != 0 || System.currentTimeMillis() - lastStrike < VENOM_IDLE_MILLIS) return;
         rangedTarget(VENOM_RANGE).ifPresent(target -> {
             lastStrike = System.currentTimeMillis();

@@ -8,8 +8,10 @@ import dev.daweapon.type.skyblockgeneric.crimson.mob.CrimsonIsleMob;
 import dev.daweapon.type.skyblockgeneric.crimson.mob.CrimsonMobProfile;
 import dev.daweapon.type.skyblockgeneric.entity.mob.BestiaryMob;
 import dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.bestiary.CataloguedBestiaryAreas;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -44,6 +46,10 @@ public class SpiderDenMob extends CrimsonIsleMob {
     }
 
     protected void afterDeath(Instance instance, Pos position) {
+    }
+
+    public Optional<SkyBlockPlayer> leapTarget(double range) {
+        return rangedTarget(range);
     }
 
     @Override
