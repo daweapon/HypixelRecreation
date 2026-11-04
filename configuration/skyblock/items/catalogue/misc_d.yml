@@ -145,7 +145,6 @@ items:
     material: redstone_lamp
     name: "Lantern of the Dead"
     rarity: SPECIAL
-    unavailable: "Carnival event-end leaderboard rewards are not built"
     source: "Carnival reward: 1,000+ points in a single Zombie Shootout game (1st Carnival)"
     lore:
       - "§7Obtained during the §e§k1§est Carnival §7for"
@@ -1523,7 +1522,6 @@ items:
     material: player_head
     name: "Aquarium Diorama"
     rarity: LEGENDARY
-    unavailable: "Carnival event-end leaderboard rewards are not built"
     source: "Carnival reward: top 500 in Catch a Fish"
     lore:
       - "§8Decoration item"
@@ -3039,7 +3037,6 @@ items:
     material: iron_shovel
     name: "Plastic Shovel"
     rarity: SPECIAL
-    unavailable: "Carnival event-end leaderboard rewards are not built"
     source: "Carnival reward: 1,000+ points in a single Fruit Digging game (1st Carnival)"
     lore:
       - "§7Obtained during the §e§k1§est Carnival §7for"

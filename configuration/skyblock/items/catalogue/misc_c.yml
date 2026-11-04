@@ -3407,7 +3407,6 @@ items:
     material: player_head
     name: "Jar of Sand"
     rarity: LEGENDARY
-    unavailable: "Needs the Carnival Fruit Digging leaderboard reward"
     source: "Chivalrous Carnival Fruit Digging top 500"
     lore:
       - "§8Decoration item"

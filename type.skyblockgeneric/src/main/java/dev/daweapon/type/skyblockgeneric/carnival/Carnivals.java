@@ -101,7 +101,11 @@ public final class Carnivals {
     public static int finishGame(SkyBlockPlayer player, CarnivalGameResult result) {
         CarnivalProfile profile = profile(player);
         CarnivalProfile.GameStats stats = profile.stats(result.game());
+        long previousBest = stats.getYearHighScore();
         stats.record(result.score());
+        if (stats.getYearHighScore() > previousBest) {
+            CarnivalLeaderboards.submit(player, result.game(), stats.getYearHighScore());
+        }
         int earned = PartyEquipment.boostedTokens(player, Carnival.tokensFor(result.score()));
         profile.setTokens(profile.getTokens() + earned);
 

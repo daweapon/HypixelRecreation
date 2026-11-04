@@ -481,7 +481,6 @@ items:
     material: player_head
     name: "Archery Cube"
     rarity: LEGENDARY
-    unavailable: "Needs the Carnival Zombie Shootout leaderboard rewards"
     source: "Carnival: Top 500 in Zombie Shootout"
     lore:
       - "§8Decoration item"
