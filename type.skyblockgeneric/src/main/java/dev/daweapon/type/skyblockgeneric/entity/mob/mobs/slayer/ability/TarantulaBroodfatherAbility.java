@@ -109,7 +109,7 @@ final class TarantulaBroodfatherAbility extends SlayerAbilitySupport {
 
     private void batBarrage(SlayerBossMob boss) {
         int tier = boss.getProfile().tier().tier().number();
-        repeating(boss, 0, BAT_WAVE_TICKS, () -> spawnBats(boss, tier));
+        repeating(boss, 1, BAT_WAVE_TICKS, () -> spawnBats(boss, tier));
         repeating(boss, 20, 20, () -> {
             double fraction = PrimordialBrood.batDamageFraction(tier);
             for (SlayerMinionMob bat : List.copyOf(bats)) {
