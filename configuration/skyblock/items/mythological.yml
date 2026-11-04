@@ -6,6 +6,9 @@ items:
     lore:
       - "\xA77A rusted hilt, dropped by the Minos"
       - "\xA77Hunter."
+    components:
+      - id: SELLABLE
+        value: 150000.0
   - id: MANTI_CORE
     material: player_head
     name: "Manti-core"
