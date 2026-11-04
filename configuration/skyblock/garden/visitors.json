@@ -3610,8 +3610,10 @@
         "z": -55
       },
       "desire": {
-        "mode": "UNKNOWN",
-        "families": [],
+        "mode": "ONE_FAMILY",
+        "families": [
+          "PUMPKIN"
+        ],
         "count": null,
         "items": []
       },
@@ -3621,11 +3623,11 @@
         "accept": [],
         "decline": []
       },
-      "available": false,
-      "unavailableReason": "Great Spook event is not built",
+      "available": true,
+      "unavailableReason": null,
       "requirementChecks": [],
       "verified": false,
-      "notes": "wanted items not on wiki list (InfoNeeded/blank on Georik); desire unknown"
+      "notes": "wiki Visitors table: wants Pumpkin, only visits during The Great Spook"
     },
     {
       "id": "CLERK_SERAPHINE",
@@ -4399,8 +4401,10 @@
         "z": 150
       },
       "desire": {
-        "mode": "UNKNOWN",
-        "families": [],
+        "mode": "ONE_FAMILY",
+        "families": [
+          "PUMPKIN"
+        ],
         "count": null,
         "items": []
       },
@@ -4423,11 +4427,11 @@
         ],
         "decline": []
       },
-      "available": false,
-      "unavailableReason": "Great Spook event is not built",
+      "available": true,
+      "unavailableReason": null,
       "requirementChecks": [],
       "verified": false,
-      "notes": "wanted items not on wiki list (InfoNeeded/blank on Georik); desire unknown"
+      "notes": "wiki Visitors table: wants Pumpkin, only visits during The Great Spook"
     },
     {
       "id": "BANKER_BROADJAW",
