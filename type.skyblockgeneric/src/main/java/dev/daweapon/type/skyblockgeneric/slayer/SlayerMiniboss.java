@@ -1,6 +1,8 @@
 package dev.daweapon.type.skyblockgeneric.slayer;
 
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.skyblockgeneric.entity.mob.MobType;
+import net.minestom.server.entity.EntityType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Set;
@@ -14,6 +16,8 @@ public record SlayerMiniboss(
     String name,
     Set<SlayerTier> tiers,
     boolean stronger,
+    EntityType entityType,
+    MobType mobType,
     int level,
     double health,
     double damage,
