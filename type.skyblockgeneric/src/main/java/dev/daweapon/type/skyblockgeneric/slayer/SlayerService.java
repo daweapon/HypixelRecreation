@@ -2,6 +2,8 @@ package dev.daweapon.type.skyblockgeneric.slayer;
 
 import dev.daweapon.type.skyblockgeneric.achievement.SkyBlockAchievementSync;
 import java.util.Optional;
+import java.util.UUID;
+import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
 import java.util.stream.Stream;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -106,6 +108,18 @@ public final class SlayerService {
         player.sendMessage("<c>Slayer quest cancelled!");
     }
 
+    public static void failQuestOnTimeout(UUID ownerUuid, UUID bossUuid) {
+        SkyBlockPlayer player = SkyBlockGenericLoader.getFromUUID(ownerUuid);
+        if (player == null) return;
+        DatapointSlayer.SlayerData data = data(player);
+        SlayerQuest quest = data.getActiveQuest();
+        if (quest == null || !bossUuid.equals(quest.bossUuid())) return;
+        data.setActiveQuest(null);
+        save(player, data);
+        player.sendMessage("<c><l>SLAYER QUEST FAILED!");
+        player.sendMessage("<5><l>» <7>You ran out of time and the boss despawned!");
+    }
+
     public static void handleMobKill(SkyBlockPlayer player, SkyBlockMob mob) {
         DatapointSlayer.SlayerData data = data(player);
         SlayerQuest quest = data.getActiveQuest();
@@ -183,6 +197,7 @@ public final class SlayerService {
         if (definition.hasDropTable()) {
             SlayerDropTable.award(player, bossMob, definition, quest.tier(), previousLevel, progress);
         }
+        dev.daweapon.type.skyblockgeneric.greatspook.RogueFlesh.onBossKilled(player, quest, bossMob);
         SlayerRngMeter.addXp(progress, quest.tier(), slayerXp);
         progress.setXp(progress.getXp() + slayerXp);
         progress.addCompletion(quest.tier());

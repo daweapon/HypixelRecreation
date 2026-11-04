@@ -5,7 +5,9 @@ import java.util.UUID;
 import net.minestom.server.entity.ai.GoalSelector;
 import net.minestom.server.entity.ai.TargetSelector;
 import net.minestom.server.entity.damage.Damage;
+import net.minestom.server.MinecraftServer;
 import net.minestom.server.timer.Task;
+import net.minestom.server.timer.TaskSchedule;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
 import dev.daweapon.type.skyblockgeneric.entity.mob.MobType;
 import dev.daweapon.type.skyblockgeneric.entity.mob.SkyBlockMob;
@@ -14,16 +16,21 @@ import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.slayer.ability.SlayerBo
 import dev.daweapon.type.skyblockgeneric.loottable.OtherLoot;
 import dev.daweapon.type.skyblockgeneric.loottable.SkyBlockLootTable;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
+import dev.daweapon.type.skyblockgeneric.slayer.SlayerService;
+import dev.daweapon.type.skyblockgeneric.slayer.SlayerType;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 
 public final class SlayerBossMob extends SkyBlockMob {
     private static final ThreadLocal<SlayerBossProfile> IN_CONSTRUCTION = new ThreadLocal<>();
+    public static final long TIME_LIMIT_MILLIS = 180_000;
+    public static final long SVEN_TIME_LIMIT_MILLIS = 240_000;
 
     private final SlayerBossProfile profile;
     private final UUID ownerUuid;
     private final SlayerBossAbility ability;
     private final List<Task> abilityTasks = new java.util.concurrent.CopyOnWriteArrayList<>();
+    private long spawnedAt;
 
     private SlayerBossMob(UUID ownerUuid, SlayerBossProfile profile) {
         super(profile.entityType());
@@ -78,12 +85,45 @@ public final class SlayerBossMob extends SkyBlockMob {
 
     @Override
     public void onSpawn() {
+        spawnedAt = System.currentTimeMillis();
         ability.onSpawn(this);
+        MinecraftServer.getSchedulerManager().submitTask(() -> {
+            if (isRemoved() || isDead()) return TaskSchedule.stop();
+            if (remainingMillis() <= 0) {
+                timeOut();
+                return TaskSchedule.stop();
+            }
+            refreshName();
+            return TaskSchedule.seconds(1);
+        });
+    }
+
+    public long timeLimitMillis() {
+        return live().type() == SlayerType.SVEN_PACKMASTER ? SVEN_TIME_LIMIT_MILLIS : TIME_LIMIT_MILLIS;
+    }
+
+    public long remainingMillis() {
+        if (spawnedAt == 0) return timeLimitMillis();
+        return Math.max(0, spawnedAt + timeLimitMillis() - System.currentTimeMillis());
+    }
+
+    public int remainingSecondsShown() {
+        return (int) Math.ceil(remainingMillis() / 1000D);
+    }
+
+    private void timeOut() {
+        abilityTasks.forEach(Task::cancel);
+        abilityTasks.clear();
+        SlayerService.failQuestOnTimeout(ownerUuid, getUuid());
+        remove();
     }
 
     @Override
     protected String nameHeader() {
-        return ability == null ? "" : ability.nameHeader(this);
+        int seconds = remainingSecondsShown();
+        String timer = String.format("<c>%02d:%02d", seconds / 60, seconds % 60);
+        String header = ability == null ? "" : ability.nameHeader(this);
+        return header.isEmpty() ? timer : timer + "\n" + header;
     }
 
     @Override
