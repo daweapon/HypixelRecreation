@@ -2492,7 +2492,6 @@ items:
     material: player_head
     name: "Alley"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a City Faction Rabbit!"
@@ -2503,13 +2502,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 2677b1461a750731f7191db6fe4714d7b55f6777a4d68cccdb79c2a26eaadcd3
   - id: FACTION_RABBIT_ANCHOR
     material: player_head
     name: "Anchor"
     rarity: UNCOMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Beach Faction Rabbit!"
@@ -2520,13 +2520,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: f68fde9832946f6da9f3748640a9a77620bc4136b744a2b0974ce26ebca189ab
   - id: FACTION_RABBIT_ASTER
     material: player_head
     name: "Aster"
     rarity: RARE
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Country Faction Rabbit!"
@@ -2537,13 +2538,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: d3bc348ca8157a9b4dd60e3037018675429364b1b2e1afff8525235e1f93a5c4
   - id: FACTION_RABBIT_AVALANCHE
     material: player_head
     name: "Avalanche"
     rarity: EPIC
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Mountain Faction Rabbit!"
@@ -2554,13 +2556,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 380d094420f29d202c5fdf39b262b84147a5b2529f7bc18b1d4cdef35e62d292
   - id: FACTION_RABBIT_CANYON
     material: player_head
     name: "Canyon"
     rarity: UNCOMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Mountain Faction Rabbit!"
@@ -2571,13 +2574,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: eb5984d2058120122d8d3648d6295b941d080f6715a6387dcad76121c8ea3913
   - id: FACTION_RABBIT_CHASM
     material: player_head
     name: "Chasm"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Mountain Faction Rabbit!"
@@ -2588,13 +2592,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: c955b3e96f20b6e3086d1f0e7e8b43c1ad586f246796545c061ecb5bf563b151
   - id: FACTION_RABBIT_CLOVER
     material: player_head
     name: "Clover"
     rarity: UNCOMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Country Faction Rabbit!"
@@ -2605,13 +2610,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: efa14575f5cfe41424b37cd1f10eb8845bf8e34b6e6bb7236b5bc9c367c0eda1
   - id: FACTION_RABBIT_COBBLE
     material: player_head
     name: "Cobble"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a City Faction Rabbit!"
@@ -2622,13 +2628,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 2677b1461a750731f7191db6fe4714d7b55f6777a4d68cccdb79c2a26eaadcd3
   - id: FACTION_RABBIT_COCONUT
     material: player_head
     name: "Coconut"
     rarity: RARE
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Beach Faction Rabbit!"
@@ -2639,13 +2646,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 8a298640e5d2d8c9e2bac1a4f8369f214b7e17aea45dbd8f01c7262a32b18889
   - id: FACTION_RABBIT_CRAG
     material: player_head
     name: "Crag"
     rarity: RARE
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Mountain Faction Rabbit!"
@@ -2656,13 +2664,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 520d38b2d9b12d62a73e2f47ba71a45e2a6902bfabc162ea0a0051cfef2eb883
   - id: FACTION_RABBIT_DAISY
     material: player_head
     name: "Daisy"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Country Faction Rabbit!"
@@ -2673,13 +2682,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 5f2d0275341960044ac0646a17c22dfa82e8dd315eb48f4d901bf513b9967425
   - id: FACTION_RABBIT_DUNE
     material: player_head
     name: "Dune"
     rarity: EPIC
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Beach Faction Rabbit!"
@@ -2690,13 +2700,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: ad0a0fbeb894ccba677012fa09d6e745e03b520daae2fb627a37bd6d6dfb82e2
   - id: FACTION_RABBIT_EAGLE
     material: player_head
     name: "Eagle"
     rarity: RARE
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Mountain Faction Rabbit!"
@@ -2707,13 +2718,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 520d38b2d9b12d62a73e2f47ba71a45e2a6902bfabc162ea0a0051cfef2eb883
   - id: FACTION_RABBIT_GLACIER
     material: player_head
     name: "Glacier"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Mountain Faction Rabbit!"
@@ -2724,13 +2736,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: c955b3e96f20b6e3086d1f0e7e8b43c1ad586f246796545c061ecb5bf563b151
   - id: FACTION_RABBIT_GRAFFITI
     material: player_head
     name: "Graffiti"
     rarity: UNCOMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a City Faction Rabbit!"
@@ -2741,13 +2754,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 4be2ee656303abf312db62ed70baacb6547c2a5f79a089d1bdc0eca97976f77d
   - id: FACTION_RABBIT_GRANITE
     material: player_head
     name: "Granite"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Mountain Faction Rabbit!"
@@ -2758,13 +2772,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: c955b3e96f20b6e3086d1f0e7e8b43c1ad586f246796545c061ecb5bf563b151
   - id: FACTION_RABBIT_HAYBALE
     material: player_head
     name: "Haybale"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Country Faction Rabbit!"
@@ -2775,13 +2790,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 5f2d0275341960044ac0646a17c22dfa82e8dd315eb48f4d901bf513b9967425
   - id: FACTION_RABBIT_HAZEL
     material: player_head
     name: "Hazel"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Country Faction Rabbit!"
@@ -2792,13 +2808,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 5f2d0275341960044ac0646a17c22dfa82e8dd315eb48f4d901bf513b9967425
   - id: FACTION_RABBIT_HORIZON
     material: player_head
     name: "Horizon"
     rarity: LEGENDARY
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Mountain Faction Rabbit!"
@@ -2808,13 +2825,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: bbba21f229f94f8d53ca7e6e6e9936aee61a3b9c525a82f6212ff4dbae4109c3
   - id: FACTION_RABBIT_ICEFUR
     material: player_head
     name: "Icefur"
     rarity: UNCOMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Mountain Faction Rabbit!"
@@ -2825,13 +2843,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: eb5984d2058120122d8d3648d6295b941d080f6715a6387dcad76121c8ea3913
   - id: FACTION_RABBIT_IRIS
     material: player_head
     name: "Iris"
     rarity: RARE
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Country Faction Rabbit!"
@@ -2842,13 +2861,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: d3bc348ca8157a9b4dd60e3037018675429364b1b2e1afff8525235e1f93a5c4
   - id: FACTION_RABBIT_JUNIPER
     material: player_head
     name: "Juniper"
     rarity: EPIC
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Country Faction Rabbit!"
@@ -2859,13 +2879,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: fa10030e8e13549ce79841cfaab3470aa5ada8b6a474e3756e61974b8717e935
   - id: FACTION_RABBIT_LAGOON
     material: player_head
     name: "Lagoon"
     rarity: UNCOMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Beach Faction Rabbit!"
@@ -2876,13 +2897,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: f68fde9832946f6da9f3748640a9a77620bc4136b744a2b0974ce26ebca189ab
   - id: FACTION_RABBIT_LAVENDER
     material: player_head
     name: "Lavender"
     rarity: EPIC
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Country Faction Rabbit!"
@@ -2893,13 +2915,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: fa10030e8e13549ce79841cfaab3470aa5ada8b6a474e3756e61974b8717e935
   - id: FACTION_RABBIT_MARIGOLD
     material: player_head
     name: "Marigold"
     rarity: UNCOMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Country Faction Rabbit!"
@@ -2910,13 +2933,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: efa14575f5cfe41424b37cd1f10eb8845bf8e34b6e6bb7236b5bc9c367c0eda1
   - id: FACTION_RABBIT_MAYOR
     material: player_head
     name: "Mayor"
     rarity: LEGENDARY
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a City Faction Rabbit!"
@@ -2926,13 +2950,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: b04d59adf2fd6729abf58353de480c25ca3534c47bdf622362224a483b481e78
   - id: FACTION_RABBIT_MINISTER
     material: player_head
     name: "Minister"
     rarity: EPIC
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a City Faction Rabbit!"
@@ -2943,13 +2968,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 86cb757b0a933edfdf8eb4101dd435b3dbf6624327c1fd0965afe0a3a55051e8
   - id: FACTION_RABBIT_MISTRAL
     material: player_head
     name: "Mistral"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Mountain Faction Rabbit!"
@@ -2960,13 +2986,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: c955b3e96f20b6e3086d1f0e7e8b43c1ad586f246796545c061ecb5bf563b151
   - id: FACTION_RABBIT_MOCKTAIL
     material: player_head
     name: "Mocktail"
     rarity: UNCOMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Beach Faction Rabbit!"
@@ -2977,13 +3004,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: f68fde9832946f6da9f3748640a9a77620bc4136b744a2b0974ce26ebca189ab
   - id: FACTION_RABBIT_MOSS
     material: player_head
     name: "Moss"
     rarity: UNCOMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Country Faction Rabbit!"
@@ -2994,13 +3022,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: efa14575f5cfe41424b37cd1f10eb8845bf8e34b6e6bb7236b5bc9c367c0eda1
   - id: FACTION_RABBIT_NECTAR
     material: player_head
     name: "Nectar"
     rarity: UNCOMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Country Faction Rabbit!"
@@ -3011,13 +3040,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: efa14575f5cfe41424b37cd1f10eb8845bf8e34b6e6bb7236b5bc9c367c0eda1
   - id: FACTION_RABBIT_NEON
     material: player_head
     name: "Neon"
     rarity: EPIC
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a City Faction Rabbit!"
@@ -3028,13 +3058,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 86cb757b0a933edfdf8eb4101dd435b3dbf6624327c1fd0965afe0a3a55051e8
   - id: FACTION_RABBIT_OASIS
     material: player_head
     name: "Oasis"
     rarity: RARE
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Beach Faction Rabbit!"
@@ -3045,13 +3076,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 8a298640e5d2d8c9e2bac1a4f8369f214b7e17aea45dbd8f01c7262a32b18889
   - id: FACTION_RABBIT_PALM
     material: player_head
     name: "Palm"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Beach Faction Rabbit!"
@@ -3062,13 +3094,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 2623311e39bd3d0732a5dd1e07e767622d2b974c448398a49456db4ac9619b69
   - id: FACTION_RABBIT_PEON
     material: player_head
     name: "Peon"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a City Faction Rabbit!"
@@ -3079,13 +3112,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 2677b1461a750731f7191db6fe4714d7b55f6777a4d68cccdb79c2a26eaadcd3
   - id: FACTION_RABBIT_ROOT
     material: player_head
     name: "Root"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Country Faction Rabbit!"
@@ -3096,13 +3130,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 5f2d0275341960044ac0646a17c22dfa82e8dd315eb48f4d901bf513b9967425
   - id: FACTION_RABBIT_ROSEBUD
     material: player_head
     name: "Rosebud"
     rarity: LEGENDARY
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Country Faction Rabbit!"
@@ -3112,13 +3147,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 222ffb651c5ff25a28fcce15d6f8c958c5f8f983c9dfe9ec083e079dc700435e
   - id: FACTION_RABBIT_SANDY
     material: player_head
     name: "Sandy"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Beach Faction Rabbit!"
@@ -3129,13 +3165,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 2623311e39bd3d0732a5dd1e07e767622d2b974c448398a49456db4ac9619b69
   - id: FACTION_RABBIT_SCREE
     material: player_head
     name: "Scree"
     rarity: UNCOMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Mountain Faction Rabbit!"
@@ -3146,13 +3183,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: eb5984d2058120122d8d3648d6295b941d080f6715a6387dcad76121c8ea3913
   - id: FACTION_RABBIT_SEABUN
     material: player_head
     name: "Seabun"
     rarity: UNCOMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Beach Faction Rabbit!"
@@ -3163,13 +3201,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: f68fde9832946f6da9f3748640a9a77620bc4136b744a2b0974ce26ebca189ab
   - id: FACTION_RABBIT_SEASHELL
     material: player_head
     name: "Seashell"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Beach Faction Rabbit!"
@@ -3180,13 +3219,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 2623311e39bd3d0732a5dd1e07e767622d2b974c448398a49456db4ac9619b69
   - id: FACTION_RABBIT_SHORTCUT
     material: player_head
     name: "Shortcut"
     rarity: RARE
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a City Faction Rabbit!"
@@ -3197,13 +3237,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 5e6541e3b3d1515824a05ea09ab067f89a7f08ca39a8937a884b73404d05553d
   - id: FACTION_RABBIT_SILO
     material: player_head
     name: "Silo"
     rarity: RARE
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Country Faction Rabbit!"
@@ -3214,13 +3255,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: d3bc348ca8157a9b4dd60e3037018675429364b1b2e1afff8525235e1f93a5c4
   - id: FACTION_RABBIT_SKYRISE
     material: player_head
     name: "Skyrise"
     rarity: UNCOMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a City Faction Rabbit!"
@@ -3231,13 +3273,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 4be2ee656303abf312db62ed70baacb6547c2a5f79a089d1bdc0eca97976f77d
   - id: FACTION_RABBIT_SPEEDY
     material: player_head
     name: "Speedy"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a City Faction Rabbit!"
@@ -3248,13 +3291,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 2677b1461a750731f7191db6fe4714d7b55f6777a4d68cccdb79c2a26eaadcd3
   - id: FACTION_RABBIT_SPLASH
     material: player_head
     name: "Splash"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Beach Faction Rabbit!"
@@ -3265,13 +3309,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 2623311e39bd3d0732a5dd1e07e767622d2b974c448398a49456db4ac9619b69
   - id: FACTION_RABBIT_STARFISH
     material: player_head
     name: "Starfish"
     rarity: RARE
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Beach Faction Rabbit!"
@@ -3282,13 +3327,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 8a298640e5d2d8c9e2bac1a4f8369f214b7e17aea45dbd8f01c7262a32b18889
   - id: FACTION_RABBIT_SUBWAY
     material: player_head
     name: "Subway"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a City Faction Rabbit!"
@@ -3299,13 +3345,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 2677b1461a750731f7191db6fe4714d7b55f6777a4d68cccdb79c2a26eaadcd3
   - id: FACTION_RABBIT_SUMMIT
     material: player_head
     name: "Summit"
     rarity: EPIC
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Mountain Faction Rabbit!"
@@ -3316,13 +3363,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 380d094420f29d202c5fdf39b262b84147a5b2529f7bc18b1d4cdef35e62d292
   - id: FACTION_RABBIT_SUNSET
     material: player_head
     name: "Sunset"
     rarity: LEGENDARY
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Beach Faction Rabbit!"
@@ -3332,13 +3380,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 785c52ed4b820711853c5b281c037939934389e7b0eb809ced1ce5026473227c
   - id: FACTION_RABBIT_SURF
     material: player_head
     name: "Surf"
     rarity: EPIC
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Beach Faction Rabbit!"
@@ -3349,13 +3398,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: ad0a0fbeb894ccba677012fa09d6e745e03b520daae2fb627a37bd6d6dfb82e2
   - id: FACTION_RABBIT_TAN
     material: player_head
     name: "Tan"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Beach Faction Rabbit!"
@@ -3366,13 +3416,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 2623311e39bd3d0732a5dd1e07e767622d2b974c448398a49456db4ac9619b69
   - id: FACTION_RABBIT_TAXI
     material: player_head
     name: "Taxi"
     rarity: RARE
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a City Faction Rabbit!"
@@ -3383,13 +3434,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 5e6541e3b3d1515824a05ea09ab067f89a7f08ca39a8937a884b73404d05553d
   - id: FACTION_RABBIT_TIMBER
     material: player_head
     name: "Timber"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Mountain Faction Rabbit!"
@@ -3400,13 +3452,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: c955b3e96f20b6e3086d1f0e7e8b43c1ad586f246796545c061ecb5bf563b151
   - id: FACTION_RABBIT_TRAFFIC
     material: player_head
     name: "Traffic"
     rarity: UNCOMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a City Faction Rabbit!"
@@ -3417,13 +3470,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 4be2ee656303abf312db62ed70baacb6547c2a5f79a089d1bdc0eca97976f77d
   - id: FACTION_RABBIT_TUNDRA
     material: player_head
     name: "Tundra"
     rarity: RARE
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Mountain Faction Rabbit!"
@@ -3434,13 +3488,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 520d38b2d9b12d62a73e2f47ba71a45e2a6902bfabc162ea0a0051cfef2eb883
   - id: FACTION_RABBIT_TUNNEL
     material: player_head
     name: "Tunnel"
     rarity: UNCOMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a City Faction Rabbit!"
@@ -3451,13 +3506,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 4be2ee656303abf312db62ed70baacb6547c2a5f79a089d1bdc0eca97976f77d
   - id: FACTION_RABBIT_TWIGY
     material: player_head
     name: "Twigy"
     rarity: COMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Country Faction Rabbit!"
@@ -3468,13 +3524,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 5f2d0275341960044ac0646a17c22dfa82e8dd315eb48f4d901bf513b9967425
   - id: FACTION_RABBIT_VALLEY
     material: player_head
     name: "Valley"
     rarity: UNCOMMON
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a Mountain Faction Rabbit!"
@@ -3485,13 +3542,14 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: eb5984d2058120122d8d3648d6295b941d080f6715a6387dcad76121c8ea3913
   - id: FACTION_RABBIT_WALKER
     material: player_head
     name: "Walker"
     rarity: RARE
-    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
     source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
     lore:
       - "§7This is a City Faction Rabbit!"
@@ -3502,6 +3560,8 @@ items:
       - ""
       - "§eRight click to add to your Factory!"
     components:
+      - id: INTERACTABLE
+        handler_id: FACTION_RABBIT
       - id: SKULL_HEAD
         texture: 5e6541e3b3d1515824a05ea09ab067f89a7f08ca39a8937a884b73404d05553d
   - id: FAIRY_WINGS

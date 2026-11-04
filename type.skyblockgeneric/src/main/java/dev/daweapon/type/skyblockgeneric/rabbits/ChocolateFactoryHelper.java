@@ -52,6 +52,7 @@ public class ChocolateFactoryHelper {
             data.setRabbitYouthLevels(RabbitShardBonuses.rabbitYouth(player));
             data.updateChocolateFromProduction();
         });
+        Chocobits.expire(player);
     }
 
     public static DatapointChocolateFactory.ChocolateFactoryData getData(SkyBlockPlayer player) {

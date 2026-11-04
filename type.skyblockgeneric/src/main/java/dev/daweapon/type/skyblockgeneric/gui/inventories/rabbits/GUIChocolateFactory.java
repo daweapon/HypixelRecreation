@@ -20,6 +20,9 @@ import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateFactoryHelper;
 import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateFactoryLevel;
 import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateRabbit;
 import dev.daweapon.type.skyblockgeneric.rabbits.RabbitHitman;
+import dev.daweapon.type.skyblockgeneric.rabbits.Chocobits;
+import dev.daweapon.type.skyblockgeneric.rabbits.RabbitFaction;
+import dev.daweapon.type.skyblockgeneric.rabbits.RabbitFactions;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -303,6 +306,26 @@ public class GUIChocolateFactory implements StatefulView<GUIChocolateFactory.Sta
                 sendNotEnoughChocolateFeedback(p);
             }
             c.session(State.class).refresh();
+        });
+
+        layout.slot(42, (s, c) -> createFactionTowerItem((SkyBlockPlayer) c.player()), (click, c) -> {
+            SkyBlockPlayer p = (SkyBlockPlayer) c.player();
+            if (!RabbitFactions.isUnlocked(ChocolateFactoryHelper.getData(p))) {
+                p.sendMessage("<c>This requires Chocolate Factory V!");
+                p.playSound(NOT_ENOUGH_CHOCOLATE_SOUND);
+                return;
+            }
+            p.openView(new GUIFactionTower());
+        });
+
+        layout.slot(43, (s, c) -> createChocobitTowerItem((SkyBlockPlayer) c.player()), (click, c) -> {
+            SkyBlockPlayer p = (SkyBlockPlayer) c.player();
+            if (!Chocobits.isUnlocked(ChocolateFactoryHelper.getData(p))) {
+                p.sendMessage("<c>This requires Chocolate Factory VI!");
+                p.playSound(NOT_ENOUGH_CHOCOLATE_SOUND);
+                return;
+            }
+            p.openView(new GUIChocobitTower());
         });
 
         // Slot 45: Chocolate Production info
@@ -847,4 +870,36 @@ public class GUIChocolateFactory implements StatefulView<GUIChocolateFactory.Sta
         player.playSound(NOT_ENOUGH_CHOCOLATE_SOUND);
     }
 
+
+    private ItemStack.Builder createFactionTowerItem(SkyBlockPlayer player) {
+        DatapointChocolateFactory.ChocolateFactoryData data = ChocolateFactoryHelper.getData(player);
+        if (!RabbitFactions.isUnlocked(data)) {
+            return ItemStacks.item(Material.GRAY_DYE, "<c>???\n"
+                    + "<7><o>Your Factory is now famous\n"
+                    + "<7><o>worldwide! But some \"political\"\n"
+                    + "<7><o>Rabbits are waiting for you to\n"
+                    + "<7><o>choose a faction before they will eat\n"
+                    + "<7><o>your Chocolate.\n\n"
+                    + "<c>Chocolate Factory V");
+        }
+        RabbitFaction faction = data.getFaction();
+        String current = faction == null ? "<c>No Faction chosen!" : "<a>" + faction.getDisplayName() + " <7>Lvl <a>" + data.getFactionLevel();
+        return ItemStacks.item(Material.BELL, "<6>Faction Tower\n"
+                + "<7>Choose a <a>Rabbit Faction <7>to find its\n"
+                + "<a>Faction Rabbits <7>in your eggs!\n\n"
+                + "<7>Faction: " + current + "\n\n"
+                + "<e>Click to view!");
+    }
+
+    private ItemStack.Builder createChocobitTowerItem(SkyBlockPlayer player) {
+        DatapointChocolateFactory.ChocolateFactoryData data = ChocolateFactoryHelper.getData(player);
+        if (!Chocobits.isUnlocked(data)) {
+            return ItemStacks.item(Material.GRAY_DYE, "<c>???\n<7>What does it do? Nobody knows...\n\n<c>Chocolate Factory VI");
+        }
+        return ItemStacks.item(Material.REDSTONE_TORCH, "<c>Chocobit Tower\n"
+                + "<7>Home of your <c>Chocobits<7>. Each one\n"
+                + "<7>adds <6>+0.2x <7>to your Multiplier.\n\n"
+                + "<7>Chocobits owned: <a>" + data.getChocobits().size() + "\n\n"
+                + "<e>Click to view!");
+    }
 }

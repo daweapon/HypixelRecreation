@@ -19,6 +19,7 @@ import dev.daweapon.type.skyblockgeneric.item.components.AttributeShardComponent
 import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateFactoryHelper;
 import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateRabbit;
 import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateShopStock;
+import dev.daweapon.type.skyblockgeneric.rabbits.ChocolateFortune;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -70,7 +71,7 @@ public class GUIChocolateShop implements StatefulView<GUIChocolateShop.State> {
     private static final Offer HOT_CHOCOLATE_MIXIN = Offer.item("HOT_CHOCOLATE_MIXIN", "<9>Hot Chocolate Mixin", 1_500_000_000L, 5)
             .unavailable("Mixins on God Potions are not built");
     private static final Offer CHOCOLATE_FORTUNE = new Offer("CHOCOLATE_FORTUNE", "<e>Chocolate Fortune", 2_000_000_000L, 5, null, null, null,
-            "Cocoa Beans Fortune upgrades are not built", () -> null);
+            null, () -> null);
 
     private static final List<ShardOffer> SHARD_OFFERS = List.of(
             new ShardOffer("C22", "SHARD_RABBIT_MAFIOSO", 1_000_000_000L, 1),
@@ -505,6 +506,9 @@ public class GUIChocolateShop implements StatefulView<GUIChocolateShop.State> {
     }
 
     private String stockMarkup(SkyBlockPlayer player, Offer offer) {
+        if (offer == CHOCOLATE_FORTUNE) {
+            return "<7>Tier <6>" + ChocolateFactoryHelper.getData(player).getChocolateFortune() + "<7>/<6>" + ChocolateFortune.MAX_TIERS;
+        }
         if (!ChocolateShopStock.isLimited(offer.key())) return "<7>Annual Stock <8>Unlimited";
         int year = SkyBlockCalendar.getYear();
         int remaining = ChocolateFactoryHelper.getData(player).shopRemaining(offer.key(), year);
@@ -515,6 +519,9 @@ public class GUIChocolateShop implements StatefulView<GUIChocolateShop.State> {
     private String actionMarkup(SkyBlockPlayer player, Offer offer) {
         DatapointChocolateFactory.ChocolateFactoryData data = ChocolateFactoryHelper.getData(player);
         if (offer.unavailable() != null) return "<c>Not available yet: " + offer.unavailable();
+        if (offer == CHOCOLATE_FORTUNE) {
+            return data.getChocolateFortune() >= ChocolateFortune.MAX_TIERS ? "<a>Maxed out!" : "<e>Click to upgrade!";
+        }
         if (offer.requiredRabbit() != null && !data.hasFoundRabbit(offer.requiredRabbit())) return "<c>Not unlocked!";
         if (data.shopRemaining(offer.key(), SkyBlockCalendar.getYear()) <= 0) return "<c>Sold out for this SkyBlock year!";
         return "<e>Click to trade!";
@@ -536,6 +543,11 @@ public class GUIChocolateShop implements StatefulView<GUIChocolateShop.State> {
         DatapointChocolateFactory.ChocolateFactoryData data = ChocolateFactoryHelper.getData(player);
         if (data.getPrestigeLevel() < offer.requiredPrestige()) {
             player.sendMessage("<c>You don't meet the requirements for this item!");
+            return;
+        }
+
+        if (offer == CHOCOLATE_FORTUNE) {
+            buyChocolateFortune(player, c);
             return;
         }
 
@@ -579,4 +591,13 @@ public class GUIChocolateShop implements StatefulView<GUIChocolateShop.State> {
         c.session(State.class).refresh();
     }
 
+    private void buyChocolateFortune(SkyBlockPlayer player, ViewContext c) {
+        switch (ChocolateFortune.buy(player)) {
+            case SUCCESS -> player.sendMessage("<a>Upgraded <e>Chocolate Fortune <a>to tier <6>{}<a>! <7>(<6>+1☘ Cocoa Beans Fortune<7>)",
+                    ChocolateFactoryHelper.getData(player).getChocolateFortune());
+            case MAXED -> player.sendMessage("<c>You have already bought every tier of Chocolate Fortune!");
+            case NOT_ENOUGH_CHOCOLATE -> player.sendMessage("<c>You don't have enough Chocolate!");
+        }
+        c.session(State.class).refresh();
+    }
 }

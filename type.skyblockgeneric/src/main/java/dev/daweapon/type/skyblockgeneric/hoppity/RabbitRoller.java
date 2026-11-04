@@ -67,6 +67,11 @@ public final class RabbitRoller {
         return available;
     }
 
+    public static boolean pityDue(Context context) {
+        if (context.factoryLevel() >= unlockLevel(RabbitRarity.DIVINE) && context.divinePity() + 1 >= DIVINE_PITY) return true;
+        return context.factoryLevel() >= unlockLevel(RabbitRarity.MYTHIC) && context.mythicPity() + 1 >= MYTHIC_PITY;
+    }
+
     public static Result roll(Context context, RandomGenerator random) {
         int mythicPity = context.mythicPity() + 1;
         int divinePity = context.divinePity() + 1;

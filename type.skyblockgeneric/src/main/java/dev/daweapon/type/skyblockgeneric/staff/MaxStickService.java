@@ -547,6 +547,12 @@ public final class MaxStickService {
             for (ChocolateRabbit rabbit : ChocolateRabbit.values()) {
                 data.addFoundRabbit(rabbit);
             }
+            if (data.getFaction() == null) data.setRabbitFaction(dev.daweapon.type.skyblockgeneric.rabbits.RabbitFaction.CITY.name());
+            data.setFactionLevel(dev.daweapon.type.skyblockgeneric.rabbits.RabbitFactions.MAX_LEVEL);
+            data.setChocolateFortune(dev.daweapon.type.skyblockgeneric.rabbits.ChocolateFortune.MAX_TIERS);
+            for (dev.daweapon.type.skyblockgeneric.rabbits.FactionRabbit rabbit : dev.daweapon.type.skyblockgeneric.rabbits.FactionRabbit.values()) {
+                data.getFactionRabbits().add(rabbit.name());
+            }
 
             for (DatapointChocolateFactory.EmployeeType employeeType : DatapointChocolateFactory.EmployeeType.values()) {
                 data.setEmployee(employeeType, data.getEmployeeCap(employeeType));

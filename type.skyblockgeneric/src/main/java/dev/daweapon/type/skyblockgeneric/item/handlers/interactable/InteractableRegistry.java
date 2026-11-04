@@ -32,6 +32,7 @@ public class InteractableRegistry {
         dev.daweapon.type.skyblockgeneric.hunting.creature.HuntingTools.registerInteractables();
         dev.daweapon.type.skyblockgeneric.hoppity.Egglocator.registerInteractables();
         BottleOfJyrre.registerInteractables();
+        dev.daweapon.type.skyblockgeneric.rabbits.RabbitFactions.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.Salt.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.ItemBundle.registerInteractables();
         dev.daweapon.type.skyblockgeneric.consumable.DwarvenOs.registerInteractables();
