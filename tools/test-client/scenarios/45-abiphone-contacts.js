@@ -66,6 +66,15 @@ module.exports = {
             await bot.closeWindow();
         });
 
+        await t.step('the phone itself lists the added contacts', async () => {
+            await sleep(500);
+            await bot.useHotbarItem(/Abiphone/, { settleMs: 400 });
+            await bot.waitWindow({ timeoutMs: 8000 });
+            const text = slotsText(bot);
+            t.assert(/Taylor/.test(text) && /Lumber Merchant/.test(text), text.slice(0, 900));
+            await bot.closeWindow();
+        });
+
         await t.step('the Directory shows the contacts as unlocked', async () => {
             await sleep(500);
             await bot.useHotbarItem(/Abiphone/, { settleMs: 400 });
