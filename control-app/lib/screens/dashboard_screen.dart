@@ -5,7 +5,9 @@ import '../api/live_api.dart';
 import '../models/fleet.dart';
 import '../state/app_state.dart';
 import '../state/live_metrics.dart';
+import '../state/integrity_state.dart';
 import '../theme/reactor_theme.dart';
+import '../widgets/capacity_panel.dart';
 import '../widgets/chamfer.dart';
 import '../widgets/diagnosis_panel.dart';
 import '../widgets/drain_restart_dialog.dart';
@@ -40,6 +42,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   static const double _desktopBreakpoint = 900;
 
   late final LiveMetricsController _metrics = LiveMetricsController(LiveApi(widget.api));
+  late final IntegrityState _integrity = IntegrityState(widget.api);
 
   @override
   void initState() {
@@ -49,6 +52,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
     _metrics.start();
     widget.state.loadVersion();
     widget.state.startPolling();
+    _integrity.addListener(_onChange);
+    _integrity.startPolling();
   }
 
   @override
@@ -57,7 +62,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
     widget.state.stopPolling();
     _metrics.removeListener(_onChange);
     _metrics.dispose();
+    _integrity.removeListener(_onChange);
+    _integrity.dispose();
     super.dispose();
+  }
+
+  /// Names a start would bring up, for the capacity check that precedes it.
+  List<String> _startCandidates(String action, List<String>? names) {
+    if (action == 'start') return names ?? const [];
+    if (action != 'fleet-start') return const [];
+    return (widget.state.fleet?.containers ?? const <ContainerInfo>[])
+        .where((c) => !c.isNominal && c.name != 'game_server_builder')
+        .map((c) => c.name)
+        .toList();
   }
 
   void _onChange() {
@@ -76,6 +93,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
       return;
     }
     final target = what ?? names?.join(', ') ?? 'the fleet';
+    final capacityWarning = await _integrity.api.capacityWarning(_startCandidates(action, names));
+    if (!mounted) return;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
@@ -83,8 +102,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
         shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
         title: Text('Confirm ${action.toUpperCase()}',
             style: ReactorTheme.heading(size: 14, color: ReactorTheme.amber)),
-        content: Text('This will $action $target.',
-            style: ReactorTheme.data(size: 12, color: ReactorTheme.textSecondary)),
+        content: Text(
+            capacityWarning == null
+                ? 'This will $action $target.'
+                : 'This will $action $target.\n\nOVER MEMORY BUDGET: $capacityWarning',
+            style: ReactorTheme.data(
+                size: 12,
+                color: capacityWarning == null ? ReactorTheme.textSecondary : ReactorTheme.critical)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
@@ -270,10 +294,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
               children: [
                 TelemetryStrip(fleet: fleet, metrics: _metrics.report?.summary),
                 const SizedBox(height: 10),
+                CapacityPanel(report: _integrity.capacity),
+                const SizedBox(height: 10),
                 Expanded(
                   child: FleetTable(
                     fleet: fleet,
                     metrics: _metrics.report,
+                    badges: _integrity.badges,
                     canOperate: widget.state.canOperate,
                     onSelect: (c) => _openLogs(c.name),
                     onAction: (action, names) =>
@@ -311,9 +338,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
         const SizedBox(height: 10),
         _fleetControls(),
         const SizedBox(height: 10),
+        CapacityPanel(report: _integrity.capacity),
+        const SizedBox(height: 10),
         FleetTable(
           fleet: fleet,
           metrics: _metrics.report,
+          badges: _integrity.badges,
           scrollable: false,
           canOperate: widget.state.canOperate,
           onSelect: (c) => _openLogs(c.name),

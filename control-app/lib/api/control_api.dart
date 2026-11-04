@@ -199,6 +199,9 @@ class ControlApi {
   Future<dynamic> authedGet(String path, [Map<String, String>? query]) => _authedGet(path, query);
 
   Future<dynamic> authedPost(String path, Map<String, dynamic> body) => _authedPost(path, body);
+  Future<dynamic> getJson(String path, [Map<String, String>? query]) => _authedGet(path, query);
+
+  Future<dynamic> postJson(String path, Map<String, dynamic> body) => _authedPost(path, body);
 
   Future<FleetSnapshot> fetchFleet({bool refresh = false}) async {
     final data = await _authedGet('/control/fleet', refresh ? {'refresh': 'true'} : null);

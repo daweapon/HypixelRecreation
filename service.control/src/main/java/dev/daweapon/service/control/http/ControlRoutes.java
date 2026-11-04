@@ -214,7 +214,7 @@ public final class ControlRoutes {
     }
 
     /** Flattens a job for the wire; OperationJob itself holds concurrency primitives. */
-    private static Map<String, Object> describeJob(OperationJob job) {
+    static Map<String, Object> describeJob(OperationJob job) {
         Map<String, Object> payload = new LinkedHashMap<>();
         payload.put("id", job.getId());
         payload.put("operation", job.getOperation());

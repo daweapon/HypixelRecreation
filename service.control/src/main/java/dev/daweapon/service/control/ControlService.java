@@ -7,8 +7,16 @@ import dev.daweapon.service.control.deploy.DeployService;
 import dev.daweapon.service.control.docker.DockerSocketClient;
 import dev.daweapon.service.control.fleet.FleetService;
 import dev.daweapon.service.control.fleet.LifecycleController;
+import dev.daweapon.service.control.docker.DockerExec;
 import dev.daweapon.service.control.http.ControlRoutes;
 import dev.daweapon.service.control.http.OpsRoutes;
+import dev.daweapon.service.control.http.IntegrityRoutes;
+import dev.daweapon.service.control.integrity.BootVerifier;
+import dev.daweapon.service.control.integrity.CapacityService;
+import dev.daweapon.service.control.integrity.ConfigDriftService;
+import dev.daweapon.service.control.integrity.JarFingerprints;
+import dev.daweapon.service.control.integrity.PackHealthService;
+import dev.daweapon.service.control.integrity.RegistrationReport;
 import dev.daweapon.service.control.logs.LogTailer;
 import dev.daweapon.service.control.triage.TriageService;
 import dev.daweapon.service.control.watchdog.AlertDispatcher;
@@ -56,8 +64,20 @@ public final class ControlService {
         Spark.port(port);
         new ControlRoutes(fleetService, lifecycle, logTailer, watchdog, socketClient, deployService).register();
         new OpsRoutes(backupService, restoreService, watchdog, triageService).register();
+
+        DockerExec exec = new DockerExec(socketClient);
+        RegistrationReport registrations = new RegistrationReport();
+        BootVerifier bootVerifier = new BootVerifier(deployService.jarStore());
+        watchdog.addConditionSource(registrations);
+        new IntegrityRoutes(docker, fleetService, deployService,
+                new JarFingerprints(docker, exec, fleetService, deployService.jarStore()),
+                new ConfigDriftService(docker, exec, socketClient, fleetService, lifecycle),
+                new CapacityService(docker, fleetService),
+                new PackHealthService(docker, fleetService),
+                registrations, bootVerifier).register();
         Spark.awaitInitialization();
 
+        bootVerifier.verifyOnBoot(lifecycle, docker);
         watchdog.start();
         backupService.start();
 

@@ -4,6 +4,8 @@ import '../api/live_api.dart';
 import '../models/fleet.dart';
 import '../theme/reactor_theme.dart';
 import 'chamfer.dart';
+import '../api/integrity_api.dart';
+import 'row_badge_tag.dart';
 import 'status_pill.dart';
 
 /// Dense full-fleet table, grouped CORE / GAME SERVERS / SERVICES with a live filter.
@@ -21,6 +23,9 @@ class FleetTable extends StatefulWidget {
   /// screen, so every upward drag landed on it and the page could never scroll back up.
   final bool scrollable;
 
+  /// Integrity tags per container name (SKEW, proxy registration), drawn beside the state.
+  final Map<String, List<RowBadge>> badges;
+
   const FleetTable({
     super.key,
     required this.fleet,
@@ -29,6 +34,7 @@ class FleetTable extends StatefulWidget {
     this.onAction,
     this.scrollable = true,
     this.metrics,
+    this.badges = const {},
   });
 
   @override
@@ -120,6 +126,7 @@ class _FleetTableState extends State<FleetTable> {
         canOperate: widget.canOperate,
         onAction: widget.onAction,
         metric: widget.metrics?.forContainer(container.id, container.name),
+        badges: widget.badges[container.name] ?? const [],
       ),
     ];
   }
@@ -131,6 +138,7 @@ class _FleetRow extends StatefulWidget {
   final bool canOperate;
   final void Function(String action, List<String> names)? onAction;
   final ServerMetric? metric;
+  final List<RowBadge> badges;
 
   const _FleetRow({
     required this.container,
@@ -138,6 +146,7 @@ class _FleetRow extends StatefulWidget {
     required this.canOperate,
     this.onAction,
     this.metric,
+    this.badges = const [],
   });
 
   @override
@@ -163,6 +172,10 @@ class _FleetRowState extends State<_FleetRow> {
           child: Row(
             children: [
               StatusPill(code: c.state),
+              for (final badge in widget.badges) ...[
+                const SizedBox(width: 4),
+                RowBadgeTag(badge: badge),
+              ],
               const SizedBox(width: 10),
               Expanded(
                 flex: 4,

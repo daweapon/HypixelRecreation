@@ -10,9 +10,14 @@ import dev.daweapon.service.control.fleet.ContainerState;
 import dev.daweapon.service.control.fleet.FleetService;
 import dev.daweapon.service.control.fleet.LifecycleController;
 import dev.daweapon.service.control.fleet.OperationJob;
+import dev.daweapon.service.control.integrity.ContainerFacts;
+import dev.daweapon.service.control.integrity.HttpProbe;
+import com.google.gson.JsonObject;
 import org.tinylog.Logger;
 
 import java.io.IOException;
+import java.time.Duration;
+import java.time.Instant;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -48,6 +53,9 @@ public final class DeployService {
 
     private static final String CONTAINER_APP_DIR = "/app";
     private static final int RESTART_TIMEOUT_SECONDS = 20;
+    private static final String API_CONTAINER = "service_api";
+    private static final int API_PORT = 8080;
+    private static final Duration API_PROBE_BUDGET = Duration.ofSeconds(120);
 
     private final DockerApi docker;
     private final DockerSocketClient socketClient;
@@ -128,64 +136,127 @@ public final class DeployService {
         if (refusal != null) {
             throw new IllegalArgumentException(refusal);
         }
-        return lifecycle.submitExternal("deploy:" + jarName, actor, job -> {
-            Path source = DROP_DIR.resolve(jarName);
-            if (!Files.isRegularFile(source)) {
-                throw new IllegalArgumentException("No such jar in the drop folder: " + jarName);
-            }
+        return lifecycle.submitExternal("deploy:" + jarName, actor,
+                job -> run(job, jarName, DROP_DIR.resolve(jarName), true, requestedTargets, stagger));
+    }
 
-            byte[] content = Files.readAllBytes(source);
-            String expectedHash = sha256(content);
-            job.record(jarName, "verify", true,
-                    content.length + " bytes, sha256 " + expectedHash.substring(0, 16) + "...");
+    /**
+     * Pushes the jar store's copy back into containers that have drifted from it.
+     *
+     * The store is written first by every deploy, so it is the intended version; nothing is
+     * persisted here, and only the named containers are touched.
+     */
+    public OperationJob reconcile(String jarName, List<String> targets, int stagger, String actor) {
+        String refusal = DeployTargets.selfDeployRefusal(jarName, targets);
+        if (refusal != null) {
+            throw new IllegalArgumentException(refusal);
+        }
+        if (targets == null || targets.isEmpty()) {
+            throw new IllegalArgumentException("Nothing to reconcile for " + jarName
+                    + ": no container differs from the jar store");
+        }
+        return lifecycle.submitExternal("reconcile:" + jarName, actor,
+                job -> run(job, jarName, JAR_STORE.resolve(jarName), false, targets, stagger));
+    }
 
-            List<ContainerInfo> fleet = fleetService.refresh().containers();
-            List<String> targets = requestedTargets == null || requestedTargets.isEmpty()
-                    ? DeployTargets.defaultTargets(jarName, fleet)
-                    : requestedTargets;
+    public Path jarStore() {
+        return JAR_STORE;
+    }
 
-            if (targets.isEmpty()) {
-                throw new IllegalArgumentException(
-                        "No target containers resolved for " + jarName + " - specify them explicitly");
-            }
-            job.setCurrentStep("deploying " + jarName + " to " + targets.size() + " container(s)");
+    private void run(OperationJob job, String jarName, Path source, boolean persist,
+                     List<String> requestedTargets, int stagger) throws IOException {
+        if (!Files.isRegularFile(source)) {
+            throw new IllegalArgumentException("No such jar "
+                    + (persist ? "in the drop folder" : "in the jar store") + ": " + jarName);
+        }
 
-            // Persist first: if anything later fails, the stored jar still matches what was
-            // intended rather than leaving the store behind the containers.
+        byte[] content = Files.readAllBytes(source);
+        String expectedHash = sha256(content);
+        job.record(jarName, "verify", true,
+                content.length + " bytes, sha256 " + expectedHash.substring(0, 16) + "...");
+
+        List<ContainerInfo> fleet = fleetService.refresh().containers();
+        List<String> targets = requestedTargets == null || requestedTargets.isEmpty()
+                ? DeployTargets.defaultTargets(jarName, fleet)
+                : requestedTargets;
+
+        if (targets.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "No target containers resolved for " + jarName + " - specify them explicitly");
+        }
+        job.setCurrentStep("deploying " + jarName + " to " + targets.size() + " container(s)");
+
+        // Persist first: if anything later fails, the stored jar still matches what was
+        // intended rather than leaving the store behind the containers.
+        if (persist) {
             persistToStore(job, jarName, content);
+        } else {
+            job.record(jarName, "persist", true, "source is the jar store itself");
+        }
 
-            boolean bindMounted = DeployTargets.isBindMounted(jarName);
-            if (!bindMounted) {
-                for (String target : targets) {
-                    pushInto(job, target, jarName, content, expectedHash);
-                }
-            } else {
-                job.record(jarName, "push", true,
-                        "bind-mounted - replacing the stored file is the deploy");
-            }
-
-            Set<String> stopped = stoppedTargets(fleet, targets);
+        boolean bindMounted = DeployTargets.isBindMounted(jarName);
+        if (!bindMounted) {
             for (String target : targets) {
-                if (stopped.contains(target)) {
-                    job.record(target, "restart", true, "was stopped - jar updated, left stopped");
-                    continue;
-                }
-                job.setCurrentStep("restarting " + target);
-                try {
-                    docker.restart(target, RESTART_TIMEOUT_SECONDS);
-                    job.record(target, "restart", true, "restart issued");
-                } catch (DockerException e) {
-                    job.record(target, "restart", false, e.getMessage());
-                }
-                sleep(stagger > 0 ? stagger : 8);
+                pushInto(job, target, jarName, content, expectedHash);
             }
+        } else {
+            job.record(jarName, "push", true,
+                    "bind-mounted - replacing the stored file is the deploy");
+        }
 
-            for (String target : targets) {
-                if (!stopped.contains(target)) {
-                    verifyRunning(job, target);
+        Set<String> stopped = stoppedTargets(fleet, targets);
+        for (String target : targets) {
+            if (stopped.contains(target)) {
+                job.record(target, "restart", true, "was stopped - jar updated, left stopped");
+                continue;
+            }
+            job.setCurrentStep("restarting " + target);
+            try {
+                docker.restart(target, RESTART_TIMEOUT_SECONDS);
+                job.record(target, "restart", true, "restart issued");
+            } catch (DockerException e) {
+                job.record(target, "restart", false, e.getMessage());
+            }
+            sleep(stagger > 0 ? stagger : 8);
+        }
+
+        for (String target : targets) {
+            if (!stopped.contains(target)) {
+                verifyRunning(job, target);
+                if (API_CONTAINER.equals(target)) {
+                    verifyApiAnswering(job);
                 }
             }
-        });
+        }
+    }
+
+    /**
+     * service_api has no healthcheck, so "running" says nothing about whether the JVM came up.
+     * Deploying it also restarts the API the app is talking through, which is why this verdict
+     * lands in the job record the API reads back once it is up, rather than in the app's view.
+     */
+    private void verifyApiAnswering(OperationJob job) {
+        job.setCurrentStep("waiting for " + API_CONTAINER + " to answer HTTP");
+        Instant deadline = Instant.now().plus(API_PROBE_BUDGET);
+        HttpProbe.Outcome last = null;
+        while (Instant.now().isBefore(deadline)) {
+            try {
+                JsonObject inspect = docker.inspectRaw(API_CONTAINER);
+                String ip = inspect == null ? null : ContainerFacts.from(API_CONTAINER, inspect).ipAddress();
+                if (ip != null) {
+                    last = HttpProbe.get("http://" + ip + ":" + API_PORT + "/", Duration.ofSeconds(5));
+                    if (last.answered()) {
+                        job.record(API_CONTAINER, "probe", true, "answering HTTP " + last.status());
+                        return;
+                    }
+                }
+            } catch (DockerException e) {
+                Logger.warn("Probe of {} could not inspect it: {}", API_CONTAINER, e.getMessage());
+            }
+            sleep(5);
+        }
+        job.record(API_CONTAINER, "probe", false, "not answering HTTP after "
+                + API_PROBE_BUDGET.toSeconds() + "s" + (last == null ? "" : ": " + last.error()));
     }
 
     /** Restarting a stopped container starts it, and the NAS cannot run every area at once. */

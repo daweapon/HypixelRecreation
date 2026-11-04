@@ -11,6 +11,9 @@ import dev.daweapon.commons.redis.RedisMessageContext;
 import dev.daweapon.commons.redis.RedisMessageHandler;
 import dev.daweapon.velocity.testflow.TestFlowManager;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.*;
 
 // Redis handler that answers server-directory queries (all, by type, by UUID, or by player) filtered for test-flow isolation.
@@ -26,13 +29,19 @@ public class ListenerServersInformation implements RedisMessageHandler<
     @Override
     public RequestServersProtocol.Response handle(RequestServersProtocol.Request message, RedisMessageContext context) {
         String requestType = message.requestType();
-        boolean isInTestFlow = TestFlowManager.isServerInTestFlow(UUID.fromString(context.origin().id()));
+        boolean isInTestFlow = isOriginInTestFlow(context.origin().id());
 
         switch (requestType) {
             case "ALL" -> {
                 List<GameManager.GameServer> servers = new ArrayList<>(GameManager.getServers().values().stream().flatMap(List::stream).toList());
                 filterByTestFlow(servers, isInTestFlow);
-                return new RequestServersProtocol.Response(UnderstandableProxyServer.toJSON(toUnderstandable(servers)).toString(), true, null);
+                JSONObject json = UnderstandableProxyServer.toJSON(toUnderstandable(servers));
+                JSONArray entries = json.getJSONArray("servers");
+                for (int i = 0; i < entries.length(); i++) {
+                    entries.getJSONObject(i).put("host",
+                            servers.get(i).registeredServer().getServerInfo().getAddress().getHostString());
+                }
+                return new RequestServersProtocol.Response(json.toString(), true, null);
             }
             case "TYPE" -> {
                 List<GameManager.GameServer> servers = GameManager.getFromType(ServerType.valueOf(message.type()));
@@ -59,6 +68,18 @@ public class ListenerServersInformation implements RedisMessageHandler<
         }
 
         throw new RuntimeException("Unknown request type: " + requestType);
+    }
+
+    /**
+     * Services (the control plane's service.api) ask too, and their origin is a service name
+     * rather than a server UUID; parsing it as one threw and the query was never answered.
+     */
+    private static boolean isOriginInTestFlow(String originId) {
+        try {
+            return TestFlowManager.isServerInTestFlow(UUID.fromString(originId));
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
     }
 
     private void filterByTestFlow(List<GameManager.GameServer> servers, boolean isInTestFlow) {

@@ -11,9 +11,11 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -50,6 +52,7 @@ public final class Watchdog {
 
     /** True while a deliberate fleet operation (staggered restart, deploy, restore) is running. */
     private volatile BooleanSupplier deliberateOperation = () -> false;
+    private final List<Supplier<Map<String, Alert>>> conditionSources = new CopyOnWriteArrayList<>();
 
     private ScheduledExecutorService scheduler;
     private volatile Instant lastPollAt;
@@ -121,6 +124,11 @@ public final class Watchdog {
         return deliberateOperation.getAsBoolean();
     }
 
+    /** Adds conditions judged outside the fleet snapshot; they get the same debounce and recovery. */
+    public void addConditionSource(Supplier<Map<String, Alert>> source) {
+        conditionSources.add(source);
+    }
+
     private void safePoll() {
         try {
             poll();
@@ -148,6 +156,9 @@ public final class Watchdog {
         } else {
             collectDependencyAlerts(snapshot, currentlyBad);
             collectLoopAlerts(snapshot, currentlyBad);
+            for (Supplier<Map<String, Alert>> source : conditionSources) {
+                currentlyBad.putAll(source.get());
+            }
         }
 
         if (deliberateOperation.getAsBoolean()) {

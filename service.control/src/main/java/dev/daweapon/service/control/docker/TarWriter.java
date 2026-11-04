@@ -83,8 +83,47 @@ public final class TarWriter {
         return remainder == 0 ? 0 : BLOCK - remainder;
     }
 
-    private static byte[] header(String name, long size) {
+
+    /** Several files under relative paths; Docker creates any missing parent directories. */
+    public static byte[] files(java.util.Map<String, byte[]> entries) {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        for (java.util.Map.Entry<String, byte[]> entry : entries.entrySet()) {
+            byte[] content = entry.getValue();
+            out.writeBytes(header(entry.getKey(), content.length));
+            out.writeBytes(content);
+            int remainder = content.length % BLOCK;
+            if (remainder != 0) {
+                out.writeBytes(new byte[BLOCK - remainder]);
+            }
+        }
+        out.writeBytes(new byte[BLOCK * 2]);
+        return out.toByteArray();
+    }
+
+    /**
+     * Splits a path into the USTAR prefix and name fields (154 and 99 usable bytes), breaking
+     * at a slash. Configuration paths routinely exceed the 99-byte name field on its own.
+     */
+    public static String[] splitPath(String path) {
+        if (path.getBytes(StandardCharsets.UTF_8).length <= 99) {
+            return new String[]{"", path};
+        }
+        for (int slash = path.indexOf('/'); slash >= 0; slash = path.indexOf('/', slash + 1)) {
+            String prefix = path.substring(0, slash);
+            String name = path.substring(slash + 1);
+            if (prefix.getBytes(StandardCharsets.UTF_8).length <= 154
+                    && name.getBytes(StandardCharsets.UTF_8).length <= 99) {
+                return new String[]{prefix, name};
+            }
+        }
+        throw new IllegalArgumentException("Path too long for a USTAR header: " + path);
+    }
+
+    private static byte[] header(String path, long size) {
         byte[] header = new byte[BLOCK];
+        String[] split = splitPath(path);
+        String name = split[1];
+        writeString(header, 345, 155, split[0]);
 
         writeString(header, 0, 100, name);
         writeOctal(header, 100, 8, 0644);        // mode
