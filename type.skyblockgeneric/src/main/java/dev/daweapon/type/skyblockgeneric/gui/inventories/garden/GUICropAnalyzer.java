@@ -11,6 +11,7 @@ import dev.daweapon.type.generic.gui.v2.DefaultState;
 import dev.daweapon.type.generic.gui.v2.StatelessView;
 import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
 import dev.daweapon.type.generic.gui.v2.ViewLayout;
+import dev.daweapon.type.generic.gui.v2.context.ClickContext;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
 import dev.daweapon.type.skyblockgeneric.garden.analyzer.AnalyzerService;
 import dev.daweapon.type.skyblockgeneric.garden.greenhouse.GreenhouseService;
@@ -18,11 +19,14 @@ import dev.daweapon.type.skyblockgeneric.garden.greenhouse.MutationCatalogue;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class GUICropAnalyzer extends StatelessView {
     private static final int[] RING = {12, 13, 14, 21, 23, 30, 31, 32};
+    private @Nullable MutationCatalogue.Mutation placed;
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
@@ -33,7 +37,7 @@ public class GUICropAnalyzer extends StatelessView {
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
         for (int slot : RING) {
-            layout.slot(slot, (_, c) -> ItemStacks.filler(AnalyzerService.heldMutation((SkyBlockPlayer) c.player()) == null
+            layout.slot(slot, (_, c) -> ItemStacks.filler(input((SkyBlockPlayer) c.player()) == null
                     ? Material.BLUE_STAINED_GLASS_PANE : Material.LIME_STAINED_GLASS_PANE));
         }
         layout.slot(8, (_, _) -> ItemStacks.item(Material.MAP, Text.of("<a>Sky Mutations"), List.of(
@@ -45,9 +49,9 @@ public class GUICropAnalyzer extends StatelessView {
                 Text.of("<7>on <a>skymutations.eu"))));
         layout.slot(22, (_, c) -> mutationSlot((SkyBlockPlayer) c.player()), (_, c) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
-            MutationCatalogue.Mutation mutation = AnalyzerService.heldMutation(player);
+            MutationCatalogue.Mutation mutation = input(player);
             if (mutation == null) {
-                player.sendMessage(Text.of("<c>Hold a Mutation in your hand to analyze it!"));
+                player.sendMessage(Text.of("<c>Click a Mutation in your inventory to place it in the Crop Analyzer!"));
                 return;
             }
             if (!AnalyzerService.canAfford(player, mutation.coinsCost())) {
@@ -78,13 +82,29 @@ public class GUICropAnalyzer extends StatelessView {
         });
     }
 
-    private ItemStack.Builder mutationSlot(SkyBlockPlayer player) {
-        MutationCatalogue.Mutation mutation = AnalyzerService.heldMutation(player);
+    @Override
+    public boolean onBottomClick(ClickContext<DefaultState> click, ViewContext ctx) {
+        SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
+        ItemStack stack = player.getInventory().getItemStack(click.slot());
+        if (stack.isAir()) return false;
+        MutationCatalogue.Mutation mutation = MutationCatalogue.get().ofItem(new SkyBlockItem(stack).getAttributeHandler().getPotentialType());
         if (mutation == null) {
-            return ItemStacks.item(Material.BARRIER, Text.of("<c>No Mutation"), List.of(
-                    Text.of("<7>Hold a Mutation in your hand,"),
-                    Text.of("<7>then click here to analyze it.")));
+            player.sendMessage(Text.of("<c>Only Mutations can be placed in the Crop Analyzer!"));
+            return false;
         }
+        placed = mutation;
+        ctx.session(DefaultState.class).refresh();
+        return false;
+    }
+
+    private @Nullable MutationCatalogue.Mutation input(SkyBlockPlayer player) {
+        if (placed != null && placed.item() != null && AnalyzerService.owned(player, placed.item()) > 0) return placed;
+        return AnalyzerService.heldMutation(player);
+    }
+
+    private ItemStack.Builder mutationSlot(SkyBlockPlayer player) {
+        MutationCatalogue.Mutation mutation = input(player);
+        if (mutation == null) return ItemStack.AIR.builder();
         boolean analyzed = AnalyzerService.analyzed(player, mutation);
         List<Text> lore = new ArrayList<>();
         lore.add(Text.of(analyzed ? "<7>You have already analyzed this mutation." : "<7>Complete DNA Sequencing to analyze it."));

@@ -62,8 +62,8 @@ public class GUIAllMutations extends StatefulPaginatedView<MutationCatalogue.Mut
         boolean analyzed = GreenhouseService.data(player).getAnalyzed().contains(mutation.id());
         List<Text> lore = new ArrayList<>();
         lore.add(Text.of("<8>Mutation Crop"));
-        lore.add(Text.of("<7>Size: <a>{}", mutation.size()));
-        lore.add(Text.of("<7>Growth Surface: <a>{}", mutation.surface()));
+        lore.add(Text.of("<7>Size: <a>{}", mutation.size().replace("x", "<7>x<a>")));
+        lore.add(Text.of("<7>Growth Surface: <a>{}", mutation.surface().replace(" / ", "<7>, <a>")));
         lore.add(Text.of("<7>Growth Stages: <a>{}", mutation.stages()));
         lore.add(Text.empty());
         lore.add(Text.of("<6>Spreading Conditions"));
