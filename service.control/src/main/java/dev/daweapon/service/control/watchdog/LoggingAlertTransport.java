@@ -14,7 +14,7 @@ public final class LoggingAlertTransport implements AlertTransport {
         switch (alert.severity()) {
             case CRITICAL -> Logger.error("[ALERT/{}] {} - {}", alert.severity(), alert.title(), alert.body());
             case WARNING -> Logger.warn("[ALERT/{}] {} - {}", alert.severity(), alert.title(), alert.body());
-            case RECOVERY -> Logger.info("[ALERT/{}] {} - {}", alert.severity(), alert.title(), alert.body());
+            case RECOVERY, INFO -> Logger.info("[ALERT/{}] {} - {}", alert.severity(), alert.title(), alert.body());
         }
     }
 }

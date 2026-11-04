@@ -17,6 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
 
 /**
@@ -44,6 +45,11 @@ public final class Watchdog {
     private final Set<String> firedConditions = ConcurrentHashMap.newKeySet();
     /** Restart count per container as of the previous poll, for detecting an active loop. */
     private final Map<String, Integer> lastRestartCounts = new HashMap<>();
+    /** When each fired condition first alerted, so the recovery notice can say how long it lasted. */
+    private final Map<String, Instant> firedAt = new ConcurrentHashMap<>();
+
+    /** True while a deliberate fleet operation (staggered restart, deploy, restore) is running. */
+    private volatile BooleanSupplier deliberateOperation = () -> false;
 
     private ScheduledExecutorService scheduler;
     private volatile Instant lastPollAt;
@@ -99,6 +105,22 @@ public final class Watchdog {
         return dispatcher;
     }
 
+    /**
+     * Holds new alerts while a deliberate operation runs.
+     *
+     * A staggered restart or deploy takes containers down on purpose. While it runs, nothing
+     * observed counts towards the confirmation threshold, so a condition must persist for the
+     * full confirmation window after the operation ends before it pages. Recoveries are still
+     * announced.
+     */
+    public void suppressWhile(BooleanSupplier operationInFlight) {
+        this.deliberateOperation = operationInFlight;
+    }
+
+    public boolean isSuppressed() {
+        return deliberateOperation.getAsBoolean();
+    }
+
     private void safePoll() {
         try {
             poll();
@@ -128,7 +150,11 @@ public final class Watchdog {
             collectLoopAlerts(snapshot, currentlyBad);
         }
 
-        promoteAndFire(currentlyBad);
+        if (deliberateOperation.getAsBoolean()) {
+            pendingConditions.clear();
+        } else {
+            promoteAndFire(currentlyBad);
+        }
         clearRecovered(currentlyBad.keySet());
     }
 
@@ -195,6 +221,7 @@ public final class Watchdog {
             if (observed >= confirmPolls) {
                 dispatcher.dispatch(entry.getValue());
                 firedConditions.add(key);
+                firedAt.put(key, Instant.now());
                 pendingConditions.remove(key);
             }
         }
@@ -209,7 +236,10 @@ public final class Watchdog {
                 continue;
             }
             firedConditions.remove(key);
-            dispatcher.dispatch(Alert.recovery(key, describeRecovery(key), "Condition cleared."));
+            Instant since = firedAt.remove(key);
+            dispatcher.dispatch(Alert.recovery(key, describeRecovery(key), since == null
+                    ? "Condition cleared."
+                    : "Condition cleared after " + describeDuration(Duration.between(since, Instant.now())) + "."));
         }
     }
 
@@ -217,6 +247,17 @@ public final class Watchdog {
         int separator = key.indexOf(':');
         String subject = separator >= 0 ? key.substring(separator + 1) : key;
         return subject + " recovered";
+    }
+
+    public static String describeDuration(Duration duration) {
+        long minutes = duration.toMinutes();
+        if (minutes < 1) {
+            return duration.toSeconds() + "s";
+        }
+        if (minutes < 120) {
+            return minutes + " min";
+        }
+        return duration.toHours() + "h " + (minutes % 60) + "min";
     }
 
     public Duration getPollInterval() {

@@ -1,6 +1,7 @@
 package dev.daweapon.service.control.docker;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -102,12 +103,72 @@ public final class DockerSocketClient {
                 jsonBody == null ? null : "application/json");
     }
 
+    /** A JSON request with its own time budget, for calls that legitimately run long (exec). */
+    public DockerResponse request(String method, String path, String jsonBody, Duration budget) {
+        return send(method, path,
+                jsonBody == null ? null : jsonBody.getBytes(StandardCharsets.UTF_8),
+                jsonBody == null ? null : "application/json", budget);
+    }
+
+    /** Writes a request body of known length straight to the socket. */
+    public interface BodyWriter {
+        void writeTo(OutputStream out) throws IOException;
+    }
+
+    /**
+     * PUTs a streamed body without holding it in memory, so a database dump of any size can be
+     * pushed into a container.
+     */
+    public DockerResponse putStream(String path, long length, BodyWriter writer, String contentType,
+                                    Duration budget) {
+        return exchange("PUT", path, budget, out -> {
+            writeHead(out, "PUT", path, contentType, length);
+            writer.writeTo(out);
+        }, this::readResponse);
+    }
+
+    /**
+     * GETs a body straight into a file. Used to copy database dumps out of a container through
+     * the archive endpoint, where the body can be far larger than is sensible to buffer.
+     */
+    public void download(String path, Path destination, Duration budget) {
+        exchange("GET", path, budget, out -> writeHead(out, "GET", path, null, -1), in -> {
+            ResponseHead head = readHead(in);
+            if (head.status() < 200 || head.status() >= 300) {
+                ByteArrayOutputStream error = new ByteArrayOutputStream();
+                copyBody(in, head.headers(), error);
+                throw new DockerException("GET " + path + " failed with HTTP " + head.status()
+                        + ": " + error.toString(StandardCharsets.UTF_8));
+            }
+            try (OutputStream file = Files.newOutputStream(destination)) {
+                copyBody(in, head.headers(), file);
+            }
+            return null;
+        });
+    }
+
     private DockerResponse send(String method, String path, byte[] body, String contentType) {
         return send(method, path, body, contentType, null);
     }
 
     private DockerResponse send(String method, String path, byte[] body, String contentType,
                                 Duration explicitBudget) {
+        Duration budget = explicitBudget != null ? explicitBudget
+                : body != null && body.length > 1_000_000 ? UPLOAD_TIMEOUT : REQUEST_TIMEOUT;
+        return exchange(method, path, budget, out -> {
+            writeHead(out, method, path, body == null ? null : contentType, body == null ? -1 : body.length);
+            if (body != null) {
+                out.write(body);
+            }
+        }, this::readResponse);
+    }
+
+    private interface ResponseReader<T> {
+        T read(InputStream in) throws IOException;
+    }
+
+    private <T> T exchange(String method, String path, Duration budget, BodyWriter request,
+                           ResponseReader<T> reader) {
         if (!isAvailable()) {
             throw new DockerException("Docker socket is not available at " + socketPath
                     + " - is /var/run/docker.sock mounted into this container?");
@@ -115,8 +176,6 @@ public final class DockerSocketClient {
 
         AtomicBoolean timedOut = new AtomicBoolean(false);
         try (SocketChannel channel = SocketChannel.open(StandardProtocolFamily.UNIX)) {
-            Duration budget = explicitBudget != null ? explicitBudget
-                    : body != null && body.length > 1_000_000 ? UPLOAD_TIMEOUT : REQUEST_TIMEOUT;
             ScheduledFuture<?> watchdog = TIMEOUT_WATCHDOG.schedule(() -> {
                 timedOut.set(true);
                 try {
@@ -130,11 +189,11 @@ public final class DockerSocketClient {
             try {
                 channel.connect(UnixDomainSocketAddress.of(socketPath));
 
-                OutputStream out = Channels.newOutputStream(channel);
-                writeRequest(out, method, path, body, contentType);
+                OutputStream out = new BufferedOutputStream(Channels.newOutputStream(channel), 65536);
+                request.writeTo(out);
                 out.flush();
 
-                return readResponse(new BufferedInputStream(Channels.newInputStream(channel)));
+                return reader.read(new BufferedInputStream(Channels.newInputStream(channel), 65536));
             } finally {
                 watchdog.cancel(false);
             }
@@ -147,29 +206,37 @@ public final class DockerSocketClient {
         }
     }
 
-    private void writeRequest(OutputStream out, String method, String path,
-                              byte[] payload, String contentType) throws IOException {
+    /** Writes the request line and headers; a negative length means no body. */
+    private void writeHead(OutputStream out, String method, String path,
+                           String contentType, long length) throws IOException {
         StringBuilder head = new StringBuilder();
         head.append(method).append(' ').append(path).append(" HTTP/1.1\r\n");
         head.append("Host: docker\r\n");
         head.append("Accept: application/json\r\n");
         head.append("Connection: close\r\n");
 
-        if (payload != null) {
+        if (length >= 0) {
             head.append("Content-Type: ")
                     .append(contentType == null ? "application/octet-stream" : contentType)
                     .append("\r\n");
-            head.append("Content-Length: ").append(payload.length).append("\r\n");
+            head.append("Content-Length: ").append(length).append("\r\n");
         }
         head.append("\r\n");
 
         out.write(head.toString().getBytes(StandardCharsets.UTF_8));
-        if (payload != null) {
-            out.write(payload);
-        }
+    }
+
+    private record ResponseHead(int status, Map<String, String> headers) {
     }
 
     private DockerResponse readResponse(InputStream in) throws IOException {
+        ResponseHead head = readHead(in);
+        ByteArrayOutputStream body = new ByteArrayOutputStream();
+        copyBody(in, head.headers(), body);
+        return new DockerResponse(head.status(), body.toByteArray());
+    }
+
+    private ResponseHead readHead(InputStream in) throws IOException {
         String statusLine = readLine(in);
         if (statusLine == null || statusLine.isEmpty()) {
             throw new DockerException("Docker returned an empty response");
@@ -189,28 +256,40 @@ public final class DockerSocketClient {
             }
         }
 
-        byte[] body = readBody(in, headers);
-        return new DockerResponse(status, body);
+        return new ResponseHead(status, headers);
     }
 
-    private byte[] readBody(InputStream in, Map<String, String> headers) throws IOException {
+    private void copyBody(InputStream in, Map<String, String> headers, OutputStream out) throws IOException {
         String transferEncoding = headers.get("transfer-encoding");
         if (transferEncoding != null && transferEncoding.toLowerCase().contains("chunked")) {
-            return readChunked(in);
+            copyChunked(in, out);
+            return;
         }
 
         String contentLength = headers.get("content-length");
         if (contentLength != null) {
-            int length = Integer.parseInt(contentLength.trim());
-            return in.readNBytes(length);
+            copyExactly(in, out, Long.parseLong(contentLength.trim()));
+            return;
         }
 
         // No framing headers: the server closes the connection to signal the end of the body.
-        return in.readAllBytes();
+        in.transferTo(out);
     }
 
-    private byte[] readChunked(InputStream in) throws IOException {
-        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+    private static void copyExactly(InputStream in, OutputStream out, long length) throws IOException {
+        byte[] buffer = new byte[65536];
+        long remaining = length;
+        while (remaining > 0) {
+            int read = in.read(buffer, 0, (int) Math.min(buffer.length, remaining));
+            if (read < 0) {
+                break;
+            }
+            out.write(buffer, 0, read);
+            remaining -= read;
+        }
+    }
+
+    private void copyChunked(InputStream in, OutputStream buffer) throws IOException {
         while (true) {
             String sizeLine = readLine(in);
             if (sizeLine == null) {
@@ -226,14 +305,13 @@ public final class DockerSocketClient {
                 continue;
             }
 
-            int chunkSize = Integer.parseInt(sizeLine, 16);
+            long chunkSize = Long.parseLong(sizeLine, 16);
             if (chunkSize == 0) {
                 break;
             }
-            buffer.write(in.readNBytes(chunkSize));
+            copyExactly(in, buffer, chunkSize);
             readLine(in);
         }
-        return buffer.toByteArray();
     }
 
     /** Reads a single CRLF-terminated line. Returns null at end of stream. */

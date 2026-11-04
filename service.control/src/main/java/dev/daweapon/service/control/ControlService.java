@@ -1,12 +1,16 @@
 package dev.daweapon.service.control;
 
+import dev.daweapon.service.control.backup.BackupService;
+import dev.daweapon.service.control.backup.RestoreService;
 import dev.daweapon.service.control.docker.DockerApi;
 import dev.daweapon.service.control.deploy.DeployService;
 import dev.daweapon.service.control.docker.DockerSocketClient;
 import dev.daweapon.service.control.fleet.FleetService;
 import dev.daweapon.service.control.fleet.LifecycleController;
 import dev.daweapon.service.control.http.ControlRoutes;
+import dev.daweapon.service.control.http.OpsRoutes;
 import dev.daweapon.service.control.logs.LogTailer;
+import dev.daweapon.service.control.triage.TriageService;
 import dev.daweapon.service.control.watchdog.AlertDispatcher;
 import dev.daweapon.service.control.watchdog.Watchdog;
 import org.tinylog.Logger;
@@ -35,6 +39,10 @@ public final class ControlService {
 
         AlertDispatcher alertDispatcher = AlertDispatcher.fromEnvironment();
         Watchdog watchdog = new Watchdog(fleetService, alertDispatcher);
+        watchdog.suppressWhile(lifecycle::isBusy);
+        BackupService backupService = new BackupService(docker, fleetService, alertDispatcher);
+        RestoreService restoreService = new RestoreService(docker, fleetService, lifecycle, backupService);
+        TriageService triageService = new TriageService(docker);
 
         Logger.info("Control agent starting on port {}", port);
         Logger.info("Docker socket: {} (available: {})",
@@ -47,13 +55,16 @@ public final class ControlService {
 
         Spark.port(port);
         new ControlRoutes(fleetService, lifecycle, logTailer, watchdog, socketClient, deployService).register();
+        new OpsRoutes(backupService, restoreService, watchdog, triageService).register();
         Spark.awaitInitialization();
 
         watchdog.start();
+        backupService.start();
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             Logger.info("Control agent shutting down");
             watchdog.stop();
+            backupService.stop();
             Spark.stop();
         }));
 

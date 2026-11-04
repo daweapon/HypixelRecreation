@@ -9,7 +9,10 @@ import dev.daweapon.service.control.fleet.ContainerInfo;
 import dev.daweapon.service.control.fleet.ContainerState;
 import dev.daweapon.service.control.fleet.FleetGroup;
 
+import java.io.IOException;
 import java.net.URLEncoder;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.time.format.DateTimeParseException;
@@ -184,6 +187,100 @@ public final class DockerApi {
             throw new DockerException("Fetching logs for " + name + " failed with HTTP " + response.status());
         }
         return LogFrameDecoder.decode(response.bodyBytes());
+    }
+
+    public record ExecResult(int exitCode, String output) {
+        public boolean ok() {
+            return exitCode == 0;
+        }
+    }
+
+    /**
+     * Runs a command inside a running container and waits for it, like `docker exec`.
+     *
+     * The start call streams the command's output and only returns once the command exits, so
+     * the budget must cover the whole command; the exit code is read back from exec inspect.
+     */
+    public ExecResult exec(String container, List<String> command, Duration budget) {
+        JsonObject create = new JsonObject();
+        create.addProperty("AttachStdout", true);
+        create.addProperty("AttachStderr", true);
+        create.addProperty("Tty", false);
+        JsonArray cmd = new JsonArray();
+        command.forEach(cmd::add);
+        create.add("Cmd", cmd);
+
+        DockerResponse created = client.request("POST",
+                "/containers/" + encode(container) + "/exec", create.toString());
+        if (!created.isSuccess()) {
+            throw new DockerException("Creating exec in " + container + " failed with HTTP "
+                    + created.status() + ": " + created.body());
+        }
+        String id = JsonParser.parseString(created.body()).getAsJsonObject().get("Id").getAsString();
+
+        DockerResponse started = client.request("POST", "/exec/" + encode(id) + "/start",
+                "{\"Detach\":false,\"Tty\":false}", budget);
+        if (!started.isSuccess()) {
+            throw new DockerException("Starting exec in " + container + " failed with HTTP "
+                    + started.status() + ": " + started.body());
+        }
+        return new ExecResult(awaitExitCode(id), LogFrameDecoder.decode(started.bodyBytes()));
+    }
+
+    /** The output stream can close a moment before Docker marks the exec finished. */
+    private int awaitExitCode(String execId) {
+        for (int attempt = 0; attempt < 40; attempt++) {
+            DockerResponse response = client.get("/exec/" + encode(execId) + "/json");
+            if (!response.isSuccess()) {
+                throw new DockerException("Inspecting exec " + execId + " failed with HTTP " + response.status());
+            }
+            JsonObject root = JsonParser.parseString(response.body()).getAsJsonObject();
+            boolean running = root.has("Running") && root.get("Running").getAsBoolean();
+            if (!running) {
+                return root.has("ExitCode") && !root.get("ExitCode").isJsonNull()
+                        ? root.get("ExitCode").getAsInt() : -1;
+            }
+            try {
+                Thread.sleep(250);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            }
+        }
+        throw new DockerException("Exec " + execId + " was still running after its output closed");
+    }
+
+    /** Copies one file out of a container (running or stopped) through the archive endpoint. */
+    public void copyFileOut(String container, String path, Path destination, Duration budget) {
+        Path tar = destination.resolveSibling(destination.getFileName() + ".tar");
+        try {
+            client.download("/containers/" + encode(container) + "/archive?path=" + encode(path), tar, budget);
+            TarReader.extractFirstFile(tar, destination);
+        } catch (IOException e) {
+            throw new DockerException("Copying " + path + " out of " + container + " failed: " + e.getMessage(), e);
+        } finally {
+            try {
+                Files.deleteIfExists(tar);
+            } catch (IOException ignored) {
+                // A stray temporary tar is harmless and is overwritten next time.
+            }
+        }
+    }
+
+    /** Streams files into a directory inside a container, the equivalent of `docker cp` in. */
+    public void copyFilesIn(String container, String directory, List<TarWriter.Entry> entries, Duration budget) {
+        try {
+            DockerResponse response = client.putStream(
+                    "/containers/" + encode(container) + "/archive?path=" + encode(directory),
+                    TarWriter.length(entries), out -> TarWriter.write(out, entries),
+                    "application/x-tar", budget);
+            if (!response.isSuccess()) {
+                throw new DockerException("Copying into " + container + ":" + directory
+                        + " failed with HTTP " + response.status() + ": " + response.body());
+            }
+        } catch (IOException e) {
+            throw new DockerException("Copying into " + container + " failed: " + e.getMessage(), e);
+        }
     }
 
     private static String buildStatusText(ContainerState state, String dockerState, String health, int exitCode) {

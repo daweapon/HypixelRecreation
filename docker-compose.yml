@@ -276,6 +276,12 @@ services:
       WATCHDOG_CONFIRM_POLLS: "3"
       # Optional: a webhook that delivers alerts to a phone today (ntfy, Gotify, Discord).
       ALERT_WEBHOOK_URL: "${ALERT_WEBHOOK_URL:-}"
+      # Optional: an ntfy topic URL (https://ntfy.sh/<private-topic>); token only for protected topics.
+      ALERT_NTFY_URL: "${ALERT_NTFY_URL:-}"
+      ALERT_NTFY_TOKEN: "${ALERT_NTFY_TOKEN:-}"
+      BACKUP_SCHEDULE: "${BACKUP_SCHEDULE:-daily@04:00}"
+      BACKUP_RETAIN: "${BACKUP_RETAIN:-14}"
+      BACKUP_TIMEZONE: "${BACKUP_TIMEZONE:-UTC}"
     depends_on:
       game_server_builder:
         condition: service_started
@@ -284,6 +290,8 @@ services:
       # Read-write because the agent starts, stops and restarts containers. This mount is why
       # the agent is a separate container from the public-facing API.
       - /var/run/docker.sock:/var/run/docker.sock
+      # Scheduled Mongo/Redis backups land in backups/control/ beside any hand-made dumps.
+      - ./backups:/app/backups
     networks:
       hypixel_network:
         # Java's URI parser treats an underscore as illegal in a hostname, so

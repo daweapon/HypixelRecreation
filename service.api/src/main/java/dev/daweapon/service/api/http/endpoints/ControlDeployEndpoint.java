@@ -8,6 +8,7 @@ import dev.daweapon.service.api.control.AuditEntry;
 import dev.daweapon.service.api.control.ControlAgentClient;
 import dev.daweapon.service.api.control.ControlAuth;
 import dev.daweapon.service.api.control.ControlRole;
+import dev.daweapon.service.api.control.SecondFactor;
 import dev.daweapon.service.api.http.APIResponse;
 import dev.daweapon.service.api.http.EndpointType;
 import dev.daweapon.service.api.http.HttpMethod;
@@ -73,6 +74,11 @@ public class ControlDeployEndpoint extends SkyBlockEndpoint {
         if (body.has("names") && body.get("names").isJsonArray()) {
             JsonArray names = body.getAsJsonArray("names");
             names.forEach(element -> targets.add(element.getAsString()));
+        }
+
+        APIResponse secondFactorRefusal = SecondFactor.require(req, res, auth.caller(), "deploy", targets);
+        if (secondFactorRefusal != null) {
+            return secondFactorRefusal;
         }
 
         if (targetsControlAgent(jar, targets)) {

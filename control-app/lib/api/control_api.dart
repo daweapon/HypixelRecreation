@@ -34,6 +34,9 @@ class ControlApi {
   String? playerName;
   String? deviceId;
 
+  /// TOTP code attached to POSTs while an OWNER action runs; see `withSecondFactor`.
+  String? secondFactorCode;
+
   String? get baseUrl => _baseUrl;
   bool get isEnrolled => _deviceToken != null && _baseUrl != null;
 
@@ -185,6 +188,7 @@ class ControlApi {
           headers: {
             'Authorization': 'Bearer $_accessToken',
             'Content-Type': 'application/json',
+            if (secondFactorCode != null) 'X-Control-TOTP': secondFactorCode!,
           },
           body: jsonEncode(body),
         )
@@ -192,7 +196,6 @@ class ControlApi {
     return _decodeData(_ensureOk(response));
   }
 
-  /// Authenticated request plumbing for API clients kept in other files, such as LiveApi.
   Future<dynamic> authedGet(String path, [Map<String, String>? query]) => _authedGet(path, query);
 
   Future<dynamic> authedPost(String path, Map<String, dynamic> body) => _authedPost(path, body);

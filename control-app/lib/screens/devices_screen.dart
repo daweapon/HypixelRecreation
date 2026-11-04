@@ -4,6 +4,7 @@ import '../api/control_api.dart';
 import '../models/fleet.dart';
 import '../theme/reactor_theme.dart';
 import '../widgets/chamfer.dart';
+import '../widgets/second_factor.dart';
 
 /// The roster of paired devices, and the only place a role can be changed.
 ///
@@ -49,7 +50,11 @@ class _DevicesScreenState extends State<DevicesScreen> {
   Future<void> _apply(DeviceEntry device, Future<void> Function() action, String success) async {
     setState(() => _busyDeviceId = device.deviceId);
     try {
-      await action();
+      final done = await withSecondFactor(context, widget.api, () async {
+        await action();
+        return true;
+      });
+      if (done != true) return;
       await _load();
       if (mounted) _notify(success, ReactorTheme.cyan);
     } catch (e) {
