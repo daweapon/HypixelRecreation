@@ -7,6 +7,7 @@ import '../models/fleet.dart';
 import '../theme/reactor_theme.dart';
 import '../widgets/chamfer.dart';
 import '../widgets/job_banner.dart';
+import '../widgets/second_factor.dart';
 
 /// Deploys a jar staged in the drop folder.
 ///
@@ -96,8 +97,9 @@ class _DeployScreenState extends State<DeployScreen> {
     if (confirmed != true) return;
 
     try {
-      final job = await widget.api.deploy(jar.name);
-      if (!mounted) return;
+      final job = await withSecondFactor(context, widget.api, () => widget.api.deploy(jar.name),
+          reason: 'Deploying ${jar.name} needs the code from your authenticator app.');
+      if (job == null || !mounted) return;
       setState(() => _job = job);
       _follow(job.id);
     } catch (e) {

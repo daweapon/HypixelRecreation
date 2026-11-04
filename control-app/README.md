@@ -4,8 +4,18 @@ Native operations console for the HypixelRecreation stack. One Flutter codebase 
 Android APK (phone + Galaxy Tab) and a native Windows `.exe`. It is a client only — all logic
 lives behind `service.api`.
 
-Roadmap item **#33**. This is **Phase 1**: fleet dashboard, shared-dependency health, staggered
-lifecycle control, log tailing, and push alerting.
+Roadmap item **#33**. **Phases 1, 2 and 3 are built.**
+
+- **Phase 1:** fleet dashboard, shared-dependency health, staggered lifecycle control, log
+  tailing, the watchdog, the audit log, jar deploys and owner recovery.
+- **Phase 2:** push alerts to a phone through ntfy, scheduled Mongo + Redis backups with
+  restore, the version-skew view with reconcile, proxy-registration state, the config-drift
+  detector and post-restart verification of self-deploys.
+- **Phase 3:** exception triage across every container's logs, an optional TOTP second factor
+  on OWNER actions, spark metrics and the remaining operations screens.
+
+Each capability has its own section below. FCM push is the one deliberate omission; see
+[Alerting](#alerting).
 
 ## Architecture
 
@@ -41,10 +51,9 @@ exists to catch.
 3. Set a shared secret in a `.env` file beside `docker-compose.yml`:
    ```
    CONTROL_TOKEN=<32+ random characters>
-   # optional: delivers alerts to a phone today, before FCM is wired up
-   ALERT_WEBHOOK_URL=https://ntfy.sh/your-private-topic
    ```
    Compose **fails loudly** if `CONTROL_TOKEN` is unset rather than starting with an empty one.
+   The optional settings are listed in [Environment](#environment).
 4. Rebuild and start:
    ```bash
    sudo docker compose build game_server_builder
@@ -70,9 +79,9 @@ be promoted by an owner — a device that can stop containers is never handed ou
 
 | Role | Can do |
 |---|---|
-| `READ_ONLY` | View fleet, logs, alerts |
-| `OPERATOR` | Everything above, plus start / stop / restart |
-| `OWNER` | Everything above, plus enrol, promote and revoke devices |
+| `READ_ONLY` | View fleet, logs, alerts, backups, exception triage, audit log |
+| `OPERATOR` | Everything above, plus start / stop / restart and **back up now** |
+| `OWNER` | Everything above, plus deploy, restore, backup settings, test alerts, the second factor, and enrolling, promoting and revoking devices |
 
 Tokens: the long-lived **device token** is held in platform secure storage and is only ever sent
 to exchange for a 15-minute **access token**, which is what every control call actually carries.
@@ -144,15 +153,150 @@ never depends on colour alone.
 Separately, a slow radar sweep on the outer ring says the view is live rather than a frozen
 capture. Everything is behind a reduced-motion guard.
 
+## Environment
+
+All optional except `CONTROL_TOKEN`. They go in the stack `.env`; the reference
+`docker-compose.yml` already passes them to `service_control`.
+
+| Variable | Default | Effect |
+|---|---|---|
+| `CONTROL_TOKEN` | required | Shared secret between `service_api` and the agent |
+| `ALERT_NTFY_URL` | unset | ntfy topic URL, e.g. `https://ntfy.sh/hypixel-ops-<random>` |
+| `ALERT_NTFY_TOKEN` | unset | Bearer token, only for a protected topic |
+| `ALERT_WEBHOOK_URL` | unset | Generic JSON webhook (Gotify, Discord bridge, ...) |
+| `BACKUP_SCHEDULE` | `daily@04:00` | `off`, `daily@HH:MM` or `every <n>h` / `every <n>m` (minimum 15 min) |
+| `BACKUP_RETAIN` | `14` | Newest complete backups kept |
+| `BACKUP_TIMEZONE` | container zone (UTC) | Zone for `daily@` times, e.g. `America/Chicago` |
+| `BACKUP_DIR` | `/app/backups` | Where backups are written inside the agent |
+| `TRIAGE_PROJECT_PACKAGES` | `dev.daweapon.,net.swofty.` | Packages counted as "project" frames when grouping exceptions |
+| `CONTROL_OWNER_RECOVERY_IDLE_HOURS` | `72` | See [Recovering owner access](#recovering-owner-access) |
+
+Schedule and retention changed from the app are saved to `backups/control/settings.json` and
+win over the env values from then on.
+
+**The NAS runs its own generated compose plus `docker-compose.override.yml`**, so the repo
+compose alone changes nothing there. Add these under `service_control` in the override:
+
+```yaml
+    environment:
+      ALERT_NTFY_URL: "${ALERT_NTFY_URL:-}"
+      ALERT_NTFY_TOKEN: "${ALERT_NTFY_TOKEN:-}"
+      BACKUP_TIMEZONE: "America/Chicago"
+    volumes:
+      - ./backups:/app/backups
+```
+
+then `sudo docker compose up -d service_control`. Without the `./backups` mount the agent still
+runs: the Backups screen says the directory is not mounted and backup-now is disabled.
+
 ## Alerting
 
 The watchdog polls every 30s and alerts on **transitions**, requiring a condition to hold for 3
 consecutive polls before firing — without that, every routine staggered restart would page you.
-Recovery is announced too.
+Recovery is announced too, with how long the condition lasted.
 
-Alerts currently go to the log plus an optional webhook (`ALERT_WEBHOOK_URL`). FCM is **not**
-wired up yet, and deliberately so: an FCM device token can only come from an installed app, so
-the webhook is what delivers to a phone today. Point it at an ntfy/Gotify topic.
+**Deliberate operations never page.** While a staggered start/stop/restart, a deploy or a
+restore is running, nothing the watchdog sees counts towards the 3-poll confirmation; a fault
+must persist for the full window *after* the operation ends. Recoveries still go out.
+
+Transports, all at once:
+
+- **log** - always on.
+- **ntfy** (`ALERT_NTFY_URL`) - the recommended phone channel. Install the ntfy app, subscribe to
+  a private, hard-to-guess topic, set the URL. Critical alerts are priority 5 (bypasses do-not-
+  disturb on Android if you allow it), warnings 4, recoveries and tests 3, each tagged with an
+  emoji and the alert kind (`dependency`, `loop`, `backup`).
+- **webhook** (`ALERT_WEBHOOK_URL`) - plain JSON POST for anything else.
+
+The **Alerts** screen shows the watchdog state, configured channels, active conditions and the
+last 100 alerts, and an OWNER can **send a test alert** that reports what each transport
+answered. Do this once after setting the URL; a channel nobody has seen deliver is not one to
+trust. Failed scheduled backups alert too (`backup:scheduled`), with a recovery on the next
+good one.
+
+**FCM is not built**, deliberately: it needs a Firebase project and `google-services.json`. The
+seam is `AlertTransport` - an `FcmAlertTransport` registered in
+`AlertDispatcher.fromEnvironment()`, plus a service.api endpoint for the app to register its
+device token and `firebase_messaging` in the app.
+
+## Backups and restore
+
+The agent backs up **Mongo and Redis** on a schedule (default daily 04:00, keep 14) and on
+demand. It holds no database credentials by design, so both run *inside* the database
+containers through Docker exec and are copied out through the Engine API:
+
+- Mongo: `mongodump --archive --gzip` in `hypixel_mongo`, copied to `mongo.archive.gz`.
+- Redis: `BGSAVE` in `hypixel_redis`, waits for `LASTSAVE` to move and the save to report ok,
+  then copies the RDB to `redis.rdb`.
+
+Each backup is a folder `backups/control/<id>/` with a `manifest.json` recording sizes and
+sha256s. A backup where one database failed is kept as PARTIAL. Retention only ever touches the
+agent's own folders: **hand-made dumps elsewhere in `backups/` are listed, never pruned and
+never restored from.** Pre-restore snapshots rotate separately (newest 3), and a failed backup is
+pruned only once a newer complete one exists.
+
+**Back up now** needs OPERATOR. **Settings** and **restore** need OWNER (and the second factor
+once enrolled). Restore is two-step on the server, not just in the UI: the first request returns
+a preview of every step and a two-minute single-use token bound to that device, backup, parts and
+mode; only the second request with that token runs it. Both steps are audited
+(`restore-request`, `restore`).
+
+| Mode | Mongo | Redis |
+|---|---|---|
+| **Scratch** (default) | Restored into `restore_<db>` databases beside the live ones | Verified with `redis-check-rdb`; live Redis untouched |
+| **Live** | `mongorestore --drop` into the live databases | Redis stopped, data files replaced, started |
+
+A live restore **always takes a fresh pre-restore backup first and aborts if it fails**, so a
+live restore can itself be undone. The preview warns when game servers are running, since they
+will write their in-memory state over restored data; stop them first unless that is intended.
+With AOF on, Redis ignores `dump.rdb`, so a live Redis restore also writes a new AOF manifest
+whose base file is the backup's RDB (with a sequence number no existing file uses).
+`admin`, `config` and `local` are never restored.
+
+To check a restore: restore in scratch mode, then compare a known document in `restore_Minestom`
+with the live one (`mongosh` in `hypixel_mongo`). Drop the `restore_*` databases when done.
+
+## Exception triage
+
+The **Exceptions** screen scans the last 2000 log lines of every project container and groups
+stack traces and ERROR lines by **signature**: exception class plus the first stack frame in the
+project's own packages, without line numbers, so one bug thrown from every game server across
+several builds is one row. ERROR lines with no trace group by message with numbers, UUIDs and
+hex normalised. Each group shows its count, the containers it came from, first/last seen and a
+sample trace. Boot-race noise is hidden by default, as in the log view. Read-only, any role;
+results are cached for a minute.
+
+## Second factor (optional TOTP)
+
+Off until enrolled, and **nothing changes until then**. From the **Second factor** screen an
+OWNER device enrols: the server returns a secret (as an `otpauth://` URI and as grouped text to
+type into any authenticator app) and enforces nothing until one code from the app is confirmed.
+
+Once enrolled, these need a current code (the app prompts for it):
+deploy, restore, device role change and revoke, backup settings, reconcile, replacing or removing
+the secret, and owner recovery. A missing or wrong code is refused (HTTP 403) and audited as
+DENIED. The code travels in the `X-Control-TOTP` header; owner recovery, which has no bearer
+token, also accepts a `totp` body field.
+
+One secret covers the install, not each device. Codes are valid for their 30s step plus one
+either side and are not single-use, so one code can cover two actions in quick succession; a
+code is useless without the device's bearer token. The secret is stored in Mongo
+`api-control-totp` (TOTP needs it in usable form). **Lost the authenticator:** delete the
+`{_id: "install"}` document from that collection with a shell on the NAS.
+
+## Release routine
+
+1. Bump `version:` in `control-app/pubspec.yaml` (the app shows it in the corner).
+2. Build the backend jars on the dev box, never on the NAS:
+   `./gradlew :service.control:shadowJar :service.api:shadowJar`.
+3. Deploy `ServiceAPI.jar` from the app (OWNER). Update `ServiceControl.jar` by hand - see
+   [Updating or recovering the agent](#updating-or-recovering-the-agent) - since the agent
+   cannot deploy itself. Apply any compose/override changes first.
+4. Build the APK (WSL): `flutter build apk --release`.
+5. Build the Windows app on the PC (Developer Mode on): `flutter build windows --release`, zip
+   `Release\` as `hypixel-control-<ver>-windows.zip`.
+6. Copy both to `control-deploy/` (`windows-pc/` for the zip), regenerate `SHA256SUMS`, and
+   sideload the APK on each phone/tablet.
 
 ## Audit log
 
@@ -270,12 +414,13 @@ actions are unavailable until the agent is back.
 
 ## Known gaps
 
-- **FCM push** is not implemented; the webhook transport covers the need for now.
+- **FCM push** is not implemented (needs a Firebase project); ntfy covers the need.
 - **TPS-threshold alerting** (capability 14) needs the vendored `spark` metrics surfaced first.
 - **Proxy-registration state** (capability 3) is not yet separated from container state — the
   dashboard currently shows whether the proxy *container* is up, not whether each game server is
   *registered* with it.
-- Phases 2 and 3 (jar deploy with verification, config-drift detector, cross-server player and
-  event admin, backups, spark metrics) are untouched.
+- **Backups cover Mongo and Redis only**, not world data, schematics or `configuration/`.
+- A **live Mongo restore** replaces collections present in the backup; collections created since
+  are left in place.
 - **Owner recovery is rate-limited only by the idle window**, not by attempt count; a STAFF
   account is trusted absolutely once no live owner remains.

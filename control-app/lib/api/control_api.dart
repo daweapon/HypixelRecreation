@@ -34,6 +34,9 @@ class ControlApi {
   String? playerName;
   String? deviceId;
 
+  /// TOTP code attached to POSTs while an OWNER action runs; see `withSecondFactor`.
+  String? secondFactorCode;
+
   String? get baseUrl => _baseUrl;
   bool get isEnrolled => _deviceToken != null && _baseUrl != null;
 
@@ -185,12 +188,17 @@ class ControlApi {
           headers: {
             'Authorization': 'Bearer $_accessToken',
             'Content-Type': 'application/json',
+            if (secondFactorCode != null) 'X-Control-TOTP': secondFactorCode!,
           },
           body: jsonEncode(body),
         )
         .timeout(const Duration(seconds: 30));
     return _decodeData(_ensureOk(response));
   }
+
+  Future<dynamic> authedGet(String path, [Map<String, String>? query]) => _authedGet(path, query);
+
+  Future<dynamic> authedPost(String path, Map<String, dynamic> body) => _authedPost(path, body);
 
   Future<FleetSnapshot> fetchFleet({bool refresh = false}) async {
     final data = await _authedGet('/control/fleet', refresh ? {'refresh': 'true'} : null);
