@@ -16,10 +16,10 @@ import dev.daweapon.type.skyblockgeneric.user.fairysouls.FairySoulZone;
 import java.util.concurrent.ThreadLocalRandom;
 
 // The Archaeologist starts the Relic hunt, hands out the Archaeologist's Compass and pays for finding all 28.
-public class NPCArchaelogist extends HypixelNPC {
+public class NPCArchaeologist extends HypixelNPC {
     private static final int HINTS = 28;
 
-    public NPCArchaelogist() {
+    public NPCArchaeologist() {
         super(new HumanConfiguration() {
             @Override
             public String[] holograms(HypixelPlayer player) {
