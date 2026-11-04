@@ -44,19 +44,42 @@ public class ElectionManager {
     private static final ConcurrentHashMap<UUID, String> playerVoteCache = new ConcurrentHashMap<>();
     private static final AtomicBoolean tallyRefreshStarted = new AtomicBoolean();
 
+    private static final long ELECTION_RETRY_MILLIS = 10_000;
+
     @Getter
-    private static ElectionData electionData = new ElectionData();
+    private static volatile ElectionData electionData = new ElectionData();
 
     public static void loadFromService() {
         SERVICE = new ProxyService(ServiceType.ELECTION);
-        if (!SERVICE.isOnline().join()) {
-            Logger.error("Service ELECTION is not online!");
+        if (!fetchElectionData()) {
             electionData = new ElectionData();
             initializeFirstElection();
-            startTallyRefreshTask();
-            return;
+            retryUntilLoaded();
         }
+        startTallyRefreshTask();
+    }
 
+    private static void retryUntilLoaded() {
+        Thread.startVirtualThread(() -> {
+            while (true) {
+                try {
+                    Thread.sleep(ELECTION_RETRY_MILLIS);
+                } catch (InterruptedException interrupted) {
+                    return;
+                }
+                if (fetchElectionData()) {
+                    Logger.info("Loaded election data from the service after a retry. Mayor: {}", electionData.getCurrentMayor());
+                    return;
+                }
+            }
+        });
+    }
+
+    private static boolean fetchElectionData() {
+        if (!SERVICE.isOnline().join()) {
+            Logger.error("Service ELECTION is not online!");
+            return false;
+        }
         try {
             GetElectionDataProtocol.GetElectionDataResponse response =
                 SERVICE.<GetElectionDataProtocol.GetElectionDataMessage,
@@ -64,25 +87,21 @@ public class ElectionManager {
                     new GetElectionDataProtocol.GetElectionDataMessage()
                 ).join();
 
-            if (response.found() && response.serializedData() != null) {
-                electionData = GSON.fromJson(response.serializedData(), ElectionData.class);
-                if (electionData.getCurrentMayor() == null) {
-                    electionData = new ElectionData();
-                    initializeFirstElection();
-                    Logger.info("Election data was missing mayor info. Reinitialized first election.");
-                }
-            } else {
+            ElectionData loaded = response.found() && response.serializedData() != null
+                ? GSON.fromJson(response.serializedData(), ElectionData.class) : null;
+            if (loaded == null || loaded.getCurrentMayor() == null) {
                 electionData = new ElectionData();
                 initializeFirstElection();
-                Logger.info("No election data found. Initialized first election.");
+                Logger.info(loaded == null ? "No election data found. Initialized first election."
+                    : "Election data was missing mayor info. Reinitialized first election.");
+            } else {
+                electionData = loaded;
             }
+            return true;
         } catch (Exception e) {
             Logger.error("Failed to load election data from service: {}", e.getMessage());
-            electionData = new ElectionData();
-            initializeFirstElection();
+            return false;
         }
-
-        startTallyRefreshTask();
     }
 
     private static void initializeFirstElection() {
