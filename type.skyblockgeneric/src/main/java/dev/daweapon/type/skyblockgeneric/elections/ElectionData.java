@@ -133,9 +133,7 @@ public class ElectionData {
         }
 
         if (isSpecialYear) {
-            List<SkyBlockMayor> specials = SkyBlockMayor.getSpecialMayors();
-            SkyBlockMayor specialCandidate = specials.get(specialCandidateIndex % specials.size());
-            specialCandidateIndex++;
+            SkyBlockMayor specialCandidate = SkyBlockMayor.specialCandidateFor(year);
 
             CandidateData candidate = new CandidateData();
             candidate.setMayorName(specialCandidate.name());

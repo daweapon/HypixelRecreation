@@ -117,6 +117,11 @@ public enum SkyBlockMayor {
         return Arrays.stream(values()).filter(m -> m.kind == Kind.SPECIAL).toList();
     }
 
+    public static SkyBlockMayor specialCandidateFor(int year) {
+        List<SkyBlockMayor> rotation = List.of(SCORPIUS, DERPY, JERRY);
+        return rotation.get(Math.floorMod(Math.floorDiv(year, 8), rotation.size()));
+    }
+
     public static List<SkyBlockMayor> getOneTimeMayors() {
         return Arrays.stream(values()).filter(m -> m.kind == Kind.ONE_TIME).toList();
     }
