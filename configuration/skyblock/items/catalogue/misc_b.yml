@@ -220,7 +220,6 @@ items:
     material: player_head
     name: "Deepterror Mixin"
     rarity: RARE
-    unavailable: "Needs Mite Gel, and Endermites aren't built"
     source: "Crafted from 1 Ritual Residue and 64 Mite Gel"
     lore:
       - "§8Brewing Ingredient"
@@ -244,6 +243,25 @@ items:
         handler_id: MIXIN_CONSUME
       - id: SKULL_HEAD
         texture: 5b8ec9e72a2962d9c12b7853aac8721770840f5145cdfe1e47a580fd8bd7f136
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " A "
+              - "ABA"
+              - " A "
+            ingredients:
+              A:
+                type: MITE_GEL
+                amount: 16
+              B:
+                type: RITUAL_RESIDUE
+                amount: 1
+            result:
+              type: DEEPTERROR_MIXIN
+              amount: 1
   - id: DEEP_OCEAN_BIOME_STICK
     material: stick
     name: "Deep Ocean Biome Stick"
