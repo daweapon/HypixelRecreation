@@ -2,12 +2,12 @@ package dev.daweapon.type.skyblockgeneric.century;
 
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
-import dev.daweapon.type.generic.data.datapoints.DatapointLong;
 import dev.daweapon.type.generic.data.datapoints.DatapointMapStringLong;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.type.skyblockgeneric.user.playtime.ProfilePlaytime;
 import dev.daweapon.type.skyblockgeneric.user.statistics.TemporaryStatistic;
 import org.jetbrains.annotations.Nullable;
 
@@ -16,7 +16,7 @@ import java.util.Map;
 
 public final class CenturyCakeBuffs {
     public static final long DURATION_MS = 48L * 60 * 60 * 1000;
-    public static final long SOUL_MIN_PROFILE_AGE_MS = 8L * 60 * 60 * 1000;
+    public static final long SOUL_MIN_PLAYTIME_MS = 8L * 60 * 60 * 1000;
     public static final double SOUL_CHANCE_PERCENT = 0.1;
     static final String EATEN = "eaten";
     static final String SOULS = "souls";
@@ -35,7 +35,7 @@ public final class CenturyCakeBuffs {
         state.put(BUFF_PREFIX + cake.name(), now + DURATION_MS);
         state.merge(EATEN, 1L, Long::sum);
         SkyBlockItem soul = null;
-        if (soulEligible(active, now - profileCreated(player))
+        if (soulEligible(active, ProfilePlaytime.millis(player))
                 && LootRoll.roll(player.getUuid(), ItemType.CAKE_SOUL, SOUL_CHANCE_PERCENT)) {
             soul = CakeSoul.create(cake.soulColour(), cakeOwner);
             state.merge(SOULS, 1L, Long::sum);
@@ -68,8 +68,8 @@ public final class CenturyCakeBuffs {
         return expiration(state, cake) > now;
     }
 
-    public static boolean soulEligible(boolean buffAlreadyActive, long profileAgeMs) {
-        return !buffAlreadyActive && profileAgeMs > SOUL_MIN_PROFILE_AGE_MS;
+    public static boolean soulEligible(boolean buffAlreadyActive, long playtimeMs) {
+        return !buffAlreadyActive && playtimeMs > SOUL_MIN_PLAYTIME_MS;
     }
 
     public static long eaten(SkyBlockPlayer player) {
@@ -97,10 +97,6 @@ public final class CenturyCakeBuffs {
                 .withDisplayName(cake.displayName())
                 .withDisplayColor("<d>")
                 .build());
-    }
-
-    private static long profileCreated(SkyBlockPlayer player) {
-        return player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.CREATED, DatapointLong.class).getValue();
     }
 
     private static DatapointMapStringLong datapoint(SkyBlockPlayer player) {

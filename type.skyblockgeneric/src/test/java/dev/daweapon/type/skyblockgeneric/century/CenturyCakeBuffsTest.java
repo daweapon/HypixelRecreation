@@ -23,7 +23,7 @@ class CenturyCakeBuffsTest {
 
     @Test
     void soulsNeedAnEightHourProfileAndNoActiveBuff() {
-        long eightHours = CenturyCakeBuffs.SOUL_MIN_PROFILE_AGE_MS;
+        long eightHours = CenturyCakeBuffs.SOUL_MIN_PLAYTIME_MS;
         assertTrue(CenturyCakeBuffs.soulEligible(false, eightHours + 1));
         assertFalse(CenturyCakeBuffs.soulEligible(false, eightHours));
         assertFalse(CenturyCakeBuffs.soulEligible(true, eightHours * 10));
