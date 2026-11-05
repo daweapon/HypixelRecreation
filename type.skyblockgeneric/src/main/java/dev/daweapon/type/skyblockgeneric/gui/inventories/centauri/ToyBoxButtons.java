@@ -203,6 +203,10 @@ final class ToyBoxButtons {
 
     static List<ToyBoxButton> dungeons() {
         return List.of(
-                of(Material.WITHER_SKELETON_SKULL, "<c>Catacombs XP", "<8>The dead keep their secrets.", "<7>Gain <c>5,000,000 Catacombs Experience<7>.", p -> CatacombsProgress.addXp(p, 5_000_000L)));
+                of(Material.WITHER_SKELETON_SKULL, "<c>Catacombs XP", "<8>The dead keep their secrets.", "<7>Gain <c>5,000,000 Catacombs Experience<7>.", p -> CatacombsProgress.addXp(p, 5_000_000L)),
+                of(Material.FEATHER, "<9>Chest Keys and Feathers", "<8>Croesus hates this one trick.", "<7>Claim <a>16 <9>Dungeon Chest Keys <7>and <a>16 <9>Kismet Feathers<7>.", p -> {
+                    ToyBoxActions.give(p, ItemType.DUNGEON_CHEST_KEY, 16);
+                    ToyBoxActions.give(p, ItemType.KISMET_FEATHER, 16);
+                }));
     }
 }

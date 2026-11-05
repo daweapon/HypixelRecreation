@@ -6,6 +6,7 @@ import dev.daweapon.type.generic.command.HypixelCommand;
 import dev.daweapon.type.generic.user.categories.Rank;
 import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceDarkAuctionCommand;
 import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceDianaMobCommand;
+import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceDungeonChestsCommand;
 import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceDropCommand;
 import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceEruptionCommand;
 import dev.daweapon.type.skyblockgeneric.command.groups.force.ForceEventCommand;
@@ -23,8 +24,8 @@ import java.util.List;
 import java.util.Map;
 
 @CommandParameters(labels = "force",
-        description = "Forces a drop, the next Diana mob, a Dark Auction, a Volcano eruption, a Fire Sale, a Mining Event, the Blood God Shrine, a Glacite Mineshaft, the End Stone Protector, the Raffle of the Century, the Great Spook, the Grand Feast or a Garden visitor",
-        usage = "/force <drop|call|diana|darkauction|eruption|firesale|event|shrine|mineshaft|protector|century|greatspook|grandfeast|visitor> ...",
+        description = "Forces a drop, the next Diana mob, a Dark Auction, a Volcano eruption, a Fire Sale, a Mining Event, the Blood God Shrine, a Glacite Mineshaft, the End Stone Protector, the Raffle of the Century, the Great Spook, the Grand Feast or a Garden visitor, or grants a simulated Catacombs run's reward chests",
+        usage = "/force <drop|call|diana|darkauction|eruption|firesale|event|shrine|mineshaft|protector|century|greatspook|grandfeast|visitor|dungeonchests> ...",
         permission = Rank.STAFF,
         allowsConsole = false)
 public class ForceCommand extends CommandGroup {
@@ -43,7 +44,8 @@ public class ForceCommand extends CommandGroup {
                 new ForceCenturyCommand(),
                 new ForceGreatSpookCommand(),
                 new ForceGrandFeastCommand(),
-                new ForceVisitorCommand());
+                new ForceVisitorCommand(),
+                new ForceDungeonChestsCommand());
     }
 
     @Override

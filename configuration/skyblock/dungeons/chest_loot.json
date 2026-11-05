@@ -1,0 +1,8707 @@
+{
+ "_source": "hypixelskyblock.minecraft.wiki The Catacombs - Floor I-VII /Loot and /Master Mode Loot, fetched 2026-11-04",
+ "floors": {
+  "F1": {
+   "WOOD": {
+    "base_cost": 0,
+    "entries": [
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 1
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 3,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 4,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "GOLD": {
+    "base_cost": 25000,
+    "entries": [
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 20
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 20
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 10
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 45
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 35
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 5,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 5,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "DIAMOND": {
+    "base_cost": 50000,
+    "entries": [
+     {
+      "item": "BONZO_MASK",
+      "quality": 200,
+      "weight": 1,
+      "cost": 1000000
+     },
+     {
+      "item": "RED_NOSE",
+      "quality": 180,
+      "weight": 2
+     },
+     {
+      "item": "BALLOON_SNAKE",
+      "quality": 170,
+      "weight": 2
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 6
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 20
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 20
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 12
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 8,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 6,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "EMERALD": {
+    "base_cost": 100000,
+    "entries": [
+     {
+      "item": "BONZO_STAFF",
+      "quality": 240,
+      "weight": 1,
+      "cost": 2000000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 2,
+      "cost": 1000000
+     },
+     {
+      "item": "BONZO_MASK",
+      "quality": 200,
+      "weight": 2,
+      "cost": 1000000
+     },
+     {
+      "item": "RED_NOSE",
+      "quality": 180,
+      "weight": 3
+     },
+     {
+      "item": "BALLOON_SNAKE",
+      "quality": 170,
+      "weight": 2
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 7
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 20
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 20
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 10
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 8
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 18
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 18
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 12,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 6,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "OBSIDIAN": {
+    "base_cost": 250000,
+    "entries": [
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 3,
+      "cost": 5000000
+     },
+     {
+      "item": "BONZO_STAFF",
+      "quality": 240,
+      "weight": 1,
+      "cost": 2000000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 2,
+      "cost": 1000000
+     },
+     {
+      "item": "BONZO_MASK",
+      "quality": 200,
+      "weight": 3,
+      "cost": 1000000
+     },
+     {
+      "item": "RED_NOSE",
+      "quality": 180,
+      "weight": 3
+     },
+     {
+      "item": "BALLOON_SNAKE",
+      "quality": 170,
+      "weight": 4
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 15
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 15
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 10
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 2
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 8
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 8
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 15,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 6,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   }
+  },
+  "F2": {
+   "WOOD": {
+    "base_cost": 0,
+    "entries": [
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 1
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 35
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 5,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 6,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "GOLD": {
+    "base_cost": 50000,
+    "entries": [
+     {
+      "item": "SCARFS_STUDIES",
+      "quality": 170,
+      "weight": 2
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 18
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 18
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 14
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 45
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 8,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 7,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "DIAMOND": {
+    "base_cost": 100000,
+    "entries": [
+     {
+      "item": "RED_SCARF",
+      "quality": 210,
+      "weight": 1
+     },
+     {
+      "item": "SCARFS_STUDIES",
+      "quality": 170,
+      "weight": 3
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 7
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 15
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 15
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 14
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 35
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 15
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 12,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 8,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "EMERALD": {
+    "base_cost": 200000,
+    "entries": [
+     {
+      "item": "STONE_BLADE",
+      "quality": 250,
+      "weight": 1,
+      "cost": 1000000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 2,
+      "cost": 750000
+     },
+     {
+      "item": "RED_SCARF",
+      "quality": 210,
+      "weight": 1
+     },
+     {
+      "item": "SCARFS_STUDIES",
+      "quality": 170,
+      "weight": 4
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 7
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 10
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 10
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 10
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 5
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 10
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 5
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 15,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 10,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "OBSIDIAN": {
+    "base_cost": 500000,
+    "entries": [
+     {
+      "item": "STONE_BLADE",
+      "quality": 250,
+      "weight": 2,
+      "cost": 1000000
+     },
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 2,
+      "cost": 5000000
+     },
+     {
+      "item": "ADAPTIVE_BELT",
+      "quality": 240,
+      "weight": 3
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 3,
+      "cost": 750000
+     },
+     {
+      "item": "RED_SCARF",
+      "quality": 210,
+      "weight": 1
+     },
+     {
+      "item": "SCARFS_STUDIES",
+      "quality": 170,
+      "weight": 4
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 5
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 5
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 5
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 2
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 15
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 20,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 12,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   }
+  },
+  "F3": {
+   "WOOD": {
+    "base_cost": 0,
+    "entries": [
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 2
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 35
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 5,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 8,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "GOLD": {
+    "base_cost": 100000,
+    "entries": [
+     {
+      "item": "ADAPTIVE_BOOTS",
+      "quality": 170,
+      "weight": 2
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 14
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 10,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 9,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "DIAMOND": {
+    "base_cost": 250000,
+    "entries": [
+     {
+      "item": "ADAPTIVE_HELMET",
+      "quality": 185,
+      "weight": 2,
+      "cost": 250000
+     },
+     {
+      "item": "ADAPTIVE_BOOTS",
+      "quality": 170,
+      "weight": 3
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 7
+     },
+     {
+      "item": "SUSPICIOUS_VIAL",
+      "quality": 145,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 14
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 14
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 14
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 5
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 15
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 10
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 15,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 10,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "EMERALD": {
+    "base_cost": 500000,
+    "entries": [
+     {
+      "item": "ADAPTIVE_CHESTPLATE",
+      "quality": 260,
+      "weight": 1,
+      "cost": 1500000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 1,
+      "cost": 500000
+     },
+     {
+      "item": "ADAPTIVE_LEGGINGS",
+      "quality": 210,
+      "weight": 1,
+      "cost": 500000
+     },
+     {
+      "item": "ADAPTIVE_HELMET",
+      "quality": 185,
+      "weight": 2
+     },
+     {
+      "item": "ADAPTIVE_BOOTS",
+      "quality": 170,
+      "weight": 2
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 7
+     },
+     {
+      "item": "SUSPICIOUS_VIAL",
+      "quality": 145,
+      "weight": 5
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 130,
+      "weight": 10
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 10
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 10
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 5
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 18
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 18
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 10
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 5
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 20,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 12,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "OBSIDIAN": {
+    "base_cost": 1000000,
+    "entries": [
+     {
+      "item": "ADAPTIVE_CHESTPLATE",
+      "quality": 260,
+      "weight": 1,
+      "cost": 1000000
+     },
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 4,
+      "cost": 5000000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 3,
+      "cost": 500000
+     },
+     {
+      "item": "ADAPTIVE_LEGGINGS",
+      "quality": 210,
+      "weight": 1
+     },
+     {
+      "item": "ADAPTIVE_HELMET",
+      "quality": 185,
+      "weight": 2
+     },
+     {
+      "item": "ADAPTIVE_BOOTS",
+      "quality": 170,
+      "weight": 2
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "item": "SUSPICIOUS_VIAL",
+      "quality": 145,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 5
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 5
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 4
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 12
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 100,
+      "weight": 12
+     },
+     {
+      "book": "BANK",
+      "level": 2,
+      "quality": 100,
+      "weight": 8
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 8
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 8
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 25,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 15,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   }
+  },
+  "F4": {
+   "WOOD": {
+    "base_cost": 0,
+    "entries": [
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 35
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 10,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 8,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "GOLD": {
+    "base_cost": 100000,
+    "entries": [
+     {
+      "book": "REND",
+      "level": 1,
+      "quality": 170,
+      "weight": 2,
+      "cost": 400000
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 14
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 15,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 10,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "DIAMOND": {
+    "base_cost": 250000,
+    "entries": [
+     {
+      "item": "SPIRIT_DECOY",
+      "quality": 185,
+      "weight": 2,
+      "cost": 500000
+     },
+     {
+      "book": "REND",
+      "level": 1,
+      "quality": 170,
+      "weight": 2,
+      "cost": 250000
+     },
+     {
+      "item": "SPIRIT_PET",
+      "rarity": "EPIC",
+      "quality": 170,
+      "weight": 2,
+      "cost": 750000
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 14
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 20,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 12,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "EMERALD": {
+    "base_cost": 500000,
+    "entries": [
+     {
+      "item": "THORNS_BOOTS",
+      "quality": 260,
+      "weight": 1,
+      "cost": 3000000
+     },
+     {
+      "item": "SPIRIT_BONE",
+      "quality": 240,
+      "weight": 1
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 1,
+      "cost": 500000
+     },
+     {
+      "item": "SPIRIT_PET",
+      "rarity": "LEGENDARY",
+      "quality": 210,
+      "weight": 1,
+      "cost": 4500000
+     },
+     {
+      "item": "SPIRIT_DECOY",
+      "quality": 185,
+      "weight": 2,
+      "cost": 500000
+     },
+     {
+      "book": "REND",
+      "level": 1,
+      "quality": 170,
+      "weight": 2
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 7
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 130,
+      "weight": 12
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 10
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 10
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 18
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 10
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 4
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 25,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 15,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "OBSIDIAN": {
+    "base_cost": 1000000,
+    "entries": [
+     {
+      "item": "THORNS_BOOTS",
+      "quality": 260,
+      "weight": 1,
+      "cost": 3000000
+     },
+     {
+      "item": "ITEM_SPIRIT_BOW",
+      "quality": 260,
+      "weight": 1,
+      "cost": 3000000
+     },
+     {
+      "item": "SPIRIT_SWORD",
+      "quality": 260,
+      "weight": 1,
+      "cost": 2000000
+     },
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 3,
+      "cost": 5000000
+     },
+     {
+      "item": "SPIRIT_WING",
+      "quality": 250,
+      "weight": 2,
+      "cost": 1000000
+     },
+     {
+      "item": "SPIRIT_BONE",
+      "quality": 240,
+      "weight": 2,
+      "cost": 500000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 3,
+      "cost": 500000
+     },
+     {
+      "item": "SPIRIT_PET",
+      "rarity": "LEGENDARY",
+      "quality": 210,
+      "weight": 1,
+      "cost": 4000000
+     },
+     {
+      "item": "SPIRIT_DECOY",
+      "quality": 185,
+      "weight": 2,
+      "cost": 500000
+     },
+     {
+      "book": "REND",
+      "level": 2,
+      "quality": 170,
+      "weight": 2
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 5
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 5
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 12
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 100,
+      "weight": 12
+     },
+     {
+      "book": "BANK",
+      "level": 2,
+      "quality": 100,
+      "weight": 8
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 8
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 8
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 30,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 18,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   }
+  },
+  "F5": {
+   "WOOD": {
+    "base_cost": 0,
+    "entries": [
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 35
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 10,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 10,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "GOLD": {
+    "base_cost": 100000,
+    "entries": [
+     {
+      "book": "OVERLOAD",
+      "level": 1,
+      "quality": 170,
+      "weight": 2,
+      "cost": 150000
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "LETHALITY",
+      "level": 6,
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "item": "DARK_ORB",
+      "quality": 160,
+      "weight": 3,
+      "cost": 150000
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 15,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 12,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "DIAMOND": {
+    "base_cost": 250000,
+    "entries": [
+     {
+      "item": "SHADOW_ASSASSIN_BOOTS",
+      "quality": 210,
+      "weight": 1,
+      "cost": 1250000
+     },
+     {
+      "book": "LEGION",
+      "level": 1,
+      "quality": 170,
+      "weight": 2,
+      "cost": 750000
+     },
+     {
+      "book": "OVERLOAD",
+      "level": 1,
+      "quality": 170,
+      "weight": 2
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "LETHALITY",
+      "level": 6,
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "item": "DARK_ORB",
+      "quality": 160,
+      "weight": 3
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 20,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 14,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "EMERALD": {
+    "base_cost": 500000,
+    "entries": [
+     {
+      "item": "AOTE_STONE",
+      "quality": 260,
+      "weight": 1,
+      "cost": 4500000
+     },
+     {
+      "item": "SHADOW_ASSASSIN_HELMET",
+      "quality": 230,
+      "weight": 15,
+      "cost": 1500000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 14,
+      "cost": 500000
+     },
+     {
+      "item": "SHADOW_ASSASSIN_BOOTS",
+      "quality": 210,
+      "weight": 23,
+      "cost": 1000000
+     },
+     {
+      "book": "LEGION",
+      "level": 1,
+      "quality": 170,
+      "weight": 30,
+      "cost": 500000
+     },
+     {
+      "book": "OVERLOAD",
+      "level": 1,
+      "quality": 170,
+      "weight": 30
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 105
+     },
+     {
+      "book": "LETHALITY",
+      "level": 6,
+      "quality": 160,
+      "weight": 75
+     },
+     {
+      "item": "DARK_ORB",
+      "quality": 160,
+      "weight": 20
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 130,
+      "weight": 180
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 150
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 150
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 270
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 150
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 150
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 150
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 150
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 60
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 25,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 18,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "OBSIDIAN": {
+    "base_cost": 1000000,
+    "entries": [
+     {
+      "item": "LIVID_DAGGER",
+      "quality": 320,
+      "weight": 1,
+      "cost": 6000000
+     },
+     {
+      "item": "SHADOW_ASSASSIN_CLOAK",
+      "quality": 275,
+      "weight": 4,
+      "cost": 1500000
+     },
+     {
+      "item": "SHADOW_ASSASSIN_LEGGINGS",
+      "quality": 275,
+      "weight": 4,
+      "cost": 3000000
+     },
+     {
+      "item": "AOTE_STONE",
+      "quality": 260,
+      "weight": 1,
+      "cost": 4000000
+     },
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 6,
+      "cost": 5000000
+     },
+     {
+      "item": "SHADOW_ASSASSIN_HELMET",
+      "quality": 230,
+      "weight": 8,
+      "cost": 1000000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 9
+     },
+     {
+      "item": "SHADOW_ASSASSIN_BOOTS",
+      "quality": 210,
+      "weight": 12,
+      "cost": 500000
+     },
+     {
+      "book": "LEGION",
+      "level": 1,
+      "quality": 170,
+      "weight": 16
+     },
+     {
+      "book": "OVERLOAD",
+      "level": 1,
+      "quality": 170,
+      "weight": 16
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 20
+     },
+     {
+      "book": "LETHALITY",
+      "level": 6,
+      "quality": 160,
+      "weight": 16
+     },
+     {
+      "item": "DARK_ORB",
+      "quality": 160,
+      "weight": 12
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 20
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 20
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 40
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 100,
+      "weight": 40
+     },
+     {
+      "book": "BANK",
+      "level": 2,
+      "quality": 100,
+      "weight": 30
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 30
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 30
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 100,
+      "weight": 3
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 35,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 24,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "BEDROCK": {
+    "base_cost": 2000000,
+    "entries": [
+     {
+      "item": "SHADOW_FURY",
+      "quality": 370,
+      "weight": 1,
+      "cost": 13000000
+     },
+     {
+      "item": "LAST_BREATH",
+      "quality": 350,
+      "weight": 1,
+      "cost": 5000000
+     },
+     {
+      "item": "SHADOW_ASSASSIN_CHESTPLATE",
+      "quality": 330,
+      "weight": 2,
+      "cost": 4000000
+     },
+     {
+      "item": "LIVID_DAGGER",
+      "quality": 320,
+      "weight": 4,
+      "cost": 5000000
+     },
+     {
+      "item": "SHADOW_ASSASSIN_CLOAK",
+      "quality": 275,
+      "weight": 5,
+      "cost": 500000
+     },
+     {
+      "item": "SHADOW_ASSASSIN_LEGGINGS",
+      "quality": 275,
+      "weight": 5,
+      "cost": 2000000
+     },
+     {
+      "item": "AOTE_STONE",
+      "quality": 270,
+      "weight": 2,
+      "cost": 3000000
+     },
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 6,
+      "cost": 4000000
+     },
+     {
+      "item": "SHADOW_ASSASSIN_HELMET",
+      "quality": 230,
+      "weight": 10
+     },
+     {
+      "item": "SHADOW_ASSASSIN_BOOTS",
+      "quality": 210,
+      "weight": 15
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 175,
+      "weight": 20
+     },
+     {
+      "book": "LEGION",
+      "level": 1,
+      "quality": 170,
+      "weight": 20
+     },
+     {
+      "book": "OVERLOAD",
+      "level": 1,
+      "quality": 170,
+      "weight": 20
+     },
+     {
+      "item": "DARK_ORB",
+      "quality": 160,
+      "weight": 30
+     },
+     {
+      "book": "LETHALITY",
+      "level": 6,
+      "quality": 160,
+      "weight": 20
+     },
+     {
+      "book": "COMBO",
+      "level": 2,
+      "quality": 120,
+      "weight": 20
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 2,
+      "quality": 120,
+      "weight": 20
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 2,
+      "quality": 100,
+      "weight": 45
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 3,
+      "quality": 100,
+      "weight": 45
+     },
+     {
+      "book": "WISE",
+      "level": 2,
+      "quality": 100,
+      "weight": 40
+     },
+     {
+      "book": "WISDOM",
+      "level": 2,
+      "quality": 100,
+      "weight": 25
+     },
+     {
+      "book": "BANK",
+      "level": 3,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 3,
+      "quality": 100,
+      "weight": 4
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 45,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 34,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   }
+  },
+  "F6": {
+   "WOOD": {
+    "base_cost": 0,
+    "entries": [
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 35
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 10,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 12,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "GOLD": {
+    "base_cost": 100000,
+    "entries": [
+     {
+      "book": "SWARM",
+      "level": 1,
+      "quality": 170,
+      "weight": 2,
+      "cost": 400000
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "item": "GIANT_TOOTH",
+      "quality": 160,
+      "weight": 4,
+      "cost": 400000
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 15,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 15,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "DIAMOND": {
+    "base_cost": 250000,
+    "entries": [
+     {
+      "item": "NECROMANCER_LORD_BOOTS",
+      "quality": 210,
+      "weight": 2,
+      "cost": 1250000
+     },
+     {
+      "book": "SWARM",
+      "level": 1,
+      "quality": 170,
+      "weight": 6,
+      "cost": 250000
+     },
+     {
+      "item": "GIANT_TOOTH",
+      "quality": 160,
+      "weight": 7,
+      "cost": 250000
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 25,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 18,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "EMERALD": {
+    "base_cost": 500000,
+    "entries": [
+     {
+      "item": "NECROMANCER_LORD_HELMET",
+      "quality": 240,
+      "weight": 2,
+      "cost": 1500000
+     },
+     {
+      "item": "SADAN_BROOCH",
+      "quality": 220,
+      "weight": 2,
+      "cost": 1000000
+     },
+     {
+      "item": "NECROMANCER_LORD_BOOTS",
+      "quality": 210,
+      "weight": 3,
+      "cost": 1000000
+     },
+     {
+      "book": "SWARM",
+      "level": 1,
+      "quality": 170,
+      "weight": 8
+     },
+     {
+      "item": "GIANT_TOOTH",
+      "quality": 160,
+      "weight": 8
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 35,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 21,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "OBSIDIAN": {
+    "base_cost": 1000000,
+    "entries": [
+     {
+      "item": "SUMMONING_RING",
+      "quality": 310,
+      "weight": 1,
+      "cost": 11000000
+     },
+     {
+      "item": "NECROMANCER_SWORD",
+      "quality": 285,
+      "weight": 2,
+      "cost": 9000000
+     },
+     {
+      "item": "NECROMANCER_LORD_LEGGINGS",
+      "quality": 260,
+      "weight": 3,
+      "cost": 3000000
+     },
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 6,
+      "cost": 5000000
+     },
+     {
+      "item": "SOULWEAVER_GLOVES",
+      "quality": 250,
+      "weight": 3,
+      "cost": 4000000
+     },
+     {
+      "item": "NECROMANCER_LORD_HELMET",
+      "quality": 240,
+      "weight": 4,
+      "cost": 1000000
+     },
+     {
+      "item": "SADAN_BROOCH",
+      "quality": 220,
+      "weight": 4,
+      "cost": 500000
+     },
+     {
+      "item": "NECROMANCER_LORD_BOOTS",
+      "quality": 210,
+      "weight": 6,
+      "cost": 500000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 175,
+      "weight": 9
+     },
+     {
+      "book": "SWARM",
+      "level": 1,
+      "quality": 170,
+      "weight": 15
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 40
+     },
+     {
+      "item": "GIANT_TOOTH",
+      "quality": 160,
+      "weight": 15
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 40
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 40
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 60
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 100,
+      "weight": 60
+     },
+     {
+      "book": "BANK",
+      "level": 2,
+      "quality": 100,
+      "weight": 45
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 45
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 45
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 100,
+      "weight": 4
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 45,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 28,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "BEDROCK": {
+    "base_cost": 2000000,
+    "entries": [
+     {
+      "item": "PRECURSOR_EYE",
+      "quality": 370,
+      "weight": 3,
+      "cost": 28000000
+     },
+     {
+      "item": "GIANTS_SWORD",
+      "quality": 340,
+      "weight": 5,
+      "cost": 23000000
+     },
+     {
+      "item": "NECROMANCER_LORD_CHESTPLATE",
+      "quality": 325,
+      "weight": 8,
+      "cost": 8000000
+     },
+     {
+      "item": "SUMMONING_RING",
+      "quality": 310,
+      "weight": 10,
+      "cost": 10000000
+     },
+     {
+      "item": "FEL_SKULL",
+      "quality": 300,
+      "weight": 15,
+      "cost": 4000000
+     },
+     {
+      "item": "NECROMANCER_SWORD",
+      "quality": 285,
+      "weight": 20,
+      "cost": 8000000
+     },
+     {
+      "item": "NECROMANCER_LORD_LEGGINGS",
+      "quality": 260,
+      "weight": 30,
+      "cost": 2000000
+     },
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 100,
+      "cost": 4000000
+     },
+     {
+      "item": "SOULWEAVER_GLOVES",
+      "quality": 250,
+      "weight": 30,
+      "cost": 3000000
+     },
+     {
+      "item": "NECROMANCER_LORD_HELMET",
+      "quality": 240,
+      "weight": 40
+     },
+     {
+      "item": "SADAN_BROOCH",
+      "quality": 220,
+      "weight": 40
+     },
+     {
+      "item": "NECROMANCER_LORD_BOOTS",
+      "quality": 210,
+      "weight": 60
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 175,
+      "weight": 200
+     },
+     {
+      "book": "SWARM",
+      "level": 1,
+      "quality": 170,
+      "weight": 150
+     },
+     {
+      "item": "GIANT_TOOTH",
+      "quality": 160,
+      "weight": 50
+     },
+     {
+      "book": "COMBO",
+      "level": 2,
+      "quality": 120,
+      "weight": 200
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 2,
+      "quality": 120,
+      "weight": 175
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 2,
+      "quality": 100,
+      "weight": 380
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 3,
+      "quality": 100,
+      "weight": 380
+     },
+     {
+      "book": "WISE",
+      "level": 2,
+      "quality": 100,
+      "weight": 330
+     },
+     {
+      "book": "WISDOM",
+      "level": 2,
+      "quality": 100,
+      "weight": 225
+     },
+     {
+      "book": "BANK",
+      "level": 3,
+      "quality": 100,
+      "weight": 175
+     },
+     {
+      "book": "JERRY",
+      "level": 3,
+      "quality": 100,
+      "weight": 40
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 55,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 40,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   }
+  },
+  "F7": {
+   "WOOD": {
+    "base_cost": 0,
+    "entries": [
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 35
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 10,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 15,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "GOLD": {
+    "base_cost": 100000,
+    "entries": [
+     {
+      "item": "WITHER_BOOTS",
+      "quality": 170,
+      "weight": 2,
+      "cost": 2400000
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "item": "WITHER_CATALYST",
+      "quality": 160,
+      "weight": 5,
+      "cost": 900000
+     },
+     {
+      "item": "PRECURSOR_GEAR",
+      "quality": 140,
+      "weight": 7,
+      "cost": 400000
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 20,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 18,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "DIAMOND": {
+    "base_cost": 250000,
+    "entries": [
+     {
+      "item": "WITHER_HELMET",
+      "quality": 210,
+      "weight": 1,
+      "cost": 3750000
+     },
+     {
+      "book": "SOUL_EATER",
+      "level": 1,
+      "quality": 180,
+      "weight": 2,
+      "cost": 750000
+     },
+     {
+      "item": "WITHER_BOOTS",
+      "quality": 170,
+      "weight": 2,
+      "cost": 2250000
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "item": "WITHER_CATALYST",
+      "quality": 160,
+      "weight": 5,
+      "cost": 750000
+     },
+     {
+      "item": "PRECURSOR_GEAR",
+      "quality": 140,
+      "weight": 8,
+      "cost": 250000
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 30,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 21,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "EMERALD": {
+    "base_cost": 500000,
+    "entries": [
+     {
+      "item": "WITHER_LEGGINGS",
+      "quality": 250,
+      "weight": 1,
+      "cost": 5500000
+     },
+     {
+      "item": "WITHER_CLOAK",
+      "quality": 230,
+      "weight": 1,
+      "cost": 4000000
+     },
+     {
+      "item": "WITHER_BLOOD",
+      "quality": 210,
+      "weight": 2,
+      "cost": 2000000
+     },
+     {
+      "item": "WITHER_HELMET",
+      "quality": 210,
+      "weight": 2,
+      "cost": 3500000
+     },
+     {
+      "book": "SOUL_EATER",
+      "level": 1,
+      "quality": 180,
+      "weight": 6,
+      "cost": 500000
+     },
+     {
+      "item": "WITHER_BOOTS",
+      "quality": 170,
+      "weight": 4,
+      "cost": 2000000
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "item": "WITHER_CATALYST",
+      "quality": 160,
+      "weight": 5,
+      "cost": 500000
+     },
+     {
+      "item": "PRECURSOR_GEAR",
+      "quality": 140,
+      "weight": 7
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 80,
+      "weight": 10
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 40,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 28,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "OBSIDIAN": {
+    "base_cost": 1000000,
+    "entries": [
+     {
+      "item": "WITHER_CHESTPLATE",
+      "quality": 310,
+      "weight": 1,
+      "cost": 9000000
+     },
+     {
+      "book": "ONE_FOR_ALL",
+      "level": 1,
+      "quality": 290,
+      "weight": 1,
+      "cost": 1000000
+     },
+     {
+      "item": "WITHER_LEGGINGS",
+      "quality": 250,
+      "weight": 4,
+      "cost": 5000000
+     },
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 2,
+      "cost": 5000000
+     },
+     {
+      "item": "WITHER_CLOAK",
+      "quality": 230,
+      "weight": 6,
+      "cost": 3500000
+     },
+     {
+      "item": "WITHER_BLOOD",
+      "quality": 210,
+      "weight": 6,
+      "cost": 1500000
+     },
+     {
+      "item": "WITHER_HELMET",
+      "quality": 210,
+      "weight": 6,
+      "cost": 3000000
+     },
+     {
+      "book": "SOUL_EATER",
+      "level": 1,
+      "quality": 180,
+      "weight": 14
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 175,
+      "weight": 14
+     },
+     {
+      "item": "WITHER_BOOTS",
+      "quality": 170,
+      "weight": 14,
+      "cost": 1500000
+     },
+     {
+      "item": "WITHER_CATALYST",
+      "quality": 160,
+      "weight": 14
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 10
+     },
+     {
+      "item": "PRECURSOR_GEAR",
+      "quality": 140,
+      "weight": 16
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 32
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 10
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 100,
+      "weight": 50
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 40
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 30
+     },
+     {
+      "book": "BANK",
+      "level": 2,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 100,
+      "weight": 8
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 55,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 35,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "BEDROCK": {
+    "base_cost": 2000000,
+    "entries": [
+     {
+      "item": "NECRONS_HANDLE",
+      "quality": 360,
+      "weight": 15,
+      "cost": 98000000
+     },
+     {
+      "item": "IMPLOSION_SCROLL",
+      "quality": 350,
+      "weight": 20,
+      "cost": 48000000
+     },
+     {
+      "item": "SHADOW_WARP_SCROLL",
+      "quality": 350,
+      "weight": 20,
+      "cost": 48000000
+     },
+     {
+      "item": "WITHER_SHIELD_SCROLL",
+      "quality": 350,
+      "weight": 20,
+      "cost": 48000000
+     },
+     {
+      "item": "AUTO_RECOMBOBULATOR",
+      "quality": 330,
+      "weight": 80,
+      "cost": 8000000
+     },
+     {
+      "item": "WITHER_CHESTPLATE",
+      "quality": 310,
+      "weight": 80,
+      "cost": 8000000
+     },
+     {
+      "book": "ONE_FOR_ALL",
+      "level": 1,
+      "quality": 290,
+      "weight": 80
+     },
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 400,
+      "cost": 4000000
+     },
+     {
+      "item": "WITHER_LEGGINGS",
+      "quality": 250,
+      "weight": 320,
+      "cost": 4000000
+     },
+     {
+      "item": "WITHER_CLOAK",
+      "quality": 230,
+      "weight": 480,
+      "cost": 2500000
+     },
+     {
+      "item": "SHARD_WITHER",
+      "quality": 230,
+      "weight": 350
+     },
+     {
+      "item": "WITHER_BLOOD",
+      "quality": 210,
+      "weight": 480,
+      "cost": 1000000
+     },
+     {
+      "item": "WITHER_HELMET",
+      "quality": 210,
+      "weight": 480,
+      "cost": 2000000
+     },
+     {
+      "book": "SOUL_EATER",
+      "level": 1,
+      "quality": 180,
+      "weight": 800
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 175,
+      "weight": 400
+     },
+     {
+      "item": "WITHER_BOOTS",
+      "quality": 170,
+      "weight": 480,
+      "cost": 500000
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 800
+     },
+     {
+      "item": "WITHER_CATALYST",
+      "quality": 160,
+      "weight": 400
+     },
+     {
+      "item": "PRECURSOR_GEAR",
+      "quality": 140,
+      "weight": 1200
+     },
+     {
+      "book": "COMBO",
+      "level": 2,
+      "quality": 120,
+      "weight": 1000
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 2,
+      "quality": 120,
+      "weight": 400
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 2,
+      "quality": 100,
+      "weight": 1000
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 3,
+      "quality": 100,
+      "weight": 1000
+     },
+     {
+      "book": "WISE",
+      "level": 2,
+      "quality": 100,
+      "weight": 800
+     },
+     {
+      "book": "JERRY",
+      "level": 3,
+      "quality": 100,
+      "weight": 600
+     },
+     {
+      "book": "BANK",
+      "level": 3,
+      "quality": 100,
+      "weight": 500
+     },
+     {
+      "book": "WISDOM",
+      "level": 2,
+      "quality": 100,
+      "weight": 500
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 7,
+      "quality": 80,
+      "weight": 1000
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 7,
+      "quality": 80,
+      "weight": 320
+     },
+     {
+      "item": "GOLDOR_THE_FISH",
+      "quality": 61,
+      "weight": 10
+     },
+     {
+      "item": "MAXOR_THE_FISH",
+      "quality": 61,
+      "weight": 10
+     },
+     {
+      "item": "STORM_THE_FISH",
+      "quality": 61,
+      "weight": 10
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 70,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 50,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   }
+  },
+  "M1": {
+   "WOOD": {
+    "base_cost": 0,
+    "entries": [
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 1
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 10,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 15,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "GOLD": {
+    "base_cost": 25000,
+    "entries": [
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 20
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 20
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 10
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 45
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 35
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 24,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 21,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "DIAMOND": {
+    "base_cost": 50000,
+    "entries": [
+     {
+      "item": "BONZO_MASK",
+      "quality": 200,
+      "weight": 1,
+      "cost": 1000000
+     },
+     {
+      "item": "RED_NOSE",
+      "quality": 180,
+      "weight": 2
+     },
+     {
+      "item": "BALLOON_SNAKE",
+      "quality": 170,
+      "weight": 3
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 6
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 20
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 20
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 12
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 34,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 25,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "EMERALD": {
+    "base_cost": 100000,
+    "entries": [
+     {
+      "item": "BONZO_STAFF",
+      "quality": 240,
+      "weight": 1,
+      "cost": 2000000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 2,
+      "cost": 1000000
+     },
+     {
+      "item": "BONZO_MASK",
+      "quality": 200,
+      "weight": 2,
+      "cost": 1000000
+     },
+     {
+      "item": "RED_NOSE",
+      "quality": 180,
+      "weight": 3
+     },
+     {
+      "item": "BALLOON_SNAKE",
+      "quality": 170,
+      "weight": 3
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 7
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 15
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 15
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 10
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 8
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 14
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 14
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "item": "SHARD_BONZO",
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 45,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 32,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "OBSIDIAN": {
+    "base_cost": 250000,
+    "entries": [
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 4,
+      "cost": 5000000
+     },
+     {
+      "item": "MASTER_SKULL_TIER_1",
+      "quality": 250,
+      "weight": 3
+     },
+     {
+      "item": "BONZO_STAFF",
+      "quality": 240,
+      "weight": 1,
+      "cost": 2000000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 2,
+      "cost": 1000000
+     },
+     {
+      "item": "BONZO_MASK",
+      "quality": 200,
+      "weight": 3,
+      "cost": 1000000
+     },
+     {
+      "item": "RED_NOSE",
+      "quality": 180,
+      "weight": 4
+     },
+     {
+      "item": "BALLOON_SNAKE",
+      "quality": 170,
+      "weight": 3
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 10
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 10
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 10
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 2
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 15
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 6
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 6
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "item": "SHARD_BONZO",
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 60,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 40,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   }
+  },
+  "M2": {
+   "WOOD": {
+    "base_cost": 0,
+    "entries": [
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 1
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 35
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 12,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 17,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "GOLD": {
+    "base_cost": 50000,
+    "entries": [
+     {
+      "item": "SCARFS_STUDIES",
+      "quality": 170,
+      "weight": 2
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 18
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 18
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 14
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 45
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 28,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 24,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "DIAMOND": {
+    "base_cost": 100000,
+    "entries": [
+     {
+      "item": "RED_SCARF",
+      "quality": 210,
+      "weight": 1
+     },
+     {
+      "item": "SCARFS_STUDIES",
+      "quality": 170,
+      "weight": 3
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 7
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 15
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 15
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 14
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 35
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 15
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 40,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 30,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "EMERALD": {
+    "base_cost": 200000,
+    "entries": [
+     {
+      "item": "STONE_BLADE",
+      "quality": 250,
+      "weight": 1,
+      "cost": 1000000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 2,
+      "cost": 750000
+     },
+     {
+      "item": "RED_SCARF",
+      "quality": 210,
+      "weight": 1
+     },
+     {
+      "item": "SCARFS_STUDIES",
+      "quality": 170,
+      "weight": 4
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 7
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 10
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 10
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 10
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 5
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 10
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 5
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "item": "SHARD_SCARF",
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 50,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 36,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "OBSIDIAN": {
+    "base_cost": 500000,
+    "entries": [
+     {
+      "item": "MASTER_SKULL_TIER_2",
+      "quality": 250,
+      "weight": 3
+     },
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 3,
+      "cost": 5000000
+     },
+     {
+      "item": "STONE_BLADE",
+      "quality": 250,
+      "weight": 2,
+      "cost": 1000000
+     },
+     {
+      "item": "ADAPTIVE_BELT",
+      "quality": 240,
+      "weight": 3
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 3,
+      "cost": 750000
+     },
+     {
+      "item": "RED_SCARF",
+      "quality": 210,
+      "weight": 1
+     },
+     {
+      "item": "SCARFS_STUDIES",
+      "quality": 170,
+      "weight": 4
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 5
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 5
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 5
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 2
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 10
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "item": "SHARD_SCARF",
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 65,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 45,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   }
+  },
+  "M3": {
+   "WOOD": {
+    "base_cost": 0,
+    "entries": [
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 2
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 35
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 15,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 10,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "GOLD": {
+    "base_cost": 100000,
+    "entries": [
+     {
+      "item": "ADAPTIVE_BOOTS",
+      "quality": 170,
+      "weight": 2
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 14
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 32,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 27,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "DIAMOND": {
+    "base_cost": 250000,
+    "entries": [
+     {
+      "item": "ADAPTIVE_HELMET",
+      "quality": 185,
+      "weight": 2,
+      "cost": 250000
+     },
+     {
+      "item": "ADAPTIVE_BOOTS",
+      "quality": 170,
+      "weight": 3
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 7
+     },
+     {
+      "item": "SUSPICIOUS_VIAL",
+      "quality": 145,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 14
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 14
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 14
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 5
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 15
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 10
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 45,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 35,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "EMERALD": {
+    "base_cost": 500000,
+    "entries": [
+     {
+      "item": "ADAPTIVE_CHESTPLATE",
+      "quality": 260,
+      "weight": 1,
+      "cost": 1500000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 1,
+      "cost": 500000
+     },
+     {
+      "item": "ADAPTIVE_LEGGINGS",
+      "quality": 210,
+      "weight": 1,
+      "cost": 500000
+     },
+     {
+      "item": "ADAPTIVE_HELMET",
+      "quality": 185,
+      "weight": 2
+     },
+     {
+      "item": "ADAPTIVE_BOOTS",
+      "quality": 170,
+      "weight": 2
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 7
+     },
+     {
+      "item": "SUSPICIOUS_VIAL",
+      "quality": 145,
+      "weight": 5
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 130,
+      "weight": 10
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 10
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 10
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 5
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 18
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 18
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 10
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 5
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 55,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 42,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "OBSIDIAN": {
+    "base_cost": 1000000,
+    "entries": [
+     {
+      "item": "FIRST_MASTER_STAR",
+      "quality": 280,
+      "weight": 2,
+      "cost": 4000000
+     },
+     {
+      "item": "ADAPTIVE_CHESTPLATE",
+      "quality": 260,
+      "weight": 1,
+      "cost": 1000000
+     },
+     {
+      "item": "MASTER_SKULL_TIER_3",
+      "quality": 250,
+      "weight": 4,
+      "cost": 1000000
+     },
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 4,
+      "cost": 5000000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 3,
+      "cost": 500000
+     },
+     {
+      "item": "ADAPTIVE_LEGGINGS",
+      "quality": 210,
+      "weight": 1
+     },
+     {
+      "item": "ADAPTIVE_HELMET",
+      "quality": 185,
+      "weight": 2
+     },
+     {
+      "item": "ADAPTIVE_BOOTS",
+      "quality": 170,
+      "weight": 2
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "item": "SUSPICIOUS_VIAL",
+      "quality": 145,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 5
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 5
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 4
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 8
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 100,
+      "weight": 8
+     },
+     {
+      "book": "BANK",
+      "level": 2,
+      "quality": 100,
+      "weight": 6
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 6
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 6
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 70,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 50,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   }
+  },
+  "M4": {
+   "WOOD": {
+    "base_cost": 0,
+    "entries": [
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 35
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 18,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 23,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "GOLD": {
+    "base_cost": 100000,
+    "entries": [
+     {
+      "book": "REND",
+      "level": 1,
+      "quality": 170,
+      "weight": 2,
+      "cost": 400000
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 14
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 35,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 30,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "DIAMOND": {
+    "base_cost": 250000,
+    "entries": [
+     {
+      "item": "SPIRIT_DECOY",
+      "quality": 185,
+      "weight": 2,
+      "cost": 500000
+     },
+     {
+      "book": "REND",
+      "level": 1,
+      "quality": 170,
+      "weight": 2,
+      "cost": 250000
+     },
+     {
+      "item": "SPIRIT_PET",
+      "rarity": "EPIC",
+      "quality": 170,
+      "weight": 2,
+      "cost": 750000
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "item": "NECROMANCER_BROOCH",
+      "quality": 110,
+      "weight": 14
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 60,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 46,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "EMERALD": {
+    "base_cost": 500000,
+    "entries": [
+     {
+      "item": "THORNS_BOOTS",
+      "quality": 260,
+      "weight": 1,
+      "cost": 3000000
+     },
+     {
+      "item": "SPIRIT_BONE",
+      "quality": 240,
+      "weight": 1,
+      "cost": 1000000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 1,
+      "cost": 500000
+     },
+     {
+      "item": "SPIRIT_PET",
+      "rarity": "LEGENDARY",
+      "quality": 210,
+      "weight": 1,
+      "cost": 4500000
+     },
+     {
+      "item": "SPIRIT_DECOY",
+      "quality": 185,
+      "weight": 2,
+      "cost": 500000
+     },
+     {
+      "book": "REND",
+      "level": 1,
+      "quality": 170,
+      "weight": 2
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 7
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 130,
+      "weight": 12
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 10
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 10
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 18
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 10
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 4
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "item": "SHARD_THORN",
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 80,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 55,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "OBSIDIAN": {
+    "base_cost": 1000000,
+    "entries": [
+     {
+      "item": "SECOND_MASTER_STAR",
+      "quality": 270,
+      "weight": 8,
+      "cost": 5000000
+     },
+     {
+      "item": "SPIRIT_MASK",
+      "quality": 270,
+      "weight": 1,
+      "cost": 14000000
+     },
+     {
+      "item": "THORNS_BOOTS",
+      "quality": 260,
+      "weight": 4,
+      "cost": 3000000
+     },
+     {
+      "item": "ITEM_SPIRIT_BOW",
+      "quality": 260,
+      "weight": 4,
+      "cost": 3000000
+     },
+     {
+      "item": "SPIRIT_SWORD",
+      "quality": 260,
+      "weight": 4,
+      "cost": 2000000
+     },
+     {
+      "item": "MASTER_SKULL_TIER_3",
+      "quality": 250,
+      "weight": 12,
+      "cost": 1000000
+     },
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 12,
+      "cost": 5000000
+     },
+     {
+      "item": "SPIRIT_WING",
+      "quality": 250,
+      "weight": 8,
+      "cost": 1000000
+     },
+     {
+      "item": "SPIRIT_BONE",
+      "quality": 240,
+      "weight": 8,
+      "cost": 500000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 12,
+      "cost": 500000
+     },
+     {
+      "item": "SPIRIT_PET",
+      "rarity": "LEGENDARY",
+      "quality": 210,
+      "weight": 4,
+      "cost": 4000000
+     },
+     {
+      "item": "SPIRIT_DECOY",
+      "quality": 185,
+      "weight": 8,
+      "cost": 500000
+     },
+     {
+      "book": "REND",
+      "level": 2,
+      "quality": 170,
+      "weight": 8
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 20
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 20
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 32
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 100,
+      "weight": 32
+     },
+     {
+      "book": "BANK",
+      "level": 2,
+      "quality": 100,
+      "weight": 24
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 24
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 24
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 100,
+      "weight": 4
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 4
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "item": "SHARD_THORN",
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 90,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 65,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   }
+  },
+  "M5": {
+   "WOOD": {
+    "base_cost": 0,
+    "entries": [
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 35
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 20,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 26,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "GOLD": {
+    "base_cost": 100000,
+    "entries": [
+     {
+      "book": "OVERLOAD",
+      "level": 1,
+      "quality": 170,
+      "weight": 2,
+      "cost": 150000
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "LETHALITY",
+      "level": 6,
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "item": "DARK_ORB",
+      "quality": 160,
+      "weight": 3,
+      "cost": 150000
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 38,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 33,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "DIAMOND": {
+    "base_cost": 250000,
+    "entries": [
+     {
+      "item": "SHADOW_ASSASSIN_BOOTS",
+      "quality": 210,
+      "weight": 1,
+      "cost": 1250000
+     },
+     {
+      "book": "LEGION",
+      "level": 1,
+      "quality": 170,
+      "weight": 2,
+      "cost": 750000
+     },
+     {
+      "book": "OVERLOAD",
+      "level": 1,
+      "quality": 170,
+      "weight": 2
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "LETHALITY",
+      "level": 6,
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "item": "DARK_ORB",
+      "quality": 160,
+      "weight": 3
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 60,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 50,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "EMERALD": {
+    "base_cost": 500000,
+    "entries": [
+     {
+      "item": "AOTE_STONE",
+      "quality": 260,
+      "weight": 1,
+      "cost": 4500000
+     },
+     {
+      "item": "SHADOW_ASSASSIN_HELMET",
+      "quality": 230,
+      "weight": 15,
+      "cost": 1500000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 14,
+      "cost": 500000
+     },
+     {
+      "item": "SHADOW_ASSASSIN_BOOTS",
+      "quality": 210,
+      "weight": 23,
+      "cost": 1000000
+     },
+     {
+      "book": "LEGION",
+      "level": 1,
+      "quality": 170,
+      "weight": 30,
+      "cost": 500000
+     },
+     {
+      "book": "OVERLOAD",
+      "level": 1,
+      "quality": 170,
+      "weight": 30
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 105
+     },
+     {
+      "book": "LETHALITY",
+      "level": 6,
+      "quality": 160,
+      "weight": 75
+     },
+     {
+      "item": "DARK_ORB",
+      "quality": 160,
+      "weight": 20
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 130,
+      "weight": 180
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 150
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 150
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 270
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 150
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 150
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 150
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 150
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 60
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 70,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 56,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "OBSIDIAN": {
+    "base_cost": 1000000,
+    "entries": [
+     {
+      "item": "LIVID_DAGGER",
+      "quality": 320,
+      "weight": 1,
+      "cost": 6000000
+     },
+     {
+      "item": "THIRD_MASTER_STAR",
+      "quality": 320,
+      "weight": 1
+     },
+     {
+      "item": "SHADOW_ASSASSIN_CLOAK",
+      "quality": 275,
+      "weight": 4,
+      "cost": 1500000
+     },
+     {
+      "item": "SHADOW_ASSASSIN_LEGGINGS",
+      "quality": 275,
+      "weight": 4,
+      "cost": 3000000
+     },
+     {
+      "item": "AOTE_STONE",
+      "quality": 260,
+      "weight": 1,
+      "cost": 4000000
+     },
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 6,
+      "cost": 5000000
+     },
+     {
+      "item": "MASTER_SKULL_TIER_3",
+      "quality": 250,
+      "weight": 4,
+      "cost": 1000000
+     },
+     {
+      "item": "SHADOW_ASSASSIN_HELMET",
+      "quality": 230,
+      "weight": 8,
+      "cost": 1000000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 220,
+      "weight": 9
+     },
+     {
+      "item": "SHADOW_ASSASSIN_BOOTS",
+      "quality": 210,
+      "weight": 12,
+      "cost": 500000
+     },
+     {
+      "book": "LEGION",
+      "level": 1,
+      "quality": 170,
+      "weight": 16
+     },
+     {
+      "book": "OVERLOAD",
+      "level": 1,
+      "quality": 170,
+      "weight": 16
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 20
+     },
+     {
+      "book": "LETHALITY",
+      "level": 6,
+      "quality": 160,
+      "weight": 16
+     },
+     {
+      "item": "DARK_ORB",
+      "quality": 160,
+      "weight": 10
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 20
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 20
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 40
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 100,
+      "weight": 40
+     },
+     {
+      "book": "BANK",
+      "level": 2,
+      "quality": 100,
+      "weight": 30
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 30
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 30
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 100,
+      "weight": 3
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 85,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 65,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "BEDROCK": {
+    "base_cost": 2000000,
+    "entries": [
+     {
+      "item": "SHADOW_FURY",
+      "quality": 370,
+      "weight": 1,
+      "cost": 13000000
+     },
+     {
+      "item": "LAST_BREATH",
+      "quality": 350,
+      "weight": 1,
+      "cost": 5000000
+     },
+     {
+      "item": "SHADOW_ASSASSIN_CHESTPLATE",
+      "quality": 330,
+      "weight": 2,
+      "cost": 4000000
+     },
+     {
+      "item": "LIVID_DAGGER",
+      "quality": 320,
+      "weight": 4,
+      "cost": 5000000
+     },
+     {
+      "item": "THIRD_MASTER_STAR",
+      "quality": 320,
+      "weight": 2,
+      "cost": 5000000
+     },
+     {
+      "item": "SHADOW_ASSASSIN_CLOAK",
+      "quality": 275,
+      "weight": 5,
+      "cost": 500000
+     },
+     {
+      "item": "SHADOW_ASSASSIN_LEGGINGS",
+      "quality": 275,
+      "weight": 5,
+      "cost": 2000000
+     },
+     {
+      "item": "AOTE_STONE",
+      "quality": 270,
+      "weight": 2,
+      "cost": 3000000
+     },
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 6,
+      "cost": 4000000
+     },
+     {
+      "item": "MASTER_SKULL_TIER_4",
+      "quality": 250,
+      "weight": 5,
+      "cost": 6000000
+     },
+     {
+      "item": "SHADOW_ASSASSIN_HELMET",
+      "quality": 230,
+      "weight": 10
+     },
+     {
+      "item": "SHADOW_ASSASSIN_BOOTS",
+      "quality": 210,
+      "weight": 15
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 175,
+      "weight": 20
+     },
+     {
+      "book": "LEGION",
+      "level": 1,
+      "quality": 170,
+      "weight": 20
+     },
+     {
+      "book": "OVERLOAD",
+      "level": 1,
+      "quality": 170,
+      "weight": 20
+     },
+     {
+      "item": "DARK_ORB",
+      "quality": 160,
+      "weight": 30
+     },
+     {
+      "book": "LETHALITY",
+      "level": 6,
+      "quality": 160,
+      "weight": 20
+     },
+     {
+      "book": "COMBO",
+      "level": 2,
+      "quality": 120,
+      "weight": 15
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 2,
+      "quality": 120,
+      "weight": 15
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 2,
+      "quality": 100,
+      "weight": 35
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 3,
+      "quality": 100,
+      "weight": 35
+     },
+     {
+      "book": "WISE",
+      "level": 2,
+      "quality": 100,
+      "weight": 30
+     },
+     {
+      "book": "WISDOM",
+      "level": 2,
+      "quality": 100,
+      "weight": 12
+     },
+     {
+      "book": "BANK",
+      "level": 3,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "JERRY",
+      "level": 3,
+      "quality": 100,
+      "weight": 4
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 100,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 80,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "item": "DYE_LIVID",
+      "quality": 0,
+      "weight": 0,
+      "chance": 0.02
+     }
+    ]
+   }
+  },
+  "M6": {
+   "WOOD": {
+    "base_cost": 0,
+    "entries": [
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 35
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 22,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 28,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "GOLD": {
+    "base_cost": 100000,
+    "entries": [
+     {
+      "book": "SWARM",
+      "level": 1,
+      "quality": 170,
+      "weight": 2,
+      "cost": 400000
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "item": "GIANT_TOOTH",
+      "quality": 160,
+      "weight": 4,
+      "cost": 400000
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 40,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 35,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "DIAMOND": {
+    "base_cost": 250000,
+    "entries": [
+     {
+      "item": "NECROMANCER_LORD_BOOTS",
+      "quality": 210,
+      "weight": 2,
+      "cost": 1250000
+     },
+     {
+      "book": "SWARM",
+      "level": 1,
+      "quality": 170,
+      "weight": 6,
+      "cost": 250000
+     },
+     {
+      "item": "GIANT_TOOTH",
+      "quality": 160,
+      "weight": 7,
+      "cost": 250000
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 63,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 52,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "EMERALD": {
+    "base_cost": 500000,
+    "entries": [
+     {
+      "item": "NECROMANCER_LORD_HELMET",
+      "quality": 240,
+      "weight": 2,
+      "cost": 1500000
+     },
+     {
+      "item": "SADAN_BROOCH",
+      "quality": 220,
+      "weight": 2,
+      "cost": 1000000
+     },
+     {
+      "item": "NECROMANCER_LORD_BOOTS",
+      "quality": 210,
+      "weight": 3,
+      "cost": 1000000
+     },
+     {
+      "book": "SWARM",
+      "level": 1,
+      "quality": 170,
+      "weight": 8
+     },
+     {
+      "item": "GIANT_TOOTH",
+      "quality": 160,
+      "weight": 8
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 75,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 60,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "OBSIDIAN": {
+    "base_cost": 1000000,
+    "entries": [
+     {
+      "item": "FOURTH_MASTER_STAR",
+      "quality": 320,
+      "weight": 3,
+      "cost": 7000000
+     },
+     {
+      "item": "SUMMONING_RING",
+      "quality": 310,
+      "weight": 1,
+      "cost": 11000000
+     },
+     {
+      "item": "NECROMANCER_SWORD",
+      "quality": 285,
+      "weight": 2,
+      "cost": 9000000
+     },
+     {
+      "item": "NECROMANCER_LORD_LEGGINGS",
+      "quality": 260,
+      "weight": 3,
+      "cost": 3000000
+     },
+     {
+      "item": "MASTER_SKULL_TIER_4",
+      "quality": 250,
+      "weight": 6,
+      "cost": 7000000
+     },
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 6,
+      "cost": 5000000
+     },
+     {
+      "item": "SOULWEAVER_GLOVES",
+      "quality": 250,
+      "weight": 3,
+      "cost": 4000000
+     },
+     {
+      "item": "NECROMANCER_LORD_HELMET",
+      "quality": 240,
+      "weight": 4,
+      "cost": 1000000
+     },
+     {
+      "item": "SADAN_BROOCH",
+      "quality": 220,
+      "weight": 4,
+      "cost": 500000
+     },
+     {
+      "item": "NECROMANCER_LORD_BOOTS",
+      "quality": 210,
+      "weight": 6,
+      "cost": 500000
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 175,
+      "weight": 9
+     },
+     {
+      "book": "SWARM",
+      "level": 1,
+      "quality": 170,
+      "weight": 15
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 40
+     },
+     {
+      "item": "GIANT_TOOTH",
+      "quality": 160,
+      "weight": 15
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 40
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 40
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 60
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 100,
+      "weight": 60
+     },
+     {
+      "book": "BANK",
+      "level": 2,
+      "quality": 100,
+      "weight": 45
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 45
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 45
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 100,
+      "weight": 4
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 90,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 70,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "BEDROCK": {
+    "base_cost": 2000000,
+    "entries": [
+     {
+      "item": "PRECURSOR_EYE",
+      "quality": 370,
+      "weight": 3,
+      "cost": 28000000
+     },
+     {
+      "item": "GIANTS_SWORD",
+      "quality": 340,
+      "weight": 6,
+      "cost": 23000000
+     },
+     {
+      "item": "NECROMANCER_LORD_CHESTPLATE",
+      "quality": 325,
+      "weight": 8,
+      "cost": 8000000
+     },
+     {
+      "item": "FOURTH_MASTER_STAR",
+      "quality": 320,
+      "weight": 10,
+      "cost": 6000000
+     },
+     {
+      "item": "SUMMONING_RING",
+      "quality": 310,
+      "weight": 10,
+      "cost": 10000000
+     },
+     {
+      "item": "FEL_SKULL",
+      "quality": 300,
+      "weight": 15,
+      "cost": 4000000
+     },
+     {
+      "item": "NECROMANCER_SWORD",
+      "quality": 285,
+      "weight": 20,
+      "cost": 8000000
+     },
+     {
+      "item": "MASTER_SKULL_TIER_4",
+      "quality": 270,
+      "weight": 10,
+      "cost": 6000000
+     },
+     {
+      "item": "NECROMANCER_LORD_LEGGINGS",
+      "quality": 260,
+      "weight": 30,
+      "cost": 2000000
+     },
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 120,
+      "cost": 4000000
+     },
+     {
+      "item": "SOULWEAVER_GLOVES",
+      "quality": 250,
+      "weight": 30,
+      "cost": 3000000
+     },
+     {
+      "item": "NECROMANCER_LORD_HELMET",
+      "quality": 240,
+      "weight": 40
+     },
+     {
+      "item": "SADAN_BROOCH",
+      "quality": 220,
+      "weight": 40
+     },
+     {
+      "item": "NECROMANCER_LORD_BOOTS",
+      "quality": 210,
+      "weight": 60
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 175,
+      "weight": 200
+     },
+     {
+      "book": "SWARM",
+      "level": 1,
+      "quality": 170,
+      "weight": 150
+     },
+     {
+      "item": "GIANT_TOOTH",
+      "quality": 160,
+      "weight": 50
+     },
+     {
+      "book": "COMBO",
+      "level": 2,
+      "quality": 120,
+      "weight": 200
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 2,
+      "quality": 120,
+      "weight": 175
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 2,
+      "quality": 100,
+      "weight": 380
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 3,
+      "quality": 100,
+      "weight": 380
+     },
+     {
+      "book": "WISE",
+      "level": 2,
+      "quality": 100,
+      "weight": 330
+     },
+     {
+      "book": "WISDOM",
+      "level": 2,
+      "quality": 100,
+      "weight": 225
+     },
+     {
+      "book": "BANK",
+      "level": 3,
+      "quality": 100,
+      "weight": 175
+     },
+     {
+      "book": "JERRY",
+      "level": 3,
+      "quality": 100,
+      "weight": 40
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 110,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 85,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   }
+  },
+  "M7": {
+   "WOOD": {
+    "base_cost": 0,
+    "entries": [
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 35
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 30
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 23,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 30,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "GOLD": {
+    "base_cost": 100000,
+    "entries": [
+     {
+      "item": "WITHER_BOOTS",
+      "quality": 170,
+      "weight": 2,
+      "cost": 2400000
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "item": "WITHER_CATALYST",
+      "quality": 160,
+      "weight": 5,
+      "cost": 900000
+     },
+     {
+      "item": "PRECURSOR_GEAR",
+      "quality": 140,
+      "weight": 7,
+      "cost": 400000
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 20,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 18,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "DIAMOND": {
+    "base_cost": 250000,
+    "entries": [
+     {
+      "item": "WITHER_HELMET",
+      "quality": 210,
+      "weight": 1,
+      "cost": 3750000
+     },
+     {
+      "book": "SOUL_EATER",
+      "level": 1,
+      "quality": 180,
+      "weight": 2,
+      "cost": 750000
+     },
+     {
+      "item": "WITHER_BOOTS",
+      "quality": 170,
+      "weight": 2,
+      "cost": 2250000
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "item": "WITHER_CATALYST",
+      "quality": 160,
+      "weight": 5,
+      "cost": 750000
+     },
+     {
+      "item": "PRECURSOR_GEAR",
+      "quality": 140,
+      "weight": 8,
+      "cost": 250000
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 1,
+      "quality": 100,
+      "weight": 1
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 1,
+      "quality": 80,
+      "weight": 40
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 70,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 60,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "EMERALD": {
+    "base_cost": 500000,
+    "entries": [
+     {
+      "item": "WITHER_LEGGINGS",
+      "quality": 250,
+      "weight": 1,
+      "cost": 5500000
+     },
+     {
+      "item": "WITHER_CLOAK",
+      "quality": 230,
+      "weight": 1,
+      "cost": 4000000
+     },
+     {
+      "item": "WITHER_BLOOD",
+      "quality": 210,
+      "weight": 2,
+      "cost": 2000000
+     },
+     {
+      "item": "WITHER_HELMET",
+      "quality": 210,
+      "weight": 2,
+      "cost": 3500000
+     },
+     {
+      "book": "SOUL_EATER",
+      "level": 1,
+      "quality": 180,
+      "weight": 6,
+      "cost": 500000
+     },
+     {
+      "item": "WITHER_BOOTS",
+      "quality": 170,
+      "weight": 4,
+      "cost": 2000000
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 160,
+      "weight": 5
+     },
+     {
+      "item": "WITHER_CATALYST",
+      "quality": 160,
+      "weight": 5,
+      "cost": 500000
+     },
+     {
+      "item": "PRECURSOR_GEAR",
+      "quality": 140,
+      "weight": 7
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 6,
+      "quality": 120,
+      "weight": 16
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 20
+     },
+     {
+      "book": "BANK",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 10
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 80,
+      "weight": 25
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 6,
+      "quality": 80,
+      "weight": 20
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 80,
+      "weight": 10
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "item": "SHARD_APEX_DRAGON",
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "item": "SHARD_POWER_DRAGON",
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 90,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 70,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "OBSIDIAN": {
+    "base_cost": 1000000,
+    "entries": [
+     {
+      "item": "FIFTH_MASTER_STAR",
+      "quality": 320,
+      "weight": 1,
+      "cost": 8000000
+     },
+     {
+      "item": "WITHER_CHESTPLATE",
+      "quality": 310,
+      "weight": 1,
+      "cost": 9000000
+     },
+     {
+      "book": "ONE_FOR_ALL",
+      "level": 1,
+      "quality": 290,
+      "weight": 1,
+      "cost": 1000000
+     },
+     {
+      "item": "MASTER_SKULL_TIER_4",
+      "quality": 250,
+      "weight": 4,
+      "cost": 7000000
+     },
+     {
+      "item": "WITHER_LEGGINGS",
+      "quality": 250,
+      "weight": 4,
+      "cost": 5000000
+     },
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 2,
+      "cost": 5000000
+     },
+     {
+      "item": "WITHER_CLOAK",
+      "quality": 230,
+      "weight": 6,
+      "cost": 3500000
+     },
+     {
+      "item": "WITHER_BLOOD",
+      "quality": 210,
+      "weight": 6,
+      "cost": 1500000
+     },
+     {
+      "item": "WITHER_HELMET",
+      "quality": 210,
+      "weight": 6,
+      "cost": 3000000
+     },
+     {
+      "book": "SOUL_EATER",
+      "level": 1,
+      "quality": 180,
+      "weight": 14
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 175,
+      "weight": 14
+     },
+     {
+      "item": "SHARD_WITHER",
+      "quality": 170,
+      "weight": 350
+     },
+     {
+      "item": "WITHER_BOOTS",
+      "quality": 170,
+      "weight": 14,
+      "cost": 1500000
+     },
+     {
+      "item": "WITHER_CATALYST",
+      "quality": 160,
+      "weight": 14
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 10
+     },
+     {
+      "item": "PRECURSOR_GEAR",
+      "quality": 140,
+      "weight": 16
+     },
+     {
+      "book": "COMBO",
+      "level": 1,
+      "quality": 120,
+      "weight": 32
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 1,
+      "quality": 120,
+      "weight": 10
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 2,
+      "quality": 100,
+      "weight": 50
+     },
+     {
+      "book": "WISE",
+      "level": 1,
+      "quality": 100,
+      "weight": 40
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 1,
+      "quality": 100,
+      "weight": 30
+     },
+     {
+      "book": "BANK",
+      "level": 2,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "WISDOM",
+      "level": 1,
+      "quality": 100,
+      "weight": 15
+     },
+     {
+      "book": "JERRY",
+      "level": 2,
+      "quality": 100,
+      "weight": 8
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "item": "SHARD_APEX_DRAGON",
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "item": "SHARD_POWER_DRAGON",
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 100,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 80,
+      "quality": 0,
+      "weight": 0
+     }
+    ]
+   },
+   "BEDROCK": {
+    "base_cost": 2000000,
+    "entries": [
+     {
+      "item": "IMPLOSION_SCROLL",
+      "quality": 380,
+      "weight": 25,
+      "cost": 48000000
+     },
+     {
+      "item": "SHADOW_WARP_SCROLL",
+      "quality": 380,
+      "weight": 25,
+      "cost": 48000000
+     },
+     {
+      "item": "WITHER_SHIELD_SCROLL",
+      "quality": 380,
+      "weight": 25,
+      "cost": 48000000
+     },
+     {
+      "item": "NECRONS_HANDLE",
+      "quality": 380,
+      "weight": 18,
+      "cost": 98000000
+     },
+     {
+      "item": "DARK_CLAYMORE",
+      "quality": 360,
+      "weight": 10,
+      "cost": 148000000
+     },
+     {
+      "item": "AUTO_RECOMBOBULATOR",
+      "quality": 330,
+      "weight": 80,
+      "cost": 8000000
+     },
+     {
+      "item": "FIFTH_MASTER_STAR",
+      "quality": 320,
+      "weight": 30,
+      "cost": 7000000
+     },
+     {
+      "item": "WITHER_CHESTPLATE",
+      "quality": 310,
+      "weight": 80,
+      "cost": 8000000
+     },
+     {
+      "book": "ONE_FOR_ALL",
+      "level": 1,
+      "quality": 290,
+      "weight": 80
+     },
+     {
+      "item": "RECOMBOBULATOR_3000",
+      "quality": 250,
+      "weight": 500,
+      "cost": 4000000
+     },
+     {
+      "item": "WITHER_LEGGINGS",
+      "quality": 250,
+      "weight": 320,
+      "cost": 4000000
+     },
+     {
+      "item": "MASTER_SKULL_TIER_5",
+      "quality": 250,
+      "weight": 24,
+      "cost": 30000000
+     },
+     {
+      "item": "WITHER_CLOAK",
+      "quality": 230,
+      "weight": 480,
+      "cost": 2500000
+     },
+     {
+      "item": "WITHER_BLOOD",
+      "quality": 210,
+      "weight": 480,
+      "cost": 1000000
+     },
+     {
+      "item": "WITHER_HELMET",
+      "quality": 210,
+      "weight": 480,
+      "cost": 2000000
+     },
+     {
+      "book": "THUNDERLORD",
+      "level": 7,
+      "quality": 200,
+      "weight": 20
+     },
+     {
+      "book": "SOUL_EATER",
+      "level": 1,
+      "quality": 180,
+      "weight": 800
+     },
+     {
+      "item": "FUMING_POTATO_BOOK",
+      "quality": 175,
+      "weight": 400
+     },
+     {
+      "item": "WITHER_BOOTS",
+      "quality": 170,
+      "weight": 480,
+      "cost": 500000
+     },
+     {
+      "item": "HOT_POTATO_BOOK",
+      "quality": 160,
+      "weight": 800
+     },
+     {
+      "item": "WITHER_CATALYST",
+      "quality": 160,
+      "weight": 400
+     },
+     {
+      "item": "PRECURSOR_GEAR",
+      "quality": 140,
+      "weight": 1200
+     },
+     {
+      "book": "COMBO",
+      "level": 2,
+      "quality": 120,
+      "weight": 1000
+     },
+     {
+      "book": "NO_PAIN_NO_GAIN",
+      "level": 2,
+      "quality": 120,
+      "weight": 400
+     },
+     {
+      "book": "LAST_STAND",
+      "level": 2,
+      "quality": 100,
+      "weight": 1000
+     },
+     {
+      "book": "REJUVENATE",
+      "level": 3,
+      "quality": 100,
+      "weight": 1000
+     },
+     {
+      "book": "WISE",
+      "level": 2,
+      "quality": 100,
+      "weight": 800
+     },
+     {
+      "book": "JERRY",
+      "level": 3,
+      "quality": 100,
+      "weight": 600
+     },
+     {
+      "book": "BANK",
+      "level": 3,
+      "quality": 100,
+      "weight": 500
+     },
+     {
+      "book": "WISDOM",
+      "level": 2,
+      "quality": 100,
+      "weight": 500
+     },
+     {
+      "book": "INFINITE_QUIVER",
+      "level": 7,
+      "quality": 80,
+      "weight": 1000
+     },
+     {
+      "book": "FEATHER_FALLING",
+      "level": 7,
+      "quality": 80,
+      "weight": 320
+     },
+     {
+      "item": "GOLDOR_THE_FISH",
+      "quality": 61,
+      "weight": 5
+     },
+     {
+      "item": "MAXOR_THE_FISH",
+      "quality": 61,
+      "weight": 5
+     },
+     {
+      "item": "STORM_THE_FISH",
+      "quality": 61,
+      "weight": 5
+     },
+     {
+      "essence": "WITHER",
+      "amount": 1,
+      "quality": 10,
+      "weight": 1
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 1,
+      "quality": 1,
+      "weight": 0
+     },
+     {
+      "item": "SHARD_APEX_DRAGON",
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "item": "SHARD_POWER_DRAGON",
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "UNDEAD",
+      "amount": 125,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "essence": "WITHER",
+      "amount": 100,
+      "quality": 0,
+      "weight": 0
+     },
+     {
+      "item": "DYE_NECRON",
+      "quality": 0,
+      "weight": 0,
+      "chance": 0.04
+     }
+    ]
+   }
+  }
+ }
+}

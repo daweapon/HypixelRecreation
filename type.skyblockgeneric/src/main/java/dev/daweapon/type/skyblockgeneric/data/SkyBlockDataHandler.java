@@ -828,6 +828,9 @@ public class SkyBlockDataHandler extends DataHandler {
 
         CATACOMBS_DAILY("catacombs_daily", false, false, false,
                 DatapointString.class, new DatapointString("catacombs_daily", "")),
+
+        CATACOMBS_CHESTS("catacombs_chests", false, false, false,
+                DatapointString.class, new DatapointString("catacombs_chests", "")),
         ;
 
         @Getter
