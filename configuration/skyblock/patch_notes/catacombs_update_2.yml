@@ -1,0 +1,41 @@
+title: "The Catacombs Update, Part 2"
+date: "4th November 2026"
+intro:
+  - "Everything around a Catacombs run is now in: classes, secrets, the map, reward chests and Croesus. The Catacombs are still a staff preview, and rooms are still placeholders."
+sections:
+  - heading: "Classes"
+    colour: "<a>"
+    lines:
+      - "Pick Healer, Mage, Berserk, Archer or Tank from Mort's Catacombs Gate, or with the Nether Star in a run's starting room."
+      - "The Dungeon Orb works: right-click or Ctrl+Q for your class ability, left-click or Q for your ultimate."
+      - "Class passives are active, and a class that only one party member plays gets double-strength bonuses."
+      - "Ghosts get Haunt and two ghost abilities for their class, including the Healer's Revive Self."
+      - "Each class levels to 50: your class gets full XP and your teammates' classes get a team bonus. Class levels count toward SkyBlock XP."
+  - heading: "Inside the dungeon"
+    colour: "<a>"
+    lines:
+      - "Secrets are live: chests, item pickups, bats and Wither Essence, with x/y Secrets on the action bar."
+      - "Blow open crypts with Superboom TNT and kill the Crypt Undead for up to +5 bonus score."
+      - "Blessings of Life, Power, Stone, Wisdom and Time buff the whole party for the rest of the run."
+      - "The Magical Map in slot 9 fills in as you explore."
+      - "New dungeon tab list and sidebar: keys, time, cleared % with live score, teammates, discoveries and puzzles."
+  - heading: "Rewards"
+    colour: "<a>"
+    lines:
+      - "Winning a run gives Wood, Gold, Diamond, Emerald, Obsidian and Bedrock chests depending on score and floor, with Hypixel's loot tables."
+      - "Open one chest per run; a Dungeon Chest Key opens a second and a Kismet Feather rerolls one. Chests are paid from your purse, then your bank."
+      - "Croesus in the Dungeon Hub keeps unopened chests for 72 hours (up to 60 runs) and also shows your Kuudra chests."
+      - "Bonzo's Mask, Balloon Snake, Necromancer's Brooch and Red Nose can now drop from Floor I chests."
+  - heading: "Dungeoneering"
+    colour: "<a>"
+    lines:
+      - "Dungeoneering is in your Skills menu, with Catacombs level rewards and Your Essence."
+      - "Catacombs levels and floor completions give SkyBlock XP once the Catacombs open."
+      - "Each Catacombs level gives +2 Health inside the Catacombs."
+      - "Dungeon items scale with your Catacombs level and stars inside the Catacombs, shown in dark gray in their lore."
+      - "Dungeon accessories get double Accessory Power in the Catacombs, and Venomous slows 80% less there."
+  - heading: "Not here yet"
+    colour: "<c>"
+    lines:
+      - "Rooms, puzzles, the Watcher and the Bonzo fight are still placeholders, and Floors II to VII and Master Mode stay locked."
+      - "Catacombs level and floor requirements on dungeon items only apply once that floor opens, so your Hyperion keeps working."

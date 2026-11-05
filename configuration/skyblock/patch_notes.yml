@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "catacombs-2"
+    name: "The Catacombs Update, Part 2"
+    date: "4th November 2026"
+    material: wither_skeleton_skull
+    title: "The Catacombs Update, Part 2"
+    book: "catacombs_update_2.yml"
   - version: "loose-ends"
     name: "The Loose Ends Update"
     date: "4th November 2026"
