@@ -23,16 +23,16 @@ import java.util.function.BiConsumer;
 
 @CommandParameters(labels = "catacombsrun",
         description = "Controls the Catacombs run you are in",
-        usage = "/catacombsrun <ready|start|win|lose|boss|clear|clearall|secret|crypt|failpuzzle|die|revive|seed|layout|score|phase|key|door|spawn> [value]",
+        usage = "/catacombsrun <ready|start|win|lose|boss|clear|clearall|secret|crypt|failpuzzle|die|revive|cooldowns|seed|layout|score|phase|key|door|spawn> [value]",
         permission = Rank.STAFF,
         allowsConsole = false)
 public class CatacombsRunCommand extends HypixelCommand {
-    private static final String USAGE = "<c>Usage: /catacombsrun <ready|start|win|lose|boss|clear|clearall|secret|crypt|failpuzzle|die|revive|seed|layout|score|phase|key|door|spawn> [value]";
+    private static final String USAGE = "<c>Usage: /catacombsrun <ready|start|win|lose|boss|clear|clearall|secret|crypt|failpuzzle|die|revive|cooldowns|seed|layout|score|phase|key|door|spawn> [value]";
 
     @Override
     public void registerUsage(MinestomCommand command) {
         ArgumentWord action = new ArgumentWord("action").from("ready", "start", "win", "lose", "boss", "clear", "clearall",
-                "secret", "crypt", "failpuzzle", "die", "revive", "seed", "layout", "score");
+                "secret", "crypt", "failpuzzle", "die", "revive", "cooldowns", "seed", "layout", "score");
         ArgumentWord phaseLiteral = new ArgumentWord("phaseLiteral").from("phase");
         ArgumentWord phase = new ArgumentWord("phase").from(Arrays.stream(DungeonRunPhase.values())
                 .filter(each -> each.ordinal() >= DungeonRunPhase.CLEARING.ordinal() && each.ordinal() <= DungeonRunPhase.BOSS.ordinal())
@@ -132,6 +132,10 @@ public class CatacombsRunCommand extends HypixelCommand {
             });
             case "die" -> player.sendMessage(run.death(player) ? "<a>You died." : "<c>You can't die right now.");
             case "revive" -> player.sendMessage("<a>Revived <e>" + run.reviveAll() + "<a> ghost(s).");
+            case "cooldowns" -> {
+                run.classes().cooldowns().reset(player.getUuid());
+                player.sendMessage("<a>Reset your class ability cooldowns.");
+            }
             case "seed" -> player.sendMessage("<a>Layout seed: <e>" + run.seed());
             case "layout" -> run.arena().layout().render().lines().forEach(line -> player.sendMessage("<7>" + line));
             case "score" -> withEngine(player, run, _ -> score(player, run));

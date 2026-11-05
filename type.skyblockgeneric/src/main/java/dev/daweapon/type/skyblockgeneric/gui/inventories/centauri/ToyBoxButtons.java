@@ -8,7 +8,9 @@ import dev.daweapon.type.skyblockgeneric.crystalhollows.CrystalHollowsAccess;
 import dev.daweapon.type.skyblockgeneric.crystalhollows.NucleusRngMeter;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
 import dev.daweapon.type.skyblockgeneric.drill.DrillFuel;
+import dev.daweapon.dungeons.catacombs.classes.DungeonClassType;
 import dev.daweapon.type.skyblockgeneric.dungeons.CatacombsProgress;
+import dev.daweapon.type.skyblockgeneric.dungeons.DungeonClassProgress;
 import dev.daweapon.type.skyblockgeneric.essence.EssenceType;
 import dev.daweapon.type.skyblockgeneric.essence.Essences;
 import dev.daweapon.type.skyblockgeneric.experiments.EnchantingXpService;
@@ -203,6 +205,12 @@ final class ToyBoxButtons {
 
     static List<ToyBoxButton> dungeons() {
         return List.of(
-                of(Material.WITHER_SKELETON_SKULL, "<c>Catacombs XP", "<8>The dead keep their secrets.", "<7>Gain <c>5,000,000 Catacombs Experience<7>.", p -> CatacombsProgress.addXp(p, 5_000_000L)));
+                of(Material.WITHER_SKELETON_SKULL, "<c>Catacombs XP", "<8>The dead keep their secrets.", "<7>Gain <c>5,000,000 Catacombs Experience<7>.", p -> CatacombsProgress.addXp(p, 5_000_000L)),
+                of(Material.SPLASH_POTION, "<a>Healer XP", "<8>Patch them up.", "<7>Gain <a>5,000,000 Healer Experience<7>.", p -> DungeonClassProgress.addXp(p, DungeonClassType.HEALER, 5_000_000L)),
+                of(Material.BLAZE_ROD, "<a>Mage XP", "<8>Unlimited power, limited mana.", "<7>Gain <a>5,000,000 Mage Experience<7>.", p -> DungeonClassProgress.addXp(p, DungeonClassType.MAGE, 5_000_000L)),
+                of(Material.IRON_SWORD, "<a>Berserk XP", "<8>Hit it until it stops moving.", "<7>Gain <a>5,000,000 Berserk Experience<7>.", p -> DungeonClassProgress.addXp(p, DungeonClassType.BERSERK, 5_000_000L)),
+                of(Material.BOW, "<a>Archer XP", "<8>Keep your distance.", "<7>Gain <a>5,000,000 Archer Experience<7>.", p -> DungeonClassProgress.addXp(p, DungeonClassType.ARCHER, 5_000_000L)),
+                of(Material.LEATHER_CHESTPLATE, "<a>Tank XP", "<8>Stand in front.", "<7>Gain <a>5,000,000 Tank Experience<7>.", p -> DungeonClassProgress.addXp(p, DungeonClassType.TANK, 5_000_000L)),
+                of(Material.NETHER_STAR, "<a>Max Dungeon Classes", "<8>Every class, all the way.", "<7>Set every dungeon class to <a>level 50<7>.", DungeonClassProgress::maxOut));
     }
 }

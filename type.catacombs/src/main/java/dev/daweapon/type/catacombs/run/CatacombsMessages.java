@@ -38,8 +38,8 @@ public final class CatacombsMessages {
         return "<c>" + player + " <7>is no longer ready.";
     }
 
-    public static String classPlaceholder(String className) {
-        return "<7>Your class is <e>" + className + "<7>. Class selection is coming soon.";
+    public static String classSelected(String className) {
+        return "<7>Your selected class is <e>" + className + "<7>. Right-click the <a>Nether Star <7>to change it.";
     }
 
     public static String bloodRoomWithoutKey() {

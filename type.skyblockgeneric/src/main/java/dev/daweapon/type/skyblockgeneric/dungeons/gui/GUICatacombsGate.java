@@ -16,6 +16,7 @@ import dev.daweapon.type.generic.gui.v2.context.ViewContext;
 import dev.daweapon.type.skyblockgeneric.dungeons.CatacombsAvailability;
 import dev.daweapon.type.skyblockgeneric.dungeons.CatacombsProgress;
 import dev.daweapon.type.skyblockgeneric.dungeons.CatacombsRequirements;
+import dev.daweapon.type.skyblockgeneric.dungeons.DungeonClassProgress;
 import dev.daweapon.type.skyblockgeneric.dungeons.DungeonsUnreleased;
 import dev.daweapon.type.skyblockgeneric.dungeons.queue.CatacombsPartyCheck;
 import dev.daweapon.type.skyblockgeneric.dungeons.queue.CatacombsQueue;
@@ -26,8 +27,8 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Mort's Catacombs Gate. Entrance and Floor I queue the party; the other floors, Master Mode, classes and the
- * profile and rules menus stay locked until they exist. Shared by the Hub and Dungeon Hub Morts.
+ * Mort's Catacombs Gate. Entrance and Floor I queue the party and Dungeon Classes picks a class; the other floors,
+ * Master Mode and the profile and rules menus stay locked until they exist. Shared by the Hub and Dungeon Hub Morts.
  */
 public class GUICatacombsGate extends StatelessView {
     private final Consumer<SkyBlockPlayer> onLowCombat;
@@ -68,9 +69,14 @@ public class GUICatacombsGate extends StatelessView {
                 <c>Master Mode
                 <8><italic>Like normal Dungeons... but
                 <8><italic>more hardcore.""");
-        DungeonsUnreleased.slot(layout, 45, Material.NETHER_STAR, """
+        layout.slot(45, (s, c) -> ItemStacks.item(Material.NETHER_STAR, """
                 <a>Dungeon Classes
-                <7>View and select a dungeon class.""");
+                <7>View and select a dungeon class.
+
+                <a>Currently Selected: <b>{}
+
+                <e>Click to open!""", DungeonClassProgress.selected((SkyBlockPlayer) c.player()).displayName()),
+                (click, c) -> Components.open(c, new GUIDungeonClasses(), new DefaultState()));
         layout.slot(48, ItemStacks.item(Material.REDSTONE_BLOCK, """
                 <a>Find a Party
                 <7>Use the Party Finder to join a

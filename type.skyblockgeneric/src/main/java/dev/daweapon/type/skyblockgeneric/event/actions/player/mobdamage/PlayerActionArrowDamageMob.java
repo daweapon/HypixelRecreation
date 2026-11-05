@@ -67,11 +67,13 @@ public class PlayerActionArrowDamageMob implements HypixelEventClass {
         double damage = hit.getKey() * pierceFactor * snipeMultiplier(arrow, bow, collidedWith)
                 * AttributeEffectService.outgoingDamageMultiplier(shooter.getHuntingData(), collidedWith, true)
                 * (1 + AttributeEffectService.lifelinePercent(shooter) / 100D)
-                * CombatPetHooks.arrowMultiplier(shooter, collidedWith);
+                * CombatPetHooks.arrowMultiplier(shooter, collidedWith)
+                * dev.daweapon.type.skyblockgeneric.dungeons.DungeonClassHooks.arrowMultiplier(shooter, collidedWith);
         boolean critical = hit.getValue();
 
         float damageAmount = (float) damage;
         if (!AttackService.applyHit(shooter, collidedWith, damageAmount, critical)) return;
+        dev.daweapon.type.skyblockgeneric.dungeons.DungeonClassHooks.arrowHit(shooter, collidedWith, damageAmount);
         CombatPetHooks.bowHit(shooter);
         dev.daweapon.type.skyblockgeneric.item.armor.ArmorHitEffects.onArrowHit(shooter, collidedWith);
         ArrowEffects.onHit(shooter, arrow, collidedWith, damageAmount, critical);

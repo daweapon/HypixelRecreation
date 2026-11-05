@@ -68,7 +68,8 @@ public class PlayerActionDamageMob implements HypixelEventClass {
                 * dev.daweapon.type.skyblockgeneric.slayer.zombie.ZombieSlayerGear.outgoingMultiplier(player, mob)
                 * dev.daweapon.type.skyblockgeneric.enchantment.impl.EnchantmentHabaneroTactics.outgoingMultiplier(player, mob)
                 * dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.outgoingMultiplier(player, mob)
-                * dev.daweapon.type.skyblockgeneric.hotf.HotfAbilities.outgoingMultiplier(player);
+                * dev.daweapon.type.skyblockgeneric.hotf.HotfAbilities.outgoingMultiplier(player)
+                * dev.daweapon.type.skyblockgeneric.dungeons.DungeonClassHooks.meleeMultiplier(player, mob);
         boolean critical = hit.getValue();
 
         PlayerDamageMobValueUpdateEvent valueEvent = new PlayerDamageMobValueUpdateEvent(
@@ -84,6 +85,7 @@ public class PlayerActionDamageMob implements HypixelEventClass {
                 * (float) ReforgeLoadout.outgoingMultiplier(player, mob, critical)
                 + (float) dev.daweapon.type.skyblockgeneric.essence.DragonEssencePerks.firstStrikeBonus(player, mob);
         if (!AttackService.applyHit(player, mob, damageAmount, critical)) return;
+        dev.daweapon.type.skyblockgeneric.dungeons.DungeonClassHooks.meleeHit(player, mob, damageAmount);
         dev.daweapon.type.skyblockgeneric.item.armor.ArmorAbilityEffects.afterMeleeHit(player, mob, damageAmount, critical);
         dev.daweapon.type.skyblockgeneric.item.armor.ArmorHitEffects.onMeleeHit(player, mob);
         dev.daweapon.type.skyblockgeneric.slayer.zombie.ZombieSlayerGear.onMeleeHit(player);

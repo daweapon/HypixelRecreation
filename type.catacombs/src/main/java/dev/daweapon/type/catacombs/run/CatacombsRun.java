@@ -11,6 +11,8 @@ import dev.daweapon.dungeons.catacombs.run.DungeonRunPhase;
 import dev.daweapon.dungeons.catacombs.run.DungeonRunRules;
 import dev.daweapon.dungeons.catacombs.run.DungeonScoreBreakdown;
 import dev.daweapon.type.catacombs.arena.CatacombsArena;
+import dev.daweapon.type.catacombs.classes.ClassHost;
+import dev.daweapon.type.catacombs.classes.RunClasses;
 import dev.daweapon.type.catacombs.engine.DungeonEngine;
 import dev.daweapon.type.catacombs.engine.DungeonHost;
 import dev.daweapon.type.catacombs.engine.KeyRing;
@@ -18,6 +20,7 @@ import dev.daweapon.type.game.game.AbstractGame;
 import dev.daweapon.type.game.game.event.PlayerPostJoinGameEvent;
 import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.skyblockgeneric.dungeons.CatacombsProgress;
+import dev.daweapon.type.skyblockgeneric.dungeons.DungeonClassProgress;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
@@ -30,6 +33,7 @@ import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
 import java.time.Clock;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -38,7 +42,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /** One party's Catacombs run in its own placeholder dungeon. */
-public final class CatacombsRun extends AbstractGame<CatacombsParticipant> implements DungeonHost {
+public final class CatacombsRun extends AbstractGame<CatacombsParticipant> implements DungeonHost, ClassHost {
     public static final int SHUTDOWN_SECONDS = 20;
     private static final int POLL_TICKS = 5;
     private static final int TRANSFER_GRACE_TICKS = 200;
@@ -56,7 +60,7 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
     private final CatacombsLifecycle lifecycle;
     private final GhostRoster ghosts;
     private final KeyRing keys = new KeyRing();
-    private final Map<UUID, DungeonClassType> classes = new ConcurrentHashMap<>();
+    private final RunClasses classes = new RunClasses(this);
     private final List<Task> tasks = new CopyOnWriteArrayList<>();
     private volatile long emptySince = System.currentTimeMillis();
     private volatile @Nullable DungeonEngine engine;
@@ -71,9 +75,9 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
         this.creator = roster.getFirst();
         this.arena = arena;
         this.seed = seed;
-        DungeonClassType[] types = DungeonClassType.values();
-        for (int index = 0; index < roster.size(); index++) classes.put(roster.get(index), types[index % types.length]);
-        CatacombsRunConfig config = new CatacombsRunConfig(definition, classes, arena.layout().totalRooms(),
+        Map<UUID, DungeonClassType> partyClasses = new HashMap<>();
+        roster.forEach(member -> partyClasses.put(member, DungeonClassProgress.DEFAULT_CLASS));
+        CatacombsRunConfig config = new CatacombsRunConfig(definition, partyClasses, arena.layout().totalRooms(),
                 arena.layout().totalSecrets(), true);
         this.lifecycle = new CatacombsLifecycle(config, Clock.systemUTC(), SHUTDOWN_SECONDS);
         DungeonRunRules rules = definition.rules();
@@ -126,8 +130,10 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
         boolean waiting = lifecycle.stage() == CatacombsLifecycle.Stage.WAITING;
         player.setRespawnPoint(arena.entranceSpawn());
         player.setInstance(arena.instance(), waiting ? arena.entranceSpawn() : rejoinSpot()).thenRun(() -> {
+            classes.admit(player, waiting);
             if (waiting) greet(player);
             else if (ghosts.isGhost(player.getUuid())) applyGhost(player);
+            if (!waiting) classes.rejoin(player);
         });
         return true;
     }
@@ -137,7 +143,7 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
     }
 
     private void greet(SkyBlockPlayer player) {
-        player.sendMessage(CatacombsMessages.classPlaceholder(classes.get(player.getUuid()).displayName()));
+        player.sendMessage(CatacombsMessages.classSelected(classes.selectedOf(player.getUuid()).displayName()));
         CatacombsItems.showReady(player, readyCheck.isReady(player.getUuid()));
         player.sendMessage("<7>Right-click the dye or use <e>/catacombsrun ready <7>to ready up.");
     }
@@ -182,6 +188,7 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
         if (!lifecycle.begin()) return false;
         super.start();
         onlineMembers().forEach(CatacombsItems::remove);
+        classes.begin(onlineMembers());
         engine = new DungeonEngine(this, arena.layout(), definition);
         CatacombsMessages.dungeonEntered(floorId.floor(), floorId.mode()).forEach(this::broadcast);
         return true;
@@ -218,6 +225,7 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
         if (running != null) running.dispose();
         onlineMembers().forEach(CatacombsItems::remove);
         onlineMembers().stream().filter(member -> ghosts.revive(member.getUuid())).forEach(this::releaseGhost);
+        classes.conclude(onlineMembers());
         boolean win = outcome == CatacombsLifecycle.Outcome.WIN;
         CatacombsRunState state = lifecycle.state();
         if (state != null) {
@@ -232,6 +240,7 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
     private void reward(SkyBlockPlayer player, DungeonScoreBreakdown score) {
         try {
             CatacombsProgress.completeRun(player, floorId.floor(), floorId.mode(), score.total(), score.rank());
+            classes.reward(player, floorId.floor());
         } catch (Exception exception) {
             Logger.error(exception, "Couldn't pay {}'s Catacombs {} win", player.getUsername(), floorId.floor());
             player.sendMessage("<c>Something went wrong paying out your Catacombs rewards. Please report this to staff.");
@@ -272,9 +281,11 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
         player.setAllowFlying(true);
         player.setFlying(true);
         player.setInvisible(true);
+        classes.onGhost(player);
     }
 
     private void releaseGhost(SkyBlockPlayer player) {
+        classes.onRevive(player);
         player.setInvisible(false);
         player.setFlying(false);
         player.setAllowFlying(false);
@@ -303,7 +314,10 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
             return;
         }
         CatacombsLifecycle.Tick tick = lifecycle.tick();
-        if (lifecycle.stage() == CatacombsLifecycle.Stage.ACTIVE) reviveDue();
+        if (lifecycle.stage() == CatacombsLifecycle.Stage.ACTIVE) {
+            reviveDue();
+            classes.tickSecond();
+        }
         if (tick == CatacombsLifecycle.Tick.TIMED_OUT) {
             broadcast("<c>The dungeon ran out of time!");
             conclude(CatacombsLifecycle.Outcome.LOSE);
@@ -446,6 +460,25 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
 
     public GhostRoster ghosts() {
         return ghosts;
+    }
+
+    public RunClasses classes() {
+        return classes;
+    }
+
+    @Override
+    public boolean isGhost(UUID player) {
+        return ghosts.isGhost(player);
+    }
+
+    @Override
+    public boolean classesActive() {
+        return lifecycle.stage() == CatacombsLifecycle.Stage.ACTIVE;
+    }
+
+    @Override
+    public boolean reviveAfter(UUID player, int seconds) {
+        return ghosts.reviveAfter(player, seconds);
     }
 
     public @Nullable DungeonEngine engine() {

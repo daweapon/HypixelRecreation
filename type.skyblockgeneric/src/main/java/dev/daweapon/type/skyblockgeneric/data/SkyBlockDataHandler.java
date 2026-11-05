@@ -828,6 +828,24 @@ public class SkyBlockDataHandler extends DataHandler {
 
         CATACOMBS_DAILY("catacombs_daily", false, false, false,
                 DatapointString.class, new DatapointString("catacombs_daily", "")),
+
+        DUNGEON_CLASS("dungeon_class", false, false, false,
+                DatapointString.class, new DatapointString("dungeon_class", "")),
+
+        HEALER_CLASS_XP("healer_class_xp", false, false, false,
+                DatapointLong.class, new DatapointLong("healer_class_xp", 0L)),
+
+        MAGE_CLASS_XP("mage_class_xp", false, false, false,
+                DatapointLong.class, new DatapointLong("mage_class_xp", 0L)),
+
+        BERSERK_CLASS_XP("berserk_class_xp", false, false, false,
+                DatapointLong.class, new DatapointLong("berserk_class_xp", 0L)),
+
+        ARCHER_CLASS_XP("archer_class_xp", false, false, false,
+                DatapointLong.class, new DatapointLong("archer_class_xp", 0L)),
+
+        TANK_CLASS_XP("tank_class_xp", false, false, false,
+                DatapointLong.class, new DatapointLong("tank_class_xp", 0L)),
         ;
 
         @Getter

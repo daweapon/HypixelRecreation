@@ -54,6 +54,7 @@ public final class MobAttackService {
         PetEvent.DamagedByMob damageEvent = player.getPetData()
                 .dispatch(new PetEvent.DamagedByMob(player, pet, mob, finalDamage));
         finalDamage = (float) (damageEvent.damage() * mob.outgoingDamageMultiplier(player));
+        finalDamage = dev.daweapon.type.skyblockgeneric.dungeons.DungeonClassHooks.incomingDamage(player, mob, finalDamage);
 
         dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetService.fire(player, dev.daweapon.type.skyblockgeneric.user.pets.autopet.AutopetTrigger.ENTER_COMBAT);
         CombatPetHooks.mobAttacked(player, mob);

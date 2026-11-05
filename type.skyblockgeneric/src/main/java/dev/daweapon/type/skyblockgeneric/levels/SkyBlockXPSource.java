@@ -292,7 +292,7 @@ public enum SkyBlockXPSource {
         if (this == DEFEAT_KUUDRA || this == BOSS_COLLECTIONS) {
             return KuudraAvailability.isFightAvailable() ? Availability.LIVE : Availability.NOT_IN_GAME;
         }
-        if (this == CATACOMBS_LEVEL_UP || this == COMPLETE_DUNGEONS) {
+        if (this == CATACOMBS_LEVEL_UP || this == COMPLETE_DUNGEONS || this == CLASS_LEVEL_UP) {
             return CatacombsAvailability.isPublic() ? Availability.LIVE : Availability.NOT_IN_GAME;
         }
         return availability;
