@@ -16,6 +16,7 @@ import dev.daweapon.type.generic.tab.TablistSkinRegistry;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.type.skyblockgeneric.tabmodules.AccountInformationModule;
 import dev.daweapon.type.skyblockgeneric.tabmodules.SkyBlockPlayersOnlineModule;
+import dev.daweapon.type.skyblockgeneric.dungeons.DungeonClassProgress;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -70,7 +71,8 @@ public final class CatacombsTabList extends TablistManager {
         var rank = member.getDataHandler().get(HypixelDataHandler.Data.RANK, DatapointRank.class).getValue();
         DungeonClassType dungeonClass = run.classOf(member.getUuid());
         return new CatacombsTabLines.Member(member.getSkyBlockExperience().getLevel().asInt(), rank.getTextColor().asHexString(),
-                member.getUsername(), dungeonClass == null ? "EMPTY" : dungeonClass.displayName(), 0,
+                member.getUsername(), dungeonClass == null ? "EMPTY" : dungeonClass.displayName(),
+                dungeonClass == null ? 0 : DungeonClassProgress.level(member, dungeonClass),
                 run.ghosts().isGhost(member.getUuid()));
     }
 

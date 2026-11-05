@@ -507,7 +507,7 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
     }
 
     public DungeonClassType classOf(UUID player) {
-        return classes.get(player);
+        return classes.classOf(player);
     }
 
     public boolean started() {
