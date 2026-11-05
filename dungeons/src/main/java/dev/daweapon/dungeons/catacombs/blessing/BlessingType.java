@@ -14,7 +14,7 @@ public enum BlessingType {
             new BlessingEffect(BlessingStat.DAMAGE, 0, 6))),
     WISDOM("Blessing of Wisdom", List.of(
             new BlessingEffect(BlessingStat.INTELLIGENCE, 2, 4),
-            new BlessingEffect(BlessingStat.SPEED, 0, 0))),
+            new BlessingEffect(BlessingStat.SPEED, 0, 4))),
     TIME("Blessing of Time", List.of(
             new BlessingEffect(BlessingStat.HEALTH, 2, 4),
             new BlessingEffect(BlessingStat.INTELLIGENCE, 2, 4),

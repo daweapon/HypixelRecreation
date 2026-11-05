@@ -472,6 +472,10 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
         return keys;
     }
 
+    public DungeonClassType classOf(UUID player) {
+        return classes.get(player);
+    }
+
     public boolean started() {
         return lifecycle.stage() != CatacombsLifecycle.Stage.WAITING;
     }

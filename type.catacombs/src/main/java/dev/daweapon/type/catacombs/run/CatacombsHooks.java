@@ -1,8 +1,10 @@
 package dev.daweapon.type.catacombs.run;
 
+import dev.daweapon.type.catacombs.engine.DungeonEngine;
+import dev.daweapon.type.skyblockgeneric.user.MenuSlotOverride;
 import dev.daweapon.type.skyblockgeneric.user.PlayerDeathOverrides;
 
-/** Plugs the run's ghost rules into SkyBlock's death path. */
+/** Plugs the run's ghost rules into SkyBlock's death path and its Magical Map into the SkyBlock Menu slot. */
 public final class CatacombsHooks {
     private CatacombsHooks() {
     }
@@ -11,6 +13,12 @@ public final class CatacombsHooks {
         PlayerDeathOverrides.register(player -> {
             CatacombsRun run = CatacombsRuns.of(player.getUuid());
             return run != null && run.death(player);
+        });
+        MenuSlotOverride.register(player -> {
+            CatacombsRun run = CatacombsRuns.of(player.getUuid());
+            if (run == null || run.lifecycle().stage() != CatacombsLifecycle.Stage.ACTIVE) return null;
+            DungeonEngine engine = run.engine();
+            return engine == null ? null : engine.map().item();
         });
     }
 }

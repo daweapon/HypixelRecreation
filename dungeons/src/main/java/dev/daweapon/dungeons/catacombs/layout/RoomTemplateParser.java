@@ -59,7 +59,7 @@ final class RoomTemplateParser {
         List<String> tags = parseTags(object, label);
         List<DoorSocket> sockets = parseSockets(object, shape, label);
         List<MobSpawnPoint> spawns = parseSpawns(object, shape, label);
-        List<SecretAnchor> anchors = parseAnchors(object, label);
+        List<SecretAnchor> anchors = parseAnchors(object, shape, label);
         if (anchors.size() > secretCount) {
             throw RoomTemplateException.invalidField(label, "secretAnchors", anchors.size() + " anchors exceed secretCount " + secretCount);
         }
@@ -101,8 +101,6 @@ final class RoomTemplateParser {
     private static List<MobSpawnPoint> parseSpawns(JsonObject object, RoomShape shape, String label) {
         List<MobSpawnPoint> spawns = new ArrayList<>();
         Set<String> ids = new HashSet<>();
-        double maxX = CellGeometry.widthBlocks(shape, Rotation.DEG_0);
-        double maxZ = CellGeometry.depthBlocks(shape, Rotation.DEG_0);
         for (JsonElement element : optionalArray(object, "mobSpawns", label)) {
             JsonObject spawnObject = requiredObject(element, "mobSpawns", label);
             String spawnLabel = label + " mobSpawns entry";
@@ -115,7 +113,7 @@ final class RoomTemplateParser {
             if (!ids.add(id)) {
                 throw RoomTemplateException.invalidField(label, "mobSpawns", "duplicate spawn id '" + id + "'");
             }
-            if (x < 0 || x > maxX || z < 0 || z > maxZ) {
+            if (!insideShape(shape, x, z)) {
                 throw RoomTemplateException.invalidField(label, "mobSpawns", "spawn '" + id + "' is outside the room footprint");
             }
             spawns.add(new MobSpawnPoint(id, x, y, z, mobId, starred));
@@ -123,16 +121,27 @@ final class RoomTemplateParser {
         return spawns;
     }
 
-    private static List<SecretAnchor> parseAnchors(JsonObject object, String label) {
+    private static boolean insideShape(RoomShape shape, double x, double z) {
+        if (x < 0 || z < 0) {
+            return false;
+        }
+        return shape.containsBaseCell(new Cell((int) (x / CellGeometry.CELL_PITCH), (int) (z / CellGeometry.CELL_PITCH)));
+    }
+
+    private static List<SecretAnchor> parseAnchors(JsonObject object, RoomShape shape, String label) {
         List<SecretAnchor> anchors = new ArrayList<>();
         for (JsonElement element : optionalArray(object, "secretAnchors", label)) {
             JsonObject anchorObject = requiredObject(element, "secretAnchors", label);
             String anchorLabel = label + " secretAnchors entry";
-            anchors.add(new SecretAnchor(
+            SecretAnchor anchor = new SecretAnchor(
                     requiredEnum(SecretType.class, anchorObject, "type", anchorLabel),
                     requiredInt(anchorObject, "x", anchorLabel, Integer.MIN_VALUE),
                     requiredInt(anchorObject, "y", anchorLabel, Integer.MIN_VALUE),
-                    requiredInt(anchorObject, "z", anchorLabel, Integer.MIN_VALUE)));
+                    requiredInt(anchorObject, "z", anchorLabel, Integer.MIN_VALUE));
+            if (!insideShape(shape, anchor.x(), anchor.z())) {
+                throw RoomTemplateException.invalidField(label, "secretAnchors", "anchor at " + anchor.x() + "," + anchor.z() + " is outside shape " + shape);
+            }
+            anchors.add(anchor);
         }
         return anchors;
     }

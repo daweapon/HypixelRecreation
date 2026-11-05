@@ -6,6 +6,8 @@ public enum SecretRewardType {
     DECOY,
     TRAINING_WEIGHTS,
     SPIRIT_LEAP,
+    SUPERBOOM_TNT,
+    REVIVE_STONE,
     INFLATABLE_JERRY,
     TRAP,
     DEFUSE_KIT,
