@@ -16,31 +16,30 @@ import net.minestom.server.instance.InstanceManager;
 import net.minestom.server.instance.SharedInstance;
 import net.minestom.server.instance.block.Block;
 
-/** One run's own placeholder dungeon: the generated layout stamped as a flat grid on a private instance. */
+/** One run's own dungeon on a private instance: real rooms where the layout picked one, placeholder boxes elsewhere. */
 public final class CatacombsArena {
-    private static final int STANDING_OFFSET = CatacombsBlockPlan.MARKER_RADIUS + 2;
     private static final Key FULLBRIGHT_DIMENSION = Key.key("skyblock:island");
 
     private final InstanceContainer container;
     private final SharedInstance instance;
     private final FloorLayout layout;
-    private final CatacombsBlockPlan plan;
+    private final CatacombsArenaBlocks blocks;
 
-    private CatacombsArena(InstanceContainer container, SharedInstance instance, FloorLayout layout, CatacombsBlockPlan plan) {
+    private CatacombsArena(InstanceContainer container, SharedInstance instance, FloorLayout layout, CatacombsArenaBlocks blocks) {
         this.container = container;
         this.instance = instance;
         this.layout = layout;
-        this.plan = plan;
+        this.blocks = blocks;
     }
 
     public static CatacombsArena create(CatacombsFloor floor, CatacombsMode mode, long seed) {
         FloorLayout layout = FloorLayoutGenerator.generate(floor, mode, seed, CatacombsTemplates.get());
-        CatacombsBlockPlan plan = new CatacombsBlockPlan(layout);
+        CatacombsArenaBlocks blocks = CatacombsArenaBlocks.of(layout, RoomStructures.shared());
         InstanceManager manager = MinecraftServer.getInstanceManager();
         InstanceContainer container = manager.createInstanceContainer(
                 MinecraftServer.getDimensionTypeRegistry().getKey(FULLBRIGHT_DIMENSION));
-        container.setGenerator(new CatacombsPlaceholderGenerator(plan));
-        return new CatacombsArena(container, manager.createSharedInstance(container), layout, plan);
+        container.setGenerator(new CatacombsArenaGenerator(blocks));
+        return new CatacombsArena(container, manager.createSharedInstance(container), layout, blocks);
     }
 
     public SharedInstance instance() {
@@ -52,7 +51,11 @@ public final class CatacombsArena {
     }
 
     public CatacombsBlockPlan plan() {
-        return plan;
+        return blocks.plan();
+    }
+
+    public CatacombsArenaBlocks blocks() {
+        return blocks;
     }
 
     public Pos entranceSpawn() {
@@ -60,8 +63,7 @@ public final class CatacombsArena {
     }
 
     public Pos roomCentre(PlacedRoom room) {
-        CellGeometry.BlockPosition centre = CellGeometry.roomCenter(room.cells().getFirst());
-        return new Pos(centre.x() + 0.5, centre.y() + 1, centre.z() + 0.5 + STANDING_OFFSET);
+        return blocks.standPoint(room);
     }
 
     public Pos mobSpawn(PlacedRoom room, MobSpawnPoint spawn) {

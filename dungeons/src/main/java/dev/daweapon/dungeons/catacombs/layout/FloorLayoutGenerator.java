@@ -8,6 +8,7 @@ import java.util.Random;
 
 public final class FloorLayoutGenerator {
     private static final int MAX_ATTEMPTS = 500;
+    private static final int REAL_ROOM_ATTEMPTS = 300;
     private static final long ATTEMPT_MIX = 0x9E3779B97F4A7C15L;
 
     private FloorLayoutGenerator() {
@@ -26,7 +27,7 @@ public final class FloorLayoutGenerator {
         requireTemplates(floor, library);
         for (int attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
             Random random = new Random(seed + attempt * ATTEMPT_MIX);
-            FloorLayout layout = new LayoutAttempt(floor, mode, seed, library, budget, random).build();
+            FloorLayout layout = new LayoutAttempt(floor, mode, seed, library, budget, random, attempt < REAL_ROOM_ATTEMPTS).build();
             if (layout != null) {
                 return layout;
             }

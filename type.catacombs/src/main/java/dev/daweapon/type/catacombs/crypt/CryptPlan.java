@@ -15,9 +15,9 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- * Where the placeholder dungeon's crypts go. Real rooms carry their crypts in their build; placeholder rooms get up to
- * two tombs per standard room in free corners, seeded by the layout, and at least {@link #MINIMUM} in the dungeon so the
- * full crypt bonus is always reachable.
+ * Where the dungeon's crypts go: up to two tombs per standard room, seeded by the layout, and at least {@link #MINIMUM}
+ * in the dungeon so the full crypt bonus is always reachable. A real room offers the crypt spots listed in its template;
+ * a placeholder room offers its free corners.
  */
 public final class CryptPlan {
     public static final int MINIMUM = 5;
@@ -63,12 +63,15 @@ public final class CryptPlan {
     }
 
     private static List<int[]> freeCorners(PlacedRoom room) {
+        if (!room.template().crypts().isEmpty()) {
+            return room.template().crypts().stream().map(spot -> new int[]{spot.x(), spot.z(), spot.y()}).toList();
+        }
         List<int[]> corners = new ArrayList<>();
         for (Cell cell : room.shape().baseCells()) {
             for (int[] corner : CORNERS) {
                 int x = cell.col() * CellGeometry.CELL_PITCH + corner[0];
                 int z = cell.row() * CellGeometry.CELL_PITCH + corner[1];
-                if (clear(room, x, z)) corners.add(new int[]{x, z});
+                if (clear(room, x, z)) corners.add(new int[]{x, z, 1});
             }
         }
         return corners;
@@ -93,7 +96,7 @@ public final class CryptPlan {
     private static Crypt place(int id, PlacedRoom room, int[] local) {
         CellGeometry.BlockPosition origin = CellGeometry.blockOrigin(room.origin());
         CellGeometry.PlanarPoint rotated = CellGeometry.rotateLocal(local[0] + 0.5, local[1] + 0.5, room.shape(), room.rotation());
-        return new Crypt(id, room.index(), origin.x() + (int) Math.floor(rotated.x()), CellGeometry.FLOOR_Y + 1,
+        return new Crypt(id, room.index(), origin.x() + (int) Math.floor(rotated.x()), CellGeometry.FLOOR_Y + local[2],
                 origin.z() + (int) Math.floor(rotated.z()));
     }
 }

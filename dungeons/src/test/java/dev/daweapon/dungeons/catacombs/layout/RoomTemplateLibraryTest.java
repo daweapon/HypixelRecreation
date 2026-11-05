@@ -27,10 +27,10 @@ class RoomTemplateLibraryTest {
     }
 
     @Test
-    void placeholderFileLoadsWithAllKinds() {
+    void roomFolderLoadsWithAllKinds() {
         RoomTemplateLibrary library = PlaceholderLibrary.load();
         for (RoomShape shape : RoomShape.values()) {
-            assertTrue(library.templates(RoomKind.NORMAL, shape).size() >= 4, shape.name());
+            assertFalse(library.templates(RoomKind.NORMAL, shape).isEmpty(), shape.name());
         }
         assertTrue(library.templates(RoomKind.PUZZLE).size() >= 2);
         assertFalse(library.templates(RoomKind.ENTRANCE).isEmpty());
@@ -38,8 +38,59 @@ class RoomTemplateLibraryTest {
         assertFalse(library.templates(RoomKind.BLOOD).isEmpty());
         assertFalse(library.templates(RoomKind.MINIBOSS).isEmpty());
         assertFalse(library.templates(RoomKind.TRAP).isEmpty());
-        assertTrue(library.all().stream().allMatch(RoomTemplate::placeholder));
         assertTrue(library.find("placeholder_puzzle_three_weirdos").isPresent());
+    }
+
+    @Test
+    void realRoomsCarryTheirBlocksAndReplaceTheSpecialPlaceholders() {
+        RoomTemplateLibrary library = PlaceholderLibrary.load();
+        List<RoomTemplate> real = library.all().stream().filter(template -> !template.placeholder()).toList();
+        assertEquals(16, real.size());
+        for (RoomTemplate template : real) {
+            assertTrue(template.blocks().isPresent(), template.id());
+            assertTrue(template.stand().isPresent(), template.id());
+            assertTrue(template.restrictsDoors(), template.id());
+            assertEquals(template.secretCount(), template.secretAnchors().size(), template.id());
+        }
+        for (RoomKind kind : List.of(RoomKind.ENTRANCE, RoomKind.FAIRY, RoomKind.BLOOD, RoomKind.MINIBOSS, RoomKind.TRAP)) {
+            assertTrue(library.templates(kind).stream().noneMatch(RoomTemplate::placeholder), kind.name());
+        }
+        for (RoomShape shape : List.of(RoomShape.ONE_BY_THREE, RoomShape.ONE_BY_FOUR, RoomShape.TWO_BY_TWO, RoomShape.L_SHAPE)) {
+            assertTrue(library.templates(RoomKind.NORMAL, shape).stream().noneMatch(RoomTemplate::placeholder), shape.name());
+        }
+        RoomTemplate start = library.find("start").orElseThrow();
+        assertEquals(Rotation.DEG_180, start.fixedRotation());
+        assertEquals(RoomKind.ENTRANCE, start.kind());
+        assertEquals(RoomShape.TWO_BY_TWO, library.find("museum").orElseThrow().shape());
+        assertEquals(5, library.find("museum").orElseThrow().secretCount());
+    }
+
+    @Test
+    void structureStandPointCryptsAndRotationLockParse() {
+        String json = template("").replace("\"secretAnchors\"", "\"structure\": {\"file\": \"m7/x.schem\", \"x\": 0, \"y\": -3, \"z\": -2},"
+                + " \"standPoint\": {\"x\": 15.5, \"y\": 1, \"z\": 4.5}, \"crypts\": [{\"x\": 9, \"y\": 2, \"z\": 10}],"
+                + " \"fixedRotation\": \"DEG_180\", \"secretAnchors\"");
+        RoomTemplate loaded = RoomTemplateLibrary.fromJson("test.json", "{\"templates\": [" + json + "]}").find("t1").orElseThrow();
+        assertEquals(new RoomStructure("m7/x.schem", 0, -3, -2), loaded.structure());
+        assertEquals(new StandPoint(15.5, 1, 4.5), loaded.standPoint());
+        assertEquals(List.of(new CryptSpot(9, 2, 10)), loaded.crypts());
+        assertEquals(Rotation.DEG_180, loaded.fixedRotation());
+    }
+
+    @Test
+    void structureOutsideTheRoomsFolderIsRejected() {
+        String json = template("").replace("\"secretAnchors\"", "\"structure\": {\"file\": \"../x.schem\", \"x\": 0, \"y\": 0, \"z\": 0}, \"secretAnchors\"");
+        assertTrue(rejected(json).getMessage().contains("'structure'"));
+    }
+
+    @Test
+    void socketsLimitDoorsPerRotation() {
+        RoomTemplate template = RoomTemplateLibrary.fromJson("test.json", "{\"templates\": [" + template("") + "]}").find("t1").orElseThrow();
+        assertTrue(template.allowsDoor(Rotation.DEG_0, new Cell(0, 0), Side.NORTH));
+        assertFalse(template.allowsDoor(Rotation.DEG_0, new Cell(0, 0), Side.EAST));
+        assertTrue(template.allowsDoor(Rotation.DEG_90, new Cell(0, 0), Side.EAST));
+        assertEquals(List.of(Rotation.DEG_270), template.rotationsAllowing(java.util.Set.of(Side.WEST)));
+        assertTrue(template.rotationsAllowing(java.util.Set.of(Side.WEST, Side.EAST)).isEmpty());
     }
 
     @Test

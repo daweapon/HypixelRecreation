@@ -33,4 +33,12 @@ public record PlacedRoom(
     public boolean occupies(Cell cell) {
         return cells.contains(cell);
     }
+
+    public boolean allowsDoor(Cell cell, Side side) {
+        return template.allowsDoor(rotation, new Cell(cell.col() - origin.col(), cell.row() - origin.row()), side);
+    }
+
+    public PlacedRoom withRotation(Rotation turned) {
+        return new PlacedRoom(index, template, turned, origin, cells, onCriticalPath);
+    }
 }

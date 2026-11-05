@@ -37,7 +37,7 @@ class SecretSpotsTest {
     }
 
     @Test
-    void everyAnchorLandsInsideItsOwnRoomOnTheFloor() {
+    void everyAnchorLandsInsideItsOwnRoomAtItsHeight() {
         for (long seed = 0; seed < 25; seed++) {
             FloorLayout layout = FloorLayoutGenerator.generate(CatacombsFloor.FLOOR_ONE, CatacombsMode.NORMAL, seed, library);
             List<SecretSpot> spots = SecretSpots.of(layout);
@@ -46,7 +46,7 @@ class SecretSpotsTest {
             Set<SecretLedger.Key> keys = new HashSet<>();
             for (SecretSpot spot : spots) {
                 assertTrue(keys.add(spot.key()), "duplicate secret key " + spot.key());
-                assertEquals(CellGeometry.FLOOR_Y + 1, spot.y());
+                assertEquals(CellGeometry.FLOOR_Y + layout.room(spot.room()).template().secretAnchors().get(spot.anchor()).y(), spot.y());
                 Cell cell = new Cell((spot.x() - CellGeometry.ORIGIN_X) / CellGeometry.CELL_PITCH,
                         (spot.z() - CellGeometry.ORIGIN_Z) / CellGeometry.CELL_PITCH);
                 assertTrue(layout.room(spot.room()).occupies(cell), "seed " + seed + " spot " + spot);

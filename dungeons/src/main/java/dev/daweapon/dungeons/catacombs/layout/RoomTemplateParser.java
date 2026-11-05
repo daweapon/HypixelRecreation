@@ -63,7 +63,62 @@ final class RoomTemplateParser {
         if (anchors.size() > secretCount) {
             throw RoomTemplateException.invalidField(label, "secretAnchors", anchors.size() + " anchors exceed secretCount " + secretCount);
         }
-        return new RoomTemplate(id, name, shape, kind, secretCount, placeholder, tags, sockets, spawns, anchors);
+        RoomStructure structure = parseStructure(object, label);
+        StandPoint stand = parseStand(object, shape, label);
+        List<CryptSpot> crypts = parseCrypts(object, shape, label);
+        Rotation fixedRotation = object.has("fixedRotation") ? requiredEnum(Rotation.class, object, "fixedRotation", label) : null;
+        if (fixedRotation != null && shape != RoomShape.ONE_BY_ONE) {
+            throw RoomTemplateException.invalidField(label, "fixedRotation", "only a ONE_BY_ONE room can lock its rotation");
+        }
+        return new RoomTemplate(id, name, shape, kind, secretCount, placeholder, tags, sockets, spawns, anchors,
+                structure, stand, crypts, fixedRotation);
+    }
+
+    private static RoomStructure parseStructure(JsonObject object, String label) {
+        if (!object.has("structure")) {
+            return null;
+        }
+        JsonObject structure = requiredObject(object.get("structure"), "structure", label);
+        String structureLabel = label + " structure";
+        String file = requiredString(structure, "file", structureLabel);
+        if (file.contains("..") || file.startsWith("/") || file.contains("\\")) {
+            throw RoomTemplateException.invalidField(label, "structure", "file '" + file + "' must be a relative path inside the rooms folder");
+        }
+        return new RoomStructure(file,
+                requiredInt(structure, "x", structureLabel, Integer.MIN_VALUE),
+                requiredInt(structure, "y", structureLabel, Integer.MIN_VALUE),
+                requiredInt(structure, "z", structureLabel, Integer.MIN_VALUE));
+    }
+
+    private static StandPoint parseStand(JsonObject object, RoomShape shape, String label) {
+        if (!object.has("standPoint")) {
+            return null;
+        }
+        JsonObject point = requiredObject(object.get("standPoint"), "standPoint", label);
+        String pointLabel = label + " standPoint";
+        StandPoint stand = new StandPoint(requiredNumber(point, "x", pointLabel), requiredNumber(point, "y", pointLabel),
+                requiredNumber(point, "z", pointLabel));
+        if (!insideShape(shape, stand.x(), stand.z())) {
+            throw RoomTemplateException.invalidField(label, "standPoint", "is outside the room footprint");
+        }
+        return stand;
+    }
+
+    private static List<CryptSpot> parseCrypts(JsonObject object, RoomShape shape, String label) {
+        List<CryptSpot> crypts = new ArrayList<>();
+        for (JsonElement element : optionalArray(object, "crypts", label)) {
+            JsonObject cryptObject = requiredObject(element, "crypts", label);
+            String cryptLabel = label + " crypts entry";
+            CryptSpot crypt = new CryptSpot(
+                    requiredInt(cryptObject, "x", cryptLabel, Integer.MIN_VALUE),
+                    requiredInt(cryptObject, "y", cryptLabel, Integer.MIN_VALUE),
+                    requiredInt(cryptObject, "z", cryptLabel, Integer.MIN_VALUE));
+            if (!insideShape(shape, crypt.x(), crypt.z())) {
+                throw RoomTemplateException.invalidField(label, "crypts", "crypt at " + crypt.x() + "," + crypt.z() + " is outside shape " + shape);
+            }
+            crypts.add(crypt);
+        }
+        return crypts;
     }
 
     private static List<String> parseTags(JsonObject object, String label) {

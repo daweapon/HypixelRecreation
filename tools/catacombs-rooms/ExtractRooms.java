@@ -1,0 +1,797 @@
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.zip.GZIPOutputStream;
+
+/**
+ * Cuts the sixteen real Catacombs rooms out of the M7 practice map world and writes one Sponge schematic per room plus
+ * the room template file the server reads. See README.md.
+ */
+class ExtractRooms {
+    static final int PITCH = 32;
+    static final int ROOM = 31;
+    static final int CENTRE = 15;
+    static final int FLOOR_Y = M7Rooms.DOOR_FLOOR_Y;
+    static final int DOOR_BOTTOM_Y = FLOOR_Y + 1;
+    static final int DOOR_TOP_Y = FLOOR_Y + 4;
+    static final int DATA_VERSION = 4903;
+    static final String[] SIDES = {"NORTH", "EAST", "SOUTH", "WEST"};
+    static final String[] MOBS = {"ZOMBIE_GRUNT", "SKELETON_GRUNT", "SCARED_SKELETON", "TANK_ZOMBIE", "SKELETON_SOLDIER", "CRYPT_LURKER"};
+    static final Set<String> KEEP_ENTITY_DATA = Set.of("profile", "note_block_sound", "custom_name", "front_text", "back_text",
+            "is_waxed", "patterns", "Rot", "SkullOwner");
+
+    static final Map<String, int[][]> SHAPES = new LinkedHashMap<>();
+
+    static {
+        SHAPES.put("ONE_BY_ONE", new int[][]{{0, 0}});
+        SHAPES.put("ONE_BY_TWO", new int[][]{{0, 0}, {1, 0}});
+        SHAPES.put("ONE_BY_THREE", new int[][]{{0, 0}, {1, 0}, {2, 0}});
+        SHAPES.put("ONE_BY_FOUR", new int[][]{{0, 0}, {1, 0}, {2, 0}, {3, 0}});
+        SHAPES.put("TWO_BY_TWO", new int[][]{{0, 0}, {1, 0}, {0, 1}, {1, 1}});
+        SHAPES.put("L_SHAPE", new int[][]{{0, 0}, {1, 0}, {0, 1}});
+    }
+
+    record Box(int width, int height, int length, int minY, String[] states, Map<Integer, Nbt.Tag> entities) {
+        int index(int x, int y, int z) {
+            return x + z * width + (y - minY) * width * length;
+        }
+
+        boolean contains(int x, int y, int z) {
+            return x >= 0 && z >= 0 && x < width && z < length && y >= minY && y < minY + height;
+        }
+
+        String get(int x, int y, int z) {
+            return contains(x, y, z) ? states[index(x, y, z)] : AnvilWorld.AIR;
+        }
+
+        void set(int x, int y, int z, String state) {
+            int index = index(x, y, z);
+            states[index] = state;
+            entities.remove(index);
+        }
+    }
+
+    record Anchor(String type, String variant, int x, int y, int z, String found) {
+    }
+
+    record Socket(int col, int row, String side, boolean m7Door) {
+    }
+
+    record Spot(int x, int y, int z) {
+    }
+
+    record Result(M7Rooms.Room room, String shape, int structureX, int structureY, int structureZ, Box box,
+                  List<Anchor> anchors, List<Socket> sockets, List<Spot> spawns, List<Spot> crypts, double[] stand,
+                  int secretCount, List<String> notes) {
+    }
+
+    public static void main(String[] args) throws IOException {
+        if (args.length < 2) {
+            System.err.println("usage: java ExtractRooms.java <world region dir> <rooms config dir>");
+            System.exit(2);
+        }
+        AnvilWorld world = new AnvilWorld(Path.of(args[0]));
+        Path out = Path.of(args[1]);
+        Files.createDirectories(out.resolve("m7"));
+        List<Result> results = new ArrayList<>();
+        for (M7Rooms.Room room : M7Rooms.all()) {
+            Result result = extract(world, room);
+            results.add(result);
+            Path file = out.resolve("m7").resolve(room.id() + ".schem");
+            byte[] bytes = schematic(result.box());
+            Files.write(file, bytes);
+            report(result, bytes.length);
+        }
+        Files.writeString(out.resolve("m7.json"), json(results), StandardCharsets.UTF_8);
+    }
+
+    static Result extract(AnvilWorld world, M7Rooms.Room room) {
+        List<String> notes = new ArrayList<>();
+        Set<Long> cells = new HashSet<>();
+        int gxMin = Integer.MAX_VALUE, gxMax = Integer.MIN_VALUE, gzMin = Integer.MAX_VALUE, gzMax = Integer.MIN_VALUE;
+        for (int[] cell : room.cells()) {
+            cells.add(key(cell[0], cell[1]));
+            gxMin = Math.min(gxMin, cell[0]);
+            gxMax = Math.max(gxMax, cell[0]);
+            gzMin = Math.min(gzMin, cell[1]);
+            gzMax = Math.max(gzMax, cell[1]);
+        }
+        int worldMinX = M7Rooms.cellMinX(gxMax);
+        int worldMaxX = M7Rooms.cellMaxX(gxMin);
+        int footprintMinZ = M7Rooms.cellMinZ(gzMax);
+        int worldMaxZ = M7Rooms.cellMaxZ(gzMin);
+        boolean annex = room.id().equals("start");
+        int worldMinZ = annex ? M7Rooms.START_ANNEX_MIN_Z : footprintMinZ;
+
+        int yLo = Integer.MAX_VALUE, yHi = Integer.MIN_VALUE;
+        for (int x = worldMinX; x <= worldMaxX; x++) {
+            for (int z = worldMinZ; z <= worldMaxZ; z++) {
+                if (!inFootprint(cells, x, z, annex && z < footprintMinZ)) continue;
+                for (int y = -64; y < 320; y++) {
+                    if (AnvilWorld.isAir(world.block(x, y, z))) continue;
+                    yLo = Math.min(yLo, y);
+                    yHi = Math.max(yHi, y);
+                }
+            }
+        }
+        if (yLo < room.minY() - 1 || yHi > room.maxY() + 1) {
+            notes.add("blocks span Y " + yLo + ".." + yHi + " (m7 minY/maxY " + room.minY() + ".." + room.maxY() + "), kept all");
+        }
+        int width = worldMaxX - worldMinX + 1;
+        int length = worldMaxZ - worldMinZ + 1;
+        Box raw = new Box(width, yHi - yLo + 1, length, yLo, new String[width * (yHi - yLo + 1) * length], new HashMap<>());
+        for (int x = 0; x < width; x++) {
+            for (int z = 0; z < length; z++) {
+                int wx = worldMinX + x, wz = worldMinZ + z;
+                boolean inside = inFootprint(cells, wx, wz, annex && wz < footprintMinZ);
+                for (int y = yLo; y <= yHi; y++) {
+                    int index = raw.index(x, y, z);
+                    raw.states()[index] = inside ? world.block(wx, y, wz) : AnvilWorld.AIR;
+                    if (!inside) continue;
+                    Nbt.Tag entity = world.blockEntity(wx, y, wz);
+                    if (entity != null) raw.entities().put(index, entity);
+                }
+            }
+        }
+
+        sanitize(raw, notes);
+        closeM7Doors(raw, room, cells, worldMinX, worldMinZ, notes);
+
+        int fx0 = 0, fz0 = footprintMinZ - worldMinZ;
+        List<Anchor> rawAnchors = new ArrayList<>();
+        int counted = 0;
+        for (M7Rooms.Secret secret : room.secrets()) {
+            if (!secret.counted()) {
+                notes.add("left out " + secret.variant() + " at " + secret.x() + "," + secret.y() + "," + secret.z() + " (not a scored secret)");
+                continue;
+            }
+            counted++;
+            int bx = (int) Math.floor(secret.x()) - worldMinX;
+            int by = (int) Math.floor(secret.y());
+            int bz = (int) Math.floor(secret.z()) - worldMinZ;
+            String found = AnvilWorld.bare(raw.get(bx, by, bz));
+            placeSecretBlock(raw, secret, bx, by, bz);
+            rawAnchors.add(new Anchor(secret.type(), secret.variant(), bx - fx0, by, bz - fz0, found));
+        }
+
+        int cols = gxMax - gxMin + 1, rows = gzMax - gzMin + 1;
+        List<int[]> localCells = new ArrayList<>();
+        for (int[] cell : room.cells()) localCells.add(new int[]{gxMax - cell[0], gzMax - cell[1]});
+        String shape = null;
+        int baseTurns = -1;
+        for (Map.Entry<String, int[][]> candidate : SHAPES.entrySet()) {
+            for (int turns = 0; turns < 4 && shape == null; turns++) {
+                if (sameCells(rotateCells(candidate.getValue(), turns), localCells)) {
+                    shape = candidate.getKey();
+                    baseTurns = turns;
+                }
+            }
+            if (shape != null) break;
+        }
+        if (shape == null) throw new IllegalStateException(room.id() + " has no matching shape");
+        int turns = (4 - baseTurns) % 4;
+
+        int footprintWidth = cols * PITCH - 1, footprintDepth = rows * PITCH - 1;
+        int[] corner = rotatedBounds(-fx0, -fz0, width - 1 - fx0, length - 1 - fz0, footprintWidth, footprintDepth, turns);
+        int structureX = corner[0], structureZ = corner[1];
+        int newWidth = corner[2] - corner[0] + 1, newLength = corner[3] - corner[1] + 1;
+        Box box = new Box(newWidth, raw.height(), newLength, yLo, new String[raw.states().length], new HashMap<>());
+        for (int x = 0; x < width; x++) {
+            for (int z = 0; z < length; z++) {
+                int[] local = rotateBlock(x - fx0, z - fz0, footprintWidth, footprintDepth, turns);
+                int nx = local[0] - structureX, nz = local[1] - structureZ;
+                for (int y = yLo; y <= yHi; y++) {
+                    int from = raw.index(x, y, z);
+                    int to = box.index(nx, y, nz);
+                    box.states()[to] = BlockStates.rotate(raw.states()[from], turns);
+                    Nbt.Tag entity = raw.entities().get(from);
+                    if (entity != null) box.entities().put(to, entity);
+                }
+            }
+        }
+        List<Anchor> anchors = new ArrayList<>();
+        for (Anchor anchor : rawAnchors) {
+            int[] local = rotateBlock(anchor.x(), anchor.z(), footprintWidth, footprintDepth, turns);
+            anchors.add(new Anchor(anchor.type(), anchor.variant(), local[0], anchor.y(), local[1], anchor.found()));
+        }
+
+        int[][] baseCells = SHAPES.get(shape);
+        Analysis analysis = new Analysis(box, structureX, structureZ, baseCells);
+        Set<String> m7Sockets = m7Sockets(room, cells, gxMax, gzMax, footprintWidth, footprintDepth, turns);
+        Set<Long> reachable = analysis.reachable(m7Sockets, notes);
+        List<Socket> sockets = new ArrayList<>();
+        for (int[] cell : baseCells) {
+            for (int side = 0; side < 4; side++) {
+                int[] next = neighbour(cell, side);
+                if (containsCell(baseCells, next[0], next[1])) continue;
+                boolean m7 = m7Sockets.contains(cell[0] + "," + cell[1] + "," + side);
+                boolean open = analysis.entryReachable(reachable, cell, side);
+                if (m7 && !open) notes.add("m7 door socket " + cell[0] + "," + cell[1] + " " + SIDES[side] + " has no standable entry");
+                if (m7 || open) sockets.add(new Socket(cell[0], cell[1], SIDES[side], m7));
+            }
+        }
+
+        double[] stand;
+        if (annex) {
+            double[] spawn = rotatePoint(M7Rooms.START_SPAWN[0] - worldMinX - fx0, M7Rooms.START_SPAWN[2] - worldMinZ - fz0,
+                    footprintWidth, footprintDepth, turns);
+            stand = new double[]{spawn[0], M7Rooms.START_SPAWN[1] - FLOOR_Y, spawn[1]};
+        } else {
+            Spot centre = analysis.nearest(analysis.openFloor(reachable), CENTRE, DOOR_BOTTOM_Y, CENTRE);
+            stand = centre == null ? new double[]{CENTRE + 0.5, 1, CENTRE + 0.5}
+                    : new double[]{centre.x() + 0.5, centre.y() - FLOOR_Y, centre.z() + 0.5};
+            if (centre == null) notes.add("no open floor near the centre; stand point guessed");
+        }
+
+        List<Spot> avoid = new ArrayList<>();
+        for (Anchor anchor : anchors) avoid.add(new Spot(anchor.x(), anchor.y(), anchor.z()));
+        for (Socket socket : sockets) {
+            int[] entry = analysis.entry(new int[]{socket.col(), socket.row()}, List.of(SIDES).indexOf(socket.side()), 0);
+            avoid.add(new Spot(entry[0], DOOR_BOTTOM_Y, entry[1]));
+        }
+        List<Spot> spawns = new ArrayList<>();
+        List<Spot> crypts = new ArrayList<>();
+        List<Spot> open = analysis.openFloor(reachable);
+        if (room.kind().equals("NORMAL")) {
+            spawns = analysis.spread(open, avoid, baseCells.length * 2 + 1, 5);
+            avoid.addAll(spawns);
+            crypts = analysis.spread(open, avoid, 3, 4);
+        } else if (room.kind().equals("MINIBOSS")) {
+            Spot boss = analysis.nearest(open, CENTRE, DOOR_BOTTOM_Y, CENTRE);
+            if (boss != null) spawns = List.of(boss);
+        }
+        return new Result(room, shape, structureX, yLo - FLOOR_Y, structureZ, box, anchors, sockets, spawns, crypts, stand,
+                counted, notes);
+    }
+
+    static long key(int a, int b) {
+        return ((long) a << 32) ^ (b & 0xFFFFFFFFL);
+    }
+
+    static boolean inFootprint(Set<Long> cells, int worldX, int worldZ, boolean annex) {
+        if (annex) return true;
+        int dx = M7Rooms.ORIGIN - worldX, dz = M7Rooms.ORIGIN - worldZ;
+        if (dx < 0 || dz < 0) return false;
+        int gx = dx / PITCH, gz = dz / PITCH;
+        if (!cells.contains(key(gx, gz))) return false;
+        boolean xSeam = dx % PITCH == ROOM, zSeam = dz % PITCH == ROOM;
+        if (xSeam && !cells.contains(key(gx + 1, gz))) return false;
+        if (zSeam && !cells.contains(key(gx, gz + 1))) return false;
+        return !(xSeam && zSeam) || cells.contains(key(gx + 1, gz + 1));
+    }
+
+    static void sanitize(Box box, List<String> notes) {
+        int commandBlocks = 0;
+        for (int y = box.minY(); y < box.minY() + box.height(); y++) {
+            for (int z = 0; z < box.length(); z++) {
+                for (int x = 0; x < box.width(); x++) {
+                    int index = box.index(x, y, z);
+                    String state = box.states()[index];
+                    String name = AnvilWorld.bare(state);
+                    if (name.endsWith("command_block") || name.equals("minecraft:structure_block") || name.equals("minecraft:jigsaw")) {
+                        box.set(x, y, z, neighbourFill(box, x, y, z));
+                        commandBlocks++;
+                        continue;
+                    }
+                    Nbt.Tag entity = box.entities().get(index);
+                    if (entity == null) continue;
+                    if (name.endsWith("_sign") && signHasText(entity)) {
+                        notes.add("removed a sign with M7 map text at local " + x + "," + y + "," + z + ": " + signText(entity));
+                        box.set(x, y, z, AnvilWorld.AIR);
+                        continue;
+                    }
+                    Map<String, Nbt.Tag> kept = new LinkedHashMap<>();
+                    kept.put("id", entity.get("id"));
+                    for (Map.Entry<String, Nbt.Tag> entry : entity.compound().entrySet()) {
+                        if (KEEP_ENTITY_DATA.contains(entry.getKey())) kept.put(entry.getKey(), entry.getValue());
+                    }
+                    if (kept.size() == 1) box.entities().remove(index);
+                    else box.entities().put(index, Nbt.compound(kept));
+                }
+            }
+        }
+        if (commandBlocks > 0) notes.add("replaced " + commandBlocks + " M7 command block(s) with the surrounding block");
+    }
+
+    static String neighbourFill(Box box, int x, int y, int z) {
+        int[][] order = {{1, 0, 0}, {-1, 0, 0}, {0, 0, 1}, {0, 0, -1}, {0, -1, 0}, {0, 1, 0}};
+        for (int[] step : order) {
+            String state = box.get(x + step[0], y + step[1], z + step[2]);
+            String name = AnvilWorld.bare(state);
+            if (!AnvilWorld.isAir(state) && !name.endsWith("command_block") && !name.contains("sign")) return AnvilWorld.bare(state);
+        }
+        return AnvilWorld.AIR;
+    }
+
+    static boolean signHasText(Nbt.Tag entity) {
+        return !signText(entity).isBlank();
+    }
+
+    static String signText(Nbt.Tag entity) {
+        StringBuilder text = new StringBuilder();
+        for (String side : List.of("front_text", "back_text")) {
+            Nbt.Tag face = entity.get(side);
+            if (face == null || face.get("messages") == null) continue;
+            for (Nbt.Tag line : face.get("messages").list()) {
+                if (line.type() == Nbt.STRING) text.append(line.string().replace("\"", "")).append(' ');
+                else if (line.type() == Nbt.COMPOUND && line.get("text") != null) text.append(line.get("text").string()).append(' ');
+            }
+        }
+        return text.toString().trim();
+    }
+
+    static void placeSecretBlock(Box box, M7Rooms.Secret secret, int x, int y, int z) {
+        String current = box.get(x, y, z);
+        String name = AnvilWorld.bare(current);
+        switch (secret.type()) {
+            case "CHEST" -> {
+                String wanted = secret.variant().equals("MIMIC") ? "minecraft:trapped_chest" : "minecraft:chest";
+                if (name.equals(wanted)) return;
+                box.set(x, y, z, wanted + "[facing=" + openFace(box, x, y, z) + ",type=single,waterlogged=false]");
+            }
+            case "ESSENCE" -> {
+                if (name.startsWith("minecraft:wither_skeleton")) return;
+                if (name.equals("minecraft:skeleton_skull") || name.equals("minecraft:skeleton_wall_skull")) {
+                    box.set(x, y, z, current.replace("minecraft:skeleton_", "minecraft:wither_skeleton_"));
+                } else {
+                    box.set(x, y, z, "minecraft:wither_skeleton_skull[powered=false,rotation=0]");
+                }
+            }
+            default -> {
+            }
+        }
+    }
+
+    static String openFace(Box box, int x, int y, int z) {
+        String[] names = {"north", "south", "east", "west"};
+        int[][] steps = {{0, -1}, {0, 1}, {1, 0}, {-1, 0}};
+        for (int i = 0; i < 4; i++) {
+            if (BlockStates.passable(box.get(x + steps[i][0], y, z + steps[i][1]))) return names[i];
+        }
+        return "north";
+    }
+
+    static void closeM7Doors(Box box, M7Rooms.Room room, Set<Long> cells, int worldMinX, int worldMinZ, List<String> notes) {
+        for (int[][] door : M7Rooms.DOORS) {
+            boolean a = cells.contains(key(door[0][0], door[0][1]));
+            boolean b = cells.contains(key(door[1][0], door[1][1]));
+            if (a == b) continue;
+            int[] own = a ? door[0] : door[1];
+            boolean alongZ = door[0][1] == door[1][1];
+            for (int along = -1; along <= 1; along++) {
+                for (int y = DOOR_BOTTOM_Y; y <= DOOR_TOP_Y; y++) {
+                    int sampleAlong = along <= 0 ? -3 : 3;
+                    int[] hole = doorWall(door, own, alongZ, along);
+                    int[] sample = doorWall(door, own, alongZ, sampleAlong);
+                    int hx = hole[0] - worldMinX, hz = hole[1] - worldMinZ;
+                    String fill = box.get(sample[0] - worldMinX, y, sample[1] - worldMinZ);
+                    if (AnvilWorld.isAir(fill) || BlockStates.passable(fill)) fill = "minecraft:stone_bricks";
+                    if (box.contains(hx, y, hz)) box.set(hx, y, hz, fill);
+                }
+            }
+        }
+        notes.add("closed the M7 door holes in the outer wall; the arena reopens one wherever a layout puts a door");
+    }
+
+    static int[] doorWall(int[][] door, int[] own, boolean alongZ, int along) {
+        if (alongZ) {
+            int low = Math.min(door[0][0], door[1][0]);
+            int seamX = M7Rooms.cellMinX(low) - 1;
+            int wallX = own[0] == low ? seamX + 1 : seamX - 1;
+            return new int[]{wallX, M7Rooms.cellMaxZ(door[0][1]) - CENTRE + along};
+        }
+        int low = Math.min(door[0][1], door[1][1]);
+        int seamZ = M7Rooms.cellMinZ(low) - 1;
+        int wallZ = own[1] == low ? seamZ + 1 : seamZ - 1;
+        return new int[]{M7Rooms.cellMaxX(door[0][0]) - CENTRE + along, wallZ};
+    }
+
+    static Set<String> m7Sockets(M7Rooms.Room room, Set<Long> cells, int gxMax, int gzMax, int footprintWidth,
+                                 int footprintDepth, int turns) {
+        Set<String> sockets = new HashSet<>();
+        for (int[][] door : M7Rooms.DOORS) {
+            boolean a = cells.contains(key(door[0][0], door[0][1]));
+            boolean b = cells.contains(key(door[1][0], door[1][1]));
+            if (a == b) continue;
+            int[] own = a ? door[0] : door[1];
+            int[] other = a ? door[1] : door[0];
+            int rawSide;
+            if (other[0] == own[0] + 1) rawSide = 3;
+            else if (other[0] == own[0] - 1) rawSide = 1;
+            else if (other[1] == own[1] + 1) rawSide = 0;
+            else rawSide = 2;
+            int col = gxMax - own[0], row = gzMax - own[1];
+            int[] centre = rotateBlock(col * PITCH + CENTRE, row * PITCH + CENTRE, footprintWidth, footprintDepth, turns);
+            sockets.add(centre[0] / PITCH + "," + centre[1] / PITCH + "," + (rawSide + turns) % 4);
+        }
+        return sockets;
+    }
+
+    static int[] neighbour(int[] cell, int side) {
+        return switch (side) {
+            case 0 -> new int[]{cell[0], cell[1] - 1};
+            case 1 -> new int[]{cell[0] + 1, cell[1]};
+            case 2 -> new int[]{cell[0], cell[1] + 1};
+            default -> new int[]{cell[0] - 1, cell[1]};
+        };
+    }
+
+    static boolean containsCell(int[][] cells, int col, int row) {
+        for (int[] cell : cells) if (cell[0] == col && cell[1] == row) return true;
+        return false;
+    }
+
+    static List<int[]> rotateCells(int[][] base, int turns) {
+        List<int[]> rotated = new ArrayList<>();
+        for (int[] cell : base) {
+            int c = cell[0], r = cell[1];
+            for (int i = 0; i < turns; i++) {
+                int next = -r;
+                r = c;
+                c = next;
+            }
+            rotated.add(new int[]{c, r});
+        }
+        int minC = rotated.stream().mapToInt(cell -> cell[0]).min().orElseThrow();
+        int minR = rotated.stream().mapToInt(cell -> cell[1]).min().orElseThrow();
+        for (int[] cell : rotated) {
+            cell[0] -= minC;
+            cell[1] -= minR;
+        }
+        return rotated;
+    }
+
+    static boolean sameCells(List<int[]> first, List<int[]> second) {
+        if (first.size() != second.size()) return false;
+        Set<Long> keys = new HashSet<>();
+        for (int[] cell : first) keys.add(key(cell[0], cell[1]));
+        for (int[] cell : second) if (!keys.contains(key(cell[0], cell[1]))) return false;
+        return true;
+    }
+
+    static int[] rotateBlock(int x, int z, int width, int depth, int turns) {
+        for (int i = 0; i < turns; i++) {
+            int nextX = depth - 1 - z;
+            z = x;
+            x = nextX;
+            int swap = width;
+            width = depth;
+            depth = swap;
+        }
+        return new int[]{x, z};
+    }
+
+    static double[] rotatePoint(double x, double z, int width, int depth, int turns) {
+        for (int i = 0; i < turns; i++) {
+            double nextX = depth - z;
+            z = x;
+            x = nextX;
+            int swap = width;
+            width = depth;
+            depth = swap;
+        }
+        return new double[]{x, z};
+    }
+
+    static int[] rotatedBounds(int x0, int z0, int x1, int z1, int width, int depth, int turns) {
+        int[] a = rotateBlock(x0, z0, width, depth, turns);
+        int[] b = rotateBlock(x1, z1, width, depth, turns);
+        return new int[]{Math.min(a[0], b[0]), Math.min(a[1], b[1]), Math.max(a[0], b[0]), Math.max(a[1], b[1])};
+    }
+
+    static final class Analysis {
+        private final Box box;
+        private final int originX;
+        private final int originZ;
+        private final int[][] cells;
+
+        Analysis(Box box, int originX, int originZ, int[][] cells) {
+            this.box = box;
+            this.originX = originX;
+            this.originZ = originZ;
+            this.cells = cells;
+        }
+
+        String get(int x, int y, int z) {
+            return box.get(x - originX, y, z - originZ);
+        }
+
+        boolean standable(int x, int y, int z) {
+            String feet = get(x, y, z);
+            if (!BlockStates.passable(feet) || !BlockStates.passable(get(x, y + 1, z))) return false;
+            if (AnvilWorld.bare(feet).equals("minecraft:water")) return false;
+            return BlockStates.supports(get(x, y - 1, z)) || BlockStates.climbable(feet);
+        }
+
+        static long pack(int x, int y, int z) {
+            return ((long) (x + 512) << 40) | ((long) (y + 512) << 20) | (z + 512);
+        }
+
+        static Spot unpack(long packed) {
+            return new Spot((int) (packed >>> 40) - 512, (int) ((packed >>> 20) & 0xFFFFF) - 512, (int) (packed & 0xFFFFF) - 512);
+        }
+
+        int[] entry(int[] cell, int side, int along) {
+            int x0 = cell[0] * PITCH, z0 = cell[1] * PITCH;
+            return switch (side) {
+                case 0 -> new int[]{x0 + CENTRE + along, z0 + 1};
+                case 1 -> new int[]{x0 + ROOM - 2, z0 + CENTRE + along};
+                case 2 -> new int[]{x0 + CENTRE + along, z0 + ROOM - 2};
+                default -> new int[]{x0 + 1, z0 + CENTRE + along};
+            };
+        }
+
+        Set<Long> reachable(Set<String> m7Sockets, List<String> notes) {
+            ArrayDeque<Long> queue = new ArrayDeque<>();
+            Set<Long> seen = new HashSet<>();
+            for (String socket : m7Sockets) {
+                String[] parts = socket.split(",");
+                int[] cell = {Integer.parseInt(parts[0]), Integer.parseInt(parts[1])};
+                for (int along = -1; along <= 1; along++) {
+                    int[] at = entry(cell, Integer.parseInt(parts[2]), along);
+                    if (standable(at[0], DOOR_BOTTOM_Y, at[1]) && seen.add(pack(at[0], DOOR_BOTTOM_Y, at[1]))) {
+                        queue.add(pack(at[0], DOOR_BOTTOM_Y, at[1]));
+                    }
+                }
+            }
+            if (queue.isEmpty()) notes.add("no standable door entry found; flood fill had no seed");
+            int[][] steps = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+            while (!queue.isEmpty()) {
+                Spot at = unpack(queue.poll());
+                for (int[] step : steps) {
+                    int nx = at.x() + step[0], nz = at.z() + step[1];
+                    if (!inside(nx, nz)) continue;
+                    boolean headroom = BlockStates.passable(get(at.x(), at.y() + 2, at.z()));
+                    for (int ny = at.y() + (headroom ? 1 : 0); ny >= at.y() - 4; ny--) {
+                        if (!standable(nx, ny, nz)) continue;
+                        if (seen.add(pack(nx, ny, nz))) queue.add(pack(nx, ny, nz));
+                        break;
+                    }
+                }
+                if (BlockStates.climbable(get(at.x(), at.y(), at.z()))) {
+                    for (int dy : new int[]{1, -1}) {
+                        if (standable(at.x(), at.y() + dy, at.z()) && seen.add(pack(at.x(), at.y() + dy, at.z()))) {
+                            queue.add(pack(at.x(), at.y() + dy, at.z()));
+                        }
+                    }
+                }
+            }
+            return seen;
+        }
+
+        boolean inside(int x, int z) {
+            if (x < originX || z < originZ || x >= originX + box.width() || z >= originZ + box.length()) return false;
+            if (x < 0 || z < 0) return true;
+            int col = x / PITCH, row = z / PITCH;
+            return containsCell(cells, col, row) || x >= maxFootprintX() || z >= maxFootprintZ();
+        }
+
+        private int maxFootprintX() {
+            int cols = 0;
+            for (int[] cell : cells) cols = Math.max(cols, cell[0] + 1);
+            return cols * PITCH - 1;
+        }
+
+        private int maxFootprintZ() {
+            int rows = 0;
+            for (int[] cell : cells) rows = Math.max(rows, cell[1] + 1);
+            return rows * PITCH - 1;
+        }
+
+        boolean entryReachable(Set<Long> reachable, int[] cell, int side) {
+            for (int along = -1; along <= 1; along++) {
+                int[] at = entry(cell, side, along);
+                if (reachable.contains(pack(at[0], DOOR_BOTTOM_Y + 1, at[1]))
+                        && BlockStates.passable(get(at[0], DOOR_TOP_Y, at[1]))) return true;
+                if (!BlockStates.passable(get(at[0], DOOR_BOTTOM_Y, at[1])) || !BlockStates.passable(get(at[0], DOOR_BOTTOM_Y + 1, at[1]))) {
+                    continue;
+                }
+                for (int y = DOOR_BOTTOM_Y; y >= DOOR_BOTTOM_Y - 4; y--) {
+                    if (!standable(at[0], y, at[1])) continue;
+                    if (reachable.contains(pack(at[0], y, at[1]))) return true;
+                    break;
+                }
+            }
+            return false;
+        }
+
+        List<Spot> openFloor(Set<Long> reachable) {
+            List<Spot> open = new ArrayList<>();
+            for (long packed : reachable) {
+                Spot spot = unpack(packed);
+                if (spot.x() < 0 || spot.z() < 0 || !containsCell(cells, spot.x() / PITCH, spot.z() / PITCH)) continue;
+                if (BlockStates.climbable(get(spot.x(), spot.y(), spot.z()))) continue;
+                boolean clear = true;
+                for (int dx = -1; dx <= 1 && clear; dx++) {
+                    for (int dz = -1; dz <= 1 && clear; dz++) {
+                        clear = reachable.contains(pack(spot.x() + dx, spot.y(), spot.z() + dz))
+                                && BlockStates.passable(get(spot.x() + dx, spot.y() + 2, spot.z() + dz));
+                    }
+                }
+                if (clear) open.add(spot);
+            }
+            open.sort(Comparator.comparingInt(Spot::y).thenComparingInt(Spot::x).thenComparingInt(Spot::z));
+            return open;
+        }
+
+        Spot nearest(List<Spot> spots, int x, int y, int z) {
+            Spot best = null;
+            double bestScore = Double.MAX_VALUE;
+            for (Spot spot : spots) {
+                double score = sq(spot.x() - x) + sq(spot.z() - z) + 9 * sq(spot.y() - y);
+                if (score < bestScore) {
+                    bestScore = score;
+                    best = spot;
+                }
+            }
+            return best;
+        }
+
+        List<Spot> spread(List<Spot> spots, List<Spot> avoid, int count, int gap) {
+            List<Spot> candidates = new ArrayList<>();
+            for (Spot spot : spots) {
+                if (spot.y() < DOOR_BOTTOM_Y - 6 || spot.y() > DOOR_BOTTOM_Y + 6) continue;
+                boolean far = true;
+                for (Spot other : avoid) {
+                    if (sq(spot.x() - other.x()) + sq(spot.z() - other.z()) + sq(spot.y() - other.y()) < gap * gap) {
+                        far = false;
+                        break;
+                    }
+                }
+                if (far) candidates.add(spot);
+            }
+            List<Spot> chosen = new ArrayList<>();
+            if (candidates.isEmpty()) return chosen;
+            chosen.add(nearest(candidates, CENTRE, DOOR_BOTTOM_Y, CENTRE));
+            while (chosen.size() < count) {
+                Spot best = null;
+                double bestDistance = -1;
+                for (Spot candidate : candidates) {
+                    double distance = Double.MAX_VALUE;
+                    for (Spot taken : chosen) {
+                        distance = Math.min(distance, sq(candidate.x() - taken.x()) + sq(candidate.z() - taken.z()) + 4 * sq(candidate.y() - taken.y()));
+                    }
+                    if (distance > bestDistance) {
+                        bestDistance = distance;
+                        best = candidate;
+                    }
+                }
+                if (best == null || bestDistance < gap * gap) break;
+                chosen.add(best);
+            }
+            return chosen;
+        }
+
+        static double sq(double value) {
+            return value * value;
+        }
+    }
+
+    static byte[] schematic(Box box) throws IOException {
+        Map<String, Integer> palette = new LinkedHashMap<>();
+        ByteArrayOutputStream data = new ByteArrayOutputStream();
+        List<Nbt.Tag> entities = new ArrayList<>();
+        for (int y = box.minY(); y < box.minY() + box.height(); y++) {
+            for (int z = 0; z < box.length(); z++) {
+                for (int x = 0; x < box.width(); x++) {
+                    int index = box.index(x, y, z);
+                    String state = box.states()[index];
+                    int id = palette.computeIfAbsent(state, ignored -> palette.size());
+                    while ((id & ~0x7F) != 0) {
+                        data.write((id & 0x7F) | 0x80);
+                        id >>>= 7;
+                    }
+                    data.write(id);
+                    Nbt.Tag entity = box.entities().get(index);
+                    if (entity == null) continue;
+                    Map<String, Nbt.Tag> compound = new LinkedHashMap<>();
+                    compound.put("Pos", Nbt.intArray(x, y - box.minY(), z));
+                    compound.put("Id", entity.get("id"));
+                    entity.compound().forEach((key, value) -> {
+                        if (!key.equals("id")) compound.put(key, value);
+                    });
+                    entities.add(Nbt.compound(compound));
+                }
+            }
+        }
+        Map<String, Nbt.Tag> paletteTag = new LinkedHashMap<>();
+        palette.forEach((state, id) -> paletteTag.put(state, Nbt.intTag(id)));
+        Map<String, Nbt.Tag> root = new LinkedHashMap<>();
+        root.put("Version", Nbt.intTag(2));
+        root.put("DataVersion", Nbt.intTag(DATA_VERSION));
+        root.put("Width", Nbt.shortTag(box.width()));
+        root.put("Height", Nbt.shortTag(box.height()));
+        root.put("Length", Nbt.shortTag(box.length()));
+        root.put("PaletteMax", Nbt.intTag(palette.size()));
+        root.put("Palette", Nbt.compound(paletteTag));
+        root.put("BlockData", Nbt.byteArray(data.toByteArray()));
+        root.put("BlockEntities", Nbt.list(entities));
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        try (OutputStream gzip = new GZIPOutputStream(out)) {
+            Nbt.write(gzip, "Schematic", Nbt.compound(root));
+        }
+        return out.toByteArray();
+    }
+
+    static void report(Result result, int bytes) {
+        System.out.printf(Locale.ROOT, "%-14s %-12s %-8s box %dx%dx%d at local %d,%d,%d  %d KB  sockets %d  spawns %d  crypts %d  secrets %d%n",
+                result.room().id(), result.shape(), result.room().kind(), result.box().width(), result.box().height(), result.box().length(),
+                result.structureX(), result.structureY(), result.structureZ(), (bytes + 1023) / 1024, result.sockets().size(),
+                result.spawns().size(), result.crypts().size(), result.secretCount());
+        for (Anchor anchor : result.anchors()) {
+            System.out.println("    " + anchor.variant() + " local " + anchor.x() + "," + anchor.y() + "," + anchor.z() + " was " + anchor.found());
+        }
+        StringBuilder sockets = new StringBuilder("    sockets:");
+        for (Socket socket : result.sockets()) sockets.append(' ').append(socket.col()).append(',').append(socket.row()).append(socket.side().charAt(0)).append(socket.m7Door() ? "*" : "");
+        System.out.println(sockets);
+        for (String note : result.notes()) System.out.println("    note: " + note);
+    }
+
+    static String json(List<Result> results) {
+        StringBuilder out = new StringBuilder("{\n  \"source\": \"Generated by tools/catacombs-rooms/ExtractRooms.java from the M7 practice map (MIT, see LICENSE-m7.txt). Mob spawns, crypts, stand points and non-M7 door sockets are estimated.\",\n  \"templates\": [\n");
+        for (int i = 0; i < results.size(); i++) {
+            Result result = results.get(i);
+            M7Rooms.Room room = result.room();
+            out.append("    {\n");
+            out.append("      \"id\": \"").append(room.id()).append("\",\n");
+            out.append("      \"name\": \"").append(room.name()).append("\",\n");
+            out.append("      \"shape\": \"").append(result.shape()).append("\",\n");
+            out.append("      \"kind\": \"").append(room.kind()).append("\",\n");
+            out.append("      \"secretCount\": ").append(result.secretCount()).append(",\n");
+            out.append("      \"tags\": [\"m7\", \"").append(room.kind().toLowerCase(Locale.ROOT)).append("\"],\n");
+            if (room.id().equals("start")) out.append("      \"fixedRotation\": \"DEG_180\",\n");
+            out.append("      \"structure\": {\"file\": \"m7/").append(room.id()).append(".schem\", \"x\": ").append(result.structureX())
+                    .append(", \"y\": ").append(result.structureY()).append(", \"z\": ").append(result.structureZ()).append("},\n");
+            out.append("      \"standPoint\": {\"x\": ").append(number(result.stand()[0])).append(", \"y\": ").append(number(result.stand()[1]))
+                    .append(", \"z\": ").append(number(result.stand()[2])).append(", \"estimated\": ").append(!room.id().equals("start")).append("},\n");
+            out.append("      \"doorSockets\": [");
+            joinLines(out, result.sockets().stream().map(socket -> "{\"col\": " + socket.col() + ", \"row\": " + socket.row()
+                    + ", \"side\": \"" + socket.side() + "\", \"m7Door\": " + socket.m7Door() + "}").toList());
+            out.append("],\n      \"mobSpawns\": [");
+            List<String> spawns = new ArrayList<>();
+            for (int s = 0; s < result.spawns().size(); s++) {
+                Spot spot = result.spawns().get(s);
+                boolean miniboss = room.kind().equals("MINIBOSS");
+                String mob = miniboss ? "LOST_ADVENTURER" : MOBS[Math.floorMod(room.id().hashCode() + s, MOBS.length)];
+                boolean starred = miniboss || s % 3 != 2;
+                spawns.add("{\"id\": \"spawn_" + (s + 1) + "\", \"x\": " + number(spot.x() + 0.5) + ", \"y\": " + (spot.y() - FLOOR_Y)
+                        + ", \"z\": " + number(spot.z() + 0.5) + ", \"mobId\": \"" + mob + "\", \"starred\": " + starred + ", \"estimated\": true}");
+            }
+            joinLines(out, spawns);
+            out.append("],\n      \"secretAnchors\": [");
+            joinLines(out, result.anchors().stream().map(anchor -> "{\"type\": \"" + anchor.type() + "\", \"x\": " + anchor.x()
+                    + ", \"y\": " + (anchor.y() - FLOOR_Y) + ", \"z\": " + anchor.z() + ", \"variant\": \"" + anchor.variant() + "\"}").toList());
+            out.append("],\n      \"crypts\": [");
+            joinLines(out, result.crypts().stream().map(spot -> "{\"x\": " + spot.x() + ", \"y\": " + (spot.y() - FLOOR_Y)
+                    + ", \"z\": " + spot.z() + ", \"estimated\": true}").toList());
+            out.append("]\n    }").append(i + 1 < results.size() ? ",\n" : "\n");
+        }
+        return out.append("  ]\n}\n").toString();
+    }
+
+    static void joinLines(StringBuilder out, List<String> items) {
+        if (items.isEmpty()) return;
+        out.append('\n');
+        for (int i = 0; i < items.size(); i++) {
+            out.append("        ").append(items.get(i)).append(i + 1 < items.size() ? ",\n" : "\n");
+        }
+        out.append("      ");
+    }
+
+    static String number(double value) {
+        return value == Math.rint(value) ? String.valueOf((long) value) + ".0" : String.valueOf(value);
+    }
+}

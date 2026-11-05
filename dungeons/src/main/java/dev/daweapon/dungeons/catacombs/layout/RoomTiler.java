@@ -15,26 +15,30 @@ final class RoomTiler {
     private final int height;
     private final boolean[][] occupied;
     private final Map<Cell, Integer> pathIndex;
+    private static final int BUILT_SHAPE_BOOST = 8;
+
     private final Set<RoomShape> allowedShapes;
+    private final Set<RoomShape> builtShapes;
     private final Random random;
 
     private RoomTiler(int width, int height, boolean[][] occupied, Map<Cell, Integer> pathIndex,
-                      Set<RoomShape> allowedShapes, Random random) {
+                      Set<RoomShape> allowedShapes, Set<RoomShape> builtShapes, Random random) {
         this.width = width;
         this.height = height;
         this.occupied = occupied;
         this.pathIndex = pathIndex;
         this.allowedShapes = allowedShapes;
+        this.builtShapes = builtShapes;
         this.random = random;
     }
 
     static List<Tile> tile(int width, int height, boolean[][] reserved, Map<Cell, Integer> pathIndex,
-                           Set<RoomShape> allowedShapes, Random random) {
+                           Set<RoomShape> allowedShapes, Set<RoomShape> builtShapes, Random random) {
         boolean[][] occupied = new boolean[width][height];
         for (int col = 0; col < width; col++) {
             occupied[col] = reserved[col].clone();
         }
-        return new RoomTiler(width, height, occupied, pathIndex, allowedShapes, random).fill();
+        return new RoomTiler(width, height, occupied, pathIndex, allowedShapes, builtShapes, random).fill();
     }
 
     private List<Tile> fill() {
@@ -72,7 +76,7 @@ final class RoomTiler {
         List<RoomShape> remaining = new ArrayList<>(allowedShapes.stream().sorted().toList());
         List<RoomShape> order = new ArrayList<>();
         while (!remaining.isEmpty()) {
-            int totalWeight = remaining.stream().mapToInt(RoomTiler::weight).sum();
+            int totalWeight = remaining.stream().mapToInt(this::weight).sum();
             int roll = random.nextInt(totalWeight);
             for (RoomShape shape : remaining) {
                 roll -= weight(shape);
@@ -125,7 +129,11 @@ final class RoomTiler {
         return true;
     }
 
-    private static int weight(RoomShape shape) {
+    private int weight(RoomShape shape) {
+        return baseWeight(shape) * (builtShapes.contains(shape) ? BUILT_SHAPE_BOOST : 1);
+    }
+
+    private static int baseWeight(RoomShape shape) {
         return switch (shape) {
             case ONE_BY_ONE -> 50;
             case ONE_BY_TWO -> 20;

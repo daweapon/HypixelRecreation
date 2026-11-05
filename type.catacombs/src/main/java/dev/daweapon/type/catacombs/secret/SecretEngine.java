@@ -80,23 +80,32 @@ public final class SecretEngine {
     }
 
     private void place(SecretSpot spot) {
+        Block current = host.instance().getBlock(spot.x(), spot.y(), spot.z());
         switch (spot.type()) {
-            case CHEST -> host.instance().setBlock(spot.x(), spot.y(), spot.z(), Block.CHEST.withProperty("facing", "north"));
-            case ESSENCE -> host.instance().setBlock(spot.x(), spot.y(), spot.z(), essenceHead());
+            case CHEST -> {
+                if (!current.compare(Block.CHEST) && !current.compare(Block.TRAPPED_CHEST)) {
+                    host.instance().setBlock(spot.x(), spot.y(), spot.z(), Block.CHEST.withProperty("facing", "north"));
+                }
+            }
+            case ESSENCE -> host.instance().setBlock(spot.x(), spot.y(), spot.z(), essenceHead(current));
             case ITEM, REDSTONE_KEY -> dropGroundItem(spot);
             case BAT -> spawnBat(spot);
         }
     }
 
-    private static Block essenceHead() {
+    private static Block essenceHead(Block current) {
+        String facing = current.getProperty("facing");
+        String rotation = current.getProperty("rotation");
+        Block head = facing != null
+                ? Block.PLAYER_WALL_HEAD.withProperty("facing", facing)
+                : Block.PLAYER_HEAD.withProperty("rotation", rotation != null ? rotation : "0");
         String json = "{\"textures\":{\"SKIN\":{\"url\":\"http://textures.minecraft.net/texture/" + ESSENCE_TEXTURE + "\"}}}";
         CompoundBinaryTag profile = CompoundBinaryTag.builder().put("properties",
                 ListBinaryTag.builder(BinaryTagTypes.COMPOUND).add(CompoundBinaryTag.builder()
                         .putString("name", "textures")
                         .putString("value", Base64.getEncoder().encodeToString(json.getBytes(StandardCharsets.UTF_8)))
                         .build()).build()).build();
-        return Block.PLAYER_HEAD.withProperty("rotation", "0").withHandler(new PlayerHeadBlockHandler())
-                .withTag(Tag.NBT("profile"), profile);
+        return head.withHandler(new PlayerHeadBlockHandler()).withTag(Tag.NBT("profile"), profile);
     }
 
     private void dropGroundItem(SecretSpot spot) {
@@ -191,7 +200,9 @@ public final class SecretEngine {
 
     private void openLid(SecretSpot spot) {
         Pos at = spot.centre();
-        host.instance().sendGroupedPacket(new BlockActionPacket(new Pos(spot.x(), spot.y(), spot.z()), (byte) 1, (byte) 1, Block.CHEST));
+        Block chest = host.instance().getBlock(spot.x(), spot.y(), spot.z());
+        host.instance().sendGroupedPacket(new BlockActionPacket(new Pos(spot.x(), spot.y(), spot.z()), (byte) 1, (byte) 1,
+                chest.compare(Block.TRAPPED_CHEST) ? Block.TRAPPED_CHEST : Block.CHEST));
         host.instance().playSound(Sound.sound(Key.key("block.chest.open"), Sound.Source.BLOCK, 1f, 1f), at.x(), at.y(), at.z());
     }
 

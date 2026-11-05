@@ -1,0 +1,17 @@
+title: "The Catacombs Update, Part 3"
+date: "5th November 2026"
+intro:
+  - "The Catacombs now use real Hypixel dungeon rooms. The Catacombs are still a staff preview."
+sections:
+  - heading: "Real rooms"
+    colour: "<a>"
+    lines:
+      - "16 real rooms are in: Start, Blood, Fairy, the Yellow miniboss room, Trap, Quiz, Ice Fill, Hallway, Market, Gravel, Museum, Deathmite, Dino Site, Wizard, Well and Red Blue."
+      - "Every run's Start, Blood, Fairy and miniboss rooms are real, and most larger rooms are too."
+      - "Secrets sit where they are in Hypixel's rooms: chests, the Museum Mimic chest, items, bats and Wither Essence."
+      - "Doors only open where a room really has a doorway."
+  - heading: "Not here yet"
+    colour: "<c>"
+    lines:
+      - "Small one- and two-cell rooms and most puzzle rooms are still placeholders, and the Quiz and Ice Fill puzzles cannot be solved yet."
+      - "Room mobs and crypt spots in the real rooms are placed by estimate."

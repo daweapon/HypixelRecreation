@@ -7,34 +7,39 @@ import net.minestom.server.instance.generator.GenerationUnit;
 import net.minestom.server.instance.generator.Generator;
 import org.jetbrains.annotations.NotNull;
 
-final class CatacombsPlaceholderGenerator implements Generator {
-    private final CatacombsBlockPlan plan;
+/** Fills each chunk of a run's dungeon as Minestom generates it, so the rooms are built off the tick thread. */
+final class CatacombsArenaGenerator implements Generator {
+    private final CatacombsArenaBlocks blocks;
 
-    CatacombsPlaceholderGenerator(CatacombsBlockPlan plan) {
-        this.plan = plan;
+    CatacombsArenaGenerator(CatacombsArenaBlocks blocks) {
+        this.blocks = blocks;
     }
 
     @Override
     public void generate(@NotNull GenerationUnit unit) {
         Point start = unit.absoluteStart();
         Point end = unit.absoluteEnd();
-        int minX = Math.max(start.blockX(), plan.minX());
-        int maxX = Math.min(end.blockX() - 1, plan.maxX());
-        int minZ = Math.max(start.blockZ(), plan.minZ());
-        int maxZ = Math.min(end.blockZ() - 1, plan.maxZ());
-        int minY = Math.max(start.blockY(), plan.minY());
-        int maxY = Math.min(end.blockY() - 1, plan.maxY());
+        int minX = Math.max(start.blockX(), blocks.minX());
+        int maxX = Math.min(end.blockX() - 1, blocks.maxX());
+        int minZ = Math.max(start.blockZ(), blocks.minZ());
+        int maxZ = Math.min(end.blockZ() - 1, blocks.maxZ());
+        int unitMinY = start.blockY();
+        int unitMaxY = end.blockY() - 1;
+        CatacombsBlockPlan plan = blocks.plan();
         for (int x = minX; x <= maxX; x++) {
             for (int z = minZ; z <= maxZ; z++) {
+                RealRoom owner = blocks.ownerAt(x, z);
+                int minY = Math.max(unitMinY, owner != null ? owner.minY() : plan.minY());
+                int maxY = Math.min(unitMaxY, owner != null ? owner.maxY() : plan.maxY());
                 for (int y = minY; y <= maxY; y++) {
-                    Block block = block(plan.tileAt(x, y, z), plan.markerColourAt(x, z));
+                    Block block = owner != null ? blocks.blockIn(owner, x, y, z) : blocks.planBlock(x, y, z);
                     if (block != null) unit.modifier().setBlock(x, y, z, block);
                 }
             }
         }
     }
 
-    private static Block block(CatacombsBlockPlan.Tile tile, RoomColor colour) {
+    static Block block(CatacombsBlockPlan.Tile tile, RoomColor colour) {
         return switch (tile) {
             case AIR -> null;
             case BEDROCK -> Block.BEDROCK;

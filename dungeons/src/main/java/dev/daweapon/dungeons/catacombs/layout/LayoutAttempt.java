@@ -41,18 +41,20 @@ final class LayoutAttempt {
     private final RoomTemplateLibrary library;
     private final RoomBudget fixedBudget;
     private final Random random;
+    private final boolean realNormals;
     private final int width;
     private final int height;
     private final Map<String, ArrayDeque<RoomTemplate>> pools = new HashMap<>();
 
     LayoutAttempt(CatacombsFloor floor, CatacombsMode mode, long seed, RoomTemplateLibrary library,
-                  RoomBudget fixedBudget, Random random) {
+                  RoomBudget fixedBudget, Random random, boolean realNormals) {
         this.floor = floor;
         this.mode = mode;
         this.seed = seed;
         this.library = library;
         this.fixedBudget = fixedBudget;
         this.random = random;
+        this.realNormals = realNormals;
         this.width = floor.dungeonSize().width();
         this.height = floor.dungeonSize().height();
     }
@@ -83,11 +85,16 @@ final class LayoutAttempt {
         if (roomPath == null) {
             return null;
         }
-        List<LayoutDoor> doors = buildDoors(path, roomPath, rooms, roomOfCell);
+        SocketBook sockets = new SocketBook(rooms, roomOfCell);
+        List<LayoutDoor> doors = buildDoors(path, roomPath, rooms, roomOfCell, sockets);
         if (doors == null) {
             return null;
         }
-        return new FloorLayout(floor, mode, seed, width, height, rooms, doors, roomPath);
+        List<PlacedRoom> settled = sockets.settle(random);
+        if (settled == null) {
+            return null;
+        }
+        return new FloorLayout(floor, mode, seed, width, height, settled, doors, roomPath);
     }
 
     private Map<Cell, RoomKind> placeSpecialCells(List<Cell> path) {
@@ -143,13 +150,18 @@ final class LayoutAttempt {
         });
 
         Set<RoomShape> allowedShapes = EnumSet.noneOf(RoomShape.class);
+        Set<RoomShape> builtShapes = EnumSet.noneOf(RoomShape.class);
         for (RoomShape shape : RoomShape.values()) {
-            if (library.has(RoomKind.NORMAL, shape)) {
+            List<RoomTemplate> normals = templates(RoomKind.NORMAL, shape);
+            if (!normals.isEmpty()) {
                 allowedShapes.add(shape);
+            }
+            if (normals.stream().anyMatch(template -> !template.placeholder())) {
+                builtShapes.add(shape);
             }
         }
         int rareRemaining = library.templates(RoomKind.RARE).size();
-        for (RoomTiler.Tile tile : RoomTiler.tile(width, height, reserved, pathIndex, allowedShapes, random)) {
+        for (RoomTiler.Tile tile : RoomTiler.tile(width, height, reserved, pathIndex, allowedShapes, builtShapes, random)) {
             RoomKind kind = RoomKind.NORMAL;
             if (tile.shape() == RoomShape.ONE_BY_ONE && rareRemaining > 0 && random.nextDouble() < RARE_CHANCE) {
                 kind = RoomKind.RARE;
@@ -173,8 +185,9 @@ final class LayoutAttempt {
             int minCol = draft.cells().stream().mapToInt(Cell::col).min().orElseThrow();
             int minRow = draft.cells().stream().mapToInt(Cell::row).min().orElseThrow();
             boolean onPath = draft.cells().stream().anyMatch(pathCells::contains);
-            rooms.add(new PlacedRoom(index, nextTemplate(draft.kind(), draft.shape()), draft.rotation(),
-                    new Cell(minCol, minRow), draft.cells(), onPath));
+            RoomTemplate template = nextTemplate(draft.kind(), draft.shape());
+            Rotation rotation = template.rotationLock().orElse(draft.rotation());
+            rooms.add(new PlacedRoom(index, template, rotation, new Cell(minCol, minRow), draft.cells(), onPath));
         }
         return rooms;
     }
@@ -182,11 +195,19 @@ final class LayoutAttempt {
     private RoomTemplate nextTemplate(RoomKind kind, RoomShape shape) {
         ArrayDeque<RoomTemplate> pool = pools.computeIfAbsent(kind + "/" + shape, key -> new ArrayDeque<>());
         if (pool.isEmpty()) {
-            List<RoomTemplate> refill = new ArrayList<>(library.templates(kind, shape));
+            List<RoomTemplate> refill = new ArrayList<>(templates(kind, shape));
             Collections.shuffle(refill, random);
             pool.addAll(refill);
         }
         return pool.removeFirst();
+    }
+
+    private List<RoomTemplate> templates(RoomKind kind, RoomShape shape) {
+        List<RoomTemplate> all = library.templates(kind, shape);
+        if (realNormals || kind != RoomKind.NORMAL) {
+            return all;
+        }
+        return all.stream().filter(RoomTemplate::placeholder).toList();
     }
 
     private List<Integer> roomPath(List<Cell> path, Map<Cell, Integer> roomOfCell) {
@@ -205,7 +226,7 @@ final class LayoutAttempt {
     }
 
     private List<LayoutDoor> buildDoors(List<Cell> path, List<Integer> roomPath, List<PlacedRoom> rooms,
-                                        Map<Cell, Integer> roomOfCell) {
+                                        Map<Cell, Integer> roomOfCell, SocketBook sockets) {
         int bloodRoom = roomPath.getLast();
         List<LayoutDoor> doors = new ArrayList<>();
         Set<Edge> doored = new HashSet<>();
@@ -217,6 +238,10 @@ final class LayoutAttempt {
             if (fromRoom == toRoom) {
                 continue;
             }
+            if (!sockets.allows(from, to)) {
+                return null;
+            }
+            sockets.use(from, to);
             DoorType type = toRoom == bloodRoom ? DoorType.BLOOD : doors.isEmpty() ? DoorType.PLAIN : DoorType.WITHER;
             doors.add(new LayoutDoor(from, to, fromRoom, toRoom, type));
             doored.add(Edge.of(fromRoom, toRoom));
@@ -231,6 +256,7 @@ final class LayoutAttempt {
             List<Edge> frontier = candidates.keySet().stream()
                     .filter(edge -> edge.low() != bloodRoom && edge.high() != bloodRoom)
                     .filter(edge -> (anchor[edge.low()] >= 0) != (anchor[edge.high()] >= 0))
+                    .filter(edge -> !sockets.usable(candidates.get(edge)).isEmpty())
                     .toList();
             if (frontier.isEmpty()) {
                 break;
@@ -239,7 +265,7 @@ final class LayoutAttempt {
             int connected = anchor[edge.low()] >= 0 ? edge.low() : edge.high();
             int joining = connected == edge.low() ? edge.high() : edge.low();
             anchor[joining] = anchor[connected];
-            doors.add(plainDoor(edge, candidates.get(edge), roomOfCell));
+            doors.add(plainDoor(sockets.usable(candidates.get(edge)), roomOfCell, sockets));
             doored.add(edge);
         }
         for (int room : anchor) {
@@ -253,15 +279,20 @@ final class LayoutAttempt {
             boolean sameBranch = anchor[edge.low()] == anchor[edge.high()];
             if (sameBranch && edge.low() != bloodRoom && edge.high() != bloodRoom && !doored.contains(edge)
                     && random.nextDouble() < EXTRA_DOOR_CHANCE) {
-                doors.add(plainDoor(edge, entry.getValue(), roomOfCell));
+                List<Cell[]> usable = sockets.usable(entry.getValue());
+                if (usable.isEmpty()) {
+                    continue;
+                }
+                doors.add(plainDoor(usable, roomOfCell, sockets));
                 doored.add(edge);
             }
         }
         return doors;
     }
 
-    private LayoutDoor plainDoor(Edge edge, List<Cell[]> sides, Map<Cell, Integer> roomOfCell) {
+    private LayoutDoor plainDoor(List<Cell[]> sides, Map<Cell, Integer> roomOfCell, SocketBook sockets) {
         Cell[] pair = sides.get(random.nextInt(sides.size()));
+        sockets.use(pair[0], pair[1]);
         return new LayoutDoor(pair[0], pair[1], roomOfCell.get(pair[0]), roomOfCell.get(pair[1]), DoorType.PLAIN);
     }
 

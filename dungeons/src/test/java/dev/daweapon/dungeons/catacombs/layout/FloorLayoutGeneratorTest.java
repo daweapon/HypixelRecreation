@@ -112,6 +112,12 @@ class FloorLayoutGeneratorTest {
         for (LayoutDoor door : layout.doors()) {
             assertTrue(door.from().adjacentTo(door.to()), context);
             assertNotEquals(door.fromRoom(), door.toRoom(), context);
+            Side side = Side.between(door.from(), door.to());
+            assertTrue(layout.room(door.fromRoom()).allowsDoor(door.from(), side), "socket " + door + "\n" + context);
+            assertTrue(layout.room(door.toRoom()).allowsDoor(door.to(), side.opposite()), "socket " + door + "\n" + context);
+        }
+        for (PlacedRoom room : layout.rooms()) {
+            room.template().rotationLock().ifPresent(rotation -> assertEquals(rotation, room.rotation(), context));
         }
 
         assertEquals(layout.rooms().size(), layout.totalRooms());
@@ -182,6 +188,22 @@ class FloorLayoutGeneratorTest {
             generate(CatacombsFloor.FLOOR_SEVEN, seed).rooms().forEach(room -> shapes.add(room.shape()));
         }
         assertEquals(Set.of(RoomShape.values()), shapes);
+    }
+
+    @Test
+    void entranceAndFloorOneUseRealRoomsForEveryKindThatHasOne() {
+        int realNormals = 0;
+        for (CatacombsFloor floor : List.of(CatacombsFloor.ENTRANCE, CatacombsFloor.FLOOR_ONE)) {
+            for (long seed = 0; seed < 500; seed++) {
+                FloorLayout layout = generate(floor, seed);
+                assertValid(layout);
+                for (RoomKind kind : List.of(RoomKind.ENTRANCE, RoomKind.FAIRY, RoomKind.BLOOD, RoomKind.MINIBOSS)) {
+                    assertTrue(layout.roomsOfKind(kind).stream().noneMatch(room -> room.template().placeholder()), kind + "\n" + layout.render());
+                }
+                realNormals += (int) layout.roomsOfKind(RoomKind.NORMAL).stream().filter(room -> !room.template().placeholder()).count();
+            }
+        }
+        assertTrue(realNormals > 1000, "real normal rooms placed: " + realNormals);
     }
 
     @Test

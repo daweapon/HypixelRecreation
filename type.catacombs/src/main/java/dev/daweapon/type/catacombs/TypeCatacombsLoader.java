@@ -5,6 +5,8 @@ import dev.daweapon.commons.ServerType;
 import dev.daweapon.commons.ServiceType;
 import dev.daweapon.commons.redis.RedisMessageHandler;
 import dev.daweapon.proxyapi.ProxyService;
+import dev.daweapon.type.catacombs.arena.CatacombsTemplates;
+import dev.daweapon.type.catacombs.arena.RoomStructures;
 import dev.daweapon.type.catacombs.redis.CatacombsInstantiateGameHandler;
 import dev.daweapon.type.catacombs.run.CatacombsHooks;
 import dev.daweapon.type.catacombs.run.CatacombsInstanceHost;
@@ -55,6 +57,11 @@ public class TypeCatacombsLoader implements SkyBlockTypeLoader {
         CatacombsHooks.register();
         CatacombsRuns.startCleanup();
         startOrchestratorHeartbeat();
+        Thread.startVirtualThread(() -> {
+            long started = System.nanoTime();
+            int rooms = RoomStructures.shared().preload(CatacombsTemplates.get());
+            Logger.info("Loaded {} real Catacombs rooms in {} ms", rooms, (System.nanoTime() - started) / 1_000_000);
+        });
     }
 
     private void startOrchestratorHeartbeat() {

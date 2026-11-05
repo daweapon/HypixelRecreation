@@ -55,10 +55,10 @@ final class BossEncounter implements CatacombsMob.Listener {
     void openPortal() {
         if (portal != null) return;
         Pos centre = host.arena().roomCentre(bloodRoom);
-        portal = centre.add(0, 0, 4);
+        portal = host.arena().blocks().isReal(bloodRoom) ? centre : centre.add(0, 0, 4);
         for (int x = -PORTAL_RADIUS; x <= PORTAL_RADIUS; x++) {
             for (int z = -PORTAL_RADIUS; z <= PORTAL_RADIUS; z++) {
-                host.instance().setBlock(portal.blockX() + x, CellGeometry.FLOOR_Y, portal.blockZ() + z, Block.END_PORTAL);
+                host.instance().setBlock(portal.blockX() + x, portal.blockY() - 1, portal.blockZ() + z, Block.END_PORTAL);
             }
         }
         host.broadcast(CatacombsMessages.portalOpened());
@@ -69,7 +69,7 @@ final class BossEncounter implements CatacombsMob.Listener {
         for (SkyBlockPlayer player : host.alivePlayers()) {
             double dx = player.getPosition().x() - (portal.x());
             double dz = player.getPosition().z() - (portal.z());
-            if (Math.sqrt(dx * dx + dz * dz) <= PORTAL_REACH && player.getPosition().y() < CellGeometry.FLOOR_Y + 3) {
+            if (Math.sqrt(dx * dx + dz * dz) <= PORTAL_REACH && player.getPosition().y() < portal.y() + 2) {
                 enter();
                 return;
             }
