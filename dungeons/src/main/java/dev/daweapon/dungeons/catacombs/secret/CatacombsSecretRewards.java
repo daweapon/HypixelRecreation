@@ -22,6 +22,8 @@ public final class CatacombsSecretRewards {
                 new CatacombsSecretReward(SecretRewardType.DECOY, CatacombsFloor.ENTRANCE, COMMON),
                 new CatacombsSecretReward(SecretRewardType.TRAINING_WEIGHTS, CatacombsFloor.ENTRANCE, COMMON),
                 new CatacombsSecretReward(SecretRewardType.SPIRIT_LEAP, CatacombsFloor.ENTRANCE, COMMON),
+                new CatacombsSecretReward(SecretRewardType.SUPERBOOM_TNT, CatacombsFloor.ENTRANCE, COMMON),
+                new CatacombsSecretReward(SecretRewardType.REVIVE_STONE, CatacombsFloor.ENTRANCE, COMMON),
                 new CatacombsSecretReward(SecretRewardType.INFLATABLE_JERRY, CatacombsFloor.ENTRANCE, COMMON),
                 new CatacombsSecretReward(SecretRewardType.TRAP, CatacombsFloor.ENTRANCE, COMMON),
                 new CatacombsSecretReward(SecretRewardType.DEFUSE_KIT, CatacombsFloor.ENTRANCE, COMMON),

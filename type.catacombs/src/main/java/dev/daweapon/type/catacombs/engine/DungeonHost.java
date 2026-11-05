@@ -31,5 +31,9 @@ public interface DungeonHost {
 
     void lose(String reason);
 
+    void recordSecret();
+
+    void recordCrypt();
+
     void later(int ticks, Runnable action);
 }

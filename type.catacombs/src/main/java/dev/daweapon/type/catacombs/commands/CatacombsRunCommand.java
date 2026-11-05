@@ -1,5 +1,6 @@
 package dev.daweapon.type.catacombs.commands;
 
+import dev.daweapon.dungeons.catacombs.blessing.BlessingType;
 import dev.daweapon.dungeons.catacombs.layout.PlacedRoom;
 import dev.daweapon.dungeons.catacombs.mob.DungeonMobRegistry;
 import dev.daweapon.dungeons.catacombs.run.CatacombsRunState;
@@ -23,11 +24,12 @@ import java.util.function.BiConsumer;
 
 @CommandParameters(labels = "catacombsrun",
         description = "Controls the Catacombs run you are in",
-        usage = "/catacombsrun <ready|start|win|lose|boss|clear|clearall|secret|crypt|failpuzzle|die|revive|cooldowns|seed|layout|score|phase|key|door|spawn> [value]",
+        usage = "/catacombsrun <ready|start|win|lose|boss|clear|clearall|secret|crypt|failpuzzle|die|revive|cooldowns|seed|layout|score|phase|key|door|spawn|blessing> [value]",
         permission = Rank.STAFF,
         allowsConsole = false)
 public class CatacombsRunCommand extends HypixelCommand {
-    private static final String USAGE = "<c>Usage: /catacombsrun <ready|start|win|lose|boss|clear|clearall|secret|crypt|failpuzzle|die|revive|cooldowns|seed|layout|score|phase|key|door|spawn> [value]";
+    private static final int STAFF_BLESSING_LEVEL = 5;
+    private static final String USAGE = "<c>Usage: /catacombsrun <ready|start|win|lose|boss|clear|clearall|secret|crypt|failpuzzle|die|revive|cooldowns|seed|layout|score|phase|key|door|spawn|blessing> [value]";
 
     @Override
     public void registerUsage(MinestomCommand command) {
@@ -42,6 +44,9 @@ public class CatacombsRunCommand extends HypixelCommand {
         ArgumentWord doorLiteral = new ArgumentWord("doorLiteral").from("door");
         ArgumentWord door = new ArgumentWord("door").from("next");
         ArgumentWord spawnLiteral = new ArgumentWord("spawnLiteral").from("spawn");
+        ArgumentWord blessingLiteral = new ArgumentWord("blessingLiteral").from("blessing");
+        ArgumentWord blessing = new ArgumentWord("blessing").from(Arrays.stream(BlessingType.values())
+                .map(each -> each.name().toLowerCase()).toArray(String[]::new));
         ArgumentWord mob = ArgumentType.Word("mob").from(DungeonMobRegistry.defaults().mobs().keySet().toArray(String[]::new));
 
         command.addSyntax((sender, context) -> with(sender, (player, run) -> perform(player, run, context.get(action))), action);
@@ -67,6 +72,10 @@ public class CatacombsRunCommand extends HypixelCommand {
             CatacombsMob spawned = engine.spawnMob(id, player.getPosition());
             player.sendMessage(spawned != null ? "<a>Spawned a <e>" + id + "<a>." : "<c>No dungeon mob called " + id + ".");
         })), spawnLiteral, mob);
+
+        command.addSyntax((sender, context) -> with(sender, (player, run) -> withEngine(player, run, engine ->
+                engine.grantBlessing(BlessingType.valueOf(context.get(blessing).toUpperCase()), STAFF_BLESSING_LEVEL, player))),
+                blessingLiteral, blessing);
     }
 
     private static void with(Object sender, BiConsumer<SkyBlockPlayer, CatacombsRun> action) {
@@ -113,14 +122,13 @@ public class CatacombsRunCommand extends HypixelCommand {
                 engine.clearAll(player);
                 player.sendMessage("<a>Cleared every room except the Blood Room.");
             });
-            case "secret" -> withEngine(player, run, _ -> {
-                run.recordSecret();
-                player.sendMessage("<a>Recorded a secret: <e>" + run.state().secretsFound() + "<7>/<e>" + run.state().config().totalSecrets());
-            });
-            case "crypt" -> withEngine(player, run, _ -> {
-                run.recordCrypt();
-                player.sendMessage("<a>Recorded a crypt: <e>" + run.state().crypts());
-            });
+            case "secret" -> withEngine(player, run, engine -> player.sendMessage(engine.collectNearestSecret(player)
+                    .map(spot -> "<a>Found the nearest " + spot.type().name().toLowerCase().replace('_', ' ') + " secret in room <e>"
+                            + spot.room() + "<a>: <e>" + run.state().secretsFound() + "<7>/<e>" + run.state().config().totalSecrets())
+                    .orElse("<c>Every secret in this run has been found.")));
+            case "crypt" -> withEngine(player, run, engine -> player.sendMessage(engine.blowNearestCrypt(player.getPosition())
+                    ? "<a>Blew open the nearest crypt. Kill its Crypt Undead to count it."
+                    : "<c>Every crypt in this run is already open."));
             case "failpuzzle" -> withEngine(player, run, engine -> {
                 PlacedRoom room = engine.roomAt(player.getPosition()).orElse(null);
                 if (room == null) {

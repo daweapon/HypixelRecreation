@@ -81,6 +81,7 @@ public class SkyBlockActionBar {
         HEAT("heat"),
         PROTECTION("protection"),
         ABILITY_CHARGE("ability_charge"),
+        SECRETS("secrets"),
         ;
 
         private static final BarSection[] VALUES = values();

@@ -8,8 +8,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CatacombsSidebarTest {
+    private static final List<CatacombsSidebar.Teammate> TEAM = List.of(
+            new CatacombsSidebar.Teammate('B', "#55ffff", "techmaster54", 1251, 1400, false),
+            new CatacombsSidebar.Teammate('M', "#55ff55", "josomater", 300, 1400, false),
+            new CatacombsSidebar.Teammate('B', "#55ff55", "SmashBoulder", 0, 1400, true));
+
     private static CatacombsSidebar.Snapshot snapshot(CatacombsLifecycle.Stage stage, int witherKeys, boolean blood) {
-        return new CatacombsSidebar.Snapshot(stage, 3, 4, 2, 20, 125, 56, 4, 18, 1, witherKeys, blood, 2, 15);
+        return new CatacombsSidebar.Snapshot(stage, 3, 4, 2, 20, 72, 55, 110, witherKeys, blood, TEAM, 15);
     }
 
     @Test
@@ -19,20 +24,28 @@ class CatacombsSidebarTest {
     }
 
     @Test
-    void activeShowsTimeClearedKeysAndSecrets() {
-        List<String> lines = CatacombsSidebar.lines(snapshot(CatacombsLifecycle.Stage.ACTIVE, 1, false));
-        assertEquals("<f>Time Elapsed: <a>2m 05s", lines.get(0));
-        assertEquals("<f>Dungeon Cleared: <e>56%", lines.get(1));
-        assertTrue(lines.contains("<f>Keys: <a>✔ <8>Wither <c>✖ <c>Blood"));
-        assertTrue(lines.contains("<f>Secrets Found: <a>4<7>/<a>18"));
-        assertTrue(lines.contains("<f>Crypts: <a>1"));
+    void activeShowsKeysTimeClearedAndTeammatesLikeHypixel() {
+        List<String> lines = CatacombsSidebar.lines(snapshot(CatacombsLifecycle.Stage.ACTIVE, 0, false));
+        assertEquals("<f>Keys: <c>■ <c>✖ <8>■ <a>0x", lines.get(0));
+        assertEquals("<f>Time Elapsed: <a>01m 12s", lines.get(1));
+        assertEquals("<f>Cleared: <6>55% <8>(110)", lines.get(2));
+        assertEquals(" ", lines.get(3));
+        assertEquals("<e>[B] <color:#55ffff>techmaster54 <a>1,251<c>❤", lines.get(4));
+        assertEquals("<e>[M] <color:#55ff55>josomater <c>300<c>❤", lines.get(5));
+        assertEquals("<e>[B] <color:#55ff55>SmashBoulder <c>DEAD", lines.get(6));
         assertTrue(lines.size() <= CatacombsSidebar.MAX_LINES);
     }
 
     @Test
-    void bloodKeyAndStackedWitherKeysAreShown() {
+    void bloodKeyAndWitherKeysAreShown() {
         List<String> lines = CatacombsSidebar.lines(snapshot(CatacombsLifecycle.Stage.ACTIVE, 2, true));
-        assertTrue(lines.contains("<f>Keys: <a>✔ <8>Wither x2 <a>✔ <c>Blood"));
+        assertEquals("<f>Keys: <c>■ <a>✔ <8>■ <a>2x", lines.getFirst());
+    }
+
+    @Test
+    void underAMinuteShowsSecondsOnly() {
+        assertEquals("45s", CatacombsSidebar.elapsed(45));
+        assertEquals("01m 03s", CatacombsSidebar.elapsed(63));
     }
 
     @Test

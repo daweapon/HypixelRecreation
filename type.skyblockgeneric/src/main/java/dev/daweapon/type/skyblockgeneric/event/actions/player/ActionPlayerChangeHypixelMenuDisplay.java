@@ -20,6 +20,7 @@ import dev.daweapon.type.skyblockgeneric.item.components.ArrowComponent;
 import dev.daweapon.type.skyblockgeneric.item.components.QuiverDisplayComponent;
 import dev.daweapon.type.skyblockgeneric.item.updater.NonPlayerItemUpdater;
 import dev.daweapon.type.skyblockgeneric.item.updater.PlayerItemUpdater;
+import dev.daweapon.type.skyblockgeneric.user.MenuSlotOverride;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
@@ -103,6 +104,11 @@ public class ActionPlayerChangeHypixelMenuDisplay implements HypixelEventClass {
     public static void setMainMenu(SkyBlockPlayer player) {
         if (DojoChallengeLock.isLocked(player)) {
             player.getInventory().setItemStack(8, DojoChallengeLock.cancelItem());
+            return;
+        }
+        ItemStack override = MenuSlotOverride.itemFor(player);
+        if (override != null) {
+            player.getInventory().setItemStack(8, override);
             return;
         }
         for (int index = 0; index < player.getInventory().getSize(); index++) {

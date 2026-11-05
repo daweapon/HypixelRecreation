@@ -602,11 +602,11 @@
         {"col": 0, "row": 1, "side": "WEST"}
       ],
       "mobSpawns": [
-        {"id": "spawn_1", "x": 51.5, "y": 1, "z": 32.5, "mobId": "SKELETON_GRUNT", "starred": true},
-        {"id": "spawn_2", "x": 38.5, "y": 1, "z": 46.5, "mobId": "SKELETON_SOLDIER", "starred": true},
+        {"id": "spawn_1", "x": 51.5, "y": 1, "z": 0.5, "mobId": "SKELETON_GRUNT", "starred": true},
+        {"id": "spawn_2", "x": 38.5, "y": 1, "z": 14.5, "mobId": "SKELETON_SOLDIER", "starred": true},
         {"id": "spawn_3", "x": 11.5, "y": 1, "z": 42.5, "mobId": "SCARED_SKELETON", "starred": true},
         {"id": "spawn_4", "x": 43.5, "y": 1, "z": 28.5, "mobId": "SCARED_SKELETON", "starred": true},
-        {"id": "spawn_5", "x": 54.5, "y": 1, "z": 56.5, "mobId": "ZOMBIE_GRUNT", "starred": false}
+        {"id": "spawn_5", "x": 54.5, "y": 1, "z": 24.5, "mobId": "ZOMBIE_GRUNT", "starred": false}
       ],
       "secretAnchors": [
         {"type": "CHEST", "x": 33, "y": 1, "z": 13},
@@ -633,7 +633,7 @@
       ],
       "mobSpawns": [
         {"id": "spawn_1", "x": 20.5, "y": 1, "z": 58.5, "mobId": "SKELETON_GRUNT", "starred": true},
-        {"id": "spawn_2", "x": 57.5, "y": 1, "z": 45.5, "mobId": "TANK_ZOMBIE", "starred": true},
+        {"id": "spawn_2", "x": 57.5, "y": 1, "z": 13.5, "mobId": "TANK_ZOMBIE", "starred": true},
         {"id": "spawn_3", "x": 32.5, "y": 1, "z": 28.5, "mobId": "SKELETON_SOLDIER", "starred": false}
       ],
       "secretAnchors": [
@@ -664,10 +664,10 @@
         {"id": "spawn_1", "x": 16.5, "y": 1, "z": 56.5, "mobId": "TANK_ZOMBIE", "starred": true},
         {"id": "spawn_2", "x": 31.5, "y": 1, "z": 5.5, "mobId": "SKELETON_SOLDIER", "starred": true},
         {"id": "spawn_3", "x": 30.5, "y": 1, "z": 10.5, "mobId": "SCARED_SKELETON", "starred": true},
-        {"id": "spawn_4", "x": 36.5, "y": 1, "z": 47.5, "mobId": "TANK_ZOMBIE", "starred": true}
+        {"id": "spawn_4", "x": 36.5, "y": 1, "z": 15.5, "mobId": "TANK_ZOMBIE", "starred": true}
       ],
       "secretAnchors": [
-        {"type": "CHEST", "x": 43, "y": 1, "z": 37},
+        {"type": "CHEST", "x": 43, "y": 1, "z": 5},
         {"type": "ITEM", "x": 56, "y": 1, "z": 7}
       ]
     },
@@ -691,8 +691,8 @@
       ],
       "mobSpawns": [
         {"id": "spawn_1", "x": 34.5, "y": 1, "z": 7.5, "mobId": "TANK_ZOMBIE", "starred": true},
-        {"id": "spawn_2", "x": 42.5, "y": 1, "z": 47.5, "mobId": "TANK_ZOMBIE", "starred": true},
-        {"id": "spawn_3", "x": 39.5, "y": 1, "z": 46.5, "mobId": "SCARED_SKELETON", "starred": true},
+        {"id": "spawn_2", "x": 42.5, "y": 1, "z": 15.5, "mobId": "TANK_ZOMBIE", "starred": true},
+        {"id": "spawn_3", "x": 39.5, "y": 1, "z": 14.5, "mobId": "SCARED_SKELETON", "starred": true},
         {"id": "spawn_4", "x": 10.5, "y": 1, "z": 37.5, "mobId": "SKELETON_GRUNT", "starred": false}
       ],
       "secretAnchors": [
