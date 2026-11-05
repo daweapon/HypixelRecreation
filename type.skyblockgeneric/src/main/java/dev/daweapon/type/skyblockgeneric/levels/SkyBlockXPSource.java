@@ -4,6 +4,7 @@ import lombok.Getter;
 import net.minestom.server.item.Material;
 import dev.daweapon.commons.StringUtility;
 import dev.daweapon.type.skyblockgeneric.crimson.kuudra.KuudraAvailability;
+import dev.daweapon.type.skyblockgeneric.dungeons.CatacombsAvailability;
 import org.jetbrains.annotations.Nullable;
 import dev.daweapon.type.skyblockgeneric.levels.abstr.SkyBlockLevelCauseAbstr;
 import dev.daweapon.type.skyblockgeneric.levels.causes.CollectedMobTypesCause;
@@ -61,9 +62,9 @@ public enum SkyBlockXPSource {
     YEAR_OF_THE_WITCH(Group.EVENT, null, 105, Availability.NOT_IN_GAME, Material.CAULDRON),
 
     // ----- Dungeon Tasks (2,760 XP) -----
-    CATACOMBS_LEVEL_UP(Group.DUNGEON, null, 1220, Availability.NOT_IN_GAME, Material.WITHER_SKELETON_SKULL),
+    CATACOMBS_LEVEL_UP(Group.DUNGEON, null, 1220, Availability.LIVE, Material.WITHER_SKELETON_SKULL),
     CLASS_LEVEL_UP(Group.DUNGEON, null, 1000, Availability.NOT_IN_GAME, Material.WITHER_SKELETON_SKULL),
-    COMPLETE_DUNGEONS(Group.DUNGEON, null, 540, Availability.NOT_IN_GAME, Material.WITHER_SKELETON_SKULL),
+    COMPLETE_DUNGEONS(Group.DUNGEON, null, 540, Availability.LIVE, Material.WITHER_SKELETON_SKULL),
 
     // ----- Essence Shop Tasks (2,121 XP) -----
     DRAGON_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 185, Availability.LIVE, Material.DRAGON_HEAD),
@@ -283,10 +284,16 @@ public enum SkyBlockXPSource {
         };
     }
 
-    /** The Kuudra tasks follow {@link KuudraAvailability}: live once Kuudra is launched, not in the game before. */
+    /**
+     * The Kuudra tasks follow {@link KuudraAvailability} and the Catacombs tasks follow {@link CatacombsAvailability}:
+     * live once launched, not in the game before.
+     */
     public Availability getAvailability() {
         if (this == DEFEAT_KUUDRA || this == BOSS_COLLECTIONS) {
             return KuudraAvailability.isFightAvailable() ? Availability.LIVE : Availability.NOT_IN_GAME;
+        }
+        if (this == CATACOMBS_LEVEL_UP || this == COMPLETE_DUNGEONS) {
+            return CatacombsAvailability.isPublic() ? Availability.LIVE : Availability.NOT_IN_GAME;
         }
         return availability;
     }

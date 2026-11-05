@@ -7,6 +7,7 @@ import dev.daweapon.commons.skyblock.item.attribute.attributes.ItemAttributeHotP
 import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
 import dev.daweapon.type.skyblockgeneric.crimson.CrimsonGear;
+import dev.daweapon.type.skyblockgeneric.dungeons.DungeonItemStats;
 import dev.daweapon.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
 import dev.daweapon.type.skyblockgeneric.enchantment.abstr.EventBasedEnchant;
 import dev.daweapon.type.skyblockgeneric.enchantment.abstr.PlayerContextEnchant;
@@ -42,6 +43,7 @@ final class ItemStatisticsCalculator {
         statistics = ItemStatistics.add(statistics, dev.daweapon.type.skyblockgeneric.slayer.zombie.ZombieSlayerGear.pieceStatistics(item));
         statistics = ItemStatistics.add(statistics, dev.daweapon.type.skyblockgeneric.essence.ForestEssencePerks.axeBoost(item, player, statistics));
         statistics = ItemStatistics.add(statistics, dev.daweapon.type.skyblockgeneric.essence.DragonEssencePerks.dragonReforgeBoost(item, player));
+        statistics = ItemStatistics.add(statistics, DungeonItemStats.extraItemStatistics(item, player, statistics));
 
         return statistics;
     }

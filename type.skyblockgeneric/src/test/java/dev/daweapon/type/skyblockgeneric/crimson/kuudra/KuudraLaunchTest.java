@@ -59,7 +59,7 @@ class KuudraLaunchTest {
     @Test
     void otherXpTasksIgnoreTheSwitch() throws IOException {
         KuudraAvailability.use(new KuudraLaunch(write("public: true\n", 1), () -> 0));
-        assertEquals(SkyBlockXPSource.Availability.NOT_IN_GAME, SkyBlockXPSource.CATACOMBS_LEVEL_UP.getAvailability());
+        assertEquals(SkyBlockXPSource.Availability.NOT_IN_GAME, SkyBlockXPSource.TIMECHARMS.getAvailability());
         assertEquals(SkyBlockXPSource.Availability.LIVE, SkyBlockXPSource.SLAYER_LEVEL_UP.getAvailability());
     }
 

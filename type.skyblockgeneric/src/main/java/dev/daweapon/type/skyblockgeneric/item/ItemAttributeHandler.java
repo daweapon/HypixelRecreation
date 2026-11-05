@@ -409,15 +409,21 @@ public class ItemAttributeHandler {
      * This is what should be used when calculating item stats for display/combat.
      */
     public ItemStatistics getStatistics() {
-        ItemStatistics baseStats = getBaseStatistics();
-        ItemStatistics extraStats = getExtraDynamicStatistics();
-        ItemStatistics statistics = ItemStatistics.add(baseStats, extraStats);
+        return ItemStatistics.add(getUnstarredStatistics(), getStarStatistics());
+    }
+
+    public ItemStatistics getUnstarredStatistics() {
+        ItemStatistics statistics = ItemStatistics.add(getBaseStatistics(), getExtraDynamicStatistics());
         if (item.hasComponent(DrillComponent.class)) {
             statistics = ItemStatistics.add(statistics, dev.daweapon.type.skyblockgeneric.drill.DrillParts.statistics(getDrillData()));
         }
+        return statistics;
+    }
+
+    public ItemStatistics getStarStatistics() {
         int stars = getUpgradeLevel();
-        if (stars <= 0) return statistics;
-        return ItemStatistics.add(statistics, ItemStatistics.multiply(baseStats, stars * STAR_STAT_BONUS));
+        if (stars <= 0) return ItemStatistics.empty();
+        return ItemStatistics.multiply(getBaseStatistics(), stars * STAR_STAT_BONUS);
     }
 
     public int getUpgradeLevel() {

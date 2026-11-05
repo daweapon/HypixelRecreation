@@ -47,6 +47,7 @@ import dev.daweapon.type.skyblockgeneric.text.LoreText;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 
+import dev.daweapon.type.skyblockgeneric.dungeons.DungeonItemStats;
 import java.util.*;
 
 public class ItemLore {
@@ -240,7 +241,18 @@ public class ItemLore {
 		line = line.appendIf(reforgeValue != 0, "<9> ({}{})", reforged > 0 ? "+" : "", reforged);
 		line = line.appendIf(gemstoneValue != 0, "<d> ({}{})", gems >= 1 ? "+" : "", gems);
 
+		if (viewer != null && DungeonItemStats.isDungeonItem(item) && DungeonItemStats.scales(statistic)) {
+			double unstarred = overallValue - item.getAttributeHandler().getStarStatistics().getOverall(statistic);
+			double inDungeon = DungeonItemStats.inDungeonValue(unstarred, DungeonItemStats.multiplier(viewer, item));
+			line = line.append("<8> ({}{}{})", inDungeon >= 0 ? "+" : "", formatDungeonStat(inDungeon),
+					statistic.getIsPercentage() ? "%" : "");
+		}
+
 		return line;
+	}
+
+	static String formatDungeonStat(double value) {
+		return new java.text.DecimalFormat("#,##0.##", java.text.DecimalFormatSymbols.getInstance(Locale.ENGLISH)).format(value);
 	}
 
 	private static void fillGemstones(LoreText lore) {
@@ -615,9 +627,12 @@ public class ItemLore {
 	private static Text displayRarity(SkyBlockItem item, Rarity rarity) {
 		Component display = rarity.getDisplay();
 
-		if (item.hasComponent(ExtraRarityComponent.class)) {
-			display = display.appendSpace().append(Text.parseLenient(
-					item.getComponent(ExtraRarityComponent.class).getExtraRarityDisplay(item)).asComponent());
+		String extra = item.hasComponent(ExtraRarityComponent.class)
+				? item.getComponent(ExtraRarityComponent.class).getExtraRarityDisplay(item)
+				: null;
+		if (item.hasComponent(DungeonItemComponent.class)) extra = DungeonItemComponent.rarityDisplay(extra);
+		if (extra != null) {
+			display = display.appendSpace().append(Text.parseLenient(extra).asComponent());
 		}
 
 		Text displayRarity = Text.of("{}", display);

@@ -47,6 +47,20 @@ public final class CatacombsCompletions {
         return new CatacombsCompletions(next);
     }
 
+    public boolean hasCompleted(CatacombsFloor floor) {
+        return count(floor, CatacombsMode.NORMAL) > 0 || count(floor, CatacombsMode.MASTER) > 0;
+    }
+
+    public CatacombsCompletions withEveryFloorCompleted() {
+        Map<String, Long> next = new TreeMap<>(counts);
+        for (CatacombsMode mode : CatacombsMode.values()) {
+            for (CatacombsFloor floor : CatacombsFloor.values()) {
+                if (floor.supports(mode)) next.merge(key(floor, mode), 1L, Math::max);
+            }
+        }
+        return new CatacombsCompletions(next);
+    }
+
     public String encode() {
         StringBuilder builder = new StringBuilder();
         counts.forEach((key, value) -> builder.append(builder.isEmpty() ? "" : ",").append(key).append('=').append(value));

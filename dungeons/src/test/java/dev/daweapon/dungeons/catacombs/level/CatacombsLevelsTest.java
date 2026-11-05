@@ -50,4 +50,27 @@ class CatacombsLevelsTest {
         assertThrows(IllegalArgumentException.class, () -> CatacombsLevels.xpForLevel(51));
         assertThrows(IllegalArgumentException.class, () -> CatacombsLevels.xpToReachLevel(0));
     }
+
+    @Test
+    void itemStatBonusMatchesTheWikiTable() {
+        assertEquals(10, CatacombsLevels.itemStatBonusPercent(0));
+        assertEquals(15, CatacombsLevels.itemStatBonusPercent(1));
+        assertEquals(31, CatacombsLevels.itemStatBonusPercent(4));
+        assertEquals(55, CatacombsLevels.itemStatBonusPercent(7));
+        assertEquals(65, CatacombsLevels.itemStatBonusPercent(8));
+        assertEquals(185, CatacombsLevels.itemStatBonusPercent(20));
+        assertEquals(255, CatacombsLevels.itemStatBonusPercent(27));
+        assertEquals(385, CatacombsLevels.itemStatBonusPercent(40));
+        assertEquals(485, CatacombsLevels.itemStatBonusPercent(50));
+        assertEquals(485, CatacombsLevels.itemStatBonusPercent(80));
+    }
+
+    @Test
+    void itemStatBonusIncreasePerLevel() {
+        assertEquals(0, CatacombsLevels.itemStatBonusIncrease(0));
+        assertEquals(5, CatacombsLevels.itemStatBonusIncrease(1));
+        assertEquals(9, CatacombsLevels.itemStatBonusIncrease(7));
+        assertEquals(10, CatacombsLevels.itemStatBonusIncrease(8));
+        assertEquals(10, CatacombsLevels.itemStatBonusIncrease(50));
+    }
 }

@@ -9,6 +9,10 @@ public final class CatacombsLevels {
     public static final int HEALTH_PER_LEVEL = 2;
     public static final int DAILY_BONUS_RUNS = 5;
     public static final int DAILY_BONUS_PERCENT = 40;
+    public static final int BASE_ITEM_STAT_BONUS_PERCENT = 10;
+    public static final int ITEM_STAT_BONUS_PERCENT_PER_LEVEL = 10;
+
+    private static final int[] EARLY_ITEM_STAT_BONUS_INCREASE = {5, 5, 5, 6, 7, 8, 9};
 
     private static final long[] XP_PER_LEVEL = {
             50, 75, 110, 160, 230, 330, 470, 670, 950, 1_340,
@@ -50,5 +54,19 @@ public final class CatacombsLevels {
 
     public static int healthBonus(int level) {
         return Math.min(MAXIMUM_LEVEL, Math.max(0, level)) * HEALTH_PER_LEVEL;
+    }
+
+    public static int itemStatBonusIncrease(int level) {
+        if (level < 1 || level > MAXIMUM_LEVEL) return 0;
+        return level <= EARLY_ITEM_STAT_BONUS_INCREASE.length
+                ? EARLY_ITEM_STAT_BONUS_INCREASE[level - 1]
+                : ITEM_STAT_BONUS_PERCENT_PER_LEVEL;
+    }
+
+    public static int itemStatBonusPercent(int level) {
+        int capped = Math.min(MAXIMUM_LEVEL, Math.max(0, level));
+        int total = BASE_ITEM_STAT_BONUS_PERCENT;
+        for (int reached = 1; reached <= capped; reached++) total += itemStatBonusIncrease(reached);
+        return total;
     }
 }

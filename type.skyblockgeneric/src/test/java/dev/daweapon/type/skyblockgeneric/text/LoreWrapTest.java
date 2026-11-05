@@ -38,7 +38,13 @@ class LoreWrapTest {
         assertEquals(7, RequirementLines.parse("§4❣ §cRequires §5Heart of the Mountain Tier 7§c.").level());
         assertEquals(RequirementLines.Kind.SLAYER, RequirementLines.parse("§4☠ §cRequires §5Wolf Slayer 3§c.").kind());
         assertNull(RequirementLines.parse("§7Nothing to see here"));
-        assertNull(RequirementLines.parse("§4❣ §cRequires §5The Catacombs Floor VII Completion§c."));
+        RequirementLines.Requirement floor = RequirementLines.parse("§4❣ §cRequires §5The Catacombs Floor VII Completion§c.");
+        assertEquals(RequirementLines.Kind.CATACOMBS_FLOOR, floor.kind());
+        assertEquals(7, floor.level());
+        assertEquals(0, RequirementLines.parse("§4❣ §cRequires The Catacombs Entrance Completion.").level());
+        RequirementLines.Requirement catacombs = RequirementLines.parse("§4❣ §cRequires Catacombs Skill 16.");
+        assertEquals(RequirementLines.Kind.CATACOMBS, catacombs.kind());
+        assertEquals(16, catacombs.level());
         assertNotNull(RequirementLines.parse("<dark_red>❣ <c>Requires <a>Social Skill 5<c>."));
     }
 

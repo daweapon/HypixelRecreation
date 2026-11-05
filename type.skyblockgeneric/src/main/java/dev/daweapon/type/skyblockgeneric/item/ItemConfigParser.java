@@ -309,7 +309,7 @@ public class ItemConfigParser {
 					String display = safeConfig.getString("display");
 					yield new ExtraRarityComponent(display);
 				}
-				case "DUNGEON_ITEM" -> new ExtraRarityComponent("DUNGEON ITEM");
+				case "DUNGEON_ITEM" -> new DungeonItemComponent();
 				case "EXTRA_UNDER_NAME" -> {
 					if (safeConfig.containsKey("displays")) {
 						List<String> displays = safeConfig.getList("displays", String.class);

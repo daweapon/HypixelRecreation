@@ -268,6 +268,7 @@ public class PlayerStatistics {
         total = ItemStatistics.add(total, accessoryStatistics);
         total = ItemStatistics.add(total, thaumaturgyStatistics);
         total = ItemStatistics.add(total, AttributeEffectService.statistics(player, enemy));
+        total = ItemStatistics.add(total, dev.daweapon.type.skyblockgeneric.dungeons.CatacombsProgress.statistics(player));
         total = ItemStatistics.add(total, ItemStatistic.getOfAllBaseValues());
 
         ActivePerks perks = ElectionPerks.current();

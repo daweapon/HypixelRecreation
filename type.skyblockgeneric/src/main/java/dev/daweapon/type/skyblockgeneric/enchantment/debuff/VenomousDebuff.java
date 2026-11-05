@@ -3,6 +3,7 @@ package dev.daweapon.type.skyblockgeneric.enchantment.debuff;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.attribute.Attribute;
 import net.minestom.server.timer.TaskSchedule;
+import dev.daweapon.type.skyblockgeneric.dungeons.CatacombsZone;
 import dev.daweapon.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import dev.daweapon.type.skyblockgeneric.utility.DamageIndicator;
 import net.minestom.server.entity.damage.Damage;
@@ -17,6 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class VenomousDebuff {
     public static final double[] SPEED_REDUCTION_PERCENTAGES = new double[]{0.02, 0.04, 0.06, 0.08, 0.12, 0.15, 0.20};
     public static final double[] DAMAGE_PERCENT_PER_SECOND = new double[]{0.2, 0.4, 0.6, 0.8, 1.2, 1.6, 2.0};
+    public static final double CATACOMBS_SPEED_REDUCTION_FACTOR = 0.2;
     private static final int MAX_STACKS = 40;
     private static final int DURATION_SECONDS = 5;
     private static final Map<UUID, VenomousEffect> activeEffects = new ConcurrentHashMap<>();
@@ -39,10 +41,7 @@ public class VenomousDebuff {
     }
 
     private static void applySpeedReduction(SkyBlockMob mob, int level) {
-        double speedReduction = SPEED_REDUCTION_PERCENTAGES[level - 1];
-
-        // Apply Catacombs nerf (-80% effect in Catacombs)
-        // TODO: Check if in Catacombs and apply speedReduction *= 0.2;
+        double speedReduction = speedReduction(level, CatacombsZone.isInCatacombs());
 
         double originalSpeed = mob.getAttribute(Attribute.MOVEMENT_SPEED).getBaseValue();
         double reducedSpeed = originalSpeed * (1.0 - speedReduction);
@@ -50,6 +49,11 @@ public class VenomousDebuff {
         mob.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(reducedSpeed);
 
         mobOriginalSpeeds.put(mob.getUuid(), originalSpeed);
+    }
+
+    public static double speedReduction(int level, boolean inCatacombs) {
+        double reduction = SPEED_REDUCTION_PERCENTAGES[level - 1];
+        return inCatacombs ? reduction * CATACOMBS_SPEED_REDUCTION_FACTOR : reduction;
     }
 
     private static final Map<UUID, Double> mobOriginalSpeeds = new ConcurrentHashMap<>();

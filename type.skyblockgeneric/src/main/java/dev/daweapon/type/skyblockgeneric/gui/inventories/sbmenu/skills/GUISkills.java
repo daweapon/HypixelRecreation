@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GUISkills extends StatelessView {
+    public static final int DUNGEONEERING_SLOT = 34;
     private static final java.util.Map<SkillCategories, Integer> DISPLAY_SLOTS = java.util.Map.ofEntries(
             java.util.Map.entry(SkillCategories.COMBAT, 19),
             java.util.Map.entry(SkillCategories.FARMING, 20),
@@ -47,6 +48,8 @@ public class GUISkills extends StatelessView {
         layout.slot(4, (s, c) -> ItemStacks.item(Material.DIAMOND_SWORD, 1,
                 Text.key("gui_sbmenu.skills.main.info"),
                 Text.keyLines("gui_sbmenu.skills.main.info.lore")));
+
+        layout.slot(DUNGEONEERING_SLOT, GUIDungeoneering.skillsMenuIcon(), (click, c) -> c.push(new GUIDungeoneering()));
 
         SkillCategories[] allCategories = SkillCategories.values();
         for (SkillCategories category : allCategories) {

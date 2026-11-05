@@ -1,5 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.item.components;
 
+import dev.daweapon.dungeons.catacombs.CatacombsFloor;
+import dev.daweapon.type.skyblockgeneric.dungeons.CatacombsProgress;
 import lombok.Getter;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItemComponent;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
@@ -7,6 +9,7 @@ import dev.daweapon.type.skyblockgeneric.slayer.SlayerRequirement;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 @Getter
 public class ItemRequirementsComponent extends SkyBlockItemComponent {
@@ -33,6 +36,8 @@ public class ItemRequirementsComponent extends SkyBlockItemComponent {
     public record Requirement(Type type, String category, int level, String description) {
         public boolean isMet(SkyBlockPlayer player) {
             if (type == Type.SLAYER) return SlayerRequirement.isMet(player, category, level);
+            if (type == Type.DUNGEON_SKILL) return isDungeonSkillMet(CatacombsProgress.level(player));
+            if (type == Type.DUNGEON_TIER) return isDungeonTierMet(floor -> CatacombsProgress.hasCompleted(player, floor));
             if (type != Type.SKILL) return true;
             try {
                 SkillCategories skill = SkillCategories.valueOf(category);
@@ -42,11 +47,21 @@ public class ItemRequirementsComponent extends SkyBlockItemComponent {
             }
         }
 
+        public boolean isDungeonSkillMet(int catacombsLevel) {
+            return catacombsLevel >= level;
+        }
+
+        public boolean isDungeonTierMet(Predicate<CatacombsFloor> completed) {
+            return level < 0 || level >= CatacombsFloor.values().length || completed.test(CatacombsFloor.byNumber(level));
+        }
+
         public String display() {
             return switch (type) {
                 case SKILL -> category.substring(0, 1) + category.substring(1).toLowerCase() + " " + level;
-                case DUNGEON_SKILL -> category + " level " + level;
-                case DUNGEON_TIER -> category + " floor " + level + " completion";
+                case DUNGEON_SKILL -> "Catacombs Skill " + level;
+                case DUNGEON_TIER -> level >= 0 && level < CatacombsFloor.values().length
+                        ? "The Catacombs " + CatacombsFloor.byNumber(level).displayName() + " Completion"
+                        : "The Catacombs Floor " + level + " Completion";
                 case SLAYER -> SlayerRequirement.display(category, level);
                 case PENDING -> description;
             };

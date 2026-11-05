@@ -1,5 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.dungeons;
 
+import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
+import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
 import dev.daweapon.dungeons.catacombs.CatacombsFloor;
 import dev.daweapon.dungeons.catacombs.level.CatacombsLevels;
 import dev.daweapon.dungeons.catacombs.CatacombsMode;
@@ -16,8 +18,8 @@ import java.util.function.LongSupplier;
 
 /**
  * Per-profile Catacombs progression: the Catacombs XP and level, completed runs per floor and the daily XP bonus.
- * {@link #completeRun} is the single hook the Catacombs server calls when a run is completed. The SkyBlock XP
- * sources (Complete Dungeons, Catacombs Level Up) stay NOT_IN_GAME until the dungeon is public.
+ * {@link #completeRun} is the single hook the Catacombs server calls when a run is completed. Every change re-syncs
+ * the Catacombs Level Up and Complete Dungeons SkyBlock XP tasks.
  */
 public final class CatacombsProgress {
     private static volatile LongSupplier today = () -> LocalDate.now(ZoneOffset.UTC).toEpochDay();
@@ -61,6 +63,7 @@ public final class CatacombsProgress {
         completionsPoint(player).setValue(completionsOf(player).with(floor, mode).encode());
         player.sendMessage(runXpLine(floor, rank, earned, bonus));
         addXp(player, earned);
+        syncSkyBlockXp(player);
     }
 
     public static String runXpLine(CatacombsFloor floor, DungeonScoreRank rank, long earned, int bonusPercent) {
@@ -75,7 +78,10 @@ public final class CatacombsProgress {
         xpPoint(player).setValue(after);
         int from = level(before);
         int to = level(after);
-        if (to > from) levelUpLines(from, to).forEach(player::sendMessage);
+        if (to > from) {
+            levelUpLines(from, to).forEach(player::sendMessage);
+            syncSkyBlockXp(player);
+        }
     }
 
     public static List<String> levelUpLines(int from, int to) {
@@ -86,6 +92,27 @@ public final class CatacombsProgress {
     public static void maxOut(SkyBlockPlayer player) {
         long max = CatacombsLevels.xpForLevel(CatacombsLevels.MAXIMUM_LEVEL);
         if (xp(player) < max) xpPoint(player).setValue(max);
+        completionsPoint(player).setValue(completionsOf(player).withEveryFloorCompleted().encode());
+        syncSkyBlockXp(player);
+    }
+
+    public static ItemStatistics statistics(SkyBlockPlayer player) {
+        if (!CatacombsZone.isInCatacombs()) return ItemStatistics.empty();
+        return statistics(level(player), true);
+    }
+
+    public static ItemStatistics statistics(int level, boolean inCatacombs) {
+        int health = CatacombsLevels.healthBonus(level);
+        if (!inCatacombs || health == 0) return ItemStatistics.empty();
+        return ItemStatistics.builder().withBase(ItemStatistic.HEALTH, (double) health).build();
+    }
+
+    public static boolean hasCompleted(SkyBlockPlayer player, CatacombsFloor floor) {
+        return completionsOf(player).hasCompleted(floor);
+    }
+
+    public static void syncSkyBlockXp(SkyBlockPlayer player) {
+        CatacombsSkyBlockXp.sync(player, level(player), completionsOf(player));
     }
 
     private static CatacombsCompletions completionsOf(SkyBlockPlayer player) {
