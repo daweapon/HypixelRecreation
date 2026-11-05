@@ -1,6 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.item.components;
 
 import dev.daweapon.dungeons.catacombs.CatacombsFloor;
+import dev.daweapon.type.skyblockgeneric.dungeons.CatacombsAvailability;
 import dev.daweapon.type.skyblockgeneric.dungeons.CatacombsProgress;
 import lombok.Getter;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItemComponent;
@@ -36,8 +37,12 @@ public class ItemRequirementsComponent extends SkyBlockItemComponent {
     public record Requirement(Type type, String category, int level, String description) {
         public boolean isMet(SkyBlockPlayer player) {
             if (type == Type.SLAYER) return SlayerRequirement.isMet(player, category, level);
-            if (type == Type.DUNGEON_SKILL) return isDungeonSkillMet(CatacombsProgress.level(player));
-            if (type == Type.DUNGEON_TIER) return isDungeonTierMet(floor -> CatacombsProgress.hasCompleted(player, floor));
+            if (type == Type.DUNGEON_SKILL) {
+                return !CatacombsAvailability.isPublic() || isDungeonSkillMet(CatacombsProgress.level(player));
+            }
+            if (type == Type.DUNGEON_TIER) {
+                return isDungeonTierMet(floor -> !isEnforceable(floor) || CatacombsProgress.hasCompleted(player, floor));
+            }
             if (type != Type.SKILL) return true;
             try {
                 SkillCategories skill = SkillCategories.valueOf(category);
@@ -49,6 +54,10 @@ public class ItemRequirementsComponent extends SkyBlockItemComponent {
 
         public boolean isDungeonSkillMet(int catacombsLevel) {
             return catacombsLevel >= level;
+        }
+
+        private static boolean isEnforceable(CatacombsFloor floor) {
+            return CatacombsAvailability.isPublic() && CatacombsAvailability.isPlayable(floor);
         }
 
         public boolean isDungeonTierMet(Predicate<CatacombsFloor> completed) {
