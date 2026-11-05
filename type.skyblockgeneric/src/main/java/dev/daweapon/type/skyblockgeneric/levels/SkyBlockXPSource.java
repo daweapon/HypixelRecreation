@@ -283,10 +283,16 @@ public enum SkyBlockXPSource {
         };
     }
 
-    /** The Kuudra tasks follow {@link KuudraAvailability}: live once Kuudra is launched, not in the game before. */
+    /**
+     * The Kuudra tasks follow {@link KuudraAvailability} and Class Level Up follows the Catacombs launch: live once
+     * the content is public, not in the game before.
+     */
     public Availability getAvailability() {
         if (this == DEFEAT_KUUDRA || this == BOSS_COLLECTIONS) {
             return KuudraAvailability.isFightAvailable() ? Availability.LIVE : Availability.NOT_IN_GAME;
+        }
+        if (this == CLASS_LEVEL_UP) {
+            return dev.daweapon.type.skyblockgeneric.dungeons.CatacombsAvailability.isPublic() ? Availability.LIVE : Availability.NOT_IN_GAME;
         }
         return availability;
     }

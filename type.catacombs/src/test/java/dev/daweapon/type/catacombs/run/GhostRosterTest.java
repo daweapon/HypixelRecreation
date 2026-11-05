@@ -51,4 +51,26 @@ class GhostRosterTest {
         assertEquals(49, roster.secondsToRevive(first));
         assertEquals(1, roster.ghostCount());
     }
+
+    @Test
+    void reviveSelfStartsATimerEvenWithoutAutoRevive() {
+        GhostRoster roster = new GhostRoster(false, 50);
+        roster.die(first);
+        assertEquals(0, roster.secondsToRevive(first));
+        assertTrue(roster.reviveAfter(first, 3));
+        assertFalse(roster.reviveAfter(second, 3));
+        assertEquals(List.of(), roster.tickSecond());
+        assertEquals(List.of(), roster.tickSecond());
+        assertEquals(List.of(first), roster.tickSecond());
+    }
+
+    @Test
+    void reviveSelfOnlyShortensTheAutomaticTimer() {
+        GhostRoster roster = new GhostRoster(true, 15);
+        roster.die(first);
+        roster.reviveAfter(first, 50);
+        assertEquals(15, roster.secondsToRevive(first));
+        roster.reviveAfter(first, 5);
+        assertEquals(5, roster.secondsToRevive(first));
+    }
 }

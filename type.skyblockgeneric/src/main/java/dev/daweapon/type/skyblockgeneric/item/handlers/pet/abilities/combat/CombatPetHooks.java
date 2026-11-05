@@ -228,8 +228,9 @@ public final class CombatPetHooks {
     }
 
     public static int cooldownTicks(SkyBlockPlayer player, int ticks) {
-        if (!loaded(player)) return ticks;
-        return PetPerkMath.reducedCooldown(ticks, PetAbilities.value(player, ItemType.CROW_PET, "Quick Hands", 0));
+        int classTicks = dev.daweapon.type.skyblockgeneric.dungeons.DungeonClassHooks.cooldownTicks(player, ticks);
+        if (!loaded(player)) return classTicks;
+        return PetPerkMath.reducedCooldown(classTicks, PetAbilities.value(player, ItemType.CROW_PET, "Quick Hands", 0));
     }
 
     public static boolean savesMana(SkyBlockPlayer player) {

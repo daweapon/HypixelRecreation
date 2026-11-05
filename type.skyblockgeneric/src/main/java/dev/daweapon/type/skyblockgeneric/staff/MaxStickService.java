@@ -208,6 +208,7 @@ public final class MaxStickService {
             new Step("Spider's Den relics", dev.daweapon.type.skyblockgeneric.spidersden.SpiderDenRelics::maxOut),
             new Step("Dragons slain", dev.daweapon.type.skyblockgeneric.levels.XPSubTaskProgress::slayAllDragons),
             new Step("Catacombs level", dev.daweapon.type.skyblockgeneric.dungeons.CatacombsProgress::maxOut),
+            new Step("Dungeon classes", dev.daweapon.type.skyblockgeneric.dungeons.DungeonClassProgress::maxOut),
             new Step("Crimson town", CrimsonTownProgress::maxOut),
             new Step("Pets", MaxPets::maxOut),
             new Step("Sprays", dev.daweapon.type.skyblockgeneric.rewardbundle.RewardBundleService::ownEverySpray),

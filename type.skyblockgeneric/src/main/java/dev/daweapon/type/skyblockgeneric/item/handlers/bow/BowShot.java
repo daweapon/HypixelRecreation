@@ -26,6 +26,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class BowShot {
     private static final String SULPHUR_BOW = "SULPHUR_BOW";
     private static final long MILLIS_PER_TICK = 50;
+    private static final double DOUBLESHOT_YAW_OFFSET = 1.5;
     private static final Map<UUID, Long> NEXT_SHORTBOW_SHOT = new ConcurrentHashMap<>();
 
     private BowShot() {
@@ -86,6 +87,10 @@ public final class BowShot {
 
         for (double offset : ShortBowVolley.yawOffsets(arrows, spread)) {
             spawn(player, bow, arrow, offset, power * speed, infusion);
+        }
+        int classArrows = dev.daweapon.type.skyblockgeneric.dungeons.DungeonClassHooks.extraArrows(player);
+        for (int extra = 1; extra <= classArrows; extra++) {
+            spawn(player, bow, arrow, extra * DOUBLESHOT_YAW_OFFSET, power * speed, infusion);
         }
         double extraFactor = wear == null ? 0 : wear.extraArrowFactor(stacks);
         if (extraFactor <= 0) return;
