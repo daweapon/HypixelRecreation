@@ -233,6 +233,7 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
             List<String> summary = CatacombsMessages.summary(floorId.floor(), floorId.mode(), win, state, score);
             onlineMembers().forEach(member -> summary.forEach(member::sendMessage));
             if (win) onlineMembers().forEach(member -> reward(member, score));
+            if (win) CatacombsRewardChests.spawn(this, score);
         }
         broadcast(CatacombsMessages.returning(SHUTDOWN_SECONDS));
     }

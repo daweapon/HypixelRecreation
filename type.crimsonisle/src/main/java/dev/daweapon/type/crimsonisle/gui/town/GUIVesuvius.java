@@ -2,9 +2,7 @@ package dev.daweapon.type.crimsonisle.gui.town;
 
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.inventory.click.Click;
-import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
-import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import dev.daweapon.type.generic.gui.v2.Components;
 import dev.daweapon.type.generic.gui.v2.DefaultState;
@@ -13,14 +11,12 @@ import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
 import dev.daweapon.type.generic.gui.v2.ViewLayout;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
 import dev.daweapon.type.skyblockgeneric.crimson.kuudra.KuudraAvailability;
-import dev.daweapon.type.skyblockgeneric.crimson.kuudra.reward.KuudraChest;
 import dev.daweapon.type.skyblockgeneric.crimson.kuudra.reward.KuudraChestStorage;
 import dev.daweapon.type.skyblockgeneric.crimson.kuudra.reward.KuudraRun;
 import dev.daweapon.type.skyblockgeneric.gui.inventories.kuudra.GUIKuudraRun;
+import dev.daweapon.type.skyblockgeneric.gui.inventories.kuudra.KuudraRunIcon;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
-import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -107,7 +103,7 @@ public class GUIVesuvius extends StatelessView {
             int index = shown * RUN_SLOTS.length + i;
             if (index >= runs.size()) break;
             KuudraRun run = runs.get(index);
-            layout.slot(RUN_SLOTS[i], (_, _) -> runIcon(run, now), (_, c) -> c.push(new GUIKuudraRun(run)));
+            layout.slot(RUN_SLOTS[i], (_, _) -> KuudraRunIcon.icon(run, now), (_, c) -> c.push(new GUIKuudraRun(run)));
         }
 
         if (shown > 0) {
@@ -120,28 +116,6 @@ public class GUIVesuvius extends StatelessView {
         }
         layout.slot(51, (_, _) -> ItemStacks.item(Material.ENDER_EYE, filterLore()),
                 (click, c) -> c.replace(new GUIVesuvius(click.click() instanceof Click.Right ? filter.previous() : filter.next(), 0)));
-    }
-
-    private static ItemStack.Builder runIcon(KuudraRun run, long now) {
-        List<Text> lore = new ArrayList<>();
-        lore.add(Text.of("<7>Completed <a>{} ago", duration(now - run.completedAt())));
-        lore.add(Text.of("<7>Expires in <a>{}", duration(run.expiresAt() - now)));
-        lore.add(Text.empty());
-        lore.add(Text.of("<7>Chests:"));
-        for (KuudraChest chest : KuudraChest.values()) {
-            String status = run.opened() == chest ? "<a>Opened" : run.isOpened() ? "<8>Gone" : "<e>Unopened";
-            lore.add(Text.of(" " + chest.getColour() + chest.getDisplayName() + " <8>- " + status));
-        }
-        lore.add(Text.empty());
-        lore.add(Text.of(run.isOpened() ? "<c>No more chests to open!" : "<e>Click to view chests!"));
-        return ItemStacks.head(run.tier().getKeyTexture(), Text.of("<c>Kuudra - {}", run.tier().getDisplayName()), lore);
-    }
-
-    private static String duration(long millis) {
-        Duration duration = Duration.ofMillis(Math.max(0, millis));
-        return duration.toHours() > 0
-                ? duration.toHours() + "h " + duration.toMinutesPart() + "m"
-                : duration.toMinutesPart() + "m " + duration.toSecondsPart() + "s";
     }
 
     private String filterLore() {

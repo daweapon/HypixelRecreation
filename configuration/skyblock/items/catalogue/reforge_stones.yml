@@ -1749,8 +1749,7 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 19§c."
-    unavailable: "Needs Dungeons"
-    source: "Dungeon reward chests, Catacombs F1-F4 and Master"
+    source: "Dungeon Reward Chests: The Catacombs Floor I (Wood, Gold, Diamond, Emerald, Obsidian); F2-F4 and Master Mode chests too"
     components:
       - id: REFORGE_STONE
         reforge: necrotic
@@ -2272,8 +2271,7 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 17§c."
-    unavailable: "Needs Dungeons"
-    source: "Bonzo (Catacombs F1) drop / F1 chests, ~1.2-9%; Bonzo collection claim"
+    source: "Dungeon Reward Chests: The Catacombs Floor I (Diamond, Emerald, Obsidian); Bonzo collection claim"
     components:
       - id: REFORGE_STONE
         reforge: ridiculous

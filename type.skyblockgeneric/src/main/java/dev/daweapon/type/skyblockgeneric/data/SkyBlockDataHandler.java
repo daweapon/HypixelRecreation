@@ -846,6 +846,9 @@ public class SkyBlockDataHandler extends DataHandler {
 
         TANK_CLASS_XP("tank_class_xp", false, false, false,
                 DatapointLong.class, new DatapointLong("tank_class_xp", 0L)),
+
+        CATACOMBS_CHESTS("catacombs_chests", false, false, false,
+                DatapointString.class, new DatapointString("catacombs_chests", "")),
         ;
 
         @Getter

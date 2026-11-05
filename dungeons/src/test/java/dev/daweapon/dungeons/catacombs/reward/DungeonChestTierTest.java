@@ -1,6 +1,7 @@
 package dev.daweapon.dungeons.catacombs.reward;
 
 import dev.daweapon.dungeons.catacombs.CatacombsFloor;
+import dev.daweapon.dungeons.catacombs.CatacombsMode;
 import dev.daweapon.dungeons.catacombs.run.DungeonScoreRank;
 import org.junit.jupiter.api.Test;
 
@@ -10,13 +11,46 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DungeonChestTierTest {
     @Test
-    void coinCosts() {
-        assertEquals(0, DungeonChestTier.WOOD.coinCost());
-        assertEquals(25_000, DungeonChestTier.GOLD.coinCost());
-        assertEquals(50_000, DungeonChestTier.DIAMOND.coinCost());
-        assertEquals(100_000, DungeonChestTier.EMERALD.coinCost());
-        assertEquals(250_000, DungeonChestTier.OBSIDIAN.coinCost());
-        assertEquals(2_000_000, DungeonChestTier.BEDROCK.coinCost());
+    void baseCostsFollowTheFloorLootPages() {
+        assertEquals(0, DungeonChestTier.WOOD.baseCost(CatacombsFloor.FLOOR_SEVEN));
+        assertEquals(25_000, DungeonChestTier.GOLD.baseCost(CatacombsFloor.FLOOR_ONE));
+        assertEquals(50_000, DungeonChestTier.DIAMOND.baseCost(CatacombsFloor.FLOOR_ONE));
+        assertEquals(100_000, DungeonChestTier.EMERALD.baseCost(CatacombsFloor.FLOOR_ONE));
+        assertEquals(250_000, DungeonChestTier.OBSIDIAN.baseCost(CatacombsFloor.FLOOR_ONE));
+        assertEquals(50_000, DungeonChestTier.GOLD.baseCost(CatacombsFloor.FLOOR_TWO));
+        assertEquals(200_000, DungeonChestTier.EMERALD.baseCost(CatacombsFloor.FLOOR_TWO));
+        assertEquals(100_000, DungeonChestTier.GOLD.baseCost(CatacombsFloor.FLOOR_THREE));
+        assertEquals(1_000_000, DungeonChestTier.OBSIDIAN.baseCost(CatacombsFloor.FLOOR_SEVEN));
+        assertEquals(2_000_000, DungeonChestTier.BEDROCK.baseCost(CatacombsFloor.FLOOR_FIVE));
+    }
+
+    @Test
+    void baseQualities() {
+        assertEquals(110, DungeonChestTier.WOOD.baseQuality(CatacombsFloor.FLOOR_ONE, CatacombsMode.NORMAL));
+        assertEquals(300, DungeonChestTier.OBSIDIAN.baseQuality(CatacombsFloor.FLOOR_ONE, CatacombsMode.NORMAL));
+        assertEquals(370, DungeonChestTier.BEDROCK.baseQuality(CatacombsFloor.FLOOR_SEVEN, CatacombsMode.NORMAL));
+        assertEquals(420, DungeonChestTier.BEDROCK.baseQuality(CatacombsFloor.FLOOR_SEVEN, CatacombsMode.MASTER));
+    }
+
+    @Test
+    void qualityFormulaMatchesTheWikiMaxBonusColumn() {
+        assertEquals(110, DungeonChestRules.quality(110, false, 1.0, 0));
+        assertEquals(168, DungeonChestRules.quality(110, true, 1.03, 23));
+        assertEquals(225, DungeonChestRules.quality(160, true, 1.03, 23));
+        assertEquals(269, DungeonChestRules.quality(200, true, 1.03, 23));
+    }
+
+    @Test
+    void entranceHasNoChests() {
+        assertTrue(DungeonChestRules.availableTiers(DungeonScoreRank.S_PLUS, CatacombsFloor.ENTRANCE).isEmpty());
+    }
+
+    @Test
+    void floorSevenCompletionGrantsEmeraldAndObsidian() {
+        assertEquals(List.of(DungeonChestTier.WOOD, DungeonChestTier.GOLD, DungeonChestTier.DIAMOND,
+                        DungeonChestTier.EMERALD, DungeonChestTier.OBSIDIAN),
+                DungeonChestRules.availableTiers(DungeonScoreRank.D, CatacombsFloor.FLOOR_SEVEN, CatacombsMode.NORMAL));
+        assertEquals(6, DungeonChestRules.availableTiers(DungeonScoreRank.D, CatacombsFloor.FLOOR_SEVEN, CatacombsMode.MASTER).size());
     }
 
     @Test
@@ -42,7 +76,7 @@ class DungeonChestTierTest {
     @Test
     void availableTiersByRank() {
         assertEquals(List.of(DungeonChestTier.WOOD, DungeonChestTier.GOLD, DungeonChestTier.DIAMOND),
-                DungeonChestRules.availableTiers(DungeonScoreRank.D, CatacombsFloor.FLOOR_SEVEN));
+                DungeonChestRules.availableTiers(DungeonScoreRank.D, CatacombsFloor.FLOOR_SIX));
         assertEquals(DungeonChestTier.values().length,
                 DungeonChestRules.availableTiers(DungeonScoreRank.S_PLUS, CatacombsFloor.FLOOR_SEVEN).size());
         assertEquals(DungeonChestTier.values().length - 1,

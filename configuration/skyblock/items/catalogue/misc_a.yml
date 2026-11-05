@@ -684,7 +684,6 @@ items:
     default_statistics:
       health: 10
       intelligence: 10
-    unavailable: "Needs Dungeons (The Catacombs)"
     source: "Dungeon Reward Chests: The Catacombs Floor I"
     lore:
       - "§7Grants §bJump Boost II §7while equipped."
@@ -1433,8 +1432,7 @@ items:
       health: 100
       defense: 100
       intelligence: 100
-    unavailable: "Needs Dungeons (The Catacombs)"
-    source: "Bonzo Collection II (50 kills) or Dungeon Reward Chests: The Catacombs Floor I"
+    source: "Dungeon Reward Chests: The Catacombs Floor I; Bonzo Collection II (50 kills)"
     lore:
       - "§7Gear Score: §d350"
       - ""

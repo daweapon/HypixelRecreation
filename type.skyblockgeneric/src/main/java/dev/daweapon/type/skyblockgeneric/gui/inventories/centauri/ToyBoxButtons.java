@@ -211,6 +211,10 @@ final class ToyBoxButtons {
                 of(Material.IRON_SWORD, "<a>Berserk XP", "<8>Hit it until it stops moving.", "<7>Gain <a>5,000,000 Berserk Experience<7>.", p -> DungeonClassProgress.addXp(p, DungeonClassType.BERSERK, 5_000_000L)),
                 of(Material.BOW, "<a>Archer XP", "<8>Keep your distance.", "<7>Gain <a>5,000,000 Archer Experience<7>.", p -> DungeonClassProgress.addXp(p, DungeonClassType.ARCHER, 5_000_000L)),
                 of(Material.LEATHER_CHESTPLATE, "<a>Tank XP", "<8>Stand in front.", "<7>Gain <a>5,000,000 Tank Experience<7>.", p -> DungeonClassProgress.addXp(p, DungeonClassType.TANK, 5_000_000L)),
-                of(Material.NETHER_STAR, "<a>Max Dungeon Classes", "<8>Every class, all the way.", "<7>Set every dungeon class to <a>level 50<7>.", DungeonClassProgress::maxOut));
+                of(Material.NETHER_STAR, "<a>Max Dungeon Classes", "<8>Every class, all the way.", "<7>Set every dungeon class to <a>level 50<7>.", DungeonClassProgress::maxOut),
+                of(Material.FEATHER, "<9>Chest Keys and Feathers", "<8>Croesus hates this one trick.", "<7>Claim <a>16 <9>Dungeon Chest Keys <7>and <a>16 <9>Kismet Feathers<7>.", p -> {
+                    ToyBoxActions.give(p, ItemType.DUNGEON_CHEST_KEY, 16);
+                    ToyBoxActions.give(p, ItemType.KISMET_FEATHER, 16);
+                }));
     }
 }
