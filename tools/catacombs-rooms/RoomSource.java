@@ -11,10 +11,12 @@ final class RoomSource {
     private RoomSource() {
     }
 
-    record Secret(String type, String variant, double x, double y, double z, boolean counted, boolean estimated) {
+    /** {@code label} is the catalogue's own name for the secret ("3 - Chest"), whose number pairs it with its lever or wall. */
+    record Secret(String type, String variant, double x, double y, double z, boolean counted, boolean estimated, String label) {
     }
 
-    record Spawn(String mobId, double x, double y, double z, boolean starred, boolean starGuessed) {
+    /** {@code seenAs} is the higher-floor mob that stood here when it differs from the Floor 1 {@code mobId}. */
+    record Spawn(String mobId, double x, double y, double z, boolean starred, boolean starGuessed, String seenAs) {
     }
 
     record Crypt(int x, int y, int z) {
@@ -27,10 +29,21 @@ final class RoomSource {
     /**
      * One room to cut. {@code cryptTarget} is how many crypt spots the room should offer (measured ones first, the rest
      * estimated); {@code placed} holds block states, by "x,y,z", that the source world only received after it was saved.
+     * {@code extraTurns} turns the room further by quarter turns that keep its shape, so a replacement keeps the frame of
+     * the template it replaces.
      */
     record Room(String id, String name, String kind, int[][] cells, int minY, int maxY, List<Secret> secrets,
                 List<Spawn> spawns, List<Crypt> crypts, int cryptTarget, List<Extra> extras, Map<String, String> placed,
-                double[] spawnPoint, int annexMinZ, String folder, String tag, String catalogueName) {
+                double[] spawnPoint, int annexMinZ, String folder, String tag, String catalogueName, int extraTurns) {
+        Room withTurns(int turns) {
+            return new Room(id, name, kind, cells, minY, maxY, secrets, spawns, crypts, cryptTarget, extras, placed, spawnPoint,
+                    annexMinZ, folder, tag, catalogueName, turns);
+        }
+
+        Room withId(String newId) {
+            return new Room(newId, name, kind, cells, minY, maxY, secrets, spawns, crypts, cryptTarget, extras, placed, spawnPoint,
+                    annexMinZ, folder, tag, catalogueName, extraTurns);
+        }
     }
 
     /**
