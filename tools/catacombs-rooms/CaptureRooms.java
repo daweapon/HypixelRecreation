@@ -140,16 +140,24 @@ final class CaptureRooms {
             for (List<Seen> cluster : entry.getValue()) {
                 Seen chosen = choose(cluster);
                 RoomSource.Room room = room(chosen, cluster, catalogue, starRatio);
+                List<Seen> sources = new ArrayList<>(cluster);
+                entry.getValue().stream().filter(other -> other != cluster).forEach(sources::addAll);
+                DoorPieces.Closed closed = DoorPieces.closeOwnDoors(chosen, sources);
                 ExtractRooms.Result best = null;
                 double bestGap = 1;
                 for (int turns : reference == null ? new int[]{0} : validTurns(room)) {
-                    ExtractRooms.Result result = ExtractRooms.extract(chosen.run().world(), room.withTurns(turns), grid(chosen, cluster));
+                    ExtractRooms.Result result = ExtractRooms.extract(chosen.run().world(), room.withTurns(turns), grid(chosen, cluster), closed.walls(),
+                            ExtractRooms.Closing.HOLES);
                     double gap = reference == null ? 1 : gap(result, reference);
                     if (best == null || gap < bestGap) {
                         best = result;
                         bestGap = gap;
                     }
                 }
+                chosen.run().world().override(closed.states());
+                best = best.withBox(ExtractRooms.extract(chosen.run().world(), best.room(), grid(chosen, cluster), closed.walls(),
+                        ExtractRooms.Closing.NONE).box());
+                chosen.run().world().clearOverrides();
                 built.add(best);
                 gaps.add(bestGap);
             }
@@ -183,6 +191,7 @@ final class CaptureRooms {
         Files.writeString(out.resolve("hypixel_f1.json"), ExtractRooms.json(floorOne, String.format(SOURCE, "Floor 1")), StandardCharsets.UTF_8);
         Files.writeString(out.resolve("hypixel_m7.json"), ExtractRooms.json(masterSeven, String.format(SOURCE, "Master Mode Floor 7")), StandardCharsets.UTF_8);
         patchM7(out, catalogue, replaced);
+        DoorPieces.write(runs, out.resolve("door_pieces.json"));
     }
 
     private static String chosenLabel(List<Seen> cluster) {
@@ -427,7 +436,7 @@ final class CaptureRooms {
         return new RoomSource.Grid(ORIGIN, ORIGIN, 1, doors.toArray(int[][][]::new));
     }
 
-    private static String doorKey(int[][] door) {
+    static String doorKey(int[][] door) {
         int[] a = door[0], b = door[1];
         if (a[0] > b[0] || (a[0] == b[0] && a[1] > b[1])) {
             int[] swap = a;

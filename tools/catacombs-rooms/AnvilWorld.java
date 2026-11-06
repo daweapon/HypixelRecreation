@@ -20,12 +20,24 @@ final class AnvilWorld {
 
     private final Path regionDirectory;
     private final Map<Long, Chunk> chunks = new HashMap<>();
+    private final Map<Long, String> overrides = new HashMap<>();
 
     AnvilWorld(Path regionDirectory) {
         this.regionDirectory = regionDirectory;
     }
 
+    /** Reads at these positions return the given states (and no block entity) until {@link #clearOverrides}. */
+    void override(Map<Long, String> states) {
+        overrides.putAll(states);
+    }
+
+    void clearOverrides() {
+        overrides.clear();
+    }
+
     String block(int x, int y, int z) {
+        String override = overrides.get(key(x, y, z));
+        if (override != null) return override;
         Chunk chunk = chunk(Math.floorDiv(x, 16), Math.floorDiv(z, 16));
         if (chunk == null) return AIR;
         Section section = chunk.sections().get(Math.floorDiv(y, 16));
@@ -36,11 +48,12 @@ final class AnvilWorld {
     }
 
     Nbt.Tag blockEntity(int x, int y, int z) {
+        if (overrides.containsKey(key(x, y, z))) return null;
         Chunk chunk = chunk(Math.floorDiv(x, 16), Math.floorDiv(z, 16));
         return chunk == null ? null : chunk.blockEntities().get(key(x, y, z));
     }
 
-    private static long key(int x, int y, int z) {
+    static long key(int x, int y, int z) {
         return ((long) (x & 0x3FFFFFF) << 38) | ((long) (z & 0x3FFFFFF) << 12) | (y & 0xFFF);
     }
 
