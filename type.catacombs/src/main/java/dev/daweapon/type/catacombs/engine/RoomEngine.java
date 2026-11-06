@@ -6,6 +6,7 @@ import dev.daweapon.dungeons.catacombs.layout.MobSpawnPoint;
 import dev.daweapon.dungeons.catacombs.layout.PlacedRoom;
 import dev.daweapon.dungeons.catacombs.layout.RoomKind;
 import dev.daweapon.dungeons.catacombs.mob.DungeonMobDefinition;
+import dev.daweapon.dungeons.catacombs.mob.DungeonMobRole;
 import dev.daweapon.dungeons.catacombs.mob.DungeonMobRegistry;
 import dev.daweapon.dungeons.catacombs.run.DungeonRoomState;
 import dev.daweapon.dungeons.catacombs.run.DungeonRunPhase;
@@ -19,14 +20,14 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-/** Entering a room spawns its mobs; killing the last starred one clears it, which may drop the room's key. */
+/** Entering a room spawns its mobs; killing the last starred one clears it. A key room's key comes from {@link KeySource}. */
 final class RoomEngine implements CatacombsMob.Listener {
     private static final int NO_ROOM = -1;
 
     private final DungeonHost host;
     private final FloorLayout layout;
     private final KeyDrops keyDrops;
-    private final KeyDropPlan keyPlan;
+    private final KeySource keySource;
     private final DungeonMobRegistry registry = DungeonMobRegistry.defaults();
     private final RoomTracker tracker = new RoomTracker();
     private final Set<CatacombsMob> alive = ConcurrentHashMap.newKeySet();
@@ -35,7 +36,7 @@ final class RoomEngine implements CatacombsMob.Listener {
         this.host = host;
         this.layout = layout;
         this.keyDrops = keyDrops;
-        this.keyPlan = KeyDropPlan.of(layout);
+        this.keySource = new KeySource(KeyDropPlan.of(layout));
     }
 
     Optional<PlacedRoom> roomAt(Pos position) {
@@ -64,6 +65,7 @@ final class RoomEngine implements CatacombsMob.Listener {
             alive.add(mob);
             mob.setInstance(host.instance(), host.arena().mobSpawn(room, spawn));
             if (spawn.starred()) starred++;
+            if (isMiniboss(mob)) keySource.minibossSpawned(room.index());
         }
         if (starred > 0) tracker.registerStarred(room.index(), starred);
         return starred;
@@ -81,15 +83,23 @@ final class RoomEngine implements CatacombsMob.Listener {
     @Override
     public void mobDied(CatacombsMob mob) {
         alive.remove(mob);
-        if (mob.starred() && tracker.starredKilled(mob.room())) {
+        if (mob.room() == NO_ROOM) return;
+        boolean lastStarred = mob.starred() && tracker.starredKilled(mob.room());
+        Pos spot = mob.getPosition();
+        keySource.killed(mob.room(), isMiniboss(mob), lastStarred).ifPresent(key -> host.later(1, () -> keyDrops.drop(key, spot)));
+        if (lastStarred) {
             PlacedRoom room = layout.room(mob.room());
             host.later(1, () -> complete(room));
         }
     }
 
+    private static boolean isMiniboss(CatacombsMob mob) {
+        return mob.definition().role() == DungeonMobRole.MINIBOSS;
+    }
+
     private void complete(PlacedRoom room) {
         host.state().markRoom(room.index(), DungeonRoomState.COMPLETED);
-        keyPlan.keyFor(room.index()).ifPresent(key -> keyDrops.drop(key, host.arena().roomCentre(room)));
+        keySource.completed(room.index()).ifPresent(key -> keyDrops.drop(key, host.arena().roomCentre(room)));
     }
 
     boolean clear(PlacedRoom room, SkyBlockPlayer actor) {

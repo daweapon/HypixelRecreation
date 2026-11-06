@@ -108,6 +108,11 @@ public class TypeCatacombsLoader implements SkyBlockTypeLoader {
     }
 
     @Override
+    public boolean usesPerPlayerNpcInstances() {
+        return true;
+    }
+
+    @Override
     public List<HypixelNPC> getNPCs() {
         return List.of(new CatacombsMortNPC());
     }

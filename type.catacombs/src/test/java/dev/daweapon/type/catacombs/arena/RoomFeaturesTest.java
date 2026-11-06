@@ -120,8 +120,11 @@ class RoomFeaturesTest {
 
     @Test
     void mortStandsByTheExitFacingIntoTheRoomInEveryTurn() {
-        for (String id : List.of("entrance_room", "start")) {
-            RoomTemplate template = library.find(id).orElseThrow();
+        List<RoomTemplate> entrances = library.templates(RoomKind.ENTRANCE).stream()
+                .filter(template -> template.blocks().isPresent()).toList();
+        assertFalse(entrances.isEmpty());
+        for (RoomTemplate template : entrances) {
+            String id = template.id();
             for (Rotation rotation : Rotation.values()) {
                 FloorLayout layout = around(template, rotation);
                 CatacombsArenaBlocks blocks = CatacombsArenaBlocks.of(layout, structures);
@@ -144,6 +147,20 @@ class RoomFeaturesTest {
                 double lookX = -Math.sin(yaw), lookZ = Math.cos(yaw);
                 double inX = centre.x() + 0.5 - mort.x(), inZ = centre.z() + 0.5 - mort.z();
                 assertTrue(lookX * inX + lookZ * inZ > 0, context + " faces away from the room at yaw " + mort.yaw());
+            }
+        }
+    }
+
+    @Test
+    void everyGeneratedRunHasASpotForMortInItsEntrance() {
+        for (CatacombsFloor floor : List.of(CatacombsFloor.ENTRANCE, CatacombsFloor.FLOOR_ONE, CatacombsFloor.FLOOR_SEVEN)) {
+            for (long seed = 0; seed < 100; seed++) {
+                FloorLayout layout = FloorLayoutGenerator.generate(floor, CatacombsMode.NORMAL, seed, library);
+                PlacedRoom start = layout.startRoom();
+                String context = floor + " seed " + seed + " " + start.template().id();
+                RoomFeatures.Spot mort = features.mort(start).orElseThrow(() -> new AssertionError(context + " has no Mort"));
+                assertEquals(start.origin(), CellGeometry.cellAt((int) Math.floor(mort.x()), (int) Math.floor(mort.z())).orElseThrow(),
+                        context + " " + start.rotation());
             }
         }
     }

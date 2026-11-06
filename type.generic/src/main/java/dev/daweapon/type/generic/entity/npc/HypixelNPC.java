@@ -11,6 +11,7 @@ import net.kyori.adventure.translation.GlobalTranslator;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.GameMode;
+import net.minestom.server.instance.Instance;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.entity.npc.configuration.AnimalConfiguration;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
@@ -116,7 +117,7 @@ public abstract class HypixelNPC {
                 // NPCs like the current Mayor NPC, whose displayed entity type depends on which
                 // mayor is currently elected. Since that requires an entirely different Entity
                 // implementation, the old one must be torn down and replaced rather than updated.
-                if (!matchesConfigKind(entity, config)) {
+                if (!matchesConfigKind(entity, config) || livesInAnotherInstance(entity, config.instance(player))) {
                     entity.remove();
                     cache.remove(npc);
                     Entity replacement = spawnEntity(npc, player, config);
@@ -224,6 +225,12 @@ public abstract class HypixelNPC {
             default ->
                 throw new IllegalStateException("Unknown NPCConfiguration type: " + config.getClass().getName());
         };
+    }
+
+    /** A player who moved to another per-player world (a new dungeon run, say) needs the NPC respawned there. */
+    static boolean livesInAnotherInstance(Entity entity, Instance expected) {
+        Instance current = entity.getInstance();
+        return current != null && expected != null && current != expected;
     }
 
     private static boolean matchesConfigKind(Entity entity, NPCConfiguration config) {
