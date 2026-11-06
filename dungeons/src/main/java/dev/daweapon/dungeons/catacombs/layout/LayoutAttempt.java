@@ -92,7 +92,11 @@ final class LayoutAttempt {
             return null;
         }
         SocketBook sockets = new SocketBook(rooms, roomOfCell);
-        List<LayoutDoor> doors = buildDoors(path, roomPath, rooms, roomOfCell, sockets);
+        int fairyRoom = specialCells.entrySet().stream()
+                .filter(entry -> entry.getValue() == RoomKind.FAIRY)
+                .map(entry -> roomOfCell.get(entry.getKey()))
+                .findFirst().orElseThrow();
+        List<LayoutDoor> doors = buildDoors(path, roomPath, rooms, roomOfCell, sockets, fairyRoom);
         if (doors == null) {
             return null;
         }
@@ -239,8 +243,10 @@ final class LayoutAttempt {
     }
 
     private List<LayoutDoor> buildDoors(List<Cell> path, List<Integer> roomPath, List<PlacedRoom> rooms,
-                                        Map<Cell, Integer> roomOfCell, SocketBook sockets) {
+                                        Map<Cell, Integer> roomOfCell, SocketBook sockets, int fairyRoom) {
         int bloodRoom = roomPath.getLast();
+        int fairyStep = roomPath.indexOf(fairyRoom);
+        int extraWitherStep = fairyStep > 2 && random.nextBoolean() ? 2 + random.nextInt(fairyStep - 2) : -1;
         List<LayoutDoor> doors = new ArrayList<>();
         Set<Edge> doored = new HashSet<>();
         for (int step = 0; step < path.size() - 1; step++) {
@@ -255,7 +261,9 @@ final class LayoutAttempt {
                 return null;
             }
             sockets.use(from, to);
-            DoorType type = toRoom == bloodRoom ? DoorType.BLOOD : doors.isEmpty() ? DoorType.PLAIN : DoorType.WITHER;
+            int toStep = roomPath.indexOf(toRoom);
+            DoorType type = toRoom == bloodRoom ? DoorType.BLOOD
+                    : toRoom == fairyRoom || toStep == extraWitherStep ? DoorType.WITHER : DoorType.PLAIN;
             doors.add(new LayoutDoor(from, to, fromRoom, toRoom, type));
             doored.add(Edge.of(fromRoom, toRoom));
         }

@@ -41,7 +41,7 @@ public class NPCCroesus extends HypixelNPC {
 
             @Override
             public Pos position(HypixelPlayer player) {
-                return new Pos(-27.5, 119, 35.5);
+                return new Pos(-27.5, 119.5, 35.5, 180, 0);
             }
 
             @Override

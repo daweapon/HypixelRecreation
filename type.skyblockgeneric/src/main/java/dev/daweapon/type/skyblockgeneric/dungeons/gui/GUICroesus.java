@@ -96,7 +96,7 @@ public class GUICroesus extends StatelessView {
                 <c>Kuudra <7>run, if you don't open a
                 <7>chest, I'll save it here for you!
 
-                <7>But beware, I can only hold <660 runs
+                <7>But beware, I can only hold <6>60 runs
                 <7>worth of chests, and will discard
                 <7>them after <a>72 hours<7>!"""));
 

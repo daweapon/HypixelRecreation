@@ -103,12 +103,13 @@ class FloorLayoutGeneratorTest {
         assertFalse(unlocked.contains(layout.fairyRoom().index()), context);
         assertEquals(layout.totalRooms(), reachableThroughAllDoors(layout).size(), context);
 
-        for (int step = 0; step < layout.criticalPath().size() - 1; step++) {
-            int from = layout.criticalPath().get(step);
-            int to = layout.criticalPath().get(step + 1);
-            boolean firstDoor = step == 0;
-            assertTrue(layout.doorsOf(from).stream().anyMatch(door -> door.connects(to) && (firstDoor || !door.plain())), context);
-        }
+        long witherDoors = layout.doors().stream().filter(LayoutDoor::witherDoor).count();
+        assertTrue(witherDoors <= 2, context);
+        int fairyRoom = layout.fairyRoom().index();
+        int beforeFairy = layout.criticalPath().get(fairyPosition - 1);
+        int afterFairy = layout.criticalPath().get(fairyPosition + 1);
+        assertTrue(layout.doorsOf(beforeFairy).stream().anyMatch(door -> door.connects(fairyRoom) && door.witherDoor()), context);
+        assertTrue(layout.doorsOf(fairyRoom).stream().noneMatch(door -> door.connects(afterFairy) && door.witherDoor()), context);
         for (LayoutDoor door : layout.doors()) {
             assertTrue(door.from().adjacentTo(door.to()), context);
             assertNotEquals(door.fromRoom(), door.toRoom(), context);
