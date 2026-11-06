@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -65,6 +66,30 @@ class PlayerDataServiceTest {
         PlayerDataService.runLifecycleTransition(uuid, () -> order.add("transition"));
 
         assertEquals(List.of("write", "transition"), order);
+    }
+
+    @Test
+    void tryingATransitionNeverWaitsForQueuedWrites() throws InterruptedException {
+        UUID uuid = UUID.randomUUID();
+        CountDownLatch release = new CountDownLatch(1);
+        AtomicInteger runs = new AtomicInteger();
+        DataWriteQueue.submit(uuid, "slow", () -> {
+            try {
+                release.await(5, TimeUnit.SECONDS);
+            } catch (InterruptedException exception) {
+                Thread.currentThread().interrupt();
+            }
+        });
+
+        long started = System.nanoTime();
+        assertFalse(PlayerDataService.tryLifecycleTransition(uuid, runs::incrementAndGet));
+        assertTrue(System.nanoTime() - started < TimeUnit.MILLISECONDS.toNanos(200));
+        assertEquals(0, runs.get());
+
+        release.countDown();
+        DataWriteQueue.drain(uuid);
+        assertTrue(PlayerDataService.tryLifecycleTransition(uuid, runs::incrementAndGet));
+        assertEquals(1, runs.get());
     }
 
     @Test

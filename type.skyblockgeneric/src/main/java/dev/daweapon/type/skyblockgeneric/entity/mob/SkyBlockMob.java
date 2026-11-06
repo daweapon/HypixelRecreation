@@ -259,7 +259,7 @@ public abstract class SkyBlockMob extends EntityCreature {
         updateCustomName(Text.parse((header.isEmpty() ? "" : header + "\n") + nameLine()));
     }
 
-    private String nameLine() {
+    protected String nameLine() {
         MobType type = getMobTypes().getFirst();
         return "<8>[<7>Lv" + getLevel() + "<8>] " + type.getColor() + type.getSymbol()
                 + (runic ? " <5>Runic " : " <c>") + getDisplayName()

@@ -134,6 +134,7 @@ public enum PackSprite {
     MOBS_AIRBORNE("\uE070"),
     MOBS_GLACIAL("\uE07A"),
     MOBS_WOODLAND("\uE086"),
+    MOBS_TIMID("\uE088"),
 
     // icons/staff
     ICONS_STAFF("ዞ");

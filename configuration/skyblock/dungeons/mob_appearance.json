@@ -1,0 +1,680 @@
+{
+ "source": "Read from two captured Hypixel Floor I runs (2026-11-05): entity type, skin texture and signature, equipment (vanilla material, leather colour, head texture, glint, Hypixel item model where our pack has it) and the mob-type glyphs on each name tag. Watcher mob equipment is random per spawn on Hypixel; the pools hold every piece seen.",
+ "mobs": {
+  "ZOMBIE_GRUNT": {
+   "entity": "ZOMBIE",
+   "types": [
+    "UNDEAD"
+   ],
+   "variants": [
+    {
+     "equipment": {
+      "head": {
+       "item": "ROTTEN_HELMET",
+       "material": "leather_helmet",
+       "color": 10383363
+      },
+      "chest": {
+       "item": "ROTTEN_CHESTPLATE",
+       "material": "leather_chestplate",
+       "color": 97585
+      },
+      "legs": {
+       "item": "ROTTEN_LEGGINGS",
+       "material": "leather_leggings",
+       "color": 97585
+      },
+      "feet": {
+       "item": "ROTTEN_BOOTS",
+       "material": "leather_boots",
+       "color": 10383363
+      }
+     }
+    }
+   ]
+  },
+  "TANK_ZOMBIE": {
+   "entity": "ZOMBIE",
+   "types": [
+    "UNDEAD"
+   ],
+   "variants": [
+    {
+     "equipment": {
+      "head": {
+       "item": "HEAVY_HELMET",
+       "material": "leather_helmet",
+       "color": 16777215
+      },
+      "chest": {
+       "item": "HEAVY_CHESTPLATE",
+       "material": "leather_chestplate",
+       "color": 8553090
+      },
+      "legs": {
+       "item": "HEAVY_LEGGINGS",
+       "material": "leather_leggings",
+       "color": 8553090
+      },
+      "feet": {
+       "item": "HEAVY_BOOTS",
+       "material": "leather_boots",
+       "color": 16777215
+      }
+     }
+    }
+   ]
+  },
+  "CRYPT_LURKER": {
+   "entity": "ZOMBIE",
+   "types": [
+    "UNDEAD",
+    "SUBTERRANEAN"
+   ],
+   "variants": [
+    {
+     "equipment": {
+      "mainhand": {
+       "item": "BONE",
+       "material": "bone"
+      }
+     }
+    }
+   ]
+  },
+  "SKELETON_GRUNT": {
+   "entity": "SKELETON",
+   "types": [
+    "SKELETAL"
+   ],
+   "variants": [
+    {
+     "equipment": {
+      "head": {
+       "item": "SKELETON_GRUNT_HELMET",
+       "material": "leather_helmet",
+       "color": 14805812
+      },
+      "chest": {
+       "item": "SKELETON_GRUNT_CHESTPLATE",
+       "material": "leather_chestplate",
+       "color": 14805812
+      },
+      "legs": {
+       "item": "SKELETON_GRUNT_LEGGINGS",
+       "material": "leather_leggings",
+       "color": 14805812
+      },
+      "feet": {
+       "item": "SKELETON_GRUNT_BOOTS",
+       "material": "leather_boots",
+       "color": 14805812
+      },
+      "mainhand": {
+       "item": "BOW",
+       "material": "bow"
+      }
+     }
+    }
+   ]
+  },
+  "SKELETON_SOLDIER": {
+   "entity": "SKELETON",
+   "types": [
+    "SKELETAL"
+   ],
+   "variants": [
+    {
+     "equipment": {
+      "head": {
+       "item": "SKELETON_SOLDIER_HELMET",
+       "material": "leather_helmet",
+       "color": 16759819
+      },
+      "chest": {
+       "item": "SKELETON_SOLDIER_CHESTPLATE",
+       "material": "leather_chestplate",
+       "color": 16759819
+      },
+      "legs": {
+       "item": "SKELETON_SOLDIER_LEGGINGS",
+       "material": "leather_leggings",
+       "color": 16759819
+      },
+      "feet": {
+       "item": "SKELETON_SOLDIER_BOOTS",
+       "material": "leather_boots",
+       "color": 16759819
+      },
+      "mainhand": {
+       "item": "BOW",
+       "material": "bow"
+      }
+     }
+    }
+   ]
+  },
+  "SCARED_SKELETON": {
+   "entity": "SKELETON",
+   "types": [
+    "SKELETAL",
+    "TIMID"
+   ],
+   "variants": [
+    {
+     "equipment": {
+      "mainhand": {
+       "item": "BOW",
+       "material": "bow"
+      }
+     }
+    }
+   ]
+  },
+  "SNIPER": {
+   "entity": "SKELETON",
+   "types": [
+    "SKELETAL"
+   ],
+   "variants": [
+    {
+     "equipment": {
+      "head": {
+       "item": "SNIPER_HELMET",
+       "material": "player_head",
+       "texture": "ewogICJ0aW1lc3RhbXAiIDogMTcyMDA0MzE5NzA4NSwKICAicHJvZmlsZUlkIiA6ICI5ODY5ZmUyY2FjMjA0YmJmYjc1Y2Y1Mjk2ZTY0MDQ5MiIsCiAgInByb2ZpbGVOYW1lIiA6ICJIZW5yaXF1ZTkzIiwKICAic2lnbmF0dXJlUmVxdWlyZWQiIDogdHJ1ZSwKICAidGV4dHVyZXMiIDogewogICAgIlNLSU4iIDogewogICAgICAidXJsIiA6ICJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlL2IxOGMwNzFmMDgwZGJhNTBhNjJhNjI2M2ZmNzI0ZWRjMTU3Y2U0ZmI0ODgzY2NlZmYyNDkxZDViYmRlODMwYzEiLAogICAgICAibWV0YWRhdGEiIDogewogICAgICAgICJtb2RlbCIgOiAic2xpbSIKICAgICAgfQogICAgfQogIH0KfQ==",
+       "signature": "P1xXKP4k3wnzXUReGkHfVU3VrUjlo60DJ/54xrzoAzho1IBGMOWTlx2R92rDF4oKe8YtyhWHs3fKJYbvuFodKjr+VB4Zz/edj85H77AW6hcXHlBSTE2/ZOtIyRysFaSjKuu4v3UQ/uzOX38XNeab8L0xXpuNvKoRksF+8I83Dsxey59G4Q9duCWmD+mPt9f+RxfcMBj7F0RuP9ifFuKTR9LpgtpqT6xG2KsyHGY20w/biRl2MACJPVCvsdD7XIxmsDHiN8wjIIwLGMCa+mtkDW9KLgxNbr6e6HWwKYNo1RMmOYRxTG/TK1Kx34BpnH9D8nJPpk7AdTPgdonAfEL49eZ5JUwD2gzXCitew3M+oVuUnscAh8OvrgzNtcbnHIkKjC+XKMgQS4EJgr+m/1oD7LzzPjWLJfbxQA470SxHeLZlVdZLBD4LgEdhBePJHC4MgYGxs1PiNg9HDPhM7/ZJy8wUNGIhuCrYmN25jHv6KHQbRDDlIEGYhgE7AmqvjP4nLuVSrgkGHi+W3TPPWb52KvG67CYpU+ari+bTNwrwKqftKSxeKfBvDUbbwRnjVJR3g3ZZMNGJUcu/eN8tnxxxlmsjgIT4ezWM6ZLQtvlzb3FTkm27Ub0lMFkq57kaAnLMgJgBYpUAy6mBPTHlQ1nqZBzXVpnILF8pBEq3CUDJXSI="
+      },
+      "mainhand": {
+       "item": "BOW",
+       "material": "bow"
+      }
+     }
+    }
+   ]
+  },
+  "UNDEAD_SKELETON": {
+   "entity": "SKELETON",
+   "types": [
+    "UNDEAD",
+    "SKELETAL"
+   ],
+   "level": 94,
+   "showMaxHealth": true,
+   "variants": [
+    {
+     "equipment": {
+      "mainhand": {
+       "item": "BOW",
+       "material": "bow"
+      }
+     }
+    }
+   ]
+  },
+  "CRYPT_DREADLORD": {
+   "entity": "PLAYER",
+   "types": [
+    "UNDEAD",
+    "WITHER",
+    "SUBTERRANEAN"
+   ],
+   "variants": [
+    {
+     "skin": {
+      "texture": "eyJ0aW1lc3RhbXAiOjE1NjI0Mjc0MTA5MTQsInByb2ZpbGVJZCI6ImIwZDczMmZlMDBmNzQwN2U5ZTdmNzQ2MzAxY2Q5OGNhIiwicHJvZmlsZU5hbWUiOiJPUHBscyIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjZmMzQ5MjcwYTNiODUxODk2Y2RhZDg0MmY1ZWVjNmUxNDBiZDkxMTliNzVjMDc0OTU1YzNiZTc4NjVlMjdjNyJ9fX0=",
+      "signature": "VIR2CuqpFU48fNvF6+wktzkUS8K8eQxXzS10CRGIgeQEpFPSS2p8114dTBfOWcz61Mr3M5D0sUjhoKjSJOJyqaGWW4XJ4znronXq6xtvDKM8zengJrMj0TXfBY27o8SQrLeB2Qaq9xiQjBES+/hl+T5/R54cdGWdqNMboVscNrKWVoKr8kGa8NzYUpdHrsznZ2VltlCPpiPsevwzk2hxquHAwtDaWJMuOn238pexDOacISYdpO2huUtaAoE1mf+phoxJ9lpcJZwWPhPX5rEcTd1huPtn/Wz2mJ4ciFtlraqNsRn3VXCvV9qX8fPNGZEOzWmcfJvC57SyBhrvq3WUBmlgpX3zU6ye9gjmRCdpdsBhZxzDGzAjTl4GQOWcabeOr+jp2RvSTFjRItpb9NeO8ecz3QsGJ3hvvFF7tU5NnHcxc0qHEc6iC8eIF+gaROMDT8a9J5x/8eEc1mBGEzWpLxCK0tFEy018oTZaeDBmJURML7a6EoFBvZ2l/1XmlU4+Uio2DVatSAnnmLMzxaN2a8Bucoac7XS3oEJA+AEjKa2Y8dYhwKxliwMuy7U67BZcshQltCOnsOV2TiNIuB/W3urSoHY8Vf7ElI9qlCP/Ma2cSmNFw/KsBMIHmdzLQB/4hE8AuHadynA9YixzQtLqyuak/nbtRk6WBO2Rxq6co74="
+     },
+     "equipment": {
+      "mainhand": {
+       "item": "IRON_SWORD",
+       "material": "iron_sword"
+      }
+     }
+    }
+   ]
+  },
+  "CRYPT_SOULEATER": {
+   "entity": "PLAYER",
+   "types": [
+    "UNDEAD",
+    "WITHER",
+    "SUBTERRANEAN"
+   ],
+   "variants": [
+    {
+     "skin": {
+      "texture": "eyJ0aW1lc3RhbXAiOjE1NjI0Mjc0MTA5MTQsInByb2ZpbGVJZCI6ImIwZDczMmZlMDBmNzQwN2U5ZTdmNzQ2MzAxY2Q5OGNhIiwicHJvZmlsZU5hbWUiOiJPUHBscyIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjZmMzQ5MjcwYTNiODUxODk2Y2RhZDg0MmY1ZWVjNmUxNDBiZDkxMTliNzVjMDc0OTU1YzNiZTc4NjVlMjdjNyJ9fX0=",
+      "signature": "VIR2CuqpFU48fNvF6+wktzkUS8K8eQxXzS10CRGIgeQEpFPSS2p8114dTBfOWcz61Mr3M5D0sUjhoKjSJOJyqaGWW4XJ4znronXq6xtvDKM8zengJrMj0TXfBY27o8SQrLeB2Qaq9xiQjBES+/hl+T5/R54cdGWdqNMboVscNrKWVoKr8kGa8NzYUpdHrsznZ2VltlCPpiPsevwzk2hxquHAwtDaWJMuOn238pexDOacISYdpO2huUtaAoE1mf+phoxJ9lpcJZwWPhPX5rEcTd1huPtn/Wz2mJ4ciFtlraqNsRn3VXCvV9qX8fPNGZEOzWmcfJvC57SyBhrvq3WUBmlgpX3zU6ye9gjmRCdpdsBhZxzDGzAjTl4GQOWcabeOr+jp2RvSTFjRItpb9NeO8ecz3QsGJ3hvvFF7tU5NnHcxc0qHEc6iC8eIF+gaROMDT8a9J5x/8eEc1mBGEzWpLxCK0tFEy018oTZaeDBmJURML7a6EoFBvZ2l/1XmlU4+Uio2DVatSAnnmLMzxaN2a8Bucoac7XS3oEJA+AEjKa2Y8dYhwKxliwMuy7U67BZcshQltCOnsOV2TiNIuB/W3urSoHY8Vf7ElI9qlCP/Ma2cSmNFw/KsBMIHmdzLQB/4hE8AuHadynA9YixzQtLqyuak/nbtRk6WBO2Rxq6co74="
+     },
+     "equipment": {
+      "mainhand": {
+       "item": "BOW",
+       "material": "bow"
+      }
+     }
+    }
+   ]
+  },
+  "CRYPT_UNDEAD": {
+   "entity": "PLAYER",
+   "types": [
+    "UNDEAD",
+    "SUBTERRANEAN"
+   ],
+   "variants": [
+    {
+     "skin": {
+      "texture": "eyJ0aW1lc3RhbXAiOjE1ODA0MTYwODE3OTAsInByb2ZpbGVJZCI6ImEyZjgzNDU5NWM4OTRhMjdhZGQzMDQ5NzE2Y2E5MTBjIiwicHJvZmlsZU5hbWUiOiJiUHVuY2giLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzMyZTJkMGVkMTRjMjM4NjI2NjZiNDA1YWVmYWJjNjVhNTdhMjcxZTg0MmZkYTVmNGQxOWU2YmMxMThjZTBjOTQifX19",
+      "signature": "MSsFoQsLMBE3uMq/mLGbaDy+HjChByCQYAqIMR/IuznLHOK4bC4E3A3n6K4u7NiRoODKyJVjKMkWLF01MlKWUoU/DNbHq+0QHttDgmH93UVX0AEZwkCGeJcBtdCobltG9CMMfuKoQ+IJoJrtJuwUJnSeUAmu7cSkKa31afm4csJokYIT6DXVE5II90uUoOgTdfneOsOjkttornoiTes6KFyfK//XYpXZ2hpre5WmoE5T0BbDaGsYZUum8OXWj3RC1ny4Qwpx1xhpZ9bq1n729vd1I9ISV9qiWmi/2Od73ym2bl5g/In3MMGW9L2BMkuwxY6U6ACnNUeTLMe+uom2zSO+4Mi3hgsQhjSKFpRL1cmKWnpwGxz06nsNihJA5IuC/2/J1Nl9TCbSWYhIJcZTE151A9p4trPPIRF+3z8aJDD8HofbXggKreZ3t++t0juK7btpTE9zxWmcRspSbqzN+qULMaM7BZ1EbqL3PNQ9dgm0z+GgIlMI5HxAeasa2a9dpR7WBdaE5IqwpTNtWcRZKnsh9gXl2IDUh4eYPfycgleWJSLYzTvo5kQF1v3wA57+2NV3KJas3JZJFIxyrkkrIByVXsAN9QQBSgbNmDOno6YEGFoHwrBAlB+9o0qd7lcibUKRFpgrPgesftvpXc/lpY/tEjFqPwryy3ZdTCluMd8="
+     },
+     "equipment": {
+      "mainhand": {
+       "item": "BONE",
+       "material": "bone"
+      }
+     }
+    }
+   ]
+  },
+  "LOST_ADVENTURER": {
+   "entity": "PLAYER",
+   "types": [
+    "HUMANOID",
+    "ARCANE"
+   ],
+   "nameColour": "<d>",
+   "bold": true,
+   "header": "<c><l>MINIBOSS",
+   "variants": [
+    {
+     "skin": {
+      "texture": "ewogICJ0aW1lc3RhbXAiIDogMTU5NTQ2MjEwMzQ5OCwKICAicHJvZmlsZUlkIiA6ICJkYTQ5OGFjNGU5Mzc0ZTVjYjYxMjdiMzgwODU1Nzk4MyIsCiAgInByb2ZpbGVOYW1lIiA6ICJOaXRyb2hvbGljXzIiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTM4MWExODc1ZWZlYjJhMjYwZDM1Nzk4NGMzZTc1YTdkZmJjN2EyMmI1ODJiZmU5OTkwNDIxY2JiNDQ1YWNjIiwKICAgICAgIm1ldGFkYXRhIiA6IHsKICAgICAgICAibW9kZWwiIDogInNsaW0iCiAgICAgIH0KICAgIH0KICB9Cn0=",
+      "signature": "eowm4Fk3Ffgg8KZEtf9YG+UJDHv2/dsvXpFsnO3lsjHjz6uKvRRATbRUkvpCSJ/qBdpR/zZqO6wdPAOV8m4ejuK8H2yY9jkjGAV2JQ85IUCyceTaDOv9wIC3VYt2oz6QT+XPlma4RY6yePmEeC/ZnUK7yQ/18IOdz9KSXYo51XHVjk25vjEZpoxK6GTg03LZ75qN+qVfaDBw8Oj7HwWxgcX1eBpQD/fIMYaeEDclvit08T1FLRDc0z9a+xO60Kni9m6/9d6kp7AzQYhdq9S8g9yUTtD338Q9ChNhYfr/7Rf5SllYTlMRhf3LL7w/GdefCGu1R/2F56Cl5IEVMobfOJ3QMcneSMh8XbrEIo2zeP5pEfKCLO7A8Cwctyorn+fckG1Oxh1xMSsfkebBBdib2lIYaq2DRTPqQhANHjEqqxz9f0rBI28PFMOo9DWTEKtb0QEtqPECmlL30PNbioMeYxkOKcUkvax39IyH/2vyoQEfu6uKeY7zyIzUu9haTj/wED5IBYMFQpgVQu+9ftIaRpde0x3O8YN1THo+xltuxkTuhYFVic9mt/IkXsNe6oPJhuxmxL5yPQeQe/wBKlUXt5XBFdhiFZRDTbLWUJDxttlmNMtNx+Tv3GR32I6zZLfnhc5HWJuiGYQb7rAqSCzjT2/kMIAseTmPIDpYq6rWx3w="
+     },
+     "equipment": {
+      "head": {
+       "item": "UNSTABLE_DRAGON_HELMET",
+       "material": "player_head",
+       "texture": "ewogICJ0aW1lc3RhbXAiIDogMTY4OTY4Mzg3ODc0OCwKICAicHJvZmlsZUlkIiA6ICJmNzk3Zjg5ZGVkMjM0YTE4YjAxOGQ2ZmZhMDQ2MGJmMiIsCiAgInByb2ZpbGVOYW1lIiA6ICJBbHBhY2FMZWU2MjEiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjA1ZmM0ZTJiNjhjNDUwNTlhZmVmMzk5OWU5YTk1YWEzZDg5NDM1OTdhNzg5NGU1NjkzOTdkNmNmNWQxNjcyYSIsCiAgICAgICJtZXRhZGF0YSIgOiB7CiAgICAgICAgIm1vZGVsIiA6ICJzbGltIgogICAgICB9CiAgICB9CiAgfQp9",
+       "signature": "UQOLkwJowDHDC3nlRsnF2Tlh0kbEevlf9ltlc/MsyJn2TLy0Dq0+rjxQ7AEUBU4lAjdqt3j47LR/YkQc5L49y3nkE+N1b9vgLCTPTfzsOK+oVwurw5OkMK+KmRSsHmZCYqeuHE981WE9C8opc22oPHczr36IXCBoXm0tEueje3rtUhCDwNRwQFiL8DOEx+ZKk2M5Y1N4RLusr4CGPTqx05P9y8nRWwg54J44nXg982vtlNqokB2iFuBJIa0mip+Ycg/oxx2JLuryVwnjPjjTosOhnc10htE+1Z634zo/BMZcIlV/Uq85tUroTkzVfs7kvtqxhkF9J8VogGwjec1n3X+VKv0TPf8erJkQ/ojB1FomzWljV5W0KAW0wjYAI3Ob9qNOo6X5gS584nuVDlUQpN0YSfo19g9Cjbdz/VSBHZjMcMWlYv54jJT8CEmhkrncnEF6QKlMwzPhm3Tt3aEpTw0s885S+nyNQ68JQ7bxOD+R8y+JTOBDMq/W86JOqBxGAJ7eYnUpLEazuJ7z68KrTlp/Cj7qbRnOHys8eCUKJGuSQpkBMKLb7VCZ/qJf/ekt9Zz52s1gGcvFqS5pJsQ4OJOf8DgD6ADvzsVOEemWI/q6jrCw2Zznt86gnjUK+9qZtIEYtINoH3xYYsZ68vJCdzllDXCjX2gnMChwmoGs+v8=",
+       "glint": true
+      },
+      "chest": {
+       "item": "UNSTABLE_DRAGON_CHESTPLATE",
+       "material": "leather_chestplate",
+       "color": 11670243
+      },
+      "legs": {
+       "item": "UNSTABLE_DRAGON_LEGGINGS",
+       "material": "leather_leggings",
+       "color": 11670243
+      },
+      "feet": {
+       "item": "UNSTABLE_DRAGON_BOOTS",
+       "material": "leather_boots",
+       "color": 11670243
+      },
+      "mainhand": {
+       "item": "ASPECT_OF_THE_DRAGON",
+       "material": "diamond_sword",
+       "glint": true,
+       "model": "hypixel_skyblock:item/uncategorized/aspect_of_the_dragon"
+      }
+     }
+    },
+    {
+     "skin": {
+      "texture": "ewogICJ0aW1lc3RhbXAiIDogMTU5NTQ2MjA3MzY4NSwKICAicHJvZmlsZUlkIiA6ICJkYTQ5OGFjNGU5Mzc0ZTVjYjYxMjdiMzgwODU1Nzk4MyIsCiAgInByb2ZpbGVOYW1lIiA6ICJOaXRyb2hvbGljXzIiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2EyNmNmNjZhZjQyYTQ4ZjZiZTUyYTBhNDhhOGViNTk4ZjNhMjM2MzliN2E1YThlZTE3MWMxMzk5OWVlOTRjOSIKICAgIH0KICB9Cn0=",
+      "signature": "jQCP08i1Yt6xGjNY1wXi0PMtzX+u3OQat5YfGdNOwRY5rEebi1bocTcC/GQ2eYjZCcpFg6ZjvnQoox7Fd8o6fB+44GFnyC0f2PosGFYIjhwDSvgjVXqxg2ESAxL4Hqk1BtclRMsujr+Hv+AFM06QQYCXxzHL2TK3zpgvYG5Hpg4iacBEUMh5zoAdxKL7dKwOuUEN34qzDJmJ8fMl6vtV56uQaDu7BjmE9CS8Utx2gwuoEH5rBSoV01y/oQoEYZeGp7mw6NCtYJKWpgD8EQsi4c4tbvaiqoUCnc49ABzc8pTUA33l9o1te0hlp3dfCeeC91uDxqBpe62ZtW6zcywczAzgaOeubJmLgw4iaCPjH5rMskX07DtsZ6gm2SwVURvsUgrmf6teS/RG7jQLNA/88f0NjRcd4J/ajVOlPNGaGifIE+jFn1IIpJgJLSoqL2Cv17p0XB4hp1u1ChwbrWE2l4IJ5r9fveV8hbplBqsek0j+Z5LgX9k3iaLaknp0x8kjoedFNkvFsxw0lq2ZRQGzkErsOnQj8XWwc9pDqWCu5iQ+QSy6kLl63NxSc/xcTt4fy0r8+gXZGbEb0RhRHP91AHrvxqrBZ78ZRnQdRtvREyaxmQqt7cDAsW3EVL/UZi9ZWmS34B/3aONWALwHICk3TtMlWcZiLjQz/xsOBmr7m5c="
+     },
+     "equipment": {
+      "head": {
+       "item": "HOLY_DRAGON_HELMET",
+       "material": "player_head",
+       "texture": "ewogICJ0aW1lc3RhbXAiIDogMTcyMDA0MzMwMjU2NiwKICAicHJvZmlsZUlkIiA6ICJlY2Q0ZTI4NjdkMmE0MTE2OTljYzlkMjMzYmM1YmEyMyIsCiAgInByb2ZpbGVOYW1lIiA6ICJSYXRlZEtub3QiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTljYzhiYTI2NzkzMjE4ZjZmNjQ5MTk0N2ExODM3ZmQ1Mjg3ODcwMWYzM2Y3NmJiZTI4ODNhNDVhYmE4YWI4ZiIsCiAgICAgICJtZXRhZGF0YSIgOiB7CiAgICAgICAgIm1vZGVsIiA6ICJzbGltIgogICAgICB9CiAgICB9CiAgfQp9",
+       "signature": "oVacyvTlMDqtBZ/27qqTcxuNNmbEHkxlrPYHXGR46cRRlF/mYNlt4Ia647kG1dkcyS9a3H4ZOtzz6mishlv62vfUs3fVywMdkfg26Y6zQRyMs00Gq+cUVMcJj3EfvNnT/lydRBQFmy6tNpBqLauhHTUwjCnIiYWZHmQnoTaeu1I6wWqLyqF9/JsKIvHOfB31qV5Rg1I4UEDkLMZmw7zBq+LVNTKb8SSIpan5a7dFv9qh0lOf1KvbEkPXIR+GaA0MnrEN1OT2WasNoQExlntYWdTePrtX2WTTrlaG4QYclNoVkouhdCOkre1v5b0kaH6rJADNiyYM8E77Wal+5XDXVfYNlCQ3UIQzMuavYqwmYT2LHXMJtIeVNBzhhxboab6v3VI97p2hJWY58ARAJt1dibVpn6OpcTe84YlajLi6JPrgYHn3wj/luqX1dSvRFfcwsuNZTTCLjt7At/P/nq7oRfUcUwbHCGN8jYw+694CP30SKhSomErWHJPSN5fvNGi3iiDL4FCjrniqFpp33RTM14380BKqcHA60azo3vcwLeaP4BRTdDv4pEYy2wsYybOeAxLx7AlAdaHuPavvwaGmbKd4uYCx7hYX3HeRSLXO9+vroMv9iadS2x5qEhh+g5rfRsyxKZ0j3YGJ8W9ram1GWzDHKPbRyuHC2fVz0JL9HhA="
+      },
+      "chest": {
+       "item": "HOLY_DRAGON_CHESTPLATE",
+       "material": "leather_chestplate",
+       "color": 4706631,
+       "glint": true
+      },
+      "legs": {
+       "item": "HOLY_DRAGON_LEGGINGS",
+       "material": "leather_leggings",
+       "color": 4706631,
+       "glint": true
+      },
+      "feet": {
+       "item": "HOLY_DRAGON_BOOTS",
+       "material": "leather_boots",
+       "color": 4706631,
+       "glint": true
+      },
+      "mainhand": {
+       "item": "ASPECT_OF_THE_DRAGON",
+       "material": "diamond_sword",
+       "glint": true,
+       "model": "hypixel_skyblock:item/uncategorized/aspect_of_the_dragon"
+      }
+     }
+    },
+    {
+     "skin": {
+      "texture": "eyJ0aW1lc3RhbXAiOjE1NzU0NzAyNzE3MTUsInByb2ZpbGVJZCI6ImRlNTcxYTEwMmNiODQ4ODA4ZmU3YzlmNDQ5NmVjZGFkIiwicHJvZmlsZU5hbWUiOiJNSEZfTWluZXNraW4iLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzM2YTAzODNhNTI3ODAzZDk5YjY2MmFkMThiY2FjNzhjMTE5MjUwZWJiZmIxNDQ3NWI0ZWI0ZDRhNjYyNzk2YjQifX19",
+      "signature": "tLOz+j8nY6OOmVbnkCm4u9tf1gRmTl68rPStOJJIDzybyJircMR/ckKo0VIuINbdfn4QyS94/ZWhTG+HzZLJ0phBaY2fTrVFg47l0OWUuNoHcef+nH1t4CJ4ZND3igYOOCW4yUh3hELAxRrZYLrBuTl7aVS56VaFFBmQFTYFDPodEP4vPgNABbZ+cjCzM+8APcYA6UxwXMJBuYuiwDrlb1/L/jNn4ZuPQLYS9p0cvV65Gi5pV5clTOePg+06LbPIFLX4MCZXI4ZdFY3qiCyKUps/u58gr6sUnPdBfKLWhPFx28Sja/Ey3iMsds+EpnMbYuresYDDtd2QpE9AamOPD9hG4wWRgYEwpucsGWlVRQib67b4JM4PmAyE9+LLWG3tsG+T8+4qZLiYoyRUW2psCCgm+6AhiUd8krYy/HsRvmwAvJThFYK7dDP0b+mwrhjdEDejaJWpkY4DJBb96ug450PR/h7Mm4Tya62ZQ8n7dVx7tFw+s9Tt0iR1Im4L3XOXjOXk63XUaqCpxz+1RB0+3dQ4FT5gjVzFE3ysfgEBsnxlpZ1pgJgmN+utqKseaoDr83gGxE3bYClgt1Q6l8ZhMfjQmoT1E2aBOVh83SpfEfdisZfQRY0meYHNKfANC0HF9/shbA6TNOPkSNpMVtYnUlle9cwuX+4k+XrxcnzuMl8="
+     },
+     "equipment": {
+      "head": {
+       "item": "YOUNG_DRAGON_HELMET",
+       "material": "player_head",
+       "texture": "ewogICJ0aW1lc3RhbXAiIDogMTcyMDA1MDI3MjQwNiwKICAicHJvZmlsZUlkIiA6ICJlMjc5NjliODYyNWY0NDg1YjkyNmM5NTBhMDljMWMwMSIsCiAgInByb2ZpbGVOYW1lIiA6ICJLRVZJTktFTE9LRSIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS9hMGU4MWVkMDdkZmIwMjQ0ZDU2ZjRkNWYyYjM3NTUzZWMwMjZmYjQ3OTZmMGZiMGM1N2E4ZWIyNjQ5ODNlMWUwIiwKICAgICAgIm1ldGFkYXRhIiA6IHsKICAgICAgICAibW9kZWwiIDogInNsaW0iCiAgICAgIH0KICAgIH0KICB9Cn0=",
+       "signature": "BlfNJz+bqzNBo859lH64fi3eEYbWWS7r0eWAXsCHtJfAvMVypgX7ZZOkU79bdsD2dos74kyNHnV7kG7vXbeaYMwGToL+fKQgzeRs4VbNWzvWeiCyvKWgLyJ1E5+Zmqk3Tr91k2jMneQCgkGF62TuI9yeEGVUd2bkgxU8vHac8Tlv9XRAfqV5OVUVGPH/2FnoYsudCAejC4IUDGw0+lTNuhQmqPOhuxFYEQ7Ii18Z4FsBKvfm6pM7LZvIGGr2+MbO/Q/HOXJDBem6Mq7nb7/UUmcM+GKqWHwx+fU7y0OdrQZogvmXr0yL/T6nHSZP+vf/aOoMoK7VQc9395SopbrlwgPUXErQ+N48Nce4iDB+nJ0r0LokTM1zevr3/u8zOJgVED+C6bWIFbC3d9x5dEoKlf5wEOOIv/WAEKU/tC67QoreG3QIWO5+vmmPBxQjtWfmkRxIqUrUyKxnx7eMb+wGcxV1Vz0VyDc3u96R9+N87tCuLwAG+m5CcOyTqSqHhR6iqGuQQ8BEVt3VZrWJ6eGmCqYCv1joSu8BOnAViOXOFTLRdScrxcMEWtl/CZuN4yb1VM11VkVeC4/3rjV4/N27hDY21IjdIZMqdkZT8YzEZaYsBW1W10uRTGjyR8UOfLc6kv6gYmNGm71de//8KgHpcY96lm/dLhoO3Dgn7eFy3IA="
+      },
+      "chest": {
+       "item": "YOUNG_DRAGON_CHESTPLATE",
+       "material": "leather_chestplate",
+       "color": 14542064,
+       "glint": true
+      },
+      "legs": {
+       "item": "YOUNG_DRAGON_LEGGINGS",
+       "material": "leather_leggings",
+       "color": 14542064,
+       "glint": true
+      },
+      "feet": {
+       "item": "YOUNG_DRAGON_BOOTS",
+       "material": "leather_boots",
+       "color": 14542064
+      },
+      "mainhand": {
+       "item": "ASPECT_OF_THE_DRAGON",
+       "material": "diamond_sword",
+       "glint": true,
+       "model": "hypixel_skyblock:item/uncategorized/aspect_of_the_dragon"
+      }
+     }
+    }
+   ]
+  },
+  "ANGRY_ARCHAEOLOGIST": {
+   "entity": "PLAYER",
+   "types": [
+    "HUMANOID",
+    "SUBTERRANEAN"
+   ],
+   "nameColour": "<d>",
+   "bold": true,
+   "header": "<c><l>MINIBOSS",
+   "variants": [
+    {
+     "skin": {
+      "texture": "eyJ0aW1lc3RhbXAiOjE1NzU0NzAzOTQwMzEsInByb2ZpbGVJZCI6IjdkYTJhYjNhOTNjYTQ4ZWU4MzA0OGFmYzNiODBlNjhlIiwicHJvZmlsZU5hbWUiOiJHb2xkYXBmZWwiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlL2M0OGM3ODM0NThlNGNmODUxOGU4YWI1ODYzZmJjNGNiOTQ4ZjkwNTY4ZWViOWE2MGQxNmM0ZmRlMmI5NmMwMzMifX19",
+      "signature": "pUw1enOTi2/OX+DmJAEVvaooLrMSRS876TYX/lUHl8z4VCP8VNMax1mAAWLD5eJu/kQIJV1yGlyhrjGyLZULaPx3e18Pc8SWyGZ+mip76qtjRW+GM45lurTE8AK1EPrirJ8zUB/0dNfyuZOgTcYt/w+Y6eOtV2/+KfslsmFQyonmqSAsrlAk0ivehVULqJpbNP4eA2/Gzwdvlx1riz0wAg4fiVtOQtGoY9sltdAyaDnooYKzLMw+2ZO+UNoMoEbOL+nkVUJu5pDLT1Cv9/RZPlpQmggmlDLQg5nSgNpLF/fLDol681BWjavGO38FW7bghGSEpuPRI6QprKaj4jXf0zswcR7xN16gOKlpeLyh9Z+TzsN1EEaChJuXFi23nYwM/c8US0bjmZWdu6hJyFTHJ/CKO2YofRrRW6fwrasGtfe/VkwKEgVC5AzVeRsJD+qxZuGnSgWf951p3Nov2YXxNVUckC4gCfzCSlTdRLGWUqAGSdJVhxB+RRHA9zaLnHYVD4Jfy7UFSHrY+2hL5V2OkQwe6EhfZ/TkN/wzdJOztI++AzaMOldgqqsyJVlaFhFAlFtn6IqRhVJ/f4xEdDfSaLGubixMSi0Wjk4V9dqbp+9dDuTXCBWQ4w8rrz61V66flBvo5rwH9uDxV/z2iF6RyqEZcqVXo0rvzbUTdfEwCsI="
+     },
+     "equipment": {
+      "head": {
+       "item": "PERFECT_HELMET_5",
+       "material": "diamond_helmet",
+       "glint": true
+      },
+      "chest": {
+       "item": "PERFECT_CHESTPLATE_5",
+       "material": "diamond_chestplate",
+       "glint": true
+      },
+      "legs": {
+       "item": "PERFECT_LEGGINGS_5",
+       "material": "diamond_leggings",
+       "glint": true
+      },
+      "feet": {
+       "item": "PERFECT_BOOTS_5",
+       "material": "diamond_boots",
+       "glint": true
+      },
+      "mainhand": {
+       "item": "DIAMOND_SWORD",
+       "material": "diamond_sword",
+       "glint": true
+      }
+     }
+    }
+   ]
+  },
+  "BONZO": {
+   "entity": "PLAYER",
+   "types": [
+    "HUMANOID",
+    "ARCANE"
+   ],
+   "header": "<c><l>BOSS",
+   "variants": [
+    {
+     "skin": {
+      "texture": "eyJ0aW1lc3RhbXAiOjE1NzUwNjcxNjI5OTgsInByb2ZpbGVJZCI6IjIzZjFhNTlmNDY5YjQzZGRiZGI1MzdiZmVjMTA0NzFmIiwicHJvZmlsZU5hbWUiOiIyODA3Iiwic2lnbmF0dXJlUmVxdWlyZWQiOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS85MWU3OWY3ZTYyOGYyMWY0Mjc2MTBjYzZjZWQwZmYxNTNlMjE4ODBkNjFjYmFjNjczYmY4NjJiMWQ0ZTQ0MjZiIn19fQ==",
+      "signature": "tzPUdKgp0tfcqBRUZl6jeXKgdyxwk2//baNsv2Y1lBQqPZs4tzGpSDlHAkjy0iIpM11NRa9z9gLIFinYxZMKUaK8Sf+f2Pqx/fPBiAQPl4bO4Pp1ZMSmlJ0o4ei96NhSfVpLkPQraAML6MMsh6JWGaN2MqyarXIyMMFS1M3ugj0Ya++POyHi5Yjf44BBuWRz0qwaiBANYYyT0pI2RYThgSRpfexpcIyRlXGcTpaMb0oe0UyEyC8zmxNfUveX2YIPKAsyIT+Do7vcP3ey0wQAAEyBGbtIKjyniXgNhL0zctFVE9Netje7D4FC9uUr7UJfMpmcdbC/Z7YFDlH+AGZTBUP7m6B4+3DLtvkFHFq9vpQTFiQDjAgNNIM2Av06LA2qlTBgYD3lcLL99Ve4HSp1K/SrhLPXV+2dSIpJoH8VZPW6FFi+DXuVo03l0ce+5l4+teRrn2KnhIVTwCeEKGJ1XRVkjvy91z1Lf7qHsLY9w5fMB/vOV3fqW/aY5ZZw13ZMjw9XEV+KNeoxSEwIwwnLbvYkiv9E7XhszNyQPmKNQj1aTRJcr1PueyYGU6EMdc54E30QRAu0jxcbIbHn7jB58U7ltzNVwrPztODyEZIn+hkp68ucuwE3kh+/4RDvi20cZV3e18kpHj5kwPDFkktJpJ+Pl/hHCcCGpCtSuBb5MzA="
+     },
+     "equipment": {
+      "mainhand": {
+       "item": "DARK_ORB",
+       "material": "paper"
+      }
+     }
+    }
+   ]
+  },
+  "BONZO_REVIVED": {
+   "entity": "PLAYER",
+   "types": [
+    "UNDEAD",
+    "ARCANE"
+   ],
+   "header": "<c><l>BOSS",
+   "variants": [
+    {
+     "skin": {
+      "texture": "eyJ0aW1lc3RhbXAiOjE1NzQ0MTkzMTAxNjQsInByb2ZpbGVJZCI6Ijc1MTQ0NDgxOTFlNjQ1NDY4Yzk3MzlhNmUzOTU3YmViIiwicHJvZmlsZU5hbWUiOiJUaGFua3NNb2phbmciLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzEyNzE2ZWNiZjViOGRhMDBiMDVmMzE2ZWM2YWY2MWU4YmQwMjgwNWIyMWViOGU0NDAxNTE0NjhkYzY1NjU0OWMifX19"
+     },
+     "equipment": {
+      "mainhand": {
+       "item": "BONZO_STAFF",
+       "material": "blaze_rod",
+       "glint": true,
+       "model": "hypixel_skyblock:item/island_relevant/dungeons/bonzos_staff"
+      }
+     }
+    }
+   ]
+  },
+  "BONZO_UNDEAD": {
+   "entity": "PLAYER",
+   "types": [
+    "UNDEAD"
+   ],
+   "nameColour": "<7>",
+   "displayName": "Undead",
+   "variants": [
+    {
+     "skin": {
+      "texture": "eyJ0aW1lc3RhbXAiOjE1NjM0ODIzNzg4NDQsInByb2ZpbGVJZCI6IjVkMjRiYTBiMjg4YzQyOTM4YmExMGVjOTkwNjRkMjU5IiwicHJvZmlsZU5hbWUiOiIxbnYzbnQxdjN0NGwzbnQiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlL2Y3NzQ1MzRhYzM1NjdkZWRmZTMzMGM5OGI5MWJjMjhlMTE1MTAwNTUyNWE4NGUyYjVkNzIwY2ZmNjIzMTZkNzYifX19",
+      "signature": "sY3RHskVmB0Vj5h3SrFnG4N9retOHmJ6EPWOGr0gfbJTT/v9VgJFsl9et2eD+iaoUfy9AjCWuL9C0YlRYY63k/jINT6L7RLxCDK3suNwj+ZPOSX+BqnWMz+2LMR1cJzSbXK3btrwHFKYNl4tph8rnNqVoXgR96kBgsAOihmHMCyua2+mUUs6Z2de6jCJOrTykmF2NxtdjBjoTfbqS6P/Nt/4XsGkWE6mGh6s5jXW4SVV//D8y8cGvls/UdhMh4FAjAMFHjXZHJR/0Qs57MIA4RjFLSM4jmiRRHjKgbqMYrmyENpgwmfJa4ZLp4kps5wCRXl2a9ypO9jeSSMb0+Na/6G6K1mWD/8oGoWmQBKto6lPTjUTNoW8JBZQPTGYz+lR31Mu9Ms7YW/luqO+duQLm01w230V05W2AKD4kW2DKu84q9qFh9CLCoFDQCpp4jOZbRhE3ojFARR9XHKA7SnX97P01gv2NjT74kgyQlKW5TqSowiX5cBDIFCewKx3uUxARTmXUwj1HmZlHpEi2kLhdb1otJBDxOnRTYlaS20+l/JNU+MAUpJHUPnqNG+0MgcWKPHxpjJ1N1x2Y4K3HQV65zTlcnC381C4tNwhjEXiW8/UKKUEQRfz2ROhTp6pj9bShFWtbo271QBID7xF9Zw2gvYnSKu6ELLkWWMs8Zxdw2g="
+     },
+     "equipment": {}
+    },
+    {
+     "skin": {
+      "texture": "eyJ0aW1lc3RhbXAiOjE1NTc5NzI4MTU1NzIsInByb2ZpbGVJZCI6IjNmYzdmZGY5Mzk2MzRjNDE5MTE5OWJhM2Y3Y2MzZmVkIiwicHJvZmlsZU5hbWUiOiJZZWxlaGEiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlL2E4NzIyNTgyMzVhNzc1Mzc4OTc3YjQyMmFhNzkxN2YwOTY4Y2E4NDllNzgxZjM3MWE4ZTY3YWQwMGFhM2RhMyJ9fX0=",
+      "signature": "em+1+JD4gq8t1cgcO9LhkppYV4zb10JAnZx+FwiqqGhP20aULudp170yWEpx3mLYHwQQAchUIIbaBMFUWmpUdJYOALe4f8pirbaQz/jvM1JSotocOl9+SKQ3/NZcW7qCVOeCFaTWT8TKITMkEOlrHMfZcpYXmGkgDnCfDO9pJzG9+kbXGVWkRXFRlxjqnLpoZaVMK6n2/ThykduNH7UzurXSpytsPrswNGK7CPfs/fCnEfrKSMArwKE3nzwuhgaQgFMYPXxrvaAmNqqtlqJhYmJpVkcOJs11VGD7hUMMLL+EH/p+vlChMJGzdaeVjnGxq5APf4nsd4fN77s2omqfKVZPNm+E4AUms7HEn/77KguIk8WxGzghueMtROnmwkBWyK12ksZSJPXZL8iruxkjhGWuM5adzHpb4qjO7ajDwAkmMnI4mYAG/1nmeCkxt4IZ2lBkUQmXzizIN+ri4tbju89DRY4ZipoxjyNQw8qZriFEmr74Cmi/9JkviEiKzDge8ZU1XEk3iblf8QDnrhs+uUc+8DqruxK/NAwM93Kfwi02jIhePlFwBif/l5SPeJPo6Ac5kRvGTm/bSaR2vygiOIefi3JkQ2pkXlIioeDx/elxTcUpDY93I54jhcrxGnzPFMTiFEbmz3x9rGUVF8SAAX6nIOtx0Utlkl3TuEeLc+0="
+     },
+     "equipment": {}
+    },
+    {
+     "skin": {
+      "texture": "eyJ0aW1lc3RhbXAiOjE1NjE3OTE5MTc4NDQsInByb2ZpbGVJZCI6ImZkNjBmMzZmNTg2MTRmMTJiM2NkNDdjMmQ4NTUyOTlhIiwicHJvZmlsZU5hbWUiOiJSZWFkIiwic2lnbmF0dXJlUmVxdWlyZWQiOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS83ZDU2NWVlMWU5ODFhOWQ3MzIyYjE0NTRlYzcwZWNiZTg5NTIxYTZhMTJkNjAxZmVkOWQyNzRkNzEzOGFmMzI3In19fQ==",
+      "signature": "KGRBmCJD9WcePIoXJJneydV+Bf04lnIxrVVdq0DpD7NeHBHjDgBnQCRaf6jttlxfthnwNeq28IGHW8VA2H34CBELbFAukCVG96xytcsxlVBwu1GuqHdJTpOwxyT5ihle4iX1fHygL2nTab1IVmXUGX31JHoSh8pBi4a6feUybvQ7ZK7kGJGMMdDGUIj924awArONJZynINBNZ4hoFLVxOUNvfcX4RqEbbq/vjrAihtkL6ce1e+SDWSAHi8MbftNCeLNMkPztOCjtPJK1h57DTpCwhJVdjP8v10b0V3KJvwWFC8hVp7QF+dmQWe1ePYD3fMh8qBo9XPo3NXoedKmHEqGGE0IrXgtbgSj30SyEDA6Fi/jhO3T/LAeetMFetDfOlUOl441grdu14hm2ll3wYqIA+SUq5glv2eyyFb79f9k9wT2llEj1jjdAyofsKMCecXXR/jTc/kPJm4vY/+z4muN3eaW9+bIR0yrkhZvBwQwQkdt+4wjIn/SpnKrSz+UzSWGPTBO50jLXAQPc87MaurCMlRean9/B6RPYV9SApDF36rRCdFMam/ngBah4K2Mfyc2FYLm7cfY7GNw+NifxlRKUnBqFfHO3jGUvLaNZbQx/r5mTrjNhT8DW8q0yjC9UnPjDCZGBKUoEFD6qnv3ZFe6hh6N5xiyMNJbb4LhnTl4="
+     },
+     "equipment": {}
+    }
+   ]
+  }
+ },
+ "watcherMobs": {
+  "types": [
+   "UNDEAD"
+  ],
+  "nameColour": "<6>",
+  "health": {
+   "min": 15000,
+   "max": 23000,
+   "step": 1000
+  },
+  "names": [
+   {
+    "name": "Reaper",
+    "skin": {
+     "texture": "eyJ0aW1lc3RhbXAiOjE1ODYwNDA1MzgzODIsInByb2ZpbGVJZCI6ImRhNDk4YWM0ZTkzNzRlNWNiNjEyN2IzODA4NTU3OTgzIiwicHJvZmlsZU5hbWUiOiJOaXRyb2hvbGljXzIiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlL2E4OWY2MzAzYWY4NTg3NzYxMDkxMmRjMDRiOGIxZTg5NzI0NzUyZjBhN2VlYTA1YWI2NTQ3ZTIyODE3OWMwNmYiLCJtZXRhZGF0YSI6eyJtb2RlbCI6InNsaW0ifX19fQ==",
+     "signature": "LW6tuOSCvDp5OOTD5nO6WlHWj6dHoZdzwQd6esNOWtSxcGSo5ScA+kjchB7Zq2Pck6PtyIr9JSh3h9uJjzbsTLZwhZyAagNhUg0SM4as1xQx35UOpN8/w7TOXHPD+2NsfD/1hseYtaz0Btq9OMNV4Gv2z53tuXM4nKHeyqRvdOn//B1kGChaEkFqwfQQHn7xhlNYIVzqStbeNK4DW66SX4mgI6ClKrc4eRLjNKdkWBEldRafMN0irwzOjkQaZwlrZeIY/BTqR1zZNSuA1Ub1WpPmmB0DQyvIn8wNsiuDIwopSxb4hgHoqrHxONePgd6bOV2iDEP8ebphQ/tch6bpOkc82oxeEf3GMvi72zuUtS2q/shgxrFjBCDmoIMWQTpBBI1FEgCNHdrWRFm6yJV6CctOUJ/1q9Vt5vxhtKcCdxDF58uCGm13LVlWi3mldP3nkSET5uN1V+KG73Je5t8JGGMaJj6IYDX9SXHDfAkEEzlsAIx8W6yQ2bcc9fIwXCIUTV4mQYxNmSv2asihaUwQi4fpSokLsaJnFFa6mpI9kiQMlAwOhhmKktfPIXpjSmuNhKv+UMLgOBMsuAIaMX1PdFRehkFhWKlKlFW2myYCS3+LH3xFtEHHx7Y2QxIJX2jJGmaewEArQfQ1bZLGKI/1P8OHh+wxrE5GD64eGFw14CY="
+    }
+   },
+   {
+    "name": "Parasite",
+    "skin": {
+     "texture": "eyJ0aW1lc3RhbXAiOjE1ODYwNDExODY2MzYsInByb2ZpbGVJZCI6ImRhNDk4YWM0ZTkzNzRlNWNiNjEyN2IzODA4NTU3OTgzIiwicHJvZmlsZU5hbWUiOiJOaXRyb2hvbGljXzIiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzQ3NzQ4NzExOTBjODc4YzlhMmM0NDk2YzFlMTAyNTdjNmM0ZWExMzgwN2Q3MmMxNWQ3YWM2YWIzYTdhOWE4ZGMifX19",
+     "signature": "NM4cUDoIjQluMxWd+j5D/Gj8mpCBXJc2Z8Ds8zNgAprsFjTWanbrimL6PXzRgE/jVRspviZEGZVDuUqqAzcWg038d4g2BGB+5m3/L/PQAE7WHaQizcy9i0T/J14zytl3cALm8eHuOT/+GhhfBgflhjihFy4ZvgIb6O+lDVsKJLgFmbkznKGwXsRqKN4DO2Bs8JTBN57jJf2BJAoFSyYUhXwGcx+1Gs2F0l9ZBxWDlbqHlboiIIFvOLKaUhRnV0QSgjAmsxl6KhmVrucdLuy0SU+z7Bh70xdqPgG+eIEG8IdDEDFkZQCwwYs2iaZCsJ9tZW5aOFAhQrYSQJiz66+qr//CFD35JMRAj58EnqZJLRzwm3/jr0oa23p+WrRcZHvhXVt6VFTckt0UnvjzrdxgviIqYT3bNwNwLxl7xLWV54LIZJK0J+/Vod8B85I+EoXK5l7wGHDaSYqkJjYKjaxWPwkUTg8PGwLsmonQlSYdOu1kihH3bUIZYFgdWX+IjheKITVIX+ezHD7BTEKNdXmJA0emfSzE+oelF9HH2N3JhYzCuyudfZwf+1krLBqvu7aaTHybvTvzFRvZmS9S+iQ+iTC1ftAVAeD9PJcOvyEOiaLnZ2kUHT3eo113wrj8tMpmlXD42Ur8mxzeqzdcI/iiva09otONPoCesC9oB7TXmQs="
+    }
+   },
+   {
+    "name": "Freak",
+    "skin": {
+     "texture": "eyJ0aW1lc3RhbXAiOjE1ODYwNDA5NTY0MjIsInByb2ZpbGVJZCI6ImRhNDk4YWM0ZTkzNzRlNWNiNjEyN2IzODA4NTU3OTgzIiwicHJvZmlsZU5hbWUiOiJOaXRyb2hvbGljXzIiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzdkMTJiMmFkZTQxM2E2Y2Q3Y2NhM2M5NWU5NjFiYTlmMGFlNzE2NWZhNDFmYzdiNWQ1ZjA5NGEwMTI0MGM2MDkifX19",
+     "signature": "qzXVvv6PGICeFppFWM3GxytfhBNkhaYULbtOyFWLk+P7u0zHaLbaaqILqooHbp6Y6uNYnKHFsQf8UwiwlTYN6R+HNnygRsBLPG56J8pbAANqW94NQT1RhmaG3Vb6nFVzvfHbR6bFvB5cI8JOQTVqEvwpzat7GPIyHrfegh0Qz/B4NydrhJZRBoPwbveZvkb3tHSbfo/EFT4ooRywHDMnQ5nexwxCLWqinzWsJEMkh6yBvv5aQK4eK/gB1ceX4OYghNzZAv13npyuja8/d3KGH5V5YEd5T6nzKsskp3zorrvFT/dNZdeyRyyzKYQ6xcyWs+GdkjqM5KJbcIIkqR6GIlWBkTOY4dozCAcrebRLPZnii8Rnhi1lfXDpFuNR4Sa2DIrNSvbHWD3xAtAQQNWeGT2EssHvvb2J7DMycY+BFJuuE7fgM9NK9CHquWpvPFe3WCsswGS7lACOR9gVQJ2Qi8Av7zqVPZciEGRj6fl9i+ZAYOsw/uq3wU7t4TZ9FTkImT8/mSXgw1dHIY/x5pWmzWen3lwk0ATE7d5JSTSEuDz8uXLurA4Y9lM6jcVFQlBqwqOMuWZgEPh7iES06gMqWoPcDgw78X5oyDcjUnIsqHSo7kiUgazv1OLILuClpRozvAruJpEhBZ1GzXKSyQyM0BFKCBuYFwjTDhRnaNBd+Jg="
+    }
+   },
+   {
+    "name": "Cannibal",
+    "skin": {
+     "texture": "eyJ0aW1lc3RhbXAiOjE1ODYwNDA5MTc4NzYsInByb2ZpbGVJZCI6ImRhNDk4YWM0ZTkzNzRlNWNiNjEyN2IzODA4NTU3OTgzIiwicHJvZmlsZU5hbWUiOiJOaXRyb2hvbGljXzIiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlL2I1YmE3NmUwMmNhYjcyZmE3ZDhhYzU0Y2VlYzg0OTk3NmFiMGIwMGEwMTA2OGQ2OGMyNjY3NjZiZjcwYzM5OTcifX19",
+     "signature": "wTwM2oyDKPlQ2MtII4gJ4J4hoI1nWa/NvmRrMr7+7gJwsaKhFlwwa2yKx2ybb0QWnC/8cSmkUrVyoRvHTTtz4QcKWIl25mA1++C+evtYcg7a60/0z477q9X7p+P1ois8c9TlFKG594oRRqXLXMqKjcnsefPs+4tSm3pUAsxEjM6qJj8FoQu5uU/E7I0NylM/LweBk81MuKo1GSbPOOfRwiYbZ4r8YPn/0FG4gqoXlf5GB/75Ky8SHVOPToE0sr5JiH8rrwR1vcay6jjlfDmG3D/E22DQGz+G7Yfib2jJ2LPGNcrPojrd7MYFc4r3i6DyF+hjqqLlOKUAk1fF9vWSvZiTlIyg0Q8lvPQPk6m+pZRLAMWdEIVAipoLD1rhnOS0qmAnmCurVRJtJA8rxJaL8d7giIBPDgYF4RNQSU1a6ZnHAavdwLTl4/McjotT93A3r9V+sJO+7D8o0VasJBpR8AZqeqrFM1YRm1W1G1JjBHdALXli8txG/V1daV5Acgp3YqM9pCOTCJS96smIKnibe7zitYJWysrNU2oIuTmlaJHd9Lytg2glbP+a4dt+MkWkfea716qBbAEfSrqnGVeCpd6ANjlvgJ0YYVkpGtNLhkFPUd+Iq64L+3oFa1veQyiXl4mFixws1TRHI7YXRmOKKMAF9EnFqH5AFeCvbFgnyZ8="
+    }
+   },
+   {
+    "name": "Psycho",
+    "skin": {
+     "texture": "eyJ0aW1lc3RhbXAiOjE1ODYwNDA3Njk2MTQsInByb2ZpbGVJZCI6ImRhNDk4YWM0ZTkzNzRlNWNiNjEyN2IzODA4NTU3OTgzIiwicHJvZmlsZU5hbWUiOiJOaXRyb2hvbGljXzIiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlL2FhMjNjOGNkZTI5NDNjODQyNDlkZTgzNTFiYzM1NDBiZTVmOGFmYWFiYThiMmNiMDMyZmM1YWNhZDc4YTI2OWIifX19"
+    }
+   },
+   {
+    "name": "Flamer",
+    "skin": {
+     "texture": "eyJ0aW1lc3RhbXAiOjE1ODYwNDA5ODk1NTgsInByb2ZpbGVJZCI6ImRhNDk4YWM0ZTkzNzRlNWNiNjEyN2IzODA4NTU3OTgzIiwicHJvZmlsZU5hbWUiOiJOaXRyb2hvbGljXzIiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzY3MjM3ZWRkYWViZGJiZGFhY2ZhOTEyODg1NTYwY2NkYzY1ZGE5M2I0YzNkNTEzNTMyODY4ZWMyM2JiNWI0NDgifX19",
+     "signature": "N0/uCZOe6RHx4U+nhv4DhaADwhWAQfgnYwMg0ctVn2nuDQTcJRzR+CZOZTRniv/k5CDNU76XbIruJL2FJu++16e2fxqMYjsyDT6Zf6M4qpzbDg/MJIHH3XG+oJ64gmuO5tgq2gAjuWOzWt9y/6dz7sGPKu5iG3TCQPnOFOWMqUVOwWx16SHd64ECueT4R9VDYFqOORnXkHBmygrOKeqZ+4WmDCFjBGM66sXV1K3dR2/M0UAJDTGuaMnaD89AaSo2hhNylxw4ThLeok1JT6hRZhr8KXsUESugH2L1tWCD8rSh/LMzFPEqpBdkuHQ8J+RE8OztwrZUbsrkkux1BJrUnIKWgsaKUCgtFuAm0t1YMnAegZ5qRq7qBDVC7nE1EAyy+ooPnNegtjxQd9qpVZAi11r50Tvcz54Ha3605hhmpuWWG/cFnzlYAMM3BYVUZuz8u6hAZeI4v8IdkqKFEV0Vfr0Gi3VGklx1pyoIb50JW4gTTmPpsfSn+6LBYrJq/ll4EbMXUs3AC7JDkQZn9DGeMm0yMGqBLDNcrKGrSxOp3SF+Gf4Lz7K8dRmkTjkwYubkTWsI9HyPT5gL+JDUw2r7yRGczovTTb2nQ2iHijyXWVuaxwqHqKqDAsHZoP1K6w8rMWNGrfdM9VWnldJAcxykjgfDxwy0vhkM/0MPNxgQbKA="
+    }
+   },
+   {
+    "name": "Revoker",
+    "skin": {
+     "texture": "eyJ0aW1lc3RhbXAiOjE1ODYwNDA0OTUwMjgsInByb2ZpbGVJZCI6ImRhNDk4YWM0ZTkzNzRlNWNiNjEyN2IzODA4NTU3OTgzIiwicHJvZmlsZU5hbWUiOiJOaXRyb2hvbGljXzIiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlL2ZmMTg0YzE5ZTcyNTYyM2QzMjgyOGEwYTRlNzQxZTg2ZjEzNWFjNjNkYmM4MjhmZjNjODQ2ODMzOGYzNjgzYiJ9fX0=",
+     "signature": "TUorxz+lal6+rLZQpOhG6Faa/De5w7DZv5GybxWIXpeQB0dO4wLeO9hB3LjmunApSosZhp3eC1TGzJfwM8PBtdmNrdlikaQZJzEbNmiMddzrNhzNXC2EQCauRtvPEwNBfWWgnXTdoaag+9u1lSD1TXK5CCIvQCF7OIruYqlAsZN0SewkCqGYWQ7k/eEeNEC8rVfhN+8CyglqZs+YXF53IkySGC3YlXsuivCVx+NffI1bHl+rd3X4QPKTvuazrWihInTS6Uk99IWGG9gAvIZvJxzdGWTIC0wxlKlm8xEotUjqbjoNLDhVpNBbo75K8oQicIwrd1m3Wk/sX+/kyxM5kxQ6viHOrjNDVJGRnQSqmSH1KOXRg2eJS5zA6EOMQX71V/JGLEYjjvJadVCEKBam3PAyv93NePP//xxNJPVihG26xsl0LHqnvX3EmrYaCM5hdEK3Vjqnyan698jXixtwTxPmV6K9eRBfUrS3voYaW4Fv4euWW0hUv5gHWIARxRddQZaLYOG+qu2lKcdBQDkKW2wF13WBOzjSlDATBu8C+jLY5a73DNi2O53uWbjyq4lOC91y2zdqTUXtpq8L9MWe7lwzfRa4TvNn2ztk2ai+Mr4FlhvaKPjvE9aU2QfK6dy3684lszvZAJ8Vm4nWyg8c73HPBvOR8ydq6ufcUPI5DeU="
+    }
+   },
+   {
+    "name": "Tear",
+    "skin": {
+     "texture": "eyJ0aW1lc3RhbXAiOjE1ODYwNDExNDUyMjIsInByb2ZpbGVJZCI6ImRhNDk4YWM0ZTkzNzRlNWNiNjEyN2IzODA4NTU3OTgzIiwicHJvZmlsZU5hbWUiOiJOaXRyb2hvbGljXzIiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlL2M5MTllNWI4ZDU2ZjA2MmEyMWQyMjRkZTE0YWY3NzFlMmY1NWQwOWI1OWU3YjA5OWQwOWRhYTU3NTQwYjc5Y2YiLCJtZXRhZGF0YSI6eyJtb2RlbCI6InNsaW0ifX19fQ==",
+     "signature": "XtL5QImXUAyUJ0okGIGs1P945/BPZtfb7Q8ZYE0RdMj8J2PalLmVvcYwPoHEU8ROEio1JPgeyC2Z/FFYl6QFSbqiXP9+uiseqiOIG3sfmthmTd8WErx7zHcu8C8aHRl+wyfQORM73ezeB3O36Fhwqvd/I2YXHFfCiHlOAqPODfmmW1M8jyeqtE+GEXoXtuRvWZ1tHTCNqNcHA1Ap2ftX0/YIuEuwmYrtFXY1lrC5AHmmeCdFTUJf3WG7DR9HybX3OWQFou1cJKK//V7muPNHjsiIHjayJuFFZswISz7D9eL/9NtMfkZTKRVTOgCc1qVN932aVsFJ8hvUxc/i54wc1SJ6EdY7S/yCSW1rGv31/3ZGg7GwV7gK5QJxT/aBiFWrO3yp7WfUtAAsbBKjTRO9y4o1aFaH+vjJ4rjIRumzc1Dsmo8eIY8dWVjQ6y6DhuVSkgzqW5UJFlrsXrBB99JOSvZCK/ZCZHqfXKqTjRp8/ZsIW5NvAr7JIn/ZOSMCjzkacuHuU/yHJZwaUrDSmOG9nBvzGrXOTRu70F1AmAqLikqN/izc9yDrpgS7QArxkEIrBM3Zm8u+QKwdHFzMbY5CMqqKtY+7LpUi/SC9zCHz8B1Etp8Q64DR7rG7niXNxErluPpjGQcVGrQ5TwYmNQmFRz+b5bQoq48gv6BCS2eB048="
+    }
+   },
+   {
+    "name": "Leech",
+    "skin": {
+     "texture": "eyJ0aW1lc3RhbXAiOjE1ODYwNDEwNjQwNTAsInByb2ZpbGVJZCI6ImRhNDk4YWM0ZTkzNzRlNWNiNjEyN2IzODA4NTU3OTgzIiwicHJvZmlsZU5hbWUiOiJOaXRyb2hvbGljXzIiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzVhNzk4NjBhY2E3OTk0MDdjMGZhYTEwYjFiYmNmNDI5OThmYWQ0ZWJjZjMxZDdhMjE0MTgwODI2YjRhYzk0ZTEifX19",
+     "signature": "DPKPPDKGHYlTSf8KVB/jTfVL56vdTLNkw5L1rsbh0Sh34RbLExfLbHY2MRF1I0ByK2aMbxbKeZ8AZKNz1MOhHameMQrHcvx/Ub3FLyA/uaKdDT4qYpBR5FXTfUzcnkrKtwX/qtZpA87ksiqd1aqmiA0ChPXma3HVMyj/GT9m8ld4JsjS2athYgk/3r+enAIX07SFTyChqkGUsl2j8wYmyP33XABF8WJG0fx2elDOH8XtV3D2lyxs7tp5MOZrk5TGwYE0f2F0+j0r96ES5i0x//Nu/J5sg+80yKBTov21JqJS6IA6v0uj5fJ6gnTxg4Iw5xrsvemn+GiZ9Iijjhi/ns9qa4nvciLGT2yjEK80pQgP5OkvGDliqyMn2SYI2oPiFYQnMmV+7P4pdkbY626TfI9mEx7o46EzywyhWVTDhelvOVDPhnJav+WBgYnPdz1CPQyowIhjNIE6F24g95vjZ3A4rc/lKnHPYKT/Z0WlBIpGp7yEIj9Im5xr0F2WUjwRaeF0Gm/CRSgHMVgzG6zxaWyJ1yF73dVXdz8t2OeJ73l6gyS4S0fKlxXnoPBvAjE3kF/SbgWBugZ5y7RF16DfaALNOAqD9CwUu59x7qHLdXffCWACBh88ga2Gaxupc8zoP1DYdTn70EUzBcQW9VfhADcXwncKLyoyar1dE5NIwfI="
+    }
+   },
+   {
+    "name": "Ooze",
+    "skin": {
+     "texture": "eyJ0aW1lc3RhbXAiOjE1ODYwNDA4MTg4MDMsInByb2ZpbGVJZCI6ImRhNDk4YWM0ZTkzNzRlNWNiNjEyN2IzODA4NTU3OTgzIiwicHJvZmlsZU5hbWUiOiJOaXRyb2hvbGljXzIiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzkxNzFmMzViOGY1MDgxNDJiZDhjNjU0MTdkMGYzMjQxNTNhYjkxNDc3MzllZTRkMTBkZWE3MzNjYzgwZWFhMjAifX19",
+     "signature": "ffBLtRq5rpplSANZ3uHm8/ofRcLOTnfPB4+MWzmGjO0s4iebXsYthww0kkM3Gi4P2Bc0mUYtvYU3KQFHRBqrmzxtqxJPvqmVs/ji+BL1LIJgLeZWYKGCXDwzZYjDHpnCRDpsHTl1yVQcaryouFZ/bg79S3JiRuhLyPF9ALebiFbfA4cgrcQlvb0aQcc/UedOLGipCg7gq4F15BAfBkxymR6upwaEqEEh3+zbLqiyA2ILRsITwBPpQqZl9O+YcpeDdxJUurDfTEvpbwX2jMpVYQaqqsia0N1y0BuiNz+xkH9oshGkGzdqw45m0KeaDuG4AMed6XAjtPePp6ip4ZOxf0JDijx8/aEOmmKUBgT2VdLSnDw8mGTmglsb8HcN8W7SXXKMl7a6CsPo6mHkbPldwMBBIuiOymRAlVxZEiVFIk10IMTSwxx/wUHnzx9bs/q585dMUYfRcnBp4TxAbhu6VNeF8PNXlIVf6099QajOppjvsbEZ+uyWdMH8szLaRh9tnGXiRFjL+VUY3tgznyoJohlad0mHnIj5qnUWCFB4ceU2q+3xWGeJheYaFWc7KV23/DLgnuQ4lsMzYL5Iq/xgWF2eSipq1L0oW+Eh/KrbqZ1o6n4XArMQsErjWErf7MUIERZGWRMT53qDTE3xXuibUiGD/0YPFHViN+vVVi0nH4Q="
+    }
+   },
+   {
+    "name": "Putrid",
+    "skin": {
+     "texture": "eyJ0aW1lc3RhbXAiOjE1ODYwNDAyMDM1NzMsInByb2ZpbGVJZCI6ImRhNDk4YWM0ZTkzNzRlNWNiNjEyN2IzODA4NTU3OTgzIiwicHJvZmlsZU5hbWUiOiJOaXRyb2hvbGljXzIiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlL2Y0NjI0YTlhOGM2OWNhMjA0NTA0YWJiMDQzZDQ3NDU2Y2Q5YjA5NzQ5YTM2MzU3NDYyMzAzZjI3NmEyMjlkNCJ9fX0=",
+     "signature": "pzTWYQWz6f4H3PZjlnq3Dj5G1tymGGTBGXX8Napoee8N8o7di/kWY8zdAlAuhbBwToGu8XPWY8s3wP1aKL6Z4ky5QywwuKSafumObyq2rucuKWBIrumthe36WlZc9Al/KAYzhwqlsE4v8i6G1/H9JOLymYDI+ScTkyqYE/gcCx9HQHFpCdz2iVIzi/xtTiS1gWPOs3Nn71Rcsk3uoT5V0O2zuTi2a/gnVpuecRX6JUucr8vI6kcYh4YkU+aI/zXttg6jp7/t5AGEtKkyrK//foPJ4d8RcSwoyWyTFkbyIKIWuOR8F0EBj2BGdONrCPdq6qP358ugGcjHs4LO28k8pM2dmHFuPWXHD3RZfUhd0NRUrxF1clEsKiTJZ6pzPVx6Y+mkO8aadFfLxybEsdjnL8MHhMsLR9E1TgGAocinhgDVceIcyJcmq/tkA2BWjeOggIdiGli3xLUKBD7fQvZ7CZWnCb86/zWJCTKuIxmn+vUC7gLmHYVzXFuyMUQT+o7CuBY5CElXAKWmebuqWkV6Y2IlrXQTLmQFgK8ssB7ZlQrchlT0nu/XG8lS0A9y/bCXDCJ3xaV0LmGS66H0CD0gIW7/urUcqxQFSvwGKo/o5L+2/7OXjKk4TYhQ1BDi4oD0sars4AUf+5oe6PUNOUIGTVnO9yUd1dTKkAlUK/aI6bU="
+    }
+   }
+  ],
+  "chest": [
+   null,
+   {
+    "material": "iron_chestplate"
+   },
+   {
+    "material": "chainmail_chestplate"
+   },
+   {
+    "material": "iron_chestplate"
+   },
+   {
+    "material": "chainmail_chestplate"
+   }
+  ],
+  "legs": [
+   null,
+   {
+    "material": "leather_leggings"
+   },
+   {
+    "material": "chainmail_leggings"
+   },
+   {
+    "material": "iron_leggings"
+   }
+  ],
+  "feet": [
+   null,
+   {
+    "material": "leather_boots"
+   },
+   {
+    "material": "chainmail_boots"
+   },
+   {
+    "material": "iron_boots"
+   }
+  ],
+  "mainhand": [
+   null,
+   {
+    "material": "bow"
+   },
+   {
+    "material": "bow"
+   },
+   {
+    "material": "bow"
+   },
+   {
+    "material": "stone_sword"
+   },
+   {
+    "material": "golden_sword"
+   },
+   {
+    "material": "iron_axe"
+   },
+   {
+    "material": "golden_axe"
+   },
+   {
+    "material": "diamond_axe"
+   }
+  ]
+ }
+}

@@ -117,6 +117,22 @@ public final class PlayerDataService {
         }
     }
 
+    /**
+     * Runs the transition only if it can start at once: nobody else holds the player's lifecycle lock and no data
+     * write is queued. Callers on the tick thread use this to retry later instead of blocking the server.
+     */
+    public static boolean tryLifecycleTransition(UUID uuid, Runnable transition) {
+        ReentrantLock lock = lifecycleLock(uuid);
+        if (!lock.tryLock()) return false;
+        try {
+            if (!DataWriteQueue.isIdle(uuid)) return false;
+            transition.run();
+            return true;
+        } finally {
+            lock.unlock();
+        }
+    }
+
     static List<PlayerDataDomain<?>> active(ServerType type) {
         List<PlayerDataDomain<?>> out = new ArrayList<>();
         for (PlayerDataDomain<?> domain : registered) {

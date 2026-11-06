@@ -1,0 +1,56 @@
+{
+ "source": "The Floor I Watcher as captured twice on Hypixel (2026-11-05): look, dialogue, spawn rhythm, boss bar and sounds. Times are ticks after the Blood door opened unless said otherwise.",
+ "head": {
+  "texture": "ewogICJ0aW1lc3RhbXAiIDogMTU4OTU1MDkyNjM2MSwKICAicHJvZmlsZUlkIiA6ICI0ZDcwNDg2ZjUwOTI0ZDMzODZiYmZjOWMxMmJhYjRhZSIsCiAgInByb2ZpbGVOYW1lIiA6ICJzaXJGYWJpb3pzY2hlIiwKICAic2lnbmF0dXJlUmVxdWlyZWQiIDogdHJ1ZSwKICAidGV4dHVyZXMiIDogewogICAgIlNLSU4iIDogewogICAgICAidXJsIiA6ICJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzUxOTY3ZGI1ZTMxOTk5MTYyNTIwMjE5MDNjZjRlOTk1MmVmN2NlYzIyMGZhYWNhMWJhNzliYWZlNTkzOGJkODAiCiAgICB9CiAgfQp9",
+  "signature": "ishcEoaZgMC7CUi4xeyoCm2Nbc2MFAjM/EhppqhIYuyfE4m1Dbr3QM6jLKijgL+eWG5A42t0cwgdqBATnBM0+K+farSHNibnLOnid+s9CJ4FCl13r0/yGVAClCkvigGlNKalokdKKoIPJ28cyyExJhC84fFT357yaFmxcbmvYrvGA4C8315gMGPiPTEEMxpGOjYu1hYGsKRQZ5SYOTIgGRxClLCoMq9DPALRSf/dV/qIUZ1fhgK+t3CjGIV6jhcWV1pj9Sy0UZE7MBJ+OrFGTX6HBgeTEdI0TUwh2w82sx1iy+ykxvoChsN7aiWla1PI23uG54LAw6XfWdR9RfrWtWFoVVlYyRn1ZkRUVjtuOnxGREi1NuBXCffmu12Ja13dYSc+8e9ky2xookn3I9JnxRruasC88x5VxRQW/6OgAKgZAjCWN1CstROnsJWuIwFRdAeSNATGN10zaBXxfKn/7SY/mEX7/nl2qQxvRsCIuqBBzBo+/3dryxv4BXqMIY4IWsHCGQOpeuznCxHTsc3OeCe8rAd/LoNuOgdTMb2ihH5Vgg5yk/A6n4G9JSJIxtZezYQ06jXOfXQrVeYidnObSAJS5ZHn89dOklX1UGRvF1uojnK2ohru62kXBUqdOyujFKYF1ULWoaql/sQvP/hFGl+d90NzfAeufIfmEV+HpKA="
+ },
+ "name": "<5><glyph:mobs_arcane> <c>The Watcher",
+ "bossBar": "<c><l>The Watcher",
+ "introLine": "Ah, we meet again. As I foresaw...",
+ "spawnLines": [
+  "You'll do.",
+  "Hmmm... this one!",
+  "Go and live again!",
+  "Go, fight!",
+  "Let's see how you can handle this.",
+  "This guy looks like a fighter."
+ ],
+ "killLines": [
+  "I'm impressed.",
+  "Not bad.",
+  "Very nice."
+ ],
+ "enoughLine": "That will be enough for now.",
+ "provenLine": "You have proven yourself. You may pass.",
+ "introTicks": 3,
+ "bossBarTicks": 40,
+ "firstWave": 4,
+ "firstWaveLineTicks": [
+  160,
+  206,
+  264,
+  324
+ ],
+ "lineToSpawnTicks": 40,
+ "laterGapTicks": {
+  "min": 20,
+  "max": 110
+ },
+ "enoughAfterLastSpawnTicks": 22,
+ "provenAfterClearTicks": 10,
+ "portalAfterProvenTicks": 80,
+ "blessings": [
+  {
+   "type": "LIFE",
+   "level": 5
+  },
+  {
+   "type": "POWER",
+   "level": 5
+  }
+ ],
+ "blessingHead": {
+  "texture": "ewogICJ0aW1lc3RhbXAiIDogMTYzNTE0NTU0NzUxMiwKICAicHJvZmlsZUlkIiA6ICJmYzUwMjkzYTVkMGI0NzViYWYwNDJhNzIwMWJhMzBkMiIsCiAgInByb2ZpbGVOYW1lIiA6ICJDVUNGTDE3IiwKICAic2lnbmF0dXJlUmVxdWlyZWQiIDogdHJ1ZSwKICAidGV4dHVyZXMiIDogewogICAgIlNLSU4iIDogewogICAgICAidXJsIiA6ICJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlL2FiNDM2ZWRiN2I4MDVlMTMzZjdkMzQ4OWQ0NmNlMDYzNmY3ZTFjYjM3YjY3Njg5ZmFhMTJlNjk4ZGJiZDdjNjYiCiAgICB9CiAgfQp9",
+  "signature": "vp15kyMaJoSqBFrLcY8d0qv7kaMv6BN7XqHkFG2OLOb7dAjjy6cmR1I4pgwe1mmkFbn4/Xw5Z2J2Zg1/VvTyPO0e1B2zkIO6crXmc3scgSdATivCQXg8+tHPVK0a4pXF3eamgJjrRXRXTlgjrW3DPigEyGZCJfzTP+Gk224Quqfw26InBEavG2jCMe/X7n0Q6wz87kKkxLouVnXa3c5bBrsOGEWehqRXp7Nr5FBU0k//RYUKcSGVfoCbkMKmifFOeZ/7gxkEX/lyWT3a/qGW4cqxcmgKRpOzvhtQOe5va8B7d1YF7MhduwVLhuC/3g625gL80M3KdamZLw5JgmIdfULJMLeHhRmQfa5FFsV0mdxBgin+8wWQXhpPNqXH+UPuMxOvTnkKtdkoJwu3ynFpX9qOjNbp371x7kQd5GCqlYb+jkjgoighUpKgkcSZ4t+mLKsO2lwWPyDBV0FHh05wDgX0283GY8TIxWWwnGWEcAAiPUVbw1N4SxNDyZkTAW3/DNNtoHdy9AJlecvFlaOD3a5XmGXIitJwGRDhcR/kLpFUzz5JonbxbHZM2xNQ4t0SJxhoOOIGD/8CGSPFETWOg+9iEuJr/ZSRonPJeU4XKm2KJyiDDxnj6kvMF7rp2ET+0uPvV8tmUiympRHmXqykqSu72Hi78WJ+aIq2u5bn7KY="
+ }
+}

@@ -165,8 +165,12 @@ class RealRoomsTest {
                 int x = eastWest ? seam.x() + wall : seam.x();
                 int z = eastWest ? seam.z() : seam.z() + wall;
                 Block block = blocks.blockAt(x, CellGeometry.FLOOR_Y + dy, z);
-                if (wall == 0 && !door.plain()) continue;
-                assertNull(block, "doorway blocked at " + x + "," + (CellGeometry.FLOOR_Y + dy) + "," + z + " by " + block + " for " + door + "\n" + context);
+                Block gate = blocks.gates().appearanceOf(door).orElse(null);
+                if (gate != null) {
+                    assertEquals(gate, block, "gate missing at " + x + "," + (CellGeometry.FLOOR_Y + dy) + "," + z + " for " + door + "\n" + context);
+                    continue;
+                }
+                assertNull(block,"doorway blocked at " + x + "," + (CellGeometry.FLOOR_Y + dy) + "," + z + " by " + block + " for " + door + "\n" + context);
             }
         }
         Side side = Side.between(door.from(), door.to());

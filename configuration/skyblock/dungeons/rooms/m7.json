@@ -239,10 +239,7 @@
       "structure": {"file": "m7/blood.schem", "x": 0, "y": -2, "z": 0},
       "standPoint": {"x": 15.5, "y": 1.0, "z": 15.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "NORTH", "m7Door": true},
-        {"col": 0, "row": 0, "side": "EAST", "m7Door": false},
-        {"col": 0, "row": 0, "side": "SOUTH", "m7Door": false},
-        {"col": 0, "row": 0, "side": "WEST", "m7Door": false}
+        {"col": 0, "row": 0, "side": "NORTH", "m7Door": true}
       ],
       "mobSpawns": [],
       "secretAnchors": [],

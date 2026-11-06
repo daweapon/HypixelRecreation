@@ -3,6 +3,9 @@ package dev.daweapon.type.catacombs.engine;
 import dev.daweapon.dungeons.catacombs.CatacombsFloor;
 import dev.daweapon.dungeons.catacombs.CatacombsFloorDefinition;
 import dev.daweapon.dungeons.catacombs.blessing.BlessingType;
+import dev.daweapon.type.catacombs.arena.DoorFrame;
+import dev.daweapon.type.catacombs.arena.DoorGates;
+import dev.daweapon.type.catacombs.engine.watcher.WatcherConfig;
 import dev.daweapon.dungeons.catacombs.boss.WatcherSpawns;
 import dev.daweapon.dungeons.catacombs.layout.FloorLayout;
 import dev.daweapon.dungeons.catacombs.layout.LayoutDoor;
@@ -22,12 +25,9 @@ import net.minestom.server.coordinate.Pos;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
-import java.util.concurrent.ThreadLocalRandom;
 
 /** Everything that happens inside an active run: rooms, mobs, keys, doors, secrets, crypts, the map, the Blood Room and the boss. */
 public final class DungeonEngine {
-    private static final int WATCHER_BLESSING_LEVEL = 5;
-
     private final DungeonHost host;
     private final FloorLayout layout;
     private final CatacombsFloor floor;
@@ -40,7 +40,10 @@ public final class DungeonEngine {
     private final SecretEngine secrets;
     private final CryptEngine crypts;
     private final DungeonMapView map;
+    private final BloodBlessings bloodBlessings = new BloodBlessings();
+    private final FairyRoom fairies;
     private volatile boolean bloodRoomChecked;
+    private volatile boolean entranceOpened;
 
     public DungeonEngine(DungeonHost host, FloorLayout layout, CatacombsFloorDefinition definition) {
         this.host = host;
@@ -56,9 +59,21 @@ public final class DungeonEngine {
         this.secrets = new SecretEngine(host, layout, floor, blessings);
         this.crypts = new CryptEngine(host, CryptPlan.of(layout));
         this.map = new DungeonMapView(host, layout, room -> secrets.ledger().allFound(room));
+        this.fairies = new FairyRoom(host, layout);
         rooms.discover(layout.startRoom());
         secrets.start();
         crypts.start();
+        fairies.start();
+    }
+
+    /** The Entrance gate sinks away, opening the way out of the Entrance room. */
+    public void openEntrance() {
+        if (entranceOpened) return;
+        entranceOpened = true;
+        DoorGates gates = host.arena().blocks().gates();
+        for (var door : gates.entranceDoors()) {
+            GateLift.run(host.instance(), DoorFrame.passage(door).blocks(), DoorGates.ENTRANCE);
+        }
     }
 
     public void poll() {
@@ -67,7 +82,7 @@ public final class DungeonEngine {
         }
         doors.poll();
         keyDrops.poll();
-        boss.poll();
+        if (boss.poll()) arrivedAtBoss();
         secrets.poll();
         blessings.apply();
         map.poll();
@@ -93,16 +108,13 @@ public final class DungeonEngine {
             host.win();
             return;
         }
-        host.broadcast(CatacombsMessages.watcherDone());
-        grantWatcherBlessings();
         boss.openPortal();
+        bloodBlessings.drop(host.instance(), bloodRoom.blessingSpots(), host.arena().roomCentre(layout.bloodRoom()), WatcherConfig.shared());
     }
 
-    /** On every floor after the Entrance, clearing the Blood Room leaves one or two Blessings of Time V and a Blessing of Power V. */
-    private void grantWatcherBlessings() {
-        int times = 1 + ThreadLocalRandom.current().nextInt(2);
-        for (int index = 0; index < times; index++) blessings.grant(BlessingType.TIME, WATCHER_BLESSING_LEVEL, null);
-        blessings.grant(BlessingType.POWER, WATCHER_BLESSING_LEVEL, null);
+    private void arrivedAtBoss() {
+        bloodRoom.hideBar();
+        bloodBlessings.pickUp(host, blessings);
     }
 
     public boolean interact(SkyBlockPlayer player, int x, int y, int z) {
@@ -165,6 +177,7 @@ public final class DungeonEngine {
     public void enterBoss() {
         boss.openPortal();
         boss.enter();
+        arrivedAtBoss();
     }
 
     public int discoveredRooms() {
@@ -181,6 +194,9 @@ public final class DungeonEngine {
 
     public void dispose() {
         keyDrops.clear();
+        bloodRoom.dispose();
+        bloodBlessings.clear();
+        fairies.dispose();
         rooms.dispose();
         secrets.dispose();
         crypts.dispose();

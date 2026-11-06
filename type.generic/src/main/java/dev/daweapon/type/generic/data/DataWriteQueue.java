@@ -30,6 +30,12 @@ public final class DataWriteQueue {
         if (queue != null) queue.awaitIdle();
     }
 
+    public static boolean isIdle(UUID uuid) {
+        if (uuid == null) return true;
+        PlayerQueue queue = queues.get(uuid);
+        return queue == null || queue.idle();
+    }
+
     public static void drainAll() {
         for (PlayerQueue queue : queues.values()) queue.awaitIdle();
     }
@@ -77,6 +83,10 @@ public final class DataWriteQueue {
                 }
                 runWrite(uuid, next.key(), next.write());
             }
+        }
+
+        private synchronized boolean idle() {
+            return worker == null && pending.isEmpty();
         }
 
         private synchronized void awaitIdle() {

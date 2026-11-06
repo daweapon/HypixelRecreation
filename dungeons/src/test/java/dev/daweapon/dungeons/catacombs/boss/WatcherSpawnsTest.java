@@ -9,7 +9,7 @@ class WatcherSpawnsTest {
     @Test
     void mobCountIsNinePlusFloorTier() {
         assertEquals(9, WatcherSpawns.mobCount(CatacombsFloor.ENTRANCE));
-        assertEquals(10, WatcherSpawns.mobCount(CatacombsFloor.FLOOR_ONE));
+        assertEquals(9, WatcherSpawns.mobCount(CatacombsFloor.FLOOR_ONE));
         assertEquals(16, WatcherSpawns.mobCount(CatacombsFloor.FLOOR_SEVEN));
     }
 

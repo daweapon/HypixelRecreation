@@ -12,6 +12,15 @@ sections:
       - "Doors only open where a room really has a doorway."
       - "15 more real rooms from Hypixel Floor 1 runs: Overgrown, Silvers Sword, Double Diamond, Redstone Warrior, Grass Ruin, Diagonal, Catwalk, Rails, Chambers, the Water Board, Teleport Maze and Creeper Beams puzzle rooms, the Dragon and Default miniboss rooms, and Hypixel's own Start room."
       - "Mobs in these rooms (and the Hallway) stand where they stood on Hypixel, with the same types, and real crypts are used where the room has them."
+  - heading: "Looks like Hypixel"
+    colour: "<b>"
+    lines:
+      - "The Entrance room's exit is gated while the party waits; the gate sinks into the floor when the run starts. Wither and Blood doors open the same way, with Hypixel's sounds."
+      - "Mort waits in the Entrance room, says his three lines at the start and hands out the map. Click him before the run to ready up."
+      - "Dungeon mobs wear their Hypixel skins and gear, with Hypixel's name tags: mob-type icons, the gold star, minibosses in bold."
+      - "The Blood room plays out like Hypixel: the Watcher floats in, summons 9 named undead on Floor 1 in two waves, counts them on his boss bar, then opens a portal in the far doorway and leaves a Blessing of Life and of Power. The Blood room is always entered from the back."
+      - "Four fairies float around the Fairy room tree. Killing one revives a dead teammate and drops a Revive Stone."
+      - "Bonzo wears his real skins, a new one for his second life."
   - heading: "Not here yet"
     colour: "<c>"
     lines:

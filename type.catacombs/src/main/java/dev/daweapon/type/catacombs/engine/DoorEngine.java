@@ -7,9 +7,8 @@ import dev.daweapon.type.catacombs.arena.DoorFrame;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
+import net.minestom.server.coordinate.Pos;
 import net.minestom.server.instance.block.Block;
-import net.minestom.server.network.packet.server.play.ParticlePacket;
-import net.minestom.server.particle.Particle;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,10 +18,16 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-/** Wither and Blood doors: a player next to one while the party holds its key opens it and spends the key. */
+/**
+ * Wither and Blood doors: a player next to one while the party holds its key opens it and spends the key. The door
+ * sinks into the floor with the {@link GateLift} effect, the opener hears the captured pling and the Blood door adds a
+ * ghast cry.
+ */
 final class DoorEngine {
     private static final double REACH = 3.0;
     private static final long HINT_COOLDOWN_MILLIS = 4_000;
+    private static final Sound OPENED = Sound.sound(Key.key("block.note_block.pling"), Sound.Source.BLOCK, 8f, 4.047619f);
+    private static final Sound BLOOD_OPENED = Sound.sound(Key.key("entity.ghast.hurt"), Sound.Source.HOSTILE, 2f, 0.4920635f);
 
     private final DungeonHost host;
     private final List<LayoutDoor> doors;
@@ -67,23 +72,24 @@ final class DoorEngine {
         if (spendKey && !DoorRules.tryOpen(door.type(), host.keys())) return false;
         opened.add(door);
         DoorFrame frame = DoorFrame.of(door);
-        host.arena().fill(door, Block.AIR);
-        host.instance().playSound(Sound.sound(Key.key("block.iron_door.open"), Sound.Source.BLOCK, 1f, 0.8f),
-                frame.centreX(), frame.centreY(), frame.centreZ());
-        host.instance().sendGroupedPacket(new ParticlePacket(Particle.POOF, frame.centreX(), frame.centreY(), frame.centreZ(),
-                1f, 1.5f, 1f, 0.05f, 40));
+        Block appearance = host.arena().blocks().gates().appearanceOf(door).orElse(Block.COAL_BLOCK);
+        GateLift.run(host.instance(), DoorFrame.passage(door).blocks(), appearance);
+        Pos at = opener != null ? opener.getPosition() : new Pos(frame.centreX(), frame.centreY(), frame.centreZ());
+        host.instance().playSound(OPENED, at.x(), at.y(), at.z());
+        if (door.bloodDoor()) host.instance().playSound(BLOOD_OPENED, at.x(), at.y(), at.z());
         announce(door.type(), opener);
         return true;
     }
 
     private void announce(DoorType type, SkyBlockPlayer opener) {
         if (type == DoorType.BLOOD) {
-            host.broadcast("<c>The <4>BLOOD DOOR <c>has been opened!");
+            host.broadcast("<c>The <c><l>BLOOD DOOR</l><c> has been opened!");
+            host.broadcast("<5>A shiver runs down your spine...");
             return;
         }
         host.broadcast(opener == null
-                ? Text.of("<8>A WITHER door was opened!")
-                : Text.of("{}<a> opened a <8>WITHER <a>door!", opener.getColouredName()));
+                ? Text.of("<8>A <l>WITHER</l><8> door was opened!")
+                : Text.of("{}<a> opened a <8><l>WITHER</l> <a>door!", opener.getColouredName()));
     }
 
     boolean bloodDoorOpened() {

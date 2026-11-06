@@ -6,28 +6,41 @@ import dev.daweapon.dungeons.catacombs.layout.PlacedRoom;
 import dev.daweapon.dungeons.catacombs.mob.DungeonMobDefinition;
 import dev.daweapon.dungeons.catacombs.mob.DungeonMobRegistry;
 import dev.daweapon.dungeons.catacombs.run.DungeonRunPhase;
+import dev.daweapon.type.catacombs.arena.RoomFeatures;
+import dev.daweapon.type.catacombs.engine.look.MobLooks;
 import dev.daweapon.type.catacombs.run.CatacombsMessages;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.sound.Sound;
 import net.minestom.server.coordinate.Pos;
+import net.minestom.server.entity.Entity;
+import net.minestom.server.entity.EntityType;
 import net.minestom.server.instance.block.Block;
-import org.jetbrains.annotations.Nullable;
+
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * The placeholder boss: a portal in the cleared Blood Room takes the party to a plain arena where the floor's boss has
- * its registry health in two phases, the second coming back at full health. Real fights replace this per floor.
+ * The way to the boss and a placeholder fight. When the Watcher is done, nether portal blocks fill the obsidian frame
+ * on the far side of the Blood Room (turned with the room) with a lightning strike, thunder and a bang, as captured;
+ * stepping into it takes the party to a plain arena where the floor's boss has its registry health in two lives.
+ * Bonzo wears his captured skins, the second one for his second life. Real fights replace the arena per floor.
  */
 final class BossEncounter implements CatacombsMob.Listener {
-    private static final int PORTAL_RADIUS = 1;
-    private static final double PORTAL_REACH = 2.0;
+    private static final int FALLBACK_PORTAL_RADIUS = 1;
     private static final int ARRIVAL_DELAY_TICKS = 60;
     private static final int GAP_TO_ARENA = 20;
+    private static final Sound THUNDER = Sound.sound(Key.key("entity.lightning_bolt.thunder"), Sound.Source.WEATHER, 10000f, 0.8571429f);
+    private static final Sound BANG = Sound.sound(Key.key("entity.generic.explode"), Sound.Source.BLOCK, 2f, 0.63492066f);
 
     private final DungeonHost host;
     private final CatacombsFloor floor;
     private final PlacedRoom bloodRoom;
     private final BossArenaBox box;
     private final DungeonMobDefinition bossDefinition;
-    private @Nullable Pos portal;
+    private final List<int[]> portal = new ArrayList<>();
+    private boolean portalOpen;
     private boolean entered;
     private int phase;
     private boolean won;
@@ -53,27 +66,55 @@ final class BossEncounter implements CatacombsMob.Listener {
     }
 
     void openPortal() {
-        if (portal != null) return;
-        Pos centre = host.arena().roomCentre(bloodRoom);
-        portal = host.arena().blocks().isReal(bloodRoom) ? centre : centre.add(0, 0, 4);
-        for (int x = -PORTAL_RADIUS; x <= PORTAL_RADIUS; x++) {
-            for (int z = -PORTAL_RADIUS; z <= PORTAL_RADIUS; z++) {
-                host.instance().setBlock(portal.blockX() + x, portal.blockY() - 1, portal.blockZ() + z, Block.END_PORTAL);
+        if (portalOpen) return;
+        portalOpen = true;
+        List<int[]> frame = host.arena().blocks().isReal(bloodRoom) ? RoomFeatures.shared().portal(bloodRoom) : List.of();
+        Block block;
+        if (frame.isEmpty()) {
+            Pos centre = host.arena().roomCentre(bloodRoom).add(0, 0, 4);
+            for (int x = -FALLBACK_PORTAL_RADIUS; x <= FALLBACK_PORTAL_RADIUS; x++) {
+                for (int z = -FALLBACK_PORTAL_RADIUS; z <= FALLBACK_PORTAL_RADIUS; z++) {
+                    portal.add(new int[]{centre.blockX() + x, centre.blockY() - 1, centre.blockZ() + z});
+                }
             }
+            block = Block.END_PORTAL;
+        } else {
+            portal.addAll(frame);
+            block = Block.NETHER_PORTAL.withProperty("axis", RoomFeatures.portalAlongX(bloodRoom) ? "x" : "z");
         }
-        host.broadcast(CatacombsMessages.portalOpened());
+        for (int[] at : portal) host.instance().setBlock(at[0], at[1], at[2], block);
+        strike();
     }
 
-    void poll() {
-        if (portal == null || entered) return;
+    private void strike() {
+        double x = 0, y = Double.MAX_VALUE, z = 0;
+        for (int[] at : portal) {
+            x += at[0] + 0.5;
+            z += at[2] + 0.5;
+            y = Math.min(y, at[1]);
+        }
+        Pos at = new Pos(x / portal.size(), y + 0.5, z / portal.size());
+        Entity bolt = new Entity(EntityType.LIGHTNING_BOLT);
+        bolt.setInstance(host.instance(), at);
+        bolt.scheduleRemove(Duration.ofSeconds(1));
+        host.instance().playSound(THUNDER, at.x(), at.y(), at.z());
+        host.instance().playSound(BANG, at.x(), at.y(), at.z());
+    }
+
+    boolean poll() {
+        if (!portalOpen || entered) return false;
         for (SkyBlockPlayer player : host.alivePlayers()) {
-            double dx = player.getPosition().x() - (portal.x());
-            double dz = player.getPosition().z() - (portal.z());
-            if (Math.sqrt(dx * dx + dz * dz) <= PORTAL_REACH && player.getPosition().y() < portal.y() + 2) {
-                enter();
-                return;
+            Pos feet = player.getPosition();
+            for (int[] at : portal) {
+                boolean inside = feet.blockX() == at[0] && feet.blockZ() == at[2]
+                        && (feet.blockY() == at[1] || feet.blockY() + 1 == at[1]);
+                if (inside) {
+                    enter();
+                    return true;
+                }
             }
         }
+        return false;
     }
 
     synchronized void enter() {
@@ -88,7 +129,9 @@ final class BossEncounter implements CatacombsMob.Listener {
 
     private synchronized void spawnBoss(int number) {
         phase = number;
-        CatacombsMob boss = new CatacombsMob(bossDefinition, -1, false, this);
+        String lookId = number == 1 ? bossDefinition.id() : bossDefinition.id() + "_REVIVED";
+        CatacombsMob boss = new CatacombsMob(bossDefinition, -1, false, this,
+                MobLooks.shared().look(lookId).orElseGet(() -> CatacombsMob.lookOf(bossDefinition.id())));
         boss.setInstance(host.instance(), box.bossSpot());
     }
 
@@ -107,5 +150,9 @@ final class BossEncounter implements CatacombsMob.Listener {
 
     boolean entered() {
         return entered;
+    }
+
+    List<int[]> portalBlocks() {
+        return List.copyOf(portal);
     }
 }

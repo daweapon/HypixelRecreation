@@ -36,4 +36,7 @@ public interface DungeonHost {
     void recordCrypt();
 
     void later(int ticks, Runnable action);
+
+    /** Revives the killer if they are a ghost, otherwise the first ghost in the party; false when nobody is dead. */
+    boolean reviveGhost(SkyBlockPlayer killer);
 }

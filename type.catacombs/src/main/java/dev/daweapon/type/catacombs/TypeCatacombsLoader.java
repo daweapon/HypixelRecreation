@@ -6,7 +6,11 @@ import dev.daweapon.commons.ServiceType;
 import dev.daweapon.commons.redis.RedisMessageHandler;
 import dev.daweapon.proxyapi.ProxyService;
 import dev.daweapon.type.catacombs.arena.CatacombsTemplates;
+import dev.daweapon.type.catacombs.arena.RoomFeatures;
 import dev.daweapon.type.catacombs.arena.RoomStructures;
+import dev.daweapon.type.catacombs.engine.look.MobLooks;
+import dev.daweapon.type.catacombs.engine.watcher.WatcherConfig;
+import dev.daweapon.type.catacombs.npc.CatacombsMortNPC;
 import dev.daweapon.type.catacombs.redis.CatacombsInstantiateGameHandler;
 import dev.daweapon.type.catacombs.run.CatacombsHooks;
 import dev.daweapon.type.catacombs.run.CatacombsInstanceHost;
@@ -21,6 +25,7 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.tab.TablistManager;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
+import dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.bestiary.BestiaryCategory;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
 import org.jetbrains.annotations.Nullable;
@@ -61,6 +66,10 @@ public class TypeCatacombsLoader implements SkyBlockTypeLoader {
             long started = System.nanoTime();
             int rooms = RoomStructures.shared().preload(CatacombsTemplates.get());
             Logger.info("Loaded {} real Catacombs rooms in {} ms", rooms, (System.nanoTime() - started) / 1_000_000);
+            Logger.info("Loaded {} dungeon mob looks, the Watcher and {} bestiary categories", MobLooks.shared().all().size(),
+                    BestiaryCategory.values().length);
+            RoomFeatures.shared();
+            WatcherConfig.shared();
         });
     }
 
@@ -95,7 +104,7 @@ public class TypeCatacombsLoader implements SkyBlockTypeLoader {
 
     @Override
     public List<HypixelNPC> getNPCs() {
-        return List.of();
+        return List.of(new CatacombsMortNPC());
     }
 
     @Override

@@ -5,7 +5,6 @@ import dev.daweapon.dungeons.catacombs.CatacombsMode;
 import dev.daweapon.dungeons.catacombs.layout.CellGeometry;
 import dev.daweapon.dungeons.catacombs.layout.FloorLayout;
 import dev.daweapon.dungeons.catacombs.layout.FloorLayoutGenerator;
-import dev.daweapon.dungeons.catacombs.layout.LayoutDoor;
 import dev.daweapon.dungeons.catacombs.layout.MobSpawnPoint;
 import dev.daweapon.dungeons.catacombs.layout.PlacedRoom;
 import net.kyori.adventure.key.Key;
@@ -14,7 +13,8 @@ import net.minestom.server.coordinate.Pos;
 import net.minestom.server.instance.InstanceContainer;
 import net.minestom.server.instance.InstanceManager;
 import net.minestom.server.instance.SharedInstance;
-import net.minestom.server.instance.block.Block;
+
+import java.util.Optional;
 
 /** One run's own dungeon on a private instance: real rooms where the layout picked one, placeholder boxes elsewhere. */
 public final class CatacombsArena {
@@ -58,6 +58,12 @@ public final class CatacombsArena {
         return blocks;
     }
 
+    /** Where Mort stands in this run's Entrance room, facing into it, when the room has a captured spot for him. */
+    public Optional<Pos> mortSpot() {
+        return RoomFeatures.shared().mort(layout.startRoom())
+                .map(spot -> new Pos(spot.x(), spot.y(), spot.z(), spot.yaw(), 0));
+    }
+
     public Pos entranceSpawn() {
         return roomCentre(layout.startRoom());
     }
@@ -70,10 +76,6 @@ public final class CatacombsArena {
         CellGeometry.BlockPosition origin = CellGeometry.blockOrigin(room.origin());
         CellGeometry.PlanarPoint local = CellGeometry.rotateLocal(spawn.x(), spawn.z(), room.shape(), room.rotation());
         return new Pos(origin.x() + local.x(), origin.y() + spawn.y(), origin.z() + local.z());
-    }
-
-    public void fill(LayoutDoor door, Block block) {
-        for (int[] at : DoorFrame.of(door).blocks()) instance.setBlock(at[0], at[1], at[2], block);
     }
 
     public void destroy() {

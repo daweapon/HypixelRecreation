@@ -13,6 +13,7 @@ import java.util.List;
 public final class CatacombsMessages {
     private static final String BAR = "<8>" + "▬".repeat(40);
     private static final String WATCHER = "<c>[BOSS] The Watcher<f>: ";
+    private static final String MORT = "<e>[NPC] <b>Mort<f>: ";
 
     private CatacombsMessages() {
     }
@@ -46,20 +47,20 @@ public final class CatacombsMessages {
         return "<c>The party entered the Blood Room without opening its door with the Blood Key!";
     }
 
-    public static String watcherIntro() {
-        return WATCHER + "Things feel a little more roomy now, eh?";
-    }
-
-    public static String watcherDone() {
-        return WATCHER + "That will be enough for now.";
+    public static String watcher(String line) {
+        return WATCHER + line;
     }
 
     public static String watcherEntranceDone() {
         return WATCHER + "Congratulations, you made it through the Entrance.";
     }
 
-    public static String portalOpened() {
-        return "<5>A portal to the boss room has opened!";
+    /** Mort's three lines at the start of a run, about two seconds apart in both captured runs. */
+    public static List<String> mortLines() {
+        return List.of(
+                MORT + "Here, I found this map when I first entered the dungeon.",
+                MORT + "You should find it useful if you get lost.",
+                MORT + "Good luck.");
     }
 
     public static String bossIntro(CatacombsFloor floor) {

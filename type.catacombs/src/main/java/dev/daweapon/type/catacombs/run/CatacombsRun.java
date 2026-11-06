@@ -189,8 +189,10 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
         super.start();
         onlineMembers().forEach(CatacombsItems::remove);
         classes.begin(onlineMembers());
-        engine = new DungeonEngine(this, arena.layout(), definition);
+        DungeonEngine started = new DungeonEngine(this, arena.layout(), definition);
+        engine = started;
         CatacombsMessages.dungeonEntered(floorId.floor(), floorId.mode()).forEach(this::broadcast);
+        RunOpening.play(this, started);
         return true;
     }
 
@@ -267,6 +269,12 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
         releaseGhost(player);
         player.sendMessage(CatacombsMessages.revived());
         return true;
+    }
+
+    @Override
+    public synchronized boolean reviveGhost(SkyBlockPlayer killer) {
+        if (ghosts.isGhost(killer.getUuid())) return revive(killer);
+        return onlineMembers().stream().filter(member -> ghosts.isGhost(member.getUuid())).findFirst().map(this::revive).orElse(false);
     }
 
     public synchronized int reviveAll() {

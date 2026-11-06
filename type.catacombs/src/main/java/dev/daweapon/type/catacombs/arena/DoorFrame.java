@@ -6,7 +6,10 @@ import dev.daweapon.dungeons.catacombs.layout.LayoutDoor;
 import java.util.ArrayList;
 import java.util.List;
 
-/** The 3 wide, 4 tall doorway a door fills in the one-block gap between two rooms. */
+/**
+ * The 3 wide, 4 tall doorway a door fills in the one-block gap between two rooms, or with {@link #passage} the whole
+ * 3 deep opening through both rooms' walls that Hypixel's gates and key doors fill.
+ */
 public record DoorFrame(int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
     public static final int WIDTH = 3;
     public static final int HEIGHT = 4;
@@ -19,6 +22,18 @@ public record DoorFrame(int minX, int minY, int minZ, int maxX, int maxY, int ma
         return eastWest
                 ? new DoorFrame(centre.x(), minY, centre.z() - reach, centre.x(), minY + HEIGHT - 1, centre.z() + reach)
                 : new DoorFrame(centre.x() - reach, minY, centre.z(), centre.x() + reach, minY + HEIGHT - 1, centre.z());
+    }
+
+    public static DoorFrame passage(LayoutDoor door) {
+        DoorFrame gap = of(door);
+        boolean eastWest = door.from().row() == door.to().row();
+        return eastWest
+                ? new DoorFrame(gap.minX - 1, gap.minY, gap.minZ, gap.maxX + 1, gap.maxY, gap.maxZ)
+                : new DoorFrame(gap.minX, gap.minY, gap.minZ - 1, gap.maxX, gap.maxY, gap.maxZ + 1);
+    }
+
+    public boolean contains(int x, int y, int z) {
+        return containsColumn(x, z) && y >= minY && y <= maxY;
     }
 
     public boolean containsColumn(int x, int z) {

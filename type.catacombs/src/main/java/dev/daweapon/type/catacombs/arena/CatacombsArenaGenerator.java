@@ -46,8 +46,8 @@ final class CatacombsArenaGenerator implements Generator {
             case FLOOR -> Block.STONE_BRICKS;
             case WALL -> Block.DEEPSLATE_BRICKS;
             case CEILING -> Block.BARRIER;
-            case WITHER_DOOR -> Block.COAL_BLOCK;
-            case BLOOD_DOOR -> Block.RED_WOOL;
+            case WITHER_DOOR -> DoorGates.WITHER;
+            case BLOOD_DOOR -> DoorGates.BLOOD;
             case MARKER_FLOOR -> concrete(colour);
             case MARKER_PILLAR -> glass(colour);
         };

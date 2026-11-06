@@ -32,6 +32,7 @@ public final class CatacombsArenaBlocks {
     private final CatacombsBlockPlan plan;
     private final Map<Integer, RealRoom> realRooms;
     private final Set<Long> openings;
+    private final DoorGates gates;
     private final int minX;
     private final int maxX;
     private final int minY;
@@ -44,6 +45,7 @@ public final class CatacombsArenaBlocks {
         this.plan = plan;
         this.realRooms = realRooms;
         this.openings = openings(layout, realRooms);
+        this.gates = DoorGates.of(layout);
         int lowX = plan.minX(), highX = plan.maxX(), lowY = plan.minY(), highY = plan.maxY(), lowZ = plan.minZ(), highZ = plan.maxZ();
         for (RealRoom room : realRooms.values()) {
             lowX = Math.min(lowX, room.minX());
@@ -77,6 +79,10 @@ public final class CatacombsArenaBlocks {
 
     public CatacombsBlockPlan plan() {
         return plan;
+    }
+
+    public DoorGates gates() {
+        return gates;
     }
 
     public boolean isReal(PlacedRoom room) {
@@ -158,12 +164,16 @@ public final class CatacombsArenaBlocks {
     }
 
     Block blockIn(RealRoom owner, int x, int y, int z) {
+        Block gate = gates.blockAt(x, y, z);
+        if (gate != null) return gate;
         if (openings.contains(pack(x, y, z))) return null;
         Block block = owner.blockAt(x, y, z);
         return block == null || block.air() ? null : block;
     }
 
     Block planBlock(int x, int y, int z) {
+        Block gate = gates.blockAt(x, y, z);
+        if (gate != null) return gate;
         CatacombsBlockPlan.Tile tile = plan.tileAt(x, y, z);
         RoomColor colour = tile == CatacombsBlockPlan.Tile.MARKER_FLOOR || tile == CatacombsBlockPlan.Tile.MARKER_PILLAR
                 ? plan.markerColourAt(x, z) : RoomColor.BROWN;
@@ -193,7 +203,7 @@ public final class CatacombsArenaBlocks {
         return openings;
     }
 
-    private static long pack(int x, int y, int z) {
+    static long pack(int x, int y, int z) {
         return ((long) (x & 0x3FFFFFF) << 38) | ((long) (z & 0x3FFFFFF) << 12) | (y & 0xFFF);
     }
 }

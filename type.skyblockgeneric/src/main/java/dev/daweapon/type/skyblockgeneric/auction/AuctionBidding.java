@@ -12,6 +12,7 @@ import dev.daweapon.commons.skyblock.auctions.AuctionItem;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.proxyapi.ProxyPlayer;
 import dev.daweapon.proxyapi.ProxyService;
+import dev.daweapon.type.generic.data.DataWriteQueue;
 import dev.daweapon.type.generic.data.datapoints.DatapointDouble;
 import dev.daweapon.type.generic.data.domain.PlayerDataService;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
@@ -25,14 +26,17 @@ import org.tinylog.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.function.Supplier;
 
 public final class AuctionBidding {
+    private static final long BUSY_RETRY_MILLIS = 50;
     private static final Set<UUID> submitting = ConcurrentHashMap.newKeySet();
     private static final AuctionBidProtocol protocol = new AuctionBidProtocol();
 
@@ -229,17 +233,26 @@ public final class AuctionBidding {
         }
     }
     private static <T> T onPlayer(SkyBlockPlayer player, UUID profile, Supplier<T> action) throws Exception {
-        var result = new CompletableFuture<T>();
-        player.scheduler().scheduleNextTick(() -> {
-            try {
-                PlayerDataService.runLifecycleTransition(player.getUuid(), () -> {
-                    var handler = PlayerDataService.find(SkyBlockDomain.KEY, player.getUuid()).orElse(null);
-                    result.complete(player.isOnline() && handler != null && profile.equals(handler.getCurrentProfileId())
-                            ? action.get() : null);
-                });
-            } catch (Exception exception) { result.completeExceptionally(exception); }
-        });
-        return result.get(15, TimeUnit.SECONDS);
+        long deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(15);
+        while (true) {
+            DataWriteQueue.drain(player.getUuid());
+            var result = new CompletableFuture<Optional<T>>();
+            player.scheduler().scheduleNextTick(() -> {
+                try {
+                    boolean ran = PlayerDataService.tryLifecycleTransition(player.getUuid(), () -> {
+                        var handler = PlayerDataService.find(SkyBlockDomain.KEY, player.getUuid()).orElse(null);
+                        result.complete(Optional.ofNullable(player.isOnline() && handler != null
+                                && profile.equals(handler.getCurrentProfileId()) ? action.get() : null));
+                    });
+                    if (!ran) result.complete(null);
+                } catch (Exception exception) { result.completeExceptionally(exception); }
+            });
+            long left = deadline - System.nanoTime();
+            if (left <= 0) throw new TimeoutException("Player data stayed busy");
+            Optional<T> outcome = result.get(left, TimeUnit.NANOSECONDS);
+            if (outcome != null) return outcome.orElse(null);
+            Thread.sleep(BUSY_RETRY_MILLIS);
+        }
     }
     private static void retryLater(SkyBlockPlayer player, UUID profile) {
         MinecraftServer.getSchedulerManager().buildTask(() -> {
