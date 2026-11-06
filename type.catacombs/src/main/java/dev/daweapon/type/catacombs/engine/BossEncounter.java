@@ -6,9 +6,13 @@ import dev.daweapon.dungeons.catacombs.layout.PlacedRoom;
 import dev.daweapon.dungeons.catacombs.mob.DungeonMobDefinition;
 import dev.daweapon.dungeons.catacombs.mob.DungeonMobRegistry;
 import dev.daweapon.dungeons.catacombs.run.DungeonRunPhase;
+import dev.daweapon.type.catacombs.arena.BossArena;
 import dev.daweapon.type.catacombs.arena.RoomFeatures;
+import dev.daweapon.type.catacombs.engine.bonzo.BonzoArenaSpots;
+import dev.daweapon.type.catacombs.engine.bonzo.BonzoFight;
 import dev.daweapon.type.catacombs.engine.look.MobLooks;
 import dev.daweapon.type.catacombs.run.CatacombsMessages;
+import dev.daweapon.type.catacombs.run.ScoreScreen;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
@@ -17,15 +21,19 @@ import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.instance.block.Block;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 /**
- * The way to the boss and a placeholder fight. When the Watcher is done, nether portal blocks fill the obsidian frame
- * on the far side of the Blood Room (turned with the room) with a lightning strike, thunder and a bang, as captured;
- * stepping into it takes the party to a plain arena where the floor's boss has its registry health in two lives.
- * Bonzo wears his captured skins, the second one for his second life. Real fights replace the arena per floor.
+ * The way to the boss and the fight. When the Watcher is done, nether portal blocks fill the obsidian frame on the far
+ * side of the Blood Room (turned with the room) with a lightning strike, thunder and a bang, as captured; stepping into
+ * it takes the party to the boss. Floor I has its captured arena and {@link BonzoFight}; every other floor still uses a
+ * plain arena where its boss has its registry health in two lives.
  */
 final class BossEncounter implements CatacombsMob.Listener {
     private static final int FALLBACK_PORTAL_RADIUS = 1;
@@ -39,7 +47,10 @@ final class BossEncounter implements CatacombsMob.Listener {
     private final PlacedRoom bloodRoom;
     private final BossArenaBox box;
     private final DungeonMobDefinition bossDefinition;
+    private final Optional<BossArena> realArena;
     private final List<int[]> portal = new ArrayList<>();
+    private final List<SkyBlockPlayer> left = new ArrayList<>();
+    private BonzoFight bonzo;
     private boolean portalOpen;
     private boolean entered;
     private int phase;
@@ -51,6 +62,7 @@ final class BossEncounter implements CatacombsMob.Listener {
         this.bloodRoom = bloodRoom;
         this.box = new BossArenaBox(host.arena().plan().maxX() + GAP_TO_ARENA, CellGeometry.ORIGIN_Z, CellGeometry.FLOOR_Y);
         this.bossDefinition = DungeonMobRegistry.defaults().mob(bossId(floor));
+        this.realArena = floor == CatacombsFloor.FLOOR_ONE ? host.arena().bossArena() : Optional.empty();
     }
 
     private static String bossId(CatacombsFloor floor) {
@@ -121,10 +133,71 @@ final class BossEncounter implements CatacombsMob.Listener {
         if (entered) return;
         entered = true;
         host.advanceTo(DungeonRunPhase.BOSS);
+        if (realArena.isPresent()) {
+            enterBonzo();
+            return;
+        }
         box.build(host.instance());
         for (SkyBlockPlayer player : host.alivePlayers()) player.teleport(box.spawn());
         host.broadcast(CatacombsMessages.bossIntro(floor));
         host.later(ARRIVAL_DELAY_TICKS, () -> spawnBoss(1));
+    }
+
+    private void enterBonzo() {
+        for (SkyBlockPlayer player : host.alivePlayers()) player.teleport(BonzoArenaSpots.ARRIVAL);
+        bonzo = new BonzoFight(host, new BonzoFight.Ending() {
+            @Override
+            public void scoreScreen() {
+                host.win();
+            }
+
+            @Override
+            public void openGate(int gate) {
+                if (gate == 1) ScoreScreen.requeue(floor, host.state().config().floor().mode()).forEach(host::broadcast);
+                BossArena arena = realArena.orElseThrow();
+                GateLift.run(host.instance(), gate == 1 ? BonzoArenaSpots.FIRST_GATE : BonzoArenaSpots.SECOND_GATE,
+                        at -> arena.blockAt(at[0], at[1], at[2]), GateLift.Motion.BOSS_GATE);
+            }
+        });
+        Pos spawn = BonzoArenaSpots.BONZO_SPAWN;
+        host.instance().loadChunk(spawn).thenRun(bonzo::start);
+    }
+
+    /** Where the reward chests go: around Bonzo's spawn in the real arena, near the placeholder boss, or null before any boss. */
+    @Nullable Pos rewardCentre() {
+        if (bonzo != null) return BonzoArenaSpots.BONZO_SPAWN;
+        return entered ? box.bossSpot() : null;
+    }
+
+    boolean realArena() {
+        return bonzo != null;
+    }
+
+    /** After the run: anyone stepping into the exit portal at the end of the corridor goes back to the Dungeon Hub. */
+    void pollExit(List<SkyBlockPlayer> members, Consumer<SkyBlockPlayer> toHub) {
+        if (bonzo == null) return;
+        for (SkyBlockPlayer player : members) {
+            if (left.contains(player)) continue;
+            Pos feet = player.getPosition();
+            if (BonzoArenaSpots.inExitPortal(feet.blockX(), feet.blockY(), feet.blockZ())
+                    || BonzoArenaSpots.inExitPortal(feet.blockX(), feet.blockY() + 1, feet.blockZ())) {
+                left.add(player);
+                toHub.accept(player);
+            }
+        }
+    }
+
+    void hideBar(SkyBlockPlayer player) {
+        if (bonzo != null) bonzo.hideBar(player);
+    }
+
+    boolean killBossLife() {
+        if (bonzo != null) return bonzo.killLife();
+        return false;
+    }
+
+    void dispose() {
+        if (bonzo != null) bonzo.dispose();
     }
 
     private synchronized void spawnBoss(int number) {

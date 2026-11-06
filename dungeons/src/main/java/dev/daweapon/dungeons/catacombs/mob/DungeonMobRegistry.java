@@ -70,8 +70,8 @@ public record DungeonMobRegistry(Map<String, DungeonMobDefinition> mobs) {
         mobs.add(mob("FEL", "Fel", CatacombsFloor.FLOOR_FIVE, DungeonMobRole.NORMAL, 35000, 1300, 100, DungeonMobAbility.TELEPORT));
         mobs.add(mob("DEATHMITE", "Deathmite", CatacombsFloor.FLOOR_FIVE, DungeonMobRole.NORMAL, 10000000, 100000, 0, DungeonMobAbility.TRUE_DAMAGE));
         mobs.add(mob("WATCHER_UNDEAD", "Watcher Undead", CatacombsFloor.ENTRANCE, DungeonMobRole.BLOOD, 5000, 500, 0, DungeonMobAbility.SUMMON_UNDEAD));
-        mobs.add(mob("BONZO_UNDEAD", "Bonzo's Undead", CatacombsFloor.FLOOR_ONE, DungeonMobRole.BOSS_ADD, 45000, 0, 0));
-        mobs.add(mob("BONZO", "Bonzo", CatacombsFloor.FLOOR_ONE, DungeonMobRole.BOSS, 250000, 1600, 0, DungeonMobAbility.EXPLOSION, DungeonMobAbility.REVIVE));
+        mobs.add(mob("BONZO_UNDEAD", "Undead", CatacombsFloor.FLOOR_ONE, DungeonMobRole.BOSS_ADD, 50000, 1440, 0));
+        mobs.add(mob("BONZO", "Bonzo", CatacombsFloor.FLOOR_ONE, DungeonMobRole.BOSS, 250000, 2664, 0, DungeonMobAbility.EXPLOSION, DungeonMobAbility.REVIVE));
         mobs.add(mob("SCARF", "Scarf", CatacombsFloor.FLOOR_TWO, DungeonMobRole.BOSS, 1000000, 2500, 0, DungeonMobAbility.SUMMON_UNDEAD));
         mobs.add(mob("PROFESSOR", "The Professor", CatacombsFloor.FLOOR_THREE, DungeonMobRole.BOSS, 2500000, 3000, 0, DungeonMobAbility.SUMMON_UNDEAD));
         mobs.add(mob("THORN", "Thorn", CatacombsFloor.FLOOR_FOUR, DungeonMobRole.BOSS, 3000000, 3500, 0, DungeonMobAbility.SPIRIT_BOW_VULNERABILITY));

@@ -24,7 +24,9 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.minestom.server.coordinate.Pos;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 /** Everything that happens inside an active run: rooms, mobs, keys, doors, secrets, crypts, the map, the Blood Room and the boss. */
 public final class DungeonEngine {
@@ -178,6 +180,33 @@ public final class DungeonEngine {
         boss.openPortal();
         boss.enter();
         arrivedAtBoss();
+    }
+
+    public @Nullable Pos rewardCentre() {
+        return boss.rewardCentre();
+    }
+
+    public boolean realBossArena() {
+        return boss.realArena();
+    }
+
+    /** After the run is over: the exit portal of the boss room. */
+    public void pollEnded(List<SkyBlockPlayer> members, Consumer<SkyBlockPlayer> toHub) {
+        boss.pollExit(members, toHub);
+    }
+
+    public void hideBossBars(SkyBlockPlayer player) {
+        bloodRoom.hideBar(player);
+        boss.hideBar(player);
+    }
+
+    public boolean killBossLife() {
+        return boss.killBossLife();
+    }
+
+    /** Removes the boss and its arena entities; done when the run's instance closes, not when the run ends. */
+    public void disposeBoss() {
+        boss.dispose();
     }
 
     public int discoveredRooms() {

@@ -28,6 +28,10 @@ final class CatacombsArenaGenerator implements Generator {
         CatacombsBlockPlan plan = blocks.plan();
         for (int x = minX; x <= maxX; x++) {
             for (int z = minZ; z <= maxZ; z++) {
+                if (blocks.inBossArena(x, z)) {
+                    fillBossColumn(unit, x, z, unitMinY, unitMaxY);
+                    continue;
+                }
                 RealRoom owner = blocks.ownerAt(x, z);
                 int minY = Math.max(unitMinY, owner != null ? owner.minY() : plan.minY());
                 int maxY = Math.min(unitMaxY, owner != null ? owner.maxY() : plan.maxY());
@@ -36,6 +40,16 @@ final class CatacombsArenaGenerator implements Generator {
                     if (block != null) unit.modifier().setBlock(x, y, z, block);
                 }
             }
+        }
+    }
+
+    private void fillBossColumn(GenerationUnit unit, int x, int z, int unitMinY, int unitMaxY) {
+        BossArena arena = blocks.bossArena().orElseThrow();
+        int minY = Math.max(unitMinY, arena.minY());
+        int maxY = Math.min(unitMaxY, arena.maxY());
+        for (int y = minY; y <= maxY; y++) {
+            Block block = blocks.bossBlockAt(x, y, z);
+            if (block != null) unit.modifier().setBlock(x, y, z, block);
         }
     }
 

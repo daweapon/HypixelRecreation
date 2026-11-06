@@ -20,13 +20,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * One run's chests, from the end-of-run chests or from Croesus ("The Catacombs - Floor I"): Wood, Gold and
- * Diamond on the left of the second row, Emerald, Obsidian and Bedrock on the right, Go Back and Close below.
+ * One run's chests at Croesus ("Catacombs - Floor I"), as captured: Wood and Gold in slots 11 and 12, Diamond and
+ * Emerald in 14 and 15 (Obsidian and Bedrock, never captured, in 16 and 10), Go Back and Close below.
  */
 public class GUIDungeonRunChests extends StatelessView {
     private static final Map<DungeonChestTier, Integer> SLOTS = Map.of(
-            DungeonChestTier.WOOD, 10, DungeonChestTier.GOLD, 11, DungeonChestTier.DIAMOND, 12,
-            DungeonChestTier.EMERALD, 14, DungeonChestTier.OBSIDIAN, 15, DungeonChestTier.BEDROCK, 16);
+            DungeonChestTier.WOOD, 11, DungeonChestTier.GOLD, 12, DungeonChestTier.DIAMOND, 14,
+            DungeonChestTier.EMERALD, 15, DungeonChestTier.OBSIDIAN, 16, DungeonChestTier.BEDROCK, 10);
 
     private final DungeonChestRun snapshot;
 
@@ -52,9 +52,7 @@ public class GUIDungeonRunChests extends StatelessView {
         }
         for (DungeonRewardChest chest : run.chests()) {
             layout.slot(SLOTS.get(chest.tier()), (_, _) -> {
-                        List<Text> lore = DungeonChestIcons.contentsAndCost(run, chest);
-                        lore.add(DungeonChestIcons.status(run, chest, "<e>Click to open!"));
-                        return DungeonChestIcons.chest(chest.tier(), Text.of(chest.tier().colour() + chest.tier().chestName()), lore);
+                        return DungeonChestIcons.listIcon(chest.tier(), GUIDungeonRewardChest.openLore(run, chest));
                     },
                     (_, c) -> c.push(new GUIDungeonRewardChest(run, chest.tier())));
         }
