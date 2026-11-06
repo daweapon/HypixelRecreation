@@ -80,7 +80,7 @@ public record DungeonChestRun(String id, CatacombsFloor floor, CatacombsMode mod
     }
 
     public String title() {
-        return (mode == CatacombsMode.MASTER ? "Master Mode Catacombs - " : "The Catacombs - ") + floor.displayName();
+        return (mode == CatacombsMode.MASTER ? "Master Mode Catacombs - " : "Catacombs - ") + floor.displayName();
     }
 
     public JSONObject toJson() {

@@ -10,6 +10,8 @@ import dev.daweapon.type.skyblockgeneric.crimson.mob.CrimsonMobProfile;
 import dev.daweapon.type.skyblockgeneric.entity.mob.MobType;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import net.minestom.server.instance.Instance;
+
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -17,8 +19,9 @@ import java.util.concurrent.ThreadLocalRandom;
  * A dungeon mob built from a {@link DungeonMobDefinition}: the definition's health, damage and defense, dressed in its
  * captured Hypixel look ({@link MobLooks}) with Hypixel's dungeon name tag.
  */
-public final class CatacombsMob extends CrimsonIsleMob {
+public class CatacombsMob extends CrimsonIsleMob {
     private static final int PLACEHOLDER_LEVEL = 1;
+    private static final double DEFAULT_SPEED = 100;
 
     private final DungeonMobDefinition definition;
     private final int room;
@@ -36,7 +39,11 @@ public final class CatacombsMob extends CrimsonIsleMob {
     }
 
     public CatacombsMob(DungeonMobDefinition definition, int room, boolean starred, Listener listener, MobLook look) {
-        super(profile(definition, look));
+        this(definition, room, starred, listener, look, DEFAULT_SPEED);
+    }
+
+    public CatacombsMob(DungeonMobDefinition definition, int room, boolean starred, Listener listener, MobLook look, double speed) {
+        super(profile(definition, look, speed));
         this.definition = definition;
         this.room = room;
         this.starred = starred;
@@ -46,17 +53,18 @@ public final class CatacombsMob extends CrimsonIsleMob {
         refreshName();
     }
 
-    static MobLook lookOf(String mobId) {
+    public static MobLook lookOf(String mobId) {
         return MobLooks.shared().look(mobId).orElseGet(() -> new MobLook(MobEntityTypes.of(mobId), List.of(MobType.UNDEAD),
                 "<c>", false, null, null, false, null, List.of()));
     }
 
-    private static CrimsonMobProfile profile(DungeonMobDefinition definition, MobLook look) {
+    private static CrimsonMobProfile profile(DungeonMobDefinition definition, MobLook look, double speed) {
         return CrimsonMobProfile.builder(definition.id(), look.displayName() != null ? look.displayName() : definition.displayName())
                 .level(PLACEHOLDER_LEVEL)
                 .entity(look.entity())
                 .stats(definition.health(), definition.damage())
                 .defense(definition.defense())
+                .speed(speed)
                 .types(look.types().toArray(MobType[]::new))
                 .neverCorrupted()
                 .build();
@@ -90,6 +98,11 @@ public final class CatacombsMob extends CrimsonIsleMob {
         return starred;
     }
 
+    /** Whoever dealt the last hit, for the run's kill count. */
+    public SkyBlockPlayer lastHitter() {
+        return killer();
+    }
+
     @Override
     protected float aggroRange() {
         return 24;
@@ -101,9 +114,11 @@ public final class CatacombsMob extends CrimsonIsleMob {
 
     @Override
     public void kill() {
+        Instance at = getInstance();
         super.kill();
         if (death) return;
         death = true;
+        if (at != null) MobDeaths.record(this, at);
         listener.mobDied(this);
     }
 

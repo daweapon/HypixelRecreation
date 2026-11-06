@@ -25,7 +25,7 @@ class FloorMobScalingTest {
     @Test
     void bonzoUsesWikiHealth() {
         assertEquals(250_000, DungeonMobRegistry.defaults().mob("BONZO").health());
-        assertEquals(45_000, DungeonMobRegistry.defaults().mob("BONZO_UNDEAD").health());
+        assertEquals(50_000, DungeonMobRegistry.defaults().mob("BONZO_UNDEAD").health());
     }
 
     @Test

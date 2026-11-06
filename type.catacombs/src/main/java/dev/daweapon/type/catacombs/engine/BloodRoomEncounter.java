@@ -14,6 +14,7 @@ import dev.daweapon.type.catacombs.engine.watcher.WatcherEntity;
 import dev.daweapon.type.catacombs.engine.watcher.WatcherWaves;
 import dev.daweapon.type.catacombs.run.CatacombsMessages;
 import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.kyori.adventure.bossbar.BossBar;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
@@ -159,6 +160,10 @@ final class BloodRoomEncounter implements CatacombsMob.Listener {
     void hideBar() {
         if (bar == null) return;
         host.alivePlayers().forEach(player -> player.hideBossBar(bar));
+    }
+
+    void hideBar(SkyBlockPlayer player) {
+        if (bar != null) player.hideBossBar(bar);
     }
 
     void dispose() {
