@@ -109,7 +109,7 @@ class DungeonChestRewardsTest {
         assertNotNull(low);
         assertEquals(List.of(DungeonChestTier.WOOD, DungeonChestTier.GOLD, DungeonChestTier.DIAMOND),
                 low.chests().stream().map(DungeonRewardChest::tier).toList());
-        assertEquals(25_000, low.chest(DungeonChestTier.GOLD).cost() - extraCost(low.chest(DungeonChestTier.GOLD)));
+        assertEquals(20_000, low.chest(DungeonChestTier.GOLD).cost() - extraCost(low.chest(DungeonChestTier.GOLD)));
 
         DungeonChestRun perfect = DungeonRewards.roll(null, CatacombsFloor.FLOOR_SEVEN, CatacombsMode.NORMAL, 300, List.of(),
                 DungeonRewards.Bonuses.NONE, TABLE, new SplittableRandom(1), 0);

@@ -175,10 +175,10 @@ public final class RunClasses {
         }
     }
 
-    public void reward(SkyBlockPlayer player, CatacombsFloor floor) {
+    public Map<DungeonClassType, Long> reward(SkyBlockPlayer player, CatacombsFloor floor) {
         UUID uuid = player.getUuid();
-        if (!party.members().containsKey(uuid)) return;
-        DungeonClassProgress.completeRun(player, classOf(uuid), party.teammatesOf(uuid), floor);
+        if (!party.members().containsKey(uuid)) return Map.of();
+        return DungeonClassProgress.completeRun(player, classOf(uuid), party.teammatesOf(uuid), floor);
     }
 
     public boolean inParty(UUID player) {

@@ -52,7 +52,8 @@ public final class CatacombsProgress {
         return completionsOf(player).total();
     }
 
-    public static void completeRun(SkyBlockPlayer player, CatacombsFloor floor, CatacombsMode mode, int score, DungeonScoreRank rank) {
+    /** Pays the run's Catacombs experience and counts the completion; the run's score screen shows the amount. */
+    public static long completeRun(SkyBlockPlayer player, CatacombsFloor floor, CatacombsMode mode, int score, DungeonScoreRank rank) {
         long day = today.getAsLong();
         CatacombsDailyBonus daily = CatacombsDailyBonus.parse(dailyPoint(player).getValue());
         int bonus = daily.bonusPercent(day);
@@ -61,9 +62,9 @@ public final class CatacombsProgress {
 
         dailyPoint(player).setValue(daily.afterRun(day).encode());
         completionsPoint(player).setValue(completionsOf(player).with(floor, mode).encode());
-        player.sendMessage(runXpLine(floor, rank, earned, bonus));
         addXp(player, earned);
         syncSkyBlockXp(player);
+        return earned;
     }
 
     public static String runXpLine(CatacombsFloor floor, DungeonScoreRank rank, long earned, int bonusPercent) {

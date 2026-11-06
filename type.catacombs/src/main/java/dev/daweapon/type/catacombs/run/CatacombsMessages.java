@@ -2,11 +2,7 @@ package dev.daweapon.type.catacombs.run;
 
 import dev.daweapon.dungeons.catacombs.CatacombsFloor;
 import dev.daweapon.dungeons.catacombs.CatacombsMode;
-import dev.daweapon.dungeons.catacombs.run.CatacombsRunState;
-import dev.daweapon.dungeons.catacombs.run.DungeonScoreBreakdown;
-import dev.daweapon.dungeons.catacombs.run.DungeonScoreRank;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /** Every line the run says to the party, kept in one place. */
@@ -91,40 +87,11 @@ public final class CatacombsMessages {
         return "<c> ☠ <a>" + player + "<7> disconnected from the Dungeon and became a ghost.";
     }
 
-    public static List<String> summary(CatacombsFloor floor, CatacombsMode mode, boolean win, CatacombsRunState state,
-                                       DungeonScoreBreakdown score) {
-        List<String> lines = new ArrayList<>();
-        lines.add(BAR);
-        lines.add(title(floor, mode));
-        lines.add("<f>    Team Score: <a>" + score.total() + " <7>(" + rankColour(score.rank()) + score.rank().displayName() + "<7>)");
-        lines.add(win ? "<f>    ☠ Defeated <c>" + floor.bossName() + "<f> in <a>" + duration(state.elapsed().toSeconds())
-                : "<c>The run failed after <a>" + duration(state.elapsed().toSeconds()));
-        lines.add("<f>Skill: <a>" + score.skill() + " <7>(" + state.deaths() + " deaths, " + state.failedPuzzles() + " failed puzzles)");
-        lines.add("<f>Exploration: <a>" + score.exploration() + " <7>(" + state.completedRooms() + "/" + state.config().totalRooms()
-                + " rooms, " + state.secretsFound() + "/" + state.config().totalSecrets() + " secrets)");
-        lines.add("<f>Speed: <a>" + score.speed());
-        lines.add("<f>Bonus: <a>" + score.bonus() + " <7>(" + state.crypts() + " crypts)");
-        if (score.leavePenalty() > 0) lines.add("<c>Leave penalty: <a>-" + score.leavePenalty());
-        lines.add(BAR);
-        return lines;
-    }
-
     public static String returning(int seconds) {
         return "<7>Returning to the Dungeon Hub in <a>" + seconds + " seconds<7>.";
     }
 
     public static String duration(long seconds) {
         return String.format("%02dm %02ds", seconds / 60, seconds % 60);
-    }
-
-    private static String rankColour(DungeonScoreRank rank) {
-        return switch (rank) {
-            case S_PLUS -> "<6>";
-            case S -> "<e>";
-            case A -> "<a>";
-            case B -> "<9>";
-            case C -> "<7>";
-            case D -> "<c>";
-        };
     }
 }

@@ -37,7 +37,7 @@ public final class DungeonChestService {
                 return OpenResult.ALREADY_OPENED;
             }
             if (!run.canOpenMore()) {
-                player.sendMessage("<c>You have already opened a chest for this run!");
+                player.sendMessage("<c>You have already opened a Dungeon chest for this run!");
                 return OpenResult.NO_MORE_CHESTS;
             }
             boolean needsKey = run.nextNeedsKey();

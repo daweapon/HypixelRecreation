@@ -13,10 +13,10 @@ class DungeonChestTierTest {
     @Test
     void baseCostsFollowTheFloorLootPages() {
         assertEquals(0, DungeonChestTier.WOOD.baseCost(CatacombsFloor.FLOOR_SEVEN));
-        assertEquals(25_000, DungeonChestTier.GOLD.baseCost(CatacombsFloor.FLOOR_ONE));
-        assertEquals(50_000, DungeonChestTier.DIAMOND.baseCost(CatacombsFloor.FLOOR_ONE));
-        assertEquals(100_000, DungeonChestTier.EMERALD.baseCost(CatacombsFloor.FLOOR_ONE));
-        assertEquals(250_000, DungeonChestTier.OBSIDIAN.baseCost(CatacombsFloor.FLOOR_ONE));
+        assertEquals(20_000, DungeonChestTier.GOLD.baseCost(CatacombsFloor.FLOOR_ONE));
+        assertEquals(40_000, DungeonChestTier.DIAMOND.baseCost(CatacombsFloor.FLOOR_ONE));
+        assertEquals(80_000, DungeonChestTier.EMERALD.baseCost(CatacombsFloor.FLOOR_ONE));
+        assertEquals(200_000, DungeonChestTier.OBSIDIAN.baseCost(CatacombsFloor.FLOOR_ONE));
         assertEquals(50_000, DungeonChestTier.GOLD.baseCost(CatacombsFloor.FLOOR_TWO));
         assertEquals(200_000, DungeonChestTier.EMERALD.baseCost(CatacombsFloor.FLOOR_TWO));
         assertEquals(100_000, DungeonChestTier.GOLD.baseCost(CatacombsFloor.FLOOR_THREE));

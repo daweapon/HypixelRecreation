@@ -34,7 +34,7 @@ public final class CatacombsArena {
 
     public static CatacombsArena create(CatacombsFloor floor, CatacombsMode mode, long seed) {
         FloorLayout layout = FloorLayoutGenerator.generate(floor, mode, seed, CatacombsTemplates.get());
-        CatacombsArenaBlocks blocks = CatacombsArenaBlocks.of(layout, RoomStructures.shared());
+        CatacombsArenaBlocks blocks = CatacombsArenaBlocks.of(layout, RoomStructures.shared(), true);
         InstanceManager manager = MinecraftServer.getInstanceManager();
         InstanceContainer container = manager.createInstanceContainer(
                 MinecraftServer.getDimensionTypeRegistry().getKey(FULLBRIGHT_DIMENSION));
@@ -62,6 +62,10 @@ public final class CatacombsArena {
     public Optional<Pos> mortSpot() {
         return RoomFeatures.shared().mort(layout.startRoom())
                 .map(spot -> new Pos(spot.x(), spot.y(), spot.z(), spot.yaw(), 0));
+    }
+
+    public Optional<BossArena> bossArena() {
+        return blocks.bossArena();
     }
 
     public Pos entranceSpawn() {

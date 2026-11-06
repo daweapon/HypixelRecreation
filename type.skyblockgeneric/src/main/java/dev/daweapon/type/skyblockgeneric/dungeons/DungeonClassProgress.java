@@ -52,15 +52,15 @@ public final class DungeonClassProgress {
         return Arrays.stream(DungeonClassType.values()).mapToInt(type -> level(player, type)).average().orElse(0);
     }
 
-    public static void completeRun(SkyBlockPlayer player, DungeonClassType played, Collection<DungeonClassType> teammates,
-                                   CatacombsFloor floor) {
+    /** Pays each class its share of the run's experience; the run's score screen shows the amounts. */
+    public static Map<DungeonClassType, Long> completeRun(SkyBlockPlayer player, DungeonClassType played,
+                                                          Collection<DungeonClassType> teammates, CatacombsFloor floor) {
         Map<DungeonClassType, Long> earned = DungeonClassXp.earned(played, teammates, CatacombsRunXp.base(floor));
         for (DungeonClassType type : DungeonClassType.values()) {
             Long amount = earned.get(type);
-            if (amount == null) continue;
-            player.sendMessage(runXpLine(type, amount, type != played));
-            addXp(player, type, amount);
+            if (amount != null) addXp(player, type, amount);
         }
+        return earned;
     }
 
     public static String runXpLine(DungeonClassType type, long amount, boolean teamBonus) {

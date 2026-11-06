@@ -57,6 +57,17 @@ public final class CatacombsQueue {
     private record Entry(CatacombsFloor floor, long since) {
     }
 
+    /** A Catacombs server starting the run itself, so a party re-queueing from inside a run never changes server. */
+    public interface LocalRuns {
+        boolean start(CatacombsFloor floor, List<UUID> roster, List<SkyBlockPlayer> members);
+    }
+
+    private static volatile @Nullable LocalRuns localRuns;
+
+    public static void useLocalRuns(@Nullable LocalRuns runs) {
+        localRuns = runs;
+    }
+
     public static String entered(String leaderName, CatacombsFloor floor) {
         return "<a>" + leaderName + " <e>entered <c>The Catacombs<e>, <b>" + floor.displayName() + "<e>!";
     }
@@ -130,6 +141,17 @@ public final class CatacombsQueue {
             List<SkyBlockPlayer> present = members.stream().filter(SkyBlockPlayer::isOnline).toList();
             if (present.size() != members.size()) {
                 fail(present, "<c>A party member left, so the queue was cancelled.");
+                return;
+            }
+            LocalRuns here = localRuns;
+            if (here != null && here.start(floor, roster, present)) {
+                String entered = entered(leader.getUsername(), floor);
+                present.forEach(member -> {
+                    member.sendMessage(entered);
+                    QUEUED.remove(member.getUuid());
+                });
+                roster.forEach(QueuePositions::clear);
+                delist(roster);
                 return;
             }
             AtomicBoolean answered = new AtomicBoolean();

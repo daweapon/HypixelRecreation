@@ -21,6 +21,14 @@ sections:
       - "The Blood room plays out like Hypixel: the Watcher floats in, summons 9 named undead on Floor 1 in two waves, counts them on his boss bar, then opens a portal in the far doorway and leaves a Blessing of Life and of Power. The Blood room is always entered from the back."
       - "Four fairies float around the Fairy room tree. Killing one revives a dead teammate and drops a Revive Stone."
       - "Bonzo wears his real skins, a new one for his second life."
+  - heading: "Bonzo's real fight"
+    colour: "<6>"
+    lines:
+      - "Floor 1's portal now leads into Hypixel's own Bonzo arena, the circus tent, copied block for block."
+      - "Bonzo talks, dashes off, throws summoning orbs that land as Undead, fires Wither Skulls, says \"Oh I'm dead!\" and \"Sike\", then comes back for a second life with Bonzo's Staff, balloons and a Balloon Barrage."
+      - "When he falls, the score screen, EXTRA STATS and the re-queue link appear as on Hypixel, and the two exit gates sink into the floor."
+      - "The reward chests are Hypixel's real chest models on sea lanterns around Bonzo's spawn. Their menus match Hypixel's, and Floor 1 chests cost 20,000, 40,000 and 80,000 coins as on Hypixel."
+      - "The exit portal at the end of the corridor takes you back to the Dungeon Hub."
   - heading: "Not here yet"
     colour: "<c>"
     lines:
