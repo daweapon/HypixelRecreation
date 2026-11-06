@@ -53,7 +53,7 @@ final class Mechanisms {
                     List<Map<String, Object>> anchors, List<Map<String, Object>> extras) {
     }
 
-    record Lever(String label, int x, int y, int z, List<int[]> opens, String source, List<String> pairs, boolean freesSecret) {
+    record Lever(String label, int x, int y, int z, List<int[]> opens, String source, List<String> pairs, List<int[]> secretBlocks, boolean freesSecret) {
     }
 
     record Plug(String label, List<int[]> blocks) {
@@ -96,9 +96,9 @@ final class Mechanisms {
                 for (int i = 0; i < levers.size(); i++) {
                     Lever lever = levers.get(i);
                     part.append(i == 0 ? "\n" : ",\n").append(String.format(Locale.ROOT,
-                            "        {\"label\": \"%s\", \"x\": %d, \"y\": %d, \"z\": %d, \"source\": \"%s\", \"secrets\": [%s], \"freesSecret\": %s,\n          \"opens\": %s}",
+                            "        {\"label\": \"%s\", \"x\": %d, \"y\": %d, \"z\": %d, \"source\": \"%s\", \"secrets\": [%s], \"secretBlocks\": %s, \"freesSecret\": %s,\n          \"opens\": %s}",
                             lever.label(), lever.x(), lever.y() - FLOOR_Y, lever.z(), lever.source(),
-                            String.join(", ", lever.pairs().stream().map(pair -> "\"" + pair + "\"").toList()), lever.freesSecret(), blockList(lever.opens())));
+                            String.join(", ", lever.pairs().stream().map(pair -> "\"" + pair + "\"").toList()), blockList(lever.secretBlocks()), lever.freesSecret(), blockList(lever.opens())));
                     System.out.printf(Locale.ROOT, "%-18s %-24s %-9s %-5s %3d blocks %s%n", template.id(), lever.label(), lever.source(), lever.freesSecret(), lever.opens().size(), summary(room, lever.opens()));
                 }
                 parts.add(part.append("\n      ]").toString());
@@ -327,13 +327,13 @@ final class Mechanisms {
             Candidate chosen = choose(candidates(lever, secrets));
             if (CAPTURED.containsKey(key)) {
                 if (chosen != null) System.out.println("  (shape guess for the captured " + key + ": " + size(chosen.plug()) + ")");
-                return new Lever(label, lever[0], lever[1], lever[2], boxes(CAPTURED.get(key)), "capture", pairs, false);
+                return new Lever(label, lever[0], lever[1], lever[2], boxes(CAPTURED.get(key)), "capture", pairs, secrets, false);
             }
-            if (CHECKED.containsKey(key)) return new Lever(label, lever[0], lever[1], lever[2], boxes(CHECKED.get(key)), "checked", pairs, false);
-            if (chosen == null) return new Lever(label, lever[0], lever[1], lever[2], List.of(), "none", pairs, false);
+            if (CHECKED.containsKey(key)) return new Lever(label, lever[0], lever[1], lever[2], boxes(CHECKED.get(key)), "checked", pairs, secrets, false);
+            if (chosen == null) return new Lever(label, lever[0], lever[1], lever[2], List.of(), "none", pairs, secrets, false);
             List<int[]> opens = chosen.plug();
             if (chosen.gateShare() >= 0.5) opens = opens.stream().filter(at -> gate(get(at[0], at[1], at[2]))).toList();
-            return new Lever(label, lever[0], lever[1], lever[2], opens, "estimated", pairs, chosen.holdsSecret());
+            return new Lever(label, lever[0], lever[1], lever[2], opens, "estimated", pairs, secrets, chosen.holdsSecret());
         }
 
         private static List<int[]> boxes(List<Box3> boxes) {

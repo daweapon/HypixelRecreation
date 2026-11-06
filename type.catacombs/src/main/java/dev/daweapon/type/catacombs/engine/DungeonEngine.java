@@ -17,7 +17,11 @@ import dev.daweapon.type.catacombs.crypt.CryptEngine;
 import dev.daweapon.type.catacombs.crypt.CryptPlan;
 import dev.daweapon.type.catacombs.map.DungeonMapView;
 import dev.daweapon.type.catacombs.run.CatacombsMessages;
+import dev.daweapon.type.catacombs.arena.RoomMechanisms;
 import dev.daweapon.type.catacombs.secret.SecretEngine;
+import dev.daweapon.type.catacombs.secret.SecretLevers;
+import dev.daweapon.type.catacombs.secret.SuperboomTnt;
+import dev.daweapon.type.catacombs.secret.SuperboomWalls;
 import dev.daweapon.type.catacombs.secret.SecretLedger;
 import dev.daweapon.type.catacombs.secret.SecretSpot;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -41,6 +45,9 @@ public final class DungeonEngine {
     private final PartyBlessings blessings;
     private final SecretEngine secrets;
     private final CryptEngine crypts;
+    private final SecretLevers levers;
+    private final SuperboomWalls walls;
+    private final SuperboomTnt superboom = new SuperboomTnt();
     private final DungeonMapView map;
     private final BloodBlessings bloodBlessings = new BloodBlessings();
     private final FairyRoom fairies;
@@ -60,11 +67,14 @@ public final class DungeonEngine {
         this.blessings = new PartyBlessings(host, BlessingStats.effectiveness(floor));
         this.secrets = new SecretEngine(host, layout, floor, blessings);
         this.crypts = new CryptEngine(host, CryptPlan.of(layout));
+        this.levers = new SecretLevers(host, layout, RoomMechanisms.shared());
+        this.walls = new SuperboomWalls(host, layout, RoomMechanisms.shared());
         this.map = new DungeonMapView(host, layout, room -> secrets.ledger().allFound(room));
         this.fairies = new FairyRoom(host, layout);
         rooms.discover(layout.startRoom());
         secrets.start();
         crypts.start();
+        levers.start();
         fairies.start();
     }
 
@@ -120,7 +130,16 @@ public final class DungeonEngine {
     }
 
     public boolean interact(SkyBlockPlayer player, int x, int y, int z) {
-        return secrets.interact(player, x, y, z) || crypts.interact(player, x, y, z);
+        return secrets.interact(player, x, y, z) || levers.interact(player, x, y, z) || superboom(player, x, y, z)
+                || crypts.interact(player, x, y, z);
+    }
+
+    /** A Superboom TNT used (either click) on a block: blows the crackable wall or crypt there; true when one went off. */
+    public boolean superboom(SkyBlockPlayer player, int x, int y, int z) {
+        if (!SuperboomTnt.isSuperboom(player.getItemInMainHand()) || !superboom.ready(player)) return false;
+        if (!walls.blast(x, y, z) && !crypts.blast(x, y, z)) return false;
+        superboom.spend(player);
+        return true;
     }
 
     public Optional<SecretSpot> collectNearestSecret(SkyBlockPlayer player) {

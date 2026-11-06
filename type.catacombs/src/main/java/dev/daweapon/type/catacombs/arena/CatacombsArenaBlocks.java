@@ -22,8 +22,9 @@ import java.util.Set;
 
 /**
  * Every block of one run's dungeon: real rooms come from their block files, turned and moved into place, and
- * everything else (placeholder rooms, the strips between rooms, doorways) comes from {@link CatacombsBlockPlan}. A door
- * into a real room cuts its 3 by 4 opening through that room's outer wall. A floor with a captured boss room
+ * everything else (placeholder rooms, the strips between rooms, doorways) comes from {@link CatacombsBlockPlan}. Every
+ * door gets one of Hypixel's door pieces ({@link DoorPieces}) over the seam and both rooms' outer walls; where a layout
+ * puts no door a real room keeps its own closed wall. A floor with a captured boss room
  * ({@link BossArena}) has it beside the grid, generated with the rest.
  */
 public final class CatacombsArenaBlocks {
@@ -36,6 +37,7 @@ public final class CatacombsArenaBlocks {
     private final Map<Integer, RealRoom> realRooms;
     private final Set<Long> openings;
     private final DoorGates gates;
+    private final Map<Long, Block> doorPieces;
     private final @Nullable BossArena bossArena;
     private final int minX;
     private final int maxX;
@@ -45,12 +47,13 @@ public final class CatacombsArenaBlocks {
     private final int maxZ;
 
     private CatacombsArenaBlocks(FloorLayout layout, CatacombsBlockPlan plan, Map<Integer, RealRoom> realRooms,
-                                 @Nullable BossArena bossArena) {
+                                 @Nullable BossArena bossArena, DoorPieces pieces) {
         this.layout = layout;
         this.plan = plan;
         this.realRooms = realRooms;
         this.openings = openings(layout, realRooms);
         this.gates = DoorGates.of(layout);
+        this.doorPieces = pieces.blocks(layout);
         this.bossArena = bossArena;
         int lowX = plan.minX(), highX = plan.maxX(), lowY = plan.minY(), highY = plan.maxY(), lowZ = plan.minZ(), highZ = plan.maxZ();
         for (RealRoom room : realRooms.values()) {
@@ -82,6 +85,10 @@ public final class CatacombsArenaBlocks {
     }
 
     public static CatacombsArenaBlocks of(FloorLayout layout, RoomStructures structures, boolean withBossArena) {
+        return of(layout, structures, withBossArena, DoorPieces.shared());
+    }
+
+    public static CatacombsArenaBlocks of(FloorLayout layout, RoomStructures structures, boolean withBossArena, DoorPieces pieces) {
         Map<Integer, RealRoom> realRooms = new HashMap<>();
         for (PlacedRoom room : layout.rooms()) {
             room.template().blocks().ifPresent(structure -> {
@@ -94,7 +101,7 @@ public final class CatacombsArenaBlocks {
         }
         CatacombsBlockPlan plan = new CatacombsBlockPlan(layout);
         BossArena boss = withBossArena ? BossArena.of(layout.floor(), plan).orElse(null) : null;
-        return new CatacombsArenaBlocks(layout, plan, Map.copyOf(realRooms), boss);
+        return new CatacombsArenaBlocks(layout, plan, Map.copyOf(realRooms), boss, pieces);
     }
 
     public Optional<BossArena> bossArena() {
@@ -199,6 +206,8 @@ public final class CatacombsArenaBlocks {
     Block blockIn(RealRoom owner, int x, int y, int z) {
         Block gate = gates.blockAt(x, y, z);
         if (gate != null) return gate;
+        Block piece = doorPieces.get(pack(x, y, z));
+        if (piece != null) return piece.air() ? null : piece;
         if (openings.contains(pack(x, y, z))) return null;
         Block block = owner.blockAt(x, y, z);
         return block == null || block.air() ? null : block;
@@ -207,6 +216,8 @@ public final class CatacombsArenaBlocks {
     Block planBlock(int x, int y, int z) {
         Block gate = gates.blockAt(x, y, z);
         if (gate != null) return gate;
+        Block piece = doorPieces.get(pack(x, y, z));
+        if (piece != null) return piece.air() ? null : piece;
         CatacombsBlockPlan.Tile tile = plan.tileAt(x, y, z);
         RoomColor colour = tile == CatacombsBlockPlan.Tile.MARKER_FLOOR || tile == CatacombsBlockPlan.Tile.MARKER_PILLAR
                 ? plan.markerColourAt(x, z) : RoomColor.BROWN;

@@ -9,6 +9,7 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 public final class SecretMessages {
     public static final String CHEST_SEARCHED = "<c>This chest has already been searched!";
     public static final String REDSTONE_KEY = "<e>You found a Secret Redstone Key!";
+    public static final String LEVER_USED = "<c>This lever has already been used.";
     private static final String ESSENCE = "found a <d>Wither Essence<f>! Everyone gains an extra essence!";
 
     private SecretMessages() {

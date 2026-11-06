@@ -43,6 +43,7 @@ class RealRoomsTest {
     private static RoomTemplateLibrary library;
     private static RoomStructures structures;
     private static List<RoomTemplate> real;
+    private static DoorPieces pieces;
 
     @BeforeAll
     static void load() {
@@ -50,6 +51,7 @@ class RealRoomsTest {
         library = RoomTemplateLibrary.fromDirectory(ROOMS);
         structures = new RoomStructures(ROOMS);
         real = library.all().stream().filter(template -> template.blocks().isPresent()).toList();
+        pieces = DoorPieces.load(ROOMS.getParent().resolve("door_pieces.json"));
     }
 
     @Test
@@ -127,7 +129,7 @@ class RealRoomsTest {
             for (long seed = 0; seed < 500; seed++) {
                 FloorLayout layout = FloorLayoutGenerator.generate(floor, CatacombsMode.NORMAL, seed, library);
                 long started = System.nanoTime();
-                CatacombsArenaBlocks blocks = CatacombsArenaBlocks.of(layout, structures);
+                CatacombsArenaBlocks blocks = CatacombsArenaBlocks.of(layout, structures, false, pieces);
                 for (int x = blocks.minX(); x <= blocks.maxX(); x++) {
                     for (int z = blocks.minZ(); z <= blocks.maxZ(); z++) {
                         for (int y = blocks.minY(); y <= blocks.maxY(); y++) {

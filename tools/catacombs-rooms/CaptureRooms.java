@@ -191,7 +191,7 @@ final class CaptureRooms {
         Files.writeString(out.resolve("hypixel_f1.json"), ExtractRooms.json(floorOne, String.format(SOURCE, "Floor 1")), StandardCharsets.UTF_8);
         Files.writeString(out.resolve("hypixel_m7.json"), ExtractRooms.json(masterSeven, String.format(SOURCE, "Master Mode Floor 7")), StandardCharsets.UTF_8);
         patchM7(out, catalogue, replaced);
-        DoorPieces.write(runs, out.resolve("door_pieces.json"));
+        DoorPieces.write(runs, out.toAbsolutePath().getParent().resolve("door_pieces.json"));
     }
 
     private static String chosenLabel(List<Seen> cluster) {
