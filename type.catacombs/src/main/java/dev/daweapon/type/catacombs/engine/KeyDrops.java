@@ -7,9 +7,13 @@ import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
 import net.minestom.server.component.DataComponents;
 import net.minestom.server.coordinate.Pos;
-import net.minestom.server.entity.ItemEntity;
+import net.minestom.server.entity.Entity;
+import net.minestom.server.entity.EntityType;
+import net.minestom.server.entity.LivingEntity;
+import net.minestom.server.entity.metadata.other.ArmorStandMeta;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
+import net.minestom.server.network.player.ResolvableProfile;
 
 import java.util.Comparator;
 import java.util.List;
@@ -20,8 +24,10 @@ final class KeyDrops {
     private static final long AUTO_PICKUP_MILLIS = 10_000;
     private static final double PICKUP_RANGE = 2.5;
     private static final double GUARANTEED_CHANCE_PERCENT = 100;
+    private static final double LABEL_HEIGHT = 1.53125;
+    private static final double HEAD_DROP = 0.25;
 
-    private record Pending(KeyType key, ItemEntity entity, long droppedAt) {
+    private record Pending(KeyType key, Entity entity, List<Entity> parts, long droppedAt) {
     }
 
     private final DungeonHost host;
@@ -33,14 +39,23 @@ final class KeyDrops {
 
     void drop(KeyType key, Pos at) {
         if (!LootRoll.roll(null, null, GUARANTEED_CHANCE_PERCENT)) return;
-        ItemEntity entity = new ItemEntity(ItemStack.of(key == KeyType.BLOOD ? Material.TRIPWIRE_HOOK : Material.IRON_NUGGET));
-        entity.setPickable(false);
-        entity.setMergeable(false);
-        entity.set(DataComponents.CUSTOM_NAME, Text.parse(key.coloured()).asComponent());
-        entity.setCustomNameVisible(true);
-        entity.setGlowing(true);
-        entity.setInstance(host.instance(), at.add(0, 1, 0));
-        pending.add(new Pending(key, entity, System.currentTimeMillis()));
+        Pos label = at.add(0, LABEL_HEIGHT, 0);
+        LivingEntity head = new LivingEntity(EntityType.ARMOR_STAND);
+        head.editEntityMeta(ArmorStandMeta.class, meta -> meta.setInvisible(true));
+        head.setNoGravity(true);
+        head.setHelmet(ItemStack.builder(Material.PLAYER_HEAD)
+                .set(DataComponents.PROFILE, new ResolvableProfile(key.head().playerSkin())).build());
+        head.setInstance(host.instance(), label.sub(0, HEAD_DROP, 0));
+        Entity name = new Entity(EntityType.ARMOR_STAND);
+        name.editEntityMeta(ArmorStandMeta.class, meta -> {
+            meta.setInvisible(true);
+            meta.setMarker(true);
+            meta.setCustomName(Text.parse(key.coloured()).asComponent());
+            meta.setCustomNameVisible(true);
+        });
+        name.setNoGravity(true);
+        name.setInstance(host.instance(), label);
+        pending.add(new Pending(key, name, List.of(head, name), System.currentTimeMillis()));
         host.broadcast("<7>A " + key.coloured() + " <7>dropped!");
     }
 
@@ -58,7 +73,7 @@ final class KeyDrops {
 
     private void pickUp(Pending drop, SkyBlockPlayer picker) {
         if (!pending.remove(drop)) return;
-        drop.entity().remove();
+        drop.parts().forEach(Entity::remove);
         host.keys().grant(drop.key());
         host.broadcast(picker == null
                 ? Text.of("<a>A {}<a> was picked up!", Text.parse(drop.key().coloured()))
@@ -68,7 +83,7 @@ final class KeyDrops {
     }
 
     void clear() {
-        pending.forEach(drop -> drop.entity().remove());
+        pending.forEach(drop -> drop.parts().forEach(Entity::remove));
         pending.clear();
     }
 }
