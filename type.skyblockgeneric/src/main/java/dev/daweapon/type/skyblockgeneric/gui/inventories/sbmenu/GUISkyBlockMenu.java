@@ -19,6 +19,7 @@ import dev.daweapon.type.skyblockgeneric.calendar.CalendarEvent;
 import dev.daweapon.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointBankData;
+import dev.daweapon.type.skyblockgeneric.dungeons.CatacombsZone;
 import dev.daweapon.type.skyblockgeneric.gui.inventories.banker.GUIBanker;
 import dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.bags.GUIYourBags;
 import dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.calendar.GUICalendar;
@@ -50,6 +51,15 @@ public class GUISkyBlockMenu extends StatelessView {
     @Override
     public ViewConfiguration<DefaultState> configuration() {
         return ViewConfiguration.translatable("gui_sbmenu.main.title", InventoryType.CHEST_6_ROW);
+    }
+
+    /** In a dungeon (the Magical Map's menu) the click line becomes Hypixel's red notice and the button does nothing. */
+    static List<Text> profileManagementLore(int profiles, boolean inDungeon) {
+        List<Text> lore = Text.keyLines("gui_sbmenu.main.profile_management.lore", profiles);
+        if (!inDungeon) return lore;
+        List<Text> blocked = new ArrayList<>(lore.subList(0, lore.size() - 1));
+        blocked.addAll(Text.keyLines("gui_sbmenu.main.profile_management.dungeons"));
+        return blocked;
     }
 
     @Override
@@ -276,10 +286,10 @@ public class GUISkyBlockMenu extends StatelessView {
             HypixelPlayer player = c.player();
             return ItemStacks.item(Material.NAME_TAG, 1,
                 Text.key("gui_sbmenu.main.profile_management"),
-                Text.keyLines("gui_sbmenu.main.profile_management.lore",
-                    ((SkyBlockPlayer) player).getProfiles().getProfiles().size())
-            );
-        }, (_, c) -> c.push(new GUIProfileManagement()));
+                profileManagementLore(((SkyBlockPlayer) player).getProfiles().getProfiles().size(), CatacombsZone.isInCatacombs()));
+        }, (_, c) -> {
+            if (!CatacombsZone.isInCatacombs()) c.push(new GUIProfileManagement());
+        });
 
         layout.slot(50, (s, c) -> ItemStacks.item(Material.REDSTONE_TORCH, 1,
             Text.key("gui_sbmenu.main.settings"),

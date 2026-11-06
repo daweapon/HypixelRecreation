@@ -15,24 +15,22 @@ import net.minestom.server.tag.Tag;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * The run-only class items: the Dungeon Orb, the waiting room's class selector and a ghost's toolbar (Haunt and the two
+ * The run-only class items: the Dungeon Orb claimed from Mort's Ready Up menu and a ghost's toolbar (Haunt and the two
  * class ghost abilities). They are plain tagged stacks, never SkyBlock items, so they are never saved with the profile.
  * Lore is transcribed from the wiki's tooltip module; the ghost potions use vanilla potions because their custom head
  * textures aren't public.
  */
 public final class ClassItems {
     public static final String ORB = "ORB";
-    public static final String SELECTOR = "SELECTOR";
     public static final String HAUNT = "HAUNT";
     public static final String GHOST_FIRST = "GHOST_0";
     public static final String GHOST_SECOND = "GHOST_1";
-    public static final int SELECTOR_SLOT = 0;
     public static final int HAUNT_SLOT = 0;
     public static final int GHOST_FIRST_SLOT = 3;
     public static final int GHOST_SECOND_SLOT = 5;
 
     private static final Tag<String> TAG = Tag.String("catacombs_class_item");
-    private static final String ORB_TEXTURE = "ba49f9de12c813329f38d0af2da0f32f32a6dcd52c3221d19090c256376c418c";
+    public static final String ORB_TEXTURE = "ba49f9de12c813329f38d0af2da0f32f32a6dcd52c3221d19090c256376c418c";
     private static final String HAUNT_TEXTURE = "f1d26142909bde6d9ab136fe8928dd67b662843d6c1813e108842c23f1c793bb";
     private static final DungeonClassRegistry REGISTRY = DungeonClassRegistry.defaults();
 
@@ -68,16 +66,6 @@ public final class ClassItems {
                 ultimate.displayName(), ultimateLore(type, level), seconds(DungeonClassScaling.cooldownSeconds(ultimate, type, level)),
                 normal.displayName(), normalLore(type), seconds(DungeonClassScaling.cooldownSeconds(normal, type, level)));
         return tagged(ItemStacks.head(ORB_TEXTURE, body), ORB);
-    }
-
-    public static ItemStack selector(DungeonClassType selected) {
-        return tagged(ItemStacks.item(Material.NETHER_STAR, """
-                <a>Dungeon Classes
-                <7>View and select a dungeon class.
-
-                <a>Currently Selected: <b>%s
-
-                <e>Right-click to open!""".formatted(selected.displayName())), SELECTOR);
     }
 
     public static ItemStack haunt() {

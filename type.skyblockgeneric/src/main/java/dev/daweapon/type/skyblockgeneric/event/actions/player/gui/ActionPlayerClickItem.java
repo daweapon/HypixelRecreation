@@ -1,6 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.event.actions.player.gui;
 
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
+import net.minestom.server.event.player.PlayerUseItemEvent;
 import net.minestom.server.inventory.PlayerInventory;
 import net.minestom.server.inventory.click.Click;
 import net.minestom.server.item.ItemStack;
@@ -12,9 +13,10 @@ import dev.daweapon.type.generic.event.phase.PhasedEvent;
 import dev.daweapon.type.skyblockgeneric.crimson.dojo.DojoChallengeLock;
 import dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.GUISkyBlockMenu;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.user.MenuSlotOverride;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// Keeps the SkyBlock menu item locked in the last hotbar slot and opens the menu when it is clicked
+// Keeps the SkyBlock menu item (or the item standing in for it) locked in the last hotbar slot and opens the menu when it is clicked
 public class ActionPlayerClickItem implements HypixelEventClass {
     public static final int MENU_SLOT = 8;
 
@@ -29,10 +31,19 @@ public class ActionPlayerClickItem implements HypixelEventClass {
         }
         if (touchesMenuSlot(event) || isMenu(event.getClickedItem()) || isMenu(player.getInventory().getCursorItem())) {
             event.setCancelled(true);
-            if (isMenu(event.getClickedItem()) && (event.getClick() instanceof Click.Left || event.getClick() instanceof Click.Right)) {
+            boolean opens = isMenu(event.getClickedItem()) || MenuSlotOverride.opensMenu(player, event.getClickedItem());
+            if (opens && (event.getClick() instanceof Click.Left || event.getClick() instanceof Click.Right)) {
                 player.openView(new GUISkyBlockMenu());
             }
         }
+    }
+
+    /** Right-clicking an item that stands in for the SkyBlock Menu, such as a dungeon's Magical Map, opens the menu. */
+    @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
+    public void use(PlayerUseItemEvent event) {
+        if (!(event.getPlayer() instanceof SkyBlockPlayer player) || !MenuSlotOverride.opensMenu(player, event.getItemStack())) return;
+        event.setCancelled(true);
+        player.openView(new GUISkyBlockMenu());
     }
 
     private static boolean touchesMenuSlot(InventoryPreClickEvent event) {

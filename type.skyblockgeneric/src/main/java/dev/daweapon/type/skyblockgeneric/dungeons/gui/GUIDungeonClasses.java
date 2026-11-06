@@ -76,7 +76,7 @@ public class GUIDungeonClasses extends StatelessView {
         boolean selected = DungeonClassProgress.selected(player) == type;
         String body = "<7>[Lvl " + level + "] <a>" + type.displayName() + "\n"
                 + bonuses(type, level)
-                + abilityList(type) + "\n\n"
+                + abilityLines(type) + "\n\n"
                 + DOUBLED + "\n\n"
                 + (selected ? "<a>SELECTED" : "<e>Click to select!");
         ItemStack.Builder builder = ItemStacks.item(icon(type), body);
@@ -107,7 +107,8 @@ public class GUIDungeonClasses extends StatelessView {
         };
     }
 
-    private static String abilityList(DungeonClassType type) {
+    /** The Class Passives, Dungeon Orb Abilities and Ghost Abilities blocks, as on both Mort menus. */
+    public static String abilityLines(DungeonClassType type) {
         List<String> passives = switch (type) {
             case HEALER -> List.of("Renew", "Healing Aura", "Revive", "Orbies", "Soul Tether", "Overheal");
             case MAGE -> List.of("Mage Staff", "Efficient Spells");

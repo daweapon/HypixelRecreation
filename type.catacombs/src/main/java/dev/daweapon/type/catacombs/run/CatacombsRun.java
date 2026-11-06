@@ -49,6 +49,7 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
     public static final int SHUTDOWN_SECONDS = 60;
     private static final int POLL_TICKS = 5;
     private static final int TRANSFER_GRACE_TICKS = 200;
+    private static final int AUTO_READY_TICKS = 66;
 
     private final CatacombsFloorId floorId;
     private final CatacombsFloorDefinition definition;
@@ -137,9 +138,10 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
         boolean waiting = lifecycle.stage() == CatacombsLifecycle.Stage.WAITING;
         player.setRespawnPoint(arena.entranceSpawn());
         player.setInstance(arena.instance(), waiting ? arena.entranceSpawn() : rejoinSpot()).thenRun(() -> {
-            classes.admit(player, waiting);
-            if (waiting) greet(player);
-            else if (ghosts.isGhost(player.getUuid())) applyGhost(player);
+            classes.admit(player);
+            if (waiting) {
+                if (DungeonClassProgress.autoReady(player)) later(AUTO_READY_TICKS, () -> readyUp(player));
+            } else if (ghosts.isGhost(player.getUuid())) applyGhost(player);
             if (!waiting) classes.rejoin(player);
         });
         return true;
@@ -147,12 +149,6 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
 
     private Pos rejoinSpot() {
         return alivePlayers().stream().findFirst().map(Player::getPosition).orElse(arena.entranceSpawn());
-    }
-
-    private void greet(SkyBlockPlayer player) {
-        player.sendMessage(CatacombsMessages.classSelected(classes.selectedOf(player.getUuid()).displayName()));
-        CatacombsItems.showReady(player, readyCheck.isReady(player.getUuid()));
-        player.sendMessage("<7>Right-click the dye or use <e>/catacombsrun ready <7>to ready up.");
     }
 
     public synchronized void handleDisconnect(UUID uuid) {
@@ -168,12 +164,23 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
         if (onlineMembers().isEmpty() && emptySince == 0) emptySince = System.currentTimeMillis();
     }
 
+    /** Staff's {@code /catacombsrun ready}: flips the ready state either way. */
     public synchronized void toggleReady(SkyBlockPlayer player) {
-        if (lifecycle.stage() != CatacombsLifecycle.Stage.WAITING || !player.isOnline() || readyCheck.countingDown()) return;
+        if (!canChangeReady(player)) return;
         boolean ready = readyCheck.toggle(player.getUuid());
-        CatacombsItems.showReady(player, ready);
-        broadcast(ready ? CatacombsMessages.ready(player.getUsername()) : CatacombsMessages.notReady(player.getUsername()));
+        broadcast(ready ? CatacombsMessages.ready(player.getColouredName()) : CatacombsMessages.notReady(player.getColouredName()));
         if (ready && readyCheck.startCountdownIfAllReady(onlineIds())) startCountdown();
+    }
+
+    /** Mort's Ready Up pane and Auto Ready Up: readying is one-way there, as the captured Ready pane offers no undo. */
+    public synchronized void readyUp(SkyBlockPlayer player) {
+        if (!canChangeReady(player) || player.getInstance() != arena.instance() || !readyCheck.markReady(player.getUuid())) return;
+        broadcast(CatacombsMessages.ready(player.getColouredName()));
+        if (readyCheck.startCountdownIfAllReady(onlineIds())) startCountdown();
+    }
+
+    private boolean canChangeReady(SkyBlockPlayer player) {
+        return lifecycle.stage() == CatacombsLifecycle.Stage.WAITING && player.isOnline() && !readyCheck.countingDown();
     }
 
     public boolean isReady(UUID player) {
@@ -194,7 +201,6 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
     public synchronized boolean begin() {
         if (!lifecycle.begin()) return false;
         super.start();
-        onlineMembers().forEach(CatacombsItems::remove);
         classes.begin(onlineMembers());
         DungeonEngine started = new DungeonEngine(this, arena.layout(), definition);
         engine = started;
@@ -232,7 +238,6 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
         super.end();
         DungeonEngine running = engine;
         if (running != null) running.dispose();
-        onlineMembers().forEach(CatacombsItems::remove);
         onlineMembers().stream().filter(member -> ghosts.revive(member.getUuid())).forEach(this::releaseGhost);
         classes.conclude(onlineMembers());
         boolean win = outcome == CatacombsLifecycle.Outcome.WIN;

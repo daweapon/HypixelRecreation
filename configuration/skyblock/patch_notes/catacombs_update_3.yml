@@ -19,7 +19,10 @@ sections:
     colour: "<b>"
     lines:
       - "The Entrance room's exit is gated while the party waits; the gate sinks into the floor when the run starts. Wither and Blood doors open the same way, with Hypixel's sounds."
-      - "Mort waits in the Entrance room, says his three lines at the start and hands out the map. Click him before the run to ready up."
+      - "Mort waits in the Entrance room (he was missing from runs before), says his three lines at the start and hands out the map."
+      - "Click Mort before the run for Hypixel's Ready Up menu: ready up, pick your class (with a count of who picked each), claim a Dungeon Orb and toggle Auto Ready Up, which readies you a few seconds after you arrive. The Ready dye and the class Nether Star are gone from the hotbar."
+      - "Wither and Blood Keys drop where the last starred mob of their room died, or from the miniboss in a miniboss room."
+      - "Right-click the Magical Map to open the SkyBlock Menu. Profile Management is disabled in Dungeons, as on Hypixel."
       - "Dungeon mobs wear their Hypixel skins and gear, with Hypixel's name tags: mob-type icons, the gold star, minibosses in bold."
       - "The Blood room plays out like Hypixel: the Watcher floats in, summons 9 named undead on Floor 1 in two waves, counts them on his boss bar, then opens a portal in the far doorway and leaves a Blessing of Life and of Power. The Blood room is always entered from the back."
       - "Four fairies float around the Fairy room tree. Killing one revives a dead teammate and drops a Revive Stone."

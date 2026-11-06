@@ -3,6 +3,7 @@ package dev.daweapon.type.skyblockgeneric.dungeons;
 import dev.daweapon.dungeons.catacombs.CatacombsFloor;
 import dev.daweapon.dungeons.catacombs.classes.DungeonClassType;
 import dev.daweapon.dungeons.catacombs.classes.DungeonClassXp;
+import dev.daweapon.type.generic.data.datapoints.DatapointBoolean;
 import dev.daweapon.type.generic.data.datapoints.DatapointLong;
 import dev.daweapon.type.generic.data.datapoints.DatapointString;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Per-profile dungeon classes: the selected class and each class's XP and level. {@link #completeRun} is the hook the
+ * Per-profile dungeon classes: the selected class, each class's XP and level, and Mort's Auto Ready Up toggle. {@link #completeRun} is the hook the
  * Catacombs server calls for every member of a won run. A run pays the floor's base Catacombs XP as class XP, without
  * the Catacombs daily bonus; the wiki has no formula for it, so this is an estimate.
  */
@@ -99,6 +100,19 @@ public final class DungeonClassProgress {
             player.getSkyBlockExperience().addSourceXP(SkyBlockXPSource.CLASS_LEVEL_UP,
                     DungeonClassXp.skyBlockXp(from, DungeonClassXp.MAXIMUM_LEVEL));
         }
+    }
+
+    /** Mort's Ready Up toggle: ready up on arriving in a run without opening his menu. */
+    public static boolean autoReady(SkyBlockPlayer player) {
+        return Boolean.TRUE.equals(autoReadyPoint(player).getValue());
+    }
+
+    public static void setAutoReady(SkyBlockPlayer player, boolean enabled) {
+        autoReadyPoint(player).setValue(enabled);
+    }
+
+    private static DatapointBoolean autoReadyPoint(SkyBlockPlayer player) {
+        return player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.DUNGEON_AUTO_READY, DatapointBoolean.class);
     }
 
     private static DatapointString selectedPoint(SkyBlockPlayer player) {

@@ -17,8 +17,8 @@ import org.jetbrains.annotations.Nullable;
 
 /**
  * Mort in each run's Entrance room, where the captured runs had him: by the exit, facing into the room, labelled
- * {@code Mort} / {@code CLICK} with the same skin as the Hub's Mort. Before the run starts a click readies the player up
- * (on Hypixel that is done through his menu); once it has started he wishes them luck again.
+ * {@code Mort} / {@code CLICK} with the same skin as the Hub's Mort. Before the run starts a click opens his Ready Up
+ * menu (ready up, pick a class, claim a Dungeon Orb); once it has started he wishes them luck again.
  */
 public class CatacombsMortNPC extends HypixelNPC {
 
@@ -70,11 +70,15 @@ public class CatacombsMortNPC extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-        if (!(event.player() instanceof SkyBlockPlayer player)) return;
+        if (event.player() instanceof SkyBlockPlayer player) talkTo(player);
+    }
+
+    /** Right- or left-click: the captured runs opened Ready Up by hitting him. */
+    public static void talkTo(SkyBlockPlayer player) {
         CatacombsRun run = runOf(player);
         if (run == null) return;
         if (!run.started()) {
-            run.toggleReady(player);
+            player.openView(new GUIReadyUp(run));
             return;
         }
         player.sendMessage(CatacombsMessages.mortLines().getLast());

@@ -1,7 +1,10 @@
 package dev.daweapon.type.catacombs.run;
 
+import dev.daweapon.commons.text.Text;
 import dev.daweapon.dungeons.catacombs.CatacombsFloor;
 import dev.daweapon.dungeons.catacombs.CatacombsMode;
+
+import net.kyori.adventure.text.Component;
 
 import java.util.List;
 
@@ -23,20 +26,18 @@ public final class CatacombsMessages {
         return List.of(BAR, "<e>Dungeon entered<7>: " + title(floor, mode), BAR);
     }
 
+    /** The countdown once everyone is ready, as in all six captured runs. */
     public static String startingIn(int seconds) {
-        return "<a>Dungeon starts in " + seconds + (seconds == 1 ? " second." : " seconds.");
+        return "<a>Starting in " + seconds + (seconds == 1 ? " second." : " seconds.");
     }
 
-    public static String ready(String player) {
-        return "<a>" + player + " <7>is now ready!";
+    /** {@code §6daweapon§a is now ready!}: the name in its rank colour. */
+    public static Text ready(Component name) {
+        return Text.of("{}<a> is now ready!", name);
     }
 
-    public static String notReady(String player) {
-        return "<c>" + player + " <7>is no longer ready.";
-    }
-
-    public static String classSelected(String className) {
-        return "<7>Your selected class is <e>" + className + "<7>. Right-click the <a>Nether Star <7>to change it.";
+    public static Text notReady(Component name) {
+        return Text.of("{}<c> is no longer ready!", name);
     }
 
     public static String bloodRoomWithoutKey() {

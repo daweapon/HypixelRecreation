@@ -8,7 +8,6 @@ import dev.daweapon.type.generic.event.EventNodes;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.event.phase.EventPhase;
 import dev.daweapon.type.generic.event.phase.PhasedEvent;
-import dev.daweapon.type.skyblockgeneric.dungeons.gui.GUIDungeonClasses;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.event.item.ItemDropEvent;
@@ -21,8 +20,8 @@ import net.minestom.server.network.packet.client.play.ClientPlayerActionPacket;
 
 /**
  * Class controls in a run, as on Hypixel: right-clicking the Dungeon Orb (or the drop-stack key) uses the class ability,
- * left-clicking it (or the drop key) the ultimate; ghosts right-click Haunt and their two ghost items; the waiting
- * room's Nether Star opens Dungeon Classes. Drop keys never drop items while the run is active.
+ * left-clicking it (or the drop key) the ultimate; ghosts right-click Haunt and their two ghost items. Drop keys never
+ * drop items while the run is active.
  */
 public class ActionCatacombsClassInput implements HypixelEventClass {
 
@@ -35,9 +34,6 @@ public class ActionCatacombsClassInput implements HypixelEventClass {
         CatacombsRun run = CatacombsRuns.of(player.getUuid());
         if (run == null) return;
         switch (kind) {
-            case ClassItems.SELECTOR -> {
-                if (!run.started()) player.openView(new GUIDungeonClasses((who, type) -> run.classes().select(who, type)));
-            }
             case ClassItems.ORB -> run.classes().abilities().orb(player, false);
             case ClassItems.HAUNT -> run.classes().abilities().haunt(player);
             case ClassItems.GHOST_FIRST -> run.classes().abilities().ghost(player, 0);

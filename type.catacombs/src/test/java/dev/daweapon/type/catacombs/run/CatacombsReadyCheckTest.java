@@ -58,9 +58,21 @@ class CatacombsReadyCheckTest {
     }
 
     @Test
+    void readyingFromMortsMenuIsOneWayAndStopsAtTheCountdown() {
+        CatacombsReadyCheck check = new CatacombsReadyCheck();
+        UUID first = UUID.randomUUID();
+        UUID second = UUID.randomUUID();
+        assertTrue(check.markReady(first));
+        assertFalse(check.markReady(first));
+        assertTrue(check.isReady(first));
+        assertTrue(check.startCountdownIfAllReady(List.of(first)));
+        assertFalse(check.markReady(second));
+    }
+
+    @Test
     void countdownCountsFromFourToOne() {
         assertEquals(List.of(4, 3, 2, 1), CatacombsReadyCheck.countdownSeconds());
-        assertEquals("<a>Dungeon starts in 4 seconds.", CatacombsMessages.startingIn(4));
-        assertEquals("<a>Dungeon starts in 1 second.", CatacombsMessages.startingIn(1));
+        assertEquals("<a>Starting in 4 seconds.", CatacombsMessages.startingIn(4));
+        assertEquals("<a>Starting in 1 second.", CatacombsMessages.startingIn(1));
     }
 }

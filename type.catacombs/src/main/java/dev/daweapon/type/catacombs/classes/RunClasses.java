@@ -16,17 +16,20 @@ import org.tinylog.Logger;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * One run's classes: what each member picked in the waiting room, the party frozen when the run starts (with every
- * member's class level), cooldowns, timed effects and the ghost toolbar. Abilities live in {@link ClassAbilities}.
+ * One run's classes: what each member picked in Mort's Ready Up menu, who claimed a Dungeon Orb there, the party frozen
+ * when the run starts (with every member's class level), cooldowns, timed effects and the ghost toolbar. Abilities
+ * live in {@link ClassAbilities}.
  */
 public final class RunClasses {
     private final ClassHost host;
     private final Map<UUID, DungeonClassType> selections = new ConcurrentHashMap<>();
     private final Map<UUID, Integer> levels = new ConcurrentHashMap<>();
+    private final Set<UUID> claimedOrb = ConcurrentHashMap.newKeySet();
     private final Map<UUID, Long> castleUntil = new ConcurrentHashMap<>();
     private final Map<UUID, Long> ragnarokUntil = new ConcurrentHashMap<>();
     private final AbilityCooldowns cooldowns = new AbilityCooldowns();
@@ -41,24 +44,25 @@ public final class RunClasses {
         this.abilities = new ClassAbilities(this);
     }
 
-    public void admit(SkyBlockPlayer player, boolean waiting) {
+    public void admit(SkyBlockPlayer player) {
         selections.putIfAbsent(player.getUuid(), DungeonClassProgress.selected(player));
-        if (waiting) showSelector(player);
     }
 
     public void select(SkyBlockPlayer player, DungeonClassType type) {
         if (party.members().containsKey(player.getUuid())) return;
         selections.put(player.getUuid(), type);
-        showSelector(player);
+        if (claimedOrb.contains(player.getUuid())) giveOrb(player);
         host.broadcast("<a>" + player.getUsername() + " <7>selected the <e>" + type.displayName() + " <7>class!");
     }
 
-    private void showSelector(SkyBlockPlayer player) {
-        ItemStack selector = ClassItems.selector(selectedOf(player.getUuid()));
-        int slot = slotOf(player, ClassItems.SELECTOR);
-        if (slot < 0 && player.getInventory().getItemStack(ClassItems.SELECTOR_SLOT).isAir()) slot = ClassItems.SELECTOR_SLOT;
-        if (slot >= 0) player.getInventory().setItemStack(slot, selector);
-        else player.getInventory().addItemStack(selector);
+    /** The Ready Up menu's Dungeon Orb: on Hypixel the orb is optional, since abilities also work from the drop keys. */
+    public void claimOrb(SkyBlockPlayer player) {
+        if (slotOf(player, ClassItems.ORB) >= 0) {
+            player.sendMessage("<c>You already have a Dungeon Orb!");
+            return;
+        }
+        claimedOrb.add(player.getUuid());
+        giveOrb(player);
     }
 
     private static int slotOf(SkyBlockPlayer player, String kind) {
@@ -79,8 +83,7 @@ public final class RunClasses {
         for (SkyBlockPlayer member : members) {
             DungeonClassType type = chosen.get(member.getUuid());
             levels.put(member.getUuid(), DungeonClassProgress.level(member, type));
-            removeKind(member, ClassItems.SELECTOR);
-            giveOrb(member);
+            if (claimedOrb.contains(member.getUuid())) giveOrb(member);
             applyStats(member);
             member.sendMessage("<7>Your active Dungeon Class is <e>" + type.displayName() + "<7>!");
             if (party.isLone(type) && members.size() > 1) {
@@ -92,13 +95,15 @@ public final class RunClasses {
     /** A member who rejoins mid-run gets their orb and class stats back. */
     public void rejoin(SkyBlockPlayer player) {
         if (!party.members().containsKey(player.getUuid())) return;
-        giveOrb(player);
+        if (claimedOrb.contains(player.getUuid())) giveOrb(player);
         applyStats(player);
     }
 
     private void giveOrb(SkyBlockPlayer player) {
         removeKind(player, ClassItems.ORB);
-        ItemStack orb = ClassItems.orb(classOf(player.getUuid()), level(player.getUuid()));
+        DungeonClassType type = classOf(player.getUuid());
+        int level = party.members().containsKey(player.getUuid()) ? level(player.getUuid()) : DungeonClassProgress.level(player, type);
+        ItemStack orb = ClassItems.orb(type, level);
         if (!player.getInventory().addItemStack(orb)) {
             player.sendMessage("<c>Your inventory is full, so your Dungeon Orb couldn't be given. Your class abilities still work with your drop keys.");
         }
@@ -151,12 +156,7 @@ public final class RunClasses {
         for (SkyBlockPlayer member : members) {
             toolbar.hide(member);
             removeKind(member, ClassItems.ORB);
-            removeKind(member, ClassItems.SELECTOR);
         }
-    }
-
-    public void removeWaitingItems(SkyBlockPlayer player) {
-        removeKind(player, ClassItems.SELECTOR);
     }
 
     private static void removeKind(SkyBlockPlayer player, String kind) {

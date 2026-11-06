@@ -24,6 +24,11 @@ public final class CatacombsReadyCheck {
         return true;
     }
 
+    /** Readies the player; false when they already were or the countdown has begun. */
+    public boolean markReady(UUID player) {
+        return !countingDown && ready.add(player);
+    }
+
     public boolean isReady(UUID player) {
         return ready.contains(player);
     }
