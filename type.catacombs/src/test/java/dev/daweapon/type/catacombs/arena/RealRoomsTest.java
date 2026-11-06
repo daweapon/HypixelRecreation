@@ -54,7 +54,7 @@ class RealRoomsTest {
 
     @Test
     void everyRoomFileReadsWithOnlyKnownBlocksAndCoversItsCells() {
-        assertEquals(16, real.size());
+        assertEquals(31, real.size());
         for (RoomTemplate template : real) {
             Schematic schematic = structures.load(template.blocks().orElseThrow());
             assertEquals(0, schematic.unknownBlocks(), template.id());
@@ -83,7 +83,7 @@ class RealRoomsTest {
                     SecretAnchor anchor = template.secretAnchors().get(index);
                     Block world = blocks.blockAt(spot.x(), spot.y(), spot.z());
                     Block base = schematic.blockAt(anchor.x() - template.structure().x(),
-                            CellGeometry.FLOOR_Y + anchor.y() - blocks.realRooms().getFirst().minY(),
+                            CellGeometry.FLOOR_Y + anchor.y() - blocks.realRooms().stream().filter(real -> real.room().index() == 0).findFirst().orElseThrow().minY(),
                             anchor.z() - template.structure().z());
                     switch (anchor.type()) {
                         case CHEST -> {
@@ -118,6 +118,7 @@ class RealRoomsTest {
 
     @Test
     void entranceAndFloorOneLayoutsPasteWithOpenDoorsAndNoErrors() {
+        real.forEach(template -> structures.load(template.blocks().orElseThrow()));
         long blocksChecked = 0;
         long slowestNanos = 0;
         int realCells = 0;
