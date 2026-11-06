@@ -150,40 +150,45 @@ class RoomFeaturesTest {
 
     @Test
     void theBossPortalFillsTheObsidianFrameOppositeTheBloodDoorInEveryTurn() {
-        RoomTemplate blood = library.templates(RoomKind.BLOOD).getFirst();
-        for (Rotation rotation : Rotation.values()) {
-            FloorLayout layout = around(blood, rotation);
-            CatacombsArenaBlocks blocks = CatacombsArenaBlocks.of(layout, structures);
-            PlacedRoom room = layout.room(0);
-            List<int[]> portal = features.portal(room);
-            assertEquals(12, portal.size(), rotation.toString());
-            boolean alongX = RoomFeatures.portalAlongX(room);
-            for (int[] at : portal) {
-                assertNull(blocks.blockAt(at[0], at[1], at[2]), rotation + " portal space is filled");
+        for (RoomTemplate blood : library.templates(RoomKind.BLOOD)) {
+            for (Rotation rotation : Rotation.values()) {
+                portalFillsTheFrameOppositeTheDoor(blood, rotation);
             }
-            int minX = portal.stream().mapToInt(at -> at[0]).min().orElseThrow(), maxX = portal.stream().mapToInt(at -> at[0]).max().orElseThrow();
-            int minZ = portal.stream().mapToInt(at -> at[2]).min().orElseThrow(), maxZ = portal.stream().mapToInt(at -> at[2]).max().orElseThrow();
-            int minY = portal.stream().mapToInt(at -> at[1]).min().orElseThrow();
-            assertEquals(alongX ? 2 : 0, maxX - minX, rotation.toString());
-            assertEquals(alongX ? 0 : 2, maxZ - minZ, rotation.toString());
-            Block before = alongX ? blocks.blockAt(minX - 1, minY, minZ) : blocks.blockAt(minX, minY, minZ - 1);
-            Block after = alongX ? blocks.blockAt(maxX + 1, minY, minZ) : blocks.blockAt(minX, minY, maxZ + 1);
-            assertEquals(Block.OBSIDIAN, before, rotation + " portal frame side");
-            assertEquals(Block.OBSIDIAN, after, rotation + " portal frame side");
-
-            CellGeometry.BlockPosition centre = CellGeometry.roomCenter(room.origin());
-            double portalX = portal.stream().mapToDouble(at -> at[0] + 0.5).average().orElseThrow();
-            double portalZ = portal.stream().mapToDouble(at -> at[2] + 0.5).average().orElseThrow();
-            DoorFrame door = DoorFrame.of(layout.doors().getFirst());
-            double towardsPortalX = portalX - (centre.x() + 0.5), towardsPortalZ = portalZ - (centre.z() + 0.5);
-            double towardsDoorX = door.centreX() - (centre.x() + 0.5), towardsDoorZ = door.centreZ() - (centre.z() + 0.5);
-            assertTrue(towardsPortalX * towardsDoorX + towardsPortalZ * towardsDoorZ < 0, rotation + " door and portal are on the same side");
         }
+    }
+
+    private void portalFillsTheFrameOppositeTheDoor(RoomTemplate blood, Rotation rotation) {
+        FloorLayout layout = around(blood, rotation);
+        CatacombsArenaBlocks blocks = CatacombsArenaBlocks.of(layout, structures);
+        PlacedRoom room = layout.room(0);
+        List<int[]> portal = features.portal(room);
+        assertEquals(12, portal.size(), rotation.toString());
+        boolean alongX = RoomFeatures.portalAlongX(room);
+        for (int[] at : portal) {
+            assertNull(blocks.blockAt(at[0], at[1], at[2]), rotation + " portal space is filled");
+        }
+        int minX = portal.stream().mapToInt(at -> at[0]).min().orElseThrow(), maxX = portal.stream().mapToInt(at -> at[0]).max().orElseThrow();
+        int minZ = portal.stream().mapToInt(at -> at[2]).min().orElseThrow(), maxZ = portal.stream().mapToInt(at -> at[2]).max().orElseThrow();
+        int minY = portal.stream().mapToInt(at -> at[1]).min().orElseThrow();
+        assertEquals(alongX ? 2 : 0, maxX - minX, rotation.toString());
+        assertEquals(alongX ? 0 : 2, maxZ - minZ, rotation.toString());
+        Block before = alongX ? blocks.blockAt(minX - 1, minY, minZ) : blocks.blockAt(minX, minY, minZ - 1);
+        Block after = alongX ? blocks.blockAt(maxX + 1, minY, minZ) : blocks.blockAt(minX, minY, maxZ + 1);
+        assertEquals(Block.OBSIDIAN, before, rotation + " portal frame side");
+        assertEquals(Block.OBSIDIAN, after, rotation + " portal frame side");
+
+        CellGeometry.BlockPosition centre = CellGeometry.roomCenter(room.origin());
+        double portalX = portal.stream().mapToDouble(at -> at[0] + 0.5).average().orElseThrow();
+        double portalZ = portal.stream().mapToDouble(at -> at[2] + 0.5).average().orElseThrow();
+        DoorFrame door = DoorFrame.of(layout.doors().getFirst());
+        double towardsPortalX = portalX - (centre.x() + 0.5), towardsPortalZ = portalZ - (centre.z() + 0.5);
+        double towardsDoorX = door.centreX() - (centre.x() + 0.5), towardsDoorZ = door.centreZ() - (centre.z() + 0.5);
+        assertTrue(towardsPortalX * towardsDoorX + towardsPortalZ * towardsDoorZ < 0, rotation + " door and portal are on the same side");
     }
 
     @Test
     void everyGeneratedBloodRoomIsEnteredFromTheSideOppositeItsPortal() {
-        for (long seed = 0; seed < 40; seed++) {
+        for (long seed = 0; seed < 200; seed++) {
             FloorLayout layout = FloorLayoutGenerator.generate(CatacombsFloor.FLOOR_ONE, CatacombsMode.NORMAL, seed, library);
             PlacedRoom blood = layout.bloodRoom();
             List<LayoutDoor> doors = layout.doorsOf(blood.index());
@@ -202,16 +207,17 @@ class RoomFeaturesTest {
 
     @Test
     void theWatcherAndTheFairiesStayInsideTheirRoomsInEveryTurn() {
-        RoomTemplate blood = library.templates(RoomKind.BLOOD).getFirst();
         RoomTemplate fairy = library.templates(RoomKind.FAIRY).getFirst();
         for (Rotation rotation : Rotation.values()) {
-            PlacedRoom bloodRoom = around(blood, rotation).room(0);
-            RoomFeatures.Spot watcher = features.watcher(bloodRoom).orElseThrow();
-            CellGeometry.BlockPosition centre = CellGeometry.roomCenter(bloodRoom.origin());
-            assertEquals(centre.x() + 0.5, watcher.x(), 1e-9);
-            assertEquals(centre.z() + 0.5, watcher.z(), 1e-9);
-            for (RoomFeatures.Spot stop : features.watcherStops(bloodRoom)) {
-                assertEquals(bloodRoom.origin(), CellGeometry.cellAt((int) Math.floor(stop.x()), (int) Math.floor(stop.z())).orElseThrow());
+            for (RoomTemplate blood : library.templates(RoomKind.BLOOD)) {
+                PlacedRoom bloodRoom = around(blood, rotation).room(0);
+                RoomFeatures.Spot watcher = features.watcher(bloodRoom).orElseThrow();
+                CellGeometry.BlockPosition centre = CellGeometry.roomCenter(bloodRoom.origin());
+                assertEquals(centre.x() + 0.5, watcher.x(), 1e-9);
+                assertEquals(centre.z() + 0.5, watcher.z(), 1e-9);
+                for (RoomFeatures.Spot stop : features.watcherStops(bloodRoom)) {
+                    assertEquals(bloodRoom.origin(), CellGeometry.cellAt((int) Math.floor(stop.x()), (int) Math.floor(stop.z())).orElseThrow());
+                }
             }
             PlacedRoom fairyRoom = around(fairy, rotation).room(0);
             RoomFeatures.Box zone = features.fairies(fairyRoom).orElseThrow();

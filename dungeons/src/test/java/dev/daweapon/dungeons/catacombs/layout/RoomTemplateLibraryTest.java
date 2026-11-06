@@ -38,14 +38,14 @@ class RoomTemplateLibraryTest {
         assertFalse(library.templates(RoomKind.BLOOD).isEmpty());
         assertFalse(library.templates(RoomKind.MINIBOSS).isEmpty());
         assertFalse(library.templates(RoomKind.TRAP).isEmpty());
-        assertTrue(library.find("placeholder_puzzle_three_weirdos").isPresent());
+        assertTrue(library.find("placeholder_puzzle_ice_path").isPresent());
     }
 
     @Test
     void realRoomsCarryTheirBlocksAndReplaceTheSpecialPlaceholders() {
         RoomTemplateLibrary library = PlaceholderLibrary.load();
         List<RoomTemplate> real = library.all().stream().filter(template -> !template.placeholder()).toList();
-        assertEquals(31, real.size());
+        assertEquals(74, real.size());
         for (RoomTemplate template : real) {
             assertTrue(template.blocks().isPresent(), template.id());
             assertTrue(template.stand().isPresent(), template.id());
@@ -62,8 +62,11 @@ class RoomTemplateLibraryTest {
             assertTrue(library.templates(RoomKind.NORMAL, shape).stream().noneMatch(RoomTemplate::placeholder), shape.name());
         }
         assertEquals(2, library.templates(RoomKind.ENTRANCE).size());
-        assertEquals(3, library.templates(RoomKind.MINIBOSS).size());
-        for (String puzzle : List.of("Water Board", "Teleport Maze", "Creeper Beams", "Quiz", "Ice Fill")) {
+        assertEquals(4, library.templates(RoomKind.MINIBOSS).size());
+        assertEquals(2, library.templates(RoomKind.BLOOD).size());
+        assertEquals(2, library.templates(RoomKind.TRAP).size());
+        for (String puzzle : List.of("Water Board", "Teleport Maze", "Creeper Beams", "Quiz", "Ice Fill", "Three Weirdos", "Boulder",
+                "Tic Tac Toe", "Blaze")) {
             assertEquals(1, library.templates(RoomKind.PUZZLE).stream().filter(template -> template.name().equals(puzzle)).count(), puzzle);
         }
         assertEquals(RoomShape.TWO_BY_TWO, library.find("rails").orElseThrow().shape());
