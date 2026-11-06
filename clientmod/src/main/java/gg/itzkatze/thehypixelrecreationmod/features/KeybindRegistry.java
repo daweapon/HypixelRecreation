@@ -5,6 +5,8 @@ import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents;
 import net.minecraft.client.KeyMapping;
+import net.minecraft.client.gui.components.EditBox;
+import net.minecraft.client.gui.screens.ChatScreen;
 import org.lwjgl.glfw.GLFW;
 
 public final class KeybindRegistry {
@@ -60,6 +62,9 @@ public final class KeybindRegistry {
         // Check keybinds inside of GUI's
         ScreenEvents.AFTER_INIT.register((client, screen, scaledWidth, scaledHeight) -> {
             ScreenKeyboardEvents.allowKeyPress(screen).register((scancode, key) -> {
+                if (screen instanceof ChatScreen || screen.getFocused() instanceof EditBox) {
+                    return true;
+                }
                 if (checkSkinKey.matches(key)) {
                     GetPlayerHeadSkin.checkHoveredItemForSkin(client);
                     return false;
