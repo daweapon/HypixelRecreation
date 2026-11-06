@@ -65,7 +65,7 @@ class ExtractRooms {
         }
     }
 
-    record Anchor(String type, String variant, int x, int y, int z, String found, boolean estimated) {
+    record Anchor(String type, String variant, int x, int y, int z, String found, boolean estimated, String label) {
     }
 
     record Socket(int col, int row, String side, boolean real) {
@@ -74,7 +74,7 @@ class ExtractRooms {
     record Spot(int x, int y, int z) {
     }
 
-    record MobSpot(double x, double y, double z, String mobId, boolean starred, boolean estimated, boolean starGuessed) {
+    record MobSpot(double x, double y, double z, String mobId, boolean starred, boolean estimated, boolean starGuessed, String seenAs) {
     }
 
     record CryptSpot(int x, int y, int z, boolean estimated) {
@@ -92,12 +92,14 @@ class ExtractRooms {
             Files.writeString(Path.of(args[1]).resolve("m7.json"), json(results, M7_SOURCE), StandardCharsets.UTF_8);
             return;
         }
-        if (args.length == 5 && args[0].equals("--captures")) {
-            CaptureRooms.extract(Path.of(args[1]), Path.of(args[2]), new RoomCatalogue(Path.of(args[3])), Path.of(args[4]));
+        if (args.length >= 4 && args[0].equals("--captures")) {
+            List<Path> captures = new ArrayList<>();
+            for (int i = 1; i < args.length - 2; i++) captures.add(Path.of(args[i]));
+            CaptureRooms.extract(captures, new RoomCatalogue(Path.of(args[args.length - 2])), Path.of(args[args.length - 1]));
             return;
         }
         System.err.println("usage: java ExtractRooms.java <m7 world region dir> <rooms config dir>");
-        System.err.println("       java ExtractRooms.java --captures <run 1 capture dir> <run 2 capture dir> <room catalogue dir> <rooms config dir>");
+        System.err.println("       java ExtractRooms.java --captures <capture dir>... <room catalogue dir> <rooms config dir>");
         System.exit(2);
     }
 
@@ -197,10 +199,10 @@ class ExtractRooms {
                     break;
                 }
                 notes.add(secret.variant() + " was inside " + found + ", moved to the open block at " + (bx + worldMinX) + "," + by + "," + (bz + worldMinZ));
-                secret = new RoomSource.Secret(secret.type(), secret.variant(), secret.x(), by, secret.z(), true, true);
+                secret = new RoomSource.Secret(secret.type(), secret.variant(), secret.x(), by, secret.z(), true, true, secret.label());
             }
             placeSecretBlock(raw, secret, bx, by, bz);
-            rawAnchors.add(new Anchor(secret.type(), secret.variant(), bx - fx0, by, bz - fz0, found, secret.estimated()));
+            rawAnchors.add(new Anchor(secret.type(), secret.variant(), bx - fx0, by, bz - fz0, found, secret.estimated(), secret.label()));
         }
 
         List<int[]> localCells = new ArrayList<>();
@@ -220,7 +222,7 @@ class ExtractRooms {
             if (shape != null) break;
         }
         if (shape == null) throw new IllegalStateException(room.id() + " has no matching shape");
-        int turns = (4 - baseTurns) % 4;
+        int turns = (4 - baseTurns + room.extraTurns()) % 4;
 
         int footprintWidth = cols * PITCH - 1, footprintDepth = rows * PITCH - 1;
         int[] corner = rotatedBounds(-fx0, -fz0, width - 1 - fx0, length - 1 - fz0, footprintWidth, footprintDepth, turns);
@@ -243,7 +245,7 @@ class ExtractRooms {
         List<Anchor> anchors = new ArrayList<>();
         for (Anchor anchor : rawAnchors) {
             int[] local = rotateBlock(anchor.x(), anchor.z(), footprintWidth, footprintDepth, turns);
-            anchors.add(new Anchor(anchor.type(), anchor.variant(), local[0], anchor.y(), local[1], anchor.found(), anchor.estimated()));
+            anchors.add(new Anchor(anchor.type(), anchor.variant(), local[0], anchor.y(), local[1], anchor.found(), anchor.estimated(), anchor.label()));
         }
         List<RoomSource.Extra> extras = new ArrayList<>();
         for (RoomSource.Extra extra : room.extras()) {
@@ -263,7 +265,7 @@ class ExtractRooms {
                 boolean real = doorSockets.contains(cell[0] + "," + cell[1] + "," + side);
                 boolean open = analysis.entryReachable(reachable, cell, side);
                 if (real && !open) notes.add("door socket " + cell[0] + "," + cell[1] + " " + SIDES[side] + " has no standable entry");
-                if (real || open) sockets.add(new Socket(cell[0], cell[1], SIDES[side], real));
+                if (real || (open && room.kind().equals("NORMAL"))) sockets.add(new Socket(cell[0], cell[1], SIDES[side], real));
             }
         }
 
@@ -314,7 +316,7 @@ class ExtractRooms {
                 notes.add("dropped " + spawn.mobId() + " seen at " + spawn.x() + "," + spawn.y() + "," + spawn.z() + ": no standable block there");
                 continue;
             }
-            spawns.add(new MobSpot(local[0], y - FLOOR_Y, local[1], spawn.mobId(), spawn.starred(), false, spawn.starGuessed()));
+            spawns.add(new MobSpot(local[0], y - FLOOR_Y, local[1], spawn.mobId(), spawn.starred(), false, spawn.starGuessed(), spawn.seenAs()));
         }
         if (lifted > 0) notes.add("lifted " + lifted + " mob spawn(s) seen standing in a partial block onto the block above");
         for (RoomSource.Crypt crypt : room.crypts()) {
@@ -330,12 +332,12 @@ class ExtractRooms {
             for (int s = 0; s < spread.size(); s++) {
                 Spot spot = spread.get(s);
                 spawns.add(new MobSpot(spot.x() + 0.5, spot.y() - FLOOR_Y, spot.z() + 0.5,
-                        MOBS[Math.floorMod(room.id().hashCode() + s, MOBS.length)], s % 3 != 2, true, false));
+                        MOBS[Math.floorMod(room.id().hashCode() + s, MOBS.length)], s % 3 != 2, true, false, null));
             }
             avoid.addAll(spread);
         } else if (room.spawns().isEmpty() && room.kind().equals("MINIBOSS")) {
             Spot boss = analysis.nearest(open, CENTRE, DOOR_BOTTOM_Y, CENTRE);
-            if (boss != null) spawns.add(new MobSpot(boss.x() + 0.5, boss.y() - FLOOR_Y, boss.z() + 0.5, "LOST_ADVENTURER", true, true, false));
+            if (boss != null) spawns.add(new MobSpot(boss.x() + 0.5, boss.y() - FLOOR_Y, boss.z() + 0.5, "LOST_ADVENTURER", true, true, false, null));
         }
         if (room.kind().equals("NORMAL") && crypts.size() < room.cryptTarget()) {
             for (CryptSpot crypt : crypts) avoid.add(new Spot(crypt.x(), crypt.y(), crypt.z()));
@@ -895,6 +897,7 @@ class ExtractRooms {
         out.append("],\n      \"secretAnchors\": [");
         joinLines(out, result.anchors().stream().map(anchor -> "{\"type\": \"" + anchor.type() + "\", \"x\": " + anchor.x()
                 + ", \"y\": " + (anchor.y() - FLOOR_Y) + ", \"z\": " + anchor.z() + ", \"variant\": \"" + anchor.variant() + "\""
+                + (anchor.label() != null ? ", \"label\": \"" + anchor.label() + "\"" : "")
                 + (anchor.estimated() ? ", \"estimated\": true" : "") + "}").toList());
         out.append("],\n      \"crypts\": [");
         out.append(cryptsJson(result));
@@ -916,7 +919,8 @@ class ExtractRooms {
             MobSpot spot = list.get(s);
             spawns.add("{\"id\": \"spawn_" + (s + 1) + "\", \"x\": " + number(spot.x()) + ", \"y\": " + coordinate(spot.y())
                     + ", \"z\": " + number(spot.z()) + ", \"mobId\": \"" + spot.mobId() + "\", \"starred\": " + spot.starred()
-                    + ", \"estimated\": " + spot.estimated() + (spot.starGuessed() ? ", \"starredEstimated\": true" : "") + "}");
+                    + ", \"estimated\": " + spot.estimated() + (spot.starGuessed() ? ", \"starredEstimated\": true" : "")
+                    + (spot.seenAs() != null ? ", \"seenAs\": \"" + spot.seenAs() + "\"" : "") + "}");
         }
         StringBuilder out = new StringBuilder();
         joinLines(out, spawns);

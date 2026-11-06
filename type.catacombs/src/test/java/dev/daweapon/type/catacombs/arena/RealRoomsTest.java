@@ -54,7 +54,7 @@ class RealRoomsTest {
 
     @Test
     void everyRoomFileReadsWithOnlyKnownBlocksAndCoversItsCells() {
-        assertEquals(31, real.size());
+        assertEquals(74, real.size());
         for (RoomTemplate template : real) {
             Schematic schematic = structures.load(template.blocks().orElseThrow());
             assertEquals(0, schematic.unknownBlocks(), template.id());
@@ -124,7 +124,7 @@ class RealRoomsTest {
         int realCells = 0;
         int cells = 0;
         for (CatacombsFloor floor : List.of(CatacombsFloor.ENTRANCE, CatacombsFloor.FLOOR_ONE)) {
-            for (long seed = 0; seed < 60; seed++) {
+            for (long seed = 0; seed < 500; seed++) {
                 FloorLayout layout = FloorLayoutGenerator.generate(floor, CatacombsMode.NORMAL, seed, library);
                 long started = System.nanoTime();
                 CatacombsArenaBlocks blocks = CatacombsArenaBlocks.of(layout, structures);

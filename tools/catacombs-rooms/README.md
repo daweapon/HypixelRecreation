@@ -33,32 +33,47 @@ Fill reward chests are left out because they are not scored secrets.
 
 ## Rooms from captured Hypixel runs
 
-`--captures` cuts rooms from two clientmod full captures of Hypixel Floor 1 runs (`worlds/world_002` plus
-`streams/blocks.jsonl` of each) and writes `hypixel/<room>.schem` and `hypixel_f1.json`:
+`--captures` cuts rooms from clientmod full captures of Hypixel Catacombs runs (`worlds/world_002`, `session.json` and
+`streams/blocks.jsonl` + `streams/entities.jsonl` of each). Pass the Floor 1 captures first, then the Master Mode
+Floor 7 ones (the folder name decides: `f1_...` or `m7_...`). It writes `hypixel/<room>.schem`, `hypixel_f1.json`
+(rooms first seen on Floor 1) and `hypixel_m7.json` (the rest), and patches `m7.json`:
 
 ```sh
-java tools/catacombs-rooms/ExtractRooms.java --captures RUN1_CAPTURE RUN2_CAPTURE CATALOGUE_DIR configuration/skyblock/dungeons/rooms
+java tools/catacombs-rooms/ExtractRooms.java --captures F1_RUN1 F1_RUN2 M7_RUN1 M7_RUN2 M7_RUN3 M7_RUN4 CATALOGUE_DIR configuration/skyblock/dungeons/rooms
 ```
 
-- Hypixel's grid starts at x = -200, z = -200 with 31-block rooms on a 32 pitch, growing toward positive X/Z (checked
-  against the captured blocks and the Magical Map images). The cells and doors of each run (`CaptureRooms.java`) were
-  read off the final map image and confirmed by the blocks in the one-block seams between cells.
+- Hypixel's grid starts at x = -200, z = -200 with 31-block rooms on a 32 pitch, growing toward positive X/Z, on every
+  floor (F1 is 4 x 5, F7/M7 6 x 6; checked against the blocks and the Magical Map images). The whole dungeon's chunks
+  arrive at the start of a run, so every room is in `world_002` even when nobody walked it.
+- Rooms are found, not listed: every cell is named by the catalogue's core hash (`RoomCatalogue.java`), and a cell whose
+  centre column no longer matches (Layers in M7 run 4 has a redstone block on its roof) joins the neighbouring room
+  that is a cell short of its shape. Cells that are no room at all (the Bonzo arena reaches into the F1 grid) are left
+  out. Doors are read from the seams: a door where the 3 x 4 doorway through both walls is open or holds a door block
+  (coal, red terracotta, infested chiseled stone bricks). On the two F1 runs this matches the doors read off the maps.
 - `CATALOGUE_DIR` holds `rooms.json` and `secretlocations.json`, the Dungeon Rooms Mod room catalogue (Copyright 2021
   Quantizr, GPL-3.0) as shipped by https://github.com/yourboykyle/SecretRoutes. Download them yourself; they are not
-  in this repository. `RoomCatalogue.java` names each room the way that mod does (a hash of the block column at the
-  cell centre, the blue terracotta marker for the corner and rotation) and takes from it only facts: the room's name,
-  kind, shape, crypt count and its secret and route-point coordinates. Chests, items, bats and Wither Essence become
-  secret anchors; levers, superboom walls, stonk blocks, entrances and fairy souls go into `secretExtras`, which the
-  server does not read yet.
+  in this repository. Only facts are taken from it: the room's name, kind, shape, crypt count and its secret and
+  route-point coordinates. Chests, items, bats and Wither Essence become secret anchors; levers, superboom walls,
+  stonk blocks, entrances and fairy souls go into `secretExtras`, which the server does not read yet. Both keep the
+  catalogue's own label (`"3 - Lever"` pairs with `"3 - Chest"`).
+- Sightings of one room are compared block by block in the catalogue's room frame; ones that differ in more than 4% of
+  their blocks are kept as variants (Blood, Entrance and Default each have two). Each variant is cut from one
+  sighting (a Floor 1 one first, else the one whose mobs were seen best) but gets the doors of every sighting.
+- A captured room the M7 practice map also has replaces the practice-map template under the same id when they differ
+  in under 15% of their blocks, turned so it keeps the template's frame (`room_features.json` stays valid). Its
+  `m7.json` entry and `m7/<id>.schem` are removed. The remaining `m7.json` rooms get the catalogue name, route points,
+  secret labels (the catalogue secret of the same kind within two blocks) and crypt count.
 - Hypixel sends secret chests and levers as block updates when a player comes near, so they are missing from the
   saved chunks; their states come from `blocks.jsonl`, and a chest never seen gets one facing an open side.
-- Mob spawns (`CaptureSpawns.java`) are each mob's first position in `entities.jsonl` with its type and star from the
-  name tag above it. Where a room never showed a star, stars are guessed from the other rooms (`starredEstimated`).
-- Crypt spots: real crypts are found by their 4x3 smooth stone slab lid (the tomb stands on top of it); up to the
-  catalogue's crypt count, the rest are estimated.
-- Rooms the M7 map already has (Hallway, Fairy, Blood) are not cut again: `m7.json` is patched in place with the
-  captured Hallway spawns, each room's `catalogueName`, its route points, and crypt spots trimmed to the catalogue
-  count. Run `--captures` again after re-running the M7 extraction. The Entrance is cut as a second variant because the
-  M7 one differs (cave annex).
+- Mob spawns (`CaptureMobs.java`) are each mob's first position in `entities.jsonl` with its name and star from the
+  Hypixel name tag above it. Higher-floor mobs are stored as their Floor 1 counterpart (`mobId`) with the name seen
+  (`seenAs`), so the rooms keep their Floor 1 stats. Where a room never showed a star the stars are guessed from the
+  other rooms (`starredEstimated`).
+- Crypt spots: real crypts are found by their 4x3 smooth stone slab lid; up to the catalogue's crypt count, the rest
+  are estimated.
+- The entrance variant with a spawn cave behind it (`start`) is cut from a run where it sits on the grid's top row, keeps
+  the cave north of the grid like the practice-map Start did, and locks its rotation to 180 degrees.
+- Special rooms (entrance, puzzle, miniboss, trap, fairy, blood) only get the door sockets seen in a run; the Blood
+  room has a single one, at its back, opposite the portal frame.
 
 `ExportRegion.java` saves any box of a capture as a schematic (used for the Bonzo arena).

@@ -72,14 +72,14 @@ final class M7Rooms {
         }
 
         private Builder add(String type, String variant, double x, double y, double z, boolean counted) {
-            secrets.add(new RoomSource.Secret(type, variant, x, y, z, counted, false));
+            secrets.add(new RoomSource.Secret(type, variant, x, y, z, counted, false, null));
             return this;
         }
 
         RoomSource.Room build() {
             boolean start = id.equals("start");
             return new RoomSource.Room(id, name, kind, cells, minY, maxY, List.copyOf(secrets), List.of(), List.of(), 3,
-                    List.of(), Map.of(), start ? START_SPAWN : null, start ? START_ANNEX_MIN_Z : RoomSource.NO_ANNEX, "m7", "m7", null);
+                    List.of(), Map.of(), start ? START_SPAWN : null, start ? START_ANNEX_MIN_Z : RoomSource.NO_ANNEX, "m7", "m7", null, 0);
         }
     }
 

@@ -12,6 +12,9 @@ sections:
       - "Doors only open where a room really has a doorway."
       - "15 more real rooms from Hypixel Floor 1 runs: Overgrown, Silvers Sword, Double Diamond, Redstone Warrior, Grass Ruin, Diagonal, Catwalk, Rails, Chambers, the Water Board, Teleport Maze and Creeper Beams puzzle rooms, the Dragon and Default miniboss rooms, and Hypixel's own Start room."
       - "Mobs in these rooms (and the Hallway) stand where they stood on Hypixel, with the same types, and real crypts are used where the room has them."
+      - "43 more real rooms from four Hypixel Master Mode Floor 7 runs, among them Atlas, Buttons, Crypt, Draw Bridge, Lava Ravine, Layers, Melon, Quartz Knight, Sewer, Stairs, Withermancers, Admin, Tomioka and Zodd, a second Trap room, a second Default miniboss room and a second Blood room. The Three Weirdos, Boulder, Tic Tac Toe and Blaze puzzle rooms are now real rooms too."
+      - "Start, Blood, Fairy, Hallway, Gravel, Museum, Deathmite, Dino Site, Red Blue, Ice Fill, Trap and the Shadow Assassin room now use the blocks captured on Hypixel, with real skulls and details."
+      - "Mobs in the Master Mode rooms stand where they stood on Hypixel; each higher-floor mob becomes its Floor 1 counterpart (a Zombie Knight is a Zombie Grunt) and keeps its star."
   - heading: "Looks like Hypixel"
     colour: "<b>"
     lines:
@@ -32,5 +35,5 @@ sections:
   - heading: "Not here yet"
     colour: "<c>"
     lines:
-      - "Rare rooms and five puzzle rooms are still placeholders, and the real puzzle rooms cannot be solved yet."
-      - "Mobs in the M7-sourced rooms and some crypt spots are still placed by estimate."
+      - "Rare rooms and the Ice Path puzzle are still placeholders, and the real puzzle rooms cannot be solved yet. Levers, Superboom walls and Tomioka's shop are not working yet."
+      - "Mobs in the Market, Well, Wizard and Quiz rooms and some crypt spots are still placed by estimate."
