@@ -206,7 +206,7 @@ public final class CatacombsArenaBlocks {
     Block blockIn(RealRoom owner, int x, int y, int z) {
         Block gate = gates.blockAt(x, y, z);
         if (gate != null) return gate;
-        Block piece = doorPieces.get(pack(x, y, z));
+        Block piece = doorPieceAt(x, y, z);
         if (piece != null) return piece.air() ? null : piece;
         if (openings.contains(pack(x, y, z))) return null;
         Block block = owner.blockAt(x, y, z);
@@ -216,7 +216,7 @@ public final class CatacombsArenaBlocks {
     Block planBlock(int x, int y, int z) {
         Block gate = gates.blockAt(x, y, z);
         if (gate != null) return gate;
-        Block piece = doorPieces.get(pack(x, y, z));
+        Block piece = doorPieceAt(x, y, z);
         if (piece != null) return piece.air() ? null : piece;
         CatacombsBlockPlan.Tile tile = plan.tileAt(x, y, z);
         RoomColor colour = tile == CatacombsBlockPlan.Tile.MARKER_FLOOR || tile == CatacombsBlockPlan.Tile.MARKER_PILLAR
@@ -245,6 +245,11 @@ public final class CatacombsArenaBlocks {
             }
         }
         return openings;
+    }
+
+    private Block doorPieceAt(int x, int y, int z) {
+        if (doorPieces.isEmpty() || y < CellGeometry.FLOOR_Y || y >= CellGeometry.FLOOR_Y + DoorPieces.HEIGHT) return null;
+        return doorPieces.get(pack(x, y, z));
     }
 
     static long pack(int x, int y, int z) {

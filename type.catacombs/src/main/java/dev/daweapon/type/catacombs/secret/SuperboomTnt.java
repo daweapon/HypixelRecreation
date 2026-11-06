@@ -11,8 +11,8 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Superboom TNT and InfiniBoom TNT in a run: either click with one on a crackable wall or a crypt blows it open. A
- * Superboom TNT is used up; the InfiniBoom keeps its 2 second cooldown instead.
+ * Superboom TNT and Infinityboom TNT (Hypixel: InfiniBoom TNT) in a run: either click with one on a crackable wall or a crypt blows it open. A
+ * Superboom TNT is used up; the Infinityboom keeps its 2 second cooldown instead.
  */
 public final class SuperboomTnt {
     public static final long INFINITE_COOLDOWN_MILLIS = 2_000;

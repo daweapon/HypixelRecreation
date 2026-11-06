@@ -54,7 +54,7 @@ java tools/catacombs-rooms/ExtractRooms.java --captures F1_RUN1 F1_RUN2 M7_RUN1 
   Quantizr, GPL-3.0) as shipped by https://github.com/yourboykyle/SecretRoutes. Download them yourself; they are not
   in this repository. Only facts are taken from it: the room's name, kind, shape, crypt count and its secret and
   route-point coordinates. Chests, items, bats and Wither Essence become secret anchors; levers, superboom walls,
-  stonk blocks, entrances and fairy souls go into `secretExtras`, which the server does not read yet. Both keep the
+  stonk blocks, entrances and fairy souls go into `secretExtras` (the server uses levers and Superboom walls through `room_mechanisms.json`, below). Both keep the
   catalogue's own label (`"3 - Lever"` pairs with `"3 - Chest"`).
 - Sightings of one room are compared block by block in the catalogue's room frame; ones that differ in more than 4% of
   their blocks are kept as variants (Blood, Entrance and Default each have two). Each variant is cut from one
@@ -75,5 +75,37 @@ java tools/catacombs-rooms/ExtractRooms.java --captures F1_RUN1 F1_RUN2 M7_RUN1 
   the cave north of the grid like the practice-map Start did, and locks its rotation to 180 degrees.
 - Special rooms (entrance, puzzle, miniboss, trap, fairy, blood) only get the door sockets seen in a run; the Blood
   room has a single one, at its back, opposite the portal frame.
+
+## Doorways
+
+A Hypixel door is a piece pasted over the seam and both rooms' two outer layers (5 wide, floor to 5 up); its look
+differs per door, not per room. So:
+
+- `--captures` also writes `configuration/skyblock/dungeons/door_pieces.json` (next to the rooms folder): every door
+  piece of every run, turned so the door leads south, with the 3 x 4 passage emptied and the door block it was seen with
+  (`PLAIN`, `WITHER`, `BLOOD`, `ENTRANCE`). The arena gives each door of a layout one of these.
+- A room is cut with its closed walls: where the chosen sighting had a door, the door piece's room side is replaced by
+  the same wall from another sighting of the room where that socket was shut (`"closedWall": "captured"`), else the wall
+  beside the doorway is carried across it (`"estimated"`; the inner layer stays a plain recess). `"seen"` means the cut
+  sighting itself had no door there. Sockets, spawns, stand points and crypts are still worked out on the room as read
+  before (only the 3 x 4 hole filled), so they do not move.
+- Practice-map rooms (Quiz, Market, Wizard, Well) get the estimated closed wall at every M7 door.
+
+## Levers and Superboom walls
+
+```sh
+java tools/catacombs-rooms/ExtractRooms.java --mechanisms configuration/skyblock/dungeons/rooms configuration/skyblock/dungeons/room_mechanisms.json
+```
+
+reads every template and its catalogue `secretExtras` and writes, in the template's frame:
+
+- `superbooms`: the cracked stone brick plug at each catalogue Superboom point (cracked bricks that touch at least two
+  others; a box that is at least three quarters cracked is taken whole, as M7 run 3 removed a full 2 x 4 x 2 plug).
+- `levers`: the lever block, its paired secrets (same catalogue number) and the blocks a pull removes. `capture` comes
+  from a captured pull (`Mechanisms.CAPTURED`), `checked` from a hand-checked list (`Mechanisms.CHECKED`), `estimated`
+  from the room's shape: the closed air pocket holding the paired secret (else the nearest iron-bar style gate) and the
+  one-block plug between it and the open room. `freesSecret` marks levers whose plug shuts the secret's own pocket.
+  `none` means no such plug was found (or only plain wall away from the secret, which is not guessed at) and the lever
+  opens nothing.
 
 `ExportRegion.java` saves any box of a capture as a schematic (used for the Bonzo arena).

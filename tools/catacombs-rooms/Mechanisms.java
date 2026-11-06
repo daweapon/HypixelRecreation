@@ -330,7 +330,10 @@ final class Mechanisms {
                 return new Lever(label, lever[0], lever[1], lever[2], boxes(CAPTURED.get(key)), "capture", pairs, secrets, false);
             }
             if (CHECKED.containsKey(key)) return new Lever(label, lever[0], lever[1], lever[2], boxes(CHECKED.get(key)), "checked", pairs, secrets, false);
-            if (chosen == null) return new Lever(label, lever[0], lever[1], lever[2], List.of(), "none", pairs, secrets, false);
+            if (chosen == null || (!chosen.holdsSecret() && chosen.gateShare() < 0.5)) {
+                if (chosen != null) System.out.println("  (" + key + ": left shut, the nearest plug " + size(chosen.plug()) + " neither frees the secret nor is a gate)");
+                return new Lever(label, lever[0], lever[1], lever[2], List.of(), "none", pairs, secrets, false);
+            }
             List<int[]> opens = chosen.plug();
             if (chosen.gateShare() >= 0.5) opens = opens.stream().filter(at -> gate(get(at[0], at[1], at[2]))).toList();
             return new Lever(label, lever[0], lever[1], lever[2], opens, "estimated", pairs, secrets, chosen.holdsSecret());
