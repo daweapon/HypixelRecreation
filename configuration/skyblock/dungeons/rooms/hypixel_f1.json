@@ -12,7 +12,7 @@
       "structure": {"file": "hypixel/miniboss_dragon.schem", "x": 0, "y": -10, "z": 0},
       "standPoint": {"x": 15.5, "y": 0.0, "z": 23.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true}
+        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true, "closedWall": "estimated"}
       ],
       "mobSpawns": [
         {"id": "spawn_1", "x": 18.5, "y": -5, "z": 8.5, "mobId": "LOST_ADVENTURER", "starred": true, "estimated": false}
@@ -31,7 +31,7 @@
       "structure": {"file": "hypixel/entrance_room.schem", "x": 0, "y": -2, "z": 0},
       "standPoint": {"x": 15.5, "y": 4.0, "z": 11.5, "estimated": false},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true}
+        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true, "closedWall": "estimated"}
       ],
       "mobSpawns": [],
       "secretAnchors": [],
@@ -48,7 +48,7 @@
       "structure": {"file": "hypixel/water_board.schem", "x": 0, "y": -18, "z": 0},
       "standPoint": {"x": 25.5, "y": 1.0, "z": 15.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "EAST", "seenDoor": true}
+        {"col": 0, "row": 0, "side": "EAST", "seenDoor": true, "closedWall": "estimated"}
       ],
       "mobSpawns": [],
       "secretAnchors": [],
@@ -65,12 +65,12 @@
       "structure": {"file": "hypixel/diagonal.schem", "x": 0, "y": -12, "z": 0},
       "standPoint": {"x": 15.5, "y": 1.0, "z": 15.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true},
-        {"col": 0, "row": 0, "side": "WEST", "seenDoor": false},
-        {"col": 1, "row": 0, "side": "SOUTH", "seenDoor": false},
-        {"col": 2, "row": 0, "side": "NORTH", "seenDoor": false},
-        {"col": 2, "row": 0, "side": "EAST", "seenDoor": false},
-        {"col": 2, "row": 0, "side": "SOUTH", "seenDoor": true}
+        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true, "closedWall": "estimated"},
+        {"col": 0, "row": 0, "side": "WEST", "seenDoor": false, "closedWall": "seen"},
+        {"col": 1, "row": 0, "side": "SOUTH", "seenDoor": false, "closedWall": "seen"},
+        {"col": 2, "row": 0, "side": "NORTH", "seenDoor": false, "closedWall": "seen"},
+        {"col": 2, "row": 0, "side": "EAST", "seenDoor": false, "closedWall": "seen"},
+        {"col": 2, "row": 0, "side": "SOUTH", "seenDoor": true, "closedWall": "captured"}
       ],
       "mobSpawns": [
         {"id": "spawn_1", "x": 74.5, "y": 1, "z": 12.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
@@ -146,9 +146,9 @@
       "structure": {"file": "hypixel/rails.schem", "x": 0, "y": -23, "z": 0},
       "standPoint": {"x": 15.5, "y": 1.0, "z": 15.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true},
-        {"col": 1, "row": 0, "side": "NORTH", "seenDoor": true},
-        {"col": 0, "row": 1, "side": "SOUTH", "seenDoor": true}
+        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true, "closedWall": "estimated"},
+        {"col": 1, "row": 0, "side": "NORTH", "seenDoor": true, "closedWall": "estimated"},
+        {"col": 0, "row": 1, "side": "SOUTH", "seenDoor": true, "closedWall": "estimated"}
       ],
       "mobSpawns": [
         {"id": "spawn_1", "x": 12.5, "y": -14, "z": 20.5, "mobId": "TANK_ZOMBIE", "starred": false, "estimated": false, "starredEstimated": true},
@@ -270,7 +270,7 @@
       "structure": {"file": "hypixel/teleport_maze.schem", "x": 0, "y": -3, "z": 0},
       "standPoint": {"x": 15.5, "y": 1.0, "z": 21.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true}
+        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true, "closedWall": "estimated"}
       ],
       "mobSpawns": [],
       "secretAnchors": [],
@@ -287,9 +287,9 @@
       "structure": {"file": "hypixel/overgrown.schem", "x": 0, "y": -2, "z": 0},
       "standPoint": {"x": 15.5, "y": 1.0, "z": 15.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true},
-        {"col": 0, "row": 0, "side": "EAST", "seenDoor": true},
-        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true}
+        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true, "closedWall": "estimated"},
+        {"col": 0, "row": 0, "side": "EAST", "seenDoor": true, "closedWall": "estimated"},
+        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true, "closedWall": "estimated"}
       ],
       "mobSpawns": [
         {"id": "spawn_1", "x": 21.5, "y": 1, "z": 17.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false},
@@ -343,16 +343,16 @@
       "structure": {"file": "hypixel/hallway.schem", "x": 0, "y": -2, "z": 0},
       "standPoint": {"x": 15.5, "y": 1.0, "z": 15.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true},
-        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true},
-        {"col": 0, "row": 0, "side": "WEST", "seenDoor": false},
-        {"col": 1, "row": 0, "side": "NORTH", "seenDoor": true},
-        {"col": 1, "row": 0, "side": "SOUTH", "seenDoor": false},
-        {"col": 2, "row": 0, "side": "NORTH", "seenDoor": true},
-        {"col": 2, "row": 0, "side": "SOUTH", "seenDoor": true},
-        {"col": 3, "row": 0, "side": "NORTH", "seenDoor": false},
-        {"col": 3, "row": 0, "side": "EAST", "seenDoor": false},
-        {"col": 3, "row": 0, "side": "SOUTH", "seenDoor": true}
+        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true, "closedWall": "estimated"},
+        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true, "closedWall": "captured"},
+        {"col": 0, "row": 0, "side": "WEST", "seenDoor": false, "closedWall": "seen"},
+        {"col": 1, "row": 0, "side": "NORTH", "seenDoor": true, "closedWall": "seen"},
+        {"col": 1, "row": 0, "side": "SOUTH", "seenDoor": false, "closedWall": "seen"},
+        {"col": 2, "row": 0, "side": "NORTH", "seenDoor": true, "closedWall": "captured"},
+        {"col": 2, "row": 0, "side": "SOUTH", "seenDoor": true, "closedWall": "seen"},
+        {"col": 3, "row": 0, "side": "NORTH", "seenDoor": false, "closedWall": "seen"},
+        {"col": 3, "row": 0, "side": "EAST", "seenDoor": false, "closedWall": "seen"},
+        {"col": 3, "row": 0, "side": "SOUTH", "seenDoor": true, "closedWall": "seen"}
       ],
       "mobSpawns": [
         {"id": "spawn_1", "x": 27.5, "y": 8, "z": 10.5, "mobId": "SCARED_SKELETON", "starred": true, "estimated": false, "starredEstimated": true},
@@ -471,10 +471,10 @@
       "structure": {"file": "hypixel/fairy.schem", "x": 0, "y": -6, "z": 0},
       "standPoint": {"x": 19.5, "y": 0.0, "z": 19.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true},
-        {"col": 0, "row": 0, "side": "EAST", "seenDoor": true},
-        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true},
-        {"col": 0, "row": 0, "side": "WEST", "seenDoor": true}
+        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true, "closedWall": "captured"},
+        {"col": 0, "row": 0, "side": "EAST", "seenDoor": true, "closedWall": "captured"},
+        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true, "closedWall": "seen"},
+        {"col": 0, "row": 0, "side": "WEST", "seenDoor": true, "closedWall": "seen"}
       ],
       "mobSpawns": [],
       "secretAnchors": [],
@@ -491,10 +491,10 @@
       "structure": {"file": "hypixel/redstone_warrior.schem", "x": 0, "y": -14, "z": 0},
       "standPoint": {"x": 15.5, "y": 1.0, "z": 15.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "WEST", "seenDoor": true},
-        {"col": 1, "row": 0, "side": "NORTH", "seenDoor": false},
-        {"col": 1, "row": 0, "side": "EAST", "seenDoor": true},
-        {"col": 1, "row": 0, "side": "SOUTH", "seenDoor": false}
+        {"col": 0, "row": 0, "side": "WEST", "seenDoor": true, "closedWall": "estimated"},
+        {"col": 1, "row": 0, "side": "NORTH", "seenDoor": false, "closedWall": "seen"},
+        {"col": 1, "row": 0, "side": "EAST", "seenDoor": true, "closedWall": "estimated"},
+        {"col": 1, "row": 0, "side": "SOUTH", "seenDoor": false, "closedWall": "seen"}
       ],
       "mobSpawns": [
         {"id": "spawn_1", "x": 12.5, "y": -10, "z": 19.5, "mobId": "CRYPT_LURKER", "starred": false, "estimated": false},
@@ -563,7 +563,7 @@
       "structure": {"file": "hypixel/blood.schem", "x": 0, "y": -2, "z": 0},
       "standPoint": {"x": 15.5, "y": 1.0, "z": 15.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true}
+        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true, "closedWall": "estimated"}
       ],
       "mobSpawns": [],
       "secretAnchors": [],
@@ -580,7 +580,7 @@
       "structure": {"file": "hypixel/blood_2.schem", "x": 0, "y": -2, "z": 0},
       "standPoint": {"x": 15.5, "y": 1.0, "z": 15.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true}
+        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true, "closedWall": "estimated"}
       ],
       "mobSpawns": [],
       "secretAnchors": [],
@@ -597,10 +597,10 @@
       "structure": {"file": "hypixel/catwalk.schem", "x": 0, "y": -32, "z": 0},
       "standPoint": {"x": 15.5, "y": 1.0, "z": 15.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true},
-        {"col": 1, "row": 0, "side": "NORTH", "seenDoor": false},
-        {"col": 1, "row": 0, "side": "SOUTH", "seenDoor": true},
-        {"col": 2, "row": 0, "side": "NORTH", "seenDoor": true}
+        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true, "closedWall": "captured"},
+        {"col": 1, "row": 0, "side": "NORTH", "seenDoor": false, "closedWall": "seen"},
+        {"col": 1, "row": 0, "side": "SOUTH", "seenDoor": true, "closedWall": "seen"},
+        {"col": 2, "row": 0, "side": "NORTH", "seenDoor": true, "closedWall": "seen"}
       ],
       "mobSpawns": [
         {"id": "spawn_1", "x": 51.5, "y": -19, "z": 23.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
@@ -687,9 +687,9 @@
       "structure": {"file": "hypixel/grass_ruin.schem", "x": 0, "y": -22, "z": 0},
       "standPoint": {"x": 11.5, "y": 0.0, "z": 19.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true},
-        {"col": 0, "row": 0, "side": "WEST", "seenDoor": true},
-        {"col": 1, "row": 0, "side": "EAST", "seenDoor": true}
+        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true, "closedWall": "captured"},
+        {"col": 0, "row": 0, "side": "WEST", "seenDoor": true, "closedWall": "seen"},
+        {"col": 1, "row": 0, "side": "EAST", "seenDoor": true, "closedWall": "estimated"}
       ],
       "mobSpawns": [
         {"id": "spawn_1", "x": 32.5, "y": 9, "z": 8.5, "mobId": "CRYPT_DREADLORD", "starred": false, "estimated": false},
@@ -760,8 +760,8 @@
       "structure": {"file": "hypixel/silvers_sword.schem", "x": 0, "y": -2, "z": 0},
       "standPoint": {"x": 16.5, "y": 1.0, "z": 24.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true},
-        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true}
+        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true, "closedWall": "estimated"},
+        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true, "closedWall": "estimated"}
       ],
       "mobSpawns": [
         {"id": "spawn_1", "x": 2.5, "y": 1, "z": 2.5, "mobId": "CRYPT_DREADLORD", "starred": true, "estimated": false},
@@ -796,8 +796,8 @@
       "structure": {"file": "hypixel/double_diamond.schem", "x": 0, "y": -12, "z": 0},
       "standPoint": {"x": 15.5, "y": 1.0, "z": 23.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "EAST", "seenDoor": true},
-        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true}
+        {"col": 0, "row": 0, "side": "EAST", "seenDoor": true, "closedWall": "estimated"},
+        {"col": 0, "row": 0, "side": "SOUTH", "seenDoor": true, "closedWall": "estimated"}
       ],
       "mobSpawns": [
         {"id": "spawn_1", "x": 19.5, "y": 1, "z": 23.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false},
@@ -844,10 +844,10 @@
       "structure": {"file": "hypixel/chambers.schem", "x": 0, "y": -16, "z": 0},
       "standPoint": {"x": 17.5, "y": 1.0, "z": 17.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true},
-        {"col": 0, "row": 0, "side": "WEST", "seenDoor": true},
-        {"col": 1, "row": 0, "side": "SOUTH", "seenDoor": true},
-        {"col": 0, "row": 1, "side": "SOUTH", "seenDoor": false}
+        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true, "closedWall": "estimated"},
+        {"col": 0, "row": 0, "side": "WEST", "seenDoor": true, "closedWall": "estimated"},
+        {"col": 1, "row": 0, "side": "SOUTH", "seenDoor": true, "closedWall": "estimated"},
+        {"col": 0, "row": 1, "side": "SOUTH", "seenDoor": false, "closedWall": "seen"}
       ],
       "mobSpawns": [
         {"id": "spawn_1", "x": 14.5, "y": 12, "z": 16.5, "mobId": "SKELETON_GRUNT", "starred": false, "estimated": false},
@@ -930,7 +930,7 @@
       "structure": {"file": "hypixel/miniboss_default.schem", "x": 0, "y": -2, "z": 0},
       "standPoint": {"x": 15.5, "y": 1.0, "z": 12.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true}
+        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true, "closedWall": "estimated"}
       ],
       "mobSpawns": [
         {"id": "spawn_1", "x": 15.5, "y": 2, "z": 25.5, "mobId": "LOST_ADVENTURER", "starred": true, "estimated": false}
@@ -949,7 +949,7 @@
       "structure": {"file": "hypixel/creeper_beams.schem", "x": 0, "y": -12, "z": 0},
       "standPoint": {"x": 15.5, "y": 1.0, "z": 12.5, "estimated": true},
       "doorSockets": [
-        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true}
+        {"col": 0, "row": 0, "side": "NORTH", "seenDoor": true, "closedWall": "estimated"}
       ],
       "mobSpawns": [],
       "secretAnchors": [],

@@ -27,6 +27,9 @@ sections:
       - "The Blood room plays out like Hypixel: the Watcher floats in, summons 9 named undead on Floor 1 in two waves, counts them on his boss bar, then opens a portal in the far doorway and leaves a Blessing of Life and of Power. The Blood room is always entered from the back."
       - "Four fairies float around the Fairy room tree. Killing one revives a dead teammate and drops a Revive Stone."
       - "Bonzo wears his real skins, a new one for his second life."
+      - "Secret levers work: pulling one clears the iron bars, log wall or floor it guards the way Hypixel's gates sink away, and a second pull says the lever has already been used."
+      - "Superboom TNT and Infinityboom TNT blow open the cracked stone brick walls in real rooms with either click, as well as crypts."
+      - "Doorways now use Hypixel's own door frames, and a wall where the map puts no door is a plain wall instead of a filled-in frame."
   - heading: "Bonzo's real fight"
     colour: "<6>"
     lines:
@@ -38,5 +41,5 @@ sections:
   - heading: "Not here yet"
     colour: "<c>"
     lines:
-      - "Rare rooms and the Ice Path puzzle are still placeholders, and the real puzzle rooms cannot be solved yet. Levers, Superboom walls and Tomioka's shop are not working yet."
+      - "Rare rooms and the Ice Path puzzle are still placeholders, and the real puzzle rooms cannot be solved yet. Tomioka's shop is not working yet, and some levers still open nothing because what they open has not been worked out."
       - "Mobs in the Market, Well, Wizard and Quiz rooms and some crypt spots are still placed by estimate."

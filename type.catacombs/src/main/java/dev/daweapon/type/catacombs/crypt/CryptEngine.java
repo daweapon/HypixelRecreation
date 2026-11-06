@@ -3,15 +3,12 @@ package dev.daweapon.type.catacombs.crypt;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.catacombs.engine.DungeonHost;
 import dev.daweapon.type.catacombs.secret.SecretMessages;
-import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.loottable.LootRoll;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
 import net.minestom.server.coordinate.Pos;
-import net.minestom.server.entity.PlayerHand;
 import net.minestom.server.instance.block.Block;
-import net.minestom.server.item.ItemStack;
 import net.minestom.server.network.packet.server.play.ParticlePacket;
 import net.minestom.server.particle.Particle;
 
@@ -50,21 +47,24 @@ public final class CryptEngine {
         }
     }
 
+    /** A right-click on a sealed crypt without a Superboom: the hint. True when the block was a sealed crypt. */
     public boolean interact(SkyBlockPlayer player, int x, int y, int z) {
-        CryptPlan.Crypt crypt = crypts.stream().filter(each -> each.covers(x, y, z)).findFirst().orElse(null);
-        if (crypt == null || opened.contains(crypt.id())) return false;
-        ItemStack held = player.getItemInMainHand();
-        if (!isSuperboom(held)) {
-            hint(player);
-            return true;
-        }
-        player.setItemInHand(PlayerHand.MAIN, held.amount() > 1 ? held.withAmount(held.amount() - 1) : ItemStack.AIR);
+        CryptPlan.Crypt crypt = sealedAt(x, y, z);
+        if (crypt == null) return false;
+        hint(player);
+        return true;
+    }
+
+    /** A Superboom used on a sealed crypt opens it; false when the block is no sealed crypt. */
+    public boolean blast(int x, int y, int z) {
+        CryptPlan.Crypt crypt = sealedAt(x, y, z);
+        if (crypt == null) return false;
         blowUp(crypt);
         return true;
     }
 
-    private static boolean isSuperboom(ItemStack stack) {
-        return stack != null && !stack.isAir() && new SkyBlockItem(stack).getAttributeHandler().getPotentialType() == ItemType.SUPERBOOM_TNT;
+    private CryptPlan.Crypt sealedAt(int x, int y, int z) {
+        return crypts.stream().filter(each -> each.covers(x, y, z) && !opened.contains(each.id())).findFirst().orElse(null);
     }
 
     private void hint(SkyBlockPlayer player) {

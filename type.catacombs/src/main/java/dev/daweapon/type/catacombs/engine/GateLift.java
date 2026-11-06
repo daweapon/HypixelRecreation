@@ -36,6 +36,8 @@ public final class GateLift {
          * the barriers turn to air after 2.6 s and the riders are removed after 4.1 s.
          */
         public static final Motion BOSS_GATE = new Motion(STILL_TICKS, SINK_ACCELERATION, 0.104, 52, 81);
+        /** A pulled secret lever (M7 run 1, Trap room): barriers at once, air after 1.25 s, riders gone after 2 s. */
+        public static final Motion LEVER = new Motion(STILL_TICKS, SINK_ACCELERATION, Double.MAX_VALUE, 25, 40);
 
         public double sinkAfter(int ticks) {
             int moving = Math.max(0, ticks - stillTicks);

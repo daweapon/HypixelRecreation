@@ -68,7 +68,7 @@ class ExtractRooms {
     record Anchor(String type, String variant, int x, int y, int z, String found, boolean estimated, String label) {
     }
 
-    record Socket(int col, int row, String side, boolean real) {
+    record Socket(int col, int row, String side, boolean real, String closedWall) {
     }
 
     record Spot(int x, int y, int z) {
@@ -83,13 +83,28 @@ class ExtractRooms {
     record Result(RoomSource.Room room, String shape, int structureX, int structureY, int structureZ, Box box,
                   List<Anchor> anchors, List<Socket> sockets, List<MobSpot> spawns, List<CryptSpot> crypts,
                   List<RoomSource.Extra> extras, double[] stand, int secretCount, int turns, List<String> notes) {
+        Result withBox(Box closed) {
+            return new Result(room, shape, structureX, structureY, structureZ, closed, anchors, sockets, spawns, crypts, extras,
+                    stand, secretCount, turns, notes);
+        }
     }
+
+    /**
+     * How the doorways of the source sighting are shut: HOLES fills only the 3 by 4 opening (the room is then read for
+     * sockets, spawns and stand points exactly as before door pieces were handled), PIECES continues the wall over the
+     * whole door piece, NONE leaves the world as it is (its door pieces were already replaced by closed walls).
+     */
+    enum Closing {HOLES, PIECES, NONE}
 
     public static void main(String[] args) throws IOException {
         if (args.length == 2) {
             AnvilWorld world = new AnvilWorld(Path.of(args[0]));
             List<Result> results = extractAll(M7Rooms.all(), room -> world, M7Rooms.GRID, Path.of(args[1]));
             Files.writeString(Path.of(args[1]).resolve("m7.json"), json(results, M7_SOURCE), StandardCharsets.UTF_8);
+            return;
+        }
+        if (args.length >= 3 && args[0].equals("--mechanisms")) {
+            Mechanisms.write(Path.of(args[1]), Path.of(args[2]), args.length > 3);
             return;
         }
         if (args.length >= 4 && args[0].equals("--captures")) {
@@ -109,7 +124,8 @@ class ExtractRooms {
                                    Path out) throws IOException {
         List<Result> results = new ArrayList<>();
         for (RoomSource.Room room : rooms) {
-            Result result = extract(worlds.apply(room), room, grid);
+            Result result = extract(worlds.apply(room), room, grid, null, Closing.HOLES)
+                    .withBox(extract(worlds.apply(room), room, grid, null, Closing.PIECES).box());
             results.add(result);
             Files.createDirectories(out.resolve(room.folder()));
             byte[] bytes = schematic(result.box());
@@ -119,7 +135,11 @@ class ExtractRooms {
         return results;
     }
 
-    static Result extract(AnvilWorld world, RoomSource.Room room, RoomSource.Grid grid) {
+    /**
+     * Cuts one room. {@code closedWalls} (door key "col,row-col,row" of a grid door to how the closed wall there was
+     * found) labels the sockets for captured rooms.
+     */
+    static Result extract(AnvilWorld world, RoomSource.Room room, RoomSource.Grid grid, Map<String, String> closedWalls, Closing closing) {
         List<String> notes = new ArrayList<>();
         Set<Long> cells = new HashSet<>();
         int gxMin = Integer.MAX_VALUE, gxMax = Integer.MIN_VALUE, gzMin = Integer.MAX_VALUE, gzMax = Integer.MIN_VALUE;
@@ -169,7 +189,12 @@ class ExtractRooms {
         }
 
         sanitize(raw, room.tag().equals("m7"), notes);
-        closeDoors(raw, grid, cells, worldMinX, worldMinZ, notes);
+        switch (closing) {
+            case HOLES -> closeDoorHoles(raw, grid, cells, worldMinX, worldMinZ, notes);
+            case PIECES -> closeDoors(raw, grid, cells, worldMinX, worldMinZ, notes);
+            case NONE -> {
+            }
+        }
         room.placed().forEach((at, state) -> {
             String[] parts = at.split(",");
             int x = Integer.parseInt(parts[0]) - worldMinX, y = Integer.parseInt(parts[1]), z = Integer.parseInt(parts[2]) - worldMinZ;
@@ -255,7 +280,8 @@ class ExtractRooms {
 
         int[][] baseCells = SHAPES.get(shape);
         Analysis analysis = new Analysis(box, structureX, structureZ, baseCells);
-        Set<String> doorSockets = doorSockets(grid, cells, gxMin, gxMax, gzMin, gzMax, footprintWidth, footprintDepth, turns);
+        Map<String, String> wallBySocket = new HashMap<>();
+        Set<String> doorSockets = doorSockets(grid, cells, gxMin, gxMax, gzMin, gzMax, footprintWidth, footprintDepth, turns, closedWalls, wallBySocket);
         Set<Long> reachable = analysis.reachable(doorSockets, notes);
         List<Socket> sockets = new ArrayList<>();
         for (int[] cell : baseCells) {
@@ -265,7 +291,8 @@ class ExtractRooms {
                 boolean real = doorSockets.contains(cell[0] + "," + cell[1] + "," + side);
                 boolean open = analysis.entryReachable(reachable, cell, side);
                 if (real && !open) notes.add("door socket " + cell[0] + "," + cell[1] + " " + SIDES[side] + " has no standable entry");
-                if (real || (open && room.kind().equals("NORMAL"))) sockets.add(new Socket(cell[0], cell[1], SIDES[side], real));
+                String wall = closedWalls == null ? null : wallBySocket.getOrDefault(cell[0] + "," + cell[1] + "," + side, "seen");
+                if (real || (open && room.kind().equals("NORMAL"))) sockets.add(new Socket(cell[0], cell[1], SIDES[side], real, wall));
             }
         }
 
@@ -457,7 +484,7 @@ class ExtractRooms {
         return "north";
     }
 
-    static void closeDoors(Box box, RoomSource.Grid grid, Set<Long> cells, int worldMinX, int worldMinZ, List<String> notes) {
+    static void closeDoorHoles(Box box, RoomSource.Grid grid, Set<Long> cells, int worldMinX, int worldMinZ, List<String> notes) {
         for (int[][] door : grid.doors()) {
             boolean a = cells.contains(key(door[0][0], door[0][1]));
             boolean b = cells.contains(key(door[1][0], door[1][1]));
@@ -476,24 +503,58 @@ class ExtractRooms {
                 }
             }
         }
-        notes.add("closed the source door holes in the outer wall; the arena reopens one wherever a layout puts a door");
+    }
+
+    /**
+     * Practice-map rooms: every source door is closed by continuing the wall beside it over the door piece Hypixel puts
+     * there (5 wide, floor to 5 up, the room's two outer layers), so no frame is left where a layout puts no door.
+     */
+    static void closeDoors(Box box, RoomSource.Grid grid, Set<Long> cells, int worldMinX, int worldMinZ, List<String> notes) {
+        for (int[][] door : grid.doors()) {
+            boolean a = cells.contains(key(door[0][0], door[0][1]));
+            boolean b = cells.contains(key(door[1][0], door[1][1]));
+            if (a == b) continue;
+            int[] own = a ? door[0] : door[1];
+            boolean alongZ = door[0][1] == door[1][1];
+            for (int depth = 0; depth < DoorPieces.ROOM_DEPTH; depth++) {
+                for (int along = -DoorPieces.HALF_WIDTH; along <= DoorPieces.HALF_WIDTH; along++) {
+                    for (int y = FLOOR_Y; y <= FLOOR_Y + DoorPieces.HEIGHT - 1; y++) {
+                        int[] hole = doorWall(grid, door, own, alongZ, along, depth);
+                        int[] left = doorWall(grid, door, own, alongZ, -DoorPieces.HALF_WIDTH - 1, depth);
+                        int[] right = doorWall(grid, door, own, alongZ, DoorPieces.HALF_WIDTH + 1, depth);
+                        String leftFill = box.get(left[0] - worldMinX, y, left[1] - worldMinZ), rightFill = box.get(right[0] - worldMinX, y, right[1] - worldMinZ);
+                        String fill = along <= 0 ? leftFill : rightFill;
+                        if (depth == 0 && BlockStates.passable(fill)) fill = "minecraft:stone_bricks";
+                        if (depth > 0 && y > FLOOR_Y && (BlockStates.passable(leftFill) || BlockStates.passable(rightFill))) fill = AnvilWorld.AIR;
+                        int hx = hole[0] - worldMinX, hz = hole[1] - worldMinZ;
+                        if (box.contains(hx, y, hz)) box.set(hx, y, hz, fill);
+                    }
+                }
+            }
+        }
+        notes.add("closed the source door pieces with the wall beside them (estimated); the arena puts a door piece wherever a layout puts a door");
     }
 
     static int[] doorWall(RoomSource.Grid grid, int[][] door, int[] own, boolean alongZ, int along) {
+        return doorWall(grid, door, own, alongZ, along, 0);
+    }
+
+    static int[] doorWall(RoomSource.Grid grid, int[][] door, int[] own, boolean alongZ, int along, int depth) {
         if (alongZ) {
             int low = Math.min(door[0][0], door[1][0]);
             int seam = grid.seamX(low);
-            int wallX = seam + (own[0] == low ? -grid.sign() : grid.sign());
+            int wallX = seam + (own[0] == low ? -grid.sign() : grid.sign()) * (1 + depth);
             return new int[]{wallX, grid.cellMinZ(door[0][1]) + CENTRE + along};
         }
         int low = Math.min(door[0][1], door[1][1]);
         int seam = grid.seamZ(low);
-        int wallZ = seam + (own[1] == low ? -grid.sign() : grid.sign());
+        int wallZ = seam + (own[1] == low ? -grid.sign() : grid.sign()) * (1 + depth);
         return new int[]{grid.cellMinX(door[0][0]) + CENTRE + along, wallZ};
     }
 
     static Set<String> doorSockets(RoomSource.Grid grid, Set<Long> cells, int gxMin, int gxMax, int gzMin, int gzMax,
-                                   int footprintWidth, int footprintDepth, int turns) {
+                                   int footprintWidth, int footprintDepth, int turns, Map<String, String> closedWalls,
+                                   Map<String, String> wallBySocket) {
         Set<String> sockets = new HashSet<>();
         for (int[][] door : grid.doors()) {
             boolean a = cells.contains(key(door[0][0], door[0][1]));
@@ -504,7 +565,10 @@ class ExtractRooms {
             int rawSide = grid.sideTowards(own, other);
             int col = grid.localIndex(own[0], gxMin, gxMax), row = grid.localIndex(own[1], gzMin, gzMax);
             int[] centre = rotateBlock(col * PITCH + CENTRE, row * PITCH + CENTRE, footprintWidth, footprintDepth, turns);
-            sockets.add(centre[0] / PITCH + "," + centre[1] / PITCH + "," + (rawSide + turns) % 4);
+            String socket = centre[0] / PITCH + "," + centre[1] / PITCH + "," + (rawSide + turns) % 4;
+            sockets.add(socket);
+            String wall = closedWalls == null ? null : closedWalls.get(CaptureRooms.doorKey(door));
+            if (wall != null) wallBySocket.put(socket, wall);
         }
         return sockets;
     }
@@ -891,7 +955,8 @@ class ExtractRooms {
         out.append("      \"doorSockets\": [");
         String doorKey = m7 ? "m7Door" : "seenDoor";
         joinLines(out, result.sockets().stream().map(socket -> "{\"col\": " + socket.col() + ", \"row\": " + socket.row()
-                + ", \"side\": \"" + socket.side() + "\", \"" + doorKey + "\": " + socket.real() + "}").toList());
+                + ", \"side\": \"" + socket.side() + "\", \"" + doorKey + "\": " + socket.real()
+                + (socket.closedWall() == null ? "" : ", \"closedWall\": \"" + socket.closedWall() + "\"") + "}").toList());
         out.append("],\n      \"mobSpawns\": [");
         out.append(spawnsJson(result));
         out.append("],\n      \"secretAnchors\": [");
