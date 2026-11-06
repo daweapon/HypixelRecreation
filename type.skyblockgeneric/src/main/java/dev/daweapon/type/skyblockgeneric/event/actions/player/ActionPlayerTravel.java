@@ -35,6 +35,7 @@ public class ActionPlayerTravel implements HypixelEventClass {
     public void run(PlayerMoveEvent event) {
         final SkyBlockPlayer player = (SkyBlockPlayer) event.getPlayer();
 
+        if (HypixelConst.getTypeLoader().getType() == ServerType.SKYBLOCK_CATACOMBS) return;
         if (delay.contains(player.getUuid())) return;
         delay.add(player.getUuid());
 
