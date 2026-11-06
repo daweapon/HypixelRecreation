@@ -95,6 +95,10 @@ class BonzoScriptTest {
         List<Timed> seen = run(script, BonzoScript.BARRAGE_FIRST + 1);
         assertFalse(ticksOf(seen, BonzoScript.Balloon.class).isEmpty());
         assertEquals(1, ticksOf(seen, BonzoScript.BalloonBarrage.class).size());
+        assertTrue(seen.stream().anyMatch(timed -> timed.action().equals(new BonzoScript.Say(BonzoScript.SHOWTIME))));
+        List<Timed> after = run(script, BonzoScript.BARRAGE_LINE);
+        assertTrue(after.stream().anyMatch(timed -> timed.action() instanceof BonzoScript.Say(String line)
+                && BonzoScript.BARRAGE_LINES.contains(line)));
     }
 
     @Test

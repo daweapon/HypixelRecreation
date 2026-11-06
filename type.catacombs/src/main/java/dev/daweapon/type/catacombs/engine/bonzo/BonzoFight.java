@@ -6,6 +6,7 @@ import dev.daweapon.dungeons.catacombs.mob.DungeonMobDefinition;
 import dev.daweapon.dungeons.catacombs.mob.DungeonMobRegistry;
 import dev.daweapon.type.catacombs.engine.CatacombsMob;
 import dev.daweapon.type.catacombs.engine.DungeonHost;
+import dev.daweapon.type.catacombs.engine.MobDeaths;
 import dev.daweapon.type.catacombs.engine.look.MobLook;
 import dev.daweapon.type.catacombs.engine.look.MobLooks;
 import dev.daweapon.type.skyblockgeneric.mythological.ability.MobProjectile;
@@ -262,6 +263,7 @@ public final class BonzoFight implements BonzoBoss.Fight {
     @Override
     public synchronized void bonzoLifeLost(BonzoBoss boss) {
         perform(script.lifeLost());
+        if (script.phase() == BonzoScript.Phase.DEFEATED && boss.getInstance() != null) MobDeaths.record(boss, boss.getInstance());
     }
 
     @Override

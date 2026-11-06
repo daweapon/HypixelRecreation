@@ -19,8 +19,9 @@ import java.util.random.RandomGenerator;
  *     <li>at 0 again: the final line, the death sounds 0.35 s later, the score 2.25 s later, "But my masters are a lot
  *     stronger.." at 4.1 s, the first exit gate at 4.2 s, the second 2 s later and "Just you wait..." at 8.2 s.</li>
  * </ul>
- * Neither run lasted long enough in the second life to show Bonzo's Balloon or Balloon Barrage; their timings come
- * from the wiki's description and are estimates.
+ * Neither run lasted long enough in the second life to show Bonzo's Balloon or Balloon Barrage. A 2022 solo video
+ * (FLQEVDif3wo) shows the barrage opening with "SHOOOOOOOOO(obfuscated) TIMEEEEEEE!", balloons hitting for about
+ * 6,000, then "Weeeeeeeee"; the timings are estimates.
  */
 public final class BonzoScript {
     public sealed interface Action {
@@ -74,6 +75,7 @@ public final class BonzoScript {
     public static final int BARRAGE_FIRST = 160;
     public static final int BARRAGE_GAP = 300;
     public static final int SECOND_LIFE_LINE = 120;
+    public static final int BARRAGE_LINE = 40;
     public static final int DEATH_SOUNDS = 7;
     public static final int SCORE = 45;
     public static final int MASTERS = 82;
@@ -97,6 +99,7 @@ public final class BonzoScript {
             "Check mate.", "I can revive myself and become much stronger!");
     static final List<String> BARRAGE_LINES = List.of(
             "All I have are positive thoughts.", "Do you want a balloon?", "Run, run, run, RUN!", "Weeeeeeeee");
+    static final String SHOWTIME = "SHOOOOOOOOO<k>OOOOOOW</k> TIMEEEEEEE!";
     static final String FINAL = "Alright, maybe I'm just weak after all..";
     static final String MASTERS_LINE = "But my masters are a lot stronger..";
     static final String WAIT_LINE = "Just you wait...";
@@ -111,6 +114,7 @@ public final class BonzoScript {
     private long revivedAt = -1;
     private long nextBalloon = -1;
     private long nextBarrage = -1;
+    private long barrageLineAt = -1;
     private long defeatedAt = -1;
     private boolean hurt;
 
@@ -171,9 +175,11 @@ public final class BonzoScript {
 
     private void secondLife(List<Action> actions) {
         if (now == revivedAt + SECOND_LIFE_LINE) actions.add(new Say(pick(SECOND_LIFE_LINES)));
+        if (now == barrageLineAt) actions.add(new Say(pick(BARRAGE_LINES)));
         if (now >= nextBarrage) {
-            actions.add(new Say(pick(BARRAGE_LINES)));
+            actions.add(new Say(SHOWTIME));
             actions.add(new BalloonBarrage());
+            barrageLineAt = now + BARRAGE_LINE;
             nextBarrage = now + BARRAGE_GAP;
             nextBalloon = Math.max(nextBalloon, now + BALLOON_GAP);
         } else if (now >= nextBalloon) {

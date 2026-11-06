@@ -21,7 +21,7 @@ public final class MobDeaths {
         LISTENERS.remove(instance);
     }
 
-    static void record(CatacombsMob mob, Instance instance) {
+    public static void record(CatacombsMob mob, Instance instance) {
         Consumer<CatacombsMob> listener = LISTENERS.get(instance);
         if (listener != null) listener.accept(mob);
     }
