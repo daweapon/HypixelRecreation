@@ -264,57 +264,6 @@
       "secretAnchors": []
     },
     {
-      "id": "placeholder_puzzle_water_board",
-      "name": "Water Board",
-      "shape": "ONE_BY_ONE",
-      "kind": "PUZZLE",
-      "secretCount": 0,
-      "placeholder": true,
-      "tags": ["placeholder", "puzzle"],
-      "doorSockets": [
-        {"col": 0, "row": 0, "side": "NORTH"},
-        {"col": 0, "row": 0, "side": "EAST"},
-        {"col": 0, "row": 0, "side": "SOUTH"},
-        {"col": 0, "row": 0, "side": "WEST"}
-      ],
-      "mobSpawns": [],
-      "secretAnchors": []
-    },
-    {
-      "id": "placeholder_puzzle_creeper_beams",
-      "name": "Creeper Beams",
-      "shape": "ONE_BY_ONE",
-      "kind": "PUZZLE",
-      "secretCount": 0,
-      "placeholder": true,
-      "tags": ["placeholder", "puzzle"],
-      "doorSockets": [
-        {"col": 0, "row": 0, "side": "NORTH"},
-        {"col": 0, "row": 0, "side": "EAST"},
-        {"col": 0, "row": 0, "side": "SOUTH"},
-        {"col": 0, "row": 0, "side": "WEST"}
-      ],
-      "mobSpawns": [],
-      "secretAnchors": []
-    },
-    {
-      "id": "placeholder_puzzle_teleport_maze",
-      "name": "Teleport Maze",
-      "shape": "ONE_BY_ONE",
-      "kind": "PUZZLE",
-      "secretCount": 0,
-      "placeholder": true,
-      "tags": ["placeholder", "puzzle"],
-      "doorSockets": [
-        {"col": 0, "row": 0, "side": "NORTH"},
-        {"col": 0, "row": 0, "side": "EAST"},
-        {"col": 0, "row": 0, "side": "SOUTH"},
-        {"col": 0, "row": 0, "side": "WEST"}
-      ],
-      "mobSpawns": [],
-      "secretAnchors": []
-    },
-    {
       "id": "placeholder_puzzle_blaze",
       "name": "Blaze",
       "shape": "ONE_BY_ONE",

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The sixteen rooms of the MIT-licensed M7 practice map (github.com/strad-dev/m7, instructions/clear/Rooms.java),
@@ -13,35 +14,15 @@ final class M7Rooms {
     static final int START_ANNEX_MIN_Z = -213;
     static final double[] START_SPAWN = {-120.5, 71, -183.5};
 
-    record Secret(String type, String variant, double x, double y, double z, boolean counted) {
-    }
-
-    record Room(String id, String name, String kind, int[][] cells, int minY, int maxY, List<Secret> secrets) {
-    }
-
     static final int[][][] DOORS = {
             {{0, 0}, {0, 1}}, {{4, 0}, {5, 0}}, {{5, 1}, {5, 2}}, {{3, 2}, {4, 2}}, {{3, 2}, {3, 1}},
             {{3, 2}, {3, 3}}, {{2, 2}, {2, 1}}, {{0, 1}, {0, 2}}, {{3, 3}, {3, 4}}, {{3, 4}, {3, 5}},
             {{4, 4}, {4, 5}}, {{5, 4}, {5, 5}}, {{3, 3}, {2, 3}}, {{2, 5}, {1, 5}}, {{0, 4}, {1, 4}}
     };
 
+    static final RoomSource.Grid GRID = new RoomSource.Grid(ORIGIN, ORIGIN, -1, DOORS);
+
     private M7Rooms() {
-    }
-
-    static int cellMaxX(int gx) {
-        return ORIGIN - PITCH * gx;
-    }
-
-    static int cellMinX(int gx) {
-        return cellMaxX(gx) - 30;
-    }
-
-    static int cellMaxZ(int gz) {
-        return ORIGIN - PITCH * gz;
-    }
-
-    static int cellMinZ(int gz) {
-        return cellMaxZ(gz) - 30;
     }
 
     private static final class Builder {
@@ -51,7 +32,7 @@ final class M7Rooms {
         private final int[][] cells;
         private final int minY;
         private final int maxY;
-        private final List<Secret> secrets = new ArrayList<>();
+        private final List<RoomSource.Secret> secrets = new ArrayList<>();
 
         Builder(String id, String name, String kind, int[][] cells, int minY, int maxY) {
             this.id = id;
@@ -91,17 +72,19 @@ final class M7Rooms {
         }
 
         private Builder add(String type, String variant, double x, double y, double z, boolean counted) {
-            secrets.add(new Secret(type, variant, x, y, z, counted));
+            secrets.add(new RoomSource.Secret(type, variant, x, y, z, counted, false));
             return this;
         }
 
-        Room build() {
-            return new Room(id, name, kind, cells, minY, maxY, List.copyOf(secrets));
+        RoomSource.Room build() {
+            boolean start = id.equals("start");
+            return new RoomSource.Room(id, name, kind, cells, minY, maxY, List.copyOf(secrets), List.of(), List.of(), 3,
+                    List.of(), Map.of(), start ? START_SPAWN : null, start ? START_ANNEX_MIN_Z : RoomSource.NO_ANNEX, "m7", "m7", null);
         }
     }
 
-    static List<Room> all() {
-        List<Room> rooms = new ArrayList<>();
+    static List<RoomSource.Room> all() {
+        List<RoomSource.Room> rooms = new ArrayList<>();
         rooms.add(new Builder("quiz", "Quiz", "PUZZLE", new int[][]{{0, 0}}, 46, 105).build());
         rooms.add(new Builder("hallway", "Hallway", "NORMAL", new int[][]{{1, 0}, {2, 0}, {3, 0}, {4, 0}}, 66, 99)
                 .chest(-140, 69, -37).chest(-114, 69, -35).chest(-83, 85, -34).build());

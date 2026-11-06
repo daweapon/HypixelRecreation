@@ -45,7 +45,7 @@ class RoomTemplateLibraryTest {
     void realRoomsCarryTheirBlocksAndReplaceTheSpecialPlaceholders() {
         RoomTemplateLibrary library = PlaceholderLibrary.load();
         List<RoomTemplate> real = library.all().stream().filter(template -> !template.placeholder()).toList();
-        assertEquals(16, real.size());
+        assertEquals(31, real.size());
         for (RoomTemplate template : real) {
             assertTrue(template.blocks().isPresent(), template.id());
             assertTrue(template.stand().isPresent(), template.id());
@@ -55,9 +55,20 @@ class RoomTemplateLibraryTest {
         for (RoomKind kind : List.of(RoomKind.ENTRANCE, RoomKind.FAIRY, RoomKind.BLOOD, RoomKind.MINIBOSS, RoomKind.TRAP)) {
             assertTrue(library.templates(kind).stream().noneMatch(RoomTemplate::placeholder), kind.name());
         }
+        for (RoomShape shape : RoomShape.values()) {
+            assertTrue(library.templates(RoomKind.NORMAL, shape).stream().anyMatch(template -> !template.placeholder()), shape.name());
+        }
         for (RoomShape shape : List.of(RoomShape.ONE_BY_THREE, RoomShape.ONE_BY_FOUR, RoomShape.TWO_BY_TWO, RoomShape.L_SHAPE)) {
             assertTrue(library.templates(RoomKind.NORMAL, shape).stream().noneMatch(RoomTemplate::placeholder), shape.name());
         }
+        assertEquals(2, library.templates(RoomKind.ENTRANCE).size());
+        assertEquals(3, library.templates(RoomKind.MINIBOSS).size());
+        for (String puzzle : List.of("Water Board", "Teleport Maze", "Creeper Beams", "Quiz", "Ice Fill")) {
+            assertEquals(1, library.templates(RoomKind.PUZZLE).stream().filter(template -> template.name().equals(puzzle)).count(), puzzle);
+        }
+        assertEquals(RoomShape.TWO_BY_TWO, library.find("rails").orElseThrow().shape());
+        assertEquals(9, library.find("rails").orElseThrow().secretCount());
+        assertEquals(RoomShape.L_SHAPE, library.find("chambers").orElseThrow().shape());
         RoomTemplate start = library.find("start").orElseThrow();
         assertEquals(Rotation.DEG_180, start.fixedRotation());
         assertEquals(RoomKind.ENTRANCE, start.kind());

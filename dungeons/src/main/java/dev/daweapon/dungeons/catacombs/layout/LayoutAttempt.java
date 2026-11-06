@@ -18,6 +18,12 @@ import java.util.Random;
 import java.util.Set;
 
 final class LayoutAttempt {
+    enum NormalPool {
+        REAL_FIRST,
+        ANY,
+        PLACEHOLDERS
+    }
+
     private static final double EXTRA_DOOR_CHANCE = 0.2;
     private static final double RARE_CHANCE = 0.1;
     private static final int MAX_PATH_NUMERATOR = 3;
@@ -41,20 +47,20 @@ final class LayoutAttempt {
     private final RoomTemplateLibrary library;
     private final RoomBudget fixedBudget;
     private final Random random;
-    private final boolean realNormals;
+    private final NormalPool normalPool;
     private final int width;
     private final int height;
     private final Map<String, ArrayDeque<RoomTemplate>> pools = new HashMap<>();
 
     LayoutAttempt(CatacombsFloor floor, CatacombsMode mode, long seed, RoomTemplateLibrary library,
-                  RoomBudget fixedBudget, Random random, boolean realNormals) {
+                  RoomBudget fixedBudget, Random random, NormalPool normalPool) {
         this.floor = floor;
         this.mode = mode;
         this.seed = seed;
         this.library = library;
         this.fixedBudget = fixedBudget;
         this.random = random;
-        this.realNormals = realNormals;
+        this.normalPool = normalPool;
         this.width = floor.dungeonSize().width();
         this.height = floor.dungeonSize().height();
     }
@@ -204,10 +210,17 @@ final class LayoutAttempt {
 
     private List<RoomTemplate> templates(RoomKind kind, RoomShape shape) {
         List<RoomTemplate> all = library.templates(kind, shape);
-        if (realNormals || kind != RoomKind.NORMAL) {
+        if (kind != RoomKind.NORMAL) {
             return all;
         }
-        return all.stream().filter(RoomTemplate::placeholder).toList();
+        return switch (normalPool) {
+            case PLACEHOLDERS -> all.stream().filter(RoomTemplate::placeholder).toList();
+            case ANY -> all;
+            case REAL_FIRST -> {
+                List<RoomTemplate> real = all.stream().filter(template -> !template.placeholder()).toList();
+                yield real.isEmpty() ? all : real;
+            }
+        };
     }
 
     private List<Integer> roomPath(List<Cell> path, Map<Cell, Integer> roomOfCell) {

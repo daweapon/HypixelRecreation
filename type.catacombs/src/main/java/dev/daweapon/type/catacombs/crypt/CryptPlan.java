@@ -16,8 +16,9 @@ import java.util.Random;
 
 /**
  * Where the dungeon's crypts go: up to two tombs per standard room, seeded by the layout, and at least {@link #MINIMUM}
- * in the dungeon so the full crypt bonus is always reachable. A real room offers the crypt spots listed in its template;
- * a placeholder room offers its free corners.
+ * in the dungeon so the full crypt bonus is always reachable (a room then gives more than two if it has the spots). A
+ * real room offers only the crypt spots listed in its template, none if it lists none; a placeholder room offers its
+ * free corners.
  */
 public final class CryptPlan {
     public static final int MINIMUM = 5;
@@ -48,11 +49,12 @@ public final class CryptPlan {
             counts.put(entry.getKey(), count);
             total += count;
         }
-        for (PlacedRoom room : free.keySet()) {
-            if (total >= MINIMUM) break;
-            if (counts.get(room) < Math.min(MAX_PER_ROOM, free.get(room).size())) {
-                counts.merge(room, 1, Integer::sum);
-                total++;
+        for (int cap : new int[]{MAX_PER_ROOM, Integer.MAX_VALUE}) {
+            for (PlacedRoom room : free.keySet()) {
+                while (total < MINIMUM && counts.get(room) < Math.min(cap, free.get(room).size())) {
+                    counts.merge(room, 1, Integer::sum);
+                    total++;
+                }
             }
         }
         List<Crypt> crypts = new ArrayList<>();
@@ -63,7 +65,7 @@ public final class CryptPlan {
     }
 
     private static List<int[]> freeCorners(PlacedRoom room) {
-        if (!room.template().crypts().isEmpty()) {
+        if (!room.template().crypts().isEmpty() || room.template().blocks().isPresent()) {
             return room.template().crypts().stream().map(spot -> new int[]{spot.x(), spot.z(), spot.y()}).toList();
         }
         List<int[]> corners = new ArrayList<>();

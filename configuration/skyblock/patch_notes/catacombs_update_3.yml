@@ -10,8 +10,10 @@ sections:
       - "Every run's Start, Blood, Fairy and miniboss rooms are real, and most larger rooms are too."
       - "Secrets sit where they are in Hypixel's rooms: chests, the Museum Mimic chest, items, bats and Wither Essence."
       - "Doors only open where a room really has a doorway."
+      - "15 more real rooms from Hypixel Floor 1 runs: Overgrown, Silvers Sword, Double Diamond, Redstone Warrior, Grass Ruin, Diagonal, Catwalk, Rails, Chambers, the Water Board, Teleport Maze and Creeper Beams puzzle rooms, the Dragon and Default miniboss rooms, and Hypixel's own Start room."
+      - "Mobs in these rooms (and the Hallway) stand where they stood on Hypixel, with the same types, and real crypts are used where the room has them."
   - heading: "Not here yet"
     colour: "<c>"
     lines:
-      - "Small one- and two-cell rooms and most puzzle rooms are still placeholders, and the Quiz and Ice Fill puzzles cannot be solved yet."
-      - "Room mobs and crypt spots in the real rooms are placed by estimate."
+      - "Rare rooms and five puzzle rooms are still placeholders, and the real puzzle rooms cannot be solved yet."
+      - "Mobs in the M7-sourced rooms and some crypt spots are still placed by estimate."

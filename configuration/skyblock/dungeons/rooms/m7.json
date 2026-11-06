@@ -22,6 +22,7 @@
       "name": "Hallway",
       "shape": "ONE_BY_FOUR",
       "kind": "NORMAL",
+      "catalogueName": "Hallway-3",
       "secretCount": 3,
       "tags": ["m7", "normal"],
       "structure": {"file": "m7/hallway.schem", "x": 0, "y": -2, "z": 0},
@@ -36,15 +37,88 @@
         {"col": 3, "row": 0, "side": "SOUTH", "m7Door": false}
       ],
       "mobSpawns": [
-        {"id": "spawn_1", "x": 15.5, "y": 1, "z": 15.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": true},
-        {"id": "spawn_2", "x": 124.5, "y": 1, "z": 26.5, "mobId": "SKELETON_GRUNT", "starred": true, "estimated": true},
-        {"id": "spawn_3", "x": 70.5, "y": 1, "z": 12.5, "mobId": "SCARED_SKELETON", "starred": false, "estimated": true},
-        {"id": "spawn_4", "x": 98.5, "y": 1, "z": 3.5, "mobId": "TANK_ZOMBIE", "starred": true, "estimated": true},
-        {"id": "spawn_5", "x": 43.5, "y": 1, "z": 23.5, "mobId": "SKELETON_SOLDIER", "starred": true, "estimated": true},
-        {"id": "spawn_6", "x": 90.5, "y": 3, "z": 26.5, "mobId": "CRYPT_LURKER", "starred": false, "estimated": true},
-        {"id": "spawn_7", "x": 122.5, "y": 3, "z": 3.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": true},
-        {"id": "spawn_8", "x": 47.5, "y": 1, "z": 4.5, "mobId": "SKELETON_GRUNT", "starred": true, "estimated": true},
-        {"id": "spawn_9", "x": 2.5, "y": 3, "z": 26.5, "mobId": "SCARED_SKELETON", "starred": false, "estimated": true}
+        {"id": "spawn_1", "x": 27.5, "y": 8, "z": 10.5, "mobId": "SCARED_SKELETON", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_2", "x": 45.5, "y": 1, "z": 13.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_3", "x": 29.5, "y": 8, "z": 8.5, "mobId": "TANK_ZOMBIE", "starred": false, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_4", "x": 31.5, "y": 8, "z": 10.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_5", "x": 46.5, "y": 1, "z": 11.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_6", "x": 49.5, "y": 1, "z": 13.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_7", "x": 49.5, "y": 1, "z": 15.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_8", "x": 48.5, "y": 1, "z": 14.5, "mobId": "SKELETON_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_9", "x": 9.5, "y": 3, "z": 24.5, "mobId": "TANK_ZOMBIE", "starred": false, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_10", "x": 45.5, "y": 1, "z": 15.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_11", "x": 6.5, "y": 3, "z": 25.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_12", "x": 6.5, "y": 3, "z": 26.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_13", "x": 10.5, "y": 8, "z": 24.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_14", "x": 5.5, "y": 8, "z": 24.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_15", "x": 10.5, "y": 8, "z": 21.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_16", "x": 33.5, "y": 1, "z": 26.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_17", "x": 3.5, "y": 3, "z": 5.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_18", "x": 6.5, "y": 3, "z": 5.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_19", "x": 5.5, "y": 3, "z": 6.5, "mobId": "TANK_ZOMBIE", "starred": false, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_20", "x": 34.5, "y": 8, "z": 28.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_21", "x": 37.5, "y": 8, "z": 27.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_22", "x": 33.5, "y": 8, "z": 26.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_23", "x": 45.5, "y": 8, "z": 7.5, "mobId": "SKELETON_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_24", "x": 46.5, "y": 8, "z": 7.5, "mobId": "SKELETON_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_25", "x": 46.5, "y": 8, "z": 11.5, "mobId": "SKELETON_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_26", "x": 120.5, "y": 8, "z": 8.5, "mobId": "SCARED_SKELETON", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_27", "x": 57.5, "y": 8, "z": 28.5, "mobId": "TANK_ZOMBIE", "starred": false, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_28", "x": 57.5, "y": 8, "z": 26.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_29", "x": 65.5, "y": 2, "z": 26.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_30", "x": 62.5, "y": 2, "z": 24.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_31", "x": 68.5, "y": 1, "z": 13.5, "mobId": "SKELETON_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_32", "x": 100.5, "y": 3, "z": 25.5, "mobId": "SKELETON_SOLDIER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_33", "x": 118.5, "y": 8, "z": 6.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_34", "x": 119.5, "y": 8, "z": 10.5, "mobId": "SKELETON_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_35", "x": 91.5, "y": 8, "z": 7.5, "mobId": "SKELETON_SOLDIER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_36", "x": 71.5, "y": 1, "z": 14.5, "mobId": "TANK_ZOMBIE", "starred": false, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_37", "x": 94.5, "y": 1, "z": 6.5, "mobId": "TANK_ZOMBIE", "starred": false, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_38", "x": 122.5, "y": 1, "z": 28.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_39", "x": 123.5, "y": 1, "z": 22.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_40", "x": 103.5, "y": 3, "z": 26.5, "mobId": "SCARED_SKELETON", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_41", "x": 98.5, "y": 8, "z": 25.5, "mobId": "TANK_ZOMBIE", "starred": false, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_42", "x": 90.5, "y": 8, "z": 20.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_43", "x": 67.5, "y": 1, "z": 19.5, "mobId": "SKELETON_SOLDIER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_44", "x": 70.5, "y": 8, "z": 8.5, "mobId": "TANK_ZOMBIE", "starred": false, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_45", "x": 95.5, "y": 8, "z": 3.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_46", "x": 94.5, "y": 8, "z": 2.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_47", "x": 115.5, "y": 8, "z": 9.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_48", "x": 67.5, "y": 8, "z": 7.5, "mobId": "SKELETON_SOLDIER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_49", "x": 96.5, "y": 1, "z": 5.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_50", "x": 69.5, "y": 8, "z": 25.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_51", "x": 70.5, "y": 1, "z": 17.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_52", "x": 72.5, "y": 8, "z": 7.5, "mobId": "SKELETON_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_53", "x": 120.5, "y": 3, "z": 4.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_54", "x": 65.5, "y": 8, "z": 7.5, "mobId": "TANK_ZOMBIE", "starred": false, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_55", "x": 71.5, "y": 1, "z": 18.5, "mobId": "TANK_ZOMBIE", "starred": false, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_56", "x": 67.5, "y": 8, "z": 22.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_57", "x": 102.5, "y": 8, "z": 23.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_58", "x": 68.5, "y": 8, "z": 6.5, "mobId": "SKELETON_SOLDIER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_59", "x": 97.5, "y": 1, "z": 5.5, "mobId": "TANK_ZOMBIE", "starred": false, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_60", "x": 69.5, "y": 8, "z": 4.5, "mobId": "SKELETON_SOLDIER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_61", "x": 89.5, "y": 3, "z": 24.5, "mobId": "SKELETON_SOLDIER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_62", "x": 90.5, "y": 8, "z": 22.5, "mobId": "TANK_ZOMBIE", "starred": false, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_63", "x": 102.5, "y": 8, "z": 24.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_64", "x": 118.5, "y": 1, "z": 24.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_65", "x": 119.5, "y": 3, "z": 6.5, "mobId": "TANK_ZOMBIE", "starred": false, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_66", "x": 90.5, "y": 3, "z": 25.5, "mobId": "SKELETON_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_67", "x": 117.5, "y": 8, "z": 5.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_68", "x": 96.5, "y": 1, "z": 4.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_69", "x": 87.5, "y": 8, "z": 24.5, "mobId": "SCARED_SKELETON", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_70", "x": 94.5, "y": 3, "z": 23.5, "mobId": "SKELETON_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_71", "x": 95.5, "y": 8, "z": 4.5, "mobId": "TANK_ZOMBIE", "starred": false, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_72", "x": 101.5, "y": 8, "z": 23.5, "mobId": "TANK_ZOMBIE", "starred": false, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_73", "x": 95.5, "y": 1, "z": 5.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_74", "x": 62.5, "y": 8, "z": 9.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_75", "x": 96.5, "y": 8, "z": 2.5, "mobId": "TANK_ZOMBIE", "starred": false, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_76", "x": 72.5, "y": 1, "z": 14.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_77", "x": 119.5, "y": 1, "z": 24.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_78", "x": 90.5, "y": 8, "z": 15.5, "mobId": "SKELETON_SOLDIER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_79", "x": 72.5, "y": 8, "z": 5.5, "mobId": "ZOMBIE_GRUNT", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_80", "x": 67.5, "y": 1, "z": 12.5, "mobId": "SKELETON_SOLDIER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_81", "x": 119.5, "y": 3, "z": 5.5, "mobId": "CRYPT_LURKER", "starred": true, "estimated": false, "starredEstimated": true},
+        {"id": "spawn_82", "x": 17.5, "y": 1, "z": 15.5, "mobId": "LOST_ADVENTURER", "starred": true, "estimated": false}
       ],
       "secretAnchors": [
         {"type": "CHEST", "x": 28, "y": 1, "z": 3, "variant": "CHEST"},
@@ -52,9 +126,14 @@
         {"type": "CHEST", "x": 85, "y": 17, "z": 6, "variant": "CHEST"}
       ],
       "crypts": [
-        {"x": 15, "y": 1, "z": 11, "estimated": true},
-        {"x": 122, "y": 1, "z": 22, "estimated": true},
-        {"x": 68, "y": 1, "z": 18, "estimated": true}
+        {"x": 15, "y": 1, "z": 11, "estimated": true}
+      ],
+      "secretExtras": [
+        {"kind": "SUPERBOOM", "label": "1 - Superboom", "x": 29, "y": 7, "z": 5},
+        {"kind": "LEVER", "label": "2 - Lever", "x": 92, "y": 8, "z": 20},
+        {"kind": "ENTRANCE", "label": "2 - Entrance", "x": 74, "y": 2, "z": 3},
+        {"kind": "STONK", "label": "2 - Stonk", "x": 52, "y": 2, "z": 5},
+        {"kind": "ENTRANCE", "label": "3 - Entrance Vines", "x": 83, "y": 13, "z": 1}
       ]
     },
     {
@@ -62,6 +141,7 @@
       "name": "Market",
       "shape": "L_SHAPE",
       "kind": "NORMAL",
+      "catalogueName": "Market-5",
       "secretCount": 5,
       "tags": ["m7", "normal"],
       "structure": {"file": "m7/market.schem", "x": 0, "y": -12, "z": 0},
@@ -93,6 +173,13 @@
         {"x": 11, "y": 1, "z": 15, "estimated": true},
         {"x": 57, "y": 1, "z": 18, "estimated": true},
         {"x": 17, "y": 1, "z": 56, "estimated": true}
+      ],
+      "secretExtras": [
+        {"kind": "ENTRANCE", "label": "1 - Entrance Ladder", "x": 28, "y": -3, "z": 32},
+        {"kind": "ENTRANCE", "label": "2 - Entrance", "x": 10, "y": 13, "z": 40},
+        {"kind": "ENTRANCE", "label": "3/4 - Entrance Superboom", "x": 10, "y": -1, "z": 6},
+        {"kind": "ENTRANCE", "label": "5 - Entrance", "x": 21, "y": 17, "z": 6},
+        {"kind": "STONK", "label": "5 - Stonk", "x": 10, "y": 19, "z": 18}
       ]
     },
     {
@@ -100,6 +187,7 @@
       "name": "Gravel",
       "shape": "ONE_BY_THREE",
       "kind": "NORMAL",
+      "catalogueName": "Gravel-6",
       "secretCount": 6,
       "tags": ["m7", "normal"],
       "structure": {"file": "m7/gravel.schem", "x": 0, "y": -12, "z": 0},
@@ -130,8 +218,14 @@
       ],
       "crypts": [
         {"x": 11, "y": 1, "z": 15, "estimated": true},
-        {"x": 84, "y": 1, "z": 14, "estimated": true},
-        {"x": 47, "y": 1, "z": 4, "estimated": true}
+        {"x": 84, "y": 1, "z": 14, "estimated": true}
+      ],
+      "secretExtras": [
+        {"kind": "LEVER", "label": "1 - Lever", "x": 63, "y": 1, "z": 26},
+        {"kind": "STONK", "label": "1 - Stonk", "x": 33, "y": 2, "z": 11},
+        {"kind": "ENTRANCE", "label": "2/3 - Entrance Vines", "x": 69, "y": 14, "z": 14},
+        {"kind": "ENTRANCE", "label": "4/5 Entrance", "x": 82, "y": 6, "z": 3},
+        {"kind": "ENTRANCE", "label": "6 - Entrance Vines", "x": 35, "y": 16, "z": 9}
       ]
     },
     {
@@ -139,6 +233,7 @@
       "name": "Blood",
       "shape": "ONE_BY_ONE",
       "kind": "BLOOD",
+      "catalogueName": "Blood Room",
       "secretCount": 0,
       "tags": ["m7", "blood"],
       "structure": {"file": "m7/blood.schem", "x": 0, "y": -2, "z": 0},
@@ -158,6 +253,7 @@
       "name": "Museum",
       "shape": "TWO_BY_TWO",
       "kind": "NORMAL",
+      "catalogueName": "Museum-5",
       "secretCount": 5,
       "tags": ["m7", "normal"],
       "structure": {"file": "m7/museum.schem", "x": 0, "y": -10, "z": 0},
@@ -193,6 +289,15 @@
         {"x": 12, "y": 1, "z": 17, "estimated": true},
         {"x": 56, "y": 1, "z": 53, "estimated": true},
         {"x": 55, "y": 1, "z": 10, "estimated": true}
+      ],
+      "secretExtras": [
+        {"kind": "LEVER", "label": "1 - Lever", "x": 36, "y": 16, "z": 53},
+        {"kind": "STONK", "label": "1 - Stonk", "x": 37, "y": 14, "z": 51},
+        {"kind": "SUPERBOOM", "label": "2 - Superboom", "x": 19, "y": 0, "z": 57},
+        {"kind": "ENTRANCE", "label": "3 - Entrance", "x": 7, "y": 15, "z": 34},
+        {"kind": "STONK", "label": "3 - Stonk", "x": 27, "y": 15, "z": 46},
+        {"kind": "SUPERBOOM", "label": "5 - Superboom", "x": 31, "y": 2, "z": 5},
+        {"kind": "STONK", "label": "5 - Stonk", "x": 31, "y": 1, "z": 5}
       ]
     },
     {
@@ -200,6 +305,7 @@
       "name": "Deathmite",
       "shape": "ONE_BY_THREE",
       "kind": "NORMAL",
+      "catalogueName": "Deathmite-6",
       "secretCount": 6,
       "tags": ["m7", "normal"],
       "structure": {"file": "m7/deathmite.schem", "x": 0, "y": -12, "z": 0},
@@ -231,6 +337,14 @@
         {"x": 11, "y": -1, "z": 15, "estimated": true},
         {"x": 90, "y": 1, "z": 25, "estimated": true},
         {"x": 52, "y": 1, "z": 4, "estimated": true}
+      ],
+      "secretExtras": [
+        {"kind": "ENTRANCE", "label": "1/2 - Entrance Water", "x": 11, "y": 21, "z": 6},
+        {"kind": "STONK", "label": "3 - Stonk", "x": 28, "y": 14, "z": 15},
+        {"kind": "LEVER", "label": "4 - Lever", "x": 41, "y": 2, "z": 15},
+        {"kind": "STONK", "label": "4 - Stonk", "x": 84, "y": 2, "z": 15},
+        {"kind": "ENTRANCE", "label": "5 - Entrance Ladder", "x": 25, "y": 0, "z": 28},
+        {"kind": "SUPERBOOM", "label": "6 - Superboom", "x": 6, "y": 2, "z": 20}
       ]
     },
     {
@@ -238,6 +352,7 @@
       "name": "Dino Site",
       "shape": "L_SHAPE",
       "kind": "NORMAL",
+      "catalogueName": "Dino-Dig-Site-4",
       "secretCount": 4,
       "tags": ["m7", "normal"],
       "structure": {"file": "m7/dino_dig_site.schem", "x": 0, "y": -32, "z": 0},
@@ -265,6 +380,12 @@
         {"x": 21, "y": 0, "z": 15, "estimated": true},
         {"x": 11, "y": 1, "z": 56, "estimated": true},
         {"x": 59, "y": 1, "z": 10, "estimated": true}
+      ],
+      "secretExtras": [
+        {"kind": "SUPERBOOM", "label": "1 - Superboom", "x": 27, "y": 25, "z": 24},
+        {"kind": "ENTRANCE", "label": "2 - Entrance", "x": 23, "y": -10, "z": 41},
+        {"kind": "STONK", "label": "3 - Stonk", "x": 11, "y": -17, "z": 54},
+        {"kind": "ENTRANCE", "label": "4 - Entrance", "x": 20, "y": -20, "z": 6}
       ]
     },
     {
@@ -272,6 +393,7 @@
       "name": "Wizard",
       "shape": "ONE_BY_THREE",
       "kind": "NORMAL",
+      "catalogueName": "Wizard-4",
       "secretCount": 4,
       "tags": ["m7", "normal"],
       "structure": {"file": "m7/wizard.schem", "x": 0, "y": -22, "z": 0},
@@ -299,6 +421,11 @@
         {"x": 11, "y": 1, "z": 15, "estimated": true},
         {"x": 89, "y": 1, "z": 19, "estimated": true},
         {"x": 50, "y": 1, "z": 5, "estimated": true}
+      ],
+      "secretExtras": [
+        {"kind": "SUPERBOOM", "label": "1 - Superboom", "x": 10, "y": 2, "z": 23},
+        {"kind": "SUPERBOOM", "label": "3 - Superboom", "x": 6, "y": 24, "z": 20},
+        {"kind": "SUPERBOOM", "label": "4 - Superboom", "x": 74, "y": 14, "z": 24}
       ]
     },
     {
@@ -306,6 +433,7 @@
       "name": "Fairy",
       "shape": "ONE_BY_ONE",
       "kind": "FAIRY",
+      "catalogueName": "Fairy Room",
       "secretCount": 0,
       "tags": ["m7", "fairy"],
       "structure": {"file": "m7/fairy.schem", "x": 0, "y": -6, "z": 0},
@@ -325,6 +453,7 @@
       "name": "Well",
       "shape": "L_SHAPE",
       "kind": "NORMAL",
+      "catalogueName": "Well-7",
       "secretCount": 7,
       "tags": ["m7", "normal"],
       "structure": {"file": "m7/well.schem", "x": 0, "y": -15, "z": 0},
@@ -359,6 +488,14 @@
         {"x": 11, "y": 1, "z": 15, "estimated": true},
         {"x": 55, "y": 1, "z": 18, "estimated": true},
         {"x": 23, "y": 1, "z": 56, "estimated": true}
+      ],
+      "secretExtras": [
+        {"kind": "ENTRANCE", "label": "1 - Entrance", "x": 12, "y": 20, "z": 7},
+        {"kind": "STONK", "label": "1 - Stonk", "x": 9, "y": 21, "z": 11},
+        {"kind": "ENTRANCE", "label": "2/3 - Entrance", "x": 6, "y": 22, "z": 5},
+        {"kind": "ENTRANCE", "label": "4 - Entrance", "x": 28, "y": 24, "z": 54},
+        {"kind": "SUPERBOOM", "label": "7 - Superboom", "x": 29, "y": 20, "z": 4},
+        {"kind": "STONK", "label": "7 - Stonk", "x": 37, "y": 20, "z": 20}
       ]
     },
     {
@@ -419,6 +556,7 @@
       "name": "Start",
       "shape": "ONE_BY_ONE",
       "kind": "ENTRANCE",
+      "catalogueName": "Entrance Room",
       "secretCount": 0,
       "tags": ["m7", "entrance"],
       "fixedRotation": "DEG_180",
@@ -436,6 +574,7 @@
       "name": "Trap",
       "shape": "ONE_BY_ONE",
       "kind": "TRAP",
+      "catalogueName": "Trap-Very-Hard-3",
       "secretCount": 3,
       "tags": ["m7", "trap"],
       "structure": {"file": "m7/trap.schem", "x": 0, "y": -8, "z": 0},
@@ -449,13 +588,18 @@
         {"type": "BAT", "x": 9, "y": 24, "z": 9, "variant": "BAT"},
         {"type": "CHEST", "x": 4, "y": 22, "z": 16, "variant": "BLESSING_POWER_2"}
       ],
-      "crypts": []
+      "crypts": [],
+      "secretExtras": [
+        {"kind": "LEVER", "label": "1 - Lever Behind Crypt", "x": 8, "y": -2, "z": 10},
+        {"kind": "LEVER", "label": "2 - Lever", "x": 29, "y": 13, "z": 12}
+      ]
     },
     {
       "id": "yellow",
       "name": "Yellow",
       "shape": "ONE_BY_ONE",
       "kind": "MINIBOSS",
+      "catalogueName": "Shadow Assassin",
       "secretCount": 0,
       "tags": ["m7", "miniboss"],
       "structure": {"file": "m7/yellow.schem", "x": 0, "y": -4, "z": 0},
