@@ -1,5 +1,7 @@
 package dev.daweapon.type.catacombs.engine.bonzo;
 
+import net.minestom.server.coordinate.Pos;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.random.RandomGenerator;
@@ -57,6 +59,8 @@ public final class BonzoScript {
     public enum Phase {INTRO, FIRST_LIFE, DOWNED, SECOND_LIFE, DEFEATED}
 
     public static final int LINE_GAP = 82;
+    public static final int ORB_TICKS = 45;
+    public static final double ORB_PEAK = 9.5;
     public static final int MOVE_TICK = 230;
     public static final int SUMMON_GAP_MIN = 5;
     public static final int SUMMON_GAP_MAX = 60;
@@ -209,6 +213,15 @@ public final class BonzoScript {
             return List.of(new Say(FINAL));
         }
         return List.of();
+    }
+
+    /** The orb's path: straight across from Bonzo to where the Undead will stand, arcing about 9.5 blocks up. */
+    public static Pos orbPosition(Pos from, Pos to, double progress) {
+        double t = Math.clamp(progress, 0, 1);
+        double x = from.x() + (to.x() - from.x()) * t;
+        double z = from.z() + (to.z() - from.z()) * t;
+        double y = from.y() + (to.y() + 1 - from.y()) * t + 4 * ORB_PEAK * t * (1 - t);
+        return new Pos(x, y, z);
     }
 
     private int summonGap() {

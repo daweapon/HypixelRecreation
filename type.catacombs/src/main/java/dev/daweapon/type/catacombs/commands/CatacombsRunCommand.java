@@ -24,16 +24,16 @@ import java.util.function.BiConsumer;
 
 @CommandParameters(labels = "catacombsrun",
         description = "Controls the Catacombs run you are in",
-        usage = "/catacombsrun <ready|start|win|lose|boss|clear|clearall|secret|crypt|failpuzzle|die|revive|cooldowns|seed|layout|score|phase|key|door|spawn|blessing> [value]",
+        usage = "/catacombsrun <ready|start|win|lose|boss|killboss|clear|clearall|secret|crypt|failpuzzle|die|revive|cooldowns|seed|layout|score|phase|key|door|spawn|blessing> [value]",
         permission = Rank.STAFF,
         allowsConsole = false)
 public class CatacombsRunCommand extends HypixelCommand {
     private static final int STAFF_BLESSING_LEVEL = 5;
-    private static final String USAGE = "<c>Usage: /catacombsrun <ready|start|win|lose|boss|clear|clearall|secret|crypt|failpuzzle|die|revive|cooldowns|seed|layout|score|phase|key|door|spawn|blessing> [value]";
+    private static final String USAGE = "<c>Usage: /catacombsrun <ready|start|win|lose|boss|killboss|clear|clearall|secret|crypt|failpuzzle|die|revive|cooldowns|seed|layout|score|phase|key|door|spawn|blessing> [value]";
 
     @Override
     public void registerUsage(MinestomCommand command) {
-        ArgumentWord action = new ArgumentWord("action").from("ready", "start", "win", "lose", "boss", "clear", "clearall",
+        ArgumentWord action = new ArgumentWord("action").from("ready", "start", "win", "lose", "boss", "killboss", "clear", "clearall",
                 "secret", "crypt", "failpuzzle", "die", "revive", "cooldowns", "seed", "layout", "score");
         ArgumentWord phaseLiteral = new ArgumentWord("phaseLiteral").from("phase");
         ArgumentWord phase = new ArgumentWord("phase").from(Arrays.stream(DungeonRunPhase.values())
@@ -109,6 +109,8 @@ public class CatacombsRunCommand extends HypixelCommand {
                 engine.enterBoss();
                 player.sendMessage("<a>Sent the party to the boss arena.");
             });
+            case "killboss" -> withEngine(player, run, engine -> player.sendMessage(engine.killBossLife()
+                    ? "<a>Took the boss's current life." : "<c>The boss can't be hurt right now (not in the real arena, still talking, or already down)."));
             case "clear" -> withEngine(player, run, engine -> {
                 PlacedRoom room = engine.roomAt(player.getPosition()).orElse(null);
                 if (room == null) {

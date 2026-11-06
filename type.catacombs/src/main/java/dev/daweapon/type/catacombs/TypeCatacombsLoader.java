@@ -15,6 +15,7 @@ import dev.daweapon.type.catacombs.npc.CatacombsMortNPC;
 import dev.daweapon.type.catacombs.redis.CatacombsInstantiateGameHandler;
 import dev.daweapon.type.catacombs.run.CatacombsHooks;
 import dev.daweapon.type.catacombs.run.CatacombsInstanceHost;
+import dev.daweapon.type.catacombs.run.CatacombsRequeue;
 import dev.daweapon.type.catacombs.run.CatacombsRuns;
 import dev.daweapon.type.catacombs.run.CatacombsSidebar;
 import dev.daweapon.type.catacombs.run.CatacombsTabList;
@@ -26,6 +27,7 @@ import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.tab.TablistManager;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
+import dev.daweapon.type.skyblockgeneric.dungeons.queue.CatacombsQueue;
 import dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.bestiary.BestiaryCategory;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
@@ -62,6 +64,7 @@ public class TypeCatacombsLoader implements SkyBlockTypeLoader {
         CatacombsSidebar.register();
         CatacombsHooks.register();
         CatacombsRuns.startCleanup();
+        CatacombsQueue.useLocalRuns(CatacombsRequeue::startHere);
         startOrchestratorHeartbeat();
         Thread.startVirtualThread(() -> {
             long started = System.nanoTime();

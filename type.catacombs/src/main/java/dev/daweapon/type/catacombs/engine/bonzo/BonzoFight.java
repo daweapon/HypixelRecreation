@@ -37,8 +37,6 @@ import java.util.concurrent.ThreadLocalRandom;
 public final class BonzoFight implements BonzoBoss.Fight {
     public static final String PREFIX = "<c>[BOSS] Bonzo<f>: ";
     public static final String BAR_TITLE = "<c><l>Bonzo";
-    static final int ORB_TICKS = 45;
-    static final double ORB_PEAK = 9.5;
     static final int MAX_UNDEAD = 8;
     static final double UNDEAD_SPEED = 116;
     static final double DASH_DISTANCE = 7;
@@ -164,25 +162,16 @@ public final class BonzoFight implements BonzoBoss.Fight {
         ThreadLocalRandom random = ThreadLocalRandom.current();
         orbs.removeIf(orb -> {
             long age = script.now() - orb.launched();
-            Pos at = orbPosition(orb.from(), orb.to(), (double) age / ORB_TICKS);
+            Pos at = BonzoScript.orbPosition(orb.from(), orb.to(), (double) age / BonzoScript.ORB_TICKS);
             instance.sendGroupedPacket(new ParticlePacket(ORB_DUST, true, true, at.x(), at.y(), at.z(), 0.1f, 0.1f, 0.1f, 0f, 1));
             instance.sendGroupedPacket(new ParticlePacket(Particle.ENTITY_EFFECT.withColor(new net.minestom.server.color.AlphaColor(
                     255, random.nextInt(256), random.nextInt(256), random.nextInt(256))), true, true, at.x(), at.y(), at.z(),
                     0.1f, 0.1f, 0.1f, 1f, 1));
             if (age % 3 == 0) instance.playSound(ORB, at.x(), at.y(), at.z());
-            if (age < ORB_TICKS) return false;
+            if (age < BonzoScript.ORB_TICKS) return false;
             summonUndead(orb.to());
             return true;
         });
-    }
-
-    /** The orb's path: straight across from Bonzo to where the Undead will stand, arcing about 9.5 blocks up. */
-    static Pos orbPosition(Pos from, Pos to, double progress) {
-        double t = Math.clamp(progress, 0, 1);
-        double x = from.x() + (to.x() - from.x()) * t;
-        double z = from.z() + (to.z() - from.z()) * t;
-        double y = from.y() + (to.y() + 1 - from.y()) * t + 4 * ORB_PEAK * t * (1 - t);
-        return new Pos(x, y, z);
     }
 
     private void summonUndead(Pos at) {

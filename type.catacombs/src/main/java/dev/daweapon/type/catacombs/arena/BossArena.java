@@ -44,11 +44,9 @@ public final class BossArena {
 
     /** The floor's captured arena, when it has one and it clears the dungeon grid of this layout. */
     public static Optional<BossArena> of(CatacombsFloor floor, CatacombsBlockPlan plan) {
-        Placement placement = PLACEMENTS.get(floor);
-        if (placement == null) return Optional.empty();
-        Optional<Schematic> schematic = load(placement.file());
-        if (schematic.isEmpty()) return Optional.empty();
-        BossArena arena = new BossArena(schematic.get(), placement.x(), placement.y(), placement.z());
+        Optional<BossArena> loaded = load(floor, DIRECTORY);
+        if (loaded.isEmpty()) return Optional.empty();
+        BossArena arena = loaded.get();
         if (arena.overlaps(plan)) {
             Logger.warn("The {} boss arena overlaps the dungeon grid; using the placeholder arena", floor);
             return Optional.empty();
@@ -56,15 +54,22 @@ public final class BossArena {
         return Optional.of(arena);
     }
 
-    public static void preload() {
-        PLACEMENTS.values().forEach(placement -> load(placement.file()));
+    /** The floor's arena read from a folder, placed where Hypixel has it, without checking it against a layout. */
+    public static Optional<BossArena> load(CatacombsFloor floor, Path directory) {
+        Placement placement = PLACEMENTS.get(floor);
+        if (placement == null) return Optional.empty();
+        return read(directory, placement.file()).map(schematic -> new BossArena(schematic, placement.x(), placement.y(), placement.z()));
     }
 
-    private static Optional<Schematic> load(String file) {
+    public static void preload() {
+        PLACEMENTS.values().forEach(placement -> read(DIRECTORY, placement.file()));
+    }
+
+    private static Optional<Schematic> read(Path directory, String file) {
         try {
-            return Optional.of(LOADED.computeIfAbsent(file, name -> {
+            return Optional.of(LOADED.computeIfAbsent(directory.resolve(file).toAbsolutePath().normalize().toString(), name -> {
                 try {
-                    return SchematicReader.read(DIRECTORY.resolve(name));
+                    return SchematicReader.read(Path.of(name));
                 } catch (IOException exception) {
                     throw new IllegalStateException("Could not read boss arena " + name, exception);
                 }
