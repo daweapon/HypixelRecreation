@@ -5,6 +5,7 @@ import dev.daweapon.commons.ServerType;
 import dev.daweapon.commons.ServiceType;
 import dev.daweapon.commons.redis.RedisMessageHandler;
 import dev.daweapon.proxyapi.ProxyService;
+import dev.daweapon.type.catacombs.arena.BossArena;
 import dev.daweapon.type.catacombs.arena.CatacombsTemplates;
 import dev.daweapon.type.catacombs.arena.RoomFeatures;
 import dev.daweapon.type.catacombs.arena.RoomStructures;
@@ -69,6 +70,7 @@ public class TypeCatacombsLoader implements SkyBlockTypeLoader {
             Logger.info("Loaded {} dungeon mob looks, the Watcher and {} bestiary categories", MobLooks.shared().all().size(),
                     BestiaryCategory.values().length);
             RoomFeatures.shared();
+            BossArena.preload();
             WatcherConfig.shared();
         });
     }

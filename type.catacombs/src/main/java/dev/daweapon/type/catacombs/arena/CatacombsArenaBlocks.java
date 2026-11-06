@@ -9,6 +9,7 @@ import dev.daweapon.dungeons.catacombs.layout.RoomColor;
 import dev.daweapon.dungeons.catacombs.layout.StandPoint;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.instance.block.Block;
+import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
 import java.util.ArrayList;
@@ -16,12 +17,14 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 /**
  * Every block of one run's dungeon: real rooms come from their block files, turned and moved into place, and
  * everything else (placeholder rooms, the strips between rooms, doorways) comes from {@link CatacombsBlockPlan}. A door
- * into a real room cuts its 3 by 4 opening through that room's outer wall.
+ * into a real room cuts its 3 by 4 opening through that room's outer wall. A floor with a captured boss room
+ * ({@link BossArena}) has it beside the grid, generated with the rest.
  */
 public final class CatacombsArenaBlocks {
     private static final int PITCH = CellGeometry.CELL_PITCH;
@@ -33,6 +36,7 @@ public final class CatacombsArenaBlocks {
     private final Map<Integer, RealRoom> realRooms;
     private final Set<Long> openings;
     private final DoorGates gates;
+    private final @Nullable BossArena bossArena;
     private final int minX;
     private final int maxX;
     private final int minY;
@@ -40,12 +44,14 @@ public final class CatacombsArenaBlocks {
     private final int minZ;
     private final int maxZ;
 
-    private CatacombsArenaBlocks(FloorLayout layout, CatacombsBlockPlan plan, Map<Integer, RealRoom> realRooms) {
+    private CatacombsArenaBlocks(FloorLayout layout, CatacombsBlockPlan plan, Map<Integer, RealRoom> realRooms,
+                                 @Nullable BossArena bossArena) {
         this.layout = layout;
         this.plan = plan;
         this.realRooms = realRooms;
         this.openings = openings(layout, realRooms);
         this.gates = DoorGates.of(layout);
+        this.bossArena = bossArena;
         int lowX = plan.minX(), highX = plan.maxX(), lowY = plan.minY(), highY = plan.maxY(), lowZ = plan.minZ(), highZ = plan.maxZ();
         for (RealRoom room : realRooms.values()) {
             lowX = Math.min(lowX, room.minX());
@@ -54,6 +60,14 @@ public final class CatacombsArenaBlocks {
             highY = Math.max(highY, room.maxY());
             lowZ = Math.min(lowZ, room.minZ());
             highZ = Math.max(highZ, room.maxZ());
+        }
+        if (bossArena != null) {
+            lowX = Math.min(lowX, bossArena.minX());
+            highX = Math.max(highX, bossArena.maxX());
+            lowY = Math.min(lowY, bossArena.minY());
+            highY = Math.max(highY, bossArena.maxY());
+            lowZ = Math.min(lowZ, bossArena.minZ());
+            highZ = Math.max(highZ, bossArena.maxZ());
         }
         this.minX = lowX;
         this.maxX = highX;
@@ -64,6 +78,10 @@ public final class CatacombsArenaBlocks {
     }
 
     public static CatacombsArenaBlocks of(FloorLayout layout, RoomStructures structures) {
+        return of(layout, structures, false);
+    }
+
+    public static CatacombsArenaBlocks of(FloorLayout layout, RoomStructures structures, boolean withBossArena) {
         Map<Integer, RealRoom> realRooms = new HashMap<>();
         for (PlacedRoom room : layout.rooms()) {
             room.template().blocks().ifPresent(structure -> {
@@ -74,7 +92,22 @@ public final class CatacombsArenaBlocks {
                 }
             });
         }
-        return new CatacombsArenaBlocks(layout, new CatacombsBlockPlan(layout), Map.copyOf(realRooms));
+        CatacombsBlockPlan plan = new CatacombsBlockPlan(layout);
+        BossArena boss = withBossArena ? BossArena.of(layout.floor(), plan).orElse(null) : null;
+        return new CatacombsArenaBlocks(layout, plan, Map.copyOf(realRooms), boss);
+    }
+
+    public Optional<BossArena> bossArena() {
+        return Optional.ofNullable(bossArena);
+    }
+
+    /** The boss room's block for a column outside the dungeon grid, or null when the column isn't the boss room's. */
+    Block bossBlockAt(int x, int y, int z) {
+        return bossArena == null ? null : bossArena.blockAt(x, y, z);
+    }
+
+    boolean inBossArena(int x, int z) {
+        return bossArena != null && bossArena.covers(x, z) && plan.tileAt(x, CellGeometry.FLOOR_Y, z) == CatacombsBlockPlan.Tile.AIR;
     }
 
     public CatacombsBlockPlan plan() {
