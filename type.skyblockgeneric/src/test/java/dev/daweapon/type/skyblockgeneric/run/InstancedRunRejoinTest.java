@@ -25,6 +25,15 @@ class InstancedRunRejoinTest {
     }
 
     @Test
+    void onlyComingBackFromOutsideSkyBlockSendsAPlayerBackToTheirRun() {
+        assertTrue(InstancedRunRejoin.cameBackToSkyBlock(ServerType.PROTOTYPE_LOBBY, ServerType.SKYBLOCK_HUB));
+        assertTrue(InstancedRunRejoin.cameBackToSkyBlock(null, ServerType.SKYBLOCK_HUB));
+        assertTrue(InstancedRunRejoin.cameBackToSkyBlock(ServerType.SKYBLOCK_HUB, ServerType.SKYBLOCK_HUB));
+        assertFalse(InstancedRunRejoin.cameBackToSkyBlock(ServerType.SKYBLOCK_CATACOMBS, ServerType.SKYBLOCK_HUB));
+        assertFalse(InstancedRunRejoin.cameBackToSkyBlock(ServerType.SKYBLOCK_DUNGEON_HUB, ServerType.SKYBLOCK_ISLAND));
+    }
+
+    @Test
     void otherGamesAndMissingGamesAreIgnored() {
         assertFalse(InstancedRunRejoin.shouldRejoin(response(true, ServerType.BEDWARS_GAME)));
         assertFalse(InstancedRunRejoin.shouldRejoin(response(false, ServerType.SKYBLOCK_CATACOMBS)));

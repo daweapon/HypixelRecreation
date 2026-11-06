@@ -19,6 +19,10 @@ public final class InstancedRunRejoin {
         return RUN_SERVERS.contains(type);
     }
 
+    public static boolean cameBackToSkyBlock(ServerType origin, ServerType current) {
+        return origin == null || origin == current || !origin.isSkyBlock();
+    }
+
     public static boolean shouldRejoin(RejoinGameProtocol.RejoinGameResponse response) {
         return response != null && response.hasActiveGame() && response.server() != null && isRunServer(response.server().type());
     }
