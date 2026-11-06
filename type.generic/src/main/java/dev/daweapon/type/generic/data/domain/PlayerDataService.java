@@ -20,11 +20,13 @@ import java.util.concurrent.locks.ReentrantLock;
 public final class PlayerDataService {
     private static final long HANDOFF_SAVE_SUPPRESSION_MILLIS = 60_000;
     private static final int LIFECYCLE_LOCK_COUNT = 64;
+    private static final long TRANSFER_APPLY_WAIT_MILLIS = 15_000;
 
     private static final List<PlayerDataDomain<?>> registered = new CopyOnWriteArrayList<>();
     private static final Map<String, Map<UUID, DataHandler>> caches = new ConcurrentHashMap<>();
     private static final Map<UUID, Long> handoffs = new ConcurrentHashMap<>();
     private static final Map<UUID, Long> discards = new ConcurrentHashMap<>();
+    private static final Map<UUID, HypixelPlayer> appliedTo = new ConcurrentHashMap<>();
     private static final ReentrantLock[] lifecycleLocks = createLifecycleLocks();
 
     private PlayerDataService() {}
@@ -146,6 +148,7 @@ public final class PlayerDataService {
         lock.lock();
         try {
             discards.remove(uuid);
+            appliedTo.remove(uuid);
             for (PlayerDataDomain<?> domain : active(type)) domain.load(uuid);
         } finally {
             lock.unlock();
@@ -157,6 +160,7 @@ public final class PlayerDataService {
         lock.lock();
         try {
             discards.put(uuid, System.currentTimeMillis());
+            appliedTo.remove(uuid);
             DataWriteQueue.remove(uuid);
             for (PlayerDataDomain<?> domain : active(type)) {
                 try {
@@ -183,6 +187,27 @@ public final class PlayerDataService {
                         domain.getClass().getSimpleName(), player.getUuid());
             }
         }
+        appliedTo.put(player.getUuid(), player);
+        if (player.isRemoved()) appliedTo.remove(player.getUuid(), player);
+    }
+
+    /**
+     * True once the loaded data has been put on this player. Until then their live inventory, armour and experience
+     * are still empty, and saving them would overwrite the stored profile with nothing.
+     */
+    private static boolean isApplied(HypixelPlayer player) {
+        return appliedTo.get(player.getUuid()) == player;
+    }
+
+    private static boolean awaitApplied(HypixelPlayer player, long timeoutMillis) {
+        long deadline = System.nanoTime() + timeoutMillis * 1_000_000L;
+        long sleepNanos = 1_000_000L;
+        while (!isApplied(player)) {
+            if (System.nanoTime() >= deadline || Thread.currentThread().isInterrupted()) return false;
+            LockSupport.parkNanos(sleepNanos);
+            sleepNanos = Math.min(sleepNanos * 2, 16_000_000L);
+        }
+        return true;
     }
 
     public static void saveAndUnloadAll(ServerType type, HypixelPlayer player) {
@@ -194,8 +219,12 @@ public final class PlayerDataService {
             boolean handedOff = consumeHandoff(uuid);
             List<PlayerDataDomain<?>> domains = active(type);
 
+            boolean wasApplied = appliedTo.remove(uuid, player);
             DataWriteQueue.drain(uuid);
-            if (!handedOff && !discarded) {
+            if (!wasApplied && !handedOff && !discarded) {
+                Logger.warn("Not saving {} on unload: their data was never applied to them", uuid);
+            }
+            if (wasApplied && !handedOff && !discarded) {
                 for (PlayerDataDomain<?> domain : domains) {
                     try {
                         domain.save(player);
@@ -222,7 +251,7 @@ public final class PlayerDataService {
         ReentrantLock lock = lifecycleLock(uuid);
         lock.lock();
         try {
-            if (isSaveSuppressed(uuid)) return;
+            if (isSaveSuppressed(uuid) || !isApplied(player)) return;
             for (PlayerDataDomain<?> domain : active(type)) {
                 if (!isLoaded(domain.key(), uuid)) continue;
                 try {
@@ -237,10 +266,18 @@ public final class PlayerDataService {
     }
 
     public static void flushForTransfer(ServerType type, HypixelPlayer player) {
+        flushForTransfer(type, player, TRANSFER_APPLY_WAIT_MILLIS);
+    }
+
+    static void flushForTransfer(ServerType type, HypixelPlayer player, long applyWaitMillis) {
         UUID uuid = player.getUuid();
+        if (!awaitApplied(player, applyWaitMillis)) {
+            throw new IllegalStateException("Your data is still loading");
+        }
         ReentrantLock lock = lifecycleLock(uuid);
         lock.lock();
         try {
+            if (!isApplied(player)) throw new IllegalStateException("Your data is still loading");
             DataWriteQueue.drain(uuid);
             for (PlayerDataDomain<?> domain : active(type)) domain.save(player);
             handoffs.put(uuid, System.currentTimeMillis());

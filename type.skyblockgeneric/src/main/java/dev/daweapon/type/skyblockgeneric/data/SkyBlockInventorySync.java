@@ -7,7 +7,6 @@ import dev.daweapon.type.generic.data.datapoints.*;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.*;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.updater.NonPlayerItemUpdater;
-import dev.daweapon.type.skyblockgeneric.item.updater.PlayerItemOrigin;
 import dev.daweapon.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import dev.daweapon.type.skyblockgeneric.trade.TradeManager;
 import dev.daweapon.type.skyblockgeneric.trade.TradeOffer;
@@ -38,16 +37,13 @@ final class SkyBlockInventorySync {
                 displaced.add(loaded);
                 return;
             }
-            PlayerItemOrigin origin = PlayerItemOrigin.INVENTORY_SLOT;
-            origin.setData(slot);
-
             ItemStack updated = PlayerItemUpdater.playerUpdate(
                     player,
                     loaded.getItemStack(),
                     true
             ).build();
 
-            origin.setStack(player, updated);
+            player.getInventory().setItemStack(slot, updated);
         });
 
         player.getInventory().setItemStack(8,

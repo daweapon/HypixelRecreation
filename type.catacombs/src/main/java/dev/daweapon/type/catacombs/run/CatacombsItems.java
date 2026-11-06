@@ -2,6 +2,7 @@ package dev.daweapon.type.catacombs.run;
 
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import net.minestom.server.entity.Player;
+import net.minestom.server.inventory.PlayerInventory;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.minestom.server.tag.Tag;
@@ -9,6 +10,8 @@ import net.minestom.server.tag.Tag;
 /** The one run-only item: the ready-up dye in the hotbar before the run starts. */
 public final class CatacombsItems {
     public static final int READY_SLOT = 4;
+    private static final int MENU_SLOT = 8;
+    private static final int INVENTORY_SLOTS = 36;
     private static final Tag<String> TAG = Tag.String("catacombs_item");
     private static final String READY = "READY";
 
@@ -35,12 +38,33 @@ public final class CatacombsItems {
     }
 
     public static void showReady(Player player, boolean ready) {
-        player.getInventory().setItemStack(READY_SLOT, ready(ready));
+        showReady(player.getInventory(), ready);
+    }
+
+    /** Never covers one of the player's own items: the dye goes to its slot only when that slot is free. */
+    static void showReady(PlayerInventory inventory, boolean ready) {
+        int slot = readySlot(inventory);
+        if (slot >= 0) inventory.setItemStack(slot, ready(ready));
+    }
+
+    private static int readySlot(PlayerInventory inventory) {
+        for (int slot = 0; slot < INVENTORY_SLOTS; slot++) {
+            if (isReadyItem(inventory.getItemStack(slot))) return slot;
+        }
+        if (inventory.getItemStack(READY_SLOT).isAir()) return READY_SLOT;
+        for (int slot = 0; slot < INVENTORY_SLOTS; slot++) {
+            if (slot != MENU_SLOT && inventory.getItemStack(slot).isAir()) return slot;
+        }
+        return -1;
     }
 
     public static void remove(Player player) {
-        if (isReadyItem(player.getInventory().getItemStack(READY_SLOT))) {
-            player.getInventory().setItemStack(READY_SLOT, ItemStack.AIR);
+        remove(player.getInventory());
+    }
+
+    static void remove(PlayerInventory inventory) {
+        for (int slot = 0; slot < INVENTORY_SLOTS; slot++) {
+            if (isReadyItem(inventory.getItemStack(slot))) inventory.setItemStack(slot, ItemStack.AIR);
         }
     }
 }
