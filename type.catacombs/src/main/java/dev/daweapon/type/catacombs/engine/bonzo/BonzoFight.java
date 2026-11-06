@@ -186,7 +186,7 @@ public final class BonzoFight implements BonzoBoss.Fight {
 
     private void skull(boolean toCentre) {
         if (toCentre) teleport(BonzoArenaSpots.BONZO_SPAWN);
-        SkyBlockPlayer target = bonzo.nearestPlayer(48, player -> true).orElse(null);
+        SkyBlockPlayer target = bonzo.nearestPlayer(48, this::targetable).orElse(null);
         if (target == null) return;
         Pos at = bonzo.getPosition();
         host.instance().playSound(SHOOT, at.x(), at.y(), at.z());
@@ -194,7 +194,7 @@ public final class BonzoFight implements BonzoBoss.Fight {
     }
 
     private void balloon() {
-        SkyBlockPlayer target = bonzo.nearestPlayer(48, player -> true).orElse(null);
+        SkyBlockPlayer target = bonzo.nearestPlayer(48, this::targetable).orElse(null);
         if (target == null) return;
         Pos at = bonzo.getPosition();
         host.instance().playSound(SHOOT, at.x(), at.y(), at.z());
@@ -264,6 +264,11 @@ public final class BonzoFight implements BonzoBoss.Fight {
     public synchronized void bonzoLifeLost(BonzoBoss boss) {
         perform(script.lifeLost());
         if (script.phase() == BonzoScript.Phase.DEFEATED && boss.getInstance() != null) MobDeaths.record(boss, boss.getInstance());
+    }
+
+    @Override
+    public boolean targetable(SkyBlockPlayer player) {
+        return host.alivePlayers().contains(player);
     }
 
     @Override

@@ -21,6 +21,8 @@ import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.instance.block.Block;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -161,10 +163,10 @@ final class BossEncounter implements CatacombsMob.Listener {
         host.instance().loadChunk(spawn).thenRun(bonzo::start);
     }
 
-    /** Where the reward chests go: around Bonzo's spawn in the real arena, otherwise near the placeholder boss. */
-    Pos rewardCentre() {
+    /** Where the reward chests go: around Bonzo's spawn in the real arena, near the placeholder boss, or null before any boss. */
+    @Nullable Pos rewardCentre() {
         if (bonzo != null) return BonzoArenaSpots.BONZO_SPAWN;
-        return box.bossSpot();
+        return entered ? box.bossSpot() : null;
     }
 
     boolean realArena() {

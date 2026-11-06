@@ -182,7 +182,7 @@ public final class DungeonEngine {
         arrivedAtBoss();
     }
 
-    public Pos rewardCentre() {
+    public @Nullable Pos rewardCentre() {
         return boss.rewardCentre();
     }
 

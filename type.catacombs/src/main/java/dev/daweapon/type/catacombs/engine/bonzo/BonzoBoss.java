@@ -35,6 +35,8 @@ public final class BonzoBoss extends CatacombsMob {
         void bonzoHurt(BonzoBoss bonzo);
 
         void bonzoLifeLost(BonzoBoss bonzo);
+
+        boolean targetable(SkyBlockPlayer player);
     }
 
     public enum Stance {STILL, WANDER, CHASE}
@@ -163,7 +165,7 @@ public final class BonzoBoss extends CatacombsMob {
     }
 
     private void chase(int ticks) {
-        SkyBlockPlayer target = nearestPlayer(48, player -> true).orElse(null);
+        SkyBlockPlayer target = nearestPlayer(48, fight::targetable).orElse(null);
         if (target == null) return;
         if (ticks % 5 == 0) getVanillaNavigator().pathTo(target.getPosition());
         if (getPosition().distance(target.getPosition()) <= MELEE_RANGE && ticks - lastMelee >= MELEE_COOLDOWN) {
