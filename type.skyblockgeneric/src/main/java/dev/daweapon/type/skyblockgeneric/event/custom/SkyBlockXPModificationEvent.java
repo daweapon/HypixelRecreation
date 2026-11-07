@@ -18,11 +18,19 @@ public class SkyBlockXPModificationEvent implements PlayerInstanceEvent {
     private @Nullable SkyBlockLevelCauseAbstr cause;
     private double oldXP;
     private double newXP;
+    /** A reconciliation of stored progress (such as the join-time sync), not something the player just earned. */
+    private boolean reconciliation;
 
     public SkyBlockXPModificationEvent(SkyBlockPlayer player, @Nullable SkyBlockLevelCauseAbstr cause, double oldXP, double newXP) {
+        this(player, cause, oldXP, newXP, false);
+    }
+
+    public SkyBlockXPModificationEvent(SkyBlockPlayer player, @Nullable SkyBlockLevelCauseAbstr cause, double oldXP, double newXP,
+                                       boolean reconciliation) {
         this.player = player;
         this.cause = cause;
         this.oldXP = oldXP;
         this.newXP = newXP;
+        this.reconciliation = reconciliation;
     }
 }

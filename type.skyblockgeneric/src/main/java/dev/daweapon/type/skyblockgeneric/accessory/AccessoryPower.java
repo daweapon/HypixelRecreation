@@ -25,10 +25,21 @@ public final class AccessoryPower {
     }
 
     public static int of(SkyBlockPlayer player) {
+        return of(player, DungeonAccessoryHook.isInDungeon(player));
+    }
+
+    /**
+     * Accessory Power without the in-dungeon doubling. Anything that is stored on the profile, such as the
+     * Accessory Bag SkyBlock XP task, must use this so it reads the same on every server.
+     */
+    public static int outsideDungeons(SkyBlockPlayer player) {
+        return of(player, false);
+    }
+
+    private static int of(SkyBlockPlayer player, boolean inDungeon) {
         boolean imbued = player.getSkyblockDataHandler()
                 .get(SkyBlockDataHandler.Data.RIFT_PRISM_IMBUED, DatapointBoolean.class).getValue();
-        return of(AccessoryOwnership.active(player), abiphoneContacts(player), imbued,
-                DungeonAccessoryHook.isInDungeon(player));
+        return of(AccessoryOwnership.active(player), abiphoneContacts(player), imbued, inDungeon);
     }
 
     public static int of(List<OwnedAccessory> active, int abiphoneContacts, boolean riftPrismImbued, boolean inDungeon) {

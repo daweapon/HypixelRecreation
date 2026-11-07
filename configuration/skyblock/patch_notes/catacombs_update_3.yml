@@ -15,6 +15,7 @@ sections:
       - "43 more real rooms from four Hypixel Master Mode Floor 7 runs, among them Atlas, Buttons, Crypt, Draw Bridge, Lava Ravine, Layers, Melon, Quartz Knight, Sewer, Stairs, Withermancers, Admin, Tomioka and Zodd, a second Trap room, a second Default miniboss room and a second Blood room. The Three Weirdos, Boulder, Tic Tac Toe and Blaze puzzle rooms are now real rooms too."
       - "Start, Blood, Fairy, Hallway, Gravel, Museum, Deathmite, Dino Site, Red Blue, Ice Fill, Trap and the Shadow Assassin room now use the blocks captured on Hypixel, with real skulls and details."
       - "Mobs in the Master Mode rooms stand where they stood on Hypixel; each higher-floor mob becomes its Floor 1 counterpart (a Zombie Knight is a Zombie Grunt) and keeps its star."
+      - "No more blank grey rooms: every room in a run is a real Hypixel room. The map picks rooms whose doorways fit instead of giving up and filling the run with placeholders, and if every fitting room is already used, a real room repeats."
   - heading: "Looks like Hypixel"
     colour: "<b>"
     lines:
@@ -36,11 +37,17 @@ sections:
     lines:
       - "Floor 1's portal now leads into Hypixel's own Bonzo arena, the circus tent, copied block for block."
       - "Bonzo talks, dashes off, throws summoning orbs that land as Undead, fires Wither Skulls, says \"Oh I'm dead!\" and \"Sike\", then comes back for a second life with Bonzo's Staff, balloons and a Balloon Barrage."
+      - "When his first life runs out Bonzo drops his staff, topples over and lies flat on the floor, unhittable, until \"Sike\" gets him back on his feet."
       - "When he falls, the score screen, EXTRA STATS and the re-queue link appear as on Hypixel, and the two exit gates sink into the floor."
       - "The reward chests are Hypixel's real chest models on sea lanterns around Bonzo's spawn. Their menus match Hypixel's, and Floor 1 chests cost 20,000, 40,000 and 80,000 coins as on Hypixel."
       - "The exit portal at the end of the corridor takes you back to the Dungeon Hub."
+  - heading: "Fixes"
+    colour: "<e>"
+    lines:
+      - "Entering a Catacombs run no longer shows a SkyBlock Level Up every time. Dungeon accessories count double inside Dungeons, and that was leaking into the Accessory Bag SkyBlock XP task."
+      - "Joining a server never announces a SkyBlock Level Up; it only brings your level up to date."
   - heading: "Not here yet"
     colour: "<c>"
     lines:
-      - "Rare rooms and the Ice Path puzzle are still placeholders, and the real puzzle rooms cannot be solved yet. Tomioka's shop is not working yet, and a few levers (Deathmite, Rails, Trap Hard) still open nothing because what they open has not been worked out."
+      - "Rare rooms and the Ice Path puzzle are not built yet, so runs use other real rooms in their place, and the real puzzle rooms cannot be solved yet. Tomioka's shop is not working yet, and a few levers (Deathmite, Rails, Trap Hard) still open nothing because what they open has not been worked out."
       - "Mobs in the Market, Well, Wizard and Quiz rooms and some crypt spots are still placed by estimate."

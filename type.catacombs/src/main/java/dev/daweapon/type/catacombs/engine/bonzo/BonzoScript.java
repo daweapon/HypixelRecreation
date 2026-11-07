@@ -15,7 +15,9 @@ import java.util.random.RandomGenerator;
  *     <li>his first hurt says "Oh noes, you got me.. what ever will I do?!", then a random line every 4.1 s;</li>
  *     <li>about 10 s after he starts moving he teleports to the middle of the arena and fires a Wither Skull, then a
  *     second one 0.7 s later;</li>
- *     <li>at 0 health: "Oh I'm dead!", "Sike" 3.1 s later, his second life 1.1 s after that;</li>
+ *     <li>at 0 health he drops his staff and falls over (the DYING pose at 0 health), about 1 s later lies flat on the
+ *     floor (the SLEEPING pose) as he says "Oh I'm dead!", "Sike" 3.1 s later, and 1.1 s after that he is back on his
+ *     feet for his second life;</li>
  *     <li>at 0 again: the final line, the death sounds 0.35 s later, the score 2.25 s later, "But my masters are a lot
  *     stronger.." at 4.1 s, the first exit gate at 4.2 s, the second 2 s later and "Just you wait..." at 8.2 s.</li>
  * </ul>
@@ -37,6 +39,12 @@ public final class BonzoScript {
     }
 
     public record SkullVolley(boolean toCentre) implements Action {
+    }
+
+    public record FallOver() implements Action {
+    }
+
+    public record LieDown() implements Action {
     }
 
     public record Revive() implements Action {
@@ -68,6 +76,7 @@ public final class BonzoScript {
     public static final int SKULL_AFTER_MOVING = 200;
     public static final int SKULL_GAP = 200;
     public static final int SECOND_SKULL = 14;
+    public static final int LIE_DOWN_AFTER = 20;
     public static final int SIKE_AFTER = 62;
     public static final int REVIVE_AFTER_SIKE = 22;
     public static final int BALLOON_FIRST = 40;
@@ -164,8 +173,13 @@ public final class BonzoScript {
     }
 
     private void downed(List<Action> actions) {
-        if (now == downedAt + SIKE_AFTER) actions.add(new Say(SIKE));
-        if (now < downedAt + SIKE_AFTER + REVIVE_AFTER_SIKE) return;
+        long lyingAt = downedAt + LIE_DOWN_AFTER;
+        if (now == lyingAt) {
+            actions.add(new LieDown());
+            actions.add(new Say(DEAD));
+        }
+        if (now == lyingAt + SIKE_AFTER) actions.add(new Say(SIKE));
+        if (now < lyingAt + SIKE_AFTER + REVIVE_AFTER_SIKE) return;
         phase = Phase.SECOND_LIFE;
         revivedAt = now;
         nextBalloon = now + BALLOON_FIRST;
@@ -211,7 +225,7 @@ public final class BonzoScript {
         if (phase == Phase.FIRST_LIFE) {
             phase = Phase.DOWNED;
             downedAt = now;
-            return List.of(new Say(DEAD));
+            return List.of(new FallOver());
         }
         if (phase == Phase.SECOND_LIFE) {
             phase = Phase.DEFEATED;

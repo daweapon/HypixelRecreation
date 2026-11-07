@@ -3,7 +3,6 @@ package dev.daweapon.dungeons.catacombs.layout;
 import dev.daweapon.dungeons.catacombs.CatacombsFloor;
 import dev.daweapon.dungeons.catacombs.CatacombsMode;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -18,18 +17,12 @@ import java.util.Random;
 import java.util.Set;
 
 final class LayoutAttempt {
-    enum NormalPool {
-        REAL_FIRST,
-        ANY,
-        PLACEHOLDERS
-    }
-
     private static final double EXTRA_DOOR_CHANCE = 0.2;
     private static final double RARE_CHANCE = 0.1;
     private static final int MAX_PATH_NUMERATOR = 3;
     private static final int MAX_PATH_DENOMINATOR = 5;
 
-    private record Draft(RoomKind kind, RoomShape shape, Rotation rotation, List<Cell> cells) {
+    private record Draft(RoomKind kind, RoomShape shape, List<Cell> cells) {
         Cell firstCell() {
             return cells.getFirst();
         }
@@ -47,20 +40,19 @@ final class LayoutAttempt {
     private final RoomTemplateLibrary library;
     private final RoomBudget fixedBudget;
     private final Random random;
-    private final NormalPool normalPool;
+    private final boolean allowPlaceholders;
     private final int width;
     private final int height;
-    private final Map<String, ArrayDeque<RoomTemplate>> pools = new HashMap<>();
 
     LayoutAttempt(CatacombsFloor floor, CatacombsMode mode, long seed, RoomTemplateLibrary library,
-                  RoomBudget fixedBudget, Random random, NormalPool normalPool) {
+                  RoomBudget fixedBudget, Random random, boolean allowPlaceholders) {
         this.floor = floor;
         this.mode = mode;
         this.seed = seed;
         this.library = library;
         this.fixedBudget = fixedBudget;
         this.random = random;
-        this.normalPool = normalPool;
+        this.allowPlaceholders = allowPlaceholders;
         this.width = floor.dungeonSize().width();
         this.height = floor.dungeonSize().height();
     }
@@ -83,7 +75,7 @@ final class LayoutAttempt {
             return null;
         }
         List<Draft> drafts = draftRooms(specialCells, pathIndex);
-        List<PlacedRoom> rooms = placeRooms(drafts, new HashSet<>(path));
+        List<RoomSlot> rooms = slots(drafts, new HashSet<>(path));
         Map<Cell, Integer> roomOfCell = new HashMap<>();
         rooms.forEach(room -> room.cells().forEach(cell -> roomOfCell.put(cell, room.index())));
 
@@ -100,7 +92,7 @@ final class LayoutAttempt {
         if (doors == null) {
             return null;
         }
-        List<PlacedRoom> settled = sockets.settle(random);
+        List<PlacedRoom> settled = sockets.settle();
         if (settled == null) {
             return null;
         }
@@ -126,9 +118,9 @@ final class LayoutAttempt {
         Collections.shuffle(candidates, random);
 
         RoomBudget budget = fixedBudget != null ? fixedBudget : RoomBudget.forFloor(floor, random);
-        int puzzles = Math.min(budget.puzzles(), library.templates(RoomKind.PUZZLE).size());
-        int minibosses = Math.min(budget.minibosses(), library.templates(RoomKind.MINIBOSS).size());
-        int traps = Math.min(budget.traps(), library.templates(RoomKind.TRAP).size());
+        int puzzles = Math.min(budget.puzzles(), templates(RoomKind.PUZZLE, RoomShape.ONE_BY_ONE).size());
+        int minibosses = Math.min(budget.minibosses(), templates(RoomKind.MINIBOSS, RoomShape.ONE_BY_ONE).size());
+        int traps = Math.min(budget.traps(), templates(RoomKind.TRAP, RoomShape.ONE_BY_ONE).size());
         if (candidates.size() < puzzles + minibosses + traps) {
             return null;
         }
@@ -156,7 +148,7 @@ final class LayoutAttempt {
         List<Draft> drafts = new ArrayList<>();
         specialCells.forEach((cell, kind) -> {
             reserved[cell.col()][cell.row()] = true;
-            drafts.add(new Draft(kind, RoomShape.ONE_BY_ONE, randomRotation(), List.of(cell)));
+            drafts.add(new Draft(kind, RoomShape.ONE_BY_ONE, List.of(cell)));
         });
 
         Set<RoomShape> allowedShapes = EnumSet.noneOf(RoomShape.class);
@@ -170,61 +162,49 @@ final class LayoutAttempt {
                 builtShapes.add(shape);
             }
         }
-        int rareRemaining = library.templates(RoomKind.RARE).size();
+        int rareRemaining = hasReal(RoomKind.RARE, RoomShape.ONE_BY_ONE) || !hasReal(RoomKind.NORMAL, RoomShape.ONE_BY_ONE)
+                ? templates(RoomKind.RARE, RoomShape.ONE_BY_ONE).size() : 0;
         for (RoomTiler.Tile tile : RoomTiler.tile(width, height, reserved, pathIndex, allowedShapes, builtShapes, random)) {
             RoomKind kind = RoomKind.NORMAL;
             if (tile.shape() == RoomShape.ONE_BY_ONE && rareRemaining > 0 && random.nextDouble() < RARE_CHANCE) {
                 kind = RoomKind.RARE;
                 rareRemaining--;
             }
-            drafts.add(new Draft(kind, tile.shape(), tile.rotation(), tile.cells()));
+            drafts.add(new Draft(kind, tile.shape(), tile.cells()));
         }
         drafts.sort(Comparator.comparingInt((Draft draft) -> draft.firstCell().row())
                 .thenComparingInt(draft -> draft.firstCell().col()));
         return drafts;
     }
 
-    private Rotation randomRotation() {
-        return Rotation.values()[random.nextInt(Rotation.values().length)];
-    }
-
-    private List<PlacedRoom> placeRooms(List<Draft> drafts, Set<Cell> pathCells) {
-        List<PlacedRoom> rooms = new ArrayList<>();
+    private List<RoomSlot> slots(List<Draft> drafts, Set<Cell> pathCells) {
+        List<RoomSlot> slots = new ArrayList<>();
         for (int index = 0; index < drafts.size(); index++) {
             Draft draft = drafts.get(index);
-            int minCol = draft.cells().stream().mapToInt(Cell::col).min().orElseThrow();
-            int minRow = draft.cells().stream().mapToInt(Cell::row).min().orElseThrow();
             boolean onPath = draft.cells().stream().anyMatch(pathCells::contains);
-            RoomTemplate template = nextTemplate(draft.kind(), draft.shape());
-            Rotation rotation = template.rotationLock().orElse(draft.rotation());
-            rooms.add(new PlacedRoom(index, template, rotation, new Cell(minCol, minRow), draft.cells(), onPath));
+            slots.add(RoomSlot.of(index, draft.kind(), draft.shape(), draft.cells(), onPath,
+                    templates(draft.kind(), draft.shape()), random));
         }
-        return rooms;
+        return slots;
     }
 
-    private RoomTemplate nextTemplate(RoomKind kind, RoomShape shape) {
-        ArrayDeque<RoomTemplate> pool = pools.computeIfAbsent(kind + "/" + shape, key -> new ArrayDeque<>());
-        if (pool.isEmpty()) {
-            List<RoomTemplate> refill = new ArrayList<>(templates(kind, shape));
-            Collections.shuffle(refill, random);
-            pool.addAll(refill);
-        }
-        return pool.removeFirst();
-    }
-
+    /**
+     * The templates a room of this kind and shape may use. Real rooms only, as long as any real room of that kind and
+     * shape exists: a repeated real room is better than a blank placeholder. Placeholders fill in when none exists, or
+     * on the generator's last-resort attempts.
+     */
     private List<RoomTemplate> templates(RoomKind kind, RoomShape shape) {
         List<RoomTemplate> all = library.templates(kind, shape);
-        if (kind != RoomKind.NORMAL) {
-            return all;
-        }
-        return switch (normalPool) {
-            case PLACEHOLDERS -> all.stream().filter(RoomTemplate::placeholder).toList();
-            case ANY -> all;
-            case REAL_FIRST -> {
-                List<RoomTemplate> real = all.stream().filter(template -> !template.placeholder()).toList();
-                yield real.isEmpty() ? all : real;
-            }
-        };
+        List<RoomTemplate> real = all.stream().filter(template -> !template.placeholder()).toList();
+        if (real.isEmpty()) return all;
+        if (!allowPlaceholders) return real;
+        List<RoomTemplate> realFirst = new ArrayList<>(real);
+        all.stream().filter(RoomTemplate::placeholder).forEach(realFirst::add);
+        return realFirst;
+    }
+
+    private boolean hasReal(RoomKind kind, RoomShape shape) {
+        return library.templates(kind, shape).stream().anyMatch(template -> !template.placeholder());
     }
 
     private List<Integer> roomPath(List<Cell> path, Map<Cell, Integer> roomOfCell) {
@@ -242,7 +222,7 @@ final class LayoutAttempt {
         return roomPath;
     }
 
-    private List<LayoutDoor> buildDoors(List<Cell> path, List<Integer> roomPath, List<PlacedRoom> rooms,
+    private List<LayoutDoor> buildDoors(List<Cell> path, List<Integer> roomPath, List<RoomSlot> rooms,
                                         Map<Cell, Integer> roomOfCell, SocketBook sockets, int fairyRoom) {
         int bloodRoom = roomPath.getLast();
         int fairyStep = roomPath.indexOf(fairyRoom);

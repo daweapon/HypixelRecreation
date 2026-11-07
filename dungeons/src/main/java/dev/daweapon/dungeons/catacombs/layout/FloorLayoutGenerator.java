@@ -8,8 +8,7 @@ import java.util.Random;
 
 public final class FloorLayoutGenerator {
     private static final int MAX_ATTEMPTS = 500;
-    private static final int REAL_FIRST_ATTEMPTS = 200;
-    private static final int REAL_ROOM_ATTEMPTS = 350;
+    private static final int REAL_ROOM_ATTEMPTS = 450;
     private static final long ATTEMPT_MIX = 0x9E3779B97F4A7C15L;
 
     private FloorLayoutGenerator() {
@@ -28,19 +27,12 @@ public final class FloorLayoutGenerator {
         requireTemplates(floor, library);
         for (int attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
             Random random = new Random(seed + attempt * ATTEMPT_MIX);
-            FloorLayout layout = new LayoutAttempt(floor, mode, seed, library, budget, random, pool(attempt)).build();
+            FloorLayout layout = new LayoutAttempt(floor, mode, seed, library, budget, random, attempt >= REAL_ROOM_ATTEMPTS).build();
             if (layout != null) {
                 return layout;
             }
         }
         throw new IllegalStateException("Could not generate a " + floor.displayName() + " layout for seed " + seed);
-    }
-
-    private static LayoutAttempt.NormalPool pool(int attempt) {
-        if (attempt < REAL_FIRST_ATTEMPTS) {
-            return LayoutAttempt.NormalPool.REAL_FIRST;
-        }
-        return attempt < REAL_ROOM_ATTEMPTS ? LayoutAttempt.NormalPool.ANY : LayoutAttempt.NormalPool.PLACEHOLDERS;
     }
 
     private static void requireTemplates(CatacombsFloor floor, RoomTemplateLibrary library) {

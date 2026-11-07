@@ -46,7 +46,10 @@ public class ActionSyncSkyBlockXPOnJoin implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void onSpawn(PlayerSpawnEvent event) {
         if (!event.isFirstSpawn()) return;
-        SkyBlockPlayer player = (SkyBlockPlayer) event.getPlayer();
-        player.getSkyBlockExperience().batch(() -> SYNCS.forEach(sync -> sync.accept(player)));
+        reconcile((SkyBlockPlayer) event.getPlayer());
+    }
+
+    public static void reconcile(SkyBlockPlayer player) {
+        player.getSkyBlockExperience().reconcile(() -> SYNCS.forEach(sync -> sync.accept(player)));
     }
 }
