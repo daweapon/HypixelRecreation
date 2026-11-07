@@ -208,6 +208,41 @@ class FloorLayoutGeneratorTest {
     }
 
     @Test
+    void placeholdersOnlyAppearWhereNoRealRoomOfThatKindAndShapeExists() {
+        for (CatacombsFloor floor : CatacombsFloor.values()) {
+            for (long seed = 0; seed < 60; seed++) {
+                FloorLayout layout = generate(floor, seed);
+                for (PlacedRoom room : layout.rooms()) {
+                    if (!room.template().placeholder()) continue;
+                    boolean realExists = library.templates(room.kind(), room.shape()).stream().anyMatch(template -> !template.placeholder());
+                    assertFalse(realExists, room.template().id() + " used although a real " + room.kind() + " " + room.shape()
+                            + " exists\n" + layout.render());
+                    assertNotEquals(RoomKind.RARE, room.kind(), "placeholder rare room instead of a real 1x1\n" + layout.render());
+                }
+            }
+        }
+    }
+
+    @Test
+    void playTestSeedThatHadABlankRoomBesideTheStartIsAllRealRooms() {
+        FloorLayout layout = generate(CatacombsFloor.FLOOR_ONE, 1068654972616244420L);
+        assertValid(layout);
+        assertTrue(layout.rooms().stream().noneMatch(room -> room.template().placeholder()), layout.render());
+    }
+
+    @Test
+    void roomsRepeatOnlyWhenNoUnusedRealRoomFits() {
+        int rooms = 0;
+        int repeats = 0;
+        for (long seed = 0; seed < 100; seed++) {
+            FloorLayout layout = generate(CatacombsFloor.FLOOR_ONE, seed);
+            rooms += layout.rooms().size();
+            repeats += layout.rooms().size() - (int) layout.rooms().stream().map(room -> room.template().id()).distinct().count();
+        }
+        assertTrue(repeats * 20 < rooms, repeats + " repeated rooms out of " + rooms);
+    }
+
+    @Test
     void masterModeUsesTheSameGrid() {
         FloorLayout layout = FloorLayoutGenerator.generate(CatacombsFloor.FLOOR_FIVE, CatacombsMode.MASTER, 7L, library);
         assertEquals(6, layout.width());
