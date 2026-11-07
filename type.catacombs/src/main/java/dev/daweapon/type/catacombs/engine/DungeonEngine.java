@@ -13,6 +13,8 @@ import dev.daweapon.dungeons.catacombs.layout.PlacedRoom;
 import dev.daweapon.dungeons.catacombs.layout.RoomKind;
 import dev.daweapon.type.catacombs.blessing.BlessingStats;
 import dev.daweapon.type.catacombs.blessing.PartyBlessings;
+import dev.daweapon.type.catacombs.breaker.DungeonbreakerEngine;
+import dev.daweapon.type.skyblockgeneric.dungeons.breaker.Dungeonbreaker;
 import dev.daweapon.type.catacombs.crypt.CryptEngine;
 import dev.daweapon.type.catacombs.crypt.CryptPlan;
 import dev.daweapon.type.catacombs.map.DungeonMapView;
@@ -48,6 +50,7 @@ public final class DungeonEngine {
     private final SecretLevers levers;
     private final SuperboomWalls walls;
     private final SuperboomTnt superboom = new SuperboomTnt();
+    private final DungeonbreakerEngine breaker;
     private final DungeonMapView map;
     private final BloodBlessings bloodBlessings = new BloodBlessings();
     private final FairyRoom fairies;
@@ -65,10 +68,12 @@ public final class DungeonEngine {
         this.boss = new BossEncounter(host, floor, blood);
         this.bloodRoom = new BloodRoomEncounter(host, blood, floor, this::bloodRoomCleared);
         this.blessings = new PartyBlessings(host, BlessingStats.effectiveness(floor));
-        this.secrets = new SecretEngine(host, layout, floor, blessings);
+        this.secrets = new SecretEngine(host, layout, floor, blessings,
+                finder -> Dungeonbreaker.secretFound(finder, System.currentTimeMillis()));
         this.crypts = new CryptEngine(host, CryptPlan.of(layout));
         this.levers = new SecretLevers(host, layout, RoomMechanisms.shared());
         this.walls = new SuperboomWalls(host, layout, RoomMechanisms.shared());
+        this.breaker = new DungeonbreakerEngine(host, layout, floor, rooms::isDiscovered, this::isMechanism);
         this.map = new DungeonMapView(host, layout, room -> secrets.ledger().allFound(room));
         this.fairies = new FairyRoom(host, layout);
         rooms.discover(layout.startRoom());
@@ -98,6 +103,7 @@ public final class DungeonEngine {
         secrets.poll();
         blessings.apply();
         map.poll();
+        breaker.poll();
     }
 
     private void enter(PlacedRoom room) {
@@ -140,6 +146,18 @@ public final class DungeonEngine {
         if (!walls.blast(x, y, z) && !crypts.blast(x, y, z)) return false;
         superboom.spend(player);
         return true;
+    }
+
+    /** A Dungeonbreaker dig on a block; true when the block came out. */
+    public boolean dig(SkyBlockPlayer player, int x, int y, int z) {
+        return breaker.dig(player, x, y, z);
+    }
+
+    private boolean isMechanism(int x, int y, int z) {
+        if (secrets.isSecretBlock(x, y, z) || levers.isMechanism(x, y, z) || walls.isWallBlock(x, y, z)
+                || crypts.isCryptBlock(x, y, z)) return true;
+        if (host.arena().blocks().gates().blockAt(x, y, z) != null) return true;
+        return layout.doors().stream().anyMatch(door -> DoorFrame.of(door).contains(x, y, z));
     }
 
     public Optional<SecretSpot> collectNearestSecret(SkyBlockPlayer player) {
@@ -241,6 +259,7 @@ public final class DungeonEngine {
     }
 
     public void dispose() {
+        breaker.dispose();
         keyDrops.clear();
         bloodRoom.dispose();
         bloodBlessings.clear();

@@ -42,6 +42,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Consumer;
 import java.util.random.RandomGenerator;
 
 /**
@@ -66,11 +67,14 @@ public final class SecretEngine {
     private final Map<SecretSpot, GroundItem> groundItems = new ConcurrentHashMap<>();
     private final Map<SecretSpot, SecretBat> bats = new ConcurrentHashMap<>();
     private final RandomGenerator random = ThreadLocalRandom.current();
+    private final Consumer<SkyBlockPlayer> onFound;
 
-    public SecretEngine(DungeonHost host, FloorLayout layout, CatacombsFloor floor, PartyBlessings blessings) {
+    public SecretEngine(DungeonHost host, FloorLayout layout, CatacombsFloor floor, PartyBlessings blessings,
+                        Consumer<SkyBlockPlayer> onFound) {
         this.host = host;
         this.floor = floor;
         this.blessings = blessings;
+        this.onFound = onFound;
         this.spots = SecretSpots.of(layout);
         this.ledger = SecretLedger.of(layout);
     }
@@ -186,6 +190,7 @@ public final class SecretEngine {
         if (ground != null) ground.entity().remove();
         if (!ledger.find(spot.key())) return;
         host.recordSecret();
+        onFound.accept(player);
         switch (spot.type()) {
             case CHEST -> {
                 openLid(spot);
@@ -249,6 +254,14 @@ public final class SecretEngine {
                 .filter(SkyBlockPlayer.class::isInstance)
                 .map(SkyBlockPlayer.class::cast)
                 .toList();
+    }
+
+    /** A secret's chest or Wither Essence block, or the spot an item or bat secret marks. */
+    public boolean isSecretBlock(int x, int y, int z) {
+        for (SecretSpot spot : spots) {
+            if (spot.at(x, y, z)) return true;
+        }
+        return false;
     }
 
     public SecretLedger ledger() {

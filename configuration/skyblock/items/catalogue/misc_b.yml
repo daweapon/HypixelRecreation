@@ -911,7 +911,6 @@ items:
     rarity: SPECIAL
     default_statistics:
       speed: 20
-    unavailable: "Needs Dungeons"
     source: "Ophelia for 500 Wither Essence after completing The Catacombs Floor III"
     lore:
       - "§6Ability: Dungeon Breaker §e§lDIG"
@@ -920,11 +919,14 @@ items:
       - "§7be broken at a time, and re-appear after"
       - "§a10s§7. §e2§c⸕§7 charges are regenerated each"
       - "§7second."
-      - ""
-      - "§7Charges: §e20§7/§e20§c⸕"
     components:
       - id: STANDARD_ITEM
         standard_item_type: PICKAXE
+      - id: EXTRA_RARITY
+        display: DUNGEON PICKAXE
+      - id: LORE_UPDATE
+        handler_id: DUNGEONBREAKER
+        is_absolute: false
   - id: DUNGEON_DISC_1
     material: music_disc_stal
     name: "Dungeon Disc"

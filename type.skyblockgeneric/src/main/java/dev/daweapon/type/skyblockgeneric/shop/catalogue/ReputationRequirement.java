@@ -13,7 +13,7 @@ import java.util.Map;
  * A catalogue entry's faction reputation gate, written in shop YAML as
  * {@code requires: { faction: MAGE, tier: HERO }} or {@code requires: { faction: MAGE, reputation: 12000 }}.
  */
-public record ReputationRequirement(CrimsonFaction faction, int reputation) {
+public record ReputationRequirement(CrimsonFaction faction, int reputation) implements ShopRequirement {
 
     public static @Nullable ReputationRequirement parse(@Nullable Object raw) {
         if (!(raw instanceof Map<?, ?> map) || map.get("faction") == null) return null;

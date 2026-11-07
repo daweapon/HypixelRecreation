@@ -1,5 +1,5 @@
 # Ophelia's shop in the Catacombs Entrance (wiki Ophelia/UI, every floor tab merged).
-# Entries gated behind Catacombs floor completions stay unavailable until Dungeons exist.
+# Entries gated behind a Catacombs floor use requires: { catacombs_floor: ... }; the rest still marked unavailable wait on their floor being playable.
 # An entry whose item id is not in the game yet is shown greyed out and starts selling
 # automatically once the item is added.
 title: Ophelia
@@ -123,4 +123,4 @@ entries:
     name: "<c>Dungeonbreaker"
     material: diamond_pickaxe
     cost: { essence: { type: WITHER, amount: 500 } }
-    unavailable: "<c>Requires completing The Catacombs Floor III!\n<8>Dungeons are not available yet."
+    requires: { catacombs_floor: FLOOR_THREE }

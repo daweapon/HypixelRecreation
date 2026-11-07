@@ -67,6 +67,15 @@ public final class SuperboomWalls {
         return true;
     }
 
+    public boolean isWallBlock(int x, int y, int z) {
+        for (PlacedWall placed : walls) {
+            for (int[] at : placed.wall().blocks()) {
+                if (at[0] == x && at[1] == y && at[2] == z) return true;
+            }
+        }
+        return false;
+    }
+
     public List<PlacedWall> walls() {
         return walls;
     }

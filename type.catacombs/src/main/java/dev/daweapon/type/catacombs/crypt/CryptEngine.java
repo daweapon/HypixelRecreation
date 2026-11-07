@@ -107,6 +107,15 @@ public final class CryptEngine {
         }
     }
 
+    /** A crypt's tomb or a block touching it: crypts only open to a Superboom. */
+    public boolean isCryptBlock(int x, int y, int z) {
+        for (CryptPlan.Crypt crypt : crypts) {
+            if (Math.abs(y - crypt.y()) <= 1 && Math.abs(z - crypt.z()) <= 1
+                    && x >= crypt.x() - 1 && x <= crypt.x() + CryptPlan.TOMB_LENGTH) return true;
+        }
+        return false;
+    }
+
     public int total() {
         return crypts.size();
     }

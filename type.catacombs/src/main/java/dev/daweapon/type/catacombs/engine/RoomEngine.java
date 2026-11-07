@@ -121,6 +121,10 @@ final class RoomEngine implements CatacombsMob.Listener {
         return mob;
     }
 
+    boolean isDiscovered(int room) {
+        return tracker.isDiscovered(room);
+    }
+
     int discoveredRooms() {
         return tracker.discoveredCount();
     }

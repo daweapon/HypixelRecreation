@@ -44,7 +44,7 @@ public class CatalogueShopView extends ShopView {
                 ? ShopItem.Stackable(item, entry.amount(), entry.cost().toShopPrice(multiplier))
                 : ShopItem.Single(item, entry.amount(), entry.cost().toShopPrice(multiplier));
         if (entry.itemId().equals("BIOFUEL")) shopItem.onPurchase(GardenQuests::fuelPurchased);
-        ReputationRequirement requirement = entry.requirement();
+        ShopRequirement requirement = entry.requirement();
         if (requirement != null) shopItem.lockedWhen(viewer -> requirement.isMet(viewer) ? null : requirement.lockLine());
         return decorate(entry, shopItem, player);
     }

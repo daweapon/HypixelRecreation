@@ -161,7 +161,7 @@
           2000,
           5000
         ],
-        "unavailable": "Dungeons aren't in this server yet."
+        "unavailable": null
       }
     ],
     "totalXP": 161

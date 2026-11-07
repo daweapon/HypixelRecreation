@@ -88,6 +88,22 @@ public final class SecretLevers {
         GateLift.run(host.instance(), blocks, at -> looks.get(blocks.indexOf(at)), GateLift.Motion.LEVER);
     }
 
+    /** The lever itself, what it opens and the secret blocks behind it: none of these may be broken. */
+    public boolean isMechanism(int x, int y, int z) {
+        for (PlacedLever placed : levers) {
+            RoomMechanisms.Lever lever = placed.lever();
+            if (placed.at(x, y, z) || covers(lever.opens(), x, y, z) || covers(lever.secretBlocks(), x, y, z)) return true;
+        }
+        return false;
+    }
+
+    private static boolean covers(List<int[]> blocks, int x, int y, int z) {
+        for (int[] at : blocks) {
+            if (at[0] == x && at[1] == y && at[2] == z) return true;
+        }
+        return false;
+    }
+
     public List<PlacedLever> levers() {
         return levers;
     }

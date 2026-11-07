@@ -3,6 +3,7 @@ package dev.daweapon.type.skyblockgeneric.crimson;
 import dev.daweapon.commons.YamlFileUtils;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.skyblockgeneric.shop.catalogue.CatalogueEntry;
+import dev.daweapon.type.skyblockgeneric.shop.catalogue.ReputationRequirement;
 import dev.daweapon.type.skyblockgeneric.crimson.kuudra.KuudraCollectionTier;
 import dev.daweapon.type.skyblockgeneric.crimson.kuudra.KuudraTier;
 import dev.daweapon.type.skyblockgeneric.crimson.kuudra.follower.CoinOffering;
@@ -55,7 +56,7 @@ class KuudraTablesTest {
                 assertEquals(tier.getKeyCoins(), (int) entry.cost().coins());
                 assertEquals(tier.getKeyMaterials(), entry.cost().items().get(faction.getValue()));
                 assertEquals(KuudraTier.KEY_NETHER_STARS, entry.cost().items().get("CORRUPTED_NETHER_STAR"));
-                assertEquals(tier.getRequiredReputation(), entry.requirement() == null ? 0 : entry.requirement().reputation());
+                assertEquals(tier.getRequiredReputation(), entry.requirement() instanceof ReputationRequirement reputation ? reputation.reputation() : 0);
             }
         }
     }

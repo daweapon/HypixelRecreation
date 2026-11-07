@@ -39,6 +39,7 @@ public class LoreRegistry {
         dev.daweapon.type.skyblockgeneric.garden.tool.FarmingTools.registerLore();
         dev.daweapon.type.skyblockgeneric.garden.pest.PestItems.registerLore();
         dev.daweapon.type.skyblockgeneric.garden.greenhouse.GreenhouseItems.registerLore();
+        dev.daweapon.type.skyblockgeneric.dungeons.breaker.Dungeonbreaker.registerLore();
         register("ENCHANTED_BOOK", new LoreConfig(
                 (item, player) -> {
                     List<SkyBlockEnchantment> enchantments = item.getAttributeHandler().getEnchantments().toList();
