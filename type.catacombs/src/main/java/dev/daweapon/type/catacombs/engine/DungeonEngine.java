@@ -23,6 +23,7 @@ import dev.daweapon.type.catacombs.puzzle.PuzzleRoom;
 import dev.daweapon.type.catacombs.puzzle.PuzzleRooms;
 import dev.daweapon.type.catacombs.run.CatacombsMessages;
 import dev.daweapon.type.catacombs.arena.RoomMechanisms;
+import dev.daweapon.type.catacombs.arena.RoomPaintings;
 import dev.daweapon.type.catacombs.secret.SecretEngine;
 import dev.daweapon.type.catacombs.secret.SecretLevers;
 import dev.daweapon.type.catacombs.secret.SuperboomTnt;
@@ -58,6 +59,7 @@ public final class DungeonEngine {
     private final DungeonMapView map;
     private final BloodBlessings bloodBlessings = new BloodBlessings();
     private final FairyRoom fairies;
+    private final RoomPaintingEntities paintings;
     private final PuzzleRooms puzzles;
     private volatile boolean bloodRoomChecked;
     private volatile boolean entranceOpened;
@@ -81,6 +83,7 @@ public final class DungeonEngine {
         this.breaker = new DungeonbreakerEngine(host, layout, floor, rooms::isDiscovered, this::isMechanism);
         this.map = new DungeonMapView(host, layout, room -> secrets.ledger().allFound(room));
         this.fairies = new FairyRoom(host, layout);
+        this.paintings = new RoomPaintingEntities(host, layout, RoomPaintings.shared());
         this.puzzles = new PuzzleRooms(new PuzzleContext(host, floor, blessings, rooms::completePuzzle,
                 (room, player) -> host.state().failPuzzle(room.index())), layout, host.arena().blocks()::isReal);
         rooms.discover(layout.startRoom());
@@ -88,6 +91,7 @@ public final class DungeonEngine {
         crypts.start();
         levers.start();
         fairies.start();
+        paintings.start();
         puzzles.start();
     }
 
@@ -296,6 +300,7 @@ public final class DungeonEngine {
         bloodRoom.dispose();
         bloodBlessings.clear();
         fairies.dispose();
+        paintings.dispose();
         puzzles.dispose();
         rooms.dispose();
         secrets.dispose();

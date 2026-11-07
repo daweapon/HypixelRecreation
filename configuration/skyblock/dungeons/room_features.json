@@ -17,6 +17,20 @@
     "yaw": 180.0
    }
   },
+  "painting": {
+   "note": "M7 run 4 (2026-11-05) cell (0,5), room unturned: minecraft:painting graham facing EAST at (-189.97, 75.0, -23.5), anchor block (-190, 74, -24). It covers the 1 x 2 oak-wall-sign hole at (9, 6..7, 16), the catalogue's '1 - Entrance behind Painting'.",
+   "paintings": [
+    {
+     "x": 10,
+     "y": 6,
+     "z": 16,
+     "facing": "EAST",
+     "variant": "minecraft:graham",
+     "width": 1,
+     "height": 2
+    }
+   ]
+  },
   "blood": {
    "watcher": {
     "x": 15.5,
