@@ -77,6 +77,9 @@ import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.deepcaverns.MobMinerZom
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.deepcaverns.MobMinerZombie_20;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.deepcaverns.MobRedstonePigman;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.deepcaverns.MobSneakyCreeper;
+import dev.daweapon.type.skyblockgeneric.crypts.CryptMobs;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.hub.MobCryptGhoul;
+import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.hub.MobGoldenGhoul;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.hub.MobGraveyardZombie;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.hub.MobGraveyardZombieVillager;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.hub.MobRuinsOldWolf;
@@ -132,8 +135,8 @@ public enum BestiaryCategory {
         GRAVEYARD_ZOMBIE("<a>Graveyard Zombie", "Brains.", new GUIMaterial(Material.ZOMBIE_HEAD), List.of(new MobGraveyardZombie())),
         OLD_WOLF("<a>Old Wolf", "Wolves older than the island itself.", new GUIMaterial("d359537c15534f61c1cd886bc118774ed22280e7cdab6613870160aad4ca39"), List.of(new MobRuinsOldWolf())),
         WOLF("<a>Wolf", "Roaming the remains of a Castle far from its best days.", new GUIMaterial("f4cb7a6bf6c32c49f2589147e6f0f888e9e35875dd1ea2a8af379ca710589e6b"), List.of(new MobRuinsWolf())),
-        CRYPT_GHOUL("<a>Crypt Ghoul", "Long buried, newly unburied.", new GUIMaterial("b3666d1bdf4558b0d16990b241e8185cbf58c3e03c24d904544e8cc65b1c38d1"), CataloguedBestiaryAreas.placeholder("CRYPT_GHOUL", "Crypt Ghoul", 2, 20, MobType.UNDEAD, "b3666d1bdf4558b0d16990b241e8185cbf58c3e03c24d904544e8cc65b1c38d1")),
-        GOLDEN_GHOUL("<a>Golden Ghoul", "A ghoul that fell into molten gold.", new GUIMaterial("69be1cf0639c6b7db506686f26af222671ce52321e1c921b296933cd40ac4c62"), CataloguedBestiaryAreas.placeholder("GOLDEN_GHOUL", "Golden Ghoul", 4, 15, MobType.UNDEAD, "69be1cf0639c6b7db506686f26af222671ce52321e1c921b296933cd40ac4c62")),
+        CRYPT_GHOUL("<a>Crypt Ghoul", "Long buried, newly unburied.", new GUIMaterial(CryptMobs.CRYPT_GHOUL_HEAD), List.of(new MobCryptGhoul())),
+        GOLDEN_GHOUL("<a>Golden Ghoul", "A ghoul that fell into molten gold.", new GUIMaterial(CryptMobs.GOLDEN_GHOUL_HEAD), List.of(new MobGoldenGhoul())),
         SHINY_PIG("<a>Shiny Pig", "Found all around the Hub during the Year of the Pig!", new GUIMaterial("621668ef7cb79dd9c22ce3d1f3f4cb6e2559893b6df4a469514e667c16aa4"), CataloguedBestiaryAreas.placeholder("SHINY_PIG", "Shiny Pig", 5, 15, MobType.ANIMAL, "621668ef7cb79dd9c22ce3d1f3f4cb6e2559893b6df4a469514e667c16aa4")),
         ZOMBIE_VILLAGER("<a>Zombie Villager", "The real enemy isn't the dead - it's the living.", new GUIMaterial("69198f410a10f99314aa0fbe9a3db10697bbc1c011f019507d96673c64217f5a"), List.of(new MobGraveyardZombieVillager())),
         ;

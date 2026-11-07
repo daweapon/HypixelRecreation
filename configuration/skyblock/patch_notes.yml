@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "hub-crypts"
+    name: "The Hub Crypts Update"
+    date: "6th November 2026"
+    material: zombie_head
+    title: "The Hub Crypts Update"
+    book: "hub_crypts_update.yml"
   - version: "catacombs-3"
     name: "The Catacombs Update, Part 3"
     date: "5th November 2026"
