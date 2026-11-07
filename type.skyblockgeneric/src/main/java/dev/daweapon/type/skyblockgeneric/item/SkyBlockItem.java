@@ -353,7 +353,7 @@ public class SkyBlockItem {
 				continue;
 
 			if (attribute.getValue() != null && item.getAttribute(attribute.getKey()).getValue() != null) {
-				if (!attribute.saveIntoString().equals(item.getAttribute(attribute.getKey()).saveIntoString())) {
+				if (!Objects.equals(attribute.saveIntoString(), item.getAttribute(attribute.getKey()).saveIntoString())) {
 					allAttributesMatch = false;
 					break;
 				}
