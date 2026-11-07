@@ -102,7 +102,7 @@ reads every template and its catalogue `secretExtras` and writes, in the templat
 - `superbooms`: the cracked stone brick plug at each catalogue Superboom point (cracked bricks that touch at least two
   others; a box that is at least three quarters cracked is taken whole, as M7 run 3 removed a full 2 x 4 x 2 plug).
 - `levers`: the lever block, its paired secrets (same catalogue number) and the blocks a pull removes. `capture` comes
-  from a captured pull (`Mechanisms.CAPTURED`), `checked` from a hand-checked list (`Mechanisms.CHECKED`), `estimated`
+  from a captured pull (`Mechanisms.CAPTURED`), `video` from doors seen opening in YouTube secret guides and found in the template (`Mechanisms.SEEN`, with `evidence` = video id@time and a `confidence`), `estimated`
   from the room's shape: the closed air pocket holding the paired secret (else the nearest iron-bar style gate) and the
   one-block plug between it and the open room. `freesSecret` marks levers whose plug shuts the secret's own pocket.
   `none` means no such plug was found (or only plain wall away from the secret, which is not guessed at) and the lever

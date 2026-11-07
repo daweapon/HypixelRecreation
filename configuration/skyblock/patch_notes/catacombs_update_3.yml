@@ -28,6 +28,7 @@ sections:
       - "Four fairies float around the Fairy room tree. Killing one revives a dead teammate and drops a Revive Stone."
       - "Bonzo wears his real skins, a new one for his second life."
       - "Secret levers work: pulling one clears the iron bars, log wall or floor it guards the way Hypixel's gates sink away, and a second pull says the lever has already been used."
+      - "More levers open their doors, worked out from secret guide videos: Atlas, Museum, Chambers, Hallway, Buttons and both Grass Ruin levers. A pull now says you hear the sound of something opening."
       - "Superboom TNT and Infinityboom TNT blow open the cracked stone brick walls in real rooms with either click, as well as crypts."
       - "Doorways now use Hypixel's own door frames, and a wall where the map puts no door is a plain wall instead of a filled-in frame."
   - heading: "Bonzo's real fight"
@@ -41,5 +42,5 @@ sections:
   - heading: "Not here yet"
     colour: "<c>"
     lines:
-      - "Rare rooms and the Ice Path puzzle are still placeholders, and the real puzzle rooms cannot be solved yet. Tomioka's shop is not working yet, and some levers still open nothing because what they open has not been worked out."
+      - "Rare rooms and the Ice Path puzzle are still placeholders, and the real puzzle rooms cannot be solved yet. Tomioka's shop is not working yet, and a few levers (Deathmite, Rails, Trap Hard) still open nothing because what they open has not been worked out."
       - "Mobs in the Market, Well, Wizard and Quiz rooms and some crypt spots are still placed by estimate."

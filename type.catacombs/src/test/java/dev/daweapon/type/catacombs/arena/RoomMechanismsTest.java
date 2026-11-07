@@ -54,6 +54,64 @@ class RoomMechanismsTest {
     }
 
     @Test
+    void theLeversSeenInSecretGuidesOpenTheirDoors() {
+        Map<String, Map<String, Integer>> expected = Map.of(
+                "atlas|2 - Lever", Map.of("minecraft:oak_log", 24),
+                "museum|1 - Lever", Map.of("minecraft:oak_wood", 26, "minecraft:spruce_stairs", 18, "minecraft:oak_log", 1),
+                "chambers|3 - Lever", Map.of("minecraft:spruce_log", 8),
+                "hallway|2 - Lever", Map.of("minecraft:oak_log", 16),
+                "grass_ruin|3 - Lever 1", Map.of("minecraft:oak_wood", 31, "minecraft:spruce_stairs", 26, "minecraft:oak_log", 2),
+                "grass_ruin|3 - Lever 2", Map.of("minecraft:iron_bars", 33),
+                "buttons|3 - Lever behind Crypt", Map.of("minecraft:oak_log", 27));
+        for (Map.Entry<String, Map<String, Integer>> entry : expected.entrySet()) {
+            String[] key = entry.getKey().split("\\|");
+            RoomMechanisms.Lever lever = mechanisms.levers(key[0]).stream().filter(each -> each.label().equals(key[1])).findFirst().orElseThrow();
+            assertEquals("video", lever.source(), entry.getKey());
+            Map<String, Integer> kinds = new java.util.TreeMap<>();
+            for (int[] at : lever.opens()) kinds.merge(local(templates.get(key[0]), at).name(), 1, Integer::sum);
+            assertEquals(new java.util.TreeMap<>(entry.getValue()), kinds, entry.getKey());
+        }
+    }
+
+    @Test
+    void theMuseumDoorShutsAPlayerOutOfTheChestRoom() {
+        RoomTemplate template = templates.get("museum");
+        for (Rotation rotation : RoomDoorwaysTest.rotations(template)) {
+            FloorLayout layout = RoomDoorwaysTest.surrounded(template, rotation, true);
+            CatacombsArenaBlocks blocks = CatacombsArenaBlocks.of(layout, RoomDoorwaysTest.structures(), false, pieces);
+            RoomMechanisms.Lever lever = SecretLevers.placed(layout, blocks::isReal, mechanisms).stream()
+                    .filter(each -> each.lever().label().equals("1 - Lever")).findFirst().orElseThrow().lever();
+            assertFalse(reaches(blocks, layout, lever, Set.of(), 2), "museum " + rotation + " chest reachable before the pull");
+            assertTrue(reaches(blocks, layout, lever, packed(lever.opens()), 2), "museum " + rotation + " chest still shut after the pull");
+        }
+    }
+
+    @Test
+    void theGrassRuinChestNeedsBothLevers() {
+        RoomTemplate template = templates.get("grass_ruin");
+        for (Rotation rotation : RoomDoorwaysTest.rotations(template)) {
+            FloorLayout layout = RoomDoorwaysTest.surrounded(template, rotation, true);
+            CatacombsArenaBlocks blocks = CatacombsArenaBlocks.of(layout, RoomDoorwaysTest.structures(), false, pieces);
+            List<SecretLevers.PlacedLever> placed = SecretLevers.placed(layout, blocks::isReal, mechanisms);
+            RoomMechanisms.Lever first = placed.stream().filter(each -> each.lever().label().equals("3 - Lever 1")).findFirst().orElseThrow().lever();
+            RoomMechanisms.Lever second = placed.stream().filter(each -> each.lever().label().equals("3 - Lever 2")).findFirst().orElseThrow().lever();
+            String context = "grass_ruin " + rotation;
+            assertFalse(reaches(blocks, layout, first, Set.of()), context + " chest reachable with no lever pulled");
+            assertFalse(reaches(blocks, layout, first, packed(first.opens())), context + " chest reachable with only lever 1 pulled");
+            assertFalse(reaches(blocks, layout, first, packed(second.opens())), context + " chest reachable with only lever 2 pulled");
+            Set<Long> both = packed(first.opens());
+            both.addAll(packed(second.opens()));
+            assertTrue(reaches(blocks, layout, first, both), context + " chest still shut after both levers");
+        }
+    }
+
+    private static Set<Long> packed(List<int[]> blocks) {
+        Set<Long> out = new HashSet<>();
+        for (int[] at : blocks) out.add(CatacombsArenaBlocks.pack(at[0], at[1], at[2]));
+        return out;
+    }
+
+    @Test
     void everyLeverAndSuperboomWallSitsOnItsBlocksInEveryRotation() {
         int levers = 0, walls = 0;
         for (RoomTemplate template : templates.values()) {
@@ -124,11 +182,15 @@ class RoomMechanismsTest {
                 checked++;
             }
         }
-        assertTrue(checked >= 10, checked + " levers checked");
+        assertTrue(checked >= 20, checked + " levers checked");
     }
 
-    /** Whether open air connects a doorway of the room to a block next to the lever's secret. */
     private static boolean reaches(CatacombsArenaBlocks blocks, FloorLayout layout, RoomMechanisms.Lever lever, Set<Long> opened) {
+        return reaches(blocks, layout, lever, opened, 1);
+    }
+
+    /** Whether open air, {@code height} blocks tall, connects a doorway of the room to a block next to the lever's secret. */
+    private static boolean reaches(CatacombsArenaBlocks blocks, FloorLayout layout, RoomMechanisms.Lever lever, Set<Long> opened, int height) {
         Set<Long> goals = new HashSet<>();
         for (int[] secret : lever.secretBlocks()) {
             for (int[] step : new int[][]{{1, 0, 0}, {-1, 0, 0}, {0, 1, 0}, {0, -1, 0}, {0, 0, 1}, {0, 0, -1}}) {
@@ -150,11 +212,16 @@ class RoomMechanismsTest {
             for (int[] step : new int[][]{{1, 0, 0}, {-1, 0, 0}, {0, 1, 0}, {0, -1, 0}, {0, 0, 1}, {0, 0, -1}}) {
                 int x = at[0] + step[0], y = at[1] + step[1], z = at[2] + step[2];
                 if (y < blocks.minY() || y > blocks.maxY() || !blocks.plan().roomAtColumn(x, z).map(room -> room.index() == 0).orElse(false)) continue;
-                Block block = blocks.blockAt(x, y, z);
-                boolean open = block == null || !block.solid() || opened.contains(CatacombsArenaBlocks.pack(x, y, z));
+                boolean open = true;
+                for (int above = 0; above < height && open; above++) open = open(blocks, opened, x, y + above, z);
                 if (open && !seen.contains(CatacombsArenaBlocks.pack(x, y, z))) queue.add(new int[]{x, y, z});
             }
         }
         return false;
+    }
+
+    private static boolean open(CatacombsArenaBlocks blocks, Set<Long> opened, int x, int y, int z) {
+        Block block = blocks.blockAt(x, y, z);
+        return block == null || !block.solid() || opened.contains(CatacombsArenaBlocks.pack(x, y, z));
     }
 }

@@ -73,6 +73,7 @@ public final class SecretLevers {
             return true;
         }
         pull(lever);
+        player.sendMessage(SecretMessages.LEVER_OPENS);
         Pos at = player.getPosition();
         player.playSound(PULL, at.x(), at.y(), at.z());
         return true;
