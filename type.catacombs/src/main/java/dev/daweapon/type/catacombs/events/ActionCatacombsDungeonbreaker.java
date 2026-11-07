@@ -60,7 +60,7 @@ public class ActionCatacombsDungeonbreaker implements HypixelEventClass {
         long now = System.currentTimeMillis();
         if (inRun && ticks % REFRESH_TICKS == 0) Dungeonbreaker.refresh(player, now);
         boolean ready = inRun && Dungeonbreaker.is(player.getItemInMainHand()) && Dungeonbreaker.canUse(player)
-                && Dungeonbreaker.heldCharges(player, now) > 0;
+                && (Dungeonbreaker.isStaff(player) || Dungeonbreaker.heldCharges(player, now) > 0);
         var speed = player.getAttribute(Attribute.BLOCK_BREAK_SPEED);
         double wanted = ready ? INSTANT : NO_MINING;
         if (speed.getBaseValue() != wanted) speed.setBaseValue(wanted);

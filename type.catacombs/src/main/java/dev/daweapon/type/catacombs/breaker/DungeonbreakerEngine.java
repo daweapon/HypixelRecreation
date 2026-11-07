@@ -56,10 +56,11 @@ public final class DungeonbreakerEngine {
         Block block = instance.getBlock(x, y, z);
         if (!mayBreak(x, y, z, block)) return false;
         long now = System.currentTimeMillis();
-        if (!Dungeonbreaker.spendHeld(player, now)) return false;
+        boolean staff = Dungeonbreaker.isStaff(player);
+        if (!staff && !Dungeonbreaker.spendHeld(player, now)) return false;
         instance.setBlock(x, y, z, Block.AIR);
         instance.sendGroupedPacket(new WorldEventPacket(WorldEvent.PARTICLES_DESTROY_BLOCK.id(), new Pos(x, y, z), block.stateId(), false));
-        restore(broken.record(player.getUuid(), x, y, z, block, now));
+        restore(broken.record(player.getUuid(), x, y, z, block, now, BrokenBlocks.capFor(staff)));
         return true;
     }
 

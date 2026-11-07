@@ -26,14 +26,23 @@ public final class BrokenBlocks<B> {
     private final Map<UUID, Deque<Broken<B>>> byOwner = new HashMap<>();
     private final Map<Long, Broken<B>> byPosition = new HashMap<>();
 
-    /** Records a break and returns the blocks that must come back now to keep the owner at twenty. */
+    /** Staff are not held to the twenty-block cap (a deliberate difference from Hypixel). */
+    public static int capFor(boolean staff) {
+        return staff ? Integer.MAX_VALUE : MAX_PER_PLAYER;
+    }
+
     public synchronized List<Broken<B>> record(UUID owner, int x, int y, int z, B original, long now) {
+        return record(owner, x, y, z, original, now, MAX_PER_PLAYER);
+    }
+
+    /** Records a break and returns the blocks that must come back now to keep the owner within their cap. */
+    public synchronized List<Broken<B>> record(UUID owner, int x, int y, int z, B original, long now, int cap) {
         Broken<B> broken = new Broken<>(owner, x, y, z, original, now + RESTORE_MILLIS);
         Deque<Broken<B>> queue = byOwner.computeIfAbsent(owner, _ -> new ArrayDeque<>());
         queue.addLast(broken);
         byPosition.put(broken.key(), broken);
         List<Broken<B>> evicted = new ArrayList<>();
-        while (queue.size() > MAX_PER_PLAYER) {
+        while (queue.size() > cap) {
             Broken<B> oldest = queue.pollFirst();
             byPosition.remove(oldest.key());
             evicted.add(oldest);

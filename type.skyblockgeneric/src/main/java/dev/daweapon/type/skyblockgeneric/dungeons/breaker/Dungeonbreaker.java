@@ -4,6 +4,7 @@ import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.skyblock.item.attribute.attributes.ItemAttributeDungeonbreakerCharges;
 import dev.daweapon.dungeons.catacombs.CatacombsFloor;
 import dev.daweapon.type.skyblockgeneric.dungeons.CatacombsProgress;
+import dev.daweapon.type.generic.user.categories.Rank;
 import dev.daweapon.type.skyblockgeneric.essence.EssencePerks;
 import dev.daweapon.type.skyblockgeneric.essence.EssenceShops;
 import dev.daweapon.type.skyblockgeneric.essence.EssenceType;
@@ -42,6 +43,11 @@ public final class Dungeonbreaker {
     public static boolean is(ItemStack stack) {
         if (stack == null || stack.material() != Material.DIAMOND_PICKAXE || !SkyBlockItem.isSkyBlockItem(stack)) return false;
         return new SkyBlockItem(stack).getAttributeHandler().getPotentialType() == ItemType.DUNGEONBREAKER;
+    }
+
+    /** Staff break without spending or needing charges, a deliberate difference from Hypixel. */
+    public static boolean isStaff(SkyBlockPlayer player) {
+        return player.getRank().isEqualOrHigherThan(Rank.STAFF);
     }
 
     public static boolean canUse(SkyBlockPlayer player) {

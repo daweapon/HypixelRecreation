@@ -42,6 +42,18 @@ class BrokenBlocksTest {
     }
 
     @Test
+    void staffHaveNoTwentyBlockCapButTheirBlocksStillComeBack() {
+        BrokenBlocks<Integer> broken = new BrokenBlocks<>();
+        int staffCap = BrokenBlocks.capFor(true);
+        for (int i = 0; i < 60; i++) {
+            assertTrue(broken.record(ALICE, i, 70, 0, i, 0, staffCap).isEmpty());
+        }
+        assertEquals(60, broken.brokenBy(ALICE));
+        assertEquals(60, broken.due(BrokenBlocks.RESTORE_MILLIS).size());
+        assertEquals(BrokenBlocks.MAX_PER_PLAYER, BrokenBlocks.capFor(false));
+    }
+
+    @Test
     void everythingStillBrokenComesBackWhenTheRunEnds() {
         BrokenBlocks<String> broken = new BrokenBlocks<>();
         broken.record(ALICE, 1, 70, 1, "a", 0);
