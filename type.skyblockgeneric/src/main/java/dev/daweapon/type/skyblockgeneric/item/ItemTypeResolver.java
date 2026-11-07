@@ -43,6 +43,18 @@ public final class ItemTypeResolver {
         return names;
     }
 
+    public static String commandName(ItemType type) {
+        return commandName(type, ConfigurableSkyBlockItem::getConfiguredName);
+    }
+
+    static String commandName(ItemType type, Function<String, String> configuredName) {
+        String name = configuredName.apply(type.name());
+        if (name == null) return type.name();
+        String key = name.replaceAll("<[^>]*>", "").replaceAll("§.", "").replace("'", "")
+                .toUpperCase().replaceAll("[^A-Z0-9]+", "_").replaceAll("^_+|_+$", "");
+        return key.isEmpty() ? type.name() : key;
+    }
+
     private static String normalize(String input) {
         return input.trim().toUpperCase().replace(' ', '_').replace('-', '_');
     }

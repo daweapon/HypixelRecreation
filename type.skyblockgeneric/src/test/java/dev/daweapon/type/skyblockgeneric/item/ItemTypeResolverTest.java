@@ -38,4 +38,14 @@ class ItemTypeResolverTest {
     void unknownInputResolvesToNothing() {
         assertNull(resolve("NOT_A_REAL_ITEM_AT_ALL"));
     }
+
+    @Test
+    void commandNamesComeFromTheItemsRealNameAndResolveBack() {
+        Map<String, String> names = Map.of("WISE_WITHER_HELMET", "<5>Storm's Helmet", "BURSTFIRE_DAGGER", "Kindlebane Dagger");
+        assertEquals("STORMS_HELMET", ItemTypeResolver.commandName(ItemType.WISE_WITHER_HELMET, names::get));
+        assertEquals("KINDLEBANE_DAGGER", ItemTypeResolver.commandName(ItemType.BURSTFIRE_DAGGER, names::get));
+        assertEquals("FIREDUST_DAGGER", ItemTypeResolver.commandName(ItemType.FIREDUST_DAGGER, ignored -> null));
+        assertEquals(ItemType.WISE_WITHER_HELMET, ItemTypeResolver.resolve("storms_helmet", names::get));
+        assertEquals(ItemType.WISE_WITHER_HELMET, ItemTypeResolver.resolve("WISE_WITHER_HELMET", names::get));
+    }
 }

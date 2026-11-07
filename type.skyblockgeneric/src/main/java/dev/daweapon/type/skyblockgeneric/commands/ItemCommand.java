@@ -27,8 +27,10 @@ public class ItemCommand extends HypixelCommand {
         ArgumentWord itemArgument = ArgumentType.Word("item");
         itemArgument.setSuggestionCallback((_, context, suggestion) -> {
             String typed = context.getInput().substring(context.getInput().lastIndexOf(' ') + 1).toUpperCase();
+            java.util.Set<String> offered = new java.util.HashSet<>();
             for (ItemType type : ItemType.values()) {
-                if (type.name().startsWith(typed)) suggestion.addEntry(new SuggestionEntry(type.name()));
+                String name = ItemTypeResolver.commandName(type);
+                if (name.startsWith(typed) && offered.add(name)) suggestion.addEntry(new SuggestionEntry(name));
             }
         });
         ArgumentInteger amountArgument = ArgumentType.Integer("amount");
@@ -92,15 +94,15 @@ public class ItemCommand extends HypixelCommand {
 
         if (target == sender) {
             sender.sendMessage(amount == 1
-                    ? Text.of("<a>Given you item <e>{}<a>.", itemTypeLinker.name())
-                    : Text.of("<a>Given you item <e>{}<8> x{}<a>.", itemTypeLinker.name(), amount));
+                    ? Text.of("<a>Given you item <e>{}<a>.", ItemTypeResolver.commandName(itemTypeLinker))
+                    : Text.of("<a>Given you item <e>{}<8> x{}<a>.", ItemTypeResolver.commandName(itemTypeLinker), amount));
         } else {
             target.sendMessage(amount == 1
-                    ? Text.of("<a>You were given item <e>{}<a>.", itemTypeLinker.name())
-                    : Text.of("<a>You were given item <e>{}<8> x{}<a>.", itemTypeLinker.name(), amount));
+                    ? Text.of("<a>You were given item <e>{}<a>.", ItemTypeResolver.commandName(itemTypeLinker))
+                    : Text.of("<a>You were given item <e>{}<8> x{}<a>.", ItemTypeResolver.commandName(itemTypeLinker), amount));
             sender.sendMessage(amount == 1
-                    ? Text.of("<a>Gave <e>{} <a>to <e>{}<a>.", itemTypeLinker.name(), target.getUsername())
-                    : Text.of("<a>Gave <e>{}<8> x{} <a>to <e>{}<a>.", itemTypeLinker.name(), amount, target.getUsername()));
+                    ? Text.of("<a>Gave <e>{} <a>to <e>{}<a>.", ItemTypeResolver.commandName(itemTypeLinker), target.getUsername())
+                    : Text.of("<a>Gave <e>{}<8> x{} <a>to <e>{}<a>.", ItemTypeResolver.commandName(itemTypeLinker), amount, target.getUsername()));
         }
     }
 }
