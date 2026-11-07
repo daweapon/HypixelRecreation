@@ -39,7 +39,7 @@ public class ActionPlayerDamageBlock implements HypixelEventClass {
         }
         SkyBlockRegion region = SkyBlockRegion.getRegionOfPosition(event.getBlockPosition());
 
-        Material currentMaterial = Material.fromKey(instance.getBlock(event.getBlockPosition()).key());
+        Material currentMaterial = dev.daweapon.type.skyblockgeneric.region.mining.CropBlocks.materialOf(instance.getBlock(event.getBlockPosition()));
         boolean statusNotStarted = event.getStatus() != ClientPlayerActionPacket.Status.STARTED_DIGGING;
         boolean regionNull = region == null;
         boolean handlerNull = !regionNull && region.getType().getMiningHandler() == null;

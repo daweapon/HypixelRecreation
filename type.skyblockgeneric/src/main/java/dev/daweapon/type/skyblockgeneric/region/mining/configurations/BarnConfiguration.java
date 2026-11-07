@@ -6,6 +6,7 @@ import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.block.Block;
 import net.minestom.server.item.Material;
 import dev.daweapon.type.skyblockgeneric.region.SkyBlockRegenConfiguration;
+import dev.daweapon.type.skyblockgeneric.region.mining.CropBlocks;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class BarnConfiguration extends SkyBlockRegenConfiguration {
     @Override
     public MiningTask handleStageOne(MiningTask task, Pos brokenBlock) {
         task.setIntermediaryBlock(Block.AIR);
-        task.setReviveBlock(Block.AIR);
+        task.setReviveBlock(CropBlocks.fullyGrown(task.getInitialMinedBlock()));
 
         return task;
     }
@@ -25,7 +26,7 @@ public class BarnConfiguration extends SkyBlockRegenConfiguration {
 
     @Override
     public List<Material> getMineableBlocks(Instance instance, Point point) {
-        return List.of(Material.WHEAT, Material.CARVED_PUMPKIN, Material.MELON, Material.POTATO, Material.CARROT);
+        return List.of(Material.WHEAT, Material.CARVED_PUMPKIN, Material.PUMPKIN, Material.MELON, Material.POTATO, Material.CARROT);
     }
 
     @Override

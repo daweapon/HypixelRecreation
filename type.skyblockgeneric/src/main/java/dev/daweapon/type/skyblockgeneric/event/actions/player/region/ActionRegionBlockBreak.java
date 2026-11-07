@@ -110,7 +110,7 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
         SkyBlockRegion region = SkyBlockRegion.getRegionOfPosition(event.getBlockPosition());
 
         Block block = event.getBlock();
-        Material material = Material.fromKey(block.name());
+        Material material = dev.daweapon.type.skyblockgeneric.region.mining.CropBlocks.materialOf(block);
         boolean shouldItemDrop = false;
 
         // Leaves on public foraging islands are authored parts of their tree. Handle them before
