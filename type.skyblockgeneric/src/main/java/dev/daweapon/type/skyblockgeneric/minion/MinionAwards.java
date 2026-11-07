@@ -30,6 +30,14 @@ public final class MinionAwards {
         return total;
     }
 
+    public static int maxSkyBlockXp() {
+        int total = 0;
+        for (MinionRegistry minion : MinionRegistry.values()) {
+            for (SkyBlockMinion.MinionTier tier : minion.asSkyBlockMinion().getTiers()) total += xpForTier(tier.tier());
+        }
+        return total;
+    }
+
     public static void syncSkyBlockXP(SkyBlockPlayer player) {
         DatapointMinionData datapoint = player.getSkyblockDataHandler()
                 .get(SkyBlockDataHandler.Data.MINION_DATA, DatapointMinionData.class);

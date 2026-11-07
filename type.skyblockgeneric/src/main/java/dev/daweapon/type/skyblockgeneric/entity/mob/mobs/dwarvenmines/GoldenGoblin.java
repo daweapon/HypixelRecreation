@@ -37,7 +37,7 @@ public class GoldenGoblin extends BestiaryMob {
 
 	@Override
 	public int getBestiaryBracket() {
-		return 5;
+		return 6;
 	}
 
 	@Override

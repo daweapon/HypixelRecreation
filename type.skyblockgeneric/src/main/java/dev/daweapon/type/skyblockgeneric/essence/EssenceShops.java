@@ -50,6 +50,20 @@ public final class EssenceShops {
         shops().values().forEach(shop -> shop.maxAvailable(player));
     }
 
+    /** Every essence shop with a SkyBlock XP task, the coded ones included. */
+    public static List<EssenceShop<?>> allWithXp() {
+        List<EssenceShop<?>> all = new ArrayList<>(shops().values());
+        all.add(CrimsonEssenceShop.SHOP);
+        all.add(IceEssenceShop.SHOP);
+        all.add(FossilEssenceShop.SHOP);
+        all.removeIf(shop -> shop.xpSource() == null);
+        return all;
+    }
+
+    public static void syncSkyBlockXP(SkyBlockPlayer player) {
+        allWithXp().forEach(shop -> shop.syncSkyBlockXP(player));
+    }
+
     public static synchronized void load(Path path) {
         Map<EssenceType, EssenceShop<CataloguePerk>> loaded = new EnumMap<>(EssenceType.class);
         Map<EssenceType, String> loadedSellers = new EnumMap<>(EssenceType.class);

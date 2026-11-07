@@ -44,6 +44,9 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
             if (value.getBonusXP() != 0) {
                 json.put("bonus", value.getBonusXP());
             }
+            if (!value.getUnbuiltCredit().isEmpty()) {
+                json.put("unbuilt", new JSONObject(new HashMap<String, Object>(value.getUnbuiltCredit())));
+            }
 
             return new JSONObject(json).toString();
         }
@@ -73,22 +76,34 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
             double bonus = jsonObject.has("bonus") && !jsonObject.isNull("bonus")
                     ? jsonObject.getDouble("bonus") : 0D;
 
+            Map<String, Double> unbuilt = new LinkedHashMap<>();
+            if (jsonObject.has("unbuilt") && !jsonObject.isNull("unbuilt")) {
+                JSONObject unbuiltJson = jsonObject.getJSONObject("unbuilt");
+                for (String key : unbuiltJson.keySet()) {
+                    unbuilt.put(key, unbuiltJson.getDouble(key));
+                }
+            }
+
             Map.Entry<SkyBlockEmblems, Integer> currentEmblem = null;
             if (jsonObject.has("emblem") && !jsonObject.isNull("emblem")) {
                 String[] emblem = jsonObject.getString("emblem").split(":");
                 currentEmblem = new HashMap.SimpleEntry<>(SkyBlockEmblems.valueOf(emblem[0]), Integer.parseInt(emblem[1]));
             }
 
-            return new PlayerSkyBlockExperience(experience, currentEmblem, sources, bonus);
+            PlayerSkyBlockExperience result = new PlayerSkyBlockExperience(experience, currentEmblem, sources, bonus);
+            result.unbuiltCredit.putAll(unbuilt);
+            return result;
         }
 
         @Override
         public PlayerSkyBlockExperience clone(PlayerSkyBlockExperience value) {
-            return new PlayerSkyBlockExperience(
+            PlayerSkyBlockExperience copy = new PlayerSkyBlockExperience(
                     new ArrayList<>(value.getCompletedExperienceCauses()),
                     value.getCurrentEmblem(),
                     new LinkedHashMap<>(value.getSourceProgress()),
                     value.getBonusXP());
+            copy.unbuiltCredit.putAll(value.getUnbuiltCredit());
+            return copy;
         }
     };
 
@@ -113,6 +128,11 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
         private Map<String, Double> sourceProgress = new LinkedHashMap<>();
         /** Admin-granted XP offset, set by the SkyBlock XP commands. Can be negative. */
         private double bonusXP = 0D;
+        /**
+         * XP per source for the part of Hypixel's task this server has no content for yet, granted by
+         * {@code /max profile} on top of real progress so a maxed profile stays maxed through a reconcile.
+         */
+        private Map<String, Double> unbuiltCredit = new LinkedHashMap<>();
         @Setter
         private SkyBlockPlayer attachedPlayer = null;
         @Getter(AccessLevel.NONE)
@@ -120,7 +140,9 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
         @Getter(AccessLevel.NONE)
         private int cachedCauseCount = -1;
         @Getter(AccessLevel.NONE)
-        private double cachedCauseXP;
+        private Map<Class<?>, Double> cachedCauseXPByType = Map.of();
+        @Getter(AccessLevel.NONE)
+        private double cachedUnbackedCauseXP;
 
         public PlayerSkyBlockExperience(List<SkyBlockLevelCauseAbstr> completedExperienceCauses,
                                         Map.Entry<SkyBlockEmblems, Integer> currentEmblem) {
@@ -201,12 +223,35 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
          * class are summed from completed causes; everything else reads stored progress.
          */
         public double getSourceXP(@NonNull SkyBlockXPSource source) {
+            double earned = getRealSourceXP(source);
+            if (source.isUncapped()) return earned;
+            return Math.min(source.getMaxXP(), earned + unbuiltCredit.getOrDefault(source.name(), 0D));
+        }
+
+        /** XP a source holds from real progress alone, without the unbuilt-content credit. */
+        public double getRealSourceXP(@NonNull SkyBlockXPSource source) {
             Class<? extends SkyBlockLevelCauseAbstr> backing = source.getBackingCauseType();
-            if (backing != null) {
-                double earned = causeXP(backing) + sourceProgress.getOrDefault(source.name(), 0D);
-                return source.isUncapped() ? earned : Math.min(source.getMaxXP(), earned);
-            }
-            return sourceProgress.getOrDefault(source.name(), 0D);
+            double earned = sourceProgress.getOrDefault(source.name(), 0D) + (backing == null ? 0D : causeXP(backing));
+            return source.isUncapped() ? earned : Math.min(source.getMaxXP(), earned);
+        }
+
+        /** How much of the total comes from the unbuilt-content credit rather than real progress. */
+        public double getUnbuiltCreditXP() {
+            double total = 0D;
+            for (SkyBlockXPSource source : SkyBlockXPSource.values()) total += getSourceXP(source) - getRealSourceXP(source);
+            return total;
+        }
+
+        /** Replaces the unbuilt-content credit. Amounts are clamped to each source's maximum; uncapped sources take none. */
+        public void setUnbuiltCredit(@NonNull Map<SkyBlockXPSource, Double> credit) {
+            double oldXP = getTotalXP();
+            unbuiltCredit.clear();
+            credit.forEach((source, amount) -> {
+                if (source.isUncapped()) return;
+                double clamped = Math.max(0D, Math.min(amount, source.getMaxXP()));
+                if (clamped > 0D) unbuiltCredit.put(source.name(), clamped);
+            });
+            fireModification(null, oldXP, getTotalXP());
         }
 
         /**
@@ -239,19 +284,19 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
             fireModification(null, oldXP, getTotalXP());
         }
 
-        /** Marks every source this server cannot award through play as fully completed. */
         /**
-         * Puts every capped task at 100%. Cause-backed tasks get a top-up for the part of
-         * Hypixel's total this server has no content for yet; uncapped tasks keep their real
-         * running totals.
+         * Puts every capped task at 100%: stored progress covers whatever the unbuilt-content credit and, for
+         * cause-backed tasks, the earned causes leave. Uncapped tasks keep their real running totals.
          */
         public void completeAllSourceProgress() {
             double oldXP = getTotalXP();
             for (SkyBlockXPSource source : SkyBlockXPSource.values()) {
                 if (source.isUncapped()) continue;
                 Class<? extends SkyBlockLevelCauseAbstr> backing = source.getBackingCauseType();
-                double topUp = backing == null ? source.getMaxXP() : Math.max(0D, source.getMaxXP() - causeXP(backing));
-                sourceProgress.put(source.name(), topUp);
+                double covered = unbuiltCredit.getOrDefault(source.name(), 0D) + (backing == null ? 0D : causeXP(backing));
+                double topUp = Math.max(0D, source.getMaxXP() - covered);
+                if (topUp == 0D) sourceProgress.remove(source.name());
+                else sourceProgress.put(source.name(), topUp);
             }
             fireModification(null, oldXP, getTotalXP());
         }
@@ -264,14 +309,30 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
         }
 
         private double causeXP(Class<? extends SkyBlockLevelCauseAbstr> type) {
-            return completedExperienceCauses.stream()
-                    .filter(type::isInstance)
-                    .mapToDouble(SkyBlockLevelCauseAbstr::xpReward)
-                    .sum();
+            refreshCauseCache();
+            return cachedCauseXPByType.getOrDefault(type, 0D);
         }
 
-        public double getTotalSourceXP() {
-            return sourceProgress.values().stream().mapToDouble(Double::doubleValue).sum();
+        private void refreshCauseCache() {
+            if (cachedCauseCount == completedExperienceCauses.size()) return;
+            Map<Class<?>, Double> byType = new HashMap<>();
+            double unbacked = 0D;
+            for (SkyBlockLevelCauseAbstr cause : completedExperienceCauses) {
+                Class<? extends SkyBlockLevelCauseAbstr> backing = backingTypeOf(cause);
+                if (backing == null) unbacked += cause.xpReward();
+                else byType.merge(backing, cause.xpReward(), Double::sum);
+            }
+            cachedCauseXPByType = byType;
+            cachedUnbackedCauseXP = unbacked;
+            cachedCauseCount = completedExperienceCauses.size();
+        }
+
+        private static @Nullable Class<? extends SkyBlockLevelCauseAbstr> backingTypeOf(SkyBlockLevelCauseAbstr cause) {
+            for (SkyBlockXPSource source : SkyBlockXPSource.values()) {
+                Class<? extends SkyBlockLevelCauseAbstr> backing = source.getBackingCauseType();
+                if (backing != null && backing.isInstance(cause)) return backing;
+            }
+            return null;
         }
 
         // ----- Admin bonus XP -----
@@ -296,13 +357,15 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
             setBonusXP(bonusXP + (Math.max(0D, target) - getTotalXP()));
         }
 
-        /** XP earned without the admin offset — what the player actually worked for. */
+        /**
+         * XP without the admin offset: every task at its capped value, unbuilt-content credit included, plus
+         * causes that belong to no task.
+         */
         public double getEarnedXP() {
-            if (cachedCauseCount != completedExperienceCauses.size()) {
-                cachedCauseXP = completedExperienceCauses.stream().mapToDouble(SkyBlockLevelCauseAbstr::xpReward).sum();
-                cachedCauseCount = completedExperienceCauses.size();
-            }
-            return cachedCauseXP + getTotalSourceXP();
+            refreshCauseCache();
+            double total = cachedUnbackedCauseXP;
+            for (SkyBlockXPSource source : SkyBlockXPSource.values()) total += getSourceXP(source);
+            return total;
         }
 
         /**

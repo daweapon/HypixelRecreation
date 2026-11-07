@@ -24,10 +24,34 @@ public class GUIBestiaryIsland extends StatelessView {
             37, 38, 39, 40, 41, 42, 43,
     };
 
+    private static final int PREVIOUS_PAGE_SLOT = 45;
+    private static final int NEXT_PAGE_SLOT = 53;
+
     private final BestiaryCategories category;
+    private final int page;
 
     public GUIBestiaryIsland(BestiaryCategories category) {
+        this(category, 0);
+    }
+
+    public GUIBestiaryIsland(BestiaryCategories category, int page) {
         this.category = category;
+        this.page = page;
+    }
+
+    private int pageCount() {
+        return Math.max(1, (category.getEntries().length + DISPLAY_SLOTS.length - 1) / DISPLAY_SLOTS.length);
+    }
+
+    private void pageArrows(ViewLayout<DefaultState> layout) {
+        if (page > 0) {
+            layout.slot(PREVIOUS_PAGE_SLOT, (s, c) -> ItemStacks.item(Material.ARROW, 1, "<a>Previous Page\n<e>Page {}", page),
+                    (click, c) -> c.replace(new GUIBestiaryIsland(category, page - 1)));
+        }
+        if (page + 1 < pageCount()) {
+            layout.slot(NEXT_PAGE_SLOT, (s, c) -> ItemStacks.item(Material.ARROW, 1, "<a>Next Page\n<e>Page {}", page + 2),
+                    (click, c) -> c.replace(new GUIBestiaryIsland(category, page + 1)));
+        }
     }
 
     @Override
@@ -51,10 +75,12 @@ public class GUIBestiaryIsland extends StatelessView {
             return ItemStacks.of(category.getIcon(), 1, Text.of(category.getDisplayName()), lore);
         });
 
-        // Display all mobs
+        pageArrows(layout);
+
         BestiaryEntry[] bestiaryEntries = category.getEntries();
-        for (int i = 0; i < DISPLAY_SLOTS.length && i < bestiaryEntries.length; i++) {
-            BestiaryEntry bestiaryEntry = bestiaryEntries[i];
+        int first = page * DISPLAY_SLOTS.length;
+        for (int i = 0; i < DISPLAY_SLOTS.length && first + i < bestiaryEntries.length; i++) {
+            BestiaryEntry bestiaryEntry = bestiaryEntries[first + i];
             int slot = DISPLAY_SLOTS[i];
 
             layout.slot(slot, (s, c) -> {

@@ -75,4 +75,13 @@ public final class EssenceShop<P extends EssencePerk> {
     public int maxSkyBlockXP() {
         return skyBlockXP(EssencePerk::getMaxTier);
     }
+
+    /** SkyBlock XP from every perk this server lets players buy, each at its maximum tier. */
+    public int availableSkyBlockXP() {
+        return skyBlockXP(perk -> perk.getUnavailableReason() == null ? perk.getMaxTier() : 0);
+    }
+
+    public SkyBlockXPSource xpSource() {
+        return xpSource;
+    }
 }

@@ -149,6 +149,13 @@ public final class HotfService {
         syncSkyBlockXp(player);
     }
 
+    public static double maxSkyBlockXp() {
+        HotfRegistry registry = HotfRegistry.get();
+        double tierXp = registry.tiers().stream().mapToInt(HotfTierReward::skyBlockXp).sum();
+        double whisperXp = WhisperExperience.MAX_XP * (registry.desertWhispersEnabled() ? 2 : 1);
+        return tierXp + whisperXp;
+    }
+
     public static void syncSkyBlockXp(SkyBlockPlayer player) {
         HotfRegistry registry = HotfRegistry.get();
         DatapointHOTF.PlayerHOTFData data = data(player);

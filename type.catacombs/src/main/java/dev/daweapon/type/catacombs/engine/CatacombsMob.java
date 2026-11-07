@@ -7,6 +7,8 @@ import dev.daweapon.type.catacombs.engine.look.MobLook;
 import dev.daweapon.type.catacombs.engine.look.MobLooks;
 import dev.daweapon.type.skyblockgeneric.crimson.mob.CrimsonIsleMob;
 import dev.daweapon.type.skyblockgeneric.crimson.mob.CrimsonMobProfile;
+import dev.daweapon.type.skyblockgeneric.entity.mob.BestiaryMob;
+import dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.bestiary.BestiaryCategory;
 import dev.daweapon.type.skyblockgeneric.entity.mob.MobType;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -125,5 +127,15 @@ public class CatacombsMob extends CrimsonIsleMob {
     @Override
     public boolean countsTowardVanquisher() {
         return false;
+    }
+
+    @Override
+    public boolean countsForBestiary() {
+        return BestiaryCategory.CATACOMBS.forDungeonMob(getMobID()).isPresent();
+    }
+
+    @Override
+    public BestiaryMob bestiaryKillTarget() {
+        return BestiaryCategory.CATACOMBS.forDungeonMob(getMobID()).orElse(this);
     }
 }

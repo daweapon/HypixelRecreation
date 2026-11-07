@@ -131,6 +131,14 @@ public final class ChapterService {
         syncSkyBlockXp(player);
     }
 
+    public static int maxSkyBlockXp() {
+        int xp = 0;
+        for (ChapterRegistry registry : ChapterRegistry.all()) {
+            for (Chapter chapter : registry.chapters()) xp += chapter.completion().skyBlockXp();
+        }
+        return xp;
+    }
+
     public static void syncSkyBlockXp(SkyBlockPlayer player) {
         int xp = 0;
         for (ChapterRegistry registry : ChapterRegistry.all()) {

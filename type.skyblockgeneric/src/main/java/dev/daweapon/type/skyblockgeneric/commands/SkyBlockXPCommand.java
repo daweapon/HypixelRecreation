@@ -150,6 +150,7 @@ public class SkyBlockXPCommand extends HypixelCommand {
             case "reset" -> {
                 experience.getCompletedExperienceCauses().clear();
                 experience.getSourceProgress().clear();
+                experience.getUnbuiltCredit().clear();
                 experience.setBonusXP(0D);
                 sender.sendMessage("<a>Reset <e>{}<a>'s SkyBlock XP to zero.", target.getUsername());
             }
@@ -199,10 +200,10 @@ public class SkyBlockXPCommand extends HypixelCommand {
                 String.format(Locale.ROOT, "%.2f", experience.getPreciseLevel()));
         sender.sendMessage("  <7>Total XP: <b>{}<7>/<b>{}", Math.round(experience.getTotalXP()),
                 SkyBlockXPSource.TOTAL_MAX_XP);
-        sender.sendMessage("  <7>Earned: <b>{} <8>(causes <b>{}<8>, sources <b>{}<8>)",
+        sender.sendMessage("  <7>Earned: <b>{} <8>(real progress <b>{}<8>, unbuilt content <b>{}<8>)",
                 Math.round(experience.getEarnedXP()),
-                Math.round(experience.getEarnedXP() - experience.getTotalSourceXP()),
-                Math.round(experience.getTotalSourceXP()));
+                Math.round(experience.getEarnedXP() - experience.getUnbuiltCreditXP()),
+                Math.round(experience.getUnbuiltCreditXP()));
         sender.sendMessage("  <7>Admin bonus: <e>{}", Math.round(experience.getBonusXP()));
         sender.sendMessage("  <7>Progress: {}", experience.getNextLevelDisplay());
         sender.sendMessage("<3><m>---------------------------------");

@@ -1,6 +1,8 @@
 package dev.daweapon.type.skyblockgeneric.staff;
 
 import dev.daweapon.type.skyblockgeneric.hotm.HotmService;
+import dev.daweapon.type.skyblockgeneric.levels.SkyBlockXPCapacity;
+import dev.daweapon.type.skyblockgeneric.levels.SkyBlockXPSyncs;
 import dev.daweapon.type.skyblockgeneric.fishing.trophy.TrophyFishMax;
 import dev.daweapon.type.skyblockgeneric.crimson.dojo.DojoProgress;
 import dev.daweapon.type.skyblockgeneric.crimson.faction.CrimsonReputationService;
@@ -132,8 +134,8 @@ public final class MaxStickService {
     private record Step(String name, Consumer<SkyBlockPlayer> action) {
     }
 
-    // Last: maxSkyBlockLevel tops the total up to real Hypixel's maximum, so every step above it
-    // must have granted its own SkyBlock XP causes first or the top-up would overshoot.
+    // Last: settleSkyBlockLevel recomputes every data-backed task from what the steps above maxed, so each of those
+    // steps must max the real progress a task reads, not just its XP.
     private static final List<Step> STEPS = List.of(
             new Step("Community Shop upgrades", dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgrades::maxAll),
             new Step("Starlyn Contests", dev.daweapon.type.skyblockgeneric.starlyn.StarlynMilestones::maxOut),
@@ -165,6 +167,10 @@ public final class MaxStickService {
             new Step("Bits", MaxStickService::giveMaxBits),
             new Step("Gems", MaxStickService::giveMaxGems),
             new Step("Dark Auction calendar", MaxStickService::unlockDarkAuctionCalendar),
+            new Step("Attributes", dev.daweapon.type.skyblockgeneric.hunting.AttributeLevelAwards::maxOut),
+            new Step("Spooky Festival", dev.daweapon.type.skyblockgeneric.spookyfestival.SpookyFestivalXP::maxOut),
+            new Step("Ship parts", dev.daweapon.type.skyblockgeneric.fishing.ship.ShipPartAwards::maxOut),
+            new Step("Tree Gift milestones", dev.daweapon.type.skyblockgeneric.foraging.TreeGiftMilestones::maxOut),
             new Step("Hunting Toolkit", player -> {
                 dev.daweapon.type.skyblockgeneric.hunting.HuntingToolkit.unlock(player);
                 dev.daweapon.type.skyblockgeneric.hunting.HuntingToolkit.stockBest(player);
@@ -225,7 +231,7 @@ public final class MaxStickService {
             new Step("Profile playtime", player -> dev.daweapon.type.skyblockgeneric.user.playtime.ProfilePlaytime.ensureAtLeast(player,
                     10 * dev.daweapon.type.skyblockgeneric.user.playtime.ProfilePlaytime.HOUR_MILLIS)),
             new Step("SkyBlock Guide", dev.daweapon.type.skyblockgeneric.levels.guide.SkyBlockGuide::maxOut),
-            new Step("SkyBlock Level", MaxStickService::maxSkyBlockLevel));
+            new Step("SkyBlock Level", MaxStickService::settleSkyBlockLevel));
 
     public static void maxProfile(SkyBlockPlayer player) {
         List<String> failed = runSteps(player);
@@ -508,27 +514,50 @@ public final class MaxStickService {
     }
 
     /**
-     * Puts every capped SkyBlock XP task at 100% and unlocks every prefix emblem.
+     * Puts every capped SkyBlock XP task at 100% and unlocks every prefix emblem, without touching the progress the
+     * tasks are computed from: a data-backed task falls back to the player's real progress on the next join.
+     * {@code /max profile} uses {@link #settleSkyBlockLevel} instead.
      *
-     * <p>The total is {@link SkyBlockXPSource#TOTAL_MAX_XP} (Level 578.74) plus whatever the
-     * uncapped tasks (Accessory Bag, Pet Score, ...) hold, since Hypixel counts those on top.
-     * Bonus XP absorbs causes such as emblems that belong to no task.
+     * <p>The part of each task this server has no content for is credited as unbuilt content, the rest is stored as
+     * task progress, and the admin bonus offset is cleared, so the total is exactly
+     * {@link SkyBlockXPSource#TOTAL_MAX_XP} plus whatever the uncapped tasks hold.
      */
     public static void maxSkyBlockLevel(SkyBlockPlayer player) {
         DatapointSkyBlockExperience.PlayerSkyBlockExperience experience = player.getSkyBlockExperience();
-
         experience.batch(() -> {
+            unlockEmblems(experience);
+            experience.setUnbuiltCredit(SkyBlockXPCapacity.unbuiltCredit());
             experience.completeAllSourceProgress();
-
-            for (SkyBlockEmblems category : SkyBlockEmblems.values()) {
-                for (SkyBlockEmblems.SkyBlockEmblem emblem : category.getEmblems()) {
-                    if (emblem.cause() != null) experience.addExperience(emblem.cause());
-                }
-            }
-
-            experience.setTotalXP(SkyBlockXPSource.TOTAL_MAX_XP + experience.getUncappedSourceXP());
+            experience.setBonusXP(0D);
         });
+        saveExperience(player, experience);
+    }
 
+    /**
+     * The final {@code /max profile} step: credits unbuilt content, fills the accumulated tasks, then recomputes every
+     * data-backed task from the maxed progress, so a later join reconciles to the same total.
+     */
+    public static void settleSkyBlockLevel(SkyBlockPlayer player) {
+        DatapointSkyBlockExperience.PlayerSkyBlockExperience experience = player.getSkyBlockExperience();
+        experience.batch(() -> {
+            unlockEmblems(experience);
+            experience.setUnbuiltCredit(SkyBlockXPCapacity.unbuiltCredit());
+            experience.completeAllSourceProgress();
+            SkyBlockXPSyncs.syncAll(player);
+            experience.setBonusXP(0D);
+        });
+        saveExperience(player, experience);
+    }
+
+    private static void unlockEmblems(DatapointSkyBlockExperience.PlayerSkyBlockExperience experience) {
+        for (SkyBlockEmblems category : SkyBlockEmblems.values()) {
+            for (SkyBlockEmblems.SkyBlockEmblem emblem : category.getEmblems()) {
+                if (emblem.cause() != null) experience.addExperience(emblem.cause());
+            }
+        }
+    }
+
+    private static void saveExperience(SkyBlockPlayer player, DatapointSkyBlockExperience.PlayerSkyBlockExperience experience) {
         player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SKYBLOCK_EXPERIENCE,
                 DatapointSkyBlockExperience.class).setValue(experience);
     }

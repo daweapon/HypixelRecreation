@@ -24,7 +24,9 @@ import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobVoidlingFanat
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobZealot;
 import dev.daweapon.type.skyblockgeneric.entity.mob.mobs.theend.MobZealotBruiser;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public final class CataloguedBestiaryAreas {
     private CataloguedBestiaryAreas() {
@@ -65,6 +67,22 @@ public final class CataloguedBestiaryAreas {
         GUIMaterial material = new GUIMaterial(icon);
         return new CataloguedFamily("<a>" + displayName, description, material, List.of(CataloguedBestiaryMob.of(
                 new CataloguedBestiaryMob.Family(mobId, displayName, bracket, maxTier, material, type))));
+    }
+
+    /** Hunting brackets follow the eight combat brackets, so Hunting N is bracket 8 + N. */
+    private static final int HUNTING_BRACKET_OFFSET = 8;
+
+    /** Moonglade Marsh families whose creature isn't built yet (wiki Bestiary list; NEU icon). */
+    public static final BestiaryEntry[] MOONGLADE_MARSH_UNBUILT = {
+            family("INVISIBUG", "Invisibug", "Tiny bugs flickering at the edge of sight.", HUNTING_BRACKET_OFFSET + 3, 10, MobType.CRITTER,
+                    "1b944a5ecf2401d4826cf8380a3ad540e517dcd4461869092552043ec10fbfae"),
+    };
+
+    /** A built section plus its catalogued families, sorted by name as the in-game menu lists them. */
+    public static BestiaryEntry[] withPlaceholders(BestiaryEntry[] built, BestiaryEntry[] placeholders) {
+        return Stream.concat(Arrays.stream(built), Arrays.stream(placeholders))
+                .sorted((a, b) -> a.getName().compareToIgnoreCase(b.getName()))
+                .toArray(BestiaryEntry[]::new);
     }
 
     public static final BestiaryEntry[] FARMING_ISLANDS = {

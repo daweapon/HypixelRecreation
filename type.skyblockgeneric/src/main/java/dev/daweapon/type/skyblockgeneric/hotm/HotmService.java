@@ -100,10 +100,33 @@ public final class HotmService {
         HotmRegistry registry = HotmRegistry.get();
         double tierXp = 0;
         for (int tier = 1; tier <= data.getTier(); tier++) tierXp += registry.tierReward(tier).skyBlockXp();
+        double powderXp = 0;
+        for (HotmPowder powder : HotmPowder.values()) powderXp += PowderExperience.experience(powder, totalPowder(data, powder));
         double coreXp = 0;
         for (int level = 1; level <= data.getCoreLevel(); level++) coreXp += registry.coreLevel(level).skyBlockXp();
-        player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.HEART_OF_THE_MOUNTAIN, tierXp);
+        player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.HEART_OF_THE_MOUNTAIN, tierXp + powderXp);
         player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.CORE_OF_THE_MOUNTAIN, coreXp);
+    }
+
+    public static double maxSkyBlockXp() {
+        double tierXp = HotmRegistry.get().tiers().stream().mapToInt(HotmTierReward::skyBlockXp).sum();
+        double powderXp = 0;
+        for (HotmPowder powder : HotmPowder.values()) powderXp += PowderExperience.maxXp(powder);
+        return tierXp + powderXp;
+    }
+
+    /** Powder ever earned: the balance plus everything spent on perks and Core of the Mountain levels. */
+    public static long totalPowder(DatapointHOTM.PlayerHOTMData data, HotmPowder powder) {
+        HotmRegistry registry = HotmRegistry.get();
+        long spent = 0;
+        for (HotmPerk perk : registry.perks().values()) {
+            if (perk.powder() == powder) spent += perk.totalCost(data.perkLevel(perk.id()));
+        }
+        for (int level = 1; level <= data.getCoreLevel(); level++) {
+            HotmCoreLevel core = registry.coreLevel(level);
+            if (core.powder() == powder) spent += core.cost();
+        }
+        return data.powder(powder) + spent;
     }
 
     public static String buyPerk(SkyBlockPlayer player, String perkId) {
@@ -241,6 +264,7 @@ public final class HotmService {
         DatapointHOTM.PlayerHOTMData data = data(player);
         data.addPowder(powder, amount);
         save(player, data);
+        syncSkyBlockXp(player);
         if (powder == HotmPowder.MITHRIL) {
             dev.daweapon.type.skyblockgeneric.commission.CommissionProgress.update(player,
                     dev.daweapon.type.skyblockgeneric.commission.ObjectiveType.COLLECT,
@@ -254,6 +278,7 @@ public final class HotmService {
         DatapointHOTM.PlayerHOTMData data = data(player);
         data.addPowder(powder, amount);
         save(player, data);
+        syncSkyBlockXp(player);
     }
 
     public static long dailyPowderAmount(SkyBlockPlayer player) {

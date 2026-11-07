@@ -113,12 +113,12 @@ public class MobGraveyardZombieVillager extends BestiaryMob implements RegionPop
 
 	@Override
 	public int getMaxBestiaryTier() {
-		return 15;
+		return 5;
 	}
 
 	@Override
 	public int getBestiaryBracket() {
-		return 4;
+		return 1;
 	}
 
 	@Override

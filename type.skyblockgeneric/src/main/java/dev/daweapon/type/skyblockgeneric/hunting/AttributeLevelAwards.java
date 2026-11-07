@@ -19,6 +19,25 @@ public final class AttributeLevelAwards {
         return Math.min(levels * XP_PER_LEVEL, SkyBlockXPSource.ATTRIBUTE_LEVELS.getMaxXP());
     }
 
+    public static int maxSkyBlockXp() {
+        int levels = 0;
+        for (AttributeDefinition definition : AttributeRegistry.values()) {
+            if (definition.isAvailable()) levels += AttributeRarity.MAX_LEVEL;
+        }
+        return Math.min(levels * XP_PER_LEVEL, SkyBlockXPSource.ATTRIBUTE_LEVELS.getMaxXP());
+    }
+
+    /** Every available attribute syphoned to its maximum level. Shards stay unowned. */
+    public static void maxOut(SkyBlockPlayer player) {
+        DatapointHunting.HuntingData data = player.getHuntingData();
+        for (AttributeDefinition definition : AttributeRegistry.values()) {
+            if (!definition.isAvailable()) continue;
+            String id = definition.id().toString();
+            data.setSyphoned(id, Math.max(data.syphoned(id), definition.rarity().cumulativeForLevel(AttributeRarity.MAX_LEVEL)));
+        }
+        syncSkyBlockXP(player);
+    }
+
     public static void syncSkyBlockXP(SkyBlockPlayer player) {
         player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.ATTRIBUTE_LEVELS, skyBlockXp(player.getHuntingData()));
     }

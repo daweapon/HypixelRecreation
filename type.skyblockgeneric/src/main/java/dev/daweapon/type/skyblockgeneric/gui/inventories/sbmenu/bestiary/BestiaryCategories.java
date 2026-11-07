@@ -21,19 +21,25 @@ public enum BestiaryCategories {
     THE_END("<d>The End", CataloguedBestiaryAreas.THE_END),
     THE_PARK("<3>The Park", CataloguedBestiaryAreas.THE_PARK),
     JERRY("<6>Jerry", CataloguedBestiaryAreas.JERRY),
-    MOONGLADE_MARSH("<2>Moonglade Marsh", dev.daweapon.type.skyblockgeneric.hunting.creature.HuntingBestiary.section("MOONGLADE_MARSH")),
+    MOONGLADE_MARSH("<2>Moonglade Marsh", CataloguedBestiaryAreas.withPlaceholders(
+            dev.daweapon.type.skyblockgeneric.hunting.creature.HuntingBestiary.section("MOONGLADE_MARSH"),
+            CataloguedBestiaryAreas.MOONGLADE_MARSH_UNBUILT)),
     TORRHUS_CANYON("<6>Torrhus Canyon", dev.daweapon.type.skyblockgeneric.hunting.creature.HuntingBestiary.section("TORRHUS_CANYON")),
     DWARVEN_MINES("<2>Dwarven Mines", BestiaryCategory.DWARVEN_MINES.values()),
     MYTHOLOGICAL_CREATURES("<b>Mythological Creatures", BestiaryCategory.MYTHOLOGICAL_CREATURES.values()),
     CRYSTAL_HOLLOWS("<5>Crystal Hollows", BestiaryCategory.CRYSTAL_HOLLOWS.values()),
     CRIMSON_ISLE("<c>Crimson Isle", BestiaryCategory.CRIMSON_ISLE.values()),
     KUUDRA("<c>Kuudra", BestiaryCategory.KUUDRA.values()),
+    SPOOKY_FESTIVAL("<6>Spooky Festival", BestiaryCategory.SPOOKY_FESTIVAL.values()),
+    CATACOMBS("<c>The Catacombs", BestiaryCategory.CATACOMBS.values()),
     FISHING(FishingBestiarySection.FISHING),
     FISHING_LAVA(FishingBestiarySection.LAVA),
     FISHING_SPOOKY_FESTIVAL(FishingBestiarySection.SPOOKY_FESTIVAL),
     FISHING_FISHING_FESTIVAL(FishingBestiarySection.FISHING_FESTIVAL),
     FISHING_WINTER(FishingBestiarySection.WINTER),
     FISHING_BACKWATER_BAYOU(FishingBestiarySection.BACKWATER_BAYOU),
+    FISHING_TORRHUS_CANYON(FishingBestiarySection.TORRHUS_CANYON),
+    FISHING_MOONGLADE_MARSH(FishingBestiarySection.MOONGLADE_MARSH),
     ;
 
     private static final GUIMaterial DEFAULT_ICON = new GUIMaterial("c9c8881e42915a9d29bb61a16fb26d059913204d265df5b439b3d792acd56");

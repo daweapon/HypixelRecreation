@@ -27,7 +27,7 @@ public class PlayerKilledSkyBlockMobEvent implements PlayerInstanceEvent {
 
         if (killedMob instanceof BestiaryMob bestiaryMob && bestiaryMob.countsForBestiary()) {
             DatapointBestiary.PlayerBestiary playerBestiary = player.getSkyblockDataHandler().get(dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler.Data.BESTIARY, DatapointBestiary.class).getValue();
-            playerBestiary.increase(bestiaryMob, 1);
+            playerBestiary.increase(bestiaryMob.bestiaryKillTarget(), 1);
         }
 
         SkyBlockItem mainHandItem = PlayerItemOrigin.getFromCache(player.getUuid()).get(PlayerItemOrigin.MAIN_HAND);

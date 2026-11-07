@@ -11,6 +11,8 @@ public enum AttributeRarity {
     EPIC(new int[]{1, 2, 4, 6, 9, 12, 16, 20, 25, 32}, 15),
     LEGENDARY(new int[]{1, 2, 3, 5, 7, 9, 12, 15, 19, 24}, 20);
 
+    public static final int MAX_LEVEL = 10;
+
     private final int[] cumulativeShards;
     private final int huntingRequirement;
 
