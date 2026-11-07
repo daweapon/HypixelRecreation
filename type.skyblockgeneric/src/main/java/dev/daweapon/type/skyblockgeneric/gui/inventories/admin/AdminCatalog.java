@@ -31,7 +31,7 @@ public final class AdminCatalog {
             Map.entry("tp", new Details(Category.WORLD, "/tp <player> | <x> <y> <z> | npc <npc>", "Teleports you to a player, to coordinates or to an NPC.")),
             Map.entry("unlock", new Details(Category.ITEMS, "/unlock <warps|bestiary> [player]", "Unlocks Fast Travel warps or the Bestiary.")),
             Map.entry("world", new Details(Category.WORLD, "/world <structure|tree|regrow|hologram|crystal|deleteorb|minionspeed|dragon|velocity> ...", "World, structure, hologram, crystal and minion tools.")),
-            Map.entry("adminbypass", new Details(Category.WORLD, "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable|skipforgetime [slot]", "Skips a SkyBlock calendar or Auction House timer, or opens a Cookie-gated menu without a Cookie Buff.")),
+            Map.entry("adminbypass", new Details(Category.WORLD, "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable|skipforgetime [slot]|dungeonbreaker [player]", "Skips a SkyBlock calendar or Auction House timer, opens a Cookie-gated menu without a Cookie Buff, or toggles a player's Dungeonbreaker bypass.")),
             Map.entry("adminme", new Details(Category.DEVELOPMENT, "/adminme", "Literally just gives me admin. Developer allowlist only, despite DEFAULT annotation. Resolves allowed UUIDs and grants STAFF; not a general player feature.")),
             Map.entry("ahview", new Details(Category.DEVELOPMENT, "/ahview <uuid>", "Views an auction.")),
             Map.entry("allowaccessforapiauthentication", new Details(Category.DEVELOPMENT, "/allowaccessforapiauthentication <code>", "Allows access for API authentication for the given code.")),

@@ -35,7 +35,7 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @CommandParameters(labels = "adminbypass jumptonextevent skiptoevent",
         description = "Skips the timer to the next occurrence of a SkyBlock event",
-        usage = "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable|skiptospecialmayor|forcemayor <mayor>|resetyear|skipforgetime [slot]|hunt <egg 0-278>|greatspook <on|off|auto>|primalfear [manifestation]",
+        usage = "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable|skiptospecialmayor|forcemayor <mayor>|resetyear|skipforgetime [slot]|hunt <egg 0-278>|greatspook <on|off|auto>|primalfear [manifestation]|dungeonbreaker [player]",
         permission = Rank.STAFF,
         allowsConsole = true)
 public class AdminBypassCommand extends HypixelCommand {
@@ -107,6 +107,23 @@ public class AdminBypassCommand extends HypixelCommand {
         command.addSyntax((sender, context) -> setGreatSpook(sender, context.get("greatspook_state")),
                 ArgumentType.Literal("greatspook"), ArgumentType.Word("greatspook_state").from("on", "off", "auto"));
 
+        command.addSyntax((sender, context) -> {
+            if (!(sender instanceof SkyBlockPlayer player)) {
+                sender.sendMessage("<c>Name a player when running this from the console.");
+                return;
+            }
+            toggleDungeonbreaker(sender, player);
+        }, ArgumentType.Literal("dungeonbreaker"));
+        var breakerTarget = ArgumentType.Entity("dungeonbreaker_player").onlyPlayers(true).singleEntity(true);
+        command.addSyntax((sender, context) -> {
+            var target = context.get(breakerTarget).findFirstPlayer(sender);
+            if (!(target instanceof SkyBlockPlayer player)) {
+                sender.sendMessage("<c>That player is not online on this server.");
+                return;
+            }
+            toggleDungeonbreaker(sender, player);
+        }, ArgumentType.Literal("dungeonbreaker"), breakerTarget);
+
         command.addSyntax((sender, context) -> spawnPrimalFear(sender, null),
                 ArgumentType.Literal("primalfear"));
         command.addSyntax((sender, context) -> spawnPrimalFear(sender, context.get("primal_manifestation")),
@@ -121,6 +138,14 @@ public class AdminBypassCommand extends HypixelCommand {
         });
         command.addSyntax((sender, context) -> forceElectMayor(sender, context.get(mayorArgument)),
                 ArgumentType.Literal("forcemayor"), mayorArgument);
+    }
+
+    private static void toggleDungeonbreaker(net.minestom.server.command.CommandSender sender, SkyBlockPlayer target) {
+        boolean enabled = dev.daweapon.type.skyblockgeneric.dungeons.breaker.Dungeonbreaker.toggleBypass(target);
+        String state = enabled ? "<a>ON" : "<c>OFF";
+        sender.sendMessage("<e>Dungeonbreaker bypass for <f>" + target.getUsername() + "<e>: " + state
+                + (enabled ? " <7>(no Floor III requirement, no charges, no 20-block cap)" : ""));
+        if (sender != target) target.sendMessage("<e>Your Dungeonbreaker bypass was turned " + state + "<e>.");
     }
 
     private static void setGreatSpook(net.minestom.server.command.CommandSender sender, String state) {

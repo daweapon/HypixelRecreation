@@ -48,6 +48,7 @@ sections:
       - "Broken blocks come back after 10 seconds. Breaking a 21st block brings your oldest one back straight away, and everything still broken comes back when the run ends."
       - "It only works in rooms your party has explored. Puzzle rooms, room edges, doors, crypts, secrets, levers and what they open, weak walls, chests and skulls cannot be broken, and boss rooms are off limits (only the Floor VII Wither Lords fight will allow it)."
       - "Staff are not limited by charges or by the 20-block cap (this differs from Hypixel on purpose); their blocks still come back after 10 seconds and the same blocks stay unbreakable."
+      - "Staff do not need Floor III to use or buy the Dungeonbreaker, and staff can give any player the same bypass with /adminbypass dungeonbreaker."
       - "Echoes of the Lost can now be bought in Malik's Wither Essence shop: every secret you find restores 1 to 5 charges on your Dungeonbreaker."
       - "All five Wither Armor sets now work: Wither, Maxor's, Storm's, Goldor's and Necron's. Each piece takes 10% off damage from withers, and each Maxor's piece adds 5% arrow damage."
       - "Any four Wither Armor pieces, mixed or matched, give Witherborn: every 30 seconds a small wither minion appears (one at a time), flies at the nearest enemy and explodes for your normal hit damage on everything around it. The set bonus counter in the lore now counts the pieces you are wearing."

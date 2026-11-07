@@ -835,6 +835,9 @@ public class SkyBlockDataHandler extends DataHandler {
         DUNGEON_AUTO_READY("dungeon_auto_ready", false, false, false,
                 DatapointBoolean.class, new DatapointBoolean("dungeon_auto_ready", true)),
 
+        DUNGEONBREAKER_BYPASS("dungeonbreaker_bypass", false, false, false,
+                DatapointBoolean.class, new DatapointBoolean("dungeonbreaker_bypass", false)),
+
         HEALER_CLASS_XP("healer_class_xp", false, false, false,
                 DatapointLong.class, new DatapointLong("healer_class_xp", 0L)),
 

@@ -21,7 +21,8 @@ public record CatacombsFloorRequirement(CatacombsFloor floor) implements ShopReq
 
     @Override
     public boolean isMet(SkyBlockPlayer player) {
-        return CatacombsProgress.hasCompleted(player, floor);
+        return dev.daweapon.type.skyblockgeneric.dungeons.breaker.Dungeonbreaker.isStaff(player)
+                || CatacombsProgress.hasCompleted(player, floor);
     }
 
     @Override

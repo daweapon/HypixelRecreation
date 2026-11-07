@@ -1,5 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.dungeons.breaker;
 
+import dev.daweapon.type.generic.data.datapoints.DatapointBoolean;
+import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.skyblock.item.attribute.attributes.ItemAttributeDungeonbreakerCharges;
 import dev.daweapon.dungeons.catacombs.CatacombsFloor;
@@ -45,13 +47,30 @@ public final class Dungeonbreaker {
         return new SkyBlockItem(stack).getAttributeHandler().getPotentialType() == ItemType.DUNGEONBREAKER;
     }
 
-    /** Staff break without spending or needing charges, a deliberate difference from Hypixel. */
+    /**
+     * Staff, and anyone given the bypass with /adminbypass dungeonbreaker, break without spending or needing charges
+     * and without the Floor III requirement: a deliberate difference from Hypixel.
+     */
     public static boolean isStaff(SkyBlockPlayer player) {
-        return player.getRank().isEqualOrHigherThan(Rank.STAFF);
+        return player.getRank().isEqualOrHigherThan(Rank.STAFF) || hasBypass(player);
     }
 
     public static boolean canUse(SkyBlockPlayer player) {
-        return CatacombsProgress.hasCompleted(player, REQUIRED_FLOOR);
+        return isStaff(player) || CatacombsProgress.hasCompleted(player, REQUIRED_FLOOR);
+    }
+
+    public static boolean hasBypass(SkyBlockPlayer player) {
+        return Boolean.TRUE.equals(bypassPoint(player).getValue());
+    }
+
+    public static boolean toggleBypass(SkyBlockPlayer player) {
+        boolean enabled = !hasBypass(player);
+        bypassPoint(player).setValue(enabled);
+        return enabled;
+    }
+
+    private static DatapointBoolean bypassPoint(SkyBlockPlayer player) {
+        return player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.DUNGEONBREAKER_BYPASS, DatapointBoolean.class);
     }
 
     public static BreakerCharges charges(SkyBlockItem item, long now) {
