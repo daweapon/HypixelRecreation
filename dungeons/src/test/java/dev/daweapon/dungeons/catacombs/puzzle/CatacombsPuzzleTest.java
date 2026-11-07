@@ -40,6 +40,24 @@ class CatacombsPuzzleTest {
     }
 
     @Test
+    void theCatalogueOnlyReadsARoomAsItsOwnPuzzle() {
+        PuzzleCatalogue catalogue = PuzzleCatalogueFixture.load();
+        assertTrue(catalogue.iceFill("three_weirdos").isEmpty());
+        assertTrue(catalogue.weirdos("ice_fill").isEmpty());
+        assertTrue(catalogue.quiz("boulder").isEmpty());
+        assertTrue(catalogue.waterBoard("unknown_room").isEmpty());
+        for (CatacombsPuzzle puzzle : CatacombsPuzzle.values()) {
+            String template = puzzle.templateIds().getFirst();
+            boolean any = catalogue.iceFill(template).isPresent() || catalogue.weirdos(template).isPresent()
+                    || catalogue.ticTacToe(template).isPresent() || catalogue.teleportMaze(template).isPresent()
+                    || catalogue.creeperBeams(template).isPresent() || catalogue.waterBoard(template).isPresent()
+                    || catalogue.higherOrLower(template).isPresent() || catalogue.boulder(template).isPresent()
+                    || catalogue.quiz(template).isPresent();
+            assertEquals(puzzle != CatacombsPuzzle.ICE_PATH, any, puzzle.name());
+        }
+    }
+
+    @Test
     void templatesMapToTheirPuzzle() {
         assertEquals(CatacombsPuzzle.HIGHER_OR_LOWER, CatacombsPuzzle.ofTemplate("blaze").orElseThrow());
         assertEquals(CatacombsPuzzle.ICE_FILL, CatacombsPuzzle.ofTemplate("ice_fill").orElseThrow());

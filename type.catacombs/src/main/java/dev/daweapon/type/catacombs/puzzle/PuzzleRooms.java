@@ -22,17 +22,39 @@ import java.util.function.Predicate;
 
 /** The run's playable puzzle rooms: one {@link PuzzleRoom} per real puzzle room the catalogue has data for. */
 public final class PuzzleRooms {
+    @FunctionalInterface
+    private interface Factory {
+        Optional<PuzzleRoom> create(PuzzleContext context, PlacedRoom room, PuzzleCatalogue catalogue, String templateId);
+    }
+
+    private static final List<Factory> FACTORIES = List.of(
+            (context, room, catalogue, id) -> catalogue.iceFill(id).map(data -> new IceFillRoom(context, room, data)),
+            (context, room, catalogue, id) -> catalogue.weirdos(id).map(data -> new ThreeWeirdosRoom(context, room, data)),
+            (context, room, catalogue, id) -> catalogue.ticTacToe(id).map(data -> new TicTacToeRoom(context, room, data)),
+            (context, room, catalogue, id) -> catalogue.teleportMaze(id).map(data -> new TeleportMazeRoom(context, room, data)),
+            (context, room, catalogue, id) -> catalogue.creeperBeams(id).map(data -> new CreeperBeamsRoom(context, room, data)),
+            (context, room, catalogue, id) -> catalogue.waterBoard(id).map(data -> new WaterBoardRoom(context, room, data)),
+            (context, room, catalogue, id) -> catalogue.higherOrLower(id).map(data -> new HigherOrLowerRoom(context, room, data)),
+            (context, room, catalogue, id) -> catalogue.boulder(id).map(data -> new BoulderRoom(context, room, data)),
+            (context, room, catalogue, id) -> catalogue.quiz(id).map(data -> new QuizRoom(context, room, data)));
+
     private static volatile PuzzleCatalogue shared;
 
     private final PuzzleContext context;
     private final Map<Integer, PuzzleRoom> rooms = new ConcurrentHashMap<>();
+    private final Map<Integer, PuzzleRoom> ready = new ConcurrentHashMap<>();
+    private volatile boolean disposed;
 
     public PuzzleRooms(PuzzleContext context, FloorLayout layout, Predicate<PlacedRoom> real) {
         this.context = context;
         PuzzleCatalogue catalogue = catalogue();
         for (PlacedRoom room : layout.roomsOfKind(RoomKind.PUZZLE)) {
             if (!real.test(room)) continue;
-            create(context, room, catalogue).ifPresent(puzzle -> rooms.put(room.index(), puzzle));
+            try {
+                create(context, room, catalogue).ifPresent(puzzle -> rooms.put(room.index(), puzzle));
+            } catch (RuntimeException exception) {
+                Logger.error(exception, "Could not set up the puzzle in room {} ({})", room.index(), room.template().id());
+            }
         }
     }
 
@@ -57,27 +79,13 @@ public final class PuzzleRooms {
         return FACTORIES.stream().map(factory -> factory.create(context, room, catalogue, id)).flatMap(Optional::stream).findFirst();
     }
 
-    @FunctionalInterface
-    private interface Factory {
-        Optional<PuzzleRoom> create(PuzzleContext context, PlacedRoom room, PuzzleCatalogue catalogue, String templateId);
-    }
-
-    private static final List<Factory> FACTORIES = List.of(
-            (context, room, catalogue, id) -> catalogue.iceFill(id).map(data -> new IceFillRoom(context, room, data)),
-            (context, room, catalogue, id) -> catalogue.weirdos(id).map(data -> new ThreeWeirdosRoom(context, room, data)),
-            (context, room, catalogue, id) -> catalogue.ticTacToe(id).map(data -> new TicTacToeRoom(context, room, data)),
-            (context, room, catalogue, id) -> catalogue.teleportMaze(id).map(data -> new TeleportMazeRoom(context, room, data)),
-            (context, room, catalogue, id) -> catalogue.creeperBeams(id).map(data -> new CreeperBeamsRoom(context, room, data)),
-            (context, room, catalogue, id) -> catalogue.waterBoard(id).map(data -> new WaterBoardRoom(context, room, data)),
-            (context, room, catalogue, id) -> catalogue.higherOrLower(id).map(data -> new HigherOrLowerRoom(context, room, data)),
-            (context, room, catalogue, id) -> catalogue.boulder(id).map(data -> new BoulderRoom(context, room, data)),
-            (context, room, catalogue, id) -> catalogue.quiz(id).map(data -> new QuizRoom(context, room, data)));
-
     public void start() {
         for (PuzzleRoom puzzle : rooms.values()) {
             loadRoom(puzzle.room()).thenRun(() -> {
+                if (disposed) return;
                 try {
                     puzzle.start();
+                    ready.put(puzzle.room().index(), puzzle);
                 } catch (RuntimeException exception) {
                     Logger.error(exception, "Could not start the {} puzzle in room {}", puzzle.puzzle().displayName(), puzzle.room().index());
                 }
@@ -99,7 +107,7 @@ public final class PuzzleRooms {
     }
 
     public Optional<PuzzleRoom> in(PlacedRoom room) {
-        return Optional.ofNullable(rooms.get(room.index()));
+        return Optional.ofNullable(ready.get(room.index()));
     }
 
     public boolean interact(SkyBlockPlayer player, int x, int y, int z) {
@@ -123,16 +131,18 @@ public final class PuzzleRooms {
     }
 
     private @Nullable PuzzleRoom at(int x, int z) {
-        if (rooms.isEmpty()) return null;
-        return context.host().arena().plan().roomAtColumn(x, z).map(room -> rooms.get(room.index())).orElse(null);
+        if (ready.isEmpty()) return null;
+        return context.host().arena().plan().roomAtColumn(x, z).map(room -> ready.get(room.index())).orElse(null);
     }
 
     public void poll() {
-        rooms.values().forEach(PuzzleRoom::poll);
+        ready.values().forEach(PuzzleRoom::poll);
     }
 
     public void dispose() {
-        rooms.values().forEach(PuzzleRoom::dispose);
+        disposed = true;
+        ready.values().forEach(PuzzleRoom::dispose);
+        ready.clear();
         rooms.clear();
     }
 }

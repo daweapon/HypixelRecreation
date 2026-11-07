@@ -1,7 +1,8 @@
 {
- "source": "Puzzle room data in each template's own frame (x/z from the room's north-west corner, y above the dungeon floor at 68), read from the user's Hypixel captures (2026-11-05) and the room templates. Ice Fill: boards from the template with obstacle blocks on top of ice left out; the captured M7 run 3 walk covers every tile in this order; gate and chests as captured. Three Weirdos: NPC spots, skins and chests from M7 run 3; the six statement cases from the wiki (Catacombs Puzzle Rooms) with the captured case 6 wording; names beyond Hugo/Winona/Ramsey are a guess (Minnesota town names, like the three captured). Tic Tac Toe: buttons, the wall that sinks and the reward chest from M7 run 2. Teleport Maze: pads from the template, landing spots and the final-pad aim from both F1 captures. Creeper Beams: lanterns from the template, the creeper, its pedestal and the chest from F1 run 2; the creeper space is fitted so the four captured beams count.",
+ "source": "Puzzle room data in each template's own frame (x/z from the room's north-west corner, y above the dungeon floor at 68), read from the user's Hypixel captures (2026-11-05) and the room templates. Ice Fill: boards from the template with obstacle blocks on top of ice left out; the captured M7 run 3 walk covers every tile in this order; gate and chests as captured. Three Weirdos: NPC spots, skins and chests from M7 run 3; the six statement cases from the wiki (Catacombs Puzzle Rooms) with the captured case 6 wording; names beyond Hugo/Winona/Ramsey are a guess (Minnesota town names, like the three captured). Tic Tac Toe: buttons, the wall that sinks and the reward chest from M7 run 2. Teleport Maze: pads from the template, landing spots and the final-pad aim from both F1 captures. Creeper Beams: lanterns from the template, the creeper, its pedestal and the chest from F1 run 2; the creeper space is fitted so the four captured beams count. Water Board: the maze plane (x 4) with its gate blocks, levers, holes and doors from the template and F1 run 1 (lever kinds read from the lever pulls). Higher Or Lower (blaze): blaze spots and the chest column from M7 run 2, health range from its ten blazes. Boulder: the box layouts of M7 runs 1, 2 and 4 read from each capture, turned into the template frame. Quiz: the room is the M7 practice-map copy (pedestals from it); questions and answers from the wiki (Catacombs Puzzle Rooms, Quiz), the wrong answers are made up.",
  "rooms": {
   "ice_fill": {
+   "puzzle": "ICE_FILL",
    "boards": [
     {
      "y": 1,
@@ -133,6 +134,7 @@
    ]
   },
   "three_weirdos": {
+   "puzzle": "THREE_WEIRDOS",
    "weirdos": [
     {
      "x": 24.5,
@@ -245,6 +247,7 @@
    ]
   },
   "tic_tac_toe": {
+   "puzzle": "TIC_TAC_TOE",
    "cells": [
     [13, 4, 8],
     [14, 4, 8],
@@ -277,6 +280,7 @@
    }
   },
   "teleport_maze": {
+   "puzzle": "TELEPORT_MAZE",
    "y": 1,
    "pads": [
     {
@@ -499,6 +503,7 @@
    "chest": [15, 2, 10]
   },
   "creeper_beams": {
+   "puzzle": "CREEPER_BEAMS",
    "creeper": {
     "x": 15.5,
     "y": 7.0,
@@ -577,6 +582,7 @@
    "chest": [15, 1, 15]
   },
   "water_board": {
+   "puzzle": "WATER_BOARD",
    "plane": {
     "x": 4,
     "minZ": 5,
@@ -956,6 +962,7 @@
    "chest": [8, -12, 15]
   },
   "blaze": {
+   "puzzle": "HIGHER_OR_LOWER",
    "blazes": [
     [17, 21, 15],
     [17, 37, 15],
@@ -982,6 +989,7 @@
    }
   },
   "boulder": {
+   "puzzle": "BOULDER",
    "grid": {
     "x": 5,
     "z": 8,
@@ -1451,6 +1459,7 @@
    "chest": [15, -2, 29]
   },
   "quiz": {
+   "puzzle": "QUIZ",
    "questions": [
     {
      "question": "What is the status of The Watcher?",

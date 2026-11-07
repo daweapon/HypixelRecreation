@@ -103,12 +103,12 @@ public final class PuzzleCatalogue {
     }
 
     public Optional<IceFillRoom> iceFill(String templateId) {
-        return room(templateId, room -> new IceFillRoom(list(room.getAsJsonArray("boards"), PuzzleCatalogue::board),
+        return room(templateId, CatacombsPuzzle.ICE_FILL, room -> new IceFillRoom(list(room.getAsJsonArray("boards"), PuzzleCatalogue::board),
                 blocks(room.getAsJsonArray("gate")), blocks(room.getAsJsonArray("chests"))));
     }
 
     public Optional<WeirdosRoom> weirdos(String templateId) {
-        return room(templateId, room -> new WeirdosRoom(
+        return room(templateId, CatacombsPuzzle.THREE_WEIRDOS, room -> new WeirdosRoom(
                 list(room.getAsJsonArray("weirdos"), weirdo -> new Weirdo(spot(weirdo.getAsJsonObject()), block(weirdo.getAsJsonObject().get("chest")))),
                 list(room.getAsJsonArray("skins"), skin -> new SkinData(skin.getAsJsonObject().get("texture").getAsString(),
                         skin.getAsJsonObject().get("signature").getAsString())),
@@ -118,7 +118,7 @@ public final class PuzzleCatalogue {
     }
 
     public Optional<TicTacToeRoom> ticTacToe(String templateId) {
-        return room(templateId, room -> {
+        return room(templateId, CatacombsPuzzle.TIC_TAC_TOE, room -> {
             JsonObject marks = room.getAsJsonObject("marks");
             return new TicTacToeRoom(blocks(room.getAsJsonArray("cells")), blocks(room.getAsJsonArray("wall")), block(room.get("chest")),
                     marks.get("hypixel").getAsString(), marks.get("player").getAsString());
@@ -126,7 +126,7 @@ public final class PuzzleCatalogue {
     }
 
     public Optional<TeleportMazeRoom> teleportMaze(String templateId) {
-        return room(templateId, room -> new TeleportMazeRoom(room.get("y").getAsInt(),
+        return room(templateId, CatacombsPuzzle.TELEPORT_MAZE, room -> new TeleportMazeRoom(room.get("y").getAsInt(),
                 list(room.getAsJsonArray("pads"), pad -> {
                     JsonObject json = pad.getAsJsonObject();
                     JsonArray land = json.getAsJsonArray("land");
@@ -137,7 +137,7 @@ public final class PuzzleCatalogue {
     }
 
     public Optional<CreeperBeamsRoom> creeperBeams(String templateId) {
-        return room(templateId, room -> {
+        return room(templateId, CatacombsPuzzle.CREEPER_BEAMS, room -> {
             JsonObject space = room.getAsJsonObject("space");
             return new CreeperBeamsRoom(spot(room.getAsJsonObject("creeper")),
                     new CreeperBeams.Space(space.get("minX").getAsDouble(), space.get("minY").getAsDouble(), space.get("minZ").getAsDouble(),
@@ -148,7 +148,7 @@ public final class PuzzleCatalogue {
     }
 
     public Optional<WaterBoardRoom> waterBoard(String templateId) {
-        return room(templateId, room -> {
+        return room(templateId, CatacombsPuzzle.WATER_BOARD, room -> {
             JsonObject plane = room.getAsJsonObject("plane");
             JsonObject source = room.getAsJsonObject("source");
             JsonObject doorway = room.getAsJsonObject("doorway");
@@ -173,7 +173,7 @@ public final class PuzzleCatalogue {
     }
 
     public Optional<HigherOrLowerRoom> higherOrLower(String templateId) {
-        return room(templateId, room -> {
+        return room(templateId, CatacombsPuzzle.HIGHER_OR_LOWER, room -> {
             JsonObject health = room.getAsJsonObject("health");
             JsonObject column = room.getAsJsonObject("column");
             return new HigherOrLowerRoom(list(room.getAsJsonArray("blazes"), spot -> {
@@ -186,7 +186,7 @@ public final class PuzzleCatalogue {
     }
 
     public Optional<BoulderRoom> boulder(String templateId) {
-        return room(templateId, room -> {
+        return room(templateId, CatacombsPuzzle.BOULDER, room -> {
             JsonObject grid = room.getAsJsonObject("grid");
             return new BoulderRoom(grid.get("x").getAsInt(), grid.get("y").getAsInt(), grid.get("z").getAsInt(), grid.get("cell").getAsInt(),
                     grid.get("columns").getAsInt(), grid.get("rows").getAsInt(),
@@ -205,7 +205,7 @@ public final class PuzzleCatalogue {
     }
 
     public Optional<QuizRoom> quiz(String templateId) {
-        return room(templateId, room -> new QuizRoom(
+        return room(templateId, CatacombsPuzzle.QUIZ, room -> new QuizRoom(
                 list(room.getAsJsonArray("questions"), question -> {
                     JsonObject json = question.getAsJsonObject();
                     return new QuizRound.Question(json.get("question").getAsString(), json.get("answer").getAsString(),
@@ -228,9 +228,11 @@ public final class PuzzleCatalogue {
         return rooms.containsKey(templateId);
     }
 
-    private <T> Optional<T> room(String templateId, Function<JsonObject, T> reader) {
+    /** The template's room data read as the given puzzle, or empty when the template holds another puzzle or none. */
+    private <T> Optional<T> room(String templateId, CatacombsPuzzle puzzle, Function<JsonObject, T> reader) {
         JsonObject room = rooms.get(templateId);
-        return room == null ? Optional.empty() : Optional.of(reader.apply(room));
+        if (room == null || !room.has("puzzle") || !puzzle.name().equals(room.get("puzzle").getAsString())) return Optional.empty();
+        return Optional.of(reader.apply(room));
     }
 
     private static IceFillBoard board(JsonElement element) {
