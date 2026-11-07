@@ -26,10 +26,15 @@ public class ActionSkillDisplay implements HypixelEventClass {
 
         SkyBlockActionBar.getFor(event.getPlayer()).addReplacement(
                 SkyBlockActionBar.BarSection.DEFENSE,
-                Text.of("<3>+{} {} ({}/{})", difference, event.getSkillCategory(),
-                        event.getNewValueCumulative(), currentRequirement),
+                Text.of("<3>+{} {} ({}/{})", oneDecimal(difference), event.getSkillCategory(),
+                        oneDecimal(event.getNewValueCumulative()), oneDecimal(currentRequirement)),
                 20,
                 2
         );
+    }
+
+    static String oneDecimal(double value) {
+        java.text.DecimalFormat format = new java.text.DecimalFormat("#,##0.#", java.text.DecimalFormatSymbols.getInstance(java.util.Locale.ROOT));
+        return format.format(Math.floor(value * 10 + 1e-9) / 10);
     }
 }
