@@ -54,7 +54,7 @@ public final class PuzzleCatalogue {
     }
 
     public record CreeperBeamsRoom(RoomSpot creeper, CreeperBeams.Space space, int required, List<RoomBlock> lanterns,
-                                   List<RoomBlock> pedestal, RoomBlock chest) {
+                                   List<RoomBlock> pedestal, RoomBlock chest, List<RoomBlock> startBeam) {
     }
 
     public record WaterLever(RoomBlock at, String type) {
@@ -143,7 +143,7 @@ public final class PuzzleCatalogue {
                     new CreeperBeams.Space(space.get("minX").getAsDouble(), space.get("minY").getAsDouble(), space.get("minZ").getAsDouble(),
                             space.get("maxX").getAsDouble(), space.get("maxY").getAsDouble(), space.get("maxZ").getAsDouble()),
                     room.get("required").getAsInt(), blocks(room.getAsJsonArray("lanterns")), blocks(room.getAsJsonArray("pedestal")),
-                    block(room.get("chest")));
+                    block(room.get("chest")), room.has("startBeam") ? blocks(room.getAsJsonArray("startBeam")) : List.of());
         });
     }
 

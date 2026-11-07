@@ -85,11 +85,16 @@ public final class CreeperBeams {
             selected = null;
             return new Shot.Deselected(lantern);
         }
-        Beam beam = new Beam(selected, lantern);
+        RoomBlock first = selected;
         selected = null;
-        beams.put(beam.first(), beam);
-        beams.put(beam.second(), beam);
-        return new Shot.Joined(beam);
+        return new Shot.Joined(connect(first, lantern));
+    }
+
+    public Beam connect(RoomBlock first, RoomBlock second) {
+        Beam beam = new Beam(first, second);
+        beams.put(first, beam);
+        beams.put(second, beam);
+        return beam;
     }
 
     public boolean crossesCreeper(Beam beam) {

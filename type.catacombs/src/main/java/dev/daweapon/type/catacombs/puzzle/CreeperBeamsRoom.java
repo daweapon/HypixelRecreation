@@ -24,8 +24,10 @@ import java.util.Map;
 
 /**
  * Creeper Beams (F1 run 2 capture): shooting a sea lantern and then a second one joins them with a guardian beam and
- * turns both to prismarine; shooting a joined lantern breaks the beam. Once four beams cross the creeper it primes,
- * explodes after about a second and a half, and its pedestal is blown away top to bottom to reveal the blessing chest.
+ * turns both to prismarine; shooting a joined lantern breaks the beam. Arrows fly through the creeper and the beam
+ * guardians, and one beam that misses the creeper is already joined when the room loads. Once four beams cross the
+ * creeper it primes, explodes after about a second and a half, and its pedestal is blown away top to bottom to reveal
+ * the blessing chest.
  */
 public final class CreeperBeamsRoom extends PuzzleRoom {
     private static final int FUSE_TICKS = 29;
@@ -59,10 +61,19 @@ public final class CreeperBeamsRoom extends PuzzleRoom {
             lanterns.put(RoomFrame.key(at), lantern);
             instance().setBlock(at[0], at[1], at[2], Block.SEA_LANTERN);
         }
-        creeper = new Entity(EntityType.CREEPER);
+        creeper = prop(EntityType.CREEPER);
         creeper.setNoGravity(true);
         creeper.setInstance(instance(), frame.spot(data.creeper()));
         chest = chest(frame.block(data.chest()));
+        if (data.startBeam().size() == 2) join(puzzle.connect(data.startBeam().get(0), data.startBeam().get(1)));
+    }
+
+    static Entity prop(EntityType type) {
+        return new Entity(type) {
+            {
+                collidesWithEntities = false;
+            }
+        };
     }
 
     @Override
@@ -89,7 +100,7 @@ public final class CreeperBeamsRoom extends PuzzleRoom {
             meta.setMarker(true);
         });
         target.setNoGravity(true);
-        Entity guardian = new Entity(EntityType.GUARDIAN);
+        Entity guardian = prop(EntityType.GUARDIAN);
         guardian.setInvisible(true);
         guardian.setNoGravity(true);
         guardian.setSilent(true);

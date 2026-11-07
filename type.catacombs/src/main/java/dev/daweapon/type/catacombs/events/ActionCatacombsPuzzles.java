@@ -8,12 +8,15 @@ import dev.daweapon.type.generic.event.phase.PhasedEvent;
 import dev.daweapon.type.skyblockgeneric.event.custom.ArrowHitBlockEvent;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.minestom.server.coordinate.Point;
+import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.PlayerHand;
 import net.minestom.server.event.player.PlayerEntityInteractEvent;
 import net.minestom.server.event.player.PlayerMoveEvent;
+import net.minestom.server.tag.Tag;
 
 /** Walking, clicking puzzle NPCs and shooting puzzle blocks inside a run's puzzle rooms. */
 public class ActionCatacombsPuzzles implements HypixelEventClass {
+    private static final Tag<Long> LAST_VOLLEY = Tag.Long("catacombs_puzzle_volley");
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.POST_SPAWN)
     public void onMove(PlayerMoveEvent event) {
@@ -34,7 +37,13 @@ public class ActionCatacombsPuzzles implements HypixelEventClass {
         if (!(event.getShooter() instanceof SkyBlockPlayer player)) return;
         DungeonEngine engine = ActionCatacombsSecrets.activeEngine(player);
         if (engine == null) return;
+        long volley = volley(event.getArrow());
+        if (Long.valueOf(volley).equals(player.getTag(LAST_VOLLEY))) return;
         Point at = event.getHitPosition();
-        engine.arrowHit(player, at.blockX(), at.blockY(), at.blockZ());
+        if (engine.arrowHit(player, at.blockX(), at.blockY(), at.blockZ())) player.setTag(LAST_VOLLEY, volley);
+    }
+
+    static long volley(Entity arrow) {
+        return arrow.getInstance().getWorldAge() - arrow.getAliveTicks();
     }
 }

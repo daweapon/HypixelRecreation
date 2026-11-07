@@ -154,7 +154,7 @@ public class ArrowEntityImpl extends LivingEntity {
 
                 if (!hitBlock.air()) {
                     // Fire arrow hit block event
-                    ArrowHitBlockEvent arrowHitBlockEvent = new ArrowHitBlockEvent(shooter, arrowItem, hitBlock, hitPosition);
+                    ArrowHitBlockEvent arrowHitBlockEvent = new ArrowHitBlockEvent(shooter, arrowItem, hitBlock, hitPosition, this);
                     HypixelEventHandler.callCustomEvent(arrowHitBlockEvent);
                     hasHit = true;
                     explodeIfExplosive();

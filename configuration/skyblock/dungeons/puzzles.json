@@ -1,5 +1,5 @@
 {
- "source": "Puzzle room data in each template's own frame (x/z from the room's north-west corner, y above the dungeon floor at 68), read from the user's Hypixel captures (2026-11-05) and the room templates. Ice Fill: boards from the template with obstacle blocks on top of ice left out; the captured M7 run 3 walk covers every tile in this order; gate and chests as captured. Three Weirdos: NPC spots, skins and chests from M7 run 3; the six statement cases from the wiki (Catacombs Puzzle Rooms) with the captured case 6 wording; names beyond Hugo/Winona/Ramsey are a guess (Minnesota town names, like the three captured). Tic Tac Toe: buttons, the wall that sinks and the reward chest from M7 run 2. Teleport Maze: pads from the template, landing spots and the final-pad aim from both F1 captures. Creeper Beams: lanterns from the template, the creeper, its pedestal and the chest from F1 run 2; the creeper space is fitted so the four captured beams count. Water Board: the maze plane (x 4) with its gate blocks, levers, holes and doors from the template and F1 run 1 (lever kinds read from the lever pulls). Higher Or Lower (blaze): blaze spots and the chest column from M7 run 2, health range from its ten blazes. Boulder: the box layouts of M7 runs 1, 2 and 4 read from each capture, turned into the template frame. Quiz: the room is the M7 practice-map copy (pedestals from it); questions and answers from the wiki (Catacombs Puzzle Rooms, Quiz), the wrong answers are made up.",
+ "source": "Puzzle room data in each template's own frame (x/z from the room's north-west corner, y above the dungeon floor at 68), read from the user's Hypixel captures (2026-11-05) and the room templates. Ice Fill: boards from the template with obstacle blocks on top of ice left out; the captured M7 run 3 walk covers every tile in this order; gate and chests as captured. Three Weirdos: NPC spots, skins and chests from M7 run 3; the six statement cases from the wiki (Catacombs Puzzle Rooms) with the captured case 6 wording; names beyond Hugo/Winona/Ramsey are a guess (Minnesota town names, like the three captured). Tic Tac Toe: buttons, the wall that sinks and the reward chest from M7 run 2. Teleport Maze: pads from the template, landing spots and the final-pad aim from both F1 captures. Creeper Beams: lanterns from the template, the creeper, its pedestal and the chest from F1 run 2; the creeper space is fitted so the four captured beams count; the beam already joined when the room loads (startBeam, missing the creeper) was seen in F1 run 2 and M7 runs 1 and 4. Water Board: the maze plane (x 4) with its gate blocks, levers, holes and doors from the template and F1 run 1 (lever kinds read from the lever pulls). Higher Or Lower (blaze): blaze spots and the chest column from M7 run 2, health range from its ten blazes. Boulder: the box layouts of M7 runs 1, 2 and 4 read from each capture, turned into the template frame. Quiz: the room is the M7 practice-map copy (pedestals from it); questions and answers from the wiki (Catacombs Puzzle Rooms, Quiz), the wrong answers are made up.",
  "rooms": {
   "ice_fill": {
    "puzzle": "ICE_FILL",
@@ -579,7 +579,8 @@
     [17, 2, 15],
     [17, 5, 15]
    ],
-   "chest": [15, 1, 15]
+   "chest": [15, 1, 15],
+   "startBeam": [[8, 12, 8], [5, 5, 24]]
   },
   "water_board": {
    "puzzle": "WATER_BOARD",

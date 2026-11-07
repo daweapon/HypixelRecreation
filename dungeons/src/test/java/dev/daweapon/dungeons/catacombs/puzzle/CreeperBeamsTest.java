@@ -3,6 +3,8 @@ package dev.daweapon.dungeons.catacombs.puzzle;
 import dev.daweapon.dungeons.catacombs.puzzle.creeperbeams.CreeperBeams;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
@@ -40,6 +42,23 @@ class CreeperBeamsTest {
         CreeperBeams.Shot shot = beams.shoot(new RoomBlock(8, 12, 8));
         assertFalse(beams.crossesCreeper(((CreeperBeams.Shot.Joined) shot).beam()));
         assertEquals(0, beams.beamsThroughCreeper());
+    }
+
+    @Test
+    void theRoomOpensWithTheArrivalBeamJoinedAndTheFourCapturedBeamsStillSolveIt() {
+        PuzzleCatalogue.CreeperBeamsRoom room = PuzzleCatalogueFixture.load().creeperBeams("creeper_beams").orElseThrow();
+        assertEquals(List.of(new RoomBlock(8, 12, 8), new RoomBlock(5, 5, 24)), room.startBeam());
+        CreeperBeams beams = puzzle();
+        beams.connect(room.startBeam().get(0), room.startBeam().get(1));
+        assertEquals(1, beams.beams().size());
+        assertEquals(0, beams.beamsThroughCreeper());
+        for (RoomBlock[] pair : CAPTURED) {
+            beams.shoot(pair[0]);
+            beams.shoot(pair[1]);
+        }
+        assertEquals(5, beams.beams().size());
+        assertTrue(beams.solved());
+        assertInstanceOf(CreeperBeams.Shot.Broken.class, beams.shoot(new RoomBlock(5, 5, 24)));
     }
 
     @Test

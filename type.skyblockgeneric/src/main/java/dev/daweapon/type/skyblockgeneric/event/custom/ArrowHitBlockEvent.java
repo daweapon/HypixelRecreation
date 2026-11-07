@@ -16,12 +16,14 @@ public class ArrowHitBlockEvent implements Event {
     private final boolean isSkyBlockPlayer;
     private final Block hitBlock;
     private final Point hitPosition;
+    private final Entity arrow;
 
-    public ArrowHitBlockEvent(Entity shooter, SkyBlockItem arrowItem, Block hitBlock, Point hitPosition) {
+    public ArrowHitBlockEvent(Entity shooter, SkyBlockItem arrowItem, Block hitBlock, Point hitPosition, Entity arrow) {
         this.shooter = shooter;
         this.arrowItem = arrowItem;
         this.isSkyBlockPlayer = shooter instanceof SkyBlockPlayer;
         this.hitBlock = hitBlock;
         this.hitPosition = hitPosition;
+        this.arrow = arrow;
     }
 }
