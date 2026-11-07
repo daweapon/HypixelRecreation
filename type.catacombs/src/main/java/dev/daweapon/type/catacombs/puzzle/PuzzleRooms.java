@@ -68,7 +68,10 @@ public final class PuzzleRooms {
             (context, room, catalogue, id) -> catalogue.ticTacToe(id).map(data -> new TicTacToeRoom(context, room, data)),
             (context, room, catalogue, id) -> catalogue.teleportMaze(id).map(data -> new TeleportMazeRoom(context, room, data)),
             (context, room, catalogue, id) -> catalogue.creeperBeams(id).map(data -> new CreeperBeamsRoom(context, room, data)),
-            (context, room, catalogue, id) -> catalogue.waterBoard(id).map(data -> new WaterBoardRoom(context, room, data)));
+            (context, room, catalogue, id) -> catalogue.waterBoard(id).map(data -> new WaterBoardRoom(context, room, data)),
+            (context, room, catalogue, id) -> catalogue.higherOrLower(id).map(data -> new HigherOrLowerRoom(context, room, data)),
+            (context, room, catalogue, id) -> catalogue.boulder(id).map(data -> new BoulderRoom(context, room, data)),
+            (context, room, catalogue, id) -> catalogue.quiz(id).map(data -> new QuizRoom(context, room, data)));
 
     public void start() {
         for (PuzzleRoom puzzle : rooms.values()) {

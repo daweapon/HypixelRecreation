@@ -115,6 +115,7 @@ public final class CreeperBeamsRoom extends PuzzleRoom {
         if (exploding) return;
         exploding = true;
         advance(CatacombsPuzzleFactory.BEAMS_ALIGNED);
+        completeRoom();
         beams.values().forEach(Beam::remove);
         beams.clear();
         creeper.editEntityMeta(CreeperMeta.class, meta -> meta.setState(CreeperMeta.State.FUSE));

@@ -123,10 +123,7 @@ public final class WaterBoardRoom extends PuzzleRoom {
                     .ifPresent(each -> showDoor(each, board.doorOpen(door), true));
         }
         showWater();
-        if (board.allDoorsOpen() && !chest.unlocked()) {
-            advance(CatacombsPuzzleFactory.DOORS_OPEN);
-            chest.unlock();
-        }
+        if (board.allDoorsOpen() && !chest.unlocked()) solved();
     }
 
     private void showWater() {
@@ -208,9 +205,13 @@ public final class WaterBoardRoom extends PuzzleRoom {
     public synchronized void solve(SkyBlockPlayer staff) {
         board.openAllDoors();
         data.doors().forEach(door -> showDoor(door, true, true));
-        if (chest.unlocked()) return;
+        if (!chest.unlocked()) solved();
+    }
+
+    private void solved() {
         advance(CatacombsPuzzleFactory.DOORS_OPEN);
         chest.unlock();
+        completeRoom();
     }
 
     @Override

@@ -125,6 +125,7 @@ public final class TicTacToeRoom extends PuzzleRoom {
         int[] at = chest.position();
         instance().setBlock(at[0], at[1], at[2], chestBlock);
         chest.unlock();
+        completeRoom();
         later(WALL_DELAY_TICKS, this::openWall);
     }
 

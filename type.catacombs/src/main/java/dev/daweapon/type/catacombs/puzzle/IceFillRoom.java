@@ -130,6 +130,7 @@ public final class IceFillRoom extends PuzzleRoom {
             later(NOTE_TICKS * click + 1, () -> sound("block.wooden_pressure_plate.click_on", 2f, 0.492f, centre.x(), centre.y(), centre.z()));
         }
         chests.forEach(PuzzleChest::unlock);
+        completeRoom();
     }
 
     @Override

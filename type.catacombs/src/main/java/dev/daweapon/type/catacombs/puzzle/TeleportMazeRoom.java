@@ -95,6 +95,7 @@ public final class TeleportMazeRoom extends PuzzleRoom {
         if (chest.unlocked()) return;
         advance(CatacombsPuzzleFactory.CENTRE_REACHED);
         chest.unlock();
+        completeRoom();
     }
 
     @Override

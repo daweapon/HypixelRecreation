@@ -18,7 +18,8 @@ import java.util.List;
 
 /**
  * One puzzle room of a run, playing its puzzle in the world. The room's {@link PuzzleController} keeps the puzzle's
- * state; solving it unlocks the reward chest and opening that chest completes the room, failing it fails the room.
+ * state; solving it completes the room and unlocks its reward chest (the M7 Higher Or Lower capture ticks the puzzle
+ * off before the chest is opened), failing it fails the room.
  */
 public abstract class PuzzleRoom {
     private static final String FAIL = "fail";
@@ -106,7 +107,7 @@ public abstract class PuzzleRoom {
     }
 
     protected final PuzzleChest chest(int[] at) {
-        return new PuzzleChest(context, at, _ -> completeRoom());
+        return new PuzzleChest(context, at);
     }
 
     protected final Instance instance() {

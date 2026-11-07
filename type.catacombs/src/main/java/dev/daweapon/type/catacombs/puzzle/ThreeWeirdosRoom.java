@@ -43,10 +43,7 @@ public final class ThreeWeirdosRoom extends PuzzleRoom {
                     List.of("<c>" + riddle.names().get(spot), "<e><l>CLICK"));
             npc.spawn(instance(), frame.spot(weirdo.spot()));
             npcs.add(npc);
-            int rewardSpot = spot;
-            chests.add(new PuzzleChest(context, frame.block(weirdo.chest()), _ -> {
-                if (riddle.rewarded(rewardSpot)) completeRoom();
-            }));
+            chests.add(chest(frame.block(weirdo.chest())));
         }
     }
 
@@ -81,6 +78,7 @@ public final class ThreeWeirdosRoom extends PuzzleRoom {
         }
         select(CatacombsPuzzleFactory.RIGHT_CHEST);
         context.host().broadcast(PuzzleMessages.solved(player, "wasn't fooled by <c>" + rewarded + "<e>!"));
+        completeRoom();
         PuzzleChest chest = chests.get(spot);
         chest.unlock();
         chest.click(player);

@@ -3,6 +3,7 @@ package dev.daweapon.type.catacombs.run;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.dungeons.catacombs.classes.DungeonClassType;
 import dev.daweapon.dungeons.catacombs.layout.PlacedRoom;
+import dev.daweapon.dungeons.catacombs.puzzle.CatacombsPuzzle;
 import dev.daweapon.dungeons.catacombs.layout.RoomKind;
 import dev.daweapon.dungeons.catacombs.run.CatacombsRunState;
 import dev.daweapon.dungeons.catacombs.run.DungeonRoomState;
@@ -108,6 +109,7 @@ public final class CatacombsTabList extends TablistManager {
     }
 
     private static CatacombsTabLines.Puzzle puzzle(PlacedRoom room, Map<Integer, DungeonRoomState> rooms) {
-        return new CatacombsTabLines.Puzzle(room.template().name(), rooms.getOrDefault(room.index(), DungeonRoomState.UNDISCOVERED));
+        String name = CatacombsPuzzle.ofTemplate(room.template().id()).map(CatacombsPuzzle::displayName).orElse(room.template().name());
+        return new CatacombsTabLines.Puzzle(name, rooms.getOrDefault(room.index(), DungeonRoomState.UNDISCOVERED));
     }
 }

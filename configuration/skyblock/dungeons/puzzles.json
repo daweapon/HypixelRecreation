@@ -954,6 +954,853 @@
    },
    "closedDoors": 3,
    "chest": [8, -12, 15]
+  },
+  "blaze": {
+   "blazes": [
+    [17, 21, 15],
+    [17, 37, 15],
+    [15, 9, 13],
+    [15, 17, 17],
+    [13, 13, 15],
+    [15, 33, 17],
+    [15, 25, 13],
+    [15, 41, 13],
+    [13, 29, 15],
+    [13, 45, 15]
+   ],
+   "health": {
+    "min": 1300,
+    "max": 3700
+   },
+   "level": 11,
+   "order": "LOWEST_FIRST",
+   "column": {
+    "x": 15,
+    "z": 15,
+    "bottom": 2,
+    "top": 51
+   }
+  },
+  "boulder": {
+   "grid": {
+    "x": 5,
+    "z": 8,
+    "y": -4,
+    "cell": 3,
+    "columns": 7,
+    "rows": 6
+   },
+   "variants": [
+    {
+     "capture": "m7_run1",
+     "boxes": [
+      {
+       "column": 0,
+       "row": 1,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 2,
+       "row": 1,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 3,
+       "row": 1,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 4,
+       "row": 1,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 6,
+       "row": 1,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 0,
+       "row": 2,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 1,
+       "row": 2,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 5,
+       "row": 2,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 6,
+       "row": 2,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 0,
+       "row": 3,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 2,
+       "row": 3,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 3,
+       "row": 3,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 4,
+       "row": 3,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 6,
+       "row": 3,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 0,
+       "row": 4,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 1,
+       "row": 4,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 2,
+       "row": 4,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 4,
+       "row": 4,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 5,
+       "row": 4,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 6,
+       "row": 4,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 0,
+       "row": 5,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "south"
+       ]
+      },
+      {
+       "column": 6,
+       "row": 5,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "south"
+       ]
+      }
+     ]
+    },
+    {
+     "capture": "m7_run2",
+     "boxes": [
+      {
+       "column": 0,
+       "row": 0,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 1,
+       "row": 0,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 2,
+       "row": 0,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 0,
+       "row": 1,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 1,
+       "row": 1,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 2,
+       "row": 1,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 4,
+       "row": 1,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 3,
+       "row": 2,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 4,
+       "row": 2,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 5,
+       "row": 2,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 1,
+       "row": 3,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 3,
+       "row": 3,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 6,
+       "row": 3,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 1,
+       "row": 4,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 2,
+       "row": 4,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 3,
+       "row": 4,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 4,
+       "row": 4,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 6,
+       "row": 4,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 5,
+       "row": 5,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "south",
+        "west",
+        "east"
+       ]
+      }
+     ]
+    },
+    {
+     "capture": "m7_run4",
+     "boxes": [
+      {
+       "column": 1,
+       "row": 0,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 5,
+       "row": 0,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 2,
+       "row": 1,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 4,
+       "row": 1,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 1,
+       "row": 2,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 3,
+       "row": 2,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 5,
+       "row": 2,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 2,
+       "row": 3,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 4,
+       "row": 3,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 1,
+       "row": 4,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 5,
+       "row": 4,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 0,
+       "row": 5,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "south"
+       ]
+      },
+      {
+       "column": 3,
+       "row": 5,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 6,
+       "row": 5,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "south"
+       ]
+      }
+     ]
+    }
+   ],
+   "chest": [15, -2, 29]
+  },
+  "quiz": {
+   "questions": [
+    {
+     "question": "What is the status of The Watcher?",
+     "answer": "Stalker",
+     "wrong": [
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "Necromancer Lord",
+      "The Wither Lords"
+     ]
+    },
+    {
+     "question": "What is the status of Bonzo?",
+     "answer": "New Necromancer",
+     "wrong": [
+      "Stalker",
+      "Apprentice Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "Necromancer Lord",
+      "The Wither Lords"
+     ]
+    },
+    {
+     "question": "What is the status of Scarf?",
+     "answer": "Apprentice Necromancer",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "Necromancer Lord",
+      "The Wither Lords"
+     ]
+    },
+    {
+     "question": "What is the status of The Professor?",
+     "answer": "Professor",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "Necromancer Lord",
+      "The Wither Lords"
+     ]
+    },
+    {
+     "question": "What is the status of Thorn?",
+     "answer": "Shaman Necromancer",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Professor",
+      "Master Necromancer",
+      "Necromancer Lord",
+      "The Wither Lords"
+     ]
+    },
+    {
+     "question": "What is the status of Livid?",
+     "answer": "Master Necromancer",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Necromancer Lord",
+      "The Wither Lords"
+     ]
+    },
+    {
+     "question": "What is the status of Sadan?",
+     "answer": "Necromancer Lord",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "The Wither Lords"
+     ]
+    },
+    {
+     "question": "What is the status of Maxor?",
+     "answer": "The Wither Lords",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "Necromancer Lord"
+     ]
+    },
+    {
+     "question": "What is the status of Goldor?",
+     "answer": "The Wither Lords",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "Necromancer Lord"
+     ]
+    },
+    {
+     "question": "What is the status of Storm?",
+     "answer": "The Wither Lords",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "Necromancer Lord"
+     ]
+    },
+    {
+     "question": "What is the status of Necron?",
+     "answer": "The Wither Lords",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "Necromancer Lord"
+     ]
+    },
+    {
+     "question": "What is the status of Maxor, Storm, Goldor, and Necron?",
+     "answer": "The Wither Lords",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "Necromancer Lord"
+     ]
+    },
+    {
+     "question": "Which brother is on the Spider's Den?",
+     "answer": "Rick",
+     "wrong": [
+      "Pat",
+      "Jamie",
+      "Bubu"
+     ]
+    },
+    {
+     "question": "What is the name of Rick's brother?",
+     "answer": "Pat",
+     "wrong": [
+      "Rick",
+      "Jamie",
+      "Bubu"
+     ]
+    },
+    {
+     "question": "What is the name of the vendor in the Hub who sells stained glass?",
+     "answer": "Wool Weaver",
+     "wrong": [
+      "Builder",
+      "Adventurer",
+      "Farm Merchant"
+     ]
+    },
+    {
+     "question": "What is the name of the person that upgrades pets?",
+     "answer": "Kat",
+     "wrong": [
+      "Bea",
+      "George",
+      "Elle"
+     ]
+    },
+    {
+     "question": "What is the name of the lady of the Nether?",
+     "answer": "Elle",
+     "wrong": [
+      "Kat",
+      "Ophelia",
+      "Bea"
+     ]
+    },
+    {
+     "question": "Which villager in the Village gives you a Rogue Sword?",
+     "answer": "Jamie",
+     "wrong": [
+      "Andrew",
+      "Liam",
+      "Ryu"
+     ]
+    },
+    {
+     "question": "How many unique minions are there?",
+     "answer": "61 Minions",
+     "wrong": [
+      "59 Minions",
+      "60 Minions",
+      "62 Minions",
+      "63 Minions"
+     ]
+    },
+    {
+     "question": "How many total Fairy Souls are there?",
+     "answer": "273 Fairy Souls",
+     "wrong": [
+      "266 Fairy Souls",
+      "270 Fairy Souls",
+      "278 Fairy Souls",
+      "283 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in Hub?",
+     "answer": "80 Fairy Souls",
+     "wrong": [
+      "74 Fairy Souls",
+      "76 Fairy Souls",
+      "82 Fairy Souls",
+      "85 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in the Spider's Den?",
+     "answer": "19 Fairy Souls",
+     "wrong": [
+      "17 Fairy Souls",
+      "18 Fairy Souls",
+      "21 Fairy Souls",
+      "23 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in The End?",
+     "answer": "12 Fairy Souls",
+     "wrong": [
+      "10 Fairy Souls",
+      "11 Fairy Souls",
+      "13 Fairy Souls",
+      "15 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in The Farming Islands?",
+     "answer": "20 Fairy Souls",
+     "wrong": [
+      "18 Fairy Souls",
+      "19 Fairy Souls",
+      "22 Fairy Souls",
+      "25 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in the Crimson Isle?",
+     "answer": "29 Fairy Souls",
+     "wrong": [
+      "25 Fairy Souls",
+      "27 Fairy Souls",
+      "31 Fairy Souls",
+      "33 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in The Park?",
+     "answer": "12 Fairy Souls",
+     "wrong": [
+      "9 Fairy Souls",
+      "10 Fairy Souls",
+      "11 Fairy Souls",
+      "14 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in Jerry's Workshop?",
+     "answer": "5 Fairy Souls",
+     "wrong": [
+      "3 Fairy Souls",
+      "9 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in Deep Caverns?",
+     "answer": "21 Fairy Souls",
+     "wrong": [
+      "19 Fairy Souls",
+      "20 Fairy Souls",
+      "23 Fairy Souls",
+      "25 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in Gold Mine?",
+     "answer": "12 Fairy Souls",
+     "wrong": [
+      "9 Fairy Souls",
+      "10 Fairy Souls",
+      "11 Fairy Souls",
+      "14 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in Dungeon Hub?",
+     "answer": "7 Fairy Souls",
+     "wrong": [
+      "5 Fairy Souls",
+      "6 Fairy Souls",
+      "8 Fairy Souls",
+      "9 Fairy Souls"
+     ]
+    }
+   ],
+   "asked": 3,
+   "pedestals": [
+    {
+     "option": "a",
+     "block": [20, 2, 6]
+    },
+    {
+     "option": "b",
+     "block": [15, 2, 9]
+    },
+    {
+     "option": "c",
+     "block": [10, 2, 6]
+    }
+   ],
+   "question": {
+    "x": 15.5,
+    "y": 20.0,
+    "z": 15.5
+   }
   }
  }
 }

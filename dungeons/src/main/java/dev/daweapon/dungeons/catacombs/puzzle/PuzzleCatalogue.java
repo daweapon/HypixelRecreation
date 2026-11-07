@@ -4,9 +4,12 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import dev.daweapon.dungeons.catacombs.puzzle.boulder.BoulderBoard;
 import dev.daweapon.dungeons.catacombs.puzzle.creeperbeams.CreeperBeams;
+import dev.daweapon.dungeons.catacombs.puzzle.higherorlower.HigherOrLower;
 import dev.daweapon.dungeons.catacombs.puzzle.icefill.IceFillBoard;
 import dev.daweapon.dungeons.catacombs.puzzle.icefill.IceTile;
+import dev.daweapon.dungeons.catacombs.puzzle.quiz.QuizRound;
 import dev.daweapon.dungeons.catacombs.puzzle.teleportmaze.MazePad;
 import dev.daweapon.dungeons.catacombs.puzzle.waterboard.WaterBoard;
 import dev.daweapon.dungeons.catacombs.puzzle.weirdos.WeirdosCase;
@@ -17,7 +20,9 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -64,6 +69,20 @@ public final class PuzzleCatalogue {
     public record WaterBoardRoom(int planeX, WaterBoard.Layout layout, String sourcePlug, List<WaterLever> levers, List<WaterDoor> doors,
                                  List<DoorPart> doorFill, List<DoorPart> doorHeads, List<DoorPart> doorPistons, int closedDoors,
                                  RoomBlock chest) {
+    }
+
+    public record HigherOrLowerRoom(List<RoomSpot> blazes, int minHealth, int maxHealth, int level, HigherOrLower.Order order,
+                                    int columnX, int columnZ, int bottom, int top) {
+    }
+
+    public record BoulderRoom(int gridX, int gridY, int gridZ, int cellSize, int columns, int rows,
+                              List<Map<BoulderBoard.Cell, BoulderBoard.Box>> variants, RoomBlock chest) {
+    }
+
+    public record QuizPedestal(String option, RoomBlock block) {
+    }
+
+    public record QuizRoom(List<QuizRound.Question> questions, int asked, List<QuizPedestal> pedestals, RoomSpot questionSpot) {
     }
 
     private final Map<String, JsonObject> rooms;
@@ -151,6 +170,51 @@ public final class PuzzleCatalogue {
                     doorParts(doorway.getAsJsonArray("fill")), doorParts(doorway.getAsJsonArray("heads")),
                     doorParts(doorway.getAsJsonArray("pistons")), room.get("closedDoors").getAsInt(), block(room.get("chest")));
         });
+    }
+
+    public Optional<HigherOrLowerRoom> higherOrLower(String templateId) {
+        return room(templateId, room -> {
+            JsonObject health = room.getAsJsonObject("health");
+            JsonObject column = room.getAsJsonObject("column");
+            return new HigherOrLowerRoom(list(room.getAsJsonArray("blazes"), spot -> {
+                JsonArray at = spot.getAsJsonArray();
+                return new RoomSpot(at.get(0).getAsDouble(), at.get(1).getAsDouble(), at.get(2).getAsDouble(), 0);
+            }), health.get("min").getAsInt(), health.get("max").getAsInt(), room.get("level").getAsInt(),
+                    HigherOrLower.Order.valueOf(room.get("order").getAsString()), column.get("x").getAsInt(), column.get("z").getAsInt(),
+                    column.get("bottom").getAsInt(), column.get("top").getAsInt());
+        });
+    }
+
+    public Optional<BoulderRoom> boulder(String templateId) {
+        return room(templateId, room -> {
+            JsonObject grid = room.getAsJsonObject("grid");
+            return new BoulderRoom(grid.get("x").getAsInt(), grid.get("y").getAsInt(), grid.get("z").getAsInt(), grid.get("cell").getAsInt(),
+                    grid.get("columns").getAsInt(), grid.get("rows").getAsInt(),
+                    list(room.getAsJsonArray("variants"), variant -> {
+                        Map<BoulderBoard.Cell, BoulderBoard.Box> boxes = new LinkedHashMap<>();
+                        variant.getAsJsonObject().getAsJsonArray("boxes").forEach(box -> {
+                            JsonObject json = box.getAsJsonObject();
+                            Set<BoulderBoard.Face> buttons = new HashSet<>(list(json.getAsJsonArray("buttons"),
+                                    face -> BoulderBoard.Face.valueOf(face.getAsString().toUpperCase(Locale.ROOT))));
+                            boxes.put(new BoulderBoard.Cell(json.get("column").getAsInt(), json.get("row").getAsInt()),
+                                    new BoulderBoard.Box(json.get("wood").getAsString(), buttons));
+                        });
+                        return Map.copyOf(boxes);
+                    }), block(room.get("chest")));
+        });
+    }
+
+    public Optional<QuizRoom> quiz(String templateId) {
+        return room(templateId, room -> new QuizRoom(
+                list(room.getAsJsonArray("questions"), question -> {
+                    JsonObject json = question.getAsJsonObject();
+                    return new QuizRound.Question(json.get("question").getAsString(), json.get("answer").getAsString(),
+                            list(json.getAsJsonArray("wrong"), JsonElement::getAsString));
+                }),
+                room.get("asked").getAsInt(),
+                list(room.getAsJsonArray("pedestals"), pedestal -> new QuizPedestal(pedestal.getAsJsonObject().get("option").getAsString(),
+                        block(pedestal.getAsJsonObject().get("block")))),
+                spot(room.getAsJsonObject("question"))));
     }
 
     private static List<DoorPart> doorParts(JsonArray array) {

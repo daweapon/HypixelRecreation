@@ -12,11 +12,10 @@ import net.minestom.server.network.packet.server.play.BlockActionPacket;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.function.Consumer;
 
 /**
  * A puzzle's reward chest. Once the puzzle lets it open, the first player to open it hears the five-note jingle from
- * every captured puzzle chest and finds a level V blessing for the party; the room is marked complete at that moment.
+ * every captured puzzle chest and finds a level V blessing for the party.
  */
 public final class PuzzleChest {
     public static final int BLESSING_LEVEL = 5;
@@ -27,14 +26,12 @@ public final class PuzzleChest {
 
     private final PuzzleContext context;
     private final int[] at;
-    private final Consumer<SkyBlockPlayer> opened;
     private volatile boolean unlocked;
     private volatile boolean searched;
 
-    public PuzzleChest(PuzzleContext context, int[] at, Consumer<SkyBlockPlayer> opened) {
+    public PuzzleChest(PuzzleContext context, int[] at) {
         this.context = context;
         this.at = at;
-        this.opened = opened;
     }
 
     public boolean at(int x, int y, int z) {
@@ -84,6 +81,5 @@ public final class PuzzleChest {
     private void reward(SkyBlockPlayer player) {
         BlessingType type = BLESSINGS.get(ThreadLocalRandom.current().nextInt(BLESSINGS.size()));
         context.blessings().grant(type, BLESSING_LEVEL, player.isOnline() ? player : null);
-        opened.accept(player);
     }
 }

@@ -168,8 +168,53 @@ class PuzzleRoomPlacementTest {
     }
 
     @Test
+    void blazesHangInAirBesideTheChestColumn() {
+        PuzzleCatalogue.HigherOrLowerRoom data = catalogue.higherOrLower("blaze").orElseThrow();
+        inEveryRotation("blaze", (frame, blocks) -> {
+            for (RoomSpot spot : data.blazes()) {
+                var at = frame.spot(spot);
+                assertNull(blocks.blockAt(at.blockX(), at.blockY(), at.blockZ()), "blaze inside a block at " + spot);
+            }
+            for (int y = data.bottom(); y <= data.top(); y++) {
+                assertNotNull(at(blocks, frame.block(new RoomBlock(data.columnX(), y, data.columnZ()))), "column at " + y);
+            }
+        });
+    }
+
+    @Test
+    void boulderBoxesFillTheGridOverItsFloorAndTheChestSitsBehind() {
+        PuzzleCatalogue.BoulderRoom data = catalogue.boulder("boulder").orElseThrow();
+        inEveryRotation("boulder", (frame, blocks) -> {
+            for (int column = 0; column < data.columns(); column++) {
+                for (int row = 0; row < data.rows(); row++) {
+                    RoomBlock floor = new RoomBlock(data.gridX() + column * data.cellSize() + 1, data.gridY() - 1,
+                            data.gridZ() + row * data.cellSize() + 1);
+                    assertNotNull(at(blocks, frame.block(floor)), "floor under cell " + column + "," + row);
+                }
+            }
+            assertBlock(blocks, frame.block(data.chest()), Block.CHEST, "chest");
+        });
+    }
+
+    @Test
+    void quizPedestalsCarryTheirAnswerButtons() {
+        PuzzleCatalogue.QuizRoom data = catalogue.quiz("quiz").orElseThrow();
+        inEveryRotation("quiz", (frame, blocks) -> {
+            for (PuzzleCatalogue.QuizPedestal pedestal : data.pedestals()) {
+                RoomBlock block = pedestal.block();
+                assertNotNull(at(blocks, frame.block(block)), "pedestal " + pedestal.option());
+                for (int[] side : new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}}) {
+                    assertBlock(blocks, frame.block(new RoomBlock(block.x() + side[0], block.y(), block.z() + side[1])), Block.STONE_BUTTON,
+                            "pedestal " + pedestal.option() + " button");
+                }
+            }
+        });
+    }
+
+    @Test
     void everyCataloguedPuzzleRoomIsARealTemplate() {
-        for (String id : List.of("ice_fill", "three_weirdos", "tic_tac_toe", "teleport_maze", "creeper_beams", "water_board")) {
+        for (String id : List.of("ice_fill", "three_weirdos", "tic_tac_toe", "teleport_maze", "creeper_beams", "water_board", "blaze",
+                "boulder", "quiz")) {
             assertTrue(catalogue.has(id), id);
             assertTrue(RoomDoorwaysTest.library().find(id).orElseThrow().blocks().isPresent(), id);
         }

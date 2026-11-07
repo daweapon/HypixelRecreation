@@ -7,8 +7,9 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * The Catacombs puzzles with the first floor each can appear on (wiki puzzle table and the 0.20.5 changelog: Higher or
- * Lower Floor III+, Ice Fill Floor VII only, Teleport Maze Floor I+) and the room templates that hold them.
+ * The Catacombs puzzles, named as the tab list shows them, with the first floor each can appear on (wiki puzzle table
+ * and the 0.20.5 changelog: Higher Or Lower Floor III+, Ice Fill Floor VII only, Teleport Maze Floor I+) and the room
+ * templates that hold them.
  */
 public enum CatacombsPuzzle {
     CREEPER_BEAMS("Creeper Beams", CatacombsFloor.ENTRANCE, false, "creeper_beams"),
@@ -16,7 +17,7 @@ public enum CatacombsPuzzle {
     TIC_TAC_TOE("Tic Tac Toe", CatacombsFloor.ENTRANCE, true, "tic_tac_toe"),
     WATER_BOARD("Water Board", CatacombsFloor.ENTRANCE, false, "water_board"),
     TELEPORT_MAZE("Teleport Maze", CatacombsFloor.FLOOR_ONE, false, "teleport_maze"),
-    HIGHER_OR_LOWER("Higher or Lower", CatacombsFloor.FLOOR_THREE, true, "blaze"),
+    HIGHER_OR_LOWER("Higher Or Lower", CatacombsFloor.FLOOR_THREE, true, "blaze"),
     BOULDER("Boulder", CatacombsFloor.FLOOR_THREE, true, "boulder"),
     ICE_FILL("Ice Fill", CatacombsFloor.FLOOR_SEVEN, false, "ice_fill"),
     ICE_PATH("Ice Path", CatacombsFloor.FLOOR_THREE, true, "placeholder_puzzle_ice_path"),
