@@ -74,9 +74,12 @@ class MaxProfileTest {
     private static final int FULL_QUIVER = 36 * 64;
     private static final Path ITEMS = Path.of("../configuration/skyblock/items");
 
+    private static boolean initialized;
+
     @BeforeAll
     @SuppressWarnings("unchecked")
-    static void init() throws IOException {
+    static synchronized void init() throws IOException {
+        if (initialized) return;
         Path configuration = Path.of("configuration");
         if (!Files.exists(configuration)) Files.createSymbolicLink(configuration, Path.of("../configuration"));
         Assumptions.assumeTrue(Files.exists(configuration.resolve("skyblock/shards.yml")),
@@ -92,6 +95,7 @@ class MaxProfileTest {
         }
         SkyBlockLevelCause.initializeCauses();
         CustomCollectionAward.cacheFromCollections();
+        initialized = true;
     }
 
     static SkyBlockPlayer player() {
