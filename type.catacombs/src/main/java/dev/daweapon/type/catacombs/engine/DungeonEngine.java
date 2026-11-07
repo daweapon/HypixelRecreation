@@ -10,6 +10,7 @@ import dev.daweapon.dungeons.catacombs.boss.WatcherSpawns;
 import dev.daweapon.dungeons.catacombs.layout.FloorLayout;
 import dev.daweapon.dungeons.catacombs.layout.LayoutDoor;
 import dev.daweapon.dungeons.catacombs.layout.PlacedRoom;
+import dev.daweapon.type.catacombs.tomioka.TomiokaNpcs;
 import dev.daweapon.dungeons.catacombs.layout.RoomKind;
 import dev.daweapon.type.catacombs.blessing.BlessingStats;
 import dev.daweapon.type.catacombs.blessing.PartyBlessings;
@@ -59,6 +60,7 @@ public final class DungeonEngine {
     private final BloodBlessings bloodBlessings = new BloodBlessings();
     private final FairyRoom fairies;
     private final PuzzleRooms puzzles;
+    private final TomiokaNpcs tomioka = new TomiokaNpcs();
     private volatile boolean bloodRoomChecked;
     private volatile boolean entranceOpened;
 
@@ -89,6 +91,7 @@ public final class DungeonEngine {
         levers.start();
         fairies.start();
         puzzles.start();
+        tomioka.start(host.instance(), layout, host.arena().blocks()::isReal);
     }
 
     /** The Entrance gate sinks away, opening the way out of the Entrance room. */
@@ -150,7 +153,7 @@ public final class DungeonEngine {
     }
 
     public boolean interactEntity(SkyBlockPlayer player, Entity entity) {
-        return puzzles.interactEntity(player, entity);
+        return puzzles.interactEntity(player, entity) || tomioka.interact(player, entity);
     }
 
     public void moved(SkyBlockPlayer player, Pos to, boolean onGround) {
@@ -297,6 +300,7 @@ public final class DungeonEngine {
         bloodBlessings.clear();
         fairies.dispose();
         puzzles.dispose();
+        tomioka.dispose();
         rooms.dispose();
         secrets.dispose();
         crypts.dispose();

@@ -18,7 +18,7 @@ import java.util.Optional;
 
 /**
  * Captured spots inside particular real rooms ({@code configuration/skyblock/dungeons/room_features.json}): where Mort
- * stands in the Entrance, the Watcher's perch and flight stops and the boss portal in the Blood room, and the space the
+ * stands in the Entrance, Tomioka's ledge, the Watcher's perch and flight stops and the boss portal in the Blood room, and the space the
  * Fairy Room's fairies drift in. Spots are in the template's own frame and are turned with the room when placed.
  */
 public final class RoomFeatures {
@@ -34,7 +34,8 @@ public final class RoomFeatures {
     public record PortalFrame(int minX, int maxX, int minY, int maxY, int z) {
     }
 
-    private record Features(Spot mort, Spot watcher, List<Spot> watcherStops, List<Spot> blessings, PortalFrame portal, Box fairies) {
+    private record Features(Spot mort, Spot watcher, List<Spot> watcherStops, List<Spot> blessings, PortalFrame portal, Box fairies,
+                            Spot tomioka) {
     }
 
     private final Map<String, Features> rooms;
@@ -72,7 +73,8 @@ public final class RoomFeatures {
                     spots(room, "watcherStops"),
                     spots(room, "blessings"),
                     room.has("portal") ? portal(room.getAsJsonObject("portal")) : null,
-                    room.has("fairies") ? box(room.getAsJsonObject("fairies")) : null));
+                    room.has("fairies") ? box(room.getAsJsonObject("fairies")) : null,
+                    room.has("tomioka") ? spot(room.getAsJsonObject("tomioka")) : null));
         }
         return new RoomFeatures(Map.copyOf(rooms));
     }
@@ -104,6 +106,10 @@ public final class RoomFeatures {
 
     public Optional<Spot> mort(PlacedRoom room) {
         return of(room).map(Features::mort).map(spot -> place(room, spot));
+    }
+
+    public Optional<Spot> tomioka(PlacedRoom room) {
+        return of(room).map(Features::tomioka).map(spot -> place(room, spot));
     }
 
     public Optional<Spot> watcher(PlacedRoom room) {

@@ -74,7 +74,7 @@ public class AbilityRegistry {
             "Wither Impact",
             (player, item) -> "<7>Teleports <a>10 Blocks <7>ahead of you dealing <c>10,000 <7>damage to nearby enemies within a <a>6 block <7>radius. Also reduces your damage taken by <a>10% <7>and grants an absorption shield for <e>5 <7>seconds.",
             RegisteredAbility.AbilityActivation.RIGHT_CLICK,
-            3, // Intentionally near-instant - real Hypixel's known "Hyperion jump" mobility mechanic
+            0,
             new RegisteredAbility.AbilityManaCost(300),
             (player, _, _, _) -> {
                 Pos landed = ForwardTeleport.teleport(player, 10);
@@ -135,7 +135,7 @@ public class AbilityRegistry {
             "Instant Transmission",
             (player, item) -> "<7>Teleports <a>8 Blocks <7>ahead of you and gain <a>+50 <f>Speed for <a>3 seconds<7>.",
             RegisteredAbility.AbilityActivation.RIGHT_CLICK,
-            5,
+            0,
             new RegisteredAbility.AbilityManaCost(50).transmission(),
             (player, _, _, _) -> {
                 boolean strongBlood = dev.daweapon.type.skyblockgeneric.item.set.sets.StrongDragonSet.isWearing(player);
@@ -156,7 +156,7 @@ public class AbilityRegistry {
             "Ether Transmission",
             (_, _) -> "<7>Teleport to your targeted block up to <a>57 <7>blocks away.",
             RegisteredAbility.AbilityActivation.SNEAK_RIGHT_CLICK,
-            5,
+            0,
             new RegisteredAbility.AbilityManaSoulflowCost(180, 1).transmission(),
             (player, _, _, _) -> {
                 // TODO: should not be able to go through 1 block holes.

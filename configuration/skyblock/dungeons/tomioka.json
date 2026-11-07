@@ -1,0 +1,28 @@
+{
+ "source": "Tomioka from M7 run 1 (2026-11-05, opened) and run 4 (seen): a player NPC on the ledge of the Tomioka room, name lines 'Tomioka' and bold yellow 'CLICK', a 6-row 'Tomioka' shop with three enchanted books at slots 10-12. Prices are the captured ones and match the wiki's Tips section (Sharpness VI 9.7M, Scavenger V 14.55M, Protection VI 3.88M). One opening seen, so whether the stock rotates is unknown; the wiki lists only these three.",
+ "skin": {
+  "texture": "ewogICJ0aW1lc3RhbXAiIDogMTU5ODM0MjE2NzgwNSwKICAicHJvZmlsZUlkIiA6ICJjNTBhZmE4YWJlYjk0ZTQ1OTRiZjFiNDI1YTk4MGYwMiIsCiAgInByb2ZpbGVOYW1lIiA6ICJOb3Rab2duaSIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS9kMDc4ZTk2M2ZkOTFlNzhmYjY2MjAyMDczYTY1NjU5Njk5NGFhYTZmZDA0ZjIwMzM5MjBjNjEyY2VhZTI1ZDdkIgogICAgfQogIH0KfQ==",
+  "signature": "x8nf6q5UHjIc2QPdC037x1o16EoAGquJLxmeqeBkyOf7J312ixc/1Zk2a+GbxHK3veG1vsjD0uwLuCXDwMTs4Vsm3ScDlr1mvTSxc2DwGsLmPIkpBQJHPwH36XVwk5oP3Yk9Kn1ImlRX7NyA9/lyGgV+FknSTp6wngJJo6x3GtEPf0/cnRZWT1RjVO57/qy4c42OBFJVwjM3+EYP1X3YLDjeoChkm6vFOvMaHPByG3Uzbx+Jjl01pdlR5XCZWJ9Xic6OJwxfMBBitVBP2rbR3ldGGt5UFdOwnAJe0ibVuwQeDQTttMEL0aJJTARCUmd73tuq0H/iTg0i6f2IMjiuJ6Sjjb5Q5kklNkUo0A1VBnZUNATVYtdKTk+sQyp8P7ikAUaZKGsKhQqk9kGS4LoU+JYRES7HhQfXQQEgthV4GSAATpzRnx0DFn7B0nGyJlP0ojRECCwDktY77VWV171Qx9fGVVWOSUMgBTMyOLb9E95SQsSrwNJ4gOYHtzcUnVhSDL7HkMVpp46SdejY/RtbRyTp/hpAEINFKT6dGDJq0giDNYppLt/gA8jfG2JqI93FNSOi9D7Z/Uir4BI6AOimAGlJC7oc221ZemNjtRbYipvFiN+zeWp5S6/lTiLLEf02hg326xAHLr4k4HGIZGNVWk1qA3foGMDAHl+3LGXyX3E="
+ },
+ "nameLines": [
+  "Tomioka",
+  "<e><l>CLICK"
+ ],
+ "stock": [
+  {
+   "enchantment": "SHARPNESS",
+   "level": 6,
+   "coins": 9700000
+  },
+  {
+   "enchantment": "SCAVENGER",
+   "level": 5,
+   "coins": 14550000
+  },
+  {
+   "enchantment": "PROTECTION",
+   "level": 6,
+   "coins": 3880000
+  }
+ ]
+}

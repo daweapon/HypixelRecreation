@@ -9,6 +9,7 @@ import dev.daweapon.type.skyblockgeneric.dungeons.breaker.Dungeonbreaker;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.minestom.server.coordinate.BlockVec;
 import net.minestom.server.entity.attribute.Attribute;
+import net.minestom.server.entity.attribute.AttributeInstance;
 import net.minestom.server.event.player.PlayerBlockBreakEvent;
 import net.minestom.server.event.player.PlayerStartDiggingEvent;
 import net.minestom.server.event.player.PlayerTickEvent;
@@ -19,12 +20,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * The Dungeonbreaker in a run. Holding one lifts the run's no-mining rule so the client breaks blocks at once, like
- * Hypixel's hidden Efficiency X and 1024 mining speed; the server then decides whether the block may go.
+ * Hypixel's hidden Efficiency X and 1024 mining speed; the server then decides whether the block may go. The server also
+ * breaks a block on the first hit, so a block the client would still mine slowly (mid-air, harder blocks) goes at once.
  */
 public class ActionCatacombsDungeonbreaker implements HypixelEventClass {
     private static final double INSTANT = 1_000_000D;
     private static final double NO_MINING = 0D;
-    private static final int CHECK_TICKS = 4;
     private static final int REFRESH_TICKS = 20;
     private static final long WARNING_MILLIS = 3_000;
     private static final String NEEDS_FLOOR = "<c>You must complete The Catacombs Floor III to use the Dungeonbreaker!";
@@ -44,7 +45,13 @@ public class ActionCatacombsDungeonbreaker implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.POST_SPAWN)
     public void onDig(PlayerStartDiggingEvent event) {
         if (!(event.getPlayer() instanceof SkyBlockPlayer player) || !Dungeonbreaker.is(player.getItemInMainHand())) return;
-        if (ActionCatacombsSecrets.activeEngine(player) == null || Dungeonbreaker.canUse(player)) return;
+        DungeonEngine engine = ActionCatacombsSecrets.activeEngine(player);
+        if (engine == null) return;
+        if (Dungeonbreaker.canUse(player)) {
+            BlockVec at = event.getBlockPosition();
+            if (engine.dig(player, at.blockX(), at.blockY(), at.blockZ())) event.setCancelled(true);
+            return;
+        }
         long now = System.currentTimeMillis();
         if (now - warned.getOrDefault(player.getUuid(), 0L) < WARNING_MILLIS) return;
         warned.put(player.getUuid(), now);
@@ -55,14 +62,16 @@ public class ActionCatacombsDungeonbreaker implements HypixelEventClass {
     public void onTick(PlayerTickEvent event) {
         if (!(event.getPlayer() instanceof SkyBlockPlayer player)) return;
         long ticks = player.getAliveTicks();
-        if (ticks % CHECK_TICKS != 0) return;
         boolean inRun = ActionCatacombsSecrets.activeEngine(player) != null;
         long now = System.currentTimeMillis();
         if (inRun && ticks % REFRESH_TICKS == 0) Dungeonbreaker.refresh(player, now);
         boolean ready = inRun && Dungeonbreaker.is(player.getItemInMainHand()) && Dungeonbreaker.canUse(player)
                 && (Dungeonbreaker.isStaff(player) || Dungeonbreaker.heldCharges(player, now) > 0);
-        var speed = player.getAttribute(Attribute.BLOCK_BREAK_SPEED);
-        double wanted = ready ? INSTANT : NO_MINING;
-        if (speed.getBaseValue() != wanted) speed.setBaseValue(wanted);
+        set(player.getAttribute(Attribute.BLOCK_BREAK_SPEED), ready ? INSTANT : NO_MINING);
+        set(player.getAttribute(Attribute.MINING_EFFICIENCY), ready ? INSTANT : NO_MINING);
+    }
+
+    private static void set(AttributeInstance attribute, double wanted) {
+        if (attribute.getBaseValue() != wanted) attribute.setBaseValue(wanted);
     }
 }

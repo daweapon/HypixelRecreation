@@ -1,5 +1,5 @@
 {
- "source": "Room-relative spots read from two captured Hypixel Floor I runs (2026-11-05), in each template's own unturned frame (block x/z from the room's north-west corner, y above the dungeon floor at 68). The captured rooms were matched to our templates block by block to find their turn. Mort: Entrance variant B (entrance_room) from both F1 runs and M7 runs 2 and 4, five blocks from the exit door's centre; variant A (start, the spawn-cave entrance) from M7 runs 1 and 3, four blocks from it. Both face away from the door into the room.",
+ "source": "Room-relative spots read from two captured Hypixel Floor I runs (2026-11-05), in each template's own unturned frame (block x/z from the room's north-west corner, y above the dungeon floor at 68). The captured rooms were matched to our templates block by block to find their turn. Mort: Entrance variant B (entrance_room) from both F1 runs and M7 runs 2 and 4, five blocks from the exit door's centre; variant A (start, the spawn-cave entrance) from M7 runs 1 and 3, four blocks from it. Both face away from the door into the room. Tomioka: the tomioka template (cut from M7 run 1), on the spruce ledge at local (27.5, 7, 4.5) facing west into the room; run 4 had the room turned 180 with him on the matching spot.",
  "rooms": {
   "entrance_room": {
    "mort": {
@@ -161,6 +161,14 @@
     "maxY": 7.2,
     "minZ": 9.5,
     "maxZ": 14.5
+   }
+  },
+  "tomioka": {
+   "tomioka": {
+    "x": 27.5,
+    "y": 7.0,
+    "z": 4.5,
+    "yaw": 90.0
    }
   }
  }

@@ -77,7 +77,7 @@ public final class RewardChestModels {
      * no Hypixel model for them was captured.
      */
     static final Map<DungeonChestTier, int[]> UNCAPTURED_LANTERNS = Map.of(
-            DungeonChestTier.OBSIDIAN, new int[]{-4, -4},
+            DungeonChestTier.OBSIDIAN, new int[]{0, 0},
             DungeonChestTier.BEDROCK, new int[]{4, -4});
 
     private RewardChestModels() {

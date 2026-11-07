@@ -119,6 +119,26 @@ class RoomFeaturesTest {
     }
 
     @Test
+    void tomiokaStandsOnHisLedgeLookingIntoTheRoomInEveryTurn() {
+        RoomTemplate template = library.find("tomioka").orElseThrow();
+        for (Rotation rotation : Rotation.values()) {
+            FloorLayout layout = around(template, rotation);
+            CatacombsArenaBlocks blocks = CatacombsArenaBlocks.of(layout, structures);
+            PlacedRoom room = layout.room(0);
+            RoomFeatures.Spot tomioka = features.tomioka(room).orElseThrow();
+            int x = (int) Math.floor(tomioka.x()), y = (int) Math.floor(tomioka.y()), z = (int) Math.floor(tomioka.z());
+            Block feet = blocks.blockAt(x, y, z);
+            Block below = blocks.blockAt(x, y - 1, z);
+            assertTrue(feet == null || !feet.isSolid(), rotation + " feet in " + feet);
+            assertEquals(Block.SPRUCE_PLANKS, below, rotation.toString());
+            CellGeometry.BlockPosition centre = CellGeometry.roomCenter(room.origin());
+            double yaw = Math.toRadians(tomioka.yaw());
+            double inX = centre.x() + 0.5 - tomioka.x(), inZ = centre.z() + 0.5 - tomioka.z();
+            assertTrue(-Math.sin(yaw) * inX + Math.cos(yaw) * inZ > 0, rotation + " faces away at yaw " + tomioka.yaw());
+        }
+    }
+
+    @Test
     void mortStandsByTheExitFacingIntoTheRoomInEveryTurn() {
         List<RoomTemplate> entrances = library.templates(RoomKind.ENTRANCE).stream()
                 .filter(template -> template.blocks().isPresent()).toList();
