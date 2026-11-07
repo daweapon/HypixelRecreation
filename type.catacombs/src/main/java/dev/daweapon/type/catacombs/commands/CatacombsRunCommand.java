@@ -9,6 +9,7 @@ import dev.daweapon.dungeons.catacombs.run.DungeonScoreBreakdown;
 import dev.daweapon.type.catacombs.engine.CatacombsMob;
 import dev.daweapon.type.catacombs.engine.DungeonEngine;
 import dev.daweapon.type.catacombs.engine.KeyType;
+import dev.daweapon.type.catacombs.puzzle.PuzzleRoom;
 import dev.daweapon.type.catacombs.run.CatacombsLifecycle;
 import dev.daweapon.type.catacombs.run.CatacombsRun;
 import dev.daweapon.type.catacombs.run.CatacombsRuns;
@@ -24,12 +25,12 @@ import java.util.function.BiConsumer;
 
 @CommandParameters(labels = "catacombsrun",
         description = "Controls the Catacombs run you are in",
-        usage = "/catacombsrun <ready|start|win|lose|boss|killboss|clear|clearall|secret|crypt|failpuzzle|die|revive|cooldowns|seed|layout|score|phase|key|door|spawn|blessing> [value]",
+        usage = "/catacombsrun <ready|start|win|lose|boss|killboss|clear|clearall|secret|crypt|failpuzzle|die|revive|cooldowns|seed|layout|score|phase|key|door|spawn|blessing|puzzle> [value]",
         permission = Rank.STAFF,
         allowsConsole = false)
 public class CatacombsRunCommand extends HypixelCommand {
     private static final int STAFF_BLESSING_LEVEL = 5;
-    private static final String USAGE = "<c>Usage: /catacombsrun <ready|start|win|lose|boss|killboss|clear|clearall|secret|crypt|failpuzzle|die|revive|cooldowns|seed|layout|score|phase|key|door|spawn|blessing> [value]";
+    private static final String USAGE = "<c>Usage: /catacombsrun <ready|start|win|lose|boss|killboss|clear|clearall|secret|crypt|failpuzzle|die|revive|cooldowns|seed|layout|score|phase|key|door|spawn|blessing|puzzle> [value]";
 
     @Override
     public void registerUsage(MinestomCommand command) {
@@ -47,6 +48,8 @@ public class CatacombsRunCommand extends HypixelCommand {
         ArgumentWord blessingLiteral = new ArgumentWord("blessingLiteral").from("blessing");
         ArgumentWord blessing = new ArgumentWord("blessing").from(Arrays.stream(BlessingType.values())
                 .map(each -> each.name().toLowerCase()).toArray(String[]::new));
+        ArgumentWord puzzleLiteral = new ArgumentWord("puzzleLiteral").from("puzzle");
+        ArgumentWord puzzleAction = new ArgumentWord("puzzleAction").from("solve", "info");
         ArgumentWord mob = ArgumentType.Word("mob").from(DungeonMobRegistry.defaults().mobs().keySet().toArray(String[]::new));
 
         command.addSyntax((sender, context) -> with(sender, (player, run) -> perform(player, run, context.get(action))), action);
@@ -76,6 +79,25 @@ public class CatacombsRunCommand extends HypixelCommand {
         command.addSyntax((sender, context) -> with(sender, (player, run) -> withEngine(player, run, engine ->
                 engine.grantBlessing(BlessingType.valueOf(context.get(blessing).toUpperCase()), STAFF_BLESSING_LEVEL, player))),
                 blessingLiteral, blessing);
+
+        command.addSyntax((sender, context) -> with(sender, (player, run) -> withEngine(player, run, engine ->
+                puzzle(player, engine, context.get(puzzleAction)))), puzzleLiteral, puzzleAction);
+    }
+
+    private static void puzzle(SkyBlockPlayer player, DungeonEngine engine, String action) {
+        PlacedRoom room = engine.roomAt(player.getPosition()).orElse(null);
+        PuzzleRoom puzzle = room == null ? null : engine.puzzle(room).orElse(null);
+        if (puzzle == null) {
+            player.sendMessage("<c>You aren't standing in a playable puzzle room.");
+            return;
+        }
+        if (action.equals("solve")) {
+            puzzle.solve(player);
+            player.sendMessage("<a>Solved <d>" + puzzle.puzzle().displayName() + "<a>. Open its reward chest to complete the room.");
+            return;
+        }
+        player.sendMessage("<d>" + puzzle.puzzle().displayName() + " <7>(" + puzzle.state() + ")");
+        puzzle.info().forEach(player::sendMessage);
     }
 
     private static void with(Object sender, BiConsumer<SkyBlockPlayer, CatacombsRun> action) {
@@ -137,7 +159,7 @@ public class CatacombsRunCommand extends HypixelCommand {
                     player.sendMessage("<c>You aren't standing in a room.");
                     return;
                 }
-                run.failPuzzle(room.index());
+                engine.failPuzzle(room, player);
                 player.sendMessage("<a>Failed the puzzle in room <e>" + room.index() + "<a>.");
             });
             case "die" -> player.sendMessage(run.death(player) ? "<a>You died." : "<c>You can't die right now.");

@@ -18,6 +18,9 @@ import dev.daweapon.type.skyblockgeneric.dungeons.breaker.Dungeonbreaker;
 import dev.daweapon.type.catacombs.crypt.CryptEngine;
 import dev.daweapon.type.catacombs.crypt.CryptPlan;
 import dev.daweapon.type.catacombs.map.DungeonMapView;
+import dev.daweapon.type.catacombs.puzzle.PuzzleContext;
+import dev.daweapon.type.catacombs.puzzle.PuzzleRoom;
+import dev.daweapon.type.catacombs.puzzle.PuzzleRooms;
 import dev.daweapon.type.catacombs.run.CatacombsMessages;
 import dev.daweapon.type.catacombs.arena.RoomMechanisms;
 import dev.daweapon.type.catacombs.secret.SecretEngine;
@@ -28,6 +31,7 @@ import dev.daweapon.type.catacombs.secret.SecretLedger;
 import dev.daweapon.type.catacombs.secret.SecretSpot;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.minestom.server.coordinate.Pos;
+import net.minestom.server.entity.Entity;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -54,6 +58,7 @@ public final class DungeonEngine {
     private final DungeonMapView map;
     private final BloodBlessings bloodBlessings = new BloodBlessings();
     private final FairyRoom fairies;
+    private final PuzzleRooms puzzles;
     private volatile boolean bloodRoomChecked;
     private volatile boolean entranceOpened;
 
@@ -76,11 +81,14 @@ public final class DungeonEngine {
         this.breaker = new DungeonbreakerEngine(host, layout, floor, rooms::isDiscovered, this::isMechanism);
         this.map = new DungeonMapView(host, layout, room -> secrets.ledger().allFound(room));
         this.fairies = new FairyRoom(host, layout);
+        this.puzzles = new PuzzleRooms(new PuzzleContext(host, floor, blessings, rooms::completePuzzle,
+                (room, player) -> host.state().failPuzzle(room.index())), layout, host.arena().blocks()::isReal);
         rooms.discover(layout.startRoom());
         secrets.start();
         crypts.start();
         levers.start();
         fairies.start();
+        puzzles.start();
     }
 
     /** The Entrance gate sinks away, opening the way out of the Entrance room. */
@@ -101,6 +109,7 @@ public final class DungeonEngine {
         keyDrops.poll();
         if (boss.poll()) arrivedAtBoss();
         secrets.poll();
+        puzzles.poll();
         blessings.apply();
         map.poll();
         breaker.poll();
@@ -136,8 +145,31 @@ public final class DungeonEngine {
     }
 
     public boolean interact(SkyBlockPlayer player, int x, int y, int z) {
-        return secrets.interact(player, x, y, z) || levers.interact(player, x, y, z) || superboom(player, x, y, z)
-                || crypts.interact(player, x, y, z);
+        return puzzles.interact(player, x, y, z) || secrets.interact(player, x, y, z) || levers.interact(player, x, y, z)
+                || superboom(player, x, y, z) || crypts.interact(player, x, y, z);
+    }
+
+    public boolean interactEntity(SkyBlockPlayer player, Entity entity) {
+        return puzzles.interactEntity(player, entity);
+    }
+
+    public void moved(SkyBlockPlayer player, Pos to, boolean onGround) {
+        puzzles.moved(player, to, onGround);
+    }
+
+    public boolean arrowHit(SkyBlockPlayer player, int x, int y, int z) {
+        return puzzles.arrowHit(player, x, y, z);
+    }
+
+    public Optional<PuzzleRoom> puzzle(PlacedRoom room) {
+        return puzzles.in(room);
+    }
+
+    /** Fails the room's puzzle as a staff action: the puzzle stops and the room is marked failed. */
+    public void failPuzzle(PlacedRoom room, SkyBlockPlayer actor) {
+        Optional<PuzzleRoom> puzzle = puzzles.in(room);
+        if (puzzle.isPresent() && puzzle.get().puzzle().failable()) puzzle.get().fail(actor, null);
+        else host.state().failPuzzle(room.index());
     }
 
     /** A Superboom TNT used (either click) on a block: blows the crackable wall or crypt there; true when one went off. */
@@ -264,6 +296,7 @@ public final class DungeonEngine {
         bloodRoom.dispose();
         bloodBlessings.clear();
         fairies.dispose();
+        puzzles.dispose();
         rooms.dispose();
         secrets.dispose();
         crypts.dispose();

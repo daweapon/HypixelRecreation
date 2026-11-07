@@ -1,0 +1,1815 @@
+{
+ "source": "Puzzle room data in each template's own frame (x/z from the room's north-west corner, y above the dungeon floor at 68), read from the user's Hypixel captures (2026-11-05) and the room templates. Ice Fill: boards from the template with obstacle blocks on top of ice left out; the captured M7 run 3 walk covers every tile in this order; gate and chests as captured. Three Weirdos: NPC spots, skins and chests from M7 run 3; the six statement cases from the wiki (Catacombs Puzzle Rooms) with the captured case 6 wording; names beyond Hugo/Winona/Ramsey are a guess (Minnesota town names, like the three captured). Tic Tac Toe: buttons, the wall that sinks and the reward chest from M7 run 2. Teleport Maze: pads from the template, landing spots and the final-pad aim from both F1 captures. Creeper Beams: lanterns from the template, the creeper, its pedestal and the chest from F1 run 2; the creeper space is fitted so the four captured beams count. Water Board: the maze plane (x 4) with its gate blocks, levers, holes and doors from the template and F1 run 1 (lever kinds read from the lever pulls). Higher Or Lower (blaze): blaze spots and the chest column from M7 run 2, health range from its ten blazes. Boulder: the box layouts of M7 runs 1, 2 and 4 read from each capture, turned into the template frame. Quiz: the room is the M7 practice-map copy (pedestals from it); questions and answers from the wiki (Catacombs Puzzle Rooms, Quiz), the wrong answers are made up.",
+ "rooms": {
+  "ice_fill": {
+   "puzzle": "ICE_FILL",
+   "boards": [
+    {
+     "y": 1,
+     "start": [23, 15],
+     "exit": [20, 15],
+     "tiles": [
+      [20, 15],
+      [21, 14],
+      [21, 15],
+      [22, 14],
+      [22, 15],
+      [22, 16],
+      [23, 15],
+      [23, 16]
+     ]
+    },
+    {
+     "y": 2,
+     "start": [18, 15],
+     "exit": [13, 15],
+     "tiles": [
+      [13, 15],
+      [14, 13],
+      [14, 14],
+      [14, 15],
+      [15, 13],
+      [15, 14],
+      [15, 15],
+      [15, 16],
+      [15, 17],
+      [16, 13],
+      [16, 15],
+      [16, 16],
+      [16, 17],
+      [17, 13],
+      [17, 14],
+      [17, 15],
+      [17, 17],
+      [18, 13],
+      [18, 14],
+      [18, 15],
+      [18, 16],
+      [18, 17]
+     ]
+    },
+    {
+     "y": 3,
+     "start": [11, 15],
+     "exit": [4, 15],
+     "tiles": [
+      [4, 15],
+      [5, 13],
+      [5, 14],
+      [5, 15],
+      [5, 17],
+      [5, 18],
+      [6, 12],
+      [6, 13],
+      [6, 14],
+      [6, 15],
+      [6, 16],
+      [6, 17],
+      [6, 18],
+      [7, 12],
+      [7, 13],
+      [7, 14],
+      [7, 16],
+      [7, 17],
+      [7, 18],
+      [8, 12],
+      [8, 13],
+      [8, 18],
+      [9, 12],
+      [9, 13],
+      [9, 14],
+      [9, 16],
+      [9, 17],
+      [9, 18],
+      [10, 12],
+      [10, 14],
+      [10, 16],
+      [10, 17],
+      [10, 18],
+      [11, 12],
+      [11, 13],
+      [11, 14],
+      [11, 15],
+      [11, 16],
+      [11, 17],
+      [11, 18]
+     ]
+    }
+   ],
+   "gate": [
+    [3, 6, 13],
+    [3, 6, 14],
+    [3, 6, 15],
+    [3, 6, 16],
+    [3, 6, 17],
+    [3, 7, 13],
+    [3, 7, 14],
+    [3, 7, 15],
+    [3, 7, 16],
+    [3, 7, 17],
+    [3, 8, 13],
+    [3, 8, 14],
+    [3, 8, 15],
+    [3, 8, 16],
+    [3, 8, 17],
+    [3, 9, 13],
+    [3, 9, 14],
+    [3, 9, 15],
+    [3, 9, 16],
+    [3, 9, 17],
+    [3, 10, 13],
+    [3, 10, 14],
+    [3, 10, 15],
+    [3, 10, 16],
+    [3, 10, 17],
+    [3, 11, 13],
+    [3, 11, 14],
+    [3, 11, 15],
+    [3, 11, 16],
+    [3, 11, 17]
+   ],
+   "chests": [
+    [1, 7, 14],
+    [1, 7, 16]
+   ]
+  },
+  "three_weirdos": {
+   "puzzle": "THREE_WEIRDOS",
+   "weirdos": [
+    {
+     "x": 24.5,
+     "y": 1.0,
+     "z": 17.5,
+     "yaw": 165.9,
+     "chest": [24, 1, 16]
+    },
+    {
+     "x": 25.5,
+     "y": 1.0,
+     "z": 15.5,
+     "yaw": 118.1,
+     "chest": [25, 1, 14]
+    },
+    {
+     "x": 24.5,
+     "y": 1.0,
+     "z": 13.5,
+     "yaw": 32.8,
+     "chest": [24, 1, 12]
+    }
+   ],
+   "skins": [
+    {
+     "texture": "eyJ0aW1lc3RhbXAiOjE1ODIwNTY1MjY1ODksInByb2ZpbGVJZCI6ImEyZjgzNDU5NWM4OTRhMjdhZGQzMDQ5NzE2Y2E5MTBjIiwicHJvZmlsZU5hbWUiOiJiUHVuY2giLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzYxOTBhN2IyYmIxM2FlNTgyM2Y2YTE4NDZmODQyYzM0ODllMjYyMGEzNjY1NTc0YTBmYmE5NzVjMzk0MTA5MjIifX19",
+     "signature": "D/AAFPkwp3dqEx8OktDtqX0PSwJfu6PS+u67e8mq+0FMz+yqvDhD4FmzlvJlz6dwVa+UWGBCX6CMPXbPja9eeR90GFEYU+AYInam8IvyrmDzw7q0Fx3jzP9aRmHSn4229Y8GXhkOJ37k3pWf5zrcIJmT9npIq4lwEc3B0OxEZtQadanWX0/qIr/bpbrB+en2zIWzzwQWIAXPJUwQgiVj7mRwfMCyajoOqGs0AApzTi5IPresYF2BZZ9pLWyLv96YFhm96ncMHVJlSl3h8mt0R1pGi2BwOROYIfFq6HDONpSfD3R7aaty0fyPeV9kcrswndCS5/ubZxvv1bLp2wqhR0A5NzWr2GM3GK7o2EQgM5o9gsKS65SGPaWF0h3dUzsrpCOSMKzxzj29eAP4TLsLxWNAyaR/Q4NQt8cluiisLSk2yKUDovzUiSqrdLToD+5DPFqNYxDRraCc2gQQlsHpp3aXHNpqoBYcczTXwUHgjqh71HodzXGo4pxOcJNo5kOjV+uyfgvR9zCIuoN3j7UK6E2F3LQrLDTTRb8W4KGkMDnEESv8jGrXwQs4WzqUdP4HHXOFHbp2cx0Pi7xc93MQW1ZmjNtDeLr+xvsqDbL2syI8D2mf2++vjLhPSzxqtx4hOcyWQFCMC9Sdzb/bDg8JAuXgQSAMgmp1E1Oz/msZJ1w="
+    },
+    {
+     "texture": "eyJ0aW1lc3RhbXAiOjE1ODIxNDU3Njc3MDEsInByb2ZpbGVJZCI6ImEyZjgzNDU5NWM4OTRhMjdhZGQzMDQ5NzE2Y2E5MTBjIiwicHJvZmlsZU5hbWUiOiJiUHVuY2giLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzE0Nzk0Yjc3N2Y5YmIzNDhjNTBiMTlhNTAwZDk2ODkwNGM1NzAwNTRlZGMxNzhhNTIwYzRlMWEyZGEwZDY1ODcifX19",
+     "signature": "k+o7OResg2zOWnG/s2kdEWgEytoj4sVcaFHU0oiLkhwZfxp9NpEeGdTC3A8PdiGiLGAMGJnmBjgXPY0iyJJbfpe+f8FLb/F0FpFPT8P6t7Et9t/jep8ZtAKRQF8kKkgTvDljycSSQQod/DXHOuX/9LCb0UytSc8FFeaTKStTqbGpAOA9Wgb3cF9Mg5DmKC3RJwOeMw3G1nnWrJuG8W+6Uf7oR8f4+M6DBxay3GDNRNBVRQfFxovd/3T0f9VBCenn5ednB+T4t5h8pEssUVmgGiHLwJONxfQolzQkgb7sVC8I9oi74JDwAg3k4rKFb64YTbVKsvbmqb+sqfrcbZUQhPLR9BgNKlWr/A3SokplfjraK7+m90B/vM4jZiFnexxpW1TwNGZkrDrkozNckYRtTK2j9PmOwUgscrRMl4pMNMe7bPDpb1w8PeAzXMSTYzcvVQDK4rFuGCviwWq5JhQnbI+sFTHCJtxixH1AQSWTnLIqUqcKNtQsVYgoN3AGpaj3v5cqoGHh2WPjo1vOMNQN1VjCpNGMiNEJhf9xxfigh4bdC4thH4NMBKavXeMedJ5M9azmBo30b9u0YT3nYbqrx82D4HxagmKeb2+j2O3StdGWk1VUUfxUpwQ4mR9nMKfN1k2JYewog3uxGcJ9FGAcOflvQqBwSIVrMnZgtHFpuQ0="
+    },
+    {
+     "texture": "eyJ0aW1lc3RhbXAiOjE1ODIxNDYwNjAxMDYsInByb2ZpbGVJZCI6ImEyZjgzNDU5NWM4OTRhMjdhZGQzMDQ5NzE2Y2E5MTBjIiwicHJvZmlsZU5hbWUiOiJiUHVuY2giLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzdiNGM2ZjVkZjMxMzRhZGY0YTdlYWUxMmZlMjJlYjZhYTEwMmI2NzM1MjIxZTdmNTQ3NWM3YmJlYzQyMzdiYjgifX19",
+     "signature": "rDW4GM5nUP2hvfh9it3pfXgGeaDoa+JEHoOefy5Rwruz2clabGqda1lXt527QWTAWieS4lFcNWnqwJUtzLow83i/kbFZ72MkUTo3c0LC3nFDTtABGijY8KfcIVRp0XHzWdQwG7PXWYt5RvX+RgEdOmd+yhDoq16Cf4d3MhWhuFrSpKJohzvQ3ad/FFXdpSiWmklnsQ2n7ZP1ZRzuWWg4kRdtYEEjE2oodVkQoN8xqtddK+eT/3kz9n/aqPfokAHjWMJDbkqPBLweLVK2+WYkI9c6unHcG/uWKwhw8lwG7oEXLNhtDnipoWqA+TNcP//m8DAF9kA2MeBjO72U2v+UkNIGXZPamy5wSqhoNhyTAmG0MsammQprwfzL/K3PVW5QZxIldAIDMFNn/T6tYH2PtT345A+0gC0xtZUXHjscjlok/dcvYyleHyxK15fPyYtxcmGE59AUjj0Xllv90aEECRHrzC3t+2/gj+nWcDrLPvxX/qbjlTXKyxT/V0vJlMrzfoj8apPHgdj3S3mu3XDog18kfj7iPmoN0X1xllGzgR4SmOqnlCSWKFieYx7wrbN9J1y23itVteto9DiMWKbgc314m6nxGSaiSVSZriMX4lciNv1js7ADkyQ5LX3FuWUe7KRJuHYv/aRSzj70IEHq+/G6I5EHd3WbRJKmM6AMg4Q="
+    }
+   ],
+   "names": [
+    "Ardis",
+    "Baxter",
+    "Benson",
+    "Carver",
+    "Elmo",
+    "Eveleth",
+    "Hope",
+    "Hugo",
+    "Lino",
+    "Luverne",
+    "Madelia",
+    "Marshall",
+    "Melrose",
+    "Montgomery",
+    "Morris",
+    "Ramsey",
+    "Rose",
+    "Victoria",
+    "Virginia",
+    "Willmar",
+    "Winona"
+   ],
+   "cases": [
+    {
+     "rewarded": 0,
+     "lines": [
+      "The reward is not in my chest!",
+      "One of us is telling the truth!",
+      "They are both telling the truth. The reward isn't in {1}'s chest."
+     ]
+    },
+    {
+     "rewarded": 1,
+     "lines": [
+      "We are all telling the truth!",
+      "At least one of them is lying, and the reward is not in {3}'s chest!",
+      "{1} is telling the truth and the reward is in his chest."
+     ]
+    },
+    {
+     "rewarded": 1,
+     "lines": [
+      "My chest doesn't have the reward. At least one of the others is telling the truth!",
+      "My chest doesn't have the reward. We are all telling the truth.",
+      "One of the others is lying."
+     ]
+    },
+    {
+     "rewarded": 0,
+     "lines": [
+      "My chest has the reward and I'm telling the truth!",
+      "They are both telling the truth, the reward is in {3}'s chest.",
+      "They are both lying, the reward is in my chest!"
+     ]
+    },
+    {
+     "rewarded": 0,
+     "lines": [
+      "The reward isn't in any of our chests.",
+      "The reward is in my chest.",
+      "The reward is not in my chest. They are both lying."
+     ]
+    },
+    {
+     "rewarded": 2,
+     "lines": [
+      "{2} is telling the truth.",
+      "My chest has the reward!",
+      "Both of them are telling the truth. Also, {1} has the reward in their chest!"
+     ]
+    }
+   ]
+  },
+  "tic_tac_toe": {
+   "puzzle": "TIC_TAC_TOE",
+   "cells": [
+    [13, 4, 8],
+    [14, 4, 8],
+    [15, 4, 8],
+    [13, 3, 8],
+    [14, 3, 8],
+    [15, 3, 8],
+    [13, 2, 8],
+    [14, 2, 8],
+    [15, 2, 8]
+   ],
+   "wall": [
+    [13, 1, 7],
+    [14, 1, 7],
+    [15, 1, 7],
+    [13, 2, 7],
+    [14, 2, 7],
+    [15, 2, 7],
+    [13, 3, 7],
+    [14, 3, 7],
+    [15, 3, 7],
+    [13, 4, 7],
+    [14, 4, 7],
+    [15, 4, 7]
+   ],
+   "chest": [14, 2, 2],
+   "marks": {
+    "hypixel": "puzzles/tic_tac_toe_hypixel.png",
+    "player": "puzzles/tic_tac_toe_player.png"
+   }
+  },
+  "teleport_maze": {
+   "puzzle": "TELEPORT_MAZE",
+   "y": 1,
+   "pads": [
+    {
+     "x": 4,
+     "z": 2,
+     "kind": "ROOM",
+     "room": 0,
+     "land": [5.5, 3.5]
+    },
+    {
+     "x": 4,
+     "z": 8,
+     "kind": "ROOM",
+     "room": 0,
+     "land": [5.5, 7.5]
+    },
+    {
+     "x": 4,
+     "z": 10,
+     "kind": "ROOM",
+     "room": 3,
+     "land": [5.5, 11.5]
+    },
+    {
+     "x": 4,
+     "z": 16,
+     "kind": "ROOM",
+     "room": 3,
+     "land": [5.5, 15.5]
+    },
+    {
+     "x": 4,
+     "z": 18,
+     "kind": "ROOM",
+     "room": 5,
+     "land": [5.5, 19.5]
+    },
+    {
+     "x": 4,
+     "z": 24,
+     "kind": "ROOM",
+     "room": 5,
+     "land": [5.5, 23.5]
+    },
+    {
+     "x": 10,
+     "z": 2,
+     "kind": "ROOM",
+     "room": 0,
+     "land": [9.5, 3.5]
+    },
+    {
+     "x": 10,
+     "z": 8,
+     "kind": "ROOM",
+     "room": 0,
+     "land": [9.5, 7.5]
+    },
+    {
+     "x": 10,
+     "z": 10,
+     "kind": "ROOM",
+     "room": 3,
+     "land": [9.5, 11.5]
+    },
+    {
+     "x": 10,
+     "z": 16,
+     "kind": "ROOM",
+     "room": 3,
+     "land": [9.5, 15.5]
+    },
+    {
+     "x": 10,
+     "z": 18,
+     "kind": "ROOM",
+     "room": 5,
+     "land": [9.5, 19.5]
+    },
+    {
+     "x": 10,
+     "z": 24,
+     "kind": "ROOM",
+     "room": 5,
+     "land": [9.5, 23.5]
+    },
+    {
+     "x": 12,
+     "z": 2,
+     "kind": "ROOM",
+     "room": 1,
+     "land": [13.5, 3.5]
+    },
+    {
+     "x": 12,
+     "z": 8,
+     "kind": "ROOM",
+     "room": 1,
+     "land": [13.5, 7.5]
+    },
+    {
+     "x": 15,
+     "z": 16,
+     "kind": "CENTRE",
+     "room": -1,
+     "land": [14.5, 15.5]
+    },
+    {
+     "x": 15,
+     "z": 18,
+     "kind": "ENTRY",
+     "room": -1,
+     "land": [16.5, 19.5]
+    },
+    {
+     "x": 18,
+     "z": 2,
+     "kind": "ROOM",
+     "room": 1,
+     "land": [17.5, 3.5]
+    },
+    {
+     "x": 18,
+     "z": 8,
+     "kind": "ROOM",
+     "room": 1,
+     "land": [17.5, 7.5]
+    },
+    {
+     "x": 20,
+     "z": 2,
+     "kind": "ROOM",
+     "room": 2,
+     "land": [21.5, 3.5]
+    },
+    {
+     "x": 20,
+     "z": 8,
+     "kind": "ROOM",
+     "room": 2,
+     "land": [21.5, 7.5]
+    },
+    {
+     "x": 20,
+     "z": 10,
+     "kind": "ROOM",
+     "room": 4,
+     "land": [21.5, 11.5]
+    },
+    {
+     "x": 20,
+     "z": 16,
+     "kind": "ROOM",
+     "room": 4,
+     "land": [21.5, 15.5]
+    },
+    {
+     "x": 20,
+     "z": 18,
+     "kind": "ROOM",
+     "room": 6,
+     "land": [21.5, 19.5]
+    },
+    {
+     "x": 20,
+     "z": 24,
+     "kind": "ROOM",
+     "room": 6,
+     "land": [21.5, 23.5]
+    },
+    {
+     "x": 26,
+     "z": 2,
+     "kind": "ROOM",
+     "room": 2,
+     "land": [25.5, 3.5]
+    },
+    {
+     "x": 26,
+     "z": 8,
+     "kind": "ROOM",
+     "room": 2,
+     "land": [25.5, 7.5]
+    },
+    {
+     "x": 26,
+     "z": 10,
+     "kind": "ROOM",
+     "room": 4,
+     "land": [25.5, 11.5]
+    },
+    {
+     "x": 26,
+     "z": 16,
+     "kind": "ROOM",
+     "room": 4,
+     "land": [25.5, 15.5]
+    },
+    {
+     "x": 26,
+     "z": 18,
+     "kind": "ROOM",
+     "room": 6,
+     "land": [25.5, 19.5]
+    },
+    {
+     "x": 26,
+     "z": 24,
+     "kind": "ROOM",
+     "room": 6,
+     "land": [25.5, 23.5]
+    }
+   ],
+   "exit": {
+    "x": 15.0,
+    "y": 1.0,
+    "z": 22.0,
+    "yaw": 0.0
+   },
+   "chest": [15, 2, 10]
+  },
+  "creeper_beams": {
+   "puzzle": "CREEPER_BEAMS",
+   "creeper": {
+    "x": 15.5,
+    "y": 7.0,
+    "z": 15.5
+   },
+   "space": {
+    "minX": 14.7,
+    "minY": 6.5,
+    "minZ": 14.7,
+    "maxX": 16.3,
+    "maxY": 9.5,
+    "maxZ": 16.3
+   },
+   "required": 4,
+   "lanterns": [
+    [10, 1, 27],
+    [6, 2, 5],
+    [21, 2, 27],
+    [26, 2, 7],
+    [2, 3, 13],
+    [18, 3, 2],
+    [4, 4, 8],
+    [25, 4, 23],
+    [5, 5, 24],
+    [15, 6, 15],
+    [24, 6, 6],
+    [2, 7, 16],
+    [3, 8, 18],
+    [25, 8, 23],
+    [26, 10, 12],
+    [27, 10, 14],
+    [8, 12, 8],
+    [7, 13, 20],
+    [9, 13, 20],
+    [18, 14, 8],
+    [9, 15, 17],
+    [15, 16, 13]
+   ],
+   "pedestal": [
+    [13, 5, 15],
+    [13, 6, 15],
+    [14, 1, 14],
+    [14, 1, 15],
+    [14, 1, 16],
+    [14, 2, 14],
+    [14, 3, 14],
+    [14, 3, 15],
+    [14, 4, 14],
+    [14, 5, 14],
+    [14, 5, 15],
+    [14, 5, 16],
+    [14, 6, 14],
+    [14, 6, 16],
+    [15, 1, 16],
+    [15, 2, 15],
+    [15, 2, 16],
+    [15, 4, 14],
+    [15, 5, 14],
+    [15, 6, 15],
+    [16, 1, 15],
+    [16, 1, 16],
+    [16, 2, 16],
+    [16, 3, 14],
+    [16, 3, 15],
+    [16, 3, 16],
+    [16, 4, 14],
+    [16, 4, 16],
+    [16, 5, 15],
+    [16, 5, 16],
+    [16, 6, 14],
+    [16, 6, 16],
+    [17, 1, 15],
+    [17, 2, 15],
+    [17, 5, 15]
+   ],
+   "chest": [15, 1, 15]
+  },
+  "water_board": {
+   "puzzle": "WATER_BOARD",
+   "plane": {
+    "x": 4,
+    "minZ": 5,
+    "maxY": 14
+   },
+   "rows": [
+    "##########s##########",
+    "##########.##########",
+    "##########.##########",
+    "##########.##########",
+    "#####....g.g........#",
+    "#####.#########g#.#.#",
+    "#####g..........#.#.#",
+    "#####.######.####g#.#",
+    "#....g.g..#g....g.g.#",
+    "#.####g##.#.#####g###",
+    "#.####.##.#.#####.###",
+    "#.###..#g.g.g.g.g...#",
+    "#.###.##.######g###.#",
+    "#...g.g..######.#...#",
+    "#g#.###########.#.###",
+    "#.#.###########.#.#.#",
+    "#.#......g.g....#.#.#",
+    "#.########.######.###",
+    "#.###....g.g....g.g.#",
+    "#...g.####g##.###g#.#",
+    "#g###g####.g..#...#.#",
+    "#.###.####.####.###.#",
+    "#.###.####.####.###.#",
+    "#...................#",
+    "#.###.####.####.###.#"
+   ],
+   "gates": [
+    {
+     "type": "emerald_block",
+     "z": 6,
+     "y": -6,
+     "extended": true
+    },
+    {
+     "type": "coal_block",
+     "z": 10,
+     "y": -6,
+     "extended": false
+    },
+    {
+     "type": "emerald_block",
+     "z": 16,
+     "y": -6,
+     "extended": true
+    },
+    {
+     "type": "quartz_block",
+     "z": 9,
+     "y": -5,
+     "extended": false
+    },
+    {
+     "type": "terracotta",
+     "z": 15,
+     "y": -5,
+     "extended": true
+    },
+    {
+     "type": "emerald_block",
+     "z": 22,
+     "y": -5,
+     "extended": false
+    },
+    {
+     "type": "gold_block",
+     "z": 14,
+     "y": -4,
+     "extended": true
+    },
+    {
+     "type": "diamond_block",
+     "z": 16,
+     "y": -4,
+     "extended": true
+    },
+    {
+     "type": "diamond_block",
+     "z": 21,
+     "y": -4,
+     "extended": false
+    },
+    {
+     "type": "coal_block",
+     "z": 23,
+     "y": -4,
+     "extended": false
+    },
+    {
+     "type": "terracotta",
+     "z": 14,
+     "y": -2,
+     "extended": false
+    },
+    {
+     "type": "gold_block",
+     "z": 16,
+     "y": -2,
+     "extended": true
+    },
+    {
+     "type": "coal_block",
+     "z": 6,
+     "y": 0,
+     "extended": false
+    },
+    {
+     "type": "diamond_block",
+     "z": 9,
+     "y": 1,
+     "extended": false
+    },
+    {
+     "type": "quartz_block",
+     "z": 11,
+     "y": 1,
+     "extended": false
+    },
+    {
+     "type": "quartz_block",
+     "z": 20,
+     "y": 2,
+     "extended": true
+    },
+    {
+     "type": "emerald_block",
+     "z": 13,
+     "y": 3,
+     "extended": true
+    },
+    {
+     "type": "coal_block",
+     "z": 15,
+     "y": 3,
+     "extended": false
+    },
+    {
+     "type": "gold_block",
+     "z": 17,
+     "y": 3,
+     "extended": true
+    },
+    {
+     "type": "emerald_block",
+     "z": 19,
+     "y": 3,
+     "extended": true
+    },
+    {
+     "type": "terracotta",
+     "z": 21,
+     "y": 3,
+     "extended": false
+    },
+    {
+     "type": "terracotta",
+     "z": 11,
+     "y": 5,
+     "extended": false
+    },
+    {
+     "type": "diamond_block",
+     "z": 22,
+     "y": 5,
+     "extended": false
+    },
+    {
+     "type": "gold_block",
+     "z": 10,
+     "y": 6,
+     "extended": true
+    },
+    {
+     "type": "diamond_block",
+     "z": 12,
+     "y": 6,
+     "extended": false
+    },
+    {
+     "type": "emerald_block",
+     "z": 16,
+     "y": 6,
+     "extended": true
+    },
+    {
+     "type": "terracotta",
+     "z": 21,
+     "y": 6,
+     "extended": false
+    },
+    {
+     "type": "emerald_block",
+     "z": 23,
+     "y": 6,
+     "extended": true
+    },
+    {
+     "type": "gold_block",
+     "z": 22,
+     "y": 7,
+     "extended": true
+    },
+    {
+     "type": "emerald_block",
+     "z": 10,
+     "y": 8,
+     "extended": true
+    },
+    {
+     "type": "coal_block",
+     "z": 20,
+     "y": 9,
+     "extended": true
+    },
+    {
+     "type": "quartz_block",
+     "z": 14,
+     "y": 10,
+     "extended": false
+    },
+    {
+     "type": "gold_block",
+     "z": 16,
+     "y": 10,
+     "extended": true
+    }
+   ],
+   "source": {
+    "z": 15,
+    "y": 14,
+    "plug": "minecraft:lapis_block"
+   },
+   "levers": [
+    {
+     "at": [10, -7, 10],
+     "type": "diamond_block"
+    },
+    {
+     "at": [10, -7, 20],
+     "type": "quartz_block"
+    },
+    {
+     "at": [15, -7, 10],
+     "type": "emerald_block"
+    },
+    {
+     "at": [15, -7, 20],
+     "type": "gold_block"
+    },
+    {
+     "at": [20, -7, 10],
+     "type": "terracotta"
+    },
+    {
+     "at": [20, -7, 20],
+     "type": "coal_block"
+    },
+    {
+     "at": [25, -8, 15],
+     "type": "water"
+    }
+   ],
+   "holes": [
+    {
+     "z": 6,
+     "door": "red"
+    },
+    {
+     "z": 10,
+     "door": "lime"
+    },
+    {
+     "z": 15,
+     "door": "blue"
+    },
+    {
+     "z": 20,
+     "door": "orange"
+    },
+    {
+     "z": 24,
+     "door": "purple"
+    }
+   ],
+   "doors": [
+    {
+     "colour": "purple",
+     "x": 11
+    },
+    {
+     "colour": "orange",
+     "x": 12
+    },
+    {
+     "colour": "blue",
+     "x": 13
+    },
+    {
+     "colour": "lime",
+     "x": 14
+    },
+    {
+     "colour": "red",
+     "x": 15
+    }
+   ],
+   "doorway": {
+    "fill": [
+     [-12, 14],
+     [-12, 15],
+     [-12, 16],
+     [-11, 14],
+     [-11, 15],
+     [-11, 16]
+    ],
+    "heads": [
+     [
+      -12,
+      13,
+      "south"
+     ],
+     [
+      -11,
+      13,
+      "south"
+     ],
+     [
+      -12,
+      17,
+      "north"
+     ],
+     [
+      -11,
+      17,
+      "north"
+     ],
+     [
+      -13,
+      15,
+      "up"
+     ]
+    ],
+    "pistons": [
+     [
+      -12,
+      12,
+      "south"
+     ],
+     [
+      -11,
+      12,
+      "south"
+     ],
+     [
+      -12,
+      18,
+      "north"
+     ],
+     [
+      -11,
+      18,
+      "north"
+     ],
+     [
+      -14,
+      15,
+      "up"
+     ]
+    ]
+   },
+   "closedDoors": 3,
+   "chest": [8, -12, 15]
+  },
+  "blaze": {
+   "puzzle": "HIGHER_OR_LOWER",
+   "blazes": [
+    [17, 21, 15],
+    [17, 37, 15],
+    [15, 9, 13],
+    [15, 17, 17],
+    [13, 13, 15],
+    [15, 33, 17],
+    [15, 25, 13],
+    [15, 41, 13],
+    [13, 29, 15],
+    [13, 45, 15]
+   ],
+   "health": {
+    "min": 1300,
+    "max": 3700
+   },
+   "level": 11,
+   "order": "LOWEST_FIRST",
+   "column": {
+    "x": 15,
+    "z": 15,
+    "bottom": 2,
+    "top": 51
+   }
+  },
+  "boulder": {
+   "puzzle": "BOULDER",
+   "grid": {
+    "x": 5,
+    "z": 8,
+    "y": -4,
+    "cell": 3,
+    "columns": 7,
+    "rows": 6
+   },
+   "variants": [
+    {
+     "capture": "m7_run1",
+     "boxes": [
+      {
+       "column": 0,
+       "row": 1,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 2,
+       "row": 1,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 3,
+       "row": 1,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 4,
+       "row": 1,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 6,
+       "row": 1,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 0,
+       "row": 2,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 1,
+       "row": 2,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 5,
+       "row": 2,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 6,
+       "row": 2,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 0,
+       "row": 3,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 2,
+       "row": 3,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 3,
+       "row": 3,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 4,
+       "row": 3,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 6,
+       "row": 3,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 0,
+       "row": 4,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 1,
+       "row": 4,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 2,
+       "row": 4,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 4,
+       "row": 4,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 5,
+       "row": 4,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 6,
+       "row": 4,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 0,
+       "row": 5,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "south"
+       ]
+      },
+      {
+       "column": 6,
+       "row": 5,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "south"
+       ]
+      }
+     ]
+    },
+    {
+     "capture": "m7_run2",
+     "boxes": [
+      {
+       "column": 0,
+       "row": 0,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 1,
+       "row": 0,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 2,
+       "row": 0,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 0,
+       "row": 1,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 1,
+       "row": 1,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 2,
+       "row": 1,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 4,
+       "row": 1,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 3,
+       "row": 2,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 4,
+       "row": 2,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 5,
+       "row": 2,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 1,
+       "row": 3,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 3,
+       "row": 3,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 6,
+       "row": 3,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 1,
+       "row": 4,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 2,
+       "row": 4,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 3,
+       "row": 4,
+       "wood": "minecraft:birch_planks",
+       "buttons": []
+      },
+      {
+       "column": 4,
+       "row": 4,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south"
+       ]
+      },
+      {
+       "column": 6,
+       "row": 4,
+       "wood": "minecraft:jungle_planks",
+       "buttons": []
+      },
+      {
+       "column": 5,
+       "row": 5,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "south",
+        "west",
+        "east"
+       ]
+      }
+     ]
+    },
+    {
+     "capture": "m7_run4",
+     "boxes": [
+      {
+       "column": 1,
+       "row": 0,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 5,
+       "row": 0,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 2,
+       "row": 1,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 4,
+       "row": 1,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 1,
+       "row": 2,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 3,
+       "row": 2,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 5,
+       "row": 2,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 2,
+       "row": 3,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 4,
+       "row": 3,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "north",
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 1,
+       "row": 4,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 5,
+       "row": 4,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "north",
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 0,
+       "row": 5,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "south"
+       ]
+      },
+      {
+       "column": 3,
+       "row": 5,
+       "wood": "minecraft:birch_planks",
+       "buttons": [
+        "south",
+        "west",
+        "east"
+       ]
+      },
+      {
+       "column": 6,
+       "row": 5,
+       "wood": "minecraft:jungle_planks",
+       "buttons": [
+        "south"
+       ]
+      }
+     ]
+    }
+   ],
+   "chest": [15, -2, 29]
+  },
+  "quiz": {
+   "puzzle": "QUIZ",
+   "questions": [
+    {
+     "question": "What is the status of The Watcher?",
+     "answer": "Stalker",
+     "wrong": [
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "Necromancer Lord",
+      "The Wither Lords"
+     ]
+    },
+    {
+     "question": "What is the status of Bonzo?",
+     "answer": "New Necromancer",
+     "wrong": [
+      "Stalker",
+      "Apprentice Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "Necromancer Lord",
+      "The Wither Lords"
+     ]
+    },
+    {
+     "question": "What is the status of Scarf?",
+     "answer": "Apprentice Necromancer",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "Necromancer Lord",
+      "The Wither Lords"
+     ]
+    },
+    {
+     "question": "What is the status of The Professor?",
+     "answer": "Professor",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "Necromancer Lord",
+      "The Wither Lords"
+     ]
+    },
+    {
+     "question": "What is the status of Thorn?",
+     "answer": "Shaman Necromancer",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Professor",
+      "Master Necromancer",
+      "Necromancer Lord",
+      "The Wither Lords"
+     ]
+    },
+    {
+     "question": "What is the status of Livid?",
+     "answer": "Master Necromancer",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Necromancer Lord",
+      "The Wither Lords"
+     ]
+    },
+    {
+     "question": "What is the status of Sadan?",
+     "answer": "Necromancer Lord",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "The Wither Lords"
+     ]
+    },
+    {
+     "question": "What is the status of Maxor?",
+     "answer": "The Wither Lords",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "Necromancer Lord"
+     ]
+    },
+    {
+     "question": "What is the status of Goldor?",
+     "answer": "The Wither Lords",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "Necromancer Lord"
+     ]
+    },
+    {
+     "question": "What is the status of Storm?",
+     "answer": "The Wither Lords",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "Necromancer Lord"
+     ]
+    },
+    {
+     "question": "What is the status of Necron?",
+     "answer": "The Wither Lords",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "Necromancer Lord"
+     ]
+    },
+    {
+     "question": "What is the status of Maxor, Storm, Goldor, and Necron?",
+     "answer": "The Wither Lords",
+     "wrong": [
+      "Stalker",
+      "New Necromancer",
+      "Apprentice Necromancer",
+      "Professor",
+      "Shaman Necromancer",
+      "Master Necromancer",
+      "Necromancer Lord"
+     ]
+    },
+    {
+     "question": "Which brother is on the Spider's Den?",
+     "answer": "Rick",
+     "wrong": [
+      "Pat",
+      "Jamie",
+      "Bubu"
+     ]
+    },
+    {
+     "question": "What is the name of Rick's brother?",
+     "answer": "Pat",
+     "wrong": [
+      "Rick",
+      "Jamie",
+      "Bubu"
+     ]
+    },
+    {
+     "question": "What is the name of the vendor in the Hub who sells stained glass?",
+     "answer": "Wool Weaver",
+     "wrong": [
+      "Builder",
+      "Adventurer",
+      "Farm Merchant"
+     ]
+    },
+    {
+     "question": "What is the name of the person that upgrades pets?",
+     "answer": "Kat",
+     "wrong": [
+      "Bea",
+      "George",
+      "Elle"
+     ]
+    },
+    {
+     "question": "What is the name of the lady of the Nether?",
+     "answer": "Elle",
+     "wrong": [
+      "Kat",
+      "Ophelia",
+      "Bea"
+     ]
+    },
+    {
+     "question": "Which villager in the Village gives you a Rogue Sword?",
+     "answer": "Jamie",
+     "wrong": [
+      "Andrew",
+      "Liam",
+      "Ryu"
+     ]
+    },
+    {
+     "question": "How many unique minions are there?",
+     "answer": "61 Minions",
+     "wrong": [
+      "59 Minions",
+      "60 Minions",
+      "62 Minions",
+      "63 Minions"
+     ]
+    },
+    {
+     "question": "How many total Fairy Souls are there?",
+     "answer": "273 Fairy Souls",
+     "wrong": [
+      "266 Fairy Souls",
+      "270 Fairy Souls",
+      "278 Fairy Souls",
+      "283 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in Hub?",
+     "answer": "80 Fairy Souls",
+     "wrong": [
+      "74 Fairy Souls",
+      "76 Fairy Souls",
+      "82 Fairy Souls",
+      "85 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in the Spider's Den?",
+     "answer": "19 Fairy Souls",
+     "wrong": [
+      "17 Fairy Souls",
+      "18 Fairy Souls",
+      "21 Fairy Souls",
+      "23 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in The End?",
+     "answer": "12 Fairy Souls",
+     "wrong": [
+      "10 Fairy Souls",
+      "11 Fairy Souls",
+      "13 Fairy Souls",
+      "15 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in The Farming Islands?",
+     "answer": "20 Fairy Souls",
+     "wrong": [
+      "18 Fairy Souls",
+      "19 Fairy Souls",
+      "22 Fairy Souls",
+      "25 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in the Crimson Isle?",
+     "answer": "29 Fairy Souls",
+     "wrong": [
+      "25 Fairy Souls",
+      "27 Fairy Souls",
+      "31 Fairy Souls",
+      "33 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in The Park?",
+     "answer": "12 Fairy Souls",
+     "wrong": [
+      "9 Fairy Souls",
+      "10 Fairy Souls",
+      "11 Fairy Souls",
+      "14 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in Jerry's Workshop?",
+     "answer": "5 Fairy Souls",
+     "wrong": [
+      "3 Fairy Souls",
+      "9 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in Deep Caverns?",
+     "answer": "21 Fairy Souls",
+     "wrong": [
+      "19 Fairy Souls",
+      "20 Fairy Souls",
+      "23 Fairy Souls",
+      "25 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in Gold Mine?",
+     "answer": "12 Fairy Souls",
+     "wrong": [
+      "9 Fairy Souls",
+      "10 Fairy Souls",
+      "11 Fairy Souls",
+      "14 Fairy Souls"
+     ]
+    },
+    {
+     "question": "How many Fairy Souls are there in Dungeon Hub?",
+     "answer": "7 Fairy Souls",
+     "wrong": [
+      "5 Fairy Souls",
+      "6 Fairy Souls",
+      "8 Fairy Souls",
+      "9 Fairy Souls"
+     ]
+    }
+   ],
+   "asked": 3,
+   "pedestals": [
+    {
+     "option": "a",
+     "block": [20, 2, 6]
+    },
+    {
+     "option": "b",
+     "block": [15, 2, 9]
+    },
+    {
+     "option": "c",
+     "block": [10, 2, 6]
+    }
+   ],
+   "question": {
+    "x": 15.5,
+    "y": 20.0,
+    "z": 15.5
+   }
+  }
+ }
+}

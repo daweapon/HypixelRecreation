@@ -102,6 +102,10 @@ final class RoomEngine implements CatacombsMob.Listener {
         keySource.completed(room.index()).ifPresent(key -> keyDrops.drop(key, host.arena().roomCentre(room)));
     }
 
+    void completePuzzle(PlacedRoom room) {
+        if (tracker.forceClear(room.index())) complete(room);
+    }
+
     boolean clear(PlacedRoom room, SkyBlockPlayer actor) {
         discover(room);
         for (CatacombsMob mob : List.copyOf(alive)) {

@@ -2,6 +2,7 @@ package dev.daweapon.dungeons.catacombs.layout;
 
 import dev.daweapon.dungeons.catacombs.CatacombsFloor;
 import dev.daweapon.dungeons.catacombs.CatacombsMode;
+import dev.daweapon.dungeons.catacombs.puzzle.CatacombsPuzzle;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -195,6 +196,9 @@ final class LayoutAttempt {
      */
     private List<RoomTemplate> templates(RoomKind kind, RoomShape shape) {
         List<RoomTemplate> all = library.templates(kind, shape);
+        if (kind == RoomKind.PUZZLE) {
+            all = all.stream().filter(template -> CatacombsPuzzle.templateAllowedOn(template.id(), floor)).toList();
+        }
         List<RoomTemplate> real = all.stream().filter(template -> !template.placeholder()).toList();
         if (real.isEmpty()) return all;
         if (!allowPlaceholders) return real;

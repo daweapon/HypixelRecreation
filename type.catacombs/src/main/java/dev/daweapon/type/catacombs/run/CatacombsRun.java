@@ -366,11 +366,6 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
         if (state != null) state.recordCrypt();
     }
 
-    public synchronized void failPuzzle(int room) {
-        CatacombsRunState state = lifecycle.state();
-        if (state != null) state.failPuzzle(room);
-    }
-
     private synchronized void tickSecond() {
         if (lifecycle.stage() == CatacombsLifecycle.Stage.WAITING) {
             if (readyCheck.tickSecond(onlineIds())) startCountdown();
