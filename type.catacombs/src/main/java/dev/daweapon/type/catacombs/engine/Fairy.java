@@ -7,6 +7,8 @@ import dev.daweapon.type.skyblockgeneric.entity.mob.MobType;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.minestom.server.component.DataComponents;
 import net.minestom.server.entity.EntityType;
+import net.minestom.server.entity.damage.Damage;
+import net.minestom.server.entity.damage.DamageType;
 import net.minestom.server.entity.metadata.other.ArmorStandMeta;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
@@ -17,6 +19,7 @@ import java.util.function.BiConsumer;
 /** One Fairy Room fairy: a fairy head on a small invisible armor stand, named in pink with 4 health. */
 final class Fairy extends CrimsonIsleMob {
     private static final String ID = "DUNGEON_FAIRY";
+    private static final float HEART = 1f;
 
     private final BiConsumer<Fairy, SkyBlockPlayer> onKilled;
 
@@ -41,6 +44,13 @@ final class Fairy extends CrimsonIsleMob {
     @Override
     protected String nameLine() {
         return "<d>" + getProfile().displayName() + " <a>" + (long) Math.ceil(getHealth()) + "<c>❤";
+    }
+
+    @Override
+    protected Damage filterIncomingDamage(Damage damage) {
+        if (damage.getType() != DamageType.PLAYER_ATTACK || damage.getSource() != damage.getAttacker() || isRangedHit()) return null;
+        return new Damage(damage.getType(), damage.getSource(), damage.getAttacker(), damage.getSourcePosition(),
+                Math.min(damage.getAmount(), HEART));
     }
 
     @Override
