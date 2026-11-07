@@ -38,7 +38,7 @@ public class ActionCatacombsSecrets implements HypixelEventClass {
         if (engine.superboom(player, at.blockX(), at.blockY(), at.blockZ())) event.setCancelled(true);
     }
 
-    private static @Nullable DungeonEngine activeEngine(SkyBlockPlayer player) {
+    static @Nullable DungeonEngine activeEngine(SkyBlockPlayer player) {
         CatacombsRun run = CatacombsRuns.of(player.getUuid());
         if (run == null || run.lifecycle().stage() != CatacombsLifecycle.Stage.ACTIVE) return null;
         DungeonEngine engine = run.engine();

@@ -3,6 +3,7 @@ package dev.daweapon.dungeons.catacombs.layout;
 import dev.daweapon.dungeons.catacombs.CatacombsFloor;
 import dev.daweapon.dungeons.catacombs.CatacombsFloorDefinition;
 import dev.daweapon.dungeons.catacombs.CatacombsMode;
+import dev.daweapon.dungeons.catacombs.puzzle.CatacombsPuzzle;
 
 import java.util.Random;
 
@@ -47,7 +48,12 @@ public final class FloorLayoutGenerator {
         requireKind(library, RoomKind.ENTRANCE, 1);
         requireKind(library, RoomKind.FAIRY, 1);
         requireKind(library, RoomKind.BLOOD, 1);
-        requireKind(library, RoomKind.PUZZLE, RoomBudget.MINIMUM_PUZZLES);
+        long puzzles = library.templates(RoomKind.PUZZLE).stream()
+                .filter(template -> CatacombsPuzzle.templateAllowedOn(template.id(), floor)).count();
+        if (puzzles < RoomBudget.MINIMUM_PUZZLES) {
+            throw new IllegalStateException("Room template library needs at least " + RoomBudget.MINIMUM_PUZZLES
+                    + " PUZZLE template(s) for " + floor.displayName());
+        }
         requireKind(library, RoomKind.MINIBOSS, 1);
         if (floor.ordinal() >= RoomBudget.FIRST_TRAP_FLOOR) {
             requireKind(library, RoomKind.TRAP, 1);

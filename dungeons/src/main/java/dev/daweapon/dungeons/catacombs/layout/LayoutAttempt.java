@@ -2,6 +2,7 @@ package dev.daweapon.dungeons.catacombs.layout;
 
 import dev.daweapon.dungeons.catacombs.CatacombsFloor;
 import dev.daweapon.dungeons.catacombs.CatacombsMode;
+import dev.daweapon.dungeons.catacombs.puzzle.CatacombsPuzzle;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -126,7 +127,7 @@ final class LayoutAttempt {
         Collections.shuffle(candidates, random);
 
         RoomBudget budget = fixedBudget != null ? fixedBudget : RoomBudget.forFloor(floor, random);
-        int puzzles = Math.min(budget.puzzles(), library.templates(RoomKind.PUZZLE).size());
+        int puzzles = Math.min(budget.puzzles(), templates(RoomKind.PUZZLE, RoomShape.ONE_BY_ONE).size());
         int minibosses = Math.min(budget.minibosses(), library.templates(RoomKind.MINIBOSS).size());
         int traps = Math.min(budget.traps(), library.templates(RoomKind.TRAP).size());
         if (candidates.size() < puzzles + minibosses + traps) {
@@ -214,6 +215,9 @@ final class LayoutAttempt {
 
     private List<RoomTemplate> templates(RoomKind kind, RoomShape shape) {
         List<RoomTemplate> all = library.templates(kind, shape);
+        if (kind == RoomKind.PUZZLE) {
+            return all.stream().filter(template -> CatacombsPuzzle.templateAllowedOn(template.id(), floor)).toList();
+        }
         if (kind != RoomKind.NORMAL) {
             return all;
         }
