@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.item.events;
 
+import net.minestom.server.entity.EntityType;
 import net.minestom.server.potion.Potion;
 import net.minestom.server.potion.PotionEffect;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
@@ -11,6 +12,7 @@ import dev.daweapon.type.skyblockgeneric.event.value.events.PlayerDamagedByMobVa
 import dev.daweapon.type.skyblockgeneric.item.armor.ArmorAbilityEffects;
 import dev.daweapon.type.skyblockgeneric.item.armor.ArmorAbilityMath;
 import dev.daweapon.type.skyblockgeneric.item.armor.ArmorAbilityState;
+import dev.daweapon.type.skyblockgeneric.item.armor.WitherArmor;
 import dev.daweapon.type.skyblockgeneric.item.armor.WornArmor;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -38,6 +40,7 @@ public class ArmorAbilityDamageTakenEvent extends SkyBlockValueEvent {
             damage = ArmorAbilityMath.reducedByPercent(damage, ArmorAbilityMath.MASTIFF_ANIMAL_REDUCTION);
         }
         if (animal) damage *= animalDefenseMultiplier(player, worn);
+        if (mob.getEntityType() == EntityType.WITHER) damage *= WitherArmor.witherDamageMultiplier(WitherArmor.pieces(worn));
         if (worn.contains("MITHRIL_COAT")) {
             double maxHealth = player.getMaxHealth();
             if (ArmorAbilityMath.mithrilProtectionTriggers(damage, maxHealth)) {

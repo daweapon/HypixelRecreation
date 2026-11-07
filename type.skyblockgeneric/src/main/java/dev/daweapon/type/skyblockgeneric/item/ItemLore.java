@@ -31,6 +31,8 @@ import dev.daweapon.type.skyblockgeneric.fishing.rod.FishingRodLoreBuilder;
 import dev.daweapon.type.skyblockgeneric.gems.GemRarity;
 import dev.daweapon.type.skyblockgeneric.gems.Gemstone;
 import dev.daweapon.type.skyblockgeneric.item.components.*;
+import dev.daweapon.type.skyblockgeneric.item.armor.WitherArmor;
+import dev.daweapon.type.skyblockgeneric.item.armor.WornArmor;
 import dev.daweapon.type.skyblockgeneric.item.handlers.ability.AbilityRegistry;
 import dev.daweapon.type.skyblockgeneric.item.handlers.ability.RegisteredAbility;
 import dev.daweapon.type.skyblockgeneric.item.handlers.lore.LoreConfig;
@@ -442,8 +444,9 @@ public class ItemLore {
 		if (configLore == null) return;
 
 		TextBody.Section section = lore.section(LoreText.Sections.CONFIG_LORE);
+		int witherPieces = lore.viewer() == null ? 0 : WitherArmor.pieces(WornArmor.cachedIds(lore.viewer()));
 		RequirementLines.withoutMetRequirements(configLore, lore.viewer())
-				.forEach(line -> LoreText.grayWrapped(line).forEach(section::line));
+				.forEach(line -> LoreText.grayWrapped(WitherArmor.withWornCount(line, witherPieces)).forEach(section::line));
 	}
 
 	private static void fillReforgeAbility(LoreText lore) {

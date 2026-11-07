@@ -2,6 +2,7 @@ package dev.daweapon.type.catacombs.run;
 
 import dev.daweapon.type.catacombs.classes.ClassCombat;
 import dev.daweapon.type.catacombs.engine.DungeonEngine;
+import dev.daweapon.type.skyblockgeneric.dungeons.DungeonGhosts;
 import dev.daweapon.type.skyblockgeneric.user.MenuSlotOverride;
 import dev.daweapon.type.skyblockgeneric.user.PlayerDeathOverrides;
 
@@ -14,6 +15,10 @@ public final class CatacombsHooks {
         PlayerDeathOverrides.register(player -> {
             CatacombsRun run = CatacombsRuns.of(player.getUuid());
             return run != null && run.death(player);
+        });
+        DungeonGhosts.use(player -> {
+            CatacombsRun run = CatacombsRuns.of(player.getUuid());
+            return run != null && run.ghosts().isGhost(player.getUuid());
         });
         ClassCombat.install();
         MenuSlotOverride.register(player -> {

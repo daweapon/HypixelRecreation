@@ -41,6 +41,16 @@ sections:
       - "When he falls, the score screen, EXTRA STATS and the re-queue link appear as on Hypixel, and the two exit gates sink into the floor."
       - "The reward chests are Hypixel's real chest models on sea lanterns around Bonzo's spawn. Their menus match Hypixel's, and Floor 1 chests cost 20,000, 40,000 and 80,000 coins as on Hypixel."
       - "The exit portal at the end of the corridor takes you back to the Dungeon Hub."
+  - heading: "Dungeonbreaker and Wither Armor"
+    colour: "<c>"
+    lines:
+      - "The Dungeonbreaker is here. Ophelia sells it for 500 Wither Essence once you have completed Floor III. Hold it in a run and blocks break instantly; each one costs one of its 20 charges, two charges come back every second, and its lore shows how many are left."
+      - "Broken blocks come back after 10 seconds. Breaking a 21st block brings your oldest one back straight away, and everything still broken comes back when the run ends."
+      - "It only works in rooms your party has explored. Puzzle rooms, room edges, doors, crypts, secrets, levers and what they open, weak walls, chests and skulls cannot be broken, and boss rooms are off limits (only the Floor VII Wither Lords fight will allow it)."
+      - "Echoes of the Lost can now be bought in Malik's Wither Essence shop: every secret you find restores 1 to 5 charges on your Dungeonbreaker."
+      - "All five Wither Armor sets now work: Wither, Maxor's, Storm's, Goldor's and Necron's. Each piece takes 10% off damage from withers, and each Maxor's piece adds 5% arrow damage."
+      - "Any four Wither Armor pieces, mixed or matched, give Witherborn: every 30 seconds a small wither minion appears (one at a time), flies at the nearest enemy and explodes for your normal hit damage on everything around it. The set bonus counter in the lore now counts the pieces you are wearing."
+      - "Infinityboom TNT is now called InfiniBoom™ TNT, as on Hypixel."
   - heading: "Fixes"
     colour: "<e>"
     lines:
@@ -51,3 +61,4 @@ sections:
     lines:
       - "Rare rooms and the Ice Path puzzle are not built yet, so runs use other real rooms in their place, and the real puzzle rooms cannot be solved yet. Tomioka's shop is not working yet, and a few levers (Deathmite, Rails, Trap Hard) still open nothing because what they open has not been worked out."
       - "Mobs in the Market, Well, Wizard and Quiz rooms and some crypt spots are still placed by estimate."
+      - "Witherborn cannot be switched off with the Pick Block key yet, and Wither Armor still has no normal way to get it until Floor VII is playable."

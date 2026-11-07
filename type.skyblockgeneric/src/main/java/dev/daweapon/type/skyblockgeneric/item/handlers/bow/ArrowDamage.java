@@ -4,6 +4,8 @@ import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
 import dev.daweapon.type.skyblockgeneric.entity.ArrowEntityImpl;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.item.armor.WitherArmor;
+import dev.daweapon.type.skyblockgeneric.item.armor.WornArmor;
 import dev.daweapon.type.skyblockgeneric.item.components.ShortBowComponent;
 import dev.daweapon.type.skyblockgeneric.item.set.sets.terror.HydraStrike;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -26,7 +28,8 @@ public final class ArrowDamage {
         ItemStatistics stats = divideCritChance(shooterStatistics(shooter, arrow.getArrowItem()), critChanceDivisor(arrow.getBow()));
         Map.Entry<Double, Boolean> hit = PlayerStatistics.runPrimaryDamageFormula(stats,
                 ArrowEffects.enemyStatistics(ArrowEffects.of(arrow.getArrowItem()), enemyStatistics));
-        double damage = hit.getKey() * arrow.getDamageFactor() * HydraStrike.damageMultiplier(shooter);
+        double damage = hit.getKey() * arrow.getDamageFactor() * HydraStrike.damageMultiplier(shooter)
+                * WitherArmor.arrowDamageMultiplier(WitherArmor.maxorPieces(WornArmor.cachedIds(shooter)));
         return new AbstractMap.SimpleEntry<>(damage, hit.getValue());
     }
 

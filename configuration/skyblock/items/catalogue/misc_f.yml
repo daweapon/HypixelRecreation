@@ -800,8 +800,6 @@ items:
       - "§7explode on nearby enemies."
       - ""
       - "§4❣ §cRequires The Catacombs Floor VII Completion."
-      - ""
-      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -850,8 +848,6 @@ items:
       - "§7explode on nearby enemies."
       - ""
       - "§4❣ §cRequires The Catacombs Floor VII Completion."
-      - ""
-      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -900,8 +896,6 @@ items:
       - "§7explode on nearby enemies."
       - ""
       - "§4❣ §cRequires The Catacombs Floor VII Completion."
-      - ""
-      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
     components:
       - id: SKULL_HEAD
         texture: d4923e28a187fe6af2278b7394ef253a96331fa2dc0731879c780bfee244228a
@@ -948,8 +942,6 @@ items:
       - "§7explode on nearby enemies."
       - ""
       - "§4❣ §cRequires The Catacombs Floor VII Completion."
-      - ""
-      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -2633,8 +2625,6 @@ items:
       - "§7explode on nearby enemies."
       - ""
       - "§4❣ §cRequires The Catacombs Floor VII Completion."
-      - ""
-      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -2683,8 +2673,6 @@ items:
       - "§7explode on nearby enemies."
       - ""
       - "§4❣ §cRequires The Catacombs Floor VII Completion."
-      - ""
-      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -2733,8 +2721,6 @@ items:
       - "§7explode on nearby enemies."
       - ""
       - "§4❣ §cRequires The Catacombs Floor VII Completion."
-      - ""
-      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
     components:
       - id: SKULL_HEAD
         texture: f83159c5bb7d80454d2d646b15774b7116aabcb3af5b6777a27573fc45f7854f
@@ -2781,8 +2767,6 @@ items:
       - "§7explode on nearby enemies."
       - ""
       - "§4❣ §cRequires The Catacombs Floor VII Completion."
-      - ""
-      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -2881,8 +2865,6 @@ items:
       - "§7explode on nearby enemies."
       - ""
       - "§4❣ §cRequires The Catacombs Floor VII Completion."
-      - ""
-      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -2913,8 +2895,6 @@ items:
       - "§7explode on nearby enemies."
       - ""
       - "§4❣ §cRequires The Catacombs Floor VII Completion."
-      - ""
-      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -2963,8 +2943,6 @@ items:
       - "§7explode on nearby enemies."
       - ""
       - "§4❣ §cRequires The Catacombs Floor VII Completion."
-      - ""
-      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
     components:
       - id: SKULL_HEAD
         texture: 691129409789589ae1b43e1d828c06fc9a213b78348a68b7313bdd401d7485cc
@@ -2993,8 +2971,6 @@ items:
       - "§7explode on nearby enemies."
       - ""
       - "§4❣ §cRequires The Catacombs Floor VII Completion."
-      - ""
-      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
