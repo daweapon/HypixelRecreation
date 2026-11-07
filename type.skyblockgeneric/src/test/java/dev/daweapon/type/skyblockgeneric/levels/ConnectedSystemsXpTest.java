@@ -111,8 +111,9 @@ class ConnectedSystemsXpTest {
     void heartAndCoreOfTheMountainHitTheirOwnCapsWhenMaxed() {
         SkyBlockPlayer player = player();
         HotmService.maxOut(player);
-        assertEquals(SkyBlockXPSource.HEART_OF_THE_MOUNTAIN.getMaxXP() - 1942,
-                player.getSkyBlockExperience().getSourceXP(SkyBlockXPSource.HEART_OF_THE_MOUNTAIN));
+        assertEquals(SkyBlockXPSource.HEART_OF_THE_MOUNTAIN.getMaxXP(),
+                player.getSkyBlockExperience().getSourceXP(SkyBlockXPSource.HEART_OF_THE_MOUNTAIN),
+                "every tier plus the 1,942 XP for powder earned");
         assertEquals(SkyBlockXPSource.CORE_OF_THE_MOUNTAIN.getMaxXP(),
                 player.getSkyBlockExperience().getSourceXP(SkyBlockXPSource.CORE_OF_THE_MOUNTAIN));
     }

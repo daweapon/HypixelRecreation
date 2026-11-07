@@ -60,6 +60,12 @@ public final class TrophyFishAwards {
         return total;
     }
 
+    public static int maxSkyBlockXp() {
+        int perFish = 0;
+        for (TrophyTier tier : TrophyTier.values()) perFish += tier.firstCatchSkyBlockXp();
+        return perFish * FishingRegistry.getTrophyFish().size();
+    }
+
     public static void syncSkyBlockXP(SkyBlockPlayer player) {
         player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.TROPHY_FISH, skyBlockXp(player.getTrophyFishData()));
         awardAchievements(player, player.getTrophyFishData());

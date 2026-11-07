@@ -16,4 +16,9 @@ public abstract class BestiaryMob extends SkyBlockMob {
     public boolean countsForBestiary() {
         return true;
     }
+
+    /** The mob whose Bestiary kill count a kill of this one raises; a family kept under its own id overrides this. */
+    public BestiaryMob bestiaryKillTarget() {
+        return this;
+    }
 }

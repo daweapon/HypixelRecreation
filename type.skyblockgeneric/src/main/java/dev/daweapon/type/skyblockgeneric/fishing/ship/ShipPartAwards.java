@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.fishing.ship;
 
+import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointShipState;
 import dev.daweapon.type.skyblockgeneric.levels.SkyBlockXPSource;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -19,6 +20,16 @@ public final class ShipPartAwards {
         if ("BRONZE_SHIP_ENGINE".equals(state.getEngine())) parts++;
         if ("BRONZE_SHIP_HULL".equals(state.getHull())) parts++;
         return parts * XP_PER_PART;
+    }
+
+    /** The Bronze Helm, Engine and Hull applied to the ship; no part item is given. */
+    public static void maxOut(SkyBlockPlayer player) {
+        DatapointShipState.ShipState state = player.getShipState();
+        state.setHelm("BRONZE_SHIP_HELM");
+        state.setEngine("BRONZE_SHIP_ENGINE");
+        state.setHull("BRONZE_SHIP_HULL");
+        player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SHIP_STATE, DatapointShipState.class).setValue(state);
+        syncSkyBlockXP(player);
     }
 
     public static void syncSkyBlockXP(SkyBlockPlayer player) {

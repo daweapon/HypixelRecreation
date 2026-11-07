@@ -4,7 +4,9 @@ import dev.daweapon.dungeons.catacombs.mob.DungeonMobDefinition;
 import dev.daweapon.dungeons.catacombs.mob.DungeonMobRegistry;
 import dev.daweapon.type.skyblockgeneric.crimson.mob.CrimsonIsleMob;
 import dev.daweapon.type.skyblockgeneric.crimson.mob.CrimsonMobProfile;
+import dev.daweapon.type.skyblockgeneric.entity.mob.BestiaryMob;
 import dev.daweapon.type.skyblockgeneric.entity.mob.MobType;
+import dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.bestiary.BestiaryCategory;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.minestom.server.entity.EntityType;
 
@@ -45,6 +47,16 @@ final class SecretBat extends CrimsonIsleMob {
     @Override
     public boolean countsTowardVanquisher() {
         return false;
+    }
+
+    @Override
+    public boolean countsForBestiary() {
+        return true;
+    }
+
+    @Override
+    public BestiaryMob bestiaryKillTarget() {
+        return BestiaryCategory.CATACOMBS.BAT.getMobs().getFirst();
     }
 
     @Override

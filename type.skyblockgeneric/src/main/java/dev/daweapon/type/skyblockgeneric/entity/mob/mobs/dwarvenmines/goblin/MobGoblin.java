@@ -45,7 +45,7 @@ public class MobGoblin extends BestiaryMob implements RegionPopulator, MobPlayer
 
 	@Override
 	public int getBestiaryBracket() {
-		return 2;
+		return 4;
 	}
 
 	@Override

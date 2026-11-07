@@ -144,6 +144,10 @@ public final class HotmRegistry {
         return coreLevels.size();
     }
 
+    public List<HotmTierReward> tiers() {
+        return tiers;
+    }
+
     public HotmTierReward tierReward(int tier) {
         return tiers.get(Math.min(Math.max(tier, 1), tiers.size()) - 1);
     }

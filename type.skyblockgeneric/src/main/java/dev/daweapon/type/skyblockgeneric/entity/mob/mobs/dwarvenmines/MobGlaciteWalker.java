@@ -47,12 +47,12 @@ public class MobGlaciteWalker extends BestiaryMob implements RegionPopulator {
 
 	@Override
 	public int getMaxBestiaryTier() {
-		return 15;
+		return 10;
 	}
 
 	@Override
 	public int getBestiaryBracket() {
-		return 2;
+		return 1;
 	}
 
 	@Override

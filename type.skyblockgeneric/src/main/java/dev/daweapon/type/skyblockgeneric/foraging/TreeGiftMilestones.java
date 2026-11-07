@@ -63,6 +63,17 @@ public final class TreeGiftMilestones {
                 TreeMilestoneRewards.sweepPerTier(treeType), StringUtility.commaify((int) xp), XP_PER_MILESTONE);
     }
 
+    /** Every tree type at its last milestone; skills are maxed separately, so no Foraging XP is paid here. */
+    public static void maxOut(SkyBlockPlayer player) {
+        DatapointTreeGifts gifts = datapoint(player);
+        Map<String, Integer> counts = gifts.getValue();
+        int last = TIER_GIFTS[TIER_GIFTS.length - 1];
+        for (String type : TREE_TYPES) counts.merge(type, last, Math::max);
+        gifts.setValue(counts);
+        player.getStatistics().invalidateStatistics();
+        syncSkyBlockXP(player);
+    }
+
     public static void syncSkyBlockXP(SkyBlockPlayer player) {
         player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.TREE_GIFT_MILESTONES,
                 skyBlockXp(datapoint(player).getValue()));

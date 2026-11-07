@@ -79,6 +79,20 @@ public final class SlayerProgression {
         return total;
     }
 
+    public static int maxLevelSkyBlockXp() {
+        return SlayerRegistry.all().stream()
+                .flatMap(definition -> definition.levels().stream())
+                .mapToInt(SlayerLevelReward::skyBlockXp)
+                .sum();
+    }
+
+    public static int maxDefeatSkyBlockXp() {
+        return SlayerRegistry.all().stream()
+                .flatMap(definition -> definition.tiers().keySet().stream())
+                .mapToInt(SlayerProgression::firstDefeatXp)
+                .sum();
+    }
+
     public static void sync(SkyBlockPlayer player) {
         player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.SLAYER_LEVEL_UP, skyBlockXp(player));
         player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.DEFEAT_SLAYERS, defeatSkyBlockXp(player));

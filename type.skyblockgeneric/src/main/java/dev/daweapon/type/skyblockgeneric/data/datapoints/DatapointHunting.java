@@ -146,6 +146,13 @@ public class DatapointHunting extends SkyBlockDatapoint<DatapointHunting.Hunting
             return syphoned(id.toString());
         }
 
+        public void setSyphoned(String id, int amount) {
+            if (AttributeRegistry.get(id) == null) return;
+            if (amount <= 0) syphoned.remove(id);
+            else syphoned.put(id, amount);
+            discoveredAt.putIfAbsent(id, System.currentTimeMillis());
+        }
+
         public int level(String id) {
             AttributeDefinition definition = AttributeRegistry.get(id);
             return definition == null ? 0 : definition.rarity().levelFor(syphoned(id));

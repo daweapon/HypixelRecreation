@@ -26,6 +26,13 @@ public final class SpookyFestivalXP {
         return xp;
     }
 
+    /** Records the top bracket as reached in a past festival; this year's candy is left alone. */
+    public static void maxOut(SkyBlockPlayer player) {
+        player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SPOOKY_FESTIVAL_BEST_BRACKET, DatapointInteger.class)
+                .setValue(POINT_BRACKETS);
+        syncSkyBlockXP(player);
+    }
+
     public static void syncSkyBlockXP(SkyBlockPlayer player) {
         DatapointInteger best = player.getSkyblockDataHandler()
                 .get(SkyBlockDataHandler.Data.SPOOKY_FESTIVAL_BEST_BRACKET, DatapointInteger.class);

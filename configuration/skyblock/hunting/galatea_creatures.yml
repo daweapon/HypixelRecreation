@@ -163,7 +163,7 @@ creatures:
     orbs: 41
     coins: 12
     drops: [{"item": "GILL_MEMBRANE", "min": 1, "max": 1, "chance": 100}, {"item": "GILL_MEMBRANE", "min": 1, "max": 1, "chance": 40}]
-    bestiary: {"section": "MOONGLADE_MARSH", "bracket": "HUNTING_4", "maxTier": 10, "lore": "They are a little washed up."}
+    bestiary: {"section": "MOONGLADE_MARSH", "family": "Tidetot", "bracket": "HUNTING_4", "maxTier": 10, "lore": "They are a little washed up."}
     spawn:
       regions: ["DROWNED_RELIQUARY"]
       points: []

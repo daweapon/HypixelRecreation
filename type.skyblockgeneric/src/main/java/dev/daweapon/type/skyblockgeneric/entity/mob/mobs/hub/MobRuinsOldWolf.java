@@ -124,7 +124,7 @@ public class MobRuinsOldWolf extends BestiaryMob implements RegionPopulator {
 
     @Override
     public int getBestiaryBracket() {
-        return 3;
+        return 5;
     }
 
     @Override

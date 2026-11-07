@@ -37,7 +37,7 @@ public class DiamondGoblin extends BestiaryMob {
 
 	@Override
 	public int getBestiaryBracket() {
-		return 7;
+		return 8;
 	}
 
 	@Override

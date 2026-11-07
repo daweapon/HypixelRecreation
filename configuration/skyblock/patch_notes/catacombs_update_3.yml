@@ -52,6 +52,20 @@ sections:
       - "All five Wither Armor sets now work: Wither, Maxor's, Storm's, Goldor's and Necron's. Each piece takes 10% off damage from withers, and each Maxor's piece adds 5% arrow damage."
       - "Any four Wither Armor pieces, mixed or matched, give Witherborn: every 30 seconds a small wither minion appears (one at a time), flies at the nearest enemy and explodes for your normal hit damage on everything around it. The set bonus counter in the lore now counts the pieces you are wearing."
       - "Infinityboom TNT is now called InfiniBoom™ TNT, as on Hypixel."
+  - heading: "Bestiary"
+    colour: "<d>"
+    lines:
+      - "The Bestiary has a Catacombs page with all 35 of Hypixel's dungeon families, over two pages. Killing dungeon mobs, the Watcher's undead and secret bats now counts toward them; families whose mobs are not in runs yet are listed already and fill in once those mobs arrive."
+      - "The Spooky Festival page lists its 7 families (Crazy Witch, Headless Horseman, Phantom Spirit, Scary Jerry, Trick or Treater, Wither Gourd and Wraith). Those mobs are not in the game yet."
+      - "The Fishing Bestiary menu opens again: its Torrhus Canyon and Moonglade Marsh pages were missing, which broke the whole menu. Their 13 sea creature families now count too."
+      - "Moonglade Marsh lists the Invisibug, and the Tidetot family is no longer split in two."
+      - "Zombie Villager, Wolf, Old Wolf, Diamond Goblin, Golden Goblin, Goblin, Glacite Walker, Blazing Golem, Dropship, Kuudra Slasher, Magma Follower and Wither Sentry now use Hypixel's kill brackets and tier caps."
+      - "Every new family counts toward the Bestiary Progress SkyBlock XP task."
+  - heading: "SkyBlock XP"
+    colour: "<b>"
+    lines:
+      - "Heart of the Mountain now gives SkyBlock XP for powder earned, as on Hypixel: 1 XP per 2,400 Mithril Powder or 2,500 Gemstone or Glacite Powder up to 600,000, then less and less up to 1,942 XP in total. Powder already spent on perks and the Core of the Mountain counts."
+      - "Forest and Desert Whispers now fill their SkyBlock XP task completely at 12,500,000 whispers instead of stopping just short."
   - heading: "Fixes"
     colour: "<e>"
     lines:

@@ -4,6 +4,8 @@ import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointSkyBlockExperi
 import dev.daweapon.type.skyblockgeneric.levels.SkyBlockXPSource;
 import org.junit.jupiter.api.Test;
 
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -93,14 +95,38 @@ class DatapointSkyBlockExperienceTest {
     }
 
     @Test
-    void maxingTheProfileLandsExactlyOnTheRealMaximum() {
+    void maxingTheProfileLandsExactlyOnTheRealMaximumWithoutABonusOffset() {
         DatapointSkyBlockExperience.PlayerSkyBlockExperience experience = experience();
 
-        // Mirrors MaxStickService.maxSkyBlockLevel: finish every source, then top up.
+        experience.setUnbuiltCredit(Map.of(SkyBlockXPSource.BESTIARY_PROGRESS, 1000D, SkyBlockXPSource.RIFT_GUIDE, 360D));
         experience.completeAllSourceProgress();
-        experience.setTotalXP(SkyBlockXPSource.TOTAL_MAX_XP + experience.getUncappedSourceXP());
 
         assertEquals(SkyBlockXPSource.TOTAL_MAX_XP, experience.getTotalXP());
+        assertEquals(0, experience.getBonusXP());
         assertEquals(SkyBlockXPSource.getMaxLevel(), experience.getPreciseLevel(), 1e-9);
+        assertEquals(1360, experience.getUnbuiltCreditXP(), 1e-9);
+    }
+
+    @Test
+    void unbuiltCreditTopsUpRealProgressButNeverPastTheTaskMaximum() {
+        DatapointSkyBlockExperience.PlayerSkyBlockExperience experience = experience();
+        experience.setUnbuiltCredit(Map.of(SkyBlockXPSource.BESTIARY_PROGRESS, 560D));
+
+        experience.setSourceXP(SkyBlockXPSource.BESTIARY_PROGRESS, 5075);
+        assertEquals(5635, experience.getSourceXP(SkyBlockXPSource.BESTIARY_PROGRESS));
+        assertEquals(5075, experience.getRealSourceXP(SkyBlockXPSource.BESTIARY_PROGRESS));
+
+        experience.setSourceXP(SkyBlockXPSource.BESTIARY_PROGRESS, 5600);
+        assertEquals(5635, experience.getSourceXP(SkyBlockXPSource.BESTIARY_PROGRESS));
+        assertEquals(5635, experience.getEarnedXP());
+    }
+
+    @Test
+    void uncappedTasksTakeNoUnbuiltCredit() {
+        DatapointSkyBlockExperience.PlayerSkyBlockExperience experience = experience();
+        experience.setUnbuiltCredit(Map.of(SkyBlockXPSource.PET_SCORE, 500D));
+
+        assertTrue(experience.getUnbuiltCredit().isEmpty());
+        assertEquals(0, experience.getTotalXP());
     }
 }

@@ -37,6 +37,20 @@ public final class BestiaryExperience {
         return total;
     }
 
+    public static int maxTotalTiers() {
+        int total = 0;
+        for (BestiaryCategories category : BestiaryCategories.values()) {
+            for (BestiaryEntry entry : category.getEntries()) {
+                if (!entry.getMobs().isEmpty()) total += entry.getMobs().getFirst().getMaxBestiaryTier();
+            }
+        }
+        return total;
+    }
+
+    public static double maxSkyBlockXp() {
+        return skyBlockXp(maxTotalTiers());
+    }
+
     public static void syncSkyBlockXP(SkyBlockPlayer player) {
         player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.BESTIARY_PROGRESS, skyBlockXp(totalTiers(player.getBestiaryData())));
     }
