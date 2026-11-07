@@ -40,7 +40,7 @@ public final class CatacombsTabList extends TablistManager {
     protected List<TablistModule.TablistEntry> buildEntries(HypixelPlayer player) {
         CatacombsRun run = player instanceof SkyBlockPlayer member ? CatacombsRuns.of(member.getUuid()) : null;
         if (run == null || run.lifecycle().stage() == CatacombsLifecycle.Stage.WAITING || run.lifecycle().state() == null) {
-            return super.buildEntries(player);
+            return waitingColumns(player);
         }
         List<TablistModule.TablistEntry> entries = new ArrayList<>();
         List<String> slots = CatacombsTabLines.slots(snapshot(run));
@@ -51,6 +51,26 @@ public final class CatacombsTabList extends TablistManager {
                     : new TablistModule.TablistEntry(Text.of(line), skin(index, members)));
         }
         return entries;
+    }
+
+    private List<TablistModule.TablistEntry> waitingColumns(HypixelPlayer player) {
+        List<TablistModule.TablistEntry> entries = new ArrayList<>();
+        for (TablistModule module : getModules()) {
+            List<TablistModule.TablistEntry> column = new ArrayList<>();
+            try {
+                column.addAll(module.getEntries(player));
+            } catch (Exception exception) {
+                reportOnce(module.getClass().getName(), exception);
+            }
+            entries.addAll(padded(column));
+        }
+        return entries;
+    }
+
+    static List<TablistModule.TablistEntry> padded(List<TablistModule.TablistEntry> column) {
+        List<TablistModule.TablistEntry> rows = new ArrayList<>(column.subList(0, Math.min(column.size(), CatacombsTabLines.ROWS)));
+        while (rows.size() < CatacombsTabLines.ROWS) rows.add(TablistModule.getGrayEntry());
+        return rows;
     }
 
     private static TablistSkin skin(int index, List<SkyBlockPlayer> members) {
