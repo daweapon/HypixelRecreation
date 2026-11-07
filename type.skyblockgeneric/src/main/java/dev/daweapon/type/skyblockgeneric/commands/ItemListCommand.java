@@ -11,7 +11,7 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 @CommandParameters(labels = "itemlist e",
         description = "Opens the item categories, or searches every category",
         usage = "/e [lookup]",
-        permission = Rank.STAFF,
+        permission = Rank.MVP_PLUS_PLUS,
         allowsConsole = false)
 public class ItemListCommand extends HypixelCommand {
     @Override

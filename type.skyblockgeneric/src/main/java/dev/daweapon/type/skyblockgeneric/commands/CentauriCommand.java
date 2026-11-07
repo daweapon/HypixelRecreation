@@ -6,7 +6,7 @@ import dev.daweapon.type.generic.user.categories.Rank;
 import dev.daweapon.type.skyblockgeneric.gui.inventories.centauri.GUICentauri;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
-@CommandParameters(labels = "centauri", description = "Opens the Centauri menu", usage = "/centauri", permission = Rank.STAFF, allowsConsole = false)
+@CommandParameters(labels = "centauri", description = "Opens the Centauri menu", usage = "/centauri", permission = Rank.MVP_PLUS_PLUS, allowsConsole = false)
 public class CentauriCommand extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {

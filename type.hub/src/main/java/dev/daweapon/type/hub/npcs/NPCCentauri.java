@@ -34,7 +34,7 @@ public class NPCCentauri extends HypixelNPC {
 
             @Override
             public boolean visible(HypixelPlayer player) {
-                return player.getRank().isEqualOrHigherThan(Rank.STAFF);
+                return player.getRank().isEqualOrHigherThan(Rank.MVP_PLUS_PLUS);
             }
 
             @Override
