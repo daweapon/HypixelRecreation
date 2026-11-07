@@ -7,9 +7,13 @@ import dev.daweapon.type.catacombs.engine.look.MobDresser;
 import dev.daweapon.type.catacombs.engine.look.MobLook;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.minestom.server.coordinate.Pos;
+import net.minestom.server.entity.EntityPose;
+import net.minestom.server.entity.Player;
 import net.minestom.server.entity.ai.GoalSelector;
 import net.minestom.server.entity.ai.TargetSelector;
 import net.minestom.server.entity.damage.Damage;
+import net.minestom.server.item.ItemStack;
+import net.minestom.server.network.packet.server.play.DestroyEntitiesPacket;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -18,8 +22,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Bonzo as a player-skinned NPC, as captured: 250,000 health per life, movement speed 0.40 (SkyBlock speed 160), the
- * BOSS header over his name, each line he says shown in bold above it for three seconds. He never really dies: at zero
- * health he stays standing with a red 0 while the fight decides what happens next (his revive, or the end of the run).
+ * BOSS header over his name, each line he says shown in bold above it for three seconds. He never really dies. When his
+ * first life runs out he drops his staff and falls over, then lies flat on the floor until he revives; the client is
+ * shown 0 health and then 0.1, as the captures sync it, and he is respawned for every viewer on revive to clear the
+ * client's death tilt. After his second life he stays standing with a red 0 until the run ends.
  * In his first life he wanders the arena and never attacks in melee; in his second he chases the nearest player and
  * hits for the wiki's 2,664.
  */
@@ -30,6 +36,8 @@ public final class BonzoBoss extends CatacombsMob {
     private static final int REPATH_TICKS = 40;
     private static final double MELEE_RANGE = 2.6;
     private static final int MELEE_COOLDOWN = 20;
+    private static final float LYING_HEALTH = 0.1f;
+    private static final float STANDING_NAME_RAISE = 1.6f;
 
     public interface Fight extends Listener {
         void bonzoHurt(BonzoBoss bonzo);
@@ -45,6 +53,7 @@ public final class BonzoBoss extends CatacombsMob {
     private final Pos centre;
     private MobLook current;
     private boolean down;
+    private boolean lying;
     private boolean vulnerable;
     private Stance stance = Stance.STILL;
     private @Nullable String line;
@@ -88,13 +97,51 @@ public final class BonzoBoss extends CatacombsMob {
         return down;
     }
 
+    public boolean lying() {
+        return lying;
+    }
+
+    /** His first life is gone: the staff leaves his hand and he topples over at 0 health. */
+    public void fallOver() {
+        setItemInMainHand(ItemStack.AIR);
+        lying = true;
+        setPose(EntityPose.DYING);
+        getLivingEntityMeta().setHealth(0f);
+        refreshName();
+    }
+
+    /** About a second later he lies flat on the floor, as he says "Oh I'm dead!". */
+    public void lieDown() {
+        lying = true;
+        getLivingEntityMeta().setHealth(LYING_HEALTH);
+        setPose(EntityPose.SLEEPING);
+        refreshName();
+    }
+
     /** His second life: the second look (skin and Bonzo's Staff), full health, back on his feet. */
     public void revive(MobLook revived) {
         current = revived;
+        lying = false;
+        setPose(EntityPose.STANDING);
         MobDresser.dress(this, revived.pick(ThreadLocalRandom.current()));
         down = false;
         heal();
         refreshName();
+        respawnForViewers();
+    }
+
+    private void respawnForViewers() {
+        DestroyEntitiesPacket destroy = new DestroyEntitiesPacket(getEntityId());
+        for (Player viewer : getViewers()) {
+            viewer.sendPacket(destroy);
+            updateNewViewer(viewer);
+            viewer.sendPacket(getPassengersPacket());
+        }
+    }
+
+    @Override
+    public float getNameDisplayHeightOffset() {
+        return super.getNameDisplayHeightOffset() + (lying ? STANDING_NAME_RAISE : 0);
     }
 
     @Override

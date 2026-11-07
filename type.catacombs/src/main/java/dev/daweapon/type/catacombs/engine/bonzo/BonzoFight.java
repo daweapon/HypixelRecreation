@@ -111,6 +111,8 @@ public final class BonzoFight implements BonzoBoss.Fight {
                 case BonzoScript.StartMoving() -> startMoving();
                 case BonzoScript.SummonOrb() -> launchOrb();
                 case BonzoScript.SkullVolley(boolean toCentre) -> skull(toCentre);
+                case BonzoScript.FallOver() -> bonzo.fallOver();
+                case BonzoScript.LieDown() -> bonzo.lieDown();
                 case BonzoScript.Revive() -> revive();
                 case BonzoScript.Balloon() -> balloon();
                 case BonzoScript.BalloonBarrage() -> barrage();

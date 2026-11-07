@@ -71,17 +71,19 @@ class BonzoScriptTest {
     }
 
     @Test
-    void firstDeathSaysSikeThreeSecondsLaterAndRevivesAfterAnotherSecond() {
+    void firstDeathFallsOverThenLiesDownSaysSikeAndRevives() {
         BonzoScript script = new BonzoScript(new SplittableRandom(4));
         run(script, BonzoScript.MOVE_TICK + 5);
         long down = script.now();
-        assertEquals(List.of(new BonzoScript.Say("Oh I'm dead!")), script.lifeLost());
+        assertEquals(List.of(new BonzoScript.FallOver()), script.lifeLost(), "he topples over at 0 health before saying anything");
         assertFalse(script.vulnerable());
-        List<Timed> seen = run(script, 100);
-        assertEquals(List.of(down + BonzoScript.SIKE_AFTER), ticksOf(seen, BonzoScript.Say.class).subList(0, 1));
-        assertEquals(new BonzoScript.Say("Sike"), seen.stream().filter(timed -> timed.action() instanceof BonzoScript.Say)
-                .findFirst().orElseThrow().action());
-        assertEquals(List.of(down + BonzoScript.SIKE_AFTER + BonzoScript.REVIVE_AFTER_SIKE), ticksOf(seen, BonzoScript.Revive.class));
+        List<Timed> seen = run(script, 120);
+        long lying = down + BonzoScript.LIE_DOWN_AFTER;
+        assertEquals(List.of(lying), ticksOf(seen, BonzoScript.LieDown.class), "both captures lie him flat about 1 s after he falls");
+        List<Timed> lines = seen.stream().filter(timed -> timed.action() instanceof BonzoScript.Say).toList();
+        assertEquals(new Timed(lying, new BonzoScript.Say("Oh I'm dead!")), lines.get(0));
+        assertEquals(new Timed(lying + BonzoScript.SIKE_AFTER, new BonzoScript.Say("Sike")), lines.get(1));
+        assertEquals(List.of(lying + BonzoScript.SIKE_AFTER + BonzoScript.REVIVE_AFTER_SIKE), ticksOf(seen, BonzoScript.Revive.class));
         assertTrue(script.vulnerable());
         assertTrue(ticksOf(seen, BonzoScript.SummonOrb.class).isEmpty(), "no summons while he is down");
     }
@@ -91,7 +93,7 @@ class BonzoScriptTest {
         BonzoScript script = new BonzoScript(new SplittableRandom(5));
         run(script, BonzoScript.MOVE_TICK + 1);
         script.lifeLost();
-        run(script, BonzoScript.SIKE_AFTER + BonzoScript.REVIVE_AFTER_SIKE);
+        run(script, BonzoScript.LIE_DOWN_AFTER + BonzoScript.SIKE_AFTER + BonzoScript.REVIVE_AFTER_SIKE);
         List<Timed> seen = run(script, BonzoScript.BARRAGE_FIRST + 1);
         assertFalse(ticksOf(seen, BonzoScript.Balloon.class).isEmpty());
         assertEquals(1, ticksOf(seen, BonzoScript.BalloonBarrage.class).size());
@@ -106,7 +108,7 @@ class BonzoScriptTest {
         BonzoScript script = new BonzoScript(new SplittableRandom(6));
         run(script, BonzoScript.MOVE_TICK + 1);
         script.lifeLost();
-        run(script, BonzoScript.SIKE_AFTER + BonzoScript.REVIVE_AFTER_SIKE);
+        run(script, BonzoScript.LIE_DOWN_AFTER + BonzoScript.SIKE_AFTER + BonzoScript.REVIVE_AFTER_SIKE);
         long end = script.now();
         assertEquals(List.of(new BonzoScript.Say("Alright, maybe I'm just weak after all..")), script.lifeLost());
         assertTrue(script.lifeLost().isEmpty());
