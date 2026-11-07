@@ -262,8 +262,7 @@ items:
     material: glowstone_dust
     name: "Golden Powder"
     rarity: EPIC
-    unavailable: "Needs the Golden Ghoul mob (not built)"
-    source: "Dropped by Golden Ghouls"
+    source: "Dropped by Golden Ghouls in the Hub Crypts"
     components:
       - id: SELLABLE
         value: 14060.0

@@ -46,6 +46,7 @@ import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.museum.MuseumDisplays;
 import dev.daweapon.type.skyblockgeneric.utility.WarpPortal;
 import dev.daweapon.type.hub.sewer.SewerRats;
+import dev.daweapon.type.skyblockgeneric.crypts.CryptsSpawner;
 import dev.daweapon.type.skyblockgeneric.mission.missions.marco.MissionGiveRoseRedDyeToMarco;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
@@ -166,6 +167,7 @@ public class TypeHubLoader implements SkyBlockTypeLoader {
 				() -> ElectionManager.getElectionData().isElectionOpen() ? null : "<c>The Election Room only opens while an election is running.");
         WarpPortal.create(HypixelConst.getInstanceContainer(), new BlockVec(0, 49, 47), Component.text("Community Center"), COMMUNITY_CENTER_ARRIVAL);
 		SewerRats.start();
+		CryptsSpawner.start();
 		dev.daweapon.type.hub.shrine.ShrineDisplay.start(HypixelConst.getInstanceContainer());
 		VargulTombstone.start(HypixelConst.getInstanceContainer());
 		WarpPortal.createFor(HypixelConst.getInstanceContainer(), new BlockVec(90, 75, 9), Component.text("Canvas Room"), CANVAS_ROOM_ARRIVAL,

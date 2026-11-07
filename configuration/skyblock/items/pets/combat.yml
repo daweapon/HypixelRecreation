@@ -261,7 +261,7 @@ items:
     components:
       - id: PET
         pet_name: "Ghoul"
-        source: { text: "Crypt Ghouls", active: false }
+        source: { text: "Crypt Ghouls", active: true }
         pet_type: COMBAT
         rarities: [EPIC, LEGENDARY]
         skull_texture: 1e1109bbd1f82c182363ed53b624b688924447f9f68b929674ad37f3cef762a8

@@ -1,0 +1,13 @@
+title: "The Hub Crypts Update"
+date: "6th November 2026"
+intro:
+  - "The Crypts under the Graveyard are no longer empty: the Zombies that lurk there have finally woken up."
+sections:
+  - heading: "Crypts"
+    colour: "<c>"
+    lines:
+      - "Crypt Ghouls (Level 33, 2,000 Health) spawn at 15 spots throughout the Crypts, 2 per spot (4 during the Spooky Festival), with a new one every 14 seconds. They wear Chainmail Armor, swing an Iron Sword and attack players within 8 blocks."
+      - "Crypt Ghouls drop Rotten Flesh and, very rarely, the Epic (0.003%) or Legendary (0.001%) Ghoul Pet."
+      - "Golden Ghouls (Level 65, 20,000 Health) spawn in the two large rooms. They drop Rotten Flesh, Gold Ingots and a 0.05% chance of Golden Powder, and can be charmed for the Golden Ghoul Shard."
+      - "Both count towards the Revenant Horror Slayer quest and have their own Hub Bestiary entries."
+      - "The Crypts zone now covers the lower room, the stairs from the Graveyard and the tunnel to the Coal Mine."
