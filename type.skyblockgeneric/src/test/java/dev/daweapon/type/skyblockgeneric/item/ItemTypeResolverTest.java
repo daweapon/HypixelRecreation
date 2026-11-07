@@ -48,4 +48,13 @@ class ItemTypeResolverTest {
         assertEquals(ItemType.WISE_WITHER_HELMET, ItemTypeResolver.resolve("storms_helmet", names::get));
         assertEquals(ItemType.WISE_WITHER_HELMET, ItemTypeResolver.resolve("WISE_WITHER_HELMET", names::get));
     }
+
+    @Test
+    void infiniBoomKeepsItsIdAndItsOldNameStillResolves() {
+        Map<String, String> names = Map.of("INFINITE_SUPERBOOM_TNT", "InfiniBoom™ TNT");
+        assertEquals("INFINIBOOM_TNT", ItemTypeResolver.commandName(ItemType.INFINITE_SUPERBOOM_TNT, names::get));
+        assertEquals(ItemType.INFINITE_SUPERBOOM_TNT, ItemTypeResolver.resolve("infiniboom_tnt", names::get));
+        assertEquals(ItemType.INFINITE_SUPERBOOM_TNT, ItemTypeResolver.resolve("infinityboom_tnt", names::get));
+        assertEquals(ItemType.INFINITE_SUPERBOOM_TNT, ItemTypeResolver.resolve("INFINITE_SUPERBOOM_TNT", names::get));
+    }
 }

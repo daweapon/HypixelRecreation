@@ -8,7 +8,8 @@ import java.util.Map;
 import java.util.function.Function;
 
 public final class ItemTypeResolver {
-    private static final Map<String, String> ALIASES = Map.of("METAL_DETECTOR", "DWARVEN_METAL_DETECTOR");
+    private static final Map<String, String> ALIASES = Map.of("METAL_DETECTOR", "DWARVEN_METAL_DETECTOR",
+            "INFINITYBOOM_TNT", "INFINITE_SUPERBOOM_TNT");
     private static volatile Map<String, ItemType> byName;
 
     private ItemTypeResolver() {}

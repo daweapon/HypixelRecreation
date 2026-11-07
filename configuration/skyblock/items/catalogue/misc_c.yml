@@ -3242,7 +3242,7 @@ items:
       - id: DUNGEON_ITEM
   - id: INFINITE_SUPERBOOM_TNT
     material: tnt
-    name: "Infinityboom TNT"
+    name: "InfiniBoom™ TNT"
     rarity: EPIC
     unavailable: "Needs Dungeons"
     source: "Malik's Undead Essence shop for 50,000 Undead Essence"
