@@ -10,8 +10,10 @@ import dev.daweapon.type.catacombs.engine.DungeonEngine;
 import dev.daweapon.type.generic.data.HypixelDataHandler;
 import dev.daweapon.type.generic.data.datapoints.DatapointRank;
 import dev.daweapon.type.generic.tab.AreaServerModule;
+import dev.daweapon.type.generic.tab.CustomTablistSkin;
 import dev.daweapon.type.generic.tab.TablistManager;
 import dev.daweapon.type.generic.tab.TablistModule;
+import dev.daweapon.type.generic.tab.TablistSkin;
 import dev.daweapon.type.generic.tab.TablistSkinRegistry;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.type.skyblockgeneric.tabmodules.AccountInformationModule;
@@ -42,12 +44,21 @@ public final class CatacombsTabList extends TablistManager {
         }
         List<TablistModule.TablistEntry> entries = new ArrayList<>();
         List<String> slots = CatacombsTabLines.slots(snapshot(run));
+        List<SkyBlockPlayer> members = run.onlineMembers();
         for (int index = 0; index < slots.size(); index++) {
             String line = slots.get(index);
             entries.add(line == null ? TablistModule.getGrayEntry()
-                    : new TablistModule.TablistEntry(Text.of(line), index % CatacombsTabLines.ROWS == 0 ? TablistSkinRegistry.CYAN : TablistSkinRegistry.GRAY));
+                    : new TablistModule.TablistEntry(Text.of(line), skin(index, members)));
         }
         return entries;
+    }
+
+    private static TablistSkin skin(int index, List<SkyBlockPlayer> members) {
+        if (index % CatacombsTabLines.ROWS == 0) return TablistSkinRegistry.CYAN;
+        int member = CatacombsTabLines.memberAt(index);
+        if (member >= 0 && member < members.size() && members.get(member).getSkin() != null)
+            return new CustomTablistSkin(members.get(member).getSkin());
+        return TablistSkinRegistry.GRAY;
     }
 
     static CatacombsTabLines.Snapshot snapshot(CatacombsRun run) {

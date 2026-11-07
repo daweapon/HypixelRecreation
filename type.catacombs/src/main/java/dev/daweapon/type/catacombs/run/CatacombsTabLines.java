@@ -54,6 +54,11 @@ public final class CatacombsTabLines {
         }
     }
 
+    public static int memberAt(int slot) {
+        if (slot <= 0 || slot >= ROWS || (slot - 1) % SLOTS_PER_MEMBER != 0) return -1;
+        return (slot - 1) / SLOTS_PER_MEMBER;
+    }
+
     static String member(Member member) {
         String state = member.dead() ? "<c>DEAD" : "<e>" + member.className() + " " + classLevel(member.classLevel());
         return "<8>[<7>" + member.skyBlockLevel() + "<8>] <color:" + member.colour() + ">" + member.name() + " <f>(" + state + "<f>)";

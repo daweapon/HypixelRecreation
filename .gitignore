@@ -84,3 +84,6 @@ store/next-env.d.ts
 
 ### Generated sources (rebuilt by commons:generateItemTypes) ###
 /commons/src/generated/
+
+# Staged per-profile inventory backups for /restoreinventory (player data, never commit)
+configuration/skyblock/restores/

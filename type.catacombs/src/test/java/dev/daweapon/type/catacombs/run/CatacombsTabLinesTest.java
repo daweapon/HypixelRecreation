@@ -66,4 +66,14 @@ class CatacombsTabLinesTest {
         assertEquals("0", CatacombsTabLines.secretPercent(0, 0));
         assertEquals("100", CatacombsTabLines.secretPercent(4, 4));
     }
+
+    @Test
+    void partyMemberRowsAreFoundByTheirSlot() {
+        assertEquals(0, CatacombsTabLines.memberAt(1));
+        assertEquals(1, CatacombsTabLines.memberAt(5));
+        assertEquals(4, CatacombsTabLines.memberAt(17));
+        assertEquals(-1, CatacombsTabLines.memberAt(0));
+        assertEquals(-1, CatacombsTabLines.memberAt(2));
+        assertEquals(-1, CatacombsTabLines.memberAt(CatacombsTabLines.ROWS + 1));
+    }
 }

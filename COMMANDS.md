@@ -186,6 +186,7 @@ This catalog covers **136 top-level game-server command definitions** (after mer
 | `/mute <player> [duration] <reason>` | `/tempmute` | Mute a player from the server. | STAFF | No | `type.generic` |
 | `/rank <player> <rank>` | `/setrank` | Rank command. | STAFF | Yes | `type.generic` |
 | `/restore <player>` | — | Restores a player's profile if they were wiped within the last hour. Restores a recent wipe snapshot (one-hour window); see handler for online/offline handling. | STAFF | No | `type.generic` |
+| `/restoreinventory` | — | Gives back the items from a staged inventory backup for your current profile: a file `configuration/skyblock/restores/<profile id>.json` (an `inventory` datapoint value) placed on the server by an admin. Items you already have are skipped, backup armour is worn only where the slot is empty, nothing you carry is removed, and the file is renamed to `.applied` so it can't run twice. | STAFF | No | `type.skyblockgeneric` |
 | `/unban <player>` | `/pardon`, `/unbanip`, `/pardonip` | Unban a player from the server. | STAFF | No | `type.generic` |
 | `/unmute <player>` | — | Unmute a player on the server. | STAFF | No | `type.generic` |
 | `/wipe [player]` | — | Wipes a player's profile data. No target wipes yourself. Captures a snapshot and wipes account/profile ownership data; rank and identity fields are preserved. Target selector resolves locally. | STAFF | No | `type.generic` |
