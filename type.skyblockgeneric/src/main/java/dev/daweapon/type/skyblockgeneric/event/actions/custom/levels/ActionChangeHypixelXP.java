@@ -36,15 +36,20 @@ public class ActionChangeHypixelXP implements HypixelEventClass {
             return;
         }
 
+        if (event.isReconciliation()) {
+            if (oldLevel != newLevel) {
+                ActionAddSkyBlockXPToNametag.updatePlayerNametag(player);
+                recordLevelCause(player, newLevel);
+            }
+            return;
+        }
+
         if (oldLevel == newLevel) {
             if (event.getCause() != null && event.getCause().shouldDisplayMessage(player))
                 player.sendMessage("<b>+<3>{} <b>SkyBlock XP", event.getNewXP() - event.getOldXP());
         } else {
             ActionAddSkyBlockXPToNametag.updatePlayerNametag(player);
-            if (!(event.getCause() instanceof LevelCause)) {
-                LevelCause levelCause = SkyBlockLevelCause.getLevelCause(newLevel.asInt());
-                if (levelCause != null) player.getSkyBlockExperience().addExperience(levelCause);
-            }
+            if (!(event.getCause() instanceof LevelCause)) recordLevelCause(player, newLevel);
             player.sendMessage("<3><m>---------------------------------");
             player.sendMessage("  <b><l>SKYBLOCK LEVEL UP");
             player.sendMessage("  " + newLevel.getColor() + "Level <7>{} <8>-> <7>[" + newLevel.getColor() + "{}<7>]", oldLevel.asInt(), newLevel.asInt());
@@ -56,6 +61,11 @@ public class ActionChangeHypixelXP implements HypixelEventClass {
             }
             player.sendMessage("<3><m>---------------------------------");
         }
+    }
+
+    private static void recordLevelCause(SkyBlockPlayer player, SkyBlockLevelRequirement level) {
+        LevelCause levelCause = SkyBlockLevelCause.getLevelCause(level.asInt());
+        if (levelCause != null) player.getSkyBlockExperience().addExperience(levelCause);
     }
 
     private static List<Text> rewardsBetween(SkyBlockPlayer player, int fromLevel, int toLevel) {

@@ -310,6 +310,22 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
          * a single modification from the starting to the final total is fired at the end.
          */
         public void batch(Runnable changes) {
+            batch(changes, false);
+        }
+
+        /**
+         * Like {@link #batch}, for bringing stored progress in line with the player's data (the join-time
+         * sync). The single modification is marked as a reconciliation, so it never announces a level-up.
+         */
+        public void reconcile(Runnable changes) {
+            batch(changes, true);
+        }
+
+        private void batch(Runnable changes, boolean reconciliation) {
+            if (batching) {
+                changes.run();
+                return;
+            }
             double oldXP = getTotalXP();
             batching = true;
             try {
@@ -317,13 +333,17 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
             } finally {
                 batching = false;
             }
-            fireModification(null, oldXP, getTotalXP());
+            fireModification(null, oldXP, getTotalXP(), reconciliation);
         }
 
         private void fireModification(@Nullable SkyBlockLevelCauseAbstr cause, double oldXP, double newXP) {
+            fireModification(cause, oldXP, newXP, false);
+        }
+
+        private void fireModification(@Nullable SkyBlockLevelCauseAbstr cause, double oldXP, double newXP, boolean reconciliation) {
             if (batching || oldXP == newXP || getAttachedPlayer() == null) return;
             HypixelEventHandler.callCustomEvent(new SkyBlockXPModificationEvent(
-                    getAttachedPlayer(), cause, oldXP, newXP));
+                    getAttachedPlayer(), cause, oldXP, newXP, reconciliation));
         }
 
         /**
