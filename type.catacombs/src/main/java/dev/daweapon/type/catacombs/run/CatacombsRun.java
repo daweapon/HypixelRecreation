@@ -257,9 +257,17 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
         for (SkyBlockPlayer member : onlineMembers()) {
             ScoreScreen.Earned paid = reward(member, score);
             earned.put(member.getUuid(), paid);
-            ScoreScreen.won(floorId.floor(), floorId.mode(), score, finishedSeconds, paid).forEach(member::sendMessage);
         }
         CatacombsRewardChests.spawn(this, score, running == null ? null : running.rewardCentre(), running != null && running.realBossArena());
+        for (SkyBlockPlayer member : onlineMembers()) {
+            ScoreScreen.Earned paid = earned.get(member.getUuid());
+            if (paid == null) continue;
+            try {
+                ScoreScreen.won(floorId.floor(), floorId.mode(), score, finishedSeconds, paid).forEach(member::sendMessage);
+            } catch (RuntimeException exception) {
+                org.tinylog.Logger.error(exception, "Score screen failed for {}", member.getUsername());
+            }
+        }
     }
 
     private ScoreScreen.Earned reward(SkyBlockPlayer player, DungeonScoreBreakdown score) {

@@ -23,7 +23,7 @@ public final class ScoreScreen {
     private static final int CENTRE_PX = 160;
     private static final int SPACE_PX = 4;
     private static final String EXTRA_STATS = "<f>" + " ".repeat(29)
-            + "<hover:'<#FFFF55>Click to view extra stats!'><click:run:'" + EXTRA_STATS_COMMAND + "'><6>> <e><l>EXTRA STATS</l> <6><</click></hover>";
+            + "<hover:'<#FFFF55>Click to view extra stats!'><click:run:'" + EXTRA_STATS_COMMAND + "'><6>> <e><l>EXTRA STATS</l> <6>\\<</click></hover>";
     private static final Map<Character, Integer> WIDTHS = widths();
 
     /** What one member earned, for the two experience lines. */

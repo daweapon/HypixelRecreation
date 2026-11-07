@@ -65,4 +65,16 @@ class ScoreScreenTest {
         assertTrue(lines.get(2).contains("<click:run:'/instancerequeue'><7>Click <e><l>HERE</l> <7>to re-queue into <a>The Catacombs<7>!"));
         assertTrue(lines.get(2).contains("Floor I"));
     }
+
+    @Test
+    void everyScoreScreenLineIsValidMarkup() {
+        Map<String, Long> classes = new LinkedHashMap<>();
+        classes.put("Healer", 120L);
+        List<String> lines = new java.util.ArrayList<>(ScoreScreen.won(CatacombsFloor.FLOOR_ONE, CatacombsMode.NORMAL, SCORE, 309,
+                new ScoreScreen.Earned(297, classes)));
+        lines.addAll(ScoreScreen.failed(CatacombsFloor.FLOOR_ONE, CatacombsMode.NORMAL, SCORE, 309));
+        for (String line : lines) {
+            org.junit.jupiter.api.Assertions.assertDoesNotThrow(() -> dev.daweapon.commons.text.Text.of(line), line);
+        }
+    }
 }
