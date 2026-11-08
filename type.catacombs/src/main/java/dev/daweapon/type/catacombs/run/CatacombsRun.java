@@ -74,6 +74,7 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
     private volatile long emptySince = System.currentTimeMillis();
     private volatile @Nullable DungeonEngine engine;
     private final Map<UUID, ItemStack> scoreMaps = new ConcurrentHashMap<>();
+    private final Set<UUID> readyUpViewers = ConcurrentHashMap.newKeySet();
 
     CatacombsRun(CatacombsFloorId floorId, List<UUID> roster, CatacombsArena arena, long seed) {
         super(arena.instance(), _ -> {
@@ -203,6 +204,7 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
 
     public synchronized boolean begin() {
         if (!lifecycle.begin()) return false;
+        closeReadyUp();
         super.start();
         classes.begin(onlineMembers());
         DungeonEngine started = new DungeonEngine(this, arena.layout(), definition);
@@ -235,6 +237,16 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
             broadcast(reason);
         }
         finish(CatacombsLifecycle.Outcome.LOSE);
+    }
+
+    public Set<UUID> readyUpViewers() {
+        return readyUpViewers;
+    }
+
+    private void closeReadyUp() {
+        for (SkyBlockPlayer member : onlineMembers()) {
+            if (readyUpViewers.remove(member.getUuid())) member.closeInventory();
+        }
     }
 
     public @Nullable ItemStack scoreMap(UUID player) {

@@ -12,6 +12,7 @@ import dev.daweapon.type.generic.gui.v2.DefaultState;
 import dev.daweapon.type.generic.gui.v2.StatelessView;
 import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
 import dev.daweapon.type.generic.gui.v2.ViewLayout;
+import dev.daweapon.type.generic.gui.v2.ViewSession;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
 import dev.daweapon.type.skyblockgeneric.dungeons.DungeonClassProgress;
 import dev.daweapon.type.skyblockgeneric.dungeons.gui.GUIDungeonClasses;
@@ -41,6 +42,7 @@ public class GUIReadyUp extends StatelessView {
     static final int CLOSE_SLOT = 49;
     static final int AUTO_READY_SLOT = 53;
     private static final Duration REFRESH = Duration.ofMillis(500);
+    static final String TOO_LATE = "<c>You can't change your class after the dungeon has started!";
     private static final String DOUBLED = """
             <a>All positive bonus stats are doubled if only 1
             <a>player uses this class in a dungeon.""";
@@ -88,8 +90,23 @@ public class GUIReadyUp extends StatelessView {
         }, REFRESH);
     }
 
+    @Override
+    public void onOpen(DefaultState state, ViewContext ctx) {
+        run.readyUpViewers().add(ctx.player().getUuid());
+    }
+
+    @Override
+    public void onClose(DefaultState state, ViewContext ctx, ViewSession.CloseReason reason) {
+        run.readyUpViewers().remove(ctx.player().getUuid());
+    }
+
     private void pick(SkyBlockPlayer player, DungeonClassType type) {
-        if (run.started() || run.classes().selectedOf(player.getUuid()) == type) return;
+        if (run.started()) {
+            player.sendMessage(TOO_LATE);
+            player.closeInventory();
+            return;
+        }
+        if (run.classes().selectedOf(player.getUuid()) == type) return;
         DungeonClassProgress.select(player, type);
         run.classes().select(player, type);
     }
