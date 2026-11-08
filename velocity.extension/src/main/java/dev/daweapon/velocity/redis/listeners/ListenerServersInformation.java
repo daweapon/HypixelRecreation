@@ -44,8 +44,8 @@ public class ListenerServersInformation implements RedisMessageHandler<
                 return new RequestServersProtocol.Response(json.toString(), true, null);
             }
             case "TYPE" -> {
-                List<GameManager.GameServer> servers = GameManager.getFromType(ServerType.valueOf(message.type()));
-                if (servers == null) servers = new ArrayList<>();
+                List<GameManager.GameServer> ofType = GameManager.getFromType(ServerType.valueOf(message.type()));
+                List<GameManager.GameServer> servers = ofType == null ? new ArrayList<>() : new ArrayList<>(ofType);
                 filterByTestFlow(servers, isInTestFlow);
                 return new RequestServersProtocol.Response(UnderstandableProxyServer.toJSON(toUnderstandable(servers)).toString(), true, null);
             }
