@@ -132,8 +132,8 @@ final class PlayerStatisticLoops {
                     speed = Math.min(speed, dev.daweapon.type.skyblockgeneric.item.handlers.ability.abilities.RanchersBootsSpeedCap.cap(player));
                     speed = dev.daweapon.type.skyblockgeneric.region.rules.TempleLockdown.limitSpeed(
                             dev.daweapon.type.skyblockgeneric.region.rules.TempleLockdown.isLocked(player), speed);
-                    if (player.isSpeedManaged()) return; // if the Speed is currently managed by another source, don't override it
-                    player.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue((float) (speed / 1000));
+                    if (!player.isSpeedManaged()) player.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue((float) (speed / 1000));
+                    SpeedFov.hold(player);
                 });
             });
             return TaskSchedule.tick(4);
