@@ -40,6 +40,10 @@ public final class CatacombsMessages {
         return Text.of("{}<c> is no longer ready!", name);
     }
 
+    public static String countdownCancelled() {
+        return "<c>The countdown was cancelled because a player is no longer ready.";
+    }
+
     public static String bloodRoomWithoutKey() {
         return "<c>The party entered the Blood Room without opening its door with the Blood Key!";
     }

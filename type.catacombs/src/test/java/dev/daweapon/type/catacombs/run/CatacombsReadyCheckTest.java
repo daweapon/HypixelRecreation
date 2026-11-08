@@ -49,16 +49,34 @@ class CatacombsReadyCheckTest {
     }
 
     @Test
-    void readyStateIsFrozenOnceTheCountdownBegins() {
+    void unreadyingCancelsAnAllReadyCountdown() {
         CatacombsReadyCheck check = new CatacombsReadyCheck();
         check.toggle(first);
         check.startCountdownIfAllReady(List.of(first));
-        assertTrue(check.toggle(first));
+        int id = check.countdown();
+        assertTrue(check.stillCounting(id));
+        assertTrue(check.unready(first));
+        assertFalse(check.isReady(first));
+        assertFalse(check.countingDown());
+        assertFalse(check.stillCounting(id));
+        check.markReady(first);
+        assertTrue(check.startCountdownIfAllReady(List.of(first)));
+        assertFalse(check.stillCounting(id));
+        assertTrue(check.stillCounting(check.countdown()));
+    }
+
+    @Test
+    void theTimeoutCountdownCannotBeCancelled() {
+        CatacombsReadyCheck check = new CatacombsReadyCheck();
+        check.toggle(first);
+        for (int tick = 1; tick <= CatacombsReadyCheck.TIMEOUT_SECONDS; tick++) check.tickSecond(List.of(first, second));
+        assertTrue(check.countingDown());
+        assertFalse(check.unready(first));
         assertTrue(check.isReady(first));
     }
 
     @Test
-    void readyingFromMortsMenuIsOneWayAndStopsAtTheCountdown() {
+    void markReadyIsIdempotentAndStopsAtTheCountdown() {
         CatacombsReadyCheck check = new CatacombsReadyCheck();
         UUID first = UUID.randomUUID();
         UUID second = UUID.randomUUID();

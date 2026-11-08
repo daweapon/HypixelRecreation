@@ -68,7 +68,7 @@ public class GUIReadyUp extends StatelessView {
             layout.autoUpdating(heads.get(index), (_, _) -> memberHead(member), REFRESH);
         }
         layout.autoUpdating(READY_SLOT, (_, c) -> readyPane(run.isReady(c.player().getUuid())), (_, c) -> {
-            if (c.player() instanceof SkyBlockPlayer player) run.readyUp(player);
+            if (c.player() instanceof SkyBlockPlayer player) run.clickReady(player);
         }, REFRESH);
         DungeonClassType[] types = DungeonClassType.values();
         for (int index = 0; index < types.length; index++) {
@@ -135,7 +135,9 @@ public class GUIReadyUp extends StatelessView {
                         <7>You are marked as ready! The fight
                         <7>will start when all players have
                         <7>readied up and have the same tier
-                        <7>selected!""")
+                        <7>selected!
+
+                        <e>Click to unready!""")
                 : ItemStacks.item(Material.RED_STAINED_GLASS_PANE, """
                         <c>Not Ready
                         <7>Click to mark yourself as ready to

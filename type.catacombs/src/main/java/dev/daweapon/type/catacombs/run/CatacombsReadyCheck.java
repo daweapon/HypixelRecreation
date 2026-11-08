@@ -14,14 +14,32 @@ public final class CatacombsReadyCheck {
 
     private final Set<UUID> ready = ConcurrentHashMap.newKeySet();
     private volatile boolean countingDown;
+    private volatile boolean forced;
+    private volatile int countdown;
     private volatile int waitedSeconds;
 
-    /** Flips the player's ready state; ignored once the countdown has begun. Returns whether they are ready now. */
+    /** Flips the player's ready state. Returns whether they are ready now. */
     public boolean toggle(UUID player) {
-        if (countingDown) return ready.contains(player);
-        if (ready.remove(player)) return false;
-        ready.add(player);
+        if (ready.contains(player)) return !unready(player);
+        return markReady(player) || ready.contains(player);
+    }
+
+    /** Takes back a ready; cancels an all-ready countdown, but not the one the timeout forced. */
+    public boolean unready(UUID player) {
+        if (forced || !ready.remove(player)) return false;
+        if (countingDown) {
+            countingDown = false;
+            countdown++;
+        }
         return true;
+    }
+
+    public int countdown() {
+        return countdown;
+    }
+
+    public boolean stillCounting(int id) {
+        return countingDown && countdown == id;
     }
 
     /** Readies the player; false when they already were or the countdown has begun. */
@@ -44,6 +62,7 @@ public final class CatacombsReadyCheck {
         if (countingDown || present.isEmpty()) return false;
         if (++waitedSeconds < TIMEOUT_SECONDS) return false;
         countingDown = true;
+        forced = true;
         return true;
     }
 

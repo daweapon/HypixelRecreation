@@ -170,13 +170,23 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
 
     /** Staff's {@code /catacombsrun ready}: flips the ready state either way. */
     public synchronized void toggleReady(SkyBlockPlayer player) {
-        if (!canChangeReady(player)) return;
-        boolean ready = readyCheck.toggle(player.getUuid());
-        broadcast(ready ? CatacombsMessages.ready(player.getColouredName()) : CatacombsMessages.notReady(player.getColouredName()));
-        if (ready && readyCheck.startCountdownIfAllReady(onlineIds())) startCountdown();
+        clickReady(player);
     }
 
-    /** Mort's Ready Up pane and Auto Ready Up: readying is one-way there, as the captured Ready pane offers no undo. */
+    /** Mort's Ready Up pane: a second click takes the ready back, cancelling the countdown if it had started. */
+    public synchronized void clickReady(SkyBlockPlayer player) {
+        if (readyCheck.isReady(player.getUuid())) unready(player);
+        else readyUp(player);
+    }
+
+    public synchronized void unready(SkyBlockPlayer player) {
+        if (lifecycle.stage() != CatacombsLifecycle.Stage.WAITING || !player.isOnline()) return;
+        boolean wasCounting = readyCheck.countingDown();
+        if (!readyCheck.unready(player.getUuid())) return;
+        broadcast(CatacombsMessages.notReady(player.getColouredName()));
+        if (wasCounting) broadcast(CatacombsMessages.countdownCancelled());
+    }
+
     public synchronized void readyUp(SkyBlockPlayer player) {
         if (!canChangeReady(player) || player.getInstance() != arena.instance() || !readyCheck.markReady(player.getUuid())) return;
         broadcast(CatacombsMessages.ready(player.getColouredName()));
@@ -193,12 +203,17 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
 
     private void startCountdown() {
         List<Integer> seconds = CatacombsReadyCheck.countdownSeconds();
+        int id = readyCheck.countdown();
         for (int index = 0; index < seconds.size(); index++) {
             String line = CatacombsMessages.startingIn(seconds.get(index));
-            later(20 * index + 1, () -> broadcast(line));
+            later(20 * index + 1, () -> {
+                if (readyCheck.stillCounting(id)) broadcast(line);
+            });
         }
         later(20 * seconds.size(), () -> {
-            if (lifecycle.stage() == CatacombsLifecycle.Stage.WAITING) begin();
+            synchronized (this) {
+                if (readyCheck.stillCounting(id) && lifecycle.stage() == CatacombsLifecycle.Stage.WAITING) begin();
+            }
         });
     }
 
