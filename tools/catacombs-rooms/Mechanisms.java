@@ -68,7 +68,14 @@ final class Mechanisms {
             "grass_ruin|3 - Lever 2", new Seen(List.of(new Box3(26, -16, 19, 26, -10, 23)), Set.of("minecraft:iron_bars"),
                     "4zata5TZenI@0:11.6 pull, @0:12-0:13.4 through the iron bar window next to the lever to 3 - Chest; which of the two windows is a guess (the one by the lever)", "medium", false),
             "buttons|3 - Lever behind Crypt", new Seen(List.of(new Box3(55, 12, 15, 57, 20, 15)), Set.of("minecraft:oak_log"),
-                    "NOXbttb-Zok@0:35 pull, @0:45-0:47 down the corridor behind the log wall to 3 - Chest", "medium", true));
+                    "NOXbttb-Zok@0:35 pull, @0:45-0:47 down the corridor behind the log wall to 3 - Chest", "medium", true),
+            "deathmite|4 - Lever", new Seen(List.of(new Box3(67, -3, 14, 67, 2, 16), new Box3(66, -1, 15, 66, -1, 15)),
+                    Set.of("minecraft:spruce_stairs", "minecraft:spruce_slab", "minecraft:oak_log", "minecraft:tripwire_hook"),
+                    "wHSmClEOkK0@0:24 pull, @0:27 'You hear the sound of something opening...', @0:28.5 through the open 3 wide doorway (the Tripwire Hook on the door drops) and up the steps to 4 - Chest @0:30", "high", true),
+            "rails|7 - Lever", new Seen(List.of(new Box3(21, -19, 53, 21, -14, 57)), Set.of("minecraft:cobblestone_wall"),
+                    "Lk0rnjPEKZM@2:13 pull at world (37.9, 70, 109.3), @2:15.5-2:17 F3 track drops to y 49 and crosses x 21 at z 119-120 through the open cobblestone wall grille, @2:20 7 - Chest", "high", false),
+            "trap_hard|2 - Lever", new Seen(List.of(new Box3(13, 13, 2, 13, 16, 5)), Set.of("minecraft:oak_log"),
+                    "rtp6mN-RdSA@0:16.5 pull next to 1 - Chest, @0:17.5 'You hear the sound of something opening...', @0:24-0:25.5 open doorway beside the granite panel at the corridor end; also pulled in xc0NEWsdwLM@0:40. Which wall it opens is inferred: the only plug between the upper floor (2 - Chest, 3 - Bat) and the room", "medium", true));
 
     record Template(String id, String file, String shape, int sx, int sy, int sz, List<Map<String, Object>> sockets,
                     List<Map<String, Object>> anchors, List<Map<String, Object>> extras) {

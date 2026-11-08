@@ -62,7 +62,10 @@ class RoomMechanismsTest {
                 "hallway|2 - Lever", Map.of("minecraft:oak_log", 16),
                 "grass_ruin|3 - Lever 1", Map.of("minecraft:oak_wood", 31, "minecraft:spruce_stairs", 26, "minecraft:oak_log", 2),
                 "grass_ruin|3 - Lever 2", Map.of("minecraft:iron_bars", 33),
-                "buttons|3 - Lever behind Crypt", Map.of("minecraft:oak_log", 27));
+                "buttons|3 - Lever behind Crypt", Map.of("minecraft:oak_log", 27),
+                "deathmite|4 - Lever", Map.of("minecraft:spruce_stairs", 8, "minecraft:spruce_slab", 4, "minecraft:oak_log", 6, "minecraft:tripwire_hook", 1),
+                "rails|7 - Lever", Map.of("minecraft:cobblestone_wall", 21),
+                "trap_hard|2 - Lever", Map.of("minecraft:oak_log", 16));
         for (Map.Entry<String, Map<String, Integer>> entry : expected.entrySet()) {
             String[] key = entry.getKey().split("\\|");
             RoomMechanisms.Lever lever = mechanisms.levers(key[0]).stream().filter(each -> each.label().equals(key[1])).findFirst().orElseThrow();
