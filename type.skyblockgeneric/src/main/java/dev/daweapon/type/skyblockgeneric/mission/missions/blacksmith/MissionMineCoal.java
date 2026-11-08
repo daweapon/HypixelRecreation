@@ -54,7 +54,7 @@ public class MissionMineCoal extends SkyBlockProgressMission {
 
     @Override
     public Set<RegionType> getValidRegions() {
-        return Set.of(RegionType.BLACKSMITH, RegionType.COAL_MINE);
+        return Set.of(RegionType.MINING_DISTRICT, RegionType.COAL_MINE);
     }
 
     @Override

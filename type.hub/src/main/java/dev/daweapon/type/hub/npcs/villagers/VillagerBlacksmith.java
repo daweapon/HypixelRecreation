@@ -46,18 +46,21 @@ public class VillagerBlacksmith extends HypixelNPC {
         if (isInDialogue(player)) return;
         MissionData data = player.getMissionData();
 
-        if (data.isCurrentlyActive(MissionTalkToBlacksmith.class)) {
+        if (!data.hasCompleted(MissionTalkToBlacksmith.class)) {
+            if (!data.isCurrentlyActive(MissionTalkToBlacksmith.class)) data.startMission(MissionTalkToBlacksmith.class);
             setDialogue(player, "initial-hello").thenRun(() -> {
-                data.endMission(MissionTalkToBlacksmith.class);
+                if (data.isCurrentlyActive(MissionTalkToBlacksmith.class)) data.endMission(MissionTalkToBlacksmith.class);
             });
             return;
         }
         if (!data.hasCompleted(MissionMineCoal.class)) {
-            player.sendMessage("Retrieve 10 coal from the Coal Mines!");
+            setDialogue(player, "mine-more-coal");
             return;
         }
         if (!data.hasCompleted(MissionTalkToBlacksmithAgain.class)) {
             setDialogue(player, "spoke-again").thenRun(() -> {
+                if (data.hasCompleted(MissionTalkToBlacksmithAgain.class)) return;
+                if (!data.isCurrentlyActive(MissionTalkToBlacksmithAgain.class)) data.startMission(MissionTalkToBlacksmithAgain.class);
                 data.endMission(MissionTalkToBlacksmithAgain.class);
             });
             return;
@@ -74,6 +77,11 @@ public class VillagerBlacksmith extends HypixelNPC {
                                 "I'm the town Blacksmith! I can <a>reforge <f>items for you, for a price.",
                                 "Reforging usually costs Coins, but since I'm feeling friendly I can reforge your first item for Coal <8>x10.",
                                 "Go into the Mine to collect Coal, then come back to learn how to reforge items!"
+                        ).build(),
+                DialogueSet.builder()
+                        .key("mine-more-coal").lines(
+                                "Mine some more Coal in the Mine!",
+                                "I will teach you how to reforge items once you mine some more Coal!"
                         ).build(),
                 DialogueSet.builder()
                         .key("spoke-again").lines(

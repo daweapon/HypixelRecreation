@@ -32,16 +32,16 @@ public class MissionTalkToBlacksmithAgain extends SkyBlockMission implements Loc
 
     @Override
     public void onEnd(SkyBlockPlayer player, Map<String, Object> customData, MissionData.ActiveMission mission) {
-
+        player.getMissionData().startMission(MissionReforgeAnItem.class);
     }
 
     @Override
     public Set<RegionType> getValidRegions() {
-        return Set.of(RegionType.BLACKSMITH, RegionType.COAL_MINE);
+        return Set.of(RegionType.MINING_DISTRICT, RegionType.COAL_MINE);
     }
 
     @Override
     public Pos getLocation() {
-        return new Pos(-28.5, 69, -125.45);
+        return new Pos(10.5, 63, -126.5);
     }
 }

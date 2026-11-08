@@ -8,6 +8,7 @@ import dev.daweapon.type.skyblockgeneric.mission.missions.garden.*;
 import dev.daweapon.type.skyblockgeneric.mission.missions.barn.MissionTalkToFarmHand;
 import dev.daweapon.type.skyblockgeneric.mission.missions.barn.MissionTalkToFarmhandAgain;
 import dev.daweapon.type.skyblockgeneric.mission.missions.blacksmith.MissionMineCoal;
+import dev.daweapon.type.skyblockgeneric.mission.missions.blacksmith.MissionReforgeAnItem;
 import dev.daweapon.type.skyblockgeneric.mission.missions.blacksmith.MissionTalkToBlacksmith;
 import dev.daweapon.type.skyblockgeneric.mission.missions.blacksmith.MissionTalkToBlacksmithAgain;
 import dev.daweapon.type.skyblockgeneric.mission.missions.farmer.MissionCollectWheat;
@@ -35,6 +36,7 @@ public enum MissionSet {
     LIBRARY_CARD(MissionTalkToLibrarian.class),
     AUCTIONEER(MissionTalkToAuctionMaster.class),
     TIME_TO_MINE(MissionTalkToBlacksmith.class, MissionMineCoal.class, MissionTalkToBlacksmithAgain.class),
+    REFORGER(MissionReforgeAnItem.class),
     TIME_TO_STRIKE(MissionKillZombies.class, MissionTalkToBartender.class),
     TIMBER(MissionTalkToLumberjack.class, MissionBreakOaklog.class, MissionTalkToLumberjackAgain.class),
     INTO_THE_WOODS(MissionTravelToThePark.class, MissionTalkToCharlie.class, MissionCollectBirchLogs.class, MissionGiveCharlieBirchLogs.class, MissionClaimTheTrousers.class, MissionTalkToCharlieAgain.class),

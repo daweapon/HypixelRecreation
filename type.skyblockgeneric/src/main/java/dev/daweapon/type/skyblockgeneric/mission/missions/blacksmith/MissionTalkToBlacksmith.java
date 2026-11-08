@@ -21,7 +21,7 @@ public class MissionTalkToBlacksmith extends SkyBlockMission implements Location
     public void run(PlayerRegionChangeEvent event) {
         MissionData data = event.getPlayer().getMissionData();
 
-        if (event.getTo() == null || !event.getTo().equals(RegionType.BLACKSMITH)) {
+        if (event.getTo() == null || !event.getTo().equals(RegionType.MINING_DISTRICT)) {
             return;
         }
 
@@ -54,11 +54,11 @@ public class MissionTalkToBlacksmith extends SkyBlockMission implements Location
 
     @Override
     public Set<RegionType> getValidRegions() {
-        return Set.of(RegionType.BLACKSMITH, RegionType.COAL_MINE);
+        return Set.of(RegionType.MINING_DISTRICT, RegionType.COAL_MINE);
     }
 
     @Override
     public Pos getLocation() {
-        return new Pos(-28.5, 69, -125.45);
+        return new Pos(10.5, 63, -126.5);
     }
 }

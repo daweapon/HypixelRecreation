@@ -22,6 +22,7 @@ import dev.daweapon.type.generic.utility.MathUtility;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.components.ReforgableComponent;
 import dev.daweapon.type.skyblockgeneric.item.updater.PlayerItemUpdater;
+import dev.daweapon.type.skyblockgeneric.mission.missions.blacksmith.MissionReforgeAnItem;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.HashMap;
@@ -160,14 +161,18 @@ public class GUIReforge extends HypixelInventoryGUI {
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
+                boolean paysWithCoal = MissionReforgeAnItem.paysWithCoal(player);
                 int cost = COST_MAP.get(item.getAttributeHandler().getRarity());
 
-                if (player.getCoins() - cost < 0) {
+                if (paysWithCoal) {
+                    if (player.countItem(MissionReforgeAnItem.PRICE_ITEM) < MissionReforgeAnItem.PRICE_AMOUNT) {
+                        player.sendMessage("<c>You need Coal <8>x" + MissionReforgeAnItem.PRICE_AMOUNT + " <c>for this reforge!");
+                        return;
+                    }
+                } else if (player.getCoins() - cost < 0) {
                     player.sendMessage(Text.key("gui_reforge.not_enough_coins"));
                     return;
                 }
-
-                player.removeCoins(cost);
 
                 ReforgeType itemReforgeType = item.getComponent(ReforgableComponent.class).getReforgeType();
                 List<Reforge> availableReforges = ReforgeLoader.getReforgesForType(itemReforgeType);
@@ -190,6 +195,13 @@ public class GUIReforge extends HypixelInventoryGUI {
                     return;
                 }
 
+                if (paysWithCoal) {
+                    player.removeItemFromPlayer(MissionReforgeAnItem.PRICE_ITEM, MissionReforgeAnItem.PRICE_AMOUNT);
+                    player.getMissionData().endMission(MissionReforgeAnItem.class);
+                } else {
+                    player.removeCoins(cost);
+                }
+
                 String itemName = StringUtility.toNormalCase(item.getAttributeHandler().getTypeAsString());
 
                 player.sendMessage(Text.key("gui_reforge.success_message",
@@ -202,6 +214,15 @@ public class GUIReforge extends HypixelInventoryGUI {
 
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
+                if (MissionReforgeAnItem.paysWithCoal((SkyBlockPlayer) p)) {
+                    return ItemStacks.item(Material.ANVIL, 1, Text.key("gui_reforge.reforge_button"), List.of(
+                        Text.of("<7>Reforges the above item, giving it a"),
+                        Text.of("<7>random stat modifier that boosts its"),
+                        Text.of("<7>stats."),
+                        Text.of(""),
+                        Text.of("<7>Cost"),
+                        Text.of("<f>Coal <8>x" + MissionReforgeAnItem.PRICE_AMOUNT)));
+                }
                 return ItemStacks.item(Material.ANVIL, 1, Text.key("gui_reforge.reforge_button"),
                     Text.keyLines("gui_reforge.reforge_button.lore",
                         COST_MAP.get(item.getAttributeHandler().getRarity())));
