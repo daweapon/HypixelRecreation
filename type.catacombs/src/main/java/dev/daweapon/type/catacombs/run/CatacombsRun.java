@@ -35,6 +35,7 @@ import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
 import java.time.Clock;
+import net.minestom.server.item.ItemStack;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -72,6 +73,7 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
     private final List<Task> tasks = new CopyOnWriteArrayList<>();
     private volatile long emptySince = System.currentTimeMillis();
     private volatile @Nullable DungeonEngine engine;
+    private final Map<UUID, ItemStack> scoreMaps = new ConcurrentHashMap<>();
 
     CatacombsRun(CatacombsFloorId floorId, List<UUID> roster, CatacombsArena arena, long seed) {
         super(arena.instance(), _ -> {
@@ -235,6 +237,10 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
         finish(CatacombsLifecycle.Outcome.LOSE);
     }
 
+    public @Nullable ItemStack scoreMap(UUID player) {
+        return scoreMaps.get(player);
+    }
+
     private void conclude(CatacombsLifecycle.Outcome outcome) {
         super.end();
         DungeonEngine running = engine;
@@ -269,7 +275,9 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
                 org.tinylog.Logger.error(exception, "Score screen failed for {}", member.getUsername());
             }
             MinecraftServer.getSchedulerManager().buildTask(() -> {
-                if (member.isOnline() && member.getInstance() == instance()) ScoreSummaryMap.show(member, score);
+                if (!member.isOnline() || member.getInstance() != instance()) return;
+                ItemStack shown = ScoreSummaryMap.show(member, score);
+                if (shown != null) scoreMaps.put(member.getUuid(), shown);
             }).delay(TaskSchedule.tick(SCORE_MAP_DELAY_TICKS)).schedule();
         }
     }

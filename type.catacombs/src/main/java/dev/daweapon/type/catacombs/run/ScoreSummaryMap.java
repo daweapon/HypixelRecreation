@@ -43,20 +43,22 @@ public final class ScoreSummaryMap {
     private ScoreSummaryMap() {
     }
 
-    public static void show(SkyBlockPlayer player, DungeonScoreBreakdown score) {
+    public static @Nullable ItemStack show(SkyBlockPlayer player, DungeonScoreBreakdown score) {
         byte[] colours;
         try {
             colours = colours(render(score, DIRECTORY));
         } catch (IOException | RuntimeException exception) {
             Logger.error(exception, "Could not draw the score summary map");
-            return;
+            return null;
         }
         int mapId = NEXT_ID.getAndIncrement();
         player.sendPacket(new MapDataPacket(mapId, (byte) 0, true, false, List.of(),
                 new MapDataPacket.ColorContent((byte) SIZE, (byte) SIZE, (byte) 0, (byte) 0, colours)));
-        player.getInventory().setItemStack(DungeonMapView.SLOT, item(mapId));
+        ItemStack item = item(mapId);
+        player.getInventory().setItemStack(DungeonMapView.SLOT, item);
         player.setHeldItemSlot((byte) DungeonMapView.SLOT);
         player.teleport(player.getPosition().withPitch(PITCH));
+        return item;
     }
 
     static ItemStack item(int mapId) {
