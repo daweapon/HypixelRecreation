@@ -10,7 +10,8 @@ import java.util.Set;
 
 /**
  * What of the Catacombs can be entered. Only the floors with a run behind them are playable (Entrance and Floor I);
- * the rest stay locked for everyone. Until {@link CatacombsLaunch} says {@code public: true}, only staff can queue.
+ * the rest stay locked for everyone. Until {@link CatacombsLaunch} says {@code public: true}, only staff, YouTube and MVP++
+ * players can queue.
  */
 public final class CatacombsAvailability {
     public static final Set<CatacombsFloor> PLAYABLE_FLOORS = EnumSet.of(CatacombsFloor.ENTRANCE, CatacombsFloor.FLOOR_ONE);
@@ -37,16 +38,18 @@ public final class CatacombsAvailability {
         return PLAYABLE_FLOORS.contains(floor);
     }
 
-    public static boolean canQueue(boolean staff, CatacombsFloor floor) {
-        return isPlayable(floor) && (isPublic() || staff);
+    public static final Rank EARLY_ACCESS_RANK = Rank.MVP_PLUS_PLUS;
+
+    public static boolean canQueue(boolean earlyAccess, CatacombsFloor floor) {
+        return isPlayable(floor) && (isPublic() || earlyAccess);
     }
 
     public static boolean canQueue(SkyBlockPlayer player, CatacombsFloor floor) {
-        return canQueue(isStaff(player), floor);
+        return canQueue(hasEarlyAccess(player.getRank()), floor);
     }
 
     public static boolean canUsePartyFinder(SkyBlockPlayer player) {
-        return isPublic() || isStaff(player);
+        return isPublic() || hasEarlyAccess(player.getRank());
     }
 
     public static List<String> floorLore(SkyBlockPlayer player, CatacombsFloor floor) {
@@ -66,7 +69,7 @@ public final class CatacombsAvailability {
         return false;
     }
 
-    private static boolean isStaff(SkyBlockPlayer player) {
-        return player.getRank().isEqualOrHigherThan(Rank.STAFF);
+    public static boolean hasEarlyAccess(Rank rank) {
+        return rank.isEqualOrHigherThan(EARLY_ACCESS_RANK);
     }
 }

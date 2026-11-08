@@ -2,6 +2,7 @@ package dev.daweapon.type.skyblockgeneric.dungeons;
 
 import dev.daweapon.dungeons.catacombs.CatacombsFloor;
 import dev.daweapon.dungeons.catacombs.CatacombsMode;
+import dev.daweapon.type.generic.user.categories.Rank;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -92,5 +93,14 @@ class CatacombsAvailabilityTest {
         assertFalse(CatacombsRequirements.meets(60, 2, CatacombsFloor.FLOOR_TWO, CatacombsMode.NORMAL));
         assertTrue(CatacombsRequirements.meets(0, 3, CatacombsFloor.FLOOR_TWO, CatacombsMode.NORMAL));
         assertFalse(CatacombsRequirements.meets(60, 50, CatacombsFloor.FLOOR_ONE, CatacombsMode.MASTER));
+    }
+
+    @Test
+    void staffYouTubeAndMvpPlusPlusGetEarlyAccess() {
+        assertTrue(CatacombsAvailability.hasEarlyAccess(Rank.STAFF));
+        assertTrue(CatacombsAvailability.hasEarlyAccess(Rank.YOUTUBE));
+        assertTrue(CatacombsAvailability.hasEarlyAccess(Rank.MVP_PLUS_PLUS));
+        assertFalse(CatacombsAvailability.hasEarlyAccess(Rank.MVP_PLUS));
+        assertFalse(CatacombsAvailability.hasEarlyAccess(Rank.DEFAULT));
     }
 }
