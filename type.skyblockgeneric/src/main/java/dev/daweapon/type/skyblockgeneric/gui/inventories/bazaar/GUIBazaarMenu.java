@@ -33,6 +33,7 @@ abstract class GUIBazaarMenu extends HypixelInventoryGUI implements RefreshingGU
     protected final int page;
     protected final BazaarMenuState state = new BazaarMenuState();
     private long lastRefresh;
+    private final BazaarOfflineWatch offlineWatch = new BazaarOfflineWatch();
 
     GUIBazaarMenu(BazaarCategories category, String parentName, String name, BazaarSetLayout layout, int page,
                   String backLabel, Supplier<HypixelInventoryGUI> back) {
@@ -164,7 +165,7 @@ abstract class GUIBazaarMenu extends HypixelInventoryGUI implements RefreshingGU
             return;
         }
         player.getBazaarConnector().isOnline().thenAccept(online -> {
-            if (!online) {
+            if (offlineWatch.isOffline(online)) {
                 player.sendMessage(Text.key("gui_bazaar.main.offline_message"));
                 player.closeInventory();
             }

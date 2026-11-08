@@ -32,6 +32,7 @@ public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
     private final BazaarCategories category;
     private final List<BazaarTile> tiles;
     private final BazaarMenuState state = new BazaarMenuState();
+    private final BazaarOfflineWatch offlineWatch = new BazaarOfflineWatch();
     private final Map<BazaarTile, BazaarConnector.BazaarStatistics> prices = new ConcurrentHashMap<>();
     private long lastStateRefresh;
 
@@ -189,10 +190,10 @@ public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
     public void refreshItems(HypixelPlayer p) {
         SkyBlockPlayer player = (SkyBlockPlayer) p;
         player.getBazaarConnector().isOnline().thenAccept(online -> {
-            if (!online) {
+            if (offlineWatch.isOffline(online)) {
                 player.sendMessage(Text.key("gui_bazaar.main.offline_message"));
                 player.closeInventory();
-            } else {
+            } else if (online) {
                 player.getBazaarConnector().processAllPendingTransactions();
             }
         });
