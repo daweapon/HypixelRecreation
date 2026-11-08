@@ -17,18 +17,22 @@ import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class GUIQuiver implements StatefulView<GUIQuiver.QuiverState> {
-    private static final Map<CustomCollectionAward, Integer> SLOTS_PER_UPGRADE = Map.of(
-            CustomCollectionAward.QUIVER, 18,
-            CustomCollectionAward.QUIVER_UPGRADE_1, 9,
-            CustomCollectionAward.QUIVER_UPGRADE_2, 9
-    );
+    private static final Map<CustomCollectionAward, Integer> SLOTS_PER_UPGRADE = new LinkedHashMap<>();
+    private static final int STORAGE_SLOTS = 45;
+
+    static {
+        SLOTS_PER_UPGRADE.put(CustomCollectionAward.QUIVER, 27);
+        SLOTS_PER_UPGRADE.put(CustomCollectionAward.QUIVER_UPGRADE_1, 9);
+        SLOTS_PER_UPGRADE.put(CustomCollectionAward.QUIVER_UPGRADE_2, 9);
+    }
 
     @Override
     public ViewConfiguration<QuiverState> configuration() {
-        return ViewConfiguration.translatable("gui_sbmenu.bags.quiver.title", InventoryType.CHEST_5_ROW);
+        return ViewConfiguration.translatable("gui_sbmenu.bags.quiver.title", InventoryType.CHEST_6_ROW);
     }
 
     @Override
@@ -39,9 +43,9 @@ public class GUIQuiver implements StatefulView<GUIQuiver.QuiverState> {
     @Override
     public void layout(ViewLayout<QuiverState> layout, QuiverState state, ViewContext ctx) {
         Components.fill(layout);
-        Components.close(layout, 40);
-        Components.back(layout, 39, ctx);
-        layout.slot(41, ItemStacks.item(Material.LAVA_BUCKET, """
+        Components.close(layout, 49);
+        Components.back(layout, 48, ctx);
+        layout.slot(50, ItemStacks.item(Material.LAVA_BUCKET, """
                 <c>Clear Quiver
                 <7>Deletes all arrows from your quiver."""), (_, c) -> {
             for (int i = 0; i < getUnlockedSlots((SkyBlockPlayer) c.player()); i++) c.inventory().setItemStack(i, ItemStack.AIR);
@@ -58,7 +62,7 @@ public class GUIQuiver implements StatefulView<GUIQuiver.QuiverState> {
             } else {
                 for (int i = 0; i < entry.getValue(); i++) {
                     int slotIndex = i + rawAmountOfSlots;
-                    if (slotIndex < 36) {
+                    if (slotIndex < STORAGE_SLOTS) {
                         layout.slot(slotIndex, (s, c) -> ItemStacks.item(Material.RED_STAINED_GLASS_PANE, 1,
                             Text.key("gui_sbmenu.bags.quiver.locked_slot"),
                             Text.keyLines("gui_sbmenu.bags.quiver.locked_slot.lore", entry.getKey().getDisplay())));
@@ -82,12 +86,23 @@ public class GUIQuiver implements StatefulView<GUIQuiver.QuiverState> {
                     return PlayerItemUpdater.playerUpdate(p, item.getItemStack());
                 }
             }, (slot, oldItem, newItem, s) -> {
-                SkyBlockItem newSkyBlockItem = new SkyBlockItem(newItem);
-                if (!isItemAllowed(newSkyBlockItem)) {
-                    ctx.player().sendMessage(Text.key("gui_sbmenu.bags.quiver.msg.cannot_put"));
-                }
+                if (isItemAllowed(new SkyBlockItem(newItem))) return;
+                ctx.inventory().setItemStack(slot, oldItem);
+                ctx.player().getInventory().addItemStack(newItem);
+                ctx.player().sendMessage(Text.key("gui_sbmenu.bags.quiver.msg.cannot_put"));
             });
         }
+    }
+
+    @Override
+    public boolean onBottomClick(dev.daweapon.type.generic.gui.v2.context.ClickContext<QuiverState> click, ViewContext ctx) {
+        SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
+        if (click.slot() < 0 || click.slot() >= player.getInventory().getSize()) return true;
+        SkyBlockItem cursorItem = new SkyBlockItem(player.getInventory().getCursorItem());
+        SkyBlockItem clickedItem = new SkyBlockItem(player.getInventory().getItemStack(click.slot()));
+        if (isItemAllowed(cursorItem) && isItemAllowed(clickedItem)) return true;
+        player.sendMessage(Text.key("gui_sbmenu.bags.quiver.msg.cannot_put"));
+        return false;
     }
 
     @Override
@@ -106,7 +121,7 @@ public class GUIQuiver implements StatefulView<GUIQuiver.QuiverState> {
         return amountOfSlots;
     }
 
-    private boolean isItemAllowed(SkyBlockItem item) {
+    static boolean isItemAllowed(SkyBlockItem item) {
         if (item.isNA()) return true;
         if (item.getMaterial().equals(Material.AIR)) return true;
         return item.getMaterial() == Material.ARROW;

@@ -130,14 +130,14 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: CUSTOM_AWARD
+      data:
+        customAward: QUIVER_UPGRADE_1
   - amount: 10000
     rewards:
     - type: XP
       data:
         xp: 4
-    - type: CUSTOM_AWARD
-      data:
-        customAward: QUIVER_UPGRADE_1
   - amount: 25000
     rewards:
     - type: XP

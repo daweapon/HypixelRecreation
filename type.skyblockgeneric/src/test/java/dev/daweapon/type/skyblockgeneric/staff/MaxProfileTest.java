@@ -71,7 +71,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MaxProfileTest {
-    private static final int FULL_QUIVER = 36 * 64;
+    private static final int FULL_QUIVER = 45 * 64;
     private static final Path ITEMS = Path.of("../configuration/skyblock/items");
 
     private static boolean initialized;
