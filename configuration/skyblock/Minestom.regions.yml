@@ -1745,6 +1745,15 @@ regions:
     y2: 255
     z2: 239
     serverType: SKYBLOCK_THE_GARDEN
+  - id: dungeon_hub
+    type: DUNGEON_HUB
+    x1: -400
+    y1: -64
+    z1: -400
+    x2: 400
+    y2: 320
+    z2: 400
+    serverType: SKYBLOCK_DUNGEON_HUB
   - id: crystal_hollows
     type: CRYSTAL_HOLLOWS
     x1: 202

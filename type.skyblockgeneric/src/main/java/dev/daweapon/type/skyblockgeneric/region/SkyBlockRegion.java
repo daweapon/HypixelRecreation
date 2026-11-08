@@ -213,6 +213,10 @@ public class SkyBlockRegion {
             ServerType.SKYBLOCK_ISLAND));
     }
 
+    public static boolean mapsThisServer() {
+        return REGION_CACHE.values().stream().anyMatch(region -> region.getType() != RegionType.PRIVATE_ISLAND);
+    }
+
     public static SkyBlockRegion getIslandRegion() {
         return REGION_CACHE.get("island");
     }
