@@ -66,6 +66,7 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
     private final KeyRing keys = new KeyRing();
     private final RunClasses classes = new RunClasses(this);
     private final RunStats stats = new RunStats();
+    private static final int SCORE_MAP_DELAY_TICKS = 10;
     private final Map<UUID, ScoreScreen.Earned> earned = new ConcurrentHashMap<>();
     private volatile long finishedSeconds;
     private final List<Task> tasks = new CopyOnWriteArrayList<>();
@@ -267,6 +268,9 @@ public final class CatacombsRun extends AbstractGame<CatacombsParticipant> imple
             } catch (RuntimeException exception) {
                 org.tinylog.Logger.error(exception, "Score screen failed for {}", member.getUsername());
             }
+            MinecraftServer.getSchedulerManager().buildTask(() -> {
+                if (member.isOnline() && member.getInstance() == instance()) ScoreSummaryMap.show(member, score);
+            }).delay(TaskSchedule.tick(SCORE_MAP_DELAY_TICKS)).schedule();
         }
     }
 
