@@ -35,6 +35,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 // Detects when a player steps onto a launch pad and fires its particle/permission-gated launch effect
 public class ActionPlayerLaunchPads implements HypixelEventClass {
     private static final int SEGMENTS = 30;
+    private static final long SERVER_LOOKUP_TIMEOUT_SECONDS = 5;
     private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     private static final Set<UUID> notifiedPlayers = ConcurrentHashMap.newKeySet();
 
@@ -82,8 +83,10 @@ public class ActionPlayerLaunchPads implements HypixelEventClass {
         ServerType targetServerType = pad.getTargetServerType();
         ProxyInformation proxyInfo = new ProxyInformation();
 
-        List<UnderstandableProxyServer> informations =
-                proxyInfo.getServerInformation(targetServerType).join();
+        List<UnderstandableProxyServer> informations = proxyInfo.getServerInformation(targetServerType)
+                .completeOnTimeout(List.of(), SERVER_LOOKUP_TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                .exceptionally(_ -> List.of())
+                .join();
         if (informations.isEmpty()) {
             accepted = false;
             rejectionMessage = Text.of("<c>There are no {} servers available at the moment. Please try again later.",
