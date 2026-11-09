@@ -141,11 +141,10 @@ public class AbilityRegistry {
                 boolean strongBlood = dev.daweapon.type.skyblockgeneric.item.set.sets.StrongDragonSet.isWearing(player);
                 ForwardTeleport.teleport(player, strongBlood ? 8 + (int) dev.daweapon.type.skyblockgeneric.item.armor.ArmorAbilities.STRONG_BLOOD_RANGE : 8);
                 ItemStatistics speedStats = ItemStatistics.builder().withBase(ItemStatistic.SPEED, 50.0).build();
-                TemporaryStatistic speedBoost = TemporaryStatistic.builder().withStatistics(speedStats).withExpirationInMs(strongBlood ? 6000 : 3000).withDisplayName("Instant Transmission").build();
-                player.getStatistics().boostStatistic(speedBoost);
+                refreshHiddenBuff(player, "Instant Transmission", speedStats, strongBlood ? 6000 : 3000);
                 if (strongBlood) {
                     ItemStatistics strength = ItemStatistics.builder().withBase(ItemStatistic.STRENGTH, dev.daweapon.type.skyblockgeneric.item.armor.ArmorAbilities.STRONG_BLOOD_STRENGTH).build();
-                    player.getStatistics().boostStatistic(TemporaryStatistic.builder().withStatistics(strength).withExpirationInMs(6000).withDisplayName("Strong Blood").build());
+                    refreshHiddenBuff(player, "Strong Blood", strength, 6000);
                 }
                 return true;
             }
@@ -309,5 +308,11 @@ public class AbilityRegistry {
             new RegisteredAbility.NoAbilityCost(),
             (player, _, _, _) -> GriffinBurrowService.INSTANCE.echo(player)
         ));
+    }
+
+    private static void refreshHiddenBuff(SkyBlockPlayer player, String name, ItemStatistics statistics, long millis) {
+        player.getStatistics().removeTemporaryStatistics(statistic -> name.equals(statistic.getDisplayName()));
+        player.getStatistics().boostStatistic(TemporaryStatistic.builder().withStatistics(statistics)
+                .withExpirationInMs(millis).withDisplayName(name).hiddenFromEffects().build());
     }
 }

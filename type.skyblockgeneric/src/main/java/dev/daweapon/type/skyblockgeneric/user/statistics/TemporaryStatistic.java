@@ -13,6 +13,7 @@ public class TemporaryStatistic {
     // Optional display info for tablist
     private @Nullable String displayName;
     private @Nullable String displayColor;
+    private boolean hiddenFromEffects;
 
     public TemporaryStatistic(ItemStatistics statistics, long expiration) {
         this.statistics = statistics;
@@ -37,7 +38,7 @@ public class TemporaryStatistic {
      * Check if this statistic has display info for tablist
      */
     public boolean hasDisplayInfo() {
-        return displayName != null;
+        return displayName != null && !hiddenFromEffects;
     }
 
     public static Builder builder() {
@@ -49,6 +50,7 @@ public class TemporaryStatistic {
         private long expiration;
         private String displayName;
         private String displayColor;
+        private boolean hiddenFromEffects;
 
         public Builder withStatistics(ItemStatistics statistics) {
             this.statistics = statistics;
@@ -75,8 +77,16 @@ public class TemporaryStatistic {
             return this;
         }
 
+        /** Named so it can be found and refreshed, but left out of the Active Effects list, like an ability buff on Hypixel. */
+        public Builder hiddenFromEffects() {
+            this.hiddenFromEffects = true;
+            return this;
+        }
+
         public TemporaryStatistic build() {
-            return new TemporaryStatistic(statistics, expiration, displayName, displayColor);
+            TemporaryStatistic statistic = new TemporaryStatistic(statistics, expiration, displayName, displayColor);
+            statistic.hiddenFromEffects = hiddenFromEffects;
+            return statistic;
         }
     }
 }
