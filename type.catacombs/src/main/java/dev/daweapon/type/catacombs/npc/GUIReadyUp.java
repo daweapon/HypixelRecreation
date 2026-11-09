@@ -75,10 +75,10 @@ public class GUIReadyUp extends StatelessView {
             DungeonClassType type = types[index];
             layout.autoUpdating(FIRST_CLASS_SLOT + index, (_, c) -> classItem((SkyBlockPlayer) c.player(), type,
                     run.classes().selectedOf(c.player().getUuid()) == type), (click, c) -> {
-                if (!(c.player() instanceof SkyBlockPlayer player) || click.click() instanceof Click.Right) return;
-                pick(player, type);
+                if (!(click.click() instanceof Click.Right)) pick(c, type);
             }, REFRESH);
-            layout.autoUpdating(FIRST_COUNT_SLOT + index, (_, c) -> pickedBy(type, run.classes().selectedOf(c.player().getUuid()) == type), REFRESH);
+            layout.autoUpdating(FIRST_COUNT_SLOT + index, (_, c) -> pickedBy(type, run.classes().selectedOf(c.player().getUuid()) == type),
+                    (_, c) -> pick(c, type), REFRESH);
         }
         layout.slot(ORB_SLOT, (_, _) -> orb(), (_, c) -> {
             if (c.player() instanceof SkyBlockPlayer player) run.classes().claimOrb(player);
@@ -100,13 +100,17 @@ public class GUIReadyUp extends StatelessView {
         run.readyUpViewers().remove(ctx.player().getUuid());
     }
 
-    private void pick(SkyBlockPlayer player, DungeonClassType type) {
+    private void pick(ViewContext ctx, DungeonClassType type) {
+        if (!(ctx.player() instanceof SkyBlockPlayer player)) return;
         if (run.started()) {
             player.sendMessage(TOO_LATE);
             player.closeInventory();
             return;
         }
-        if (run.classes().selectedOf(player.getUuid()) == type) return;
+        if (run.classes().selectedOf(player.getUuid()) == type) {
+            player.sendMessage("<c>You already have the " + type.displayName() + " class selected!");
+            return;
+        }
         DungeonClassProgress.select(player, type);
         run.classes().select(player, type);
     }
