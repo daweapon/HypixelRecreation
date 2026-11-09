@@ -139,9 +139,7 @@ public class GUIReadyUp extends StatelessView {
                         <7>You are marked as ready! The fight
                         <7>will start when all players have
                         <7>readied up and have the same tier
-                        <7>selected!
-
-                        <e>Click to unready!""")
+                        <7>selected!""")
                 : ItemStacks.item(Material.RED_STAINED_GLASS_PANE, """
                         <c>Not Ready
                         <7>Click to mark yourself as ready to
