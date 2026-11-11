@@ -91,6 +91,18 @@ class CarnivalTest {
     }
 
     @Test
+    void anchorShowsTheLowestFruitOnItsTileAndOnlyTalksWhenThereIsNone() {
+        FruitDiggingBoard board = board(FruitTile.MANGO, FruitTile.MANGO, FruitTile.APPLE);
+        FruitDiggingBoard.Dig dig = board.dig(1, 0, DowsingMode.ANCHOR);
+        assertNull(dig.dowsing());
+        assertEquals(FruitTile.APPLE, dig.anchor().tile());
+        board.dig(0, 0, DowsingMode.MINES);
+        FruitDiggingBoard.Dig last = board.dig(2, 0, DowsingMode.ANCHOR);
+        assertNull(last.anchor());
+        assertEquals("<b><l>ANCHOR! <f>There are no fruits nearby!", last.dowsing());
+    }
+
+    @Test
     void bombSpreadsToTwoOrThreeHiddenFruits() {
         FruitTile[][] tiles = new FruitTile[FruitDiggingBoard.SIZE][FruitDiggingBoard.SIZE];
         for (FruitTile[] column : tiles) Arrays.fill(column, FruitTile.MANGO);

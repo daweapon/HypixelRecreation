@@ -59,7 +59,8 @@ public class FruitDiggingBoard {
     public record Reveal(int x, int z, FruitTile tile, double points, boolean fromWatermelon, double multiplier,
                          @Nullable FruitTile multiplierSource) {}
 
-    public record Dig(List<Reveal> reveals, List<int[]> destroyed, boolean bombDefused, @Nullable String dowsing) {}
+    public record Dig(List<Reveal> reveals, List<int[]> destroyed, boolean bombDefused, @Nullable String dowsing,
+                      @Nullable Reveal anchor) {}
 
     private final FruitTile[][] tiles;
     private final CellState[][] states = new CellState[SIZE][SIZE];
@@ -142,7 +143,11 @@ public class FruitDiggingBoard {
             reveals.add(new Reveal(x, z, tile, points, false, multiplier, multiplier == 1 ? null : multiplierSource));
             activate(x, z, tile, reveals);
         }
-        return new Dig(reveals, destroyed, defused, dowse ? dowse(x, z, mode) : null);
+        boolean anchored = dowse && mode == DowsingMode.ANCHOR;
+        int[] lowest = anchored ? hiddenNeighbourFruit(x, z, false) : null;
+        Reveal anchor = lowest == null ? null : new Reveal(lowest[0], lowest[1], tiles[lowest[0]][lowest[1]], 0, false, 1, null);
+        String dowsing = !dowse || anchor != null ? null : dowse(x, z, mode);
+        return new Dig(reveals, destroyed, defused, dowsing, anchor);
     }
 
     private double collect(FruitTile tile) {
@@ -222,11 +227,7 @@ public class FruitDiggingBoard {
                         .count();
                 yield "<c><l>MINES! <f>There " + (bombs == 1 ? "is <6>1 <f>bomb" : "are <6>" + bombs + " <f>bombs") + " hidden nearby.";
             }
-            case ANCHOR -> {
-                int[] lowest = hiddenNeighbourFruit(x, z, false);
-                yield lowest == null ? "<b><l>ANCHOR! <f>There are no fruits nearby!"
-                        : "<b><l>ANCHOR! <f>The lowest scoring fruit nearby is to the <b>" + direction(x, z, lowest) + "<f>.";
-            }
+            case ANCHOR -> "<b><l>ANCHOR! <f>There are no fruits nearby!";
             case TREASURE -> {
                 int[] highest = hiddenNeighbourFruit(x, z, true);
                 if (highest == null) yield "<6><l>TREASURE! <f>There are no fruits nearby!";
@@ -250,13 +251,6 @@ public class FruitDiggingBoard {
             if (highest ? value > current : value < current) best = cell;
         }
         return best;
-    }
-
-    static String direction(int x, int z, int[] to) {
-        String north = to[1] < z ? "North" : to[1] > z ? "South" : "";
-        String east = to[0] > x ? "East" : to[0] < x ? "West" : "";
-        if (north.isEmpty()) return east;
-        return east.isEmpty() ? north : north + "-" + east;
     }
 
     private static List<int[]> neighbours(int x, int z) {

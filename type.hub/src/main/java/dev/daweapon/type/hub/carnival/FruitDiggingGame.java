@@ -111,6 +111,8 @@ public class FruitDiggingGame extends CarnivalGameBase {
     private int lastStage = -1;
     private long lastDigTick;
     private long shownScore;
+    private @Nullable Entity anchorMarker;
+    private @Nullable int[] anchorCell;
 
     public FruitDiggingGame(SkyBlockPlayer player) {
         super(player, CarnivalGame.FRUIT_DIGGING, SECONDS);
@@ -224,6 +226,7 @@ public class FruitDiggingGame extends CarnivalGameBase {
         player.sendPacket(new BlockBreakAnimationPacket(BREAKER_ID, position, (byte) 10));
         Dig dig = board.dig(cell[0], cell[1], mode);
         if (dig == null) return;
+        if (anchorCell != null && anchorCell[0] == cell[0] && anchorCell[1] == cell[1]) removeAnchor();
         lastDigTick = tick;
         player.sendPacket(new WorldEventPacket(2001, position, Block.SAND.stateId(), false));
         showBlock(position, Block.SANDSTONE);
@@ -234,6 +237,7 @@ public class FruitDiggingGame extends CarnivalGameBase {
         play("entity.chicken.egg", 0.3f, 1f);
         showReveal(dug, dig.bombDefused());
         if (dig.dowsing() != null) player.sendMessage(dig.dowsing());
+        if (dig.anchor() != null) showAnchor(dig.anchor());
         if (!dig.destroyed().isEmpty()) primeTnt(dig.destroyed());
 
         List<Reveal> chained = dig.reveals().subList(1, dig.reveals().size());
@@ -241,6 +245,25 @@ public class FruitDiggingGame extends CarnivalGameBase {
             Reveal reveal = chained.get(i);
             schedule((long) WATERMELON_DELAY_TICKS * (i + 1), () -> showChained(reveal));
         }
+    }
+
+    private void showAnchor(Reveal anchor) {
+        removeAnchor();
+        ItemEntity item = new ItemEntity(itemFor(anchor.tile()));
+        item.setPickable(false);
+        item.setMergeable(false);
+        item.setNoGravity(true);
+        spawn(item, above(anchor.x(), anchor.z(), 73), DISPLAY_TICKS);
+        anchorMarker = item;
+        anchorCell = new int[]{anchor.x(), anchor.z()};
+    }
+
+    private void removeAnchor() {
+        if (anchorMarker == null) return;
+        anchorMarker.remove();
+        entities.remove(anchorMarker);
+        anchorMarker = null;
+        anchorCell = null;
     }
 
     private void showChained(Reveal reveal) {
@@ -276,7 +299,7 @@ public class FruitDiggingGame extends CarnivalGameBase {
         FruitTile tile = reveal.tile();
         if (tile == FruitTile.RUM) return List.of("<e>Rum", "<c>✘ <7>Dowsing");
         if (tile == FruitTile.BOMB) {
-            return defused ? List.of("<c>Bomb", "<7>Defused (" + FruitTile.COCONUT.colored() + "<7>)") : List.of("<c>Bomb");
+            return defused ? List.of("<c>Bomb", "<7>Bomb protection (" + FruitTile.COCONUT.colored() + "<7>)") : List.of("<c>Bomb");
         }
         String name = tile.colored() + " <7>(+" + StringUtility.commaify(Math.round(reveal.points())) + ")";
         FruitTile source = reveal.multiplierSource();
