@@ -53,6 +53,7 @@ public class GUICarnivalGoals extends StatelessView {
         lore.append("\n\n<7>Rewards:\n<8>+<e>").append(goal.getTokens()).append(" Carnival Tokens")
                 .append("\n<a>Carnival Ticket <8>x").append(CarnivalGoal.TICKETS_PER_GOAL)
                 .append("\n\n").append(complete ? "<a><l>COMPLETE" : "<c><l>INCOMPLETE");
-        return ItemStacks.item(goal.getGame().getIcon(), lore.toString());
+        ItemStack.Builder item = ItemStacks.item(goal.getGame().getIcon(), lore.toString());
+        return complete ? ItemStacks.enchanted(item) : item;
     }
 }
