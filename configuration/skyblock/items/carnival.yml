@@ -24,12 +24,11 @@ items:
     lore:
       - "\xA77Used to catch \xA73fish \xA77in the \xA73Catch a"
       - "\xA73Fish \xA77game."
-      - ""
-      - "\xA7eRight-click to hook a fish, then hold"
-      - "\xA7eRight-click to reel it in!"
     components:
       - id: INTERACTABLE
         handler_id: CARNIVAL_ROD_INTERACT
+      - id: REFORGABLE
+        reforge_type: FISHING_RODS
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
   - id: CARNIVAL_DART_TUBE

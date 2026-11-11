@@ -153,15 +153,39 @@ class CarnivalTest {
     }
 
     @Test
-    void catchStreakAddsFivePerCatchUpToFifty() {
+    void catchStreakAddsFivePerCatchFromTheSecondUpToFifty() {
         CatchAFishScore score = new CatchAFishScore();
-        assertEquals(50, score.onCatch(CatchAFishScore.FishColor.RED, false));
-        assertEquals(105, score.onCatch(CatchAFishScore.FishColor.BLUE, false));
-        for (int i = 0; i < 12; i++) score.onCatch(CatchAFishScore.FishColor.RED, false);
-        assertEquals((200 + 50) * 2, score.onCatch(CatchAFishScore.FishColor.YELLOW, true));
+        assertEquals(200, score.onCatch(CatchAFishScore.FishColor.YELLOW, false));
+        assertEquals(120, score.onCatch(CatchAFishScore.FishColor.RED, true));
+        assertEquals(65, score.onCatch(CatchAFishScore.FishColor.RED, false));
+        for (int i = 0; i < 5; i++) score.onCatch(CatchAFishScore.FishColor.RED, false);
+        assertEquals(145, score.onCatch(CatchAFishScore.FishColor.BLUE, false));
+        assertEquals(200, score.onCatch(CatchAFishScore.FishColor.RED, true));
+        for (int i = 0; i < 3; i++) score.onCatch(CatchAFishScore.FishColor.BLUE, false);
+        assertEquals(250, score.onCatch(CatchAFishScore.FishColor.YELLOW, false));
         score.breakStreak();
         assertEquals(50, score.onCatch(CatchAFishScore.FishColor.RED, false));
-        assertEquals(15, score.getBestStreak());
+        assertEquals(14, score.getBestStreak());
+        assertEquals(1880, score.getScore());
+        assertEquals(2, score.caught(CatchAFishScore.FishColor.YELLOW));
+    }
+
+    @Test
+    void reelBarsFillAsCaptured() {
+        int[] red = {2, 7, 12, 16, 21, 26, 31, 36, 40, 45};
+        int[] blue = {1, 5, 9, 12, 16, 20, 24, 27, 31, 35, 38, 42, 46};
+        for (int i = 0; i < red.length; i++) assertEquals(red[i], CatchAFishScore.FishColor.RED.barFilled(i));
+        for (int i = 0; i < blue.length; i++) assertEquals(blue[i], CatchAFishScore.FishColor.BLUE.barFilled(i));
+        assertEquals(46, CatchAFishScore.FishColor.YELLOW.barFilled(15));
+        assertTrue(CatchAFishScore.FishColor.YELLOW.isReeled(16));
+        assertEquals("<c>", CatchAFishScore.FishColor.YELLOW.barColor(3));
+        assertEquals("<e>", CatchAFishScore.FishColor.YELLOW.barColor(4));
+        assertEquals("<e>", CatchAFishScore.FishColor.YELLOW.barColor(11));
+        assertEquals("<a>", CatchAFishScore.FishColor.YELLOW.barColor(12));
+        assertEquals("<c>|<8>" + "|".repeat(46), CatchAFishScore.FishColor.YELLOW.bar(0));
+        assertEquals(0.5238f, CatchAFishScore.FishColor.YELLOW.hatPitch(0), 0.0005);
+        assertEquals(1.5238f, CatchAFishScore.FishColor.YELLOW.hatPitch(16), 0.0005);
+        assertEquals(0.6349f, CatchAFishScore.FishColor.RED.hatPitch(1), 0.0005);
     }
 
     @Test
