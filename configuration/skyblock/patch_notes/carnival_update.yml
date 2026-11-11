@@ -1,0 +1,24 @@
+title: "The Carnival Update"
+date: "10th November 2026"
+intro:
+  - "Foxy's Carnival in the Hub has been rebuilt from a recording of the real one, from its tents and stalls to the end-of-game summary."
+sections:
+  - heading: "The Carnival grounds"
+    colour: "<6>"
+    lines:
+      - "The whole Carnival now stands south-west of the Village: the tents, the fishing pond, the Fruit Digging sandbox, the Zombie Shootout gallery, the banners and the lanterns."
+      - "The Carnival Leader, Chantelle, Doug, the Carnival Fisherman, the Carnival Pirateman and the Carnival Cowboy wear their real skins and stand where they do on Hypixel. Chantelle's sign reads CARNIVAL GOALS and Doug's reads SOUVENIR SHOP."
+      - "Each game has a leaderboard beside its stall: the Top 10 best single-game scores of this Carnival and your own place."
+  - heading: "Games"
+    colour: "<a>"
+    lines:
+      - "While you play, your sidebar shows the game, the time left, its counters and your score. Your hotbar gets a Leave Game button; leaving counts as a fail."
+      - "Fruit Digging, Catch a Fish and Zombie Shootout now play like Hypixel's: the same arenas, timings, points, sounds and end-of-game summary."
+      - "Carnival Goals now appear two seconds after a game, together with their summed rewards."
+      - "The Shoot Zombies goal now asks for 60 Zombies, as on Hypixel."
+  - heading: "Around the Carnival"
+    colour: "<e>"
+    lines:
+      - "Inside the Carnival, your sidebar shows your Carnival Tokens and how long the Carnival has left."
+      - "Claiming your daily tickets from the Carnival Leader now confirms it in chat."
+      - "The Carnival Leader now writes your name in your rank colour."
