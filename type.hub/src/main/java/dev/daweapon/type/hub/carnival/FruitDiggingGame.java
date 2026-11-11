@@ -119,6 +119,11 @@ public class FruitDiggingGame extends CarnivalGameBase {
     }
 
     @Override
+    protected List<String> sidebarBody() {
+        return List.of("<f>Fruits: <a>" + (FruitDiggingBoard.DIGS - board.getDigsLeft()) + "<7>/<c>" + FruitDiggingBoard.DIGS);
+    }
+
+    @Override
     protected long score() {
         return Math.round(board.getScore());
     }

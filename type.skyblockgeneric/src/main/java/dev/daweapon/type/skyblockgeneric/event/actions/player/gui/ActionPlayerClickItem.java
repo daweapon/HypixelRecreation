@@ -31,6 +31,8 @@ public class ActionPlayerClickItem implements HypixelEventClass {
         }
         if (touchesMenuSlot(event) || isMenu(event.getClickedItem()) || isMenu(player.getInventory().getCursorItem())) {
             event.setCancelled(true);
+            boolean clicked = event.getClick() instanceof Click.Left || event.getClick() instanceof Click.Right;
+            if (clicked && MenuSlotOverride.use(player, event.getClickedItem())) return;
             boolean opens = isMenu(event.getClickedItem()) || MenuSlotOverride.opensMenu(player, event.getClickedItem());
             if (opens && (event.getClick() instanceof Click.Left || event.getClick() instanceof Click.Right)) {
                 player.openView(new GUISkyBlockMenu());
@@ -41,7 +43,12 @@ public class ActionPlayerClickItem implements HypixelEventClass {
     /** Right-clicking an item that stands in for the SkyBlock Menu, such as a dungeon's Magical Map, opens the menu. */
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void use(PlayerUseItemEvent event) {
-        if (!(event.getPlayer() instanceof SkyBlockPlayer player) || !MenuSlotOverride.opensMenu(player, event.getItemStack())) return;
+        if (!(event.getPlayer() instanceof SkyBlockPlayer player)) return;
+        if (MenuSlotOverride.use(player, event.getItemStack())) {
+            event.setCancelled(true);
+            return;
+        }
+        if (!MenuSlotOverride.opensMenu(player, event.getItemStack())) return;
         event.setCancelled(true);
         player.openView(new GUISkyBlockMenu());
     }

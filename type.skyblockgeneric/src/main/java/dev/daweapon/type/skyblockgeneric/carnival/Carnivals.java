@@ -97,8 +97,11 @@ public final class Carnivals {
         return true;
     }
 
-    /** Records a finished game, pays its tokens and any goals it completes; returns the tokens earned. */
-    public static int finishGame(SkyBlockPlayer player, CarnivalGameResult result) {
+    public record Finish(int tokens, List<CarnivalGoal> goals) {
+    }
+
+    /** Records a finished game and pays its tokens and any goals it completes; the caller announces the goals. */
+    public static Finish finishGame(SkyBlockPlayer player, CarnivalGameResult result) {
         CarnivalProfile profile = profile(player);
         CarnivalProfile.GameStats stats = profile.stats(result.game());
         long previousBest = stats.getYearHighScore();
@@ -120,20 +123,21 @@ public final class Carnivals {
             player.addAndUpdateItem(new SkyBlockItem(ItemType.CARNIVAL_TICKET, CarnivalGoal.TICKETS_PER_GOAL));
         }
         save(player, profile);
-        if (!completed.isEmpty()) announceGoals(player, completed);
-        return earned;
+        return new Finish(earned, completed);
     }
 
-    private static void announceGoals(SkyBlockPlayer player, List<CarnivalGoal> goals) {
-        StringBuilder message = new StringBuilder("<a><l>CARNIVAL GOALS COMPLETE");
+    public static List<String> goalsCompleteLines(List<CarnivalGoal> goals) {
+        List<String> lines = new ArrayList<>();
+        lines.add("<a><l>CARNIVAL GOALS COMPLETE");
         int tokens = 0;
         for (CarnivalGoal goal : goals) {
-            message.append("\n<8>- <7>").append(goal.plainDescription());
+            lines.add("<8> - <7>" + goal.chatDescription());
             tokens += goal.getTokens();
         }
-        message.append("\n\n<7>Rewards:")
-                .append("\n   <8>+<e>").append(StringUtility.commaify(tokens)).append(" Carnival Tokens")
-                .append("\n   <a>Carnival Ticket <8>x").append(goals.size() * CarnivalGoal.TICKETS_PER_GOAL);
-        for (String line : message.toString().split("\n", -1)) player.sendMessage(line);
+        lines.add("");
+        lines.add("<7>Rewards:");
+        lines.add("   <7><8>+<e>" + StringUtility.commaify(tokens) + " Carnival Tokens");
+        lines.add("   <7><a>Carnival Ticket <8>x" + goals.size() * CarnivalGoal.TICKETS_PER_GOAL);
+        return lines;
     }
 }

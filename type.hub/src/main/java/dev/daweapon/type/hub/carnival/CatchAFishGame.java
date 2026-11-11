@@ -211,6 +211,11 @@ public class CatchAFishGame extends CarnivalGameBase implements StationaryCarniv
     }
 
     @Override
+    protected List<String> sidebarBody() {
+        return List.of("<f>Catch Streak: <a>" + score.getStreak());
+    }
+
+    @Override
     protected long score() {
         return score.getScore();
     }

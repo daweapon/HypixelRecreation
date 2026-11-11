@@ -19,7 +19,7 @@ public enum CarnivalGoal {
     FISH_STREAK(CarnivalGame.CATCH_A_FISH, Kind.METRIC, Metric.BEST_STREAK, 5, 100, "Reach a <a>5 Catch Streak <7>in a single\n<7>game of <3>Catch a Fish<7>."),
     ZOMBIE_PLAY(CarnivalGame.ZOMBIE_SHOOTOUT, Kind.PLAY, null, 3, 50, "Play <a>3 games <7>of <c>Zombie Shootout<7>."),
     ZOMBIE_SCORE(CarnivalGame.ZOMBIE_SHOOTOUT, Kind.SCORE, null, 3_000, 50, "Reach <a>3,000 score <7>in a single game\n<7>of <c>Zombie Shootout<7>."),
-    ZOMBIE_KILLS(CarnivalGame.ZOMBIE_SHOOTOUT, Kind.METRIC, Metric.ZOMBIES, 75, 100, "Shoot <a>75 Zombies <7>in a single game of\n<c>Zombie Shootout<7>."),
+    ZOMBIE_KILLS(CarnivalGame.ZOMBIE_SHOOTOUT, Kind.METRIC, Metric.ZOMBIES, 60, 100, "Shoot <a>60 Zombies <7>in a single game of\n<c>Zombie Shootout<7>."),
     ZOMBIE_DIAMOND(CarnivalGame.ZOMBIE_SHOOTOUT, Kind.METRIC, Metric.DIAMOND_ZOMBIES, 5, 100, "Shoot <a>5 Diamond Zombies <7>in a single\n<7>game of <c>Zombie Shootout<7>."),
     ZOMBIE_LAMPS(CarnivalGame.ZOMBIE_SHOOTOUT, Kind.METRIC, Metric.LAMPS, 5, 100, "Shoot <a>5 Redstone Lamps <7>in a single\n<7>game of <c>Zombie Shootout<7>.");
 
@@ -52,7 +52,7 @@ public enum CarnivalGoal {
         };
     }
 
-    public String plainDescription() {
-        return description.replaceAll("<[^>]+>", "").replace("\n", " ");
+    public String chatDescription() {
+        return description.replace("\n<7>", " ").replace("\n", " ");
     }
 }

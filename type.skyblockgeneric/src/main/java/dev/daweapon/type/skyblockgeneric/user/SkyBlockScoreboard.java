@@ -32,6 +32,8 @@ import dev.daweapon.type.skyblockgeneric.mission.MissionData;
 import dev.daweapon.type.skyblockgeneric.mission.SkyBlockMission;
 import dev.daweapon.type.skyblockgeneric.mission.SkyBlockProgressMission;
 import dev.daweapon.type.skyblockgeneric.glacite.ColdService;
+import dev.daweapon.type.skyblockgeneric.carnival.Carnival;
+import dev.daweapon.type.skyblockgeneric.carnival.Carnivals;
 import dev.daweapon.type.skyblockgeneric.region.RegionType;
 import dev.daweapon.type.skyblockgeneric.region.SkyBlockRegion;
 
@@ -153,7 +155,13 @@ public class SkyBlockScoreboard {
                     StringUtility.commaify(bits)));
             }
 
-            dev.daweapon.type.skyblockgeneric.garden.GardenProfile garden = dev.daweapon.type.skyblockgeneric.garden.Gardens.profile(player);
+            boolean carnivalTokens = Carnival.isOpen() && region != null && region.getType() == RegionType.CARNIVAL;
+            TextBody.Section tokensLine = purse.child("carnival_tokens").when(() -> carnivalTokens);
+            if (carnivalTokens) {
+                tokensLine.line(Text.of("<f>Carnival Tokens: <e>{}", StringUtility.commaify(Carnivals.profile(player).getTokens())));
+            }
+
+            dev.daweapon.type.skyblockgeneric.garden.GardenProfile garden =dev.daweapon.type.skyblockgeneric.garden.Gardens.profile(player);
             boolean hasCopper = dev.daweapon.type.generic.HypixelConst.isGardenServer() && garden.getCopper() >= 1;
             TextBody.Section copperLine = purse.child("copper").when(() -> hasCopper);
             if (hasCopper) {
@@ -306,6 +314,13 @@ public class SkyBlockScoreboard {
                 objectives.line(Text.key("scoreboard.skyblock.objective_label"));
             }
             objectives.line("<e>{}", questObjective.text());
+        }
+
+        boolean carnivalCountdown = Carnival.isOpen() && region != null && region.getType() == RegionType.CARNIVAL;
+        TextBody.Section carnival = body.section("carnival").when(() -> carnivalCountdown);
+        if (carnivalCountdown) {
+            carnival.line(BLANK);
+            carnival.line(Text.of("<e>Carnival<f> {}", Carnival.countdown()));
         }
 
         body.section("footer").line(BLANK).line(Text.key("scoreboard.common.footer"));

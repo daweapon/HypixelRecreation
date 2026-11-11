@@ -39,6 +39,12 @@ public final class Carnival {
         return ElectionManager.getElectionData().getMayorElectedYear();
     }
 
+    /** Time left in the Carnival as Hypixel's sidebar shows it, hours uncapped: {@code 102:52:22}. */
+    public static String countdown() {
+        long seconds = Math.max(0, SkyBlockCalendar.ticksUntilEvent(CalendarEvent.ELECTION_CLOSE) / 20);
+        return String.format("%d:%02d:%02d", seconds / 3600, seconds / 60 % 60, seconds % 60);
+    }
+
     public static int tokensFor(long score) {
         return (int) Math.max(0, score / POINTS_PER_TOKEN);
     }

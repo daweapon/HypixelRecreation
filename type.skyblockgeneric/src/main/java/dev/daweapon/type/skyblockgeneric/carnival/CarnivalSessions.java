@@ -1,6 +1,12 @@
 package dev.daweapon.type.skyblockgeneric.carnival;
 
+import net.kyori.adventure.text.format.TextDecoration;
 import net.minestom.server.item.ItemStack;
+import net.minestom.server.item.Material;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.event.actions.player.ActionPlayerChangeHypixelMenuDisplay;
+import dev.daweapon.type.skyblockgeneric.user.ChallengeSidebar;
+import dev.daweapon.type.skyblockgeneric.user.MenuSlotOverride;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.handlers.interactable.InteractableItemConfig;
@@ -11,6 +17,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Stream;
 
 /** Tracks who is playing which Carnival game and routes the game tools' clicks to it. */
 public final class CarnivalSessions {
@@ -18,10 +25,26 @@ public final class CarnivalSessions {
 
     private CarnivalSessions() {}
 
+    private static final ItemStack LEAVE_GAME = ItemStack.builder(Material.RED_TERRACOTTA)
+            .customName(Text.of("<c>Leave Game <7>(Click)").asComponent().decoration(TextDecoration.ITALIC, false))
+            .lore(Stream.of("<7>Leave your current carnival", "<7>minigame. Will count as a <c>fail<7>!", "",
+                            "<e>Click to leave minigame.")
+                    .map(line -> Text.of(line).asComponent().decoration(TextDecoration.ITALIC, false)).toList())
+            .build();
+
     public static void initialize() {
         register("CARNIVAL_SHOVEL_INTERACT", CarnivalGame.FRUIT_DIGGING);
         register("CARNIVAL_ROD_INTERACT", CarnivalGame.CATCH_A_FISH);
         register("CARNIVAL_DART_TUBE_INTERACT", CarnivalGame.ZOMBIE_SHOOTOUT);
+        ChallengeSidebar.register(player -> {
+            CarnivalGameSession session = get(player);
+            return session == null ? null : session.sidebarLines();
+        });
+        ChallengeSidebar.hidePurseWhen(CarnivalSessions::isPlaying);
+        MenuSlotOverride.register(player -> isPlaying(player) ? LEAVE_GAME : null, player -> {
+            CarnivalGameSession session = get(player);
+            if (session != null) session.leave();
+        });
     }
 
     private static void register(String handlerId, CarnivalGame game) {
@@ -51,11 +74,13 @@ public final class CarnivalSessions {
 
     public static void begin(SkyBlockPlayer player, CarnivalGameSession session) {
         SESSIONS.put(player.getUuid(), session);
+        if (player.isOnline()) ActionPlayerChangeHypixelMenuDisplay.setMainMenu(player);
     }
 
     public static void end(SkyBlockPlayer player, CarnivalGameSession session) {
         SESSIONS.remove(player.getUuid(), session);
         removeTools(player);
+        if (player.isOnline()) ActionPlayerChangeHypixelMenuDisplay.setMainMenu(player);
     }
 
     public static void abandon(SkyBlockPlayer player) {

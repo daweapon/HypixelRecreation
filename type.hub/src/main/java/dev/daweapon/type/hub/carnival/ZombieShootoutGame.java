@@ -205,6 +205,11 @@ public class ZombieShootoutGame extends CarnivalGameBase implements StationaryCa
     }
 
     @Override
+    protected List<String> sidebarBody() {
+        return List.of("<f>Kills: <a>" + score.totalKills());
+    }
+
+    @Override
     protected long score() {
         return Math.round(score.getScore());
     }
