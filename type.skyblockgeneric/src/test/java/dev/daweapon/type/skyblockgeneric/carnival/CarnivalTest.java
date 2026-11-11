@@ -76,7 +76,31 @@ class CarnivalTest {
         assertEquals(300, board.getScore());
         board.dig(2, 0, DowsingMode.MINES);
         board.dig(3, 0, DowsingMode.MINES);
-        assertEquals(300 + 500 + 800, board.getScore());
+        assertEquals(300 + 200 + 500, board.getScore());
+    }
+
+    @Test
+    void treasureNamesTheFruitWorthMostRightNow() {
+        FruitDiggingBoard board = board(FruitTile.APPLE, FruitTile.APPLE, FruitTile.APPLE, FruitTile.MANGO, FruitTile.APPLE);
+        board.dig(0, 0, DowsingMode.MINES);
+        board.dig(1, 0, DowsingMode.MINES);
+        assertEquals("<6><l>TREASURE! <f>There is a <a>Mango <f>nearby.", board.dig(2, 0, DowsingMode.TREASURE).dowsing());
+        assertEquals("<6><l>TREASURE! <f>There is an <a>Apple <f>nearby.", board.dig(3, 0, DowsingMode.TREASURE).dowsing());
+        assertEquals("<6><l>TREASURE! <f>There are no fruits nearby!", board.dig(4, 0, DowsingMode.TREASURE).dowsing());
+        assertEquals("<c><l>MINES! <f>There are <6>0 <f>bombs hidden nearby.", board.dig(5, 0, DowsingMode.MINES).dowsing());
+    }
+
+    @Test
+    void bombSpreadsToTwoOrThreeHiddenFruits() {
+        FruitTile[][] tiles = new FruitTile[FruitDiggingBoard.SIZE][FruitDiggingBoard.SIZE];
+        for (FruitTile[] column : tiles) Arrays.fill(column, FruitTile.MANGO);
+        tiles[3][3] = FruitTile.BOMB;
+        for (int seed = 0; seed < 20; seed++) {
+            FruitDiggingBoard board = new FruitDiggingBoard(copy(tiles), new Random(seed));
+            int destroyed = board.dig(3, 3, DowsingMode.MINES).destroyed().size();
+            assertTrue(destroyed == 2 || destroyed == 3, "destroyed " + destroyed);
+            assertEquals(1, board.found().get(FruitTile.BOMB));
+        }
     }
 
     @Test
@@ -172,6 +196,12 @@ class CarnivalTest {
         assertTrue(copy.getCompletedGoals().isEmpty());
         assertEquals(0, copy.stats(CarnivalGame.CATCH_A_FISH).getYearAttempts());
         assertEquals(1, copy.stats(CarnivalGame.CATCH_A_FISH).getLifetimeAttempts());
+    }
+
+    private static FruitTile[][] copy(FruitTile[][] tiles) {
+        FruitTile[][] copy = new FruitTile[tiles.length][];
+        for (int i = 0; i < tiles.length; i++) copy[i] = tiles[i].clone();
+        return copy;
     }
 
     private static FruitDiggingBoard board(FruitTile... firstRow) {

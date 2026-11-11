@@ -18,6 +18,7 @@ import java.util.Set;
 /**
  * The rules of Fruit Digging on a 7x7 board: 34 fruits, 10 bombs and 5 rums, dug 15 times with
  * the Carnival Shovel. Column {@code x} grows east and row {@code z} grows south.
+ * Fruit values and dowsing text follow the 2026-11-10 capture of the real game.
  */
 public class FruitDiggingBoard {
     public static final int SIZE = 7;
@@ -25,17 +26,29 @@ public class FruitDiggingBoard {
     private static final double POMEGRANATE_MULTIPLIER = 1.5;
     private static final double DURIAN_MULTIPLIER = 0.5;
     private static final double WATERMELON_SHARE = 0.5;
+    private static final int MIN_BOMB_SPREAD = 2;
+    private static final int MAX_BOMB_SPREAD = 3;
 
     public enum CellState { HIDDEN, REVEALED, DESTROYED }
 
     public enum DowsingMode {
-        MINES("<c>Mines"), ANCHOR("<b>Anchor"), TREASURE("<6>Treasure");
+        MINES("<c>Mines", 1f, List.of("<7>Reveals the amount of <c>Bombs", "<7>adjacent to this block when you dig.")),
+        ANCHOR("<b>Anchor", 1.1428572f, List.of("<7>Reveals the location of the",
+                "<7>lowest-scoring <6>Fruit <7>adjacent to", "<7>this block when you dig.")),
+        TREASURE("<6>Treasure", 1.2857143f, List.of("<7>Reveals the highest scoring <6>Fruit",
+                "<7>adjacent to this block when you dig."));
 
         @Getter
         private final String displayName;
+        @Getter
+        private final float switchPitch;
+        @Getter
+        private final List<String> description;
 
-        DowsingMode(String displayName) {
+        DowsingMode(String displayName, float switchPitch, List<String> description) {
             this.displayName = displayName;
+            this.switchPitch = switchPitch;
+            this.description = description;
         }
 
         public DowsingMode next() {
@@ -43,7 +56,8 @@ public class FruitDiggingBoard {
         }
     }
 
-    public record Reveal(int x, int z, FruitTile tile, double points, boolean fromWatermelon) {}
+    public record Reveal(int x, int z, FruitTile tile, double points, boolean fromWatermelon, double multiplier,
+                         @Nullable FruitTile multiplierSource) {}
 
     public record Dig(List<Reveal> reveals, List<int[]> destroyed, boolean bombDefused, @Nullable String dowsing) {}
 
@@ -55,6 +69,7 @@ public class FruitDiggingBoard {
     @Getter
     private double score;
     private double nextMultiplier = 1;
+    private @Nullable FruitTile nextMultiplierSource;
     private boolean bombShield;
     private boolean dowsingDisabled;
     private int apples;
@@ -98,7 +113,9 @@ public class FruitDiggingBoard {
     public @Nullable Dig dig(int x, int z, DowsingMode mode) {
         if (!inside(x, z) || states[x][z] != CellState.HIDDEN || isFinished()) return null;
         double multiplier = nextMultiplier;
+        FruitTile multiplierSource = nextMultiplierSource;
         nextMultiplier = 1;
+        nextMultiplierSource = null;
         boolean shielded = bombShield;
         bombShield = false;
         boolean dowse = !dowsingDisabled;
@@ -111,16 +128,18 @@ public class FruitDiggingBoard {
         states[x][z] = CellState.REVEALED;
         boolean defused = false;
         if (tile == FruitTile.BOMB) {
+            found.merge(tile, 1, Integer::sum);
             if (shielded) defused = true;
             else explode(x, z, destroyed);
-            reveals.add(new Reveal(x, z, tile, 0, false));
+            reveals.add(new Reveal(x, z, tile, 0, false, 1, null));
         } else if (tile == FruitTile.RUM) {
+            found.merge(tile, 1, Integer::sum);
             dowsingDisabled = true;
-            reveals.add(new Reveal(x, z, tile, 0, false));
+            reveals.add(new Reveal(x, z, tile, 0, false, 1, null));
         } else {
             double points = collect(tile) * multiplier;
             score += points;
-            reveals.add(new Reveal(x, z, tile, points, false));
+            reveals.add(new Reveal(x, z, tile, points, false, multiplier, multiplier == 1 ? null : multiplierSource));
             activate(x, z, tile, reveals);
         }
         return new Dig(reveals, destroyed, defused, dowse ? dowse(x, z, mode) : null);
@@ -131,15 +150,34 @@ public class FruitDiggingBoard {
         found.merge(tile, 1, Integer::sum);
         return switch (tile) {
             case APPLE -> ++apples * FruitTile.APPLE_BONUS;
-            case CHERRY -> tile.getPoints() + ++cherries * FruitTile.CHERRY_BONUS;
+            case CHERRY -> tile.getPoints() + cherries++ * FruitTile.CHERRY_BONUS;
             default -> tile.getPoints();
         };
     }
 
+    /** What digging this tile right now would score, before any Pomegranate or Durian multiplier. */
+    public int valueOf(FruitTile tile) {
+        return switch (tile) {
+            case APPLE -> (apples + 1) * FruitTile.APPLE_BONUS;
+            case CHERRY -> tile.getPoints() + cherries * FruitTile.CHERRY_BONUS;
+            default -> tile.getPoints();
+        };
+    }
+
+    public Map<FruitTile, Integer> found() {
+        return Collections.unmodifiableMap(found);
+    }
+
     private void activate(int x, int z, FruitTile tile, List<Reveal> reveals) {
         switch (tile) {
-            case POMEGRANATE -> nextMultiplier = POMEGRANATE_MULTIPLIER;
-            case DURIAN -> nextMultiplier = DURIAN_MULTIPLIER;
+            case POMEGRANATE -> {
+                nextMultiplier = POMEGRANATE_MULTIPLIER;
+                nextMultiplierSource = tile;
+            }
+            case DURIAN -> {
+                nextMultiplier = DURIAN_MULTIPLIER;
+                nextMultiplierSource = tile;
+            }
             case COCONUT -> bombShield = true;
             case WATERMELON -> chain(x, z, reveals);
             default -> {}
@@ -147,35 +185,32 @@ public class FruitDiggingBoard {
     }
 
     private void chain(int x, int z, List<Reveal> reveals) {
-        List<int[]> candidates = hiddenFruits(x, z, true);
-        if (candidates.isEmpty()) candidates = hiddenFruits(x, z, false);
+        List<int[]> candidates = hiddenFruits(x, z);
         if (candidates.isEmpty()) return;
         int[] cell = candidates.get(random.nextInt(candidates.size()));
         FruitTile tile = tiles[cell[0]][cell[1]];
         states[cell[0]][cell[1]] = CellState.REVEALED;
         double points = collect(tile) * WATERMELON_SHARE;
         score += points;
-        reveals.add(new Reveal(cell[0], cell[1], tile, points, true));
+        reveals.add(new Reveal(cell[0], cell[1], tile, points, true, WATERMELON_SHARE, FruitTile.WATERMELON));
         activate(cell[0], cell[1], tile, reveals);
     }
 
-    private List<int[]> hiddenFruits(int x, int z, boolean adjacentOnly) {
+    private List<int[]> hiddenFruits(int x, int z) {
         List<int[]> cells = new ArrayList<>();
-        for (int cx = 0; cx < SIZE; cx++) {
-            for (int cz = 0; cz < SIZE; cz++) {
-                if (adjacentOnly && (Math.abs(cx - x) > 1 || Math.abs(cz - z) > 1)) continue;
-                if (states[cx][cz] == CellState.HIDDEN && tiles[cx][cz].isFruit()) cells.add(new int[]{cx, cz});
-            }
+        for (int[] cell : neighbours(x, z)) {
+            if (states[cell[0]][cell[1]] == CellState.HIDDEN && tiles[cell[0]][cell[1]].isFruit()) cells.add(cell);
         }
         return cells;
     }
 
     private void explode(int x, int z, List<int[]> destroyed) {
-        for (int[] cell : neighbours(x, z)) {
-            if (states[cell[0]][cell[1]] == CellState.HIDDEN && tiles[cell[0]][cell[1]].isFruit()) {
-                states[cell[0]][cell[1]] = CellState.DESTROYED;
-                destroyed.add(cell);
-            }
+        List<int[]> targets = hiddenFruits(x, z);
+        Collections.shuffle(targets, random);
+        int spread = MIN_BOMB_SPREAD + random.nextInt(MAX_BOMB_SPREAD - MIN_BOMB_SPREAD + 1);
+        for (int[] cell : targets.subList(0, Math.min(spread, targets.size()))) {
+            states[cell[0]][cell[1]] = CellState.DESTROYED;
+            destroyed.add(cell);
         }
     }
 
@@ -185,17 +220,18 @@ public class FruitDiggingBoard {
                 long bombs = neighbours(x, z).stream()
                         .filter(cell -> tiles[cell[0]][cell[1]] == FruitTile.BOMB && states[cell[0]][cell[1]] == CellState.HIDDEN)
                         .count();
-                yield "<c><l>MINES! <7>There " + (bombs == 1 ? "is <c>1 <7>bomb" : "are <c>" + bombs + " <7>bombs") + " hidden nearby.";
+                yield "<c><l>MINES! <f>There " + (bombs == 1 ? "is <6>1 <f>bomb" : "are <6>" + bombs + " <f>bombs") + " hidden nearby.";
             }
             case ANCHOR -> {
                 int[] lowest = hiddenNeighbourFruit(x, z, false);
-                yield lowest == null ? "<b><l>ANCHOR! <7>There are no fruits nearby."
-                        : "<b><l>ANCHOR! <7>The lowest scoring fruit nearby is to the <b>" + direction(x, z, lowest) + "<7>.";
+                yield lowest == null ? "<b><l>ANCHOR! <f>There are no fruits nearby!"
+                        : "<b><l>ANCHOR! <f>The lowest scoring fruit nearby is to the <b>" + direction(x, z, lowest) + "<f>.";
             }
             case TREASURE -> {
                 int[] highest = hiddenNeighbourFruit(x, z, true);
-                yield highest == null ? "<6><l>TREASURE! <7>There are no fruits nearby."
-                        : "<6><l>TREASURE! <7>There is a " + tiles[highest[0]][highest[1]].colored() + " <7>nearby.";
+                if (highest == null) yield "<6><l>TREASURE! <f>There are no fruits nearby!";
+                FruitTile fruit = tiles[highest[0]][highest[1]];
+                yield "<6><l>TREASURE! <f>There is " + fruit.article() + " " + fruit.colored() + " <f>nearby.";
             }
         };
     }
@@ -209,8 +245,9 @@ public class FruitDiggingBoard {
                 best = cell;
                 continue;
             }
-            int current = tiles[best[0]][best[1]].getPoints();
-            if (highest ? tile.getPoints() > current : tile.getPoints() < current) best = cell;
+            int current = valueOf(tiles[best[0]][best[1]]);
+            int value = valueOf(tile);
+            if (highest ? value > current : value < current) best = cell;
         }
         return best;
     }

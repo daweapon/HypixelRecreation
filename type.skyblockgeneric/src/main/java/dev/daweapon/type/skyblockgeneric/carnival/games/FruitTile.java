@@ -2,17 +2,20 @@ package dev.daweapon.type.skyblockgeneric.carnival.games;
 
 import lombok.Getter;
 
-/** What lies under one sand block in Fruit Digging, with the wiki's points and counts per board. */
+/**
+ * What lies under one sand block in Fruit Digging, with the wiki's points and counts per board. Declared in the order
+ * Hypixel lists them in the end-of-game summary: fruits by rarity colour, then Bomb and Rum.
+ */
 @Getter
 public enum FruitTile {
+    APPLE("Apple", "<a>", 0, 8),
+    MANGO("Mango", "<a>", 300, 10),
+    POMEGRANATE("Pomegranate", "<9>", 200, 4),
+    WATERMELON("Watermelon", "<9>", 100, 4),
+    COCONUT("Coconut", "<9>", 200, 3),
+    CHERRY("Cherry", "<5>", 200, 2),
+    DURIAN("Durian", "<5>", 800, 2),
     DRAGONFRUIT("Dragonfruit", "<d>", 1200, 1),
-    MANGO("Mango", "<6>", 300, 10),
-    COCONUT("Coconut", "<6>", 200, 3),
-    APPLE("Apple", "<c>", 0, 8),
-    CHERRY("Cherry", "<c>", 200, 2),
-    POMEGRANATE("Pomegranate", "<5>", 200, 4),
-    DURIAN("Durian", "<e>", 800, 2),
-    WATERMELON("Watermelon", "<a>", 100, 4),
     BOMB("Bomb", "<c>", 0, 10),
     RUM("Rum", "<e>", 0, 5);
 
@@ -37,5 +40,9 @@ public enum FruitTile {
 
     public String colored() {
         return color + displayName;
+    }
+
+    public String article() {
+        return "AEIOU".indexOf(displayName.charAt(0)) >= 0 ? "an" : "a";
     }
 }

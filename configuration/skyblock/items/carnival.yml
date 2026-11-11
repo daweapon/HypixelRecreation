@@ -7,6 +7,10 @@ items:
       - "\xA77Used to dig up \xA76fruits \xA77in the \xA76Fruit"
       - "\xA76Digging \xA77game."
       - ""
+      - "\xA7eDowsing Mode: \xA7cMines"
+      - "\xA77Reveals the amount of \xA7cBombs"
+      - "\xA77adjacent to this block when you dig."
+      - ""
       - "\xA7eRight-click to cycle Dowsing Modes!"
     components:
       - id: INTERACTABLE
