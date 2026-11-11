@@ -193,10 +193,35 @@ class CarnivalTest {
         ZombieShootoutScore score = new ZombieShootoutScore();
         assertEquals(60, score.onZombie(ZombieTier.LEATHER, true, 0));
         score.onLamp(10);
-        assertEquals(144, score.onZombie(ZombieTier.DIAMOND, false, 20), 0.001);
-        assertEquals(120, score.onZombie(ZombieTier.DIAMOND, false, 10 + ZombieShootoutScore.LAMP_BOOST_TICKS), 0.001);
-        assertEquals(3, score.totalKills());
+        assertEquals(144, score.onZombie(ZombieTier.DIAMOND, false, 20));
+        assertEquals(72, score.onZombie(ZombieTier.LEATHER, true, 30));
+        assertEquals(36, score.onZombie(ZombieTier.LEATHER, false, 10 + ZombieShootoutScore.LAMP_BOOST_TICKS - 1));
+        assertEquals(120, score.onZombie(ZombieTier.DIAMOND, false, 10 + ZombieShootoutScore.LAMP_BOOST_TICKS));
+        assertEquals(5, score.totalKills());
+        assertEquals(168, score.points(ZombieTier.LEATHER));
         assertEquals(1, score.result().metric(Metric.LAMPS));
+        assertEquals(60 + 100 + 144 + 72 + 36 + 120, score.getScore());
+    }
+
+    @Test
+    void zombieWavesGrowAndUnlockArmourLikeTheCapture() {
+        int[] sizes = {1, 2, 3, 4, 4, 5, 6, 7, 7, 8, 9, 9, 9};
+        for (int wave = 1; wave <= sizes.length; wave++) {
+            assertEquals(sizes[wave - 1], ZombieShootoutScore.waveSize(wave));
+        }
+        Random random = new Random(7);
+        for (int wave = 1; wave <= 16; wave++) {
+            for (int run = 0; run < 50; run++) {
+                var spawns = ZombieShootoutScore.wave(wave, random);
+                assertEquals(ZombieShootoutScore.waveSize(wave), spawns.size());
+                assertEquals(wave >= 5 ? 1 : 0, spawns.stream().filter(ZombieShootoutScore.Spawn::baby).count());
+                if (wave >= 5) assertTrue(spawns.getFirst().baby());
+                for (var spawn : spawns) {
+                    assertTrue(wave >= spawn.tier().getFirstWave(), wave + " spawned " + spawn.tier());
+                    if (spawn.baby()) assertTrue(spawn.tier() == ZombieTier.LEATHER || spawn.tier() == ZombieTier.IRON);
+                }
+            }
+        }
     }
 
     @Test
