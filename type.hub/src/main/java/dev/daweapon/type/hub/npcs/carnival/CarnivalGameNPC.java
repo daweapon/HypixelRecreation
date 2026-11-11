@@ -50,20 +50,20 @@ public abstract class CarnivalGameNPC extends HypixelNPC {
                 CarnivalProfile met = Carnivals.profile(player);
                 met.meet(npc);
                 Carnivals.save(player, met);
-                choose(player, replies.introAccept(), null, replies.introDecline());
+                choose(player, replies.introAccept(), null, replies.introDecline(), "start");
             });
             return;
         }
         setDialogue(player, "welcome").thenRun(() ->
-                choose(player, replies.welcomeAccept(), replies.welcomeRules(), replies.welcomeDecline()));
+                choose(player, replies.welcomeAccept(), replies.welcomeRules(), replies.welcomeDecline(), "start"));
     }
 
-    private void choose(SkyBlockPlayer player, String accept, String rules, String decline) {
+    private void choose(SkyBlockPlayer player, String accept, String rules, String decline, String startDialogue) {
         List<NPCOption.Option> options = new java.util.ArrayList<>();
-        options.add(option("play", NamedTextColor.GREEN, accept, () -> tryStart(player)));
+        options.add(option("play", NamedTextColor.GREEN, accept, () -> tryStart(player, startDialogue)));
         if (rules != null) {
             options.add(option("rules", NamedTextColor.AQUA, rules, () -> setDialogue(player, "rules").thenRun(() ->
-                    choose(player, replies.rulesAccept(), null, replies.rulesDecline()))));
+                    choose(player, replies.rulesAccept(), null, replies.rulesDecline(), startAfterRules()))));
         }
         options.add(option("decline", NamedTextColor.RED, decline, () -> setDialogue(player, "decline")));
         NPCOption.sendOption(player, npc.name().toLowerCase(), true, options);
@@ -73,7 +73,11 @@ public abstract class CarnivalGameNPC extends HypixelNPC {
         return NPCOption.Option.builder().key(key).color(color).bold(false).name(text).action(_ -> action.run()).build();
     }
 
-    private void tryStart(SkyBlockPlayer player) {
+    protected String startAfterRules() {
+        return "start";
+    }
+
+    private void tryStart(SkyBlockPlayer player, String startDialogue) {
         if (!Carnival.acceptsNewGames()) {
             setDialogue(player, "closed");
             return;
@@ -86,7 +90,7 @@ public abstract class CarnivalGameNPC extends HypixelNPC {
             player.sendMessage("<c>You need an empty hotbar slot to play!");
             return;
         }
-        setDialogue(player, "start").thenRun(() -> {
+        setDialogue(player, startDialogue).thenRun(() -> {
             int slot = CarnivalSessions.freeHotbarSlot(player);
             if (slot < 0 || !Carnivals.hasTicketsToPlay(player) || CarnivalSessions.isPlaying(player)) return;
             newGame(player).start(slot);

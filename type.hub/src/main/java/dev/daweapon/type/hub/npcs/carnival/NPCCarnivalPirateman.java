@@ -24,6 +24,11 @@ public class NPCCarnivalPirateman extends CarnivalGameNPC {
     }
 
     @Override
+    protected String startAfterRules() {
+        return "rules-start";
+    }
+
+    @Override
     protected DialogueSet[] dialogues(HypixelPlayer player) {
         String rules = "The rules of the game are as follows - I give ye a <a>shovel<f>, ye dig up the sand on the lookout fer <6>fruit<f>!";
         return new DialogueSet[]{
@@ -44,6 +49,9 @@ public class NPCCarnivalPirateman extends CarnivalGameNPC {
                         "Ye can <e><l>RIGHT CLICK <f>with yer <a>shovel <f>to swap between <6>dowsing modes<f>, which give ye a little <b>info <f>every time ye <e>dig<f>!",
                         "Yer supposed to use that <b>info <f>to avoid them <c>bombs <f>and pick the best blocks to mine.",
                         "With that said, are ye ready to play?").build(),
+                DialogueSet.builder().key("rules-start").lines(
+                        "Of course ye arrrrr!",
+                        "Good luck, matey!").build(),
                 DialogueSet.builder().key("start").lines(
                         "Here's yer <a>shovel<f>, then.",
                         "Good luck, matey!").build(),
