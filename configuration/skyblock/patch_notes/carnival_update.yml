@@ -16,6 +16,7 @@ sections:
       - "Fruit Digging, Catch a Fish and Zombie Shootout now play like Hypixel's: the same arenas, timings, points, sounds and end-of-game summary."
       - "Carnival Goals now appear two seconds after a game, together with their summed rewards."
       - "The Shoot Zombies goal now asks for 60 Zombies, as on Hypixel."
+      - "Fruit Digging: Coconuts are dark purple in chat, holograms and the summary."
   - heading: "Around the Carnival"
     colour: "<e>"
     lines:

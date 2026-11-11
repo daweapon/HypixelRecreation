@@ -12,7 +12,7 @@ public enum FruitTile {
     MANGO("Mango", "<a>", 300, 10),
     POMEGRANATE("Pomegranate", "<9>", 200, 4),
     WATERMELON("Watermelon", "<9>", 100, 4),
-    COCONUT("Coconut", "<9>", 200, 3),
+    COCONUT("Coconut", "<5>", 200, 3),
     CHERRY("Cherry", "<5>", 200, 2),
     DURIAN("Durian", "<5>", 800, 2),
     DRAGONFRUIT("Dragonfruit", "<d>", 1200, 1),
