@@ -784,12 +784,12 @@ regions:
     serverType: SKYBLOCK_HUB
   - id: carnival
     type: CARNIVAL
-    x1: -116
+    x1: -122
     y1: 60
     z1: 4
-    x2: -72
+    x2: -68
     y2: 100
-    z2: 46
+    z2: 63
     serverType: SKYBLOCK_HUB
   - id: forest_camp
     type: FORAGING_CAMP
