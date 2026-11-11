@@ -20,6 +20,7 @@ sections:
       - "Completed goals in Chantelle's Carnival Goals menu now shine."
       - "Fruit Digging: Anchor dowsing now shows the lowest-scoring nearby fruit sitting on its own tile instead of naming a direction in chat; chat only speaks when there are no fruits nearby."
       - "Fruit Digging: a bomb stopped by a Coconut now reads Bomb protection (Coconut)."
+      - "The Carnival Shovel turns iron, diamond or gold with its Mines, Anchor or Treasure mode, and the Carnival Rod uses its own model."
   - heading: "Around the Carnival"
     colour: "<e>"
     lines:

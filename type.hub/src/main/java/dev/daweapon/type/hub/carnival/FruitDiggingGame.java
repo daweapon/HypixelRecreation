@@ -83,6 +83,11 @@ public class FruitDiggingGame extends CarnivalGameBase {
             FruitTile.DURIAN, Material.SLIME_BALL,
             FruitTile.DRAGONFRUIT, Material.CHORUS_FRUIT));
 
+    private static final Map<DowsingMode, String> SHOVEL_MODELS = new EnumMap<>(Map.of(
+            DowsingMode.MINES, "hypixel_skyblock:item/uncategorized/carnival_shovel_iron",
+            DowsingMode.ANCHOR, "hypixel_skyblock:item/uncategorized/carnival_shovel_diamond",
+            DowsingMode.TREASURE, "hypixel_skyblock:item/uncategorized/carnival_shovel_gold"));
+
     private record TileSound(String sound, float pitch) {}
 
     private static final Map<FruitTile, List<TileSound>> SOUNDS = new EnumMap<>(Map.of(
@@ -355,7 +360,8 @@ public class FruitDiggingGame extends CarnivalGameBase {
             if (stack.isAir() || new SkyBlockItem(stack).getAttributeHandler().getPotentialType() != ItemType.CARNIVAL_SHOVEL) continue;
             List<Component> lore = stack.get(DataComponents.LORE);
             if (lore == null) return;
-            player.getInventory().setItemStack(slot, stack.with(DataComponents.LORE, withMode(lore)));
+            player.getInventory().setItemStack(slot, stack.with(DataComponents.LORE, withMode(lore))
+                    .with(DataComponents.ITEM_MODEL, SHOVEL_MODELS.get(mode)));
             return;
         }
     }

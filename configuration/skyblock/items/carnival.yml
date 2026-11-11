@@ -13,6 +13,8 @@ items:
       - ""
       - "\xA7eRight-click to cycle Dowsing Modes!"
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/carnival_shovel_iron
       - id: INTERACTABLE
         handler_id: CARNIVAL_SHOVEL_INTERACT
       - id: DEFAULT_SOULBOUND
@@ -25,6 +27,8 @@ items:
       - "\xA77Used to catch \xA73fish \xA77in the \xA73Catch a"
       - "\xA73Fish \xA77game."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/carnival_rod
       - id: INTERACTABLE
         handler_id: CARNIVAL_ROD_INTERACT
       - id: REFORGABLE
