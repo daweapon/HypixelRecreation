@@ -24,8 +24,8 @@ class CarnivalBoardLinesTest {
     void rankedViewerSeesTheirPlace() {
         CarnivalLeaderboards.Board board = new CarnivalLeaderboards.Board(1, List.of());
         List<String> lines = CarnivalLeaderboards.boardLines(CarnivalGame.ZOMBIE_SHOOTOUT, board,
-                new CarnivalLeaderboards.BoardRow(42, "daweapon", "aqua", 6_158), "daweapon", "aqua");
+                new CarnivalLeaderboards.BoardRow(2_147, "daweapon", "aqua", 6_158), "daweapon", "aqua");
         assertEquals("<e><l>1st Carnival", lines.get(0));
-        assertEquals("<e>42. <color:aqua>daweapon <7>- <e>6,158", lines.get(13));
+        assertEquals("<e>2,147. <color:aqua>daweapon <7>- <e>6,158", lines.get(13));
     }
 }

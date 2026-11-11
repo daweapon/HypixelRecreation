@@ -134,7 +134,7 @@ public final class CarnivalLeaderboards {
     }
 
     private static String row(BoardRow row) {
-        return "<e>" + row.rank() + ". <color:" + row.colour() + ">" + row.owner() + " <7>- <e>" + StringUtility.commaify(row.score());
+        return "<e>" + StringUtility.commaify(row.rank()) + ". <color:" + row.colour() + ">" + row.owner() + " <7>- <e>" + StringUtility.commaify(row.score());
     }
 
     public static boolean hasPendingResults(CarnivalProfile profile) {
