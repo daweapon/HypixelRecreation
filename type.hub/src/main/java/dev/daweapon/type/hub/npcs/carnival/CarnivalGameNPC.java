@@ -5,6 +5,7 @@ import net.minestom.server.coordinate.Pos;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.NPCOption;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
+import dev.daweapon.type.generic.utility.TpsMeter;
 import dev.daweapon.type.hub.carnival.CarnivalGameBase;
 import dev.daweapon.type.hub.carnival.CarnivalSkin;
 import dev.daweapon.type.skyblockgeneric.carnival.Carnival;
@@ -22,6 +23,8 @@ import java.util.List;
  * {@code closed}, plus the wording of each reply option.
  */
 public abstract class CarnivalGameNPC extends HypixelNPC {
+    private static final double LAGGING_TPS = 15;
+
     private final CarnivalNpc npc;
     private final Replies replies;
 
@@ -80,6 +83,10 @@ public abstract class CarnivalGameNPC extends HypixelNPC {
     private void tryStart(SkyBlockPlayer player, String startDialogue) {
         if (!Carnival.acceptsNewGames()) {
             setDialogue(player, "closed");
+            return;
+        }
+        if (TpsMeter.tps() < LAGGING_TPS) {
+            setDialogue(player, "lagging");
             return;
         }
         if (!Carnivals.hasTicketsToPlay(player)) {

@@ -53,7 +53,9 @@ public class NPCCarnivalCowboy extends CarnivalGameNPC {
                         "Well, gosh darn it!",
                         "Stop wasting my time then, will ya?").build(),
                 DialogueSet.builder().key("closed").lines(
-                        "Aw shucks, the Carnival is about to close! Hope to see yer next time.").build()
+                        "Aw shucks, the Carnival is about to close! Hope to see yer next time.").build(),
+                DialogueSet.builder().key("lagging").lines(
+                        "This server's draggin' like a tired old mule, can't wrangle this game right now. Sorry, partner!").build()
         };
     }
 }

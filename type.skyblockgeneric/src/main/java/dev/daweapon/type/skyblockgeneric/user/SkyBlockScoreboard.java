@@ -11,6 +11,7 @@ import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.commons.text.TextBody;
 import dev.daweapon.type.generic.HypixelConst;
+import dev.daweapon.commons.ServerType;
 import dev.daweapon.type.generic.data.datapoints.DatapointDouble;
 import dev.daweapon.type.generic.data.datapoints.DatapointInteger;
 import dev.daweapon.type.generic.scoreboard.HypixelScoreboard;
@@ -316,7 +317,7 @@ public class SkyBlockScoreboard {
             objectives.line("<e>{}", questObjective.text());
         }
 
-        boolean carnivalCountdown = Carnival.isOpen() && region != null && region.getType() == RegionType.CARNIVAL;
+        boolean carnivalCountdown = Carnival.isOpen() && HypixelConst.getTypeLoader().getType() == ServerType.SKYBLOCK_HUB;
         TextBody.Section carnival = body.section("carnival").when(() -> carnivalCountdown);
         if (carnivalCountdown) {
             carnival.line(BLANK);

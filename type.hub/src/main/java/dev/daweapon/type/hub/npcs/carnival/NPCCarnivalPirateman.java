@@ -62,7 +62,9 @@ public class NPCCarnivalPirateman extends CarnivalGameNPC {
                         "A swashbucklin' shame, if ye ask me...",
                         "Whenever ye be ready, I'll be waitin'").build(),
                 DialogueSet.builder().key("closed").lines(
-                        "Blimey! The Carnival is about to close. Ye'll gotta come back next time.").build()
+                        "Blimey! The Carnival is about to close. Ye'll gotta come back next time.").build(),
+                DialogueSet.builder().key("lagging").lines(
+                        "Arrr, this server be slower than a sea turtle in a storm! No chance we be playin' this game, matey. Sorry!").build()
         };
     }
 }

@@ -52,7 +52,9 @@ public class NPCCarnivalFisherman extends CarnivalGameNPC {
                         "Alas, not everyone can appreciate the art of <a>fishing<f>...",
                         "I'll be waiting here if you change your mind.").build(),
                 DialogueSet.builder().key("closed").lines(
-                        "Aww, the Carnival is closing for the year now. There's always a next time!").build()
+                        "Aww, the Carnival is closing for the year now. There's always a next time!").build(),
+                DialogueSet.builder().key("lagging").lines(
+                        "This server's as slow as reeling in a heavy catch, can't play the game like this. Sorry, friend!").build()
         };
     }
 }
