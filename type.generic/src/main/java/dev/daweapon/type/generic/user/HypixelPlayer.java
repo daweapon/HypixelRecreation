@@ -125,6 +125,16 @@ public class HypixelPlayer extends Player {
 		return getRank().prefixComponent(getRankColor(), isMvpPlusPlusAqua() ? NamedTextColor.AQUA : NamedTextColor.GOLD);
 	}
 
+	public NamedTextColor getNameColor() {
+		Rank rank = getRank();
+		if (rank == Rank.MVP_PLUS_PLUS) return isMvpPlusPlusAqua() ? NamedTextColor.AQUA : NamedTextColor.GOLD;
+		return rank.getTextColor();
+	}
+
+	public String getRankColoredName() {
+		return "<color:" + NamedTextColor.NAMES.key(getNameColor()) + ">" + getUsername();
+	}
+
 	public Component getRankTitle() {
 		return getRank().titleComponent(getRankColor(), isMvpPlusPlusAqua() ? NamedTextColor.AQUA : NamedTextColor.GOLD);
 	}

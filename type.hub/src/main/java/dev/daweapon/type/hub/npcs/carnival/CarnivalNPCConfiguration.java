@@ -8,19 +8,30 @@ import dev.daweapon.type.skyblockgeneric.carnival.Carnival;
 
 /** A Carnival NPC: it only stands in the Hub while Foxy's Carnival is open. */
 public class CarnivalNPCConfiguration extends HumanConfiguration {
-    private final String name;
+    private final String[] holograms;
+    private final String chatName;
     private final CarnivalSkin skin;
     private final Pos position;
 
-    public CarnivalNPCConfiguration(String name, CarnivalSkin skin, Pos position) {
-        this.name = name;
+    public CarnivalNPCConfiguration(String chatName, CarnivalSkin skin, Pos position, String... holograms) {
+        this.chatName = chatName;
         this.skin = skin;
         this.position = position;
+        this.holograms = holograms;
+    }
+
+    public static CarnivalNPCConfiguration host(String name, CarnivalSkin skin, Pos position) {
+        return new CarnivalNPCConfiguration(null, skin, position, name, "<e><l>CLICK");
     }
 
     @Override
     public String[] holograms(HypixelPlayer player) {
-        return new String[]{name, "<e><l>CLICK"};
+        return holograms;
+    }
+
+    @Override
+    public String chatName(HypixelPlayer player) {
+        return chatName;
     }
 
     @Override

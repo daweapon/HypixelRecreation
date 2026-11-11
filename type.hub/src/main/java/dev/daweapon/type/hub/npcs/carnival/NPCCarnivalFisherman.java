@@ -12,7 +12,7 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 public class NPCCarnivalFisherman extends CarnivalGameNPC {
 
     public NPCCarnivalFisherman() {
-        super("Carnival Fisherman", CarnivalSkin.FISHERMAN, new Pos(-81.5, 73, 29.5, 180, 0), CarnivalNpc.CARNIVAL_FISHERMAN,
+        super("Carnival Fisherman", CarnivalSkin.FISHERMAN, new Pos(-81.5, 72, 29.5, 158.9f, 0), CarnivalNpc.CARNIVAL_FISHERMAN,
                 new Replies("I sure am!", "Maybe later.", "You guessed it!", "Could you tell me the rules again?",
                         "Nope.", "Let's do it!", "I think I'll reconsider."));
     }

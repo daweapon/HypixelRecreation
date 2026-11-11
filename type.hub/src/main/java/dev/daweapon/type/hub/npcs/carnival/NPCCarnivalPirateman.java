@@ -12,7 +12,7 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 public class NPCCarnivalPirateman extends CarnivalGameNPC {
 
     public NPCCarnivalPirateman() {
-        super("Carnival Pirateman", CarnivalSkin.PIRATEMAN, new Pos(-107, 71, 28, 180, 0), CarnivalNpc.CARNIVAL_PIRATEMAN,
+        super("Carnival Pirateman", CarnivalSkin.PIRATEMAN, new Pos(-107, 73, 28, -135, 0), CarnivalNpc.CARNIVAL_PIRATEMAN,
                 new Replies("Aye aye, Captain!", "I'll find me a different game.", "Aye sure do!",
                         "Could ye tell me the rules again, Captain?", "I'll set me sights elsewhere.",
                         "I be ready as the tide!", "Avast, I've changed me mind..."));

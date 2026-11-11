@@ -16,7 +16,8 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 public class NPCDoug extends HypixelNPC {
 
     public NPCDoug() {
-        super(new CarnivalNPCConfiguration("Doug", CarnivalSkin.DOUG, new Pos(-78.5, 73, 22.5, 90, 0)));
+        super(new CarnivalNPCConfiguration(null, CarnivalSkin.DOUG,
+                new Pos(-78.5, 70.5, 22.5, 90, 0), "<e><l>SOUVENIR SHOP", "Doug", "<e><l>CLICK"));
     }
 
     @Override

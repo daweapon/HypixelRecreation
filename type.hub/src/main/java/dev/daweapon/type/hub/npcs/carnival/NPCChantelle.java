@@ -16,7 +16,8 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 public class NPCChantelle extends HypixelNPC {
 
     public NPCChantelle() {
-        super(new CarnivalNPCConfiguration("Chantelle", CarnivalSkin.CHANTELLE, new Pos(-83.5, 72, 11.5, 180, 0)));
+        super(new CarnivalNPCConfiguration("<a>Chantelle", CarnivalSkin.CHANTELLE,
+                new Pos(-83.5, 71, 11.5, 158.9f, 0), "<6><l>CARNIVAL GOALS", "<a>Chantelle", "<e><l>CLICK"));
     }
 
     @Override

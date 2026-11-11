@@ -12,7 +12,7 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 public class NPCCarnivalCowboy extends CarnivalGameNPC {
 
     public NPCCarnivalCowboy() {
-        super("Carnival Cowboy", CarnivalSkin.DOUG, new Pos(-103.5, 70, 38.5, 90, 0), CarnivalNpc.CARNIVAL_COWBOY,
+        super("Carnival Cowboy", CarnivalSkin.DOUG, new Pos(-103.5, 70, 38.5, -56.25f, 0), CarnivalNpc.CARNIVAL_COWBOY,
                 new Replies("Sure does, partner! I'd like to give it a try.", "I think I'll save this one for later.",
                         "Sure thing, partner!", "Could ya tell me the rules again?", "I'd like to do somthin' else fer now.",
                         "More ready than a rooster at dawn!", "Reckon I'll wrangle up a fresh thought instead."));

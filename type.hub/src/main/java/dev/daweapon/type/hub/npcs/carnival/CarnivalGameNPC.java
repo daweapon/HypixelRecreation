@@ -29,7 +29,7 @@ public abstract class CarnivalGameNPC extends HypixelNPC {
                              String welcomeDecline, String rulesAccept, String rulesDecline) {}
 
     protected CarnivalGameNPC(String name, CarnivalSkin skin, Pos position, CarnivalNpc npc, Replies replies) {
-        super(new CarnivalNPCConfiguration(name, skin, position));
+        super(CarnivalNPCConfiguration.host(name, skin, position));
         this.npc = npc;
         this.replies = replies;
     }

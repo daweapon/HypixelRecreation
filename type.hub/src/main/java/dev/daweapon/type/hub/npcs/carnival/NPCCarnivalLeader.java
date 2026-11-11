@@ -37,7 +37,8 @@ public class NPCCarnivalLeader extends HypixelNPC {
     }
 
     public NPCCarnivalLeader() {
-        super(new CarnivalNPCConfiguration("Carnival Leader", CarnivalSkin.LEADER, new Pos(-89.5, 72, 11.5, 180, 0)));
+        super(new CarnivalNPCConfiguration("<a>Carnival Leader", CarnivalSkin.LEADER,
+                new Pos(-89.5, 71, 11.5, -160.3f, 0), "<a>Carnival Leader", "<e><l>CLICK"));
     }
 
     @Override
@@ -81,7 +82,7 @@ public class NPCCarnivalLeader extends HypixelNPC {
 
     @Override
     protected DialogueSet[] dialogues(HypixelPlayer player) {
-        String name = "<7>" + player.getUsername() + "<f>";
+        String name = player.getRankColoredName() + "<f>";
         return new DialogueSet[]{
                 DialogueSet.builder().key("introduction").lines(
                         "Welcome to <e>The Carnival<f>, " + name + "!",
