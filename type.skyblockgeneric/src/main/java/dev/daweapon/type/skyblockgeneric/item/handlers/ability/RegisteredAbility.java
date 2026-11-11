@@ -13,6 +13,7 @@ import net.minestom.server.instance.block.BlockFace;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.data.datapoints.DatapointInteger;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
+import dev.daweapon.type.skyblockgeneric.carnival.Carnival;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
@@ -62,6 +63,10 @@ public class RegisteredAbility {
     }
 
     public boolean execute(SkyBlockPlayer player, SkyBlockItem item, Point targetedBlock, BlockFace blockFace) {
+        if (Carnival.blocksAbilities(player)) {
+            player.sendMessage(Carnival.NO_ABILITIES);
+            return false;
+        }
         if (!cost.canUse(player)) {
             cost.onFail(player);
             return false;

@@ -26,3 +26,4 @@ sections:
       - "Inside the Carnival, your sidebar shows your Carnival Tokens and how long the Carnival has left."
       - "Claiming your daily tickets from the Carnival Leader now confirms it in chat."
       - "The Carnival Leader now writes your name in your rank colour."
+      - "Item abilities can't be used inside the Carnival while it is open."

@@ -7,6 +7,8 @@ import dev.daweapon.type.skyblockgeneric.elections.SkyBlockMayor;
 import dev.daweapon.type.skyblockgeneric.elections.perks.ElectionPerks;
 import dev.daweapon.type.skyblockgeneric.region.RegionPresence;
 import dev.daweapon.type.skyblockgeneric.region.RegionType;
+import dev.daweapon.type.skyblockgeneric.region.SkyBlockRegion;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 /**
  * Foxy's Chivalrous Carnival. It runs in the Hub for the whole term of a Mayor or Minister Foxy
@@ -16,6 +18,7 @@ public final class Carnival {
     public static final int TICKETS_PER_GAME = 5;
     public static final int DAILY_TICKETS = 25;
     public static final int POINTS_PER_TOKEN = 100;
+    public static final String NO_ABILITIES = "<c>Abilities can not be used in the Carnival area.";
     private static final long CLOSING_TICKS = 15L * 60L * 20L;
 
     private Carnival() {}
@@ -27,6 +30,11 @@ public final class Carnival {
 
     public static boolean isOpen() {
         return ElectionPerks.isActive(SkyBlockMayor.Perk.CHIVALROUS_CARNIVAL);
+    }
+
+    public static boolean blocksAbilities(SkyBlockPlayer player) {
+        SkyBlockRegion region = player.getRegion();
+        return region != null && region.getType() == RegionType.CARNIVAL && isOpen();
     }
 
     public static boolean acceptsNewGames() {
