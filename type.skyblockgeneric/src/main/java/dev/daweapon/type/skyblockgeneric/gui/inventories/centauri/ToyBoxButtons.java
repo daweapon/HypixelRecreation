@@ -148,6 +148,12 @@ final class ToyBoxButtons {
                     HotfService.setWhispers(p, HotfCurrency.DESERT, 1_000_000L);
                     HotfService.syncSkyBlockXp(p);
                 }),
+                of(Material.SUNFLOWER, "<e>Carnival Tokens and Tickets", "<8>A Carnivalot of Fun.", "<7>Gain <e>10,000 Carnival Tokens <7>and <a>100 Carnival Tickets<7>.", p -> {
+                    dev.daweapon.type.skyblockgeneric.carnival.CarnivalProfile profile = dev.daweapon.type.skyblockgeneric.carnival.Carnivals.profile(p);
+                    profile.setTokens(profile.getTokens() + 10_000);
+                    dev.daweapon.type.skyblockgeneric.carnival.Carnivals.save(p, profile);
+                    ToyBoxActions.give(p, ItemType.CARNIVAL_TICKET, 100);
+                }),
                 of(Material.RABBIT_HIDE, "<5>Pelts", "<8>Trevor owes you.", "<7>Gain <5>1,000 Pelts<7>.", p -> dev.daweapon.type.skyblockgeneric.trapper.Pelts.add(p, 1_000)),
                 of(Material.SPIDER_EYE, "<4>Arachne's Altar", "<8>She is expecting you.", "<7>Get <a>4 <9>Arachne's Calling<7> and an <5>Arachne Crystal<7>.", p -> {
                     ToyBoxActions.give(p, ItemType.ARACHNE_KEEPER_FRAGMENT, 4);

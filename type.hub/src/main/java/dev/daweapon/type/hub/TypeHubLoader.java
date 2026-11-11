@@ -28,6 +28,7 @@ import dev.daweapon.type.generic.entity.hologram.ServerHolograms;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.tab.TablistManager;
+import dev.daweapon.type.hub.carnival.CarnivalLeaderboardHolograms;
 import dev.daweapon.type.hub.darkauction.DarkAuctionDisplay;
 import dev.daweapon.type.hub.util.HubMap;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
@@ -168,6 +169,7 @@ public class TypeHubLoader implements SkyBlockTypeLoader {
         WarpPortal.create(HypixelConst.getInstanceContainer(), new BlockVec(0, 49, 47), Component.text("Community Center"), COMMUNITY_CENTER_ARRIVAL);
 		SewerRats.start();
 		CryptsSpawner.start();
+		CarnivalLeaderboardHolograms.start();
 		dev.daweapon.type.hub.shrine.ShrineDisplay.start(HypixelConst.getInstanceContainer());
 		VargulTombstone.start(HypixelConst.getInstanceContainer());
 		WarpPortal.createFor(HypixelConst.getInstanceContainer(), new BlockVec(90, 75, 9), Component.text("Canvas Room"), CANVAS_ROOM_ARRIVAL,

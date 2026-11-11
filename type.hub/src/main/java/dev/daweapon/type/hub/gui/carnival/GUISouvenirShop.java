@@ -25,7 +25,7 @@ public class GUISouvenirShop extends StatelessView {
         Components.fill(layout);
         Components.close(layout, 31);
         layout.slot(11, (_, _) -> ItemStacks.head(FROG_MASK_TEXTURE, """
-                <a>Mask Shop
+                <e>Mask Shop
                 <7>Exchange your <e>Carnival Tokens <7>for
                 <7>masks, which grant you <b>small <7>and
                 <b>not-so-small <7>buffs while worn!

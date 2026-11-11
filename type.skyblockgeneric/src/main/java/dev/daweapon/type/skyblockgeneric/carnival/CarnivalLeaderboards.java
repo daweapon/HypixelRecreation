@@ -10,6 +10,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.event.HoverEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -30,6 +31,7 @@ public final class CarnivalLeaderboards {
     public static final long HIGH_SCORE = 1_000;
     public static final String CLAIM_COMMAND = "/carnivalrewards";
     private static final Set<UUID> CLAIMING = ConcurrentHashMap.newKeySet();
+    private static final String NAME_COLOUR = "name_colour";
 
     public enum Reward {
         FRUIT_DIGGING(CarnivalGame.FRUIT_DIGGING, ItemType.JAR_OF_SAND, ItemType.PLASTIC_SHOVEL),
@@ -67,11 +69,72 @@ public final class CarnivalLeaderboards {
         UUID profile = SkyBlockLeaderboards.currentProfile(player);
         if (profile == null) return;
         String owner = player.getUsername();
+        String colour = NamedTextColor.NAMES.key(player.getNameColor());
         String key = key(Carnival.year(), game);
         Thread.startVirtualThread(() -> {
-            LeaderboardService.putMemberMeta(profile, Map.of(), Map.of("owner", owner));
+            LeaderboardService.putMemberMeta(profile, Map.of(NAME_COLOUR, colour), Map.of("owner", owner));
             LeaderboardService.updateScore(key, profile, best);
         });
+    }
+
+    public record BoardRow(int rank, String owner, String colour, long score) {
+    }
+
+    /** One game's board as the Hub shows it beside the game: the Top 10 and the year's Carnival number. */
+    public record Board(int carnival, List<BoardRow> top) {
+    }
+
+    /** Reads Redis; call it off the tick thread. */
+    public static Board loadBoard(CarnivalGame game) {
+        int year = Carnival.year();
+        List<BoardRow> top = new ArrayList<>();
+        for (LeaderboardService.LeaderboardEntry entry : LeaderboardService.getTopN(key(year, game), SkyBlockLeaderboards.TOP_SIZE)) {
+            Map<String, String> meta = LeaderboardService.getMemberMeta(entry.playerUuid());
+            top.add(new BoardRow(entry.rank(), meta.getOrDefault("owner", "Unknown"), meta.getOrDefault(NAME_COLOUR, "gray"),
+                    (long) entry.score()));
+        }
+        return new Board(carnivalNumber(year), top);
+    }
+
+    /** Reads Redis; call it off the tick thread. Null when the profile has no score this Carnival. */
+    public static @Nullable BoardRow loadOwnRow(SkyBlockPlayer player, CarnivalGame game) {
+        UUID profile = SkyBlockLeaderboards.currentProfile(player);
+        if (profile == null || SkyBlockLeaderboards.hidden(player)) return null;
+        LeaderboardService.LeaderboardEntry entry = LeaderboardService.getPlayerRankEntry(key(Carnival.year(), game), profile);
+        return entry == null ? null : new BoardRow(entry.rank(), player.getUsername(),
+                NamedTextColor.NAMES.key(player.getNameColor()), (long) entry.score());
+    }
+
+    /** This server's Carnivals are counted from the boards it has kept, one per Carnival year. */
+    static int carnivalNumber(int year) {
+        Set<Integer> years = new java.util.TreeSet<>();
+        for (String key : LeaderboardService.listKeys("carnival:")) {
+            String[] parts = key.split(":");
+            if (parts.length < 3) continue;
+            try {
+                int keyYear = Integer.parseInt(parts[1]);
+                if (keyYear <= year) years.add(keyYear);
+            } catch (NumberFormatException ignored) {
+            }
+        }
+        years.add(year);
+        return years.size();
+    }
+
+    public static List<String> boardLines(CarnivalGame game, Board board, @Nullable BoardRow own, String viewerName, String viewerColour) {
+        List<String> lines = new ArrayList<>();
+        lines.add("<e><l>" + StringUtility.ntify(board.carnival()) + " Carnival");
+        lines.add(game.colored());
+        for (int i = 0; i < SkyBlockLeaderboards.TOP_SIZE; i++) {
+            lines.add(i < board.top().size() ? row(board.top().get(i)) : "<e>" + (i + 1) + ". <8>---");
+        }
+        lines.add("<7>...");
+        lines.add(own == null ? "<8>?. <color:" + viewerColour + ">" + viewerName + " <7>- <8>N/A" : row(own));
+        return lines;
+    }
+
+    private static String row(BoardRow row) {
+        return "<e>" + row.rank() + ". <color:" + row.colour() + ">" + row.owner() + " <7>- <e>" + StringUtility.commaify(row.score());
     }
 
     public static boolean hasPendingResults(CarnivalProfile profile) {
