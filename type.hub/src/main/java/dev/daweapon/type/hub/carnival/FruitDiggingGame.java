@@ -43,7 +43,6 @@ import dev.daweapon.type.skyblockgeneric.carnival.games.FruitTile;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
-import org.tinylog.Logger;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -159,7 +158,6 @@ public class FruitDiggingGame extends CarnivalGameBase {
     public void onRightClick() {
         if (tick - lastModeTick < MODE_DEBOUNCE_TICKS) return;
         lastModeTick = tick;
-        Logger.info("Fruit Digging {}: mode switch at tick {}", player.getUsername(), tick);
         mode = mode.next();
         play("block.lever.click", 1f, mode.getSwitchPitch());
         updateShovelLore();
@@ -168,7 +166,6 @@ public class FruitDiggingGame extends CarnivalGameBase {
     private void onPacket(PlayerPacketEvent event) {
         if (event.getPlayer() != player || !(event.getPacket() instanceof ClientPlayerActionPacket action)) return;
         Point position = action.blockPosition();
-        Logger.info("Fruit Digging {}: {} {} at tick {}", player.getUsername(), action.status(), position, tick);
         switch (action.status()) {
             case STARTED_DIGGING -> packets.add(() -> startDigging(position));
             case CANCELLED_DIGGING -> packets.add(() -> {
@@ -185,7 +182,6 @@ public class FruitDiggingGame extends CarnivalGameBase {
         if (cell == null || board.isFinished() || board.stateAt(cell[0], cell[1]) != CellState.HIDDEN) return;
         digging = cell;
         digStart = tick;
-        Logger.info("Fruit Digging {}: dig started on {},{} at tick {}", player.getUsername(), cell[0], cell[1], tick);
         lastStage = -1;
     }
 
@@ -246,7 +242,6 @@ public class FruitDiggingGame extends CarnivalGameBase {
     private void finishDigging() {
         int[] cell = digging;
         digging = null;
-        Logger.info("Fruit Digging {}: dig finished at tick {}", player.getUsername(), tick);
         BlockVec position = cellPosition(cell);
         player.sendPacket(new BlockBreakAnimationPacket(BREAKER_ID, position, (byte) 10));
         Dig dig = board.dig(cell[0], cell[1], mode);
