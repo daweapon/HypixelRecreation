@@ -1,7 +1,5 @@
 # Hypixel
 
-![Gameplay](.github/media/demo.gif)
-
 A 26.2 Minestom-based recreation of Hypixel with a properly abstracted, scalable microservices architecture.
 
 > **Note**: This implementation is under active development and is not yet production-ready.
@@ -9,7 +7,6 @@ A 26.2 Minestom-based recreation of Hypixel with a properly abstracted, scalable
 ## Documentation
 
 - [ARCHITECTURE.md](ARCHITECTURE.md): module map, how a game server starts, messaging, conventions and ownership.
-- [docs/audits/](docs/audits/): auction house, bazaar, command alias and handoff reports.
 For the commands implemented in this checkout, see the sorted [Commands reference](COMMANDS.md), including aliases, syntax, permissions, and source links.
 
 ## Requirements

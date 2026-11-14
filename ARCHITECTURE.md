@@ -64,7 +64,3 @@ One maintainer, `@daweapon`, owns the whole tree (`.github/CODEOWNERS`). The are
 ## Third-party code and licences
 
 The project is AGPL-3.0 and derives from Swofty's HypixelRecreation; upstream copyright and licence notices stay. Vendored libraries and their licences are in `NOTICE.md`.
-
-## Further reading
-
-`docs/audits/` holds the auction house, bazaar parity, command alias and handoff reports.
