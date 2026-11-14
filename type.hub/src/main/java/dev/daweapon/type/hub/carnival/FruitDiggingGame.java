@@ -141,7 +141,7 @@ public class FruitDiggingGame extends CarnivalGameBase {
                 (byte) (Potion.AMBIENT_FLAG | Potion.PARTICLES_FLAG)));
         hadHaste = player.getActiveEffects().stream().anyMatch(active -> active.potion().effect() == PotionEffect.HASTE);
         if (!hadHaste) {
-            player.addEffect(new Potion(PotionEffect.HASTE, 3, Potion.INFINITE_DURATION,
+            player.addEffect(new Potion(PotionEffect.HASTE, 0, Potion.INFINITE_DURATION,
                     (byte) (Potion.AMBIENT_FLAG | Potion.PARTICLES_FLAG)));
         }
         MinecraftServer.getGlobalEventHandler().addListener(digListener);
