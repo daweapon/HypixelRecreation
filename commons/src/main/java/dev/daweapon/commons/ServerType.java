@@ -24,7 +24,20 @@ public enum ServerType {
 	SKYBLOCK_KUUDRA(true),
 	SKYBLOCK_THE_GARDEN(true),
 	SKYBLOCK_CATACOMBS(true),
-	PROTOTYPE_LOBBY(false)
+	PROTOTYPE_LOBBY(false),
+	BEDWARS_LOBBY(false),
+	BEDWARS_GAME(false),
+	MAIN_LOBBY(false),
+	BEDWARS_CONFIGURATOR(false),
+	MURDER_MYSTERY_LOBBY(false),
+	MURDER_MYSTERY_GAME(false),
+	MURDER_MYSTERY_CONFIGURATOR(false),
+	SKYWARS_LOBBY(false),
+	SKYWARS_GAME(false),
+	SKYWARS_CONFIGURATOR(false),
+	RAVENGARD_LOBBY(false),
+	RAVENGARD_DUNGEON(false),
+	REPLAY_VIEWER(false)
 	;
 
 	private final boolean isSkyBlock;

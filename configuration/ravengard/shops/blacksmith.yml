@@ -1,0 +1,91 @@
+id: blacksmith
+title: Blacksmith
+banner: blacksmith
+shelf_slots: [4, 5, 6, 7, 8, 13, 14, 15, 16, 17, 22, 23, 24, 25, 26, 31, 32, 33, 34, 35, 40]
+pool:
+  - item: BALLISTIC_WAR_HAMMER
+    price: 62
+  - item: BARBARIAN_GREAT_AXE
+    price: 130
+  - item: CAPTAINS_SWORD
+    price: 55
+  - item: ELM_BOW
+    price: 42
+  - item: GREAT_WAR_HAMMER
+    price: 45
+  - item: HUNTING_KNIFE
+    price: 35
+  - item: IRON_DAGGER
+    price: 38
+  - item: IRON_GREATSWORD
+    price: 54
+  - item: IRON_HALBERD
+    price: 55
+  - item: IRON_KNIFE
+    price: 15
+  - item: IRON_SWORD
+    price: 18
+  - item: IRON_WAR_HAMMER
+    price: 4
+  - item: POWER_BOW
+    price: 65
+  - item: RUSTY_GREATSWORD
+    price: 21
+  - item: RUSTY_HALBERD
+    price: 34
+  - item: RUSTY_MACE
+    price: 17
+  - item: SPIKED_MACE
+    price: 28
+  - item: STEEL_DAGGER
+    price: 48
+  - item: STEEL_GREAT_AXE
+    price: 95
+  - item: STEEL_HALBERD
+    price: 82
+  - item: STEEL_MACE
+    price: 70
+  - item: STEEL_SWORD
+    price: 55
+  - item: STEEL_WAR_HAMMER
+    price: 68
+  - item: STILETTO_DAGGER
+    price: 33
+  - item: WAR_BOW
+    price: 50
+  - item: WAR_GREAT_AXE
+    price: 55
+  - item: WEATHERED_ORB
+    price: 15
+  - item: WOODEN_STAFF
+    price: 18
+  - item: UNCOMMON_RUSTY_HALBERD
+    price: 34
+  - item: GOLD_KNIFE
+    price: 45
+  - item: UNCOMMON_IRON_HALBERD
+    price: 55
+  - item: KNIGHT_SWORD
+    price: 17
+  - item: SILVER_DAGGER
+    price: 28
+  - item: GOLD_MACE
+    price: 49
+  - item: GOLD_SWORD
+    price: 47
+  - item: BRONZE_HALBERD
+    price: 17
+  - item: BRONZE_GREATSWORD
+    price: 34
+  - item: BRONZE_DAGGER
+    price: 27
+  - item: GOLD_GREATSWORD
+    price: 54
+  - item: STEELBOUND_BOW
+    price: 50
+  - item: BRONZE_MACE
+    price: 19
+  - item: COMMON_SPIKED_MACE
+    price: 28
+  - item: UNCOMMON_IRON_SWORD
+    price: 34

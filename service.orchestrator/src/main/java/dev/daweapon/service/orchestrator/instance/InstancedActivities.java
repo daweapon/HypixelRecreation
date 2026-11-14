@@ -19,6 +19,7 @@ public final class InstancedActivities {
     private static final long START_TIMEOUT_SECONDS = 15;
     private static final Duration KUUDRA_MAX_WAIT = Duration.ofSeconds(45);
     private static final Duration CATACOMBS_MAX_WAIT = Duration.ofSeconds(45);
+    private static final Duration RAVENGARD_MAX_WAIT = Duration.ofSeconds(10);
     private static final ActivityQueue QUEUE = new ActivityQueue(QueuePositionNotifier::moved);
     private static final InstanceAllocator ALLOCATOR = new InstanceAllocator(
             (server, request) -> RedisClient.requestServerFromService(
@@ -67,6 +68,17 @@ public final class InstancedActivities {
         return toResponse(allocation, Messages.CATACOMBS);
     }
 
+    public static GetServerForMapProtocol.GetServerForMapResponse ravengardNew(String mode, String map, ActivityQueue.Waiter waiter) {
+        InstantiateGamePushProtocol.Request request = new InstantiateGamePushProtocol.Request(mode, map);
+        Allocation allocation = QUEUE.await(ServerType.RAVENGARD_DUNGEON, RAVENGARD_MAX_WAIT, waiter, () -> {
+            OrchestratorCache.GameServerState server = OrchestratorCache.pickServerForNewGame(ServerType.RAVENGARD_DUNGEON);
+            List<OrchestratorCache.GameServerState> candidates = server == null ? List.of() : List.of(server);
+            return ALLOCATOR.allocate(candidates, anyOnline(ServerType.RAVENGARD_DUNGEON), request, 0);
+        });
+        Logger.info("[matchmaking] RAVENGARD_DUNGEON mode='{}' -> {}", mode, describe(allocation));
+        return toResponse(allocation, Messages.RAVENGARD);
+    }
+
     public static UnderstandableProxyServer toProxyServer(OrchestratorCache.GameServerState server) {
         return new UnderstandableProxyServer(
                 server.shortName(),
@@ -102,6 +114,8 @@ public final class InstancedActivities {
                 "No Kuudra server could start the run");
         static final Messages CATACOMBS = new Messages("No Catacombs server is online", "No Catacombs server has room",
                 "No Catacombs server could start the run");
+        static final Messages RAVENGARD = new Messages("No dungeon servers online", "No dungeon server has room",
+                "No dungeon server could start the instance");
 
         String forReason(FailureReason reason) {
             return switch (reason) {

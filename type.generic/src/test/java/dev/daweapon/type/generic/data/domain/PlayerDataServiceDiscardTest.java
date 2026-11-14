@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class PlayerDataServiceDiscardTest {
     @Test
     void discardsEveryDomainWithoutSavingAndSuppressesLaterSaves() {
-        ServerType type = ServerType.PROTOTYPE_LOBBY;
+        ServerType type = ServerType.REPLAY_VIEWER;
         RecordingDomain first = new RecordingDomain("test-discard-a", type);
         RecordingDomain second = new RecordingDomain("test-discard-b", type);
         PlayerDataService.register(first);
@@ -45,7 +45,7 @@ class PlayerDataServiceDiscardTest {
 
     @Test
     void clearsSuppressionWhenTheUserIsLoadedAgain() {
-        ServerType type = ServerType.SKYBLOCK_GALATEA;
+        ServerType type = ServerType.RAVENGARD_LOBBY;
         RecordingDomain domain = new RecordingDomain("test-discard-reload", type);
         PlayerDataService.register(domain);
 
@@ -60,7 +60,7 @@ class PlayerDataServiceDiscardTest {
 
     @Test
     void holdsTheLifecycleLockForTheWholeDiscard() throws Exception {
-        ServerType type = ServerType.SKYBLOCK_THE_PARK;
+        ServerType type = ServerType.SKYWARS_CONFIGURATOR;
         UUID uuid = UUID.randomUUID();
         CountDownLatch competitorStarted = new CountDownLatch(1);
         CountDownLatch competitorFinished = new CountDownLatch(1);

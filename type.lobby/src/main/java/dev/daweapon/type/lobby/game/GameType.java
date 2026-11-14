@@ -33,6 +33,33 @@ public enum GameType {
         "<7>build your private islands and",
         "<7>collect all the items!"),
 
+    BED_WARS("Bed Wars",
+        Material.RED_BED,
+        Category.TEAM_SURVIVAL,
+        ServerType.BEDWARS_LOBBY,
+        "<7>Protect your bed along with your",
+        "<7>teammates and destroy enemy beds",
+        "<7>to win!"),
+
+    SKYWARS("SkyWars <d><l>OLD EMBLEMS + QOL CHANGES",
+        Material.ENDER_EYE,
+        Category.SURVIVAL,
+        ServerType.SKYWARS_LOBBY,
+        "<7>Hypixel's take on the SkyWars",
+        "<7>gamemode. Featuring the angel of",
+        "<7>Death, Soul Well, and <c>INSANE MODE</c>!",
+        "<7>Play on your own or in teams."
+    ),
+
+    MURDER_MYSTERY("Murder Mystery",
+        Material.BOW,
+        Category.TEAM_SURVIVAL,
+        ServerType.MURDER_MYSTERY_LOBBY,
+        "<7>1 Murderer. 1 Detective. And a whole",
+        "<7>lot of Innocents. Can you survive",
+        "<7>this tense social game of betrayal",
+        "<7>and murder?"),
+
     HOUSING("Housing",
         Material.DARK_OAK_DOOR,
         Category.HOUSING,
@@ -91,6 +118,14 @@ public enum GameType {
         "<c>in development, and may be removed",
         "<c>at any time."),
 
+    RAVENGARD("Ravengard",
+        Material.IRON_AXE,
+        Category.PERSISTENT_GAME,
+        ServerType.RAVENGARD_LOBBY,
+        "<7>Battle your way through dangerous",
+        "<7>monsters and bosses. Collect",
+        "<7>valuable loot and extract before the",
+        "<7>dungeon is consumed by the curse!"),
     ;
 
     private final Text displayName;

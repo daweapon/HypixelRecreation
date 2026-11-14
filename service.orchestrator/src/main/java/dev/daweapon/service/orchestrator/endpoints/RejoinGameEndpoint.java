@@ -36,6 +36,11 @@ public class RejoinGameEndpoint implements RedisMessageHandler<
                 return new RejoinGameProtocol.RejoinGameResponse(false, null, null, null, null, false, true, null);
             }
 
+            // Skywars does not support rejoining
+            if (hostingServer.type() == ServerType.SKYWARS_GAME) {
+                return new RejoinGameProtocol.RejoinGameResponse(false, null, null, null, null, false, true, null);
+            }
+
             // Check if this player is in the disconnected list (meaning they should rejoin)
             // If they're in involvedPlayers, they're already in the game
             boolean isDisconnected = gameWithServer.game().getDisconnectedPlayers() != null

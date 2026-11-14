@@ -7,6 +7,7 @@ import net.minestom.server.item.Material;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.achievement.gui.AchievementNav;
 import dev.daweapon.type.generic.achievement.gui.GUIAchievementsMenu;
+import dev.daweapon.type.generic.command.commands.replay.ReplaysCommand;
 import dev.daweapon.type.generic.experience.PlayerExperienceHandler;
 import dev.daweapon.type.generic.gui.inventory.HypixelInventoryGUI;
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
@@ -278,6 +279,21 @@ public class GUIMyProfile extends HypixelInventoryGUI {
             }
         });
 
+        set(new GUIClickableItem(39) {
+            @Override
+            public void run(InventoryPreClickEvent e, HypixelPlayer player) {
+                ReplaysCommand.displaySendReplay(player);
+            }
+
+            @Override
+            public ItemStack.Builder getItem(HypixelPlayer player) {
+                return ItemStacks.item(Material.BOOK, """
+                        <a>Recent Games
+                        <7>View your recently played games.
+
+                        <e>Click to view!""");
+            }
+        });
         set(new GUIItem(40) {
             @Override
             public ItemStack.Builder getItem(HypixelPlayer player) {

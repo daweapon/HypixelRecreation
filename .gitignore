@@ -42,6 +42,12 @@ build/
 /configuration/skyblock/islands
 /configuration/hypixel_prototype_lobby/
 /configuration/hypixel_prototype_lobby
+/configuration/hypixel_bedwars_lobby/
+/configuration/hypixel_bedwars_lobby
+/configuration/hypixel_murder_mystery_lobby/
+/configuration/hypixel_murder_mystery_lobby
+/configuration/hypixel_skywars_lobby/
+/configuration/hypixel_skywars_lobby
 *.polar
 *.schem
 /configuration/*.schem
@@ -65,6 +71,7 @@ build/
 .claude/
 server/proxy/ViaLoader/
 /configuration/resourcepacks/skyblockpack
+/configuration/resourcepacks/ravengard
 /type.skyblockgeneric/configuration
 
 ### Generated sources (rebuilt by commons:generateItemTypes) ###

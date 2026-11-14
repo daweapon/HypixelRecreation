@@ -1,0 +1,75 @@
+id: armorer
+title: Armorer
+banner: armorer
+shelf_slots: [4, 5, 6, 7, 8, 13, 14, 15, 16, 17, 22, 23, 24, 25, 26]
+pool:
+  - item: DOUBLET
+    price: 18
+  - item: KNIGHTS_HAUBERK
+    price: 30
+  - item: KNIGHTS_SABATONS
+    price: 30
+  - item: LEATHER_BOOTS
+    price: 6
+  - item: LEATHER_HARNESS
+    price: 20
+  - item: LEATHER_TUNIC
+    price: 6
+  - item: LIGHT_BOOTS
+    price: 16
+  - item: LIGHT_LEGGINGS
+    price: 20
+  - item: MARKSMAN_BOOTS
+    price: 25
+  - item: PADDED_LEGGINGS
+    price: 10
+  - item: PADDED_TUNIC
+    price: 11
+  - item: QUILTED_LEGGINGS
+    price: 19
+  - item: ROGUE_COAT
+    price: 20
+  - item: SOLDIERS_GREAVES
+    price: 28
+  - item: SOLDIERS_SABATONS
+    price: 10
+  - item: STUDDED_BOOTS
+    price: 18
+  - item: STUDDED_BREECHES
+    price: 12
+  - item: WAR_BOOTS
+    price: 28
+  - item: WAR_LEGGINGS
+    price: 15
+  - item: APPRENTICE_PANTS
+    price: 14
+  - item: APPRENTICE_BOOTS
+    price: 7
+  - item: UNCOMMON_APPRENTICE_PANTS
+    price: 22
+  - item: UNCOMMON_APPRENTICE_BOOTS
+    price: 10
+  - item: EMBER_PANTS
+    price: 28
+  - item: EMBER_BOOTS
+    price: 13
+  - item: EMBER_ROBE
+    price: 32
+  - item: ONYX_PANTS
+    price: 30
+  - item: LEATHER_LEGGINGS
+    price: 8
+  - item: UNCOMMON_LEATHER_LEGGINGS
+    price: 14
+  - item: UNCOMMON_LEATHER_TUNIC
+    price: 14
+  - item: UNCOMMON_LEATHER_HARNESS
+    price: 20
+  - item: UNCOMMON_SOLDIERS_SABATONS
+    price: 18
+  - item: COMMON_LIGHT_LEGGINGS
+    price: 13
+  - item: CHAINMAIL
+    price: 22
+  - item: PLATE_CUISSES
+    price: 28

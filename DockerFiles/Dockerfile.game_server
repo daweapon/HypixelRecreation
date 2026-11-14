@@ -23,6 +23,7 @@ RUN set -eu; \
         ServiceElection.jar \
         ServiceGuild.jar \
         ServicePunishment.jar \
+        ServiceReplay.jar \
         net.swofty.packer.HypixelPackServer.jar \
     ; do \
         if [ -f "/app/prebuilt_jars/$jar" ]; then \

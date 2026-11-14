@@ -1,0 +1,42 @@
+package dev.daweapon.service.replay.endpoints;
+
+import dev.daweapon.commons.protocol.objects.replay.ReplayDataBatchProtocolObject;
+import dev.daweapon.commons.redis.RedisMessageHandler;
+import dev.daweapon.commons.redis.RedisMessageContext;
+import dev.daweapon.service.replay.ReplayService;
+import org.tinylog.Logger;
+
+// Redis endpoint that feeds a compressed batch of recorded replay data into the active recording session.
+public class ReplayDataBatchEndpoint implements RedisMessageHandler<
+        ReplayDataBatchProtocolObject.BatchMessage,
+        ReplayDataBatchProtocolObject.BatchResponse> {
+
+    @Override
+    public ReplayDataBatchProtocolObject protocol() {
+        return new ReplayDataBatchProtocolObject();
+    }
+
+    @Override
+    public ReplayDataBatchProtocolObject.BatchResponse handle(ReplayDataBatchProtocolObject.BatchMessage msg, RedisMessageContext context) {
+
+        try {
+            ReplayService.getSessionManager().receiveBatch(
+                    msg.replayId(),
+                    msg.batchIndex(),
+                    msg.startTick(),
+                    msg.endTick(),
+                    msg.recordableCount(),
+                    msg.compressedData()
+            );
+
+            Logger.debug("Received batch {} for replay {} ({} bytes, ticks {}-{})",
+                    msg.batchIndex(), msg.replayId(), msg.compressedData().length, msg.startTick(), msg.endTick());
+
+            return new ReplayDataBatchProtocolObject.BatchResponse(true, msg.compressedData().length);
+
+        } catch (Exception e) {
+            Logger.error(e, "Failed to process replay batch");
+            return new ReplayDataBatchProtocolObject.BatchResponse(false, 0);
+        }
+    }
+}

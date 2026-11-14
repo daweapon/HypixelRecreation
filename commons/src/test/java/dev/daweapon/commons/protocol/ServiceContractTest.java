@@ -41,7 +41,8 @@ class ServiceContractTest {
             Map.entry("orchestrator", ServiceType.ORCHESTRATOR),
             Map.entry("party", ServiceType.PARTY),
             Map.entry("presence", ServiceType.FRIEND),
-            Map.entry("punishment", ServiceType.PUNISHMENT));
+            Map.entry("punishment", ServiceType.PUNISHMENT),
+            Map.entry("replay", ServiceType.REPLAY));
 
     private static final Pattern HANDLER = Pattern.compile("class\\s+(\\w+)[^{]*implements[^{]*RedisMessageHandler\\s*<");
     private static final Pattern HANDLER_PROTOCOL = Pattern.compile("protocol\\(\\)\\s*\\{\\s*return new ([\\w.]+)\\(|PROTOCOL\\s*=\\s*new ([\\w.]+)\\(");
@@ -255,7 +256,7 @@ class ServiceContractTest {
             Matcher matcher = SCANNED_PACKAGE.matcher(source.text());
             while (matcher.find()) scanned.add(matcher.group(1));
         }
-        assertTrue(scanned.size() >= 15, "expected the scanned handler packages but found " + scanned);
+        assertTrue(scanned.size() >= 25, "expected the scanned handler packages but found " + scanned);
 
         List<String> orphans = new ArrayList<>();
         for (Handler handler : handlers()) {
