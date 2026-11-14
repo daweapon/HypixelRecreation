@@ -26,6 +26,7 @@ import dev.daweapon.type.skyblockgeneric.item.components.ItemSkinComponent;
 import dev.daweapon.type.skyblockgeneric.item.components.SkullHeadComponent;
 import dev.daweapon.type.skyblockgeneric.item.components.TrackedUniqueComponent;
 import dev.daweapon.type.skyblockgeneric.potion.PotionEffectType;
+import dev.daweapon.type.skyblockgeneric.user.MenuSlotOverride;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.json.JSONObject;
 
@@ -36,9 +37,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PlayerItemUpdater {
+    @FunctionalInterface
+    public interface DisplayOverride {
+        ItemStack.Builder apply(SkyBlockPlayer player, SkyBlockItem item, ItemStack.Builder builder);
+    }
+
+    private static final List<DisplayOverride> OVERRIDES = new CopyOnWriteArrayList<>();
+
+    public static void registerOverride(DisplayOverride override) {
+        OVERRIDES.add(override);
+    }
+
     public static ItemStack.Builder playerUpdate(SkyBlockPlayer player, ItemStack stack) {
         return playerUpdateFull(player, stack, false).getValue();
     }
@@ -49,6 +62,9 @@ public class PlayerItemUpdater {
 
     public static Map.Entry<SkyBlockItem, ItemStack.Builder> playerUpdateFull(SkyBlockPlayer player, ItemStack stack, boolean isOwnedByPlayer) {
         if (ItemAttributeTags.flag(ItemAttributeTags.of(stack), "uneditable"))
+            return Map.entry(new SkyBlockItem(stack), stack.builder());
+
+        if (stack.equals(MenuSlotOverride.itemFor(player)))
             return Map.entry(new SkyBlockItem(stack), stack.builder());
 
         if (!SkyBlockItem.isSkyBlockItem(stack) || stack.material().equals(Material.AIR)) {
@@ -172,10 +188,11 @@ public class PlayerItemUpdater {
         }
 
         ItemStacks.clearAttributes(toReturn);
-        return Map.entry(item,
-                toReturn.amount(stack.amount())
-                        .set(DataComponents.CUSTOM_NAME, stack.get(DataComponents.CUSTOM_NAME))
-                        .set(DataComponents.LORE, stack.get(DataComponents.LORE)));
+        ItemStack.Builder finished = toReturn.amount(stack.amount())
+                .set(DataComponents.CUSTOM_NAME, stack.get(DataComponents.CUSTOM_NAME))
+                .set(DataComponents.LORE, stack.get(DataComponents.LORE));
+        for (DisplayOverride override : OVERRIDES) finished = override.apply(player, item, finished);
+        return Map.entry(item, finished);
     }
 
     private static final AtomicBoolean UPDATING = new AtomicBoolean();

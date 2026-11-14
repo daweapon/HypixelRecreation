@@ -33,6 +33,7 @@ import dev.daweapon.type.generic.entity.hologram.HologramEntity;
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import dev.daweapon.type.skyblockgeneric.carnival.CarnivalGame;
 import dev.daweapon.type.skyblockgeneric.carnival.CarnivalGameResult;
+import dev.daweapon.type.skyblockgeneric.carnival.CarnivalShovelDisplay;
 import dev.daweapon.type.skyblockgeneric.carnival.games.FruitDiggingBoard;
 import dev.daweapon.type.skyblockgeneric.carnival.games.FruitDiggingBoard.CellState;
 import dev.daweapon.type.skyblockgeneric.carnival.games.FruitDiggingBoard.Dig;
@@ -68,7 +69,7 @@ public class FruitDiggingGame extends CarnivalGameBase {
     private static final int WATERMELON_DELAY_TICKS = 10;
     private static final int END_DELAY_TICKS = 60;
     private static final int BREAKER_ID = 0;
-    private static final int MODE_DEBOUNCE_TICKS = 2;
+    private static final int MODE_DEBOUNCE_TICKS = 6;
     private static final double LOWER_LINE_Y = 74.0;
     private static final double UPPER_LINE_Y = 74.34375;
     private static final float HIGH_PITCH = 1.4920635f;
@@ -84,11 +85,6 @@ public class FruitDiggingGame extends CarnivalGameBase {
             FruitTile.DURIAN, "ac268d36c2c6047ffeec00124096376b56dbb4d756a55329363a1b27fcd659cd",
             FruitTile.DRAGONFRUIT, "3cc761bcb0579763d9b8ab6b7b96fa77eb6d9605a804d838fec39e7b25f95591",
             FruitTile.BOMB, "a76a2811d1e176a07b6d0a657b910f134896ce30850f6e80c7c83732d85381ea"));
-
-    private static final Map<DowsingMode, String> SHOVEL_MODELS = new EnumMap<>(Map.of(
-            DowsingMode.MINES, "hypixel_skyblock:item/uncategorized/carnival_shovel_iron",
-            DowsingMode.ANCHOR, "hypixel_skyblock:item/uncategorized/carnival_shovel_diamond",
-            DowsingMode.TREASURE, "hypixel_skyblock:item/uncategorized/carnival_shovel_gold"));
 
     private record TileSound(String sound, float pitch) {}
 
@@ -119,6 +115,7 @@ public class FruitDiggingGame extends CarnivalGameBase {
     private long digStart;
     private int lastStage = -1;
     private long lastDigTick;
+    private boolean hadHaste;
     private long lastModeTick = -MODE_DEBOUNCE_TICKS;
     private long shownScore;
     private @Nullable Entity anchorMarker;
@@ -142,6 +139,11 @@ public class FruitDiggingGame extends CarnivalGameBase {
     protected void onStart() {
         player.addEffect(new Potion(PotionEffect.MINING_FATIGUE, 255, Potion.INFINITE_DURATION,
                 (byte) (Potion.AMBIENT_FLAG | Potion.PARTICLES_FLAG)));
+        hadHaste = player.getActiveEffects().stream().anyMatch(active -> active.potion().effect() == PotionEffect.HASTE);
+        if (!hadHaste) {
+            player.addEffect(new Potion(PotionEffect.HASTE, 3, Potion.INFINITE_DURATION,
+                    (byte) (Potion.AMBIENT_FLAG | Potion.PARTICLES_FLAG)));
+        }
         MinecraftServer.getGlobalEventHandler().addListener(digListener);
         MinecraftServer.getGlobalEventHandler().addListener(blockClickListener);
         updateShovelLore();
@@ -371,36 +373,7 @@ public class FruitDiggingGame extends CarnivalGameBase {
     }
 
     private void updateShovelLore() {
-        for (int slot = 0; slot < 9; slot++) {
-            ItemStack stack = player.getInventory().getItemStack(slot);
-            if (stack.isAir() || new SkyBlockItem(stack).getAttributeHandler().getPotentialType() != ItemType.CARNIVAL_SHOVEL) continue;
-            List<Component> lore = stack.get(DataComponents.LORE);
-            if (lore == null) return;
-            player.getInventory().setItemStack(slot, stack.with(DataComponents.LORE, withMode(lore))
-                    .with(DataComponents.ITEM_MODEL, SHOVEL_MODELS.get(mode)));
-            return;
-        }
-    }
-
-    private List<Component> withMode(List<Component> lore) {
-        int modeLine = -1;
-        int cycleLine = -1;
-        for (int i = 0; i < lore.size(); i++) {
-            String plain = PlainTextComponentSerializer.plainText().serialize(lore.get(i));
-            if (modeLine < 0 && plain.startsWith("Dowsing Mode:")) modeLine = i;
-            if (cycleLine < 0 && plain.startsWith("Right-click to cycle")) cycleLine = i;
-        }
-        if (cycleLine < 0) return lore;
-        int from = modeLine < 0 ? cycleLine : modeLine;
-        int to = modeLine < 0 ? cycleLine : cycleLine - 1;
-        List<String> block = new ArrayList<>();
-        block.add("<e>Dowsing Mode: " + mode.getDisplayName());
-        block.addAll(mode.getDescription());
-        if (modeLine < 0) block.add("");
-        List<Component> updated = new ArrayList<>(lore.subList(0, from));
-        block.forEach(line -> updated.add(Text.of(line).asComponent().decoration(TextDecoration.ITALIC, false)));
-        updated.addAll(lore.subList(to, lore.size()));
-        return updated;
+        CarnivalShovelDisplay.show(player, mode);
     }
 
     @Override
@@ -429,6 +402,8 @@ public class FruitDiggingGame extends CarnivalGameBase {
         entities.forEach(Entity::remove);
         entities.clear();
         player.removeEffect(PotionEffect.MINING_FATIGUE);
+        if (!hadHaste) player.removeEffect(PotionEffect.HASTE);
+        CarnivalShovelDisplay.clear(player);
     }
 
     @Override

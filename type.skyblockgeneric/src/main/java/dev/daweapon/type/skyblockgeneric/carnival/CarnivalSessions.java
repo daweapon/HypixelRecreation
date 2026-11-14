@@ -33,6 +33,7 @@ public final class CarnivalSessions {
             .build();
 
     public static void initialize() {
+        CarnivalShovelDisplay.initialize();
         register("CARNIVAL_SHOVEL_INTERACT", CarnivalGame.FRUIT_DIGGING);
         register("CARNIVAL_ROD_INTERACT", CarnivalGame.CATCH_A_FISH);
         register("CARNIVAL_DART_TUBE_INTERACT", CarnivalGame.ZOMBIE_SHOOTOUT);
