@@ -156,6 +156,7 @@ public abstract class CarnivalGameBase implements CarnivalGameSession {
     public void leave() {
         if (over) return;
         abandon();
+        Carnivals.refundGame(player);
         Pos end = endPosition();
         if (end != null) player.teleport(end);
         player.sendMessage("<c>You left the " + game.getDisplayName() + " minigame!");

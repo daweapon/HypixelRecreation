@@ -56,6 +56,7 @@ public class CatchAFishGame extends CarnivalGameBase implements StationaryCarniv
     private static final int FLING_TICKS = 20;
     private static final int MESSAGE_TICKS = 20;
     private static final int BOBBER_RANGE = 40;
+    private static final int HOLD_GRACE_TICKS = 8;
 
     private enum State { SWIMMING, HOOKED, REELED, FLUNG }
 
@@ -67,6 +68,7 @@ public class CatchAFishGame extends CarnivalGameBase implements StationaryCarniv
     private long nextMessageAt;
     private @Nullable Bobber bobber;
     private long lastHook;
+    private long lastUse;
 
     public CatchAFishGame(SkyBlockPlayer player) {
         super(player, CarnivalGame.CATCH_A_FISH, CatchAFishScore.SECONDS);
@@ -220,6 +222,7 @@ public class CatchAFishGame extends CarnivalGameBase implements StationaryCarniv
     }
 
     private void click() {
+        lastUse = tick;
         if (bobber != null) {
             if (bobber.hooked != null) return;
             bobber.remove();
@@ -292,7 +295,9 @@ public class CatchAFishGame extends CarnivalGameBase implements StationaryCarniv
                 reelStep(swimmer);
             }
             case REELED -> {
-                if (tick - swimmer.stateSince >= NAME_DELAY_TICKS) fling(swimmer);
+                if (tick - swimmer.stateSince < NAME_DELAY_TICKS) return;
+                if (tick - lastUse > HOLD_GRACE_TICKS) escape(swimmer);
+                else fling(swimmer);
             }
             case FLUNG -> {
                 long flown = tick - swimmer.stateSince;
@@ -320,6 +325,15 @@ public class CatchAFishGame extends CarnivalGameBase implements StationaryCarniv
         }
         ThreadLocalRandom random = ThreadLocalRandom.current();
         swimmer.headPose(new Vec(random.nextDouble(-10, 0), random.nextDouble(-5, 5), 0));
+    }
+
+    private void escape(Fish swimmer) {
+        swimmer.stand.setCustomNameVisible(false);
+        swimmer.headPose(Vec.ZERO);
+        swimmer.state = State.SWIMMING;
+        removeBobber();
+        player.sendMessage("<c>The fish escaped! Hold right-click to reel in fish.");
+        playAt("entity.zombie.break_wooden_door", Sound.Source.HOSTILE, 0.5f, 1f, eye());
     }
 
     private void fling(Fish swimmer) {

@@ -17,7 +17,6 @@ import net.minestom.server.event.EventListener;
 import net.minestom.server.event.player.PlayerPacketEvent;
 import net.minestom.server.instance.block.Block;
 import net.minestom.server.item.ItemStack;
-import net.minestom.server.item.Material;
 import net.minestom.server.network.packet.client.play.ClientPlayerActionPacket;
 import net.minestom.server.network.packet.server.play.BlockBreakAnimationPacket;
 import net.minestom.server.network.packet.server.play.ParticlePacket;
@@ -77,11 +76,10 @@ public class FruitDiggingGame extends CarnivalGameBase {
             FruitTile.POMEGRANATE, "40824d18079042d5769f264f44394b95b9b99ce689688cc10c9eec3f882ccc08",
             FruitTile.WATERMELON, "efe4ef83baf105e8dee6cf03dfe7407f1911b3b9952c891ae34139560f2931d6",
             FruitTile.RUM, "407b275d28b927b1bf7f6dd9f45fbdad2af8571c54c8f027d1bff6956fbf3c16",
+            FruitTile.COCONUT, "10ceb1455b471d016a9f06d25f6e468df9fcf223e2c1e4795b16e84fcca264ee",
+            FruitTile.DURIAN, "ac268d36c2c6047ffeec00124096376b56dbb4d756a55329363a1b27fcd659cd",
+            FruitTile.DRAGONFRUIT, "3cc761bcb0579763d9b8ab6b7b96fa77eb6d9605a804d838fec39e7b25f95591",
             FruitTile.BOMB, "a76a2811d1e176a07b6d0a657b910f134896ce30850f6e80c7c83732d85381ea"));
-    private static final Map<FruitTile, Material> UNCAPTURED_ITEMS = new EnumMap<>(Map.of(
-            FruitTile.COCONUT, Material.COCOA_BEANS,
-            FruitTile.DURIAN, Material.SLIME_BALL,
-            FruitTile.DRAGONFRUIT, Material.CHORUS_FRUIT));
 
     private static final Map<DowsingMode, String> SHOVEL_MODELS = new EnumMap<>(Map.of(
             DowsingMode.MINES, "hypixel_skyblock:item/uncategorized/carnival_shovel_iron",
@@ -99,9 +97,9 @@ public class FruitDiggingGame extends CarnivalGameBase {
                     new TileSound("entity.player.splash", 0.74603176f)),
             FruitTile.RUM, List.of(new TileSound("entity.generic.drink", 1f)),
             FruitTile.BOMB, List.of(new TileSound("entity.creeper.hurt", 1f)),
-            FruitTile.COCONUT, List.of(new TileSound("entity.generic.eat", 1f)),
-            FruitTile.DURIAN, List.of(new TileSound("entity.generic.eat", 0.5f)),
-            FruitTile.DRAGONFRUIT, List.of(new TileSound("entity.player.levelup", HIGH_PITCH))));
+            FruitTile.COCONUT, List.of(new TileSound("block.grass.step", HIGH_PITCH)),
+            FruitTile.DURIAN, List.of(new TileSound("entity.player.burp", HIGH_PITCH)),
+            FruitTile.DRAGONFRUIT, List.of(new TileSound("entity.generic.drink", HIGH_PITCH))));
 
     private record Scheduled(long at, Runnable action) {}
 
@@ -318,9 +316,7 @@ public class FruitDiggingGame extends CarnivalGameBase {
     }
 
     private static ItemStack itemFor(FruitTile tile) {
-        String texture = HEAD_TEXTURES.get(tile);
-        if (texture != null) return ItemStacks.head(texture, Text.empty(), List.of()).build();
-        return ItemStack.of(UNCAPTURED_ITEMS.get(tile));
+        return ItemStacks.head(HEAD_TEXTURES.get(tile), Text.empty(), List.of()).build();
     }
 
     private void primeTnt(List<int[]> cells) {

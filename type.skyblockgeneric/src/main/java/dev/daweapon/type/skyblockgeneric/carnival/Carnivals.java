@@ -69,6 +69,10 @@ public final class Carnivals {
         return player.getAmountInInventory(ItemType.CARNIVAL_TICKET) >= Carnival.TICKETS_PER_GAME;
     }
 
+    public static void refundGame(SkyBlockPlayer player) {
+        player.addAndUpdateItem(new SkyBlockItem(ItemType.CARNIVAL_TICKET, Carnival.TICKETS_PER_GAME));
+    }
+
     public static void payForGame(SkyBlockPlayer player) {
         player.takeItem(ItemType.CARNIVAL_TICKET, Carnival.TICKETS_PER_GAME);
     }

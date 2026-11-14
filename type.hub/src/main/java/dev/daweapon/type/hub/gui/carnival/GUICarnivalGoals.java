@@ -47,8 +47,9 @@ public class GUICarnivalGoals extends StatelessView {
         StringBuilder lore = new StringBuilder(goal.getGame().colored()).append("\n<7>")
                 .append(goal.getDescription().replace("\n", "\n<7>"));
         if (goal.getKind() == CarnivalGoal.Kind.PLAY) {
-            int played = Math.min(profile.stats(goal.getGame()).getYearAttempts(), goal.getTarget());
-            lore.append("\n\n<7>Progress: <a>").append(played).append("<7>/<c>").append(goal.getTarget());
+            int played = profile.stats(goal.getGame()).getYearAttempts();
+            lore.append("\n\n<7>Progress: <a>").append(played).append("<7>/")
+                    .append(played >= goal.getTarget() ? "<a>" : "<c>").append(goal.getTarget());
         }
         lore.append("\n\n<7>Rewards:\n<8>+<e>").append(goal.getTokens()).append(" Carnival Tokens")
                 .append("\n<a>Carnival Ticket <8>x").append(CarnivalGoal.TICKETS_PER_GOAL)
