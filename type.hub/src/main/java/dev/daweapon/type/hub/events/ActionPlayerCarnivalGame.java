@@ -1,6 +1,7 @@
 package dev.daweapon.type.hub.events;
 
 import net.minestom.server.coordinate.Pos;
+import net.minestom.server.coordinate.Vec;
 import net.minestom.server.event.player.PlayerDisconnectEvent;
 import net.minestom.server.event.player.PlayerMoveEvent;
 import net.minestom.server.event.player.PlayerSpawnEvent;
@@ -8,6 +9,7 @@ import dev.daweapon.type.generic.event.EventNodes;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.event.phase.EventPhase;
 import dev.daweapon.type.generic.event.phase.PhasedEvent;
+import dev.daweapon.type.hub.carnival.RoamingCarnivalGame;
 import dev.daweapon.type.hub.carnival.StationaryCarnivalGame;
 import dev.daweapon.type.skyblockgeneric.carnival.CarnivalGameSession;
 import dev.daweapon.type.skyblockgeneric.carnival.CarnivalSessions;
@@ -20,6 +22,14 @@ public class ActionPlayerCarnivalGame implements HypixelEventClass {
     public void holdAtStation(PlayerMoveEvent event) {
         SkyBlockPlayer player = (SkyBlockPlayer) event.getPlayer();
         CarnivalGameSession session = CarnivalSessions.get(player);
+        if (session instanceof RoamingCarnivalGame roaming) {
+            Pos target = event.getNewPosition();
+            if (roaming.mustReturn(target)) {
+                event.setNewPosition(roaming.dock().withView(target.yaw(), target.pitch()));
+                player.setVelocity(Vec.ZERO);
+            }
+            return;
+        }
         if (!(session instanceof StationaryCarnivalGame stationary)) return;
         Pos station = stationary.station();
         Pos moved = event.getNewPosition();

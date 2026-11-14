@@ -12,8 +12,10 @@ import net.minestom.server.coordinate.Vec;
 import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.ItemEntity;
+import net.minestom.server.entity.PlayerHand;
 import net.minestom.server.entity.metadata.other.PrimedTntMeta;
 import net.minestom.server.event.EventListener;
+import net.minestom.server.event.player.PlayerBlockInteractEvent;
 import net.minestom.server.event.player.PlayerPacketEvent;
 import net.minestom.server.instance.block.Block;
 import net.minestom.server.item.ItemStack;
@@ -40,6 +42,7 @@ import dev.daweapon.type.skyblockgeneric.carnival.games.FruitTile;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
+import org.tinylog.Logger;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -65,6 +68,7 @@ public class FruitDiggingGame extends CarnivalGameBase {
     private static final int WATERMELON_DELAY_TICKS = 10;
     private static final int END_DELAY_TICKS = 60;
     private static final int BREAKER_ID = 0;
+    private static final int MODE_DEBOUNCE_TICKS = 2;
     private static final double LOWER_LINE_Y = 74.0;
     private static final double UPPER_LINE_Y = 74.34375;
     private static final float HIGH_PITCH = 1.4920635f;
@@ -108,11 +112,14 @@ public class FruitDiggingGame extends CarnivalGameBase {
     private final List<Scheduled> scheduled = new ArrayList<>();
     private final List<Entity> entities = new ArrayList<>();
     private final EventListener<PlayerPacketEvent> digListener = EventListener.of(PlayerPacketEvent.class, this::onPacket);
+    private final EventListener<PlayerBlockInteractEvent> blockClickListener =
+            EventListener.of(PlayerBlockInteractEvent.class, this::onBlockClick);
     private DowsingMode mode = DowsingMode.MINES;
     private int[] digging;
     private long digStart;
     private int lastStage = -1;
     private long lastDigTick;
+    private long lastModeTick = -MODE_DEBOUNCE_TICKS;
     private long shownScore;
     private @Nullable Entity anchorMarker;
     private @Nullable int[] anchorCell;
@@ -136,11 +143,21 @@ public class FruitDiggingGame extends CarnivalGameBase {
         player.addEffect(new Potion(PotionEffect.MINING_FATIGUE, 255, Potion.INFINITE_DURATION,
                 (byte) (Potion.AMBIENT_FLAG | Potion.PARTICLES_FLAG)));
         MinecraftServer.getGlobalEventHandler().addListener(digListener);
+        MinecraftServer.getGlobalEventHandler().addListener(blockClickListener);
         updateShovelLore();
+    }
+
+    private void onBlockClick(PlayerBlockInteractEvent event) {
+        if (event.getPlayer() != player || event.getHand() != PlayerHand.MAIN) return;
+        event.setBlockingItemUse(true);
+        onRightClick();
     }
 
     @Override
     public void onRightClick() {
+        if (tick - lastModeTick < MODE_DEBOUNCE_TICKS) return;
+        lastModeTick = tick;
+        Logger.info("Fruit Digging {}: mode switch at tick {}", player.getUsername(), tick);
         mode = mode.next();
         play("block.lever.click", 1f, mode.getSwitchPitch());
         updateShovelLore();
@@ -149,6 +166,7 @@ public class FruitDiggingGame extends CarnivalGameBase {
     private void onPacket(PlayerPacketEvent event) {
         if (event.getPlayer() != player || !(event.getPacket() instanceof ClientPlayerActionPacket action)) return;
         Point position = action.blockPosition();
+        Logger.info("Fruit Digging {}: {} {} at tick {}", player.getUsername(), action.status(), position, tick);
         switch (action.status()) {
             case STARTED_DIGGING -> packets.add(() -> startDigging(position));
             case CANCELLED_DIGGING -> packets.add(() -> {
@@ -165,6 +183,7 @@ public class FruitDiggingGame extends CarnivalGameBase {
         if (cell == null || board.isFinished() || board.stateAt(cell[0], cell[1]) != CellState.HIDDEN) return;
         digging = cell;
         digStart = tick;
+        Logger.info("Fruit Digging {}: dig started on {},{} at tick {}", player.getUsername(), cell[0], cell[1], tick);
         lastStage = -1;
     }
 
@@ -225,6 +244,7 @@ public class FruitDiggingGame extends CarnivalGameBase {
     private void finishDigging() {
         int[] cell = digging;
         digging = null;
+        Logger.info("Fruit Digging {}: dig finished at tick {}", player.getUsername(), tick);
         BlockVec position = cellPosition(cell);
         player.sendPacket(new BlockBreakAnimationPacket(BREAKER_ID, position, (byte) 10));
         Dig dig = board.dig(cell[0], cell[1], mode);
@@ -403,6 +423,7 @@ public class FruitDiggingGame extends CarnivalGameBase {
     @Override
     protected void onEnd() {
         MinecraftServer.getGlobalEventHandler().removeListener(digListener);
+        MinecraftServer.getGlobalEventHandler().removeListener(blockClickListener);
         stopDigging();
         scheduled.clear();
         entities.forEach(Entity::remove);

@@ -36,7 +36,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * fixed spots, a thrown bobber hooks one it touches, the reel bar above it fills at the fish's own rate, then the fish
  * is flung out of the pond and its points land a second later.
  */
-public class CatchAFishGame extends CarnivalGameBase implements StationaryCarnivalGame {
+public class CatchAFishGame extends CarnivalGameBase implements RoamingCarnivalGame {
     private static final Pos START = new Pos(-78.0, 72, 39.0, 15, 0);
     private static final Pos END = new Pos(-78.5, 72, 28.5, 60, 0);
     private static final double FISH_Y = 68.375;
@@ -75,8 +75,14 @@ public class CatchAFishGame extends CarnivalGameBase implements StationaryCarniv
     }
 
     @Override
-    public Pos station() {
+    public Pos dock() {
         return START;
+    }
+
+    @Override
+    public boolean mustReturn(Pos position) {
+        Instance instance = player.getInstance();
+        return instance != null && instance.getBlock(position).compare(Block.WATER);
     }
 
     @Override

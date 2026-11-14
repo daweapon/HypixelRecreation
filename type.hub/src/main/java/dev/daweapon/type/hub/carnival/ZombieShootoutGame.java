@@ -10,7 +10,6 @@ import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.EntityCreature;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.EquipmentSlot;
-import net.minestom.server.entity.attribute.Attribute;
 import net.minestom.server.entity.metadata.monster.zombie.ZombieMeta;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.block.Block;
@@ -52,9 +51,8 @@ public class ZombieShootoutGame extends CarnivalGameBase implements StationaryCa
             new BlockVec(-96, 76, 61), new BlockVec(-99, 77, 62), new BlockVec(-102, 75, 62), new BlockVec(-106, 77, 61),
             new BlockVec(-109, 75, 60), new BlockVec(-112, 76, 58), new BlockVec(-115, 77, 55), new BlockVec(-117, 76, 52),
             new BlockVec(-118, 76, 49), new BlockVec(-119, 75, 45), new BlockVec(-119, 77, 42), new BlockVec(-118, 76, 39));
-    private static final double MIN_X = -117.5, MAX_X = -92.5, MIN_Z = 37.5, MAX_Z = 61.5;
     private static final double ADULT_SPEED = 0.12, BABY_SPEED = 0.18;
-    private static final double WANDER_REACH = 10;
+    private static final int TURN_PAUSE_TICKS = 2;
     private static final int NAME_SHOWN_TICKS = 60;
     private static final int SHOT_COOLDOWN_TICKS = 10;
     private static final double ARROW_SPEED = 4.5;
@@ -101,7 +99,10 @@ public class ZombieShootoutGame extends CarnivalGameBase implements StationaryCa
         final double row;
         final long despawnAt;
         final EntityCreature entity;
-        long nextWanderAt;
+        final ZombieLane lane;
+        double distance;
+        int direction;
+        long pausedUntil;
 
         Zombie(Spawn spawn, Vec at, Instance instance) {
             this.tier = spawn.tier();
@@ -112,7 +113,10 @@ public class ZombieShootoutGame extends CarnivalGameBase implements StationaryCa
             entity.setAutoViewable(false);
             entity.setInvulnerable(true);
             entity.editEntityMeta(ZombieMeta.class, meta -> meta.setBaby(baby));
-            entity.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(baby ? BABY_SPEED : ADULT_SPEED);
+            this.lane = ZombieLane.forRow(row);
+            this.distance = lane.nearestDistance(at);
+            this.direction = ThreadLocalRandom.current().nextBoolean() ? 1 : -1;
+            entity.setNoGravity(true);
             entity.setEquipment(EquipmentSlot.HELMET, ItemStack.of(tier.getHelmet()));
             entity.setEquipment(EquipmentSlot.CHESTPLATE, ItemStack.of(tier.getChestplate()));
             entity.setInstance(instance, new Pos(at, 0, 0)).thenRun(() -> entity.addViewer(player));
@@ -124,28 +128,22 @@ public class ZombieShootoutGame extends CarnivalGameBase implements StationaryCa
                 entity.setCustomName(Text.of(timerName(left)).asComponent());
                 entity.setCustomNameVisible(true);
             }
-            if (tick >= nextWanderAt) wander();
+            walk();
         }
 
-        void wander() {
-            ThreadLocalRandom random = ThreadLocalRandom.current();
-            nextWanderAt = tick + random.nextInt(40, 81);
-            Pos at = entity.getPosition();
-            List<Vec> reachable = SPAWNS.stream()
-                    .filter(spot -> spot.y() == row && spot.withY(0).distance(at.asVec().withY(0)) <= WANDER_REACH)
-                    .toList();
-            Vec spot = reachable.isEmpty() ? nearestSpot(at) : reachable.get(random.nextInt(reachable.size()));
-            Vec target = new Vec(clamp(spot.x() + random.nextDouble(-1.5, 1.5), MIN_X, MAX_X), row,
-                    clamp(spot.z() + random.nextDouble(-1.5, 1.5), MIN_Z, MAX_Z));
-            entity.getNavigator().setPathTo(target, 0.5, 16, 8, () -> nextWanderAt = Math.min(nextWanderAt, tick + 1));
-        }
-
-        Vec nearestSpot(Pos at) {
-            Vec best = SPAWNS.getFirst();
-            for (Vec spot : SPAWNS) {
-                if (spot.y() == row && spot.distance(at.asVec()) < best.distance(at.asVec())) best = spot;
+        void walk() {
+            if (tick < pausedUntil) return;
+            double next = distance + direction * (baby ? BABY_SPEED : ADULT_SPEED);
+            if (next <= 0 || next >= lane.length()) {
+                direction = -direction;
+                pausedUntil = tick + TURN_PAUSE_TICKS;
+                return;
             }
-            return best;
+            distance = next;
+            Vec from = entity.getPosition().asVec();
+            Vec to = lane.at(distance);
+            float yaw = (float) Math.toDegrees(Math.atan2(-(to.x() - from.x()), to.z() - from.z()));
+            entity.teleport(new Pos(to, yaw, 0));
         }
 
         double hitTime(Vec from, Vec to) {
@@ -326,10 +324,6 @@ public class ZombieShootoutGame extends CarnivalGameBase implements StationaryCa
         float yaw = (float) Math.toDegrees(Math.atan2(velocity.x(), velocity.z()));
         float pitch = (float) Math.toDegrees(Math.atan2(velocity.y(), horizontal));
         return new Pos(position, yaw, pitch);
-    }
-
-    private static double clamp(double value, double min, double max) {
-        return Math.max(min, Math.min(max, value));
     }
 
     private void playAt(String sound, Sound.Source source, float volume, float pitch) {
