@@ -23,7 +23,7 @@ player -> Velocity proxy -> HypixelCore game server (one per ServerType/area)
 | Services | `service.generic` plus one `service.*` per domain | Redis-driven services; `service.generic` holds `ServiceInitializer` and the base `SkyBlockService` |
 | Proxy | `velocity.extension`, `proxy.api` | Routing, heartbeat, server selection; `proxy.api` is the game-server side client |
 | Entry point | `loader` | `Hypixel.main`, shades every `type.*` module into `HypixelCore.jar` |
-| Tooling | `packer`, `anticheat`, `pvp`, `spark`, `dungeons`, `setup`, `control-app`, `clientmod`, `website`, `tools` | Resource pack server, anticheat (MIT), combat, web API, installer (Go), Flutter control app, Fabric client mod, docs |
+| Tooling | `packer`, `anticheat`, `pvp`, `spark`, `dungeons`, `control-app`, `clientmod`, `tools` | Resource pack server, anticheat (MIT), combat, web API, Flutter control app, Fabric client mod, capture and world tools |
 
 ## How a game server starts
 
@@ -58,7 +58,7 @@ One maintainer, `@daweapon`, owns the whole tree (`.github/CODEOWNERS`). The are
 | `commons/protocol`, `commons/redis` | Wire format shared by every JVM; change both sides in one deploy |
 | `type.skyblockgeneric` data handlers | Profile persistence; a bad change corrupts saves |
 | `service.auctionhouse`, `service.bazaar` | Player economy |
-| `loader`, `DockerFiles`, `setup`, `control-app` | Build and deploy path |
+| `loader`, `DockerFiles`, `control-app` | Build and deploy path |
 | `anticheat` | Separate MIT licence; keep its `LICENSE.md` |
 
 ## Third-party code and licences
