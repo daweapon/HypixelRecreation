@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Exposed End Stone and Obsidian blocks a player can stand next to, scanned from the captured End world
- * (tools/theend). Hypixel places nodes only inside hidden designated areas; these spots are a stand-in.
+ * Exposed End Stone and Obsidian blocks a player can stand next to, scanned from the captured End world.
+ * Hypixel places nodes only inside hidden designated areas; these spots are a stand-in.
  */
 public final class EnderNodeSpots {
     private static final int[] END_STONE = {

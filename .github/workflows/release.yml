@@ -30,33 +30,6 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew --parallel --build-cache shadowJar
 
-      - name: Set up Go
-        uses: actions/setup-go@v7
-        with:
-          go-version-file: setup/go.mod
-          check-latest: false
-          cache-dependency-path: |
-            setup/go.mod
-            setup/go.sum
-
-      - name: Test setup TUI
-        run: go test ./...
-        working-directory: setup
-
-      - name: Build setup TUI release assets
-        working-directory: setup
-        run: |
-          mkdir -p dist
-          for goos in linux darwin; do
-            for goarch in amd64 arm64; do
-              name="skyblock-installer_${goos}_${goarch}"
-              CGO_ENABLED=0 GOOS="$goos" GOARCH="$goarch" \
-                go build -trimpath -ldflags="-s -w" -o "dist/skyblock-installer" ./cmd/skyblock-installer
-              tar -C dist -czf "dist/${name}.tar.gz" skyblock-installer
-              rm dist/skyblock-installer
-            done
-          done
-
       - name: Add Jar to GitHub releases
         uses: marvinpinto/action-automatic-releases@latest
         with:
@@ -83,4 +56,3 @@ jobs:
             service.guild/build/libs/*.jar
             service.punishment/build/libs/*.jar
             service.replay/build/libs/*.jar
-            setup/dist/*.tar.gz

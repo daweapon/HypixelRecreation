@@ -1,8 +1,7 @@
 package dev.daweapon.service.control.fleet;
 
 /**
- * Grouping used by the fleet table, derived from the installer's own container naming
- * convention (setup/internal/installer/docker.go isProjectContainer).
+ * Grouping used by the fleet table, derived from the container naming convention.
  */
 public enum FleetGroup {
     CORE,
