@@ -32,7 +32,6 @@ import dev.daweapon.proxyapi.ProxyService;
 import dev.daweapon.spark.Spark;
 import dev.daweapon.type.generic.*;
 import dev.daweapon.type.generic.i18n.HypixelTranslator;
-import dev.daweapon.type.ravengardgeneric.RavengardGenericLoader;
 import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
 import org.reflections.Reflections;
 import org.tinylog.Logger;
@@ -154,9 +153,6 @@ public class Hypixel {
             skyblockLoader.initialize(minecraftServer);
             AbiphoneCallBindings.register();
         }
-        if (typeLoader instanceof RavengardTypeLoader) {
-            new RavengardGenericLoader(typeLoader).initialize(minecraftServer);
-        }
 
         // Initialize the server
         typeLoader.onInitialize(minecraftServer);
@@ -173,9 +169,6 @@ public class Hypixel {
                     .forEach(proxyAPI::registerProxyHandler);
             SkyBlockGenericLoader.loopThroughPackage("dev.daweapon.type.skyblockgeneric.redis.service", RedisMessageHandler.class)
                     .forEach(proxyAPI::registerServiceHandler);
-        } else if (typeLoader instanceof RavengardTypeLoader) {
-            SkyBlockGenericLoader.loopThroughPackage("dev.daweapon.type.ravengardgeneric.redis", RedisMessageHandler.class)
-                    .forEach(proxyAPI::registerProxyHandler);
         }
         RedisProtocol<?, ?>[] toProxyProtocols = {
                 new RequestServerNameProtocol(), new PlayerCountProtocol(),

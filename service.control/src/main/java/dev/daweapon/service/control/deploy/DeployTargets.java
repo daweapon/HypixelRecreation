@@ -93,7 +93,6 @@ public final class DeployTargets {
             case "election" -> "service_election";
             case "guild" -> "service_guild";
             case "punishment" -> "service_punishment";
-            case "replay" -> "service_replay";
             case "control" -> "service_control";
             default -> null;
         };

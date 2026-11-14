@@ -1,6 +1,5 @@
 package dev.daweapon.packer;
 
-import dev.daweapon.packer.packs.ravengard.RavengardPackDefinition;
 import dev.daweapon.packer.packs.skyblock.SkyblockPackDefinition;
 import team.unnamed.creative.BuiltResourcePack;
 import team.unnamed.creative.server.ResourcePackServer;
@@ -40,7 +39,6 @@ public class HypixelPackServer {
         overlayMountedPacks();
 
         Map<String, BuiltResourcePack> packs = List.of(
-                        RavengardPackDefinition.INSTANCE,
                         SkyblockPackDefinition.INSTANCE
                 ).stream()
                 .filter(HypixelPackServer::packDirectoryExists)

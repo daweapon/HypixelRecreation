@@ -26,7 +26,6 @@ public final class QueuePositionNotifier {
         return switch (type) {
             case SKYBLOCK_KUUDRA -> "Kuudra";
             case SKYBLOCK_CATACOMBS -> "The Catacombs";
-            case RAVENGARD_DUNGEON -> "Dungeons";
             default -> type.name();
         };
     }

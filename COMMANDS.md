@@ -2,7 +2,7 @@
 
 Sorted reference for the current HypixelRecreation source tree. Updated 2026-10-11.
 
-This catalog covers **136 top-level game-server command definitions** (after merging 52 staff commands into subcommand groups, see Merged staff commands), **7 proxy commands**, and the optional Spark command. It describes the remake as implemented, not a promise of complete real-Hypixel parity.
+This catalog covers **134 top-level game-server command definitions** (after merging 52 staff commands into subcommand groups, see Merged staff commands), **7 proxy commands**, and the optional Spark command. It describes the remake as implemented, not a promise of complete real-Hypixel parity.
 
 ## Contents
 
@@ -13,7 +13,7 @@ This catalog covers **136 top-level game-server command definitions** (after mer
 - [Subcommand reference](#subcommand-reference)
 - [Merged staff commands](#merged-staff-commands)
 - [Examples](#examples)
-- [Other game modes](#other-game-modes)
+- [Optional modules](#optional-modules)
 - [Known registration and help discrepancies](#known-registration-and-help-discrepancies)
 - [Admin GUI planning](#admin-gui-planning)
 
@@ -87,8 +87,6 @@ This catalog covers **136 top-level game-server command definitions** (after mer
 | `/pity` | — | Opens the Pity menu: live pity counters for Crimson Isle (trophy fish, Vanquisher), The End (Special Zealots), The Garden (Overclocker 3000 greenhouse progress), Glacite Mineshafts, Hoppity's Hunt (Mythic and Divine rabbits), Moonglade Marsh (Swamp the Fish, Mob the Fish) and Torrhus Canyon (Fish the Fish). Counters whose content is not built yet show "Not available yet". | DEFAULT | No | `type.skyblockgeneric` |
 | `/primalfearsign <paper>` | — | Internal command behind the clickable [HERE] in a Commitment Phobia's chat message: signs the paper it handed you. Only the mob's owner can use it, and an outdated paper is rejected. | DEFAULT | No | `type.skyblockgeneric` |
 | `/rankcolor` | `/rankcolour` | Change your MVP+ rank color. | DEFAULT | No | `type.generic` |
-| `/replay <uuid> [hex]` | — | Watch a specific replay by ID. | DEFAULT | No | `type.generic` |
-| `/replays` | — | View your game replays. | DEFAULT | No | `type.generic` |
 | `/rngmeter` | `/experimentrngmeter` | Opens the Experimentation Table RNG Meter, where you pick a Superpairs drop to make guaranteed once the meter fills. | DEFAULT | No | `type.skyblockgeneric` |
 | `/romerorestore` | — | Buys back the quest item Romero gave you for Juliette if you lost it, for 100,000 coins. Internal entry point behind the clickable [CLICK] in Romero's dialogue; only works while you are carrying a gift for Juliette. | DEFAULT | No | `type.skyblockgeneric` |
 | `/sbadvent`<br>`/sbadvent preview <day\|0>` | `/adventcalendar` | Opens the Advent Calendar: claim each December day's gifts, coins and rank-gated furniture (day 1-25, the 2022 table). `preview` is staff-only and pretends it is that day (0 turns it off) so the calendar can be tested outside December. | DEFAULT | No | `type.skyblockgeneric` |
@@ -215,7 +213,7 @@ This catalog covers **136 top-level game-server command definitions** (after mer
 | --- | --- | --- | --- |
 | `/find <username> [tp]` | — | STAFF, player only | Finds an online player's server; `tp` also transfers/teleports to their location. |
 | `/limbo` | — | Player only | Enters Limbo, or displays information when already there. |
-| `/lobby [game]` | — | Player only | Travels to the default or named lobby; destination aliases include `bw`, `bedwars`, `sw`, and `skywars`. `/l` is not registered here. |
+| `/lobby [game]` | — | Player only | Travels to the default or named lobby; destination aliases include `sb`, `skyblock`, `hub`, `prototype` and `ptl`. `/l` is not registered here. |
 | `/login <password>` | — | Unauthenticated player; authentication enabled | Logs into the local authentication system. |
 | `/protocolversion` | `/protocol` | Player only | Displays the connected client's protocol version. |
 | `/register <password> <password>` | — | Unauthenticated player; authentication enabled | Registers a local authentication password. |
@@ -539,85 +537,7 @@ Replace player names and enum IDs with your intended targets. These are syntax e
 | Teleport to coordinates as staff | `/tp 0 100 0` |
 | Change flying speed as staff | `/speed 1 FLY` |
 
-## Other game modes
-
-These definitions are in the repository but are loaded only for the relevant game/module. Configurator branches and preconditions vary by game mode. Syntax here records the declared usage with corrected registered command spellings; this appendix is not a live deployment or functional certification of those modes.
-
-### type.bedwarsconfigurator
-
-| Command / syntax | Aliases | Purpose | Minimum rank | Console declared |
-| --- | --- | --- | --- | --- |
-| `/autosetup <subcommand>` | `/setup`, `/mapsetup` | Automatic BedWars map configuration tool. | STAFF | No |
-| `/choosemap <map>` | `/choose`, `/selectmap`, `/select` | Choose a BedWars map to configure. | STAFF | No |
-
-### type.bedwarsgame
-
-| Command / syntax | Aliases | Purpose | Minimum rank | Console declared |
-| --- | --- | --- | --- | --- |
-| `/bwadmin <breakbed\|respawnbed\|endgame\|info> [team]` | — | Admin commands for BedWars game management. | STAFF | No |
-| `/shout <message>` | — | Shouts a message to all players on the game. | DEFAULT | No |
-
-### type.bedwarslobby
-
-| Command / syntax | Aliases | Purpose | Minimum rank | Console declared |
-| --- | --- | --- | --- | --- |
-| `/rejoin` | — | Rejoin an active BedWars game. | DEFAULT | No |
-
-### type.murdermysteryconfigurator
-
-| Command / syntax | Aliases | Purpose | Minimum rank | Console declared |
-| --- | --- | --- | --- | --- |
-| `/choosemap <map>` | `/choose`, `/selectmap`, `/select` | Choose a Murder Mystery map to configure. | STAFF | No |
-| `/setup <subcommand>` | `/mapsetup`, `/autosetup` | Murder Mystery map configuration tool. | STAFF | No |
-
-### type.murdermysterygame
-
-| Command / syntax | Aliases | Purpose | Minimum rank | Console declared |
-| --- | --- | --- | --- | --- |
-| `/forcestart [seconds]` | — | Starts a murder mystery game immediately. | STAFF | No |
-
-### type.ravengardgeneric
-
-| Command / syntax | Aliases | Purpose | Minimum rank | Console declared |
-| --- | --- | --- | --- | --- |
-| `/animreview [start <clip>\|stop\|goto <tick>\|markstart\|mark <name>\|marks\|unmark <name>]` | — | Review captured animations and mark their segments. | STAFF | No |
-| `/class <knight\|warrior\|hunter\|assassin>` | — | Sets your Ravengard class. | DEFAULT | No |
-| `/crowns <amount>` | — | Sets your crown balance. | STAFF | No |
-| `/dungeon <join\|list\|generate [seed] [rooms]>` | — | Ravengard dungeon administration. | STAFF | No |
-| `/hub` | `/h` | Sends the player to the Ravengard hub. | DEFAULT | No |
-| `/items [lookup]` | `/e` | Browse every implemented Ravengard item. Opens the item browser; optional search. | STAFF | No |
-| `/spawn <mob>` | — | Spawns a Ravengard mob at your position. | STAFF | No |
-| `/spawnsatchel` | — | Drops a loot satchel at your position. | STAFF | No |
-| `/switch <world>` | — | Switches between captured polar worlds. | DEFAULT | No |
-
-### type.replayviewer
-
-| Command / syntax | Aliases | Purpose | Minimum rank | Console declared |
-| --- | --- | --- | --- | --- |
-| `/goto <time\|tick>` | — | Seeks to a specific time in the replay. | DEFAULT | No |
-| `/share` | — | Share your current replay position. | DEFAULT | No |
-| `/viewer <play\|pause\|speed\|skip\|goto\|restart\|leave>` | — | Controls replay playback. | DEFAULT | No |
-
-### type.skywarsconfigurator
-
-| Command / syntax | Aliases | Purpose | Minimum rank | Console declared |
-| --- | --- | --- | --- | --- |
-| `/choosemap <map>` | `/choose`, `/selectmap`, `/select` | Choose a SkyWars map to configure. | STAFF | No |
-| `/swconfig <subcommand>` | — | Configure SkyWars maps. | STAFF | No |
-
-### type.skywarsgame
-
-| Command / syntax | Aliases | Purpose | Minimum rank | Console declared |
-| --- | --- | --- | --- | --- |
-| `/forcestart [seconds]` | — | Force starts the skywars game. | STAFF | No |
-| `/skipevent` | — | Skips to the next game event (refill, dragon spawn). | STAFF | No |
-
-### type.skywarslobby
-
-| Command / syntax | Aliases | Purpose | Minimum rank | Console declared |
-| --- | --- | --- | --- | --- |
-| `/setswlevel <level>` | — | Set your SkyWars level for testing. | STAFF | No |
-| `/swadmin <give\|set> <coins\|souls\|tokens> <amount>` | `/skywarsadmin` | Admin command for managing SkyWars currencies. | STAFF | No |
+## Optional modules
 
 ### Optional Spark profiler
 

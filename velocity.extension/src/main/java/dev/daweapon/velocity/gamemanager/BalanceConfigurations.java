@@ -47,17 +47,7 @@ public final class BalanceConfigurations {
             Map.entry(ServerType.SKYBLOCK_TORRHUS_CANYON, DEFAULT_CHAIN),
             Map.entry(ServerType.SKYBLOCK_BACKWATER_BAYOU, DEFAULT_CHAIN),
             Map.entry(ServerType.SKYBLOCK_JERRYS_WORKSHOP, DEFAULT_CHAIN),
-            Map.entry(ServerType.PROTOTYPE_LOBBY, DEFAULT_CHAIN),
-            Map.entry(ServerType.BEDWARS_LOBBY, DEFAULT_CHAIN),
-            Map.entry(ServerType.BEDWARS_GAME, DEFAULT_CHAIN),
-            Map.entry(ServerType.SKYWARS_LOBBY, DEFAULT_CHAIN),
-            Map.entry(ServerType.SKYWARS_GAME, DEFAULT_CHAIN),
-            Map.entry(ServerType.MURDER_MYSTERY_LOBBY, DEFAULT_CHAIN),
-            Map.entry(ServerType.MURDER_MYSTERY_GAME, DEFAULT_CHAIN),
-            Map.entry(ServerType.SKYWARS_CONFIGURATOR, DEFAULT_CHAIN),
-            Map.entry(ServerType.BEDWARS_CONFIGURATOR, DEFAULT_CHAIN),
-            Map.entry(ServerType.MURDER_MYSTERY_CONFIGURATOR, DEFAULT_CHAIN),
-            Map.entry(ServerType.RAVENGARD_LOBBY, DEFAULT_CHAIN)
+            Map.entry(ServerType.PROTOTYPE_LOBBY, DEFAULT_CHAIN)
     );
 
     public static @Nullable GameManager.GameServer getServerFor(Player player, ServerType type) {

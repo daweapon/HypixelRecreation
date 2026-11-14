@@ -45,23 +45,9 @@ dependencies {
 
     implementation(project(":type.prototypelobby"))
 
-    implementation(project(":type.bedwarslobby"))
-    implementation(project(":type.bedwarsgame"))
-    implementation(project(":type.bedwarsconfigurator"))
 
-    implementation(project(":type.murdermysterylobby"))
-    implementation(project(":type.murdermysterygame"))
-    implementation(project(":type.murdermysteryconfigurator"))
 
-    implementation(project(":type.skywarslobby"))
-    implementation(project(":type.skywarsgame"))
-    implementation(project(":type.skywarsconfigurator"))
-    implementation(project(":type.ravengardgeneric"))
-    implementation(project(":type.ravengardlobby"))
-    implementation(project(":type.ravengarddungeon"))
-    implementation(project(":type.mainlobby"))
 
-    implementation(project(":type.replayviewer"))
 
     implementation(project(":type.generic"))
     implementation(project(":commons"))

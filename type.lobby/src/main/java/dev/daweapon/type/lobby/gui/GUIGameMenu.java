@@ -38,10 +38,6 @@ public class GUIGameMenu extends StatelessView {
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         ServerInfoCache.getServers();
 
-        layout.slot(4, ItemStacks.item(Material.BOOKSHELF, """
-                <a>Main Lobby
-
-                <7>Return to the Main Lobby."""), (_, c) -> c.player().sendTo(ServerType.MAIN_LOBBY));
         layout.slot(13, ItemStacks.item(Material.GRASS_BLOCK, """
                 <a>Hypixel SMP
                 <8>Persistent Game
@@ -51,12 +47,9 @@ public class GUIGameMenu extends StatelessView {
 
                 <a>► Click to Connect"""), (_, c) -> c.player().notImplemented());
 
-        layout.slot(22, createGameItem(GameType.RAVENGARD), (_, c) -> connect(c, GameType.RAVENGARD));
-
         int index = 0;
         for (GameType game : GameType.values()) {
             if (index >= GAME_SLOTS.length) break;
-            if (game == GameType.RAVENGARD) continue;
             layout.slot(GAME_SLOTS[index++], createGameItem(game), (_, c) -> connect(c, game));
         }
         layout.slot(49, createRandomGameItem(), (_, c) -> connectRandom(c));

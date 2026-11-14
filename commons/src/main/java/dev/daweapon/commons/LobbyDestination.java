@@ -9,21 +9,6 @@ import java.util.Set;
 
 // Maps minigame lobby destinations to their aliases and the ServerTypes considered part of that game's session.
 public enum LobbyDestination {
-    BEDWARS(
-        ServerType.BEDWARS_LOBBY,
-        Set.of("bw", "bedwars"),
-        Set.of(ServerType.BEDWARS_LOBBY, ServerType.BEDWARS_GAME, ServerType.BEDWARS_CONFIGURATOR)
-    ),
-    SKYWARS(
-        ServerType.SKYWARS_LOBBY,
-        Set.of("sw", "skywars"),
-        Set.of(ServerType.SKYWARS_LOBBY, ServerType.SKYWARS_GAME, ServerType.SKYWARS_CONFIGURATOR)
-    ),
-    MURDER_MYSTERY(
-        ServerType.MURDER_MYSTERY_LOBBY,
-        Set.of("mm", "murder", "murdermystery", "murder_mystery", "mystery"),
-        Set.of(ServerType.MURDER_MYSTERY_LOBBY, ServerType.MURDER_MYSTERY_GAME, ServerType.MURDER_MYSTERY_CONFIGURATOR)
-    ),
     SKYBLOCK(
         ServerType.SKYBLOCK_HUB,
         Set.of("sb", "skyblock", "hub"),
@@ -32,17 +17,7 @@ public enum LobbyDestination {
     PROTOTYPE(
         ServerType.PROTOTYPE_LOBBY,
         Set.of("prototype", "proto", "ptl"),
-        Set.of(ServerType.PROTOTYPE_LOBBY, ServerType.REPLAY_VIEWER)
-    ),
-    MAIN_LOBBY(
-        ServerType.MAIN_LOBBY,
-        Set.of("main"),
-        Set.of(ServerType.MAIN_LOBBY)
-    ),
-    RAVENGARD(
-        ServerType.RAVENGARD_LOBBY,
-        Set.of("ravengard", "rg"),
-        Set.of()
+        Set.of(ServerType.PROTOTYPE_LOBBY)
     );
 
     private final ServerType destination;

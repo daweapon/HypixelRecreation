@@ -227,7 +227,6 @@ public class HypixelDataHandler extends DataHandler {
             ScheduleUtility.delay(() -> {
                 if (!player.isOnline()) return;
                 if (HypixelConst.getTypeLoader().getType().isSkyBlock()) return;
-                if (HypixelConst.getTypeLoader().getType() == ServerType.BEDWARS_GAME) return;
 
                 String teamName = StringUtility.limitStringLength(rank.getPriorityCharacter() + player.getUsername(), 15);
                 Team team = new TeamBuilder("H" + teamName, MinecraftServer.getTeamManager())
@@ -240,7 +239,6 @@ public class HypixelDataHandler extends DataHandler {
         }, (player, datapoint) -> {
             player.sendPacket(MinecraftServer.getCommandManager().createDeclareCommandsPacket(player));
             if (HypixelConst.getTypeLoader().getType().isSkyBlock()) return;
-            if (HypixelConst.getTypeLoader().getType() == ServerType.BEDWARS_GAME) return;
 
             Rank rank = (Rank) datapoint.getValue();
             String teamName = StringUtility.limitStringLength(rank.getPriorityCharacter() + player.getUsername(), 15);

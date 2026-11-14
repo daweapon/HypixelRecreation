@@ -21,13 +21,13 @@ class CapacityReportTest {
         List<TypeStatus> report = CapacityReport.build(List.of(
                         server("k1", ServerType.SKYBLOCK_KUUDRA, 100, 10, 3),
                         server("k2", ServerType.SKYBLOCK_KUUDRA, 100, 5, 1),
-                        server("d1", ServerType.RAVENGARD_DUNGEON, 50, 0, null)),
+                        server("d1", ServerType.SKYBLOCK_CATACOMBS, 50, 0, null)),
                 type -> type == ServerType.SKYBLOCK_KUUDRA ? 2 : 0,
-                type -> type == ServerType.RAVENGARD_DUNGEON ? 4 : 0);
+                type -> type == ServerType.SKYBLOCK_CATACOMBS ? 4 : 0);
 
         assertEquals(2, report.size());
         TypeStatus dungeon = report.get(0);
-        assertEquals(ServerType.RAVENGARD_DUNGEON, dungeon.type());
+        assertEquals(ServerType.SKYBLOCK_CATACOMBS, dungeon.type());
         assertEquals(0, dungeon.freeInstanceSlots());
         assertEquals(4, dungeon.queued());
         TypeStatus kuudra = report.get(1);

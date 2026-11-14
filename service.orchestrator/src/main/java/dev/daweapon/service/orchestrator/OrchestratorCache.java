@@ -1,7 +1,6 @@
 package dev.daweapon.service.orchestrator;
 
 import dev.daweapon.commons.ServerType;
-import dev.daweapon.commons.bedwars.BedWarsGameType;
 import dev.daweapon.commons.protocol.objects.orchestrator.GameHeartbeatProtocol;
 import dev.daweapon.type.game.game.GameObject;
 
@@ -67,24 +66,6 @@ public class OrchestratorCache {
     }
 
     /**
-     * Finds an existing joinable game for the specified game type and map (Bedwars-specific)
-     */
-    public static GameWithServer findExisting(BedWarsGameType gameType, String map) {
-        return findExisting(ServerType.BEDWARS_GAME, gameType.maxPlayers(), map, 1, gameType.name());
-    }
-
-    /**
-     * Finds an existing joinable game for the specified game type and map with needed slots (Bedwars-specific)
-     */
-    public static GameWithServer findExisting(BedWarsGameType gameType, String map, int neededSlots) {
-        return findExisting(ServerType.BEDWARS_GAME, gameType.maxPlayers(), map, neededSlots, gameType.name());
-    }
-
-    public static GameWithServer findMostPopulatedBedwarsGame(BedWarsGameType gameType, int neededSlots) {
-        return findExisting(ServerType.BEDWARS_GAME, gameType.maxPlayers(), null, neededSlots, gameType.name(), true);
-    }
-
-    /**
      * Generic version - finds an existing joinable game for any server type
      */
     public static GameWithServer findExisting(ServerType serverType, int maxPlayers, String map) {
@@ -144,58 +125,6 @@ public class OrchestratorCache {
         }
         return selected;
     }
-
-    /**
-     * Finds a server with capacity to host a new game (Bedwars-specific)
-     */
-    public static GameServerState instantiateServer(BedWarsGameType gameType, String map) {
-        cleanup();
-
-        List<GameServerState> candidates = new ArrayList<>();
-        int bedwarsSeen = 0;
-        for (GameServerState server : serversByShortName.values()) {
-            if (server.type() != ServerType.BEDWARS_GAME) {
-                continue;
-            }
-            bedwarsSeen++;
-            if (server.availableSlots() < gameType.maxPlayers()) {
-                org.tinylog.Logger.info("[matchmaking]   reject {}: availableSlots {} < needed {}", server.shortName(), server.availableSlots(), gameType.maxPlayers());
-                continue;
-            }
-            if (server.remainingGameSlots() != null && server.remainingGameSlots() <= 0) {
-                org.tinylog.Logger.info("[matchmaking]   reject {}: no remaining game slots", server.shortName());
-                continue;
-            }
-            if (!supportsBedwarsRequest(server, map, gameType.name())) {
-                org.tinylog.Logger.info("[matchmaking]   reject {}: does not support mode {} (map {}); advertised={}", server.shortName(), gameType.name(), map, server.mapAdvertisements());
-                continue;
-            }
-            candidates.add(server);
-        }
-        org.tinylog.Logger.info("[matchmaking] BEDWARS instantiateServer: {} bedwars servers known, {} candidates after filters", bedwarsSeen, candidates.size());
-
-        if (candidates.isEmpty()) {
-            return null;
-        }
-
-        candidates.sort(Comparator
-            .comparingInt(GameServerState::availableSlots)
-            .thenComparingInt(server -> server.remainingGameSlots() != null ? server.remainingGameSlots() : Integer.MAX_VALUE)
-            .reversed());
-
-        GameServerState best = candidates.getFirst();
-        List<GameServerState> topServers = candidates.stream()
-            .filter(server -> server.availableSlots() == best.availableSlots())
-            .filter(server -> {
-                int serverSlots = server.remainingGameSlots() != null ? server.remainingGameSlots() : Integer.MAX_VALUE;
-                int bestSlots = best.remainingGameSlots() != null ? best.remainingGameSlots() : Integer.MAX_VALUE;
-                return serverSlots == bestSlots;
-            })
-            .toList();
-
-        return topServers.get(ThreadLocalRandom.current().nextInt(topServers.size()));
-    }
-
     /**
      * Generic version - finds a server with capacity to host a new game for any server type
      */
@@ -261,13 +190,6 @@ public class OrchestratorCache {
     public static Set<String> getMaps(ServerType type, String gameTypeName) {
         cleanup();
 
-        if (type == ServerType.BEDWARS_GAME) {
-            Set<String> advertisedMaps = getAdvertisedBedwarsMapNames(gameTypeName);
-            if (!advertisedMaps.isEmpty()) {
-                return advertisedMaps;
-            }
-        }
-
         Set<String> maps = new HashSet<>();
 
         for (GameWithServer gameWithServer : gamesByGameId.values()) {
@@ -278,31 +200,6 @@ public class OrchestratorCache {
         }
 
         return maps;
-    }
-
-    public static List<String> getEligibleBedwarsMaps(BedWarsGameType gameType) {
-        cleanup();
-        Set<String> advertisedMaps = getAdvertisedBedwarsMapNames(gameType.name());
-        if (!advertisedMaps.isEmpty()) {
-            return advertisedMaps.stream().sorted(String.CASE_INSENSITIVE_ORDER).toList();
-        }
-
-        Set<String> maps = new HashSet<>();
-        for (GameWithServer gameWithServer : gamesByGameId.values()) {
-            GameObject game = gameWithServer.game();
-            if (game.getType() == ServerType.BEDWARS_GAME && gameType.name().equals(game.getGameTypeName())) {
-                maps.add(game.getMap());
-            }
-        }
-        return maps.stream().sorted(String.CASE_INSENSITIVE_ORDER).toList();
-    }
-
-    public static String pickRandomBedwarsMap(BedWarsGameType gameType) {
-        List<String> maps = getEligibleBedwarsMaps(gameType);
-        if (maps.isEmpty()) {
-            return null;
-        }
-        return maps.get(ThreadLocalRandom.current().nextInt(maps.size()));
     }
 
     /**
@@ -446,7 +343,7 @@ public class OrchestratorCache {
     /**
      * Get player and game counts filtered by server type and optionally by game type name.
      *
-     * @param type         The server type (e.g., MURDER_MYSTERY_GAME, BEDWARS_GAME)
+     * @param type         The server type (e.g., SKYBLOCK_CATACOMBS, SKYBLOCK_KUUDRA)
      * @param gameTypeName Optional game type name to filter by (e.g., "CLASSIC", "SOLO"). Pass null for all.
      * @return GameCountStats with player count and game count
      */
@@ -457,7 +354,7 @@ public class OrchestratorCache {
     /**
      * Get player and game counts filtered by server type, game type name, and map name.
      *
-     * @param type         The server type (e.g., MURDER_MYSTERY_GAME, BEDWARS_GAME)
+     * @param type         The server type (e.g., SKYBLOCK_CATACOMBS, SKYBLOCK_KUUDRA)
      * @param gameTypeName Optional game type name to filter by (e.g., "CLASSIC", "SOLO"). Pass null for all.
      * @param mapName      Optional map name to filter by. Pass null for all maps.
      * @return GameCountStats with player count and game count
@@ -485,69 +382,4 @@ public class OrchestratorCache {
     public record GameCountStats(int playerCount, int gameCount) {
     }
 
-    private static Set<String> getAdvertisedBedwarsMapNames(String gameTypeName) {
-        Set<String> maps = new HashSet<>();
-        for (GameServerState server : serversByShortName.values()) {
-            if (server.type() != ServerType.BEDWARS_GAME || server.mapAdvertisements().isEmpty()) {
-                continue;
-            }
-            for (GameHeartbeatProtocol.MapAdvertisement advertisement : server.mapAdvertisements()) {
-                if (supportsMode(advertisement, gameTypeName)) {
-                    maps.add(advertisement.mapName());
-                }
-            }
-        }
-        return maps;
-    }
-
-    private static boolean supportsBedwarsRequest(GameServerState server, String map, String gameTypeName) {
-        if (server.mapAdvertisements().isEmpty()) {
-            return true;
-        }
-
-        if (map == null) {
-            for (GameHeartbeatProtocol.MapAdvertisement advertisement : server.mapAdvertisements()) {
-                if (supportsMode(advertisement, gameTypeName)) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        for (GameHeartbeatProtocol.MapAdvertisement advertisement : server.mapAdvertisements()) {
-            if (matchesMap(advertisement, map) && supportsMode(advertisement, gameTypeName)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static boolean matchesMap(GameHeartbeatProtocol.MapAdvertisement advertisement, String requestedMap) {
-        return advertisement.mapId().equalsIgnoreCase(requestedMap)
-            || advertisement.mapName().equalsIgnoreCase(requestedMap);
-    }
-
-    private static boolean supportsMode(GameHeartbeatProtocol.MapAdvertisement advertisement, String gameTypeName) {
-        if (gameTypeName == null) {
-            return true;
-        }
-        BedWarsGameType parsed = BedWarsGameType.from(gameTypeName);
-        String compatibleMode = parsed != null ? parsed.getMapCompatibilityType().name() : gameTypeName;
-        BedWarsGameType requestedCompat = parsed != null ? parsed.getMapCompatibilityType() : null;
-        for (String mode : advertisement.supportedModes()) {
-            // Direct name match (handles enum-name advertisements like ULTIMATE_DOUBLES, ONE_BLOCK).
-            if (mode.equalsIgnoreCase(gameTypeName) || mode.equalsIgnoreCase(compatibleMode)) {
-                return true;
-            }
-            // Normalize the advertised mode too: maps.json uses friendly names ("SOLO",
-            // "DOUBLES", "FOUR_FOUR_FOUR_FOUR") while the queue sends enum names
-            // (ONE_EIGHT, TWO_EIGHT, FOUR_FOUR). Compare via map-compatibility type.
-            BedWarsGameType advertised = BedWarsGameType.from(mode);
-            if (advertised != null && requestedCompat != null
-                    && advertised.getMapCompatibilityType() == requestedCompat) {
-                return true;
-            }
-        }
-        return false;
-    }
 }

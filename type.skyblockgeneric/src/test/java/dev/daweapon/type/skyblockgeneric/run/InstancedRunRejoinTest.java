@@ -35,7 +35,7 @@ class InstancedRunRejoinTest {
 
     @Test
     void otherGamesAndMissingGamesAreIgnored() {
-        assertFalse(InstancedRunRejoin.shouldRejoin(response(true, ServerType.BEDWARS_GAME)));
+        assertFalse(InstancedRunRejoin.shouldRejoin(response(true, ServerType.PROTOTYPE_LOBBY)));
         assertFalse(InstancedRunRejoin.shouldRejoin(response(false, ServerType.SKYBLOCK_CATACOMBS)));
         assertFalse(InstancedRunRejoin.shouldRejoin(response(true, null)));
         assertFalse(InstancedRunRejoin.shouldRejoin(null));

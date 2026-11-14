@@ -64,7 +64,6 @@ class ServerMetricsTest {
     void drainSendsSkyBlockPlayersToTheHubAndHubPlayersHome() {
         assertEquals(ServerType.SKYBLOCK_HUB, DrainDestination.of(ServerType.SKYBLOCK_CRIMSON_ISLE));
         assertEquals(ServerType.SKYBLOCK_ISLAND, DrainDestination.of(ServerType.SKYBLOCK_HUB));
-        assertEquals(ServerType.PROTOTYPE_LOBBY, DrainDestination.of(ServerType.BEDWARS_LOBBY));
         assertEquals(ServerType.SKYBLOCK_HUB, DrainDestination.of(ServerType.PROTOTYPE_LOBBY));
     }
 }
